@@ -22,6 +22,7 @@ interface Card {
   rarity: string
   imageUrl: string
   set?: string
+  quantity?: number
 }
 
 interface Deck {
@@ -116,18 +117,64 @@ export default function DeckBuilderPage() {
   }, [deckId])
 
   const addCardToDeck = (card: Card) => {
-    setCurrentDeck(prev => ({
-      ...prev,
-      cards: [...prev.cards, card]
-    }))
+    // Vérifier si la carte est déjà dans le deck
+    const existingCardIndex = selectedCards.findIndex(c => c.id === card.id)
+    
+    // Vérifier si on a déjà 4 copies de la carte
+    if (existingCardIndex !== -1) {
+      const currentQuantity = selectedCards[existingCardIndex].quantity || 1
+      if (currentQuantity >= 4) {
+        alert('Vous ne pouvez pas avoir plus de 4 copies de la même carte')
+        return
+      }
+    }
+    
+    // Calculer le nombre total de cartes non-leader
+    const nonLeaderCards = selectedCards.filter(c => c.type !== 'LEADER')
+    const totalNonLeaderCount = nonLeaderCards.reduce((sum, c) => sum + (c.quantity || 1), 0)
+    
+    // Vérifier si l'ajout de la carte dépasserait la limite
+    if (card.type !== 'LEADER' && totalNonLeaderCount >= 50) {
+      alert('Vous ne pouvez pas avoir plus de 50 cartes non-leader dans votre deck')
+      return
+    }
+    
+    // Vérifier si c'est un leader et s'il y en a déjà un
+    if (card.type === 'LEADER' && selectedCards.some(c => c.type === 'LEADER')) {
+      alert('Vous ne pouvez avoir qu\'un seul leader dans votre deck')
+      return
+    }
+
+    if (existingCardIndex !== -1) {
+      // Augmenter la quantité si la carte existe déjà
+      const updatedCards = [...selectedCards]
+      updatedCards[existingCardIndex] = {
+        ...updatedCards[existingCardIndex],
+        quantity: (updatedCards[existingCardIndex].quantity || 1) + 1
+      }
+      setSelectedCards(updatedCards)
+    } else {
+      // Ajouter la carte avec une quantité de 1
+      setSelectedCards([...selectedCards, { ...card, quantity: 1 }])
+    }
   }
 
   const removeCardFromDeck = (cardId: string) => {
-    setCurrentDeck(prev => ({
-      ...prev,
-      cards: prev.cards.filter(card => card.id !== cardId)
-    }))
-  }
+    const card = selectedCards.find(c => c.id === cardId);
+    if (!card) return;
+
+    if ((card.quantity || 1) > 1) {
+      setSelectedCards(
+        selectedCards.map(c =>
+          c.id === cardId
+            ? { ...c, quantity: (c.quantity || 1) - 1 }
+            : c
+        )
+      );
+    } else {
+      setSelectedCards(selectedCards.filter(c => c.id !== cardId));
+    }
+  };
 
   const filteredCards = availableCards.filter(card => {
     if (filters.search && !card.name.toLowerCase().includes(filters.search.toLowerCase())) {
@@ -141,8 +188,25 @@ export default function DeckBuilderPage() {
 
   const saveDeck = async () => {
     try {
-      const url = isEditing ? `/api/decks/${deckId}` : '/api/decks'
-      const method = isEditing ? 'PUT' : 'POST'
+      // Vérifier les règles du deck avant de sauvegarder
+      const leaderCards = selectedCards.filter(card => card.type === 'LEADER');
+      const nonLeaderCards = selectedCards.filter(card => card.type !== 'LEADER');
+      
+      const leaderCount = leaderCards.reduce((sum, card) => sum + (card.quantity || 1), 0);
+      const nonLeaderCount = nonLeaderCards.reduce((sum, card) => sum + (card.quantity || 1), 0);
+      
+      if (leaderCount !== 1) {
+        alert('Le deck doit contenir exactement 1 leader');
+        return;
+      }
+      
+      if (nonLeaderCount !== 50) {
+        alert('Le deck doit contenir exactement 50 cartes (sans compter le leader)');
+        return;
+      }
+      
+      const url = isEditing ? `/api/decks/${deckId}` : '/api/decks';
+      const method = isEditing ? 'PUT' : 'POST';
       
       const response = await fetch(url, {
         method,
@@ -153,19 +217,20 @@ export default function DeckBuilderPage() {
           name: deckName,
           cards: selectedCards,
         }),
-      })
+      });
 
       if (!response.ok) {
-        throw new Error('Erreur lors de la sauvegarde du deck')
+        const errorData = await response.json();
+        throw new Error(errorData.message || 'Erreur lors de la sauvegarde du deck');
       }
 
-      const savedDeck = await response.json()
-      router.push('/decks')
+      const savedDeck = await response.json();
+      router.push('/decks');
     } catch (error) {
-      console.error('Erreur:', error)
-      setError('Erreur lors de la sauvegarde du deck')
+      console.error('Erreur:', error);
+      setError('Erreur lors de la sauvegarde du deck');
     }
-  }
+  };
 
   if (loading) {
     return (
@@ -301,11 +366,12 @@ export default function DeckBuilderPage() {
                 />
                 
                 <div className="text-sm text-gray-500 mb-4">
-                  <p>Cartes dans le deck: {selectedCards.length}/50</p>
-                  <p>Leader: {selectedCards.filter(card => card.type === 'LEADER').length}/1</p>
-                  <p>Personnages: {selectedCards.filter(card => card.type === 'CHARACTER').length}</p>
-                  <p>Événements: {selectedCards.filter(card => card.type === 'EVENT').length}</p>
-                  <p>Stages: {selectedCards.filter(card => card.type === 'STAGE').length}</p>
+                  <p>Leader: {selectedCards.filter(card => card.type === 'LEADER').reduce((sum, card) => sum + (card.quantity || 1), 0)}/1</p>
+                  <p>Autres cartes: {selectedCards.filter(card => card.type !== 'LEADER').reduce((sum, card) => sum + (card.quantity || 1), 0)}/50</p>
+                  <p>Total: {selectedCards.reduce((sum, card) => sum + (card.quantity || 1), 0)}/51</p>
+                  <p>Personnages: {selectedCards.filter(card => card.type === 'CHARACTER').reduce((sum, card) => sum + (card.quantity || 1), 0)}</p>
+                  <p>Événements: {selectedCards.filter(card => card.type === 'EVENT').reduce((sum, card) => sum + (card.quantity || 1), 0)}</p>
+                  <p>Stages: {selectedCards.filter(card => card.type === 'STAGE').reduce((sum, card) => sum + (card.quantity || 1), 0)}</p>
                 </div>
 
                 <Button className="w-full" onClick={saveDeck}>
@@ -314,9 +380,9 @@ export default function DeckBuilderPage() {
               </div>
 
               <div className="space-y-2">
-                {selectedCards.map((card) => (
+                {selectedCards.map((card, index) => (
                   <div
-                    key={card.id}
+                    key={`${card.id}-${index}`}
                     className="flex items-center justify-between p-2 bg-gray-50 rounded"
                   >
                     <div className="flex items-center space-x-2">
@@ -328,15 +394,27 @@ export default function DeckBuilderPage() {
                           className="object-cover rounded"
                         />
                       </div>
-                      <span className="text-sm">{card.name}</span>
+                      <div>
+                        <span className="text-sm">{card.name}</span>
+                        <span className="text-xs text-gray-500 ml-2">x{card.quantity || 1}</span>
+                      </div>
                     </div>
-                    <Button
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => removeCardFromDeck(card.id)}
-                    >
-                      ×
-                    </Button>
+                    <div className="flex items-center space-x-2">
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => addCardToDeck(card)}
+                      >
+                        +
+                      </Button>
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        onClick={() => removeCardFromDeck(card.id)}
+                      >
+                        ×
+                      </Button>
+                    </div>
                   </div>
                 ))}
               </div>

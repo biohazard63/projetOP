@@ -37,7 +37,7 @@ model Card {
   ability     String? // Capacité de la carte
   trigger     String? // Effet trigger
   notes       String? // Notes additionnelles
-  decks       Deck[]  @relation("CardToDeck")
+  deckCards   DeckCard[]
   users       User[]  @relation("CardToUser")
 }
 
@@ -49,5 +49,16 @@ model Deck {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
   user        User     @relation(fields: [userId], references: [id])
-  cards       Card[]   @relation("CardToDeck")
+  deckCards   DeckCard[]
+}
+
+model DeckCard {
+  id        String   @id @default(cuid())
+  deckId    String
+  cardId    String
+  quantity  Int      @default(1)
+  deck      Deck     @relation(fields: [deckId], references: [id], onDelete: Cascade)
+  card      Card     @relation(fields: [cardId], references: [id], onDelete: Cascade)
+
+  @@unique([deckId, cardId])
 }

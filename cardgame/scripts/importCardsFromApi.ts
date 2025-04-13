@@ -14,7 +14,7 @@ interface ApiCard {
   name: string;
   type: string;
   color: string;
-  cost: number;
+  cost: number | null;
   power: number | null;
   counter: string | null;
   rarity: string;
@@ -49,6 +49,13 @@ function parseCounter(counter: string | null | undefined): number | null {
   }
   const value = parseInt(counter);
   return isNaN(value) ? null : value;
+}
+
+function parseCost(cost: number | null | undefined): number {
+  if (cost === null || cost === undefined) {
+    return 0; // Valeur par défaut pour les cartes sans coût
+  }
+  return cost;
 }
 
 async function fetchPage(page: number): Promise<ApiResponse> {
@@ -112,7 +119,7 @@ async function importCards() {
             name: card.name.trim(),
             type: card.type,
             color: card.color,
-            cost: card.cost,
+            cost: parseCost(card.cost),
             power: card.power,
             counter: parseCounter(card.counter),
             rarity: card.rarity,

@@ -1,4 +1,4 @@
-import { PrismaClient } from '@prisma/client'
+import { PrismaClient, Prisma } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
@@ -17,9 +17,9 @@ const starterDecks = [
       { code: 'ST01-009', quantity: 4 }, // Brook
       { code: 'ST01-010', quantity: 4 }, // Nami
       { code: 'ST01-011', quantity: 4 }, // Roronoa Zoro
-      { code: 'ST01-012', quantity: 2 }, // Monkey D. Luffy
-      { code: 'ST01-013', quantity: 2 }, // Guard Point
-      { code: 'ST01-014', quantity: 2 }, // Gum-Gum Jet Pistol
+      { code: 'ST01-012', quantity: 4 }, // Monkey D. Luffy
+      { code: 'ST01-013', quantity: 4 }, // Guard Point
+      { code: 'ST01-014', quantity: 4 }, // Gum-Gum Jet Pistol
     ]
   },
   {
@@ -36,8 +36,8 @@ const starterDecks = [
       { code: 'ST02-009', quantity: 4 }, // Trafalgar Law
       { code: 'ST02-010', quantity: 4 }, // Heat
       { code: 'ST02-011', quantity: 4 }, // Wire
-      { code: 'ST02-012', quantity: 2 }, // Repel
-      { code: 'ST02-013', quantity: 2 }, // Straw Sword
+      { code: 'ST02-012', quantity: 4 }, // Repel
+      { code: 'ST02-013', quantity: 4 }, // Straw Sword
     ]
   },
   {
@@ -54,8 +54,8 @@ const starterDecks = [
       { code: 'ST03-009', quantity: 4 }, // Trafalgar Law
       { code: 'ST03-010', quantity: 4 }, // Buggy
       { code: 'ST03-011', quantity: 4 }, // Gekko Moria
-      { code: 'ST03-012', quantity: 2 }, // Love-Love Mellow
-      { code: 'ST03-013', quantity: 2 }, // Thrust Pad Cannon
+      { code: 'ST03-012', quantity: 4 }, // Love-Love Mellow
+      { code: 'ST03-013', quantity: 4 }, // Thrust Pad Cannon
     ]
   },
   {
@@ -72,30 +72,30 @@ const starterDecks = [
       { code: 'ST04-009', quantity: 4 }, // Who's-Who
       { code: 'ST04-010', quantity: 4 }, // Babanuki
       { code: 'ST04-011', quantity: 4 }, // Sheepshead
-      { code: 'ST04-012', quantity: 2 }, // Brachio Bomber
-      { code: 'ST04-013', quantity: 2 }, // Blast Breath
+      { code: 'ST04-012', quantity: 4 }, // Brachio Bomber
+      { code: 'ST04-013', quantity: 4 }, // Blast Breath
     ]
   },
   {
     name: 'ST-05 : Édition FILM (Violet)',
     cards: [
       { code: 'ST05-001', quantity: 1 }, // Leader: Shanks
-      { code: 'ST05-002', quantity: 2 }, // Ain
-      { code: 'ST05-003', quantity: 2 }, // Ann
-      { code: 'ST05-004', quantity: 2 }, // Uta
-      { code: 'ST05-005', quantity: 2 }, // Carina
-      { code: 'ST05-006', quantity: 2 }, // Gild Tesoro
-      { code: 'ST05-007', quantity: 2 }, // Gordon
-      { code: 'ST05-008', quantity: 2 }, // Shiki
-      { code: 'ST05-009', quantity: 2 }, // Scarlet
-      { code: 'ST05-010', quantity: 2 }, // Zephyr
-      { code: 'ST05-011', quantity: 2 }, // Douglas Bullet
-      { code: 'ST05-012', quantity: 2 }, // Baccarat
-      { code: 'ST05-013', quantity: 2 }, // Bins
-      { code: 'ST05-014', quantity: 2 }, // Buena Festa
-      { code: 'ST05-015', quantity: 2 }, // Dr. Indigo
-      { code: 'ST05-016', quantity: 2 }, // Lion's Threat Imperial Earth Bind
-      { code: 'ST05-017', quantity: 2 }, // Union Armada
+      { code: 'ST05-002', quantity: 4 }, // Ain
+      { code: 'ST05-003', quantity: 4 }, // Ann
+      { code: 'ST05-004', quantity: 4 }, // Uta
+      { code: 'ST05-005', quantity: 4 }, // Carina
+      { code: 'ST05-006', quantity: 4 }, // Gild Tesoro
+      { code: 'ST05-007', quantity: 4 }, // Gordon
+      { code: 'ST05-008', quantity: 4 }, // Shiki
+      { code: 'ST05-009', quantity: 4 }, // Scarlet
+      { code: 'ST05-010', quantity: 4 }, // Zephyr
+      { code: 'ST05-011', quantity: 4 }, // Douglas Bullet
+      { code: 'ST05-012', quantity: 4 }, // Baccarat
+      { code: 'ST05-013', quantity: 4 }, // Bins
+      { code: 'ST05-014', quantity: 4 }, // Buena Festa
+      { code: 'ST05-015', quantity: 4 }, // Dr. Indigo
+      { code: 'ST05-016', quantity: 4 }, // Lion's Threat Imperial Earth Bind
+      { code: 'ST05-017', quantity: 4 }, // Union Armada
     ]
   },
   {
@@ -114,7 +114,7 @@ const starterDecks = [
       { code: 'ST06-011', quantity: 4 }, // Momonga
       { code: 'ST06-012', quantity: 4 }, // Monkey D. Garp
       { code: 'ST06-013', quantity: 4 }, // T-Bone
-      { code: 'ST06-014', quantity: 2 }, // Shockwave
+      { code: 'ST06-014', quantity: 4 }, // Shockwave
     ]
   },
   {
@@ -132,7 +132,7 @@ const starterDecks = [
       { code: 'ST07-010', quantity: 4 }, // Charlotte Pudding
       { code: 'ST07-011', quantity: 4 }, // Charlotte Cracker
       { code: 'ST07-012', quantity: 4 }, // Charlotte Katakuri
-      { code: 'ST07-013', quantity: 2 }, // Soul Pocus
+      { code: 'ST07-013', quantity: 4 }, // Soul Pocus
     ]
   },
   {
@@ -149,8 +149,8 @@ const starterDecks = [
       { code: 'ST08-009', quantity: 4 }, // Jinbe
       { code: 'ST08-010', quantity: 4 }, // Nico Robin
       { code: 'ST08-011', quantity: 4 }, // Carrot
-      { code: 'ST08-012', quantity: 2 }, // Gum-Gum Red Roc
-      { code: 'ST08-013', quantity: 2 }, // Straw Hat Crew's Resolve
+      { code: 'ST08-012', quantity: 4 }, // Gum-Gum Red Roc
+      { code: 'ST08-013', quantity: 4 }, // Straw Hat Crew's Resolve
     ]
   },
   {
@@ -167,7 +167,7 @@ const starterDecks = [
       { code: 'ST09-009', quantity: 4 }, // Inuarashi
       { code: 'ST09-010', quantity: 4 }, // Nekomamushi
       { code: 'ST09-011', quantity: 4 }, // Kozuki Oden
-      { code: 'ST09-012', quantity: 2 }, // Two-Sword Style
+      { code: 'ST09-012', quantity: 4 }, // Two-Sword Style
     ]
   },
   {
@@ -184,8 +184,8 @@ const starterDecks = [
       { code: 'ST10-009', quantity: 4 }, // Usopp
       { code: 'ST10-010', quantity: 4 }, // Carrot
       { code: 'ST10-011', quantity: 4 }, // Nico Robin
-      { code: 'ST10-012', quantity: 2 }, // Gum-Gum Giant Sumo Slap
-      { code: 'ST10-013', quantity: 2 }, // Gum-Gum Kong Gatling
+      { code: 'ST10-012', quantity: 4 }, // Gum-Gum Giant Sumo Slap
+      { code: 'ST10-013', quantity: 4 }, // Gum-Gum Kong Gatling
     ]
   },
   {
@@ -202,8 +202,8 @@ const starterDecks = [
       { code: 'ST12-009', quantity: 4 }, // Jinbe
       { code: 'ST12-010', quantity: 4 }, // Nico Robin
       { code: 'ST12-011', quantity: 4 }, // Carrot
-      { code: 'ST12-012', quantity: 2 }, // Gum-Gum Red Roc
-      { code: 'ST12-013', quantity: 2 }, // Straw Hat Crew's Resolve
+      { code: 'ST12-012', quantity: 4 }, // Two-Sword Style
+      { code: 'ST12-013', quantity: 4 }, // Diable Jambe
     ]
   },
   {
@@ -251,6 +251,10 @@ async function importStarterDecks() {
 
     console.log(`${users.length} utilisateurs trouvés. Attribution des decks de démarrage...`)
 
+    // Supprimer tous les decks existants
+    await prisma.deck.deleteMany()
+    console.log('Decks existants supprimés')
+
     // Créer les decks de démarrage pour chaque utilisateur
     for (const user of users) {
       console.log(`Création des decks pour l'utilisateur: ${user.email}`)
@@ -258,33 +262,51 @@ async function importStarterDecks() {
       for (const deckData of starterDecks) {
         console.log(`Création du deck: ${deckData.name}`)
 
-        // Récupérer les cartes correspondantes
-        const cards = await Promise.all(
-          deckData.cards.map(async ({ code, quantity }) => {
-            const card = await prisma.card.findFirst({
-              where: { id: code }
-            })
-            if (!card) {
-              throw new Error(`Carte non trouvée: ${code}`)
+        // Créer le deck avec toutes ses cartes en une seule transaction
+        await prisma.$transaction(async (tx) => {
+          // Créer le deck
+          const deck = await tx.deck.create({
+            data: {
+              name: deckData.name,
+              userId: user.id,
             }
-            return { card, quantity }
           })
-        )
 
-        // Créer le deck
-        const deck = await prisma.deck.create({
-          data: {
-            name: deckData.name,
-            userId: user.id,
-            cards: {
-              connect: cards.flatMap(({ card, quantity }) => 
-                Array(quantity).fill({ id: card.id })
-              )
+          // Pour chaque carte dans le deck
+          for (const cardData of deckData.cards) {
+            // Vérifier si la carte existe
+            const card = await tx.card.findUnique({
+              where: { id: cardData.code }
+            })
+
+            if (!card) {
+              console.error(`Carte non trouvée: ${cardData.code}`)
+              continue
             }
-          }
-        })
 
-        console.log(`Deck créé avec succès: ${deck.name} pour ${user.email} avec ${cards.reduce((sum, { quantity }) => sum + quantity, 0)} cartes`)
+            // Créer l'entrée DeckCard avec la quantité spécifiée
+            await tx.deckCard.create({
+              data: {
+                deckId: deck.id,
+                cardId: card.id,
+                quantity: cardData.quantity
+              }
+            })
+          }
+
+          // Vérifier le nombre final de cartes
+          const updatedDeck = await tx.deck.findUnique({
+            where: { id: deck.id },
+            include: { 
+              deckCards: {
+                include: { card: true }
+              }
+            }
+          })
+
+          const totalCards = updatedDeck?.deckCards.reduce((sum, dc) => sum + dc.quantity, 0) || 0
+          console.log(`Deck créé avec succès: ${deck.name} pour ${user.email} avec ${totalCards} cartes au total`)
+        })
       }
     }
 
@@ -293,6 +315,57 @@ async function importStarterDecks() {
     console.error('Erreur lors de l\'importation des decks de démarrage:', error)
   } finally {
     await prisma.$disconnect()
+  }
+}
+
+async function createStarterDeck(userId: string, deckData: { name: string, cards: { code: string, quantity: number }[] }) {
+  try {
+    console.log(`Création du deck: ${deckData.name}`)
+    
+    // Créer le deck
+    const deck = await prisma.deck.create({
+      data: {
+        name: deckData.name,
+        userId: userId,
+      },
+    })
+
+    // Ajouter les cartes au deck
+    for (const cardData of deckData.cards) {
+      // Récupérer la carte
+      const card = await prisma.card.findUnique({
+        where: { id: cardData.code }
+      })
+
+      if (!card) {
+        console.error(`Carte non trouvée: ${cardData.code}`)
+        continue
+      }
+
+      // Ajouter la carte au deck le nombre de fois spécifié
+      for (let i = 0; i < cardData.quantity; i++) {
+        await prisma.deck.update({
+          where: { id: deck.id },
+          data: {
+            cards: {
+              connect: { id: card.id }
+            }
+          }
+        })
+      }
+    }
+
+    // Vérifier le nombre total de cartes dans le deck
+    const updatedDeck = await prisma.deck.findUnique({
+      where: { id: deck.id },
+      include: { cards: true }
+    })
+
+    console.log(`Deck créé avec succès: ${deckData.name} pour ${userId} avec ${updatedDeck?.cards.length} cartes`)
+    return deck
+  } catch (error) {
+    console.error(`Erreur lors de la création du deck ${deckData.name}:`, error)
+    throw error
   }
 }
 
