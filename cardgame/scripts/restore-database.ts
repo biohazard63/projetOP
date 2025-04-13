@@ -112,21 +112,23 @@ async function restoreDatabase() {
             await prisma.card.create({
               data: {
                 id: card.id,
+                code: card.code || card.id,
                 name: card.name,
-                image: card.image,
                 type: card.type,
                 color: card.color,
-                rarity: card.rarity,
                 cost: card.cost,
                 power: card.power,
                 counter: card.counter,
+                effect: card.effect,
+                rarity: card.rarity,
+                imageUrl: card.imageUrl || card.image,
+                set: card.set,
                 attribute: card.attribute,
                 attributeImage: card.attributeImage,
-                set: card.set,
-                setNumber: card.setNumber,
-                effect: card.effect,
-                createdAt: new Date(card.createdAt),
-                updatedAt: new Date(card.updatedAt)
+                family: card.family,
+                ability: card.ability,
+                trigger: card.trigger,
+                notes: card.notes
               }
             })
           }

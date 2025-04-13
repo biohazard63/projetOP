@@ -5,6 +5,7 @@ const prisma = new PrismaClient()
 const testCards = [
   {
     id: 'card1',
+    code: 'ST01-001',
     name: 'Dragon de Feu',
     type: 'Créature',
     color: 'Rouge',
@@ -17,6 +18,7 @@ const testCards = [
   },
   {
     id: 'card2',
+    code: 'ST01-002',
     name: 'Boule de Feu',
     type: 'Sort',
     color: 'Rouge',
@@ -27,6 +29,7 @@ const testCards = [
   },
   {
     id: 'card3',
+    code: 'ST01-003',
     name: 'Élémental d\'Eau',
     type: 'Créature',
     color: 'Bleu',
@@ -39,6 +42,7 @@ const testCards = [
   },
   {
     id: 'card4',
+    code: 'ST01-004',
     name: 'Contrôle Mental',
     type: 'Sort',
     color: 'Bleu',
@@ -49,6 +53,7 @@ const testCards = [
   },
   {
     id: 'card5',
+    code: 'ST01-005',
     name: 'Golem de Pierre',
     type: 'Créature',
     color: 'Vert',
@@ -61,6 +66,7 @@ const testCards = [
   },
   {
     id: 'card6',
+    code: 'ST01-006',
     name: 'Éclat de Vie',
     type: 'Sort',
     color: 'Vert',
@@ -71,6 +77,7 @@ const testCards = [
   },
   {
     id: 'card7',
+    code: 'ST01-007',
     name: 'Ange Gardien',
     type: 'Créature',
     color: 'Blanc',
@@ -83,6 +90,7 @@ const testCards = [
   },
   {
     id: 'card8',
+    code: 'ST01-008',
     name: 'Exorcisme',
     type: 'Sort',
     color: 'Blanc',
@@ -93,6 +101,7 @@ const testCards = [
   },
   {
     id: 'card9',
+    code: 'ST01-009',
     name: 'Vampire Nocturne',
     type: 'Créature',
     color: 'Noir',
@@ -105,6 +114,7 @@ const testCards = [
   },
   {
     id: 'card10',
+    code: 'ST01-010',
     name: 'Drain de Vie',
     type: 'Sort',
     color: 'Noir',

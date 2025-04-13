@@ -7,6 +7,7 @@ import { useSession, signOut } from 'next-auth/react'
 
 const navigation = [
   { name: 'Accueil', href: '/' },
+  { name: 'Mes Decks', href: '/decks' },
   { name: 'Deck Builder', href: '/deck-builder' },
   { name: 'Boosters', href: '/booster-opening' },
   { name: 'Jouer', href: '/game' },
