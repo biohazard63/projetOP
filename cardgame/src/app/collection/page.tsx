@@ -206,38 +206,46 @@ export default function CollectionPage() {
   useEffect(() => {
     const fetchCards = async () => {
       try {
-        console.log('Début de la récupération des cartes...')
-        const response = await fetch('/api/collection')
-        console.log('Réponse reçue:', response.status)
+        setLoading(true)
+        setError(null)
+        console.log('Collection: Début de la récupération des cartes')
+        
+        const response = await fetch('/api/collection', {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          credentials: 'include', // Important pour les cookies de session
+        })
+
+        console.log('Collection: Statut de la réponse:', response.status)
         
         if (!response.ok) {
-          throw new Error('Erreur lors de la récupération des cartes')
+          const errorData = await response.json()
+          console.error('Collection: Erreur de réponse:', errorData)
+          throw new Error(errorData.message || 'Erreur lors de la récupération des cartes')
         }
 
         const data = await response.json()
-        console.log('Nombre total de cartes reçues:', data.length)
-        console.log('Premières 5 cartes:', data.slice(0, 5))
-        console.log('Dernières 5 cartes:', data.slice(-5))
+        console.log('Collection: Données reçues:', data.length, 'cartes')
         
-        if (Array.isArray(data)) {
-          setCards(data)
-          console.log('État des cartes mis à jour avec', data.length, 'cartes')
-        } else {
-          console.error('Format de données invalide:', data)
-          setError('Format de données invalide')
+        if (!Array.isArray(data)) {
+          console.error('Collection: Format de données invalide:', data)
+          throw new Error('Format de données invalide')
         }
+
+        setCards(data)
+        console.log('Collection: État mis à jour avec succès')
       } catch (error) {
-        console.error('Erreur lors de la récupération des cartes:', error)
+        console.error('Collection: Erreur lors de la récupération:', error)
         setError(error instanceof Error ? error.message : 'Une erreur est survenue')
       } finally {
         setLoading(false)
       }
     }
 
-    if (session) {
-      fetchCards()
-    }
-  }, [session])
+    fetchCards()
+  }, [])
 
   const filteredAndSortedCards = cards
     .filter((card) => {
