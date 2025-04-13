@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id         String   @id @default(cuid())
+  name       String?
+  email      String   @unique
+  password   String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  decks      Deck[]
+  collection Card[]   @relation("CardToUser")
+}
+
+model Card {
+  id          String  @id
+  code        String  // Code de la carte (même que l'id)
+  name        String
+  type        String
+  color       String
+  cost        Int
+  power       Int?
+  counter     Int?
+  effect      String?
+  rarity      String
+  imageUrl    String
+  set         String?
+  attribute   String? // Nom de l'attribut (ex: "Wisdom")
+  attributeImage String? // URL de l'image de l'attribut
+  family      String? // Type de famille (ex: "FILM/Mecha Island")
+  ability     String? // Capacité de la carte
+  trigger     String? // Effet trigger
+  notes       String? // Notes additionnelles
+  decks       Deck[]  @relation("CardToDeck")
+  users       User[]  @relation("CardToUser")
+}
+
+model Deck {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  user        User     @relation(fields: [userId], references: [id])
+  cards       Card[]   @relation("CardToDeck")
+}
