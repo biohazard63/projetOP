@@ -2,7 +2,7 @@ import { PrismaClient, Prisma } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
-const starterDecks = [
+export const starterDecks = [
   {
     name: 'ST-01 : Équipage du Chapeau de Paille (Rouge)',
     cards: [
@@ -367,6 +367,4 @@ async function createStarterDeck(userId: string, deckData: { name: string, cards
     console.error(`Erreur lors de la création du deck ${deckData.name}:`, error)
     throw error
   }
-}
-
-importStarterDecks() 
+} 

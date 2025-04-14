@@ -23,7 +23,9 @@
     "check-user-collection": "tsx scripts/checkUserCollection.ts",
     "create-test-user": "tsx scripts/create-test-user.ts",
     "delete-all-cards": "tsx scripts/deleteAllCards.ts",
-    "import-cards": "tsx scripts/importCardsFromApi.ts"
+    "import-cards": "tsx scripts/importCardsFromApi.ts",
+    "add-starter-decks": "tsx scripts/addStarterDecksToUsers.ts",
+    "delete-all-decks": "tsx scripts/deleteAllDecks.ts"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.6.0",
@@ -50,6 +52,7 @@
     "react-beautiful-dnd": "^13.1.1",
     "react-dom": "^18",
     "socket.io-client": "^4.7.0",
+    "sonner": "^2.0.3",
     "tailwind-merge": "^2.2.1"
   },
   "devDependencies": {
