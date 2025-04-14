@@ -22,84 +22,56 @@ interface RawDeckWithCards extends Deck {
 }
 
 // GET /api/decks - Récupérer tous les decks de l'utilisateur
-export async function GET(request: Request) {
+export async function GET() {
   try {
-    console.log('API Decks: Début de la requête GET')
-    
     const session = await getServerSession(authOptions)
-    console.log('API Decks: Session récupérée', session ? 'Oui' : 'Non')
-
+    
     if (!session?.user?.email) {
-      console.log('API Decks: Utilisateur non authentifié')
       return NextResponse.json(
-        { message: 'Non autorisé' },
+        { error: 'Non autorisé' },
         { status: 401 }
       )
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
+      where: { email: session.user.email },
+      include: {
+        decks: {
+          include: {
+            deckCards: {
+              include: {
+                card: true
+              }
+            }
+          }
+        }
+      }
     })
 
     if (!user) {
-      console.log('API Decks: Utilisateur non trouvé')
       return NextResponse.json(
-        { message: 'Utilisateur non trouvé' },
+        { error: 'Utilisateur non trouvé' },
         { status: 404 }
       )
     }
 
-    // Récupérer les decks avec leurs cartes
-    const decksWithCards = await prisma.$queryRaw<RawDeckWithCards[]>`
-      SELECT 
-        d.*,
-        json_agg(
-          json_build_object(
-            'id', c.id,
-            'code', c.code,
-            'name', c.name,
-            'type', c.type,
-            'color', c.color,
-            'cost', c.cost,
-            'power', c.power,
-            'counter', c.counter,
-            'effect', c.effect,
-            'rarity', c.rarity,
-            'imageUrl', c."imageUrl",
-            'set', c.set,
-            'attribute', c.attribute,
-            'attributeImage', c."attributeImage",
-            'family', c.family,
-            'ability', c.ability,
-            'trigger', c.trigger,
-            'notes', c.notes,
-            'quantity', dc.quantity
-          )
-        ) as cards
-      FROM "Deck" d
-      LEFT JOIN "DeckCard" dc ON d.id = dc."deckId"
-      LEFT JOIN "Card" c ON dc."cardId" = c.id
-      WHERE d."userId" = ${user.id}
-      GROUP BY d.id
-    `
-
-    // Transformer les decks
-    const transformedDecks: TransformedDeck[] = decksWithCards.map(deck => ({
+    // Transformer les decks dans le format attendu
+    const transformedDecks = user.decks.map(deck => ({
       id: deck.id,
       name: deck.name,
-      description: deck.description,
-      userId: deck.userId,
-      createdAt: deck.createdAt,
-      updatedAt: deck.updatedAt,
-      cards: deck.cards || []
+      cards: deck.deckCards.map(deckCard => ({
+        id: deckCard.card.id,
+        name: deckCard.card.name,
+        imageUrl: deckCard.card.imageUrl,
+        quantity: deckCard.quantity
+      }))
     }))
 
-    console.log('API Decks: Decks récupérés avec succès')
-    return NextResponse.json(transformedDecks)
+    return NextResponse.json({ decks: transformedDecks })
   } catch (error) {
-    console.error('API Decks: Erreur lors de la récupération des decks:', error)
+    console.error('Erreur lors de la récupération des decks:', error)
     return NextResponse.json(
-      { message: 'Erreur serveur', error: error instanceof Error ? error.message : 'Erreur inconnue' },
+      { error: 'Erreur serveur' },
       { status: 500 }
     )
   }

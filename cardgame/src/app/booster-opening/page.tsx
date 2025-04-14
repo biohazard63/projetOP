@@ -10,7 +10,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select'
-import { toast } from 'sonner'
+import { toast, Toaster } from 'sonner'
 
 export default function BoosterOpening() {
   const [sets, setSets] = useState<string[]>([])
@@ -113,6 +113,7 @@ export default function BoosterOpening() {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 text-white p-4">
+      <Toaster position="top-center" richColors />
       <div className="container mx-auto max-w-7xl">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold mb-2">Ouverture de Booster</h1>
