@@ -61,9 +61,13 @@ export default function DecksPage() {
         }
 
         const data = await response.json()
-        console.log('Decks: Données reçues:', data.length, 'decks')
+        console.log('Decks: Données reçues:', data)
         
-        setDecks(data)
+        if (!data.decks || !Array.isArray(data.decks)) {
+          throw new Error('Format de données invalide')
+        }
+        
+        setDecks(data.decks)
       } catch (error) {
         console.error('Decks: Erreur lors de la récupération:', error)
         setError(error instanceof Error ? error.message : 'Une erreur est survenue')

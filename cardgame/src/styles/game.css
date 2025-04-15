@@ -1,0 +1,47 @@
+.game-board {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem;
+  background-color: #1a1a1a;
+  min-height: 100vh;
+}
+
+.opponent-field,
+.player-field {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  gap: 1rem;
+  min-height: 200px;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+}
+
+.hand {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.hand-cards {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.05);
+  border-radius: 8px;
+  overflow-x: auto;
+  min-height: 200px;
+}
+
+h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0;
+} 

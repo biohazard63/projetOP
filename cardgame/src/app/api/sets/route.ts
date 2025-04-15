@@ -3,11 +3,28 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
+const mainSets = [
+  '-ROMANCE DAWN- [OP01]',
+  '-PARAMOUNT WAR- [OP02]',
+  '-PILLARS OF STRENGTH- [OP03]',
+  '-KINGDOMS OF INTRIGUE- [OP04]',
+  'OP-05',
+  '-WINGS OF THE CAPTAIN-[OP06]',
+  '-500 YEARS IN THE FUTURE- [OP-07]',
+  '-TWO LEGENDS- [OP-08]',
+  '-EMPERORS IN THE NEW WORLD- [OP-09]'
+];
+
 export async function GET() {
   try {
     const sets = await prisma.card.findMany({
       select: {
         set: true
+      },
+      where: {
+        set: {
+          in: mainSets
+        }
       },
       distinct: ['set'],
       orderBy: {

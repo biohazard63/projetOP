@@ -3,45 +3,46 @@
 import React from 'react';
 import { GameCard } from '@/types/game';
 import Image from 'next/image';
+import { cn } from '@/lib/utils';
 
 interface CardProps {
   card: GameCard;
   onClick?: () => void;
   isActive?: boolean;
   isTarget?: boolean;
+  className?: string;
 }
 
-export default function Card({ card, onClick, isActive, isTarget }: CardProps) {
+export function Card({ card, onClick, isActive = false, isTarget = false, className }: CardProps) {
   const getCardColor = (color: string) => {
-    switch (color) {
-      case 'RED':
-        return 'bg-red-500';
-      case 'BLUE':
-        return 'bg-blue-500';
-      case 'GREEN':
-        return 'bg-green-500';
-      case 'BLACK':
-        return 'bg-gray-900';
-      case 'YELLOW':
-        return 'bg-yellow-500';
+    switch (color.toLowerCase()) {
+      case 'red':
+        return 'bg-red-100';
+      case 'blue':
+        return 'bg-blue-100';
+      case 'green':
+        return 'bg-green-100';
+      case 'black':
+        return 'bg-gray-100';
       default:
-        return 'bg-gray-500';
+        return 'bg-white';
     }
   };
 
   return (
     <div
-      className={`
-        relative w-full h-full rounded-lg overflow-hidden
-        ${getCardColor(card.color)}
-        ${onClick ? 'cursor-pointer hover:scale-105 transition-transform' : ''}
-        ${isActive ? 'ring-4 ring-yellow-400' : ''}
-        ${isTarget ? 'ring-4 ring-red-500' : ''}
-      `}
+      className={cn(
+        'relative w-32 h-48 rounded-lg shadow-lg transition-all duration-200 cursor-pointer',
+        getCardColor(card.color),
+        isActive && 'hover:scale-105 hover:shadow-xl',
+        isTarget && 'ring-2 ring-yellow-400',
+        !isActive && 'opacity-75',
+        className
+      )}
       onClick={onClick}
     >
       {/* Image de la carte */}
-      <div className="relative w-full h-2/3">
+      <div className="w-full h-32 rounded-t-lg overflow-hidden">
         <Image
           src={card.imageUrl}
           alt={card.name}
@@ -52,32 +53,30 @@ export default function Card({ card, onClick, isActive, isTarget }: CardProps) {
 
       {/* Informations de la carte */}
       <div className="p-2">
-        <div className="flex justify-between items-center">
-          <h3 className="text-sm font-bold truncate">{card.name}</h3>
-          <span className="text-sm font-bold">{card.cost}</span>
+        <h3 className="text-sm font-bold truncate">{card.name}</h3>
+        <div className="flex justify-between items-center mt-1">
+          <span className="text-xs">Coût: {card.cost}</span>
+          <span className="text-xs">Puissance: {card.power}</span>
         </div>
-        
-        <div className="text-xs mt-1">
-          <div className="flex items-center gap-1">
-            <span>Power:</span>
-            <span className="font-bold">{card.power}</span>
-          </div>
-          <div className="flex items-center gap-1">
-            <span>Type:</span>
-            <span className="font-bold">{card.type}</span>
-          </div>
-        </div>
-
-        {/* Indicateurs d'état */}
-        <div className="absolute top-1 right-1 flex gap-1">
-          {card.isLeader && (
-            <div className="w-4 h-4 bg-yellow-400 rounded-full" title="Leader" />
-          )}
-          {card.isDon && (
-            <div className="w-4 h-4 bg-orange-400 rounded-full" title="Don" />
-          )}
-        </div>
+        <div className="text-xs mt-1">{card.type}</div>
       </div>
+
+      {/* Indicateurs spéciaux */}
+      {card.isLeader && (
+        <div className="absolute top-1 right-1 bg-yellow-400 text-xs px-1 rounded">
+          Leader
+        </div>
+      )}
+      {card.isDon && (
+        <div className="absolute top-1 left-1 bg-purple-400 text-xs px-1 rounded">
+          Don
+        </div>
+      )}
+      {card.hasAttacked && (
+        <div className="absolute bottom-1 right-1 bg-red-400 text-xs px-1 rounded">
+          Attaqué
+        </div>
+      )}
     </div>
   );
 } 

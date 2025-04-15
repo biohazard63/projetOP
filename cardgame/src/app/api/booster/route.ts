@@ -4,14 +4,18 @@ import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
 // Fonction pour obtenir une carte aléatoire d'une rareté spécifique
-async function getRandomCardByRarity(cards: any[], rarity: string) {
-  const rarityCards = cards.filter(card => card.rarity === rarity);
-  if (rarityCards.length === 0) {
-    console.log(`Aucune carte trouvée pour la rareté ${rarity}`);
+async function getRandomCardByRarity(cards: any[], rarity: string, type?: string) {
+  let filteredCards = cards.filter(card => card.rarity === rarity);
+  if (type) {
+    filteredCards = filteredCards.filter(card => card.type === type);
+  }
+  
+  if (filteredCards.length === 0) {
+    console.log(`Aucune carte trouvée pour la rareté ${rarity}${type ? ` et le type ${type}` : ''}`);
     return null;
   }
-  const randomCard = rarityCards[Math.floor(Math.random() * rarityCards.length)];
-  console.log(`Carte ${rarity} sélectionnée:`, randomCard.name);
+  const randomCard = filteredCards[Math.floor(Math.random() * filteredCards.length)];
+  console.log(`Carte ${rarity}${type ? ` (${type})` : ''} sélectionnée:`, randomCard.name);
   return randomCard;
 }
 
@@ -34,13 +38,15 @@ export async function POST(request: Request) {
     const rareCards = cards.filter(card => card.rarity === 'R');
     const superRareCards = cards.filter(card => card.rarity === 'SR');
     const secretCards = cards.filter(card => card.rarity === 'SEC');
+    const leaderCards = cards.filter(card => card.type === 'LEADER');
 
     console.log('Répartition des cartes par rareté:', {
       C: commonCards.length,
       UC: uncommonCards.length,
       R: rareCards.length,
       SR: superRareCards.length,
-      SEC: secretCards.length
+      SEC: secretCards.length,
+      LEADER: leaderCards.length
     });
 
     // Générer le booster
@@ -64,17 +70,34 @@ export async function POST(request: Request) {
       if (card) booster.push(card);
     }
 
-    // 1 carte SR ou SEC (5% de chance pour SEC)
-    const isSecret = Math.random() < 0.05;
-    const lastCard = await getRandomCardByRarity(
-      isSecret ? secretCards : superRareCards,
-      isSecret ? 'SEC' : 'SR'
-    );
+    // Dernière carte avec distribution spéciale :
+    // - 8% SEC
+    // - 25% SR
+    // - 15% Leader (R)
+    // - 52% R
+    const random = Math.random();
+    let lastCard;
+
+    if (random < 0.08) {
+      // 8% chance de SEC
+      lastCard = await getRandomCardByRarity(secretCards, 'SEC');
+    } else if (random < 0.33) {
+      // 25% chance de SR
+      lastCard = await getRandomCardByRarity(superRareCards, 'SR');
+    } else if (random < 0.48) {
+      // 15% chance de Leader
+      lastCard = await getRandomCardByRarity(cards, 'R', 'LEADER');
+    } else {
+      // 52% chance de R
+      lastCard = await getRandomCardByRarity(rareCards, 'R');
+    }
+
     if (lastCard) booster.push(lastCard);
 
     console.log('Booster généré avec succès:', booster.map(card => ({
       name: card.name,
       rarity: card.rarity,
+      type: card.type,
       imageUrl: card.imageUrl
     })));
 
