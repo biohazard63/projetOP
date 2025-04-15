@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "buildCommand": "cd cardgame && npm run vercel-build",
-  "outputDirectory": "cardgame/.next",
-  "installCommand": "cd cardgame && npm install"
+  "buildCommand": "npm run vercel-build",
+  "outputDirectory": ".next",
+  "installCommand": "npm install"
 } 
