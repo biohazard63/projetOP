@@ -1,15 +1,6 @@
 {
   "version": 2,
-  "builds": [
-    {
-      "src": "cardgame/package.json",
-      "use": "@vercel/next"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/cardgame/$1"
-    }
-  ]
+  "buildCommand": "cd cardgame && npm run vercel-build",
+  "outputDirectory": "cardgame/.next",
+  "installCommand": "cd cardgame && npm install"
 } 
