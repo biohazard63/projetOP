@@ -1,4 +1,4 @@
-import { PrismaClient, Prisma } from '@prisma/client'
+import { PrismaClient, Prisma, Card } from '@prisma/client'
 
 const prisma = new PrismaClient()
 
@@ -232,6 +232,7 @@ async function importStarterDecks() {
 
     // Récupérer tous les utilisateurs
     const users = await prisma.user.findMany()
+    console.log(`Nombre d'utilisateurs trouvés: ${users.length}`)
     
     if (users.length === 0) {
       console.log('Aucun utilisateur trouvé. Création d\'un utilisateur admin par défaut...')
@@ -249,68 +250,27 @@ async function importStarterDecks() {
       users.push(adminUser)
     }
 
-    console.log(`${users.length} utilisateurs trouvés. Attribution des decks de démarrage...`)
-
     // Supprimer tous les decks existants
+    console.log('Suppression des decks existants...')
     await prisma.deck.deleteMany()
     console.log('Decks existants supprimés')
 
     // Créer les decks de démarrage pour chaque utilisateur
+    console.log('Création des decks de démarrage pour chaque utilisateur...')
     for (const user of users) {
-      console.log(`Création des decks pour l'utilisateur: ${user.email}`)
-      
+      console.log(`Création des decks pour l'utilisateur ${user.email}...`)
       for (const deckData of starterDecks) {
-        console.log(`Création du deck: ${deckData.name}`)
-
-        // Créer le deck avec toutes ses cartes en une seule transaction
-        await prisma.$transaction(async (tx) => {
-          // Créer le deck
-          const deck = await tx.deck.create({
-            data: {
-              name: deckData.name,
-              userId: user.id,
-            }
-          })
-
-          // Pour chaque carte dans le deck
-          for (const cardData of deckData.cards) {
-            // Vérifier si la carte existe
-            const card = await tx.card.findUnique({
-              where: { id: cardData.code }
-            })
-
-            if (!card) {
-              console.error(`Carte non trouvée: ${cardData.code}`)
-              continue
-            }
-
-            // Créer l'entrée DeckCard avec la quantité spécifiée
-            await tx.deckCard.create({
-              data: {
-                deckId: deck.id,
-                cardId: card.id,
-                quantity: cardData.quantity
-              }
-            })
-          }
-
-          // Vérifier le nombre final de cartes
-          const updatedDeck = await tx.deck.findUnique({
-            where: { id: deck.id },
-            include: { 
-              deckCards: {
-                include: { card: true }
-              }
-            }
-          })
-
-          const totalCards = updatedDeck?.deckCards.reduce((sum, dc) => sum + dc.quantity, 0) || 0
-          console.log(`Deck créé avec succès: ${deck.name} pour ${user.email} avec ${totalCards} cartes au total`)
-        })
+        try {
+          console.log(`Création du deck ${deckData.name}...`)
+          await createStarterDeck(user.id, deckData)
+          console.log(`Deck ${deckData.name} créé avec succès`)
+        } catch (error) {
+          console.error(`Erreur lors de la création du deck ${deckData.name}:`, error)
+        }
       }
     }
 
-    console.log('Importation des decks de démarrage terminée avec succès')
+    console.log('Importation des decks de démarrage terminée')
   } catch (error) {
     console.error('Erreur lors de l\'importation des decks de démarrage:', error)
   } finally {
@@ -320,51 +280,50 @@ async function importStarterDecks() {
 
 async function createStarterDeck(userId: string, deckData: { name: string, cards: { code: string, quantity: number }[] }) {
   try {
-    console.log(`Création du deck: ${deckData.name}`)
-    
+    console.log(`Recherche des cartes pour le deck ${deckData.name}...`)
+    // Trouver les cartes correspondantes
+    const deckCards = await Promise.all(
+      deckData.cards.map(async (cardData) => {
+        const card = await prisma.card.findFirst({
+          where: { code: cardData.code }
+        })
+        if (!card) {
+          console.warn(`Carte non trouvée: ${cardData.code}`)
+          return null
+        }
+        return { card, quantity: cardData.quantity }
+      })
+    )
+
+    const validCards = deckCards.filter((item): item is { card: Card, quantity: number } => item !== null)
+    console.log(`${validCards.length}/${deckData.cards.length} cartes trouvées`)
+
+    if (validCards.length !== deckData.cards.length) {
+      console.warn(`Certaines cartes sont manquantes pour le deck ${deckData.name}`)
+      return
+    }
+
     // Créer le deck
+    console.log(`Création du deck ${deckData.name}...`)
     const deck = await prisma.deck.create({
       data: {
         name: deckData.name,
         userId: userId,
-      },
+        deckCards: {
+          create: validCards.map(item => ({
+            cardId: item.card.id,
+            quantity: item.quantity
+          }))
+        }
+      }
     })
 
-    // Ajouter les cartes au deck
-    for (const cardData of deckData.cards) {
-      // Récupérer la carte
-      const card = await prisma.card.findUnique({
-        where: { id: cardData.code }
-      })
-
-      if (!card) {
-        console.error(`Carte non trouvée: ${cardData.code}`)
-        continue
-      }
-
-      // Ajouter la carte au deck le nombre de fois spécifié
-      for (let i = 0; i < cardData.quantity; i++) {
-        await prisma.deck.update({
-          where: { id: deck.id },
-          data: {
-            cards: {
-              connect: { id: card.id }
-            }
-          }
-        })
-      }
-    }
-
-    // Vérifier le nombre total de cartes dans le deck
-    const updatedDeck = await prisma.deck.findUnique({
-      where: { id: deck.id },
-      include: { cards: true }
-    })
-
-    console.log(`Deck créé avec succès: ${deckData.name} pour ${userId} avec ${updatedDeck?.cards.length} cartes`)
+    console.log(`Deck ${deck.name} créé avec succès`)
     return deck
   } catch (error) {
     console.error(`Erreur lors de la création du deck ${deckData.name}:`, error)
     throw error
   }
-} 
+}
+
+importStarterDecks() 

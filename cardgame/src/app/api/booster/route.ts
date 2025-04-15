@@ -64,9 +64,20 @@ export async function POST(request: Request) {
       if (card) booster.push(card);
     }
 
-    // 2 cartes rares
+    // 2 cartes rares avec possibilité de LEADER
     for (let i = 0; i < 2; i++) {
-      const card = await getRandomCardByRarity(rareCards, 'R');
+      const random = Math.random();
+      let card;
+
+      if (random < 0.15 && leaderCards.length > 0) {
+        // 15% chance de Leader pour chaque position
+        card = leaderCards[Math.floor(Math.random() * leaderCards.length)];
+        console.log('Carte LEADER sélectionnée:', card.name);
+      } else {
+        // 85% chance de R normale
+        card = await getRandomCardByRarity(rareCards, 'R');
+      }
+
       if (card) booster.push(card);
     }
 
@@ -86,7 +97,13 @@ export async function POST(request: Request) {
       lastCard = await getRandomCardByRarity(superRareCards, 'SR');
     } else if (random < 0.48) {
       // 15% chance de Leader
-      lastCard = await getRandomCardByRarity(cards, 'R', 'LEADER');
+      if (leaderCards.length > 0) {
+        lastCard = leaderCards[Math.floor(Math.random() * leaderCards.length)];
+        console.log('Carte LEADER sélectionnée:', lastCard.name);
+      } else {
+        console.log('Aucune carte LEADER trouvée, sélection d\'une carte R normale');
+        lastCard = await getRandomCardByRarity(rareCards, 'R');
+      }
     } else {
       // 52% chance de R
       lastCard = await getRandomCardByRarity(rareCards, 'R');

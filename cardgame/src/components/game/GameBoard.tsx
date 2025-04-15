@@ -36,8 +36,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
       joueurActif: gameState.currentPlayer,
     });
 
-    // Afficher un message pour la phase de setup
-    if (gameState.currentPhase === 'SETUP') {
+    if (gameState.currentPhase === 'SETUP' && !gameState.player.leader) {
       toast.info('Phase de setup : Choisissez votre leader parmi vos cartes en main');
     }
   }, [gameState]);
@@ -45,20 +44,23 @@ export const GameBoard: React.FC<GameBoardProps> = ({
   const handleCardClick = (card: GameCard) => {
     console.log('Carte cliquée:', {
       nom: card.name,
-      position: card.id,
+      type: card.type,
       phase: gameState.currentPhase,
       joueurActif: gameState.currentPlayer,
     });
 
     // Gestion spéciale pour la phase de setup
     if (gameState.currentPhase === 'SETUP') {
-      if (card.type === 'LEADER' && gameState.player.hand.includes(card)) {
-        setSelectedCard(card);
-        onCardClick(card);
-      } else {
-        toast.error('Vous devez choisir un leader parmi vos cartes en main');
+      if (!gameState.player.leader) {
+        // Sélection du leader
+        if (card.type === 'LEADER' && gameState.player.hand.includes(card)) {
+          setSelectedCard(card);
+          onCardClick(card);
+        } else {
+          toast.error('Vous devez choisir un leader parmi vos cartes en main');
+        }
+        return;
       }
-      return;
     }
 
     setSelectedCard(card);
@@ -94,23 +96,34 @@ export const GameBoard: React.FC<GameBoardProps> = ({
           <button
             onClick={handleDrawCard}
             className={`px-4 py-2 rounded ${
-              gameState.currentPhase === 'DRAW'
+              gameState.currentPhase === 'DRAW' && gameState.currentPlayer === 'player'
                 ? 'bg-blue-600 hover:bg-blue-700'
                 : 'bg-gray-600 cursor-not-allowed'
             } text-white`}
-            disabled={gameState.currentPhase !== 'DRAW'}
+            disabled={gameState.currentPhase !== 'DRAW' || gameState.currentPlayer !== 'player'}
           >
             Piocher
           </button>
           <button
             onClick={handleEndTurn}
-            className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
-            disabled={gameState.currentPhase === 'SETUP'}
+            className={`px-4 py-2 rounded ${
+              gameState.currentPlayer === 'player' && gameState.currentPhase !== 'SETUP'
+                ? 'bg-red-600 hover:bg-red-700'
+                : 'bg-gray-600 cursor-not-allowed'
+            } text-white`}
+            disabled={gameState.currentPlayer !== 'player' || gameState.currentPhase === 'SETUP'}
           >
             Fin de tour
           </button>
         </div>
       </div>
+
+      {/* Message de phase de setup */}
+      {gameState.currentPhase === 'SETUP' && !gameState.player.leader && (
+        <div className="bg-blue-600 text-white p-4 rounded-lg text-center">
+          Choisissez votre leader parmi vos cartes en main
+        </div>
+      )}
 
       {/* Plateau de jeu */}
       <div className="flex-1 flex flex-col justify-between">

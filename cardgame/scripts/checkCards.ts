@@ -11,7 +11,7 @@ async function checkCards() {
     // Vérifier les relations
     const decksWithCards = await prisma.deck.count({
       where: {
-        cards: {
+        deckCards: {
           some: {}
         }
       }

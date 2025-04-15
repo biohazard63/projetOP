@@ -117,17 +117,17 @@ export default function GameBoard({ playerDeck, opponentDeck }: GameBoardProps) 
         {/* Champ de l'adversaire */}
         <PlayerField
           player={gameState.opponent}
-          isActive={gameState.currentPlayer === 'opponent'}
+          isOpponent={true}
           onCardClick={(card) => setTargetCard(card)}
-          onLeaderClick={(card) => setTargetCard(card)}
+          selectedCard={targetCard || undefined}
         />
 
         {/* Champ du joueur */}
         <PlayerField
           player={gameState.player}
-          isActive={gameState.currentPlayer === 'player'}
+          isOpponent={false}
           onCardClick={(card) => handleCardClick(card, 'field')}
-          onLeaderClick={(card) => handleCardClick(card, 'leader')}
+          selectedCard={selectedCard || undefined}
         />
 
         {/* Contrôles du jeu */}
@@ -147,8 +147,8 @@ export default function GameBoard({ playerDeck, opponentDeck }: GameBoardProps) 
           <div className="text-sm">
             <p>Tour: {gameState.turnNumber}</p>
             <p>Phase: {gameState.currentPhase}</p>
-            {gameState.lastAction && (
-              <p className="text-gray-600">{gameState.lastAction}</p>
+            {gameState.currentAction && (
+              <p className="text-gray-600">{gameState.currentAction}</p>
             )}
           </div>
         </div>

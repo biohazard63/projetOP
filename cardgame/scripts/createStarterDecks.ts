@@ -107,8 +107,10 @@ async function createStarterDecks() {
           name: deckData.name,
           description: deckData.description,
           userId: testUser.id,
-          cards: {
-            connect: deckCards.map(card => ({ id: card!.id }))
+          deckCards: {
+            create: deckCards.map(card => ({
+              cardId: card!.id
+            }))
           }
         }
       })

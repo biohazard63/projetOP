@@ -7,6 +7,7 @@ const MAX_HAND_SIZE = 7
 
 export function useGame(playerDeck: GameCard[], opponentDeck: GameCard[]) {
   const [gameState, setGameState] = useState<GameState>({
+    id: 'game_' + Date.now(),
     player: {
       id: 'player',
       name: 'Joueur',
@@ -14,11 +15,13 @@ export function useGame(playerDeck: GameCard[], opponentDeck: GameCard[]) {
       deck: [...playerDeck],
       hand: [],
       field: [],
-      donZone: [],
+      donDeck: [],
       trash: [],
-      life: [],
       activeDon: 0,
-      donAddedThisTurn: 0
+      donAddedThisTurn: 0,
+      leader: null,
+      usedDonDeck: [],
+      discardPile: []
     },
     opponent: {
       id: 'opponent',
@@ -27,11 +30,13 @@ export function useGame(playerDeck: GameCard[], opponentDeck: GameCard[]) {
       deck: [...opponentDeck],
       hand: [],
       field: [],
-      donZone: [],
+      donDeck: [],
       trash: [],
-      life: [],
       activeDon: 0,
-      donAddedThisTurn: 0
+      donAddedThisTurn: 0,
+      leader: null,
+      usedDonDeck: [],
+      discardPile: []
     },
     currentPhase: 'SETUP',
     setupPhase: 'CHOOSE_FIRST',
@@ -42,6 +47,7 @@ export function useGame(playerDeck: GameCard[], opponentDeck: GameCard[]) {
     canEndTurn: false,
     gameOver: false,
     isFirstTurn: true,
+    winner: null
   })
 
   const chooseFirst = useCallback((player: 'player' | 'opponent') => {
@@ -99,7 +105,7 @@ export function useGame(playerDeck: GameCard[], opponentDeck: GameCard[]) {
         [player]: {
           ...prevState[player],
           deck: remainingDeck,
-          donZone: donCards.map(card => ({ ...card, isFaceUp: false })),
+          donDeck: donCards.map(card => ({ ...card, isFaceUp: false })),
         },
         setupPhase: 'DRAW_STARTING',
         lastAction: `${player === 'player' ? 'Vous avez' : "L'adversaire a"} placé 10 DON!!`,
@@ -314,7 +320,7 @@ export function useGame(playerDeck: GameCard[], opponentDeck: GameCard[]) {
   const addDon = useCallback((playerId: 'player' | 'opponent') => {
     setGameState(prevState => {
       const player = prevState[playerId]
-      if (player.donZone.length >= 10) return prevState
+      if (player.donDeck.length >= 10) return prevState
       if (player.donAddedThisTurn >= 2) return prevState
 
       const newDon: GameCard = {
@@ -332,7 +338,7 @@ export function useGame(playerDeck: GameCard[], opponentDeck: GameCard[]) {
         ...prevState,
         [playerId]: {
           ...player,
-          donZone: [...player.donZone, newDon],
+          donDeck: [...player.donDeck, newDon],
           activeDon: (player.activeDon || 0) + 2,
           donAddedThisTurn: (player.donAddedThisTurn || 0) + 1
         },

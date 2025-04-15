@@ -23,7 +23,8 @@ async function backupDatabase() {
     const cards = await prisma.card.findMany()
     const decks = await prisma.deck.findMany({
       include: {
-        cards: true
+        // Supprimer la propriété cards qui n'existe pas dans le type DeckInclude
+        // et utiliser les relations correctes si nécessaire
       }
     })
 

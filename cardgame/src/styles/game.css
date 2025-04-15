@@ -44,4 +44,22 @@ h3 {
   font-size: 1.5rem;
   font-weight: bold;
   margin: 0;
+}
+
+.player-field {
+  background: linear-gradient(45deg, rgba(255, 0, 0, 0.1), rgba(255, 100, 0, 0.1));
+  border: 2px solid rgba(255, 0, 0, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(255, 0, 0, 0.1);
+}
+
+.opponent-field {
+  background: linear-gradient(45deg, rgba(0, 0, 255, 0.1), rgba(0, 100, 255, 0.1));
+  border: 2px solid rgba(0, 0, 255, 0.2);
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 255, 0.1);
+}
+
+.player-field:hover, .opponent-field:hover {
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
 } 

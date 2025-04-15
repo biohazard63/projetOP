@@ -160,13 +160,15 @@ export function GameSetup({
         {/* Champ de l'adversaire */}
         <PlayerField
           player={gameState.opponent}
-          isActive={gameState.currentPlayer === 'opponent'}
+          isOpponent={true}
+          onCardClick={() => {}}
         />
 
         {/* Champ du joueur */}
         <PlayerField
           player={gameState.player}
-          isActive={gameState.currentPlayer === 'player'}
+          isOpponent={false}
+          onCardClick={() => {}}
         />
 
         {/* Étape de mise en place */}

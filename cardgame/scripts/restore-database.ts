@@ -181,14 +181,15 @@ async function restoreDatabase() {
           console.log('🔄 Restauration des cartes des decks...')
           for (const deck of backup.data.decks) {
             if (deck.cards && deck.cards.length > 0) {
-              await prisma.deck.update({
-                where: { id: deck.id },
-                data: {
-                  cards: {
-                    connect: deck.cards.map((card: any) => ({ id: card.id }))
+              for (const card of deck.cards) {
+                await prisma.deckCard.create({
+                  data: {
+                    deckId: deck.id,
+                    cardId: card.id,
+                    quantity: 1 // ou card.quantity si disponible dans la sauvegarde
                   }
-                }
-              })
+                })
+              }
             }
           }
           

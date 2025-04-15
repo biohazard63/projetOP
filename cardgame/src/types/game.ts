@@ -9,11 +9,13 @@ export type CardEffectTiming = 'IMMEDIATE' | 'END_OF_TURN' | 'NEXT_TURN' | 'CONT
 export interface GameCard {
   id: string;
   name: string;
-  type: string;
-  color: string;
+  type: CardType;
+  color: CardColor;
   cost: number;
   power: number;
   imageUrl: string;
+  effect?: string;
+  trigger?: string;
   isLeader?: boolean;
   isDon?: boolean;
   position?: CardPosition;
@@ -37,12 +39,16 @@ export interface Player {
   id: string;
   name: string;
   lifePoints: number;
+  leader: GameCard | null;
   deck: GameCard[];
   hand: GameCard[];
   field: GameCard[];
-  leader: GameCard | null;
+  donDeck: GameCard[];
   activeDon: number;
-  donDeck?: GameCard[];
+  usedDonDeck: GameCard[];
+  discardPile: GameCard[];
+  trash: GameCard[];
+  donAddedThisTurn: number;
 }
 
 export interface PlayerState {
@@ -63,20 +69,20 @@ export interface PlayerState {
 }
 
 export interface GameState {
+  id: string;
   player: Player;
   opponent: Player;
-  currentPhase: 'SETUP' | 'DRAW' | 'MAIN' | 'BATTLE' | 'END';
   currentPlayer: 'player' | 'opponent';
+  currentPhase: GamePhase;
   turnNumber: number;
-  selectedCard?: GameCard;
-  targetCard?: GameCard;
+  setupPhase?: SetupPhase;
+  winner: string | null;
   canPlayCard: boolean;
   canAttack: boolean;
   canEndTurn: boolean;
-  lastAction?: string;
   gameOver: boolean;
-  winner?: 'player' | 'opponent';
   isFirstTurn: boolean;
+  currentAction?: string;
 }
 
 export interface GameAction {
