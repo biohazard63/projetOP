@@ -1,0 +1,121 @@
+{
+  "metadata": {
+    "totalCards": 2250,
+    "lastUpdated": "2024-04-16",
+    "source": "Taux_de_Drop_avec_Alt_Art.csv"
+  },
+  "rarity": {
+    "C": {
+      "description": "Common",
+      "count": 772,
+      "percentage": 34.31,
+      "dropRate": 41.7,
+      "altArtRate": 0.01,
+      "alternativeCount": 147,
+      "alternativePercentage": 19.04
+    },
+    "UC": {
+      "description": "Uncommon",
+      "count": 383,
+      "percentage": 17.02,
+      "dropRate": 16.7,
+      "altArtRate": 0.05,
+      "alternativeCount": 111,
+      "alternativePercentage": 28.98
+    },
+    "R": {
+      "description": "Rare",
+      "count": 426,
+      "percentage": 18.93,
+      "dropRate": 16.7,
+      "altArtRate": 0.07,
+      "alternativeCount": 170,
+      "alternativePercentage": 39.91
+    },
+    "SR": {
+      "description": "Super Rare",
+      "count": 322,
+      "percentage": 14.31,
+      "dropRate": 8.3,
+      "altArtRate": 0.05,
+      "alternativeCount": 181,
+      "alternativePercentage": 56.21
+    },
+    "L": {
+      "description": "Legendary",
+      "count": 158,
+      "percentage": 7.02,
+      "dropRate": 8.3,
+      "altArtRate": 0.04,
+      "alternativeCount": 75,
+      "alternativePercentage": 47.47
+    },
+    "P": {
+      "description": "Promotional",
+      "count": 83,
+      "percentage": 3.69,
+      "dropRate": 0.0,
+      "altArtRate": 0.0,
+      "alternativeCount": 29,
+      "alternativePercentage": 34.94
+    },
+    "SEC": {
+      "description": "Secret",
+      "count": 61,
+      "percentage": 2.71,
+      "dropRate": 1.0,
+      "altArtRate": 0.01,
+      "alternativeCount": 42,
+      "alternativePercentage": 68.85
+    },
+    "SP CARD": {
+      "description": "Special Card",
+      "count": 43,
+      "percentage": 1.91,
+      "dropRate": 0.1,
+      "altArtRate": 0.001,
+      "alternativeCount": 43,
+      "alternativePercentage": 100
+    },
+    "TR": {
+      "description": "Treasure",
+      "count": 2,
+      "percentage": 0.09,
+      "dropRate": 0.0,
+      "altArtRate": 0.0,
+      "alternativeCount": 2,
+      "alternativePercentage": 100
+    }
+  },
+  "generationRules": {
+    "normalPack": {
+      "totalCards": 12,
+      "distribution": [
+        {
+          "rarity": "C",
+          "count": 7,
+          "percentage": 58.33
+        },
+        {
+          "rarity": "UC",
+          "count": 2,
+          "percentage": 16.67
+        },
+        {
+          "rarity": "R",
+          "count": 2,
+          "percentage": 16.67
+        },
+        {
+          "rarity": "SR",
+          "count": 1,
+          "percentage": 8.33
+        }
+      ]
+    },
+    "altArtRules": {
+      "canReplace": ["C", "UC", "R", "SR", "L", "SEC", "SP CARD"],
+      "replacementRate": 0.01
+    }
+  }
+} 

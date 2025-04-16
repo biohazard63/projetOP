@@ -317,6 +317,16 @@ export default function CollectionPage() {
     )
   }
 
+  console.log('Cartes:', cards.map(card => ({
+    id: card.id,
+    name: card.name,
+    code: card.code,
+    rarity: card.rarity,
+    type: card.type,
+
+    
+  })))
+
   return (
     <div className="min-h-screen bg-gray-100">
       <div className="container mx-auto px-4 py-8">

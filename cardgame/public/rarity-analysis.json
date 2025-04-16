@@ -1,0 +1,214 @@
+{
+  "metadata": {
+    "totalCards": 2250,
+    "lastUpdated": "2024-04-16"
+  },
+  "rarity": {
+    "distribution": {
+      "L": {
+        "count": 158,
+        "percentage": 7.02,
+        "description": "Legendary"
+      },
+      "R": {
+        "count": 426,
+        "percentage": 18.93,
+        "description": "Rare"
+      },
+      "UC": {
+        "count": 383,
+        "percentage": 17.02,
+        "description": "Uncommon"
+      },
+      "C": {
+        "count": 772,
+        "percentage": 34.31,
+        "description": "Common"
+      },
+      "SR": {
+        "count": 322,
+        "percentage": 14.31,
+        "description": "Super Rare"
+      },
+      "P": {
+        "count": 83,
+        "percentage": 3.69,
+        "description": "Promotional"
+      },
+      "SEC": {
+        "count": 61,
+        "percentage": 2.71,
+        "description": "Secret"
+      },
+      "SP CARD": {
+        "count": 43,
+        "percentage": 1.91,
+        "description": "Special Card"
+      },
+      "TR": {
+        "count": 2,
+        "percentage": 0.09,
+        "description": "Treasure"
+      }
+    },
+    "alternativeRates": {
+      "L": {
+        "count": 75,
+        "percentage": 47.47,
+        "totalOfRarity": 158
+      },
+      "R": {
+        "count": 170,
+        "percentage": 39.91,
+        "totalOfRarity": 426
+      },
+      "UC": {
+        "count": 111,
+        "percentage": 28.98,
+        "totalOfRarity": 383
+      },
+      "C": {
+        "count": 147,
+        "percentage": 19.04,
+        "totalOfRarity": 772
+      },
+      "SR": {
+        "count": 181,
+        "percentage": 56.21,
+        "totalOfRarity": 322
+      },
+      "P": {
+        "count": 29,
+        "percentage": 34.94,
+        "totalOfRarity": 83
+      },
+      "SEC": {
+        "count": 42,
+        "percentage": 68.85,
+        "totalOfRarity": 61
+      },
+      "SP CARD": {
+        "count": 43,
+        "percentage": 100,
+        "totalOfRarity": 43
+      },
+      "TR": {
+        "count": 2,
+        "percentage": 100,
+        "totalOfRarity": 2
+      }
+    }
+  },
+  "cardTypes": {
+    "distribution": {
+      "LEADER": {
+        "count": 160,
+        "percentage": 7.11
+      },
+      "CHARACTER": {
+        "count": 1749,
+        "percentage": 77.73
+      },
+      "EVENT": {
+        "count": 301,
+        "percentage": 13.38
+      },
+      "STAGE": {
+        "count": 40,
+        "percentage": 1.78
+      }
+    },
+    "byRarity": {
+      "L": {
+        "LEADER": {
+          "count": 158,
+          "percentage": 100
+        }
+      },
+      "R": {
+        "CHARACTER": {
+          "count": 343,
+          "percentage": 80.52
+        },
+        "EVENT": {
+          "count": 82,
+          "percentage": 19.25
+        },
+        "STAGE": {
+          "count": 1,
+          "percentage": 0.23
+        }
+      },
+      "UC": {
+        "CHARACTER": {
+          "count": 297,
+          "percentage": 77.55
+        },
+        "EVENT": {
+          "count": 80,
+          "percentage": 20.89
+        },
+        "STAGE": {
+          "count": 6,
+          "percentage": 1.57
+        }
+      },
+      "C": {
+        "CHARACTER": {
+          "count": 608,
+          "percentage": 78.76
+        },
+        "EVENT": {
+          "count": 131,
+          "percentage": 16.97
+        },
+        "STAGE": {
+          "count": 33,
+          "percentage": 4.27
+        }
+      },
+      "SR": {
+        "CHARACTER": {
+          "count": 320,
+          "percentage": 99.38
+        },
+        "EVENT": {
+          "count": 2,
+          "percentage": 0.62
+        }
+      },
+      "P": {
+        "CHARACTER": {
+          "count": 75,
+          "percentage": 90.36
+        },
+        "EVENT": {
+          "count": 6,
+          "percentage": 7.23
+        },
+        "LEADER": {
+          "count": 2,
+          "percentage": 2.41
+        }
+      },
+      "SEC": {
+        "CHARACTER": {
+          "count": 61,
+          "percentage": 100
+        }
+      },
+      "SP CARD": {
+        "CHARACTER": {
+          "count": 43,
+          "percentage": 100
+        }
+      },
+      "TR": {
+        "CHARACTER": {
+          "count": 2,
+          "percentage": 100
+        }
+      }
+    }
+  }
+}
