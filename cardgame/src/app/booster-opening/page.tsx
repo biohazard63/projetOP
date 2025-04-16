@@ -633,13 +633,6 @@ export default function BoosterOpening() {
                                     <div className="w-8 h-8 border-4 border-red-500 border-t-transparent rounded-full animate-spin"></div>
                                   </div>
                                 )}
-                                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-all duration-300">
-                                  <div className={`absolute inset-0 bg-gradient-to-r ${getRarityColor(card.rarity)} opacity-30`} />
-                                  <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-85 text-white p-2 backdrop-blur-sm transform translate-y-0">
-                                    <p className="text-xs font-bold truncate">{card.name}</p>
-                                    <p className="text-[10px] text-gray-300">{card.rarity}</p>
-                                  </div>
-                                </div>
                               </div>
                             ) :
                               <div className="w-full h-full bg-gray-700 flex items-center justify-center">
@@ -748,7 +741,7 @@ export default function BoosterOpening() {
         
         <AnimatePresence>
           {showCardDetails && currentCardIndex >= 0 && currentCardIndex < booster.length && (
-          <motion.div
+            <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
@@ -762,6 +755,12 @@ export default function BoosterOpening() {
                 transition={{ type: "spring", damping: 20, stiffness: 200 }}
                 className={`relative max-w-xl w-full aspect-[63/88] rounded-lg overflow-hidden shadow-2xl ${getRarityGlow(booster[currentCardIndex].rarity)}`}
                 onClick={e => e.stopPropagation()}
+                drag="x"
+                dragConstraints={{ left: 0, right: 0 }}
+                dragElastic={0.1}
+                onDragStart={handleDragStart}
+                onDrag={handleDrag}
+                onDragEnd={handleDragEnd}
               >
                 {booster[currentCardIndex].imageUrl && !imageErrors[booster[currentCardIndex].uniqueId] ? (
                   <img
@@ -775,15 +774,33 @@ export default function BoosterOpening() {
                   </div>
                 )}
                 
-                <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-85 p-4">
-                  <h3 className="text-lg font-bold">{booster[currentCardIndex].name}</h3>
-                  <p className="text-sm text-gray-300">Rareté: {booster[currentCardIndex].rarity}</p>
-                  <p className="text-sm text-gray-300">Type: {booster[currentCardIndex].type}</p>
-                    </div>
+                {/* Indicateurs de direction */}
+                {isDragging && (
+                  <>
+                    {dragDirection === 'left' && (
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 0.7 }}
+                        className="absolute top-1/2 left-4 bg-black bg-opacity-50 p-2 rounded-full"
+                      >
+                        <ChevronLeft size={24} className="text-white" />
+                      </motion.div>
+                    )}
+                    {dragDirection === 'right' && (
+                      <motion.div 
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 0.7 }}
+                        className="absolute top-1/2 right-4 bg-black bg-opacity-50 p-2 rounded-full"
+                      >
+                        <ChevronRight size={24} className="text-white" />
+                      </motion.div>
+                    )}
+                  </>
+                )}
               </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
         {/* Effet pour les cartes rares */}
         <AnimatePresence>
