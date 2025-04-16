@@ -357,12 +357,16 @@ export default function BoosterOpening() {
         
         <div className="flex flex-col md:flex-row gap-4 items-center justify-center mb-4 bg-gray-800/50 p-4 rounded-lg shadow-lg backdrop-blur-sm">
           <Select value={selectedSet} onValueChange={setSelectedSet}>
-            <SelectTrigger className="w-[300px] bg-gray-700/80 border-gray-600 text-white">
+            <SelectTrigger className="w-[300px] bg-gradient-to-r from-gray-700 to-gray-800 border-gray-600 text-white hover:from-gray-600 hover:to-gray-700 transition-all duration-300">
               <SelectValue placeholder="Sélectionnez un set" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-gray-800 border-gray-700">
               {sets.map((set) => (
-                <SelectItem key={set} value={set}>
+                <SelectItem 
+                  key={set} 
+                  value={set}
+                  className="text-white hover:bg-gray-700 focus:bg-gray-700 cursor-pointer"
+                >
                   {set}
                 </SelectItem>
               ))}
@@ -370,15 +374,37 @@ export default function BoosterOpening() {
           </Select>
 
           <Button 
-          onClick={openBooster}
+            onClick={openBooster}
             disabled={!selectedSet || isLoading}
-            className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 hover:from-red-700 hover:via-red-600 hover:to-orange-600 text-white px-6 py-2 rounded-lg transition-all hover:scale-105 hover:shadow-lg"
-        >
-            {isLoading ? 'Ouverture...' : 'Ouvrir un Booster'}
+            className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 hover:from-red-700 hover:via-red-600 hover:to-orange-600 text-white px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 disabled:hover:shadow-none"
+          >
+            {isLoading ? (
+              <div className="flex items-center gap-2">
+                <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                <span>Ouverture...</span>
+              </div>
+            ) : (
+              <div className="flex items-center gap-2">
+                <span>Ouvrir un Booster</span>
+                <motion.div
+                  animate={{ 
+                    scale: [1, 1.2, 1],
+                    rotate: [0, 10, 0, -10, 0]
+                  }}
+                  transition={{ 
+                    duration: 2,
+                    repeat: Infinity,
+                    repeatType: "reverse"
+                  }}
+                >
+                  🎴
+                </motion.div>
+              </div>
+            )}
           </Button>
-      </div>
+        </div>
 
-      <AnimatePresence>
+        <AnimatePresence>
           {showPackOpening && (
             <motion.div
               initial={{ scale: 0, rotate: -180 }}

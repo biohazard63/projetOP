@@ -8,6 +8,8 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import Image from 'next/image'
 import CardModal from '@/components/CardModal'
 import { motion } from 'framer-motion'
+import { Search, ChevronLeft, ChevronRight, Filter, SortAsc, SortDesc } from 'lucide-react'
+import { Button } from '@/components/ui/button'
 
 interface Card {
   id: string
@@ -328,12 +330,14 @@ export default function CollectionPage() {
   })))
 
   return (
-    <div className="min-h-screen bg-gray-100">
-      <div className="container mx-auto px-4 py-8">
-        <h1 className="text-4xl font-bold mb-8 text-gray-800">Ma Collection</h1>
+    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 p-4 md:p-8 text-white">
+      <div className="container mx-auto">
+        <h1 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500">
+          Ma Collection
+        </h1>
         
-        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
-          <p className="text-blue-700">
+        <div className="bg-gray-800/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-gray-700 mb-6">
+          <p className="text-gray-300 text-sm md:text-base">
             Utilisez les filtres ci-dessous pour trouver des cartes spécifiques dans votre collection. Vous pouvez filtrer par type, couleur, rareté et set.
           </p>
         </div>
@@ -346,22 +350,9 @@ export default function CollectionPage() {
                 placeholder="Rechercher une carte par nom..."
                 value={filters.search}
                 onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-                className="w-full pl-10"
+                className="w-full pl-10 bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:ring-red-500 focus:border-red-500"
               />
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-5 w-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                />
-              </svg>
+              <Search className="h-5 w-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
             </div>
           </div>
           
@@ -369,12 +360,12 @@ export default function CollectionPage() {
             value={filters.type}
             onValueChange={(value) => setFilters({ ...filters, type: value })}
           >
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
               <SelectValue placeholder="Type de carte" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-gray-800 border-gray-700">
               {cardTypes.map((type) => (
-                <SelectItem key={type.value} value={type.value}>
+                <SelectItem key={type.value} value={type.value} className="text-white hover:bg-gray-700">
                   {type.label}
                 </SelectItem>
               ))}
@@ -385,12 +376,12 @@ export default function CollectionPage() {
             value={filters.color}
             onValueChange={(value) => setFilters({ ...filters, color: value })}
           >
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
               <SelectValue placeholder="Couleur" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-gray-800 border-gray-700">
               {cardColors.map((color) => (
-                <SelectItem key={color.value} value={color.value}>
+                <SelectItem key={color.value} value={color.value} className="text-white hover:bg-gray-700">
                   {color.label}
                 </SelectItem>
               ))}
@@ -401,12 +392,12 @@ export default function CollectionPage() {
             value={filters.rarity}
             onValueChange={(value) => setFilters({ ...filters, rarity: value })}
           >
-            <SelectTrigger className="w-full">
+            <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
               <SelectValue placeholder="Rareté" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-gray-800 border-gray-700">
               {cardRarities.map((rarity) => (
-                <SelectItem key={rarity.value} value={rarity.value}>
+                <SelectItem key={rarity.value} value={rarity.value} className="text-white hover:bg-gray-700">
                   {rarity.label}
                 </SelectItem>
               ))}
@@ -417,12 +408,12 @@ export default function CollectionPage() {
             value={filters.set}
             onValueChange={(value: CardSet) => setFilters(prev => ({ ...prev, set: value }))}
           >
-            <SelectTrigger className="w-[180px]">
+            <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
               <SelectValue placeholder="Sélectionner un set" />
             </SelectTrigger>
-            <SelectContent>
+            <SelectContent className="bg-gray-800 border-gray-700">
               {cardSets.map((set) => (
-                <SelectItem key={set} value={set}>
+                <SelectItem key={set} value={set} className="text-white hover:bg-gray-700">
                   {set === 'all' ? 'Tous les sets' : set}
                 </SelectItem>
               ))}
@@ -430,24 +421,25 @@ export default function CollectionPage() {
           </Select>
         </div>
 
-        <div className="flex justify-between items-center mb-4">
-          <p className="text-gray-600">
+        <div className="flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
+          <p className="text-gray-400 text-sm">
             Affichage de {indexOfFirstCard + 1}-{Math.min(indexOfLastCard, filteredAndSortedCards.length)} sur {filteredAndSortedCards.length} cartes
           </p>
           <div className="flex items-center gap-2">
-            <span className="text-gray-500 text-sm">Trier par:</span>
+            <span className="text-gray-400 text-sm">Trier par:</span>
             <Select
               value={sortBy}
               onValueChange={(value) => setSortBy(value)}
             >
-              <SelectTrigger className="w-[180px]">
+              <SelectTrigger className="w-[180px] bg-gray-700/50 border-gray-600 text-white">
                 <SelectValue placeholder="Trier par..." />
               </SelectTrigger>
-              <SelectContent>
+              <SelectContent className="bg-gray-800 border-gray-700">
                 {sortOptions.map((option) => (
                   <SelectItem 
                     key={`${option.value}-${option.order}`} 
                     value={`${option.value}-${option.order}`}
+                    className="text-white hover:bg-gray-700"
                   >
                     {option.label}
                   </SelectItem>
@@ -462,7 +454,7 @@ export default function CollectionPage() {
             currentCards.map((card) => (
               <motion.div
                 key={card.id}
-                className={`bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer transform transition-transform hover:scale-105 ${rarityColors[card.rarity as keyof typeof rarityColors]}`}
+                className={`bg-gray-800/80 rounded-lg shadow-xl overflow-hidden cursor-pointer backdrop-blur-sm border border-gray-700 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] ${rarityColors[card.rarity as keyof typeof rarityColors]}`}
                 onClick={() => handleCardClick(card)}
                 whileHover={{ y: -5 }}
                 initial={{ opacity: 0, y: 20 }}
@@ -477,24 +469,24 @@ export default function CollectionPage() {
                     sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 16vw"
                     onError={(e) => {
                       const target = e.target as HTMLImageElement
-                      target.src = '/placeholder-card.jpg' // Assurez-vous d'avoir une image par défaut
+                      target.src = '/placeholder-card.jpg'
                     }}
                   />
-                </div>
-                <div className="p-3">
-                  <h3 className="font-semibold text-gray-800 truncate">{card.name}</h3>
-                  <div className="flex justify-between items-center mt-2">
-                    <span className="text-sm text-gray-600">{card.type}</span>
-                    <span className="text-sm font-medium text-blue-600">Coût: {card.cost}</span>
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">
+                    <h3 className="font-semibold text-xs md:text-sm truncate text-white">{card.name}</h3>
+                    <div className="flex justify-between text-xs text-gray-300">
+                      <span>{card.type}</span>
+                      <span>{card.cost} ⭐</span>
+                    </div>
                   </div>
                 </div>
               </motion.div>
             ))
           ) : (
-            <div className="col-span-full text-center py-12">
-              <p className="text-gray-500 text-lg">Aucune carte ne correspond à vos critères de recherche.</p>
+            <div className="col-span-full text-center py-12 bg-gray-800/80 rounded-lg shadow-xl backdrop-blur-sm border border-gray-700">
+              <p className="text-gray-400 text-lg mb-4">Aucune carte ne correspond à vos critères de recherche.</p>
               <button 
-                className="mt-4 px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600 transition-colors"
+                className="px-4 py-2 bg-gradient-to-r from-red-600 via-red-500 to-orange-500 hover:from-red-700 hover:via-red-600 hover:to-orange-600 text-white rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
                 onClick={() => setFilters({
                   search: '',
                   type: 'all',
@@ -512,20 +504,20 @@ export default function CollectionPage() {
         {/* Message d'aide */}
         {currentCards.length > 0 && (
           <div className="text-center py-4 mt-4">
-            <p className="text-gray-500 text-sm">Cliquez sur une carte pour voir plus de détails.</p>
+            <p className="text-gray-400 text-sm">Cliquez sur une carte pour voir plus de détails.</p>
           </div>
         )}
 
         {/* Pagination */}
         {filteredAndSortedCards.length > cardsPerPage && (
           <div className="flex justify-center mt-8 gap-2">
-            <button
+            <Button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
-              className="px-4 py-2 rounded-md bg-blue-500 text-white disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-blue-600 transition-colors"
+              className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Précédent
-            </button>
+              <ChevronLeft className="h-4 w-4" />
+            </Button>
             
             <div className="flex gap-2">
               {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
@@ -541,40 +533,40 @@ export default function CollectionPage() {
                 }
 
                 return (
-                  <button
+                  <Button
                     key={pageNumber}
                     onClick={() => handlePageChange(pageNumber)}
-                    className={`px-4 py-2 rounded-md ${
-                      currentPage === pageNumber
-                        ? 'bg-blue-600 text-white'
-                        : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
+                    className={`${
+                      currentPage === pageNumber 
+                        ? "bg-red-600 hover:bg-red-700 text-white" 
+                        : "bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600"
                     }`}
                   >
                     {pageNumber}
-                  </button>
+                  </Button>
                 );
               })}
               
               {totalPages > 5 && currentPage < totalPages - 2 && (
                 <>
-                  <span className="px-2 py-2">...</span>
-                  <button
+                  <span className="px-2 py-2 text-gray-400">...</span>
+                  <Button
                     onClick={() => handlePageChange(totalPages)}
-                    className={`px-4 py-2 rounded-md bg-gray-200 text-gray-700 hover:bg-gray-300`}
+                    className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600"
                   >
                     {totalPages}
-                  </button>
+                  </Button>
                 </>
               )}
             </div>
 
-            <button
+            <Button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className="px-4 py-2 rounded-md bg-blue-500 text-white disabled:bg-gray-300 disabled:cursor-not-allowed hover:bg-blue-600 transition-colors"
+              className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              Suivant
-            </button>
+              <ChevronRight className="h-4 w-4" />
+            </Button>
           </div>
         )}
 
