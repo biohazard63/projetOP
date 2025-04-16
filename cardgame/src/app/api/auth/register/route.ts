@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { PrismaClient } from '@prisma/client'
 import bcrypt from 'bcryptjs'
+import { addStarterDeckCardsToUser } from '@/lib/starterDeckUtils'
 
 const prisma = new PrismaClient()
 
@@ -39,6 +40,9 @@ export async function POST(request: Request) {
         password: hashedPassword,
       },
     })
+
+    // Ajouter les cartes de démarrage à l'utilisateur
+    await addStarterDeckCardsToUser(user.id)
 
     // Ne pas renvoyer le mot de passe
     const { password: _, ...userWithoutPassword } = user
