@@ -27,7 +27,8 @@
     "import-cards": "tsx scripts/importCardsFromApi.ts",
     "add-starter-decks": "tsx scripts/addStarterDecksToUsers.ts",
     "delete-all-decks": "tsx scripts/deleteAllDecks.ts",
-    "reset-collections": "tsx scripts/reset-user-collections.ts"
+    "reset-collections": "tsx scripts/reset-user-collections.ts",
+    "export-cards": "ts-node scripts/exportCards.ts"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^1.6.0",
@@ -47,13 +48,16 @@
     "@types/react": "^18",
     "@types/react-beautiful-dnd": "^13.1.8",
     "@types/react-dom": "^18",
+    "@vitalets/google-translate-api": "^9.2.1",
     "autoprefixer": "^10.4.21",
     "bcrypt": "^5.1.1",
     "bcryptjs": "^3.0.2",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.0",
+    "deepl-node": "^1.17.3",
     "dotenv": "^16.5.0",
     "framer-motion": "^11.18.2",
+    "fs": "^0.0.1-security",
     "lucide-react": "^0.344.0",
     "next": "14.1.0",
     "next-auth": "^4.24.6",

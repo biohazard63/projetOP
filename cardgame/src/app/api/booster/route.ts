@@ -14,6 +14,7 @@ type Card = {
   rarity: string;
   code: string;
   imageUrl: string;
+  set: string;
 };
 
 type RarityDistribution = {
@@ -48,6 +49,21 @@ const generationRates = JSON.parse(
   }>;
   generationRules: GenerationRules;
 };
+
+// Liste des cartes ultra rares
+const ULTRA_RARE_CARDS = [
+  "EB01-006_p2", "EB01-006_p5", "EB01-061", "EB01-061_p1", "OP01-001_p2", "OP01-005_p2", "OP01-006_p2", "OP01-006_p3", "OP01-006_p4", "OP01-006_p5", "OP01-013_p2", "OP01-013_p3", "OP01-016_p2", "OP01-016_p3", "OP01-016_p4", "OP01-016_p5", "OP01-021_p2", "OP01-021_p3", "OP01-024_p2", "OP01-024_p3", "OP01-025_p2", "OP01-029_p2", "OP01-029_p3", "OP01-033_p2", "OP01-033_p3", "OP01-033_p4", "OP01-033_p5", "OP01-035_p2", "OP01-041_p2", "OP01-041_p3", "OP01-041_p4", "OP01-041_p5", "OP01-047_p2", "OP01-047_p3", "OP01-047_p4", "OP01-051_p2", "OP01-051_p3", "OP01-051_p4", "OP01-052_p2", "OP01-052_p3", "OP01-052_p4", "OP01-060_p2", "OP01-070_p3", "OP01-070_p4", "OP01-073_p2", "OP01-073_p3", "OP01-078_p2", "OP01-078_p3", "OP01-078_p4", "OP01-120", "OP01-120_p1", "OP01-120_p2", "OP01-120_p3", "OP01-120_p4", "OP01-120_p5", "OP01-121", "OP01-121_p1", "OP01-121_p2", "OP01-121_p3", "OP01-121_p4", "OP02-001_p2", "OP02-004_p2", "OP02-004_p3", "OP02-004_p4", "OP02-013_p2", "OP02-013_p3", "OP02-013_p4", "OP02-015_p2", "OP02-015_p3", "OP02-015_p4", "OP02-018_p2", "OP02-018_p3", "OP02-018_p4", "OP02-018_p5", "OP02-035_p2", "OP02-041_p2", "OP02-059_p2", "OP02-085_p2", "OP02-089_p2", "OP02-089_p3", "OP02-089_p4", "OP02-093_p2", "OP02-096_p2", "OP02-096_p3", "OP02-098_p2", "OP02-099_p2", "OP02-099_p3", "OP02-099_p4", "OP02-106_p2", "OP02-106_p3", "OP02-106_p4", "OP02-106_p5", "OP02-108_p2", "OP02-114_p2", "OP02-114_p3", "OP02-117_p3", "OP02-117_p4", "OP02-117_p5", "OP02-120", "OP02-120_p1", "OP02-120_p2", "OP02-121", "OP02-121_p1", "OP02-121_p2", "OP02-121_p3", "OP03-001_p2", "OP03-003_p1", "OP03-003_p2", "OP03-003_p3", "OP03-003_p4", "OP03-003_p5", "OP03-008_p1", "OP03-055_p2", "OP03-055_p3", "OP03-056_p2", "OP03-056_p3", "OP03-056_p4", "OP03-057_p2", "OP03-057_p3", "OP03-057_p4", "OP03-060_p2", "OP03-060_p3", "OP03-078_p2", "OP03-079_p2", "OP03-079_p3", "OP03-079_p4", "OP03-089_p2", "OP03-089_p3", "OP03-089_p4", "OP03-089_p5", "OP03-092_p2", "OP03-094_p2", "OP03-094_p3", "OP03-099_p2", "OP03-108_p2", "OP03-108_p3", "OP03-110_p2", "OP03-110_p3", "OP03-110_p4", "OP03-110_p5", "OP03-112_p4", "OP03-112_p5", "OP03-113_p2", "OP03-113_p3", "OP03-114_p2", "OP03-116_p4", "OP03-116_p5", "OP03-121_p2", "OP03-121_p3", "OP03-121_p4", "OP03-122", "OP03-122_p1", "OP03-122_p2", "OP03-122_p3", "OP03-123", "OP03-123_p1", "OP03-123_p3", "OP03-123_p4", "OP04-024_p2", "OP04-029_p2", "OP04-029_p3", "OP04-031_p2", "OP04-031_p3", "OP04-032_p2", "OP04-032_p3", "OP04-036_p2", "OP04-036_p3", "OP04-044_p2", "OP04-044_p3", "OP04-044_p4", "OP04-056_p2", "OP04-056_p3", "OP04-056_p4", "OP04-064_p2", "OP04-083_p2", "OP04-083_p3", "OP04-083_p4", "OP04-089_p2", "OP04-089_p3", "OP04-089_p4", "OP04-095_p2", "OP04-095_p3", "OP04-100_p2", "OP04-100_p3", "OP04-100_p4", "OP04-100_p5", "OP04-104_p2", "OP04-104_p3", "OP04-112_p2", "OP04-112_p3", "OP04-118", "OP04-118_p1", "OP04-119", "OP04-119_p1", "OP04-119_p2", "OP05-006_p2", "OP05-006_p3", "OP05-007_p2", "OP05-007_p3", "OP05-010_p2", "OP05-010_p3", "OP05-015_p2", "OP05-015_p3", "OP05-015_p4", "OP05-015_p5", "OP05-034_p2", "OP05-034_p3", "OP05-034_p4", "OP05-034_p5", "OP05-043_p2", "OP05-043_p3", "OP05-051_p2", "OP05-057_p2", "OP05-057_p3", "OP05-057_p4", "OP05-060_p3", "OP05-067_p3", "OP05-067_p4", "OP05-069_p2", "OP05-069_p3", "OP05-073_p2", "OP05-073_p3", "OP05-074_p2", "OP05-074_p3", "OP05-074_p4", "OP05-074_p5", "OP05-081_p2", "OP05-081_p3", "OP05-081_p4", "OP05-082_p2", "OP05-082_p3", "OP05-082_p4", "OP05-091_p2", "OP05-093_p2", "OP05-100_p2", "OP05-105_p2", "OP05-105_p3", "OP05-105_p4", "OP05-114_p2", "OP05-114_p3", "OP05-115_p2", "OP05-115_p3", "OP05-115_p4", "OP05-117_p2", "OP05-117_p3", "OP05-117_p4", "OP05-118", "OP05-118_p1", "OP05-118_p2", "OP05-118_p3", "OP05-119", "OP05-119_p1", "OP05-119_p2", "OP05-119_p3", "OP05-119_p4", "OP05-119_p5", "OP05-119_p6", "OP06-003_p2", "OP06-003_p3", "OP06-023_p2", "OP06-023_p3", "OP06-023_p4", "OP06-035_p2", "OP06-035_p3", "OP06-036_p2", "OP06-036_p3", "OP06-036_p4", "OP06-038_p2", "OP06-038_p3", "OP06-056_p2", "OP06-056_p3", "OP06-060_p2", "OP06-060_p3", "OP06-064_p2", "OP06-064_p3", "OP06-065_p2", "OP06-065_p3", "OP06-065_p4", "OP06-066_p2", "OP06-066_p3", "OP06-067_p2", "OP06-067_p3", "OP06-067_p4", "OP06-068_p2", "OP06-068_p3", "OP06-069_p3", "OP06-069_p4", "OP06-079_p2", "OP06-079_p3", "OP06-079_p4", "OP06-086_p2", "OP06-086_p3", "OP06-091_p2", "OP06-091_p3", "OP06-100_p2", "OP06-100_p3", "OP06-101_p2", "OP06-106_p2", "OP06-106_p3", "OP06-110_p2", "OP06-110_p3", "OP06-110_p4", "OP06-114_p2", "OP06-114_p3", "OP06-118", "OP06-118_p1", "OP06-118_p2", "OP06-118_p3", "OP06-119", "OP06-119_p1", "OP07-015_p2", "OP07-051_p2", "OP07-051_p3", "OP07-109_p2", "OP07-118", "OP07-118_p1", "OP07-119", "OP07-119_p1", "OP08-106_p2", "OP08-118", "OP08-118_p1", "OP08-118_p2", "OP08-119", "OP08-119_p1", "OP09-004_p2", "OP09-004_p3", "OP09-051_p2", "OP09-051_p3", "OP09-093_p2", "OP09-093_p3", "OP09-118", "OP09-118_p1", "OP09-118_p2", "OP09-119", "OP09-119_p1", "OP09-119_p2", "P-001_p2", "P-001_p3", "P-001_p4", "P-014_p2", "P-014_p3", "P-029_p2", "P-029_p3", "P-029_p4", "P-041_p2", "P-053_p2", "P-053_p3", "P-055_p2", "P-055_p3", "ST01-002_p2", "ST01-004_p2", "ST01-005_p2", "ST01-006_p2", "ST01-006_p3", "ST01-006_p5", "ST01-007_p2", "ST01-007_p3", "ST01-008_p2", "ST01-011_p2", "ST01-012_p1", "ST01-012_p2", "ST01-012_p3", "ST01-012_p4", "ST01-013_p2", "ST01-014_p2", "ST01-014_p3", "ST02-004_p2", "ST02-004_p3", "ST02-004_p4", "ST02-007_p2", "ST03-004_p1", "ST03-004_p2", "ST03-005_p2", "ST03-005_p3", "ST03-005_p4", "ST03-005_p5", "ST03-008_p2", "ST03-008_p4", "ST03-008_p5", "ST03-009_p1", "ST03-013_p2", "ST03-013_p3", "ST03-013_p4", "ST04-003_p1", "ST04-003_p2", "ST04-003_p3", "ST04-003_p4", "ST04-005_p1", "ST04-005_p2", "ST04-005_p3", "ST04-005_p4", "ST04-016_p2", "ST04-016_p3", "ST06-006_p2", "ST06-010_p2", "ST06-010_p3", "ST06-014_p2", "ST06-014_p3", "ST07-007_p2", "ST07-007_p3", "ST09-014_p2", "ST09-014_p3", "ST10-010_p2", "ST10-010_p3", "ST10-010_p4", "ST11-003_p2", "ST11-004_p2", "ST11-005_p2", "ST12-014_p2", "ST12-014_p3"
+];
+
+// Fonction pour vérifier si une carte est ultra rare
+function isUltraRareCard(card: Card): boolean {
+  return ULTRA_RARE_CARDS.includes(card.code);
+}
+
+// Fonction pour obtenir les cartes ultra rares d'un set spécifique
+function getUltraRareCardsForSet(cards: Card[], set: string): Card[] {
+  return cards.filter(card => isUltraRareCard(card) && card.set === set);
+}
 
 // Fonction pour obtenir une carte aléatoire d'une rareté spécifique
 async function getRandomCardByRarity(cards: Card[], rarity: string, type?: string): Promise<Card | null> {
@@ -141,7 +157,8 @@ export async function POST(request: Request) {
         code: true,
         rarity: true,
         type: true,
-        imageUrl: true
+        imageUrl: true,
+        set: true
       }
     }) as Card[];
 
@@ -162,6 +179,10 @@ export async function POST(request: Request) {
     console.log('Répartition des cartes par rareté:', Object.fromEntries(
       Object.entries(cardsByRarity).map(([rarity, cards]) => [rarity, cards.length])
     ));
+
+    // Obtenir les cartes ultra rares pour ce set
+    const ultraRareCardsForSet = getUltraRareCardsForSet(cards, set);
+    console.log(`Nombre de cartes ultra rares trouvées pour le set ${set}:`, ultraRareCardsForSet.length);
 
     // Générer le booster
     const booster: Card[] = [];
@@ -308,7 +329,13 @@ export async function POST(request: Request) {
     const mandatoryRarity = Math.random();
     let card12;
 
-    if (mandatoryRarity < 0.10 && cardsByRarity['SP CARD'].length > 0) { // 10% SP CARD
+    // 5% de chance d'obtenir une carte ultra rare si disponible pour ce set
+    if (mandatoryRarity < 0.05 && ultraRareCardsForSet.length > 0) {
+      console.log("Tentative d'obtenir une carte ultra rare pour le slot 12");
+      const randomIndex = Math.floor(Math.random() * ultraRareCardsForSet.length);
+      card12 = ultraRareCardsForSet[randomIndex];
+      console.log(`Carte ultra rare sélectionnée: ${card12.name} (${card12.code})`);
+    } else if (mandatoryRarity < 0.15 && cardsByRarity['SP CARD'].length > 0) { // 10% SP CARD
       card12 = await getRandomCardByRarity(cardsByRarity['SP CARD'], 'SP CARD');
       if (card12 && shouldBeAltArt(card12.rarity, card12.id)) {
         const altCard = getAlternativeVersion(card12, cardsByRarity, true);
@@ -320,7 +347,7 @@ export async function POST(request: Request) {
       } else if (card12) {
         booster.push(card12);
       }
-    } else if (mandatoryRarity < 0.30 && cardsByRarity.P.length > 0) { // 20% chance for parallel
+    } else if (mandatoryRarity < 0.35 && cardsByRarity.P.length > 0) { // 20% chance for parallel
       card12 = await getRandomCardByRarity(cardsByRarity.P, 'P');
       if (card12 && shouldBeAltArt(card12.rarity, card12.id)) {
         const altCard = getAlternativeVersion(card12, cardsByRarity, true);
@@ -332,7 +359,7 @@ export async function POST(request: Request) {
       } else if (card12) {
         booster.push(card12);
       }
-    } else if (mandatoryRarity < 0.70 && cardsByRarity.C.length > 0) { // 40% C
+    } else if (mandatoryRarity < 0.75 && cardsByRarity.C.length > 0) { // 40% C
       card12 = await getRandomCardByRarity(cardsByRarity.C, 'C');
       if (card12 && shouldBeAltArt(card12.rarity, card12.id)) {
         const altCard = getAlternativeVersion(card12, cardsByRarity, true);
@@ -344,7 +371,7 @@ export async function POST(request: Request) {
       } else if (card12) {
         booster.push(card12);
       }
-    } else if (cardsByRarity.UC.length > 0) { // 30% UC
+    } else if (cardsByRarity.UC.length > 0) { // 25% UC
       card12 = await getRandomCardByRarity(cardsByRarity.UC, 'UC');
       if (card12 && shouldBeAltArt(card12.rarity, card12.id)) {
         const altCard = getAlternativeVersion(card12, cardsByRarity, true);
@@ -358,15 +385,10 @@ export async function POST(request: Request) {
       }
     }
 
-    // Fallback pour le slot 12 si aucune carte n'a été ajoutée
-    if (booster.length < 12) {
-      if (cardsByRarity.C.length > 0) {
-        card12 = await getRandomCardByRarity(cardsByRarity.C, 'C');
-        if (card12) booster.push(card12);
-      } else if (cardsByRarity.UC.length > 0) {
-        card12 = await getRandomCardByRarity(cardsByRarity.UC, 'UC');
-        if (card12) booster.push(card12);
-      }
+    // Si une carte ultra rare a été sélectionnée, l'ajouter au booster
+    if (card12 && isUltraRareCard(card12)) {
+      booster.push(card12);
+      console.log(`Carte ultra rare ajoutée au booster: ${card12.name} (${card12.code})`);
     }
 
     // Vérification finale du nombre de cartes
@@ -376,6 +398,7 @@ export async function POST(request: Request) {
 
     // Log des cartes générées
     console.log('Booster généré avec succès:', booster.map(card => ({
+      id: card.id,
       name: card.name,
       rarity: card.rarity,
       type: card.type,
