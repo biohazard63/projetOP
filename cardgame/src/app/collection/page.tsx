@@ -229,14 +229,14 @@ export default function CollectionPage() {
         }
 
         const data = await response.json()
-        console.log('Collection: Données reçues:', data.length, 'cartes')
+        console.log('Collection: Données reçues:', data.cards?.length, 'cartes')
         
-        if (!Array.isArray(data)) {
+        if (!data.cards || !Array.isArray(data.cards)) {
           console.error('Collection: Format de données invalide:', data)
           throw new Error('Format de données invalide')
         }
 
-        setCards(data)
+        setCards(data.cards)
         console.log('Collection: État mis à jour avec succès')
       } catch (error) {
         console.error('Collection: Erreur lors de la récupération:', error)

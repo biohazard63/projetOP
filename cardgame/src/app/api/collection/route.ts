@@ -2,8 +2,13 @@ import { NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import prisma from '@/lib/prisma'
+import { Card, User } from '@prisma/client'
 
 export const dynamic = 'force-dynamic'
+
+type UserWithCollection = User & {
+  collection: Card[]
+}
 
 export async function GET(request: Request) {
   try {
@@ -11,24 +16,25 @@ export async function GET(request: Request) {
     
     const session = await getServerSession(authOptions)
     console.log('API Collection: Session récupérée', session ? 'Oui' : 'Non')
+    console.log('API Collection: Détails de la session:', JSON.stringify(session, null, 2))
 
     if (!session?.user?.email) {
-      console.log('API Collection: Utilisateur non authentifié')
-      return NextResponse.json(
-        { message: 'Non autorisé' },
-        { status: 401 }
-      )
+      console.log('API Collection: Utilisateur non authentifié, retour d\'une collection vide')
+      return NextResponse.json({ cards: [] })
     }
 
     console.log('API Collection: Email de l\'utilisateur', session.user.email)
 
     // Récupérer l'utilisateur avec sa collection
+    console.log('API Collection: Tentative de récupération de l\'utilisateur')
     const user = await prisma.user.findUnique({
       where: { email: session.user.email },
       include: { 
         collection: true
       }
-    })
+    }) as UserWithCollection | null
+
+    console.log('API Collection: Résultat de la requête utilisateur:', user ? 'Utilisateur trouvé' : 'Utilisateur non trouvé')
 
     if (!user) {
       console.log('API Collection: Utilisateur non trouvé dans la base de données')
@@ -44,7 +50,7 @@ export async function GET(request: Request) {
     // Vérifier si la collection est vide
     if (user.collection.length === 0) {
       console.log('API Collection: Collection vide, renvoi d\'un tableau vide')
-      return NextResponse.json([])
+      return NextResponse.json({ cards: [] })
     }
 
     // Log des premières et dernières cartes pour le débogage
@@ -53,15 +59,13 @@ export async function GET(request: Request) {
       console.log('API Collection: Dernière carte:', user.collection[user.collection.length - 1].name)
     }
 
-    return NextResponse.json(user.collection)
+    return NextResponse.json({ cards: user.collection })
   } catch (error) {
-    console.error('API Collection: Erreur lors de la récupération de la collection:', error)
+    console.error('API Collection: Erreur détaillée:', error)
+    console.error('API Collection: Stack trace:', error instanceof Error ? error.stack : 'Pas de stack trace disponible')
     return NextResponse.json(
       { message: 'Erreur serveur', error: error instanceof Error ? error.message : 'Erreur inconnue' },
       { status: 500 }
     )
-  } finally {
-    // Ne pas déconnecter Prisma ici car cela peut causer des problèmes avec les connexions suivantes
-    // await prisma.$disconnect()
   }
 } 

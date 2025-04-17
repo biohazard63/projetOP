@@ -4,56 +4,60 @@ const prisma = new PrismaClient();
 
 async function checkCollectionValues() {
   try {
-    // Récupérer l'utilisateur test
-    const user = await prisma.user.findUnique({
-      where: { email: 'test@test.com' },
-      include: { collection: true }
+    const users = await prisma.user.findMany({
+      include: {
+        collection: true
+      }
     });
 
-    if (!user) {
-      console.error('Utilisateur test non trouvé');
-      return;
+    console.log('Nombre d\'utilisateurs trouvés:', users.length);
+
+    for (const user of users) {
+      console.log(`\nUtilisateur: ${user.email}`);
+      console.log('Nombre de cartes dans la collection:', user.collection.length);
+
+      if (user.collection.length > 0) {
+        // Calculer la valeur totale de la collection
+        const totalValue = user.collection.reduce((acc, card) => {
+          // Ici vous pouvez ajouter une logique pour calculer la valeur basée sur la rareté
+          const value = getCardValue(card.rarity);
+          return acc + value;
+        }, 0);
+
+        console.log('Valeur totale de la collection:', totalValue);
+
+        // Afficher les statistiques par rareté
+        const rarityStats = user.collection.reduce((acc, card) => {
+          acc[card.rarity] = (acc[card.rarity] || 0) + 1;
+          return acc;
+        }, {} as Record<string, number>);
+
+        console.log('\nStatistiques par rareté:');
+        Object.entries(rarityStats).forEach(([rarity, count]) => {
+          console.log(`${rarity}: ${count} cartes`);
+        });
+      }
     }
-
-    console.log(`Utilisateur trouvé: ${user.email}`);
-    console.log(`Nombre de cartes dans la collection: ${user.collection.length}`);
-
-    // Récupérer les valeurs uniques des types, couleurs et raretés
-    const uniqueTypes = new Set<string>();
-    const uniqueColors = new Set<string>();
-    const uniqueRarities = new Set<string>();
-    const uniqueSets = new Set<string>();
-
-    user.collection.forEach(card => {
-      if (card.type) uniqueTypes.add(card.type);
-      if (card.color) uniqueColors.add(card.color);
-      if (card.rarity) uniqueRarities.add(card.rarity);
-      if (card.set) uniqueSets.add(card.set);
-    });
-
-    console.log('\nTypes uniques dans la collection:');
-    console.log([...uniqueTypes].sort());
-
-    console.log('\nCouleurs uniques dans la collection:');
-    console.log([...uniqueColors].sort());
-
-    console.log('\nRaretés uniques dans la collection:');
-    console.log([...uniqueRarities].sort());
-
-    console.log('\nSets uniques dans la collection:');
-    console.log([...uniqueSets].sort());
-
-    // Afficher quelques exemples de cartes
-    console.log('\nExemples de cartes:');
-    user.collection.slice(0, 5).forEach(card => {
-      console.log(`- ${card.name} (${card.type}, ${card.color}, ${card.rarity}, ${card.set || 'Pas de set'})`);
-    });
-
   } catch (error) {
     console.error('Erreur lors de la vérification des valeurs:', error);
   } finally {
     await prisma.$disconnect();
   }
+}
+
+function getCardValue(rarity: string): number {
+  // Définir les valeurs par rareté
+  const values: Record<string, number> = {
+    'C': 1,    // Common
+    'U': 2,    // Uncommon
+    'R': 5,    // Rare
+    'SR': 10,  // Super Rare
+    'SEC': 20, // Secret
+    'L': 30,   // Leader
+    'SPR': 40  // Special Rare
+  };
+
+  return values[rarity] || 1; // Retourne 1 si la rareté n'est pas trouvée
 }
 
 checkCollectionValues(); 

@@ -2,35 +2,30 @@ import { PrismaClient } from '@prisma/client';
 
 const prisma = new PrismaClient();
 
-async function main() {
-  const testUserEmail = 'test@example.com';
-
+async function checkUserCards() {
   try {
-    // Récupérer l'utilisateur de test
-    const user = await prisma.user.findUnique({
-      where: { email: testUserEmail },
+    const users = await prisma.user.findMany({
       include: {
         collection: true
       }
     });
 
-    if (!user) {
-      console.error('Utilisateur de test non trouvé');
-      return;
+    console.log('Nombre d\'utilisateurs trouvés:', users.length);
+
+    for (const user of users) {
+      console.log(`\nUtilisateur: ${user.email}`);
+      console.log('Nombre de cartes dans la collection:', user.collection.length);
+      
+      if (user.collection.length > 0) {
+        console.log('Première carte:', user.collection[0].name);
+        console.log('Dernière carte:', user.collection[user.collection.length - 1].name);
+      }
     }
-
-    console.log('Utilisateur trouvé:', user.email);
-    console.log('Nombre de cartes dans la collection:', user.collection.length);
-    console.log('Cartes dans la collection:');
-    user.collection.forEach(card => {
-      console.log(`- ${card.name} (${card.id})`);
-    });
-
   } catch (error) {
-    console.error('Erreur:', error);
+    console.error('Erreur lors de la vérification des cartes:', error);
   } finally {
     await prisma.$disconnect();
   }
 }
 
-main(); 
+checkUserCards(); 

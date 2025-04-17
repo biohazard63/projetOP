@@ -1,66 +1,46 @@
 import { PrismaClient } from '@prisma/client';
-import * as bcrypt from 'bcrypt';
+import bcrypt from 'bcryptjs';
 
 const prisma = new PrismaClient();
 
-async function createTestUser() {
+async function main() {
+  const email = 'test@example.com';
+  const password = 'password123';
+  const name = 'Utilisateur Test';
+
   try {
-    // Créer un utilisateur test
-    const hashedPassword = await bcrypt.hash('test123', 10);
-    const user = await prisma.user.upsert({
-      where: { email: 'test@test.com' },
-      update: {},
-      create: {
-        email: 'test@test.com',
-        name: 'Utilisateur Test',
+    // Vérifier si l'utilisateur existe déjà
+    const existingUser = await prisma.user.findUnique({
+      where: { email }
+    });
+
+    if (existingUser) {
+      console.log('L\'utilisateur existe déjà');
+      return;
+    }
+
+    // Hasher le mot de passe
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    // Créer l'utilisateur
+    const user = await prisma.user.create({
+      data: {
+        email,
+        name,
         password: hashedPassword,
       },
     });
 
-    console.log('Utilisateur test créé:', user);
-
-    // Récupérer quelques cartes aléatoires
-    const randomCards = await prisma.card.findMany({
-      take: 30,
-      orderBy: {
-        id: 'asc',
-      },
+    console.log('Utilisateur créé avec succès:', {
+      id: user.id,
+      email: user.email,
+      name: user.name,
     });
-
-    // Ajouter les cartes à la collection de l'utilisateur
-    for (const card of randomCards) {
-      await prisma.user.update({
-        where: { id: user.id },
-        data: {
-          collection: {
-            connect: {
-              id: card.id,
-            },
-          },
-        },
-      });
-    }
-
-    console.log(`${randomCards.length} cartes ajoutées à la collection de l'utilisateur test`);
-
-    // Afficher les détails de la collection
-    const userWithCollection = await prisma.user.findUnique({
-      where: { id: user.id },
-      include: {
-        collection: true,
-      },
-    });
-
-    console.log('Collection de l\'utilisateur test:');
-    userWithCollection?.collection.forEach(card => {
-      console.log(`- ${card.name} (${card.type}, ${card.rarity})`);
-    });
-
   } catch (error) {
-    console.error('Erreur lors de la création de l\'utilisateur test:', error);
+    console.error('Erreur lors de la création de l\'utilisateur:', error);
   } finally {
     await prisma.$disconnect();
   }
 }
 
-createTestUser(); 
+main(); 
