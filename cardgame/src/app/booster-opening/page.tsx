@@ -1144,20 +1144,7 @@ export default function BoosterOpening() {
             Sélectionnez un set et ouvrez un booster pour découvrir de nouvelles cartes !
           </motion.p>
           
-          {booster && booster.length > 0 && newCardsCount > 0 && (
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.4, duration: 0.5 }}
-              className="mt-4 inline-block bg-gradient-to-r from-emerald-500 to-teal-500 px-4 py-2 rounded-full shadow-lg"
-            >
-              <span className="text-white font-medium flex items-center gap-2">
-                <Sparkles className="w-5 h-5" />
-                {newCardsCount} nouvelle{newCardsCount > 1 ? 's' : ''} carte{newCardsCount > 1 ? 's' : ''} dans ce booster !
-              </span>
-            </motion.div>
-          )}
-        </div>
+       
         
         <motion.div 
           initial={{ y: 50, opacity: 0 }}
