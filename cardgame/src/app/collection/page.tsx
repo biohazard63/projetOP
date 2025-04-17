@@ -330,8 +330,8 @@ export default function CollectionPage() {
   })))
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 p-4 md:p-8 text-white">
-      <div className="container mx-auto">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 text-white p-4 relative overflow-hidden overflow-x-hidden">
+      <div className="container mx-auto max-w-7xl relative z-10">
         <h1 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500">
           Ma Collection
         </h1>

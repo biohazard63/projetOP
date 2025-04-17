@@ -1087,7 +1087,7 @@ export default function BoosterOpening() {
   }, [])
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 text-white p-4 relative overflow-hidden">
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 text-white p-4 relative overflow-hidden overflow-x-hidden">
       {/* Arrière-plan dynamique */}
       <AnimatePresence>
         {showBackgroundEffect && (
@@ -1126,7 +1126,7 @@ export default function BoosterOpening() {
       
       <Toaster position="top-center" richColors />
       <div className="container mx-auto max-w-7xl relative z-10">
-      <div className="text-center mb-8">
+        <div className="text-center mb-8">
           <motion.h1 
             initial={{ y: -50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
