@@ -1144,7 +1144,8 @@ export default function BoosterOpening() {
             Sélectionnez un set et ouvrez un booster pour découvrir de nouvelles cartes !
           </motion.p>
           
-       
+      
+        </div>
         
         <motion.div 
           initial={{ y: 50, opacity: 0 }}
