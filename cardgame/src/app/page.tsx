@@ -1,3 +1,5 @@
+'use client'
+
 import Link from 'next/link'
 import { Card } from '@/components/ui/card'
 
@@ -6,105 +8,146 @@ const features = [
     title: 'Deck Builder',
     description: 'Créez et partagez vos decks personnalisés avec notre interface intuitive de glisser-déposer.',
     href: '/deck-builder',
+    icon: '⚔️',
+    color: 'from-red-500 to-orange-500',
   },
   {
     title: 'Ouverture de Boosters',
     description: 'Vivez l\'expérience d\'ouverture de boosters virtuels avec des animations épiques.',
     href: '/booster-opening',
+    icon: '🎴',
+    color: 'from-blue-500 to-indigo-500',
   },
   {
     title: 'Mode de Jeu',
     description: 'Affrontez l\'IA ou d\'autres joueurs en ligne sur notre plateau de jeu interactif.',
     href: '/game',
+    icon: '🎮',
+    color: 'from-green-500 to-teal-500',
   },
   {
     title: 'Collection',
     description: 'Gérez votre collection de cartes et suivez votre progression.',
     href: '/collection',
+    icon: '📚',
+    color: 'from-purple-500 to-pink-500',
   },
 ]
 
 const updates = [
   {
-    title: 'Nouvelle Version Mobile',
-    description: 'Interface d\'ouverture de booster optimisée pour mobile avec animations fluides et effets sonores.',
-    icon: '📱',
-    color: 'bg-gradient-to-br from-blue-500 to-indigo-600',
+    title: 'Nouveaux Effets Visuels',
+    description: 'Animations spectaculaires pour les cartes ultra rares avec effets de particules dorées et halos lumineux.',
+    icon: '✨',
+    color: 'from-amber-500 to-yellow-600',
   },
   {
-    title: 'Taux de Drop Mis à Jour',
-    description: 'Taux de drop conformes au jeu officiel avec gestion des cartes alternatives et des cartes spéciales.',
-    icon: '📊',
-    color: 'bg-gradient-to-br from-purple-500 to-pink-600',
+    title: 'Détection Ultra Rare',
+    description: 'Système amélioré de détection des cartes ultra rares incluant les versions alt art et plus, les SEC et les cartes promotionnelles.',
+    icon: '🌟',
+    color: 'from-purple-500 to-pink-600',
   },
   {
-    title: 'Effets Sonores',
-    description: 'Nouveaux effets sonores pour les cartes rares et alternatives lors de l\'ouverture des boosters.',
-    icon: '🔊',
-    color: 'bg-gradient-to-br from-green-500 to-teal-600',
+    title: 'Design Modern',
+    description: 'Interface repensée avec de nouveaux dégradés et effets visuels pour une expérience plus immersive.',
+    icon: '🎨',
+    color: 'from-indigo-500 to-purple-600',
+  },
+  {
+    title: 'Traductions Complètes',
+    description: 'Toutes les cartes sont maintenant disponibles en français avec leurs effets et descriptions traduits.',
+    icon: '🌍',
+    color: 'from-green-500 to-emerald-600',
   },
 ]
 
 export default function Home() {
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen py-2">
-      <div className="w-full max-w-4xl mb-8 bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg">
-        <div className="flex items-center">
-          <div className="flex-shrink-0">
-            <svg className="h-5 w-5 text-red-500" viewBox="0 0 20 20" fill="currentColor">
-              <path fillRule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clipRule="evenodd" />
-            </svg>
-          </div>
-          <div className="ml-3">
-            <h3 className="text-sm font-medium text-red-800">
-              Important : Mise à jour majeure prévue
-            </h3>
-            <div className="mt-2 text-sm text-red-700">
-              <p>
-                Dans l'après-midi, les collections de cartes seront réinitialisées. Les cartes des decks de démarrage seront automatiquement ajoutées à votre collection. Merci de votre compréhension.
-              </p>
+    <div className="min-h-screen bg-gradient-to-br from-blue-900 via-indigo-900 to-purple-900 text-white">
+      {/* Hero Section */}
+      <div className="relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/images/one-piece-bg.jpg')] bg-cover bg-center opacity-20"></div>
+        <div className="container mx-auto px-4 py-16 relative z-10">
+          <div className="text-center animate-fade-in">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500">
+              One Piece Card Game
+            </h1>
+            <p className="text-xl md:text-2xl mb-8 text-blue-100">
+              Explorez le monde de One Piece à travers des duels de cartes épiques
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link href="/booster-opening">
+                <button className="px-8 py-3 bg-gradient-to-r from-red-500 to-orange-500 rounded-full font-bold shadow-lg hover:shadow-red-500/30 transition-all hover:scale-105 active:scale-95">
+                  Ouvrir un Booster
+                </button>
+              </Link>
+              <Link href="/deck-builder">
+                <button className="px-8 py-3 bg-gradient-to-r from-blue-500 to-indigo-500 rounded-full font-bold shadow-lg hover:shadow-blue-500/30 transition-all hover:scale-105 active:scale-95">
+                  Créer un Deck
+                </button>
+              </Link>
             </div>
           </div>
         </div>
       </div>
-
-      <h1 className="text-4xl font-bold text-blue-600 mb-4">
-        Bienvenue sur One Piece Card Game
-      </h1>
-      <div className="w-full max-w-4xl mb-12 bg-gradient-to-b from-blue-50 to-indigo-50 p-8 rounded-2xl shadow-xl">
-        <h2 className="text-3xl font-bold text-blue-600 mb-6 text-center">
-          ✨ Nouvelles Fonctionnalités ✨
+   {/* Updates Section */}
+   <div className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-500 to-amber-500">Nouvelles Fonctionnalités</span>
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {updates.map((update, index) => (
-            <div 
-              key={index} 
-              className={`${update.color} p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1`}
+            <div
+              key={index}
+              className={`bg-gradient-to-br ${update.color} p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all hover:-translate-y-2`}
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="text-5xl mb-4 text-white">{update.icon}</div>
               <h3 className="text-xl font-bold text-white mb-2">{update.title}</h3>
-              <p className="text-blue-50">{update.description}</p>
+              <p className="text-white/90">{update.description}</p>
             </div>
           ))}
         </div>
       </div>
-      <p className="text-xl text-gray-700 mb-8">
-        Créez des decks, ouvrez des boosters et jouez en ligne !
-      </p>
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full max-w-4xl mb-12">
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-semibold text-indigo-600 mb-2">Deck Builder</h2>
-          <p className="text-gray-600">Créez et personnalisez vos decks pour affronter vos adversaires.</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-semibold text-indigo-600 mb-2">Boosters</h2>
-          <p className="text-gray-600">Ouvrez des boosters pour obtenir de nouvelles cartes rares.</p>
-        </div>
-        <div className="bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-semibold text-indigo-600 mb-2">Jouer</h2>
-          <p className="text-gray-600">Affrontez d'autres joueurs en ligne dans des duels épiques.</p>
+      {/* Features Section */}
+      <div className="container mx-auto px-4 py-16">
+        <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 text-white">
+          <span className="bg-clip-text text-transparent bg-gradient-to-r from-red-500 to-orange-500">Fonctionnalités</span>
+        </h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          {features.map((feature, index) => (
+            <div
+              key={index}
+              className="bg-white/10 backdrop-blur-md rounded-xl p-6 border border-white/20 shadow-xl hover:shadow-2xl transition-all hover:-translate-y-2"
+              style={{ animationDelay: `${index * 100}ms` }}
+            >
+              <div className={`text-4xl mb-4 bg-gradient-to-r ${feature.color} bg-clip-text text-transparent`}>
+                {feature.icon}
+              </div>
+              <h3 className="text-xl font-bold mb-2 text-white">{feature.title}</h3>
+              <p className="text-blue-100 mb-4">{feature.description}</p>
+              <Link href={feature.href}>
+                <span className="text-blue-300 hover:text-blue-200 transition-colors flex items-center">
+                  En savoir plus
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                  </svg>
+                </span>
+              </Link>
+            </div>
+          ))}
         </div>
       </div>
+
+   
+
+      {/* Footer */}
+      <footer className="bg-black/30 backdrop-blur-md py-8 mt-16">
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-blue-200">© 2024 One Piece Card Game - Tous droits réservés</p>
+          <p className="text-blue-300 mt-2">Ce site n'est pas affilié à Bandai Namco ou à Eiichiro Oda</p>
+        </div>
+      </footer>
     </div>
   )
 }

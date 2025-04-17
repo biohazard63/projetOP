@@ -57,7 +57,22 @@ const ULTRA_RARE_CARDS = [
 
 // Fonction pour vérifier si une carte est ultra rare
 function isUltraRareCard(card: Card): boolean {
-  return ULTRA_RARE_CARDS.includes(card.code);
+  // Vérifier si la carte est dans la liste des ultra rares
+  if (ULTRA_RARE_CARDS.includes(card.code)) return true;
+  
+  // Vérifier si c'est une carte promotionnelle (P-001 à P-060)
+  if (card.code.startsWith('P-')) return true;
+  
+  // Vérifier si c'est une SP Card (SP-001 à SP-043)
+  if (card.code.startsWith('SP-')) return true;
+  
+  // Vérifier si c'est une carte avec _p3 ou plus
+  if (card.imageUrl && /_p[3-9]/.test(card.imageUrl)) return true;
+  
+  // Vérifier si c'est une carte SEC
+  if (card.rarity === 'SEC') return true;
+  
+  return false;
 }
 
 // Fonction pour obtenir les cartes ultra rares d'un set spécifique
@@ -117,7 +132,9 @@ function getAlternativeVersion(card: Card, cardsByRarity: Record<string, Card[]>
   // Filtrer les versions selon le slot
   const availableVersions = altCards.filter(altCard => {
     const version = parseInt(altCard.id.split('_p')[1]);
-    return isSlot12 || version <= 2; // Seules les versions _p1 et _p2 sont disponibles hors du slot 12
+    // Seules les versions _p1 et _p2 sont disponibles hors du slot 12
+    // Les versions _p3 et plus sont uniquement disponibles dans le slot 12
+    return isSlot12 ? true : version <= 2;
   });
 
   if (availableVersions.length === 0) return null;
@@ -186,15 +203,20 @@ export async function POST(request: Request) {
 
     // Générer le booster
     const booster: Card[] = [];
+    
+    // Variables pour suivre les cartes SR et alternatives
+    let hasSRCard = false;
+    let hasAltArtCard = false;
 
     // Slots 1-5: 5 cartes communes
     for (let i = 0; i < 5; i++) {
       const card = await getRandomCardByRarity(cardsByRarity.C, 'C');
       if (card) {
-        if (shouldBeAltArt(card.rarity, card.id)) {
+        if (!hasAltArtCard && shouldBeAltArt(card.rarity, card.id)) {
           const altCard = getAlternativeVersion(card, cardsByRarity, false);
           if (altCard) {
             booster.push(altCard);
+            hasAltArtCard = true;
             continue;
           }
         }
@@ -206,10 +228,11 @@ export async function POST(request: Request) {
     for (let i = 0; i < 2; i++) {
       const card = await getRandomCardByRarity(cardsByRarity.UC, 'UC');
       if (card) {
-        if (shouldBeAltArt(card.rarity, card.id)) {
+        if (!hasAltArtCard && shouldBeAltArt(card.rarity, card.id)) {
           const altCard = getAlternativeVersion(card, cardsByRarity, false);
           if (altCard) {
             booster.push(altCard);
+            hasAltArtCard = true;
             continue;
           }
         }
@@ -226,10 +249,11 @@ export async function POST(request: Request) {
         // 70% chance de R
         card = await getRandomCardByRarity(cardsByRarity.R, 'R');
         if (card) {
-          if (shouldBeAltArt(card.rarity, card.id)) {
+          if (!hasAltArtCard && shouldBeAltArt(card.rarity, card.id)) {
             const altCard = getAlternativeVersion(card, cardsByRarity, false);
             if (altCard) {
               booster.push(altCard);
+              hasAltArtCard = true;
             } else {
               booster.push(card);
             }
@@ -241,10 +265,11 @@ export async function POST(request: Request) {
         // 30% chance de UC
         card = await getRandomCardByRarity(cardsByRarity.UC, 'UC');
         if (card) {
-          if (shouldBeAltArt(card.rarity, card.id)) {
+          if (!hasAltArtCard && shouldBeAltArt(card.rarity, card.id)) {
             const altCard = getAlternativeVersion(card, cardsByRarity, false);
             if (altCard) {
               booster.push(altCard);
+              hasAltArtCard = true;
             } else {
               booster.push(card);
             }
@@ -262,41 +287,53 @@ export async function POST(request: Request) {
     if (random10 < 0.8 && cardsByRarity.R.length > 0) {
       // 80% chance de R
       card10 = await getRandomCardByRarity(cardsByRarity.R, 'R');
-      if (card10 && shouldBeAltArt(card10.rarity, card10.id)) {
-        const altCard = getAlternativeVersion(card10, cardsByRarity, false);
-        if (altCard) {
-          booster.push(altCard);
+      if (card10) {
+        if (!hasAltArtCard && shouldBeAltArt(card10.rarity, card10.id)) {
+          const altCard = getAlternativeVersion(card10, cardsByRarity, false);
+          if (altCard) {
+            booster.push(altCard);
+            hasAltArtCard = true;
+          } else {
+            booster.push(card10);
+          }
         } else {
           booster.push(card10);
         }
-      } else if (card10) {
-        booster.push(card10);
       }
-    } else if (cardsByRarity.SR.length > 0) {
-      // 20% chance de SR
+    } else if (!hasSRCard && cardsByRarity.SR.length > 0) {
+      // 20% chance de SR seulement si on n'a pas déjà une SR
       card10 = await getRandomCardByRarity(cardsByRarity.SR, 'SR');
-      if (card10 && shouldBeAltArt(card10.rarity, card10.id)) {
-        const altCard = getAlternativeVersion(card10, cardsByRarity, false);
-        if (altCard) {
-          booster.push(altCard);
+      if (card10) {
+        if (!hasAltArtCard && shouldBeAltArt(card10.rarity, card10.id)) {
+          const altCard = getAlternativeVersion(card10, cardsByRarity, false);
+          if (altCard) {
+            booster.push(altCard);
+            hasAltArtCard = true;
+            hasSRCard = true;
+          } else {
+            booster.push(card10);
+            hasSRCard = true;
+          }
         } else {
           booster.push(card10);
+          hasSRCard = true;
         }
-      } else if (card10) {
-        booster.push(card10);
-      }
-    } else if (cardsByRarity.R.length > 0) {
-      // Fallback sur R si pas de SR
-      card10 = await getRandomCardByRarity(cardsByRarity.R, 'R');
-      if (card10 && shouldBeAltArt(card10.rarity, card10.id)) {
-        const altCard = getAlternativeVersion(card10, cardsByRarity, false);
-        if (altCard) {
-          booster.push(altCard);
-        } else {
-          booster.push(card10);
+      } else if (cardsByRarity.R.length > 0) {
+        // Fallback sur R si pas de SR
+        card10 = await getRandomCardByRarity(cardsByRarity.R, 'R');
+        if (card10) {
+          if (!hasAltArtCard && shouldBeAltArt(card10.rarity, card10.id)) {
+            const altCard = getAlternativeVersion(card10, cardsByRarity, false);
+            if (altCard) {
+              booster.push(altCard);
+              hasAltArtCard = true;
+            } else {
+              booster.push(card10);
+            }
+          } else {
+            booster.push(card10);
+          }
         }
-      } else if (card10) {
-        booster.push(card10);
       }
     }
 
@@ -304,25 +341,31 @@ export async function POST(request: Request) {
     const bonusRarity = Math.random();
     let cardBonus;
 
-    if (bonusRarity < 0.80) { // 80% SR
+    if (bonusRarity < 0.80 && !hasSRCard) { // 80% SR seulement si on n'a pas déjà une SR
       cardBonus = await getRandomCardByRarity(cardsByRarity.SR, 'SR');
+      if (cardBonus) {
+        hasSRCard = true;
+      }
     } else if (bonusRarity < 0.95) { // 15% L
       cardBonus = await getRandomCardByRarity(cardsByRarity.L, 'L');
     } else if (bonusRarity < 1.00) { // 5% SEC
       cardBonus = await getRandomCardByRarity(cardsByRarity.SEC, 'SEC');
     } else {
-      cardBonus = await getRandomCardByRarity(cardsByRarity.SR, 'SR'); // Fallback to SR if no SEC or L
+      cardBonus = await getRandomCardByRarity(cardsByRarity.R, 'R'); // Fallback to R if no SR or L
     }
 
-    if (cardBonus && shouldBeAltArt(cardBonus.rarity, cardBonus.id)) {
-      const altCard = getAlternativeVersion(cardBonus, cardsByRarity, false);
-      if (altCard) {
-        booster.push(altCard);
+    if (cardBonus) {
+      if (!hasAltArtCard && shouldBeAltArt(cardBonus.rarity, cardBonus.id)) {
+        const altCard = getAlternativeVersion(cardBonus, cardsByRarity, false);
+        if (altCard) {
+          booster.push(altCard);
+          hasAltArtCard = true;
+        } else {
+          booster.push(cardBonus);
+        }
       } else {
         booster.push(cardBonus);
       }
-    } else if (cardBonus) {
-      booster.push(cardBonus);
     }
 
     // Slot 12: 1 carte obligatoire (toutes raretés possibles)
