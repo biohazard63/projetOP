@@ -971,10 +971,10 @@ export default function BoosterOpening() {
           <div className="flex items-center gap-2">
             <Package className="w-5 h-5 text-indigo-400" />
             <Select value={selectedSet} onValueChange={setSelectedSet}>
-              <SelectTrigger className="w-[300px] bg-white/10 border-white/20 text-white hover:bg-white/20 transition-all duration-300">
+              <SelectTrigger className="w-[300px] bg-indigo-900/80 border-indigo-400/30 text-white hover:bg-indigo-800/90 transition-all duration-300 shadow-lg">
                 <SelectValue placeholder="Sélectionnez un set" />
               </SelectTrigger>
-              <SelectContent className="bg-indigo-900/90 border-white/20">
+              <SelectContent className="bg-indigo-950/95 border-indigo-400/30 backdrop-blur-md">
                 {sets.map((set) => (
                   <SelectItem 
                     key={set} 
