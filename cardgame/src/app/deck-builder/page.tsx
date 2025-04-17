@@ -70,9 +70,9 @@ export default function DeckBuilderPage() {
         }
 
         const data = await response.json()
-        console.log('Deck Builder: Données reçues:', data.length, 'cartes')
+        console.log('Deck Builder: Données reçues:', data.cards?.length || 0, 'cartes')
         
-        setAvailableCards(data)
+        setAvailableCards(data.cards || [])
       } catch (error) {
         console.error('Deck Builder: Erreur lors de la récupération:', error)
         setError(error instanceof Error ? error.message : 'Une erreur est survenue')
