@@ -30,6 +30,7 @@ interface Card {
   ability?: string
   trigger?: string
   notes?: string
+  isOwned?: boolean
 }
 
 type CardSet = typeof cardSets[number];
@@ -40,6 +41,7 @@ interface Filters {
   color: string
   rarity: string
   set: CardSet
+  showOnly?: string
 }
 
 interface SortOption {
@@ -203,7 +205,11 @@ export default function CollectionPage() {
     rarity: 'all',
     set: 'all'
   })
-  const [sortBy, setSortBy] = useState<string>(`${sortOptions[0].value}-${sortOptions[0].order}`)
+  const [sortBy, setSortBy] = useState<string>('set-asc')
+  const [showMissingCards, setShowMissingCards] = useState(false);
+  const [allCards, setAllCards] = useState<Card[]>([]);
+  const [missingCards, setMissingCards] = useState<Card[]>([]);
+  const [loadingAllCards, setLoadingAllCards] = useState(false);
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -249,7 +255,93 @@ export default function CollectionPage() {
     fetchCards()
   }, [])
 
-  const filteredAndSortedCards = cards
+  useEffect(() => {
+    const fetchAllCards = async () => {
+      try {
+        setLoadingAllCards(true);
+        console.log('Début de la récupération de toutes les cartes disponibles');
+        const response = await fetch('/api/cards');
+        if (!response.ok) {
+          throw new Error('Erreur lors de la récupération de toutes les cartes');
+        }
+        const data = await response.json();
+        console.log('Réponse de l\'API /api/cards:', data);
+        
+        // Vérifier si data est un tableau ou un objet avec une propriété cards
+        let allCardsData: Card[] = [];
+        if (Array.isArray(data)) {
+          console.log('L\'API /api/cards renvoie directement un tableau de cartes');
+          allCardsData = data;
+        } else if (data.cards && Array.isArray(data.cards)) {
+          console.log('L\'API /api/cards renvoie un objet avec une propriété cards');
+          allCardsData = data.cards;
+        } else {
+          console.error('Format de réponse inattendu de l\'API /api/cards');
+          setAllCards([]);
+          setMissingCards([]);
+          return;
+        }
+        
+        console.log('Toutes les cartes disponibles récupérées:', allCardsData.length);
+        setAllCards(allCardsData);
+        
+        // Utiliser les IDs uniques pour compter les cartes, y compris les alternatives
+        const userCardIds = new Set(cards.map(card => card.id));
+        const totalUserCards = userCardIds.size;
+        console.log('Nombre total de cartes dans la collection (avec alternatives):', totalUserCards);
+        
+        // Créer un Set des IDs de toutes les cartes disponibles
+        const allCardIds = new Set(allCardsData.map(card => card.id));
+        const totalAvailableCards = allCardIds.size;
+        console.log('Nombre total de cartes disponibles (avec alternatives):', totalAvailableCards);
+        
+        // Calculer les cartes manquantes en utilisant les IDs
+        const missing = allCardsData.filter(card => !userCardIds.has(card.id));
+        console.log('Cartes manquantes calculées:', missing.length);
+        
+        // Calculer le pourcentage de complétion correct
+        const completionPercentage = Math.round((totalUserCards / totalAvailableCards) * 100);
+        console.log('Pourcentage de complétion:', completionPercentage + '%');
+        
+        setMissingCards(missing);
+      } catch (error) {
+        console.error('Erreur lors de la récupération de toutes les cartes:', error);
+        setAllCards([]);
+        setMissingCards([]);
+      } finally {
+        setLoadingAllCards(false);
+      }
+    };
+
+    if (showMissingCards) {
+      console.log('Mode "cartes manquantes" activé, lancement de la récupération...');
+      fetchAllCards();
+    }
+  }, [showMissingCards, cards]);
+
+  // Créer un ensemble des IDs des cartes que l'utilisateur possède
+  const userCardIds = new Set(cards.map(card => card.id));
+  
+  // Modifier la fonction pour obtenir toutes les cartes (possédées et manquantes)
+  const getAllCards = () => {
+    if (!allCards.length) return [];
+    
+    // Créer un Map pour stocker les cartes par ID
+    const cardsMap = new Map();
+    
+    // Ajouter toutes les cartes disponibles
+    allCards.forEach(card => {
+      // Vérifier si l'utilisateur possède cette carte
+      const isOwned = cards.some(userCard => userCard.id === card.id);
+      cardsMap.set(card.id, { ...card, isOwned });
+    });
+    
+    // Convertir le Map en tableau
+    return Array.from(cardsMap.values());
+  };
+  
+  // Modifier la variable filteredAndSortedCards pour utiliser getAllCards
+  const filteredAndSortedCards = (showMissingCards ? getAllCards() : cards)
     .filter((card) => {
       if (filters.search && !card.name.toLowerCase().includes(filters.search.toLowerCase())) {
         return false;
@@ -259,6 +351,11 @@ export default function CollectionPage() {
       if (filters.color !== 'all' && card.color !== filters.color) return false;
       if (filters.rarity !== 'all' && card.rarity !== filters.rarity) return false;
       if (filters.set !== 'all' && card.set !== filters.set) return false;
+      
+      // Si on est en mode "cartes manquantes", on peut filtrer pour ne voir que les cartes manquantes
+      if (showMissingCards && filters.showOnly === 'missing' && card.isOwned) return false;
+      if (showMissingCards && filters.showOnly === 'owned' && !card.isOwned) return false;
+      
       return true;
     })
     .sort((a, b) => {
@@ -335,6 +432,70 @@ export default function CollectionPage() {
         <h1 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500">
           Ma Collection
         </h1>
+        
+        {/* Statistiques de collection */}
+        <div className="bg-gray-800/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-gray-700 mb-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div className="flex flex-col items-center justify-center p-4 bg-gray-700/50 rounded-lg">
+              <h3 className="text-lg font-semibold text-gray-300">Cartes possédées</h3>
+              <p className="text-3xl font-bold text-white">{cards.length}</p>
+            </div>
+            
+            <div className="flex flex-col items-center justify-center p-4 bg-gray-700/50 rounded-lg">
+              <h3 className="text-lg font-semibold text-gray-300">Cartes totales</h3>
+              <p className="text-3xl font-bold text-white">{allCards.length || 2250}</p>
+            </div>
+            
+            <div className="flex flex-col items-center justify-center p-4 bg-gray-700/50 rounded-lg">
+              <h3 className="text-lg font-semibold text-gray-300">Complétion</h3>
+              <div className="w-full max-w-xs mx-auto mt-2">
+                <div className="h-4 bg-gray-600 rounded-full overflow-hidden">
+                  <div 
+                    className="h-full bg-gradient-to-r from-blue-500 to-purple-500" 
+                    style={{ width: `${Math.round((cards.length / (allCards.length || 2250)) * 100)}%` }}
+                  ></div>
+                </div>
+                <p className="text-2xl font-bold text-white mt-1">
+                  {Math.round((cards.length / (allCards.length || 2250)) * 100)}%
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+          <div className="flex items-center gap-2">
+            <Button 
+              onClick={() => setShowMissingCards(!showMissingCards)}
+              className={`${showMissingCards ? 'bg-red-600 hover:bg-red-700' : 'bg-gray-700 hover:bg-gray-600'} text-white`}
+            >
+              {showMissingCards ? 'Voir ma collection' : 'Voir les cartes manquantes'}
+            </Button>
+            {showMissingCards && (
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-300">
+                  {missingCards.length} cartes manquantes sur {allCards.length} cartes totales
+                  ({Math.round((missingCards.length / allCards.length) * 100)}% manquantes)
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-gray-300">
+              {showMissingCards ? `${missingCards.length} cartes manquantes` : `${cards.length} cartes dans ma collection`}
+            </span>
+          </div>
+        </div>
+        
+        {showMissingCards && missingCards.length === 0 && allCards.length > 0 && (
+          <div className="bg-gradient-to-r from-green-900/80 to-emerald-900/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-green-700 mb-6 text-center">
+            <h2 className="text-2xl font-bold text-green-400 mb-2">Félicitations !</h2>
+            <p className="text-gray-200">
+              Vous avez toutes les cartes disponibles dans votre collection ! 
+              Votre collection est complète à 100%.
+            </p>
+          </div>
+        )}
         
         <div className="bg-gray-800/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-gray-700 mb-6">
           <p className="text-gray-300 text-sm md:text-base">
@@ -419,6 +580,29 @@ export default function CollectionPage() {
               ))}
             </SelectContent>
           </Select>
+          
+          {/* Nouveau filtre pour afficher toutes les cartes, seulement les cartes possédées ou seulement les cartes manquantes */}
+          {showMissingCards && (
+            <Select
+              value={filters.showOnly || 'all'}
+              onValueChange={(value) => setFilters(prev => ({ ...prev, showOnly: value }))}
+            >
+              <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
+                <SelectValue placeholder="Filtrer par statut" />
+              </SelectTrigger>
+              <SelectContent className="bg-gray-800 border-gray-700">
+                <SelectItem value="all" className="text-white hover:bg-gray-700">
+                  Toutes les cartes
+                </SelectItem>
+                <SelectItem value="owned" className="text-white hover:bg-gray-700">
+                  Cartes possédées
+                </SelectItem>
+                <SelectItem value="missing" className="text-white hover:bg-gray-700">
+                  Cartes manquantes
+                </SelectItem>
+              </SelectContent>
+            </Select>
+          )}
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
@@ -450,7 +634,50 @@ export default function CollectionPage() {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-          {currentCards.length > 0 ? (
+          {showMissingCards ? (
+            // Affichage des cartes avec indicateur de statut amélioré
+            currentCards.map((card) => (
+              <motion.div
+                key={card.id}
+                className={`bg-gray-800/80 rounded-lg shadow-xl overflow-hidden cursor-pointer backdrop-blur-sm hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] ${
+                  card.isOwned 
+                    ? 'border border-gray-700' 
+                    : 'border-2 border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]'
+                }`}
+                onClick={() => handleCardClick(card)}
+                whileHover={{ y: -5 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+              >
+                <div className="relative aspect-[3/4]">
+                  <Image
+                    src={card.imageUrl}
+                    alt={card.name}
+                    fill
+                    className={`object-cover ${!card.isOwned ? 'filter grayscale' : ''}`}
+                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 16vw"
+                    onError={(e) => {
+                      const target = e.target as HTMLImageElement
+                      target.src = '/placeholder-card.jpg'
+                    }}
+                  />
+                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">
+                    <h3 className="font-semibold text-xs md:text-sm truncate text-white">{card.name}</h3>
+                    <div className="flex justify-between text-xs text-gray-300">
+                      <span>{card.type}</span>
+                      <span>{card.cost} ⭐</span>
+                    </div>
+                  </div>
+                  {!card.isOwned && (
+                    <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
+                      Manquante
+                    </div>
+                  )}
+                </div>
+              </motion.div>
+            ))
+          ) : (
+            // Affichage normal des cartes de la collection
             currentCards.map((card) => (
               <motion.div
                 key={card.id}
@@ -482,22 +709,6 @@ export default function CollectionPage() {
                 </div>
               </motion.div>
             ))
-          ) : (
-            <div className="col-span-full text-center py-12 bg-gray-800/80 rounded-lg shadow-xl backdrop-blur-sm border border-gray-700">
-              <p className="text-gray-400 text-lg mb-4">Aucune carte ne correspond à vos critères de recherche.</p>
-              <button 
-                className="px-4 py-2 bg-gradient-to-r from-red-600 via-red-500 to-orange-500 hover:from-red-700 hover:via-red-600 hover:to-orange-600 text-white rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg"
-                onClick={() => setFilters({
-                  search: '',
-                  type: 'all',
-                  color: 'all',
-                  rarity: 'all',
-                  set: 'all',
-                })}
-              >
-                Réinitialiser les filtres
-              </button>
-            </div>
           )}
         </div>
 

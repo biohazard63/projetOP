@@ -35,7 +35,7 @@ async function checkCollectionValues() {
         console.log('\nStatistiques par rareté:');
         Object.entries(rarityStats).forEach(([rarity, count]) => {
           console.log(`${rarity}: ${count} cartes`);
-        });
+    });
       }
     }
   } catch (error) {

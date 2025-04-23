@@ -17,7 +17,7 @@ async function checkUserCollection() {
     for (const user of users) {
       console.log(`\nUtilisateur: ${user.email}`);
       console.log('Nombre de cartes dans la collection:', user.collection.length);
-
+      
       if (user.collection.length > 0) {
         console.log('\nDétails de la collection:');
         user.collection.forEach(card => {

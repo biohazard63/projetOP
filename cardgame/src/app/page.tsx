@@ -47,17 +47,18 @@ const updates = [
     icon: '🌟',
     color: 'from-purple-500 to-pink-600',
   },
-  {
-    title: 'Design Modern',
-    description: 'Interface repensée avec de nouveaux dégradés et effets visuels pour une expérience plus immersive.',
-    icon: '🎨',
-    color: 'from-indigo-500 to-purple-600',
-  },
+
   {
     title: 'Traductions Complètes',
     description: 'Toutes les cartes sont maintenant disponibles en français avec leurs effets et descriptions traduits.',
     icon: '🌍',
     color: 'from-green-500 to-emerald-600',
+  },
+  {
+    title: 'Cartes Manquantes',
+    description: 'Nouvelle fonctionnalité pour visualiser toutes les cartes disponibles, y compris celles que vous ne possédez pas encore.',
+    icon: '🔍',
+    color: 'from-red-500 to-orange-600',
   },
 ]
 

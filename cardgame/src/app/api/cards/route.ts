@@ -17,17 +17,10 @@ export async function GET() {
       return NextResponse.json({ error: 'Non autorisé' }, { status: 401 });
     }
 
-    console.log('Recherche des cartes pour:', session.user.email);
-    const cards = await prisma.card.findMany({
-      where: {
-        users: {
-          some: {
-            email: session.user.email
-          }
-        }
-      }
-    });
-    console.log('Cartes trouvées:', cards.length);
+    console.log('Récupération de toutes les cartes disponibles');
+    // Récupérer toutes les cartes de la base de données, pas seulement celles de l'utilisateur
+    const cards = await prisma.card.findMany();
+    console.log('Nombre total de cartes disponibles:', cards.length);
 
     return NextResponse.json(cards);
   } catch (error) {
