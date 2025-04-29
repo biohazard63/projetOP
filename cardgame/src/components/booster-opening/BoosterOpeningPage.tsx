@@ -109,26 +109,45 @@ export default function BoosterOpeningPage() {
         
         // Filtrer les sets pour n'afficher que ceux dont le code commence par "OP", "EB" ou "PRB"
         const filteredSets = data.sets ? data.sets.filter((set: any) => {
-          const code = set.code || '';
-          const name = set.name || '';
-          return code.startsWith('OP') || code.startsWith('EB') || code.startsWith('PRB') || name.startsWith('OP') || name.startsWith('EB') || name.startsWith('PRB');
+          if (!set || !set.code) return false;
+          
+          // Normaliser le code en supprimant les tirets et espaces
+          const normalizedCode = set.code.replace(/[-\s]/g, '');
+          
+          // Vérifier si le code normalisé commence par OP, EB ou PRB
+          return normalizedCode.startsWith('OP') || 
+                 normalizedCode.startsWith('EB') || 
+                 normalizedCode.startsWith('PRB');
         }) : [];
         
         // Éliminer les doublons en utilisant le code du set comme identifiant unique
         const uniqueSets = filteredSets.reduce((acc: any[], current: any) => {
-          // Normaliser le code (supprimer le tiret s'il existe)
-          const normalizedCode = current.code.replace('-', '');
+          if (!current || !current.code) return acc;
+          
+          // Normaliser le code (supprimer les tirets et espaces)
+          const normalizedCode = current.code.replace(/[-\s]/g, '');
           
           // Vérifier si un set avec ce code normalisé existe déjà
-          const exists = acc.some(item => item.code.replace('-', '') === normalizedCode);
+          const exists = acc.some(item => item && item.code && item.code.replace(/[-\s]/g, '') === normalizedCode);
           
           // Si ce n'est pas un doublon, l'ajouter à l'accumulateur
           if (!exists) {
-            acc.push(current);
+            // Créer une copie du set avec le code normalisé
+            acc.push({
+              ...current,
+              code: normalizedCode // Utiliser le code normalisé pour la comparaison
+            });
           }
           
           return acc;
         }, []);
+        
+        // Trier les sets par code
+        uniqueSets.sort((a: { code: string }, b: { code: string }) => {
+          const codeA = a.code.replace(/[-\s]/g, '');
+          const codeB = b.code.replace(/[-\s]/g, '');
+          return codeA.localeCompare(codeB);
+        });
         
         console.log('Sets filtrés (avec doublons):', filteredSets);
         console.log('Sets uniques (sans doublons):', uniqueSets);

@@ -133,34 +133,56 @@ export async function POST(request: Request) {
   }
 }
 
+// Fonction pour normaliser les codes de set
+function normalizeSetCode(code: string): string {
+  // Supprimer les tirets et les espaces
+  return code.replace(/[-\s]/g, '').toUpperCase();
+}
+
 async function generateBooster(setRules: any) {
   console.log('[BOOSTER-GEN] Début de la génération du booster');
+  
+  // Normaliser le code du set
+  const normalizedSetCode = normalizeSetCode(setRules.code);
+  console.log(`[BOOSTER-GEN] Code du set normalisé: ${normalizedSetCode}`);
   
   // Distribution des cartes selon les règles avec leurs positions
   // Les cartes les plus rares sont placées dans les derniers slots
   const distribution = [
-    { rarity: 'C', count: 5, positions: [1, 2, 3, 4, 5] }, // Positions 1-5 pour les cartes communes
-    { rarity: 'UC', count: 3, positions: [6, 7, 8] }, // Positions 6-8 pour les cartes peu communes
-    { rarity: 'R', count: 2, positions: [9, 10] }, // Positions 9-10 pour les cartes rares
-    { rarity: 'SR', count: 1, positions: [11] }, // Position 11 pour les cartes super rares
-    { rarity: 'L', count: 0, positions: [12] }, // Position 12 pour les cartes Leader (rare)
-    { rarity: 'SEC', count: 0, positions: [12] }, // Position 12 pour les cartes Secret (très rare)
-    { rarity: 'SP CARD', count: 0, positions: [12] } // Position 12 pour les cartes Special (très rare)
+    { rarity: 'C', count: 5, positions: [1, 2, 3, 4, 5] },
+    { rarity: 'UC', count: 3, positions: [6, 7, 8] },
+    { rarity: 'R', count: 2, positions: [9, 10] },
+    { rarity: 'SR', count: 1, positions: [11] },
+    { rarity: 'L', count: 0.1, positions: [12] }, // 10% de chance
+    { rarity: 'SEC', count: 0.05, positions: [12] }, // 5% de chance
+    { rarity: 'SP CARD', count: 0.05, positions: [12] }, // 5% de chance
+    { rarity: 'TR', count: 0.01, positions: [12] } // 1% de chance
   ];
 
   console.log('[BOOSTER-GEN] Distribution des cartes:', distribution);
   
   // Récupérer toutes les cartes du set
-  console.log(`[BOOSTER-GEN] Récupération des cartes pour le set ${setRules.code}`);
+  console.log(`[BOOSTER-GEN] Récupération des cartes pour le set ${normalizedSetCode}`);
   const allCards = await prisma.card.findMany({
     where: {
-      setCode: setRules.code,
+      OR: [
+        { setCode: normalizedSetCode },
+        { setCode: `OP-${normalizedSetCode.replace('OP', '')}` },
+        { setCode: normalizedSetCode.replace('-', '') },
+        { set: { contains: normalizedSetCode } },
+        // Ajout des formats spécifiques pour EB et PRB
+        { setCode: `EB-${normalizedSetCode.replace('EB', '')}` },
+        { setCode: `PRB-${normalizedSetCode.replace('PRB', '')}` },
+        { setCode: normalizedSetCode.replace('EB', 'EB-') },
+        { setCode: normalizedSetCode.replace('PRB', 'PRB-') }
+      ],
       isParallel: false,
       isAltArt: false
     }
   });
   
   console.log(`[BOOSTER-GEN] Nombre total de cartes récupérées: ${allCards.length}`);
+  console.log('[BOOSTER-GEN] Codes de set trouvés:', [...new Set(allCards.map(card => card.setCode))]);
   
   // Grouper les cartes par rareté
   const cardsByRarity: Record<string, any[]> = {};
@@ -186,8 +208,31 @@ async function generateBooster(setRules: any) {
   
   // Sélectionner les cartes selon la distribution et les placer aux positions spécifiées
   for (const { rarity, count, positions } of distribution) {
-    // Si c'est une rareté très rare et qu'il n'y en a pas, on passe
-    if ((rarity === 'L' || rarity === 'SEC' || rarity === 'SP CARD') && !hasVeryRareCards) {
+    // Si c'est une rareté très rare, on utilise la probabilité
+    if (['L', 'SEC', 'SP CARD', 'TR'].includes(rarity)) {
+      if (Math.random() > count) {
+        continue;
+      }
+      
+      // Vérifier si des cartes de cette rareté sont disponibles
+      if (!cardsByRarity[rarity] || cardsByRarity[rarity].length === 0) {
+        console.log(`[BOOSTER-GEN] Aucune carte de rareté ${rarity} disponible, passage à la rareté suivante`);
+        continue;
+      }
+      
+      // Mélanger les cartes de cette rareté
+      const shuffledCards = [...cardsByRarity[rarity]];
+      for (let i = shuffledCards.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [shuffledCards[i], shuffledCards[j]] = [shuffledCards[j], shuffledCards[i]];
+      }
+      
+      // Prendre la première carte
+      const cardToAdd = shuffledCards[0];
+      
+      // Placer la carte à la position 12
+      booster[11] = cardToAdd;
+      console.log(`[BOOSTER-GEN] Carte ${cardToAdd.name} (${rarity}) placée à la position 12`);
       continue;
     }
     
