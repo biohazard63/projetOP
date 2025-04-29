@@ -230,6 +230,21 @@ async function importStarterDecks() {
   try {
     console.log('Début de l\'importation des decks de démarrage...')
 
+    // Vérifier si les decks de démarrage existent déjà
+    const existingDecks = await prisma.deck.findMany({
+      where: {
+        name: {
+          startsWith: 'ST-'
+        }
+      }
+    })
+
+    if (existingDecks.length > 0) {
+      console.log(`${existingDecks.length} decks de démarrage existent déjà.`)
+      console.log('Voulez-vous les recréer ? (y/n)')
+      process.exit(0)
+    }
+
     // Récupérer tous les utilisateurs
     const users = await prisma.user.findMany()
     console.log(`Nombre d'utilisateurs trouvés: ${users.length}`)
@@ -250,27 +265,16 @@ async function importStarterDecks() {
       users.push(adminUser)
     }
 
-    // Supprimer tous les decks existants
-    console.log('Suppression des decks existants...')
-    await prisma.deck.deleteMany()
-    console.log('Decks existants supprimés')
-
     // Créer les decks de démarrage pour chaque utilisateur
-    console.log('Création des decks de démarrage pour chaque utilisateur...')
     for (const user of users) {
-      console.log(`Création des decks pour l'utilisateur ${user.email}...`)
+      console.log(`Création des decks de démarrage pour l'utilisateur ${user.email}...`)
+      
       for (const deckData of starterDecks) {
-        try {
-          console.log(`Création du deck ${deckData.name}...`)
           await createStarterDeck(user.id, deckData)
-          console.log(`Deck ${deckData.name} créé avec succès`)
-        } catch (error) {
-          console.error(`Erreur lors de la création du deck ${deckData.name}:`, error)
-        }
       }
     }
 
-    console.log('Importation des decks de démarrage terminée')
+    console.log('Importation des decks de démarrage terminée avec succès!')
   } catch (error) {
     console.error('Erreur lors de l\'importation des decks de démarrage:', error)
   } finally {
@@ -280,49 +284,67 @@ async function importStarterDecks() {
 
 async function createStarterDeck(userId: string, deckData: { name: string, cards: { code: string, quantity: number }[] }) {
   try {
-    console.log(`Recherche des cartes pour le deck ${deckData.name}...`)
-    // Trouver les cartes correspondantes
-    const deckCards = await Promise.all(
-      deckData.cards.map(async (cardData) => {
-        const card = await prisma.card.findFirst({
-          where: { code: cardData.code }
-        })
-        if (!card) {
-          console.warn(`Carte non trouvée: ${cardData.code}`)
-          return null
-        }
-        return { card, quantity: cardData.quantity }
+    // Vérifier si le deck existe déjà pour cet utilisateur
+    const existingDeck = await prisma.deck.findFirst({
+      where: {
+        name: deckData.name,
+        userId: userId
+      }
       })
-    )
 
-    const validCards = deckCards.filter((item): item is { card: Card, quantity: number } => item !== null)
-    console.log(`${validCards.length}/${deckData.cards.length} cartes trouvées`)
-
-    if (validCards.length !== deckData.cards.length) {
-      console.warn(`Certaines cartes sont manquantes pour le deck ${deckData.name}`)
+    if (existingDeck) {
+      console.log(`Le deck "${deckData.name}" existe déjà pour cet utilisateur.`)
       return
     }
 
     // Créer le deck
-    console.log(`Création du deck ${deckData.name}...`)
     const deck = await prisma.deck.create({
       data: {
         name: deckData.name,
-        userId: userId,
-        deckCards: {
-          create: validCards.map(item => ({
-            cardId: item.card.id,
-            quantity: item.quantity
-          }))
-        }
+        description: `Deck de démarrage: ${deckData.name}`,
+        userId: userId
       }
     })
 
-    console.log(`Deck ${deck.name} créé avec succès`)
-    return deck
+    console.log(`Deck créé: ${deck.name}`)
+
+    // Créer une version initiale du deck
+    const deckVersion = await prisma.deckVersion.create({
+      data: {
+        deckId: deck.id,
+        name: 'Version initiale'
+      }
+    })
+
+    console.log(`Version créée pour le deck: ${deck.name}`)
+
+    // Ajouter les cartes au deck
+    for (const cardData of deckData.cards) {
+      // Trouver la carte par son code
+      const card = await prisma.card.findFirst({
+        where: {
+          code: cardData.code
+        }
+      })
+
+      if (!card) {
+        console.warn(`Carte non trouvée: ${cardData.code}`)
+        continue
+      }
+
+      // Ajouter la carte au deck
+      await prisma.deckCard.create({
+        data: {
+          deckVersionId: deckVersion.id,
+          cardId: card.id,
+          quantity: cardData.quantity
+        }
+      })
+      }
+
+    console.log(`Cartes ajoutées au deck: ${deck.name}`)
   } catch (error) {
     console.error(`Erreur lors de la création du deck ${deckData.name}:`, error)
-    throw error
   }
 }
 

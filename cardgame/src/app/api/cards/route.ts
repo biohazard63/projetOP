@@ -1,32 +1,81 @@
 import { NextResponse } from 'next/server';
 import { getServerSession } from 'next-auth';
 import { authOptions } from '@/lib/auth';
-import prisma from '@/lib/prisma';
+import { prisma } from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic';
 
+interface CardInfo {
+  id: string;
+  name: string;
+  number: string;
+  rarity: string;
+  type: string;
+  cost: number;
+  power: number;
+  counter: string;
+  color: string;
+  family: string;
+  ability: string;
+  trigger: string;
+  images: {
+    small: string;
+    large: string;
+  };
+  set: {
+    id: string;
+    name: string;
+    series: string;
+  };
+}
+
 export async function GET() {
   try {
-    console.log('Début de la requête GET /api/cards');
+    const API_KEY = "a5efebe9adc836a0d6d3798bf21658b03cda8e322ba5d7e57fa4e2cc12f84179";
     
-    const session = await getServerSession(authOptions);
-    console.log('Session:', session);
+    const response = await fetch('https://apitcg.com/api/one-piece/cards', {
+      headers: {
+        'X-Api-Key': API_KEY
+      }
+    });
+    const data = await response.json();
+    
+    const cards = data.data.map((card: any) => ({
+      id: card.id,
+      name: card.name,
+      number: card.number,
+      rarity: card.rarity,
+      type: card.type,
+      cost: card.cost,
+      power: card.power,
+      counter: card.counter,
+      color: card.color,
+      family: card.family,
+      ability: card.ability,
+      trigger: card.trigger,
+      images: {
+        small: card.images.small,
+        large: card.images.large
+      },
+      set: {
+        id: card.set.id,
+        name: card.set.name,
+        series: card.set.series
+      }
+    }));
 
-    if (!session?.user?.email) {
-      console.log('Utilisateur non authentifié');
-      return NextResponse.json({ error: 'Non autorisé' }, { status: 401 });
-    }
+    console.log('Nombre total de cartes:', cards.length);
+    console.log('Exemple de carte:', cards[0]);
 
-    console.log('Récupération de toutes les cartes disponibles');
-    // Récupérer toutes les cartes de la base de données, pas seulement celles de l'utilisateur
-    const cards = await prisma.card.findMany();
-    console.log('Nombre total de cartes disponibles:', cards.length);
-
-    return NextResponse.json(cards);
+    return NextResponse.json({ 
+      success: true, 
+      totalCards: cards.length,
+      cards: cards
+    });
   } catch (error) {
     console.error('Erreur lors de la récupération des cartes:', error);
     return NextResponse.json(
-      { error: 'Erreur serveur', details: error instanceof Error ? error.message : 'Erreur inconnue' },
+      { success: false, error: 'Échec de la récupération des cartes' },
       { status: 500 }
     );
   }

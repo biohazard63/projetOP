@@ -1,5 +1,5 @@
 import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useEffect } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { X, Plus } from 'lucide-react';
 import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion';
@@ -39,6 +39,7 @@ export default function CardModal({ card, isOpen, onClose, onAddToDeck }: CardMo
   const controls = useAnimation();
   const x = useMotionValue(0);
   const opacity = useTransform(x, [-100, 0, 100], [0.5, 1, 0.5]);
+  const [imageError, setImageError] = useState(false);
 
   // Réinitialiser l'animation quand la modal s'ouvre
   useEffect(() => {
@@ -138,14 +139,20 @@ export default function CardModal({ card, isOpen, onClose, onAddToDeck }: CardMo
                   </div>
                   <div className="flex flex-col md:flex-row gap-8 p-6">
                     <div className="relative w-full md:w-1/2 aspect-[3/4]">
-                      <Image
+                      <div className="relative aspect-[63/88] rounded-lg overflow-hidden shadow-lg">
+                        {card.imageUrl && !imageError ? (
+                          <img
                         src={card.imageUrl}
-                        alt={card.name}
-                        fill
-                        className="object-contain rounded-lg"
-                        sizes="(max-width: 768px) 100vw, 50vw"
-                        priority
-                      />
+                            alt={typeof card.name === 'string' ? card.name : 'Carte'}
+                            className="w-full h-full object-contain"
+                            onError={() => setImageError(true)}
+                          />
+                        ) : (
+                          <div className="w-full h-full bg-gray-700 flex items-center justify-center">
+                            <span className="text-gray-400">Image non disponible</span>
+                          </div>
+                        )}
+                      </div>
                       {onAddToDeck && (
                         <button
                           onClick={() => onAddToDeck(card)}
@@ -158,7 +165,7 @@ export default function CardModal({ card, isOpen, onClose, onAddToDeck }: CardMo
                     <div className="w-full md:w-1/2 space-y-6">
                       <div>
                         <Dialog.Title className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500">
-                          {card.name}
+                          {typeof card.name === 'string' ? card.name : 'Carte sans nom'}
                         </Dialog.Title>
                         {card.set && (
                           <div className="mt-2 flex items-center">

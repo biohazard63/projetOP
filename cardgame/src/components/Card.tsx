@@ -31,50 +31,30 @@ export function Card({ card, onClick, isActive = false, isTarget = false, classN
 
   return (
     <div
-      className={cn(
-        'relative w-32 h-48 rounded-lg shadow-lg transition-all duration-200 cursor-pointer',
-        getCardColor(card.color),
-        isActive && 'hover:scale-105 hover:shadow-xl',
-        isTarget && 'ring-2 ring-yellow-400',
-        !isActive && 'opacity-75',
-        className
-      )}
+      className={`relative ${className} ${isActive ? 'ring-2 ring-blue-500' : ''}`}
       onClick={onClick}
     >
-      {/* Image de la carte */}
-      <div className="w-full h-32 rounded-t-lg overflow-hidden">
-        <Image
+      <div className="relative aspect-[63/88] rounded-lg overflow-hidden shadow-lg">
+        {card.imageUrl && !card.imageError ? (
+          <img
           src={card.imageUrl}
-          alt={card.name}
-          fill
-          className="object-cover"
-        />
+            alt={typeof card.name === 'string' ? card.name : 'Carte'}
+            className="w-full h-full object-contain"
+            onError={() => card.setImageError(true)}
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-700 flex flex-col items-center justify-center p-2">
+            <span className="text-gray-400 text-xs text-center">Image non disponible</span>
+            <h3 className="text-sm font-bold truncate text-white mt-2">{typeof card.name === 'string' ? card.name : 'Carte sans nom'}</h3>
       </div>
-
-      {/* Informations de la carte */}
-      <div className="p-2">
-        <h3 className="text-sm font-bold truncate">{card.name}</h3>
-        <div className="flex justify-between items-center mt-1">
-          <span className="text-xs">Coût: {card.cost}</span>
-          <span className="text-xs">Puissance: {card.power}</span>
-        </div>
-        <div className="text-xs mt-1">{card.type}</div>
+        )}
       </div>
-
-      {/* Indicateurs spéciaux */}
-      {card.isLeader && (
-        <div className="absolute top-1 right-1 bg-yellow-400 text-xs px-1 rounded">
-          Leader
-        </div>
-      )}
-      {card.isDon && (
-        <div className="absolute top-1 left-1 bg-purple-400 text-xs px-1 rounded">
-          Don
-        </div>
-      )}
-      {card.hasAttacked && (
-        <div className="absolute bottom-1 right-1 bg-red-400 text-xs px-1 rounded">
-          Attaqué
+      {card.showDetails && (
+        <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 p-2">
+          <h3 className="text-sm font-bold truncate text-white">{typeof card.name === 'string' ? card.name : 'Carte sans nom'}</h3>
+          {card.quantity !== undefined && (
+            <p className="text-xs text-gray-300">Quantité: {card.quantity}</p>
+          )}
         </div>
       )}
     </div>

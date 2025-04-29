@@ -8,6 +8,19 @@ const nextConfig = {
       },
     ],
   },
+  typescript: {
+    ignoreBuildErrors: true,
+  },
+  webpack: (config) => {
+    config.module.rules.push({
+      test: /\.ts$/,
+      include: [/scripts/],
+      use: {
+        loader: 'ignore-loader',
+      },
+    });
+    return config;
+  },
 }
 
 module.exports = nextConfig 

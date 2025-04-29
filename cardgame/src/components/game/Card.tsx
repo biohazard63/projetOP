@@ -103,6 +103,9 @@ export const Card: React.FC<CardProps> = ({
     return properties;
   };
 
+  const [imageError, setImageError] = React.useState(false);
+  const [showDetails, setShowDetails] = React.useState(false);
+
   return (
     <div className="relative group">
       <div
@@ -112,12 +115,23 @@ export const Card: React.FC<CardProps> = ({
         onClick={onClick}
         onMouseEnter={handleMouseEnter}
       >
-        <Image
-          src={getImageUrl()}
-          alt={isFaceDown ? 'Carte face verso' : card.name}
-          fill
-          className="object-cover"
-        />
+        <div className="relative aspect-[63/88] rounded-lg overflow-hidden shadow-lg">
+          {card.imageUrl && !imageError ? (
+            <img
+              src={card.imageUrl}
+              alt={isFaceDown ? 'Carte face verso' : (typeof card.name === 'string' ? card.name : 'Carte')}
+              className="w-full h-full object-contain"
+              onError={() => setImageError(true)}
+            />
+          ) : (
+            <div className="w-full h-full bg-gray-700 flex flex-col items-center justify-center p-2">
+              <span className="text-gray-400 text-xs text-center">Image non disponible</span>
+              <h3 className="text-sm font-bold truncate text-white mt-2">
+                {isFaceDown ? 'Carte face verso' : (typeof card.name === 'string' ? card.name : 'Carte sans nom')}
+              </h3>
+            </div>
+          )}
+        </div>
         {card.type === 'LEADER' && (
           <div className="absolute top-2 right-2 bg-yellow-400 text-black px-2 py-1 rounded-full text-xs">
             Leader

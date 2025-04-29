@@ -86,9 +86,9 @@ function GameContent() {
 
         if (!response.ok) {
           const errorData = await response.json()
-          if (response.status === 404 && errorData.error === 'Deck non trouvé') {
-            setShowDeckSelection(true)
-            setIsLoading(false)
+          if (response.status === 404 && (errorData.error === 'Deck non trouvé' || errorData.error === 'Aucun deck actif')) {
+            // Rediriger vers la page de sélection de deck
+            router.push('/game/select-deck')
             return
           }
           throw new Error(errorData.error || 'Erreur lors de l\'initialisation du jeu')
@@ -172,6 +172,48 @@ function GameContent() {
     } catch (error) {
       console.error('Erreur:', error)
       toast.error('Impossible de piocher une carte')
+    }
+  }
+
+  const handleMulligan = async () => {
+    if (!gameState) return
+
+    try {
+      const response = await fetch('/api/game/mulligan', {
+        method: 'POST',
+      })
+
+      if (!response.ok) {
+        throw new Error('Erreur lors du mulligan')
+      }
+
+      const updatedState = await response.json()
+      setGameState(updatedState)
+      toast.success('Nouvelle main piochée')
+    } catch (error) {
+      console.error('Erreur:', error)
+      toast.error('Impossible de faire un mulligan')
+    }
+  }
+
+  const handleKeepHand = async () => {
+    if (!gameState) return
+
+    try {
+      const response = await fetch('/api/game/keep-hand', {
+        method: 'POST',
+      })
+
+      if (!response.ok) {
+        throw new Error('Erreur lors de la confirmation de la main')
+      }
+
+      const updatedState = await response.json()
+      setGameState(updatedState)
+      toast.success('Main conservée')
+    } catch (error) {
+      console.error('Erreur:', error)
+      toast.error('Impossible de confirmer la main')
     }
   }
 
@@ -260,28 +302,18 @@ function GameContent() {
   }
 
   if (!gameState) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-900">
-        <div className="text-white text-center">
-          <h1 className="text-2xl font-bold mb-4">Erreur</h1>
-          <p className="mb-4">Impossible de charger l'état du jeu</p>
-          <Button onClick={() => router.push('/decks')}>
-            Retour aux decks
-          </Button>
-        </div>
-      </div>
-    )
+    return null
   }
 
   return (
-    <div className="min-h-screen bg-gray-900">
       <GameBoard
         gameState={gameState}
         onCardClick={handleCardClick}
         onEndTurn={handleEndTurn}
         onDrawCard={handleDrawCard}
+      onMulligan={handleMulligan}
+      onKeepHand={handleKeepHand}
       />
-    </div>
   )
 }
 

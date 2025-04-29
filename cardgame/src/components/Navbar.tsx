@@ -13,6 +13,7 @@ const navigation = [
   { name: 'Deck Builder', href: '/deck-builder' },
   { name: 'Boosters', href: '/booster-opening' },
   { name: 'Collection', href: '/collection' },
+  { name: 'Jouer', href: '/game' },
 ]
 
 export function Navbar() {

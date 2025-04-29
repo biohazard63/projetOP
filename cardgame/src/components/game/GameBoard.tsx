@@ -2,12 +2,15 @@ import React, { useEffect, useState } from 'react';
 import { GameState, GameCard } from '@/types/game';
 import { PlayerField } from './PlayerField';
 import { toast } from 'sonner';
+import { Play, SkipForward, RefreshCw, RotateCcw } from 'lucide-react';
 
 interface GameBoardProps {
   gameState: GameState;
   onCardClick: (card: GameCard) => void;
   onEndTurn: () => void;
   onDrawCard: () => void;
+  onMulligan: () => void;
+  onKeepHand: () => void;
 }
 
 export const GameBoard: React.FC<GameBoardProps> = ({
@@ -15,6 +18,8 @@ export const GameBoard: React.FC<GameBoardProps> = ({
   onCardClick,
   onEndTurn,
   onDrawCard,
+  onMulligan,
+  onKeepHand,
 }) => {
   const [selectedCard, setSelectedCard] = useState<GameCard | undefined>();
 
@@ -79,45 +84,31 @@ export const GameBoard: React.FC<GameBoardProps> = ({
     }
   };
 
-  return (
-    <div className="flex flex-col gap-8 p-6 bg-gray-900 min-h-screen">
-      {/* En-tête du jeu */}
-      <div className="flex justify-between items-center bg-gray-800 p-4 rounded-lg">
-        <div className="text-white">
-          <span className="font-bold">Phase:</span> {gameState.currentPhase}
-        </div>
-        <div className="text-white">
-          <span className="font-bold">Tour:</span> {gameState.turnNumber}
-        </div>
-        <div className="text-white">
-          <span className="font-bold">Joueur actif:</span> {gameState.currentPlayer === 'player' ? 'Vous' : 'Adversaire'}
-        </div>
-        <div className="flex gap-4">
-          <button
-            onClick={handleDrawCard}
-            className={`px-4 py-2 rounded ${
-              gameState.currentPhase === 'DRAW' && gameState.currentPlayer === 'player'
-                ? 'bg-blue-600 hover:bg-blue-700'
-                : 'bg-gray-600 cursor-not-allowed'
-            } text-white`}
-            disabled={gameState.currentPhase !== 'DRAW' || gameState.currentPlayer !== 'player'}
-          >
-            Piocher
-          </button>
-          <button
-            onClick={handleEndTurn}
-            className={`px-4 py-2 rounded ${
-              gameState.currentPlayer === 'player' && gameState.currentPhase !== 'SETUP'
-                ? 'bg-red-600 hover:bg-red-700'
-                : 'bg-gray-600 cursor-not-allowed'
-            } text-white`}
-            disabled={gameState.currentPlayer !== 'player' || gameState.currentPhase === 'SETUP'}
-          >
-            Fin de tour
-          </button>
-        </div>
-      </div>
+  const cardToGameCard = (card: Card, isFaceUp: boolean = true): GameCard => {
+    return {
+      id: card.id,
+      code: card.code,
+      nom: typeof card.name === 'string' ? card.name : 'Carte sans nom',
+      type: card.type,
+      color: card.color,
+      cost: card.cost,
+      power: card.power,
+      counter: card.counter,
+      effect: card.effect,
+      rarity: card.rarity,
+      imageUrl: card.imageUrl,
+      isFaceUp,
+      isLeader: card.type === 'Leader',
+      isDon: card.type === 'Don!!',
+      hasAttacked: false,
+      isParallel: card.isParallel,
+      isAltArt: card.isAltArt,
+      isSpecial: card.isSpecial,
+    };
+  };
 
+  return (
+    <div className="flex flex-col gap-8 p-6 bg-gray-900 min-h-screen pb-24">
       {/* Message de phase de setup */}
       {gameState.currentPhase === 'SETUP' && !gameState.player.leader && (
         <div className="bg-blue-600 text-white p-4 rounded-lg text-center">
@@ -139,6 +130,80 @@ export const GameBoard: React.FC<GameBoardProps> = ({
           onCardClick={handleCardClick}
           selectedCard={selectedCard}
         />
+      </div>
+
+      {/* Barre de statut fixe */}
+      <div className="fixed bottom-0 left-0 right-0 bg-gray-800 border-t border-gray-700 p-4">
+        <div className="container mx-auto">
+          <div className="flex justify-between items-center">
+            {/* Informations de jeu */}
+            <div className="flex gap-8 text-white">
+              <div>
+                <span className="font-bold">Phase:</span> {gameState.currentPhase}
+              </div>
+              <div>
+                <span className="font-bold">Tour:</span> {gameState.turnNumber}
+              </div>
+              <div>
+                <span className="font-bold">Joueur actif:</span> {gameState.currentPlayer === 'player' ? 'Vous' : 'Adversaire'}
+              </div>
+            </div>
+
+            {/* Boutons d'action */}
+            <div className="flex gap-4">
+              {gameState.currentPhase === 'SETUP' ? (
+                <>
+                  <button
+                    onClick={onMulligan}
+                    className="flex items-center gap-2 px-6 py-3 rounded-lg bg-purple-600 hover:bg-purple-700 text-white transition-colors"
+                    title="Remettre vos cartes dans le deck et en piocher de nouvelles"
+                  >
+                    <RotateCcw className="w-5 h-5" />
+                    <span>Mulligan</span>
+                  </button>
+                  <button
+                    onClick={onKeepHand}
+                    className="flex items-center gap-2 px-6 py-3 rounded-lg bg-green-600 hover:bg-green-700 text-white transition-colors"
+                    title="Garder votre main actuelle"
+                  >
+                    <Play className="w-5 h-5" />
+                    <span>Garder la main</span>
+                  </button>
+                </>
+              ) : (
+                <>
+                  <button
+                    onClick={handleDrawCard}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                      gameState.currentPhase === 'DRAW' && gameState.currentPlayer === 'player'
+                        ? 'bg-blue-600 hover:bg-blue-700'
+                        : 'bg-gray-600 cursor-not-allowed'
+                    } text-white`}
+                    disabled={gameState.currentPhase !== 'DRAW' || gameState.currentPlayer !== 'player'}
+                    title="Piocher une carte"
+                  >
+                    <RefreshCw className="w-5 h-5" />
+                    <span>Piocher</span>
+                  </button>
+
+                  <button
+                    onClick={handleEndTurn}
+                    className={`flex items-center gap-2 px-4 py-2 rounded-lg transition-colors ${
+                      gameState.currentPlayer === 'player' && gameState.currentPhase !== 'SETUP'
+                        ? 'bg-red-600 hover:bg-red-700'
+                        : 'bg-gray-600 cursor-not-allowed'
+                    } text-white`}
+                    disabled={gameState.currentPlayer !== 'player' || gameState.currentPhase === 'SETUP'}
+                    title="Terminer le tour"
+                  >
+                    <SkipForward className="w-5 h-5" />
+                    <span>Fin de tour</span>
+                  </button>
+                </>
+              )}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

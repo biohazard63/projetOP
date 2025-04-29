@@ -5,6 +5,9 @@ import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { toast } from 'sonner'
+import { motion } from 'framer-motion'
+import { ChevronLeft, Plus, Play } from 'lucide-react'
+import Link from 'next/link'
 
 interface Deck {
   id: string
@@ -87,54 +90,112 @@ export default function SelectDeckPage() {
   }
 
   if (isLoading) {
-    return <div className="flex justify-center items-center min-h-screen">Chargement...</div>
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 flex justify-center items-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    )
   }
 
   if (decks.length === 0) {
     return (
-      <div className="container mx-auto py-8">
-        <h1 className="text-3xl font-bold mb-8">Sélectionnez votre deck</h1>
-        <div className="text-center">
-          <p className="text-lg mb-4">Aucun deck disponible</p>
-          <Button onClick={() => router.push('/decks')}>
+      <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 text-white">
+        <div className="container mx-auto px-4 py-8">
+          <div className="flex items-center mb-8">
+            <Button 
+              variant="ghost" 
+              className="text-white hover:bg-white/10 mr-4"
+              onClick={() => router.push('/')}
+            >
+              <ChevronLeft className="mr-2 h-5 w-5" />
+              Retour
+            </Button>
+            <h1 className="text-3xl font-bold">Sélectionnez votre deck</h1>
+          </div>
+          
+          <div className="bg-white/10 backdrop-blur-md rounded-xl p-8 text-center max-w-2xl mx-auto border border-white/20 shadow-xl">
+            <div className="text-6xl mb-6">🎴</div>
+            <h2 className="text-2xl font-bold mb-4">Aucun deck disponible</h2>
+            <p className="text-lg mb-8 text-gray-300">
+              Vous n'avez pas encore créé de deck. Créez-en un pour commencer à jouer !
+            </p>
+            <Link href="/deck-builder">
+              <Button className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all">
+                <Plus className="mr-2 h-5 w-5" />
             Créer un deck
           </Button>
+            </Link>
+          </div>
         </div>
       </div>
     )
   }
 
   return (
-    <div className="container mx-auto py-8">
-      <h1 className="text-3xl font-bold mb-8">Sélectionnez votre deck</h1>
+    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 text-white">
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex items-center justify-between mb-8">
+          <div className="flex items-center">
+            <Button 
+              variant="ghost" 
+              className="text-white hover:bg-white/10 mr-4"
+              onClick={() => router.push('/')}
+            >
+              <ChevronLeft className="mr-2 h-5 w-5" />
+              Retour
+            </Button>
+            <h1 className="text-3xl font-bold">Sélectionnez votre deck</h1>
+          </div>
+          <Link href="/deck-builder">
+            <Button className="bg-white/10 hover:bg-white/20 text-white">
+              <Plus className="mr-2 h-5 w-5" />
+              Nouveau deck
+            </Button>
+          </Link>
+        </div>
       
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {decks.map((deck) => (
+          {decks.map((deck, index) => (
+            <motion.div
+              key={deck.id}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
           <Card
-            key={deck.id}
-            className={`p-4 cursor-pointer transition-all ${
-              selectedDeckId === deck.id ? 'ring-2 ring-primary' : ''
+                className={`p-4 cursor-pointer transition-all h-full ${
+                  selectedDeckId === deck.id 
+                    ? 'ring-2 ring-blue-500 bg-blue-900/30' 
+                    : 'bg-gray-800/50 hover:bg-gray-700/50'
             }`}
             onClick={() => handleDeckSelect(deck.id)}
           >
-            <h2 className="text-xl font-semibold mb-4">{deck.name}</h2>
-            <div className="grid grid-cols-4 gap-2">
+                <CardHeader className="pb-2">
+                  <CardTitle className="text-xl font-bold text-white">{deck.name}</CardTitle>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-4 gap-2 mb-4">
               {deck.cards.slice(0, 8).map((card) => (
                 <div key={card.id} className="relative">
                   <img
                     src={card.imageUrl}
                     alt={card.name}
-                    className="w-full rounded-lg"
+                          className="w-full rounded-lg shadow-md hover:shadow-lg transition-shadow"
                   />
                   {card.quantity > 1 && (
-                    <div className="absolute top-1 right-1 bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm">
+                          <div className="absolute top-1 right-1 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm">
                       {card.quantity}
                     </div>
                   )}
                 </div>
               ))}
             </div>
+                  <div className="text-sm text-gray-400">
+                    {deck.cards.length} cartes au total
+                  </div>
+                </CardContent>
           </Card>
+            </motion.div>
         ))}
       </div>
 
@@ -142,10 +203,16 @@ export default function SelectDeckPage() {
         <Button
           onClick={handleStartGame}
           disabled={!selectedDeckId}
-          className="px-8"
-        >
+            className={`px-8 py-6 text-lg ${
+              selectedDeckId 
+                ? 'bg-gradient-to-r from-green-500 to-emerald-600 hover:from-green-600 hover:to-emerald-700' 
+                : 'bg-gray-700 cursor-not-allowed'
+            }`}
+          >
+            <Play className="mr-2 h-5 w-5" />
           Lancer la partie
         </Button>
+        </div>
       </div>
     </div>
   )
