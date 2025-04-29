@@ -109,12 +109,13 @@ export default function CardReveal({ card, isNewCard = false, onComplete, onCard
 
   return (
     <div className="relative flex items-center justify-center min-h-[400px] sm:min-h-[500px] md:min-h-[600px]">
-      {/* Effets spéciaux pour les cartes rares */}
+      {/* Effets spéciaux pour les cartes rares - temporairement désactivés
       {showUltraRareEffect && <UltraRareEffect card={card} />}
       {showAltArtEffect && <AltArtEffect card={card} />}
       {showRareEffect && <RareCardEffect card={card} />}
+      */}
       
-      {/* Fond lumineux animé */}
+      {/* Fond lumineux animé - temporairement désactivé
       {showParticles && (isUltraRare || isRare || isAlternative) && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -127,56 +128,35 @@ export default function CardReveal({ card, isNewCard = false, onComplete, onCard
           } blur-3xl`}
         />
       )}
+      */}
 
-      {/* Particules d'arrière-plan */}
+      {/* Particules d'arrière-plan - temporairement désactivées
       {showParticles && (
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.5 }}
           className="absolute inset-0 overflow-hidden pointer-events-none"
-          style={{
-            position: 'absolute',
-            top: '0%',
-            left: '66%',
-            transform: 'translate(-50%, -50%)',
-            width: '100%',
-            height: '100%',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            zIndex: 100,
-          }}
         >
-          {/* Particules flottantes */}
           {Array.from({ length: isUltraRare ? 100 : isRare ? 75 : 50 }).map((_, i) => (
             <motion.div
               key={i}
               className="absolute"
-              initial={{
+              initial={{ 
                 x: '50%',
                 y: '50%',
-                scale: 0,
-                opacity: 0
+                scale: 0
               }}
-              animate={{
+              animate={{ 
                 x: `${Math.random() * 100}%`,
                 y: `${Math.random() * 100}%`,
                 scale: [0, 1, 0],
-                opacity: [0, 1, 0],
                 rotate: [0, 360]
               }}
-              transition={{
+              transition={{ 
                 duration: 2 + Math.random() * 2,
-                delay: Math.random() * 0.5,
                 repeat: Infinity,
-                repeatType: "reverse"
-              }}
-              style={{
-                position: 'absolute',
-                left: '50%',
-                top: '50%',
-                transform: 'translate(-50%, -50%)'
+                repeatType: "reverse",
+                delay: Math.random() * 2
               }}
             >
               {isUltraRare ? (
