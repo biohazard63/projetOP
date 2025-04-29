@@ -363,8 +363,8 @@ model UserInventory {
 model SetRules {
   id           String   @id @default(cuid())
   code         String   @unique
-  name         String
-  releaseDate  DateTime
+  name         String?
+  releaseDate  DateTime?
   rarityCounts Json
   typeCounts   Json
   boosterRules Json
