@@ -29,11 +29,20 @@ export default function CardReveal({ card, isNewCard = false, onComplete, onCard
   const rotate = useTransform(x, [-200, 200], [-30, 30])
   const opacity = useTransform(x, [-200, 0, 200], [0.5, 1, 0.5])
 
-  const isUltraRare = ['L', 'SEC'].includes(card.rarity)
-  const isRare = ['SR', 'SP CARD'].includes(card.rarity) && !card.imageUrl?.includes('_p2') && !card.isParallel
-  const isAlternative = card.imageUrl?.includes('_p1') || card.isParallel
+  // Nouvelle logique de détection des raretés
+  const isUltraRare = (card.rarity === 'SR' && card.id.endsWith('_p1')) || 
+                     card.id.match(/_p[3-9]/) || 
+                     ['SEC', 'SP CARD', 'TR', 'P'].includes(card.rarity)
+  const isAlternative = card.id.endsWith('_p1') && !isUltraRare
+  const isRare = card.id.endsWith('_p2') || 
+                (card.rarity === 'SR' && !card.id.endsWith('_p1') && !card.id.match(/_p[3-9]/))
 
   useEffect(() => {
+    console.log('CardReveal - Détection des raretés pour:', card.name)
+    console.log('isUltraRare:', isUltraRare)
+    console.log('isAlternative:', isAlternative)
+    console.log('isRare:', isRare)
+
     // Attendre que BoosterPackAnimation soit terminée
     const timer = setTimeout(() => {
       setIsRevealed(true)
@@ -43,12 +52,15 @@ export default function CardReveal({ card, isNewCard = false, onComplete, onCard
         
         // Afficher les effets spéciaux après la révélation
         if (isUltraRare) {
+          console.log('Affichage de l\'effet Ultra Rare pour:', card.name)
           setShowUltraRareEffect(true)
           setTimeout(() => setShowUltraRareEffect(false), 3000)
         } else if (isAlternative) {
+          console.log('Affichage de l\'effet Alternative pour:', card.name)
           setShowAltArtEffect(true)
           setTimeout(() => setShowAltArtEffect(false), 3000)
         } else if (isRare) {
+          console.log('Affichage de l\'effet Rare pour:', card.name)
           setShowRareEffect(true)
           setTimeout(() => setShowRareEffect(false), 3000)
         }
@@ -109,75 +121,7 @@ export default function CardReveal({ card, isNewCard = false, onComplete, onCard
 
   return (
     <div className="relative flex items-center justify-center min-h-[400px] sm:min-h-[500px] md:min-h-[600px]">
-      {/* Effets spéciaux pour les cartes rares - temporairement désactivés
-      {showUltraRareEffect && <UltraRareEffect card={card} />}
-      {showAltArtEffect && <AltArtEffect card={card} />}
-      {showRareEffect && <RareCardEffect card={card} />}
-      */}
-      
-      {/* Fond lumineux animé - temporairement désactivé
-      {showParticles && (isUltraRare || isRare || isAlternative) && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: [0, 0.8, 0.4] }}
-          transition={{ duration: 1.5, repeat: Infinity }}
-          className={`absolute inset-0 ${
-            isUltraRare ? 'bg-gradient-conic from-yellow-500 via-amber-500 to-yellow-500' :
-            isRare ? 'bg-gradient-conic from-purple-500 via-pink-500 to-purple-500' :
-            'bg-gradient-conic from-blue-500 via-cyan-500 to-blue-500'
-          } blur-3xl`}
-        />
-      )}
-      */}
-
-      {/* Particules d'arrière-plan - temporairement désactivées
-      {showParticles && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="absolute inset-0 overflow-hidden pointer-events-none"
-        >
-          {Array.from({ length: isUltraRare ? 100 : isRare ? 75 : 50 }).map((_, i) => (
-            <motion.div
-              key={i}
-              className="absolute"
-              initial={{ 
-                x: '50%',
-                y: '50%',
-                scale: 0
-              }}
-              animate={{ 
-                x: `${Math.random() * 100}%`,
-                y: `${Math.random() * 100}%`,
-                scale: [0, 1, 0],
-                rotate: [0, 360]
-              }}
-              transition={{ 
-                duration: 2 + Math.random() * 2,
-                repeat: Infinity,
-                repeatType: "reverse",
-                delay: Math.random() * 2
-              }}
-            >
-              {isUltraRare ? (
-                <Crown className="w-4 h-4 text-yellow-400" />
-              ) : isRare ? (
-                <Star className="w-4 h-4 text-purple-400" />
-              ) : isAlternative ? (
-                <Sparkles className="w-4 h-4 text-cyan-400" />
-              ) : (
-                <div 
-                  className="w-2 h-2 rounded-full"
-                  style={{
-                    background: getParticleColors()[Math.floor(Math.random() * getParticleColors().length)],
-                    boxShadow: '0 0 10px currentColor'
-                  }}
-                />
-              )}
-            </motion.div>
-          ))}
-        </motion.div>
-      )}
+    
 
       {/* Carte */}
       <motion.div
@@ -258,11 +202,7 @@ export default function CardReveal({ card, isNewCard = false, onComplete, onCard
             <img
               src={card.imageUrl}
               alt={typeof card.name === 'string' ? card.name : 'Carte'}
-              className={`w-full h-auto rounded-xl shadow-2xl ${
-                isUltraRare ? 'ring-4 ring-yellow-400' :
-                isRare ? 'ring-4 ring-purple-400' :
-                isAlternative ? 'ring-4 ring-cyan-400' : ''
-              }`}
+              className={`w-full h-auto rounded-xl shadow-2xl `}
             />
 
             {/* Badge "Nouvelle" pour les nouvelles cartes */}
@@ -277,27 +217,7 @@ export default function CardReveal({ card, isNewCard = false, onComplete, onCard
               </motion.div>
             )}
 
-            {/* Effet de brillance */}
-            <motion.div
-              className={`absolute inset-0 bg-gradient-to-r ${
-                isUltraRare ? 'from-yellow-500/0 via-yellow-500/50 to-yellow-500/0' :
-                isRare ? 'from-purple-500/0 via-purple-500/50 to-purple-500/0' :
-                isAlternative ? 'from-cyan-500/0 via-cyan-500/50 to-cyan-500/0' :
-                'from-transparent via-white to-transparent'
-              } opacity-0`}
-              animate={{
-                opacity: [0, 0.8, 0],
-                x: ['-100%', '100%'],
-              }}
-              transition={{
-                duration: 1.5,
-                delay: 1,
-                ease: "easeInOut",
-                repeat: isUltraRare ? Infinity : 0,
-                repeatDelay: 1
-              }}
-            />
-
+           
             {/* Texte de rareté */}
             {(isUltraRare || isRare || isAlternative) && (
               <motion.div

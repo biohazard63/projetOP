@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
-import { ChevronLeft, ChevronRight, Sparkles, Star, ArrowRight } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Card } from '@prisma/client';
-import { getRarityGlow, getRarityColor } from '@/utils/cardEffects';
+import { getRarityGlow } from '@/utils/cardEffects';
 import Image from 'next/image';
 import clsx from 'clsx';
 
@@ -71,43 +71,6 @@ export default function BoosterCard({
             e.currentTarget.src = '/images/card-back.png';
           }}
         />
-      </div>
-
-      {/* Indicateurs */}
-      <div className="absolute left-2 top-2 flex items-center gap-2">
-        {/* Indicateur de rareté */}
-        {card.rarity && (
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className={clsx(
-              'flex h-8 w-8 items-center justify-center rounded-full bg-black/50 backdrop-blur-sm',
-              getRarityColor(card.rarity)
-            )}
-          >
-            {card.rarity === 'L' || card.rarity === 'SR' || card.rarity === 'SEC' ? (
-              <Sparkles className="h-5 w-5" />
-            ) : (
-              <Star className="h-5 w-5" />
-            )}
-          </motion.div>
-        )}
-
-        {/* Indicateur de carte alternative */}
-        {(card.isAltArt || card.isParallel) && (
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            className="flex h-8 w-8 items-center justify-center rounded-full bg-purple-500/50 text-purple-200 backdrop-blur-sm"
-          >
-            <motion.div
-              animate={{ rotate: 360 }}
-              transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
-            >
-              <Sparkles className="h-5 w-5" />
-            </motion.div>
-          </motion.div>
-        )}
       </div>
 
       {/* Indicateur de nouvelle carte */}

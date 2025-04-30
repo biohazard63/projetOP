@@ -112,9 +112,7 @@ export async function POST(request: Request) {
 
     // Vérifier s'il y a des cartes rares
     const hasRareCard = cards.some(card => 
-      card.rarity === 'rare' || 
-      card.rarity === 'mythic' || 
-      card.imageUrl?.includes('_p1')
+      ['R', 'SR', 'L', 'SEC', 'SP CARD'].includes(card.rarity)
     )
     console.log(`[BOOSTER-OPEN] Le booster contient des cartes rares: ${hasRareCard}`);
 
@@ -206,81 +204,139 @@ async function generateBooster(setRules: any) {
   
   console.log(`[BOOSTER-GEN] Cartes très rares disponibles: ${hasVeryRareCards}`);
   
-  // Sélectionner les cartes selon la distribution et les placer aux positions spécifiées
-  for (const { rarity, count, positions } of distribution) {
-    // Si c'est une rareté très rare, on utilise la probabilité
-    if (['L', 'SEC', 'SP CARD', 'TR'].includes(rarity)) {
-      if (Math.random() > count) {
-        continue;
-      }
-      
-      // Vérifier si des cartes de cette rareté sont disponibles
-      if (!cardsByRarity[rarity] || cardsByRarity[rarity].length === 0) {
-        console.log(`[BOOSTER-GEN] Aucune carte de rareté ${rarity} disponible, passage à la rareté suivante`);
-        continue;
-      }
-      
-      // Mélanger les cartes de cette rareté
-      const shuffledCards = [...cardsByRarity[rarity]];
-      for (let i = shuffledCards.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [shuffledCards[i], shuffledCards[j]] = [shuffledCards[j], shuffledCards[i]];
-      }
-      
-      // Prendre la première carte
-      const cardToAdd = shuffledCards[0];
-      
-      // Placer la carte à la position 12
-      booster[11] = cardToAdd;
-      console.log(`[BOOSTER-GEN] Carte ${cardToAdd.name} (${rarity}) placée à la position 12`);
-      continue;
-    }
-    
-    console.log(`[BOOSTER-GEN] Sélection de ${count} cartes de rareté ${rarity}`);
-    
-    if (!cardsByRarity[rarity] || cardsByRarity[rarity].length === 0) {
-      console.log(`[BOOSTER-GEN] Aucune carte de rareté ${rarity} disponible`);
-      continue;
-    }
-    
-    // Mélanger les cartes de cette rareté
-    const shuffledCards = [...cardsByRarity[rarity]];
-    for (let i = shuffledCards.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [shuffledCards[i], shuffledCards[j]] = [shuffledCards[j], shuffledCards[i]];
-    }
-    
-    // Prendre les premières cartes
-    const cardsToAdd = shuffledCards.slice(0, count);
-    
-    // Placer les cartes aux positions spécifiées
-    for (let i = 0; i < cardsToAdd.length; i++) {
-      // Trouver une position disponible parmi les positions autorisées
-      const availablePositions = positions.filter(pos => booster[pos - 1] === null);
-      if (availablePositions.length > 0) {
-        const randomPositionIndex = Math.floor(Math.random() * availablePositions.length);
-        const position = availablePositions[randomPositionIndex];
-        booster[position - 1] = cardsToAdd[i];
-        console.log(`[BOOSTER-GEN] Carte ${cardsToAdd[i].name} (${rarity}) placée à la position ${position}`);
-      }
+  // Sélectionner aléatoirement les cartes pour chaque position
+  console.log(`[BOOSTER-GEN] Sélection des cartes pour le booster...`);
+  
+  // Positions 1-6: Cartes communes
+  for (let i = 0; i < 6; i++) {
+    if (cardsByRarity['C'] && cardsByRarity['C'].length > 0) {
+      const randomIndex = Math.floor(Math.random() * cardsByRarity['C'].length);
+      const selectedCard = cardsByRarity['C'][randomIndex];
+      booster[i] = selectedCard;
+      cardsByRarity['C'].splice(randomIndex, 1);
+      console.log(`[BOOSTER-GEN] Position ${i+1}: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
+    } else if (cardsByRarity['UC'] && cardsByRarity['UC'].length > 0) {
+      // Si pas de cartes communes, utiliser des cartes uncommon
+      const randomIndex = Math.floor(Math.random() * cardsByRarity['UC'].length);
+      const selectedCard = cardsByRarity['UC'][randomIndex];
+      booster[i] = selectedCard;
+      cardsByRarity['UC'].splice(randomIndex, 1);
+      console.log(`[BOOSTER-GEN] Position ${i+1}: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}] (fallback UC)`);
+    } else {
+      console.log(`[BOOSTER-GEN] Position ${i+1}: Aucune carte commune ou uncommon disponible`);
     }
   }
   
-  // Compléter les positions vides avec des cartes communes
-  console.log('[BOOSTER-GEN] Complétion des positions vides');
-  const commonCards = cardsByRarity['C'] || [];
+  // Positions 7-9: Cartes uncommon
+  for (let i = 0; i < 3; i++) {
+    if (cardsByRarity['UC'] && cardsByRarity['UC'].length > 0) {
+      const randomIndex = Math.floor(Math.random() * cardsByRarity['UC'].length);
+      const selectedCard = cardsByRarity['UC'][randomIndex];
+      booster[i+6] = selectedCard;
+      cardsByRarity['UC'].splice(randomIndex, 1);
+      console.log(`[BOOSTER-GEN] Position ${i+7}: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
+    } else if (cardsByRarity['C'] && cardsByRarity['C'].length > 0) {
+      // Si pas de cartes uncommon, utiliser des cartes communes
+      const randomIndex = Math.floor(Math.random() * cardsByRarity['C'].length);
+      const selectedCard = cardsByRarity['C'][randomIndex];
+      booster[i+6] = selectedCard;
+      cardsByRarity['C'].splice(randomIndex, 1);
+      console.log(`[BOOSTER-GEN] Position ${i+7}: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}] (fallback C)`);
+    } else {
+      console.log(`[BOOSTER-GEN] Position ${i+7}: Aucune carte uncommon ou commune disponible`);
+    }
+  }
   
+  // Position 10: Carte rare ou super rare (50% de chance pour chaque)
+  const isSuperRare = Math.random() < 0.5;
+  console.log(`[BOOSTER-GEN] Position 10: Tentative de sélection ${isSuperRare ? 'super rare' : 'rare'}`);
+  
+  if (isSuperRare && cardsByRarity['SR'] && cardsByRarity['SR'].length > 0) {
+    const randomIndex = Math.floor(Math.random() * cardsByRarity['SR'].length);
+    const selectedCard = cardsByRarity['SR'][randomIndex];
+    booster[9] = selectedCard;
+    cardsByRarity['SR'].splice(randomIndex, 1);
+    console.log(`[BOOSTER-GEN] Position 10: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
+  } else if (cardsByRarity['R'] && cardsByRarity['R'].length > 0) {
+    const randomIndex = Math.floor(Math.random() * cardsByRarity['R'].length);
+    const selectedCard = cardsByRarity['R'][randomIndex];
+    booster[9] = selectedCard;
+    cardsByRarity['R'].splice(randomIndex, 1);
+    console.log(`[BOOSTER-GEN] Position 10: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
+  } else if (cardsByRarity['UC'] && cardsByRarity['UC'].length > 0) {
+    // Fallback sur uncommon si pas de rare/super rare
+    const randomIndex = Math.floor(Math.random() * cardsByRarity['UC'].length);
+    const selectedCard = cardsByRarity['UC'][randomIndex];
+    booster[9] = selectedCard;
+    cardsByRarity['UC'].splice(randomIndex, 1);
+    console.log(`[BOOSTER-GEN] Position 10: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}] (fallback UC)`);
+  } else {
+    console.log(`[BOOSTER-GEN] Position 10: Aucune carte rare/super rare/uncommon disponible`);
+  }
+  
+  // Position 11: Carte rare
+  if (cardsByRarity['R'] && cardsByRarity['R'].length > 0) {
+    const randomIndex = Math.floor(Math.random() * cardsByRarity['R'].length);
+    const selectedCard = cardsByRarity['R'][randomIndex];
+    booster[10] = selectedCard;
+    cardsByRarity['R'].splice(randomIndex, 1);
+    console.log(`[BOOSTER-GEN] Position 11: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
+  } else if (cardsByRarity['UC'] && cardsByRarity['UC'].length > 0) {
+    // Fallback sur uncommon si pas de rare
+    const randomIndex = Math.floor(Math.random() * cardsByRarity['UC'].length);
+    const selectedCard = cardsByRarity['UC'][randomIndex];
+    booster[10] = selectedCard;
+    cardsByRarity['UC'].splice(randomIndex, 1);
+    console.log(`[BOOSTER-GEN] Position 11: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}] (fallback UC)`);
+  } else {
+    console.log(`[BOOSTER-GEN] Position 11: Aucune carte rare ou uncommon disponible`);
+  }
+  
+  // Position 12: Leader ou SR (50% de chance pour chaque)
+  const isLeader = Math.random() < 0.5;
+  console.log(`[BOOSTER-GEN] Position 12: Tentative de sélection ${isLeader ? 'leader' : 'super rare'}`);
+  
+  if (isLeader && cardsByRarity['LEADER'] && cardsByRarity['LEADER'].length > 0) {
+    const randomIndex = Math.floor(Math.random() * cardsByRarity['LEADER'].length);
+    const selectedCard = cardsByRarity['LEADER'][randomIndex];
+    booster[11] = selectedCard;
+    cardsByRarity['LEADER'].splice(randomIndex, 1);
+    console.log(`[BOOSTER-GEN] Position 12: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
+  } else if (cardsByRarity['SR'] && cardsByRarity['SR'].length > 0) {
+    const randomIndex = Math.floor(Math.random() * cardsByRarity['SR'].length);
+    const selectedCard = cardsByRarity['SR'][randomIndex];
+    booster[11] = selectedCard;
+    cardsByRarity['SR'].splice(randomIndex, 1);
+    console.log(`[BOOSTER-GEN] Position 12: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
+  } else if (cardsByRarity['R'] && cardsByRarity['R'].length > 0) {
+    // Fallback sur rare si pas de leader/SR
+    const randomIndex = Math.floor(Math.random() * cardsByRarity['R'].length);
+    const selectedCard = cardsByRarity['R'][randomIndex];
+    booster[11] = selectedCard;
+    cardsByRarity['R'].splice(randomIndex, 1);
+    console.log(`[BOOSTER-GEN] Position 12: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}] (fallback R)`);
+  } else {
+    console.log(`[BOOSTER-GEN] Position 12: Aucune carte leader/super rare/rare disponible`);
+  }
+  
+  // Vérifier et remplir les positions vides avec des cartes communes si possible
   for (let i = 0; i < booster.length; i++) {
-    if (booster[i] === null && commonCards.length > 0) {
-      const randomIndex = Math.floor(Math.random() * commonCards.length);
-      booster[i] = commonCards[randomIndex];
-      console.log(`[BOOSTER-GEN] Position ${i + 1} complétée avec ${commonCards[randomIndex].name} (C)`);
+    if (booster[i] === null && cardsByRarity['C'] && cardsByRarity['C'].length > 0) {
+      const randomIndex = Math.floor(Math.random() * cardsByRarity['C'].length);
+      const selectedCard = cardsByRarity['C'][randomIndex];
+      booster[i] = selectedCard;
+      cardsByRarity['C'].splice(randomIndex, 1);
+      console.log(`[BOOSTER-GEN] Position ${i+1} remplie avec une carte commune: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
     }
   }
   
   console.log('[BOOSTER-GEN] Contenu final du booster:');
   booster.forEach((card, index) => {
-    console.log(`[BOOSTER-GEN] Position ${index + 1}: ${card.name} (${card.rarity})`);
+    if (card) {
+      console.log(`[BOOSTER-GEN] Position ${index + 1}: ${card.name} (${card.rarity}) [${card.id}]`);
+    } else {
+      console.log(`[BOOSTER-GEN] Position ${index + 1}: Vide`);
+    }
   });
   
   return booster;

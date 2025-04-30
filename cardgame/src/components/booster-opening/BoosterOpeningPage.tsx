@@ -15,14 +15,15 @@ import { Package, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
 import CardReveal from './CardReveal'
 import CardDetailsModal from './CardDetailsModal'
-/* import RareCardEffect from './RareCardEffect'
-import AltArtEffect from './AltArtEffect'
-import UltraRareEffect from './UltraRareEffect' */
+
 import { useAudio } from '@/hooks/useAudio'
 import { useCollection } from '@/hooks/useCollection'
 import { useBooster } from '@/hooks/useBooster'
 import { ExtendedCardType } from '@/types/card'
 import BoosterPackAnimation from './BoosterPackAnimation'
+import UltraRareAnimation from './UltraRareAnimation'
+import RareAnimation from './RareAnimation'
+import AlternativeAnimation from './AlternativeAnimation'
 
 export default function BoosterOpeningPage() {
   const [sets, setSets] = useState<Array<{id: string, code: string, name: string}>>([])
@@ -52,13 +53,14 @@ export default function BoosterOpeningPage() {
   const [rareCardGlow, setRareCardGlow] = useState<Record<string, boolean>>({})
   const [ultraRareParticles, setUltraRareParticles] = useState<Array<{id: number, x: number, y: number, size: number, color: string}>>([])
   const [showAnimation, setShowAnimation] = useState(false)
+  const [showRareAnimation, setShowRareAnimation] = useState(false)
+  const [rareAnimationType, setRareAnimationType] = useState<'ultra-rare' | 'rare' | 'alternative' | null>(null)
   
   // Utilisation des hooks personnalisés
   const { userCollection, loadUserCollection } = useCollection()
   const { 
     playRareCardSound, 
     playAltArtSound, 
-    playSpecialCardSound, 
     playUltraRareSound, 
     playNewCardSound 
   } = useAudio()
@@ -238,56 +240,54 @@ export default function BoosterOpeningPage() {
 
   // Vérification de la rareté et lecture des effets
   const checkRarityAndPlayEffect = (card: ExtendedCardType) => {
-    console.log('Vérification de la rareté pour:', card.name, card.rarity)
+    console.log('Vérification de la rareté pour:', card.name, card.rarity, card.id)
     
-    if (isUltraRareCard(card)) {
-      console.log('Carte ultra rare détectée:', card.name)
+    // Catégorie 3 : Ultra Rare / Collector (priorité la plus haute)
+    if ((card.rarity === 'SR' && card.id.endsWith('_p1'))) {
+      console.log('Carte SR Alternative détectée comme Ultra Rare:', card.name)
       setCurrentRareCard(card)
-      setShowUltraRareEffect(true)
-      playUltraRareSound()
-      generateUltraRareParticles()
-      setTimeout(() => {
-        setShowUltraRareEffect(false)
-      }, 3000)
+      setRareAnimationType('ultra-rare')
+      setShowRareAnimation(true)
       return
     }
     
-    if (card.imageUrl?.includes('_p1') || card.isParallel) {
-      console.log('Carte alternative détectée:', card.name)
+    if (card.id.match(/_p[3-9]/) || 
+        ['SEC', 'SP CARD', 'TR', 'P'].includes(card.rarity)) {
+      console.log('Carte Ultra Rare détectée:', card.name)
       setCurrentRareCard(card)
-      setShowAltArtEffect(true)
-      playAltArtSound()
-      setTimeout(() => {
-        setShowAltArtEffect(false)
-      }, 3000)
+      setRareAnimationType('ultra-rare')
+      setShowRareAnimation(true)
       return
     }
-    
-    if (['L', 'SR', 'SEC', 'SP CARD'].includes(card.rarity)) {
-      console.log('Carte spéciale détectée:', card.name);
-      setCurrentRareCard(card);
-      setShowRareEffect(true);
-      playSpecialCardSound();
-      setTimeout(() => {
-        setShowRareEffect(false)
-      }, 3000)
-      return;
-    }
-    
-    if (card.rarity === 'rare' || card.rarity === 'mythic') {
-      console.log('Carte rare détectée:', card.name)
+
+    // Catégorie 1 : Alternative Art de base
+    if (card.id.endsWith('_p1')) {
+      console.log('Carte Alternative détectée:', card.name)
       setCurrentRareCard(card)
-      setShowRareEffect(true)
-      playRareCardSound()
-      setTimeout(() => {
-        setShowRareEffect(false)
-      }, 3000)
+      setRareAnimationType('alternative')
+      setShowRareAnimation(true)
       return
     }
-    
-    console.log('Carte commune détectée:', card.name);
-    playNewCardSound();
-  };
+
+    // Catégorie 2 : Rare + Alternatives modérées
+    if (card.id.endsWith('_p2') || 
+        (card.rarity === 'SR' && !card.id.endsWith('_p1') && !card.id.match(/_p[3-9]/))) {
+      console.log('Carte Rare détectée:', card.name)
+      setCurrentRareCard(card)
+      setRareAnimationType('rare')
+      setShowRareAnimation(true)
+      return
+    }
+
+    // Cartes communes
+    console.log('Carte commune détectée:', card.name)
+    playNewCardSound()
+  }
+
+  const handleRareAnimationComplete = () => {
+    setShowRareAnimation(false)
+    setRareAnimationType(null)
+  }
 
   // Navigation entre les cartes
   const navigateCard = (direction: 'prev' | 'next') => {
@@ -405,10 +405,8 @@ export default function BoosterOpeningPage() {
           setIsRevealing(true)
           
           if (result.hasRareCard) {
-            playRareCardSound()
-          } else {
-            playSpecialCardSound()
-          }
+            // Suppression du son des cartes rares
+          } 
         } else {
           toast.error(result.error || 'Erreur lors de l\'ouverture du booster')
         }
@@ -494,6 +492,30 @@ export default function BoosterOpeningPage() {
       {/* Animation d'ouverture du booster */}
       {showAnimation && (
         <BoosterPackAnimation onComplete={handleAnimationComplete} />
+      )}
+
+      {/* Animation des cartes rares */}
+      {showRareAnimation && currentRareCard && (
+        <>
+          {rareAnimationType === 'ultra-rare' && (
+            <UltraRareAnimation
+              card={currentRareCard}
+              onComplete={handleRareAnimationComplete}
+            />
+          )}
+          {rareAnimationType === 'rare' && (
+            <RareAnimation
+              card={currentRareCard}
+              onComplete={handleRareAnimationComplete}
+            />
+          )}
+          {rareAnimationType === 'alternative' && (
+            <AlternativeAnimation
+              card={currentRareCard}
+              onComplete={handleRareAnimationComplete}
+            />
+          )}
+        </>
       )}
       
       {/* En-tête avec sélection de set */}
