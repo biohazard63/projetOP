@@ -15,13 +15,14 @@ import { Package, Sparkles } from 'lucide-react'
 import { motion } from 'framer-motion'
 import CardReveal from './CardReveal'
 import CardDetailsModal from './CardDetailsModal'
-import RareCardEffect from './RareCardEffect'
+/* import RareCardEffect from './RareCardEffect'
 import AltArtEffect from './AltArtEffect'
-import UltraRareEffect from './UltraRareEffect'
+import UltraRareEffect from './UltraRareEffect' */
 import { useAudio } from '@/hooks/useAudio'
 import { useCollection } from '@/hooks/useCollection'
 import { useBooster } from '@/hooks/useBooster'
 import { ExtendedCardType } from '@/types/card'
+import BoosterPackAnimation from './BoosterPackAnimation'
 
 export default function BoosterOpeningPage() {
   const [sets, setSets] = useState<Array<{id: string, code: string, name: string}>>([])
@@ -50,6 +51,7 @@ export default function BoosterOpeningPage() {
   const [showBackgroundEffect, setShowBackgroundEffect] = useState(false)
   const [rareCardGlow, setRareCardGlow] = useState<Record<string, boolean>>({})
   const [ultraRareParticles, setUltraRareParticles] = useState<Array<{id: number, x: number, y: number, size: number, color: string}>>([])
+  const [showAnimation, setShowAnimation] = useState(false)
   
   // Utilisation des hooks personnalisés
   const { userCollection, loadUserCollection } = useCollection()
@@ -307,7 +309,8 @@ export default function BoosterOpeningPage() {
       if (currentCardIndex + 1 === booster.length - 1) {
         setTimeout(async () => {
           try {
-            const result = await addToCollection(booster.map(card => card.id))
+            const cardIds = booster.map(card => card.id)
+            const result = await addToCollection(cardIds)
             if (result.success) {
               toast.success('Cartes ajoutées à votre collection !')
               await loadUserCollection()
@@ -360,6 +363,13 @@ export default function BoosterOpeningPage() {
       return
     }
 
+    if (!showAnimation) {
+      setShowAnimation(true)
+    }
+  }
+
+  const handleAnimationComplete = async () => {
+    setShowAnimation(false)
     setIsLoading(true)
     try {
       const selectedSetData = sets.find(set => set.id === selectedSet)
@@ -480,6 +490,11 @@ export default function BoosterOpeningPage() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-900 to-indigo-950 text-white p-2 sm:p-4 md:p-8">
       <Toaster position="top-center" />
+      
+      {/* Animation d'ouverture du booster */}
+      {showAnimation && (
+        <BoosterPackAnimation onComplete={handleAnimationComplete} />
+      )}
       
       {/* En-tête avec sélection de set */}
       <div className="max-w-6xl mx-auto mb-4 sm:mb-8">

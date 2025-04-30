@@ -38,6 +38,7 @@ export function useBooster() {
 
   const addToCollection = useCallback(async (cardIds: string[]) => {
     try {
+      console.log('useBooster: Appel API add-to-collection avec les cartes:', cardIds)
       const response = await fetch('/api/booster/add-to-collection', {
         method: 'POST',
         headers: {
@@ -46,7 +47,9 @@ export function useBooster() {
         body: JSON.stringify({ cardIds })
       })
       
+      console.log('useBooster: Statut de la réponse:', response.status)
       const data = await response.json()
+      console.log('useBooster: Données de la réponse:', data)
       
       if (data.success) {
         return {
@@ -60,7 +63,7 @@ export function useBooster() {
         }
       }
     } catch (error) {
-      console.error('Erreur lors de l\'ajout à la collection:', error)
+      console.error('useBooster: Erreur lors de l\'ajout à la collection:', error)
       return {
         success: false,
         error: 'Erreur lors de l\'ajout à la collection'
