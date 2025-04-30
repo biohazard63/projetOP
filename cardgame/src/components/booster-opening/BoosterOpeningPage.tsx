@@ -312,11 +312,15 @@ export default function BoosterOpeningPage() {
             const cardIds = booster.map(card => card.id)
             const result = await addToCollection(cardIds)
             if (result.success) {
-              toast.success('Cartes ajoutées à votre collection !')
+              toast.success('Cartes ajoutées à votre collection !', {
+                duration: 4000,
+                position: 'top-center'
+              })
               await loadUserCollection()
             }
           } catch (error) {
             console.error('Erreur lors de l\'ajout automatique à la collection:', error)
+            toast.error('Erreur lors de l\'ajout à la collection')
           }
         }, 2000) // Attendre 2 secondes pour que l'utilisateur puisse voir la dernière carte
       }
@@ -587,7 +591,7 @@ export default function BoosterOpeningPage() {
                 <motion.button
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="absolute left-4 top-1/2 -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
+                  className="absolute left-4 top-[103%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
                   onClick={() => setCurrentCardIndex(currentCardIndex - 1)}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -611,7 +615,7 @@ export default function BoosterOpeningPage() {
                 <motion.button
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="absolute right-4 top-1/2 -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
+                  className="absolute right-4 top-[103%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
                   onClick={() => setCurrentCardIndex(currentCardIndex + 1)}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
