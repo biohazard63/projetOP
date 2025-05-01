@@ -314,13 +314,30 @@ export default function BoosterOpeningPage() {
             if (result.success) {
               toast.success('Cartes ajoutées à votre collection !', {
                 duration: 4000,
-                position: 'top-center'
+                position: 'top-center',
+                className: 'bg-green-500 text-white font-bold',
+                style: {
+                  fontSize: '16px',
+                  padding: '12px',
+                  borderRadius: '8px',
+                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                }
               })
               await loadUserCollection()
             }
           } catch (error) {
             console.error('Erreur lors de l\'ajout automatique à la collection:', error)
-            toast.error('Erreur lors de l\'ajout à la collection')
+            toast.error('Erreur lors de l\'ajout à la collection', {
+              duration: 4000,
+              position: 'top-center',
+              className: 'bg-red-500 text-white font-bold',
+              style: {
+                fontSize: '16px',
+                padding: '12px',
+                borderRadius: '8px',
+                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+              }
+            })
           }
         }, 2000) // Attendre 2 secondes pour que l'utilisateur puisse voir la dernière carte
       }
@@ -330,7 +347,7 @@ export default function BoosterOpeningPage() {
   // Gestion du glissement des cartes
   const handleDragEnd = (event: any, info: any) => {
     setIsDragging(false)
-    const threshold = 100 // Distance minimale pour déclencher le changement de carte
+    const threshold = 50 // Distance minimale pour déclencher le changement de carte (réduite pour mobile)
     
     if (info.offset.x > threshold && currentCardIndex > 0) {
       // Glissement vers la droite -> carte précédente
