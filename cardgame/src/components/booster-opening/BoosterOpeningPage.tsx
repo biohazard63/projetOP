@@ -11,8 +11,8 @@ import {
   SelectValue,
 } from '@/components/ui/select'
 import { toast, Toaster } from 'sonner'
-import { Package, Sparkles } from 'lucide-react'
-import { motion } from 'framer-motion'
+import { Package, Sparkles, X } from 'lucide-react'
+import { motion, AnimatePresence } from 'framer-motion'
 import CardReveal from './CardReveal'
 import CardDetailsModal from './CardDetailsModal'
 
@@ -55,6 +55,7 @@ export default function BoosterOpeningPage() {
   const [showAnimation, setShowAnimation] = useState(false)
   const [showRareAnimation, setShowRareAnimation] = useState(false)
   const [rareAnimationType, setRareAnimationType] = useState<'ultra-rare' | 'rare' | 'alternative' | null>(null)
+  const [showBoosterModal, setShowBoosterModal] = useState(false)
   
   // Utilisation des hooks personnalisés
   const { userCollection, loadUserCollection } = useCollection()
@@ -688,7 +689,10 @@ export default function BoosterOpeningPage() {
       
       {/* Animation d'ouverture du booster */}
       {showAnimation && (
-        <BoosterPackAnimation onComplete={handleAnimationComplete} />
+        <BoosterPackAnimation 
+          onComplete={handleAnimationComplete} 
+          setCode={sets.find(set => set.id === selectedSet)?.code || ''}
+        />
       )}
 
       {/* Animation des cartes rares */}
@@ -715,63 +719,139 @@ export default function BoosterOpeningPage() {
         </>
       )}
       
-      {/* En-tête avec sélection de set */}
+      {/* En-tête */}
       <div className="max-w-6xl mx-auto mb-4 sm:mb-8">
         <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-center">Ouverture de Booster</h1>
         
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-2 sm:gap-4 mb-4 sm:mb-6">
-          <Select value={selectedSet} onValueChange={setSelectedSet}>
-            <SelectTrigger className="w-full sm:w-64 bg-white/10 border-white/20 text-white text-sm sm:text-base">
-              <SelectValue placeholder="Sélectionnez un set" />
-            </SelectTrigger>
-            <SelectContent>
-              {sets.map((set) => (
-                <SelectItem key={set.id} value={set.id}>
-                  {set.name}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          
-          {booster.length === 0 ? (
+        {/* Affichage du booster sélectionné */}
+        {selectedSet && (
+          <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="flex flex-col items-center justify-center gap-2 mb-6"
+          >
+            <div className="relative w-32 h-48 sm:w-40 sm:h-60">
+              <img
+                src={`/images/booster/${sets.find(set => set.id === selectedSet)?.code.toLowerCase()}.png`}
+                alt={sets.find(set => set.id === selectedSet)?.name}
+                className="w-full h-full object-contain"
+              />
+            </div>
+            <p className="text-lg sm:text-xl font-semibold text-center">
+              {sets.find(set => set.id === selectedSet)?.name}
+            </p>
+          </motion.div>
+        )}
+        
+        <div className="flex flex-col items-center justify-center gap-4 mb-4 sm:mb-6">
+          <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
             <Button 
-              onClick={handleOpenBooster} 
-              disabled={!selectedSet || isLoading}
-              className="w-full sm:w-auto bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-white font-bold py-2 px-4 sm:px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              onClick={() => setShowBoosterModal(true)}
+              className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-2 px-4 sm:px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
             >
-              {isLoading ? (
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 border-t-2 border-white rounded-full animate-spin"></div>
-                  <span>Chargement...</span>
-                </div>
-              ) : (
-                <div className="flex items-center gap-2">
-                  <Package className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span>Ouvrir un booster</span>
-                </div>
-              )}
+              <div className="flex items-center gap-2">
+                <Package className="w-4 h-4 sm:w-5 sm:h-5" />
+                <span>Choisir un booster</span>
+              </div>
             </Button>
-          ) : (
-            <Button 
-              onClick={resetAndOpenNewBooster} 
-              disabled={!selectedSet || isLoading}
-              className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold py-2 px-4 sm:px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
-            >
-              {isLoading ? (
-                <div className="flex items-center gap-2">
-                  <div className="w-4 h-4 sm:w-5 sm:h-5 border-t-2 border-white rounded-full animate-spin"></div>
-                  <span>Chargement...</span>
-                </div>
-              ) : (
-                <div className="flex items-center gap-2">
-                  <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
-                  <span>Nouveau booster</span>
-                </div>
-              )}
-            </Button>
-          )}
+            
+            {booster.length === 0 ? (
+              <Button 
+                onClick={handleOpenBooster} 
+                disabled={!selectedSet || isLoading}
+                className="w-full sm:w-auto bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-white font-bold py-2 px-4 sm:px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              >
+                {isLoading ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-t-2 border-white rounded-full animate-spin"></div>
+                    <span>Chargement...</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span>Ouvrir un booster</span>
+                  </div>
+                )}
+              </Button>
+            ) : (
+              <Button 
+                onClick={resetAndOpenNewBooster} 
+                disabled={!selectedSet || isLoading}
+                className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold py-2 px-4 sm:px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              >
+                {isLoading ? (
+                  <div className="flex items-center gap-2">
+                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-t-2 border-white rounded-full animate-spin"></div>
+                    <span>Chargement...</span>
+                  </div>
+                ) : (
+                  <div className="flex items-center gap-2">
+                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
+                    <span>Nouveau booster</span>
+                  </div>
+                )}
+              </Button>
+            )}
+          </div>
         </div>
       </div>
+
+      {/* Modal de sélection des boosters */}
+      <AnimatePresence>
+        {showBoosterModal && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
+            onClick={() => setShowBoosterModal(false)}
+          >
+            <motion.div
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.9, opacity: 0 }}
+              className="bg-gradient-to-b from-gray-900 to-gray-800 rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
+              onClick={e => e.stopPropagation()}
+            >
+              <div className="p-4 border-b border-gray-700 flex justify-between items-center">
+                <h2 className="text-xl font-bold">Sélectionnez un booster</h2>
+                <button
+                  onClick={() => setShowBoosterModal(false)}
+                  className="p-2 hover:bg-gray-700 rounded-full transition-colors"
+                >
+                  <X className="w-5 h-5" />
+                </button>
+              </div>
+              
+              <div className="p-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                  {sets.map((set) => (
+                    <motion.div
+                      key={set.id}
+                      className={`relative cursor-pointer group ${selectedSet === set.id ? 'ring-4 ring-yellow-500' : ''}`}
+                      onClick={() => {
+                        setSelectedSet(set.id)
+                        setShowBoosterModal(false)
+                      }}
+                      whileHover={{ scale: 1.05 }}
+                      whileTap={{ scale: 0.95 }}
+                    >
+                      <img
+                        src={`/images/booster/${set.code.toLowerCase()}.png`}
+                        alt={set.name}
+                        className="w-full h-auto rounded-lg shadow-lg"
+                      />
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
+                        <span className="text-white font-bold text-center px-2">{set.name}</span>
+                      </div>
+                    </motion.div>
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
       
       {/* Zone d'affichage des cartes */}
       {booster.length > 0 && (

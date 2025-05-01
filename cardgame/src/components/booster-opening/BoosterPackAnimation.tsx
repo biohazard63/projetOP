@@ -6,9 +6,10 @@ import Image from 'next/image'
 
 interface BoosterPackAnimationProps {
   onComplete: () => void
+  setCode: string
 }
 
-export default function BoosterPackAnimation({ onComplete }: BoosterPackAnimationProps) {
+export default function BoosterPackAnimation({ onComplete, setCode }: BoosterPackAnimationProps) {
   const [isVisible, setIsVisible] = useState(true)
   const [showCards, setShowCards] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
@@ -93,11 +94,11 @@ export default function BoosterPackAnimation({ onComplete }: BoosterPackAnimatio
               duration: 1.5,
               ease: "easeInOut"
             }}
-            className="relative w-48 h-72 md:w-64 md:h-96" // Taille adaptative
+            className="relative w-48 h-72 md:w-64 md:h-96"
           >
             <Image
-              src="/images/booster-pack.png"
-              alt="Booster Pack"
+              src={`/images/booster/${setCode.toLowerCase()}.png`}
+              alt={`Booster Pack ${setCode}`}
               fill
               className="object-contain"
             />
