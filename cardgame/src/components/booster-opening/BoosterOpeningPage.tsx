@@ -75,21 +75,30 @@ export default function BoosterOpeningPage() {
   // Détection de l'appareil mobile
   useEffect(() => {
     const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768)
+      const isMobileDevice = window.innerWidth < 768;
+      console.log('Détection appareil:', {
+        width: window.innerWidth,
+        isMobile: isMobileDevice,
+        userAgent: navigator.userAgent
+      });
+      setIsMobile(isMobileDevice);
     }
     
-    checkMobile()
-    window.addEventListener('resize', checkMobile)
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
     
     return () => {
-      window.removeEventListener('resize', checkMobile)
+      window.removeEventListener('resize', checkMobile);
     }
-  }, [])
+  }, []);
 
   // Gestionnaire des touches du clavier
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (isMobile) return; // Ne pas activer sur mobile
+      if (isMobile) {
+        console.log('Touche pressée sur mobile, navigation désactivée');
+        return;
+      }
       
       if (event.key === 'ArrowLeft' && currentCardIndex > 0) {
         navigateCard('prev');
@@ -291,83 +300,219 @@ export default function BoosterOpeningPage() {
 
   // Navigation entre les cartes
   const navigateCard = (direction: 'prev' | 'next') => {
-    if (!booster || booster.length === 0) return;
+    console.log('Tentative de navigation:', {
+      direction,
+      currentIndex: currentCardIndex,
+      booster: booster ? booster.length : 'undefined',
+      isMobile,
+      isDragging,
+      carteActuelle: booster?.[currentCardIndex]?.name
+    });
+
+    if (!booster) {
+      console.log('Navigation impossible: booster est undefined');
+      return;
+    }
+
+    if (booster.length === 0) {
+      console.log('Navigation impossible: booster est vide');
+      return;
+    }
+
+    if (currentCardIndex === undefined || currentCardIndex === null) {
+      console.log('Navigation impossible: currentCardIndex est undefined');
+      return;
+    }
     
     if (direction === 'prev' && currentCardIndex > 0) {
-      const prevCard = booster[currentCardIndex - 1]
-      setCurrentCardIndex(currentCardIndex - 1)
-      setIsNewCard(!userCollection.has(prevCard.id))
-    } else if (direction === 'next' && booster && currentCardIndex < booster.length - 1) {
-      const nextCard = booster[currentCardIndex + 1]
-      setCurrentCardIndex(currentCardIndex + 1)
-      setIsNewCard(!userCollection.has(nextCard.id))
+      const prevCard = booster[currentCardIndex - 1];
+      if (!prevCard) {
+        console.log('Navigation impossible: prevCard est undefined');
+        return;
+      }
+      setCurrentCardIndex(currentCardIndex - 1);
+      setIsNewCard(!userCollection.has(prevCard.id));
+
+      console.log('Navigation vers la carte précédente:', {
+        nouvelIndex: currentCardIndex - 1,
+        carte: prevCard.name,
+        isMobile
+      });
+    } else if (direction === 'next' && currentCardIndex < booster.length - 1) {
+      const nextCard = booster[currentCardIndex + 1];
+      if (!nextCard) {
+        console.log('Navigation impossible: nextCard est undefined');
+        return;
+      }
+      setCurrentCardIndex(currentCardIndex + 1);
+      setIsNewCard(!userCollection.has(nextCard.id));
       
+      console.log('Navigation vers la carte suivante:', {
+        nouvelIndex: currentCardIndex + 1,
+        carte: nextCard.name,
+        isMobile
+      });
+
       // Vérifier si la nouvelle carte est rare ou alternative
-      checkRarityAndPlayEffect(nextCard)
+      checkRarityAndPlayEffect(nextCard);
       
       // Si on arrive à la dernière carte, ajouter automatiquement à la collection
       if (currentCardIndex + 1 === booster.length - 1) {
+        console.log('Dernière carte atteinte, tentative d\'ajout automatique:', {
+          isMobile,
+          currentIndex: currentCardIndex,
+          boosterLength: booster.length,
+          isDragging,
+          dernièreCarte: booster[booster.length - 1]?.name
+        });
+        
+        // Ajouter un délai plus court sur mobile
+        const delay = isMobile ? 1000 : 2000;
+        
         setTimeout(async () => {
           try {
-            const cardIds = booster.map(card => card.id)
-            const result = await addToCollection(cardIds)
+            if (!booster || booster.length === 0) {
+              console.log('Ajout automatique impossible: booster est vide ou undefined');
+              return;
+            }
+
+            const cardIds = booster.map(card => card.id);
+            console.log('Ajout automatique des cartes:', {
+              cardIds,
+              isMobile,
+              isDragging,
+              cartes: booster.map(card => card.name)
+            });
+            
+            const result = await addToCollection(cardIds);
+            console.log('Résultat de l\'ajout automatique:', result);
+            
             if (result.success) {
               toast.success('Cartes ajoutées à votre collection !', {
-                duration: 4000,
-                position: 'top-center',
-                className: 'bg-green-500 text-white font-bold',
+                duration: isMobile ? 3000 : 4000,
+                position: isMobile ? 'bottom-center' : 'top-center',
                 style: {
-                  fontSize: '16px',
-                  padding: '12px',
+                  background: '#1a1a1a',
+                  color: '#fff',
+                  border: '1px solid #333',
+                  fontSize: isMobile ? '14px' : '16px',
+                  padding: isMobile ? '12px 16px' : '16px 24px',
                   borderRadius: '8px',
-                  boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                  boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
                 }
-              })
-              await loadUserCollection()
+              });
+              await loadUserCollection();
             }
           } catch (error) {
-            console.error('Erreur lors de l\'ajout automatique à la collection:', error)
+            console.error('Erreur lors de l\'ajout automatique à la collection:', error);
             toast.error('Erreur lors de l\'ajout à la collection', {
-              duration: 4000,
-              position: 'top-center',
-              className: 'bg-red-500 text-white font-bold',
+              duration: isMobile ? 3000 : 4000,
+              position: isMobile ? 'bottom-center' : 'top-center',
               style: {
-                fontSize: '16px',
-                padding: '12px',
+                background: '#1a1a1a',
+                color: '#fff',
+                border: '1px solid #333',
+                fontSize: isMobile ? '14px' : '16px',
+                padding: isMobile ? '12px 16px' : '16px 24px',
                 borderRadius: '8px',
-                boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)'
+                boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
               }
-            })
+            });
           }
-        }, 2000) // Attendre 2 secondes pour que l'utilisateur puisse voir la dernière carte
+        }, delay);
       }
     }
   }
 
   // Gestion du glissement des cartes
   const handleDragEnd = (event: any, info: any) => {
-    setIsDragging(false)
-    const threshold = 50 // Distance minimale pour déclencher le changement de carte (réduite pour mobile)
+    if (!info) {
+      console.log('Fin du glissement impossible: info est undefined');
+      return;
+    }
+
+    setIsDragging(false);
+    const threshold = 100; // Distance minimale pour déclencher le changement de carte
     
+    console.log('Fin du glissement:', {
+      offsetX: info.offset ? info.offset.x : 'undefined',
+      threshold,
+      isMobile,
+      currentIndex: currentCardIndex,
+      boosterLength: booster ? booster.length : 'undefined',
+      carteActuelle: booster?.[currentCardIndex]?.name
+    });
+    
+    if (!booster || booster.length === 0) {
+      console.log('Fin du glissement impossible: booster est vide ou undefined');
+      return;
+    }
+
+    // Vérifier si c'est un clic ou un glissement
+    const isClick = Math.abs(info.offset.x) < threshold;
+    
+    if (isClick) {
+      console.log('Clic détecté, pas de navigation');
+      return;
+    }
+
     if (info.offset.x > threshold && currentCardIndex > 0) {
       // Glissement vers la droite -> carte précédente
-      navigateCard('prev')
-    } else if (info.offset.x < -threshold && booster && currentCardIndex < booster.length - 1) {
+      console.log('Glissement vers la droite détecté');
+      navigateCard('prev');
+    } else if (info.offset.x < -threshold && currentCardIndex < booster.length - 1) {
       // Glissement vers la gauche -> carte suivante
-      navigateCard('next')
+      console.log('Glissement vers la gauche détecté');
+      navigateCard('next');
     }
   }
   
-  const handleDragStart = (event: any, info: any) => {
-    setIsDragging(true)
-    setDragDirection(null)
+  const handleDragStart = () => {
+    console.log('Début du glissement:', {
+      isMobile,
+      currentIndex: currentCardIndex,
+      boosterLength: booster ? booster.length : 'undefined',
+      carteActuelle: booster?.[currentCardIndex]?.name
+    });
+    setIsDragging(true);
+    setDragDirection(null);
   }
   
   const handleDrag = (event: any, info: any) => {
+    if (!info) return;
+    
+    console.log('Glissement en cours:', {
+      offsetX: info.offset.x,
+      isMobile,
+      currentIndex: currentCardIndex
+    });
+
     if (info.offset.x > 0) {
-      setDragDirection('right')
+      setDragDirection('right');
     } else if (info.offset.x < 0) {
-      setDragDirection('left')
+      setDragDirection('left');
+    }
+  }
+
+  // Gestion du clic sur les flèches
+  const handleArrowClick = (direction: 'prev' | 'next') => {
+    console.log('Clic sur la flèche:', {
+      direction,
+      isMobile,
+      currentIndex: currentCardIndex,
+      boosterLength: booster ? booster.length : 'undefined',
+      carteActuelle: booster?.[currentCardIndex]?.name
+    });
+
+    if (!booster || booster.length === 0) {
+      console.log('Navigation impossible: booster est vide ou undefined');
+      return;
+    }
+
+    if (direction === 'prev' && currentCardIndex > 0) {
+      navigateCard('prev');
+    } else if (direction === 'next' && currentCardIndex < booster.length - 1) {
+      navigateCard('next');
     }
   }
 
@@ -398,6 +543,11 @@ export default function BoosterOpeningPage() {
         throw new Error('Set non trouvé')
       }
 
+      console.log('Début de l\'ouverture du booster:', {
+        setCode: selectedSetData.code,
+        isMobile
+      });
+
       const response = await fetch('/api/booster/open', {
         method: 'POST',
         headers: {
@@ -415,6 +565,15 @@ export default function BoosterOpeningPage() {
             name: typeof card.name === 'string' ? card.name : 'Carte sans nom'
           }))
           
+          console.log('Booster ouvert avec succès:', {
+            nombreCartes: processedCards.length,
+            cartes: processedCards.map((card: any) => ({
+              nom: card.name,
+              id: card.id,
+              rareté: card.rarity
+            }))
+          });
+
           setBooster(processedCards)
           setNewCardsCount(result.newCardsCount)
           
@@ -424,6 +583,12 @@ export default function BoosterOpeningPage() {
           
           setCurrentCardIndex(0)
           setIsRevealing(true)
+
+          console.log('Première carte prête à être révélée:', {
+            index: 0,
+            carte: processedCards[0]?.name,
+            isMobile
+          });
           
           if (result.hasRareCard) {
             // Suppression du son des cartes rares
@@ -444,24 +609,35 @@ export default function BoosterOpeningPage() {
 
   // Gestion de l'ajout à la collection
   const handleAddToCollection = async () => {
-    if (!booster || !booster.length) return
+    if (!booster || !booster.length) {
+      console.log('Aucune carte à ajouter à la collection');
+      return;
+    }
 
-    setIsAddingToCollection(true)
+    console.log('Tentative d\'ajout à la collection:', {
+      isMobile,
+      boosterLength: booster.length,
+      cardIds: booster.map(card => card.id)
+    });
+
+    setIsAddingToCollection(true);
     try {
-      const result = await addToCollection(booster.map(card => card.id))
+      const result = await addToCollection(booster.map(card => card.id));
+      
+      console.log('Résultat de l\'ajout à la collection:', result);
       
       if (result.success) {
-        toast.success(result.message)
+        toast.success(result.message);
         // Recharger la collection après l'ajout des cartes
-        await loadUserCollection()
+        await loadUserCollection();
       } else {
-        throw new Error(result.error)
+        throw new Error(result.error);
       }
     } catch (error) {
-      console.error('Erreur lors de l\'ajout à la collection:', error)
-      toast.error('Erreur lors de l\'ajout à la collection')
+      console.error('Erreur lors de l\'ajout à la collection:', error);
+      toast.error('Erreur lors de l\'ajout à la collection');
     } finally {
-      setIsAddingToCollection(false)
+      setIsAddingToCollection(false);
     }
   }
 
@@ -609,7 +785,7 @@ export default function BoosterOpeningPage() {
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
                   className="absolute left-4 top-[103%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
-                  onClick={() => setCurrentCardIndex(currentCardIndex - 1)}
+                  onClick={() => handleArrowClick('prev')}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -625,6 +801,9 @@ export default function BoosterOpeningPage() {
                   checkRarityAndPlayEffect(booster[currentCardIndex])
                 }}
                 onCardClick={handleCardClick}
+                onDragStart={handleDragStart}
+                onDrag={handleDrag}
+                onDragEnd={handleDragEnd}
               />
 
               {/* Flèche droite */}
@@ -633,7 +812,7 @@ export default function BoosterOpeningPage() {
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
                   className="absolute right-4 top-[103%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
-                  onClick={() => setCurrentCardIndex(currentCardIndex + 1)}
+                  onClick={() => handleArrowClick('next')}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

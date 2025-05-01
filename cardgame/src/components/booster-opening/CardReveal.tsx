@@ -13,9 +13,20 @@ interface CardRevealProps {
   isNewCard?: boolean
   onComplete?: () => void
   onCardClick?: (card: ExtendedCardType) => void
+  onDragStart?: () => void
+  onDrag?: (event: any, info: any) => void
+  onDragEnd?: (event: any, info: any) => void
 }
 
-export default function CardReveal({ card, isNewCard = false, onComplete, onCardClick }: CardRevealProps) {
+export default function CardReveal({ 
+  card, 
+  isNewCard = false, 
+  onComplete, 
+  onCardClick,
+  onDragStart,
+  onDrag,
+  onDragEnd
+}: CardRevealProps) {
   const [isRevealed, setIsRevealed] = useState(false)
   const [showParticles, setShowParticles] = useState(false)
   const [showRareEffect, setShowRareEffect] = useState(false)
@@ -94,29 +105,50 @@ export default function CardReveal({ card, isNewCard = false, onComplete, onCard
     setIsDragging(false)
     const threshold = 100
     
+    console.log('CardReveal - Fin du glissement:', {
+      offsetX: info.offset.x,
+      threshold,
+      isDragging
+    })
+    
     if (info.offset.x > threshold) {
       // Swipe vers la droite -> carte précédente
+      console.log('CardReveal - Swipe vers la droite détecté')
       onCardClick?.(card)
     } else if (info.offset.x < -threshold) {
       // Swipe vers la gauche -> carte suivante
+      console.log('CardReveal - Swipe vers la gauche détecté')
       onCardClick?.(card)
     } else {
       // Retour à la position initiale si le swipe n'est pas assez important
+      console.log('CardReveal - Swipe insuffisant, retour à la position initiale')
       controls.start({ x: 0, rotate: 0 })
     }
+
+    // Appeler la fonction onDragEnd du parent si elle existe
+    onDragEnd?.(event, info)
   }
   
   const handleDragStart = () => {
+    console.log('CardReveal - Début du glissement')
     setIsDragging(true)
     setDragDirection(null)
+    onDragStart?.()
   }
   
   const handleDrag = (event: any, info: any) => {
+    console.log('CardReveal - Glissement en cours:', {
+      offsetX: info.offset.x,
+      isDragging
+    })
+
     if (info.offset.x > 0) {
       setDragDirection('right')
     } else if (info.offset.x < 0) {
       setDragDirection('left')
     }
+
+    onDrag?.(event, info)
   }
 
   return (
