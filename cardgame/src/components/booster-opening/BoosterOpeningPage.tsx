@@ -721,25 +721,33 @@ export default function BoosterOpeningPage() {
       
       {/* En-tête */}
       <div className="max-w-6xl mx-auto mb-4 sm:mb-8">
-        <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2 sm:mb-4 text-center">Ouverture de Booster</h1>
-        
+      <motion.h1 
+          initial={{ opacity: 0, y: -20 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-4 text-center bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent"
+        >
+          Ouverture de Booster
+        </motion.h1>        
         {/* Affichage du booster sélectionné */}
         {selectedSet && (
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col items-center justify-center gap-2 mb-6"
+            className="flex flex-col items-center justify-center gap-3 mb-6"
           >
-            <div className="relative w-32 h-48 sm:w-40 sm:h-60">
+            <div className="relative w-40 h-60 sm:w-48 sm:h-72 group">
+              <div className="absolute inset-0  rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300" />
               <img
                 src={`/images/booster/${sets.find(set => set.id === selectedSet)?.code.toLowerCase()}.png`}
                 alt={sets.find(set => set.id === selectedSet)?.name}
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain relative z-10 transform group-hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <p className="text-lg sm:text-xl font-semibold text-center">
-              {sets.find(set => set.id === selectedSet)?.name}
-            </p>
+            <div className="text-center">
+              <p className="text-lg sm:text-xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
+                {sets.find(set => set.id === selectedSet)?.name}
+              </p>
+            </div>
           </motion.div>
         )}
         
@@ -814,7 +822,9 @@ export default function BoosterOpeningPage() {
               onClick={e => e.stopPropagation()}
             >
               <div className="p-4 border-b border-gray-700 flex justify-between items-center">
-                <h2 className="text-xl font-bold">Sélectionnez un booster</h2>
+                <h2 className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
+                  Sélectionnez un booster
+                </h2>
                 <button
                   onClick={() => setShowBoosterModal(false)}
                   className="p-2 hover:bg-gray-700 rounded-full transition-colors"
@@ -823,8 +833,8 @@ export default function BoosterOpeningPage() {
                 </button>
               </div>
               
-              <div className="p-4">
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 mt-12">
+              <div className="p-6">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-12">
                   {sets.map((set) => (
                     <motion.div
                       key={set.id}
@@ -836,18 +846,23 @@ export default function BoosterOpeningPage() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
-                      <div className="absolute -top-10 left-0 right-0 text-center">
-                        <span className="text-white font-bold text-sm bg-black/50 mt-4 px-2 py-1 rounded-full">
+                      <div className="absolute -top-12 left-0 right-0 text-center">
+                        <span className="text-white font-bold text-sm bg-gradient-to-r from-gray-800 to-gray-900 px-4 py-2 rounded-full shadow-lg">
                           {set.name}
                         </span>
                       </div>
-                      <img
-                        src={`/images/booster/${set.code.toLowerCase()}.png`}
-                        alt={set.name}
-                        className="w-full h-auto rounded-lg shadow-lg"
-                      />
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-center px-2">Cliquer pour sélectionner</span>
+                      <div className="relative">
+                        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-amber-600/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300" />
+                        <img
+                          src={`/images/booster/${set.code.toLowerCase()}.png`}
+                          alt={set.name}
+                          className="w-full h-auto rounded-xl shadow-lg relative z-10 transform group-hover:scale-105 transition-transform duration-300"
+                        />
+                      </div>
+                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-center justify-center">
+                        <span className="text-white font-bold text-center px-2 bg-black/50 py-2 rounded-lg">
+                          Cliquer pour sélectionner
+                        </span>
                       </div>
                     </motion.div>
                   ))}
@@ -869,7 +884,7 @@ export default function BoosterOpeningPage() {
                 <motion.button
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="absolute left-4 top-[103%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
+                  className="absolute left-4 top-[98%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
                   onClick={() => handleArrowClick('prev')}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -896,7 +911,7 @@ export default function BoosterOpeningPage() {
                 <motion.button
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="absolute right-4 top-[103%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
+                  className="absolute right-4 top-[98%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
                   onClick={() => handleArrowClick('next')}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -908,35 +923,7 @@ export default function BoosterOpeningPage() {
           )}
           
           {/* Miniatures des cartes en bas */}
-          <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.3 }}
-            className="mt-12"
-          >
-            <h3 className="text-xl font-bold mb-4 text-center">Cartes du booster</h3>
-            <div className="flex flex-wrap justify-center gap-2">
-              {booster.map((card, index) => (
-                <motion.div
-                  key={index}
-                  className={`relative w-16 h-24 rounded-md overflow-hidden cursor-pointer ${currentCardIndex === index ? 'ring-2 ring-yellow-400' : ''}`}
-                  onClick={() => setCurrentCardIndex(index)}
-                  whileHover={{ scale: 1.1 }}
-                  transition={{ duration: 0.2 }}
-                >
-                  <img
-                    src={card.imageUrl}
-                    alt={typeof card.name === 'string' ? card.name : 'Carte'}
-                    className="w-full h-full object-cover"
-                    onError={() => handleImageError(card.id)}
-                  />
-                  {rareCardGlow[card.id] && (
-                    <div className="absolute inset-0 bg-yellow-500/30"></div>
-                  )}
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
+         
         </div>
       )}
       
