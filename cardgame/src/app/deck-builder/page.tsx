@@ -77,48 +77,53 @@ export default function DeckBuilderPage() {
         setError(null)
         console.log('Deck Builder: Début de la récupération des cartes')
         
-        const response = await fetch('/api/collection', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include',
-        })
+        // Récupérer les cartes et les favoris en parallèle
+        const [collectionResponse, favoritesResponse] = await Promise.all([
+          fetch('/api/collection', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+          }),
+          fetch('/api/user/cards', {
+            method: 'GET',
+            headers: { 'Content-Type': 'application/json' },
+            credentials: 'include',
+          })
+        ])
 
-        console.log('Deck Builder: Statut de la réponse:', response.status)
-        
-        if (!response.ok) {
-          const errorData = await response.json()
-          console.error('Deck Builder: Erreur de réponse:', errorData)
-          throw new Error(errorData.message || 'Erreur lors de la récupération des cartes')
+        if (!collectionResponse.ok || !favoritesResponse.ok) {
+          throw new Error('Erreur lors de la récupération des données')
         }
 
-        const data = await response.json()
-        console.log('Deck Builder: Données reçues:', data.cards?.length || 0, 'cartes')
-        
-        // Récupérer les favoris pour chaque carte
-        const cardsWithFavorites = await Promise.all(
-          (data.cards || []).map(async (card: DeckCard) => {
-            try {
-              const favoriteResponse = await fetch(`/api/user/favorites/${card.id}`)
-              const favoriteData = await favoriteResponse.json()
-              return {
-                ...card,
-                isFavorite: favoriteData.isFavorite
-              }
-            } catch (error) {
-              console.error('Erreur lors de la vérification des favoris:', error)
-              return {
-                ...card,
-                isFavorite: false
-              }
-            }
-          })
+        const [collectionData, userData] = await Promise.all([
+          collectionResponse.json(),
+          favoritesResponse.json()
+        ])
+
+        // Créer un Map pour les quantités et les favoris
+        const quantitiesMap = new Map(
+          userData.cards.map((card: { cardId: string; quantity: number }) => [
+            card.cardId,
+            card.quantity
+          ])
         )
-        
-        setAvailableCards(cardsWithFavorites)
+        const favoritesMap = new Map(
+          userData.favorites.map((favorite: { cardId: string }) => [
+            favorite.cardId,
+            true
+          ])
+        )
+
+        // Combiner les données
+        const cardsWithData = collectionData.cards.map((card: DeckCard) => ({
+          ...card,
+          quantity: quantitiesMap.get(card.id) || 0,
+          isFavorite: favoritesMap.has(card.id)
+        }))
+
+        setAvailableCards(cardsWithData)
       } catch (error) {
-        console.error('Deck Builder: Erreur lors de la récupération:', error)
+        console.error('Erreur lors de la récupération:', error)
         setError(error instanceof Error ? error.message : 'Une erreur est survenue')
       } finally {
         setLoading(false)
@@ -174,6 +179,19 @@ export default function DeckBuilderPage() {
         alert('Vous ne pouvez pas avoir plus de 4 copies de la même carte')
         return
       }
+    }
+    
+    // Vérifier la quantité disponible dans la collection
+    const availableCard = availableCards.find(c => c.id === card.id)
+    if (!availableCard) {
+      alert('Cette carte n\'est pas disponible dans votre collection')
+      return
+    }
+
+    const currentQuantityInDeck = selectedCards.find(c => c.id === card.id)?.quantity || 0
+    if (currentQuantityInDeck >= (availableCard.quantity || 0)) {
+      alert(`Vous ne pouvez pas ajouter plus de cartes que vous n'en possédez (${availableCard.quantity || 0} disponible(s))`)
+      return
     }
     
     // Calculer le nombre total de cartes non-leader
@@ -457,12 +475,19 @@ export default function DeckBuilderPage() {
                         alt={card.name}
                         fill
                         className="object-cover rounded-t-lg"
+                        loading="lazy"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">
                         <h3 className="font-semibold text-xs md:text-sm truncate text-white">{card.name}</h3>
                         <div className="flex justify-between text-xs text-gray-300">
                           <span>{card.type}</span>
                           <span>{card.cost} ⭐</span>
+                        </div>
+                        <div className="flex justify-between items-center mt-1">
+                          <span className="text-xs text-gray-300">Disponible: {card.quantity || 0}</span>
+                          {card.isFavorite && (
+                            <span className="text-yellow-400 text-xs">★</span>
+                          )}
                         </div>
                       </div>
                     </div>
