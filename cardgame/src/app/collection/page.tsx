@@ -8,7 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import Image from 'next/image'
 import CardModal from '@/components/CardModal'
 import { motion } from 'framer-motion'
-import { Search, ChevronLeft, ChevronRight, Filter, SortAsc, SortDesc } from 'lucide-react'
+import { Search, ChevronLeft, ChevronRight, Filter, SortAsc, SortDesc, Heart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 
 interface Card {
@@ -31,6 +31,8 @@ interface Card {
   trigger?: string
   notes?: string
   isOwned?: boolean
+  isFavorite?: boolean
+  quantity?: number
 }
 
 type CardSet = typeof cardSets[number];
@@ -42,6 +44,7 @@ interface Filters {
   rarity: string
   set: CardSet
   showOnly?: string
+  favoritesOnly?: boolean
 }
 
 interface SortOption {
@@ -189,6 +192,20 @@ const cardSets = [
   'Winner prize for Sealed Battle 2023 Vol.1'
 ] as const;
 
+interface UserCard {
+  cardId: string
+  quantity: number
+}
+
+interface UserFavorite {
+  cardId: string
+}
+
+interface UserData {
+  cards: UserCard[]
+  favorites: UserFavorite[]
+}
+
 export default function CollectionPage() {
   const { data: session } = useSession()
   const [cards, setCards] = useState<Card[]>([])
@@ -203,7 +220,8 @@ export default function CollectionPage() {
     type: 'all',
     color: 'all',
     rarity: 'all',
-    set: 'all'
+    set: 'all',
+    favoritesOnly: false
   })
   const [sortBy, setSortBy] = useState<string>('set-asc')
   const [showMissingCards, setShowMissingCards] = useState(false);
@@ -211,113 +229,106 @@ export default function CollectionPage() {
   const [missingCards, setMissingCards] = useState<Card[]>([]);
   const [loadingAllCards, setLoadingAllCards] = useState(false);
 
-  useEffect(() => {
-    const fetchCards = async () => {
-      try {
-        setLoading(true)
-        setError(null)
-        console.log('Collection: Début de la récupération des cartes')
-        
-        const response = await fetch('/api/collection', {
-          method: 'GET',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          credentials: 'include', // Important pour les cookies de session
-        })
+  const fetchCards = async () => {
+    try {
+      setLoading(true)
+      setError(null)
+      console.log('Collection: Début de la récupération des cartes')
+      
+      const response = await fetch('/api/collection', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      })
 
-        console.log('Collection: Statut de la réponse:', response.status)
-        
-        if (!response.ok) {
-          const errorData = await response.json()
-          console.error('Collection: Erreur de réponse:', errorData)
-          throw new Error(errorData.message || 'Erreur lors de la récupération des cartes')
-        }
-
-        const data = await response.json()
-        console.log('Collection: Données reçues:', data.cards?.length, 'cartes')
-        
-        if (!data.cards || !Array.isArray(data.cards)) {
-          console.error('Collection: Format de données invalide:', data)
-          throw new Error('Format de données invalide')
-        }
-
-        setCards(data.cards)
-        console.log('Collection: État mis à jour avec succès')
-      } catch (error) {
-        console.error('Collection: Erreur lors de la récupération:', error)
-        setError(error instanceof Error ? error.message : 'Une erreur est survenue')
-      } finally {
-        setLoading(false)
+      console.log('Collection: Statut de la réponse:', response.status)
+      
+      if (!response.ok) {
+        const errorData = await response.json()
+        console.error('Collection: Erreur de réponse:', errorData)
+        throw new Error(errorData.message || 'Erreur lors de la récupération des cartes')
       }
-    }
 
-    fetchCards()
-  }, [])
+      const data = await response.json()
+      console.log('Collection: Données reçues:', data.cards?.length || 0, 'cartes')
+      
+      // Récupérer les favoris et les quantités en une seule requête
+      const userDataResponse = await fetch('/api/user/cards', {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+      })
 
-  useEffect(() => {
-    const fetchAllCards = async () => {
-      try {
-        setLoadingAllCards(true);
-        console.log('Début de la récupération de toutes les cartes disponibles');
-        const response = await fetch('/api/cards');
-        if (!response.ok) {
-          throw new Error('Erreur lors de la récupération de toutes les cartes');
-        }
-        const data = await response.json();
-        console.log('Réponse de l\'API /api/cards:', data);
-        
-        // Vérifier si data est un tableau ou un objet avec une propriété cards
-        let allCardsData: Card[] = [];
-        if (Array.isArray(data)) {
-          console.log('L\'API /api/cards renvoie directement un tableau de cartes');
-          allCardsData = data;
-        } else if (data.cards && Array.isArray(data.cards)) {
-          console.log('L\'API /api/cards renvoie un objet avec une propriété cards');
-          allCardsData = data.cards;
-        } else {
-          console.error('Format de réponse inattendu de l\'API /api/cards');
-          setAllCards([]);
-          setMissingCards([]);
-          return;
-        }
-        
-        console.log('Toutes les cartes disponibles récupérées:', allCardsData.length);
-        setAllCards(allCardsData);
-        
-        // Utiliser les IDs uniques pour compter les cartes, y compris les alternatives
-        const userCardIds = new Set(cards.map(card => card.id));
-        const totalUserCards = userCardIds.size;
-        console.log('Nombre total de cartes dans la collection (avec alternatives):', totalUserCards);
-        
-        // Créer un Set des IDs de toutes les cartes disponibles
-        const allCardIds = new Set(allCardsData.map(card => card.id));
-        const totalAvailableCards = allCardIds.size;
-        console.log('Nombre total de cartes disponibles (avec alternatives):', totalAvailableCards);
-        
-        // Calculer les cartes manquantes en utilisant les IDs
-        const missing = allCardsData.filter(card => !userCardIds.has(card.id));
-        console.log('Cartes manquantes calculées:', missing.length);
-        
-        // Calculer le pourcentage de complétion correct
-        const completionPercentage = Math.round((totalUserCards / totalAvailableCards) * 100);
-        console.log('Pourcentage de complétion:', completionPercentage + '%');
-        
-        setMissingCards(missing);
-      } catch (error) {
-        console.error('Erreur lors de la récupération de toutes les cartes:', error);
-        setAllCards([]);
-        setMissingCards([]);
-      } finally {
-        setLoadingAllCards(false);
+      if (!userDataResponse.ok) {
+        throw new Error('Erreur lors de la récupération des données utilisateur')
       }
-    };
 
-    if (showMissingCards) {
-      console.log('Mode "cartes manquantes" activé, lancement de la récupération...');
-      fetchAllCards();
+      const userData = await userDataResponse.json() as UserData
+      const userCardsMap = new Map(userData.cards.map((card: UserCard) => [card.cardId, card]))
+      const userFavoritesSet = new Set(userData.favorites.map((favorite: UserFavorite) => favorite.cardId))
+
+      // Combiner les données
+      const cardsWithUserData = (data.cards || []).map((card: Card) => ({
+        ...card,
+        quantity: userCardsMap.get(card.id)?.quantity || 0,
+        isFavorite: userFavoritesSet.has(card.id)
+      }))
+      
+      setCards(cardsWithUserData)
+    } catch (error) {
+      console.error('Collection: Erreur lors de la récupération:', error)
+      setError(error instanceof Error ? error.message : 'Une erreur est survenue')
+    } finally {
+      setLoading(false)
     }
-  }, [showMissingCards, cards]);
+  }
+
+  const fetchAllCards = async () => {
+    try {
+      setLoadingAllCards(true)
+      console.log('Début de la récupération de toutes les cartes disponibles')
+      
+      const response = await fetch('/api/cards')
+      if (!response.ok) {
+        throw new Error('Erreur lors de la récupération de toutes les cartes')
+      }
+      
+      const data = await response.json()
+      console.log('Réponse de l\'API /api/cards:', data)
+      
+      let allCardsData: Card[] = []
+      if (Array.isArray(data)) {
+        allCardsData = data
+      } else if (data.cards && Array.isArray(data.cards)) {
+        allCardsData = data.cards
+      } else {
+        console.error('Format de réponse inattendu de l\'API /api/cards')
+        setAllCards([])
+        setMissingCards([])
+        return
+      }
+      
+      console.log('Toutes les cartes disponibles récupérées:', allCardsData.length)
+      setAllCards(allCardsData)
+      
+      // Calculer les cartes manquantes
+      const userCardIds = new Set(cards.map(card => card.id))
+      const missing = allCardsData.filter(card => !userCardIds.has(card.id))
+      console.log('Cartes manquantes calculées:', missing.length)
+      
+      setMissingCards(missing)
+    } catch (error) {
+      console.error('Erreur lors de la récupération de toutes les cartes:', error)
+      setAllCards([])
+      setMissingCards([])
+    } finally {
+      setLoadingAllCards(false)
+    }
+  }
 
   // Créer un ensemble des IDs des cartes que l'utilisateur possède
   const userCardIds = new Set(cards.map(card => card.id));
@@ -356,6 +367,9 @@ export default function CollectionPage() {
       if (showMissingCards && filters.showOnly === 'missing' && card.isOwned) return false;
       if (showMissingCards && filters.showOnly === 'owned' && !card.isOwned) return false;
       
+      // Filtre pour les favoris
+      if (filters.favoritesOnly && !card.isFavorite) return false;
+      
       return true;
     })
     .sort((a, b) => {
@@ -390,10 +404,22 @@ export default function CollectionPage() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Chargement initial des cartes
   useEffect(() => {
-    // Réinitialiser la page courante quand les filtres changent
-    setCurrentPage(1);
-  }, [filters, sortBy]);
+    fetchCards()
+  }, [])
+
+  // Chargement des cartes manquantes uniquement quand showMissingCards change
+  useEffect(() => {
+    if (showMissingCards) {
+      fetchAllCards()
+    }
+  }, [showMissingCards])
+
+  // Réinitialiser la page courante quand les filtres changent
+  useEffect(() => {
+    setCurrentPage(1)
+  }, [filters, sortBy, showMissingCards])
 
   const handleCardClick = (card: Card) => {
     setSelectedCard(card)
@@ -427,6 +453,47 @@ export default function CollectionPage() {
 
     
   })))
+
+  const CardGrid = ({ cards }: { cards: Card[] }) => {
+    return (
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+        {cards.map((card) => (
+          <div
+            key={card.id}
+            className="group relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+            onClick={() => handleCardClick(card)}
+          >
+            <Image
+              src={card.imageUrl}
+              alt={card.name}
+              fill
+              className="object-cover transition-transform duration-300 group-hover:scale-110"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-3">
+              <h3 className="text-white font-semibold text-sm truncate">{card.name}</h3>
+              <div className="flex items-center justify-between mt-1">
+                <span className="text-xs text-gray-300">{card.type}</span>
+                <div className="flex items-center gap-1">
+                  <span className="text-xs text-gray-300">{card.cost} ⭐</span>
+                  {card.quantity && card.quantity > 0 && (
+                    <div className="bg-red-500/80 text-white text-xs px-2 py-1 rounded-full">
+                      x{card.quantity}
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+            {card.isFavorite && (
+              <div className="absolute top-2 right-2">
+                <Heart className="w-5 h-5 text-red-500 fill-red-500" />
+              </div>
+            )}
+          </div>
+        ))}
+      </div>
+    )
+  }
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 text-white p-4 relative overflow-hidden overflow-x-hidden">
@@ -605,6 +672,19 @@ export default function CollectionPage() {
               </SelectContent>
             </Select>
           )}
+          
+          {/* Ajouter le filtre pour les favoris */}
+          <div className="flex items-center gap-2">
+            <label className="flex items-center gap-2 cursor-pointer">
+              <input
+                type="checkbox"
+                checked={filters.favoritesOnly}
+                onChange={(e) => setFilters({ ...filters, favoritesOnly: e.target.checked })}
+                className="w-4 h-4 rounded border-gray-600 bg-gray-700/50 text-red-500 focus:ring-red-500"
+              />
+              <span className="text-sm text-gray-300">Afficher uniquement les favoris</span>
+            </label>
+          </div>
         </div>
 
         <div className="flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
@@ -635,84 +715,7 @@ export default function CollectionPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-          {showMissingCards ? (
-            // Affichage des cartes avec indicateur de statut amélioré
-            currentCards.map((card) => (
-              <motion.div
-                key={card.id}
-                className={`bg-gray-800/80 rounded-lg shadow-xl overflow-hidden cursor-pointer backdrop-blur-sm hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] ${
-                  card.isOwned 
-                    ? 'border border-gray-700' 
-                    : 'border-2 border-red-500 shadow-[0_0_10px_rgba(239,68,68,0.5)]'
-                }`}
-                onClick={() => handleCardClick(card)}
-                whileHover={{ y: -5 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
-                <div className="relative aspect-[3/4]">
-                  <Image
-                    src={card.imageUrl}
-                    alt={card.name}
-                    fill
-                    className={`object-cover ${!card.isOwned ? 'filter grayscale' : ''}`}
-                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 16vw"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement
-                      target.src = '/placeholder-card.jpg'
-                    }}
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">
-                    <h3 className="font-semibold text-xs md:text-sm truncate text-white">{card.name}</h3>
-                    <div className="flex justify-between text-xs text-gray-300">
-                      <span>{card.type}</span>
-                      <span>{card.cost} ⭐</span>
-                    </div>
-                  </div>
-                  {!card.isOwned && (
-                    <div className="absolute top-2 right-2 bg-red-500 text-white text-xs font-bold px-2 py-1 rounded-full">
-                      Manquante
-                    </div>
-                  )}
-                </div>
-              </motion.div>
-            ))
-          ) : (
-            // Affichage normal des cartes de la collection
-            currentCards.map((card) => (
-              <motion.div
-                key={card.id}
-                className={`bg-gray-800/80 rounded-lg shadow-xl overflow-hidden cursor-pointer backdrop-blur-sm border border-gray-700 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02] ${rarityColors[card.rarity as keyof typeof rarityColors]}`}
-                onClick={() => handleCardClick(card)}
-                whileHover={{ y: -5 }}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
-                <div className="relative aspect-[3/4]">
-                  <Image
-                    src={card.imageUrl}
-                    alt={card.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, (max-width: 1024px) 25vw, (max-width: 1280px) 20vw, 16vw"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement
-                      target.src = '/placeholder-card.jpg'
-                    }}
-                  />
-                  <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">
-                    <h3 className="font-semibold text-xs md:text-sm truncate text-white">{card.name}</h3>
-                    <div className="flex justify-between text-xs text-gray-300">
-                      <span>{card.type}</span>
-                      <span>{card.cost} ⭐</span>
-                    </div>
-                  </div>
-                </div>
-              </motion.div>
-            ))
-          )}
-        </div>
+        <CardGrid cards={showMissingCards ? missingCards : currentCards} />
 
         {/* Message d'aide */}
         {currentCards.length > 0 && (

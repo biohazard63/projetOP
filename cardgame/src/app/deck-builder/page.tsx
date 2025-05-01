@@ -17,9 +17,32 @@ interface Deck {
   deckCards: { cardId: string; quantity: number }[]
 }
 
+interface DeckCard {
+  id: string
+  name: string
+  type: string
+  color: string
+  cost: number
+  power?: number
+  counter?: number
+  effect?: string
+  rarity: string
+  imageUrl: string
+  set?: string
+  attribute?: string
+  attributeImage?: string
+  family?: string
+  ability?: string
+  trigger?: string
+  notes?: string
+  isOwned?: boolean
+  isFavorite?: boolean
+  quantity?: number
+}
+
 export default function DeckBuilderPage() {
   const { data: session } = useSession()
-  const [availableCards, setAvailableCards] = useState<Card[]>([])
+  const [availableCards, setAvailableCards] = useState<DeckCard[]>([])
   const [currentDeck, setCurrentDeck] = useState<Deck>({
     id: '',
     name: 'Nouveau Deck',
@@ -31,12 +54,13 @@ export default function DeckBuilderPage() {
     search: '',
     type: 'all',
     color: 'all',
-    rarity: 'all'
+    rarity: 'all',
+    favoritesOnly: false
   })
   const [isEditing, setIsEditing] = useState(false)
   const [deckName, setDeckName] = useState('')
-  const [selectedCards, setSelectedCards] = useState<Card[]>([])
-  const [selectedCard, setSelectedCard] = useState<Card | null>(null)
+  const [selectedCards, setSelectedCards] = useState<DeckCard[]>([])
+  const [selectedCard, setSelectedCard] = useState<DeckCard | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const router = useRouter()
   const [currentPage, setCurrentPage] = useState(1)
@@ -72,7 +96,27 @@ export default function DeckBuilderPage() {
         const data = await response.json()
         console.log('Deck Builder: Données reçues:', data.cards?.length || 0, 'cartes')
         
-        setAvailableCards(data.cards || [])
+        // Récupérer les favoris pour chaque carte
+        const cardsWithFavorites = await Promise.all(
+          (data.cards || []).map(async (card: DeckCard) => {
+            try {
+              const favoriteResponse = await fetch(`/api/user/favorites/${card.id}`)
+              const favoriteData = await favoriteResponse.json()
+              return {
+                ...card,
+                isFavorite: favoriteData.isFavorite
+              }
+            } catch (error) {
+              console.error('Erreur lors de la vérification des favoris:', error)
+              return {
+                ...card,
+                isFavorite: false
+              }
+            }
+          })
+        )
+        
+        setAvailableCards(cardsWithFavorites)
       } catch (error) {
         console.error('Deck Builder: Erreur lors de la récupération:', error)
         setError(error instanceof Error ? error.message : 'Une erreur est survenue')
@@ -119,7 +163,7 @@ export default function DeckBuilderPage() {
     loadDeck()
   }, [deckId])
 
-  const addCardToDeck = (card: Card) => {
+  const addCardToDeck = (card: DeckCard) => {
     // Vérifier si la carte est déjà dans le deck
     const existingCardIndex = selectedCards.findIndex(c => c.id === card.id)
     
@@ -186,6 +230,7 @@ export default function DeckBuilderPage() {
     if (filters.type !== 'all' && card.type !== filters.type) return false
     if (filters.color !== 'all' && card.color !== filters.color) return false
     if (filters.rarity !== 'all' && card.rarity !== filters.rarity) return false
+    if (filters.favoritesOnly && !card.isFavorite) return false
     return true
   })
 
@@ -274,12 +319,12 @@ export default function DeckBuilderPage() {
     }
   };
 
-  const handleCardClick = (card: Card) => {
+  const handleCardClick = (card: DeckCard) => {
     setSelectedCard(card)
     setIsModalOpen(true)
   }
 
-  const handleAddCard = (card: Card) => {
+  const handleAddCard = (card: DeckCard) => {
     addCardToDeck(card)
     setIsModalOpen(false)
   }
@@ -385,6 +430,17 @@ export default function DeckBuilderPage() {
                     <SelectItem value="SEC" className="text-white hover:bg-gray-700">Secret Rare</SelectItem>
                   </SelectContent>
                 </Select>
+                <div className="flex items-center gap-2">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={filters.favoritesOnly}
+                      onChange={(e) => setFilters({ ...filters, favoritesOnly: e.target.checked })}
+                      className="w-4 h-4 rounded border-gray-600 bg-gray-700/50 text-red-500 focus:ring-red-500"
+                    />
+                    <span className="text-sm text-gray-300">Afficher uniquement les favoris</span>
+                  </label>
+                </div>
               </div>
 
               {/* Grille de cartes */}
