@@ -7,6 +7,8 @@ const nextConfig = {
         hostname: '**',
       },
     ],
+    domains: ['en.onepiece-cardgame.com'],
+    unoptimized: true,
   },
   typescript: {
     ignoreBuildErrors: true,
