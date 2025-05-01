@@ -111,22 +111,23 @@ export default function CardReveal({
       isDragging
     })
     
-    if (info.offset.x > threshold) {
-      // Swipe vers la droite -> carte précédente
-      console.log('CardReveal - Swipe vers la droite détecté')
-      onCardClick?.(card)
-    } else if (info.offset.x < -threshold) {
-      // Swipe vers la gauche -> carte suivante
-      console.log('CardReveal - Swipe vers la gauche détecté')
-      onCardClick?.(card)
+    // Si le swipe est suffisamment important, on navigue
+    if (Math.abs(info.offset.x) > threshold) {
+      if (info.offset.x > threshold) {
+        // Swipe vers la droite -> carte précédente
+        console.log('CardReveal - Swipe vers la droite détecté')
+        onDragEnd?.(event, info)
+      } else if (info.offset.x < -threshold) {
+        // Swipe vers la gauche -> carte suivante
+        console.log('CardReveal - Swipe vers la gauche détecté')
+        onDragEnd?.(event, info)
+      }
     } else {
-      // Retour à la position initiale si le swipe n'est pas assez important
-      console.log('CardReveal - Swipe insuffisant, retour à la position initiale')
+      // Si le swipe est trop petit, on considère que c'est un clic
+      console.log('CardReveal - Swipe insuffisant, considéré comme un clic')
+      onCardClick?.(card)
       controls.start({ x: 0, rotate: 0 })
     }
-
-    // Appeler la fonction onDragEnd du parent si elle existe
-    onDragEnd?.(event, info)
   }
   
   const handleDragStart = () => {
@@ -171,12 +172,18 @@ export default function CardReveal({
           opacity,
           transformStyle: 'preserve-3d',
           rotateY: isRevealed ? 180 : 0,
-          cursor: isDragging ? 'grabbing' : 'grab',
+          cursor: isDragging ? 'grabbing' : 'pointer',
           touchAction: 'pan-y pinch-zoom'
         }}
         animate={controls}
         className="relative"
-        onClick={() => onCardClick && onCardClick(card)}
+        onClick={(e) => {
+          // On ne gère le clic que si on n'est pas en train de glisser
+          if (!isDragging) {
+            e.stopPropagation();
+            onCardClick?.(card);
+          }
+        }}
       >
         {/* Indicateurs de swipe */}
         {isDragging && (

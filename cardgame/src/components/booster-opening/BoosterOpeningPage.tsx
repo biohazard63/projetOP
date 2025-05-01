@@ -662,21 +662,7 @@ export default function BoosterOpeningPage() {
   }
 
   const handleCardClick = (card: ExtendedCardType) => {
-    // Déterminer la direction du swipe en fonction de la position actuelle
-    // Si nous sommes à la première carte, nous ne pouvons aller que vers la suivante
-    // Si nous sommes à la dernière carte, nous ne pouvons aller que vers la précédente
-    // Sinon, nous allons vers la carte suivante par défaut
-    
-    if (currentCardIndex === 0) {
-      // Première carte, aller à la suivante
-      setCurrentCardIndex(currentCardIndex + 1)
-    } else if (currentCardIndex === booster.length - 1) {
-      // Dernière carte, aller à la précédente
-      setCurrentCardIndex(currentCardIndex - 1)
-    } else {
-      // Carte du milieu, aller à la suivante
-      setCurrentCardIndex(currentCardIndex + 1)
-    }
+    setSelectedCard(card)
   }
 
   return (
