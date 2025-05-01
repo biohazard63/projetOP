@@ -514,6 +514,46 @@ export default function CollectionPage() {
     setIsModalOpen(true)
   }
 
+  const handleToggleFavorite = async (cardId: string) => {
+    try {
+      // Vérifier si la carte est déjà en favoris
+      const isCurrentlyFavorite = cards.find(card => card.id === cardId)?.isFavorite;
+      
+      const response = await fetch('/api/user/favorites', {
+        method: isCurrentlyFavorite ? 'DELETE' : 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ cardId }),
+        credentials: 'include',
+      });
+
+      if (!response.ok) {
+        throw new Error('Erreur lors de la mise à jour des favoris');
+      }
+
+      // Mettre à jour l'état local des cartes
+      setCards(prevCards => 
+        prevCards.map(card => 
+          card.id === cardId 
+            ? { ...card, isFavorite: !card.isFavorite } 
+            : card
+        )
+      );
+
+      // Mettre à jour la carte sélectionnée si elle est ouverte dans la modal
+      if (selectedCard && selectedCard.id === cardId) {
+        setSelectedCard(prev => prev ? { ...prev, isFavorite: !prev.isFavorite } : null);
+      }
+
+      // Afficher une notification de succès
+      const action = isCurrentlyFavorite ? 'supprimée' : 'ajoutée';
+      console.log(`Carte ${action} des favoris avec succès`);
+    } catch (error) {
+      console.error('Erreur lors de la mise à jour des favoris:', error);
+    }
+  };
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100">
@@ -548,7 +588,7 @@ export default function CollectionPage() {
         {cards.map((card) => (
           <div
             key={card.id}
-            className={`group relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer ${
+            className={`group relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer ${
               showMissingCards && !card.isOwned ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
             }`}
             onClick={() => handleCardClick(card)}
@@ -559,29 +599,52 @@ export default function CollectionPage() {
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-            <div className="absolute bottom-0 left-0 right-0 p-3">
-              <h3 className="text-white font-semibold text-sm truncate">{card.name}</h3>
-              <div className="flex items-center justify-between mt-1">
-                <span className="text-xs text-gray-300">{card.type}</span>
-                <div className="flex items-center gap-1">
-                  <span className="text-xs text-gray-300">{card.cost} ⭐</span>
-                  {card.quantity && card.quantity > 0 && (
-                    <div className="bg-red-500/80 text-white text-xs px-2 py-1 rounded-full">
-                      x{card.quantity}
-                    </div>
-                  )}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+            
+            {/* Badge de rareté en haut à gauche */}
+            <div className="absolute top-2 left-2">
+              <span className={`px-2 py-1 text-xs font-bold rounded-full ${
+                card.rarity === 'L' ? 'bg-yellow-500/90 text-yellow-100' :
+                card.rarity === 'SR' ? 'bg-purple-500/90 text-purple-100' :
+                card.rarity === 'SEC' ? 'bg-red-500/90 text-red-100' :
+                card.rarity === 'R' ? 'bg-blue-500/90 text-blue-100' :
+                'bg-gray-500/90 text-gray-100'
+              }`}>
+                {card.rarity}
+              </span>
+            </div>
+
+            {/* Badge de coût en haut à droite */}
+            
+
+            {/* Badge de quantité en bas à droite */}
+            {card.quantity && card.quantity > 0 && (
+              <div className="absolute bottom-2 right-2">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-red-500/90 text-white text-sm font-bold">
+                  x{card.quantity}
                 </div>
               </div>
-            </div>
+            )}
+
+            {/* Icône de favori en bas à gauche */}
             {card.isFavorite && (
-              <div className="absolute top-2 right-2">
-                <Heart className="w-5 h-5 text-red-500 fill-red-500" />
+              <div className="absolute bottom-2 left-2">
+                <Heart className="w-6 h-6 text-red-500 fill-red-500 drop-shadow-lg" />
               </div>
             )}
+
+            {/* Nom de la carte en bas */}
+            <div className="absolute bottom-0 left-0 right-0 p-3">
+              <div className="flex items-center gap-2 mt-1">
+              <h3 className="text-white font-semibold text-sm truncate drop-shadow-lg">{card.name}</h3>
+
+              </div>
+            </div>
+
+            {/* Badge "Manquante" pour les cartes manquantes */}
             {showMissingCards && !card.isOwned && (
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-red-500/80 text-white text-sm font-bold px-3 py-1 rounded-full">
+                <div className="bg-red-500/90 text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg">
                   Manquante
                 </div>
               </div>
@@ -887,6 +950,7 @@ export default function CollectionPage() {
           card={selectedCard}
           isOpen={isModalOpen}
           onClose={() => setIsModalOpen(false)}
+          onToggleFavorite={handleToggleFavorite}
         />
       </div>
     </div>

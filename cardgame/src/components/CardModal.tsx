@@ -3,7 +3,7 @@
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useEffect, useState } from 'react';
 import Image from 'next/image';
-import { X, Plus } from 'lucide-react';
+import { X, Plus, Heart } from 'lucide-react';
 import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion';
 
 export interface Card {
@@ -26,6 +26,7 @@ export interface Card {
   notes?: string;
   code?: string;
   quantity?: number;
+  isFavorite?: boolean;
 }
 
 interface CardModalProps {
@@ -33,9 +34,10 @@ interface CardModalProps {
   isOpen: boolean;
   onClose: () => void;
   onAddToDeck?: (card: Card) => void;
+  onToggleFavorite?: (cardId: string) => void;
 }
 
-export default function CardModal({ card, isOpen, onClose, onAddToDeck }: CardModalProps) {
+export default function CardModal({ card, isOpen, onClose, onAddToDeck, onToggleFavorite }: CardModalProps) {
   if (!card) return null;
 
   const controls = useAnimation();
@@ -131,7 +133,19 @@ export default function CardModal({ card, isOpen, onClose, onAddToDeck }: CardMo
                   style={{ x, opacity }}
                   className="relative"
                 >
-                  <div className="absolute -top-2 -right-2 z-10">
+                  <div className="absolute -top-2 -right-2 z-10 flex gap-2">
+                    {onToggleFavorite && (
+                      <button
+                        onClick={() => onToggleFavorite(card.id)}
+                        className={`rounded-full p-3 transition-all hover:scale-110 active:scale-95 ${
+                          card.isFavorite 
+                            ? 'bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30' 
+                            : 'bg-gray-500/20 hover:bg-gray-500/30 text-gray-400 border border-gray-500/30'
+                        }`}
+                      >
+                        <Heart className="h-6 w-6" />
+                      </button>
+                    )}
                     <button
                       onClick={onClose}
                       className="rounded-full p-3 bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30 transition-all hover:scale-110 active:scale-95"
@@ -169,6 +183,10 @@ export default function CardModal({ card, isOpen, onClose, onAddToDeck }: CardMo
                         <Dialog.Title className="text-3xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500">
                           {typeof card.name === 'string' ? card.name : 'Carte sans nom'}
                         </Dialog.Title>
+                        <div className="mt-2 flex items-center gap-2">
+                          <span className="text-sm font-medium text-gray-400">ID:</span>
+                          <span className="text-sm font-medium text-gray-300">{card.id}</span>
+                        </div>
                         {card.set && (
                           <div className="mt-2 flex items-center">
                             <span className="text-sm font-medium text-gray-400 mr-2">Set:</span>
