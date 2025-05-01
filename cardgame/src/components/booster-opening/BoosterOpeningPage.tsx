@@ -824,7 +824,7 @@ export default function BoosterOpeningPage() {
               </div>
               
               <div className="p-4">
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-10 mt-12">
                   {sets.map((set) => (
                     <motion.div
                       key={set.id}
@@ -836,13 +836,18 @@ export default function BoosterOpeningPage() {
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                     >
+                      <div className="absolute -top-10 left-0 right-0 text-center">
+                        <span className="text-white font-bold text-sm bg-black/50 mt-4 px-2 py-1 rounded-full">
+                          {set.name}
+                        </span>
+                      </div>
                       <img
                         src={`/images/booster/${set.code.toLowerCase()}.png`}
                         alt={set.name}
                         className="w-full h-auto rounded-lg shadow-lg"
                       />
                       <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-center px-2">{set.name}</span>
+                        <span className="text-white font-bold text-center px-2">Cliquer pour sélectionner</span>
                       </div>
                     </motion.div>
                   ))}
