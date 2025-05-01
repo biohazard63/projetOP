@@ -38,9 +38,17 @@ export async function GET() {
       include: {
         decks: {
           include: {
-            deckCards: {
+            versions: {
+              orderBy: {
+                createdAt: 'desc'
+              },
+              take: 1,
               include: {
-                card: true
+                cards: {
+                  include: {
+                    card: true
+                  }
+                }
               }
             }
           }
@@ -56,16 +64,37 @@ export async function GET() {
     }
 
     // Transformer les decks dans le format attendu
-    const transformedDecks = user.decks.map(deck => ({
-      id: deck.id,
-      name: deck.name,
-      cards: deck.deckCards.map(deckCard => ({
-        id: deckCard.card.id,
-        name: deckCard.card.name,
-        imageUrl: deckCard.card.imageUrl,
-        quantity: deckCard.quantity
-      }))
-    }))
+    const transformedDecks = user.decks.map(deck => {
+      const latestVersion = deck.versions[0]
+      return {
+        id: deck.id,
+        name: deck.name,
+        cards: latestVersion ? latestVersion.cards.map(deckCard => ({
+          id: deckCard.card.id,
+          name: deckCard.card.name,
+          type: deckCard.card.type,
+          color: deckCard.card.color,
+          cost: deckCard.card.cost,
+          power: deckCard.card.power,
+          counter: deckCard.card.counter,
+          effect: deckCard.card.effect,
+          rarity: deckCard.card.rarity,
+          imageUrl: deckCard.card.imageUrl,
+          set: deckCard.card.set,
+          attribute: deckCard.card.attribute,
+          attributeImage: deckCard.card.attributeImage,
+          family: deckCard.card.family,
+          ability: deckCard.card.ability,
+          trigger: deckCard.card.trigger,
+          notes: deckCard.card.notes,
+          code: deckCard.card.code,
+          isParallel: deckCard.card.isParallel,
+          isAltArt: deckCard.card.isAltArt,
+          isSpecial: deckCard.card.isSpecial,
+          quantity: deckCard.quantity
+        })) : []
+      }
+    })
 
     return NextResponse.json({ decks: transformedDecks })
   } catch (error) {
@@ -119,7 +148,7 @@ export async function POST(request: Request) {
       )
     }
 
-    // Créer le deck avec ses cartes
+    // Créer le deck avec sa première version
     const deck = await prisma.$transaction(async (tx) => {
       // Créer le deck
       const newDeck = await tx.deck.create({
@@ -129,49 +158,41 @@ export async function POST(request: Request) {
         }
       })
 
-      // Ajouter les cartes avec leurs quantités
+      // Créer la première version du deck
+      const newVersion = await tx.deckVersion.create({
+        data: {
+          name: 'Version 1',
+          deckId: newDeck.id,
+        }
+      })
+
+      // Ajouter les cartes à la version
       for (const card of cards) {
-        await tx.$executeRaw`
-          INSERT INTO "DeckCard" (id, "deckId", "cardId", "quantity")
-          VALUES (gen_random_uuid(), ${newDeck.id}, ${card.id}, ${card.quantity || 1})
-        `
+        await tx.deckCard.create({
+          data: {
+            cardId: card.id,
+            quantity: card.quantity || 1,
+            deckVersionId: newVersion.id
+          }
+        })
       }
 
-      // Récupérer le deck avec ses cartes
-      const result = await tx.$queryRaw<RawDeckWithCards[]>`
-        SELECT 
-          d.*,
-          json_agg(
-            json_build_object(
-              'id', c.id,
-              'code', c.code,
-              'name', c.name,
-              'type', c.type,
-              'color', c.color,
-              'cost', c.cost,
-              'power', c.power,
-              'counter', c.counter,
-              'effect', c.effect,
-              'rarity', c.rarity,
-              'imageUrl', c."imageUrl",
-              'set', c.set,
-              'attribute', c.attribute,
-              'attributeImage', c."attributeImage",
-              'family', c.family,
-              'ability', c.ability,
-              'trigger', c.trigger,
-              'notes', c.notes,
-              'quantity', dc.quantity
-            )
-          ) as cards
-        FROM "Deck" d
-        LEFT JOIN "DeckCard" dc ON d.id = dc."deckId"
-        LEFT JOIN "Card" c ON dc."cardId" = c.id
-        WHERE d.id = ${newDeck.id}
-        GROUP BY d.id
-      `
-
-      return result[0]
+      // Récupérer le deck complet avec sa version et ses cartes
+      return tx.deck.findUnique({
+        where: { id: newDeck.id },
+        include: {
+          versions: {
+            where: { id: newVersion.id },
+            include: {
+              cards: {
+                include: {
+                  card: true
+                }
+              }
+            }
+          }
+        }
+      })
     })
 
     if (!deck) {
@@ -182,7 +203,30 @@ export async function POST(request: Request) {
     const transformedDeck: TransformedDeck = {
       id: deck.id,
       name: deck.name,
-      cards: deck.cards
+      cards: deck.versions[0].cards.map(deckCard => ({
+        id: deckCard.card.id,
+        name: deckCard.card.name,
+        type: deckCard.card.type,
+        color: deckCard.card.color,
+        cost: deckCard.card.cost,
+        power: deckCard.card.power,
+        counter: deckCard.card.counter,
+        effect: deckCard.card.effect,
+        rarity: deckCard.card.rarity,
+        imageUrl: deckCard.card.imageUrl,
+        set: deckCard.card.set,
+        attribute: deckCard.card.attribute,
+        attributeImage: deckCard.card.attributeImage,
+        family: deckCard.card.family,
+        ability: deckCard.card.ability,
+        trigger: deckCard.card.trigger,
+        notes: deckCard.card.notes,
+        code: deckCard.card.code,
+        isParallel: deckCard.card.isParallel,
+        isAltArt: deckCard.card.isAltArt,
+        isSpecial: deckCard.card.isSpecial,
+        quantity: deckCard.quantity
+      }))
     }
 
     console.log('API Decks: Deck créé avec succès')

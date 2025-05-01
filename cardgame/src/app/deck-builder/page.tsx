@@ -103,19 +103,8 @@ export default function DeckBuilderPage() {
           setDeckName(deck.name || 'Nouveau Deck')
           
           // Vérifier si le deck a des cartes et les formater correctement
-          if (deck.deckCards && Array.isArray(deck.deckCards)) {
-            // Récupérer les détails complets des cartes depuis availableCards
-            const cardsWithDetails = deck.deckCards.map((deckCard: any) => {
-              const cardDetails = availableCards.find(card => card.id === deckCard.cardId)
-              if (cardDetails) {
-                return {
-                  ...cardDetails,
-                  quantity: deckCard.quantity || 1
-                }
-              }
-              return null
-            }).filter(Boolean) // Enlever les cartes null
-            setSelectedCards(cardsWithDetails)
+          if (deck.cards && Array.isArray(deck.cards)) {
+            setSelectedCards(deck.cards)
           } else {
             setSelectedCards([])
           }
@@ -128,7 +117,7 @@ export default function DeckBuilderPage() {
       }
     }
     loadDeck()
-  }, [deckId, availableCards])
+  }, [deckId])
 
   const addCardToDeck = (card: Card) => {
     // Vérifier si la carte est déjà dans le deck
@@ -248,6 +237,7 @@ export default function DeckBuilderPage() {
         name: deckName,
         cards: selectedCards.map(card => ({
           id: card.id,
+          type: card.type,
           quantity: card.quantity || 1
         }))
       };
