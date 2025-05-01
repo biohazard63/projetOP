@@ -330,12 +330,13 @@ export default function CollectionPage() {
     }
   }
 
-  // Créer un ensemble des IDs des cartes que l'utilisateur possède
-  const userCardIds = new Set(cards.map(card => card.id));
-  
   // Modifier la fonction pour obtenir toutes les cartes (possédées et manquantes)
   const getAllCards = () => {
     if (!allCards.length) return [];
+    
+    console.log('Début de getAllCards');
+    console.log('Nombre total de cartes disponibles:', allCards.length);
+    console.log('Nombre de cartes possédées:', cards.length);
     
     // Créer un Map pour stocker les cartes par ID
     const cardsMap = new Map();
@@ -343,12 +344,47 @@ export default function CollectionPage() {
     // Ajouter toutes les cartes disponibles
     allCards.forEach(card => {
       // Vérifier si l'utilisateur possède cette carte
-      const isOwned = cards.some(userCard => userCard.id === card.id);
-      cardsMap.set(card.id, { ...card, isOwned });
+      const userCard = cards.find(userCard => userCard.id === card.id);
+      cardsMap.set(card.id, { 
+        ...card, 
+        isOwned: !!userCard,
+        quantity: userCard?.quantity || 0,
+        isFavorite: userCard?.isFavorite || false
+      });
     });
     
-    // Convertir le Map en tableau
-    return Array.from(cardsMap.values());
+    // Convertir le Map en tableau et trier
+    const sortedCards = Array.from(cardsMap.values()).sort((a, b) => {
+      // Extraire le numéro de carte du code (ex: "OP01-001" -> 1)
+      const getCardNumber = (code: string) => {
+        const match = code.match(/-(\d+)$/);
+        return match ? parseInt(match[1]) : 0;
+      };
+      
+      // Extraire le numéro de set (ex: "OP01" -> 1)
+      const getSetNumber = (set: string) => {
+        const match = set.match(/OP(\d+)/);
+        return match ? parseInt(match[1]) : 0;
+      };
+      
+      // Comparer d'abord par numéro de set
+      const setNumberCompare = getSetNumber(a.set || '') - getSetNumber(b.set || '');
+      if (setNumberCompare !== 0) return setNumberCompare;
+      
+      // Si même set, comparer par numéro de carte
+      const cardNumberCompare = getCardNumber(a.code) - getCardNumber(b.code);
+      return cardNumberCompare;
+    });
+
+    console.log('Cartes triées:', sortedCards.map(card => ({
+      code: card.code,
+      set: card.set,
+      name: card.name,
+      isOwned: card.isOwned,
+      quantity: card.quantity
+    })));
+
+    return sortedCards;
   };
   
   // Modifier la variable filteredAndSortedCards pour utiliser getAllCards
@@ -376,21 +412,73 @@ export default function CollectionPage() {
       const [value, order] = sortBy.split('-');
       const multiplier = order === 'asc' ? 1 : -1;
 
+      // Gérer les valeurs nulles ou undefined
+      const getValue = (card: Card, key: string) => {
+        const val = card[key as keyof Card];
+        if (val === undefined || val === null) return '';
+        return val;
+      };
+
+      let result = 0;
       switch (value) {
         case 'name':
-          return multiplier * a.name.localeCompare(b.name);
+          result = multiplier * String(getValue(a, 'name')).localeCompare(String(getValue(b, 'name')));
+          break;
         case 'cost':
-          return multiplier * ((a.cost || 0) - (b.cost || 0));
+          result = multiplier * (Number(getValue(a, 'cost')) - Number(getValue(b, 'cost')));
+          break;
         case 'power':
-          return multiplier * ((a.power || 0) - (b.power || 0));
+          result = multiplier * (Number(getValue(a, 'power')) - Number(getValue(b, 'power')));
+          break;
         case 'set':
-          const setA = String(a.set || '');
-          const setB = String(b.set || '');
-          return multiplier * setA.localeCompare(setB);
+          // Pour le tri par set, on utilise la même logique que dans getAllCards
+          const getSetNumber = (set: string) => {
+            const match = set.match(/OP(\d+)/);
+            return match ? parseInt(match[1]) : 0;
+          };
+          const getCardNumber = (code: string) => {
+            const match = code.match(/-(\d+)$/);
+            return match ? parseInt(match[1]) : 0;
+          };
+          
+          const setNumberCompare = getSetNumber(a.set || '') - getSetNumber(b.set || '');
+          if (setNumberCompare !== 0) {
+            result = multiplier * setNumberCompare;
+          } else {
+            result = multiplier * (getCardNumber(a.code) - getCardNumber(b.code));
+          }
+          break;
         default:
-          return 0;
+          result = 0;
       }
+
+      console.log(`Tri: ${value}-${order}`, {
+        a: { 
+          name: a.name, 
+          set: a.set,
+          code: a.code,
+          value: getValue(a, value) 
+        },
+        b: { 
+          name: b.name, 
+          set: b.set,
+          code: b.code,
+          value: getValue(b, value) 
+        },
+        result
+      });
+
+      return result;
     });
+
+  console.log('Cartes filtrées et triées:', filteredAndSortedCards.map(card => ({
+    code: card.code,
+    set: card.set,
+    name: card.name,
+    isOwned: card.isOwned,
+    quantity: card.quantity,
+    sortValue: card[sortBy.split('-')[0] as keyof Card]
+  })));
 
   // Calcul de la pagination
   const totalPages = Math.ceil(filteredAndSortedCards.length / cardsPerPage);
@@ -460,7 +548,9 @@ export default function CollectionPage() {
         {cards.map((card) => (
           <div
             key={card.id}
-            className="group relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer"
+            className={`group relative aspect-[3/4] rounded-lg overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer ${
+              showMissingCards && !card.isOwned ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
+            }`}
             onClick={() => handleCardClick(card)}
           >
             <Image
@@ -487,6 +577,13 @@ export default function CollectionPage() {
             {card.isFavorite && (
               <div className="absolute top-2 right-2">
                 <Heart className="w-5 h-5 text-red-500 fill-red-500" />
+              </div>
+            )}
+            {showMissingCards && !card.isOwned && (
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="bg-red-500/80 text-white text-sm font-bold px-3 py-1 rounded-full">
+                  Manquante
+                </div>
               </div>
             )}
           </div>
@@ -538,7 +635,7 @@ export default function CollectionPage() {
               onClick={() => setShowMissingCards(!showMissingCards)}
               className={`${showMissingCards ? 'bg-red-600 hover:bg-red-700' : 'bg-gray-700 hover:bg-gray-600'} text-white`}
             >
-              {showMissingCards ? 'Voir ma collection' : 'Voir les cartes manquantes'}
+              {showMissingCards ? 'Voir ma collection' : 'Voir toutes les cartes'}
             </Button>
             {showMissingCards && (
               <div className="flex items-center gap-2">
@@ -551,7 +648,7 @@ export default function CollectionPage() {
           </div>
           <div className="flex items-center gap-2">
             <span className="text-sm text-gray-300">
-              {showMissingCards ? `${missingCards.length} cartes manquantes` : `${cards.length} cartes dans ma collection`}
+              {showMissingCards ? `${allCards.length} cartes au total` : `${cards.length} cartes dans ma collection`}
             </span>
           </div>
         </div>
@@ -715,7 +812,7 @@ export default function CollectionPage() {
           </div>
         </div>
 
-        <CardGrid cards={showMissingCards ? missingCards : currentCards} />
+        <CardGrid cards={currentCards} />
 
         {/* Message d'aide */}
         {currentCards.length > 0 && (
