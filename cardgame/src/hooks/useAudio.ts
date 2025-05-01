@@ -8,7 +8,7 @@ export function useAudio() {
     setTimeout(() => {
       audio.pause()
       audio.currentTime = 0
-    }, 5000)
+    }, 2500)
   }, [])
 
   const playAltArtSound = useCallback(() => {
@@ -18,7 +18,7 @@ export function useAudio() {
     setTimeout(() => {
       audio.pause()
       audio.currentTime = 0
-    }, 5000)
+    }, 2500)
   }, [])
 
 
@@ -30,7 +30,7 @@ export function useAudio() {
     setTimeout(() => {
       audio.pause()
       audio.currentTime = 0
-    }, 5000)
+    }, 2500)
   }, [])
 
   const playNewCardSound = useCallback(() => {
@@ -40,7 +40,7 @@ export function useAudio() {
     setTimeout(() => {
       audio.pause()
       audio.currentTime = 0
-    }, 5000)
+    }, 2500)
   }, [])
 
   return {

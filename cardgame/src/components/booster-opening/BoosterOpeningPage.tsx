@@ -291,7 +291,6 @@ export default function BoosterOpeningPage() {
 
     // Cartes communes
     console.log('Carte commune détectée:', card.name)
-    playNewCardSound()
   }
 
   const handleRareAnimationComplete = () => {
@@ -533,10 +532,8 @@ export default function BoosterOpeningPage() {
     if (!showAnimation) {
       setShowAnimation(true)
     }
-  }
 
-  const handleAnimationComplete = async () => {
-    setShowAnimation(false)
+    // Lancer la requête API en même temps que l'animation
     setIsLoading(true)
     try {
       const selectedSetData = sets.find(set => set.id === selectedSet)
@@ -575,6 +572,7 @@ export default function BoosterOpeningPage() {
             }))
           });
 
+          // Stocker les cartes mais ne pas les afficher tout de suite
           setBooster(processedCards)
           setNewCardsCount(result.newCardsCount)
           
@@ -582,18 +580,7 @@ export default function BoosterOpeningPage() {
             setIsNewCard(!userCollection.has(processedCards[0].id))
           }
           
-          setCurrentCardIndex(0)
-          setIsRevealing(true)
-
-          console.log('Première carte prête à être révélée:', {
-            index: 0,
-            carte: processedCards[0]?.name,
-            isMobile
-          });
-          
-          if (result.hasRareCard) {
-            // Suppression du son des cartes rares
-          } 
+          // Supprimer la vérification de rareté ici car elle sera gérée dans les composants d'animation
         } else {
           toast.error(result.error || 'Erreur lors de l\'ouverture du booster')
         }
@@ -605,6 +592,15 @@ export default function BoosterOpeningPage() {
       toast.error('Erreur lors de l\'ouverture du booster')
     } finally {
       setIsLoading(false)
+    }
+  }
+
+  const handleAnimationComplete = async () => {
+    setShowAnimation(false)
+    // Une fois l'animation terminée, on peut afficher les cartes
+    if (booster.length > 0) {
+      setCurrentCardIndex(0)
+      setIsRevealing(true)
     }
   }
 
@@ -884,7 +880,7 @@ export default function BoosterOpeningPage() {
                 <motion.button
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="absolute left-4 top-[98%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
+                  className="absolute left-4 top-[90%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
                   onClick={() => handleArrowClick('prev')}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -911,7 +907,7 @@ export default function BoosterOpeningPage() {
                 <motion.button
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="absolute right-4 top-[98%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
+                  className="absolute right-4 top-[90%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
                   onClick={() => handleArrowClick('next')}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
