@@ -370,7 +370,9 @@ export default function CollectionPage() {
         case 'power':
           return multiplier * ((a.power || 0) - (b.power || 0));
         case 'set':
-          return multiplier * (a.set || '').localeCompare(b.set || '');
+          const setA = String(a.set || '');
+          const setB = String(b.set || '');
+          return multiplier * setA.localeCompare(setB);
         default:
           return 0;
       }

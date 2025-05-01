@@ -36,6 +36,13 @@ const features = [
 
 const updates = [
   {
+    title: 'Réinitialisation des Données',
+    description: "Suite à une mauvaise manipulation, toutes les données ont été supprimées. L'application a été remise en ligne après une longue maintenance. Il est désormais nécessaire de recréer un compte. La création peut prendre quelques secondes durant lesquelles l'interface est bloquée.",
+    icon: '🛠️',
+    color: 'from-gray-600 to-gray-800',
+  },
+  
+  {
     title: 'Nouveaux Effets Visuels',
     description: 'Animations spectaculaires pour les cartes ultra rares avec effets de particules dorées et halos lumineux.',
     icon: '✨',
@@ -49,11 +56,12 @@ const updates = [
   },
 
   {
-    title: 'Traductions Complètes',
-    description: 'Toutes les cartes sont maintenant disponibles en français avec leurs effets et descriptions traduits.',
+    title: 'Traductions en Cours',
+    description: 'Les effets et textes des cartes seront à nouveau disponibles en français dans quelques jours. Merci de votre patience !',
     icon: '🌍',
     color: 'from-green-500 to-emerald-600',
   },
+  
   {
     title: 'Cartes Manquantes',
     description: 'Nouvelle fonctionnalité pour visualiser toutes les cartes disponibles, y compris celles que vous ne possédez pas encore.',
