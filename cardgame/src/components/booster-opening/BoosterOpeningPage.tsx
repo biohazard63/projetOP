@@ -57,6 +57,7 @@ export default function BoosterOpeningPage() {
   const [showRareAnimation, setShowRareAnimation] = useState(false)
   const [rareAnimationType, setRareAnimationType] = useState<'ultra-rare' | 'rare' | 'alternative' | null>(null)
   const [showBoosterModal, setShowBoosterModal] = useState(false)
+  const [setRules, setSetRules] = useState<any>(null)
   
   // Utilisation des hooks personnalisés
   const { userCollection, loadUserCollection } = useCollection()
@@ -222,6 +223,63 @@ export default function BoosterOpeningPage() {
   useEffect(() => {
     loadUserCollection()
   }, [loadUserCollection])
+
+  // Chargement des règles du set
+  useEffect(() => {
+    if (selectedSet) {
+      const selectedSetData = sets.find(set => set.id === selectedSet);
+      if (selectedSetData) {
+        console.log('Chargement des règles pour le set:', selectedSetData.code);
+        fetch(`/api/sets/${selectedSetData.code}/rules`)
+          .then(res => {
+            if (!res.ok) {
+              throw new Error(`Erreur HTTP: ${res.status}`);
+            }
+            return res.json();
+          })
+          .then(data => {
+            if (data.success) {
+              console.log('Règles du set chargées:', data.rules);
+              setSetRules(data.rules);
+            } else {
+              console.error('Erreur dans la réponse:', data.error);
+            }
+          })
+          .catch(error => {
+            console.error('Erreur lors du chargement des règles du set:', error);
+            // En cas d'erreur, utiliser des règles par défaut
+            setSetRules({
+              name: selectedSetData.name,
+              rarityCounts: {
+                'C': 45,
+                'UC': 30,
+                'R': 32,
+                'SR': 21,
+                'L': 12,
+                'SEC': 4,
+                'SP CARD': 6,
+                'TR': 0,
+                'P': 0
+              },
+              boosterRules: {
+                commonCount: 6,
+                uncommonCount: 3,
+                rareCount: 2,
+                superRareCount: 1,
+                leaderCount: 0,
+                characterCount: 4,
+                eventCount: 2,
+                stageCount: 0,
+                donCount: 1,
+                altArtChance: 0.1,
+                parallelChance: 0.05,
+                specialChance: 0.05
+              }
+            });
+          });
+      }
+    }
+  }, [selectedSet, sets]);
 
   // Gestion des erreurs d'image
   const handleImageError = (cardId: string) => {
@@ -726,7 +784,7 @@ export default function BoosterOpeningPage() {
           <motion.div
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col items-center justify-center gap-3 mb-6"
+            className="flex flex-col md:flex-row items-center justify-center gap-6 mb-6"
           >
             <div className="relative w-40 h-60 sm:w-48 sm:h-72 group">
               <div className="absolute inset-0  rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300" />
@@ -736,10 +794,71 @@ export default function BoosterOpeningPage() {
                 className="w-full h-full object-contain relative z-10 transform group-hover:scale-105 transition-transform duration-300"
               />
             </div>
-            <div className="text-center">
-              <p className="text-lg sm:text-xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
-                {sets.find(set => set.id === selectedSet)?.name}
-              </p>
+            <div className="flex flex-col gap-4">
+              <div className="text-center md:text-left">
+                <p className="text-lg sm:text-xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
+                  {sets.find(set => set.id === selectedSet)?.name}
+                </p>
+              </div>
+              
+              <div className="bg-gray-800/50 p-4 rounded-xl border border-gray-700">
+                <h3 className="text-sm font-semibold text-gray-300 mb-2">Contenu possible du booster :</h3>
+                <div className="grid grid-cols-2 gap-2 text-sm">
+                  {setRules && setRules.boosterRules && (
+                    <>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-gray-400"></div>
+                        <span>{setRules.boosterRules.commonCount} Communes</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-green-400"></div>
+                        <span>{setRules.boosterRules.uncommonCount} Peu communes</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-blue-400"></div>
+                        <span>{setRules.boosterRules.rareCount} Rares</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 rounded-full bg-purple-400"></div>
+                        <span>{setRules.boosterRules.superRareCount} Super Rare</span>
+                      </div>
+                    </>
+                  )}
+                  <div className="col-span-2">
+                    <p className="text-xs text-gray-400 mt-2">Cartes disponibles dans le set :</p>
+                    <div className="grid grid-cols-2 gap-1 mt-1">
+                      {setRules && setRules.rarityCounts && (
+                        <>
+                          <div className="text-xs text-gray-300">
+                            Leader ({setRules.rarityCounts.L} cartes)
+                          </div>
+                          <div className="text-xs text-gray-300">
+                            Secrète ({setRules.rarityCounts.SEC} cartes)
+                          </div>
+                          <div className="text-xs text-gray-300">
+                            SP Card ({setRules.rarityCounts['SP CARD']} cartes)
+                          </div>
+                          <div className="text-xs text-gray-300">
+                            TR ({setRules.rarityCounts.TR || 0} cartes)
+                          </div>
+                          <div className="text-xs text-gray-300">
+                            Promo ({setRules.rarityCounts.P || 0} cartes)
+                          </div>
+                        </>
+                      )}
+                    </div>
+                  </div>
+                  <div className="col-span-2 mt-2">
+                    <p className="text-xs text-gray-400">Cartes alternatives :</p>
+                    <div className="grid grid-cols-2 gap-1 mt-1">
+                      <div className="text-xs text-gray-300">alternative lv1 (5%)</div>
+                      <div className="text-xs text-gray-300">alternative lv2 (3%)</div>
+                      <div className="text-xs text-gray-300">alternative lv3 (1%)</div>
+                      <div className="text-xs text-gray-300">alternative lv4+ (0.5%)</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </motion.div>
         )}
