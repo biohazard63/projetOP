@@ -3,10 +3,6 @@
 import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion'
 import { useState, useEffect } from 'react'
 import { ExtendedCardType } from '@/types/card'
-import { Star, Sparkles, Crown } from 'lucide-react'
-import RareCardEffect from './RareCardEffect'
-import AltArtEffect from './AltArtEffect'
-import UltraRareEffect from './UltraRareEffect'
 
 interface CardRevealProps {
   card: ExtendedCardType
@@ -174,7 +170,7 @@ export default function CardReveal({
           rotateY: isRevealed ? 180 : 0,
           cursor: isDragging ? 'grabbing' : 'pointer',
           touchAction: 'pan-y pinch-zoom',
-          marginBottom: '4rem'
+          marginBottom: '12rem'
         }}
         animate={controls}
         className="relative"

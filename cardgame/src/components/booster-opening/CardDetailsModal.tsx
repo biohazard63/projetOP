@@ -20,6 +20,18 @@ export default function CardDetailsModal({
   getRarityGlow
 }: CardDetailsModalProps) {
   const [isFavorite, setIsFavorite] = useState(false)
+  const [lastClickTime, setLastClickTime] = useState(0)
+
+  const handleClick = () => {
+    const currentTime = new Date().getTime()
+    const timeDiff = currentTime - lastClickTime
+    
+    if (timeDiff < 300) { // Double-clic détecté (moins de 300ms entre les clics)
+      onClose()
+    }
+    
+    setLastClickTime(currentTime)
+  }
 
   useEffect(() => {
     // Vérifier si la carte est dans les favoris
@@ -66,7 +78,7 @@ export default function CardDetailsModal({
       exit={{ opacity: 0 }}
       className="fixed inset-0 flex items-center justify-center z-50 p-4 overflow-y-auto"
     >
-      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={onClose} />
+      <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" onClick={handleClick} />
       
       <motion.div
         initial={{ scale: 0.9, y: 20 }}

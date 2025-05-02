@@ -52,6 +52,7 @@ export default function BoosterOpeningPage() {
   const [showBackgroundEffect, setShowBackgroundEffect] = useState(false)
   const [rareCardGlow, setRareCardGlow] = useState<Record<string, boolean>>({})
   const [ultraRareParticles, setUltraRareParticles] = useState<Array<{id: number, x: number, y: number, size: number, color: string}>>([])
+  const [lastClickTime, setLastClickTime] = useState(0)
   const [showAnimation, setShowAnimation] = useState(false)
   const [showRareAnimation, setShowRareAnimation] = useState(false)
   const [rareAnimationType, setRareAnimationType] = useState<'ultra-rare' | 'rare' | 'alternative' | null>(null)
@@ -242,10 +243,10 @@ export default function BoosterOpeningPage() {
       id: i,
       x: Math.random() * window.innerWidth,
       y: Math.random() * window.innerHeight,
-      size: Math.random() * 4 + 2,
-      color: i % 2 === 0 ? '#FFD700' : '#FFA500' // Alternance entre or et orange
+      size: Math.random() * 3 + 1,
+      color: `hsl(${Math.random() * 60 + 30}, 100%, 50%)`
     }))
-    setUltraRareParticles(particles)
+    return particles
   }
 
   // Vérification de la rareté et lecture des effets
@@ -662,7 +663,17 @@ export default function BoosterOpeningPage() {
   }
 
   const handleCardClick = (card: ExtendedCardType) => {
-    setSelectedCard(card)
+    const currentTime = new Date().getTime()
+    const timeDiff = currentTime - lastClickTime
+    
+    if (timeDiff < 300) { // Double-clic détecté (moins de 300ms entre les clics)
+      setSelectedCard(card)
+      if (card.rarity === 'Ultra Rare') {
+        setUltraRareParticles(generateUltraRareParticles())
+      }
+    }
+    
+    setLastClickTime(currentTime)
   }
 
   return (
@@ -866,7 +877,7 @@ export default function BoosterOpeningPage() {
                 <motion.button
                   initial={{ opacity: 0, x: -20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="absolute left-4 top-[90%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
+                  className="absolute left-4 top-[75%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
                   onClick={() => handleArrowClick('prev')}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -893,7 +904,7 @@ export default function BoosterOpeningPage() {
                 <motion.button
                   initial={{ opacity: 0, x: 20 }}
                   animate={{ opacity: 1, x: 0 }}
-                  className="absolute right-4 top-[90%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
+                  className="absolute right-4 top-[75%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
                   onClick={() => handleArrowClick('next')}
                 >
                   <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
