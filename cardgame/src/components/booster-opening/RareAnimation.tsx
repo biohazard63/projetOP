@@ -15,7 +15,7 @@ interface UltraRareAnimationProps {
 export default function UltraRareAnimation({ card, onComplete }: UltraRareAnimationProps) {
   const [isVisible, setIsVisible] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
-  const { playUltraRareSound } = useAudio()
+  const { playRareCardSound } = useAudio()
   const hasPlayedSound = useRef(false)
 
   useEffect(() => {
@@ -33,7 +33,7 @@ export default function UltraRareAnimation({ card, onComplete }: UltraRareAnimat
 
   useEffect(() => {
     if (!hasPlayedSound.current) {
-      playUltraRareSound()
+      playRareCardSound()
       hasPlayedSound.current = true
     }
 
@@ -43,7 +43,7 @@ export default function UltraRareAnimation({ card, onComplete }: UltraRareAnimat
     }, 2500)
 
     return () => clearTimeout(timer)
-  }, [onComplete, playUltraRareSound])
+  }, [onComplete, playRareCardSound])
 
   return (
     <AnimatePresence>

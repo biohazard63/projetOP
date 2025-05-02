@@ -176,18 +176,44 @@ async function generateBooster(setRules: any) {
         { setCode: `PRB-${normalizedSetCode.replace('PRB', '')}` },
         { setCode: normalizedSetCode.replace('EB', 'EB-') },
         { setCode: normalizedSetCode.replace('PRB', 'PRB-') }
-      ],
-      isParallel: false,
-      isAltArt: false
+      ]
     }
   });
+
+  // Fonction pour vérifier si une carte est une alternative et obtenir son niveau
+  const getAltLevel = (cardId: string) => {
+    const match = cardId.match(/_p(\d+)$/);
+    return match ? parseInt(match[1]) : 0;
+  };
+
+  // Fonction pour appliquer les taux de drop des alternatives
+  const shouldIncludeAlt = (cardId: string) => {
+    const altLevel = getAltLevel(cardId);
+    if (altLevel === 0) return true; // Carte normale
+
+    const random = Math.random();
+    switch (altLevel) {
+      case 1: // _p1 - 5% de chance
+        return random < 0.05;
+      case 2: // _p2 - 3% de chance
+        return random < 0.03;
+      case 3: // _p3 - 1% de chance
+        return random < 0.01;
+      default: // _p4 et plus - 0.5% de chance
+        return random < 0.005;
+    }
+  };
+
+  // Filtrer les cartes en fonction des taux de drop
+  const filteredCards = allCards.filter(card => shouldIncludeAlt(card.id));
   
   console.log(`[BOOSTER-GEN] Nombre total de cartes récupérées: ${allCards.length}`);
-  console.log('[BOOSTER-GEN] Codes de set trouvés:', [...new Set(allCards.map(card => card.setCode))]);
+  console.log(`[BOOSTER-GEN] Nombre de cartes après filtrage: ${filteredCards.length}`);
+  console.log('[BOOSTER-GEN] Codes de set trouvés:', [...new Set(filteredCards.map(card => card.setCode))]);
   
   // Grouper les cartes par rareté
   const cardsByRarity: Record<string, any[]> = {};
-  allCards.forEach(card => {
+  filteredCards.forEach(card => {
     if (!cardsByRarity[card.rarity]) {
       cardsByRarity[card.rarity] = [];
     }
