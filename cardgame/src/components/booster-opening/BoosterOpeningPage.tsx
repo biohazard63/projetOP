@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useEffect, useRef } from 'react'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import { Card as CardType } from '@prisma/client'
 import { Button } from '@/components/ui/button'
 import {
@@ -25,7 +27,21 @@ import UltraRareAnimation from './UltraRareAnimation'
 import RareAnimation from './RareAnimation'
 import AlternativeAnimation from './AlternativeAnimation'
 
+// Composant de chargement séparé
+function LoadingSpinner() {
+  return (
+    <div className="flex items-center justify-center min-h-screen">
+      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
+    </div>
+  )
+}
+
 export default function BoosterOpeningPage() {
+  // Hooks de base
+  const { data: session, status } = useSession()
+  const router = useRouter()
+  
+  // États
   const [sets, setSets] = useState<Array<{id: string, code: string, name: string}>>([])
   const [selectedSet, setSelectedSet] = useState<string>('')
   const [booster, setBooster] = useState<ExtendedCardType[]>([])
@@ -58,8 +74,8 @@ export default function BoosterOpeningPage() {
   const [rareAnimationType, setRareAnimationType] = useState<'ultra-rare' | 'rare' | 'alternative' | null>(null)
   const [showBoosterModal, setShowBoosterModal] = useState(false)
   const [setRules, setSetRules] = useState<any>(null)
-  
-  // Utilisation des hooks personnalisés
+
+  // Hooks personnalisés
   const { userCollection, loadUserCollection } = useCollection()
   const { 
     playRareCardSound, 
@@ -75,7 +91,13 @@ export default function BoosterOpeningPage() {
     getRarityGlow 
   } = useBooster()
 
-  // Détection de l'appareil mobile
+  // Effets
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/login')
+    }
+  }, [status, router])
+
   useEffect(() => {
     const checkMobile = () => {
       const isMobileDevice = window.innerWidth < 768;
@@ -94,27 +116,6 @@ export default function BoosterOpeningPage() {
       window.removeEventListener('resize', checkMobile);
     }
   }, []);
-
-  // Gestionnaire des touches du clavier
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (isMobile) {
-        console.log('Touche pressée sur mobile, navigation désactivée');
-        return;
-      }
-      
-      if (event.key === 'ArrowLeft' && currentCardIndex > 0) {
-        navigateCard('prev');
-      } else if (event.key === 'ArrowRight' && currentCardIndex < booster.length - 1) {
-        navigateCard('next');
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [currentCardIndex, booster.length, isMobile]);
 
   // Chargement des sets disponibles
   useEffect(() => {
@@ -175,6 +176,27 @@ export default function BoosterOpeningPage() {
       .catch(error => console.error('Erreur lors du chargement des sets:', error))
   }, [])
 
+  // Gestionnaire des touches du clavier
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (isMobile) {
+        console.log('Touche pressée sur mobile, navigation désactivée');
+        return;
+      }
+      
+      if (event.key === 'ArrowLeft' && currentCardIndex > 0) {
+        navigateCard('prev');
+      } else if (event.key === 'ArrowRight' && currentCardIndex < booster.length - 1) {
+        navigateCard('next');
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [currentCardIndex, booster.length, isMobile]);
+
   // Préchargement des images
   useEffect(() => {
     if (booster && booster.length > 0) {
@@ -205,28 +227,16 @@ export default function BoosterOpeningPage() {
     }
   }, [booster])
 
-  // Génération des particules d'arrière-plan
-  useEffect(() => {
-    if (booster && booster.length > 0) {
-      const particles = Array.from({ length: 50 }, (_, i) => ({
-        id: i,
-        x: Math.random() * window.innerWidth,
-        y: Math.random() * window.innerHeight,
-        size: Math.random() * 3 + 1
-      }))
-      setBackgroundParticles(particles)
-      setShowBackgroundEffect(true)
-    }
-  }, [booster])
-
   // Chargement de la collection de l'utilisateur
   useEffect(() => {
-    loadUserCollection()
-  }, [loadUserCollection])
+    if (session) {
+      loadUserCollection()
+    }
+  }, [session, loadUserCollection])
 
   // Chargement des règles du set
   useEffect(() => {
-    if (selectedSet) {
+    if (selectedSet && session) {
       const selectedSetData = sets.find(set => set.id === selectedSet);
       if (selectedSetData) {
         console.log('Chargement des règles pour le set:', selectedSetData.code);
@@ -247,7 +257,6 @@ export default function BoosterOpeningPage() {
           })
           .catch(error => {
             console.error('Erreur lors du chargement des règles du set:', error);
-            // En cas d'erreur, utiliser des règles par défaut
             setSetRules({
               name: selectedSetData.name,
               rarityCounts: {
@@ -279,7 +288,12 @@ export default function BoosterOpeningPage() {
           });
       }
     }
-  }, [selectedSet, sets]);
+  }, [selectedSet, sets, session]);
+
+  // Si la session est en cours de chargement ou si l'utilisateur n'est pas authentifié
+  if (status === 'loading' || !session) {
+    return <LoadingSpinner />
+  }
 
   // Gestion des erreurs d'image
   const handleImageError = (cardId: string) => {

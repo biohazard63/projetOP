@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { associateStarterDecksToUser } from '../../scripts/associateStarterDecksToNewUser';
+import { addStarterDeckCardsToUser } from './starterDeckUtils';
 
 declare global {
   var prisma: PrismaClient | undefined
@@ -27,7 +27,7 @@ prisma.$use(async (params, next) => {
     setTimeout(async () => {
       try {
         // Associer les decks de démarrage
-        await associateStarterDecksToUser(result.id);
+        await addStarterDeckCardsToUser(result.id);
         
         // Marquer l'utilisateur comme ayant reçu ses decks
         await prisma.$executeRaw`
