@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import { GameCard } from '@/types/game';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
@@ -11,9 +11,13 @@ interface CardProps {
   isActive?: boolean;
   isTarget?: boolean;
   className?: string;
+  showDetails?: boolean;
+  quantity?: number;
 }
 
-export function Card({ card, onClick, isActive = false, isTarget = false, className }: CardProps) {
+export function Card({ card, onClick, isActive = false, isTarget = false, className, showDetails = false, quantity }: CardProps) {
+  const [hasImageError, setHasImageError] = useState(false);
+
   const getCardColor = (color: string) => {
     switch (color.toLowerCase()) {
       case 'red':
@@ -35,25 +39,25 @@ export function Card({ card, onClick, isActive = false, isTarget = false, classN
       onClick={onClick}
     >
       <div className="relative aspect-[63/88] rounded-lg overflow-hidden shadow-lg">
-        {card.imageUrl && !card.imageError ? (
+        {card.imageUrl && !hasImageError ? (
           <img
-          src={card.imageUrl}
+            src={card.imageUrl}
             alt={typeof card.name === 'string' ? card.name : 'Carte'}
             className="w-full h-full object-contain"
-            onError={() => card.setImageError(true)}
+            onError={() => setHasImageError(true)}
           />
         ) : (
           <div className="w-full h-full bg-gray-700 flex flex-col items-center justify-center p-2">
             <span className="text-gray-400 text-xs text-center">Image non disponible</span>
             <h3 className="text-sm font-bold truncate text-white mt-2">{typeof card.name === 'string' ? card.name : 'Carte sans nom'}</h3>
-      </div>
+          </div>
         )}
       </div>
-      {card.showDetails && (
+      {showDetails && (
         <div className="absolute bottom-0 left-0 right-0 bg-black bg-opacity-75 p-2">
           <h3 className="text-sm font-bold truncate text-white">{typeof card.name === 'string' ? card.name : 'Carte sans nom'}</h3>
-          {card.quantity !== undefined && (
-            <p className="text-xs text-gray-300">Quantité: {card.quantity}</p>
+          {quantity !== undefined && (
+            <p className="text-xs text-gray-300">Quantité: {quantity}</p>
           )}
         </div>
       )}

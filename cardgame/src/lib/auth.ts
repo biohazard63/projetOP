@@ -37,6 +37,10 @@ export const authOptions: NextAuthOptions = {
           throw new Error("Aucun utilisateur trouvé avec cet email")
         }
 
+        if (!user.password) {
+          throw new Error("Ce compte n'a pas de mot de passe configuré")
+        }
+
         const isPasswordValid = await bcrypt.compare(credentials.password, user.password)
 
         if (!isPasswordValid) {

@@ -44,32 +44,45 @@ export async function GET() {
       )
     }
 
-    // Récupérer le deck actif avec ses cartes
-    const activeDeck = await prisma.deck.findFirst({
+    // Récupérer le deck actif
+    const deck = await prisma.deck.findUnique({
       where: {
-        id: activeDeckId,
-        userId: user.id
+        id: activeDeckId
       },
       include: {
-        deckCards: {
+        versions: {
           include: {
-            card: true
+            cards: {
+              include: {
+                card: true
+              }
+            }
           }
         }
       }
-    })
+    });
 
-    if (!activeDeck) {
-      console.log('Deck actif non trouvé ou n\'appartient pas à l\'utilisateur')
+    if (!deck) {
+      console.log('Erreur: Deck actif non trouvé')
       return NextResponse.json(
-        { error: 'Deck non trouvé' },
+        { error: 'Deck actif non trouvé' },
         { status: 404 }
       )
     }
 
-    console.log('Deck actif trouvé:', activeDeck.name, 'avec', activeDeck.deckCards.length, 'cartes')
+    // Obtenir la dernière version du deck
+    const latestVersion = deck.versions[deck.versions.length - 1];
+    const cards = latestVersion ? latestVersion.cards.map(dc => dc.card) : [];
 
-    return NextResponse.json({ deck: activeDeck })
+    console.log('Deck actif trouvé:', deck.name, 'avec', cards.length, 'cartes')
+
+    return NextResponse.json({
+      deck: {
+        id: deck.id,
+        name: deck.name,
+        cards: cards
+      }
+    })
   } catch (error) {
     console.error('Erreur lors de la récupération du deck actif:', error)
     return NextResponse.json(

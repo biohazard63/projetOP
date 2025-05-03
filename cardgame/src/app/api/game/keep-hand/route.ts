@@ -2,7 +2,44 @@ import { NextResponse } from 'next/server'
 import { getServerSession } from 'next-auth'
 import { authOptions } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
-import { GameState } from '@/types/game'
+import { GameState, GameCard } from '@/types/game'
+
+function parseGameCard(jsonCard: any): GameCard | null {
+  if (!jsonCard) return null;
+  return {
+    id: jsonCard.id,
+    name: jsonCard.name,
+    type: jsonCard.type,
+    color: jsonCard.color,
+    cost: jsonCard.cost,
+    power: jsonCard.power,
+    imageUrl: jsonCard.imageUrl,
+    effect: jsonCard.effect,
+    trigger: jsonCard.trigger,
+    isLeader: jsonCard.isLeader,
+    isDon: jsonCard.isDon,
+    position: jsonCard.position,
+    hasAttacked: jsonCard.hasAttacked,
+    hasRush: jsonCard.hasRush,
+    hasBlocker: jsonCard.hasBlocker,
+    hasDoubleAttack: jsonCard.hasDoubleAttack,
+    hasTrigger: jsonCard.hasTrigger,
+    hasCounter: jsonCard.hasCounter,
+    counterValue: jsonCard.counterValue,
+    attachedDons: jsonCard.attachedDons || 0,
+    attachedCards: jsonCard.attachedCards?.map(parseGameCard).filter(Boolean) || [],
+    isFaceUp: jsonCard.isFaceUp,
+    effects: jsonCard.effects || [],
+    isBlocking: jsonCard.isBlocking,
+    isBlocked: jsonCard.isBlocked,
+    blocker: jsonCard.blocker ? (parseGameCard(jsonCard.blocker) || undefined) : undefined
+  };
+}
+
+function parseGameCards(jsonCards: any[]): GameCard[] {
+  if (!Array.isArray(jsonCards)) return [];
+  return jsonCards.map(parseGameCard).filter((card): card is GameCard => card !== null);
+}
 
 export async function POST() {
   try {
@@ -54,33 +91,33 @@ export async function POST() {
       id: updatedGameState.id,
       player: {
         id: updatedGameState.player.id,
-        name: updatedGameState.player.name,
+        name: updatedGameState.player.name || 'Joueur',
         lifePoints: updatedGameState.playerLife,
-        leader: updatedGameState.playerLeader,
-        deck: updatedGameState.playerDeck,
-        hand: updatedGameState.playerHand,
-        field: updatedGameState.playerField,
-        donDeck: updatedGameState.playerDonDeck,
-        trash: updatedGameState.playerTrash,
-        activeDon: updatedGameState.playerActiveDon,
-        donAddedThisTurn: updatedGameState.playerDonAddedThisTurn,
-        usedDonDeck: updatedGameState.playerUsedDonDeck,
-        discardPile: updatedGameState.playerDiscardPile
+        leader: parseGameCard(updatedGameState.playerLeader),
+        deck: parseGameCards(Array.isArray(updatedGameState.playerDeck) ? updatedGameState.playerDeck : []),
+        hand: parseGameCards(Array.isArray(updatedGameState.playerHand) ? updatedGameState.playerHand : []),
+        field: parseGameCards(Array.isArray(updatedGameState.playerField) ? updatedGameState.playerField : []),
+        donDeck: parseGameCards(Array.isArray(updatedGameState.playerDonDeck) ? updatedGameState.playerDonDeck : []),
+        trash: parseGameCards(Array.isArray(updatedGameState.playerTrash) ? updatedGameState.playerTrash : []),
+        activeDon: Number(updatedGameState.playerActiveDon) || 0,
+        donAddedThisTurn: Number(updatedGameState.playerDonAddedThisTurn) || 0,
+        usedDonDeck: parseGameCards(Array.isArray(updatedGameState.playerUsedDonDeck) ? updatedGameState.playerUsedDonDeck : []),
+        discardPile: parseGameCards(Array.isArray(updatedGameState.playerDiscardPile) ? updatedGameState.playerDiscardPile : [])
       },
       opponent: {
         id: updatedGameState.opponent.id,
-        name: updatedGameState.opponent.name,
+        name: updatedGameState.opponent.name || 'Adversaire',
         lifePoints: updatedGameState.opponentLife,
-        leader: updatedGameState.opponentLeader,
-        deck: updatedGameState.opponentDeck,
-        hand: updatedGameState.opponentHand,
-        field: updatedGameState.opponentField,
-        donDeck: updatedGameState.opponentDonDeck,
-        trash: updatedGameState.opponentTrash,
-        activeDon: updatedGameState.opponentActiveDon,
-        donAddedThisTurn: updatedGameState.opponentDonAddedThisTurn,
-        usedDonDeck: updatedGameState.opponentUsedDonDeck,
-        discardPile: updatedGameState.opponentDiscardPile
+        leader: parseGameCard(updatedGameState.opponentLeader),
+        deck: parseGameCards(Array.isArray(updatedGameState.opponentDeck) ? updatedGameState.opponentDeck : []),
+        hand: parseGameCards(Array.isArray(updatedGameState.opponentHand) ? updatedGameState.opponentHand : []),
+        field: parseGameCards(Array.isArray(updatedGameState.opponentField) ? updatedGameState.opponentField : []),
+        donDeck: parseGameCards(Array.isArray(updatedGameState.opponentDonDeck) ? updatedGameState.opponentDonDeck : []),
+        trash: parseGameCards(Array.isArray(updatedGameState.opponentTrash) ? updatedGameState.opponentTrash : []),
+        activeDon: Number(updatedGameState.opponentActiveDon) || 0,
+        donAddedThisTurn: Number(updatedGameState.opponentDonAddedThisTurn) || 0,
+        usedDonDeck: parseGameCards(Array.isArray(updatedGameState.opponentUsedDonDeck) ? updatedGameState.opponentUsedDonDeck : []),
+        discardPile: parseGameCards(Array.isArray(updatedGameState.opponentDiscardPile) ? updatedGameState.opponentDiscardPile : [])
       },
       currentPlayer: updatedGameState.currentPlayer as 'player' | 'opponent',
       currentPhase: updatedGameState.currentPhase as any,

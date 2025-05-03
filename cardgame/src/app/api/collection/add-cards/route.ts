@@ -46,8 +46,11 @@ export async function POST(request: Request) {
         id: user.id
       },
       data: {
-        collection: {
-          connect: cardIds.map(id => ({ id }))
+        userCards: {
+          create: cardIds.map(cardId => ({
+            cardId,
+            quantity: 1
+          }))
         }
       }
     });

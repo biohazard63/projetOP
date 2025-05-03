@@ -11,17 +11,7 @@ const nextConfig = {
     unoptimized: true,
   },
   typescript: {
-    ignoreBuildErrors: true,
-  },
-  webpack: (config) => {
-    config.module.rules.push({
-      test: /\.ts$/,
-      include: [/scripts/],
-      use: {
-        loader: 'ignore-loader',
-      },
-    });
-    return config;
+    // Les erreurs TypeScript ne seront plus ignorées
   },
 }
 

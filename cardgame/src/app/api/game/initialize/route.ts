@@ -49,30 +49,57 @@ export async function POST() {
       )
     }
 
-    // Récupérer le deck actif avec ses cartes
-    const activeDeck = await prisma.deck.findFirst({
+    // Récupérer le deck actif
+    const deck = await prisma.deck.findFirst({
       where: {
         id: activeDeckId,
         userId: user.id
       },
       include: {
-        deckCards: {
+        versions: {
           include: {
-            card: true
+            cards: {
+              include: {
+                card: true
+              }
+            }
           }
         }
       }
-    })
+    });
 
-    if (!activeDeck) {
-      console.log('❌ Deck actif non trouvé ou n\'appartient pas à l\'utilisateur')
+    if (!deck) {
       return NextResponse.json(
-        { error: 'Deck non trouvé' },
+        { error: 'Deck actif non trouvé' },
         { status: 404 }
-      )
+      );
     }
 
-    console.log('✅ Deck actif trouvé:', activeDeck.name, 'avec', activeDeck.deckCards.length, 'cartes')
+    // Obtenir la dernière version du deck
+    const latestVersion = deck.versions[deck.versions.length - 1];
+    if (!latestVersion) {
+      return NextResponse.json(
+        { error: 'Aucune version du deck trouvée' },
+        { status: 404 }
+      );
+    }
+
+    // Transformer les cartes du deck
+    const deckCards = latestVersion.cards.map(dc => ({
+      id: dc.card.id,
+      name: dc.card.name,
+      type: dc.card.type,
+      color: dc.card.color,
+      cost: dc.card.cost,
+      power: dc.card.power,
+      counter: dc.card.counter,
+      effect: dc.card.effect,
+      rarity: dc.card.rarity,
+      imageUrl: dc.card.imageUrl,
+      quantity: dc.quantity
+    }));
+
+    console.log('✅ Deck actif trouvé:', deck.name, 'avec', deckCards.length, 'cartes')
 
     // Fonction pour convertir une carte de la base de données en GameCard
     const convertToGameCard = (card: any, isFaceUp: boolean = false): GameCard => {
@@ -107,7 +134,7 @@ export async function POST() {
 
     // Préparer les cartes du joueur
     console.log('🔄 Préparation des cartes du joueur')
-    const playerCards = activeDeck.deckCards.map(dc => convertToGameCard(dc.card, dc.card.type === 'LEADER'))
+    const playerCards = deckCards.map(dc => convertToGameCard(dc, dc.type === 'LEADER'))
     
     // Séparer le leader des autres cartes
     const playerLeader = playerCards.find(card => card.type === 'LEADER')

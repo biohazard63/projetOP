@@ -83,6 +83,7 @@ export interface GameState {
   gameOver: boolean;
   isFirstTurn: boolean;
   currentAction?: string;
+  hasKeptHand?: boolean;
 }
 
 export interface GameAction {

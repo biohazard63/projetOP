@@ -43,12 +43,11 @@ interface ApiResponse {
   data: ApiCard[];
 }
 
-function parseCounter(counter: string | null | undefined): number | null {
+function parseCounter(counter: string | null | undefined): string | null {
   if (!counter || counter === '-') {
     return null;
   }
-  const value = parseInt(counter);
-  return isNaN(value) ? null : value;
+  return counter;
 }
 
 function parseCost(cost: number | null | undefined): number {

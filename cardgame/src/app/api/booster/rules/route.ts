@@ -5,6 +5,8 @@ import { authOptions } from '@/lib/auth';
 
 const prisma = new PrismaClient();
 
+export const dynamic = 'force-dynamic'
+
 // Règles de génération des boosters par set
 const GENERATION_RULES = {
   'OP-01': {

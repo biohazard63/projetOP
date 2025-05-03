@@ -42,9 +42,13 @@ export async function POST(
         userId: user.id
       },
       include: {
-        deckCards: {
+        versions: {
           include: {
-            card: true
+            cards: {
+              include: {
+                card: true
+              }
+            }
           }
         }
       }
@@ -58,7 +62,11 @@ export async function POST(
       )
     }
 
-    console.log('Deck trouvé:', deck.name, 'avec', deck.deckCards.length, 'cartess')
+    // Obtenir la dernière version du deck
+    const latestVersion = deck.versions[deck.versions.length - 1];
+    const cardCount = latestVersion ? latestVersion.cards.length : 0;
+
+    console.log('Deck trouvé:', deck.name, 'avec', cardCount, 'cartes')
 
     // Stocker l'ID du deck actif dans un cookie
     const cookieStore = cookies()
@@ -75,7 +83,7 @@ export async function POST(
       deck: {
         id: deck.id,
         name: deck.name,
-        cardCount: deck.deckCards.length
+        cardCount: cardCount
       }
     })
   } catch (error) {

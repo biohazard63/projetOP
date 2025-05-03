@@ -3,6 +3,7 @@ import { GameState, GameCard } from '@/types/game';
 import { PlayerField } from './PlayerField';
 import { toast } from 'sonner';
 import { Play, SkipForward, RefreshCw, RotateCcw } from 'lucide-react';
+import { Card as PrismaCard } from '@prisma/client';
 
 interface GameBoardProps {
   gameState: GameState;
@@ -84,26 +85,27 @@ export const GameBoard: React.FC<GameBoardProps> = ({
     }
   };
 
-  const cardToGameCard = (card: Card, isFaceUp: boolean = true): GameCard => {
+  const cardToGameCard = (card: PrismaCard, isFaceUp: boolean = true): GameCard => {
     return {
       id: card.id,
-      code: card.code,
-      nom: typeof card.name === 'string' ? card.name : 'Carte sans nom',
-      type: card.type,
-      color: card.color,
+      name: card.name,
+      type: card.type as any,
+      color: card.color as any,
       cost: card.cost,
-      power: card.power,
-      counter: card.counter,
-      effect: card.effect,
-      rarity: card.rarity,
+      power: card.power || 0,
       imageUrl: card.imageUrl,
+      effect: card.effect || undefined,
+      trigger: card.trigger || undefined,
       isFaceUp,
-      isLeader: card.type === 'Leader',
-      isDon: card.type === 'Don!!',
+      isLeader: card.type === 'LEADER',
+      isDon: card.type === 'DON',
       hasAttacked: false,
-      isParallel: card.isParallel,
-      isAltArt: card.isAltArt,
-      isSpecial: card.isSpecial,
+      hasRush: card.effect?.includes('[Rush]') || false,
+      hasBlocker: card.effect?.includes('[Blocker]') || false,
+      hasDoubleAttack: card.effect?.includes('[Double Attack]') || false,
+      hasTrigger: !!card.trigger,
+      hasCounter: card.counter !== null && card.counter !== undefined,
+      counterValue: card.counter ? parseInt(card.counter) : undefined
     };
   };
 
@@ -151,7 +153,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
 
             {/* Boutons d'action */}
             <div className="flex gap-4">
-              {gameState.currentPhase === 'SETUP' ? (
+              {gameState.currentPhase === 'SETUP' && !gameState.hasKeptHand ? (
                 <>
                   <button
                     onClick={onMulligan}

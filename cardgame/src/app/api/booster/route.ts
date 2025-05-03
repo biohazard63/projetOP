@@ -315,79 +315,130 @@ async function generateBooster(setCode: string): Promise<Card[]> {
 
 export async function POST(req: Request) {
   try {
+    console.log('[BOOSTER-OPEN] Début de la requête');
     const session = await getServerSession(authOptions);
-    if (!session?.user?.email) {
-      return NextResponse.json({ error: 'Non autorisé' }, { status: 401 });
+
+    if (!session?.user) {
+      console.log('[BOOSTER-OPEN] Utilisateur non authentifié');
+      return NextResponse.json({ error: 'Non authentifié' }, { status: 401 });
     }
 
-    const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
+    const { setCode } = await req.json();
+    const rules = BOOSTER_RULES[setCode] || BOOSTER_RULES.DEFAULT;
+
+    // Compter le nombre de cartes de chaque rareté
+    const totalCommon = await prisma.card.count({
+      where: {
+        set: setCode,
+        rarity: 'C'
+      }
     });
 
-    if (!user) {
-      return NextResponse.json({ error: 'Utilisateur non trouvé' }, { status: 404 });
-    }
+    const totalUncommon = await prisma.card.count({
+      where: {
+        set: setCode,
+        rarity: 'UC'
+      }
+    });
 
-    const { setId } = await req.json();
-    const rules = BOOSTER_RULES[setId] || BOOSTER_RULES.DEFAULT;
+    const totalRare = await prisma.card.count({
+      where: {
+        set: setCode,
+        rarity: 'R'
+      }
+    });
+
+    const totalSuperRare = await prisma.card.count({
+      where: {
+        set: setCode,
+        rarity: 'SR'
+      }
+    });
 
     // Sélection des cartes selon les règles
     const selectedCards = [];
-    for (const [rarity, count] of Object.entries(rules.rarityCounts)) {
-      const cards = await prisma.card.findMany({
+    
+    // Cartes communes
+    for (let i = 0; i < rules.commonCount; i++) {
+      const card = await prisma.card.findMany({
         where: {
-          set: setId,
-          rarity: rarity,
-          isParallel: false,
-          isAltArt: false,
-          isSpecial: false
+          set: setCode,
+          rarity: 'C'
         },
-        take: count
+        take: 1,
+        skip: Math.floor(Math.random() * totalCommon)
       });
-      selectedCards.push(...cards);
+      if (card.length > 0) selectedCards.push(card[0]);
+    }
+
+    // Cartes peu communes
+    for (let i = 0; i < rules.uncommonCount; i++) {
+      const card = await prisma.card.findMany({
+        where: {
+          set: setCode,
+          rarity: 'UC'
+        },
+        take: 1,
+        skip: Math.floor(Math.random() * totalUncommon)
+      });
+      if (card.length > 0) selectedCards.push(card[0]);
+    }
+
+    // Cartes rares
+    for (let i = 0; i < rules.rareCount; i++) {
+      const card = await prisma.card.findMany({
+        where: {
+          set: setCode,
+          rarity: 'R'
+        },
+        take: 1,
+        skip: Math.floor(Math.random() * totalRare)
+      });
+      if (card.length > 0) selectedCards.push(card[0]);
+    }
+
+    // Cartes super rares
+    for (let i = 0; i < rules.superRareCount; i++) {
+      const card = await prisma.card.findMany({
+        where: {
+          set: setCode,
+          rarity: 'SR'
+        },
+        take: 1,
+        skip: Math.floor(Math.random() * totalSuperRare)
+      });
+      if (card.length > 0) selectedCards.push(card[0]);
     }
 
     // Mélange des cartes
     const shuffledCards = selectedCards.sort(() => Math.random() - 0.5);
 
-    // Création du booster
+    // Créer le booster
     const booster = await prisma.booster.create({
       data: {
-        setId,
-        userId: user.id,
+        name: `Booster ${setCode}`,
+        description: `Booster du set ${setCode}`,
+        price: 0,
+        setCode: setCode,
         cards: {
           create: shuffledCards.map((card, index) => ({
             cardId: card.id,
-            position: index + 1
+            probability: 1
           }))
-        }
-      },
-      include: {
-        cards: {
-          include: {
-            card: true
-          }
         }
       }
     });
 
-    // Création de l'ouverture de booster
+    // Créer l'ouverture du booster
     const boosterOpening = await prisma.boosterOpening.create({
       data: {
-        userId: user.id,
+        userId: session.user.id,
         boosterId: booster.id,
         cards: {
           create: shuffledCards.map((card, index) => ({
             cardId: card.id,
-            position: index + 1
+            position: index
           }))
-        }
-      },
-      include: {
-        cards: {
-          include: {
-            card: true
-          }
         }
       }
     });
