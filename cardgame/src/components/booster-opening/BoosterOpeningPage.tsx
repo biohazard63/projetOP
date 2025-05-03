@@ -829,9 +829,16 @@ export default function BoosterOpeningPage() {
                     <div className="grid grid-cols-2 gap-1 mt-1">
                       {setRules && setRules.rarityCounts && (
                         <>
+                        <div className="text-xs text-gray-300">
+                          Comunes ({setRules.rarityCounts.C} cartes)
+                          </div>
+                          <div className="text-xs text-gray-300">
+                            Peu communes ({setRules.rarityCounts.U} cartes)
+                          </div>
                           <div className="text-xs text-gray-300">
                             Leader ({setRules.rarityCounts.L} cartes)
                           </div>
+                          
                           <div className="text-xs text-gray-300">
                             Secrète ({setRules.rarityCounts.SEC} cartes)
                           </div>
@@ -841,22 +848,12 @@ export default function BoosterOpeningPage() {
                           <div className="text-xs text-gray-300">
                             TR ({setRules.rarityCounts.TR || 0} cartes)
                           </div>
-                          <div className="text-xs text-gray-300">
-                            Promo ({setRules.rarityCounts.P || 0} cartes)
-                          </div>
+                        
                         </>
                       )}
                     </div>
                   </div>
-                  <div className="col-span-2 mt-2">
-                    <p className="text-xs text-gray-400">Cartes alternatives :</p>
-                    <div className="grid grid-cols-2 gap-1 mt-1">
-                      <div className="text-xs text-gray-300">alternative lv1 (5%)</div>
-                      <div className="text-xs text-gray-300">alternative lv2 (3%)</div>
-                      <div className="text-xs text-gray-300">alternative lv3 (1%)</div>
-                      <div className="text-xs text-gray-300">alternative lv4+ (0.5%)</div>
-                    </div>
-                  </div>
+                
                 </div>
               </div>
             </div>
