@@ -692,39 +692,7 @@ export default function CollectionPage() {
           </div>
         </div>
         
-        <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-          <div className="flex items-center gap-2">
-            <Button 
-              onClick={() => setShowMissingCards(!showMissingCards)}
-              className={`${showMissingCards ? 'bg-red-600 hover:bg-red-700' : 'bg-gray-700 hover:bg-gray-600'} text-white`}
-            >
-              {showMissingCards ? 'Voir ma collection' : 'Voir toutes les cartes'}
-            </Button>
-            {showMissingCards && (
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-300">
-                  {missingCards.length} cartes manquantes sur {allCards.length} cartes totales
-                  ({Math.round((missingCards.length / allCards.length) * 100)}% manquantes)
-                </span>
-              </div>
-            )}
-          </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-300">
-              {showMissingCards ? `${allCards.length} cartes au total` : `${cards.length} cartes dans ma collection`}
-            </span>
-          </div>
-        </div>
         
-        {showMissingCards && missingCards.length === 0 && allCards.length > 0 && (
-          <div className="bg-gradient-to-r from-green-900/80 to-emerald-900/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-green-700 mb-6 text-center">
-            <h2 className="text-2xl font-bold text-green-400 mb-2">Félicitations !</h2>
-            <p className="text-gray-200">
-              Vous avez toutes les cartes disponibles dans votre collection ! 
-              Votre collection est complète à 100%.
-            </p>
-          </div>
-        )}
         
         <div className="bg-gray-800/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-gray-700 mb-6">
           <p className="text-gray-300 text-sm md:text-base">
@@ -846,6 +814,39 @@ export default function CollectionPage() {
             </label>
           </div>
         </div>
+        <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+          <div className="flex items-center gap-2">
+            <Button 
+              onClick={() => setShowMissingCards(!showMissingCards)}
+              className={`${showMissingCards ? 'bg-red-600 hover:bg-red-700' : 'bg-gray-700 hover:bg-gray-600'} text-white`}
+            >
+              {showMissingCards ? 'Voir ma collection' : 'Voir toutes les cartes'}
+            </Button>
+            {showMissingCards && (
+              <div className="flex items-center gap-2">
+                <span className="text-sm text-gray-300">
+                  {missingCards.length} cartes manquantes sur {allCards.length} cartes totales
+                  ({Math.round((missingCards.length / allCards.length) * 100)}% manquantes)
+                </span>
+              </div>
+            )}
+          </div>
+          <div className="flex items-center gap-2">
+            <span className="text-sm text-gray-300">
+              {showMissingCards ? `${allCards.length} cartes au total` : `${cards.length} cartes dans ma collection`}
+            </span>
+          </div>
+        </div>
+        
+        {showMissingCards && missingCards.length === 0 && allCards.length > 0 && (
+          <div className="bg-gradient-to-r from-green-900/80 to-emerald-900/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-green-700 mb-6 text-center">
+            <h2 className="text-2xl font-bold text-green-400 mb-2">Félicitations !</h2>
+            <p className="text-gray-200">
+              Vous avez toutes les cartes disponibles dans votre collection ! 
+              Votre collection est complète à 100%.
+            </p>
+          </div>
+        )}
 
         <div className="flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
           <p className="text-gray-400 text-sm">
