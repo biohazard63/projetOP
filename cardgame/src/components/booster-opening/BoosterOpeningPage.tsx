@@ -27,11 +27,30 @@ import UltraRareAnimation from './UltraRareAnimation'
 import RareAnimation from './RareAnimation'
 import AlternativeAnimation from './AlternativeAnimation'
 
-// Composant de chargement séparé
+// Modification du composant LoadingSpinner pour le rendre plus thématique
 function LoadingSpinner() {
   return (
-    <div className="flex items-center justify-center min-h-screen">
-      <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-indigo-500"></div>
+    <div className="flex flex-col items-center justify-center min-h-screen pt-16">
+      {/* Logo One Piece */}
+      <div className="relative z-10 flex flex-col items-center">
+        <img 
+          src="/images/jolly-roger.png" 
+          alt="Loading" 
+          className="w-32 h-32 animate-float opacity-90 mb-6 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
+        />
+        <div className="text-2xl font-bold text-yellow-400 mb-4 animate-pulse tracking-wider">
+          Chargement du Trésor
+        </div>
+        <div className="flex gap-2">
+          {[...Array(3)].map((_, i) => (
+            <div
+              key={i}
+              className="w-3 h-3 rounded-full bg-yellow-400 animate-bounce"
+              style={{ animationDelay: `${i * 0.2}s` }}
+            />
+          ))}
+        </div>
+      </div>
     </div>
   )
 }
@@ -749,273 +768,195 @@ export default function BoosterOpeningPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-900 to-indigo-950 text-white p-2 sm:p-4 md:p-8">
-      <Toaster position="top-center" />
-      
-      {/* Animation d'ouverture du booster */}
-      {showAnimation && (
-        <BoosterPackAnimation 
-          onComplete={handleAnimationComplete} 
-          setCode={sets.find(set => set.id === selectedSet)?.code || ''}
-        />
-      )}
+    <div className="min-h-screen relative">
+      {/* Contenu principal avec effet de verre dépoli */}
+      <div className="relative z-10 min-h-screen pt-16">
+        <Toaster position="top-center" />
+        
+        {/* Animations existantes */}
+        {showAnimation && (
+          <BoosterPackAnimation 
+            onComplete={handleAnimationComplete} 
+            setCode={sets.find(set => set.id === selectedSet)?.code || ''}
+          />
+        )}
 
-      {/* Animation des cartes rares */}
-      {showRareAnimation && currentRareCard && (
-        <>
-          {rareAnimationType === 'ultra-rare' && (
-            <UltraRareAnimation
-              card={currentRareCard}
-              onComplete={handleRareAnimationComplete}
-            />
-          )}
-          {rareAnimationType === 'rare' && (
-            <RareAnimation
-              card={currentRareCard}
-              onComplete={handleRareAnimationComplete}
-            />
-          )}
-          {rareAnimationType === 'alternative' && (
-            <AlternativeAnimation
-              card={currentRareCard}
-              onComplete={handleRareAnimationComplete}
-            />
-          )}
-        </>
-      )}
-      
-      {/* En-tête */}
-      <div className="max-w-6xl mx-auto mb-4 sm:mb-8">
-      <motion.h1 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="text-3xl sm:text-4xl md:text-5xl font-bold mb-2 sm:mb-4 text-center bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent"
-        >
-          Ouverture de Booster
-        </motion.h1>        
-        {/* Affichage du booster sélectionné */}
-        {selectedSet && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="flex flex-col md:flex-row items-center justify-center gap-6 mb-6"
-          >
-            <div className="relative w-40 h-60 sm:w-48 sm:h-72 group">
-              <div className="absolute inset-0  rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-              <img
-                src={`/images/booster/${sets.find(set => set.id === selectedSet)?.code.toLowerCase()}.png`}
-                alt={sets.find(set => set.id === selectedSet)?.name}
-                className="w-full h-full object-contain relative z-10 transform group-hover:scale-105 transition-transform duration-300"
+        {showRareAnimation && currentRareCard && (
+          <>
+            {rareAnimationType === 'ultra-rare' && (
+              <UltraRareAnimation
+                card={currentRareCard}
+                onComplete={handleRareAnimationComplete}
               />
-            </div>
-            <div className="flex flex-col gap-4">
-              <div className="text-center md:text-left">
-                <p className="text-lg sm:text-xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
-                  {sets.find(set => set.id === selectedSet)?.name}
-                </p>
-              </div>
-              
-              <div className="bg-gray-800/50 p-4 rounded-xl border border-gray-700">
-                <h3 className="text-sm font-semibold text-gray-300 mb-2">Contenu possible du booster :</h3>
-                <div className="grid grid-cols-2 gap-2 text-sm">
-                  {setRules && setRules.boosterRules && (
-                    <>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-gray-400"></div>
-                        <span>{setRules.boosterRules.commonCount} Communes</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-green-400"></div>
-                        <span>{setRules.boosterRules.uncommonCount} Peu communes</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-blue-400"></div>
-                        <span>{setRules.boosterRules.rareCount} Rares</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 rounded-full bg-purple-400"></div>
-                        <span>{setRules.boosterRules.superRareCount} Super Rare</span>
-                      </div>
-                    </>
-                  )}
-                  <div className="col-span-2">
-                    <p className="text-xs text-gray-400 mt-2">Cartes disponibles dans le set :</p>
-                    <div className="grid grid-cols-2 gap-1 mt-1">
-                      {setRules && setRules.rarityCounts && (
-                        <>
-                        <div className="text-xs text-gray-300">
-                          Comunes ({setRules.rarityCounts.C} cartes)
-                          </div>
-                          <div className="text-xs text-gray-300">
-                            Peu communes ({setRules.rarityCounts.U} cartes)
-                          </div>
-                          <div className="text-xs text-gray-300">
-                            Leader ({setRules.rarityCounts.L} cartes)
-                          </div>
-                          
-                          <div className="text-xs text-gray-300">
-                            Secrète ({setRules.rarityCounts.SEC} cartes)
-                          </div>
-                          <div className="text-xs text-gray-300">
-                            SP Card ({setRules.rarityCounts['SP CARD']} cartes)
-                          </div>
-                          <div className="text-xs text-gray-300">
-                            TR ({setRules.rarityCounts.TR || 0} cartes)
-                          </div>
-                        
-                        </>
-                      )}
-                    </div>
-                  </div>
-                
-                </div>
-              </div>
-            </div>
-          </motion.div>
+            )}
+            {rareAnimationType === 'rare' && (
+              <RareAnimation
+                card={currentRareCard}
+                onComplete={handleRareAnimationComplete}
+              />
+            )}
+            {rareAnimationType === 'alternative' && (
+              <AlternativeAnimation
+                card={currentRareCard}
+                onComplete={handleRareAnimationComplete}
+              />
+            )}
+          </>
         )}
         
-        <div className="flex flex-col items-center justify-center gap-4 mb-4 sm:mb-6">
-          <div className="flex flex-col sm:flex-row gap-4 w-full max-w-md">
+        {/* En-tête avec effet de verre dépoli */}
+        <div className="max-w-6xl mx-auto p-4 sm:p-6 md:p-8">
+          <motion.h1 
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center"
+          >
+            <span className="bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-glow">
+              Ouverture de Trésor
+            </span>
+          </motion.h1>
+
+          {/* Affichage du booster sélectionné avec effet de carte */}
+          {selectedSet && (
+            <motion.div
+              initial={{ opacity: 0, y: -20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="flex flex-col md:flex-row items-center justify-center gap-8 mb-8"
+            >
+              <div className="relative group">
+                <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-amber-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
+                <div className="relative w-40 h-60 sm:w-48 sm:h-72 transform group-hover:scale-105 transition-all duration-300">
+                  <img
+                    src={`/images/booster/${sets.find(set => set.id === selectedSet)?.code.toLowerCase()}.png`}
+                    alt={sets.find(set => set.id === selectedSet)?.name}
+                    className="w-full h-full object-contain rounded-xl shadow-2xl"
+                  />
+                </div>
+              </div>
+
+              <div className="flex flex-col gap-6 max-w-md">
+                <div className="text-center md:text-left">
+                  <h2 className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent mb-2">
+                    {sets.find(set => set.id === selectedSet)?.name}
+                  </h2>
+                  <p className="text-white/80">
+                    Découvrez les trésors cachés de ce booster !
+                  </p>
+                </div>
+
+                <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10">
+                  <h3 className="text-lg font-bold text-white/90 mb-4">Contenu possible :</h3>
+                  {setRules && setRules.boosterRules && (
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-gray-400"></div>
+                        <span className="text-white/80">{setRules.boosterRules.commonCount} Communes</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                        <span className="text-white/80">{setRules.boosterRules.uncommonCount} Peu communes</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-blue-400"></div>
+                        <span className="text-white/80">{setRules.boosterRules.rareCount} Rares</span>
+                      </div>
+                      <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 rounded-full bg-purple-400"></div>
+                        <span className="text-white/80">{setRules.boosterRules.superRareCount} Super Rare</span>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          )}
+
+          {/* Boutons d'action */}
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
             <Button 
               onClick={() => setShowBoosterModal(true)}
-              className="w-full sm:w-auto bg-gradient-to-r from-purple-600 to-indigo-600 hover:from-purple-700 hover:to-indigo-700 text-white font-bold py-2 px-4 sm:px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+              className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105"
             >
               <div className="flex items-center gap-2">
-                <Package className="w-4 h-4 sm:w-5 sm:h-5" />
+                <Package className="w-5 h-5" />
                 <span>Choisir un booster</span>
               </div>
             </Button>
-            
+
             {booster.length === 0 ? (
               <Button 
-                onClick={handleOpenBooster} 
+                onClick={handleOpenBooster}
                 disabled={!selectedSet || isLoading}
-                className="w-full sm:w-auto bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-white font-bold py-2 px-4 sm:px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+                className="w-full sm:w-auto bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 {isLoading ? (
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-t-2 border-white rounded-full animate-spin"></div>
+                    <div className="w-5 h-5 border-t-2 border-white rounded-full animate-spin"></div>
                     <span>Chargement...</span>
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span>Ouvrir un booster</span>
+                    <Sparkles className="w-5 h-5" />
+                    <span>Ouvrir le trésor</span>
                   </div>
                 )}
               </Button>
             ) : (
               <Button 
-                onClick={resetAndOpenNewBooster} 
+                onClick={resetAndOpenNewBooster}
                 disabled={!selectedSet || isLoading}
-                className="w-full sm:w-auto bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white font-bold py-2 px-4 sm:px-6 rounded-lg shadow-lg transition-all duration-300 transform hover:scale-105 text-sm sm:text-base"
+                className="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105"
               >
                 {isLoading ? (
                   <div className="flex items-center gap-2">
-                    <div className="w-4 h-4 sm:w-5 sm:h-5 border-t-2 border-white rounded-full animate-spin"></div>
+                    <div className="w-5 h-5 border-t-2 border-white rounded-full animate-spin"></div>
                     <span>Chargement...</span>
                   </div>
                 ) : (
                   <div className="flex items-center gap-2">
-                    <Sparkles className="w-4 h-4 sm:w-5 sm:h-5" />
-                    <span>Nouveau booster</span>
+                    <Sparkles className="w-5 h-5" />
+                    <span>Nouveau trésor</span>
                   </div>
                 )}
               </Button>
             )}
           </div>
         </div>
-      </div>
 
-      {/* Modal de sélection des boosters */}
-      <AnimatePresence>
-        {showBoosterModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/80 z-50 flex items-center justify-center p-4"
-            onClick={() => setShowBoosterModal(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              className="bg-gradient-to-b from-gray-900 to-gray-800 rounded-xl shadow-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto"
-              onClick={e => e.stopPropagation()}
-            >
-              <div className="p-4 border-b border-gray-700 flex justify-between items-center">
-                <h2 className="text-xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent">
-                  Sélectionnez un booster
-                </h2>
-                <button
-                  onClick={() => setShowBoosterModal(false)}
-                  className="p-2 hover:bg-gray-700 rounded-full transition-colors"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-              
-              <div className="p-6">
-                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8 mt-12">
-                  {sets.map((set) => (
-                    <motion.div
-                      key={set.id}
-                      className={`relative cursor-pointer group ${selectedSet === set.id ? 'ring-4 ring-yellow-500' : ''}`}
-                      onClick={() => {
-                        setSelectedSet(set.id)
-                        setShowBoosterModal(false)
-                      }}
-                      whileHover={{ scale: 1.05 }}
-                      whileTap={{ scale: 0.95 }}
-                    >
-                      <div className="absolute -top-12 left-0 right-0 text-center">
-                        <span className="text-white font-bold text-sm bg-gradient-to-r from-gray-800 to-gray-900 px-4 py-2 rounded-full shadow-lg">
-                          {set.name}
-                        </span>
-                      </div>
-                      <div className="relative">
-                        <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 to-amber-600/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300" />
-                        <img
-                          src={`/images/booster/${set.code.toLowerCase()}.png`}
-                          alt={set.name}
-                          className="w-full h-auto rounded-xl shadow-lg relative z-10 transform group-hover:scale-105 transition-transform duration-300"
-                        />
-                      </div>
-                      <div className="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-xl flex items-center justify-center">
-                        <span className="text-white font-bold text-center px-2 bg-black/50 py-2 rounded-lg">
-                          Cliquer pour sélectionner
-                        </span>
-                      </div>
-                    </motion.div>
-                  ))}
+        {/* Zone d'affichage des cartes avec effet de verre dépoli */}
+        {booster.length > 0 && currentCardIndex >= 0 && (
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="relative backdrop-blur-md bg-white/5 rounded-2xl p-6 border border-white/10 shadow-xl">
+              {/* Navigation */}
+              <div className="flex justify-between items-center mb-6">
+                {currentCardIndex > 0 && (
+                  <button
+                    onClick={() => handleArrowClick('prev')}
+                    className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                    </svg>
+                  </button>
+                )}
+
+                <div className="text-white/80 text-lg font-bold">
+                  Carte {currentCardIndex + 1} sur {booster.length}
                 </div>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
-      
-      {/* Zone d'affichage des cartes */}
-      {booster.length > 0 && (
-        <div className="max-w-6xl mx-auto">
-          {/* Affichage de la carte actuelle */}
-          {currentCardIndex >= 0 && currentCardIndex < booster.length && (
-            <div className="relative">
-              {/* Flèche gauche */}
-              {currentCardIndex > 0 && (
-                <motion.button
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className="absolute left-4 top-[75%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
-                  onClick={() => handleArrowClick('prev')}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                  </svg>
-                </motion.button>
-              )}
 
+                {currentCardIndex < booster.length - 1 && (
+                  <button
+                    onClick={() => handleArrowClick('next')}
+                    className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300"
+                  >
+                    <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                    </svg>
+                  </button>
+                )}
+              </div>
+
+              {/* Carte actuelle */}
               <CardReveal
                 card={booster[currentCardIndex]}
                 isNewCard={isNewCard}
@@ -1028,37 +969,126 @@ export default function BoosterOpeningPage() {
                 onDrag={handleDrag}
                 onDragEnd={handleDragEnd}
               />
-
-              {/* Flèche droite */}
-              {currentCardIndex < booster.length - 1 && (
-                <motion.button
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  className="absolute right-4 top-[75%] -translate-y-1/2 z-50 bg-black/50 hover:bg-black/70 text-white p-3 rounded-full shadow-lg transition-all duration-300"
-                  onClick={() => handleArrowClick('next')}
-                >
-                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                  </svg>
-                </motion.button>
-              )}
             </div>
+          </div>
+        )}
+
+        {/* Modal de sélection des boosters */}
+        <AnimatePresence>
+          {showBoosterModal && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4"
+              onClick={() => setShowBoosterModal(false)}
+            >
+              {/* Éléments décoratifs d'arrière-plan */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none">
+                <div className="absolute inset-0 bg-gradient-to-b from-blue-950/30 to-indigo-950/30"></div>
+                <img 
+                  src="/images/jolly-roger.png" 
+                  alt="" 
+                  className="absolute top-0 left-0 w-32 h-32 opacity-20 rotate-[-15deg]"
+                />
+                <img 
+                  src="/images/straw-hat.png" 
+                  alt="" 
+                  className="absolute bottom-0 right-0 w-32 h-32 opacity-20 rotate-[15deg]"
+                />
+              </div>
+
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0, y: 20 }}
+                animate={{ scale: 1, opacity: 1, y: 0 }}
+                exit={{ scale: 0.9, opacity: 0, y: 20 }}
+                className="bg-gradient-to-b from-blue-950/90 via-blue-900/90 to-indigo-950/90 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.3)] max-w-5xl w-full max-h-[85vh] overflow-y-auto border border-yellow-500/20"
+                onClick={e => e.stopPropagation()}
+              >
+                {/* En-tête de la modale */}
+                <div className="relative p-6 border-b border-yellow-500/20">
+                  <div className="flex justify-between items-center">
+                    <div className="flex items-center gap-4">
+                      <img 
+                        src="/images/treasure-chest.png" 
+                        alt="Trésor" 
+                        className="w-12 h-12 animate-float"
+                      />
+                      <h2 className="text-3xl font-bold bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
+                        Choisissez votre Trésor
+                      </h2>
+                    </div>
+                    <button
+                      onClick={() => setShowBoosterModal(false)}
+                      className="p-2 hover:bg-white/10 rounded-full transition-all duration-300 hover:rotate-90 hover:scale-110"
+                    >
+                      <X className="w-8 h-8 text-yellow-500" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Grille des boosters */}
+                <div className="p-8">
+                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+                    {sets.map((set) => (
+                      <motion.div
+                        key={set.id}
+                        className={`relative cursor-pointer group perspective-1000 ${
+                          selectedSet === set.id ? 'ring-4 ring-yellow-500/50 shadow-[0_0_30px_rgba(234,179,8,0.3)]' : ''
+                        }`}
+                        onClick={() => {
+                          setSelectedSet(set.id)
+                          setShowBoosterModal(false)
+                        }}
+                        whileHover={{ 
+                          scale: 1.05,
+                          rotateY: 5,
+                          z: 20
+                        }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {/* Étiquette du nom */}
+                        <div className="absolute -top-4 left-0 right-0 text-center z-10">
+                          <span className="inline-block text-white text-sm font-bold px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg transform transition-transform group-hover:scale-110">
+                            {set.name}
+                          </span>
+                        </div>
+
+                        {/* Carte du booster */}
+                        <div className="relative rounded-xl overflow-hidden shadow-[0_10px_20px_rgba(0,0,0,0.3)] transition-all duration-300 group-hover:shadow-[0_20px_40px_rgba(0,0,0,0.4)]">
+                          {/* Effet de brillance */}
+                          <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 via-transparent to-blue-500/20 group-hover:from-yellow-500/30 group-hover:to-blue-500/30 transition-all duration-300" />
+                          
+                          {/* Effet de lueur sur les bords */}
+                          <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/0 via-yellow-500/50 to-yellow-500/0 blur-xl"></div>
+                          </div>
+
+                          <img
+                            src={`/images/booster/${set.code.toLowerCase()}.png`}
+                            alt={set.name}
+                            className="w-full h-auto transform transition-all duration-500 group-hover:scale-110"
+                          />
+                        </div>
+                      </motion.div>
+                    ))}
+                  </div>
+                </div>
+              </motion.div>
+            </motion.div>
           )}
-          
-          {/* Miniatures des cartes en bas */}
-         
-        </div>
-      )}
-      
-      {/* Modal de détails de la carte */}
-      {selectedCard && (
-        <CardDetailsModal
-          card={selectedCard}
-          onClose={() => setSelectedCard(null)}
-          getRarityColor={getRarityColor}
-          getRarityGlow={getRarityGlow}
-        />
-      )}
+        </AnimatePresence>
+
+        {/* Modal de détails de la carte */}
+        {selectedCard && (
+          <CardDetailsModal
+            card={selectedCard}
+            onClose={() => setSelectedCard(null)}
+            getRarityColor={getRarityColor}
+            getRarityGlow={getRarityGlow}
+          />
+        )}
+      </div>
     </div>
   )
 } 

@@ -10,6 +10,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
 import CardModal, { Card } from '@/components/CardModal'
+import Link from 'next/link'
 
 interface Deck {
   id: string
@@ -366,16 +367,30 @@ export default function DeckBuilderPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 p-4 md:p-8 text-white">
+    <div className="p-4 md:p-8">
       <div className="container mx-auto">
-        <h1 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500">
-          {isEditing ? 'Modifier le Deck' : 'Créateur de Deck'}
-        </h1>
+        {/* En-tête avec effet de haki */}
+        <div className="mb-12 relative">
+          <div className="absolute -top-4 -left-4 w-32 h-32 bg-[url('/images/deck/haki-flash.png')] bg-contain bg-no-repeat opacity-40 animate-haki-pulse"></div>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 relative">
+            <h1 className="text-4xl md:text-5xl font-bold text-white relative z-10">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400">
+                {isEditing ? 'Modifier le Deck' : 'Créateur de Deck'}
+              </span>
+            </h1>
+            <Link href="/decks">
+              <Button className="relative group overflow-hidden bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-500 hover:to-red-500 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,165,0,0.3)] transform">
+                <div className="absolute inset-0 bg-[url('/images/deck/explosion.png')] bg-cover opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                <span className="relative z-10">Retour aux Decks</span>
+              </Button>
+            </Link>
+          </div>
+        </div>
         
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
           {/* Section des cartes disponibles */}
           <div className="lg:col-span-2 order-2 lg:order-1">
-            <div className="bg-gray-800/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-gray-700">
+            <div className="glass-effect-deck rounded-lg p-4 md:p-6">
               <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white">Cartes Disponibles</h2>
               
               {/* Filtres */}
@@ -560,7 +575,7 @@ export default function DeckBuilderPage() {
 
           {/* Section du deck en cours */}
           <div className="lg:col-span-1 order-1 lg:order-2">
-            <div className="bg-gray-800/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-gray-700 sticky top-4">
+            <div className="glass-effect-deck rounded-lg p-4 md:p-6 sticky top-24">
               <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white">Mon Deck</h2>
               
               <div className="mb-4">
@@ -639,7 +654,7 @@ export default function DeckBuilderPage() {
         </div>
       </div>
 
-      {/* Modal */}
+      {/* Modal with glass effect */}
       <CardModal
         card={selectedCard}
         isOpen={isModalOpen}

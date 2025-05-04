@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Plus, Edit, Play, ChevronRight } from 'lucide-react'
+import { Plus, Edit, Play, ChevronRight, Swords, Users, Scroll } from 'lucide-react'
 
 interface Card {
   id: string
@@ -82,16 +82,21 @@ export default function DecksPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500"></div>
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="relative">
+          <div className="w-16 h-16 bg-[url('/images/deck/haki-flash.png')] bg-contain bg-no-repeat animate-pulse"></div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <div className="w-8 h-8 border-t-2 border-yellow-400 rounded-full animate-spin"></div>
+          </div>
+        </div>
       </div>
     )
   }
 
   if (error) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100">
-        <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded shadow-lg">
+      <div className="min-h-screen flex items-center justify-center">
+        <div className="bg-red-900/20 backdrop-blur-sm border border-red-500/20 text-red-200 px-6 py-4 rounded-lg shadow-lg">
           <p>{error}</p>
         </div>
       </div>
@@ -99,83 +104,101 @@ export default function DecksPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800 p-4 md:p-8 text-white">
-      <div className="container mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center mb-6 md:mb-8 gap-4">
-          <h1 className="text-3xl md:text-4xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500">
-            Mes Decks
-          </h1>
-          <Link href="/deck-builder">
-            <Button className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 hover:from-red-700 hover:via-red-600 hover:to-orange-600 text-white px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2">
-              <Plus className="h-5 w-5" />
-              <span className="hidden md:inline">Créer un nouveau deck</span>
-              <span className="md:hidden">Nouveau deck</span>
-            </Button>
-          </Link>
-        </div>
-        
-        {decks.length === 0 ? (
-          <div className="bg-gray-800/80 rounded-lg shadow-xl p-6 md:p-8 text-center backdrop-blur-sm border border-gray-700">
-            <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white">Vous n'avez pas encore de deck</h2>
-            <p className="text-gray-400 mb-6">Commencez à créer votre premier deck pour jouer !</p>
+    <div className="container mx-auto px-4 py-8">
+      <div className="relative">
+        {/* En-tête avec effet de haki */}
+        <div className="mb-12 relative">
+          <div className="absolute -top-4 -left-4 w-32 h-32 bg-[url('/images/deck/haki-flash.png')] bg-contain bg-no-repeat opacity-40 animate-pulse"></div>
+          <div className="flex flex-col md:flex-row justify-between items-center gap-6 relative">
+            <h1 className="text-4xl md:text-5xl font-bold text-white relative z-10">
+              <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400">
+                Mes Decks
+              </span>
+            </h1>
             <Link href="/deck-builder">
-              <Button className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 hover:from-red-700 hover:via-red-600 hover:to-orange-600 text-white px-6 py-2 rounded-lg transition-all duration-300 hover:scale-105 hover:shadow-lg flex items-center gap-2 mx-auto">
-                <Plus className="h-5 w-5" />
-                Créer mon premier deck
+              <Button className="relative group overflow-hidden bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-500 hover:to-red-500 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,165,0,0.3)] transform">
+                <div className="absolute inset-0 bg-[url('/images/deck/explosion.png')] bg-cover opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                <Plus className="h-5 w-5 mr-2" />
+                <span className="relative z-10">Nouveau Deck</span>
               </Button>
             </Link>
           </div>
+        </div>
+
+        {decks.length === 0 ? (
+          <div className="relative overflow-hidden rounded-2xl backdrop-blur-sm border border-yellow-500/20 shadow-[0_0_30px_rgba(0,0,0,0.3)]">
+            <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 to-gray-800/90"></div>
+            <div className="relative p-8 md:p-12 text-center">
+              <div className="mb-6">
+                <Swords className="h-16 w-16 mx-auto text-yellow-500 animate-pulse" />
+              </div>
+              <h2 className="text-2xl md:text-3xl font-bold text-white mb-4">
+                Commencez votre aventure !
+              </h2>
+              <p className="text-gray-300 mb-8 text-lg">
+                Créez votre premier deck et partez à la conquête des mers !
+              </p>
+              <Link href="/deck-builder">
+                <Button className="relative group overflow-hidden bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-500 hover:to-red-500 text-white px-8 py-4 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,165,0,0.3)] transform">
+                  <div className="absolute inset-0 bg-[url('/images/deck/explosion.png')] bg-cover opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                  <Plus className="h-6 w-6 mr-2" />
+                  <span className="relative z-10 text-lg">Créer mon premier deck</span>
+                </Button>
+              </Link>
+            </div>
+          </div>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {decks.map((deck) => (
-              <Card key={deck.id} className="bg-gray-800/80 rounded-lg shadow-xl overflow-hidden backdrop-blur-sm border border-gray-700 hover:shadow-2xl transition-all duration-300 hover:scale-[1.02]">
-                <div className="p-4 md:p-6">
-                  <div className="flex justify-between items-start mb-4">
-                    <h2 className="text-xl md:text-2xl font-semibold text-white">{deck.name}</h2>
+              <Card key={deck.id} className="group relative overflow-hidden rounded-xl backdrop-blur-sm border border-yellow-500/10 hover:border-yellow-500/30 bg-gradient-to-b from-gray-900/90 to-gray-800/90 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,165,0,0.1)] transform hover:scale-[1.02]">
+                <div className="absolute inset-0 bg-[url('/images/deck/marineford-war.png')] bg-cover opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
+                <div className="relative p-6">
+                  <div className="flex justify-between items-start mb-6">
+                    <h2 className="text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300">
+                      {deck.name}
+                    </h2>
                     <div className="flex gap-2">
                       <Link href={`/deck-builder?deckId=${deck.id}`}>
-                        <Button variant="ghost" size="sm" className="h-8 w-8 p-0 bg-gray-700/50 hover:bg-gray-600 text-white">
+                        <Button variant="ghost" size="sm" className="h-9 w-9 rounded-lg bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-400">
                           <Edit className="h-4 w-4" />
                         </Button>
                       </Link>
                       <Link href={`/game?deckId=${deck.id}`}>
-                        <Button variant="ghost" size="sm" className="h-8 w-8 p-0 bg-red-600/50 hover:bg-red-500 text-white">
+                        <Button variant="ghost" size="sm" className="h-9 w-9 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400">
                           <Play className="h-4 w-4" />
                         </Button>
                       </Link>
                     </div>
                   </div>
-                  
+
                   {deck.description && (
-                    <p className="text-gray-400 text-sm mb-4 line-clamp-2">{deck.description}</p>
+                    <p className="text-gray-300 text-sm mb-6 line-clamp-2">{deck.description}</p>
                   )}
-                  
-                  <div className="grid grid-cols-2 gap-2 mb-4 text-sm">
-                    <div className="bg-gray-700/30 p-2 rounded-lg">
-                      <p className="text-gray-400">Cartes</p>
-                      <p className="text-white font-medium">{deck.cards.length}/50</p>
+
+                  <div className="grid grid-cols-2 gap-3 mb-6">
+                    <div className="bg-yellow-500/5 border border-yellow-500/10 p-3 rounded-lg">
+                      <div className="flex items-center gap-2 text-yellow-400 mb-1">
+                        <Users className="h-4 w-4" />
+                        <span className="text-sm font-medium">Leader</span>
+                      </div>
+                      <p className="text-lg font-bold text-white">{deck.cards.filter(card => card.type === 'LEADER').length}/1</p>
                     </div>
-                    <div className="bg-gray-700/30 p-2 rounded-lg">
-                      <p className="text-gray-400">Leader</p>
-                      <p className="text-white font-medium">{deck.cards.filter(card => card.type === 'LEADER').length}/1</p>
-                    </div>
-                    <div className="bg-gray-700/30 p-2 rounded-lg">
-                      <p className="text-gray-400">Personnages</p>
-                      <p className="text-white font-medium">{deck.cards.filter(card => card.type === 'CHARACTER').length}</p>
-                    </div>
-                    <div className="bg-gray-700/30 p-2 rounded-lg">
-                      <p className="text-gray-400">Événements</p>
-                      <p className="text-white font-medium">{deck.cards.filter(card => card.type === 'EVENT').length}</p>
+                    <div className="bg-yellow-500/5 border border-yellow-500/10 p-3 rounded-lg">
+                      <div className="flex items-center gap-2 text-yellow-400 mb-1">
+                        <Scroll className="h-4 w-4" />
+                        <span className="text-sm font-medium">Cartes</span>
+                      </div>
+                      <p className="text-lg font-bold text-white">{deck.cards.length}/50</p>
                     </div>
                   </div>
-                  
+
                   <div className="relative">
-                    <div className="flex -space-x-2 overflow-hidden">
-                      {deck.cards.slice(0, 6).map((card, index) => (
+                    <div className="flex -space-x-3 overflow-hidden">
+                      {deck.cards.slice(0, 5).map((card, index) => (
                         <div 
                           key={card.id} 
-                          className="relative w-12 h-16 border-2 border-gray-800 rounded-lg overflow-hidden"
-                          style={{ zIndex: 6 - index }}
+                          className="relative w-14 h-20 rounded-lg overflow-hidden border-2 border-gray-800 transform transition-transform duration-300 hover:scale-110 hover:z-10"
+                          style={{ zIndex: 5 - index }}
                         >
                           <Image
                             src={card.imageUrl}
@@ -183,11 +206,12 @@ export default function DecksPage() {
                             fill
                             className="object-cover"
                           />
+                          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                         </div>
                       ))}
-                      {deck.cards.length > 6 && (
-                        <div className="relative w-12 h-16 border-2 border-gray-800 rounded-lg bg-gray-700/50 flex items-center justify-center">
-                          <span className="text-xs font-bold text-white">+{deck.cards.length - 6}</span>
+                      {deck.cards.length > 5 && (
+                        <div className="relative w-14 h-20 flex items-center justify-center rounded-lg bg-yellow-500/10 border-2 border-yellow-500/20">
+                          <span className="text-sm font-bold text-yellow-400">+{deck.cards.length - 5}</span>
                         </div>
                       )}
                     </div>

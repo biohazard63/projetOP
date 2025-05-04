@@ -588,7 +588,7 @@ export default function CollectionPage() {
         {cards.map((card) => (
           <div
             key={card.id}
-            className={`group relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 cursor-pointer ${
+            className={`impel-down-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer ${
               showMissingCards && !card.isOwned ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
             }`}
             onClick={() => handleCardClick(card)}
@@ -599,53 +599,51 @@ export default function CollectionPage() {
               fill
               className="object-cover transition-transform duration-300 group-hover:scale-110"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120]/90 via-[#1B2A4A]/50 to-transparent" />
             
-            {/* Badge de rareté en haut à gauche */}
+            {/* Badge de rareté stylisé Impel Down */}
             <div className="absolute top-2 left-2">
-              <span className={`px-2 py-1 text-xs font-bold rounded-full ${
-                card.rarity === 'L' ? 'bg-yellow-500/90 text-yellow-100' :
-                card.rarity === 'SR' ? 'bg-purple-500/90 text-purple-100' :
-                card.rarity === 'SEC' ? 'bg-red-500/90 text-red-100' :
-                card.rarity === 'R' ? 'bg-blue-500/90 text-blue-100' :
-                'bg-gray-500/90 text-gray-100'
-              }`}>
+              <span className={`px-2 py-1 text-xs font-bold rounded-full border border-red-900/30 ${
+                card.rarity === 'L' ? 'bg-yellow-500/80 text-black' :
+                card.rarity === 'SR' ? 'bg-purple-500/80 text-white' :
+                card.rarity === 'SEC' ? 'bg-red-500/80 text-white' :
+                card.rarity === 'R' ? 'bg-blue-500/80 text-white' :
+                'bg-gray-500/80 text-white'
+              } shadow-[0_0_10px_rgba(255,0,0,0.3)]`}>
                 {card.rarity}
               </span>
             </div>
 
-            {/* Badge de coût en haut à droite */}
-            
-
-            {/* Badge de quantité en bas à droite */}
+            {/* Badge de quantité stylisé */}
             {card.quantity && card.quantity > 0 && (
               <div className="absolute bottom-2 right-2">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-red-500/90 text-white text-sm font-bold">
+                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-red-900/80 text-white text-sm font-bold border border-red-500/30 shadow-[0_0_10px_rgba(255,0,0,0.3)]">
                   x{card.quantity}
                 </div>
               </div>
             )}
 
-            {/* Icône de favori en bas à gauche */}
+            {/* Icône de favori stylisée */}
             {card.isFavorite && (
               <div className="absolute bottom-2 left-2">
-                <Heart className="w-6 h-6 text-red-500 fill-red-500 drop-shadow-lg" />
+                <Heart className="w-6 h-6 text-red-500 fill-red-500 drop-shadow-[0_0_5px_rgba(255,0,0,0.5)]" />
               </div>
             )}
 
-            {/* Nom de la carte en bas */}
-            <div className="absolute bottom-0 left-0 right-0 p-3">
-              <div className="flex items-center gap-2 mt-1">
-              <h3 className="text-white font-semibold text-sm truncate drop-shadow-lg">{card.name}</h3>
-
+            {/* Nom de la carte stylisé */}
+            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-[#0B1120] to-transparent">
+              <div className="flex items-center gap-2">
+                <h3 className="text-red-300 font-semibold text-sm truncate drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+                  {card.name}
+                </h3>
               </div>
             </div>
 
-            {/* Badge "Manquante" pour les cartes manquantes */}
+            {/* Badge "Recherché" pour les cartes manquantes */}
             {showMissingCards && !card.isOwned && (
               <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-red-500/90 text-white text-sm font-bold px-4 py-2 rounded-full shadow-lg">
-                  Manquante
+                <div className="bg-red-900/90 text-white text-sm font-bold px-4 py-2 rounded-full shadow-[0_0_20px_rgba(255,0,0,0.3)] border border-red-500/30">
+                  Recherché
                 </div>
               </div>
             )}
@@ -656,304 +654,296 @@ export default function CollectionPage() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 text-white p-4 relative overflow-hidden overflow-x-hidden">
-      <div className="container mx-auto max-w-7xl relative z-10">
-        <h1 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center bg-clip-text text-transparent bg-gradient-to-r from-red-500 via-orange-500 to-yellow-500">
-          Ma Collection
-        </h1>
-        
-        {/* Statistiques de collection */}
-        <div className="bg-gray-800/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-gray-700 mb-6">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="flex flex-col items-center justify-center p-4 bg-gray-700/50 rounded-lg">
-              <h3 className="text-lg font-semibold text-gray-300">Cartes possédées</h3>
-              <p className="text-3xl font-bold text-white">{cards.length}</p>
-            </div>
-            
-            <div className="flex flex-col items-center justify-center p-4 bg-gray-700/50 rounded-lg">
-              <h3 className="text-lg font-semibold text-gray-300">Cartes totales</h3>
-              <p className="text-3xl font-bold text-white">{allCards.length || 2250}</p>
-            </div>
-            
-            <div className="flex flex-col items-center justify-center p-4 bg-gray-700/50 rounded-lg">
-              <h3 className="text-lg font-semibold text-gray-300">Complétion</h3>
-              <div className="w-full max-w-xs mx-auto mt-2">
-                <div className="h-4 bg-gray-600 rounded-full overflow-hidden">
-                  <div 
-                    className="h-full bg-gradient-to-r from-blue-500 to-purple-500" 
-                    style={{ width: `${Math.round((cards.length / (allCards.length || 2250)) * 100)}%` }}
-                  ></div>
-                </div>
-                <p className="text-2xl font-bold text-white mt-1">
-                  {Math.round((cards.length / (allCards.length || 2250)) * 100)}%
-                </p>
+    <div className="container mx-auto max-w-7xl relative z-10 p-4">
+      <h1 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center">
+        <span className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
+          Prison de Collection - Niveau 6
+        </span>
+      </h1>
+      
+      {/* Statistiques avec thème prison */}
+      <div className="bg-[#1B2A4A]/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-red-900/30 mb-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="flex flex-col items-center justify-center p-4 bg-[#0B1120]/50 rounded-lg border border-red-900/20">
+            <h3 className="text-lg font-semibold text-red-400">Prisonniers Capturés</h3>
+            <p className="text-3xl font-bold text-red-500">{cards.length}</p>
+          </div>
+          
+          <div className="flex flex-col items-center justify-center p-4 bg-[#0B1120]/50 rounded-lg border border-red-900/20">
+            <h3 className="text-lg font-semibold text-red-400">Criminels Recherchés</h3>
+            <p className="text-3xl font-bold text-red-500">{allCards.length || 2250}</p>
+          </div>
+          
+          <div className="flex flex-col items-center justify-center p-4 bg-[#0B1120]/50 rounded-lg border border-red-900/20">
+            <h3 className="text-lg font-semibold text-red-400">Taux de Capture</h3>
+            <div className="w-full max-w-xs mx-auto mt-2">
+              <div className="h-4 bg-[#0B1120] rounded-full overflow-hidden border border-red-900/20">
+                <div 
+                  className="h-full bg-gradient-to-r from-red-700 to-red-500" 
+                  style={{ width: `${Math.round((cards.length / (allCards.length || 2250)) * 100)}%` }}
+                ></div>
               </div>
+              <p className="text-2xl font-bold text-red-500 mt-1">
+                {Math.round((cards.length / (allCards.length || 2250)) * 100)}%
+              </p>
             </div>
           </div>
         </div>
+      </div>
+      
+      <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
+        <div className="md:col-span-5">
+          <div className="relative">
+            <Input
+              type="text"
+              placeholder="Rechercher un prisonnier..."
+              value={filters.search}
+              onChange={(e) => setFilters({ ...filters, search: e.target.value })}
+              className="w-full pl-10 bg-[#0B1120]/50 border-red-900/30 text-white placeholder-red-200/50 focus:ring-red-500 focus:border-red-500"
+            />
+            <Search className="h-5 w-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-red-500" />
+          </div>
+        </div>
         
+        <Select
+          value={filters.type}
+          onValueChange={(value) => setFilters({ ...filters, type: value })}
+        >
+          <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
+            <SelectValue placeholder="Type de carte" />
+          </SelectTrigger>
+          <SelectContent className="bg-gray-800 border-gray-700">
+            {cardTypes.map((type) => (
+              <SelectItem key={type.value} value={type.value} className="text-white hover:bg-gray-700">
+                {type.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+
+        <Select
+          value={filters.color}
+          onValueChange={(value) => setFilters({ ...filters, color: value })}
+        >
+          <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
+            <SelectValue placeholder="Couleur" />
+          </SelectTrigger>
+          <SelectContent className="bg-gray-800 border-gray-700">
+            {cardColors.map((color) => (
+              <SelectItem key={color.value} value={color.value} className="text-white hover:bg-gray-700">
+                {color.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+
+        <Select
+          value={filters.rarity}
+          onValueChange={(value) => setFilters({ ...filters, rarity: value })}
+        >
+          <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
+            <SelectValue placeholder="Rareté" />
+          </SelectTrigger>
+          <SelectContent className="bg-gray-800 border-gray-700">
+            {cardRarities.map((rarity) => (
+              <SelectItem key={rarity.value} value={rarity.value} className="text-white hover:bg-gray-700">
+                {rarity.label}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+
+        <Select
+          value={filters.set}
+          onValueChange={(value: CardSet) => setFilters(prev => ({ ...prev, set: value }))}
+        >
+          <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
+            <SelectValue placeholder="Sélectionner un set" />
+          </SelectTrigger>
+          <SelectContent className="bg-gray-800 border-gray-700">
+            {cardSets.map((set) => (
+              <SelectItem key={set} value={set} className="text-white hover:bg-gray-700">
+                {set === 'all' ? 'Tous les sets' : set}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
         
+        {/* Nouveau filtre pour afficher toutes les cartes, seulement les cartes possédées ou seulement les cartes manquantes */}
+        {showMissingCards && (
+          <Select
+            value={filters.showOnly || 'all'}
+            onValueChange={(value) => setFilters(prev => ({ ...prev, showOnly: value }))}
+          >
+            <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
+              <SelectValue placeholder="Filtrer par statut" />
+            </SelectTrigger>
+            <SelectContent className="bg-gray-800 border-gray-700">
+              <SelectItem value="all" className="text-white hover:bg-gray-700">
+                Toutes les cartes
+              </SelectItem>
+              <SelectItem value="owned" className="text-white hover:bg-gray-700">
+                Cartes possédées
+              </SelectItem>
+              <SelectItem value="missing" className="text-white hover:bg-gray-700">
+                Cartes manquantes
+              </SelectItem>
+            </SelectContent>
+          </Select>
+        )}
         
-        <div className="bg-gray-800/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-gray-700 mb-6">
-          <p className="text-gray-300 text-sm md:text-base">
-            Utilisez les filtres ci-dessous pour trouver des cartes spécifiques dans votre collection. Vous pouvez filtrer par type, couleur, rareté et set.
+        {/* Ajouter le filtre pour les favoris */}
+        <div className="flex items-center gap-2">
+          <label className="flex items-center gap-2 cursor-pointer">
+            <input
+              type="checkbox"
+              checked={filters.favoritesOnly}
+              onChange={(e) => setFilters({ ...filters, favoritesOnly: e.target.checked })}
+              className="w-4 h-4 rounded border-gray-600 bg-gray-700/50 text-red-500 focus:ring-red-500"
+            />
+            <span className="text-sm text-gray-300">Afficher uniquement les favoris</span>
+          </label>
+        </div>
+      </div>
+      <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
+        <div className="flex items-center gap-2">
+          <Button 
+            onClick={() => setShowMissingCards(!showMissingCards)}
+            className={`${showMissingCards ? 'bg-red-600 hover:bg-red-700' : 'bg-gray-700 hover:bg-gray-600'} text-white`}
+          >
+            {showMissingCards ? 'Voir ma collection' : 'Voir toutes les cartes'}
+          </Button>
+          {showMissingCards && (
+            <div className="flex items-center gap-2">
+              <span className="text-sm text-gray-300">
+                {missingCards.length} cartes manquantes sur {allCards.length} cartes totales
+                ({Math.round((missingCards.length / allCards.length) * 100)}% manquantes)
+              </span>
+            </div>
+          )}
+        </div>
+        <div className="flex items-center gap-2">
+          <span className="text-sm text-gray-300">
+            {showMissingCards ? `${allCards.length} cartes au total` : `${cards.length} cartes dans ma collection`}
+          </span>
+        </div>
+      </div>
+      
+      {showMissingCards && missingCards.length === 0 && allCards.length > 0 && (
+        <div className="bg-gradient-to-r from-green-900/80 to-emerald-900/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-green-700 mb-6 text-center">
+          <h2 className="text-2xl font-bold text-green-400 mb-2">Félicitations !</h2>
+          <p className="text-gray-200">
+            Vous avez toutes les cartes disponibles dans votre collection ! 
+            Votre collection est complète à 100%.
           </p>
         </div>
-        
-        <div className="grid grid-cols-1 md:grid-cols-5 gap-4 mb-6">
-          <div className="md:col-span-5">
-            <div className="relative">
-              <Input
-                type="text"
-                placeholder="Rechercher une carte par nom..."
-                value={filters.search}
-                onChange={(e) => setFilters({ ...filters, search: e.target.value })}
-                className="w-full pl-10 bg-gray-700/50 border-gray-600 text-white placeholder-gray-400 focus:ring-red-500 focus:border-red-500"
-              />
-              <Search className="h-5 w-5 absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-            </div>
-          </div>
-          
-          <Select
-            value={filters.type}
-            onValueChange={(value) => setFilters({ ...filters, type: value })}
-          >
-            <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
-              <SelectValue placeholder="Type de carte" />
-            </SelectTrigger>
-            <SelectContent className="bg-gray-800 border-gray-700">
-              {cardTypes.map((type) => (
-                <SelectItem key={type.value} value={type.value} className="text-white hover:bg-gray-700">
-                  {type.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
+      )}
 
+      <div className="flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
+        <p className="text-gray-400 text-sm">
+          Affichage de {indexOfFirstCard + 1}-{Math.min(indexOfLastCard, filteredAndSortedCards.length)} sur {filteredAndSortedCards.length} cartes
+        </p>
+        <div className="flex items-center gap-2">
+          <span className="text-gray-400 text-sm">Trier par:</span>
           <Select
-            value={filters.color}
-            onValueChange={(value) => setFilters({ ...filters, color: value })}
+            value={sortBy}
+            onValueChange={(value) => setSortBy(value)}
           >
-            <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
-              <SelectValue placeholder="Couleur" />
+            <SelectTrigger className="w-[180px] bg-gray-700/50 border-gray-600 text-white">
+              <SelectValue placeholder="Trier par..." />
             </SelectTrigger>
             <SelectContent className="bg-gray-800 border-gray-700">
-              {cardColors.map((color) => (
-                <SelectItem key={color.value} value={color.value} className="text-white hover:bg-gray-700">
-                  {color.label}
+              {sortOptions.map((option) => (
+                <SelectItem 
+                  key={`${option.value}-${option.order}`} 
+                  value={`${option.value}-${option.order}`}
+                  className="text-white hover:bg-gray-700"
+                >
+                  {option.label}
                 </SelectItem>
               ))}
             </SelectContent>
           </Select>
-
-          <Select
-            value={filters.rarity}
-            onValueChange={(value) => setFilters({ ...filters, rarity: value })}
-          >
-            <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
-              <SelectValue placeholder="Rareté" />
-            </SelectTrigger>
-            <SelectContent className="bg-gray-800 border-gray-700">
-              {cardRarities.map((rarity) => (
-                <SelectItem key={rarity.value} value={rarity.value} className="text-white hover:bg-gray-700">
-                  {rarity.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-
-          <Select
-            value={filters.set}
-            onValueChange={(value: CardSet) => setFilters(prev => ({ ...prev, set: value }))}
-          >
-            <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
-              <SelectValue placeholder="Sélectionner un set" />
-            </SelectTrigger>
-            <SelectContent className="bg-gray-800 border-gray-700">
-              {cardSets.map((set) => (
-                <SelectItem key={set} value={set} className="text-white hover:bg-gray-700">
-                  {set === 'all' ? 'Tous les sets' : set}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </Select>
-          
-          {/* Nouveau filtre pour afficher toutes les cartes, seulement les cartes possédées ou seulement les cartes manquantes */}
-          {showMissingCards && (
-            <Select
-              value={filters.showOnly || 'all'}
-              onValueChange={(value) => setFilters(prev => ({ ...prev, showOnly: value }))}
-            >
-              <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
-                <SelectValue placeholder="Filtrer par statut" />
-              </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-700">
-                <SelectItem value="all" className="text-white hover:bg-gray-700">
-                  Toutes les cartes
-                </SelectItem>
-                <SelectItem value="owned" className="text-white hover:bg-gray-700">
-                  Cartes possédées
-                </SelectItem>
-                <SelectItem value="missing" className="text-white hover:bg-gray-700">
-                  Cartes manquantes
-                </SelectItem>
-              </SelectContent>
-            </Select>
-          )}
-          
-          {/* Ajouter le filtre pour les favoris */}
-          <div className="flex items-center gap-2">
-            <label className="flex items-center gap-2 cursor-pointer">
-              <input
-                type="checkbox"
-                checked={filters.favoritesOnly}
-                onChange={(e) => setFilters({ ...filters, favoritesOnly: e.target.checked })}
-                className="w-4 h-4 rounded border-gray-600 bg-gray-700/50 text-red-500 focus:ring-red-500"
-              />
-              <span className="text-sm text-gray-300">Afficher uniquement les favoris</span>
-            </label>
-          </div>
         </div>
-        <div className="flex flex-col md:flex-row justify-between items-center mb-6 gap-4">
-          <div className="flex items-center gap-2">
-            <Button 
-              onClick={() => setShowMissingCards(!showMissingCards)}
-              className={`${showMissingCards ? 'bg-red-600 hover:bg-red-700' : 'bg-gray-700 hover:bg-gray-600'} text-white`}
-            >
-              {showMissingCards ? 'Voir ma collection' : 'Voir toutes les cartes'}
-            </Button>
-            {showMissingCards && (
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-300">
-                  {missingCards.length} cartes manquantes sur {allCards.length} cartes totales
-                  ({Math.round((missingCards.length / allCards.length) * 100)}% manquantes)
-                </span>
-              </div>
+      </div>
+
+      <CardGrid cards={currentCards} />
+
+      {/* Message d'aide */}
+      {currentCards.length > 0 && (
+        <div className="text-center py-4 mt-4">
+          <p className="text-gray-400 text-sm">Cliquez sur une carte pour voir plus de détails.</p>
+        </div>
+      )}
+
+      {/* Pagination */}
+      {filteredAndSortedCards.length > cardsPerPage && (
+        <div className="flex justify-center mt-8 gap-2">
+          <Button
+            onClick={() => handlePageChange(currentPage - 1)}
+            disabled={currentPage === 1}
+            className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <ChevronLeft className="h-4 w-4" />
+          </Button>
+          
+          <div className="flex gap-2">
+            {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
+              let pageNumber;
+              if (totalPages <= 5) {
+                pageNumber = i + 1;
+              } else if (currentPage <= 3) {
+                pageNumber = i + 1;
+              } else if (currentPage >= totalPages - 2) {
+                pageNumber = totalPages - 4 + i;
+              } else {
+                pageNumber = currentPage - 2 + i;
+              }
+
+              return (
+                <Button
+                  key={pageNumber}
+                  onClick={() => handlePageChange(pageNumber)}
+                  className={`${
+                    currentPage === pageNumber 
+                      ? "bg-red-600 hover:bg-red-700 text-white" 
+                      : "bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600"
+                  }`}
+                >
+                  {pageNumber}
+                </Button>
+              );
+            })}
+            
+            {totalPages > 5 && currentPage < totalPages - 2 && (
+              <>
+                <span className="px-2 py-2 text-gray-400">...</span>
+                <Button
+                  onClick={() => handlePageChange(totalPages)}
+                  className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600"
+                >
+                  {totalPages}
+                </Button>
+              </>
             )}
           </div>
-          <div className="flex items-center gap-2">
-            <span className="text-sm text-gray-300">
-              {showMissingCards ? `${allCards.length} cartes au total` : `${cards.length} cartes dans ma collection`}
-            </span>
-          </div>
+
+          <Button
+            onClick={() => handlePageChange(currentPage + 1)}
+            disabled={currentPage === totalPages}
+            className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <ChevronRight className="h-4 w-4" />
+          </Button>
         </div>
-        
-        {showMissingCards && missingCards.length === 0 && allCards.length > 0 && (
-          <div className="bg-gradient-to-r from-green-900/80 to-emerald-900/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-green-700 mb-6 text-center">
-            <h2 className="text-2xl font-bold text-green-400 mb-2">Félicitations !</h2>
-            <p className="text-gray-200">
-              Vous avez toutes les cartes disponibles dans votre collection ! 
-              Votre collection est complète à 100%.
-            </p>
-          </div>
-        )}
+      )}
 
-        <div className="flex flex-col md:flex-row justify-between items-center mb-4 gap-4">
-          <p className="text-gray-400 text-sm">
-            Affichage de {indexOfFirstCard + 1}-{Math.min(indexOfLastCard, filteredAndSortedCards.length)} sur {filteredAndSortedCards.length} cartes
-          </p>
-          <div className="flex items-center gap-2">
-            <span className="text-gray-400 text-sm">Trier par:</span>
-            <Select
-              value={sortBy}
-              onValueChange={(value) => setSortBy(value)}
-            >
-              <SelectTrigger className="w-[180px] bg-gray-700/50 border-gray-600 text-white">
-                <SelectValue placeholder="Trier par..." />
-              </SelectTrigger>
-              <SelectContent className="bg-gray-800 border-gray-700">
-                {sortOptions.map((option) => (
-                  <SelectItem 
-                    key={`${option.value}-${option.order}`} 
-                    value={`${option.value}-${option.order}`}
-                    className="text-white hover:bg-gray-700"
-                  >
-                    {option.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
-          </div>
-        </div>
-
-        <CardGrid cards={currentCards} />
-
-        {/* Message d'aide */}
-        {currentCards.length > 0 && (
-          <div className="text-center py-4 mt-4">
-            <p className="text-gray-400 text-sm">Cliquez sur une carte pour voir plus de détails.</p>
-          </div>
-        )}
-
-        {/* Pagination */}
-        {filteredAndSortedCards.length > cardsPerPage && (
-          <div className="flex justify-center mt-8 gap-2">
-            <Button
-              onClick={() => handlePageChange(currentPage - 1)}
-              disabled={currentPage === 1}
-              className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <ChevronLeft className="h-4 w-4" />
-            </Button>
-            
-            <div className="flex gap-2">
-              {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-                let pageNumber;
-                if (totalPages <= 5) {
-                  pageNumber = i + 1;
-                } else if (currentPage <= 3) {
-                  pageNumber = i + 1;
-                } else if (currentPage >= totalPages - 2) {
-                  pageNumber = totalPages - 4 + i;
-                } else {
-                  pageNumber = currentPage - 2 + i;
-                }
-
-                return (
-                  <Button
-                    key={pageNumber}
-                    onClick={() => handlePageChange(pageNumber)}
-                    className={`${
-                      currentPage === pageNumber 
-                        ? "bg-red-600 hover:bg-red-700 text-white" 
-                        : "bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600"
-                    }`}
-                  >
-                    {pageNumber}
-                  </Button>
-                );
-              })}
-              
-              {totalPages > 5 && currentPage < totalPages - 2 && (
-                <>
-                  <span className="px-2 py-2 text-gray-400">...</span>
-                  <Button
-                    onClick={() => handlePageChange(totalPages)}
-                    className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600"
-                  >
-                    {totalPages}
-                  </Button>
-                </>
-              )}
-            </div>
-
-            <Button
-              onClick={() => handlePageChange(currentPage + 1)}
-              disabled={currentPage === totalPages}
-              className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
-            >
-              <ChevronRight className="h-4 w-4" />
-            </Button>
-          </div>
-        )}
-
-        <CardModal
-          card={selectedCard}
-          isOpen={isModalOpen}
-          onClose={() => setIsModalOpen(false)}
-          onToggleFavorite={handleToggleFavorite}
-        />
-      </div>
+      <CardModal
+        card={selectedCard}
+        isOpen={isModalOpen}
+        onClose={() => setIsModalOpen(false)}
+        onToggleFavorite={handleToggleFavorite}
+      />
     </div>
   )
 } 
