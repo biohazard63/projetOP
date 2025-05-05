@@ -51,14 +51,12 @@ export default function BoosterOpeningLayout({
         </div>
 
         {/* Particules dorées */}
-        <div className="fixed inset-0 top-16 pointer-events-none">
-          <div className="treasure-particles"></div>
-        </div>
+       
 
         {/* Contenu principal avec effet de verre */}
         <div className="relative z-10">
-          <div className="container mx-auto px-4 py-8">
-            <div className="glass-effect rounded-xl p-6">
+          <div className="w-[95%] md:w-[90%] mx-auto px-2 sm:px-4 py-4 sm:py-8">
+            <div className="rounded-xl">
               {children}
             </div>
           </div>

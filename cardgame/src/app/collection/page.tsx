@@ -654,7 +654,7 @@ export default function CollectionPage() {
   }
 
   return (
-    <div className="container mx-auto max-w-7xl relative z-10 p-4">
+    <div className="container mx-auto max-w-7xl relative z-10 p-4 pt-20">
       <h1 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center">
         <span className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
           Prison de Collection - Niveau 6

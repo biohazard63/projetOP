@@ -170,7 +170,7 @@ export default function CardReveal({
           rotateY: isRevealed ? 180 : 0,
           cursor: isDragging ? 'grabbing' : 'pointer',
           touchAction: 'pan-y pinch-zoom',
-          marginBottom: '12rem'
+          marginBottom: '2rem'
         }}
         animate={controls}
         className="relative"

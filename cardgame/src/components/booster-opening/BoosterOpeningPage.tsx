@@ -768,9 +768,9 @@ export default function BoosterOpeningPage() {
   }
 
   return (
-    <div className="min-h-screen relative">
-      {/* Contenu principal avec effet de verre dépoli */}
-      <div className="relative z-10 min-h-screen pt-16">
+    <div className="min-h-screen relative w-full">
+      {/* Contenu principal */}
+      <div className="relative z-10 min-h-screen pt-16 w-full">
         <Toaster position="top-center" />
         
         {/* Animations existantes */}
@@ -805,11 +805,11 @@ export default function BoosterOpeningPage() {
         )}
         
         {/* En-tête avec effet de verre dépoli */}
-        <div className="max-w-6xl mx-auto p-4 sm:p-6 md:p-8">
+        <div className="w-[95%] md:w-[90%] mx-auto p-2 sm:p-4 md:p-6">
           <motion.h1 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-6 text-center"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center"
           >
             <span className="bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-glow">
               Ouverture de Trésor
@@ -821,7 +821,7 @@ export default function BoosterOpeningPage() {
             <motion.div
               initial={{ opacity: 0, y: -20 }}
               animate={{ opacity: 1, y: 0 }}
-              className="flex flex-col md:flex-row items-center justify-center gap-8 mb-8"
+              className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-8 mb-6 sm:mb-8"
             >
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-amber-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
@@ -834,7 +834,7 @@ export default function BoosterOpeningPage() {
                 </div>
               </div>
 
-              <div className="flex flex-col gap-6 max-w-md">
+              <div className="flex flex-col gap-4 sm:gap-6 max-w-md">
                 <div className="text-center md:text-left">
                   <h2 className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent mb-2">
                     {sets.find(set => set.id === selectedSet)?.name}
@@ -844,7 +844,7 @@ export default function BoosterOpeningPage() {
                   </p>
                 </div>
 
-                <div className="bg-white/5 backdrop-blur-md rounded-xl p-6 border border-white/10">
+                <div className="bg-white/5 rounded-xl p-4 sm:p-6 border border-white/10">
                   <h3 className="text-lg font-bold text-white/90 mb-4">Contenu possible :</h3>
                   {setRules && setRules.boosterRules && (
                     <div className="grid grid-cols-2 gap-4">
@@ -923,12 +923,25 @@ export default function BoosterOpeningPage() {
           </div>
         </div>
 
-        {/* Zone d'affichage des cartes avec effet de verre dépoli */}
+        {/* Zone d'affichage des cartes */}
         {booster.length > 0 && currentCardIndex >= 0 && (
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="relative backdrop-blur-md bg-white/5 rounded-2xl p-6 border border-white/10 shadow-xl">
-              {/* Navigation */}
-              <div className="flex justify-between items-center mb-6">
+          <div className="w-[90%] sm:max-w-6xl mx-auto px-2 sm:px-4">
+            <div className="relative rounded-2xl p-3 sm:p-6 border border-white/10 shadow-xl">
+              {/* Carte actuelle */}
+              <CardReveal
+                card={booster[currentCardIndex]}
+                isNewCard={isNewCard}
+                onComplete={() => {
+                  setIsRevealing(false)
+                  checkRarityAndPlayEffect(booster[currentCardIndex])
+                }}
+                onCardClick={handleCardClick}
+                onDragStart={handleDragStart}
+                onDrag={handleDrag}
+                onDragEnd={handleDragEnd}
+              />
+                {/* Navigation */}
+          <div className="flex justify-between items-center mb-6">
                 {currentCardIndex > 0 && (
                   <button
                     onClick={() => handleArrowClick('prev')}
@@ -955,23 +968,10 @@ export default function BoosterOpeningPage() {
                   </button>
                 )}
               </div>
-
-              {/* Carte actuelle */}
-              <CardReveal
-                card={booster[currentCardIndex]}
-                isNewCard={isNewCard}
-                onComplete={() => {
-                  setIsRevealing(false)
-                  checkRarityAndPlayEffect(booster[currentCardIndex])
-                }}
-                onCardClick={handleCardClick}
-                onDragStart={handleDragStart}
-                onDrag={handleDrag}
-                onDragEnd={handleDragEnd}
-              />
             </div>
           </div>
         )}
+        
 
         {/* Modal de sélection des boosters */}
         <AnimatePresence>
@@ -980,7 +980,7 @@ export default function BoosterOpeningPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/90 backdrop-blur-md z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
               onClick={() => setShowBoosterModal(false)}
             >
               {/* Éléments décoratifs d'arrière-plan */}
