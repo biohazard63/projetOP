@@ -1002,34 +1002,34 @@ export default function BoosterOpeningPage() {
                 initial={{ scale: 0.9, opacity: 0, y: 20 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                className="bg-gradient-to-b from-blue-950/90 via-blue-900/90 to-indigo-950/90 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.3)] max-w-5xl w-full max-h-[85vh] overflow-y-auto border border-yellow-500/20"
+                className="bg-gradient-to-b from-blue-950/90 via-blue-900/90 to-indigo-950/90 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.3)] w-[95%] sm:max-w-5xl max-h-[90vh] overflow-y-auto border border-yellow-500/20"
                 onClick={e => e.stopPropagation()}
               >
                 {/* En-tête de la modale */}
-                <div className="relative p-6 border-b border-yellow-500/20">
+                <div className="relative p-4 sm:p-6 border-b border-yellow-500/20">
                   <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center gap-2 sm:gap-4">
                       <img 
                         src="/images/treasure-chest.png" 
                         alt="Trésor" 
-                        className="w-12 h-12 animate-float"
+                        className="w-8 h-8 sm:w-12 sm:h-12 animate-float"
                       />
-                      <h2 className="text-3xl font-bold bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
+                      <h2 className="text-xl sm:text-3xl font-bold bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
                         Choisissez votre Trésor
                       </h2>
                     </div>
                     <button
                       onClick={() => setShowBoosterModal(false)}
-                      className="p-2 hover:bg-white/10 rounded-full transition-all duration-300 hover:rotate-90 hover:scale-110"
+                      className="p-1 sm:p-2 hover:bg-white/10 rounded-full transition-all duration-300 hover:rotate-90 hover:scale-110"
                     >
-                      <X className="w-8 h-8 text-yellow-500" />
+                      <X className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-500" />
                     </button>
                   </div>
                 </div>
 
                 {/* Grille des boosters */}
-                <div className="p-8">
-                  <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-8">
+                <div className="p-4 sm:p-6 md:p-8">
+                  <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
                     {sets.map((set) => (
                       <motion.div
                         key={set.id}
@@ -1048,8 +1048,8 @@ export default function BoosterOpeningPage() {
                         whileTap={{ scale: 0.95 }}
                       >
                         {/* Étiquette du nom */}
-                        <div className="absolute -top-4 left-0 right-0 text-center z-10">
-                          <span className="inline-block text-white text-sm font-bold px-4 py-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg transform transition-transform group-hover:scale-110">
+                        <div className="absolute -top-3 sm:-top-4 left-0 right-0 text-center z-10">
+                          <span className="inline-block text-white text-xs sm:text-sm font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg transform transition-transform group-hover:scale-110">
                             {set.name}
                           </span>
                         </div>
