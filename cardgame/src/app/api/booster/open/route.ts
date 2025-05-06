@@ -193,10 +193,10 @@ async function generateBooster(setRules: any) {
 
     const random = Math.random();
     switch (altLevel) {
-      case 1: // _p1 - 5% de chance
+      case 1: // _p1 - 15% de chance
+        return random < 0.15;
+      case 2: // _p2 - 5% de chance
         return random < 0.05;
-      case 2: // _p2 - 3% de chance
-        return random < 0.03;
       case 3: // _p3 - 1% de chance
         return random < 0.01;
       default: // _p4 et plus - 0.5% de chance
