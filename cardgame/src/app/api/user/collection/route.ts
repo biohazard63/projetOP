@@ -15,7 +15,8 @@ export async function GET() {
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
+      where: { email: session.user.email.toLowerCase() },
+      select: { id: true },
     })
 
     if (!user) {
@@ -70,7 +71,8 @@ export async function POST(request: Request) {
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
+      where: { email: session.user.email.toLowerCase() },
+      select: { id: true },
     })
 
     if (!user) {
@@ -80,39 +82,18 @@ export async function POST(request: Request) {
       }, { status: 404 })
     }
 
-    // Ajouter les cartes à la collection de l'utilisateur via UserCard
-    for (const cardId of cardIds) {
-      // Vérifier si l'utilisateur a déjà cette carte
-      const existingUserCard = await prisma.userCard.findUnique({
-        where: {
-          userId_cardId: {
-            userId: user.id,
-            cardId: cardId
-          }
-        }
-      })
-
-      if (existingUserCard) {
-        // Incrémenter la quantité si l'utilisateur a déjà cette carte
-        await prisma.userCard.update({
-          where: {
-            id: existingUserCard.id
-          },
-          data: {
-            quantity: existingUserCard.quantity + 1
-          }
+    // Upsert transactionnel pour éviter les doublons
+    const counts = new Map<string, number>()
+    for (const id of cardIds as string[]) counts.set(id, (counts.get(id) || 0) + 1)
+    await prisma.$transaction(
+      Array.from(counts.entries()).map(([cardId, qty]) =>
+        prisma.userCard.upsert({
+          where: { userId_cardId: { userId: user.id, cardId } },
+          update: { quantity: { increment: qty } },
+          create: { userId: user.id, cardId, quantity: qty },
         })
-      } else {
-        // Créer une nouvelle entrée UserCard
-        await prisma.userCard.create({
-          data: {
-            userId: user.id,
-            cardId: cardId,
-            quantity: 1
-          }
-        })
-      }
-    }
+      )
+    )
 
     return NextResponse.json({
       success: true,

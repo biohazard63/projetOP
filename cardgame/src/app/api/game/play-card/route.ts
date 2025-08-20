@@ -25,7 +25,8 @@ export async function POST(request: Request) {
 
     // Récupérer la carte
     const card = await prisma.card.findUnique({
-      where: { id: cardId }
+      where: { id: cardId },
+      select: { id: true, name: true, type: true, color: true, cost: true, power: true, imageUrl: true }
     })
 
     if (!card) {

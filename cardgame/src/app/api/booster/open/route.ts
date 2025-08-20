@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import type { Card } from '@prisma/client'
 
 export async function POST(request: Request) {
   try {
@@ -29,11 +30,11 @@ export async function POST(request: Request) {
     // Récupérer les règles du set
     console.log(`[BOOSTER-OPEN] Récupération des règles pour le set ${setCode}`);
     const setRules = await prisma.setRules.findUnique({
-      where: { code: setCode }
+      where: { code: String(setCode).toUpperCase() }
     })
 
     // Déclarer la variable cards en dehors du bloc conditionnel
-    let cards: any[] = [];
+    let cards: Card[] = []
 
     if (!setRules) {
       console.log(`[BOOSTER-OPEN] Set ${setCode} non trouvé dans la base de données, utilisation des règles par défaut`);
@@ -74,7 +75,7 @@ export async function POST(request: Request) {
       
       // Générer un booster selon les règles par défaut
       console.log(`[BOOSTER-OPEN] Génération du booster pour le set ${setCode} avec les règles par défaut`);
-      cards = await generateBooster(defaultRules);
+      cards = await generateBooster(defaultRules)
       console.log(`[BOOSTER-OPEN] Booster généré avec ${cards.length} cartes`);
 
     } else {
@@ -82,13 +83,14 @@ export async function POST(request: Request) {
   
       // Générer un booster selon les règles
       console.log(`[BOOSTER-OPEN] Génération du booster pour le set ${setCode}`);
-      cards = await generateBooster(setRules);
+      cards = await generateBooster(setRules as MinimalSetRules)
       console.log(`[BOOSTER-OPEN] Booster généré avec ${cards.length} cartes`);
     }
 
     // Vérifier si l'utilisateur a déjà ces cartes
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
+      where: { email: session.user.email.toLowerCase() },
+      select: { id: true }
     })
 
     if (!user) {
@@ -136,7 +138,9 @@ function normalizeSetCode(code: string): string {
   return code.replace(/[-\s]/g, '').toUpperCase();
 }
 
-async function generateBooster(setRules: any) {
+type MinimalSetRules = { code: string }
+
+async function generateBooster(setRules: MinimalSetRules): Promise<Card[]> {
   console.log('[BOOSTER-GEN] Début de la génération du booster');
   
   // Normaliser le code du set
@@ -180,13 +184,14 @@ async function generateBooster(setRules: any) {
   });
 
   // Fonction pour vérifier si une carte est une alternative et obtenir son niveau
-  const getAltLevel = (cardId: string) => {
-    const match = cardId.match(/_p(\d+)$/);
-    return match ? parseInt(match[1]) : 0;
-  };
+  const getAltLevel = (cardId: string): number => {
+    const regex = /_p(\d+)$/
+    const match = regex.exec(cardId)
+    return match ? parseInt(match[1]!, 10) : 0
+  }
 
   // Fonction pour appliquer les taux de drop des alternatives
-  const shouldIncludeAlt = (cardId: string) => {
+  const shouldIncludeAlt = (cardId: string): boolean => {
     const altLevel = getAltLevel(cardId);
     if (altLevel === 0) return true; // Carte normale
 
@@ -211,7 +216,7 @@ async function generateBooster(setRules: any) {
   console.log('[BOOSTER-GEN] Codes de set trouvés:', [...new Set(filteredCards.map(card => card.setCode))]);
   
   // Grouper les cartes par rareté
-  const cardsByRarity: Record<string, any[]> = {};
+  const cardsByRarity: Record<string, Card[]> = {}
   filteredCards.forEach(card => {
     if (!cardsByRarity[card.rarity]) {
       cardsByRarity[card.rarity] = [];
@@ -223,7 +228,7 @@ async function generateBooster(setRules: any) {
     Object.keys(cardsByRarity).map(rarity => `${rarity}: ${cardsByRarity[rarity].length}`));
   
   // Initialiser le booster avec 12 positions vides
-  const booster: any[] = new Array(12).fill(null);
+  const booster: Array<Card | null> = new Array(12).fill(null)
   
   // Vérifier s'il y a des cartes très rares (L, SEC, SP CARD) disponibles
   const hasVeryRareCards = ['L', 'SEC', 'SP CARD'].some(rarity => 
@@ -406,5 +411,5 @@ async function generateBooster(setRules: any) {
     }
   });
   
-  return booster;
+  return booster.filter((c): c is Card => c !== null)
 } 

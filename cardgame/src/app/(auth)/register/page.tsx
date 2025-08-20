@@ -1,14 +1,17 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, useTransition } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { motion } from 'framer-motion'
+import { Input } from '@/components/ui/input'
 
 export default function RegisterPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const callbackUrl = searchParams.get('callbackUrl') || '/home'
   const [error, setError] = useState<string | null>(null)
-  const [isLoading, setIsLoading] = useState(false)
+  const [isPending, startTransition] = useTransition()
   const [passwordStrength, setPasswordStrength] = useState(0)
 
   // Fonction de validation d'email
@@ -43,32 +46,28 @@ export default function RegisterPage() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault()
     setError(null)
-    setIsLoading(true)
 
     const formData = new FormData(e.currentTarget)
-    const name = formData.get('name') as string
-    const email = formData.get('email') as string
+    const name = (formData.get('name') as string).trim()
+    const email = (formData.get('email') as string).trim().toLowerCase()
     const password = formData.get('password') as string
     const confirmPassword = formData.get('confirmPassword') as string
 
     // Validation du nom
     if (name.length < 2) {
       setError('Le nom doit contenir au moins 2 caractères')
-      setIsLoading(false)
       return
     }
 
     // Validation de l'email
     if (!isValidEmail(email)) {
       setError('Veuillez entrer une adresse email valide')
-      setIsLoading(false)
       return
     }
 
     // Validation du mot de passe
     if (!isValidPassword(password)) {
       setError('Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial (@$!%*?&)')
-      setIsLoading(false)
       return
     }
 
@@ -78,30 +77,24 @@ export default function RegisterPage() {
       return
     }
 
-    try {
-      const response = await fetch('/api/auth/register', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          name,
-          email,
-          password,
-        }),
-      })
+    startTransition(async () => {
+      try {
+        const response = await fetch('/api/auth/register', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, password }),
+        })
 
-      if (!response.ok) {
-        const data = await response.json()
-        throw new Error(data.message || 'Une erreur est survenue')
+        if (!response.ok) {
+          const data = await response.json().catch(() => ({}))
+          throw new Error((data as any).message || 'Une erreur est survenue')
+        }
+
+        router.push(`/login?registered=true&callbackUrl=${encodeURIComponent(callbackUrl)}`)
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Une erreur est survenue')
       }
-
-      router.push('/login?registered=true')
-    } catch (error) {
-      setError(error instanceof Error ? error.message : 'Une erreur est survenue')
-    } finally {
-      setIsLoading(false)
-    }
+    })
   }
 
   return (
@@ -133,13 +126,12 @@ export default function RegisterPage() {
               <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-1">
                 Nom
               </label>
-              <input
+              <Input
                 id="name"
                 name="name"
                 type="text"
                 required
                 minLength={2}
-                className="appearance-none relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
                 placeholder="Votre nom"
               />
             </div>
@@ -148,14 +140,13 @@ export default function RegisterPage() {
               <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
                 Adresse email
               </label>
-              <input
+              <Input
                 id="email"
                 name="email"
                 type="email"
                 autoComplete="email"
                 required
                 pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
-                className="appearance-none relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
                 placeholder="votre@email.com"
               />
             </div>
@@ -164,7 +155,7 @@ export default function RegisterPage() {
               <label htmlFor="password" className="block text-sm font-medium text-gray-700 mb-1">
                 Mot de passe
               </label>
-              <input
+              <Input
                 id="password"
                 name="password"
                 type="password"
@@ -173,7 +164,6 @@ export default function RegisterPage() {
                 minLength={8}
                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
                 onChange={handlePasswordChange}
-                className="appearance-none relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
                 placeholder="••••••••"
               />
               <div className="mt-2">
@@ -195,7 +185,7 @@ export default function RegisterPage() {
               <label htmlFor="confirmPassword" className="block text-sm font-medium text-gray-700 mb-1">
                 Confirmer le mot de passe
               </label>
-              <input
+              <Input
                 id="confirmPassword"
                 name="confirmPassword"
                 type="password"
@@ -203,7 +193,6 @@ export default function RegisterPage() {
                 required
                 minLength={8}
                 pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
-                className="appearance-none relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
                 placeholder="••••••••"
               />
             </div>
@@ -259,10 +248,10 @@ export default function RegisterPage() {
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             type="submit"
-            disabled={isLoading}
+            disabled={isPending}
             className="group relative w-full flex justify-center py-3 px-4 border border-transparent text-sm font-medium rounded-lg text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
           >
-            {isLoading ? (
+            {isPending ? (
               <div className="flex items-center">
                 <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                   <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>

@@ -11,6 +11,9 @@ export const authConfig = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+      // Autoriser le rattachement d'un compte Google au même email qu'un compte existant
+      // (sécurisé par la vérification d'email dans le callback signIn ci-dessous)
+      allowDangerousEmailAccountLinking: true,
     }),
     GithubProvider({
       clientId: process.env.GITHUB_ID!,
@@ -57,7 +60,19 @@ export const authConfig = {
     signIn: "/login",
   },
   callbacks: {
+    // Protection centralisée utilisée par le middleware
+    authorized({ auth, request }) {
+      // true = accès, false = redirection vers pages.signIn
+      return !!auth?.user
+    },
     async signIn({ user, account, profile, isNewUser }) {
+      // Bloquer les connexions OAuth si l'email Google n'est pas vérifié
+      if (account?.provider === 'google') {
+        const verified = (profile as any)?.email_verified
+        if (verified === false) {
+          return false
+        }
+      }
       // Si c'est un nouvel utilisateur OAuth
       if (account?.provider !== 'credentials' && user) {
         // Vérifier si l'utilisateur a déjà des decks

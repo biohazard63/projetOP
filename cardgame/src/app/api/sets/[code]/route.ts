@@ -1,6 +1,8 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
+export const dynamic = 'force-dynamic'
+
 export async function GET(
   request: Request,
   { params }: { params: { code: string } }
@@ -93,7 +95,10 @@ export async function GET(
 
     // Si on demande les cartes
     if (type === 'cards') {
-      const API_KEY = "a5efebe9adc836a0d6d3798bf21658b03cda8e322ba5d7e57fa4e2cc12f84179";
+      const API_KEY = process.env.OPTTCG_API_KEY || ''
+      if (!API_KEY) {
+        return NextResponse.json({ success: false, error: 'Clé API manquante' }, { status: 500 })
+      }
       
       // Récupérer tous les sets
       const setsResponse = await fetch('https://apitcg.com/api/one-piece/sets', {

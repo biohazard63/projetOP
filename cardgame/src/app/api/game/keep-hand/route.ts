@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
-
 import { prisma } from '@/lib/prisma'
 import { GameState, GameCard } from '@/types/game'
 
@@ -52,7 +51,7 @@ export async function POST() {
     const gameState = await prisma.gameState.findFirst({
       where: {
         player: {
-          email: session.user.email
+          email: session.user.email.toLowerCase()
         },
         isActive: true
       },

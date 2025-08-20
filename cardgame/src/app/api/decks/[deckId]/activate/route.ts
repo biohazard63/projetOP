@@ -22,7 +22,8 @@ export async function POST(
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
+      where: { email: session.user.email.toLowerCase() },
+      select: { id: true },
     })
 
     if (!user) {
@@ -69,7 +70,7 @@ export async function POST(
     console.log('Deck trouvé:', deck.name, 'avec', cardCount, 'cartes')
 
     // Stocker l'ID du deck actif dans un cookie
-    const cookieStore = cookies()
+    const cookieStore = await cookies()
     cookieStore.set('activeDeckId', deck.id, {
       path: '/',
       maxAge: 60 * 60 * 24, // 24 heures

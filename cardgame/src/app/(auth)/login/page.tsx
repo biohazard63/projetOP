@@ -1,43 +1,56 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useTransition } from 'react'
 import { signIn } from 'next-auth/react'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 import { Github, Mail } from 'lucide-react'
 
 export default function LoginPage() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const callbackUrl = searchParams.get('callbackUrl') || '/home'
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const [error, setError] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+  const [isPending, startTransition] = useTransition()
+
+  // Propager une erreur éventuelle provenant du provider OAuth
+  const oauthError = searchParams.get('error')
+  const oauthErrorMessage =
+    oauthError === 'OAuthAccountNotLinked'
+      ? "Cet email est déjà utilisé avec une autre méthode. Connectez-vous avec la même méthode ou associez votre compte."
+      : oauthError === 'AccessDenied'
+      ? "Accès refusé. Vérifiez que votre email Google est vérifié."
+      : oauthError
+      ? "La connexion a échoué. Veuillez réessayer."
+      : ''
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    setIsLoading(true)
     setError('')
+    startTransition(async () => {
+      try {
+        const result = await signIn('credentials', {
+          redirect: false,
+          email,
+          password,
+          callbackUrl,
+        })
 
-    try {
-      const result = await signIn('credentials', {
-        redirect: false,
-        email,
-        password,
-      })
-
-      if (result?.error) {
-        setError('Email ou mot de passe incorrect')
-      } else {
-        router.push('/')
-        router.refresh()
+        if (result?.error) {
+          setError('Email ou mot de passe incorrect')
+        } else {
+          router.push(callbackUrl)
+          router.refresh()
+        }
+      } catch (err) {
+        setError('Une erreur est survenue. Veuillez réessayer.')
       }
-    } catch (error) {
-      setError('Une erreur est survenue. Veuillez réessayer.')
-    } finally {
-      setIsLoading(false)
-    }
+    })
   }
 
   return (
@@ -48,10 +61,16 @@ export default function LoginPage() {
         </CardHeader>
         <CardContent>
           <div className="space-y-4">
+            {(error || oauthErrorMessage) && (
+              <div role="alert" aria-live="polite" className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
+                {error || oauthErrorMessage}
+              </div>
+            )}
             <Button
-              onClick={() => signIn('google', { callbackUrl: '/' })}
+              onClick={() => signIn('google', { callbackUrl })}
               className="w-full"
               variant="outline"
+              disabled={isPending}
             >
               <svg className="mr-2 h-4 w-4" viewBox="0 0 24 24">
                 <path
@@ -75,9 +94,10 @@ export default function LoginPage() {
             </Button>
 
             <Button
-              onClick={() => signIn('github', { callbackUrl: '/' })}
+              onClick={() => signIn('github', { callbackUrl })}
               className="w-full"
               variant="outline"
+              disabled={isPending}
             >
               <Github className="mr-2 h-4 w-4" />
               Continuer avec GitHub
@@ -95,22 +115,16 @@ export default function LoginPage() {
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
-              {error && (
-                <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded">
-                  {error}
-                </div>
-              )}
-              
               <div>
                 <label htmlFor="email" className="block text-sm font-medium mb-1">
                   Email
                 </label>
-                <input
+                <Input
                   id="email"
                   type="email"
+                  autoComplete="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full p-2 border rounded-md"
                   required
                 />
               </div>
@@ -119,22 +133,23 @@ export default function LoginPage() {
                 <label htmlFor="password" className="block text-sm font-medium mb-1">
                   Mot de passe
                 </label>
-                <input
+                <Input
                   id="password"
                   type="password"
+                  autoComplete="current-password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  className="w-full p-2 border rounded-md"
                   required
                 />
               </div>
               
               <Button
                 type="submit"
-                disabled={isLoading}
+                disabled={isPending}
                 className="w-full"
+                aria-busy={isPending}
               >
-                {isLoading ? 'Connexion en cours...' : 'Se connecter'}
+                {isPending ? 'Connexion en cours...' : 'Se connecter'}
               </Button>
             </form>
 

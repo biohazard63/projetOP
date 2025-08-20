@@ -1,31 +1,21 @@
-import { NextResponse } from 'next/server';
-import { auth } from '@/lib/auth';
-;
-import { prisma } from '@/lib/prisma';
+import { NextResponse } from 'next/server'
+import { prisma } from '@/lib/prisma'
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'
 
 // Cache en mémoire pour stocker les cartes
-let cachedCards: any[] | null = null;
-let lastFetchTime = 0;
-const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 heures en millisecondes
+let cachedCards: any[] | null = null
+let lastFetchTime = 0
+const CACHE_DURATION = 24 * 60 * 60 * 1000 // 24 heures en millisecondes
 
 export async function GET() {
-  const startTime = Date.now();
-  console.log('Début de la requête GET /api/cards');
-  
+  const startTime = Date.now()
   try {
-    // Vérifier si le cache est valide
-    const now = Date.now();
-    if (cachedCards && (now - lastFetchTime) < CACHE_DURATION) {
-      const cacheTime = Date.now() - startTime;
-      console.log(`Utilisation du cache pour les cartes (${cacheTime}ms)`);
-      return NextResponse.json(cachedCards);
+    const now = Date.now()
+    if (cachedCards && now - lastFetchTime < CACHE_DURATION) {
+      return NextResponse.json(cachedCards)
     }
 
-    console.log('Début de la récupération des cartes depuis la base de données...');
-    
-    // Récupérer toutes les cartes de la base de données
     const cards = await prisma.card.findMany({
       select: {
         id: true,
@@ -48,24 +38,17 @@ export async function GET() {
         isAltArt: true,
         isSpecial: true
       }
-    });
+    })
 
-    const totalTime = Date.now() - startTime;
-    console.log('Récupération terminée:');
-    console.log(`- Temps total: ${totalTime}ms`);
-    console.log(`- Nombre total de cartes: ${cards.length}`);
-    
-    // Mettre à jour le cache
-    cachedCards = cards;
-    lastFetchTime = now;
+    cachedCards = cards
+    lastFetchTime = now
 
-    return NextResponse.json(cards);
+    return NextResponse.json(cards)
   } catch (error) {
-    const errorTime = Date.now() - startTime;
-    console.error(`Erreur après ${errorTime}ms:`, error);
+    console.error('Erreur GET /api/cards:', error)
     return NextResponse.json(
       { success: false, error: 'Échec de la récupération des cartes' },
       { status: 500 }
-    );
+    )
   }
 } 

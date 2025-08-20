@@ -2,15 +2,55 @@ import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 
 import { prisma } from '@/lib/prisma'
-import { GameState, GameCard } from '@/types/game'
+import { GameState, GameCard, CardType, CardColor } from '@/types/game'
 import { cookies } from 'next/headers'
 
-function convertToGameCard(card: any): GameCard {
+type BasicCard = {
+  id: string
+  name: string
+  type: string
+  color?: string | null
+  cost?: number | null
+  power?: number | null
+  imageUrl?: string | null
+  effect?: string | null
+  trigger?: string | null
+  counter?: number | null
+}
+
+function toCardType(typeValue: string): CardType {
+  switch (typeValue) {
+    case 'LEADER':
+    case 'CHARACTER':
+    case 'EVENT':
+    case 'STAGE':
+    case 'DON':
+      return typeValue
+    default:
+      return 'CHARACTER'
+  }
+}
+
+function toCardColor(colorValue?: string | null): CardColor {
+  switch (colorValue) {
+    case 'RED':
+    case 'BLUE':
+    case 'GREEN':
+    case 'BLACK':
+    case 'PURPLE':
+    case 'YELLOW':
+      return colorValue
+    default:
+      return 'RED'
+  }
+}
+
+function convertToGameCard(card: BasicCard): GameCard {
   return {
     id: card.id,
     name: card.name,
-    type: card.type,
-    color: card.color,
+    type: toCardType(card.type),
+    color: toCardColor(card.color ?? undefined),
     cost: card.cost || 0,
     power: card.power || 0,
     imageUrl: card.imageUrl || '',
@@ -51,7 +91,7 @@ export async function POST() {
     }
 
     // Récupérer l'ID du deck actif depuis le cookie
-    const cookieStore = cookies()
+    const cookieStore = await cookies()
     const activeDeckId = cookieStore.get('activeDeckId')?.value
 
     if (!activeDeckId) {
@@ -88,10 +128,11 @@ export async function POST() {
     }
 
     // Mélanger le deck et la main actuelle
-    const currentHand = Array.isArray(gameState.playerHand) ? gameState.playerHand.map(convertToGameCard) : []
-    const deckCards = latestVersion.cards.map(dc => convertToGameCard(dc.card))
+    const currentHand = Array.isArray(gameState.playerHand) ? (gameState.playerHand as BasicCard[]).map(convertToGameCard) : []
+    const deckCards = latestVersion.cards.map(dc => convertToGameCard(dc.card as unknown as BasicCard))
     const allCards = [...deckCards, ...currentHand]
-    const shuffledCards = allCards.sort(() => Math.random() - 0.5)
+    const shuffledCards = [...allCards]
+    shuffledCards.sort(() => Math.random() - 0.5)
 
     // Piocher une nouvelle main
     const newHand = shuffledCards.slice(0, 5)
@@ -146,47 +187,49 @@ export async function POST() {
         id: gameState.id
       },
       data: {
-        playerDeck: newDeckJson as any[],
-        playerHand: newHandJson as any[],
+        playerDeck: newDeckJson,
+        playerHand: newHandJson,
         hasKeptHand: true
       }
     })
 
     // Convertir en format GameState pour le frontend
+    const toBasicCards = (json: unknown): BasicCard[] => Array.isArray(json) ? (json as BasicCard[]) : []
+
     const gameStateForFrontend: GameState = {
       id: updatedGameState.id,
       player: {
         id: updatedGameState.playerId,
         name: session.user.name || 'Joueur',
         lifePoints: Number(updatedGameState.playerLife) || 5,
-        leader: convertToGameCard(updatedGameState.playerLeader),
-        deck: Array.isArray(updatedGameState.playerDeck) ? updatedGameState.playerDeck.map(card => convertToGameCard(card)) : [],
-        hand: Array.isArray(updatedGameState.playerHand) ? updatedGameState.playerHand.map(card => convertToGameCard(card)) : [],
-        field: Array.isArray(updatedGameState.playerField) ? updatedGameState.playerField.map(card => convertToGameCard(card)) : [],
-        donDeck: Array.isArray(updatedGameState.playerDonDeck) ? updatedGameState.playerDonDeck.map(card => convertToGameCard(card)) : [],
-        trash: Array.isArray(updatedGameState.playerTrash) ? updatedGameState.playerTrash.map(card => convertToGameCard(card)) : [],
+        leader: convertToGameCard(updatedGameState.playerLeader as unknown as BasicCard),
+        deck: toBasicCards(updatedGameState.playerDeck).map(convertToGameCard),
+        hand: toBasicCards(updatedGameState.playerHand).map(convertToGameCard),
+        field: toBasicCards(updatedGameState.playerField).map(convertToGameCard),
+        donDeck: toBasicCards(updatedGameState.playerDonDeck).map(convertToGameCard),
+        trash: toBasicCards(updatedGameState.playerTrash).map(convertToGameCard),
         activeDon: Number(updatedGameState.playerActiveDon) || 0,
         donAddedThisTurn: Number(updatedGameState.playerDonAddedThisTurn) || 0,
-        usedDonDeck: Array.isArray(updatedGameState.playerUsedDonDeck) ? updatedGameState.playerUsedDonDeck.map(card => convertToGameCard(card)) : [],
-        discardPile: Array.isArray(updatedGameState.playerDiscardPile) ? updatedGameState.playerDiscardPile.map(card => convertToGameCard(card)) : []
+        usedDonDeck: toBasicCards(updatedGameState.playerUsedDonDeck).map(convertToGameCard),
+        discardPile: toBasicCards(updatedGameState.playerDiscardPile).map(convertToGameCard)
       },
       opponent: {
         id: updatedGameState.opponentId,
         name: 'Adversaire',
         lifePoints: Number(updatedGameState.opponentLife) || 5,
-        leader: convertToGameCard(updatedGameState.opponentLeader),
-        deck: Array.isArray(updatedGameState.opponentDeck) ? updatedGameState.opponentDeck.map(card => convertToGameCard(card)) : [],
-        hand: Array.isArray(updatedGameState.opponentHand) ? updatedGameState.opponentHand.map(card => convertToGameCard(card)) : [],
-        field: Array.isArray(updatedGameState.opponentField) ? updatedGameState.opponentField.map(card => convertToGameCard(card)) : [],
-        donDeck: Array.isArray(updatedGameState.opponentDonDeck) ? updatedGameState.opponentDonDeck.map(card => convertToGameCard(card)) : [],
-        trash: Array.isArray(updatedGameState.opponentTrash) ? updatedGameState.opponentTrash.map(card => convertToGameCard(card)) : [],
+        leader: convertToGameCard(updatedGameState.opponentLeader as unknown as BasicCard),
+        deck: toBasicCards(updatedGameState.opponentDeck).map(convertToGameCard),
+        hand: toBasicCards(updatedGameState.opponentHand).map(convertToGameCard),
+        field: toBasicCards(updatedGameState.opponentField).map(convertToGameCard),
+        donDeck: toBasicCards(updatedGameState.opponentDonDeck).map(convertToGameCard),
+        trash: toBasicCards(updatedGameState.opponentTrash).map(convertToGameCard),
         activeDon: Number(updatedGameState.opponentActiveDon) || 0,
         donAddedThisTurn: Number(updatedGameState.opponentDonAddedThisTurn) || 0,
-        usedDonDeck: Array.isArray(updatedGameState.opponentUsedDonDeck) ? updatedGameState.opponentUsedDonDeck.map(card => convertToGameCard(card)) : [],
-        discardPile: Array.isArray(updatedGameState.opponentDiscardPile) ? updatedGameState.opponentDiscardPile.map(card => convertToGameCard(card)) : []
+        usedDonDeck: toBasicCards(updatedGameState.opponentUsedDonDeck).map(convertToGameCard),
+        discardPile: toBasicCards(updatedGameState.opponentDiscardPile).map(convertToGameCard)
       },
       currentPlayer: updatedGameState.currentPlayer as 'player' | 'opponent',
-      currentPhase: updatedGameState.currentPhase as any,
+      currentPhase: updatedGameState.currentPhase as GameState['currentPhase'],
       turnNumber: updatedGameState.turnNumber,
       winner: updatedGameState.winner,
       canPlayCard: Boolean(updatedGameState.canPlayCard),
