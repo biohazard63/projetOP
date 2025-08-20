@@ -19,13 +19,16 @@ type RootLayoutProps = {
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
     <html lang="fr" suppressHydrationWarning>
       <body suppressHydrationWarning className={cn(inter.className, "min-h-screen")}>
         <Providers>
+          <header>
+            <Navbar />
+          </header>
           <main suppressHydrationWarning>
             {children}
           </main>

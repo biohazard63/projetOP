@@ -1,22 +1,18 @@
 'use client'
 
-import { useState, useEffect } from 'react'
-import { useSession } from 'next-auth/react'
+import { useState, useEffect, useMemo, useCallback, useTransition } from 'react'
+// import { useSession } from 'next-auth/react'
 import { Card as UICard } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+import { useRouter, useSearchParams } from 'next/navigation'
 import { ChevronLeft, ChevronRight } from 'lucide-react'
-import CardModal, { Card } from '@/components/CardModal'
+import CardModal from '@/components/CardModal'
 import Link from 'next/link'
 
-interface Deck {
-  id: string
-  name: string
-  deckCards: { cardId: string; quantity: number }[]
-}
+
 
 interface DeckCard {
   id: string
@@ -42,13 +38,9 @@ interface DeckCard {
 }
 
 export default function DeckBuilderPage() {
-  const { data: session } = useSession()
+  // const { data: session } = useSession()
   const [availableCards, setAvailableCards] = useState<DeckCard[]>([])
-  const [currentDeck, setCurrentDeck] = useState<Deck>({
-    id: '',
-    name: 'Nouveau Deck',
-    deckCards: []
-  })
+  // État supprimé (non utilisé)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [filters, setFilters] = useState({
@@ -66,10 +58,11 @@ export default function DeckBuilderPage() {
   const router = useRouter()
   const [currentPage, setCurrentPage] = useState(1)
   const cardsPerPage = 15
+  const [, startTransition] = useTransition()
 
-  // Récupérer l'ID du deck depuis l'URL
-  const searchParams = new URLSearchParams(typeof window !== 'undefined' ? window.location.search : '')
-  const deckId = searchParams.get('deckId')
+  // Récupérer l'ID du deck depuis l'URL (App Router)
+  const searchParams = useSearchParams()
+  const deckId = searchParams?.get('deckId')
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -242,28 +235,36 @@ export default function DeckBuilderPage() {
     }
   };
 
-  const filteredCards = availableCards.filter(card => {
-    if (filters.search && !card.name.toLowerCase().includes(filters.search.toLowerCase())) {
-      return false
-    }
-    if (filters.type !== 'all' && card.type !== filters.type) return false
-    if (filters.color !== 'all' && card.color !== filters.color) return false
-    if (filters.rarity !== 'all' && card.rarity !== filters.rarity) return false
-    if (filters.favoritesOnly && !card.isFavorite) return false
-    return true
-  })
+  const filteredCards = useMemo(() => {
+    return availableCards.filter(card => {
+      if (filters.search && !card.name.toLowerCase().includes(filters.search.toLowerCase())) {
+        return false
+      }
+      if (filters.type !== 'all' && card.type !== filters.type) return false
+      if (filters.color !== 'all' && card.color !== filters.color) return false
+      if (filters.rarity !== 'all' && card.rarity !== filters.rarity) return false
+      if (filters.favoritesOnly && !card.isFavorite) return false
+      return true
+    })
+  }, [availableCards, filters])
 
   // Calculer les cartes à afficher pour la page courante
-  const indexOfLastCard = currentPage * cardsPerPage
-  const indexOfFirstCard = indexOfLastCard - cardsPerPage
-  const currentCards = filteredCards.slice(indexOfFirstCard, indexOfLastCard)
-  const totalPages = Math.ceil(filteredCards.length / cardsPerPage)
+  const { indexOfFirstCard, indexOfLastCard, currentCards, totalPages } = useMemo(() => {
+    const last = currentPage * cardsPerPage
+    const first = last - cardsPerPage
+    return {
+      indexOfFirstCard: first,
+      indexOfLastCard: last,
+      currentCards: filteredCards.slice(first, last),
+      totalPages: Math.ceil(filteredCards.length / cardsPerPage),
+    }
+  }, [filteredCards, currentPage, cardsPerPage])
 
   // Fonction pour changer de page
-  const paginate = (pageNumber: number) => {
-    setCurrentPage(pageNumber)
+  const paginate = useCallback((pageNumber: number) => {
+    startTransition(() => setCurrentPage(pageNumber))
     window.scrollTo({ top: 0, behavior: 'smooth' })
-  }
+  }, [startTransition])
 
   const saveDeck = async () => {
     try {
@@ -482,7 +483,15 @@ export default function DeckBuilderPage() {
                   <UICard
                     key={card.id}
                     className="cursor-pointer hover:shadow-lg transition-all duration-300 hover:scale-105 bg-gray-700/50 border-gray-600 overflow-hidden"
+                    tabIndex={0}
+                    aria-label={`Voir la carte ${card.name}`}
                     onClick={() => handleCardClick(card)}
+                    onKeyDown={(e) => {
+                      if (e.key === 'Enter' || e.key === ' ') {
+                        e.preventDefault()
+                        handleCardClick(card)
+                      }
+                    }}
                   >
                     <div className="relative aspect-[3/4]">
                       <Image
@@ -490,6 +499,7 @@ export default function DeckBuilderPage() {
                         alt={card.name}
                         fill
                         className="object-cover rounded-t-lg"
+                        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                         loading="lazy"
                       />
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">

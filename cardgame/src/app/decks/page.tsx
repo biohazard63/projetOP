@@ -1,12 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useSession } from 'next-auth/react'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Plus, Edit, Play, ChevronRight, Swords, Users, Scroll } from 'lucide-react'
+import { Plus, Edit, Play, Swords, Users, Scroll } from 'lucide-react'
 
 interface Card {
   id: string
@@ -33,7 +32,6 @@ interface Deck {
 }
 
 export default function DecksPage() {
-  const { data: session } = useSession()
   const [decks, setDecks] = useState<Deck[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -159,12 +157,12 @@ export default function DecksPage() {
                     </h2>
                     <div className="flex gap-2">
                       <Link href={`/deck-builder?deckId=${deck.id}`}>
-                        <Button variant="ghost" size="sm" className="h-9 w-9 rounded-lg bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-400">
+                        <Button aria-label={`Modifier le deck ${deck.name}`} variant="ghost" size="sm" className="h-9 w-9 rounded-lg bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-400">
                           <Edit className="h-4 w-4" />
                         </Button>
                       </Link>
                       <Link href={`/game?deckId=${deck.id}`}>
-                        <Button variant="ghost" size="sm" className="h-9 w-9 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400">
+                        <Button aria-label={`Jouer avec le deck ${deck.name}`} variant="ghost" size="sm" className="h-9 w-9 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400">
                           <Play className="h-4 w-4" />
                         </Button>
                       </Link>
@@ -205,6 +203,8 @@ export default function DecksPage() {
                             alt={card.name}
                             fill
                             className="object-cover"
+                            sizes="(max-width: 640px) 40vw, (max-width: 1024px) 20vw, 10vw"
+                            loading="lazy"
                           />
                           <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
                         </div>
