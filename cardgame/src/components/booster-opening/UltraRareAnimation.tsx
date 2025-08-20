@@ -1,18 +1,18 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import { useAudio } from '@/hooks/useAudio'
 import { ExtendedCardType } from '@/types/card'
 import Image from 'next/image'
-import { Sparkles, Crown, Star } from 'lucide-react'
+import { Sparkles, Star } from 'lucide-react'
 
 interface UltraRareAnimationProps {
   card: ExtendedCardType
   onComplete: () => void
 }
 
-export default function UltraRareAnimation({ card, onComplete }: UltraRareAnimationProps) {
+export default function UltraRareAnimation({ card, onComplete }: Readonly<UltraRareAnimationProps>) {
   const [isVisible, setIsVisible] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
   const { playUltraRareSound } = useAudio()
@@ -45,6 +45,14 @@ export default function UltraRareAnimation({ card, onComplete }: UltraRareAnimat
     return () => clearTimeout(timer)
   }, [onComplete, playUltraRareSound])
 
+  const particleIds = useMemo(() => {
+    const len = isMobile ? 15 : 20
+    const makeId = () => (globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random()}`)
+    return Array.from({ length: len }, () => makeId())
+  }, [isMobile])
+
+  const textParticleKeys = useMemo(() => ['p0','p1','p2','p3','p4','p5','p6','p7'], [])
+
   return (
     <AnimatePresence>
       {isVisible && (
@@ -69,9 +77,9 @@ export default function UltraRareAnimation({ card, onComplete }: UltraRareAnimat
           />
 
           {/* Particules dorées */}
-          {Array.from({ length: isMobile ? 15 : 20 }).map((_, i) => (
+          {particleIds.map((id, i) => (
             <motion.div
-              key={i}
+              key={id}
               className="absolute"
               initial={{
                 x: Math.random() * window.innerWidth,
@@ -150,9 +158,9 @@ export default function UltraRareAnimation({ card, onComplete }: UltraRareAnimat
                   </motion.div>
 
                   {/* Effet de particules autour du texte */}
-                  {[...Array(8)].map((_, i) => (
+                  {textParticleKeys.map((key, i) => (
                     <motion.div
-                      key={i}
+                      key={key}
                       className="absolute w-1 h-1 bg-yellow-400 rounded-full"
                       initial={{
                         x: '50%',
@@ -219,21 +227,26 @@ export default function UltraRareAnimation({ card, onComplete }: UltraRareAnimat
                   ease: 'easeInOut'
                 }}
               >
-                <img
-                  src={card.imageUrl}
-                  alt={card.name}
-                  className={`${isMobile ? 'w-48 h-64' : 'w-64 h-96'} object-cover rounded-lg shadow-2xl`}
-                />
+                <div className={`${isMobile ? 'w-48 h-64' : 'w-64 h-96'} relative`}>
+                  <Image
+                    src={card.imageUrl}
+                    alt={card.name}
+                    fill
+                    sizes="(max-width: 768px) 12rem, 16rem"
+                    className="object-cover rounded-lg shadow-2xl"
+                    priority={false}
+                  />
+                </div>
               </motion.div>
 
-              {/* Effet de couronne */}
+              {/* Effet décoratif */}
               <motion.div
                 className="absolute -top-8 left-[10%] transform -translate-x-1/2"
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.3 }}
               >
-                <Crown className={`${isMobile ? 'w-8 h-8' : 'w-12 h-12'} text-yellow-400`} />
+                <Sparkles className={`${isMobile ? 'w-8 h-8' : 'w-12 h-12'} text-yellow-400`} />
               </motion.div>
 
              

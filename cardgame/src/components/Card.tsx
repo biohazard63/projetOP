@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 import { GameCard } from '@/types/game';
 import Image from 'next/image';
 import { cn } from '@/lib/utils';
@@ -9,42 +9,45 @@ interface CardProps {
   card: GameCard;
   onClick?: () => void;
   isActive?: boolean;
-  isTarget?: boolean;
   className?: string;
   showDetails?: boolean;
   quantity?: number;
 }
 
-export function Card({ card, onClick, isActive = false, isTarget = false, className, showDetails = false, quantity }: CardProps) {
+export function Card({ card, onClick, isActive = false, className, showDetails = false, quantity }: Readonly<CardProps>) {
   const [hasImageError, setHasImageError] = useState(false);
 
-  const getCardColor = (color: string) => {
-    switch (color.toLowerCase()) {
-      case 'red':
-        return 'bg-red-100';
-      case 'blue':
-        return 'bg-blue-100';
-      case 'green':
-        return 'bg-green-100';
-      case 'black':
-        return 'bg-gray-100';
-      default:
-        return 'bg-white';
+  const altText = useMemo(() => (typeof card.name === 'string' ? card.name : 'Carte'), [card.name]);
+  const isClickable = Boolean(onClick);
+  const handleKeyDown = useCallback((e: React.KeyboardEvent<HTMLElement>) => {
+    if (!isClickable) return;
+    if (e.key === 'Enter' || e.key === ' ') {
+      e.preventDefault();
+      onClick?.();
     }
-  };
+  }, [isClickable, onClick]);
+
+  const Container = isClickable ? 'button' : 'div';
 
   return (
-    <div
-      className={`relative ${className} ${isActive ? 'ring-2 ring-blue-500' : ''}`}
+    <Container
+      className={cn('relative', className, isActive && 'ring-2 ring-blue-500')}
       onClick={onClick}
+      onKeyDown={!isClickable ? handleKeyDown : undefined}
+      aria-label={isClickable ? `Carte ${altText}` : undefined}
+      type={isClickable ? 'button' : undefined}
     >
       <div className="relative aspect-[63/88] rounded-lg overflow-hidden shadow-lg">
         {card.imageUrl && !hasImageError ? (
-          <img
+          <Image
             src={card.imageUrl}
-            alt={typeof card.name === 'string' ? card.name : 'Carte'}
-            className="w-full h-full object-contain"
+            alt={altText}
+            fill
+            sizes="(max-width: 768px) 45vw, 20vw"
+            loading="lazy"
+            className="object-contain"
             onError={() => setHasImageError(true)}
+            priority={false}
           />
         ) : (
           <div className="w-full h-full bg-gray-700 flex flex-col items-center justify-center p-2">
@@ -61,6 +64,6 @@ export function Card({ card, onClick, isActive = false, isTarget = false, classN
           )}
         </div>
       )}
-    </div>
+    </Container>
   );
 } 

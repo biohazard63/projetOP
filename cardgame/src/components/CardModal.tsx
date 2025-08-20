@@ -5,6 +5,7 @@ import { Fragment, useEffect, useState } from 'react';
 import Image from 'next/image';
 import { X, Plus, Heart } from 'lucide-react';
 import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion';
+import type { PanInfo } from 'framer-motion';
 
 export interface Card {
   id: string;
@@ -37,7 +38,7 @@ interface CardModalProps {
   onToggleFavorite?: (cardId: string) => void;
 }
 
-export default function CardModal({ card, isOpen, onClose, onAddToDeck, onToggleFavorite }: CardModalProps) {
+export default function CardModal({ card, isOpen, onClose, onAddToDeck, onToggleFavorite }: Readonly<CardModalProps>) {
   // Déplacer tous les hooks avant le return conditionnel pour React 19
   const controls = useAnimation();
   const x = useMotionValue(0);
@@ -54,7 +55,7 @@ export default function CardModal({ card, isOpen, onClose, onAddToDeck, onToggle
 
   if (!card) return null;
 
-  const handleDragEnd = async (event: any, info: any) => {
+  const handleDragEnd = async (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     const offset = info.offset.x;
     if (Math.abs(offset) > 100) {
       await controls.start({ x: offset > 0 ? 500 : -500, opacity: 0 });
@@ -143,6 +144,8 @@ export default function CardModal({ card, isOpen, onClose, onAddToDeck, onToggle
                             ? 'bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30' 
                             : 'bg-gray-500/20 hover:bg-gray-500/30 text-gray-400 border border-gray-500/30'
                         }`}
+                        aria-pressed={Boolean(card.isFavorite)}
+                        aria-label={card.isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}
                       >
                         <Heart className="h-6 w-6" />
                       </button>
@@ -150,6 +153,7 @@ export default function CardModal({ card, isOpen, onClose, onAddToDeck, onToggle
                     <button
                       onClick={onClose}
                       className="rounded-full p-3 bg-red-500/20 hover:bg-red-500/30 text-red-400 border border-red-500/30 transition-all hover:scale-110 active:scale-95"
+                      aria-label="Fermer"
                     >
                       <X className="h-6 w-6" />
                     </button>
@@ -158,11 +162,15 @@ export default function CardModal({ card, isOpen, onClose, onAddToDeck, onToggle
                     <div className="relative w-full md:w-1/2 aspect-[3/4]">
                       <div className="relative aspect-[63/88] rounded-lg overflow-hidden shadow-lg">
                         {card.imageUrl && !imageError ? (
-                          <img
-                        src={card.imageUrl}
+                          <Image
+                            src={card.imageUrl}
                             alt={typeof card.name === 'string' ? card.name : 'Carte'}
-                            className="w-full h-full object-contain"
+                            fill
+                            sizes="(max-width: 768px) 80vw, 600px"
+                            loading="lazy"
+                            className="object-contain"
                             onError={() => setImageError(true)}
+                            priority={false}
                           />
                         ) : (
                           <div className="w-full h-full bg-gray-700 flex items-center justify-center">
@@ -174,6 +182,7 @@ export default function CardModal({ card, isOpen, onClose, onAddToDeck, onToggle
                         <button
                           onClick={() => onAddToDeck(card)}
                           className="absolute bottom-4 right-4 bg-gradient-to-r from-red-600 via-red-500 to-orange-500 hover:from-red-700 hover:via-red-600 hover:to-orange-600 text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:scale-110 active:scale-95"
+                          aria-label="Ajouter au deck"
                         >
                           <Plus className="h-6 w-6" />
                         </button>

@@ -1,8 +1,10 @@
 'use client'
 
 import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useCallback } from 'react'
 import { ExtendedCardType } from '@/types/card'
+import Image from 'next/image'
+import type { PanInfo } from 'framer-motion'
 
 interface CardRevealProps {
   card: ExtendedCardType
@@ -10,8 +12,8 @@ interface CardRevealProps {
   onComplete?: () => void
   onCardClick?: (card: ExtendedCardType) => void
   onDragStart?: () => void
-  onDrag?: (event: any, info: any) => void
-  onDragEnd?: (event: any, info: any) => void
+  onDrag?: (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void
+  onDragEnd?: (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void
 }
 
 export default function CardReveal({ 
@@ -22,12 +24,8 @@ export default function CardReveal({
   onDragStart,
   onDrag,
   onDragEnd
-}: CardRevealProps) {
+}: Readonly<CardRevealProps>) {
   const [isRevealed, setIsRevealed] = useState(false)
-  const [showParticles, setShowParticles] = useState(false)
-  const [showRareEffect, setShowRareEffect] = useState(false)
-  const [showAltArtEffect, setShowAltArtEffect] = useState(false)
-  const [showUltraRareEffect, setShowUltraRareEffect] = useState(false)
   const [dragDirection, setDragDirection] = useState<'left' | 'right' | null>(null)
   const [isDragging, setIsDragging] = useState(false)
 
@@ -45,59 +43,13 @@ export default function CardReveal({
                 (card.rarity === 'SR' && !card.id.endsWith('_p1') && !card.id.match(/_p[3-9]/))
 
   useEffect(() => {
-    console.log('CardReveal - Détection des raretés pour:', card.name)
-    console.log('isUltraRare:', isUltraRare)
-    console.log('isAlternative:', isAlternative)
-    console.log('isRare:', isRare)
-
-    // Attendre que BoosterPackAnimation soit terminée
     const timer = setTimeout(() => {
       setIsRevealed(true)
-      // Décaler l'apparition des particules pour éviter le chevauchement
-      setTimeout(() => {
-        setShowParticles(true)
-        
-        // Afficher les effets spéciaux après la révélation
-        if (isUltraRare) {
-          console.log('Affichage de l\'effet Ultra Rare pour:', card.name)
-          setShowUltraRareEffect(true)
-          setTimeout(() => setShowUltraRareEffect(false), 3000)
-        } else if (isAlternative) {
-          console.log('Affichage de l\'effet Alternative pour:', card.name)
-          setShowAltArtEffect(true)
-          setTimeout(() => setShowAltArtEffect(false), 3000)
-        } else if (isRare) {
-          console.log('Affichage de l\'effet Rare pour:', card.name)
-          setShowRareEffect(true)
-          setTimeout(() => setShowRareEffect(false), 3000)
-        }
-      }, 1000)
     }, 800)
-
     return () => clearTimeout(timer)
-  }, [isUltraRare, isRare, isAlternative])
+  }, [isUltraRare, isRare, isAlternative, card.name])
 
-  const handleAnimationComplete = () => {
-    if (onComplete) {
-      // Réduire le délai avant onComplete
-      setTimeout(onComplete, 500)
-    }
-  }
-
-  const getParticleColors = () => {
-    if (isUltraRare) {
-      return ['#FFD700', '#FFA500', '#FF8C00'] // Or, orange foncé, orange
-    }
-    if (isRare) {
-      return ['#9333EA', '#C026D3', '#DB2777'] // Violet, rose, rose foncé
-    }
-    if (isAlternative) {
-      return ['#06B6D4', '#0EA5E9', '#2563EB'] // Cyan, bleu clair, bleu
-    }
-    return ['#606060', '#7F7F7F', '#303030'] // gris par défaut
-  }
-
-  const handleDragEnd = (event: any, info: any) => {
+  const handleDragEnd = useCallback((event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     setIsDragging(false)
     const threshold = 100
     
@@ -124,16 +76,16 @@ export default function CardReveal({
       onCardClick?.(card)
       controls.start({ x: 0, rotate: 0 })
     }
-  }
+  }, [controls, onDragEnd, onCardClick, card, isDragging])
   
-  const handleDragStart = () => {
+  const handleDragStart = useCallback(() => {
     console.log('CardReveal - Début du glissement')
     setIsDragging(true)
     setDragDirection(null)
     onDragStart?.()
-  }
+  }, [onDragStart])
   
-  const handleDrag = (event: any, info: any) => {
+  const handleDrag = useCallback((event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     console.log('CardReveal - Glissement en cours:', {
       offsetX: info.offset.x,
       isDragging
@@ -146,7 +98,7 @@ export default function CardReveal({
     }
 
     onDrag?.(event, info)
-  }
+  }, [isDragging, onDrag])
 
   return (
     <div className="relative flex items-center justify-center min-h-[400px] sm:min-h-[500px] md:min-h-[600px]">
@@ -214,9 +166,13 @@ export default function CardReveal({
             WebkitBackfaceVisibility: 'hidden',
           }}
         >
-          <img
+          <Image
             src="/images/card-back.jpg"
             alt="Dos de la carte"
+            width={600}
+            height={840}
+            sizes="(max-width: 768px) 80vw, 600px"
+            loading="lazy"
             className={`w-full h-auto rounded-xl shadow-2xl ${
               isUltraRare ? 'ring-4 ring-yellow-400' :
               isRare ? 'ring-4 ring-purple-400' :
@@ -235,10 +191,14 @@ export default function CardReveal({
           }}
         >
           <div className="relative">
-            <img
+            <Image
               src={card.imageUrl}
               alt={typeof card.name === 'string' ? card.name : 'Carte'}
-              className={`w-full h-auto rounded-xl shadow-2xl `}
+              width={600}
+              height={840}
+              sizes="(max-width: 768px) 80vw, 600px"
+              loading="lazy"
+              className="w-full h-auto rounded-xl shadow-2xl"
             />
 
             {/* Badge "Nouvelle" pour les nouvelles cartes */}
