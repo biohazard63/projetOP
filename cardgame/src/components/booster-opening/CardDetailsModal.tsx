@@ -4,6 +4,7 @@ import { motion } from 'framer-motion'
 import { ExtendedCardType } from '@/types/card'
 import { X, Heart } from 'lucide-react'
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { toast } from 'sonner'
 
 interface CardDetailsModalProps {
@@ -18,7 +19,7 @@ export default function CardDetailsModal({
   onClose,
   getRarityColor,
   getRarityGlow
-}: CardDetailsModalProps) {
+}: Readonly<CardDetailsModalProps>) {
   const [isFavorite, setIsFavorite] = useState(false)
   const [lastClickTime, setLastClickTime] = useState(0)
 
@@ -108,10 +109,13 @@ export default function CardDetailsModal({
         <div className="flex flex-col md:flex-row max-h-[80vh] overflow-y-auto">
           <div className="w-full md:w-1/2 p-6 flex items-center justify-center">
             <div className={`relative rounded-lg overflow-hidden ${getRarityGlow(card.rarity)}`}>
-              <img 
+              <Image 
                 src={card.imageUrl} 
                 alt={card.name} 
+                width={600}
+                height={840}
                 className="w-full h-auto"
+                unoptimized
               />
             </div>
           </div>

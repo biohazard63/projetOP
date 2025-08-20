@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 @layer base {
   :root {
@@ -61,10 +59,11 @@
 
 @layer base {
   * {
-    @apply border-border;
+    border-color: hsl(var(--border));
   }
   body {
-    @apply bg-background text-foreground;
+    background-color: hsl(var(--background));
+    color: hsl(var(--foreground));
   }
 }
 
@@ -130,19 +129,79 @@
 
 /* Styles personnalisés One Piece */
 .card {
-  @apply relative overflow-hidden rounded-lg border border-border/50 bg-card p-3 sm:p-4 transition-all hover:shadow-lg hover:scale-[1.02] hover:border-primary/50;
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  border: 1px solid hsl(var(--border) / 0.5);
+  background-color: hsl(var(--card));
+  padding: 0.75rem;
+  transition: all 0.3s ease;
   background: linear-gradient(45deg, rgba(var(--card)/0.8), rgba(var(--card)/0.95));
   backdrop-filter: blur(8px);
 }
 
+@media (min-width: 640px) {
+  .card {
+    padding: 1rem;
+  }
+}
+
+.card:hover {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transform: scale(1.02);
+  border-color: hsl(var(--primary) / 0.5);
+}
+
 .title-one-piece {
-  @apply font-bold text-2xl sm:text-3xl md:text-4xl text-primary relative;
+  font-weight: bold;
+  font-size: 1.5rem;
+  line-height: 2rem;
+  color: hsl(var(--primary));
+  position: relative;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
+@media (min-width: 640px) {
+  .title-one-piece {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .title-one-piece {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
 .button-one-piece {
-  @apply bg-primary text-white font-bold py-1.5 sm:py-2 px-3 sm:px-4 rounded-lg transition-all hover:bg-primary/80 hover:scale-105 active:scale-95 text-sm sm:text-base;
+  background-color: hsl(var(--primary));
+  color: white;
+  font-weight: bold;
+  padding: 0.375rem 0.75rem;
+  border-radius: 0.5rem;
+  transition: all 0.3s ease;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
   box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+}
+
+@media (min-width: 640px) {
+  .button-one-piece {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+.button-one-piece:hover {
+  background-color: hsl(var(--primary) / 0.8);
+  transform: scale(1.05);
+}
+
+.button-one-piece:active {
+  transform: scale(0.95);
 }
 
 /* Nouveaux styles pour les éléments décoratifs */
@@ -180,17 +239,15 @@
   }
 }
 
-.rotate-animation {
-  animation: gentleRotate 6s ease-in-out infinite;
-}
+.rotate-animation { animation: gentleRotate 6s ease-in-out infinite; }
 
 /* Effet de verre dépoli amélioré */
-.glass-effect {
-  @apply backdrop-blur-sm sm:backdrop-blur-md bg-white/10 border border-white/20;
-  box-shadow: 
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -1px rgba(0, 0, 0, 0.06),
-    inset 0 0 80px rgba(255, 255, 255, 0.1);
+.glass-effect { backdrop-filter: blur(4px); background-color: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.2); box-shadow: 0 4px 6px -1px rgba(0,0,0,.1), 0 2px 4px -1px rgba(0,0,0,.06), inset 0 0 80px rgba(255,255,255,.1); }
+
+@media (min-width: 640px) {
+  .glass-effect {
+    backdrop-filter: blur(12px);
+  }
 }
 
 /* Animation d'apparition */
@@ -211,20 +268,97 @@
 
 /* Nouveaux styles responsifs */
 .responsive-grid {
-  @apply grid gap-2 sm:gap-4 md:gap-6;
+  display: grid;
+  gap: 0.5rem;
   grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
 }
 
+@media (min-width: 640px) {
+  .responsive-grid {
+    gap: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-grid {
+    gap: 1.5rem;
+  }
+}
+
 .responsive-container {
-  @apply w-full max-w-7xl mx-auto px-2 sm:px-4 md:px-6 lg:px-8;
+  width: 100%;
+  max-width: 80rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+
+@media (min-width: 640px) {
+  .responsive-container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-container {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-container {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
 }
 
 .responsive-text {
-  @apply text-sm sm:text-base md:text-lg;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+@media (min-width: 640px) {
+  .responsive-text {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-text {
+    font-size: 1.125rem;
+    line-height: 1.75rem;
+  }
 }
 
 .responsive-heading {
-  @apply text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  font-weight: bold;
+}
+
+@media (min-width: 640px) {
+  .responsive-heading {
+    font-size: 1.5rem;
+    line-height: 2rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .responsive-heading {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .responsive-heading {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
 }
 
 /* Animation de flottement responsive */
@@ -242,16 +376,12 @@
   animation: float 4s ease-in-out infinite;
 }
 
-@screen sm {
-  .float-animation {
-    --float-multiplier: 0.75;
-  }
+@media (min-width: 640px) { /* sm */
+  .float-animation { --float-multiplier: 0.75; }
 }
 
-@screen md {
-  .float-animation {
-    --float-multiplier: 1;
-  }
+@media (min-width: 768px) { /* md */
+  .float-animation { --float-multiplier: 1; }
 }
 
 /* Animation d'apparition responsive */
@@ -271,37 +401,35 @@
   animation: fadeInUp 0.6s ease-out forwards;
 }
 
-@screen sm {
-  .fade-in-up {
-    --fade-multiplier: 0.75;
-  }
+@media (min-width: 640px) { /* sm */
+  .fade-in-up { --fade-multiplier: 0.75; }
 }
 
-@screen md {
-  .fade-in-up {
-    --fade-multiplier: 1;
-  }
+@media (min-width: 768px) { /* md */
+  .fade-in-up { --fade-multiplier: 1; }
 }
 
 /* Grille responsive pour les cartes */
 .cards-grid {
-  @apply grid gap-2 sm:gap-4;
+  display: grid;
+  gap: 0.5rem;
   grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 }
 
-@screen sm {
+@media (min-width: 640px) {
   .cards-grid {
+    gap: 1rem;
     grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
   }
 }
 
-@screen md {
+@media (min-width: 768px) {
   .cards-grid {
     grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
   }
 }
 
-@screen lg {
+@media (min-width: 1024px) {
   .cards-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
@@ -317,9 +445,7 @@
   }
 }
 
-.animate-float {
-  animation: float 3s ease-in-out infinite;
-}
+.animate-float { animation: float 3s ease-in-out infinite; }
 
 @keyframes wave {
   0% {
@@ -532,9 +658,7 @@
   animation: float 4s ease-in-out infinite;
 }
 
-.animate-float-slow {
-  animation: float-slow 6s ease-in-out infinite;
-}
+.animate-float-slow { animation: float-slow 6s ease-in-out infinite; }
 
 .animate-float-slower {
   animation: float-slower 8s ease-in-out infinite;
@@ -561,9 +685,7 @@
   filter: drop-shadow(0 0 10px rgba(255, 255, 255, 0.5));
 }
 
-.bg-gradient-radial {
-  background-image: radial-gradient(var(--tw-gradient-stops));
-}
+.bg-gradient-radial { background-image: radial-gradient(var(--tw-gradient-stops)); }
 
 /* Animations pour les nuages */
 @keyframes clouds {
@@ -779,6 +901,74 @@
 .animate-haki-pulse {
   animation: haki-pulse 4s ease-in-out infinite;
 }
+
+/* Animations manquantes pour les éléments de la page d'accueil */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.animate-float {}
+
+@keyframes float-slow {
+  0%, 100% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+}
+
+.animate-float-slow {}
+
+@keyframes pulse-slow {
+  0%, 100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
+
+.animate-pulse-slow {}
+
+/* Classes de gradient radial pour Tailwind CSS v4 */
+.bg-gradient-radial {}
+
+/* Classes personnalisées pour les boutons et éléments */
+.button-one-piece {}
+
+.button-one-piece:hover {}
+
+.title-one-piece {}
+
+@media (min-width: 640px) {
+  .title-one-piece {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .title-one-piece {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+}
+
+.card {}
+
+@media (min-width: 640px) {
+  .card {
+    padding: 1rem;
+  }
+}
+
+.card:hover {}
 
 /* Effet de hover pour les cartes du deck */
 .deck-card {

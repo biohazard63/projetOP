@@ -1,8 +1,8 @@
 'use client'
 
 import Link from 'next/link'
-import { Card } from '@/components/ui/card'
-import { Ship, Scroll, Sword, Trophy, Package, Star, Globe, Search, Anchor } from 'lucide-react'
+import Image from 'next/image'
+import { Ship, Scroll, Sword, Trophy, Package, Star, Globe, Search } from 'lucide-react'
 
 const features = [
   {
@@ -77,15 +77,17 @@ export default function HomePage() {
           <div className="text-center">
             <div className="relative inline-block mb-8">
               <div className="relative">
-                <img 
+                <Image 
                   src="/images/jolly-roger.png" 
                   alt="Jolly Roger" 
+                  width={128}
+                  height={128}
                   className="w-32 h-32 mx-auto animate-float-slow"
                 />
-                <div className="absolute inset-0 bg-gradient-radial from-yellow-500/30 to-transparent opacity-50 animate-pulse-slow"></div>
+                <div className="absolute inset-0 opacity-50 animate-pulse-slow" style={{ background: 'radial-gradient(circle, rgba(234, 179, 8, 0.3) 0%, transparent 70%)' }}></div>
               </div>
             </div>
-            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white drop-shadow-glow">
+            <h1 className="text-5xl md:text-7xl font-bold mb-6 text-white" style={{ textShadow: '0 0 20px rgba(255, 255, 255, 0.5)' }}>
               One Piece <span className="text-primary">Card Game</span>
             </h1>
             <p className="text-xl md:text-2xl mb-8 text-white/90 max-w-3xl mx-auto leading-relaxed">
@@ -93,12 +95,14 @@ export default function HomePage() {
             </p>
             <div className="flex flex-wrap justify-center gap-6">
               <Link href="/booster-opening">
-                <button className="button-one-piece text-lg px-8 py-4 bg-gradient-to-br from-primary to-primary/80 hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-primary/50">
+                <button className="text-lg px-8 py-4 hover:scale-105 transform transition-all duration-300 shadow-lg text-white font-bold rounded-lg"
+                        style={{ background: 'linear-gradient(to bottom right, #D84315, #FF5722)' }}>
                   Ouvrir un Trésor
                 </button>
               </Link>
               <Link href="/deck-builder">
-                <button className="button-one-piece text-lg px-8 py-4 bg-gradient-to-br from-blue-600 to-blue-800 hover:scale-105 transform transition-all duration-300 shadow-lg hover:shadow-blue-500/50">
+                <button className="text-lg px-8 py-4 hover:scale-105 transform transition-all duration-300 shadow-lg text-white font-bold rounded-lg"
+                        style={{ background: 'linear-gradient(to bottom right, #2563eb, #1d4ed8)' }}>
                   Préparer son Équipage
                 </button>
               </Link>
@@ -109,7 +113,7 @@ export default function HomePage() {
 
       {/* Section des mises à jour */}
       <div className="container mx-auto px-4 py-16">
-        <h2 className="title-one-piece text-center mb-12">
+        <h2 className="text-4xl font-bold text-center mb-12 text-white">
           Journal du Nouveau Monde
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -117,9 +121,13 @@ export default function HomePage() {
             const Icon = update.icon
             return (
               <div
-                key={index}
-                className="card bg-gradient-to-br from-[#1a1a1a]/95 to-[#1a1a1a]/90 hover:from-[#1a1a1a] hover:to-[#1a1a1a]/95 border border-white/10 hover:border-white/20"
-                style={{ animationDelay: `${index * 100}ms` }}
+                key={`${update.title}-${index}`}
+                className="relative overflow-hidden rounded-lg border border-white/10 hover:border-white/20 p-6 transition-all duration-300"
+                style={{ 
+                  animationDelay: `${index * 100}ms`,
+                  background: 'linear-gradient(to bottom right, rgba(26, 26, 26, 0.95), rgba(26, 26, 26, 0.98))',
+                  backdropFilter: 'blur(8px)'
+                }}
               >
                 <div className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${update.color} mb-4`}>
                   <Icon className="w-6 h-6 text-white" />
@@ -145,10 +153,14 @@ export default function HomePage() {
             const Icon = feature.icon
             return (
               <Link
-                key={index}
+                key={`${feature.title}-${index}`}
                 href={feature.href}
-                className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-[#1a1a1a]/95 to-[#1a1a1a]/90 p-6 border border-white/10 transition-all duration-300 hover:from-[#1a1a1a] hover:to-[#1a1a1a]/95 hover:scale-[1.02] hover:shadow-xl"
-                style={{ animationDelay: `${index * 100}ms` }}
+                className="group relative overflow-hidden rounded-xl p-6 border border-white/10 transition-all duration-300 hover:scale-[1.02] hover:shadow-xl"
+                style={{ 
+                  animationDelay: `${index * 100}ms`,
+                  background: 'linear-gradient(to bottom right, rgba(26, 26, 26, 0.95), rgba(26, 26, 26, 0.98))',
+                  backdropFilter: 'blur(8px)'
+                }}
               >
                 <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300"
                      style={{ backgroundImage: `linear-gradient(to bottom right, ${feature.color.split(' ')[1]}, ${feature.color.split(' ')[3]})` }}></div>
@@ -174,18 +186,20 @@ export default function HomePage() {
         <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent backdrop-blur-sm"></div>
         <div className="container mx-auto px-4 text-center relative z-10">
           <div className="relative inline-block mb-6">
-            <img 
+            <Image 
               src="/images/straw-hat.png" 
               alt="Chapeau de Paille" 
+              width={80}
+              height={80}
               className="w-20 h-20 mx-auto opacity-80 animate-float-slow"
             />
-            <div className="absolute inset-0 bg-gradient-radial from-yellow-500/20 to-transparent opacity-30"></div>
+            <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(circle, rgba(234, 179, 8, 0.2) 0%, transparent 70%)' }}></div>
           </div>
-          <p className="text-white/80 text-lg mb-4">© 2024 One Piece Card Game - L'aventure continue</p>
+          <p className="text-white/80 text-lg mb-4">© 2024 One Piece Card Game - L&apos;aventure continue</p>
           <p className="text-white/60">
             Ce site est un hommage créé par des fans, pour des fans.
             <br />
-            One Piece est la propriété d'Eiichiro Oda et de Bandai Namco.
+            One Piece est la propriété d&apos;Eiichiro Oda et de Bandai Namco.
           </p>
         </div>
       </footer>

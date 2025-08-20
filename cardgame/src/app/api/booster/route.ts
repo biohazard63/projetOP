@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient, Prisma } from '@prisma/client';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import { auth } from '@/lib/auth';
+;
 import { Card } from '@/types/card';
 
 const prisma = new PrismaClient();
@@ -316,7 +316,7 @@ async function generateBooster(setCode: string): Promise<Card[]> {
 export async function POST(req: Request) {
   try {
     console.log('[BOOSTER-OPEN] Début de la requête');
-    const session = await getServerSession(authOptions);
+    const session = await auth();
 
     if (!session?.user) {
       console.log('[BOOSTER-OPEN] Utilisateur non authentifié');

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { auth } from '@/lib/auth'
+
 import { prisma } from '@/lib/prisma'
 import { Card, User, UserCard } from '@prisma/client'
 
@@ -16,7 +16,7 @@ export async function GET(request: Request) {
   try {
     console.log('API Collection: Début de la requête')
     
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     console.log('API Collection: Session récupérée', session ? 'Oui' : 'Non')
     console.log('API Collection: Détails de la session:', JSON.stringify(session, null, 2))
 

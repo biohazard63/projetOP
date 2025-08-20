@@ -1,4 +1,5 @@
-import type { Config } from 'tailwindcss'
+import forms from '@tailwindcss/forms'
+import animate from 'tailwindcss-animate'
 
 const config = {
     darkMode: ['class'],
@@ -81,10 +82,7 @@ const config = {
   		},
   	}
   },
-  plugins: [
-    require("tailwindcss-animate"),
-    require("@tailwindcss/forms")
-  ],
-} satisfies Config
+  plugins: [animate, forms],
+}
 
-export default config 
+export default config

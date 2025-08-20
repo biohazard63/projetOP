@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { auth } from '@/lib/auth'
+
 import { prisma } from '@/lib/prisma'
 import { cookies } from 'next/headers'
 
@@ -8,7 +8,7 @@ export async function GET() {
   try {
     console.log('Récupération du deck actif')
     
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     
     if (!session?.user?.email) {
       console.log('Erreur: Utilisateur non authentifié')
@@ -96,7 +96,7 @@ export async function POST(request: Request) {
   try {
     console.log('Définition du deck actif')
     
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     
     if (!session?.user?.email) {
       console.log('Erreur: Utilisateur non authentifié')

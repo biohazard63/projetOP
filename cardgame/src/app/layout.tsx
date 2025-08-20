@@ -19,20 +19,16 @@ type RootLayoutProps = {
 
 export default function RootLayout({
   children,
-  variant = 'default',
-}: RootLayoutProps) {
+}: {
+  children: React.ReactNode
+}) {
   return (
     <html lang="fr" suppressHydrationWarning>
       <body suppressHydrationWarning className={cn(inter.className, "min-h-screen")}>
         <Providers>
-          <div className="relative z-10">
-            <div className="relative z-20" suppressHydrationWarning>
-              <Navbar variant={variant} />
-            </div>
-            <main suppressHydrationWarning>
-              {children}
-            </main>
-          </div>
+          <main suppressHydrationWarning>
+            {children}
+          </main>
         </Providers>
         <Analytics />
       </body>

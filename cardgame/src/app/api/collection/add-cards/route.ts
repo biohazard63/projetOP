@@ -1,14 +1,14 @@
 import { NextResponse } from 'next/server';
 import { PrismaClient } from '@prisma/client';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
+import { auth } from '@/lib/auth';
+;
 
 const prisma = new PrismaClient();
 
 export async function POST(request: Request) {
   try {
     // Récupérer la session de l'utilisateur
-    const session = await getServerSession(authOptions);
+    const session = await auth();
     
     if (!session || !session.user || !session.user.email) {
       return NextResponse.json(

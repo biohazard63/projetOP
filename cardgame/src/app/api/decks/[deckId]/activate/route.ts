@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { auth } from '@/lib/auth'
+
 import { prisma } from '@/lib/prisma'
 import { cookies } from 'next/headers'
 
@@ -11,7 +11,7 @@ export async function POST(
   try {
     console.log('Début de l\'activation du deck:', params.deckId)
     
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     
     if (!session?.user?.email) {
       console.log('Erreur: Utilisateur non authentifié')

@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { auth } from '@/lib/auth'
+
 import { prisma } from '@/lib/prisma'
 import { Prisma, Card, Deck } from '@prisma/client'
 
@@ -24,7 +24,7 @@ interface RawDeckWithCards extends Deck {
 // GET /api/decks - Récupérer tous les decks de l'utilisateur
 export async function GET() {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     
     if (!session?.user?.email) {
       return NextResponse.json(
@@ -113,7 +113,7 @@ export async function POST(request: Request) {
   try {
     console.log('API Decks: Début de la requête POST')
     
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     if (!session?.user?.email) {
       return NextResponse.json({ error: 'Non autorisé' }, { status: 401 })
     }

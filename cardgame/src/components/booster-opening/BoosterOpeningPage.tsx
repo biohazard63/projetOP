@@ -14,9 +14,13 @@ import {
 } from '@/components/ui/select'
 import { toast, Toaster } from 'sonner'
 import { Package, Sparkles, X } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, PanInfo } from 'framer-motion'
 import CardReveal from './CardReveal'
 import CardDetailsModal from './CardDetailsModal'
+import NextImage from 'next/image'
+
+type ApiSet = { id?: string; code?: string; name?: string }
+type ApiCardMinimal = { id: string; rarity: string; name?: unknown }
 
 import { useAudio } from '@/hooks/useAudio'
 import { useCollection } from '@/hooks/useCollection'
@@ -33,9 +37,11 @@ function LoadingSpinner() {
     <div className="flex flex-col items-center justify-center min-h-screen pt-16">
       {/* Logo One Piece */}
       <div className="relative z-10 flex flex-col items-center">
-        <img 
+        <NextImage 
           src="/images/jolly-roger.png" 
           alt="Loading" 
+          width={128}
+          height={128}
           className="w-32 h-32 animate-float opacity-90 mb-6 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
         />
         <div className="text-2xl font-bold text-yellow-400 mb-4 animate-pulse tracking-wider">
@@ -92,7 +98,25 @@ export default function BoosterOpeningPage() {
   const [showRareAnimation, setShowRareAnimation] = useState(false)
   const [rareAnimationType, setRareAnimationType] = useState<'ultra-rare' | 'rare' | 'alternative' | null>(null)
   const [showBoosterModal, setShowBoosterModal] = useState(false)
-  const [setRules, setSetRules] = useState<any>(null)
+  interface SetRules {
+    name: string
+    rarityCounts: Record<string, number>
+    boosterRules?: {
+      commonCount: number
+      uncommonCount: number
+      rareCount: number
+      superRareCount: number
+      leaderCount: number
+      characterCount: number
+      eventCount: number
+      stageCount: number
+      donCount: number
+      altArtChance: number
+      parallelChance: number
+      specialChance: number
+    }
+  }
+  const [setRules, setSetRules] = useState<SetRules | null>(null)
 
   // Hooks personnalisés
   const { userCollection, loadUserCollection } = useCollection()
@@ -144,7 +168,7 @@ export default function BoosterOpeningPage() {
         console.log('Sets chargés:', data.sets)
         
         // Filtrer les sets pour n'afficher que ceux dont le code commence par "OP", "EB" ou "PRB"
-        const filteredSets = data.sets ? data.sets.filter((set: any) => {
+        const filteredSets = data.sets ? data.sets.filter((set: ApiSet) => {
           if (!set || !set.code) return false;
           
           // Normaliser le code en supprimant les tirets et espaces
@@ -157,7 +181,7 @@ export default function BoosterOpeningPage() {
         }) : [];
         
         // Éliminer les doublons en utilisant le code du set comme identifiant unique
-        const uniqueSets = filteredSets.reduce((acc: any[], current: any) => {
+        const uniqueSets = filteredSets.reduce((acc: ApiSet[], current: ApiSet) => {
           if (!current || !current.code) return acc;
           
           // Normaliser le code (supprimer les tirets et espaces)
@@ -188,7 +212,7 @@ export default function BoosterOpeningPage() {
         console.log('Sets filtrés (avec doublons):', filteredSets);
         console.log('Sets uniques (sans doublons):', uniqueSets);
         console.log('Nombre total de sets uniques:', uniqueSets.length);
-        console.log('Codes des sets uniques:', uniqueSets.map((set: any) => set.code));
+        console.log('Codes des sets uniques:', uniqueSets.map((set: ApiSet) => set.code));
         
         setSets(uniqueSets);
       })
@@ -225,7 +249,7 @@ export default function BoosterOpeningPage() {
         for (const card of booster) {
           if (card && card.imageUrl) {
             try {
-              const img = new Image()
+              const img = new window.Image()
               img.src = card.imageUrl
               await new Promise((resolve, reject) => {
                 img.onload = resolve
@@ -517,7 +541,10 @@ export default function BoosterOpeningPage() {
   }
 
   // Gestion du glissement des cartes
-  const handleDragEnd = (event: any, info: any) => {
+  const handleDragEnd = (
+    event: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
     if (!info) {
       console.log('Fin du glissement impossible: info est undefined');
       return;
@@ -570,7 +597,10 @@ export default function BoosterOpeningPage() {
     setDragDirection(null);
   }
   
-  const handleDrag = (event: any, info: any) => {
+  const handleDrag = (
+    event: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
     if (!info) return;
     
     console.log('Glissement en cours:', {
@@ -650,14 +680,14 @@ export default function BoosterOpeningPage() {
         const result = await response.json()
         
         if (result.success) {
-          const processedCards = result.cards.map((card: any) => ({
+          const processedCards = (result.cards as ApiCardMinimal[]).map((card) => ({
             ...card,
             name: typeof card.name === 'string' ? card.name : 'Carte sans nom'
-          }))
+          })) as unknown as ExtendedCardType[]
           
           console.log('Booster ouvert avec succès:', {
             nombreCartes: processedCards.length,
-            cartes: processedCards.map((card: any) => ({
+            cartes: processedCards.map((card) => ({
               nom: card.name,
               id: card.id,
               rareté: card.rarity
@@ -826,10 +856,12 @@ export default function BoosterOpeningPage() {
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-amber-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
                 <div className="relative w-40 h-60 sm:w-48 sm:h-72 transform group-hover:scale-105 transition-all duration-300">
-                  <img
+                  <NextImage
                     src={`/images/booster/${sets.find(set => set.id === selectedSet)?.code.toLowerCase()}.png`}
-                    alt={sets.find(set => set.id === selectedSet)?.name}
-                    className="w-full h-full object-contain rounded-xl shadow-2xl"
+                    alt={sets.find(set => set.id === selectedSet)?.name || 'Booster'}
+                    fill
+                    sizes="(max-width: 640px) 10rem, 12rem"
+                    className="object-contain rounded-xl shadow-2xl"
                   />
                 </div>
               </div>
@@ -986,14 +1018,18 @@ export default function BoosterOpeningPage() {
               {/* Éléments décoratifs d'arrière-plan */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute inset-0 bg-gradient-to-b from-blue-950/30 to-indigo-950/30"></div>
-                <img 
+                <NextImage 
                   src="/images/jolly-roger.png" 
-                  alt="" 
+                  alt=""
+                  width={128}
+                  height={128}
                   className="absolute top-0 left-0 w-32 h-32 opacity-20 rotate-[-15deg]"
                 />
-                <img 
+                <NextImage 
                   src="/images/straw-hat.png" 
-                  alt="" 
+                  alt=""
+                  width={128}
+                  height={128}
                   className="absolute bottom-0 right-0 w-32 h-32 opacity-20 rotate-[15deg]"
                 />
               </div>
@@ -1009,9 +1045,11 @@ export default function BoosterOpeningPage() {
                 <div className="relative p-4 sm:p-6 border-b border-yellow-500/20">
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2 sm:gap-4">
-                      <img 
+                      <NextImage 
                         src="/images/treasure-chest.png" 
                         alt="Trésor" 
+                        width={48}
+                        height={48}
                         className="w-8 h-8 sm:w-12 sm:h-12 animate-float"
                       />
                       <h2 className="text-xl sm:text-3xl font-bold bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
@@ -1064,9 +1102,11 @@ export default function BoosterOpeningPage() {
                             <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/0 via-yellow-500/50 to-yellow-500/0 blur-xl"></div>
                           </div>
 
-                          <img
+                          <NextImage
                             src={`/images/booster/${set.code.toLowerCase()}.png`}
                             alt={set.name}
+                            width={400}
+                            height={600}
                             className="w-full h-auto transform transition-all duration-500 group-hover:scale-110"
                           />
                         </div>

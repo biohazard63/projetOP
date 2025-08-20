@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { auth } from '@/lib/auth'
+
 import { prisma } from '@/lib/prisma'
 import { cookies } from 'next/headers'
 import { GameState, GamePhase, SetupPhase, GameCard, CardType, CardColor } from '@/types/game'
@@ -9,7 +9,7 @@ export async function POST() {
   try {
     console.log('=== DÉBUT INITIALISATION DU JEU ===')
     
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     
     if (!session?.user?.email) {
       console.log('❌ Erreur: Utilisateur non authentifié')

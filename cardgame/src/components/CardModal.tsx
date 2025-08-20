@@ -38,8 +38,7 @@ interface CardModalProps {
 }
 
 export default function CardModal({ card, isOpen, onClose, onAddToDeck, onToggleFavorite }: CardModalProps) {
-  if (!card) return null;
-
+  // Déplacer tous les hooks avant le return conditionnel pour React 19
   const controls = useAnimation();
   const x = useMotionValue(0);
   const opacity = useTransform(x, [-100, 0, 100], [0.5, 1, 0.5]);
@@ -47,11 +46,13 @@ export default function CardModal({ card, isOpen, onClose, onAddToDeck, onToggle
 
   // Réinitialiser l'animation quand la modal s'ouvre
   useEffect(() => {
-    if (isOpen) {
+    if (isOpen && card) {
       controls.set({ x: 0, opacity: 1 });
       x.set(0);
     }
-  }, [isOpen, controls, x]);
+  }, [isOpen, controls, x, card]);
+
+  if (!card) return null;
 
   const handleDragEnd = async (event: any, info: any) => {
     const offset = info.offset.x;

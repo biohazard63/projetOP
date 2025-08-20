@@ -1,282 +1,337 @@
 'use client'
 
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useTransition, useCallback } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
 import { usePathname } from 'next/navigation'
 import { useSession, signOut } from 'next-auth/react'
-import { Menu, X, Anchor, Ship, Scroll, Book, Trophy, Sword } from 'lucide-react'
+import { Menu, X, Anchor, Ship, Scroll, Book, Trophy, Sword, User, LogOut } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
+// Configuration de navigation avec métadonnées enrichies
 const navigation = [
-  { name: 'Accueil', href: '/home', icon: Anchor },
-  { name: 'Mes Decks', href: '/decks', icon: Ship },
-  { name: 'Deck Builder', href: '/deck-builder', icon: Scroll },
-  { name: 'Boosters', href: '/booster-opening', icon: Book },
-  { name: 'Collection', href: '/collection', icon: Trophy },
-  { name: 'Jouer', href: '/game', icon: Sword },
-]
+  { 
+    name: 'Accueil', 
+    href: '/home', 
+    icon: Anchor,
+    description: 'Retour à l\'accueil',
+    badge: null
+  },
+  { 
+    name: 'Mes Decks', 
+    href: '/decks', 
+    icon: Ship,
+    description: 'Gérer vos decks',
+    badge: null
+  },
+  { 
+    name: 'Deck Builder', 
+    href: '/deck-builder', 
+    icon: Scroll,
+    description: 'Créer un nouveau deck',
+    badge: 'Nouveau'
+  },
+  { 
+    name: 'Boosters', 
+    href: '/booster-opening', 
+    icon: Book,
+    description: 'Ouvrir des boosters',
+    badge: null
+  },
+  { 
+    name: 'Collection', 
+    href: '/collection', 
+    icon: Trophy,
+    description: 'Voir votre collection',
+    badge: null
+  },
+  { 
+    name: 'Jouer', 
+    href: '/game', 
+    icon: Sword,
+    description: 'Lancer une partie',
+    badge: null
+  },
+] as const
 
 type NavbarProps = {
   variant?: 'default' | 'impel-down' | 'ocean' | 'deck-builder'
+  className?: string
 }
 
-const navbarVariants = {
-  default: {
-    nav: "backdrop-blur-lg bg-gradient-to-b from-[#1a1a1a]/80 to-[#1a1a1a]/60 shadow-lg border-b border-[#D84315]/20",
-    link: "group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-[#D84315]/10",
-    activeLinkClass: "text-[#FF5722] bg-[#D84315]/20 shadow-inner shadow-[#D84315]/10",
-    inactiveLinkClass: "text-white hover:text-[#FF5722]",
-    mobileMenu: "backdrop-blur-lg bg-[#1a1a1a]/90 rounded-lg border border-[#D84315]/20",
-    logo: "text-[#FF5722] hover:text-[#FF5722]/80",
-    button: "bg-[#D84315] hover:bg-[#FF5722] text-white transition-colors duration-300"
-  },
-  "impel-down": {
-    nav: "backdrop-blur-md bg-[#0B1120]/80 shadow-red-900/20 shadow-lg border-b border-red-900/30",
-    link: "group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-200 hover:bg-red-900/20",
-    activeLinkClass: "text-red-500 bg-red-900/30",
-    inactiveLinkClass: "text-gray-300 hover:text-red-400",
-    mobileMenu: "backdrop-blur-md bg-[#0B1120]/90 rounded-lg border border-red-900/30",
-    logo: "text-red-500 hover:text-red-400",
-    button: "bg-red-900 hover:bg-red-800 text-white transition-colors duration-300"
-  },
-  ocean: {
-    nav: "backdrop-blur-md bg-gradient-to-b from-blue-900/80 via-blue-800/70 to-blue-900/60 shadow-lg border-b border-blue-400/30",
-    link: "group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300",
-    activeLinkClass: "text-yellow-400 bg-blue-500/30 shadow-[0_0_15px_rgba(59,130,246,0.3)]",
-    inactiveLinkClass: "text-white hover:text-yellow-200",
-    mobileMenu: "backdrop-blur-md bg-gradient-to-b from-blue-900/90 to-blue-800/90 rounded-lg border border-blue-400/30",
-    logo: "text-yellow-400 hover:text-yellow-300",
-    button: "bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-500 hover:to-blue-600 text-white shadow-lg hover:shadow-blue-500/50 transition-all duration-300"
-  },
-  "deck-builder": {
-    nav: "backdrop-blur-lg bg-gradient-to-b from-gray-900/90 via-gray-800/80 to-gray-900/70 shadow-lg border-b border-yellow-500/20 relative overflow-hidden",
-    link: "group flex items-center px-3 py-2 text-sm font-medium rounded-lg transition-all duration-300 hover:bg-yellow-500/10 relative",
-    activeLinkClass: "text-yellow-400 bg-yellow-500/20 shadow-[0_0_15px_rgba(234,179,8,0.3)]",
-    inactiveLinkClass: "text-white hover:text-yellow-200",
-    mobileMenu: "backdrop-blur-lg bg-gradient-to-b from-gray-900/95 to-gray-800/95 rounded-lg border border-yellow-500/20",
-    logo: "text-yellow-400 hover:text-yellow-300",
-    button: "bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-500 hover:to-red-500 text-white shadow-lg hover:shadow-yellow-500/30 transition-all duration-300"
-  }
+// Composant pour l'icône du logo avec animation
+function LogoIcon() {
+  return (
+    <div className="relative group">
+      <Image 
+        src="/images/jolly-roger.png"
+        alt="Logo One Piece TCG" 
+        width={40}
+        height={40}
+        className="w-10 h-10 object-contain transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3"
+      />
+      <div className="absolute inset-0 bg-orange-500/20 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+    </div>
+  )
 }
 
-export function Navbar({ variant = 'default' }: NavbarProps) {
+// Composant pour les éléments de navigation
+function NavItem({ 
+  item, 
+  isActive, 
+  onClick 
+}: { 
+  item: typeof navigation[number]
+  isActive: boolean
+  onClick?: () => void
+}) {
+  const Icon = item.icon
+  
+  return (
+    <Link
+      href={item.href}
+      onClick={onClick}
+      role="menuitem"
+      className={cn(
+        "group relative flex items-center px-4 py-2.5 text-sm font-medium rounded-xl transition-all duration-300",
+        "hover:scale-105 active:scale-95",
+        isActive 
+          ? "text-orange-500 bg-gradient-to-r from-orange-500/20 to-orange-600/20 shadow-lg shadow-orange-500/25" 
+          : "text-white/90 hover:text-orange-400 hover:bg-white/5"
+      )}
+    >
+      <Icon className={cn(
+        "w-4 h-4 mr-2.5 transition-all duration-300",
+        isActive ? "text-orange-500" : "text-white/70 group-hover:text-orange-400"
+      )} />
+      <span className="relative">
+        {item.name}
+        {item.badge && (
+          <span className="absolute -top-2 -right-8 px-1.5 py-0.5 text-xs bg-orange-500 text-white rounded-full animate-pulse">
+            {item.badge}
+          </span>
+        )}
+      </span>
+      {isActive && (
+        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-transparent rounded-xl animate-pulse" />
+      )}
+    </Link>
+  )
+}
+
+// Composant pour le bouton de menu mobile
+function MobileMenuButton({ 
+  isOpen, 
+  onClick 
+}: { 
+  isOpen: boolean
+  onClick: () => void 
+}) {
+  return (
+    <button
+      onClick={onClick}
+      className="lg:hidden relative p-2.5 rounded-xl text-white hover:bg-orange-500/20 transition-all duration-300 hover:scale-105 active:scale-95"
+      aria-label={isOpen ? 'Fermer le menu' : 'Ouvrir le menu'}
+    >
+      <div className="relative w-6 h-6">
+        <span className={cn(
+          "absolute inset-0 transition-all duration-300",
+          isOpen ? "rotate-45 translate-y-0" : "-translate-y-1"
+        )}>
+          <X size={24} className={cn(
+            "transition-opacity duration-300",
+            isOpen ? "opacity-100" : "opacity-0"
+          )} />
+        </span>
+        <span className={cn(
+          "absolute inset-0 transition-all duration-300",
+          isOpen ? "opacity-0" : "opacity-100"
+        )}>
+          <Menu size={24} />
+        </span>
+      </div>
+    </button>
+  )
+}
+
+// Composant pour l'état de chargement
+function LoadingState() {
+  return (
+    <div className="flex items-center space-x-2">
+      <div className="h-8 w-24 bg-gradient-to-r from-orange-500/20 to-orange-600/20 rounded-lg animate-pulse" />
+      <div className="w-2 h-2 bg-orange-500 rounded-full animate-bounce" />
+    </div>
+  )
+}
+
+// Composant pour l'utilisateur connecté
+function UserSection({ session }: { session: { user?: { name?: string | null } } }) {
+  const [isPending, startTransition] = useTransition()
+  
+  const handleSignOut = useCallback(() => {
+    startTransition(() => {
+      signOut({ callbackUrl: '/home' })
+    })
+  }, [])
+
+  return (
+    <div className="flex items-center space-x-3">
+      <div className="flex items-center space-x-2 px-3 py-2 rounded-xl bg-gradient-to-r from-orange-500/10 to-orange-600/10 border border-orange-500/20">
+        <User className="w-4 h-4 text-orange-400" />
+        <span className="text-sm text-white/90">
+          Bonjour, {session.user?.name || 'Pirate'}
+        </span>
+      </div>
+      <button
+        onClick={handleSignOut}
+        disabled={isPending}
+        className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white transition-all duration-300 hover:scale-105 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed shadow-lg shadow-orange-500/25"
+      >
+        <LogOut className="w-4 h-4" />
+        <span>{isPending ? 'Déconnexion...' : 'Déconnexion'}</span>
+      </button>
+    </div>
+  )
+}
+
+// Composant pour le bouton de connexion
+function LoginButton() {
+  return (
+    <Link
+      href="/login"
+      className="flex items-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg shadow-orange-500/25"
+    >
+      <User className="w-4 h-4" />
+      <span>Connexion</span>
+    </Link>
+  )
+}
+
+export function Navbar({ variant = 'default', className }: NavbarProps) {
   const pathname = usePathname()
   const { data: session, status } = useSession()
-  const isLoading = status === 'loading'
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
 
-  useEffect(() => {
-    setMounted(true)
+  // Gestion de l'état de chargement sans use()
+  const isLoading = status === 'loading'
+  
+  // (supprimé) Mémorisation non utilisée de l'élément actif
+
+  const handleMenuToggle = useCallback(() => {
+    setIsMenuOpen(prev => !prev)
   }, [])
 
-  const styles = navbarVariants[variant]
+  const handleNavItemClick = useCallback(() => {
+    setIsMenuOpen(false)
+  }, [])
+
+  // Gestion du montage côté client
+  useEffect(() => {
+    setMounted(true)
+    const onKeyDown = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') {
+        setIsMenuOpen(false)
+      }
+    }
+    document.addEventListener('keydown', onKeyDown)
+    return () => document.removeEventListener('keydown', onKeyDown)
+  }, [])
 
   if (!mounted) {
     return null
   }
 
   return (
-    <nav className={cn(
-      styles.nav,
-      "fixed top-0 left-0 right-0 z-50 w-full"
+    <nav role="navigation" aria-label="Navigation principale" data-variant={variant} className={cn(
+      "fixed top-0 left-0 right-0 z-50 w-full",
+      "bg-black/95 backdrop-blur-xl border-b border-orange-500/30",
+      "shadow-2xl shadow-black/50",
+      className
     )}>
-      {variant === 'deck-builder' && (
-        <>
-          {/* Effet de Haki */}
-          <div className="absolute inset-0 pointer-events-none">
-            <div className="absolute top-0 right-0 w-64 h-64 opacity-10">
-              <div className="w-full h-full bg-[url('/images/deck/haki-flash.png')] bg-contain bg-no-repeat animate-pulse"></div>
-            </div>
-            <div className="absolute bottom-0 left-0 w-64 h-64 opacity-10 rotate-180">
-              <div className="w-full h-full bg-[url('/images/deck/haki-flash.png')] bg-contain bg-no-repeat animate-pulse" style={{ animationDelay: '-1.5s' }}></div>
-            </div>
-          </div>
-          {/* Effet d'explosion */}
-          <div className="absolute inset-0 bg-[url('/images/deck/explosion.png')] bg-repeat-x bg-bottom opacity-5 animate-pulse"></div>
-        </>
-      )}
-      
       <div className="container mx-auto px-4">
-        <div className="flex h-16 justify-between items-center relative z-10">
-          {/* Logo avec effet de Haki pour le deck-builder */}
-          <div className="flex-shrink-0 relative group">
-            <Link 
-              href="/home" 
-              className="flex items-center space-x-2 relative"
-            >
-              <div className="relative overflow-hidden rounded-full">
-                <img 
-                  src="/images/jolly-roger.png"
-                  alt="Logo" 
-                  className={cn(
-                    "w-10 h-10 object-contain transform transition-all duration-300",
-                    "group-hover:scale-110"
-                  )}
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-yellow-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-              </div>
-              <span className={cn(
-                "text-xl font-bold transition-all duration-300 group-hover:tracking-wider relative",
-                styles.logo,
-                "after:content-[''] after:absolute after:-bottom-1 after:left-0 after:w-0 after:h-0.5 after:transition-all after:duration-300 group-hover:after:w-full",
-                variant === 'deck-builder' && "after:bg-yellow-500"
-              )}>
+        <div className="flex h-16 justify-between items-center">
+          {/* Logo */}
+          <div className="flex-shrink-0">
+            <Link href="/home" className="flex items-center space-x-3 group">
+              <LogoIcon />
+              <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent">
                 One Piece TCG
               </span>
             </Link>
           </div>
 
-          {/* Navigation desktop avec effets de vague */}
-          <div className="hidden lg:flex space-x-1">
-            {navigation.map((item) => {
-              const Icon = item.icon
-              const isActive = pathname === item.href
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    styles.link,
-                    "relative overflow-hidden group",
-                    isActive ? styles.activeLinkClass : styles.inactiveLinkClass,
-                    "hover:bg-blue-500/10"
-                  )}
-                >
-                  <Icon className="w-4 h-4 mr-2 transition-transform duration-300 group-hover:scale-110 group-hover:rotate-12" />
-                  <span className="relative z-10">{item.name}</span>
-                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                  {isActive && (
-                    <div className="absolute bottom-0 left-0 w-full h-0.5 bg-gradient-to-r from-yellow-400/0 via-yellow-400 to-yellow-400/0"></div>
-                  )}
-                </Link>
-              )
-            })}
+          {/* Navigation desktop */}
+          <div className="hidden md:flex items-center space-x-2" role="menubar" aria-label="Liens principaux">
+            {navigation.map((item) => (
+              <NavItem
+                key={item.href}
+                item={item}
+                isActive={pathname === item.href}
+              />
+            ))}
           </div>
 
-          {/* Bouton menu mobile avec effet de vague */}
-          <div className="lg:hidden">
-            <button
-              onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className={cn(
-                "p-2 rounded-lg transition-all duration-300 focus:outline-none",
-                "hover:bg-blue-500/20",
-                styles.inactiveLinkClass,
-                "relative overflow-hidden"
-              )}
-            >
-              {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
-              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] hover:translate-x-[100%] transition-transform duration-1000"></div>
-            </button>
-          </div>
+          {/* Bouton menu mobile */}
+          <MobileMenuButton isOpen={isMenuOpen} onClick={handleMenuToggle} />
 
-          {/* Auth section desktop avec effets */}
-          <div className="hidden lg:flex items-center space-x-4">
+          {/* Section authentification desktop */}
+          <div className="hidden md:flex items-center">
             {isLoading ? (
-              <div className="h-8 w-20 bg-blue-400/20 animate-pulse rounded-lg"></div>
+              <LoadingState />
             ) : session ? (
-              <div className="flex items-center space-x-4">
-                <span className={cn(
-                  "px-3 py-2 rounded-lg",
-                  styles.inactiveLinkClass,
-                  "bg-blue-500/10"
-                )}>
-                  Bonjour, {session.user?.name || 'Pirate'}
-                </span>
-                <button
-                  onClick={() => signOut({ callbackUrl: '/home' })}
-                  className={cn(
-                    "px-4 py-2 rounded-lg",
-                    styles.button,
-                    "transform hover:scale-105 hover:shadow-lg"
-                  )}
-                >
-                  Déconnexion
-                </button>
-              </div>
+              <UserSection session={session} />
             ) : (
-              <Link
-                href="/login"
-                className={cn(
-                  "px-4 py-2 rounded-lg",
-                  styles.button,
-                  "transform hover:scale-105 hover:shadow-lg"
-                )}
-              >
-                Connexion
-              </Link>
+              <LoginButton />
             )}
           </div>
         </div>
 
-        {/* Menu mobile avec animations de vague */}
-        {isMenuOpen && (
-          <div className="lg:hidden">
-            <div className={cn(
-              "px-2 pt-2 pb-3 space-y-1 mb-4 rounded-lg shadow-lg",
-              styles.mobileMenu
-            )}>
-              {navigation.map((item) => {
-                const Icon = item.icon
-                const isActive = pathname === item.href
-                return (
-                  <Link
-                    key={item.href}
-                    href={item.href}
-                    className={cn(
-                      'flex items-center px-3 py-2 rounded-lg text-base font-medium transition-all duration-300',
-                      'relative overflow-hidden group',
-                      isActive ? styles.activeLinkClass : styles.inactiveLinkClass,
-                      'hover:bg-blue-500/10'
-                    )}
-                    onClick={() => setIsMenuOpen(false)}
-                  >
-                    <Icon className="w-5 h-5 mr-3 transition-transform group-hover:rotate-12" />
-                    {item.name}
-                    <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></div>
-                  </Link>
-                )
-              })}
+        {/* Menu mobile avec animation améliorée */}
+        <div id="mobile-nav" aria-hidden={!isMenuOpen} className={cn(
+          "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
+          isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        )}>
+          <div className="px-2 pt-2 pb-4 space-y-2 mb-4 rounded-xl bg-black/95 border border-orange-500/30 backdrop-blur-xl shadow-2xl">
+            {navigation.map((item) => (
+              <NavItem
+                key={item.href}
+                item={item}
+                isActive={pathname === item.href}
+                onClick={handleNavItemClick}
+              />
+            ))}
+            
+            {/* Section authentification mobile */}
+            <div className="pt-2 border-t border-orange-500/20">
               {!isLoading && !session && (
-                <Link
-                  href="/login"
-                  className={cn(
-                    "px-4 py-2 rounded-lg transition-all duration-300 w-full text-center",
-                    styles.button,
-                    "transform hover:scale-105"
-                  )}
-                  onClick={() => setIsMenuOpen(false)}
-                >
-                  Connexion
-                </Link>
+                <div className="px-2">
+                  <LoginButton />
+                </div>
               )}
               {!isLoading && session && (
-                <div className="px-3 py-2 space-y-3">
-                  <span className={cn(
-                    "block px-3 py-2 rounded-lg",
-                    styles.inactiveLinkClass,
-                    "bg-blue-500/10"
-                  )}>
-                    Bonjour, {session.user?.name || 'Pirate'}
-                  </span>
+                <div className="px-2 space-y-3">
+                  <div className="flex items-center space-x-2 px-3 py-2 rounded-xl bg-gradient-to-r from-orange-500/10 to-orange-600/10 border border-orange-500/20">
+                    <User className="w-4 h-4 text-orange-400" />
+                    <span className="text-sm text-white/90">
+                      Bonjour, {session.user?.name || 'Pirate'}
+                    </span>
+                  </div>
                   <button
                     onClick={() => {
                       setIsMenuOpen(false)
                       signOut({ callbackUrl: '/home' })
                     }}
-                    className={cn(
-                      "w-full px-4 py-2 rounded-lg transition-all duration-300",
-                      styles.button,
-                      "transform hover:scale-105"
-                    )}
+                    className="w-full flex items-center justify-center space-x-2 px-4 py-2 rounded-xl bg-gradient-to-r from-orange-600 to-orange-700 hover:from-orange-700 hover:to-orange-800 text-white transition-all duration-300 hover:scale-105 active:scale-95 shadow-lg shadow-orange-500/25"
                   >
-                    Déconnexion
+                    <LogOut className="w-4 h-4" />
+                    <span>Déconnexion</span>
                   </button>
                 </div>
               )}
             </div>
           </div>
-        )}
+        </div>
       </div>
     </nav>
   )
