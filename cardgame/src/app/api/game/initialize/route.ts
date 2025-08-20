@@ -91,10 +91,11 @@ export async function POST() {
       name: dc.card.name,
       type: dc.card.type,
       color: dc.card.color,
-      cost: dc.card.cost,
-      power: dc.card.power,
-      counter: dc.card.counter,
-      effect: dc.card.effect,
+      cost: (dc.card.cost ?? undefined) as number | undefined,
+      power: (dc.card.power ?? undefined) as number | undefined,
+      counter: dc.card.counter == null ? undefined : Number(dc.card.counter),
+      effect: dc.card.effect ?? undefined,
+      trigger: dc.card.trigger ?? undefined,
       rarity: dc.card.rarity,
       imageUrl: dc.card.imageUrl,
       quantity: dc.quantity
@@ -103,7 +104,8 @@ export async function POST() {
     console.log('✅ Deck actif trouvé:', deck.name, 'avec', deckCards.length, 'cartes')
 
     // Fonction pour convertir une carte de la base de données en GameCard
-    const convertToGameCard = (card: any, isFaceUp: boolean = false): GameCard => {
+    type DbCard = { id: string; name: string; type: string; color: string; cost?: number; power?: number; imageUrl?: string; effect?: string; trigger?: string; counter?: number }
+    const convertToGameCard = (card: DbCard, isFaceUp: boolean = false): GameCard => {
       console.log(`🎴 Conversion de la carte ${card.name} (type: ${card.type}, face ${isFaceUp ? 'visible' : 'cachée'})`)
       
       // Détecter les propriétés spéciales
@@ -154,8 +156,21 @@ export async function POST() {
     // Générer un deck aléatoire pour l'adversaire
     console.log('🔄 Génération du deck adversaire')
     const allCards = await prisma.card.findMany()
-    const shuffledCards = [...allCards].sort(() => Math.random() - 0.5)
-    const opponentLeaderCard = allCards.find(card => card.type === 'LEADER')
+    const normalizeDbCard = (c: { id: string; name: string; type: string; color: string; cost: number | null; power: number | null; imageUrl: string | null; effect: string | null; trigger: string | null; counter: string | null }): DbCard => ({
+      id: c.id,
+      name: c.name,
+      type: c.type,
+      color: c.color,
+      cost: c.cost ?? undefined,
+      power: c.power ?? undefined,
+      imageUrl: c.imageUrl ?? '',
+      effect: c.effect ?? undefined,
+      trigger: c.trigger ?? undefined,
+      counter: c.counter == null ? undefined : Number(c.counter),
+    })
+    const normalizedAllCards: DbCard[] = allCards.map(normalizeDbCard)
+    const shuffledCards = [...normalizedAllCards].sort(() => Math.random() - 0.5)
+    const opponentLeaderCard = normalizedAllCards.find(card => card.type === 'LEADER')
     if (!opponentLeaderCard) {
       console.log('❌ Erreur: Aucun leader trouvé pour l\'adversaire')
       return NextResponse.json(

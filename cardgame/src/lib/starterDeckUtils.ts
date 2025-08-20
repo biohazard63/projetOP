@@ -52,7 +52,6 @@ export async function addStarterDeckCardsToUser(userId: string): Promise<void> {
     // 1. Ajouter toutes les cartes à la collection de l'utilisateur
     for (const card of starterDeckCards) {
       try {
-        // @ts-ignore - Ignorer les erreurs de typage pour userCard
         await prisma.userCard.upsert({
         where: {
             userId_cardId: {
@@ -114,7 +113,6 @@ export async function addStarterDeckCardsToUser(userId: string): Promise<void> {
         });
         
         // Récupérer les versions du deck de démarrage
-        // @ts-ignore - Ignorer les erreurs de typage pour deckVersion
         const deckVersions = await prisma.deckVersion.findMany({
           where: {
             deckId: starterDeck.id
@@ -124,7 +122,6 @@ export async function addStarterDeckCardsToUser(userId: string): Promise<void> {
         // Pour chaque version, créer une copie et ajouter les cartes
         for (const version of deckVersions) {
           // Créer une nouvelle version pour le deck de l'utilisateur
-          // @ts-ignore - Ignorer les erreurs de typage pour deckVersion
           const newVersion = await prisma.deckVersion.create({
             data: {
               deckId: newDeck.id,
@@ -133,7 +130,6 @@ export async function addStarterDeckCardsToUser(userId: string): Promise<void> {
           });
           
           // Récupérer les cartes de cette version
-          // @ts-ignore - Ignorer les erreurs de typage pour deckCard
           const deckCards = await prisma.deckCard.findMany({
             where: {
               deckVersionId: version.id
@@ -142,7 +138,6 @@ export async function addStarterDeckCardsToUser(userId: string): Promise<void> {
           
           // Ajouter les cartes à la nouvelle version
           for (const deckCard of deckCards) {
-            // @ts-ignore - Ignorer les erreurs de typage pour deckCard
             await prisma.deckCard.create({
               data: {
                 deckVersionId: newVersion.id,

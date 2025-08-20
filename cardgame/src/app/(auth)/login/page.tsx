@@ -7,7 +7,7 @@ import Link from 'next/link'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { Github, Mail } from 'lucide-react'
+import { Github } from 'lucide-react'
 
 export default function LoginPage() {
   const router = useRouter()
@@ -47,7 +47,7 @@ export default function LoginPage() {
           router.push(callbackUrl)
           router.refresh()
         }
-      } catch (err) {
+      } catch {
         setError('Une erreur est survenue. Veuillez réessayer.')
       }
     })
@@ -156,7 +156,7 @@ export default function LoginPage() {
             <p className="text-center text-sm text-muted-foreground">
               Pas encore de compte ?{' '}
               <Link href="/register" className="text-primary hover:underline">
-                S'inscrire
+                S&apos;inscrire
               </Link>
             </p>
           </div>

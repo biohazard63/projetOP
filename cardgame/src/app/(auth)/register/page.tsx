@@ -73,7 +73,6 @@ export default function RegisterPage() {
 
     if (password !== confirmPassword) {
       setError('Les mots de passe ne correspondent pas')
-      setIsLoading(false)
       return
     }
 
@@ -86,8 +85,9 @@ export default function RegisterPage() {
         })
 
         if (!response.ok) {
-          const data = await response.json().catch(() => ({}))
-          throw new Error((data as any).message || 'Une erreur est survenue')
+          const data: unknown = await response.json().catch(() => ({}))
+          const message = (typeof data === 'object' && data !== null && 'message' in data) ? String((data as { message?: unknown }).message) : undefined
+          throw new Error(message || 'Une erreur est survenue')
         }
 
         router.push(`/login?registered=true&callbackUrl=${encodeURIComponent(callbackUrl)}`)
@@ -260,7 +260,7 @@ export default function RegisterPage() {
                 Inscription en cours...
               </div>
             ) : (
-              "S'inscrire"
+              "S\'inscrire"
             )}
           </motion.button>
         </form>

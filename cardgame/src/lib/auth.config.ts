@@ -25,13 +25,18 @@ export const authConfig = {
         email: { label: "Email", type: "email" },
         password: { label: "Mot de passe", type: "password" }
       },
-      async authorize(credentials) {
-        if (!credentials?.email || !credentials?.password) {
+      async authorize(credentials, _request) {
+        const rawEmail = (credentials && typeof credentials === 'object') ? (credentials as Record<string, unknown>).email : undefined
+        const rawPassword = (credentials && typeof credentials === 'object') ? (credentials as Record<string, unknown>).password : undefined
+        const email = typeof rawEmail === 'string' ? rawEmail.toLowerCase().trim() : ''
+        const password = typeof rawPassword === 'string' ? rawPassword : ''
+
+        if (!email || !password) {
           throw new Error("Email et mot de passe requis")
         }
 
         const user = await prisma.user.findUnique({
-          where: { email: credentials.email }
+          where: { email }
         })
 
         if (!user) {
@@ -42,7 +47,7 @@ export const authConfig = {
           throw new Error("Ce compte n'a pas de mot de passe configuré")
         }
 
-        const isPasswordValid = await bcrypt.compare(credentials.password, user.password)
+        const isPasswordValid = await bcrypt.compare(password, user.password)
 
         if (!isPasswordValid) {
           throw new Error("Mot de passe incorrect")
@@ -51,7 +56,7 @@ export const authConfig = {
         return {
           id: user.id,
           email: user.email,
-          name: user.name
+          name: user.name ?? user.email.split('@')[0]
         }
       }
     })
@@ -65,13 +70,13 @@ export const authConfig = {
       // true = accès, false = redirection vers pages.signIn
       return !!auth?.user
     },
-    async signIn({ user, account, profile, isNewUser }) {
+    async signIn({ user, account, profile }) {
       // Bloquer les connexions OAuth si l'email Google n'est pas vérifié
       if (account?.provider === 'google') {
-        const verified = (profile as any)?.email_verified
-        if (verified === false) {
-          return false
-        }
+        const verified = (profile && typeof profile === 'object' && 'email_verified' in profile)
+          ? (profile as { email_verified?: boolean }).email_verified
+          : undefined
+        if (verified === false) return false
       }
       // Si c'est un nouvel utilisateur OAuth
       if (account?.provider !== 'credentials' && user) {
@@ -95,17 +100,7 @@ export const authConfig = {
         }
       }
 
-      // Si c'est un nouvel utilisateur avec credentials, ajouter aussi les decks
-      if (account?.provider === 'credentials' && isNewUser && user) {
-        setTimeout(async () => {
-          try {
-            await addStarterDeckCardsToUser(user.id)
-            console.log(`Decks de démarrage ajoutés avec succès pour le nouvel utilisateur ${user.id}`)
-          } catch (error) {
-            console.error('Erreur lors de l\'association des decks de démarrage:', error)
-          }
-        }, 100)
-      }
+      // Les nouveaux comptes credentials sont gérés lors de l'inscription (API register)
 
       return true
     },

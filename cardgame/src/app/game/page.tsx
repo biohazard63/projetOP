@@ -16,7 +16,8 @@ function GameContent() {
   const [gameState, setGameState] = useState<GameState | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
-  const [decks, setDecks] = useState<any[]>([])
+  type DeckLite = { id: string; name: string; cards: { id: string }[] }
+  const [decks, setDecks] = useState<DeckLite[]>([])
   const [showDeckSelection, setShowDeckSelection] = useState(false)
 
   useEffect(() => {
@@ -33,8 +34,9 @@ function GameContent() {
           throw new Error('Erreur lors de la récupération des decks')
         }
 
-        const data = await response.json()
-        setDecks(data.decks || [])
+        const data: unknown = await response.json()
+        const decks = (typeof data === 'object' && data && 'decks' in data) ? (data as { decks?: DeckLite[] }).decks ?? [] : []
+        setDecks(decks)
       } catch (error) {
         console.error('Erreur:', error)
         toast.error('Impossible de récupérer les decks')
@@ -259,7 +261,7 @@ function GameContent() {
           
           {decks.length === 0 ? (
             <div className="bg-gray-800 rounded-lg p-6 text-center">
-              <p className="text-white mb-4">Vous n'avez pas encore de deck. Créez-en un pour commencer à jouer !</p>
+              <p className="text-white mb-4">Vous n&apos;avez pas encore de deck. Créez-en un pour commencer à jouer !</p>
               <Link href="/deck-builder">
                 <Button>Créer un deck</Button>
               </Link>

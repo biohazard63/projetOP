@@ -3,12 +3,11 @@ import { prisma } from '@/lib/prisma'
 
 export const dynamic = 'force-dynamic'
 
-export async function GET(
-  request: Request,
-  { params }: { params: { code: string } }
-) {
+export async function GET(request: Request) {
   try {
-    const code = params.code
+    const pathname = new URL(request.url).pathname
+    const match = /\/api\/sets\/([^/]+)\/rules$/.exec(pathname)
+    const code = match?.[1]
     console.log('Code du set reçu:', code)
     
     if (!code) {

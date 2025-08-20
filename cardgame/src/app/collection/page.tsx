@@ -1,14 +1,77 @@
 'use client'
 
-import React, { useState, useEffect, useCallback, useMemo, useTransition } from 'react'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
 // import { useSession } from 'next-auth/react'
-import { Card } from '@/components/ui/card'
+// import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import Image from 'next/image'
 import CardModal from '@/components/CardModal'
-import { Search, ChevronLeft, ChevronRight, Heart } from 'lucide-react'
+import { Search, Heart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+// Virtualisation désactivée temporairement pour stabilité d'affichage
+
+// Composant carte (top-level) pour éviter les re-déclarations dans le composant parent
+function CardItem({ card, showMissing, onClick }: Readonly<{ card: Card; showMissing: boolean; onClick: (card: Card) => void }>) {
+  const rarityClassMap: Record<string, string> = {
+    L: 'bg-yellow-500/80 text-black',
+    SR: 'bg-purple-500/80 text-white',
+    SEC: 'bg-red-500/80 text-white',
+    R: 'bg-blue-500/80 text-white',
+  }
+  const rarityClass = rarityClassMap[card.rarity] ?? 'bg-gray-500/80 text-white'
+
+  return (
+    <button
+      type="button"
+      className={`impel-down-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${
+        showMissing && !card.isOwned ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
+      }`}
+      onClick={() => onClick(card)}
+      aria-label={`Carte ${card.name}`}
+    >
+      <Image
+        src={card.imageUrl}
+        alt={card.name}
+        fill
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
+        className="object-cover transition-transform duration-300 group-hover:scale-110"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120]/90 via-[#1B2A4A]/50 to-transparent" />
+      <div className="absolute top-2 left-2">
+        <span className={`px-2 py-1 text-xs font-bold rounded-full border border-red-900/30 ${rarityClass} shadow-[0_0_10px_rgba(255,0,0,0.3)]`}>
+          {card.rarity}
+        </span>
+      </div>
+      {card.quantity && card.quantity > 0 && (
+        <div className="absolute bottom-2 right-2">
+          <div className="flex items-center justify-center w-8 h-8 rounded-full bg-red-900/80 text-white text-sm font-bold border border-red-500/30 shadow-[0_0_10px_rgba(255,0,0,0.3)]">
+            x{card.quantity}
+          </div>
+        </div>
+      )}
+      {card.isFavorite && (
+        <div className="absolute bottom-2 left-2">
+          <Heart className="w-6 h-6 text-red-500 fill-red-500 drop-shadow-[0_0_5px_rgba(255,0,0,0.5)]" />
+        </div>
+      )}
+      <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-[#0B1120] to-transparent">
+        <div className="flex items-center gap-2">
+          <h3 className="text-red-300 font-semibold text-sm truncate drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+            {card.name}
+          </h3>
+        </div>
+      </div>
+      {showMissing && !card.isOwned && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="bg-red-900/90 text-white text-sm font-bold px-4 py-2 rounded-full shadow-[0_0_20px_rgba(255,0,0,0.3)] border border-red-500/30">
+            Recherché
+          </div>
+        </div>
+      )}
+    </button>
+  )
+}
 
 interface Card {
   id: string
@@ -202,8 +265,6 @@ export default function CollectionPage() {
   const [error, setError] = useState<string | null>(null)
   const [selectedCard, setSelectedCard] = useState<Card | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [currentPage, setCurrentPage] = useState(1)
-  const cardsPerPage = 24
   const [filters, setFilters] = useState<Filters>({
     search: '',
     type: 'all',
@@ -216,7 +277,7 @@ export default function CollectionPage() {
   const [showMissingCards, setShowMissingCards] = useState(false);
   const [allCards, setAllCards] = useState<Card[]>([]);
   const [missingCards, setMissingCards] = useState<Card[]>([]);
-  const [, startTransition] = useTransition();
+  // useTransition n'est plus utilisé ici
 
   const fetchCards = async () => {
     try {
@@ -333,13 +394,13 @@ export default function CollectionPage() {
     });
 
     const getCardNumber = (code: string) => {
-      const match = code.match(/-(\d+)$/);
-      return match ? parseInt(match[1] as string, 10) : 0;
-    };
+      const m = /-(\d+)$/.exec(code)
+      return m ? parseInt(m[1] ?? '0', 10) : 0
+    }
     const getSetNumber = (set: string) => {
-      const match = set.match(/OP(\d+)/);
-      return match ? parseInt(match[1] as string, 10) : 0;
-    };
+      const m = /OP(\d+)/.exec(set)
+      return m ? parseInt(m[1] ?? '0', 10) : 0
+    }
 
     return Array.from(cardsMap.values()).toSorted((a, b) => {
       const setNumberCompare = getSetNumber(a.set || '') - getSetNumber(b.set || '');
@@ -396,13 +457,13 @@ export default function CollectionPage() {
         case 'set':
           // Pour le tri par set, on utilise la même logique que dans getAllCards
           const getSetNumber = (set: string) => {
-            const match = set.match(/OP(\d+)/);
-            return match ? parseInt(match[1]) : 0;
-          };
+            const m = /OP(\d+)/.exec(set)
+            return m ? parseInt(m[1] ?? '0', 10) : 0
+          }
           const getCardNumber = (code: string) => {
-            const match = code.match(/-(\d+)$/);
-            return match ? parseInt(match[1]) : 0;
-          };
+            const m = /-(\d+)$/.exec(code)
+            return m ? parseInt(m[1] ?? '0', 10) : 0
+          }
           
           const setNumberCompare = getSetNumber(a.set || '') - getSetNumber(b.set || '');
           if (setNumberCompare !== 0) {
@@ -447,24 +508,9 @@ export default function CollectionPage() {
     })()
   })));
 
-  // Calcul de la pagination
-  const { totalPages, indexOfFirstCard, indexOfLastCard, currentCards } = useMemo(() => {
-    const total = Math.ceil(filteredAndSortedCards.length / cardsPerPage)
-    const last = currentPage * cardsPerPage
-    const first = last - cardsPerPage
-    return {
-      totalPages: total,
-      indexOfFirstCard: first,
-      indexOfLastCard: last,
-      currentCards: filteredAndSortedCards.slice(first, last),
-    }
-  }, [filteredAndSortedCards, currentPage, cardsPerPage])
-
-  // Fonction pour changer de page
-  const handlePageChange = useCallback((pageNumber: number) => {
-    startTransition(() => setCurrentPage(pageNumber))
-    window.scrollTo({ top: 0, behavior: 'smooth' })
-  }, [])
+  // Indexs d'affichage
+  const indexOfFirstCard = 0
+  const indexOfLastCard = filteredAndSortedCards.length
 
   // Chargement initial des cartes
   useEffect(() => {
@@ -478,10 +524,7 @@ export default function CollectionPage() {
     }
   }, [showMissingCards, fetchAllCards])
 
-  // Réinitialiser la page courante quand les filtres changent
-  useEffect(() => {
-    setCurrentPage(1)
-  }, [filters, sortBy, showMissingCards])
+  // Rien à faire pour la pagination (supprimée)
 
   const handleCardClick = useCallback((card: Card) => {
     setSelectedCard(card)
@@ -556,77 +599,7 @@ export default function CollectionPage() {
     
   })))
 
-  const CardGrid = ({ cards }: { cards: Card[] }) => {
-    return (
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-        {cards.map((card) => (
-          <div
-            key={card.id}
-            className={`impel-down-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer ${
-              showMissingCards && !card.isOwned ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
-            }`}
-            onClick={() => handleCardClick(card)}
-          >
-            <Image
-              src={card.imageUrl}
-              alt={card.name}
-              fill
-              sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
-              className="object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120]/90 via-[#1B2A4A]/50 to-transparent" />
-            
-            {/* Badge de rareté stylisé Impel Down */}
-            <div className="absolute top-2 left-2">
-              <span className={`px-2 py-1 text-xs font-bold rounded-full border border-red-900/30 ${
-                card.rarity === 'L' ? 'bg-yellow-500/80 text-black' :
-                card.rarity === 'SR' ? 'bg-purple-500/80 text-white' :
-                card.rarity === 'SEC' ? 'bg-red-500/80 text-white' :
-                card.rarity === 'R' ? 'bg-blue-500/80 text-white' :
-                'bg-gray-500/80 text-white'
-              } shadow-[0_0_10px_rgba(255,0,0,0.3)]`}>
-                {card.rarity}
-              </span>
-            </div>
-
-            {/* Badge de quantité stylisé */}
-            {card.quantity && card.quantity > 0 && (
-              <div className="absolute bottom-2 right-2">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-red-900/80 text-white text-sm font-bold border border-red-500/30 shadow-[0_0_10px_rgba(255,0,0,0.3)]">
-                  x{card.quantity}
-                </div>
-              </div>
-            )}
-
-            {/* Icône de favori stylisée */}
-            {card.isFavorite && (
-              <div className="absolute bottom-2 left-2">
-                <Heart className="w-6 h-6 text-red-500 fill-red-500 drop-shadow-[0_0_5px_rgba(255,0,0,0.5)]" />
-              </div>
-            )}
-
-            {/* Nom de la carte stylisé */}
-            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-[#0B1120] to-transparent">
-              <div className="flex items-center gap-2">
-                <h3 className="text-red-300 font-semibold text-sm truncate drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
-                  {card.name}
-                </h3>
-              </div>
-            </div>
-
-            {/* Badge "Recherché" pour les cartes manquantes */}
-            {showMissingCards && !card.isOwned && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-red-900/90 text-white text-sm font-bold px-4 py-2 rounded-full shadow-[0_0_20px_rgba(255,0,0,0.3)] border border-red-500/30">
-                  Recherché
-                </div>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    )
-  }
+  
 
   return (
     <div className="container mx-auto max-w-7xl relative z-10 p-4 pt-20">
@@ -842,76 +815,20 @@ export default function CollectionPage() {
         </div>
       </div>
 
-      <CardGrid cards={currentCards} />
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+        {filteredAndSortedCards.map((c) => (
+          <CardItem key={c.id} card={c} showMissing={showMissingCards} onClick={handleCardClick} />
+        ))}
+      </div>
 
       {/* Message d'aide */}
-      {currentCards.length > 0 && (
+      {filteredAndSortedCards.length > 0 && (
         <div className="text-center py-4 mt-4">
           <p className="text-gray-400 text-sm">Cliquez sur une carte pour voir plus de détails.</p>
         </div>
       )}
 
-      {/* Pagination */}
-      {filteredAndSortedCards.length > cardsPerPage && (
-        <div className="flex justify-center mt-8 gap-2">
-          <Button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-          
-          <div className="flex gap-2">
-            {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-              let pageNumber;
-              if (totalPages <= 5) {
-                pageNumber = i + 1;
-              } else if (currentPage <= 3) {
-                pageNumber = i + 1;
-              } else if (currentPage >= totalPages - 2) {
-                pageNumber = totalPages - 4 + i;
-              } else {
-                pageNumber = currentPage - 2 + i;
-              }
-
-              return (
-                <Button
-                  key={pageNumber}
-                  onClick={() => handlePageChange(pageNumber)}
-                  className={`${
-                    currentPage === pageNumber 
-                      ? "bg-red-600 hover:bg-red-700 text-white" 
-                      : "bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600"
-                  }`}
-                >
-                  {pageNumber}
-                </Button>
-              );
-            })}
-            
-            {totalPages > 5 && currentPage < totalPages - 2 && (
-              <>
-                <span className="px-2 py-2 text-gray-400">...</span>
-                <Button
-                  onClick={() => handlePageChange(totalPages)}
-                  className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600"
-                >
-                  {totalPages}
-                </Button>
-              </>
-            )}
-          </div>
-
-          <Button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
-      )}
+      {/* Pagination supprimée grâce à la virtualisation */}
 
       <CardModal
         card={selectedCard}

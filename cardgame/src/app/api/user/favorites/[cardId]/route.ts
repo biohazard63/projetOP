@@ -3,10 +3,7 @@ import { auth } from '@/lib/auth'
 
 import { prisma } from '@/lib/prisma'
 
-export async function GET(
-  request: Request,
-  { params }: { params: { cardId: string } }
-) {
+export async function GET(request: Request) {
   try {
     const session = await auth()
     
@@ -17,7 +14,9 @@ export async function GET(
       }, { status: 401 })
     }
 
-    const { cardId } = params
+    const pathname = new URL(request.url).pathname
+    const match = /\/api\/user\/favorites\/([^/]+)$/.exec(pathname)
+    const cardId = match?.[1]
 
     if (!cardId) {
       return NextResponse.json({ 

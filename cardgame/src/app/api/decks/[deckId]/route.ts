@@ -8,11 +8,14 @@ type CardWithQuantity = Card & { quantity: number }
 
 export const dynamic = 'force-dynamic'
 
-export async function GET(
-  request: Request,
-  { params }: { params: { deckId: string } }
-) {
+export async function GET(request: Request) {
   try {
+    const pathname = new URL(request.url).pathname
+    const match = /\/api\/decks\/([^/]+)$/.exec(pathname)
+    const deckId = match?.[1]
+    if (!deckId) {
+      return NextResponse.json({ error: 'deckId manquant dans l\'URL' }, { status: 400 })
+    }
     const session = await auth()
 
     if (!session?.user?.email) {
@@ -24,7 +27,7 @@ export async function GET(
 
     const deck = await prisma.deck.findUnique({
       where: {
-        id: params.deckId
+        id: deckId
       },
       include: {
         versions: {
@@ -91,11 +94,14 @@ export async function GET(
   }
 }
 
-export async function PUT(
-  request: Request,
-  { params }: { params: { deckId: string } }
-) {
+export async function PUT(request: Request) {
   try {
+    const pathname = new URL(request.url).pathname
+    const match = /\/api\/decks\/([^/]+)$/.exec(pathname)
+    const deckId = match?.[1]
+    if (!deckId) {
+      return NextResponse.json({ error: 'deckId manquant dans l\'URL' }, { status: 400 })
+    }
     const session = await auth()
 
     if (!session?.user?.email) {
@@ -108,18 +114,16 @@ export async function PUT(
     const body = await request.json()
     const { name, cards } = body
 
-    console.log('Validation du deck côté serveur:', {
-      cards,
-      leaderCards: cards.filter((card: any) => card.type === 'LEADER'),
-      nonLeaderCards: cards.filter((card: any) => card.type !== 'LEADER')
-    })
+    type IncomingCard = { id: string; type: string; quantity?: number }
+    console.log('Validation du deck côté serveur: nombre de cartes', Array.isArray(cards) ? cards.length : 0)
 
     // Vérifier les règles du deck
-    const leaderCards = cards.filter((card: any) => card.type === 'LEADER')
-    const nonLeaderCards = cards.filter((card: any) => card.type !== 'LEADER')
+    const normalizedCards: IncomingCard[] = Array.isArray(cards) ? cards : []
+    const leaderCards = normalizedCards.filter((card) => card.type === 'LEADER')
+    const nonLeaderCards = normalizedCards.filter((card) => card.type !== 'LEADER')
     
-    const leaderCount = leaderCards.reduce((sum: number, card: any) => sum + (card.quantity || 1), 0)
-    const nonLeaderCount = nonLeaderCards.reduce((sum: number, card: any) => sum + (card.quantity || 1), 0)
+    const leaderCount = leaderCards.reduce((sum: number, card) => sum + (card.quantity || 1), 0)
+    const nonLeaderCount = nonLeaderCards.reduce((sum: number, card) => sum + (card.quantity || 1), 0)
 
     if (leaderCount !== 1) {
       return NextResponse.json(
@@ -141,12 +145,12 @@ export async function PUT(
       const newVersion = await tx.deckVersion.create({
         data: {
           name: `Version ${new Date().toISOString()}`,
-          deckId: params.deckId,
+          deckId: deckId,
         }
       })
 
       // Ajouter les cartes à la version
-      for (const card of cards) {
+      for (const card of normalizedCards) {
         await tx.deckCard.create({
           data: {
             cardId: card.id,
@@ -158,13 +162,13 @@ export async function PUT(
 
       // Mettre à jour le nom du deck
       await tx.deck.update({
-        where: { id: params.deckId },
+        where: { id: deckId },
         data: { name }
       })
 
       // Récupérer le deck complet avec sa dernière version
       return tx.deck.findUnique({
-        where: { id: params.deckId },
+        where: { id: deckId },
         include: {
           versions: {
             where: { id: newVersion.id },
@@ -225,11 +229,14 @@ export async function PUT(
   }
 }
 
-export async function DELETE(
-  request: Request,
-  { params }: { params: { deckId: string } }
-) {
+export async function DELETE(request: Request) {
   try {
+    const pathname = new URL(request.url).pathname
+    const match = /\/api\/decks\/([^/]+)$/.exec(pathname)
+    const deckId = match?.[1]
+    if (!deckId) {
+      return NextResponse.json({ error: 'deckId manquant dans l\'URL' }, { status: 400 })
+    }
     const session = await auth()
 
     if (!session?.user?.email) {
@@ -241,7 +248,7 @@ export async function DELETE(
 
     await prisma.deck.delete({
       where: {
-        id: params.deckId
+        id: deckId
       }
     })
 

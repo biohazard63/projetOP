@@ -8,9 +8,7 @@ import {
   useCallback, 
   useMemo, 
   useTransition,
-  Suspense,
-  startTransition,
-  use
+  Suspense
 } from 'react'
 import { SessionProvider } from 'next-auth/react'
 import { ThemeProvider } from "@/components/theme-provider"
@@ -210,7 +208,7 @@ function ProvidersInitializer({
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-50">
         <div className="text-center">
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Erreur d'initialisation</h2>
+          <h2 className="text-xl font-semibold text-gray-900 mb-2">Erreur d&apos;initialisation</h2>
           <p className="text-gray-600">{error.message}</p>
         </div>
       </div>

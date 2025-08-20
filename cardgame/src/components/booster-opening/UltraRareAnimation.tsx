@@ -227,12 +227,12 @@ export default function UltraRareAnimation({ card, onComplete }: Readonly<UltraR
                   ease: 'easeInOut'
                 }}
               >
-                <div className={`${isMobile ? 'w-48 h-64' : 'w-64 h-96'} relative`}>
+                <div className={`${isMobile ? 'w-[220px] h-[294px]' : 'w-[340px] h-[454px]'} relative`}>
                   <Image
                     src={card.imageUrl}
                     alt={card.name}
                     fill
-                    sizes="(max-width: 768px) 12rem, 16rem"
+                    sizes="(max-width: 640px) 220px, (max-width: 1024px) 300px, 340px"
                     className="object-cover rounded-lg shadow-2xl"
                     priority={false}
                   />

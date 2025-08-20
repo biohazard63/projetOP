@@ -32,7 +32,7 @@ export async function GET() {
     }
 
     // Récupérer l'ID du deck actif depuis le cookie
-    const cookieStore = cookies()
+    const cookieStore = await cookies()
     const activeDeckId = cookieStore.get('activeDeckId')?.value
 
     console.log('ID du deck actif depuis le cookie:', activeDeckId)
@@ -150,7 +150,7 @@ export async function POST(request: Request) {
     }
 
     // Définir le deck comme actif en utilisant un cookie
-    const cookieStore = cookies()
+    const cookieStore = await cookies()
     cookieStore.set('activeDeckId', deckId, {
       path: '/',
       httpOnly: true,

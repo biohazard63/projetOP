@@ -1,43 +1,56 @@
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
-import { GameState, GameCard } from '@/types/game'
+import { GameState, GameCard, CardType, CardColor } from '@/types/game'
 
-function parseGameCard(jsonCard: any): GameCard | null {
+function parseGameCard(jsonCard: unknown): GameCard | null {
+  if (typeof jsonCard !== 'object' || jsonCard === null) return null;
+  const c = jsonCard as Record<string, unknown>
   if (!jsonCard) return null;
+  const typeRaw = String(c.type ?? '')
+  const colorRaw = String(c.color ?? '')
+  const allowedTypes: readonly CardType[] = ['LEADER','CHARACTER','EVENT','STAGE','DON']
+  const allowedColors: readonly CardColor[] = ['RED','BLUE','GREEN','BLACK','PURPLE','YELLOW']
+  const safeType: CardType = (allowedTypes as readonly string[]).includes(typeRaw) ? (typeRaw as CardType) : 'CHARACTER'
+  const safeColor: CardColor = (allowedColors as readonly string[]).includes(colorRaw) ? (colorRaw as CardColor) : 'RED'
+
   return {
-    id: jsonCard.id,
-    name: jsonCard.name,
-    type: jsonCard.type,
-    color: jsonCard.color,
-    cost: jsonCard.cost,
-    power: jsonCard.power,
-    imageUrl: jsonCard.imageUrl,
-    effect: jsonCard.effect,
-    trigger: jsonCard.trigger,
-    isLeader: jsonCard.isLeader,
-    isDon: jsonCard.isDon,
-    position: jsonCard.position,
-    hasAttacked: jsonCard.hasAttacked,
-    hasRush: jsonCard.hasRush,
-    hasBlocker: jsonCard.hasBlocker,
-    hasDoubleAttack: jsonCard.hasDoubleAttack,
-    hasTrigger: jsonCard.hasTrigger,
-    hasCounter: jsonCard.hasCounter,
-    counterValue: jsonCard.counterValue,
-    attachedDons: jsonCard.attachedDons || 0,
-    attachedCards: jsonCard.attachedCards?.map(parseGameCard).filter(Boolean) || [],
-    isFaceUp: jsonCard.isFaceUp,
-    effects: jsonCard.effects || [],
-    isBlocking: jsonCard.isBlocking,
-    isBlocked: jsonCard.isBlocked,
-    blocker: jsonCard.blocker ? (parseGameCard(jsonCard.blocker) || undefined) : undefined
+    id: String(c.id ?? ''),
+    name: String(c.name ?? ''),
+    type: safeType,
+    color: safeColor,
+    cost: Number(c.cost ?? 0),
+    power: Number(c.power ?? 0),
+    imageUrl: String(c.imageUrl ?? ''),
+    effect: String(c.effect ?? ''),
+    trigger: String(c.trigger ?? ''),
+    isLeader: Boolean(c.isLeader),
+    isDon: Boolean(c.isDon),
+    position: (typeof c.position === 'string' && (c.position === 'ACTIVE' || c.position === 'RESTED')) ? (c.position as 'ACTIVE' | 'RESTED') : undefined,
+    hasAttacked: Boolean(c.hasAttacked),
+    hasRush: Boolean(c.hasRush),
+    hasBlocker: Boolean(c.hasBlocker),
+    hasDoubleAttack: Boolean(c.hasDoubleAttack),
+    hasTrigger: Boolean(c.hasTrigger),
+    hasCounter: Boolean(c.hasCounter),
+    counterValue: Number(c.counterValue ?? 0),
+    attachedDons: Number((c.attachedDons as unknown) ?? 0),
+    attachedCards: Array.isArray(c.attachedCards as unknown[])
+      ? (c.attachedCards as unknown[])
+          .map(parseGameCard)
+          .filter((card): card is GameCard => card !== null)
+      : [],
+    isFaceUp: Boolean(c.isFaceUp),
+    effects: [],
+    isBlocking: Boolean(c.isBlocking),
+    isBlocked: Boolean(c.isBlocked),
+    blocker: (typeof c.blocker === 'object' && c.blocker !== null) ? (parseGameCard(c.blocker) || undefined) : undefined
   };
 }
 
-function parseGameCards(jsonCards: any[]): GameCard[] {
+function parseGameCards(jsonCards: unknown): GameCard[] {
   if (!Array.isArray(jsonCards)) return [];
-  return jsonCards.map(parseGameCard).filter((card): card is GameCard => card !== null);
+  return (jsonCards as unknown[]).map(parseGameCard).filter((card): card is GameCard => card !== null);
 }
 
 export async function POST() {
@@ -119,7 +132,7 @@ export async function POST() {
         discardPile: parseGameCards(Array.isArray(updatedGameState.opponentDiscardPile) ? updatedGameState.opponentDiscardPile : [])
       },
       currentPlayer: updatedGameState.currentPlayer as 'player' | 'opponent',
-      currentPhase: updatedGameState.currentPhase as any,
+      currentPhase: updatedGameState.currentPhase as GameState['currentPhase'],
       turnNumber: updatedGameState.turnNumber,
       winner: updatedGameState.winner,
       canPlayCard: updatedGameState.canPlayCard,

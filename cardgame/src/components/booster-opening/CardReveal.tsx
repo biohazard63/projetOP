@@ -101,7 +101,7 @@ export default function CardReveal({
   }, [isDragging, onDrag])
 
   return (
-    <div className="relative flex items-center justify-center min-h-[400px] sm:min-h-[500px] md:min-h-[600px]">
+    <div className="relative flex items-center justify-center min-h-[360px] sm:min-h-[420px] md:min-h-[500px]">
     
 
       {/* Carte */}
@@ -125,7 +125,7 @@ export default function CardReveal({
           marginBottom: '2rem'
         }}
         animate={controls}
-        className="relative"
+        className="relative aspect-[3/4] w-[220px] sm:w-[260px] md:w-[300px] lg:w-[340px] xl:w-[380px]"
         onClick={(e) => {
           // On ne gère le clic que si on n'est pas en train de glisser
           if (!isDragging) {
@@ -169,9 +169,9 @@ export default function CardReveal({
           <Image
             src="/images/card-back.jpg"
             alt="Dos de la carte"
-            width={600}
-            height={840}
-            sizes="(max-width: 768px) 80vw, 600px"
+            width={380}
+            height={506}
+            sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 300px, (max-width: 1280px) 340px, 380px"
             loading="lazy"
             className={`w-full h-auto rounded-xl shadow-2xl ${
               isUltraRare ? 'ring-4 ring-yellow-400' :
@@ -194,9 +194,9 @@ export default function CardReveal({
             <Image
               src={card.imageUrl}
               alt={typeof card.name === 'string' ? card.name : 'Carte'}
-              width={600}
-              height={840}
-              sizes="(max-width: 768px) 80vw, 600px"
+              width={380}
+              height={506}
+              sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 300px, (max-width: 1280px) 340px, 380px"
               loading="lazy"
               className="w-full h-auto rounded-xl shadow-2xl"
             />

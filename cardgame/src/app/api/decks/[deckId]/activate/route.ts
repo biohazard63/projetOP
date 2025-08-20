@@ -4,12 +4,15 @@ import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { cookies } from 'next/headers'
 
-export async function POST(
-  request: Request,
-  { params }: { params: { deckId: string } }
-) {
+export async function POST(request: Request) {
   try {
-    console.log('Début de l\'activation du deck:', params.deckId)
+    const pathname = new URL(request.url).pathname
+    const match = /\/api\/decks\/([^/]+)\/activate/.exec(pathname)
+    const deckIdFromPath = match?.[1]
+    if (!deckIdFromPath) {
+      return NextResponse.json({ error: 'deckId manquant dans l\'URL' }, { status: 400 })
+    }
+    console.log('Début de l\'activation du deck:', deckIdFromPath)
     
     const session = await auth()
     
@@ -34,12 +37,12 @@ export async function POST(
       )
     }
 
-    console.log('Vérification du deck:', params.deckId, 'pour l\'utilisateur:', user.id)
+    console.log('Vérification du deck:', deckIdFromPath, 'pour l\'utilisateur:', user.id)
 
     // Vérifier que le deck appartient à l'utilisateur
     const deck = await prisma.deck.findFirst({
       where: {
-        id: params.deckId,
+        id: deckIdFromPath,
         userId: user.id
       },
       include: {
