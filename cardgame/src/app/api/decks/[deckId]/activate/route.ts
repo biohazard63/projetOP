@@ -1,17 +1,20 @@
 import { NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { auth } from '@/lib/auth'
+
 import { prisma } from '@/lib/prisma'
 import { cookies } from 'next/headers'
 
-export async function POST(
-  request: Request,
-  { params }: { params: { deckId: string } }
-) {
+export async function POST(request: Request) {
   try {
-    console.log('Début de l\'activation du deck:', params.deckId)
+    const pathname = new URL(request.url).pathname
+    const match = /\/api\/decks\/([^/]+)\/activate/.exec(pathname)
+    const deckIdFromPath = match?.[1]
+    if (!deckIdFromPath) {
+      return NextResponse.json({ error: 'deckId manquant dans l\'URL' }, { status: 400 })
+    }
+    console.log('Début de l\'activation du deck:', deckIdFromPath)
     
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     
     if (!session?.user?.email) {
       console.log('Erreur: Utilisateur non authentifié')
@@ -22,7 +25,8 @@ export async function POST(
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
+      where: { email: session.user.email.toLowerCase() },
+      select: { id: true },
     })
 
     if (!user) {
@@ -33,12 +37,12 @@ export async function POST(
       )
     }
 
-    console.log('Vérification du deck:', params.deckId, 'pour l\'utilisateur:', user.id)
+    console.log('Vérification du deck:', deckIdFromPath, 'pour l\'utilisateur:', user.id)
 
     // Vérifier que le deck appartient à l'utilisateur
     const deck = await prisma.deck.findFirst({
       where: {
-        id: params.deckId,
+        id: deckIdFromPath,
         userId: user.id
       },
       include: {
@@ -69,7 +73,7 @@ export async function POST(
     console.log('Deck trouvé:', deck.name, 'avec', cardCount, 'cartes')
 
     // Stocker l'ID du deck actif dans un cookie
-    const cookieStore = cookies()
+    const cookieStore = await cookies()
     cookieStore.set('activeDeckId', deck.id, {
       path: '/',
       maxAge: 60 * 60 * 24, // 24 heures

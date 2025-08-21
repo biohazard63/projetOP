@@ -1,9 +1,11 @@
 import { motion } from 'framer-motion';
+import type { PanInfo } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Card } from '@prisma/client';
-import { getRarityGlow } from '@/utils/cardEffects';
 import Image from 'next/image';
 import clsx from 'clsx';
+
+type DragEventType = MouseEvent | TouchEvent | PointerEvent
 
 interface BoosterCardProps {
   card: Card & {
@@ -16,9 +18,9 @@ interface BoosterCardProps {
   isDragging: boolean;
   dragDirection: 'left' | 'right' | null;
   isNewCard: boolean;
-  handleDragStart: (event: any, info: any) => void;
-  handleDrag: (event: any, info: any) => void;
-  handleDragEnd: (event: any, info: any) => void;
+  handleDragStart: (event: DragEventType, info: PanInfo) => void;
+  handleDrag: (event: DragEventType, info: PanInfo) => void;
+  handleDragEnd: (event: DragEventType, info: PanInfo) => void;
   getRarityGlow: (rarity: string) => string;
   index: number;
   isNew?: boolean;
@@ -38,7 +40,7 @@ export default function BoosterCard({
   index,
   isNew = false,
   onDragEnd,
-}: BoosterCardProps) {
+}: Readonly<BoosterCardProps>) {
   return (
     <motion.div
       initial={{ opacity: 0, scale: 0.8, y: 20 }}
@@ -67,6 +69,8 @@ export default function BoosterCard({
           alt={card.name}
           fill
           className="object-cover"
+          sizes="(max-width: 640px) 60vw, (max-width: 1024px) 40vw, 280px"
+          loading="lazy"
           onError={(e) => {
             e.currentTarget.src = '/images/card-back.png';
           }}

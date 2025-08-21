@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useRef, useMemo } from 'react'
 import Image from 'next/image'
 
 interface BoosterPackAnimationProps {
@@ -9,11 +9,17 @@ interface BoosterPackAnimationProps {
   setCode: string
 }
 
-export default function BoosterPackAnimation({ onComplete, setCode }: BoosterPackAnimationProps) {
+export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<BoosterPackAnimationProps>) {
   const [isVisible, setIsVisible] = useState(true)
   const [showCards, setShowCards] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [isMobile, setIsMobile] = useState(false)
+  const cardIds = useMemo(() => {
+    const makeId = () => (globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random()}`)
+    return Array.from({ length: 12 }, () => makeId())
+  }, [])
+  const timersRef = useRef<number[]>([])
+  const didStartRef = useRef(false)
 
   useEffect(() => {
     // Vérification de la taille de l'écran
@@ -32,30 +38,50 @@ export default function BoosterPackAnimation({ onComplete, setCode }: BoosterPac
   useEffect(() => {
     // Initialiser l'audio
     audioRef.current = new Audio('/sounds/ouverture.mp3')
+    audioRef.current.preload = 'auto'
     audioRef.current.volume = 0.5
 
-    // Jouer le son au début de l'animation
-    audioRef.current.play().catch(error => {
-      console.error('Erreur lors de la lecture du son:', error)
-    })
+    // Jouer le son au début de l'animation en gérant la promesse
+    const audio = audioRef.current
+    const playPromise = audio.play()
+    if (playPromise !== undefined) {
+      playPromise
+        .then(() => {
+          didStartRef.current = true
+        })
+        .catch((error: unknown) => {
+          const errObj = error as { name?: unknown; message?: unknown }
+          if (errObj?.name === 'AbortError') return
+          if (typeof errObj?.message === 'string' && errObj.message.includes('interrupted by a new load request')) return
+          console.error('Erreur lors de la lecture du son:', error)
+        })
+    }
 
     // Animation du booster qui s'ouvre
-    const timer = setTimeout(() => {
+    const t1 = window.setTimeout(() => {
       setShowCards(true)
       // Une fois les cartes révélées, on déclenche onComplete
-      setTimeout(() => {
+      const t2 = window.setTimeout(() => {
         setIsVisible(false)
         onComplete()
       }, 5000)
+      timersRef.current.push(t2)
     }, 1500)
+    timersRef.current.push(t1)
 
     return () => {
-      clearTimeout(timer)
-      // Arrêter le son si le composant est démonté
-      if (audioRef.current) {
-        audioRef.current.pause()
-        audioRef.current.currentTime = 0
+      // Annuler les timers
+      for (const t of timersRef.current) {
+        window.clearTimeout(t)
       }
+      timersRef.current = []
+      // Arrêter le son si le composant est démonté
+      const audioEl = audioRef.current
+      if (audioEl) {
+        audioEl.pause()
+        audioEl.currentTime = 0
+      }
+      didStartRef.current = false
     }
   }, [onComplete])
 
@@ -81,7 +107,7 @@ export default function BoosterPackAnimation({ onComplete, setCode }: BoosterPac
   return (
     <AnimatePresence>
       {isVisible && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/80 z-50">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/80 z-50" aria-live="polite" aria-label="Animation d'ouverture du booster">
           {/* Animation du booster */}
           <motion.div
             initial={{ scale: 1, rotate: 0 }}
@@ -100,6 +126,8 @@ export default function BoosterPackAnimation({ onComplete, setCode }: BoosterPac
               src={`/images/booster/${setCode.toLowerCase()}.png`}
               alt={`Booster Pack ${setCode}`}
               fill
+              sizes="(max-width: 768px) 12rem, 16rem"
+              priority={false}
               className="object-contain"
             />
           </motion.div>
@@ -108,11 +136,11 @@ export default function BoosterPackAnimation({ onComplete, setCode }: BoosterPac
           <AnimatePresence>
             {showCards && (
               <>
-                {[...Array(12)].map((_, index) => {
+                {cardIds.map((id, index) => {
                   const position = getCardPosition(index)
                   return (
                     <motion.div
-                      key={index}
+                      key={id}
                       initial={{ 
                         scale: 0,
                         x: 0,
@@ -140,6 +168,8 @@ export default function BoosterPackAnimation({ onComplete, setCode }: BoosterPac
                         src="/images/card-back.jpg"
                         alt="Carte"
                         fill
+                        sizes="(max-width: 768px) 8rem, 12rem"
+                        priority={false}
                         className="object-contain rounded-xl shadow-2xl"
                       />
                     </motion.div>

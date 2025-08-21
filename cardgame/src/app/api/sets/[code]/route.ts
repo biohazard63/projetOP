@@ -1,12 +1,14 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 
-export async function GET(
-  request: Request,
-  { params }: { params: { code: string } }
-) {
+export const dynamic = 'force-dynamic'
+
+export async function GET(request: Request) {
   try {
-    const code = params.code
+    // Extraire le code depuis l'URL
+    const pathname = new URL(request.url).pathname
+    const match = /\/api\/sets\/([^/]+)$/.exec(pathname)
+    const code = match?.[1]
     const { searchParams } = new URL(request.url)
     const type = searchParams.get('type')
     
@@ -93,7 +95,10 @@ export async function GET(
 
     // Si on demande les cartes
     if (type === 'cards') {
-      const API_KEY = "a5efebe9adc836a0d6d3798bf21658b03cda8e322ba5d7e57fa4e2cc12f84179";
+      const API_KEY = process.env.OPTTCG_API_KEY || ''
+      if (!API_KEY) {
+        return NextResponse.json({ success: false, error: 'Clé API manquante' }, { status: 500 })
+      }
       
       // Récupérer tous les sets
       const setsResponse = await fetch('https://apitcg.com/api/one-piece/sets', {
@@ -115,7 +120,8 @@ export async function GET(
         throw new Error('Aucune donnée reçue de l\'API')
       }
 
-      const cards = cardsData.data.map((card: any) => ({
+      type ApiCard = { id: string; name: string; number: string; rarity: string; images: { small: string; large: string }; set: { id: string; name: string; series: string } }
+      const cards = (cardsData.data as ApiCard[]).map((card) => ({
         id: card.id,
         name: card.name,
         number: card.number,

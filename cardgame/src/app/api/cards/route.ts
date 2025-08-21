@@ -1,31 +1,42 @@
-import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
-import { prisma } from '@/lib/prisma';
+import { NextResponse } from 'next/server'
+import { prisma } from '@/lib/prisma'
 
-export const dynamic = 'force-dynamic';
+export const dynamic = 'force-dynamic'
 
 // Cache en mémoire pour stocker les cartes
-let cachedCards: any[] | null = null;
-let lastFetchTime = 0;
-const CACHE_DURATION = 24 * 60 * 60 * 1000; // 24 heures en millisecondes
+type CardSummary = {
+  id: string
+  code: string
+  name: string
+  type: string
+  color: string
+  cost: number | null
+  power: number | null
+  counter: number | null
+  effect: string | null
+  rarity: string
+  imageUrl: string
+  set: string | null
+  setCode?: string | null
+  attribute: string | null
+  family: string | null
+  ability: string | null
+  trigger: string | null
+  isParallel: boolean | null
+  isAltArt: boolean | null
+  isSpecial: boolean | null
+}
+let cachedCards: CardSummary[] | null = null
+let lastFetchTime = 0
+const CACHE_DURATION = 24 * 60 * 60 * 1000 // 24 heures en millisecondes
 
 export async function GET() {
-  const startTime = Date.now();
-  console.log('Début de la requête GET /api/cards');
-  
   try {
-    // Vérifier si le cache est valide
-    const now = Date.now();
-    if (cachedCards && (now - lastFetchTime) < CACHE_DURATION) {
-      const cacheTime = Date.now() - startTime;
-      console.log(`Utilisation du cache pour les cartes (${cacheTime}ms)`);
-      return NextResponse.json(cachedCards);
+    const now = Date.now()
+    if (cachedCards && now - lastFetchTime < CACHE_DURATION) {
+      return NextResponse.json(cachedCards)
     }
 
-    console.log('Début de la récupération des cartes depuis la base de données...');
-    
-    // Récupérer toutes les cartes de la base de données
     const cards = await prisma.card.findMany({
       select: {
         id: true,
@@ -35,11 +46,13 @@ export async function GET() {
         color: true,
         cost: true,
         power: true,
+        // Prisma stocke counter en string, on va le convertir ensuite en number|null
         counter: true,
         effect: true,
         rarity: true,
         imageUrl: true,
         set: true,
+        setCode: true,
         attribute: true,
         family: true,
         ability: true,
@@ -48,24 +61,41 @@ export async function GET() {
         isAltArt: true,
         isSpecial: true
       }
-    });
+    })
 
-    const totalTime = Date.now() - startTime;
-    console.log('Récupération terminée:');
-    console.log(`- Temps total: ${totalTime}ms`);
-    console.log(`- Nombre total de cartes: ${cards.length}`);
-    
-    // Mettre à jour le cache
-    cachedCards = cards;
-    lastFetchTime = now;
+    // Convertir les types pour respecter CardSummary
+    const normalized: CardSummary[] = cards.map((c) => ({
+      id: c.id,
+      code: c.code,
+      name: c.name,
+      type: c.type,
+      color: c.color,
+      cost: c.cost,
+      power: c.power,
+      counter: c.counter === null ? null : Number(c.counter),
+      effect: c.effect,
+      rarity: c.rarity,
+      imageUrl: c.imageUrl,
+      set: c.set,
+      setCode: c.setCode ?? null,
+      attribute: c.attribute,
+      family: c.family,
+      ability: c.ability,
+      trigger: c.trigger,
+      isParallel: c.isParallel,
+      isAltArt: c.isAltArt,
+      isSpecial: c.isSpecial,
+    }))
 
-    return NextResponse.json(cards);
+    cachedCards = normalized
+    lastFetchTime = now
+
+    return NextResponse.json(normalized)
   } catch (error) {
-    const errorTime = Date.now() - startTime;
-    console.error(`Erreur après ${errorTime}ms:`, error);
+    console.error('Erreur GET /api/cards:', error)
     return NextResponse.json(
       { success: false, error: 'Échec de la récupération des cartes' },
       { status: 500 }
-    );
+    )
   }
 } 

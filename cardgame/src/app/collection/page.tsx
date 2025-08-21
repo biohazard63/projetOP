@@ -1,15 +1,77 @@
 'use client'
 
-import React, { useState, useEffect, useRef, useCallback } from 'react'
-import { useSession } from 'next-auth/react'
-import { Card } from '@/components/ui/card'
+import React, { useState, useEffect, useCallback, useMemo } from 'react'
+// import { useSession } from 'next-auth/react'
+// import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import Image from 'next/image'
 import CardModal from '@/components/CardModal'
-import { motion } from 'framer-motion'
-import { Search, ChevronLeft, ChevronRight, Filter, SortAsc, SortDesc, Heart } from 'lucide-react'
+import { Search, Heart } from 'lucide-react'
 import { Button } from '@/components/ui/button'
+// Virtualisation désactivée temporairement pour stabilité d'affichage
+
+// Composant carte (top-level) pour éviter les re-déclarations dans le composant parent
+function CardItem({ card, showMissing, onClick }: Readonly<{ card: Card; showMissing: boolean; onClick: (card: Card) => void }>) {
+  const rarityClassMap: Record<string, string> = {
+    L: 'bg-yellow-500/80 text-black',
+    SR: 'bg-purple-500/80 text-white',
+    SEC: 'bg-red-500/80 text-white',
+    R: 'bg-blue-500/80 text-white',
+  }
+  const rarityClass = rarityClassMap[card.rarity] ?? 'bg-gray-500/80 text-white'
+
+  return (
+    <button
+      type="button"
+      className={`impel-down-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 ${
+        showMissing && !card.isOwned ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
+      }`}
+      onClick={() => onClick(card)}
+      aria-label={`Carte ${card.name}`}
+    >
+      <Image
+        src={card.imageUrl}
+        alt={card.name}
+        fill
+        sizes="(max-width: 640px) 50vw, (max-width: 1024px) 25vw, 16vw"
+        className="object-cover transition-transform duration-300 group-hover:scale-110"
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120]/90 via-[#1B2A4A]/50 to-transparent" />
+      <div className="absolute top-2 left-2">
+        <span className={`px-2 py-1 text-xs font-bold rounded-full border border-red-900/30 ${rarityClass} shadow-[0_0_10px_rgba(255,0,0,0.3)]`}>
+          {card.rarity}
+        </span>
+      </div>
+      {card.quantity && card.quantity > 0 && (
+        <div className="absolute bottom-2 right-2">
+          <div className="flex items-center justify-center w-8 h-8 rounded-full bg-red-900/80 text-white text-sm font-bold border border-red-500/30 shadow-[0_0_10px_rgba(255,0,0,0.3)]">
+            x{card.quantity}
+          </div>
+        </div>
+      )}
+      {card.isFavorite && (
+        <div className="absolute bottom-2 left-2">
+          <Heart className="w-6 h-6 text-red-500 fill-red-500 drop-shadow-[0_0_5px_rgba(255,0,0,0.5)]" />
+        </div>
+      )}
+      <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-[#0B1120] to-transparent">
+        <div className="flex items-center gap-2">
+          <h3 className="text-red-300 font-semibold text-sm truncate drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
+            {card.name}
+          </h3>
+        </div>
+      </div>
+      {showMissing && !card.isOwned && (
+        <div className="absolute inset-0 flex items-center justify-center">
+          <div className="bg-red-900/90 text-white text-sm font-bold px-4 py-2 rounded-full shadow-[0_0_20px_rgba(255,0,0,0.3)] border border-red-500/30">
+            Recherché
+          </div>
+        </div>
+      )}
+    </button>
+  )
+}
 
 interface Card {
   id: string
@@ -35,14 +97,14 @@ interface Card {
   quantity?: number
 }
 
-type CardSet = typeof cardSets[number];
+// type CardSet supprimé: on passe à une liste dynamique basée sur les données
 
 interface Filters {
   search: string
   type: string
   color: string
   rarity: string
-  set: CardSet
+  set: string
   showOnly?: string
   favoritesOnly?: boolean
 }
@@ -110,87 +172,14 @@ const cardRarities = [
   { value: 'SP CARD', label: 'Carte Spéciale' },
 ]
 
-const rarityColors = {
-  'C': 'bg-gray-200',
-  'UC': 'bg-green-200',
-  'R': 'bg-blue-200',
-  'SR': 'bg-purple-200',
-  'L': 'bg-yellow-200',
-  'SEC': 'bg-red-200',
-  'P': 'bg-pink-200',
-  'TR': 'bg-orange-200',
-  'SP CARD': 'bg-indigo-200'
-}
 
-// Sets disponibles
-const cardSets = [
-  'all',
-  '-3D2Y- [ST-14]',
-  '-500 YEARS IN THE FUTURE- [OP-07]',
-  '-Absolute Justice- [ST-06]',
-  '-Animal Kingdom Pirates-[ST-04]',
-  '-Black Smoker- [ST-19]',
-  '-Blue Donquixote Doflamingo- [ST-17]',
-  '-EMPERORS IN THE NEW WORLD- [OP-09]',
-  '-Green Uta- [ST-16]',
-  '-KINGDOMS OF INTRIGUE- [OP04]',
-  '-Memorial Collection- [EB-01]',
-  '-Monkey D. Luffy-[ST-08]',
-  '-ONE PIECE CARD THE BEST- [PRB-01]',
-  '-PARAMOUNT WAR- [OP02]',
-  '-PILLARS OF STRENGTH- [OP03]',
-  '-Purple Monkey.D.Luffy- [ST-18]',
-  '-ROMANCE DAWN- [OP01]',
-  '-Red Edward.Newgate- [ST-15]',
-  '-Straw Hat Crew-[ST-01]',
-  '-TWO LEGENDS- [OP-08]',
-  '-The Seven Warlords of the Sea-[ST-03]',
-  '-The Three Brothers-[ST13]',
-  '-The Three Captains-[ST-10]',
-  '-Uta-[ST-11]',
-  '-WINGS OF THE CAPTAIN-[OP06]',
-  '-Worst Generation-[ST-02]',
-  '-Yamato-[ST-09]',
-  '-Yellow Charlotte Katakuri- [ST-20]',
-  '-Zoro & Sanji- [ST-12]',
-  'Anime Expo 2023',
-  'Big Mom Pirates [ST-07]',
-  'Event Pack Vol.3',
-  'GIFT COLLECTION 2023 [GC-01]',
-  'Included in Event Pack Vol.1',
-  'Included in Event Pack Vol.2',
-  'Included in FILM RED Promotion Card Set',
-  'Included in Online Regional Participation Pack Vol.1',
-  'Included in Pirates Party Card Vol.1',
-  'Included in Pirates Party Card Vol.2',
-  'Included in Promotion Pack 2022',
-  'ONE PIECE FILM edition [ST-05]',
-  'OP-05',
-  'Pirates Party Vol.3',
-  'Pirates Party Vol.4',
-  'Pirates Party Vol.5',
-  'Pirates Party Vol.6',
-  'Pirates Party Vol.7',
-  'Pre-Release OP02',
-  'Pre-Release OP03',
-  'Pre-Release OP04',
-  'Pre-Release OP06',
-  'Premium Card Collection -25th Edition-',
-  'Premium Card Collection -FILM RED Edition-',
-  'Regional 2024 wave1',
-  'Sealed Battle 2023 Vol.1',
-  'Sealed Battle Kit Vol.1',
-  'Special Goods Set -Ace/Sabo/Luffy-',
-  'Super Pre-Release',
-  'Tournament Pack Vol.1',
-  'Tournament Pack Vol.2',
-  'Tournament Pack Vol.3',
-  'Tournament Pack Vol.4',
-  'Tournament Pack Vol.5',
-  'Tournament Pack Vol.6',
-  'Tournament Pack Vol.7',
-  'Winner prize for Sealed Battle 2023 Vol.1'
-] as const;
+
+// Liste dynamique des sets dérivée des données (pas un hook React)
+const computeAvailableSets = (source: Card[]) => {
+  const setNames = new Set<string>()
+  source.forEach(c => { if (c.set && c.set.trim()) setNames.add(c.set.trim()) })
+  return ['all', ...Array.from(setNames).toSorted()]
+}
 
 interface UserCard {
   cardId: string
@@ -207,14 +196,12 @@ interface UserData {
 }
 
 export default function CollectionPage() {
-  const { data: session } = useSession()
+  // const { data: session } = useSession()
   const [cards, setCards] = useState<Card[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [selectedCard, setSelectedCard] = useState<Card | null>(null)
   const [isModalOpen, setIsModalOpen] = useState(false)
-  const [currentPage, setCurrentPage] = useState(1)
-  const cardsPerPage = 24
   const [filters, setFilters] = useState<Filters>({
     search: '',
     type: 'all',
@@ -227,7 +214,11 @@ export default function CollectionPage() {
   const [showMissingCards, setShowMissingCards] = useState(false);
   const [allCards, setAllCards] = useState<Card[]>([]);
   const [missingCards, setMissingCards] = useState<Card[]>([]);
-  const [loadingAllCards, setLoadingAllCards] = useState(false);
+  // useTransition n'est plus utilisé ici
+
+  const availableSets = useMemo(() => {
+    return computeAvailableSets(showMissingCards ? allCards : cards)
+  }, [showMissingCards, allCards, cards])
 
   const fetchCards = async () => {
     try {
@@ -287,9 +278,8 @@ export default function CollectionPage() {
     }
   }
 
-  const fetchAllCards = async () => {
+  const fetchAllCards = useCallback(async () => {
     try {
-      setLoadingAllCards(true)
       console.log('Début de la récupération de toutes les cartes disponibles')
       
       const response = await fetch('/api/cards')
@@ -325,71 +315,51 @@ export default function CollectionPage() {
       console.error('Erreur lors de la récupération de toutes les cartes:', error)
       setAllCards([])
       setMissingCards([])
-    } finally {
-      setLoadingAllCards(false)
     }
-  }
+  }, [cards])
 
   // Modifier la fonction pour obtenir toutes les cartes (possédées et manquantes)
-  const getAllCards = () => {
-    if (!allCards.length) return [];
-    
-    console.log('Début de getAllCards');
-    console.log('Nombre total de cartes disponibles:', allCards.length);
-    console.log('Nombre de cartes possédées:', cards.length);
-    
-    // Créer un Map pour stocker les cartes par ID
-    const cardsMap = new Map();
-    
-    // Ajouter toutes les cartes disponibles
+  const getAllCards = useMemo(() => {
+    if (!allCards.length) return [] as Card[];
+    const cardsMap = new Map<string, Card>();
+    const userCardById = new Map(cards.map(c => [c.id, c]));
+
     allCards.forEach(card => {
-      // Vérifier si l'utilisateur possède cette carte
-      const userCard = cards.find(userCard => userCard.id === card.id);
-      cardsMap.set(card.id, { 
-        ...card, 
+      const userCard = userCardById.get(card.id);
+      cardsMap.set(card.id, {
+        ...card,
         isOwned: !!userCard,
         quantity: userCard?.quantity || 0,
         isFavorite: userCard?.isFavorite || false
       });
     });
-    
-    // Convertir le Map en tableau et trier
-    const sortedCards = Array.from(cardsMap.values()).sort((a, b) => {
-      // Extraire le numéro de carte du code (ex: "OP01-001" -> 1)
-      const getCardNumber = (code: string) => {
-        const match = code.match(/-(\d+)$/);
-        return match ? parseInt(match[1]) : 0;
-      };
-      
-      // Extraire le numéro de set (ex: "OP01" -> 1)
-      const getSetNumber = (set: string) => {
-        const match = set.match(/OP(\d+)/);
-        return match ? parseInt(match[1]) : 0;
-      };
-      
-      // Comparer d'abord par numéro de set
+
+    const getCardNumber = (code: string) => {
+      const m = /-(\d+)$/.exec(code)
+      return m ? parseInt(m[1] ?? '0', 10) : 0
+    }
+    const getSetNumber = (set: string) => {
+      const m1 = /\[(OP-?\d+|ST-?\d+|EB-?\d+|PRB-?\d+|GC-?\d+)\]/i.exec(set)
+      if (m1) {
+        const code = m1[1].toUpperCase().replace('OP', '').replace('ST', '').replace('EB', '').replace('PRB', '').replace('GC', '').replace('-', '')
+        return parseInt(code || '0', 10)
+      }
+      const m2 = /OP(\d+)/i.exec(set)
+      return m2 ? parseInt(m2[1] ?? '0', 10) : 0
+    }
+
+    return Array.from(cardsMap.values()).toSorted((a, b) => {
       const setNumberCompare = getSetNumber(a.set || '') - getSetNumber(b.set || '');
       if (setNumberCompare !== 0) return setNumberCompare;
-      
-      // Si même set, comparer par numéro de carte
-      const cardNumberCompare = getCardNumber(a.code) - getCardNumber(b.code);
-      return cardNumberCompare;
+      return getCardNumber(a.code) - getCardNumber(b.code);
     });
-
-    console.log('Cartes triées:', sortedCards.map(card => ({
-      code: card.code,
-      set: card.set,
-      name: card.name,
-      isOwned: card.isOwned,
-      quantity: card.quantity
-    })));
-
-    return sortedCards;
-  };
+  }, [allCards, cards]);
   
   // Modifier la variable filteredAndSortedCards pour utiliser getAllCards
-  const filteredAndSortedCards = (showMissingCards ? getAllCards() : cards)
-    .filter((card) => {
+  const filteredAndSortedCards = useMemo(() => {
+    const base = showMissingCards ? getAllCards : cards
+    return base
+      .filter((card) => {
       if (filters.search && !card.name.toLowerCase().includes(filters.search.toLowerCase())) {
         return false;
       }
@@ -408,7 +378,7 @@ export default function CollectionPage() {
       
       return true;
     })
-    .sort((a, b) => {
+    .toSorted((a, b) => {
       const [value, order] = sortBy.split('-');
       const multiplier = order === 'asc' ? 1 : -1;
 
@@ -433,13 +403,18 @@ export default function CollectionPage() {
         case 'set':
           // Pour le tri par set, on utilise la même logique que dans getAllCards
           const getSetNumber = (set: string) => {
-            const match = set.match(/OP(\d+)/);
-            return match ? parseInt(match[1]) : 0;
-          };
+            const m1 = /\[(OP-?\d+|ST-?\d+|EB-?\d+|PRB-?\d+|GC-?\d+)\]/i.exec(set)
+            if (m1) {
+              const code = m1[1].toUpperCase().replace('OP', '').replace('ST', '').replace('EB', '').replace('PRB', '').replace('GC', '').replace('-', '')
+              return parseInt(code || '0', 10)
+            }
+            const m2 = /OP(\d+)/i.exec(set)
+            return m2 ? parseInt(m2[1] ?? '0', 10) : 0
+          }
           const getCardNumber = (code: string) => {
-            const match = code.match(/-(\d+)$/);
-            return match ? parseInt(match[1]) : 0;
-          };
+            const m = /-(\d+)$/.exec(code)
+            return m ? parseInt(m[1] ?? '0', 10) : 0
+          }
           
           const setNumberCompare = getSetNumber(a.set || '') - getSetNumber(b.set || '');
           if (setNumberCompare !== 0) {
@@ -470,6 +445,7 @@ export default function CollectionPage() {
 
       return result;
     });
+  }, [showMissingCards, getAllCards, cards, filters.search, filters.type, filters.color, filters.rarity, filters.set, filters.showOnly, filters.favoritesOnly, sortBy])
 
   console.log('Cartes filtrées et triées:', filteredAndSortedCards.map(card => ({
     code: card.code,
@@ -477,20 +453,15 @@ export default function CollectionPage() {
     name: card.name,
     isOwned: card.isOwned,
     quantity: card.quantity,
-    sortValue: card[sortBy.split('-')[0] as keyof Card]
+    sortValue: (() => {
+      const key = sortBy.split('-')[0] as keyof Card
+      return card[key]
+    })()
   })));
 
-  // Calcul de la pagination
-  const totalPages = Math.ceil(filteredAndSortedCards.length / cardsPerPage);
-  const indexOfLastCard = currentPage * cardsPerPage;
-  const indexOfFirstCard = indexOfLastCard - cardsPerPage;
-  const currentCards = filteredAndSortedCards.slice(indexOfFirstCard, indexOfLastCard);
-
-  // Fonction pour changer de page
-  const handlePageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  };
+  // Indexs d'affichage
+  const indexOfFirstCard = 0
+  const indexOfLastCard = filteredAndSortedCards.length
 
   // Chargement initial des cartes
   useEffect(() => {
@@ -502,19 +473,16 @@ export default function CollectionPage() {
     if (showMissingCards) {
       fetchAllCards()
     }
-  }, [showMissingCards])
+  }, [showMissingCards, fetchAllCards])
 
-  // Réinitialiser la page courante quand les filtres changent
-  useEffect(() => {
-    setCurrentPage(1)
-  }, [filters, sortBy, showMissingCards])
+  // Rien à faire pour la pagination (supprimée)
 
-  const handleCardClick = (card: Card) => {
+  const handleCardClick = useCallback((card: Card) => {
     setSelectedCard(card)
     setIsModalOpen(true)
-  }
+  }, [])
 
-  const handleToggleFavorite = async (cardId: string) => {
+  const handleToggleFavorite = useCallback(async (cardId: string) => {
     try {
       // Vérifier si la carte est déjà en favoris
       const isCurrentlyFavorite = cards.find(card => card.id === cardId)?.isFavorite;
@@ -552,7 +520,7 @@ export default function CollectionPage() {
     } catch (error) {
       console.error('Erreur lors de la mise à jour des favoris:', error);
     }
-  };
+  }, [cards, selectedCard])
 
   if (loading) {
     return (
@@ -582,76 +550,7 @@ export default function CollectionPage() {
     
   })))
 
-  const CardGrid = ({ cards }: { cards: Card[] }) => {
-    return (
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
-        {cards.map((card) => (
-          <div
-            key={card.id}
-            className={`impel-down-card group relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-300 cursor-pointer ${
-              showMissingCards && !card.isOwned ? 'opacity-50 grayscale hover:grayscale-0 hover:opacity-100' : ''
-            }`}
-            onClick={() => handleCardClick(card)}
-          >
-            <Image
-              src={card.imageUrl}
-              alt={card.name}
-              fill
-              className="object-cover transition-transform duration-300 group-hover:scale-110"
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-[#0B1120]/90 via-[#1B2A4A]/50 to-transparent" />
-            
-            {/* Badge de rareté stylisé Impel Down */}
-            <div className="absolute top-2 left-2">
-              <span className={`px-2 py-1 text-xs font-bold rounded-full border border-red-900/30 ${
-                card.rarity === 'L' ? 'bg-yellow-500/80 text-black' :
-                card.rarity === 'SR' ? 'bg-purple-500/80 text-white' :
-                card.rarity === 'SEC' ? 'bg-red-500/80 text-white' :
-                card.rarity === 'R' ? 'bg-blue-500/80 text-white' :
-                'bg-gray-500/80 text-white'
-              } shadow-[0_0_10px_rgba(255,0,0,0.3)]`}>
-                {card.rarity}
-              </span>
-            </div>
-
-            {/* Badge de quantité stylisé */}
-            {card.quantity && card.quantity > 0 && (
-              <div className="absolute bottom-2 right-2">
-                <div className="flex items-center justify-center w-8 h-8 rounded-full bg-red-900/80 text-white text-sm font-bold border border-red-500/30 shadow-[0_0_10px_rgba(255,0,0,0.3)]">
-                  x{card.quantity}
-                </div>
-              </div>
-            )}
-
-            {/* Icône de favori stylisée */}
-            {card.isFavorite && (
-              <div className="absolute bottom-2 left-2">
-                <Heart className="w-6 h-6 text-red-500 fill-red-500 drop-shadow-[0_0_5px_rgba(255,0,0,0.5)]" />
-              </div>
-            )}
-
-            {/* Nom de la carte stylisé */}
-            <div className="absolute bottom-0 left-0 right-0 p-3 bg-gradient-to-t from-[#0B1120] to-transparent">
-              <div className="flex items-center gap-2">
-                <h3 className="text-red-300 font-semibold text-sm truncate drop-shadow-[0_2px_2px_rgba(0,0,0,0.8)]">
-                  {card.name}
-                </h3>
-              </div>
-            </div>
-
-            {/* Badge "Recherché" pour les cartes manquantes */}
-            {showMissingCards && !card.isOwned && (
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-red-900/90 text-white text-sm font-bold px-4 py-2 rounded-full shadow-[0_0_20px_rgba(255,0,0,0.3)] border border-red-500/30">
-                  Recherché
-                </div>
-              </div>
-            )}
-          </div>
-        ))}
-      </div>
-    )
-  }
+  
 
   return (
     <div className="container mx-auto max-w-7xl relative z-10 p-4 pt-20">
@@ -755,13 +654,13 @@ export default function CollectionPage() {
 
         <Select
           value={filters.set}
-          onValueChange={(value: CardSet) => setFilters(prev => ({ ...prev, set: value }))}
+          onValueChange={(value: string) => setFilters(prev => ({ ...prev, set: value }))}
         >
           <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
             <SelectValue placeholder="Sélectionner un set" />
           </SelectTrigger>
           <SelectContent className="bg-gray-800 border-gray-700">
-            {cardSets.map((set) => (
+            {availableSets.map((set) => (
               <SelectItem key={set} value={set} className="text-white hover:bg-gray-700">
                 {set === 'all' ? 'Tous les sets' : set}
               </SelectItem>
@@ -867,76 +766,20 @@ export default function CollectionPage() {
         </div>
       </div>
 
-      <CardGrid cards={currentCards} />
+      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4">
+        {filteredAndSortedCards.map((c) => (
+          <CardItem key={c.id} card={c} showMissing={showMissingCards} onClick={handleCardClick} />
+        ))}
+      </div>
 
       {/* Message d'aide */}
-      {currentCards.length > 0 && (
+      {filteredAndSortedCards.length > 0 && (
         <div className="text-center py-4 mt-4">
           <p className="text-gray-400 text-sm">Cliquez sur une carte pour voir plus de détails.</p>
         </div>
       )}
 
-      {/* Pagination */}
-      {filteredAndSortedCards.length > cardsPerPage && (
-        <div className="flex justify-center mt-8 gap-2">
-          <Button
-            onClick={() => handlePageChange(currentPage - 1)}
-            disabled={currentPage === 1}
-            className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <ChevronLeft className="h-4 w-4" />
-          </Button>
-          
-          <div className="flex gap-2">
-            {Array.from({ length: Math.min(5, totalPages) }, (_, i) => {
-              let pageNumber;
-              if (totalPages <= 5) {
-                pageNumber = i + 1;
-              } else if (currentPage <= 3) {
-                pageNumber = i + 1;
-              } else if (currentPage >= totalPages - 2) {
-                pageNumber = totalPages - 4 + i;
-              } else {
-                pageNumber = currentPage - 2 + i;
-              }
-
-              return (
-                <Button
-                  key={pageNumber}
-                  onClick={() => handlePageChange(pageNumber)}
-                  className={`${
-                    currentPage === pageNumber 
-                      ? "bg-red-600 hover:bg-red-700 text-white" 
-                      : "bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600"
-                  }`}
-                >
-                  {pageNumber}
-                </Button>
-              );
-            })}
-            
-            {totalPages > 5 && currentPage < totalPages - 2 && (
-              <>
-                <span className="px-2 py-2 text-gray-400">...</span>
-                <Button
-                  onClick={() => handlePageChange(totalPages)}
-                  className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600"
-                >
-                  {totalPages}
-                </Button>
-              </>
-            )}
-          </div>
-
-          <Button
-            onClick={() => handlePageChange(currentPage + 1)}
-            disabled={currentPage === totalPages}
-            className="bg-gray-700/50 border-gray-600 text-white hover:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            <ChevronRight className="h-4 w-4" />
-          </Button>
-        </div>
-      )}
+      {/* Pagination supprimée grâce à la virtualisation */}
 
       <CardModal
         card={selectedCard}

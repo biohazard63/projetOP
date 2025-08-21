@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient, Card } from '@prisma/client';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
-
-const prisma = new PrismaClient();
+import { Card } from '@prisma/client';
+import { auth } from '@/lib/auth';
+import { prisma } from '@/lib/prisma';
 
 // Règles de génération des boosters par set
 const GENERATION_RULES = {
@@ -110,26 +108,27 @@ async function selectCardByPosition(position: number, setCode: string): Promise<
 
 export async function POST(request: Request) {
   try {
-    const session = await getServerSession(authOptions);
+    const session = await auth();
     if (!session?.user?.email) {
       return NextResponse.json({ error: 'Non autorisé' }, { status: 401 });
     }
 
     const { setCode } = await request.json();
-    if (!setCode) {
+    if (!setCode || typeof setCode !== 'string' || !setCode.trim()) {
       return NextResponse.json({ error: 'Code du set requis' }, { status: 400 });
     }
 
     // Récupérer l'utilisateur
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
+      where: { email: session.user.email.toLowerCase() },
+      select: { id: true }
     });
 
     if (!user) {
       return NextResponse.json({ error: 'Utilisateur non trouvé' }, { status: 404 });
     }
 
-    // Récupérer les règles pour le set
+    // Récupérer les règles pour le set (pour compatibilité future)
     const rules = GENERATION_RULES[setCode as keyof typeof GENERATION_RULES] || GENERATION_RULES.DEFAULT;
 
     // Récupérer toutes les cartes du set
@@ -160,42 +159,40 @@ export async function POST(request: Request) {
     // Mélanger les cartes sélectionnées
     const shuffledCards = shuffleArray(selectedCards);
 
-    // Créer d'abord le booster
-    const booster = await prisma.booster.create({
-      data: {
-        name: `Booster ${setCode}`,
-        description: `Booster du set ${setCode}`,
-        price: 0,
-        setCode: setCode
-      }
-    });
+    // Créer le booster et l'ouverture puis insérer les cartes atomiquement
+    await prisma.$transaction(async (tx) => {
+      const booster = await tx.booster.create({
+        data: {
+          name: `Booster ${setCode}`,
+          description: `Booster du set ${setCode}`,
+          price: 0,
+          setCode: setCode
+        }
+      });
 
-    // Créer l'ouverture de booster
-    const boosterOpening = await prisma.boosterOpening.create({
-      data: {
-        userId: user.id,
-        boosterId: booster.id
-      }
-    });
+      const boosterOpening = await tx.boosterOpening.create({
+        data: {
+          userId: user.id,
+          boosterId: booster.id
+        }
+      });
 
-    // Ajouter les cartes à l'ouverture du booster
-    await Promise.all(
-      shuffledCards.map((card, index) =>
-        prisma.boosterOpeningCard.create({
-          data: {
-            boosterOpeningId: boosterOpening.id,
-            cardId: card.id,
-            position: index + 1
-          }
-        })
-      )
-    );
+      // Insertion groupée
+      await tx.boosterOpeningCard.createMany({
+        data: shuffledCards.map((card, index) => ({
+          boosterOpeningId: boosterOpening.id,
+          cardId: card.id,
+          position: index + 1
+        }))
+      });
+    });
 
     // Retourner les cartes avec leurs détails
     return NextResponse.json({
-      cards: shuffledCards.map(card => ({
+      success: true,
+      cards: shuffledCards.map((card, idx) => ({
         ...card,
-        position: shuffledCards.indexOf(card) + 1
+        position: idx + 1
       }))
     });
   } catch (error) {

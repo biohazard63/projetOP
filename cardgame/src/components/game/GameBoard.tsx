@@ -89,8 +89,8 @@ export const GameBoard: React.FC<GameBoardProps> = ({
     return {
       id: card.id,
       name: card.name,
-      type: card.type as any,
-      color: card.color as any,
+      type: card.type as GameCard['type'],
+      color: card.color as GameCard['color'],
       cost: card.cost,
       power: card.power || 0,
       imageUrl: card.imageUrl,

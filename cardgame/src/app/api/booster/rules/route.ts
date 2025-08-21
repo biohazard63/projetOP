@@ -1,9 +1,6 @@
 import { NextResponse } from 'next/server';
-import { PrismaClient } from '@prisma/client';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
-
-const prisma = new PrismaClient();
+import { auth } from '@/lib/auth';
+import { prisma } from '@/lib/prisma';
 
 export const dynamic = 'force-dynamic'
 
@@ -61,7 +58,7 @@ const GENERATION_RULES = {
 
 export async function GET(request: Request) {
   try {
-    const session = await getServerSession(authOptions);
+    const session = await auth();
     if (!session?.user?.email) {
       return NextResponse.json({ error: 'Non autorisé' }, { status: 401 });
     }

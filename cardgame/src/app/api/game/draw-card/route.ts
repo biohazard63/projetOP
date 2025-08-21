@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { auth } from '@/lib/auth'
+
 import { prisma } from '@/lib/prisma'
 
 export async function POST() {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     
     if (!session?.user?.email) {
       return NextResponse.json(
@@ -15,7 +15,7 @@ export async function POST() {
     }
 
     // Récupérer une carte aléatoire pour la pioche
-    const allCards = await prisma.card.findMany()
+    const allCards = await prisma.card.findMany({ select: { id: true, name: true, type: true, color: true, cost: true, power: true, imageUrl: true } })
     const randomCard = allCards[Math.floor(Math.random() * allCards.length)]
 
     // Pour l'instant, on retourne simplement un état de jeu simulé

@@ -1,14 +1,11 @@
 import { NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { auth } from '@/lib/auth'
+
 import { prisma } from '@/lib/prisma'
 
-export async function GET(
-  request: Request,
-  { params }: { params: { cardId: string } }
-) {
+export async function GET(request: Request) {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     
     if (!session?.user?.email) {
       return NextResponse.json({ 
@@ -17,7 +14,9 @@ export async function GET(
       }, { status: 401 })
     }
 
-    const { cardId } = params
+    const pathname = new URL(request.url).pathname
+    const match = /\/api\/user\/favorites\/([^/]+)$/.exec(pathname)
+    const cardId = match?.[1]
 
     if (!cardId) {
       return NextResponse.json({ 
@@ -27,7 +26,8 @@ export async function GET(
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
+      where: { email: session.user.email.toLowerCase() },
+      select: { id: true },
     })
 
     if (!user) {

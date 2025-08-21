@@ -1,24 +1,19 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect, useMemo, useCallback, useTransition } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
-import { Card as CardType } from '@prisma/client'
 import { Button } from '@/components/ui/button'
-import {
-  Select,
-  SelectContent,
-  SelectItem,
-  SelectTrigger,
-  SelectValue,
-} from '@/components/ui/select'
 import { toast, Toaster } from 'sonner'
 import { Package, Sparkles, X } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import { motion, AnimatePresence, PanInfo } from 'framer-motion'
 import CardReveal from './CardReveal'
 import CardDetailsModal from './CardDetailsModal'
+import NextImage from 'next/image'
 
-import { useAudio } from '@/hooks/useAudio'
+type ApiSet = { id?: string; code?: string; name?: string }
+type ApiCardMinimal = { id: string; rarity: string; name?: unknown }
+
 import { useCollection } from '@/hooks/useCollection'
 import { useBooster } from '@/hooks/useBooster'
 import { ExtendedCardType } from '@/types/card'
@@ -27,33 +22,7 @@ import UltraRareAnimation from './UltraRareAnimation'
 import RareAnimation from './RareAnimation'
 import AlternativeAnimation from './AlternativeAnimation'
 
-// Modification du composant LoadingSpinner pour le rendre plus thématique
-function LoadingSpinner() {
-  return (
-    <div className="flex flex-col items-center justify-center min-h-screen pt-16">
-      {/* Logo One Piece */}
-      <div className="relative z-10 flex flex-col items-center">
-        <img 
-          src="/images/jolly-roger.png" 
-          alt="Loading" 
-          className="w-32 h-32 animate-float opacity-90 mb-6 drop-shadow-[0_0_15px_rgba(255,255,255,0.5)]"
-        />
-        <div className="text-2xl font-bold text-yellow-400 mb-4 animate-pulse tracking-wider">
-          Chargement du Trésor
-        </div>
-        <div className="flex gap-2">
-          {[...Array(3)].map((_, i) => (
-            <div
-              key={i}
-              className="w-3 h-3 rounded-full bg-yellow-400 animate-bounce"
-              style={{ animationDelay: `${i * 0.2}s` }}
-            />
-          ))}
-        </div>
-      </div>
-    </div>
-  )
-}
+// LoadingSpinner retiré (non utilisé)
 
 export default function BoosterOpeningPage() {
   // Hooks de base
@@ -66,47 +35,52 @@ export default function BoosterOpeningPage() {
   const [booster, setBooster] = useState<ExtendedCardType[]>([])
   const [currentCardIndex, setCurrentCardIndex] = useState<number>(-1)
   const [isLoading, setIsLoading] = useState<boolean>(false)
-  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({})
-  const [isAddingToCollection, setIsAddingToCollection] = useState<boolean>(false)
-  const [showPackOpening, setShowPackOpening] = useState<boolean>(false)
-  const [preloadedImages, setPreloadedImages] = useState<Record<string, boolean>>({})
   const [selectedCard, setSelectedCard] = useState<ExtendedCardType | null>(null)
-  const [isRevealing, setIsRevealing] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
-  const [showCardDetails, setShowCardDetails] = useState(false)
-  const [dragDirection, setDragDirection] = useState<'left' | 'right' | null>(null)
   const [isDragging, setIsDragging] = useState(false)
-  const [showRareEffect, setShowRareEffect] = useState(false)
-  const [showAltArtEffect, setShowAltArtEffect] = useState(false)
-  const [showUltraRareEffect, setShowUltraRareEffect] = useState(false)
   const [currentRareCard, setCurrentRareCard] = useState<ExtendedCardType | null>(null)
-  const [showConfetti, setShowConfetti] = useState(false)
   const [isNewCard, setIsNewCard] = useState(false)
-  const [newCardsCount, setNewCardsCount] = useState<number>(0)
-  const [backgroundParticles, setBackgroundParticles] = useState<Array<{id: number, x: number, y: number, size: number}>>([])
-  const [showBackgroundEffect, setShowBackgroundEffect] = useState(false)
-  const [rareCardGlow, setRareCardGlow] = useState<Record<string, boolean>>({})
-  const [ultraRareParticles, setUltraRareParticles] = useState<Array<{id: number, x: number, y: number, size: number, color: string}>>([])
   const [lastClickTime, setLastClickTime] = useState(0)
   const [showAnimation, setShowAnimation] = useState(false)
   const [showRareAnimation, setShowRareAnimation] = useState(false)
   const [rareAnimationType, setRareAnimationType] = useState<'ultra-rare' | 'rare' | 'alternative' | null>(null)
   const [showBoosterModal, setShowBoosterModal] = useState(false)
-  const [setRules, setSetRules] = useState<any>(null)
+  const [, startTransition] = useTransition()
+  interface SetRules {
+    name: string
+    rarityCounts: Record<string, number>
+    boosterRules?: {
+      commonCount: number
+      uncommonCount: number
+      rareCount: number
+      superRareCount: number
+      leaderCount: number
+      characterCount: number
+      eventCount: number
+      stageCount: number
+      donCount: number
+      altArtChance: number
+      parallelChance: number
+      specialChance: number
+    }
+  }
+  const [setRules, setSetRules] = useState<SetRules | null>(null)
+
+  // Valeur mémoïsée pour le set sélectionné
+  const selectedSetData = useMemo(() => {
+    return sets.find(set => set.id === selectedSet) ?? null
+  }, [sets, selectedSet])
+
+  // Handlers mémoïsés
+  const handleSelectSet = useCallback((id: string) => {
+    setSelectedSet(id)
+    setShowBoosterModal(false)
+  }, [])
 
   // Hooks personnalisés
   const { userCollection, loadUserCollection } = useCollection()
   const { 
-    playRareCardSound, 
-    playAltArtSound, 
-    playUltraRareSound, 
-    playNewCardSound 
-  } = useAudio()
-  const { 
-    openBooster, 
     addToCollection, 
-    isUltraRareCard, 
-    getRarityColor, 
     getRarityGlow 
   } = useBooster()
 
@@ -144,65 +118,90 @@ export default function BoosterOpeningPage() {
         console.log('Sets chargés:', data.sets)
         
         // Filtrer les sets pour n'afficher que ceux dont le code commence par "OP", "EB" ou "PRB"
-        const filteredSets = data.sets ? data.sets.filter((set: any) => {
-          if (!set || !set.code) return false;
-          
-          // Normaliser le code en supprimant les tirets et espaces
-          const normalizedCode = set.code.replace(/[-\s]/g, '');
-          
-          // Vérifier si le code normalisé commence par OP, EB ou PRB
-          return normalizedCode.startsWith('OP') || 
-                 normalizedCode.startsWith('EB') || 
-                 normalizedCode.startsWith('PRB');
-        }) : [];
+        const filteredSets = (data.sets ?? []).filter((set: ApiSet) => {
+          const code = set?.code
+          if (!code) return false
+          const normalizedCode = code.replace(/[-\s]/g, '')
+          return normalizedCode.startsWith('OP') || normalizedCode.startsWith('EB') || normalizedCode.startsWith('PRB')
+        })
         
         // Éliminer les doublons en utilisant le code du set comme identifiant unique
-        const uniqueSets = filteredSets.reduce((acc: any[], current: any) => {
-          if (!current || !current.code) return acc;
-          
-          // Normaliser le code (supprimer les tirets et espaces)
-          const normalizedCode = current.code.replace(/[-\s]/g, '');
-          
-          // Vérifier si un set avec ce code normalisé existe déjà
-          const exists = acc.some(item => item && item.code && item.code.replace(/[-\s]/g, '') === normalizedCode);
-          
-          // Si ce n'est pas un doublon, l'ajouter à l'accumulateur
-          if (!exists) {
-            // Créer une copie du set avec le code normalisé
-            acc.push({
-              ...current,
-              code: normalizedCode // Utiliser le code normalisé pour la comparaison
-            });
-          }
-          
-          return acc;
-        }, []);
+        const uniqueSets = filteredSets.reduce((acc: ApiSet[], current: ApiSet) => {
+          const code = current?.code
+          if (!code) return acc
+          const normalizedCode = code.replace(/[-\s]/g, '')
+          const exists = acc.some(item => item?.code?.replace(/[-\s]/g, '') === normalizedCode)
+          if (!exists) acc.push({ ...current, code: normalizedCode })
+          return acc
+        }, [])
         
         // Trier les sets par code
         uniqueSets.sort((a: { code: string }, b: { code: string }) => {
-          const codeA = a.code.replace(/[-\s]/g, '');
-          const codeB = b.code.replace(/[-\s]/g, '');
+          const codeA = a.code?.replace(/[-\s]/g, '') ?? '';
+          const codeB = b.code?.replace(/[-\s]/g, '') ?? '';
           return codeA.localeCompare(codeB);
         });
         
         console.log('Sets filtrés (avec doublons):', filteredSets);
         console.log('Sets uniques (sans doublons):', uniqueSets);
         console.log('Nombre total de sets uniques:', uniqueSets.length);
-        console.log('Codes des sets uniques:', uniqueSets.map((set: any) => set.code));
+        console.log('Codes des sets uniques:', uniqueSets.map((set: ApiSet) => set.code));
         
         setSets(uniqueSets);
       })
       .catch(error => console.error('Erreur lors du chargement des sets:', error))
   }, [])
 
+  // Navigation entre les cartes (mémoïsé avant usage)
+  const navigateCard = useCallback((direction: 'prev' | 'next') => {
+    console.log('Tentative de navigation:', {
+      direction,
+      currentIndex: currentCardIndex,
+      booster: booster ? booster.length : 'undefined',
+      isMobile,
+      isDragging,
+      carteActuelle: booster?.[currentCardIndex]?.name
+    });
+
+    if (!booster) return;
+    if (booster.length === 0) return;
+    if (currentCardIndex === undefined || currentCardIndex === null) return;
+    
+    if (direction === 'prev' && currentCardIndex > 0) {
+      const prevCard = booster[currentCardIndex - 1];
+      if (!prevCard) return;
+      setCurrentCardIndex(currentCardIndex - 1);
+      setIsNewCard(!userCollection.has(prevCard.id));
+    } else if (direction === 'next' && currentCardIndex < booster.length - 1) {
+      const nextCard = booster[currentCardIndex + 1];
+      if (!nextCard) return;
+      setCurrentCardIndex(currentCardIndex + 1);
+      setIsNewCard(!userCollection.has(nextCard.id));
+      checkRarityAndPlayEffect(nextCard);
+      if (currentCardIndex + 1 === booster.length - 1) {
+        const delay = isMobile ? 1000 : 2000;
+        setTimeout(async () => {
+          try {
+            if (!booster || booster.length === 0) return;
+            const cardIds = booster.map(card => card.id);
+            const result = await addToCollection(cardIds);
+            if (result.success) {
+              toast.success('Cartes ajoutées à votre collection !', { duration: isMobile ? 3000 : 4000, position: isMobile ? 'bottom-center' : 'top-center' });
+              await loadUserCollection();
+            }
+          } catch (error) {
+            console.error('Erreur lors de l\'ajout automatique à la collection:', error);
+            toast.error('Erreur lors de l\'ajout à la collection');
+          }
+        }, delay);
+      }
+    }
+  }, [currentCardIndex, booster, userCollection, isMobile, isDragging, addToCollection, loadUserCollection])
+
   // Gestionnaire des touches du clavier
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (isMobile) {
-        console.log('Touche pressée sur mobile, navigation désactivée');
-        return;
-      }
-      
+      if (isMobile) return;
       if (event.key === 'ArrowLeft' && currentCardIndex > 0) {
         navigateCard('prev');
       } else if (event.key === 'ArrowRight' && currentCardIndex < booster.length - 1) {
@@ -214,37 +213,7 @@ export default function BoosterOpeningPage() {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [currentCardIndex, booster.length, isMobile]);
-
-  // Préchargement des images
-  useEffect(() => {
-    if (booster && booster.length > 0) {
-      const preloadImages = async () => {
-        const newPreloadedImages: Record<string, boolean> = {}
-        
-        for (const card of booster) {
-          if (card && card.imageUrl) {
-            try {
-              const img = new Image()
-              img.src = card.imageUrl
-              await new Promise((resolve, reject) => {
-                img.onload = resolve
-                img.onerror = reject
-              })
-              newPreloadedImages[card.id] = true
-            } catch (error) {
-              console.error(`Erreur de préchargement pour ${card.name}:`, error)
-              handleImageError(card.id)
-            }
-          }
-        }
-        
-        setPreloadedImages(newPreloadedImages)
-      }
-      
-      preloadImages()
-    }
-  }, [booster])
+  }, [currentCardIndex, booster.length, isMobile, navigateCard]);
 
   // Chargement de la collection de l'utilisateur
   useEffect(() => {
@@ -310,79 +279,58 @@ export default function BoosterOpeningPage() {
   }, [selectedSet, sets, session]);
 
   // Si la session est en cours de chargement ou si l'utilisateur n'est pas authentifié
-  if (status === 'loading' || !session) {
-    return <LoadingSpinner />
-  }
+  
 
-  // Gestion des erreurs d'image
-  const handleImageError = (cardId: string) => {
-    console.error('Erreur de chargement de l\'image pour la carte:', cardId)
-    setImageErrors(prev => ({ ...prev, [cardId]: true }))
-  }
-
-  // Activation de l'effet de brillance pour les cartes rares
-  const activateRareCardGlow = (cardId: string) => {
-    setRareCardGlow(prev => ({ ...prev, [cardId]: true }))
-    setTimeout(() => {
-      setRareCardGlow(prev => ({ ...prev, [cardId]: false }))
-    }, 3000)
-  }
-
-  // Génération des particules pour les cartes ultra rares
-  const generateUltraRareParticles = () => {
-    const particles = Array.from({ length: 50 }, (_, i) => ({
-      id: i,
-      x: Math.random() * window.innerWidth,
-      y: Math.random() * window.innerHeight,
-      size: Math.random() * 3 + 1,
-      color: `hsl(${Math.random() * 60 + 30}, 100%, 50%)`
-    }))
-    return particles
-  }
+  // Gestion des erreurs d'image (placeholder)
+  // const handleImageError = useCallback((cardId: string) => {
+  //   console.error('Erreur de chargement de l\'image pour la carte:', cardId)
+  // }, [])
 
   // Vérification de la rareté et lecture des effets
   const checkRarityAndPlayEffect = (card: ExtendedCardType) => {
     console.log('Vérification de la rareté pour:', card.name, card.rarity, card.id)
-    
-    // Catégorie 3 : Ultra Rare / Collector (priorité la plus haute)
-    if ((card.rarity === 'SR' && card.id.endsWith('_p1'))) {
-      console.log('Carte SR Alternative détectée comme Ultra Rare:', card.name)
-      setCurrentRareCard(card)
-      setRareAnimationType('ultra-rare')
-      setShowRareAnimation(true)
-      return
-    }
-    
-    if (card.id.match(/_p[3-9]/) || 
-        ['SEC', 'SP CARD', 'TR', 'P'].includes(card.rarity)) {
-      console.log('Carte Ultra Rare détectée:', card.name)
+
+    // Position courante (1-based)
+    const position = currentCardIndex + 1
+    const rarityRank: Record<string, number> = { C: 1, UC: 2, U: 2, R: 3, SR: 4, L: 5, SEC: 6, 'SP CARD': 7, TR: 8, P: 9 }
+    const rank = rarityRank[card.rarity] ?? 0
+    const isHighRarity = rank >= 4 // SR et plus
+    const hasP1 = card.id.endsWith('_p1')
+    const hasP2 = card.id.endsWith('_p2')
+    const hasP3Plus = /_p[3-9]/.test(card.id)
+
+    // Pas d'animation pour C/UC avant la position 10
+    if (position < 10 && (card.rarity === 'C' || card.rarity === 'UC')) return
+
+    // Ultra-rare: SEC, SP CARD, TR, P, L, ou SR_p1, ou p3+ sur rareté élevée
+    if (
+      ['SEC', 'SP CARD', 'TR', 'P', 'L'].includes(card.rarity) ||
+      (card.rarity === 'SR' && hasP1) ||
+      (hasP3Plus && isHighRarity)
+    ) {
       setCurrentRareCard(card)
       setRareAnimationType('ultra-rare')
       setShowRareAnimation(true)
       return
     }
 
-    // Catégorie 1 : Alternative Art de base
-    if (card.id.endsWith('_p1')) {
-      console.log('Carte Alternative détectée:', card.name)
+    // Alternative: uniquement pour raretés élevées (SR+, hors cas ultra-rare)
+    if (hasP1 && isHighRarity) {
       setCurrentRareCard(card)
       setRareAnimationType('alternative')
       setShowRareAnimation(true)
       return
     }
 
-    // Catégorie 2 : Rare + Alternatives modérées
-    if (card.id.endsWith('_p2') || 
-        (card.rarity === 'SR' && !card.id.endsWith('_p1') && !card.id.match(/_p[3-9]/))) {
-      console.log('Carte Rare détectée:', card.name)
+    // Rare: toutes les R (avec ou sans _p1/_p2) et SR non alt/ultra
+    if (card.rarity === 'R' || (card.rarity === 'SR' && !hasP1 && !hasP3Plus) || (hasP2 && isHighRarity)) {
       setCurrentRareCard(card)
       setRareAnimationType('rare')
       setShowRareAnimation(true)
       return
     }
 
-    // Cartes communes
-    console.log('Carte commune détectée:', card.name)
+    // Sinon: pas d'animation spéciale
   }
 
   const handleRareAnimationComplete = () => {
@@ -390,134 +338,11 @@ export default function BoosterOpeningPage() {
     setRareAnimationType(null)
   }
 
-  // Navigation entre les cartes
-  const navigateCard = (direction: 'prev' | 'next') => {
-    console.log('Tentative de navigation:', {
-      direction,
-      currentIndex: currentCardIndex,
-      booster: booster ? booster.length : 'undefined',
-      isMobile,
-      isDragging,
-      carteActuelle: booster?.[currentCardIndex]?.name
-    });
-
-    if (!booster) {
-      console.log('Navigation impossible: booster est undefined');
-      return;
-    }
-
-    if (booster.length === 0) {
-      console.log('Navigation impossible: booster est vide');
-      return;
-    }
-
-    if (currentCardIndex === undefined || currentCardIndex === null) {
-      console.log('Navigation impossible: currentCardIndex est undefined');
-      return;
-    }
-    
-    if (direction === 'prev' && currentCardIndex > 0) {
-      const prevCard = booster[currentCardIndex - 1];
-      if (!prevCard) {
-        console.log('Navigation impossible: prevCard est undefined');
-        return;
-      }
-      setCurrentCardIndex(currentCardIndex - 1);
-      setIsNewCard(!userCollection.has(prevCard.id));
-
-      console.log('Navigation vers la carte précédente:', {
-        nouvelIndex: currentCardIndex - 1,
-        carte: prevCard.name,
-        isMobile
-      });
-    } else if (direction === 'next' && currentCardIndex < booster.length - 1) {
-      const nextCard = booster[currentCardIndex + 1];
-      if (!nextCard) {
-        console.log('Navigation impossible: nextCard est undefined');
-        return;
-      }
-      setCurrentCardIndex(currentCardIndex + 1);
-      setIsNewCard(!userCollection.has(nextCard.id));
-      
-      console.log('Navigation vers la carte suivante:', {
-        nouvelIndex: currentCardIndex + 1,
-        carte: nextCard.name,
-        isMobile
-      });
-
-      // Vérifier si la nouvelle carte est rare ou alternative
-      checkRarityAndPlayEffect(nextCard);
-      
-      // Si on arrive à la dernière carte, ajouter automatiquement à la collection
-      if (currentCardIndex + 1 === booster.length - 1) {
-        console.log('Dernière carte atteinte, tentative d\'ajout automatique:', {
-          isMobile,
-          currentIndex: currentCardIndex,
-          boosterLength: booster.length,
-          isDragging,
-          dernièreCarte: booster[booster.length - 1]?.name
-        });
-        
-        // Ajouter un délai plus court sur mobile
-        const delay = isMobile ? 1000 : 2000;
-        
-        setTimeout(async () => {
-          try {
-            if (!booster || booster.length === 0) {
-              console.log('Ajout automatique impossible: booster est vide ou undefined');
-              return;
-            }
-
-            const cardIds = booster.map(card => card.id);
-            console.log('Ajout automatique des cartes:', {
-              cardIds,
-              isMobile,
-              isDragging,
-              cartes: booster.map(card => card.name)
-            });
-            
-            const result = await addToCollection(cardIds);
-            console.log('Résultat de l\'ajout automatique:', result);
-            
-            if (result.success) {
-              toast.success('Cartes ajoutées à votre collection !', {
-                duration: isMobile ? 3000 : 4000,
-                position: isMobile ? 'bottom-center' : 'top-center',
-                style: {
-                  background: '#1a1a1a',
-                  color: '#fff',
-                  border: '1px solid #333',
-                  fontSize: isMobile ? '14px' : '16px',
-                  padding: isMobile ? '12px 16px' : '16px 24px',
-                  borderRadius: '8px',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
-                }
-              });
-              await loadUserCollection();
-            }
-          } catch (error) {
-            console.error('Erreur lors de l\'ajout automatique à la collection:', error);
-            toast.error('Erreur lors de l\'ajout à la collection', {
-              duration: isMobile ? 3000 : 4000,
-              position: isMobile ? 'bottom-center' : 'top-center',
-              style: {
-                background: '#1a1a1a',
-                color: '#fff',
-                border: '1px solid #333',
-                fontSize: isMobile ? '14px' : '16px',
-                padding: isMobile ? '12px 16px' : '16px 24px',
-                borderRadius: '8px',
-                boxShadow: '0 4px 12px rgba(0,0,0,0.15)'
-              }
-            });
-          }
-        }, delay);
-      }
-    }
-  }
-
   // Gestion du glissement des cartes
-  const handleDragEnd = (event: any, info: any) => {
+  const handleDragEnd = (
+    event: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
     if (!info) {
       console.log('Fin du glissement impossible: info est undefined');
       return;
@@ -567,10 +392,12 @@ export default function BoosterOpeningPage() {
       carteActuelle: booster?.[currentCardIndex]?.name
     });
     setIsDragging(true);
-    setDragDirection(null);
   }
   
-  const handleDrag = (event: any, info: any) => {
+  const handleDrag = (
+    event: MouseEvent | TouchEvent | PointerEvent,
+    info: PanInfo
+  ) => {
     if (!info) return;
     
     console.log('Glissement en cours:', {
@@ -578,12 +405,6 @@ export default function BoosterOpeningPage() {
       isMobile,
       currentIndex: currentCardIndex
     });
-
-    if (info.offset.x > 0) {
-      setDragDirection('right');
-    } else if (info.offset.x < 0) {
-      setDragDirection('left');
-    }
   }
 
   // Gestion du clic sur les flèches
@@ -608,27 +429,20 @@ export default function BoosterOpeningPage() {
     }
   }
 
-  // Déclencher l'effet de confetti
-  const triggerConfetti = () => {
-    setShowConfetti(true)
-    setTimeout(() => setShowConfetti(false), 3000)
-  }
-
   // Gestion de l'ouverture du booster
-  const handleOpenBooster = async () => {
+  const handleOpenBooster = useCallback(async () => {
     if (!selectedSet) {
       toast.error('Veuillez sélectionner un set')
       return
     }
 
     if (!showAnimation) {
-      setShowAnimation(true)
+      startTransition(() => setShowAnimation(true))
     }
 
     // Lancer la requête API en même temps que l'animation
     setIsLoading(true)
     try {
-      const selectedSetData = sets.find(set => set.id === selectedSet)
       if (!selectedSetData) {
         throw new Error('Set non trouvé')
       }
@@ -650,27 +464,27 @@ export default function BoosterOpeningPage() {
         const result = await response.json()
         
         if (result.success) {
-          const processedCards = result.cards.map((card: any) => ({
+          const processedCards = (result.cards as ApiCardMinimal[]).map((card) => ({
             ...card,
             name: typeof card.name === 'string' ? card.name : 'Carte sans nom'
-          }))
+          })) as unknown as ExtendedCardType[]
           
           console.log('Booster ouvert avec succès:', {
             nombreCartes: processedCards.length,
-            cartes: processedCards.map((card: any) => ({
+            cartes: processedCards.map((card) => ({
               nom: card.name,
               id: card.id,
               rareté: card.rarity
             }))
           });
 
-          // Stocker les cartes mais ne pas les afficher tout de suite
-          setBooster(processedCards)
-          setNewCardsCount(result.newCardsCount)
-          
-          if (processedCards.length > 0) {
-            setIsNewCard(!userCollection.has(processedCards[0].id))
-          }
+          // Stocker les cartes mais ne pas les afficher tout de suite (transition non bloquante)
+          startTransition(() => {
+            setBooster(processedCards)
+            if (processedCards.length > 0) {
+              setIsNewCard(!userCollection.has(processedCards[0].id))
+            }
+          })
           
           // Supprimer la vérification de rareté ici car elle sera gérée dans les composants d'animation
         } else {
@@ -685,73 +499,31 @@ export default function BoosterOpeningPage() {
     } finally {
       setIsLoading(false)
     }
-  }
+  }, [selectedSet, selectedSetData, showAnimation, isMobile, userCollection, startTransition])
 
-  const handleAnimationComplete = async () => {
-    setShowAnimation(false)
+  const handleAnimationComplete = useCallback(async () => {
+    startTransition(() => setShowAnimation(false))
     // Une fois l'animation terminée, on peut afficher les cartes
     if (booster.length > 0) {
-      setCurrentCardIndex(0)
-      setIsRevealing(true)
+      startTransition(() => {
+        setCurrentCardIndex(0)
+      })
     }
-  }
-
-  // Gestion de l'ajout à la collection
-  const handleAddToCollection = async () => {
-    if (!booster || !booster.length) {
-      console.log('Aucune carte à ajouter à la collection');
-      return;
-    }
-
-    console.log('Tentative d\'ajout à la collection:', {
-      isMobile,
-      boosterLength: booster.length,
-      cardIds: booster.map(card => card.id)
-    });
-
-    setIsAddingToCollection(true);
-    try {
-      const result = await addToCollection(booster.map(card => card.id));
-      
-      console.log('Résultat de l\'ajout à la collection:', result);
-      
-      if (result.success) {
-        toast.success(result.message);
-        // Recharger la collection après l'ajout des cartes
-        await loadUserCollection();
-      } else {
-        throw new Error(result.error);
-      }
-    } catch (error) {
-      console.error('Erreur lors de l\'ajout à la collection:', error);
-      toast.error('Erreur lors de l\'ajout à la collection');
-    } finally {
-      setIsAddingToCollection(false);
-    }
-  }
+  }, [booster.length, startTransition])
 
   // Réinitialiser l'état et ouvrir un nouveau booster
-  const resetAndOpenNewBooster = async () => {
+  const resetAndOpenNewBooster = useCallback(async () => {
     // Réinitialiser l'état
-    setBooster([])
-    setCurrentCardIndex(-1)
-    setIsRevealing(false)
-    setShowRareEffect(false)
-    setShowAltArtEffect(false)
-    setShowUltraRareEffect(false)
-    setCurrentRareCard(null)
-    setShowConfetti(false)
-    setIsNewCard(false)
-    setNewCardsCount(0)
-    setShowBackgroundEffect(false)
-    setRareCardGlow({})
-    setUltraRareParticles([])
-    setSelectedCard(null)
-    setShowCardDetails(false)
+    startTransition(() => {
+      setBooster([])
+      setCurrentCardIndex(-1)
+      setCurrentRareCard(null)
+      setIsNewCard(false)
+    })
     
     // Ouvrir directement un nouveau booster
     await handleOpenBooster()
-  }
+  }, [handleOpenBooster, startTransition])
 
   const handleCardClick = (card: ExtendedCardType) => {
     const currentTime = new Date().getTime()
@@ -759,9 +531,6 @@ export default function BoosterOpeningPage() {
     
     if (timeDiff < 300) { // Double-clic détecté (moins de 300ms entre les clics)
       setSelectedCard(card)
-      if (card.rarity === 'Ultra Rare') {
-        setUltraRareParticles(generateUltraRareParticles())
-      }
     }
     
     setLastClickTime(currentTime)
@@ -826,10 +595,13 @@ export default function BoosterOpeningPage() {
               <div className="relative group">
                 <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-amber-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
                 <div className="relative w-40 h-60 sm:w-48 sm:h-72 transform group-hover:scale-105 transition-all duration-300">
-                  <img
-                    src={`/images/booster/${sets.find(set => set.id === selectedSet)?.code.toLowerCase()}.png`}
-                    alt={sets.find(set => set.id === selectedSet)?.name}
-                    className="w-full h-full object-contain rounded-xl shadow-2xl"
+                  <NextImage
+                    src={`/images/booster/${(selectedSetData?.code || '').toLowerCase()}.png`}
+                    alt={selectedSetData?.name || 'Booster'}
+                    fill
+                    sizes="(max-width: 640px) 10rem, 12rem"
+                    className="object-contain rounded-xl shadow-2xl"
+                    priority={false}
                   />
                 </div>
               </div>
@@ -837,7 +609,7 @@ export default function BoosterOpeningPage() {
               <div className="flex flex-col gap-4 sm:gap-6 max-w-md">
                 <div className="text-center md:text-left">
                   <h2 className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent mb-2">
-                    {sets.find(set => set.id === selectedSet)?.name}
+                    {selectedSetData?.name}
                   </h2>
                   <p className="text-white/80">
                     Découvrez les trésors cachés de ce booster !
@@ -846,7 +618,7 @@ export default function BoosterOpeningPage() {
 
                 <div className="bg-white/5 rounded-xl p-4 sm:p-6 border border-white/10">
                   <h3 className="text-lg font-bold text-white/90 mb-4">Contenu possible :</h3>
-                  {setRules && setRules.boosterRules && (
+                  {setRules?.boosterRules && (
                     <div className="grid grid-cols-2 gap-4">
                       <div className="flex items-center gap-2">
                         <div className="w-3 h-3 rounded-full bg-gray-400"></div>
@@ -875,6 +647,7 @@ export default function BoosterOpeningPage() {
           <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
             <Button 
               onClick={() => setShowBoosterModal(true)}
+              aria-label="Choisir un booster"
               className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105"
             >
               <div className="flex items-center gap-2">
@@ -886,6 +659,7 @@ export default function BoosterOpeningPage() {
             {booster.length === 0 ? (
               <Button 
                 onClick={handleOpenBooster}
+                aria-label="Ouvrir le trésor"
                 disabled={!selectedSet || isLoading}
                 className="w-full sm:w-auto bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105"
               >
@@ -904,6 +678,7 @@ export default function BoosterOpeningPage() {
             ) : (
               <Button 
                 onClick={resetAndOpenNewBooster}
+                aria-label="Ouvrir un nouveau trésor"
                 disabled={!selectedSet || isLoading}
                 className="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105"
               >
@@ -931,9 +706,9 @@ export default function BoosterOpeningPage() {
               <CardReveal
                 card={booster[currentCardIndex]}
                 isNewCard={isNewCard}
+                position={currentCardIndex + 1}
                 onComplete={() => {
-                  setIsRevealing(false)
-                  checkRarityAndPlayEffect(booster[currentCardIndex])
+                  
                 }}
                 onCardClick={handleCardClick}
                 onDragStart={handleDragStart}
@@ -945,6 +720,7 @@ export default function BoosterOpeningPage() {
                 {currentCardIndex > 0 && (
                   <button
                     onClick={() => handleArrowClick('prev')}
+                    aria-label="Carte précédente"
                     className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -960,6 +736,7 @@ export default function BoosterOpeningPage() {
                 {currentCardIndex < booster.length - 1 && (
                   <button
                     onClick={() => handleArrowClick('next')}
+                    aria-label="Carte suivante"
                     className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -981,19 +758,26 @@ export default function BoosterOpeningPage() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+              role="dialog"
+              aria-modal="true"
+              aria-labelledby="choose-treasure-title"
               onClick={() => setShowBoosterModal(false)}
             >
               {/* Éléments décoratifs d'arrière-plan */}
               <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 <div className="absolute inset-0 bg-gradient-to-b from-blue-950/30 to-indigo-950/30"></div>
-                <img 
+                <NextImage 
                   src="/images/jolly-roger.png" 
-                  alt="" 
+                  alt=""
+                  width={128}
+                  height={128}
                   className="absolute top-0 left-0 w-32 h-32 opacity-20 rotate-[-15deg]"
                 />
-                <img 
+                <NextImage 
                   src="/images/straw-hat.png" 
-                  alt="" 
+                  alt=""
+                  width={128}
+                  height={128}
                   className="absolute bottom-0 right-0 w-32 h-32 opacity-20 rotate-[15deg]"
                 />
               </div>
@@ -1009,17 +793,20 @@ export default function BoosterOpeningPage() {
                 <div className="relative p-4 sm:p-6 border-b border-yellow-500/20">
                   <div className="flex justify-between items-center">
                     <div className="flex items-center gap-2 sm:gap-4">
-                      <img 
+                      <NextImage 
                         src="/images/treasure-chest.png" 
                         alt="Trésor" 
+                        width={48}
+                        height={48}
                         className="w-8 h-8 sm:w-12 sm:h-12 animate-float"
                       />
-                      <h2 className="text-xl sm:text-3xl font-bold bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
+                      <h2 id="choose-treasure-title" className="text-xl sm:text-3xl font-bold bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
                         Choisissez votre Trésor
                       </h2>
                     </div>
                     <button
                       onClick={() => setShowBoosterModal(false)}
+                      aria-label="Fermer la modale"
                       className="p-1 sm:p-2 hover:bg-white/10 rounded-full transition-all duration-300 hover:rotate-90 hover:scale-110"
                     >
                       <X className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-500" />
@@ -1036,9 +823,13 @@ export default function BoosterOpeningPage() {
                         className={`relative cursor-pointer group perspective-1000 ${
                           selectedSet === set.id ? 'ring-4 ring-yellow-500/50 shadow-[0_0_30px_rgba(234,179,8,0.3)]' : ''
                         }`}
-                        onClick={() => {
-                          setSelectedSet(set.id)
-                          setShowBoosterModal(false)
+                        onClick={() => handleSelectSet(set.id)}
+                        tabIndex={0}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault()
+                            handleSelectSet(set.id)
+                          }
                         }}
                         whileHover={{ 
                           scale: 1.05,
@@ -1064,9 +855,13 @@ export default function BoosterOpeningPage() {
                             <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/0 via-yellow-500/50 to-yellow-500/0 blur-xl"></div>
                           </div>
 
-                          <img
+                          <NextImage
                             src={`/images/booster/${set.code.toLowerCase()}.png`}
                             alt={set.name}
+                            width={400}
+                            height={600}
+                            sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 25vw"
+                            loading="lazy"
                             className="w-full h-auto transform transition-all duration-500 group-hover:scale-110"
                           />
                         </div>
@@ -1084,7 +879,6 @@ export default function BoosterOpeningPage() {
           <CardDetailsModal
             card={selectedCard}
             onClose={() => setSelectedCard(null)}
-            getRarityColor={getRarityColor}
             getRarityGlow={getRarityGlow}
           />
         )}

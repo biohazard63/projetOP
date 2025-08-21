@@ -1,6 +1,6 @@
 import { NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { auth } from '@/lib/auth'
+
 import { prisma } from '@/lib/prisma'
 import { cookies } from 'next/headers'
 
@@ -8,7 +8,7 @@ export async function GET() {
   try {
     console.log('Récupération du deck actif')
     
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     
     if (!session?.user?.email) {
       console.log('Erreur: Utilisateur non authentifié')
@@ -19,7 +19,8 @@ export async function GET() {
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
+      where: { email: session.user.email.toLowerCase() },
+      select: { id: true },
     })
 
     if (!user) {
@@ -31,7 +32,7 @@ export async function GET() {
     }
 
     // Récupérer l'ID du deck actif depuis le cookie
-    const cookieStore = cookies()
+    const cookieStore = await cookies()
     const activeDeckId = cookieStore.get('activeDeckId')?.value
 
     console.log('ID du deck actif depuis le cookie:', activeDeckId)
@@ -96,7 +97,7 @@ export async function POST(request: Request) {
   try {
     console.log('Définition du deck actif')
     
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     
     if (!session?.user?.email) {
       console.log('Erreur: Utilisateur non authentifié')
@@ -107,7 +108,8 @@ export async function POST(request: Request) {
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
+      where: { email: session.user.email.toLowerCase() },
+      select: { id: true },
     })
 
     if (!user) {
@@ -148,7 +150,7 @@ export async function POST(request: Request) {
     }
 
     // Définir le deck comme actif en utilisant un cookie
-    const cookieStore = cookies()
+    const cookieStore = await cookies()
     cookieStore.set('activeDeckId', deckId, {
       path: '/',
       httpOnly: true,

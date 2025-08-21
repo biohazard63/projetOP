@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server'
-import { PrismaClient } from '@prisma/client'
+import { prisma } from '@/lib/prisma'
 import bcrypt from 'bcryptjs'
 import { addStarterDeckCardsToUser } from '@/lib/starterDeckUtils'
-
-const prisma = new PrismaClient()
 
 export async function POST(request: Request) {
   try {
@@ -17,9 +15,9 @@ export async function POST(request: Request) {
       )
     }
 
-    // Vérifier si l'email existe déjà
+    // Vérifier si l'email existe déjà (normalisé en minuscule)
     const existingUser = await prisma.user.findUnique({
-      where: { email }
+      where: { email: (email as string).toLowerCase() }
     })
 
     if (existingUser) {
@@ -30,19 +28,24 @@ export async function POST(request: Request) {
     }
 
     // Hasher le mot de passe
-    const hashedPassword = await bcrypt.hash(password, 10)
+    const hashedPassword = await bcrypt.hash(password, 12)
 
     // Créer l'utilisateur
     const user = await prisma.user.create({
       data: {
-        name,
-        email,
+        name: name.trim(),
+        email: email.toLowerCase(),
         password: hashedPassword,
       },
     })
 
     // Ajouter les cartes de démarrage à l'utilisateur
-    await addStarterDeckCardsToUser(user.id)
+    // Ajouter les cartes de démarrage en arrière-plan pour ne pas bloquer la réponse
+    setTimeout(() => {
+      addStarterDeckCardsToUser(user.id).catch((err) =>
+        console.error('Erreur association decks démarrage:', err)
+      )
+    }, 50)
 
     // Ne pas renvoyer le mot de passe
     const { password: _, ...userWithoutPassword } = user

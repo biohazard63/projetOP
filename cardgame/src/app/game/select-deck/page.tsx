@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -117,7 +118,7 @@ export default function SelectDeckPage() {
             <div className="text-6xl mb-6">🎴</div>
             <h2 className="text-2xl font-bold mb-4">Aucun deck disponible</h2>
             <p className="text-lg mb-8 text-gray-300">
-              Vous n'avez pas encore créé de deck. Créez-en un pour commencer à jouer !
+              Vous n&apos;avez pas encore créé de deck. Créez-en un pour commencer à jouer !
             </p>
             <Link href="/deck-builder">
               <Button className="bg-gradient-to-r from-blue-500 to-indigo-600 hover:from-blue-600 hover:to-indigo-700 text-white px-6 py-3 rounded-lg shadow-lg hover:shadow-xl transition-all">
@@ -177,10 +178,13 @@ export default function SelectDeckPage() {
                   <div className="grid grid-cols-4 gap-2 mb-4">
               {deck.cards.slice(0, 8).map((card) => (
                 <div key={card.id} className="relative">
-                  <img
+                  <Image
                     src={card.imageUrl}
                     alt={card.name}
-                          className="w-full rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                    width={160}
+                    height={220}
+                    sizes="(max-width: 640px) 25vw, 160px"
+                    className="w-full h-auto rounded-lg shadow-md hover:shadow-lg transition-shadow"
                   />
                   {card.quantity > 1 && (
                           <div className="absolute top-1 right-1 bg-blue-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm">

@@ -1,96 +1,74 @@
-import { NextResponse } from 'next/server';
-import { getServerSession } from 'next-auth';
-import { authOptions } from '@/lib/auth';
-import { prisma } from '@/lib/prisma';
+import { NextResponse } from 'next/server'
+import { auth } from '@/lib/auth'
+import { prisma } from '@/lib/prisma'
 
 export async function POST(request: Request) {
   try {
-    console.log('API add-to-collection: Début de la requête')
-    const session = await getServerSession(authOptions);
-    
+    const session = await auth()
+
     if (!session?.user?.email) {
-      console.log('API add-to-collection: Utilisateur non authentifié')
-      return NextResponse.json({ 
-        success: false, 
-        error: 'Non authentifié' 
-      }, { status: 401 });
+      return NextResponse.json(
+        { success: false, error: 'Non authentifié' },
+        { status: 401 }
+      )
     }
 
-    const { cardIds } = await request.json();
-    console.log('API add-to-collection: Cartes reçues:', cardIds)
+    const { cardIds } = (await request.json()) as { cardIds: unknown }
 
-    if (!Array.isArray(cardIds)) {
-      console.log('API add-to-collection: Format de données invalide')
-      return NextResponse.json({ 
-        success: false, 
-        error: 'Format de données invalide' 
-      }, { status: 400 });
+    if (!Array.isArray(cardIds) || cardIds.some((id) => typeof id !== 'string')) {
+      return NextResponse.json(
+        { success: false, error: 'Format de données invalide' },
+        { status: 400 }
+      )
     }
 
+    // normaliser email
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
-    });
+      where: { email: session.user.email.toLowerCase() },
+      select: { id: true },
+    })
 
     if (!user) {
-      console.log('API add-to-collection: Utilisateur non trouvé')
-      return NextResponse.json({ 
-        success: false, 
-        error: 'Utilisateur non trouvé' 
-      }, { status: 404 });
+      return NextResponse.json(
+        { success: false, error: 'Utilisateur non trouvé' },
+        { status: 404 }
+      )
     }
 
-    console.log('API add-to-collection: Ajout des cartes à la collection de l\'utilisateur:', user.id)
-    // Ajouter chaque carte à la collection
-    for (const cardId of cardIds) {
-      // Vérifier si l'utilisateur a déjà cette carte
-      const existingUserCard = await prisma.userCard.findUnique({
-        where: {
-          userId_cardId: {
-            userId: user.id,
-            cardId: cardId
-          }
-        }
-      });
-
-      if (existingUserCard) {
-        console.log('API add-to-collection: Mise à jour de la quantité pour la carte:', cardId)
-        // Mettre à jour la quantité si la carte existe déjà
-        await prisma.userCard.update({
-          where: {
-            userId_cardId: {
-              userId: user.id,
-              cardId: cardId
-            }
-          },
-          data: {
-            quantity: {
-              increment: 1
-            }
-          }
-        });
-      } else {
-        console.log('API add-to-collection: Création d\'une nouvelle entrée pour la carte:', cardId)
-        // Créer une nouvelle entrée si la carte n'existe pas
-        await prisma.userCard.create({
-          data: {
-            userId: user.id,
-            cardId: cardId,
-            quantity: 1
-          }
-        });
-      }
+    if (cardIds.length === 0) {
+      return NextResponse.json(
+        { success: false, error: 'Aucune carte fournie' },
+        { status: 400 }
+      )
     }
 
-    console.log('API add-to-collection: Cartes ajoutées avec succès')
+    // Compter les occurrences en cas de doublons
+    const counts = new Map<string, number>()
+    for (const id of cardIds as string[]) {
+      counts.set(id, (counts.get(id) || 0) + 1)
+    }
+
+    // Transaction atomique avec upsert par carte
+    await prisma.$transaction(
+      Array.from(counts.entries()).map(([cardId, qty]) =>
+        prisma.userCard.upsert({
+          where: { userId_cardId: { userId: user.id, cardId } },
+          update: { quantity: { increment: qty } },
+          create: { userId: user.id, cardId, quantity: qty },
+        })
+      )
+    )
+
     return NextResponse.json({
       success: true,
-      message: 'Cartes ajoutées à la collection avec succès'
-    });
+      message: 'Cartes ajoutées à la collection avec succès',
+      added: counts.size,
+    })
   } catch (error) {
-    console.error('API add-to-collection: Erreur lors de l\'ajout des cartes à la collection:', error);
-    return NextResponse.json({ 
-      success: false, 
-      error: 'Erreur serveur' 
-    }, { status: 500 });
+    console.error('API add-to-collection: erreur:', error)
+    return NextResponse.json(
+      { success: false, error: 'Erreur serveur' },
+      { status: 500 }
+    )
   }
-} 
+}

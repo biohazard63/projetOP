@@ -1,6 +1,6 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useTransition } from 'react';
 import Link from 'next/link';
 
 // Sets principaux
@@ -41,6 +41,7 @@ const sets = [...mainSets, ...specialSets, ...eventSets];
 export default function BoosterPack() {
   const [selectedSet, setSelectedSet] = useState('');
   const [isLoading, setIsLoading] = useState(false);
+  const [, startTransition] = useTransition();
 
   const handleOpenBooster = async () => {
     if (!selectedSet) return;
@@ -61,7 +62,10 @@ export default function BoosterPack() {
 
       const data = await response.json();
       console.log('Booster ouvert:', data);
-      // TODO: Afficher les cartes du booster
+      // Transition non bloquante si on navigue/affiche les cartes
+      startTransition(() => {
+        // TODO: déclencher l’animation/affichage
+      });
     } catch (error) {
       console.error('Erreur:', error);
     } finally {
@@ -82,17 +86,18 @@ export default function BoosterPack() {
         <div className="bg-gray-800 rounded-lg p-6 mb-8">
           <div className="flex gap-4 items-end">
             <div className="flex-1">
-              <label className="block text-sm font-medium text-gray-300 mb-2">
+              <label htmlFor="set-select" className="block text-sm font-medium text-gray-300 mb-2">
                 Sélectionner un set
               </label>
               <select
+                id="set-select"
                 value={selectedSet}
                 onChange={(e) => setSelectedSet(e.target.value)}
                 className="w-full bg-gray-700 border border-gray-600 rounded px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
               >
                 <option value="">Choisir un set...</option>
-                {sets.map((set, index) => (
-                  <option key={index} value={set}>
+                {sets.map((set) => (
+                  <option key={set} value={set}>
                     {set}
                   </option>
                 ))}

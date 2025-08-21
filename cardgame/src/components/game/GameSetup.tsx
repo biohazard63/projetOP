@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { GameState, GameCard, SetupPhase } from '@/types/game';
+import { GameState, GameCard } from '@/types/game';
 import { PlayerField } from './PlayerField';
-import { toast } from 'sonner';
+import Image from 'next/image'
 
 interface GameSetupProps {
   gameState: GameState;
@@ -43,7 +43,7 @@ export function GameSetup({
                 onClick={() => onChooseFirst('opponent')}
                 className="px-6 py-3 bg-red-500 text-white rounded-lg hover:bg-red-600"
               >
-                L'adversaire commence
+                L&apos;adversaire commence
               </button>
             </div>
           </div>
@@ -53,7 +53,7 @@ export function GameSetup({
         return (
           <div className="flex flex-col items-center gap-4">
             <h2 className="text-2xl font-bold">
-              {gameState.currentPlayer === 'player' ? 'Choisissez votre Leader' : "L'adversaire choisit son Leader"}
+              {gameState.currentPlayer === 'player' ? 'Choisissez votre Leader' : "L\'adversaire choisit son Leader"}
             </h2>
             <div className="grid grid-cols-3 gap-4">
               {gameState[gameState.currentPlayer].deck
@@ -66,9 +66,11 @@ export function GameSetup({
                     }`}
                     onClick={() => setSelectedLeader(leader)}
                   >
-                    <img
+                    <Image
                       src={leader.imageUrl}
                       alt={leader.name}
+                      width={128}
+                      height={192}
                       className="w-32 h-48 object-cover rounded-lg"
                     />
                   </div>

@@ -116,12 +116,15 @@ export const Card: React.FC<CardProps> = ({
         onMouseEnter={handleMouseEnter}
       >
         <div className="relative aspect-[63/88] rounded-lg overflow-hidden shadow-lg">
-          {card.imageUrl && !imageError ? (
-            <img
-              src={card.imageUrl}
+          {getImageUrl() && !imageError ? (
+            <Image
+              src={getImageUrl()}
               alt={isFaceDown ? 'Carte face verso' : (typeof card.name === 'string' ? card.name : 'Carte')}
-              className="w-full h-full object-contain"
+              fill
+              sizes="(max-width: 768px) 100vw, 224px"
+              className="object-contain"
               onError={() => setImageError(true)}
+              priority={false}
             />
           ) : (
             <div className="w-full h-full bg-gray-700 flex flex-col items-center justify-center p-2">

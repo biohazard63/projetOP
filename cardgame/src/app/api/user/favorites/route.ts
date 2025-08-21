@@ -1,11 +1,11 @@
 import { NextResponse } from 'next/server'
-import { getServerSession } from 'next-auth'
-import { authOptions } from '@/lib/auth'
+import { auth } from '@/lib/auth'
+
 import { prisma } from '@/lib/prisma'
 
 export async function POST(request: Request) {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     
     if (!session?.user?.email) {
       return NextResponse.json({ 
@@ -24,7 +24,8 @@ export async function POST(request: Request) {
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
+      where: { email: session.user.email.toLowerCase() },
+      select: { id: true },
     })
 
     if (!user) {
@@ -47,11 +48,10 @@ export async function POST(request: Request) {
     }
 
     // Ajouter la carte aux favoris
-    await prisma.favoriteCard.create({
-      data: {
-        userId: user.id,
-        cardId: cardId
-      }
+    await prisma.favoriteCard.upsert({
+      where: { userId_cardId: { userId: user.id, cardId } },
+      update: {},
+      create: { userId: user.id, cardId },
     })
 
     return NextResponse.json({
@@ -69,7 +69,7 @@ export async function POST(request: Request) {
 
 export async function DELETE(request: Request) {
   try {
-    const session = await getServerSession(authOptions)
+    const session = await auth()
     
     if (!session?.user?.email) {
       return NextResponse.json({ 
@@ -88,7 +88,8 @@ export async function DELETE(request: Request) {
     }
 
     const user = await prisma.user.findUnique({
-      where: { email: session.user.email }
+      where: { email: session.user.email.toLowerCase() },
+      select: { id: true },
     })
 
     if (!user) {
