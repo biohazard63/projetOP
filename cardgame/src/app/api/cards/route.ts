@@ -17,6 +17,7 @@ type CardSummary = {
   rarity: string
   imageUrl: string
   set: string | null
+  setCode?: string | null
   attribute: string | null
   family: string | null
   ability: string | null
@@ -51,6 +52,7 @@ export async function GET() {
         rarity: true,
         imageUrl: true,
         set: true,
+        setCode: true,
         attribute: true,
         family: true,
         ability: true,
@@ -75,6 +77,7 @@ export async function GET() {
       rarity: c.rarity,
       imageUrl: c.imageUrl,
       set: c.set,
+      setCode: c.setCode ?? null,
       attribute: c.attribute,
       family: c.family,
       ability: c.ability,

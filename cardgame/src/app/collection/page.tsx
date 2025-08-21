@@ -97,14 +97,14 @@ interface Card {
   quantity?: number
 }
 
-type CardSet = typeof cardSets[number];
+// type CardSet supprimé: on passe à une liste dynamique basée sur les données
 
 interface Filters {
   search: string
   type: string
   color: string
   rarity: string
-  set: CardSet
+  set: string
   showOnly?: string
   favoritesOnly?: boolean
 }
@@ -174,75 +174,12 @@ const cardRarities = [
 
 
 
-// Sets disponibles
-const cardSets = [
-  'all',
-  '-3D2Y- [ST-14]',
-  '-500 YEARS IN THE FUTURE- [OP-07]',
-  '-Absolute Justice- [ST-06]',
-  '-Animal Kingdom Pirates-[ST-04]',
-  '-Black Smoker- [ST-19]',
-  '-Blue Donquixote Doflamingo- [ST-17]',
-  '-EMPERORS IN THE NEW WORLD- [OP-09]',
-  '-Green Uta- [ST-16]',
-  '-KINGDOMS OF INTRIGUE- [OP04]',
-  '-Memorial Collection- [EB-01]',
-  '-Monkey D. Luffy-[ST-08]',
-  '-ONE PIECE CARD THE BEST- [PRB-01]',
-  '-PARAMOUNT WAR- [OP02]',
-  '-PILLARS OF STRENGTH- [OP03]',
-  '-Purple Monkey.D.Luffy- [ST-18]',
-  '-ROMANCE DAWN- [OP01]',
-  '-Red Edward.Newgate- [ST-15]',
-  '-Straw Hat Crew-[ST-01]',
-  '-TWO LEGENDS- [OP-08]',
-  '-The Seven Warlords of the Sea-[ST-03]',
-  '-The Three Brothers-[ST13]',
-  '-The Three Captains-[ST-10]',
-  '-Uta-[ST-11]',
-  '-WINGS OF THE CAPTAIN-[OP06]',
-  '-Worst Generation-[ST-02]',
-  '-Yamato-[ST-09]',
-  '-Yellow Charlotte Katakuri- [ST-20]',
-  '-Zoro & Sanji- [ST-12]',
-  'Anime Expo 2023',
-  'Big Mom Pirates [ST-07]',
-  'Event Pack Vol.3',
-  'GIFT COLLECTION 2023 [GC-01]',
-  'Included in Event Pack Vol.1',
-  'Included in Event Pack Vol.2',
-  'Included in FILM RED Promotion Card Set',
-  'Included in Online Regional Participation Pack Vol.1',
-  'Included in Pirates Party Card Vol.1',
-  'Included in Pirates Party Card Vol.2',
-  'Included in Promotion Pack 2022',
-  'ONE PIECE FILM edition [ST-05]',
-  'OP-05',
-  'Pirates Party Vol.3',
-  'Pirates Party Vol.4',
-  'Pirates Party Vol.5',
-  'Pirates Party Vol.6',
-  'Pirates Party Vol.7',
-  'Pre-Release OP02',
-  'Pre-Release OP03',
-  'Pre-Release OP04',
-  'Pre-Release OP06',
-  'Premium Card Collection -25th Edition-',
-  'Premium Card Collection -FILM RED Edition-',
-  'Regional 2024 wave1',
-  'Sealed Battle 2023 Vol.1',
-  'Sealed Battle Kit Vol.1',
-  'Special Goods Set -Ace/Sabo/Luffy-',
-  'Super Pre-Release',
-  'Tournament Pack Vol.1',
-  'Tournament Pack Vol.2',
-  'Tournament Pack Vol.3',
-  'Tournament Pack Vol.4',
-  'Tournament Pack Vol.5',
-  'Tournament Pack Vol.6',
-  'Tournament Pack Vol.7',
-  'Winner prize for Sealed Battle 2023 Vol.1'
-] as const;
+// Liste dynamique des sets dérivée des données (pas un hook React)
+const computeAvailableSets = (source: Card[]) => {
+  const setNames = new Set<string>()
+  source.forEach(c => { if (c.set && c.set.trim()) setNames.add(c.set.trim()) })
+  return ['all', ...Array.from(setNames).toSorted()]
+}
 
 interface UserCard {
   cardId: string
@@ -278,6 +215,10 @@ export default function CollectionPage() {
   const [allCards, setAllCards] = useState<Card[]>([]);
   const [missingCards, setMissingCards] = useState<Card[]>([]);
   // useTransition n'est plus utilisé ici
+
+  const availableSets = useMemo(() => {
+    return computeAvailableSets(showMissingCards ? allCards : cards)
+  }, [showMissingCards, allCards, cards])
 
   const fetchCards = async () => {
     try {
@@ -398,8 +339,13 @@ export default function CollectionPage() {
       return m ? parseInt(m[1] ?? '0', 10) : 0
     }
     const getSetNumber = (set: string) => {
-      const m = /OP(\d+)/.exec(set)
-      return m ? parseInt(m[1] ?? '0', 10) : 0
+      const m1 = /\[(OP-?\d+|ST-?\d+|EB-?\d+|PRB-?\d+|GC-?\d+)\]/i.exec(set)
+      if (m1) {
+        const code = m1[1].toUpperCase().replace('OP', '').replace('ST', '').replace('EB', '').replace('PRB', '').replace('GC', '').replace('-', '')
+        return parseInt(code || '0', 10)
+      }
+      const m2 = /OP(\d+)/i.exec(set)
+      return m2 ? parseInt(m2[1] ?? '0', 10) : 0
     }
 
     return Array.from(cardsMap.values()).toSorted((a, b) => {
@@ -457,8 +403,13 @@ export default function CollectionPage() {
         case 'set':
           // Pour le tri par set, on utilise la même logique que dans getAllCards
           const getSetNumber = (set: string) => {
-            const m = /OP(\d+)/.exec(set)
-            return m ? parseInt(m[1] ?? '0', 10) : 0
+            const m1 = /\[(OP-?\d+|ST-?\d+|EB-?\d+|PRB-?\d+|GC-?\d+)\]/i.exec(set)
+            if (m1) {
+              const code = m1[1].toUpperCase().replace('OP', '').replace('ST', '').replace('EB', '').replace('PRB', '').replace('GC', '').replace('-', '')
+              return parseInt(code || '0', 10)
+            }
+            const m2 = /OP(\d+)/i.exec(set)
+            return m2 ? parseInt(m2[1] ?? '0', 10) : 0
           }
           const getCardNumber = (code: string) => {
             const m = /-(\d+)$/.exec(code)
@@ -703,13 +654,13 @@ export default function CollectionPage() {
 
         <Select
           value={filters.set}
-          onValueChange={(value: CardSet) => setFilters(prev => ({ ...prev, set: value }))}
+          onValueChange={(value: string) => setFilters(prev => ({ ...prev, set: value }))}
         >
           <SelectTrigger className="w-full bg-gray-700/50 border-gray-600 text-white">
             <SelectValue placeholder="Sélectionner un set" />
           </SelectTrigger>
           <SelectContent className="bg-gray-800 border-gray-700">
-            {cardSets.map((set) => (
+            {availableSets.map((set) => (
               <SelectItem key={set} value={set} className="text-white hover:bg-gray-700">
                 {set === 'all' ? 'Tous les sets' : set}
               </SelectItem>

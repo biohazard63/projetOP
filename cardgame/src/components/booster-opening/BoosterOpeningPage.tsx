@@ -289,46 +289,48 @@ export default function BoosterOpeningPage() {
   // Vérification de la rareté et lecture des effets
   const checkRarityAndPlayEffect = (card: ExtendedCardType) => {
     console.log('Vérification de la rareté pour:', card.name, card.rarity, card.id)
-    
-    // Catégorie 3 : Ultra Rare / Collector (priorité la plus haute)
-    if ((card.rarity === 'SR' && card.id.endsWith('_p1'))) {
-      console.log('Carte SR Alternative détectée comme Ultra Rare:', card.name)
-      setCurrentRareCard(card)
-      setRareAnimationType('ultra-rare')
-      setShowRareAnimation(true)
-      return
-    }
-    
-    if (/_p[3-9]/.exec(card.id) || 
-        ['SEC', 'SP CARD', 'TR', 'P'].includes(card.rarity)) {
-      console.log('Carte Ultra Rare détectée:', card.name)
+
+    // Position courante (1-based)
+    const position = currentCardIndex + 1
+    const rarityRank: Record<string, number> = { C: 1, UC: 2, U: 2, R: 3, SR: 4, L: 5, SEC: 6, 'SP CARD': 7, TR: 8, P: 9 }
+    const rank = rarityRank[card.rarity] ?? 0
+    const isHighRarity = rank >= 4 // SR et plus
+    const hasP1 = card.id.endsWith('_p1')
+    const hasP2 = card.id.endsWith('_p2')
+    const hasP3Plus = /_p[3-9]/.test(card.id)
+
+    // Pas d'animation pour C/UC avant la position 10
+    if (position < 10 && (card.rarity === 'C' || card.rarity === 'UC')) return
+
+    // Ultra-rare: SEC, SP CARD, TR, P, L, ou SR_p1, ou p3+ sur rareté élevée
+    if (
+      ['SEC', 'SP CARD', 'TR', 'P', 'L'].includes(card.rarity) ||
+      (card.rarity === 'SR' && hasP1) ||
+      (hasP3Plus && isHighRarity)
+    ) {
       setCurrentRareCard(card)
       setRareAnimationType('ultra-rare')
       setShowRareAnimation(true)
       return
     }
 
-    // Catégorie 1 : Alternative Art de base
-    if (card.id.endsWith('_p1')) {
-      console.log('Carte Alternative détectée:', card.name)
+    // Alternative: uniquement pour raretés élevées (SR+, hors cas ultra-rare)
+    if (hasP1 && isHighRarity) {
       setCurrentRareCard(card)
       setRareAnimationType('alternative')
       setShowRareAnimation(true)
       return
     }
 
-    // Catégorie 2 : Rare + Alternatives modérées
-    if (card.id.endsWith('_p2') || 
-        (card.rarity === 'SR' && !card.id.endsWith('_p1') && !/_p[3-9]/.exec(card.id))) {
-      console.log('Carte Rare détectée:', card.name)
+    // Rare: toutes les R (avec ou sans _p1/_p2) et SR non alt/ultra
+    if (card.rarity === 'R' || (card.rarity === 'SR' && !hasP1 && !hasP3Plus) || (hasP2 && isHighRarity)) {
       setCurrentRareCard(card)
       setRareAnimationType('rare')
       setShowRareAnimation(true)
       return
     }
 
-    // Cartes communes
-    console.log('Carte commune détectée:', card.name)
+    // Sinon: pas d'animation spéciale
   }
 
   const handleRareAnimationComplete = () => {
@@ -704,6 +706,7 @@ export default function BoosterOpeningPage() {
               <CardReveal
                 card={booster[currentCardIndex]}
                 isNewCard={isNewCard}
+                position={currentCardIndex + 1}
                 onComplete={() => {
                   
                 }}

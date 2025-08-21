@@ -25,10 +25,15 @@
     "check-total-cards": "tsx scripts/checkTotalCards.ts",
     "check-user-collection": "tsx scripts/checkUserCollection.ts",
     "create-test-user": "tsx scripts/create-test-user.ts",
-    "delete-all-cards": "tsx scripts/deleteAllCards.ts",
     "reset-collections": "tsx scripts/reset-user-collections.ts",
     "export-cards": "ts-node scripts/exportCards.ts",
-    "configure-sets": "tsx scripts/configureSetRules.ts"
+    "configure-sets": "tsx scripts/configureSetRules.ts",
+    "delete-all-cards": "tsx scripts/deleteAllCards.ts",
+    "import:all-cards": "tsx scripts/importCardsFromAllJson.ts",
+    "import:sets": "tsx scripts/importSetsFromFolder.ts",
+    "import:sets:reset": "tsx scripts/importSetsFromFolder.ts --reset",
+    "check:set": "tsx scripts/checkSet.ts",
+    "test:boosters": "tsx scripts/testBoosters.ts"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.10.0",

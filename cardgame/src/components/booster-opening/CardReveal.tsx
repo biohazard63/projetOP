@@ -14,6 +14,7 @@ interface CardRevealProps {
   onDragStart?: () => void
   onDrag?: (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void
   onDragEnd?: (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void
+  position?: number
 }
 
 export default function CardReveal({ 
@@ -23,7 +24,8 @@ export default function CardReveal({
   onCardClick,
   onDragStart,
   onDrag,
-  onDragEnd
+  onDragEnd,
+  position
 }: Readonly<CardRevealProps>) {
   const [isRevealed, setIsRevealed] = useState(false)
   const [dragDirection, setDragDirection] = useState<'left' | 'right' | null>(null)
@@ -34,13 +36,29 @@ export default function CardReveal({
   const rotate = useTransform(x, [-200, 200], [-30, 30])
   const opacity = useTransform(x, [-200, 0, 200], [0.5, 1, 0.5])
 
-  // Nouvelle logique de détection des raretés
-  const isUltraRare = (card.rarity === 'SR' && card.id.endsWith('_p1')) || 
-                     card.id.match(/_p[3-9]/) || 
-                     ['SEC', 'SP CARD', 'TR', 'P'].includes(card.rarity)
-  const isAlternative = card.id.endsWith('_p1') && !isUltraRare
-  const isRare = card.id.endsWith('_p2') || 
-                (card.rarity === 'SR' && !card.id.endsWith('_p1') && !card.id.match(/_p[3-9]/))
+  // Nouvelle logique de détection des raretés + garde par position
+  const rarityRankMap: Record<string, number> = { C: 1, UC: 2, U: 2, R: 3, SR: 4, L: 5, SEC: 6, 'SP CARD': 7, TR: 8, P: 9 }
+  const rank = rarityRankMap[card.rarity] ?? 0
+  const isHighRarity = rank >= 4 // SR et plus
+
+  const hasP1 = card.id.endsWith('_p1')
+  const hasP2 = card.id.endsWith('_p2')
+  const hasP3Plus = /_p[3-9]/.test(card.id)
+
+  const isUltraRareRaw = (
+    (card.rarity === 'SR' && hasP1) ||
+    (hasP3Plus && isHighRarity) ||
+    ['SEC', 'SP CARD', 'TR', 'P', 'L'].includes(card.rarity)
+  )
+  const isAlternativeRaw = hasP1 && isHighRarity && !isUltraRareRaw
+  const isRareRaw = (hasP2 && isHighRarity) ||
+                   (card.rarity === 'SR' && !hasP1 && !hasP3Plus)
+
+  // Autoriser les highlights uniquement si position >= 10 ou si la rareté n'est pas C/UC
+  const highlightAllowed = (position ?? 1) >= 10 || (card.rarity !== 'C' && card.rarity !== 'UC')
+  const isUltraRare = highlightAllowed && isUltraRareRaw
+  const isAlternative = highlightAllowed && isAlternativeRaw
+  const isRare = highlightAllowed && isRareRaw
 
   useEffect(() => {
     const timer = setTimeout(() => {
