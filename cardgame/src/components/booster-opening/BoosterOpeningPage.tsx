@@ -5,7 +5,7 @@ import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
 import { Button } from '@/components/ui/button'
 import { toast, Toaster } from 'sonner'
-import { Package, Sparkles, X } from 'lucide-react'
+import { Package, Sparkles, X, Search } from 'lucide-react'
 import { motion, AnimatePresence, PanInfo } from 'framer-motion'
 import CardReveal from './CardReveal'
 import CardDetailsModal from './CardDetailsModal'
@@ -46,6 +46,8 @@ export default function BoosterOpeningPage() {
   const [rareAnimationType, setRareAnimationType] = useState<'ultra-rare' | 'rare' | 'alternative' | null>(null)
   const [showBoosterModal, setShowBoosterModal] = useState(false)
   const [, startTransition] = useTransition()
+  const [setFilter, setSetFilter] = useState<'ALL' | 'OP' | 'EB' | 'PRB'>('ALL')
+  const [query, setQuery] = useState('')
   interface SetRules {
     name: string
     rarityCounts: Record<string, number>
@@ -66,10 +68,40 @@ export default function BoosterOpeningPage() {
   }
   const [setRules, setSetRules] = useState<SetRules | null>(null)
 
+  // Couleurs par rareté pour l'indicateur de progression
+  const rarityColorMap: Record<string, string> = {
+    'C': 'bg-white/20',
+    'UC': 'bg-green-400',
+    'U': 'bg-green-400',
+    'R': 'bg-blue-400',
+    'SR': 'bg-purple-500',
+    'L': 'bg-rose-500',
+    'SEC': 'bg-amber-400',
+    'SP CARD': 'bg-emerald-400',
+    'TR': 'bg-cyan-400',
+    'P': 'bg-pink-400'
+  }
+
   // Valeur mémoïsée pour le set sélectionné
   const selectedSetData = useMemo(() => {
     return sets.find(set => set.id === selectedSet) ?? null
   }, [sets, selectedSet])
+
+  // Sets affichés dans la modale (filtre + recherche)
+  const displayedSets = useMemo(() => {
+    const q = query.trim().toLowerCase()
+    return (sets || [])
+      .filter((s) => {
+        if (!s?.code) return false
+        const code = s.code.replace(/[-\s]/g, '').toUpperCase()
+        if (setFilter !== 'ALL' && !code.startsWith(setFilter)) return false
+        if (!q) return true
+        return (
+          (s.name || '').toLowerCase().includes(q) ||
+          code.toLowerCase().includes(q)
+        )
+      })
+  }, [sets, setFilter, query])
 
   // Handlers mémoïsés
   const handleSelectSet = useCallback((id: string) => {
@@ -643,8 +675,8 @@ export default function BoosterOpeningPage() {
             </motion.div>
           )}
 
-          {/* Boutons d'action */}
-          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 mb-8">
+          {/* Boutons d'action (desktop/tablette) */}
+          <div className="hidden md:flex flex-row justify-center items-center gap-4 mb-8">
             <Button 
               onClick={() => setShowBoosterModal(true)}
               aria-label="Choisir un booster"
@@ -696,17 +728,76 @@ export default function BoosterOpeningPage() {
               </Button>
             )}
           </div>
+
+          {/* Barre d'action mobile fixée en bas */}
+          <div className="md:hidden fixed bottom-4 inset-x-4 z-40">
+            <div className="rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 p-3 flex gap-3 shadow-2xl pb-[env(safe-area-inset-bottom)]">
+              <Button 
+                onClick={() => setShowBoosterModal(true)}
+                aria-label="Choisir un booster"
+                className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-4 rounded-xl shadow-lg transition-all"
+              >
+                Choisir
+              </Button>
+
+              {booster.length === 0 ? (
+                <Button
+                  onClick={handleOpenBooster}
+                  aria-label="Ouvrir le trésor"
+                  disabled={!selectedSet || isLoading}
+                  className="flex-1 bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-white font-bold py-3 px-4 rounded-xl shadow-lg transition-all"
+                >
+                  {isLoading ? '...' : 'Ouvrir'}
+                </Button>
+              ) : (
+                <Button
+                  onClick={resetAndOpenNewBooster}
+                  aria-label="Ouvrir un nouveau trésor"
+                  disabled={!selectedSet || isLoading}
+                  className="flex-1 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-bold py-3 px-4 rounded-xl shadow-lg transition-all"
+                >
+                  {isLoading ? '...' : 'Nouveau'}
+                </Button>
+              )}
+            </div>
+          </div>
         </div>
+
+        {/* Indicateur de progression 12/12 collant */}
+        {booster.length > 0 && (
+          <div className="sticky top-16 z-30 w-[95%] md:w-[90%] mx-auto mb-6">
+            <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl px-3 py-2 shadow-xl">
+              <div className="flex items-center justify-between mb-2">
+                <span className="text-white/80 text-sm font-medium">Progression</span>
+                <span className="text-white text-sm font-bold">{Math.max(0, currentCardIndex + 1)} / {booster.length}</span>
+              </div>
+              <div className="grid grid-cols-12 gap-1">
+                {Array.from({ length: 12 }).map((_, i) => {
+                  const card = booster[i]
+                  const isRevealed = i <= currentCardIndex
+                  const rarity = card?.rarity ?? 'C'
+                  const colorClass = isRevealed ? (rarityColorMap[rarity] || 'bg-white/40') : 'bg-white/10'
+                  return (
+                    <div key={`seg-${i}`} className="h-2 rounded-sm overflow-hidden">
+                      <div className={`h-full w-full rounded-sm ${colorClass}`} />
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Zone d'affichage des cartes */}
         {booster.length > 0 && currentCardIndex >= 0 && (
-          <div className="w-[90%] sm:max-w-6xl mx-auto px-2 sm:px-4">
+          <div className="w-[96%] sm:max-w-6xl mx-auto px-2 sm:px-4 pb-28 md:pb-0">
             <div className="relative rounded-2xl p-3 sm:p-6 border border-white/10 shadow-xl">
               {/* Carte actuelle */}
               <CardReveal
                 card={booster[currentCardIndex]}
                 isNewCard={isNewCard}
                 position={currentCardIndex + 1}
+                isMobile={isMobile}
                 onComplete={() => {
                   
                 }}
@@ -715,13 +806,29 @@ export default function BoosterOpeningPage() {
                 onDrag={handleDrag}
                 onDragEnd={handleDragEnd}
               />
-                {/* Navigation */}
+
+              {/* Zones de tap latérales (mobile) */}
+              {isMobile && (
+                <>
+                  <button
+                    onClick={() => currentCardIndex > 0 && handleArrowClick('prev')}
+                    aria-label="Carte précédente"
+                    className="md:hidden absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-black/10 to-transparent"
+                  />
+                  <button
+                    onClick={() => currentCardIndex < booster.length - 1 && handleArrowClick('next')}
+                    aria-label="Carte suivante"
+                    className="md:hidden absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-black/10 to-transparent"
+                  />
+                </>
+              )}
+                {/* Navigation: grandes cibles tactiles sur mobile */}
           <div className="flex justify-between items-center mb-6">
                 {currentCardIndex > 0 && (
                   <button
                     onClick={() => handleArrowClick('prev')}
                     aria-label="Carte précédente"
-                    className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300"
+                    className="bg-white/10 hover:bg-white/20 p-3 md:p-3 rounded-full transition-all duration-300 w-14 h-14 md:w-auto md:h-auto flex items-center justify-center"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -737,7 +844,7 @@ export default function BoosterOpeningPage() {
                   <button
                     onClick={() => handleArrowClick('next')}
                     aria-label="Carte suivante"
-                    className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300"
+                    className="bg-white/10 hover:bg-white/20 p-3 md:p-3 rounded-full transition-all duration-300 w-14 h-14 md:w-auto md:h-auto flex items-center justify-center"
                   >
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
@@ -786,38 +893,63 @@ export default function BoosterOpeningPage() {
                 initial={{ scale: 0.9, opacity: 0, y: 20 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                className="bg-gradient-to-b from-blue-950/90 via-blue-900/90 to-indigo-950/90 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.3)] w-[95%] sm:max-w-5xl max-h-[90vh] overflow-y-auto border border-yellow-500/20"
+                className="bg-gradient-to-b from-blue-950/90 via-blue-900/90 to-indigo-950/90 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.3)] w-[95%] sm:max-w-5xl max-h-[90vh] flex flex-col overflow-hidden border border-yellow-500/20"
                 onClick={e => e.stopPropagation()}
               >
-                {/* En-tête de la modale */}
-                <div className="relative p-4 sm:p-6 border-b border-yellow-500/20">
-                  <div className="flex justify-between items-center">
-                    <div className="flex items-center gap-2 sm:gap-4">
-                      <NextImage 
-                        src="/images/treasure-chest.png" 
-                        alt="Trésor" 
-                        width={48}
-                        height={48}
-                        className="w-8 h-8 sm:w-12 sm:h-12 animate-float"
-                      />
-                      <h2 id="choose-treasure-title" className="text-xl sm:text-3xl font-bold bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
-                        Choisissez votre Trésor
-                      </h2>
+                {/* En-tête + barre d’outils */}
+                <div className="relative p-4 sm:p-6 border-b border-yellow-500/20 bg-gradient-to-b from-white/5 to-transparent">
+                  <div className="flex flex-col gap-4">
+                    <div className="flex justify-between items-center">
+                      <div className="flex items-center gap-2 sm:gap-4">
+                        <NextImage 
+                          src="/images/treasure-chest.png" 
+                          alt="Trésor" 
+                          width={48}
+                          height={48}
+                          className="w-8 h-8 sm:w-12 sm:h-12 animate-float"
+                        />
+                        <h2 id="choose-treasure-title" className="text-xl sm:text-3xl font-bold bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
+                          Choisissez votre Trésor
+                        </h2>
+                      </div>
+                      <button
+                        onClick={() => setShowBoosterModal(false)}
+                        aria-label="Fermer la modale"
+                        className="p-1 sm:p-2 hover:bg-white/10 rounded-full transition-all duration-300 hover:rotate-90 hover:scale-110"
+                      >
+                        <X className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-500" />
+                      </button>
                     </div>
-                    <button
-                      onClick={() => setShowBoosterModal(false)}
-                      aria-label="Fermer la modale"
-                      className="p-1 sm:p-2 hover:bg-white/10 rounded-full transition-all duration-300 hover:rotate-90 hover:scale-110"
-                    >
-                      <X className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-500" />
-                    </button>
+                    {/* Outils: filtres + recherche */}
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 items-stretch">
+                      <div className="inline-flex rounded-xl border border-white/10 bg-white/5 overflow-hidden">
+                        {(['ALL','OP','EB','PRB'] as const).map((tab) => (
+                          <button
+                            key={tab}
+                            onClick={() => setSetFilter(tab)}
+                            className={`px-3 py-2 text-sm font-medium transition-colors ${setFilter===tab? 'bg-yellow-500/20 text-yellow-300':'text-white/80 hover:text-white hover:bg-white/10'}`}
+                          >
+                            {tab}
+                          </button>
+                        ))}
+                      </div>
+                      <div className="relative flex-1">
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-white/50" />
+                        <input
+                          value={query}
+                          onChange={(e)=>setQuery(e.target.value)}
+                          placeholder="Rechercher un set (nom ou code)"
+                          className="w-full pl-9 pr-3 py-2 rounded-xl bg-white/5 border border-white/10 text-white placeholder:text-white/50 outline-none focus:ring-2 focus:ring-yellow-500/30"
+                        />
+                      </div>
+                    </div>
                   </div>
                 </div>
 
                 {/* Grille des boosters */}
-                <div className="p-4 sm:p-6 md:p-8">
-                  <div className="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
-                    {sets.map((set) => (
+                <div className="flex-1 overflow-y-auto p-4 sm:p-6 md:p-8">
+                  <div className="grid grid-cols-2 xs:grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-6 md:gap-8">
+                    {displayedSets.map((set) => (
                       <motion.div
                         key={set.id}
                         className={`relative cursor-pointer group perspective-1000 ${
@@ -840,8 +972,9 @@ export default function BoosterOpeningPage() {
                       >
                         {/* Étiquette du nom */}
                         <div className="absolute -top-3 sm:-top-4 left-0 right-0 text-center z-10">
-                          <span className="inline-block text-white text-xs sm:text-sm font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg transform transition-transform group-hover:scale-110">
-                            {set.name}
+                          <span className="inline-flex items-center gap-2 text-white text-xs sm:text-sm font-bold px-3 sm:px-4 py-1 sm:py-1.5 rounded-full bg-gradient-to-r from-blue-600 to-indigo-600 shadow-lg transform transition-transform group-hover:scale-110">
+                            <span>{set.name}</span>
+                            <span className="text-white/70">[{set.code}]</span>
                           </span>
                         </div>
 
@@ -880,6 +1013,7 @@ export default function BoosterOpeningPage() {
             card={selectedCard}
             onClose={() => setSelectedCard(null)}
             getRarityGlow={getRarityGlow}
+            fullscreenMobile={isMobile}
           />
         )}
       </div>

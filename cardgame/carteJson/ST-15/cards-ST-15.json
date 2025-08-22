@@ -82,7 +82,7 @@
     "type": "ÉVÉNEMENTS",
     "name": "Tu as été stupide... mais je t'aime quand même, mon fils",
     "cost": "1",
-    "attribute": "",
+    "attribute": "-",
     "power": "-",
     "counter": "-",
     "color": "Rouge",

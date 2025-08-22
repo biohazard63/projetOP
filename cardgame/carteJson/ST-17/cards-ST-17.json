@@ -44,7 +44,7 @@
     "type": "ÉVÉNEMENTS",
     "name": "Overheat",
     "cost": "2",
-    "attribute": "",
+    "attribute": "-",
     "power": "-",
     "counter": "-",
     "color": "Bleu",

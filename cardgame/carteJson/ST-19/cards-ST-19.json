@@ -139,7 +139,7 @@
     "type": "ÉVÉNEMENTS",
     "name": "Ice Age",
     "cost": "1",
-    "attribute": "",
+    "attribute": "-",
     "power": "-",
     "counter": "-",
     "color": "Noir",

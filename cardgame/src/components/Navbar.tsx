@@ -112,9 +112,14 @@ function NavItem({
           </span>
         )}
       </span>
-      {isActive && (
-        <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-transparent rounded-xl animate-pulse" />
-      )}
+      {/* Barre active animée */}
+      <span
+        aria-hidden="true"
+        className={cn(
+          "pointer-events-none absolute -bottom-2 left-4 right-4 h-0.5 rounded-full transition-all duration-300",
+          isActive ? "bg-gradient-to-r from-orange-400 via-amber-300 to-yellow-400 opacity-100 scale-x-100" : "opacity-0 scale-x-50"
+        )}
+      />
     </Link>
   )
 }
@@ -211,6 +216,7 @@ export function Navbar({ variant = 'default', className }: NavbarProps) {
   const pathname = usePathname()
   const { data: session, status } = useSession()
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const [mounted, setMounted] = useState(false)
 
   // Gestion de l'état de chargement sans use()
@@ -229,12 +235,18 @@ export function Navbar({ variant = 'default', className }: NavbarProps) {
   // Gestion du montage côté client
   useEffect(() => {
     setMounted(true)
+    // Détecter le scroll pour intensifier le verre/ombre
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 8)
+    }
+    handleScroll()
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setIsMenuOpen(false)
       }
     }
     document.addEventListener('keydown', onKeyDown)
+    window.addEventListener('scroll', handleScroll, { passive: true })
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [])
 
@@ -244,13 +256,14 @@ export function Navbar({ variant = 'default', className }: NavbarProps) {
 
   return (
     <nav role="navigation" aria-label="Navigation principale" data-variant={variant} className={cn(
-      "fixed top-0 left-0 right-0 z-50 w-full",
-      "bg-black/95 backdrop-blur-xl border-b border-orange-500/30",
-      "shadow-2xl shadow-black/50",
+      "fixed top-0 left-0 right-0 z-50 w-full transition-all duration-300",
+      isScrolled
+        ? "bg-black/80 backdrop-blur-2xl border-b border-orange-500/40 shadow-2xl shadow-black/40"
+        : "bg-black/40 backdrop-blur-md border-b border-orange-500/20 shadow-lg shadow-black/20",
       className
     )}>
       <div className="container mx-auto px-4">
-        <div className="flex h-16 justify-between items-center">
+        <div className={cn("flex justify-between items-center transition-all duration-300", isScrolled ? "h-14" : "h-16") }>
           {/* Logo */}
           <div className="flex-shrink-0">
             <Link href="/home" className="flex items-center space-x-3 group">

@@ -15,6 +15,7 @@ interface CardRevealProps {
   onDrag?: (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void
   onDragEnd?: (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void
   position?: number
+  isMobile?: boolean
 }
 
 export default function CardReveal({ 
@@ -25,7 +26,8 @@ export default function CardReveal({
   onDragStart,
   onDrag,
   onDragEnd,
-  position
+  position,
+  isMobile = false
 }: Readonly<CardRevealProps>) {
   const [isRevealed, setIsRevealed] = useState(false)
   const [dragDirection, setDragDirection] = useState<'left' | 'right' | null>(null)
@@ -69,7 +71,7 @@ export default function CardReveal({
 
   const handleDragEnd = useCallback((event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     setIsDragging(false)
-    const threshold = 100
+    const threshold = isMobile ? 60 : 100
     
     console.log('CardReveal - Fin du glissement:', {
       offsetX: info.offset.x,
@@ -94,7 +96,7 @@ export default function CardReveal({
       onCardClick?.(card)
       controls.start({ x: 0, rotate: 0 })
     }
-  }, [controls, onDragEnd, onCardClick, card, isDragging])
+  }, [controls, onDragEnd, onCardClick, card, isDragging, isMobile])
   
   const handleDragStart = useCallback(() => {
     console.log('CardReveal - Début du glissement')
@@ -126,7 +128,7 @@ export default function CardReveal({
       <motion.div
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={0.7}
+        dragElastic={isMobile ? 0.9 : 0.7}
         onDragEnd={handleDragEnd}
         onDragStart={handleDragStart}
         onDrag={handleDrag}
