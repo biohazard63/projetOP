@@ -158,7 +158,7 @@
     "type": "ÉVÉNEMENTS",
     "name": "En mer... ce sont les pirates qu'on affronte !!",
     "cost": "1",
-    "attribute": "",
+    "attribute": "-",
     "power": "-",
     "counter": "-",
     "color": "Violet",

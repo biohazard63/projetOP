@@ -158,7 +158,7 @@
     "type": "ÉVÉNEMENTS",
     "name": "Cross Guild",
     "cost": "1",
-    "attribute": "",
+    "attribute": "-",
     "power": "-",
     "counter": "-",
     "color": "Bleu",

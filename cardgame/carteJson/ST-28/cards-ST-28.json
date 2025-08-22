@@ -139,7 +139,7 @@
     "type": "ÉVÉNEMENTS",
     "name": "Brise-flammes",
     "cost": "1",
-    "attribute": "",
+    "attribute": "-",
     "power": "-",
     "counter": "-",
     "color": "Jaune",

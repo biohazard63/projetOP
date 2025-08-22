@@ -27,6 +27,13 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+
+    /* Tokens One Piece */
+    --op-red: 15 89% 55%;
+    --op-gold: 43 85% 55%;
+    --op-ocean: 200 80% 40%;
+    --op-ink: 222 47% 11%;
+    --op-sand: 40 80% 70%;
   }
 
   .dark {
@@ -54,6 +61,13 @@
     --chart-3: 30 80% 55%;
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
+
+    /* Tokens One Piece (dark) */
+    --op-red: 0 84% 60%;
+    --op-gold: 43 85% 55%;
+    --op-ocean: 200 80% 35%;
+    --op-ink: 222 84% 5%;
+    --op-sand: 40 70% 65%;
   }
 }
 
