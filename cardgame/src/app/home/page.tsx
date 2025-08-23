@@ -262,17 +262,17 @@ function HeroShowcase() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, ease: 'easeOut', delay: 0.05 }}
-      className="relative h-[360px] md:h-[420px] lg:h-[460px]"
+      className="relative h-[320px] sm:h-[380px] md:h-[440px] lg:h-[480px]"
     >
-      <div className="absolute inset-0 rounded-3xl glass-effect shadow-[0_20px_60px_rgba(0,0,0,.35)]" />
+      <div className="absolute inset-0 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,.35)]" />
 
       <div className="absolute inset-0 flex items-center justify-center">
-        <div className="group relative w-[520px] h-[420px]">
+        <div className="group relative w-full h-full max-w-[520px] max-h-[440px] px-4">
           {/* Halo */}
           <div className="absolute -inset-6 rounded-[28px] bg-[radial-gradient(ellipse_at_center,_rgba(255,200,100,.15),_transparent_60%)] blur-xl" />
 
           {/* Carte showcase (gauche) */}
-          <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl transition-transform duration-500 group-hover:-translate-y-1 w-[320px] h-[420px]">
+          <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl transition-transform duration-500 group-hover:-translate-y-1 w-[70%] sm:w-[60%] md:w-[320px] aspect-[3/4]">
             <div className="relative w-full h-full">
               <Image src="/images/OP05-119.webp" alt="Carte Showcase" fill className="object-cover opacity-95" />
               {/* Shimmer */}
@@ -281,7 +281,7 @@ function HeroShowcase() {
           </div>
 
           {/* Booster (droite, décalé) */}
-          <div className="absolute top-1/2 left-[60%] -translate-y-1/2 w-[360px] h-[560px]">
+          <div className="hidden sm:block absolute top-1/2 left-[64%] -translate-y-1/2 w-[160px] sm:w-[220px] md:w-[320px] aspect-[2/3]">
             <div className="relative w-full h-full animate-float-slow">
               <Image src="/images/booster/op11.png" alt="Booster Pack" fill className="object-contain" />
             </div>

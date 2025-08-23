@@ -302,10 +302,10 @@ export function Navbar({ variant = 'default', className }: NavbarProps) {
 
         {/* Menu mobile avec animation améliorée */}
         <div id="mobile-nav" aria-hidden={!isMenuOpen} className={cn(
-          "md:hidden overflow-hidden transition-all duration-300 ease-in-out",
-          isMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+          "md:hidden overflow-y-auto transition-all duration-300 ease-in-out",
+          isMenuOpen ? "max-h-[85vh] opacity-100" : "max-h-0 opacity-0"
         )}>
-          <div className="px-2 pt-2 pb-4 space-y-2 mb-4 rounded-xl bg-black/95 border border-orange-500/30 backdrop-blur-xl shadow-2xl">
+          <div className="px-2 pt-3 pb-6 space-y-2 mb-4 rounded-xl bg-black/95 border border-orange-500/30 backdrop-blur-xl shadow-2xl">
             {navigation.map((item) => (
               <NavItem
                 key={item.href}

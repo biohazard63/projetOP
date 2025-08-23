@@ -48,7 +48,9 @@ export default function DeckBuilderPage() {
     type: 'all',
     color: 'all',
     rarity: 'all',
-    favoritesOnly: false
+    favoritesOnly: false,
+    onlyOwned: false,
+    leadersFirst: false
   })
   const [isEditing, setIsEditing] = useState(false)
   const [deckName, setDeckName] = useState('')
@@ -57,12 +59,21 @@ export default function DeckBuilderPage() {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const router = useRouter()
   const [currentPage, setCurrentPage] = useState(1)
-  const cardsPerPage = 15
+  const [isMobile, setIsMobile] = useState(false)
+  const cardsPerPage = isMobile ? 12 : 15
   const [, startTransition] = useTransition()
 
   // Récupérer l'ID du deck depuis l'URL (App Router)
   const searchParams = useSearchParams()
   const deckId = searchParams?.get('deckId')
+
+  // Détection mobile
+  useEffect(() => {
+    const check = () => setIsMobile(typeof window !== 'undefined' && window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
 
   useEffect(() => {
     const fetchCards = async () => {
@@ -236,7 +247,7 @@ export default function DeckBuilderPage() {
   };
 
   const filteredCards = useMemo(() => {
-    return availableCards.filter(card => {
+    const list = availableCards.filter(card => {
       if (filters.search && !card.name.toLowerCase().includes(filters.search.toLowerCase())) {
         return false
       }
@@ -244,8 +255,13 @@ export default function DeckBuilderPage() {
       if (filters.color !== 'all' && card.color !== filters.color) return false
       if (filters.rarity !== 'all' && card.rarity !== filters.rarity) return false
       if (filters.favoritesOnly && !card.isFavorite) return false
+      if (filters.onlyOwned && (card.quantity || 0) <= 0) return false
       return true
     })
+    if (filters.leadersFirst) {
+      list.sort((a, b) => (a.type === 'LEADER' ? -1 : 0) - (b.type === 'LEADER' ? -1 : 0))
+    }
+    return list
   }, [availableCards, filters])
 
   // Calculer les cartes à afficher pour la page courante
@@ -340,6 +356,10 @@ export default function DeckBuilderPage() {
   };
 
   const handleCardClick = (card: DeckCard) => {
+    if (isMobile) {
+      addCardToDeck(card)
+      return
+    }
     setSelectedCard(card)
     setIsModalOpen(true)
   }
@@ -372,7 +392,6 @@ export default function DeckBuilderPage() {
       <div className="container mx-auto">
         {/* En-tête avec effet de haki */}
         <div className="mb-12 relative">
-          <div className="absolute -top-4 -left-4 w-32 h-32 bg-[url('/images/deck/haki-flash.png')] bg-contain bg-no-repeat opacity-40 animate-haki-pulse"></div>
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 relative">
             <h1 className="text-4xl md:text-5xl font-bold text-white relative z-10">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400">
@@ -391,8 +410,15 @@ export default function DeckBuilderPage() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 md:gap-8">
           {/* Section des cartes disponibles */}
           <div className="lg:col-span-2 order-2 lg:order-1">
-            <div className="glass-effect-deck rounded-lg p-4 md:p-6">
+            <div className="rounded-lg p-4 md:p-6 bg-[#0B1120]/70 border border-white/10">
               <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white">Cartes Disponibles</h2>
+
+              {/* Bandeau aide mobile: choisir un leader */}
+              {selectedCards.filter(c => c.type === 'LEADER').reduce((s,c)=>s+(c.quantity||1),0) === 0 && (
+                <div className="mb-4 rounded-lg border border-white/10 bg-white/5 p-3 text-sm text-blue-200">
+                  Commence par choisir un Leader. Astuce: sur mobile, un tap ajoute directement la carte au deck.
+                </div>
+              )}
               
               {/* Filtres */}
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-3 mb-6">
@@ -475,6 +501,28 @@ export default function DeckBuilderPage() {
                     <span className="text-sm text-gray-300">Afficher uniquement les favoris</span>
                   </label>
                 </div>
+                <div className="flex items-center gap-2">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={filters.onlyOwned}
+                      onChange={(e) => setFilters({ ...filters, onlyOwned: e.target.checked })}
+                      className="w-4 h-4 rounded border-gray-600 bg-gray-700/50 text-red-500 focus:ring-red-500"
+                    />
+                    <span className="text-sm text-gray-300">Seulement cartes disponibles</span>
+                  </label>
+                </div>
+                <div className="flex items-center gap-2">
+                  <label className="flex items-center gap-2 cursor-pointer">
+                    <input
+                      type="checkbox"
+                      checked={filters.leadersFirst}
+                      onChange={(e) => setFilters({ ...filters, leadersFirst: e.target.checked })}
+                      className="w-4 h-4 rounded border-gray-600 bg-gray-700/50 text-red-500 focus:ring-red-500"
+                    />
+                    <span className="text-sm text-gray-300">Leaders en premier</span>
+                  </label>
+                </div>
               </div>
 
               {/* Grille de cartes */}
@@ -502,6 +550,16 @@ export default function DeckBuilderPage() {
                         sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"
                         loading="lazy"
                       />
+                      {isMobile && (
+                        <button
+                          type="button"
+                          aria-label="Ajouter au deck"
+                          className="absolute top-2 right-2 bg-white/20 hover:bg-white/30 text-white text-xs font-bold px-2 py-1 rounded"
+                          onClick={(e) => { e.stopPropagation(); addCardToDeck(card) }}
+                        >
+                          +
+                        </button>
+                      )}
                       <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-2">
                         <h3 className="font-semibold text-xs md:text-sm truncate text-white">{card.name}</h3>
                         <div className="flex justify-between text-xs text-gray-300">
@@ -585,7 +643,7 @@ export default function DeckBuilderPage() {
 
           {/* Section du deck en cours */}
           <div className="lg:col-span-1 order-1 lg:order-2">
-            <div className="glass-effect-deck rounded-lg p-4 md:p-6 sticky top-24">
+            <div className="rounded-lg p-4 md:p-6 sticky top-24 bg-[#0B1120]/70 border border-white/10">
               <h2 className="text-xl md:text-2xl font-semibold mb-4 text-white">Mon Deck</h2>
               
               <div className="mb-4">
@@ -660,6 +718,25 @@ export default function DeckBuilderPage() {
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Barre d’action sticky (mobile) */}
+      <div className="md:hidden fixed bottom-0 left-0 right-0 z-40">
+        <div className="mx-4 mb-4 rounded-2xl bg-black/60 border border-white/10 p-3 shadow-2xl">
+          <div className="flex items-center justify-between text-white text-sm">
+            <div className="flex flex-col">
+              <span>Leader: <span className="font-bold">{selectedCards.filter(c=>c.type==='LEADER').reduce((s,c)=>s+(c.quantity||1),0)}/1</span></span>
+              <span>Cartes: <span className="font-bold">{selectedCards.filter(c=>c.type!=='LEADER').reduce((s,c)=>s+(c.quantity||1),0)}/50</span></span>
+            </div>
+            <Button
+              onClick={saveDeck}
+              className="bg-gradient-to-r from-cyan-500 to-indigo-500 hover:from-cyan-400 hover:to-indigo-400 text-white font-bold px-4 py-2 rounded-xl disabled:opacity-60"
+              disabled={!(selectedCards.filter(c=>c.type==='LEADER').reduce((s,c)=>s+(c.quantity||1),0)===1 && selectedCards.filter(c=>c.type!=='LEADER').reduce((s,c)=>s+(c.quantity||1),0)===50)}
+            >
+              Sauvegarder
+            </Button>
           </div>
         </div>
       </div>

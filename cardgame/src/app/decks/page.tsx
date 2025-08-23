@@ -35,6 +35,7 @@ export default function DecksPage() {
   const [decks, setDecks] = useState<Deck[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
+  const [isMobile, setIsMobile] = useState(false)
 
   useEffect(() => {
     const fetchDecks = async () => {
@@ -78,6 +79,14 @@ export default function DecksPage() {
     fetchDecks()
   }, [])
 
+  // Détection mobile
+  useEffect(() => {
+    const check = () => setIsMobile(typeof window !== 'undefined' && window.innerWidth < 768)
+    check()
+    window.addEventListener('resize', check)
+    return () => window.removeEventListener('resize', check)
+  }, [])
+
   if (loading) {
     return (
       <div className="min-h-screen flex items-center justify-center">
@@ -94,7 +103,7 @@ export default function DecksPage() {
   if (error) {
     return (
       <div className="min-h-screen flex items-center justify-center">
-        <div className="bg-red-900/20 backdrop-blur-sm border border-red-500/20 text-red-200 px-6 py-4 rounded-lg shadow-lg">
+        <div className="bg-red-900/30 border border-red-500/30 text-red-200 px-6 py-4 rounded-lg shadow-lg">
           <p>{error}</p>
         </div>
       </div>
@@ -102,18 +111,18 @@ export default function DecksPage() {
   }
 
   return (
+    <>
     <div className="container mx-auto px-4 py-8">
       <div className="relative">
         {/* En-tête avec effet de haki */}
         <div className="mb-12 relative">
-          <div className="absolute -top-4 -left-4 w-32 h-32 bg-[url('/images/deck/haki-flash.png')] bg-contain bg-no-repeat opacity-40 animate-pulse"></div>
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 relative">
             <h1 className="text-4xl md:text-5xl font-bold text-white relative z-10">
               <span className="bg-clip-text text-transparent bg-gradient-to-r from-yellow-400 via-orange-400 to-red-400">
                 Mes Decks
               </span>
             </h1>
-            <Link href="/deck-builder">
+            <Link href="/deck-builder" className="hidden md:inline-block">
               <Button className="relative group overflow-hidden bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-500 hover:to-red-500 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,165,0,0.3)] transform">
                 <div className="absolute inset-0 bg-[url('/images/deck/explosion.png')] bg-cover opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
                 <Plus className="h-5 w-5 mr-2" />
@@ -124,8 +133,8 @@ export default function DecksPage() {
         </div>
 
         {decks.length === 0 ? (
-          <div className="relative overflow-hidden rounded-2xl backdrop-blur-sm border border-yellow-500/20 shadow-[0_0_30px_rgba(0,0,0,0.3)]">
-            <div className="absolute inset-0 bg-gradient-to-b from-gray-900/90 to-gray-800/90"></div>
+          <div className="relative overflow-hidden rounded-2xl border border-yellow-500/20 shadow-[0_0_30px_rgba(0,0,0,0.3)]">
+            <div className="absolute inset-0 bg-gradient-to-b from-gray-900/95 to-gray-800/95"></div>
             <div className="relative p-8 md:p-12 text-center">
               <div className="mb-6">
                 <Swords className="h-16 w-16 mx-auto text-yellow-500 animate-pulse" />
@@ -148,25 +157,27 @@ export default function DecksPage() {
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {decks.map((deck) => (
-              <Card key={deck.id} className="group relative overflow-hidden rounded-xl backdrop-blur-sm border border-yellow-500/10 hover:border-yellow-500/30 bg-gradient-to-b from-gray-900/90 to-gray-800/90 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,165,0,0.1)] transform hover:scale-[1.02]">
+              <Card key={deck.id} className="group relative overflow-hidden rounded-xl border border-yellow-500/10 hover:border-yellow-500/30 bg-gradient-to-b from-gray-900/90 to-gray-800/90 transition-all duration-300 hover:shadow-[0_0_30px_rgba(255,165,0,0.1)] transform hover:scale-[1.02]">
                 <div className="absolute inset-0 bg-[url('/images/deck/marineford-war.png')] bg-cover opacity-0 group-hover:opacity-5 transition-opacity duration-300"></div>
                 <div className="relative p-6">
                   <div className="flex justify-between items-start mb-6">
                     <h2 className="text-2xl font-bold text-white group-hover:text-yellow-400 transition-colors duration-300">
                       {deck.name}
                     </h2>
-                    <div className="flex gap-2">
-                      <Link href={`/deck-builder?deckId=${deck.id}`}>
-                        <Button aria-label={`Modifier le deck ${deck.name}`} variant="ghost" size="sm" className="h-9 w-9 rounded-lg bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-400">
-                          <Edit className="h-4 w-4" />
-                        </Button>
-                      </Link>
-                      <Link href={`/game?deckId=${deck.id}`}>
-                        <Button aria-label={`Jouer avec le deck ${deck.name}`} variant="ghost" size="sm" className="h-9 w-9 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400">
-                          <Play className="h-4 w-4" />
-                        </Button>
-                      </Link>
-                    </div>
+                    {!isMobile ? (
+                      <div className="flex gap-2">
+                        <Link href={`/deck-builder?deckId=${deck.id}`}>
+                          <Button aria-label={`Modifier le deck ${deck.name}`} variant="ghost" size="sm" className="h-9 w-9 rounded-lg bg-yellow-500/10 hover:bg-yellow-500/20 text-yellow-400">
+                            <Edit className="h-4 w-4" />
+                          </Button>
+                        </Link>
+                        <Link href={`/game?deckId=${deck.id}`}>
+                          <Button aria-label={`Jouer avec le deck ${deck.name}`} variant="ghost" size="sm" className="h-9 w-9 rounded-lg bg-red-500/10 hover:bg-red-500/20 text-red-400">
+                            <Play className="h-4 w-4" />
+                          </Button>
+                        </Link>
+                      </div>
+                    ) : null}
                   </div>
 
                   {deck.description && (
@@ -216,6 +227,18 @@ export default function DecksPage() {
                       )}
                     </div>
                   </div>
+
+                  {/* Actions larges sur mobile */}
+                  {isMobile && (
+                    <div className="mt-6 grid grid-cols-2 gap-3">
+                      <Link href={`/deck-builder?deckId=${deck.id}`}>
+                        <Button className="w-full bg-yellow-600 hover:bg-yellow-500 text-white">Modifier</Button>
+                      </Link>
+                      <Link href={`/game?deckId=${deck.id}`}>
+                        <Button className="w-full bg-red-600 hover:bg-red-500 text-white">Jouer</Button>
+                      </Link>
+                    </div>
+                  )}
                 </div>
               </Card>
             ))}
@@ -223,5 +246,14 @@ export default function DecksPage() {
         )}
       </div>
     </div>
+    {/* FAB mobile pour créer un deck */}
+    {isMobile && (
+      <Link href="/deck-builder">
+        <Button aria-label="Nouveau deck" className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full p-0 bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-500 hover:to-red-500 shadow-xl">
+          <Plus className="h-6 w-6" />
+        </Button>
+      </Link>
+    )}
+    </>
   )
 } 

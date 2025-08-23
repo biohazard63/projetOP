@@ -28,11 +28,11 @@ export default function RootLayout({
             {/* Fond: image + dégradés radiaux et overlay */}
             <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
               <Image
-                src="/images/one-piece-bg.jpg"
+                src="/images/home.png"
                 alt=""
                 fill
                 priority
-                className="object-cover opacity-20 dark:opacity-25"
+                className="object-cover opacity-[75%]"
               />
               <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--op-ink)/_.85)] via-transparent to-[hsl(var(--op-ink)/_.85)] [--tw-bg-opacity:1] mix-blend-multiply" />
               <div className="absolute -top-32 left-1/2 h-[60vh] w-[120vw] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,_hsl(var(--op-red)/_.12),_transparent_60%)] blur-3xl" />
