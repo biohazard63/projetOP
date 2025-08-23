@@ -92,6 +92,36 @@ async function upsertRarity(name: string) {
   })
 }
 
+function normalizeRarityName(input: string): { rarity: string; isSpecial: boolean } {
+  let s = (input || '').toUpperCase().replace(/\s+/g, ' ').trim()
+  if (!s) return { rarity: 'C', isSpecial: false }
+
+  const hasSp = /\bSP\b/.test(s)
+  // Map some common aliases
+  const aliasMap: Record<string, string> = {
+    U: 'UC',
+    COMMON: 'C',
+    UNCOMMON: 'UC',
+  }
+  if (aliasMap[s]) return { rarity: aliasMap[s], isSpecial: false }
+
+  // If the token SP is present (e.g., R SP, SR SP, SP SR), normalize to SP CARD
+  if (hasSp) return { rarity: 'SP CARD', isSpecial: true }
+
+  // Token-based detection (keeps base rarity when mixed strings)
+  if (/\bSEC\b/.test(s)) return { rarity: 'SEC', isSpecial: false }
+  if (/\bTR\b/.test(s)) return { rarity: 'TR', isSpecial: false }
+  if (/\bL\b(?![A-Z])/.test(s)) return { rarity: 'L', isSpecial: false }
+  if (/\bSR\b/.test(s)) return { rarity: 'SR', isSpecial: false }
+  if (/\bR\b/.test(s)) return { rarity: 'R', isSpecial: false }
+  if (/\bUC\b/.test(s)) return { rarity: 'UC', isSpecial: false }
+  if (/\bC\b/.test(s)) return { rarity: 'C', isSpecial: false }
+  if (/\bP\b/.test(s)) return { rarity: 'P', isSpecial: false }
+
+  // Fallback: leave as-is (will trigger an upsertRarity for visibility)
+  return { rarity: s, isSpecial: false }
+}
+
 async function importFile(filePath: string, hintedSetCode?: string) {
   const fileName = path.basename(filePath)
   const setCode = normalizeSetCode(hintedSetCode || fileName)
@@ -113,7 +143,8 @@ async function importFile(filePath: string, hintedSetCode?: string) {
   for (const raw of data as AnyCard[]) {
     try {
       const id = String(raw.id)
-      const rarity = (raw.rarity || '').toString()
+      const rarityRaw = (raw.rarity || '').toString()
+      const { rarity, isSpecial } = normalizeRarityName(rarityRaw)
       if (rarity) await upsertRarity(rarity)
 
       const cost = parseIntOrZero(raw.cost)
@@ -153,7 +184,7 @@ async function importFile(filePath: string, hintedSetCode?: string) {
           rarityName: rarity,
           isAltArt: id.includes('_p') || id.toLowerCase().includes('alt'),
           isParallel: id.includes('_p'),
-          isSpecial: false,
+          isSpecial,
         },
         create: {
           id,
@@ -178,7 +209,7 @@ async function importFile(filePath: string, hintedSetCode?: string) {
           rarityName: rarity,
           isAltArt: id.includes('_p') || id.toLowerCase().includes('alt'),
           isParallel: id.includes('_p'),
-          isSpecial: false,
+          isSpecial,
         },
       })
       count++

@@ -22,11 +22,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
-      <body suppressHydrationWarning className={cn(inter.className, "min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))]")}>
+      <body suppressHydrationWarning className={cn(inter.className, "min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))] overflow-x-hidden")}>
         <Providers>
           <div className="relative min-h-screen">
             {/* Fond: image + dégradés radiaux et overlay */}
-            <div className="pointer-events-none absolute inset-0 -z-10">
+            <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
               <Image
                 src="/images/one-piece-bg.jpg"
                 alt=""
