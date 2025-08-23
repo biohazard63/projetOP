@@ -27,17 +27,13 @@ export default function RootLayout({
           <div className="relative min-h-screen">
             {/* Fond: image + dégradés radiaux et overlay */}
             <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
-              <Image
-                src="/images/home.png"
-                alt=""
-                fill
-                priority
-                sizes="100vw"
-                className="object-cover object-center opacity-[75%]"
+              <div
+                className="absolute inset-0 bg-[url('/images/home.png')] bg-center bg-no-repeat bg-[length:100%_auto]"
+                aria-hidden
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--op-ink)/_.85)] via-transparent to-[hsl(var(--op-ink)/_.85)] [--tw-bg-opacity:1] mix-blend-multiply" />
-              <div className="absolute -top-32 left-1/2 h-[60vh] w-[120vw] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,_hsl(var(--op-red)/_.12),_transparent_60%)] blur-3xl" />
-              <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black/40 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--op-ink)/_.25)] via-transparent to-[hsl(var(--op-ink)/_.35)]" />
+              <div className="absolute -top-32 left-1/2 h-[60vh] w-[120vw] -translate-x-1/2 rounded-full bg-[radial-gradient(ellipse_at_center,_hsl(var(--op-red)/_.10),_transparent_60%)] blur-3xl" />
+              <div className="absolute bottom-0 left-0 right-0 h-48 bg-gradient-to-t from-black/10 to-transparent" />
             </div>
 
             <header className="relative z-20">
