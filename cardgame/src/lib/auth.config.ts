@@ -2,65 +2,119 @@ import type { NextAuthConfig } from "next-auth"
 import CredentialsProvider from "next-auth/providers/credentials"
 import GoogleProvider from "next-auth/providers/google"
 import GithubProvider from "next-auth/providers/github"
+import EmailProvider from "next-auth/providers/email"
+import type { Provider } from "next-auth/providers"
 import bcrypt from "bcryptjs"
 import { prisma } from "./prisma"
 import { addStarterDeckCardsToUser } from "./starterDeckUtils"
+import { verifyCaptcha } from "./captcha"
+import { getClientIp, rateLimit, isLocked, registerFailure, clearFailures } from "./security"
+
+const providers: Provider[] = []
+
+if (process.env.EMAIL_SERVER && process.env.EMAIL_FROM) {
+  providers.push(
+    EmailProvider({
+      server: process.env.EMAIL_SERVER,
+      from: process.env.EMAIL_FROM,
+      maxAge: 10 * 60, // 10 minutes
+    })
+  )
+}
+
+providers.push(
+  GoogleProvider({
+    clientId: process.env.GOOGLE_CLIENT_ID!,
+    clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+    // Autoriser le rattachement d'un compte Google au même email qu'un compte existant
+    // (sécurisé par la vérification d'email dans le callback signIn ci-dessous)
+    allowDangerousEmailAccountLinking: true,
+  })
+)
+
+providers.push(
+  GithubProvider({
+    clientId: process.env.GITHUB_ID!,
+    clientSecret: process.env.GITHUB_SECRET!,
+  })
+)
+
+providers.push(
+  CredentialsProvider({
+    name: "credentials",
+    credentials: {
+      email: { label: "Email", type: "email" },
+      password: { label: "Mot de passe", type: "password" }
+    },
+    async authorize(credentials: Record<string, unknown> | undefined, _request: { headers?: Headers }) {
+      // Protection anti-abus (rate-limit + lock basé sur IP + email)
+      const ip = getClientIp(_request)
+      const rawEmail = credentials ? credentials.email : undefined
+      const rawPassword = credentials ? credentials.password : undefined
+      const rawCaptcha = credentials ? (credentials as Record<string, unknown>).captchaToken : undefined
+      const email = typeof rawEmail === 'string' ? rawEmail.toLowerCase().trim() : ''
+      const password = typeof rawPassword === 'string' ? rawPassword : ''
+      const captchaToken = typeof rawCaptcha === 'string' ? rawCaptcha : ''
+
+      const lockKey = `loginlock:${ip}:${email}`
+      if (isLocked(lockKey)) {
+        throw new Error('Trop de tentatives, réessaie plus tard')
+      }
+      const rl = rateLimit(`login:${ip}`, 10, 10 * 60 * 1000) // 10 tentatives/10min/IP
+      if (!rl.allowed) {
+        throw new Error('Trop de tentatives, réessaie plus tard')
+      }
+
+      // Captcha si activé (provider + secret)
+      const captchaOk = await verifyCaptcha(captchaToken, ip)
+      if (!captchaOk) {
+        throw new Error('Vérification anti‑bot échouée')
+      }
+
+      if (!email || !password) {
+        throw new Error("Email et mot de passe requis")
+      }
+
+      const user = await prisma.user.findUnique({
+        where: { email }
+      })
+
+      if (!user) {
+        registerFailure(lockKey, 5, 15 * 60 * 1000) // 5 erreurs => 15min lock
+        throw new Error("Aucun utilisateur trouvé avec cet email")
+      }
+
+      if (!user.password) {
+        throw new Error("Ce compte n'a pas de mot de passe configuré")
+      }
+
+      const isPasswordValid = await bcrypt.compare(password, user.password)
+
+      if (!isPasswordValid) {
+        registerFailure(lockKey, 5, 15 * 60 * 1000)
+        throw new Error("Mot de passe incorrect")
+      }
+
+      // Exiger email vérifié pour credentials si EmailProvider activé
+      const requireEmailVerified = Boolean(process.env.EMAIL_SERVER && process.env.EMAIL_FROM)
+      if (requireEmailVerified && !user.emailVerified) {
+        throw new Error('Email non vérifié. Utilise le lien magique reçu par email.')
+      }
+
+      // Succès: effacer les échecs
+      clearFailures(lockKey)
+
+      return {
+        id: user.id,
+        email: user.email,
+        name: user.name ?? user.email.split('@')[0]
+      }
+    }
+  })
+)
 
 export const authConfig = {
-  providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID!,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-      // Autoriser le rattachement d'un compte Google au même email qu'un compte existant
-      // (sécurisé par la vérification d'email dans le callback signIn ci-dessous)
-      allowDangerousEmailAccountLinking: true,
-    }),
-    GithubProvider({
-      clientId: process.env.GITHUB_ID!,
-      clientSecret: process.env.GITHUB_SECRET!,
-    }),
-    CredentialsProvider({
-      name: "credentials",
-      credentials: {
-        email: { label: "Email", type: "email" },
-        password: { label: "Mot de passe", type: "password" }
-      },
-      async authorize(credentials, _request) {
-        const rawEmail = (credentials && typeof credentials === 'object') ? (credentials as Record<string, unknown>).email : undefined
-        const rawPassword = (credentials && typeof credentials === 'object') ? (credentials as Record<string, unknown>).password : undefined
-        const email = typeof rawEmail === 'string' ? rawEmail.toLowerCase().trim() : ''
-        const password = typeof rawPassword === 'string' ? rawPassword : ''
-
-        if (!email || !password) {
-          throw new Error("Email et mot de passe requis")
-        }
-
-        const user = await prisma.user.findUnique({
-          where: { email }
-        })
-
-        if (!user) {
-          throw new Error("Aucun utilisateur trouvé avec cet email")
-        }
-
-        if (!user.password) {
-          throw new Error("Ce compte n'a pas de mot de passe configuré")
-        }
-
-        const isPasswordValid = await bcrypt.compare(password, user.password)
-
-        if (!isPasswordValid) {
-          throw new Error("Mot de passe incorrect")
-        }
-
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name ?? user.email.split('@')[0]
-        }
-      }
-    })
-  ],
+  providers,
   pages: {
     signIn: "/login",
   },
@@ -77,6 +131,14 @@ export const authConfig = {
           ? (profile as { email_verified?: boolean }).email_verified
           : undefined
         if (verified === false) return false
+        // Marquer email vérifié en base si succès Google
+        if (verified && user?.email) {
+          await prisma.user.update({ where: { id: user.id }, data: { emailVerified: new Date() } })
+        }
+      }
+      // Email magic link: marquer email vérifié
+      if (account?.provider === 'email' && user?.id) {
+        await prisma.user.update({ where: { id: user.id }, data: { emailVerified: new Date() } })
       }
       // Si c'est un nouvel utilisateur OAuth
       if (account?.provider !== 'credentials' && user) {

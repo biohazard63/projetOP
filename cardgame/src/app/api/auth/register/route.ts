@@ -2,10 +2,28 @@ import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
 import bcrypt from 'bcryptjs'
 import { addStarterDeckCardsToUser } from '@/lib/starterDeckUtils'
+import { getClientIp, rateLimit, isStrongPassword, isValidEmail } from '@/lib/security'
+import { verifyCaptcha } from '@/lib/captcha'
 
 export async function POST(request: Request) {
   try {
-    const { name, email, password } = await request.json()
+    const { name, email, password, captchaToken } = await request.json()
+
+    // Rate limit global + par IP
+    const ip = getClientIp(request)
+    const rl = rateLimit(`register:${ip}`, 5, 15 * 60 * 1000) // 5 essais/15min
+    if (!rl.allowed) {
+      return NextResponse.json(
+        { message: 'Trop de tentatives. Réessaie plus tard.' },
+        { status: 429, headers: { 'Retry-After': String(Math.ceil((rl.resetAt - Date.now()) / 1000)) } }
+      )
+    }
+
+    // Captcha (Turnstile/Recaptcha) si activé
+    const isHuman = await verifyCaptcha(captchaToken, ip)
+    if (!isHuman) {
+      return NextResponse.json({ message: 'Vérification anti‑bot échouée' }, { status: 400 })
+    }
 
     // Validation des données
     if (!name || !email || !password) {
@@ -13,6 +31,14 @@ export async function POST(request: Request) {
         { message: 'Tous les champs sont requis' },
         { status: 400 }
       )
+    }
+
+    if (!isValidEmail(email)) {
+      return NextResponse.json({ message: 'Email invalide' }, { status: 400 })
+    }
+
+    if (!isStrongPassword(password)) {
+      return NextResponse.json({ message: 'Mot de passe trop faible (min 8, 3 types requis)' }, { status: 400 })
     }
 
     // Vérifier si l'email existe déjà (normalisé en minuscule)
