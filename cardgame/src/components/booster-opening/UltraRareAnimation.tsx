@@ -17,6 +17,9 @@ export default function UltraRareAnimation({ card, onComplete }: Readonly<UltraR
   const [isMobile, setIsMobile] = useState(false)
   const { playUltraRareSound } = useAudio()
   const hasPlayedSound = useRef(false)
+  const reduceMotionRef = useRef(false)
+  const timersRef = useRef<number[]>([])
+  const [showPulse, setShowPulse] = useState(false)
 
   useEffect(() => {
     const checkMobile = () => {
@@ -32,18 +35,46 @@ export default function UltraRareAnimation({ card, onComplete }: Readonly<UltraR
   }, [])
 
   useEffect(() => {
+    try {
+      reduceMotionRef.current = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false
+    } catch { /* no-op */ }
+
     if (!hasPlayedSound.current) {
       playUltraRareSound()
       hasPlayedSound.current = true
     }
 
-    const timer = setTimeout(() => {
+    if (reduceMotionRef.current) {
       setIsVisible(false)
       onComplete()
-    }, 2500)
+      return
+    }
 
-    return () => clearTimeout(timer)
+    const tPulse = window.setTimeout(() => setShowPulse(true), 200)
+    const tEnd = window.setTimeout(() => {
+      setIsVisible(false)
+      onComplete()
+    }, 2600)
+    timersRef.current.push(tPulse, tEnd)
+
+    return () => {
+      for (const t of timersRef.current) window.clearTimeout(t)
+      timersRef.current = []
+    }
   }, [onComplete, playUltraRareSound])
+
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') skip() }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [])
+
+  const skip = () => {
+    for (const t of timersRef.current) window.clearTimeout(t)
+    timersRef.current = []
+    setIsVisible(false)
+    onComplete()
+  }
 
   const particleIds = useMemo(() => {
     const len = isMobile ? 15 : 20
@@ -62,19 +93,10 @@ export default function UltraRareAnimation({ card, onComplete }: Readonly<UltraR
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
+          onClick={skip}
         >
           {/* Effet de fond dynamique */}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-br from-yellow-500/20 via-amber-500/20 to-orange-500/20"
-            animate={{
-              backgroundPosition: ['0% 0%', '100% 100%', '0% 0%'],
-            }}
-            transition={{
-              duration: 3,
-              repeat: Infinity,
-              ease: 'linear'
-            }}
-          />
+          <div className="absolute inset-0 bg-gradient-to-br from-yellow-500/15 via-amber-500/15 to-orange-500/15" />
 
           {/* Particules dorées */}
           {particleIds.map((id, i) => (
@@ -210,6 +232,25 @@ export default function UltraRareAnimation({ card, onComplete }: Readonly<UltraR
                   ease: 'easeInOut'
                 }}
               />
+
+              {/* Anneau lumineux pulsant + flash */}
+              {showPulse && (
+                <>
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: [0, 0.85, 0], scale: [0.8, 1.35, 1.6] }}
+                    transition={{ duration: 0.9, ease: 'easeOut' }}
+                    className="absolute inset-0 rounded-xl pointer-events-none"
+                    style={{ boxShadow: '0 0 0 2px rgba(250,204,21,.55), 0 0 70px rgba(250,204,21,.35) inset' }}
+                  />
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: [0, 0.6, 0] }}
+                    transition={{ duration: 0.2 }}
+                    className="absolute inset-0 bg-white/40 mix-blend-overlay"
+                  />
+                </>
+              )}
               
               {/* Image de la carte avec effet de brillance */}
               <motion.div
@@ -264,13 +305,10 @@ export default function UltraRareAnimation({ card, onComplete }: Readonly<UltraR
             </div>
           </motion.div>
 
-          {/* Effet de flash initial */}
-          <motion.div
-            className="absolute inset-0 bg-white"
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 0 }}
-            transition={{ duration: 0.3 }}
-          />
+          {/* Bouton passer */}
+          <button onClick={skip} className="absolute bottom-6 right-6 bg-white/10 hover:bg-white/20 text-white text-sm font-medium px-3 py-1.5 rounded-lg border border-white/20 backdrop-blur-md">
+            Passer
+          </button>
         </motion.div>
       )}
     </AnimatePresence>

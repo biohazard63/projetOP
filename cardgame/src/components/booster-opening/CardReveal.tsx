@@ -1,10 +1,13 @@
 'use client'
 
-import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion'
+import { motion, useMotionValue, useTransform } from 'framer-motion'
+import type { TargetAndTransition } from 'framer-motion'
 import { useState, useEffect, useCallback } from 'react'
 import { ExtendedCardType } from '@/types/card'
 import Image from 'next/image'
 import type { PanInfo } from 'framer-motion'
+
+type DragDirection = 'left' | 'right' | null
 
 interface CardRevealProps {
   card: ExtendedCardType
@@ -21,7 +24,7 @@ interface CardRevealProps {
 export default function CardReveal({ 
   card, 
   isNewCard = false, 
-  onComplete, 
+  // onComplete,
   onCardClick,
   onDragStart,
   onDrag,
@@ -30,11 +33,11 @@ export default function CardReveal({
   isMobile = false
 }: Readonly<CardRevealProps>) {
   const [isRevealed, setIsRevealed] = useState(false)
-  const [dragDirection, setDragDirection] = useState<'left' | 'right' | null>(null)
+  const [dragDirection, setDragDirection] = useState<DragDirection>(null)
   const [isDragging, setIsDragging] = useState(false)
+  const [shimmer, setShimmer] = useState(false)
 
   const x = useMotionValue(0)
-  const controls = useAnimation()
   const rotate = useTransform(x, [-200, 200], [-30, 30])
   const opacity = useTransform(x, [-200, 0, 200], [0.5, 1, 0.5])
 
@@ -62,12 +65,44 @@ export default function CardReveal({
   const isAlternative = highlightAllowed && isAlternativeRaw
   const isRare = highlightAllowed && isRareRaw
 
+  // Variantes d'apparition selon la rareté
+  const revealVariant = isUltraRare ? 'secret' : isRare || isAlternative ? 'rare' : 'common'
+  type RevealKey = 'common' | 'rare' | 'secret'
+  const appearanceTargets: Record<RevealKey, TargetAndTransition> = {
+    common: { opacity: [0, 1], y: [20, 0], scale: [0.96, 1], transition: { duration: 0.35 } },
+    rare: {
+      opacity: [0, 1], y: [24, 0], scale: [0.95, 1],
+      transition: { duration: 0.5 }
+    },
+    secret: {
+      opacity: [0, 1], y: [28, 0], scale: [0.94, 1],
+      boxShadow: ['0 0 0 rgba(0,0,0,0)', '0 0 50px rgba(250,204,21,.45)', '0 0 0 rgba(0,0,0,0)'],
+      transition: { duration: 0.6 }
+    }
+  }
+
   useEffect(() => {
-    const timer = setTimeout(() => {
+    setIsRevealed(false)
+    const t1 = window.setTimeout(() => {
       setIsRevealed(true)
-    }, 800)
-    return () => clearTimeout(timer)
-  }, [isUltraRare, isRare, isAlternative, card.name])
+    }, 420)
+    // Sécurité: si pour une raison quelconque le 1er timer est annulé, forcer après 1.2s
+    const t2 = window.setTimeout(() => {
+      setIsRevealed(true)
+    }, 1200)
+    return () => { window.clearTimeout(t1); window.clearTimeout(t2) }
+  }, [card.id])
+
+  // Déclenche le shimmer quand la carte se révèle
+  useEffect(() => {
+    if (!isRevealed) return
+    setShimmer(true)
+    const to = window.setTimeout(() => setShimmer(false), 700)
+    return () => window.clearTimeout(to)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [isRevealed])
+
+  // Pas d'effet: on anime directement via la prop animate
 
   const handleDragEnd = useCallback((event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     setIsDragging(false)
@@ -94,9 +129,9 @@ export default function CardReveal({
       // Si le swipe est trop petit, on considère que c'est un clic
       console.log('CardReveal - Swipe insuffisant, considéré comme un clic')
       onCardClick?.(card)
-      controls.start({ x: 0, rotate: 0 })
+      x.set(0)
     }
-  }, [controls, onDragEnd, onCardClick, card, isDragging, isMobile])
+  }, [onDragEnd, onCardClick, card, isDragging, isMobile, x])
   
   const handleDragStart = useCallback(() => {
     console.log('CardReveal - Début du glissement')
@@ -144,7 +179,8 @@ export default function CardReveal({
           touchAction: 'pan-y pinch-zoom',
           marginBottom: '2rem'
         }}
-        animate={controls}
+        initial={{ opacity: 0, y: 20, scale: 0.96 }}
+        animate={appearanceTargets[revealVariant]}
         className="relative aspect-[3/4] w-[220px] sm:w-[260px] md:w-[300px] lg:w-[340px] xl:w-[380px]"
         onClick={(e) => {
           // On ne gère le clic que si on n'est pas en train de glisser
@@ -154,6 +190,25 @@ export default function CardReveal({
           }
         }}
       >
+        {/* Effets spéciaux */}
+        {isRare && !isUltraRare && (
+          <motion.div
+            className="pointer-events-none absolute inset-0 rounded-xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, .6, 0] }}
+            transition={{ duration: 0.8, delay: 0.15 }}
+            style={{ background: 'radial-gradient(280px 160px at 50% 50%, rgba(147, 197, 253,.25), transparent 70%)' }}
+          />
+        )}
+        {isUltraRare && (
+          <motion.div
+            className="pointer-events-none absolute inset-0 rounded-xl"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: [0, .9, 0] }}
+            transition={{ duration: 0.9, delay: 0.1 }}
+            style={{ background: 'radial-gradient(300px 180px at 50% 50%, rgba(250,204,21,.35), transparent 70%)' }}
+          />
+        )}
         {/* Indicateurs de swipe */}
         {isDragging && (
           <>
@@ -218,8 +273,32 @@ export default function CardReveal({
               height={506}
               sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 300px, (max-width: 1280px) 340px, 380px"
               loading="lazy"
-              className="w-full h-auto rounded-xl shadow-2xl"
+              className={`w-full h-auto rounded-xl shadow-2xl ${
+                isUltraRare ? 'ring-4 ring-yellow-400' :
+                isRare ? 'ring-4 ring-purple-400' :
+                isAlternative ? 'ring-4 ring-emerald-400' : ''
+              }`}
             />
+            {/* Shimmer au-dessus de la face avant */}
+            {shimmer && (
+              <motion.div
+                className="pointer-events-none absolute inset-0 z-20 rounded-xl overflow-hidden"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 1, 0] }}
+                transition={{ duration: 0.65 }}
+              >
+                <motion.div
+                  initial={{ x: '-120%' }}
+                  animate={{ x: '120%' }}
+                  transition={{ duration: 0.65, ease: 'easeOut' }}
+                  className="absolute top-0 bottom-0 w-[45%] -skew-x-12"
+                  style={{
+                    background:
+                      'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.45) 45%, rgba(255,255,255,0) 100%)'
+                  }}
+                />
+              </motion.div>
+            )}
 
             {/* Badge "Nouvelle" pour les nouvelles cartes */}
             {isNewCard && (
@@ -227,7 +306,7 @@ export default function CardReveal({
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
                 transition={{ delay: 1, duration: 0.3 }}
-                className="absolute top-2 right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
+                className="absolute  right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
               >
                 Nouvelle!
               </motion.div>
@@ -240,7 +319,7 @@ export default function CardReveal({
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 1.2 }}
-                className={`absolute top-3 left-[16%] transform -translate-x-1/2 px-4 py-2 rounded-full font-bold text-white shadow-lg text-sm sm:text-base ${
+                className={`absolute  left-[20%] transform -translate-x-1/2 px-4 py-2 rounded-full font-bold text-white shadow-lg text-sm sm:text-base ${
                   isUltraRare ? 'bg-yellow-500' :
                   isRare ? 'bg-purple-500' :
                   'bg-cyan-500'

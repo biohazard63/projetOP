@@ -18,9 +18,11 @@ import { useCollection } from '@/hooks/useCollection'
 import { useBooster } from '@/hooks/useBooster'
 import { ExtendedCardType } from '@/types/card'
 import BoosterPackAnimation from './BoosterPackAnimation'
-import UltraRareAnimation from './UltraRareAnimation'
 import RareAnimation from './RareAnimation'
+import UltraRareAnimation from './UltraRareAnimation'
 import AlternativeAnimation from './AlternativeAnimation'
+import { useAudio } from '@/hooks/useAudio'
+import { useRef } from 'react'
 
 // LoadingSpinner retiré (non utilisé)
 
@@ -38,16 +40,28 @@ export default function BoosterOpeningPage() {
   const [selectedCard, setSelectedCard] = useState<ExtendedCardType | null>(null)
   const [isMobile, setIsMobile] = useState(false)
   const [isDragging, setIsDragging] = useState(false)
-  const [currentRareCard, setCurrentRareCard] = useState<ExtendedCardType | null>(null)
+  // Animations de rareté désactivées
   const [isNewCard, setIsNewCard] = useState(false)
   const [lastClickTime, setLastClickTime] = useState(0)
   const [showAnimation, setShowAnimation] = useState(false)
-  const [showRareAnimation, setShowRareAnimation] = useState(false)
-  const [rareAnimationType, setRareAnimationType] = useState<'ultra-rare' | 'rare' | 'alternative' | null>(null)
   const [showBoosterModal, setShowBoosterModal] = useState(false)
   const [, startTransition] = useTransition()
   const [setFilter, setSetFilter] = useState<'ALL' | 'OP' | 'EB' | 'PRB'>('ALL')
   const [query, setQuery] = useState('')
+  // Direction de navigation pour l'animation de pile
+  const [navDirection, setNavDirection] = useState<'prev' | 'next'>('next')
+  // Test animation rare (debug)
+  const [showTestRare, setShowTestRare] = useState(false)
+  // Test animation ultra-rare (debug)
+  const [showTestUltra, setShowTestUltra] = useState(false)
+  // Test animation alternative (debug)
+  const [showTestAlt, setShowTestAlt] = useState(false)
+  const { playRareCardSound, playUltraRareSound, playAltArtSound } = useAudio()
+  const audioPlayedRef = useRef<{rare?: boolean; ultra?: boolean; alt?: boolean}>({})
+  // Stage (coffre/pack) & FX
+  const [stage, setStage] = useState<'chest' | 'pack'>('chest')
+  const [stageFx, setStageFx] = useState<{opening:boolean}>({ opening: false })
+  const particleKeys = useMemo(() => Array.from({ length: 18 }, (_, i) => `gp-${i}`), [])
   interface SetRules {
     name: string
     rarityCounts: Record<string, number>
@@ -184,6 +198,11 @@ export default function BoosterOpeningPage() {
       .catch(error => console.error('Erreur lors du chargement des sets:', error))
   }, [])
 
+  // Basculer la scène (coffre ↔ pack) selon set
+  useEffect(() => {
+    setStage(selectedSet ? 'pack' : 'chest')
+  }, [selectedSet])
+
   // Navigation entre les cartes (mémoïsé avant usage)
   const navigateCard = useCallback((direction: 'prev' | 'next') => {
     console.log('Tentative de navigation:', {
@@ -200,11 +219,13 @@ export default function BoosterOpeningPage() {
     if (currentCardIndex === undefined || currentCardIndex === null) return;
     
     if (direction === 'prev' && currentCardIndex > 0) {
+      setNavDirection('prev')
       const prevCard = booster[currentCardIndex - 1];
       if (!prevCard) return;
       setCurrentCardIndex(currentCardIndex - 1);
       setIsNewCard(!userCollection.has(prevCard.id));
     } else if (direction === 'next' && currentCardIndex < booster.length - 1) {
+      setNavDirection('next')
       const nextCard = booster[currentCardIndex + 1];
       if (!nextCard) return;
       setCurrentCardIndex(currentCardIndex + 1);
@@ -238,6 +259,15 @@ export default function BoosterOpeningPage() {
         navigateCard('prev');
       } else if (event.key === 'ArrowRight' && currentCardIndex < booster.length - 1) {
         navigateCard('next');
+      } else if (event.key.toLowerCase() === 'r' && booster.length > 0 && currentCardIndex >= 0) {
+        // R pour tester l'animation rare
+        setShowTestRare(true)
+      } else if (event.key.toLowerCase() === 'u' && booster.length > 0 && currentCardIndex >= 0) {
+        // U pour tester l'animation ultra-rare
+        setShowTestUltra(true)
+      } else if (event.key.toLowerCase() === 'a' && booster.length > 0 && currentCardIndex >= 0) {
+        // A pour tester l'animation alternative
+        setShowTestAlt(true)
       }
     };
 
@@ -320,54 +350,27 @@ export default function BoosterOpeningPage() {
 
   // Vérification de la rareté et lecture des effets
   const checkRarityAndPlayEffect = (card: ExtendedCardType) => {
-    console.log('Vérification de la rareté pour:', card.name, card.rarity, card.id)
-
-    // Position courante (1-based)
-    const position = currentCardIndex + 1
     const rarityRank: Record<string, number> = { C: 1, UC: 2, U: 2, R: 3, SR: 4, L: 5, SEC: 6, 'SP CARD': 7, TR: 8, P: 9 }
     const rank = rarityRank[card.rarity] ?? 0
-    const isHighRarity = rank >= 4 // SR et plus
+    const isHighRarity = rank >= 4
     const hasP1 = card.id.endsWith('_p1')
     const hasP2 = card.id.endsWith('_p2')
     const hasP3Plus = /_p[3-9]/.test(card.id)
 
-    // Pas d'animation pour C/UC avant la position 10
-    if (position < 10 && (card.rarity === 'C' || card.rarity === 'UC')) return
-
-    // Ultra-rare: SEC, SP CARD, TR, P, L, ou SR_p1, ou p3+ sur rareté élevée
-    if (
-      ['SEC', 'SP CARD', 'TR', 'P', 'L'].includes(card.rarity) ||
-      (card.rarity === 'SR' && hasP1) ||
-      (hasP3Plus && isHighRarity)
-    ) {
-      setCurrentRareCard(card)
-      setRareAnimationType('ultra-rare')
-      setShowRareAnimation(true)
+    if (['SEC','SP CARD','TR','P','L'].includes(card.rarity) || (card.rarity==='SR' && hasP1) || (hasP3Plus && isHighRarity)) {
+      if (!audioPlayedRef.current.ultra) { try { playUltraRareSound() } catch {} audioPlayedRef.current.ultra = true }
+      setShowTestUltra(true)
       return
     }
-
-    // Alternative: uniquement pour raretés élevées (SR+, hors cas ultra-rare)
     if (hasP1 && isHighRarity) {
-      setCurrentRareCard(card)
-      setRareAnimationType('alternative')
-      setShowRareAnimation(true)
+      if (!audioPlayedRef.current.alt) { try { playAltArtSound() } catch {} audioPlayedRef.current.alt = true }
+      setShowTestAlt(true)
       return
     }
-
-    // Rare: toutes les R (avec ou sans _p1/_p2) et SR non alt/ultra
-    if (card.rarity === 'R' || (card.rarity === 'SR' && !hasP1 && !hasP3Plus) || (hasP2 && isHighRarity)) {
-      setCurrentRareCard(card)
-      setRareAnimationType('rare')
-      setShowRareAnimation(true)
-      return
+    if ( (card.rarity==='SR' && !hasP1 && !hasP3Plus) || (hasP2 && isHighRarity)) {
+      if (!audioPlayedRef.current.rare) { try { playRareCardSound() } catch {} audioPlayedRef.current.rare = true }
+      setShowTestRare(true)
     }
-
-    // Sinon: pas d'animation spéciale
-  }
-
-  const handleRareAnimationComplete = () => {
-    setShowRareAnimation(false)
-    setRareAnimationType(null)
   }
 
   // Gestion du glissement des cartes
@@ -468,9 +471,14 @@ export default function BoosterOpeningPage() {
       return
     }
 
-    if (!showAnimation) {
-      startTransition(() => setShowAnimation(true))
-    }
+    // Petite anim d'ouverture (FX) avant l'anim principale
+    setStageFx({ opening: true })
+    setTimeout(() => {
+      setStageFx({ opening: false })
+      if (!showAnimation) {
+        startTransition(() => setShowAnimation(true))
+      }
+    }, 500)
 
     // Lancer la requête API en même temps que l'animation
     setIsLoading(true)
@@ -539,6 +547,7 @@ export default function BoosterOpeningPage() {
     if (booster.length > 0) {
       startTransition(() => {
         setCurrentCardIndex(0)
+        audioPlayedRef.current = {}
       })
     }
   }, [booster.length, startTransition])
@@ -549,7 +558,7 @@ export default function BoosterOpeningPage() {
     startTransition(() => {
       setBooster([])
       setCurrentCardIndex(-1)
-      setCurrentRareCard(null)
+      // plus de suivi d'animation de rareté
       setIsNewCard(false)
     })
     
@@ -570,6 +579,9 @@ export default function BoosterOpeningPage() {
 
   return (
     <div className="min-h-screen relative w-full">
+      {/* Fond grille bleue + veines dorées + watermarks */}
+    
+     
       {/* Contenu principal */}
       <div className="relative z-10 min-h-screen pt-16 w-full">
         <Toaster position="top-center" />
@@ -582,97 +594,104 @@ export default function BoosterOpeningPage() {
           />
         )}
 
-        {showRareAnimation && currentRareCard && (
-          <>
-            {rareAnimationType === 'ultra-rare' && (
-              <UltraRareAnimation
-                card={currentRareCard}
-                onComplete={handleRareAnimationComplete}
-              />
-            )}
-            {rareAnimationType === 'rare' && (
-              <RareAnimation
-                card={currentRareCard}
-                onComplete={handleRareAnimationComplete}
-              />
-            )}
-            {rareAnimationType === 'alternative' && (
-              <AlternativeAnimation
-                card={currentRareCard}
-                onComplete={handleRareAnimationComplete}
-              />
-            )}
-          </>
+        {/* Test: Animation rare (toggle avec 'R') */}
+        {showTestRare && booster[currentCardIndex] && (
+          <RareAnimation
+            card={booster[currentCardIndex]}
+            onComplete={() => setShowTestRare(false)}
+          />
+        )}
+
+        {/* Test: Animation ultra-rare (toggle avec 'U') */}
+        {showTestUltra && booster[currentCardIndex] && (
+          <UltraRareAnimation
+            card={booster[currentCardIndex]}
+            onComplete={() => setShowTestUltra(false)}
+          />
+        )}
+
+        {/* Test: Animation alternative (toggle avec 'A') */}
+        {showTestAlt && booster[currentCardIndex] && (
+          <AlternativeAnimation
+            card={booster[currentCardIndex]}
+            onComplete={() => setShowTestAlt(false)}
+          />
         )}
         
         {/* En-tête avec effet de verre dépoli */}
         <div className="w-[95%] md:w-[90%] mx-auto p-2 sm:p-4 md:p-6">
+          <div className="flex justify-center">
           <motion.h1 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center"
+            className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center title-halo mx-auto w-fit"
           >
-            <span className="bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-glow">
-              Ouverture de Trésor
-            </span>
+            <span className="shimmer-gold drop-shadow-glow">Ouverture de Booster</span>
           </motion.h1>
+          </div>
 
-          {/* Affichage du booster sélectionné avec effet de carte */}
-          {selectedSet && (
+          {/* Scène centrale: coffre/pack + infos du set */}
+          <div className="stage mb-6 sm:mb-8">
+            <div aria-hidden className="stage-glow" />
             <motion.div
-              initial={{ opacity: 0, y: -20 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="flex flex-col md:flex-row items-center justify-center gap-4 sm:gap-8 mb-6 sm:mb-8"
+              className="relative stage-item"
+              initial={false}
+              animate={{ scale: stageFx.opening ? 1.06 : 1, rotate: stageFx.opening ? -2 : 0 }}
+              transition={{ type:'spring', stiffness: 200, damping: 14 }}
             >
-              <div className="relative group">
-                <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/20 to-amber-500/20 rounded-xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-                <div className="relative w-40 h-60 sm:w-48 sm:h-72 transform group-hover:scale-105 transition-all duration-300">
-                  <NextImage
-                    src={`/images/booster/${(selectedSetData?.code || '').toLowerCase()}.png`}
-                    alt={selectedSetData?.name || 'Booster'}
-                    fill
-                    sizes="(max-width: 640px) 10rem, 12rem"
-                    className="object-contain rounded-xl shadow-2xl"
-                    priority={false}
+              <NextImage
+                src={stage === 'pack' ? `/images/booster/${(selectedSetData?.code || '').toLowerCase()}.png` : '/images/boostercartoon.png'}
+                alt="Trésor"
+                width={220}
+                height={300}
+                className="w-[140px] sm:w-[180px] md:w-[220px] h-auto object-contain"
+                priority={false}
+              />
+              {/* Effet de déchirure du pack */}
+              {stage === 'pack' && stageFx.opening && (
+                <>
+                  <div className="tear-left" />
+                  <div className="tear-right" />
+                </>
+              )}
+              {/* Particules dorées lors de l'ouverture */}
+              {stageFx.opening && (
+                particleKeys.map((k, i) => (
+                  <div
+                    key={k}
+                    className="gold-particle"
+                    style={{ left: `${35 + (i%10)*3}%`, animationDelay: `${i*0.035}s` }}
                   />
-                </div>
-              </div>
-
-              <div className="flex flex-col gap-4 sm:gap-6 max-w-md">
-                <div className="text-center md:text-left">
-                  <h2 className="text-2xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent mb-2">
-                    {selectedSetData?.name}
-                  </h2>
-                  <p className="text-white/80">
-                    Découvrez les trésors cachés de ce booster !
-                  </p>
-                </div>
-
-                <div className="bg-white/5 rounded-xl p-4 sm:p-6 border border-white/10">
-                  <h3 className="text-lg font-bold text-white/90 mb-4">Contenu possible :</h3>
-                  {setRules?.boosterRules && (
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-gray-400"></div>
-                        <span className="text-white/80">{setRules.boosterRules.commonCount} Communes</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                        <span className="text-white/80">{setRules.boosterRules.uncommonCount} Peu communes</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-blue-400"></div>
-                        <span className="text-white/80">{setRules.boosterRules.rareCount} Rares</span>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <div className="w-3 h-3 rounded-full bg-purple-400"></div>
-                        <span className="text-white/80">{setRules.boosterRules.superRareCount} Super Rare</span>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              </div>
+                ))
+              )}
+              {stageFx.opening && (
+                <motion.div
+                  className="absolute inset-0 pointer-events-none"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, .9, 0] }}
+                  transition={{ duration: .6 }}
+                  style={{
+                    background: 'radial-gradient(220px 120px at 50% 60%, rgba(255,215,0,.55), transparent 70%)'
+                  }}
+                />
+              )}
             </motion.div>
+          </div>
+
+          {selectedSet && (
+            <div className="mx-auto max-w-xl bg-white/5 rounded-xl p-4 sm:p-6 border border-white/10 mb-6">
+              <h2 className="text-center text-xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent mb-2">
+                {selectedSetData?.name}
+              </h2>
+              {setRules?.boosterRules && (
+                <div className="grid grid-cols-2 gap-4 text-sm text-white/85">
+                  <div className="flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full bg-gray-400"></span>{setRules.boosterRules.commonCount} Communes</div>
+                  <div className="flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full bg-green-400"></span>{setRules.boosterRules.uncommonCount} Peu communes</div>
+                  <div className="flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full bg-blue-400"></span>{setRules.boosterRules.rareCount} Rares</div>
+                  <div className="flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full bg-purple-400"></span>{setRules.boosterRules.superRareCount} Super Rare</div>
+                </div>
+              )}
+            </div>
           )}
 
           {/* Boutons d'action (desktop/tablette) */}
@@ -680,7 +699,7 @@ export default function BoosterOpeningPage() {
             <Button 
               onClick={() => setShowBoosterModal(true)}
               aria-label="Choisir un booster"
-              className="w-full sm:w-auto bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105"
+              className="w-full sm:w-auto btn-crystal hover:brightness-110 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
             >
               <div className="flex items-center gap-2">
                 <Package className="w-5 h-5" />
@@ -691,9 +710,9 @@ export default function BoosterOpeningPage() {
             {booster.length === 0 ? (
               <Button 
                 onClick={handleOpenBooster}
-                aria-label="Ouvrir le trésor"
+                aria-label="Ouvrir le booster"
                 disabled={!selectedSet || isLoading}
-                className="w-full sm:w-auto bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105"
+                className="w-full sm:w-auto btn-gold btn-gold-glow hover:brightness-110 text-black font-bold py-3 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
               >
                 {isLoading ? (
                   <div className="flex items-center gap-2">
@@ -703,14 +722,14 @@ export default function BoosterOpeningPage() {
                 ) : (
                   <div className="flex items-center gap-2">
                     <Sparkles className="w-5 h-5" />
-                    <span>Ouvrir le trésor</span>
+                    <span>Ouvrir le booster</span>
                   </div>
                 )}
               </Button>
             ) : (
               <Button 
                 onClick={resetAndOpenNewBooster}
-                aria-label="Ouvrir un nouveau trésor"
+                aria-label="Ouvrir un nouveau booster"
                 disabled={!selectedSet || isLoading}
                 className="w-full sm:w-auto bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-bold py-3 px-6 rounded-xl shadow-lg transition-all duration-300 transform hover:scale-105"
               >
@@ -722,7 +741,7 @@ export default function BoosterOpeningPage() {
                 ) : (
                   <div className="flex items-center gap-2">
                     <Sparkles className="w-5 h-5" />
-                    <span>Nouveau trésor</span>
+                    <span>Nouveau booster</span>
                   </div>
                 )}
               </Button>
@@ -735,7 +754,7 @@ export default function BoosterOpeningPage() {
               <Button 
                 onClick={() => setShowBoosterModal(true)}
                 aria-label="Choisir un booster"
-                className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-bold py-3 px-4 rounded-xl shadow-lg transition-all"
+                className="flex-1 btn-crystal hover:brightness-110 text-white font-bold py-3 px-4 rounded-xl transition-all"
               >
                 Choisir
               </Button>
@@ -743,16 +762,16 @@ export default function BoosterOpeningPage() {
               {booster.length === 0 ? (
                 <Button
                   onClick={handleOpenBooster}
-                  aria-label="Ouvrir le trésor"
+                  aria-label="Ouvrir le booster"
                   disabled={!selectedSet || isLoading}
-                  className="flex-1 bg-gradient-to-r from-yellow-500 to-amber-600 hover:from-yellow-600 hover:to-amber-700 text-white font-bold py-3 px-4 rounded-xl shadow-lg transition-all"
+                  className="flex-1 btn-gold btn-gold-glow hover:brightness-110 text-black font-bold py-3 px-4 rounded-xl transition-all"
                 >
                   {isLoading ? '...' : 'Ouvrir'}
                 </Button>
               ) : (
                 <Button
                   onClick={resetAndOpenNewBooster}
-                  aria-label="Ouvrir un nouveau trésor"
+                  aria-label="Ouvrir un nouveau booster"
                   disabled={!selectedSet || isLoading}
                   className="flex-1 bg-gradient-to-r from-emerald-500 to-green-600 hover:from-emerald-600 hover:to-green-700 text-white font-bold py-3 px-4 rounded-xl shadow-lg transition-all"
                 >
@@ -792,20 +811,58 @@ export default function BoosterOpeningPage() {
         {booster.length > 0 && currentCardIndex >= 0 && (
           <div className="w-[96%] sm:max-w-6xl mx-auto px-2 sm:px-4 pb-28 md:pb-0">
             <div className="relative rounded-2xl p-3 sm:p-6 border border-white/10 shadow-xl">
-              {/* Carte actuelle */}
-              <CardReveal
-                card={booster[currentCardIndex]}
-                isNewCard={isNewCard}
-                position={currentCardIndex + 1}
-                isMobile={isMobile}
-                onComplete={() => {
-                  
-                }}
-                onCardClick={handleCardClick}
-                onDragStart={handleDragStart}
-                onDrag={handleDrag}
-                onDragEnd={handleDragEnd}
-              />
+              {/* Carte actuelle avec transition type pile */}
+              <div className="relative flex items-center justify-center min-h-[360px] sm:min-h-[420px] md:min-h-[500px]">
+                <AnimatePresence initial={false} custom={navDirection}>
+                  <motion.div
+                    key={booster[currentCardIndex]?.id ?? `idx-${currentCardIndex}`}
+                    custom={navDirection}
+                    variants={{
+                      enter: (dir: 'prev' | 'next') => ({
+                        x: dir === 'next' ? 140 : -140,
+                        y: 24,
+                        rotate: dir === 'next' ? -10 : 10,
+                        opacity: 0
+                      }),
+                      center: {
+                        x: 0,
+                        y: 0,
+                        rotate: 0,
+                        opacity: 1,
+                        transition: { type: 'spring', stiffness: 500, damping: 35 }
+                      },
+                      exit: (dir: 'prev' | 'next') => ({
+                        x: dir === 'next' ? -140 : 140,
+                        y: -24,
+                        rotate: dir === 'next' ? 10 : -10,
+                        opacity: 0,
+                        transition: { duration: 0.25, ease: 'easeIn' }
+                      })
+                    }}
+                    initial="enter"
+                    animate="center"
+                    exit="exit"
+                    className="will-change-transform"
+                  >
+                    <CardReveal
+                      card={booster[currentCardIndex]}
+                      isNewCard={isNewCard}
+                      position={currentCardIndex + 1}
+                      isMobile={isMobile}
+                      onComplete={() => {}}
+                      onCardClick={handleCardClick}
+                      onDragStart={handleDragStart}
+                      onDrag={handleDrag}
+                      onDragEnd={(e, info) => {
+                        handleDragEnd(e, info)
+                        // Forcer la face avant juste après navigation
+                        // (CardReveal écoute card.id et relance le flip)
+                      }}
+                    />
+                  </motion.div>
+                </AnimatePresence>
+                <div aria-hidden className="pointer-events-none absolute inset-x-1/3 top-8 h-6 rounded-xl bg-black/30 blur-xl" />
+              </div>
 
               {/* Zones de tap latérales (mobile) */}
               {isMobile && (
@@ -864,45 +921,35 @@ export default function BoosterOpeningPage() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+              className="fixed inset-0 z-[120] flex items-center justify-center p-4 md:p-6"
               role="dialog"
               aria-modal="true"
               aria-labelledby="choose-treasure-title"
               onClick={() => setShowBoosterModal(false)}
             >
-              {/* Éléments décoratifs d'arrière-plan */}
-              <div className="absolute inset-0 overflow-hidden pointer-events-none">
-                <div className="absolute inset-0 bg-gradient-to-b from-blue-950/30 to-indigo-950/30"></div>
-                <NextImage 
-                  src="/images/jolly-roger.png" 
-                  alt=""
-                  width={128}
-                  height={128}
-                  className="absolute top-0 left-0 w-32 h-32 opacity-20 rotate-[-15deg]"
-                />
-                <NextImage 
-                  src="/images/straw-hat.png" 
-                  alt=""
-                  width={128}
-                  height={128}
-                  className="absolute bottom-0 right-0 w-32 h-32 opacity-20 rotate-[15deg]"
-                />
+              {/* Backdrop */}
+              <div className="absolute inset-0 bg-black/70 backdrop-blur-sm" />
+              {/* Éléments décoratifs d'arrière-plan dans le thème */}
+              <div className="absolute inset-0 overflow-hidden pointer-events-none z-[125]">
+                <div className="absolute inset-0 bg-gradient-to-b from-[#0b1020]/60 to-[#0b0f1a]/60" />
+                <NextImage src="/images/jolly-roger.png" alt="" width={140} height={140} className="absolute -top-4 -left-2 w-28 h-28 opacity-10" />
+                <NextImage src="/globe.svg" alt="" width={140} height={140} className="absolute -bottom-6 -right-2 w-28 h-28 opacity-10" />
               </div>
 
               <motion.div
                 initial={{ scale: 0.9, opacity: 0, y: 20 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
                 exit={{ scale: 0.9, opacity: 0, y: 20 }}
-                className="bg-gradient-to-b from-blue-950/90 via-blue-900/90 to-indigo-950/90 rounded-2xl shadow-[0_0_50px_rgba(0,0,0,0.3)] w-[95%] sm:max-w-5xl max-h-[90vh] flex flex-col overflow-hidden border border-yellow-500/20"
+                className="relative z-[130] bg-white/5 backdrop-blur-xl rounded-2xl shadow-[0_0_60px_rgba(0,0,0,0.45)] w-[95%] sm:max-w-5xl max-h-[90vh] flex flex-col overflow-hidden border border-white/10"
                 onClick={e => e.stopPropagation()}
               >
                 {/* En-tête + barre d’outils */}
-                <div className="relative p-4 sm:p-6 border-b border-yellow-500/20 bg-gradient-to-b from-white/5 to-transparent">
+                <div className="relative p-4 sm:p-6 border-b border-white/10 bg-gradient-to-b from-white/5 to-transparent">
                   <div className="flex flex-col gap-4">
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-2 sm:gap-4">
                         <NextImage 
-                          src="/images/treasure-chest.png" 
+                          src="/images/booster-ouvert.png" 
                           alt="Trésor" 
                           width={48}
                           height={48}

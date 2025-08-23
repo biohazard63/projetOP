@@ -12,8 +12,12 @@ interface BoosterPackAnimationProps {
 export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<BoosterPackAnimationProps>) {
   const [isVisible, setIsVisible] = useState(true)
   const [showCards, setShowCards] = useState(false)
+  const [showTear, setShowTear] = useState(false)
+  const [showPulse, setShowPulse] = useState(false)
+  const [showFlash, setShowFlash] = useState(false)
   const audioRef = useRef<HTMLAudioElement | null>(null)
   const [isMobile, setIsMobile] = useState(false)
+  const reduceMotionRef = useRef(false)
   const cardIds = useMemo(() => {
     const makeId = () => (globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random()}`)
     return Array.from({ length: 12 }, () => makeId())
@@ -36,10 +40,22 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
   }, [])
 
   useEffect(() => {
+    // Préférence utilisateur: réduire les animations
+    try {
+      reduceMotionRef.current = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false
+    } catch { /* no-op */ }
+
+    if (reduceMotionRef.current) {
+      // Pas d'animation: on termine immédiatement
+      setIsVisible(false)
+      onComplete()
+      return
+    }
+
     // Initialiser l'audio
     audioRef.current = new Audio('/sounds/ouverture.mp3')
     audioRef.current.preload = 'auto'
-    audioRef.current.volume = 0.5
+    audioRef.current.volume = isMobile ? 0.35 : 0.5
 
     // Jouer le son au début de l'animation en gérant la promesse
     const audio = audioRef.current
@@ -57,17 +73,25 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
         })
     }
 
-    // Animation du booster qui s'ouvre
-    const t1 = window.setTimeout(() => {
-      setShowCards(true)
-      // Une fois les cartes révélées, on déclenche onComplete
-      const t2 = window.setTimeout(() => {
-        setIsVisible(false)
-        onComplete()
-      }, 5000)
-      timersRef.current.push(t2)
-    }, 1500)
-    timersRef.current.push(t1)
+    // Timeline mobile-first: déchirure -> cartes -> fin
+    const tTear = window.setTimeout(() => {
+      setShowTear(true)
+      setShowPulse(true)
+      setShowFlash(true)
+      const tFlash = window.setTimeout(() => setShowFlash(false), 180)
+      timersRef.current.push(tFlash)
+    }, 800)
+    const tCards = window.setTimeout(() => setShowCards(true), 1700)
+    // Durées et délais pour une sortie plus progressive (plus long)
+    const perCardDelay = 0.2 // s
+    const perCardDuration = 0.7 // s
+    const extraTail = 1.1 // s de marge après la dernière carte
+    const endMs = 1700 + ((cardIds.length - 1) * perCardDelay + perCardDuration + extraTail) * 1000
+    const tEnd = window.setTimeout(() => {
+      setIsVisible(false)
+      onComplete()
+    }, endMs)
+    timersRef.current.push(tTear, tCards, tEnd)
 
     return () => {
       // Annuler les timers
@@ -83,45 +107,76 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
       }
       didStartRef.current = false
     }
-  }, [onComplete])
+  }, [onComplete, isMobile])
+
+  // Permettre de passer l'animation (tap/clic/Echap)
+  useEffect(() => {
+    const handleKey = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        skip()
+      }
+    }
+    window.addEventListener('keydown', handleKey)
+    return () => window.removeEventListener('keydown', handleKey)
+  }, [])
+
+  const skip = () => {
+    // stop timers
+    for (const t of timersRef.current) window.clearTimeout(t)
+    timersRef.current = []
+    // finish
+    setIsVisible(false)
+    onComplete()
+    const audioEl = audioRef.current
+    if (audioEl) {
+      audioEl.pause()
+      audioEl.currentTime = 0
+    }
+  }
 
   // Calcul des positions des cartes en fonction de la taille de l'écran
   const getCardPosition = (index: number) => {
-    if (isMobile) {
-      // Sur mobile, les cartes sont disposées en 2 rangées de 6
-      const row = Math.floor(index / 6)
-      const col = index % 6
-      return {
-        x: (col - 2.5) * 40, // Espacement plus serré sur mobile
-        y: row * 80 - 50 // Deux rangées sur mobile
-      }
-    } else {
-      // Sur desktop, les cartes sont disposées en une seule rangée
-      return {
-        x: (index - 6) * 60,
-        y: -100
-      }
-    }
+    // Disposition en éventail (arc) centrée sur le pack
+    const total = cardIds.length
+    const i = index - (total - 1) / 2
+    const radius = isMobile ? 110 : 150
+    const spread = isMobile ? Math.PI / 1.6 : Math.PI / 1.8
+    const angle = (i / ((total - 1) / 2)) * (spread / 2)
+    const x = Math.sin(angle) * radius
+    const y = -Math.cos(angle) * (radius * 0.6)
+    const rotate = (angle * 180) / Math.PI * 0.35 // légère inclinaison
+    const depthScale = 1 - Math.abs(i) * 0.03
+    const zIndex = 100 - Math.abs(Math.round(i))
+    return { x, y, rotate, scale: depthScale, zIndex }
   }
 
   return (
     <AnimatePresence>
       {isVisible && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/80 z-50" aria-live="polite" aria-label="Animation d'ouverture du booster">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/75 z-[140]" aria-live="polite" aria-label="Animation d'ouverture du booster" onClick={skip}>
           {/* Animation du booster */}
           <motion.div
             initial={{ scale: 1, rotate: 0 }}
             animate={{ 
-              scale: [1, 1.2, 0.8, 1.5],
-              rotate: [0, 10, -10, 0],
-              y: [0, -50, 0]
+              scale: [1, 1.1, 0.97, 1.18],
+              rotate: [0, 4, -4, 0],
+              y: [0, -24, 0]
             }}
             transition={{ 
-              duration: 1.5,
+              duration: 1.6,
               ease: "easeInOut"
             }}
-            className="relative w-48 h-72 md:w-64 md:h-96"
+            className="relative w-48 h-72 md:w-64 md:h-96 will-change-transform"
+            onClick={(e) => e.stopPropagation()}
           >
+            {/* Micro-secousse à la déchirure */}
+            <motion.div
+              className="absolute inset-0"
+              animate={showTear ? { x: [0, -2, 2, -1, 1, 0], y: [0, -1, 1, 0], rotate: [0, -1.2, 1.2, -0.6, 0] } : {}}
+              transition={{ duration: 0.35, ease: 'easeOut' }}
+            />
+            {/* Halo doré */}
+            <div className="absolute -inset-6 pointer-events-none" style={{ background: 'radial-gradient(120px 80px at 50% 60%, rgba(255,215,0,.45), transparent 70%)', filter: 'blur(6px)' }} />
             <Image
               src={`/images/booster/${setCode.toLowerCase()}.png`}
               alt={`Booster Pack ${setCode}`}
@@ -130,6 +185,31 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
               priority={false}
               className="object-contain"
             />
+            {/* Effet déchirure */}
+            {showTear && (
+              <>
+                <div className="tear-left" />
+                <div className="tear-right" />
+              </>
+            )}
+            {/* Pulse lumineux (anneau) */}
+            {showPulse && (
+              <>
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: [0, 0.9, 0], scale: [0.8, 1.35, 1.6] }}
+                  transition={{ duration: 0.9, ease: 'easeOut' }}
+                  className="absolute inset-0 rounded-2xl pointer-events-none"
+                  style={{ boxShadow: '0 0 0 2px rgba(250,204,21,.45), 0 0 60px rgba(250,204,21,.35) inset' }}
+                />
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: [0, 0.8, 0] }}
+                  transition={{ duration: 0.25 }}
+                  className="absolute inset-0 bg-white/50 mix-blend-overlay"
+                />
+              </>
+            )}
           </motion.div>
 
           {/* Animation des cartes qui sortent */}
@@ -145,24 +225,27 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
                         scale: 0,
                         x: 0,
                         y: 0,
-                        opacity: 0
+                        opacity: 0,
+                        rotate: 0
                       }}
                       animate={{ 
-                        scale: 1,
+                        scale: position.scale,
                         x: position.x,
                         y: position.y,
-                        opacity: 1
+                        opacity: 1,
+                        rotate: position.rotate
                       }}
                       exit={{ 
                         scale: 0,
                         opacity: 0
                       }}
                       transition={{ 
-                        duration: 0.8,
-                        delay: index * 0.25,
+                        duration: 0.7,
+                        delay: index * 0.18 + (Math.random() * 0.06),
                         ease: "easeOut"
                       }}
-                      className="absolute w-32 h-44 md:w-48 md:h-64" // Taille adaptative des cartes
+                      className="absolute w-32 h-44 md:w-48 md:h-64 will-change-transform"
+                      style={{ zIndex: position.zIndex, boxShadow: '0 10px 24px rgba(0,0,0,0.35)' }}
                     >
                       <Image
                         src="/images/card-back.jpg"
@@ -175,9 +258,31 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
                     </motion.div>
                   )
                 })}
+                {/* Particules dorées */}
+                {Array.from({ length: 14 }).map((_, i) => (
+                  <div key={`gp-${i}`} className="gold-particle" style={{ left: `${45 + (i%6)*3}%`, animationDelay: `${i * 0.08}s` }} />
+                ))}
               </>
             )}
           </AnimatePresence>
+
+          {/* Flash directionnel court */}
+          {showFlash && (
+            <motion.div
+              className="absolute inset-0 pointer-events-none"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: [0, 0.9, 0] }}
+              transition={{ duration: 0.22, ease: 'easeOut' }}
+              style={{
+                background: 'radial-gradient(200px 120px at 60% 40%, rgba(255,255,255,.8), rgba(255,255,255,0) 70%)'
+              }}
+            />
+          )}
+
+          {/* Bouton Passer */}
+          <button onClick={skip} className="absolute bottom-6 right-6 bg-white/10 hover:bg-white/20 text-white text-sm font-medium px-3 py-1.5 rounded-lg border border-white/20 backdrop-blur-md">
+            Passer
+          </button>
         </div>
       )}
     </AnimatePresence>

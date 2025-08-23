@@ -148,23 +148,22 @@ async function generateBooster(setRules: MinimalSetRules): Promise<Card[]> {
   console.log(`[BOOSTER-GEN] Code du set normalisé: ${normalizedSetCode}`);
   const packSize = 12
   
-  // Distribution des cartes selon les règles avec leurs positions
-  // Les cartes les plus rares sont placées dans les derniers slots
-  const distribution = [
-    { rarity: 'C', count: 5, positions: [1, 2, 3, 4, 5] },
-    { rarity: 'UC', count: 3, positions: [6, 7, 8] },
-    { rarity: 'R', count: 2, positions: [9, 10] },
-    { rarity: 'SR', count: 0.5, positions: [11] }, // 50% de chance pour une SR
-    { rarity: 'R', count: 0.5, positions: [11] }, // 50% de chance pour une R
-    { rarity: 'R', count: 0.4, positions: [12] }, // 40% de chance pour une R
-    { rarity: 'SR', count: 0.2, positions: [12] }, // 20% de chance pour une SR
-    { rarity: 'L', count: 0.2, positions: [12] }, // 20% de chance pour une L
-    { rarity: 'SEC', count: 0.10, positions: [12] }, // 10% de chance pour une SEC
-    { rarity: 'SP CARD', count: 0.1, positions: [12] }, // 10% de chance pour une SP
-    { rarity: 'TR', count: 0.05, positions: [12] } // 5% de chance pour une TR
-  ];
-
-  console.log('[BOOSTER-GEN] Distribution des cartes:', distribution);
+  // Règles de slots pondérées plus flexibles (base safe + surprises)
+  const SLOT_RULES: Array<Record<string, number>> = [
+    { 'C': 1 }, // 1
+    { 'C': 1 }, // 2
+    { 'C': 1 }, // 3
+    { 'C': 1 }, // 4
+    { 'C': 1 }, // 5
+    { 'UC': 0.8, 'R': 0.2 }, // 6
+    { 'UC': 0.6, 'R': 0.3, 'SR': 0.1 }, // 7
+    { 'UC': 0.4, 'R': 0.4, 'SR': 0.2 }, // 8
+    { 'R': 0.6, 'SR': 0.3, 'L': 0.1 }, // 9
+    { 'R': 0.5, 'SR': 0.3, 'L': 0.15, 'SEC': 0.05 }, // 10
+    { 'R': 0.3, 'SR': 0.3, 'L': 0.2, 'SEC': 0.1, 'SP CARD': 0.05, 'TR': 0.05 }, // 11
+    { 'R': 0.25, 'SR': 0.25, 'L': 0.2, 'SEC': 0.15, 'SP CARD': 0.1, 'TR': 0.05 } // 12
+  ]
+  console.log('[BOOSTER-GEN] SLOT_RULES:', SLOT_RULES)
   
   // Récupérer toutes les cartes du set
   console.log(`[BOOSTER-GEN] Récupération des cartes pour le set ${normalizedSetCode}`);
@@ -191,7 +190,17 @@ async function generateBooster(setRules: MinimalSetRules): Promise<Card[]> {
     return match ? parseInt(match[1]!, 10) : 0
   }
 
-  // Fonction pour appliquer les taux de drop des alternatives
+  // Normalisation agressive des libellés de rareté pour éviter les ratés (SP, TR, espaces, casse)
+  const normalizeRarityName = (rarityRaw: string | null | undefined): string => {
+    const r = String(rarityRaw || '').trim().toUpperCase().replace(/\s+/g, ' ')
+    if (!r) return 'C'
+    if (r === 'SP' || r === 'S P' || r.includes('SP-') || r.includes('SPCARD') || r.includes('SP CARD')) return 'SP CARD'
+    if (r === 'TR' || r === 'T R' || r.includes('TREASURE')) return 'TR'
+    if (r === 'U') return 'UC'
+    return r
+  }
+
+  // Fonction pour appliquer les taux de drop des alternatives (hors SP/TR)
   const shouldIncludeAlt = (cardId: string): boolean => {
     const altLevel = getAltLevel(cardId);
     if (altLevel === 0) return true; // Carte normale
@@ -210,19 +219,25 @@ async function generateBooster(setRules: MinimalSetRules): Promise<Card[]> {
   };
 
   // Filtrer les cartes en fonction des taux de drop
-  const filteredCards = allCards.filter(card => shouldIncludeAlt(card.id));
+  const filteredCards = allCards.filter((card: Card) => {
+    const normRarity = normalizeRarityName(card.rarity as unknown as string)
+    // Ne jamais filtrer les SP/TR par le système d'alternatives
+    if (normRarity === 'SP CARD' || normRarity === 'TR') return true
+    return shouldIncludeAlt(card.id)
+  });
   
   console.log(`[BOOSTER-GEN] Nombre total de cartes récupérées: ${allCards.length}`);
   console.log(`[BOOSTER-GEN] Nombre de cartes après filtrage: ${filteredCards.length}`);
   console.log('[BOOSTER-GEN] Codes de set trouvés:', [...new Set(filteredCards.map(card => card.setCode))]);
   
-  // Grouper les cartes par rareté
+  // Grouper les cartes par rareté (normalisée)
   const cardsByRarity: Record<string, Card[]> = {}
-  filteredCards.forEach(card => {
-    if (!cardsByRarity[card.rarity]) {
-      cardsByRarity[card.rarity] = [];
+  filteredCards.forEach((card: Card) => {
+    const norm = normalizeRarityName(card.rarity as unknown as string)
+    if (!cardsByRarity[norm]) {
+      cardsByRarity[norm] = [];
     }
-    cardsByRarity[card.rarity].push(card);
+    cardsByRarity[norm].push(card as Card);
   });
   
   console.log('[BOOSTER-GEN] Cartes groupées par rareté:', 
@@ -281,115 +296,46 @@ async function generateBooster(setRules: MinimalSetRules): Promise<Card[]> {
     }
   }
   
-  // Position 10: Carte rare ou super rare (50% de chance pour chaque)
-  const isSuperRare10 = Math.random() < 0.5;
-  console.log(`[BOOSTER-GEN] Position 10: Tentative de sélection ${isSuperRare10 ? 'super rare' : 'rare'}`);
-  
-  if (isSuperRare10 && cardsByRarity['SR'] && cardsByRarity['SR'].length > 0) {
-    const randomIndex = Math.floor(Math.random() * cardsByRarity['SR'].length);
-    const selectedCard = cardsByRarity['SR'][randomIndex];
-    if (packSize > 9) booster[9] = selectedCard;
-    cardsByRarity['SR'].splice(randomIndex, 1);
-    console.log(`[BOOSTER-GEN] Position 10: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
-  } else if (cardsByRarity['R'] && cardsByRarity['R'].length > 0) {
-    const randomIndex = Math.floor(Math.random() * cardsByRarity['R'].length);
-    const selectedCard = cardsByRarity['R'][randomIndex];
-    if (packSize > 9) booster[9] = selectedCard;
-    cardsByRarity['R'].splice(randomIndex, 1);
-    console.log(`[BOOSTER-GEN] Position 10: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
-  } else if (cardsByRarity['UC'] && cardsByRarity['UC'].length > 0) {
-    // Fallback sur uncommon si pas de rare/super rare
-    const randomIndex = Math.floor(Math.random() * cardsByRarity['UC'].length);
-    const selectedCard = cardsByRarity['UC'][randomIndex];
-    if (packSize > 9) booster[9] = selectedCard;
-    cardsByRarity['UC'].splice(randomIndex, 1);
-    console.log(`[BOOSTER-GEN] Position 10: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}] (fallback UC)`);
-  } else {
-    console.log(`[BOOSTER-GEN] Position 10: Aucune carte rare/super rare/uncommon disponible`);
+  // Sélection par slots pondérés
+  const weightedPick = (weights: Record<string, number>): string | null => {
+    const entries = Object.entries(weights).filter(([r,w]) => w > 0)
+    const total = entries.reduce((s, [,w]) => s + w, 0)
+    if (total <= 0) return null
+    let t = Math.random() * total
+    for (const [rarity, w] of entries) {
+      t -= w
+      if (t <= 0) return rarity
+    }
+    return entries[entries.length-1]?.[0] ?? null
   }
-  
-  // Position 11: Carte rare ou super rare (50% de chance pour chaque)
-  const isSuperRare11 = Math.random() < 0.5;
-  console.log(`[BOOSTER-GEN] Position 11: Tentative de sélection ${isSuperRare11 ? 'super rare' : 'rare'}`);
-  
-  if (isSuperRare11 && cardsByRarity['SR'] && cardsByRarity['SR'].length > 0) {
-    const randomIndex = Math.floor(Math.random() * cardsByRarity['SR'].length);
-    const selectedCard = cardsByRarity['SR'][randomIndex];
-    if (packSize > 10) booster[10] = selectedCard;
-    cardsByRarity['SR'].splice(randomIndex, 1);
-    console.log(`[BOOSTER-GEN] Position 11: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
-  } else if (cardsByRarity['R'] && cardsByRarity['R'].length > 0) {
-    const randomIndex = Math.floor(Math.random() * cardsByRarity['R'].length);
-    const selectedCard = cardsByRarity['R'][randomIndex];
-    if (packSize > 10) booster[10] = selectedCard;
-    cardsByRarity['R'].splice(randomIndex, 1);
-    console.log(`[BOOSTER-GEN] Position 11: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
-  } else if (cardsByRarity['UC'] && cardsByRarity['UC'].length > 0) {
-    // Fallback sur uncommon si pas de rare/super rare
-    const randomIndex = Math.floor(Math.random() * cardsByRarity['UC'].length);
-    const selectedCard = cardsByRarity['UC'][randomIndex];
-    if (packSize > 10) booster[10] = selectedCard;
-    cardsByRarity['UC'].splice(randomIndex, 1);
-    console.log(`[BOOSTER-GEN] Position 11: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}] (fallback UC)`);
-  } else {
-    console.log(`[BOOSTER-GEN] Position 11: Aucune carte rare/super rare/uncommon disponible`);
+
+  const takeFromRarity = (rarity: string, slotIdx: number): boolean => {
+    const pool = cardsByRarity[rarity]
+    if (pool && pool.length > 0) {
+      const randomIndex = Math.floor(Math.random() * pool.length)
+      const selected = pool[randomIndex]
+      booster[slotIdx] = selected
+      pool.splice(randomIndex, 1)
+      console.log(`[BOOSTER-GEN] Position ${slotIdx+1}: ${selected.name} (${selected.rarity}) [${selected.id}] via ${rarity}`)
+      return true
+    }
+    return false
   }
-  
-  // Position 12: Distribution des raretés (R: 30%, SR: 20%, L: 20%, SEC: 15%, SP: 10%, TR: 5%)
-  const random = Math.random();
-  console.log(`[BOOSTER-GEN] Position 12: Tirage aléatoire = ${random}`);
-  
-  if (random < 0.3 && cardsByRarity['R'] && cardsByRarity['R'].length > 0) {
-    // 30% de chance pour une Rare
-    const randomIndex = Math.floor(Math.random() * cardsByRarity['R'].length);
-    const selectedCard = cardsByRarity['R'][randomIndex];
-    booster[11] = selectedCard;
-    cardsByRarity['R'].splice(randomIndex, 1);
-    console.log(`[BOOSTER-GEN] Position 12: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
-  } else if (random < 0.5 && cardsByRarity['SR'] && cardsByRarity['SR'].length > 0) {
-    // 20% de chance pour une Super Rare
-    const randomIndex = Math.floor(Math.random() * cardsByRarity['SR'].length);
-    const selectedCard = cardsByRarity['SR'][randomIndex];
-    booster[11] = selectedCard;
-    cardsByRarity['SR'].splice(randomIndex, 1);
-    console.log(`[BOOSTER-GEN] Position 12: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
-  } else if (random < 0.7 && cardsByRarity['L'] && cardsByRarity['L'].length > 0) {
-    // 20% de chance pour une Leader
-    const randomIndex = Math.floor(Math.random() * cardsByRarity['L'].length);
-    const selectedCard = cardsByRarity['L'][randomIndex];
-    booster[11] = selectedCard;
-    cardsByRarity['L'].splice(randomIndex, 1);
-    console.log(`[BOOSTER-GEN] Position 12: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
-  } else if (random < 0.85 && cardsByRarity['SEC'] && cardsByRarity['SEC'].length > 0) {
-    // 15% de chance pour une Secrète
-    const randomIndex = Math.floor(Math.random() * cardsByRarity['SEC'].length);
-    const selectedCard = cardsByRarity['SEC'][randomIndex];
-    booster[11] = selectedCard;
-    cardsByRarity['SEC'].splice(randomIndex, 1);
-    console.log(`[BOOSTER-GEN] Position 12: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
-  } else if (random < 0.95 && cardsByRarity['SP CARD'] && cardsByRarity['SP CARD'].length > 0) {
-    // 10% de chance pour une SP
-    const randomIndex = Math.floor(Math.random() * cardsByRarity['SP CARD'].length);
-    const selectedCard = cardsByRarity['SP CARD'][randomIndex];
-    booster[11] = selectedCard;
-    cardsByRarity['SP CARD'].splice(randomIndex, 1);
-    console.log(`[BOOSTER-GEN] Position 12: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
-  } else if (cardsByRarity['TR'] && cardsByRarity['TR'].length > 0) {
-    // 5% de chance pour une TR
-    const randomIndex = Math.floor(Math.random() * cardsByRarity['TR'].length);
-    const selectedCard = cardsByRarity['TR'][randomIndex];
-    booster[11] = selectedCard;
-    cardsByRarity['TR'].splice(randomIndex, 1);
-    console.log(`[BOOSTER-GEN] Position 12: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}]`);
-  } else if (cardsByRarity['R'] && cardsByRarity['R'].length > 0) {
-    // Fallback sur rare si aucune autre carte n'est disponible
-    const randomIndex = Math.floor(Math.random() * cardsByRarity['R'].length);
-    const selectedCard = cardsByRarity['R'][randomIndex];
-    booster[11] = selectedCard;
-    cardsByRarity['R'].splice(randomIndex, 1);
-    console.log(`[BOOSTER-GEN] Position 12: ${selectedCard.name} (${selectedCard.rarity}) [${selectedCard.id}] (fallback R)`);
-  } else {
-    console.log(`[BOOSTER-GEN] Position 12: Aucune carte disponible`);
+
+  for (let slot = 0; slot < packSize; slot++) {
+    const weights = SLOT_RULES[slot]
+    if (!weights) continue
+    // Essaie 3 tirages max avant fallback
+    let ok = false
+    for (let tries = 0; tries < 3 && !ok; tries++) {
+      const pick = weightedPick(weights)
+      if (pick) ok = takeFromRarity(pick, slot)
+    }
+    if (!ok) {
+      // Fallback ordonné
+      const order = ['UC','C','R','SR','L','SEC','SP CARD','TR']
+      for (const r of order) { if (takeFromRarity(r, slot)) { ok = true; break } }
+    }
   }
   
   // Vérifier et remplir les positions vides avec des cartes communes si possible
@@ -433,6 +379,25 @@ async function generateBooster(setRules: MinimalSetRules): Promise<Card[]> {
     }
   }
   
+  // Chance globale de "God Pack" (1%) : transforme tous les slots en hauts tirages
+  const GOD_PACK_CHANCE = 0.01 // 1%
+  if (Math.random() < GOD_PACK_CHANCE) {
+    console.log('[BOOSTER-GEN] GOD PACK ACTIVÉ — tous les slots upgradés')
+    const godWeights: Record<string, number> = { 'SR': 0.5, 'L': 0.2, 'SEC': 0.15, 'SP CARD': 0.1, 'TR': 0.05 }
+    for (let slot = 0; slot < booster.length; slot++) {
+      // si déjà une très bonne carte, on laisse; sinon on sur-tire
+      const current = booster[slot]
+      const rarity = current?.rarity ? normalizeRarityName(current.rarity as unknown as string) : ''
+      if (!['SR','L','SEC','SP CARD','TR'].includes(rarity)) {
+        let ok = false
+        for (let tries = 0; tries < 3 && !ok; tries++) {
+          const pick = weightedPick(godWeights)
+          if (pick && takeFromRarity(pick, slot)) ok = true
+        }
+      }
+    }
+  }
+
   console.log('[BOOSTER-GEN] Contenu final du booster:');
   booster.forEach((card, index) => {
     if (card) {

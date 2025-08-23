@@ -554,35 +554,36 @@ export default function CollectionPage() {
 
   return (
     <div className="container mx-auto max-w-7xl relative z-10 p-4 pt-20">
-      <h1 className="text-3xl md:text-4xl font-bold mb-6 md:mb-8 text-center">
-        <span className="bg-gradient-to-r from-red-600 via-red-500 to-orange-500 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
-          Prison de Collection - Niveau 6
-        </span>
-      </h1>
+      <div className="text-center mb-6 md:mb-8">
+        <h1 className="text-3xl md:text-4xl font-bold">
+          <span className="bg-gradient-to-r from-cyan-400 via-blue-400 to-indigo-400 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
+            Collection – Impel Down
+          </span>
+        </h1>
+        <p className="text-sm text-blue-200/80 mt-1">Mobile‑first • Filtres rapides • Visuels modernisés</p>
+      </div>
       
-      {/* Statistiques avec thème prison */}
-      <div className="bg-[#1B2A4A]/80 rounded-lg shadow-xl p-4 md:p-6 backdrop-blur-sm border border-red-900/30 mb-6">
+      {/* Statistiques compactes */}
+      <div className="bg-white/5 rounded-xl shadow-xl p-4 md:p-6 backdrop-blur-md border border-white/10 mb-6">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="flex flex-col items-center justify-center p-4 bg-[#0B1120]/50 rounded-lg border border-red-900/20">
-            <h3 className="text-lg font-semibold text-red-400">Prisonniers Capturés</h3>
-            <p className="text-3xl font-bold text-red-500">{cards.length}</p>
+          <div className="flex flex-col items-center justify-center p-4 bg-[#0B1120]/40 rounded-lg border border-white/10">
+            <h3 className="text-sm font-semibold text-blue-300">Cartes</h3>
+            <p className="text-2xl font-bold text-blue-200">{cards.length}</p>
           </div>
-          
-          <div className="flex flex-col items-center justify-center p-4 bg-[#0B1120]/50 rounded-lg border border-red-900/20">
-            <h3 className="text-lg font-semibold text-red-400">Criminels Recherchés</h3>
-            <p className="text-3xl font-bold text-red-500">{allCards.length || 2250}</p>
+          <div className="flex flex-col items-center justify-center p-4 bg-[#0B1120]/40 rounded-lg border border-white/10">
+            <h3 className="text-sm font-semibold text-blue-300">Catalogue</h3>
+            <p className="text-2xl font-bold text-blue-200">{allCards.length || 2250}</p>
           </div>
-          
-          <div className="flex flex-col items-center justify-center p-4 bg-[#0B1120]/50 rounded-lg border border-red-900/20">
-            <h3 className="text-lg font-semibold text-red-400">Taux de Capture</h3>
+          <div className="flex flex-col items-center justify-center p-4 bg-[#0B1120]/40 rounded-lg border border-white/10">
+            <h3 className="text-sm font-semibold text-blue-300">Taux de collection</h3>
             <div className="w-full max-w-xs mx-auto mt-2">
-              <div className="h-4 bg-[#0B1120] rounded-full overflow-hidden border border-red-900/20">
-                <div 
-                  className="h-full bg-gradient-to-r from-red-700 to-red-500" 
+              <div className="h-3 bg-[#0B1120] rounded-full overflow-hidden border border-white/10">
+                <div
+                  className="h-full bg-gradient-to-r from-cyan-500 to-indigo-500"
                   style={{ width: `${Math.round((cards.length / (allCards.length || 2250)) * 100)}%` }}
                 ></div>
               </div>
-              <p className="text-2xl font-bold text-red-500 mt-1">
+              <p className="text-xl font-bold text-blue-200 mt-1">
                 {Math.round((cards.length / (allCards.length || 2250)) * 100)}%
               </p>
             </div>
