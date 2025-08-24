@@ -1,11 +1,12 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import Link from 'next/link'
 import Image from 'next/image'
-import { Plus, Edit, Play, Swords, Users, Scroll } from 'lucide-react'
+import { Plus, Edit, Play, Swords, Users, Scroll, Trash2 } from 'lucide-react'
 
 interface Card {
   id: string
@@ -36,6 +37,27 @@ export default function DecksPage() {
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const [isMobile, setIsMobile] = useState(false)
+  const searchParams = useSearchParams()
+  const deleted = searchParams?.get('deleted') === '1'
+
+  const deleteDeck = async (deckId: string) => {
+    const ok = window.confirm('Supprimer ce deck ? Cette action est définitive.')
+    if (!ok) return
+    const prev = decks
+    setDecks((d) => d.filter((x) => x.id !== deckId))
+    try {
+      const res = await fetch(`/api/decks/${deckId}`, { method: 'DELETE', credentials: 'include' })
+      if (!res.ok) {
+        type ErrorShape = { error?: string }
+        const data: ErrorShape = await res.json().catch(() => ({} as ErrorShape))
+        throw new Error(data.error || 'Suppression impossible')
+      }
+    } catch (e) {
+      console.error('Suppression deck échouée:', e)
+      setDecks(prev) // rollback
+      alert(e instanceof Error ? e.message : 'Erreur lors de la suppression')
+    }
+  }
 
   useEffect(() => {
     const fetchDecks = async () => {
@@ -114,6 +136,11 @@ export default function DecksPage() {
     <>
     <div className="container mx-auto px-4 py-8">
       <div className="relative">
+        {deleted && (
+          <div className="mb-4 rounded-lg border border-green-500/20 bg-green-500/10 text-green-200 px-4 py-3">
+            Deck supprimé.
+          </div>
+        )}
         {/* En-tête avec effet de haki */}
         <div className="mb-12 relative">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6 relative">
@@ -176,6 +203,9 @@ export default function DecksPage() {
                             <Play className="h-4 w-4" />
                           </Button>
                         </Link>
+                        <Button aria-label={`Supprimer le deck ${deck.name}`} variant="ghost" size="sm" className="h-9 w-9 rounded-lg bg-white/5 hover:bg-white/10 text-white/80" onClick={() => deleteDeck(deck.id)}>
+                          <Trash2 className="h-4 w-4" />
+                        </Button>
                       </div>
                     ) : null}
                   </div>
@@ -237,6 +267,7 @@ export default function DecksPage() {
                       <Link href={`/game?deckId=${deck.id}`}>
                         <Button className="w-full bg-red-600 hover:bg-red-500 text-white">Jouer</Button>
                       </Link>
+                      <Button onClick={() => deleteDeck(deck.id)} className="col-span-2 w-full bg-white/10 hover:bg-white/20 text-white">Supprimer</Button>
                     </div>
                   )}
                 </div>

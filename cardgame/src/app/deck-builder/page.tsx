@@ -8,7 +8,7 @@ import { Button } from '@/components/ui/button'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
 import Image from 'next/image'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { ChevronLeft, ChevronRight } from 'lucide-react'
+import { ChevronLeft, ChevronRight, Trash2 } from 'lucide-react'
 import CardModal from '@/components/CardModal'
 import Link from 'next/link'
 
@@ -26,6 +26,8 @@ interface DeckCard {
   rarity: string
   imageUrl: string
   set?: string
+  setCode?: string
+  code?: string
   attribute?: string
   attributeImage?: string
   family?: string
@@ -48,6 +50,7 @@ export default function DeckBuilderPage() {
     type: 'all',
     color: 'all',
     rarity: 'all',
+    set: 'all',
     favoritesOnly: false,
     onlyOwned: false,
     leadersFirst: false
@@ -246,6 +249,20 @@ export default function DeckBuilderPage() {
     }
   };
 
+  const availableSetOptions = useMemo(() => {
+    const deriveSet = (c: DeckCard) => {
+      if (c.set && typeof c.set === 'string' && c.set.trim().length > 0) return c.set.trim()
+      if (c.setCode && typeof c.setCode === 'string' && c.setCode.trim().length > 0) return c.setCode.trim()
+      if (c.code && typeof c.code === 'string' && c.code.includes('-')) return c.code.split('-')[0]
+      return 'Autres'
+    }
+    const setLabels = new Set<string>()
+    for (const c of availableCards) {
+      setLabels.add(deriveSet(c))
+    }
+    return Array.from(setLabels).filter(Boolean).sort((a, b) => a.localeCompare(b))
+  }, [availableCards])
+
   const filteredCards = useMemo(() => {
     const list = availableCards.filter(card => {
       if (filters.search && !card.name.toLowerCase().includes(filters.search.toLowerCase())) {
@@ -254,6 +271,10 @@ export default function DeckBuilderPage() {
       if (filters.type !== 'all' && card.type !== filters.type) return false
       if (filters.color !== 'all' && card.color !== filters.color) return false
       if (filters.rarity !== 'all' && card.rarity !== filters.rarity) return false
+      if (filters.set !== 'all') {
+        const label = (card.set && card.set.trim()) || (card.setCode && card.setCode.trim()) || (card.code && card.code.split('-')[0]) || 'Autres'
+        if (label !== filters.set) return false
+      }
       if (filters.favoritesOnly && !card.isFavorite) return false
       if (filters.onlyOwned && (card.quantity || 0) <= 0) return false
       return true
@@ -355,6 +376,22 @@ export default function DeckBuilderPage() {
     }
   };
 
+  const deleteDeck = async () => {
+    if (!isEditing || !deckId) return
+    const ok = window.confirm('Supprimer ce deck ?')
+    if (!ok) return
+    try {
+      const res = await fetch(`/api/decks/${deckId}`, { method: 'DELETE', credentials: 'include' })
+      if (!res.ok) {
+        const data: { error?: string } = await res.json().catch(() => ({} as { error?: string }))
+        throw new Error(data.error || 'Suppression impossible')
+      }
+      router.push('/decks?deleted=1')
+    } catch (e) {
+      alert(e instanceof Error ? e.message : 'Erreur lors de la suppression')
+    }
+  }
+
   const handleCardClick = (card: DeckCard) => {
     if (isMobile) {
       addCardToDeck(card)
@@ -398,12 +435,23 @@ export default function DeckBuilderPage() {
                 {isEditing ? 'Modifier le Deck' : 'Créateur de Deck'}
               </span>
             </h1>
-            <Link href="/decks">
-              <Button className="relative group overflow-hidden bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-500 hover:to-red-500 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,165,0,0.3)] transform">
-                <div className="absolute inset-0 bg-[url('/images/deck/explosion.png')] bg-cover opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
-                <span className="relative z-10">Retour aux Decks</span>
-              </Button>
-            </Link>
+            <div className="flex gap-3">
+              {isEditing && (
+                <Button
+                  onClick={deleteDeck}
+                  className="relative bg-white/10 hover:bg-white/20 text-white px-4 py-3 rounded-xl transition-all duration-300 hover:scale-105"
+                  title="Supprimer ce deck"
+                >
+                  <Trash2 className="h-5 w-5" />
+                </Button>
+              )}
+              <Link href="/decks">
+                <Button className="relative group overflow-hidden bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-500 hover:to-red-500 text-white px-6 py-3 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-[0_0_20px_rgba(255,165,0,0.3)] transform">
+                  <div className="absolute inset-0 bg-[url('/images/deck/explosion.png')] bg-cover opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
+                  <span className="relative z-10">Retour aux Decks</span>
+                </Button>
+              </Link>
+            </div>
           </div>
         </div>
         
@@ -488,6 +536,23 @@ export default function DeckBuilderPage() {
                     <SelectItem value="SR" className="text-white hover:bg-gray-700">Super Rare</SelectItem>
                     <SelectItem value="L" className="text-white hover:bg-gray-700">Légendaire</SelectItem>
                     <SelectItem value="SEC" className="text-white hover:bg-gray-700">Secret Rare</SelectItem>
+                  </SelectContent>
+                </Select>
+                <Select
+                  value={filters.set}
+                  onValueChange={(value) => {
+                    setFilters(prev => ({ ...prev, set: value }))
+                    setCurrentPage(1)
+                  }}
+                >
+                  <SelectTrigger className="bg-gray-700/50 border-gray-600 text-white">
+                    <SelectValue placeholder="Set" />
+                  </SelectTrigger>
+                  <SelectContent className="bg-gray-800 border-gray-700 max-h-80">
+                    <SelectItem value="all" className="text-white hover:bg-gray-700">Tous les sets</SelectItem>
+                    {availableSetOptions.map((s) => (
+                      <SelectItem key={s} value={s} className="text-white hover:bg-gray-700">{s}</SelectItem>
+                    ))}
                   </SelectContent>
                 </Select>
                 <div className="flex items-center gap-2">

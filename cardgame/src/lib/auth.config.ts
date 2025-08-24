@@ -131,39 +131,8 @@ export const authConfig = {
           ? (profile as { email_verified?: boolean }).email_verified
           : undefined
         if (verified === false) return false
-        // Marquer email vérifié en base si succès Google
-        if (verified && user?.email) {
-          await prisma.user.update({ where: { id: user.id }, data: { emailVerified: new Date() } })
-        }
       }
-      // Email magic link: marquer email vérifié
-      if (account?.provider === 'email' && user?.id) {
-        await prisma.user.update({ where: { id: user.id }, data: { emailVerified: new Date() } })
-      }
-      // Si c'est un nouvel utilisateur OAuth
-      if (account?.provider !== 'credentials' && user) {
-        // Vérifier si l'utilisateur a déjà des decks
-        const userWithDecks = await prisma.user.findUnique({
-          where: { id: user.id },
-          include: { decks: true }
-        })
-
-        // Si l'utilisateur n'a pas de decks, ajouter les decks de démarrage
-        if (userWithDecks && userWithDecks.decks.length === 0) {
-          // Lancer l'association des decks de démarrage en arrière-plan
-          setTimeout(async () => {
-            try {
-              await addStarterDeckCardsToUser(user.id)
-              console.log(`Decks de démarrage ajoutés avec succès pour l'utilisateur ${user.id}`)
-            } catch (error) {
-              console.error('Erreur lors de l\'association des decks de démarrage:', error)
-            }
-          }, 100)
-        }
-      }
-
       // Les nouveaux comptes credentials sont gérés lors de l'inscription (API register)
-
       return true
     },
     async jwt({ token, user, account }) {
@@ -188,6 +157,32 @@ export const authConfig = {
       }
       return session
     }
+  },
+  events: {
+    // Lorsqu'un compte OAuth est lié/créé → marquer l'email comme vérifié
+    async linkAccount({ user, account }) {
+      try {
+        if ((account?.provider === 'google' || account?.provider === 'email') && user?.id) {
+          await prisma.user.update({ where: { id: user.id }, data: { emailVerified: new Date() } })
+        }
+      } catch (e) {
+        console.error('events.linkAccount error:', e)
+      }
+    },
+    // À la création d'un nouvel utilisateur (OAuth) → provisionner cartes ST + decks
+    async createUser({ user }) {
+      try {
+        if (!user?.id) return
+        const found = await prisma.user.findUnique({ where: { id: user.id } })
+        if (!found) return
+        if (found.hasStarterDecks) return
+        await addStarterDeckCardsToUser(user.id)
+        await prisma.user.update({ where: { id: user.id }, data: { hasStarterDecks: true } })
+        console.log(`[auth] Starter ST + decks provisionnés pour ${user.id}`)
+      } catch (e) {
+        console.error('events.createUser error:', e)
+      }
+    },
   },
   session: {
     strategy: "jwt",
