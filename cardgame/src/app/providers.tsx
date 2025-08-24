@@ -11,6 +11,7 @@ import {
   Suspense
 } from 'react'
 import { SessionProvider } from 'next-auth/react'
+import { signOut } from 'next-auth/react'
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from 'sonner'
 import { Analytics } from '@vercel/analytics/react'
@@ -203,6 +204,33 @@ function ProvidersInitializer({
 
     initializeProviders()
   }, [config])
+
+  // Déconnexion automatique après inactivité (client)
+  useEffect(() => {
+    let timer: number | null = null
+    const inactivityMs = Number(process.env.NEXT_PUBLIC_INACTIVITY_TIMEOUT_MS || 15 * 60 * 1000) // défaut 15 min
+    const reset = () => {
+      if (timer) window.clearTimeout(timer)
+      timer = window.setTimeout(async () => {
+        try {
+          await signOut({ callbackUrl: '/login' })
+        } catch {}
+      }, inactivityMs) as unknown as number
+    }
+    const onActivity = () => reset()
+    reset()
+    window.addEventListener('mousemove', onActivity)
+    window.addEventListener('keydown', onActivity)
+    window.addEventListener('click', onActivity)
+    window.addEventListener('scroll', onActivity)
+    return () => {
+      if (timer) window.clearTimeout(timer)
+      window.removeEventListener('mousemove', onActivity)
+      window.removeEventListener('keydown', onActivity)
+      window.removeEventListener('click', onActivity)
+      window.removeEventListener('scroll', onActivity)
+    }
+  }, [])
 
   if (error) {
     return (

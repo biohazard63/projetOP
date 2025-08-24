@@ -186,8 +186,10 @@ export const authConfig = {
   },
   session: {
     strategy: "jwt",
-    maxAge: 24 * 60 * 60, // 24 heures
-    updateAge: 60 * 60, // 1 heure
+    // Durée de session (inactivité serveur) configurable via env
+    // Par défaut: 30 minutes d'inactivité, rolling toutes les 5 minutes si activité
+    maxAge: parseInt(process.env.SESSION_MAX_AGE_SECONDS || `${30 * 60}`, 10),
+    updateAge: parseInt(process.env.SESSION_UPDATE_AGE_SECONDS || `${5 * 60}`, 10),
   },
   secret: process.env.NEXTAUTH_SECRET,
   debug: process.env.NODE_ENV === 'development'
