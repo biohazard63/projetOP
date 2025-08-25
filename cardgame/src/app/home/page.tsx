@@ -3,7 +3,7 @@
 import Link from 'next/link'
 import Image from 'next/image'
 import { useEffect, useRef, useState } from 'react'
-import { Ship, Scroll, Sword, Trophy, Package, Star, Globe, FlaskConical, Users, HelpCircle, Images } from 'lucide-react'
+import { Ship, Scroll, Sword, Trophy, Package, Star, Globe, FlaskConical, Users, HelpCircle, Images, Download, ArrowRight } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const features = [
@@ -374,9 +374,33 @@ export default function HomePage() {
             <Link href="https://discord.gg/8Z8tUY85" target="_blank" rel="noopener noreferrer" className="group">
               <span className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-400 hover:to-violet-500 transition-all">Rejoindre le Discord</span>
             </Link>
-          {/*   <Link href="#download" className="group">
-              <span className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white/90 border border-white/15 hover:text-white hover:border-white/30 transition-all">Télécharger l’application</span>
-            </Link> */}
+            <button
+              id="install-pwa-btn"
+              className="group flex items-center space-x-3 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-[0_12px_40px_rgba(255,170,40,.45)] ring-1 ring-amber-300/60"
+              onClick={() => {
+                // Vérifier si l'installation PWA est supportée
+                const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+                
+                if (isStandalone) {
+                  alert('L\'app est déjà installée !')
+                  return
+                }
+                
+                if (isIOS) {
+                  alert('Sur iOS, utilise le bouton "Partager" puis "Sur l\'écran d\'accueil"')
+                  return
+                }
+                
+                // Déclencher l'installation PWA
+                const event = new Event('beforeinstallprompt')
+                window.dispatchEvent(event)
+              }}
+            >
+              <Download className="w-5 h-5" />
+              <span>Télécharger l&apos;app</span>
+              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            </button>
           </div>
         </div>
       </section>

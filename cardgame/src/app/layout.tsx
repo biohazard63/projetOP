@@ -6,12 +6,24 @@ import { Providers } from './providers'
 import { Footer } from '@/components/Footer'
 import { Analytics } from '@vercel/analytics/react'
 import { cn } from "@/lib/utils"
+import { PWAInstallPrompt } from '@/components/PWAInstallPrompt'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'One Piece Card Game',
-  description: 'Mugiwara TCG – L’application fan-made française du One Piece Card Game. Ouvre des boosters réalistes, collectionne tes cartes et affronte d’autres joueurs pirates.',
+  description: 'Mugiwara TCG – L\'application fan-made française du One Piece Card Game. Ouvre des boosters réalistes, collectionne tes cartes et affronte d\'autres joueurs pirates.',
+  manifest: '/manifest.json',
+  themeColor: '#f59e0b',
+  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: 'default',
+    title: 'Mugiwara TCG',
+  },
+  formatDetection: {
+    telephone: false,
+  },
 }
 
 // Note: variante de layout réservée pour usage futur (supprimée pour éviter warn unused)
@@ -47,6 +59,7 @@ export default function RootLayout({
             <Footer />
           </div>
         </Providers>
+        <PWAInstallPrompt />
         <Analytics />
       </body>
     </html>
