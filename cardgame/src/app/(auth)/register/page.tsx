@@ -22,22 +22,27 @@ export default function RegisterPage() {
     return emailRegex.test(email)
   }
 
-  // Fonction de validation du mot de passe
+  // Validation du mot de passe alignée sur l'API (min 8, 3 catégories sur 4)
   const isValidPassword = (password: string) => {
-    // Au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial
-    const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$/
-    return passwordRegex.test(password)
+    const pw = (password || '').trim()
+    if (pw.length < 8 || pw.length > 72) return false
+    const hasUpper = /[A-Z]/.test(pw)
+    const hasLower = /[a-z]/.test(pw)
+    const hasNum = /[0-9]/.test(pw)
+    const hasSym = /[^A-Za-z0-9]/.test(pw) // accepter tous les symboles
+    const score = [hasUpper, hasLower, hasNum, hasSym].filter(Boolean).length
+    return score >= 3
   }
 
-  // Fonction pour calculer la force du mot de passe
+  // Force du mot de passe: min 8 + points pour maj/min/chiffre/symbole
   const calculatePasswordStrength = (password: string) => {
     let strength = 0
     if (password.length >= 8) strength += 1
     if (/[A-Z]/.test(password)) strength += 1
     if (/[a-z]/.test(password)) strength += 1
     if (/[0-9]/.test(password)) strength += 1
-    if (/[@$!%*?&]/.test(password)) strength += 1
-    return strength
+    if (/[^A-Za-z0-9]/.test(password)) strength += 1
+    return Math.min(strength, 5)
   }
 
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -198,7 +203,6 @@ export default function RegisterPage() {
                 autoComplete="new-password"
                 required
                 minLength={8}
-                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
                 onChange={handlePasswordChange}
                 placeholder="••••••••"
                 className="bg-white/5 border-white/10 text-white placeholder-white/50 focus-visible:ring-orange-500"
@@ -212,9 +216,7 @@ export default function RegisterPage() {
                     transition={{ duration: 0.3 }}
                   />
                 </div>
-                <p className="text-xs text-white/70 mt-1">
-                  Force du mot de passe: {passwordStrength}/5
-                </p>
+                <p className="text-xs text-white/70 mt-1">Force du mot de passe: {passwordStrength}/5</p>
               </div>
             </div>
 
@@ -229,7 +231,6 @@ export default function RegisterPage() {
                 autoComplete="new-password"
                 required
                 minLength={8}
-                pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
                 placeholder="••••••••"
                 className="bg-white/5 border-white/10 text-white placeholder-white/50 focus-visible:ring-orange-500"
               />
@@ -247,10 +248,11 @@ export default function RegisterPage() {
             <p className="text-sm font-medium text-white/90 mb-2">Le mot de passe doit contenir :</p>
             <ul className="text-sm text-white/70 space-y-1">
               <li className="flex items-center"><span className={`h-2 w-2 rounded-full mr-2 ${passwordStrength >= 1 ? 'bg-green-400' : 'bg-white/30'}`} />Au moins 8 caractères</li>
-              <li className="flex items-center"><span className={`h-2 w-2 rounded-full mr-2 ${passwordStrength >= 2 ? 'bg-green-400' : 'bg-white/30'}`} />Une lettre majuscule</li>
-              <li className="flex items-center"><span className={`h-2 w-2 rounded-full mr-2 ${passwordStrength >= 3 ? 'bg-green-400' : 'bg-white/30'}`} />Une lettre minuscule</li>
-              <li className="flex items-center"><span className={`h-2 w-2 rounded-full mr-2 ${passwordStrength >= 4 ? 'bg-green-400' : 'bg-white/30'}`} />Un chiffre</li>
-              <li className="flex items-center"><span className={`h-2 w-2 rounded-full mr-2 ${passwordStrength >= 5 ? 'bg-green-400' : 'bg-white/30'}`} />Un caractère spécial (@$!%*?&)</li>
+              <li className="flex items-center"><span className={`h-2 w-2 rounded-full mr-2 ${/[A-Z]/.test((document.getElementById('password') as HTMLInputElement)?.value || '') ? 'bg-green-400' : 'bg-white/30'}`} />Une lettre majuscule</li>
+              <li className="flex items-center"><span className={`h-2 w-2 rounded-full mr-2 ${/[a-z]/.test((document.getElementById('password') as HTMLInputElement)?.value || '') ? 'bg-green-400' : 'bg-white/30'}`} />Une lettre minuscule</li>
+              <li className="flex items-center"><span className={`h-2 w-2 rounded-full mr-2 ${/[0-9]/.test((document.getElementById('password') as HTMLInputElement)?.value || '') ? 'bg-green-400' : 'bg-white/30'}`} />Un chiffre</li>
+              <li className="flex items-center"><span className={`h-2 w-2 rounded-full mr-2 ${/[^A-Za-z0-9]/.test((document.getElementById('password') as HTMLInputElement)?.value || '') ? 'bg-green-400' : 'bg-white/30'}`} />Un symbole (n’importe lequel)</li>
+              <li className="flex items-center text-white/60"><span className="h-2 w-2 rounded-full mr-2 bg-white/30" />Au moins 3 catégories sur 4 sont requises</li>
             </ul>
           </div>
 
