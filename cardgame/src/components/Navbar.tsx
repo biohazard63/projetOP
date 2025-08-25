@@ -45,13 +45,13 @@ const navigation = [
     description: 'Voir votre collection',
     badge: null
   },
-  { 
+  /* { 
     name: 'Jouer', 
     href: '/game', 
     icon: Sword,
     description: 'Lancer une partie',
     badge: null
-  },
+  }, */
 ] as const
 
 type NavbarProps = {
