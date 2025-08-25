@@ -250,6 +250,11 @@ export function Navbar({ variant = 'default', className }: NavbarProps) {
     return () => document.removeEventListener('keydown', onKeyDown)
   }, [])
 
+  // Fermer automatiquement le menu mobile lors d'un changement de page
+  useEffect(() => {
+    setIsMenuOpen(false)
+  }, [pathname])
+
   if (!mounted) {
     return null
   }

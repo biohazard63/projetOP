@@ -1,7 +1,7 @@
 'use client'
 
 import { useState, useEffect, useMemo, useCallback, useTransition } from 'react'
-// import { useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
 import { Card as UICard } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
@@ -40,7 +40,7 @@ interface DeckCard {
 }
 
 export default function DeckBuilderPage() {
-  // const { data: session } = useSession()
+  const { status } = useSession()
   const [availableCards, setAvailableCards] = useState<DeckCard[]>([])
   // État supprimé (non utilisé)
   const [loading, setLoading] = useState(true)
@@ -77,6 +77,13 @@ export default function DeckBuilderPage() {
     window.addEventListener('resize', check)
     return () => window.removeEventListener('resize', check)
   }, [])
+
+  // Redirection si non connecté
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push(`/login?callbackUrl=${encodeURIComponent('/deck-builder')}`)
+    }
+  }, [status, router])
 
   useEffect(() => {
     const fetchCards = async () => {

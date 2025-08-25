@@ -98,12 +98,10 @@ export default function HomePage() {
     },
     {
       q: 'Puis-je jouer en ligne avec mes amis ?',
-      a: 'Un mode multijoueur (bêta) est disponible. Les fonctionnalités évoluent progressivement.'
+      a: 'Un mode multijoueur (bêta) sera bientôt disponible. Les fonctionnalités évoluent progressivement.'
     },
-    {
-      q: 'Comment installer l’app sur mobile/PC ?',
-      a: 'Accède à la section Télécharger pour les instructions iOS/Android/Desktop (PWA).' 
-    }
+    
+   
   ]
 
   const faqSchema = {

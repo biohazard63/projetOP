@@ -1,49 +1,64 @@
-import { useCallback } from 'react'
+import { useCallback, useEffect, useState } from 'react'
+
+function isMobileDevice() {
+  if (typeof window === 'undefined') return false
+  const ua = navigator.userAgent || navigator.vendor || ''
+  return /android|iphone|ipad|ipod|mobile/i.test(ua) || window.innerWidth < 768
+}
+
+const STORAGE_KEY = 'mugiwara:soundsEnabled'
+
+export function useSoundSetting() {
+  const [soundsEnabled, setSoundsEnabled] = useState<boolean>(() => {
+    if (typeof window === 'undefined') return true
+    const stored = window.localStorage.getItem(STORAGE_KEY)
+    if (stored === 'true') return true
+    if (stored === 'false') return false
+    // Par défaut: désactiver sur mobile pour respecter le mode silencieux, activer sur desktop
+    return !isMobileDevice()
+  })
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      window.localStorage.setItem(STORAGE_KEY, String(soundsEnabled))
+    }
+  }, [soundsEnabled])
+
+  return { soundsEnabled, setSoundsEnabled }
+}
 
 export function useAudio() {
+  const { soundsEnabled } = useSoundSetting()
+
+  const playIfAllowed = useCallback((src: string, maxMs = 2500) => {
+    if (!soundsEnabled) return
+    try {
+      const audio = new Audio(src)
+      audio.play().catch(() => { /* silencieux/autoplay bloqué: on ignore */ })
+      window.setTimeout(() => { try { audio.pause(); audio.currentTime = 0 } catch {} }, maxMs)
+    } catch {}
+  }, [soundsEnabled])
+
   const playRareCardSound = useCallback(() => {
-    const audio = new Audio('/sounds/rare-card.mp3')
-    audio.play().catch(error => console.error('Erreur lors de la lecture du son:', error))
-    // Arrêter le son après 5 secondes
-    setTimeout(() => {
-      audio.pause()
-      audio.currentTime = 0
-    }, 2500)
-  }, [])
+    playIfAllowed('/sounds/rare-card.mp3')
+  }, [playIfAllowed])
 
   const playAltArtSound = useCallback(() => {
-    const audio = new Audio('/sounds/alt-art.mp3')
-    audio.play().catch(error => console.error('Erreur lors de la lecture du son:', error))
-    // Arrêter le son après 5 secondes
-    setTimeout(() => {
-      audio.pause()
-      audio.currentTime = 0
-    }, 2500)
-  }, [])
+    playIfAllowed('/sounds/alt-art.mp3')
+  }, [playIfAllowed])
 
 
 
   const playUltraRareSound = useCallback(() => {
-    const audio = new Audio('/sounds/ultra-rare.mp3')
-    audio.play().catch(error => console.error('Erreur lors de la lecture du son:', error))
-    // Arrêter le son après 5 secondes
-    setTimeout(() => {
-      audio.pause()
-      audio.currentTime = 0
-    }, 2500)
-  }, [])
+    playIfAllowed('/sounds/ultra-rare.mp3')
+  }, [playIfAllowed])
 
   const playNewCardSound = useCallback(() => {
-    const audio = new Audio('/sounds/new-card.mp3')
-    audio.play().catch(error => console.error('Erreur lors de la lecture du son:', error))
-    // Arrêter le son après 5 secondes
-    setTimeout(() => {
-      audio.pause()
-      audio.currentTime = 0
-    }, 2500)
-  }, [])
+    playIfAllowed('/sounds/new-card.mp3')
+  }, [playIfAllowed])
 
   return {
+    useSoundSetting,
     playRareCardSound,
     playAltArtSound,
     playUltraRareSound,

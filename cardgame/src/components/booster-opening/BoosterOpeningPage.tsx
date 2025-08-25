@@ -348,26 +348,33 @@ export default function BoosterOpeningPage() {
   //   console.error('Erreur de chargement de l\'image pour la carte:', cardId)
   // }, [])
 
-  // Vérification de la rareté et lecture des effets
+  // Vérification de la rareté et lecture des effets (ALT > ULTRA > RARE)
   const checkRarityAndPlayEffect = (card: ExtendedCardType) => {
     const rarityRank: Record<string, number> = { C: 1, UC: 2, U: 2, R: 3, SR: 4, L: 5, SEC: 6, 'SP CARD': 7, TR: 8, P: 9 }
     const rank = rarityRank[card.rarity] ?? 0
     const isHighRarity = rank >= 4
-    const hasP1 = card.id.endsWith('_p1')
-    const hasP2 = card.id.endsWith('_p2')
-    const hasP3Plus = /_p[3-9]/.test(card.id)
+    const altSuffix = /_p\d+$/.test(card.id)
+    const hasP1 = /_p1$/.test(card.id)
+    const hasP2 = /_p2$/.test(card.id)
+    const hasP3Plus = /_p[3-9]$/.test(card.id)
+    const altLabel = /alt|parallel/i.test(card.rarity || '')
 
-    if (['SEC','SP CARD','TR','P','L'].includes(card.rarity) || (card.rarity==='SR' && hasP1) || (hasP3Plus && isHighRarity)) {
-      if (!audioPlayedRef.current.ultra) { try { playUltraRareSound() } catch {} audioPlayedRef.current.ultra = true }
-      setShowTestUltra(true)
-      return
-    }
-    if (hasP1 && isHighRarity) {
+    // 1) Alternative/Parallel: priorité absolue
+    if (altSuffix || altLabel) {
       if (!audioPlayedRef.current.alt) { try { playAltArtSound() } catch {} audioPlayedRef.current.alt = true }
       setShowTestAlt(true)
       return
     }
-    if ( (card.rarity==='SR' && !hasP1 && !hasP3Plus) || (hasP2 && isHighRarity)) {
+
+    // 2) Ultra-rare et assimilés (hors alt déjà captés)
+    if (['SEC','SP CARD','TR','P','L'].includes(card.rarity) || (hasP3Plus && isHighRarity)) {
+      if (!audioPlayedRef.current.ultra) { try { playUltraRareSound() } catch {} audioPlayedRef.current.ultra = true }
+      setShowTestUltra(true)
+      return
+    }
+
+    // 3) Rare (SR non-alt, ou p2 sur hautes raretés)
+    if ((card.rarity === 'SR' && !hasP1 && !hasP3Plus) || (hasP2 && isHighRarity)) {
       if (!audioPlayedRef.current.rare) { try { playRareCardSound() } catch {} audioPlayedRef.current.rare = true }
       setShowTestRare(true)
     }

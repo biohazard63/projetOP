@@ -1,6 +1,8 @@
 'use client'
 
 import { useState, useEffect } from 'react'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 import { useSearchParams } from 'next/navigation'
 import { Card } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
@@ -33,6 +35,8 @@ interface Deck {
 }
 
 export default function DecksPage() {
+  const { status } = useSession()
+  const router = useRouter()
   const [decks, setDecks] = useState<Deck[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -100,6 +104,13 @@ export default function DecksPage() {
 
     fetchDecks()
   }, [])
+
+  // Redirection si non connecté
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push(`/login?callbackUrl=${encodeURIComponent('/decks')}`)
+    }
+  }, [status, router])
 
   // Détection mobile
   useEffect(() => {

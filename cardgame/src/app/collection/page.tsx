@@ -1,7 +1,8 @@
 'use client'
 
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
-// import { useSession } from 'next-auth/react'
+import { useSession } from 'next-auth/react'
+import { useRouter } from 'next/navigation'
 // import { Card } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select'
@@ -196,7 +197,8 @@ interface UserData {
 }
 
 export default function CollectionPage() {
-  // const { data: session } = useSession()
+  const { status } = useSession()
+  const router = useRouter()
   const [cards, setCards] = useState<Card[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -219,6 +221,13 @@ export default function CollectionPage() {
   const availableSets = useMemo(() => {
     return computeAvailableSets(showMissingCards ? allCards : cards)
   }, [showMissingCards, allCards, cards])
+
+  // Redirection si non connecté
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push(`/login?callbackUrl=${encodeURIComponent('/collection')}`)
+    }
+  }, [status, router])
 
   const fetchCards = async () => {
     try {
