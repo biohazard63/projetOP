@@ -2,100 +2,95 @@
 
 import Link from 'next/link'
 import Image from 'next/image'
-import { Ship, Scroll, Sword, Trophy, Package, Star, Globe, Search, Download, FlaskConical, Users, HelpCircle, Images } from 'lucide-react'
+import { useEffect, useRef, useState } from 'react'
+import { Ship, Scroll, Sword, Trophy, Package, Star, Globe, FlaskConical, Users, HelpCircle, Images } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 const features = [
   {
     title: 'Ouverture de boosters réaliste',
-    description: 'Effets épiques, raretés pondérées, chances de God Pack et animations haut de gamme.',
+    description: 'Revivez l’excitation d’un booster physique: animations épiques et raretés authentiques.',
     href: '/booster-opening',
     icon: Package,
     color: 'from-[#1E88E5] to-[#2196F3]',
+    thumb: '/images/ouverture.png'
   },
   {
     title: 'Gestion de collection',
-    description: 'Suis tes cartes capturées, tes sets et tes pièces manquantes en un clin d’œil.',
+    description: 'Suivez vos cartes, sets complétés et pièces manquantes en un clin d’œil.',
     href: '/collection',
     icon: Trophy,
     color: 'from-[#8E24AA] to-[#9C27B0]',
+    thumb: '/images/collection.png'
   },
   {
     title: 'Créateur de deck',
-    description: 'Conçois des stratégies, respecte les règles (1 Leader, 50 cartes), mobile first.',
+    description: 'Construisez des decks optimisés (1 Leader, 50 cartes), pensé mobile‑first.',
     href: '/deck-builder',
     icon: Ship,
     color: 'from-[#D84315] to-[#FF5722]',
+    thumb: '/images/builder.png'
   },
-  {
-    title: 'Mode multijoueur (bêta)',
-    description: 'Affronte d’autres joueurs. Fonctionnalité expérimentale en cours de stabilisation.',
-    href: '/game',
-    icon: Sword,
-    color: 'from-[#43A047] to-[#4CAF50]',
-  },
-  {
-    title: 'Cartes traduites et interface FR',
-    description: 'Normalisation des raretés, libellés FR et UI entièrement francophone.',
-    href: '/collection',
-    icon: Globe,
-    color: 'from-[#FFA000] to-[#FFC107]',
-  },
-  {
-    title: 'Galerie & démos',
-    description: 'Aperçus modernes des boosters, de la collection et du deck builder.',
-    href: '#galerie',
-    icon: Images,
-    color: 'from-[#00ACC1] to-[#26C6DA]',
-  },
+  
+ {
+  title: 'liste des decks',
+  description: 'Actions rapides : jouer, éditer, supprimer, avec option annuler.',
+  href: '/decks',
+  icon: Scroll,
+  color: 'from-gray-700 to-gray-900',
+ }
+
 ]
+
+type UpdateCategory = 'animation' | 'boosters' | 'tech' | 'ui';
 
 const updates = [
   {
-    title: 'Refonte Booster Opening',
-    description: 'Nouveau fond responsive, animation de déchirure + éventail 3D des cartes, indicateur 12/12, skip, sons et animations par rareté.',
-    icon: Package,
-    color: 'from-[#1E88E5] to-[#2196F3]',
-  },
-  {
-    title: 'Génération de boosters avancée',
-    description: '12 cartes garanties (PRB-01 inclus), pondération par slot, prise en charge SR/L/SEC/SP CARD/TR, God Pack, déduplication intelligente.',
-    icon: Star,
-    color: 'from-[#FFB300] to-[#FFC107]',
-  },
-  {
-    title: 'Collection Impel Down',
-    description: 'Fond Impel Down optimisé mobile, filtres sets corrigés, liste déroulante scrollable, modal carte plein écran.',
-    icon: Trophy,
-    color: 'from-[#8E24AA] to-[#9C27B0]',
-  },
-  {
-    title: 'Deck Builder mobile‑first',
-    description: 'Ajout par tap, leaders en premier, “seulement possédées”, barre sticky récap + sauvegarde, suppression du verre.',
+    title: 'Deck Builder',
+    description: 'Crée, modifie et supprime tes decks facilement (mobile & desktop).',
     icon: Ship,
     color: 'from-[#D84315] to-[#FF5722]',
+    category: 'ui' as UpdateCategory,
+    date: '2025‑05'
   },
   {
-    title: 'Navbar et Accueil modernisés',
-    description: 'Navbar sticky avec état scroll + onglet actif. Hero responsive, nouveaux CTA, sections Fonctionnalités, Galerie, FAQ.',
-    icon: Globe,
-    color: 'from-[#00ACC1] to-[#26C6DA]',
+    title: 'Set OP12 ajouté',
+    description: 'Les cartes OP12 arrivent : boosters, collection et filtres par set.',
+    icon: Star,
+    color: 'from-[#FFB300] to-[#FFC107]',
+    category: 'boosters' as UpdateCategory,
+    date: '2025‑05'
   },
   {
-    title: 'Imports et données',
-    description: 'Scripts d’import (all-cards + sets), purge sécurisée, normalisation de raretés (SP CARD/TR). Correction Prisma (P2003).',
+    title: 'Boosters améliorés',
+    description: 'Animations plus réalistes, éventail des cartes et bouton pour passer.',
+    icon: Package,
+    color: 'from-[#1E88E5] to-[#2196F3]',
+    category: 'animation' as UpdateCategory,
+    date: '2025‑05'
+  },
+  {
+    title: 'Collection plus claire',
+    description: 'Nouveau fond Impel Down, filtres pratiques et vue carte plein écran.',
+    icon: Trophy,
+    color: 'from-[#8E24AA] to-[#9C27B0]',
+    category: 'ui' as UpdateCategory,
+    date: '2025‑05'
+  },
+  {
+    title: 'Liste des decks',
+    description: 'Actions rapides : jouer, éditer, supprimer, avec option annuler.',
     icon: Scroll,
     color: 'from-gray-700 to-gray-900',
+    category: 'ui' as UpdateCategory,
+    date: '2025‑05'
   },
-  {
-    title: 'Auth Google corrigée',
-    description: 'Correction redirect_uri_mismatch et guide configuration Vercel/Google. Layout global sans défilement horizontal.',
-    icon: Search,
-    color: 'from-[#D84315] to-[#FF5722]',
-  },
+  
 ]
 
 export default function HomePage() {
+  const screenshotsContainerRef = useRef<HTMLDivElement | null>(null)
+  const [isSliderPaused, setIsSliderPaused] = useState(false)
   const faqItems = [
     {
       q: 'Mugiwara TCG est-il officiel ?',
@@ -123,6 +118,53 @@ export default function HomePage() {
       },
     })),
   }
+  
+  // Liste des captures pour le carrousel
+  const galleryShots = [
+    { src: '/images/booster/op12.png', alt: 'Dernier booster' },
+    { src: '/images/imgBooster.png', alt: 'Liste des boosters' },
+    { src: '/images/builder.png', alt: 'Deck Builder' },
+    { src: '/images/collection.png', alt: 'Collection' },
+    { src: '/images/ouverture.png', alt: 'Ouverture de booster' },
+    { src: '/images/effecarte.png', alt: 'Effet carte' },
+  ]
+
+  // Auto-carrousel (défilement horizontal) avec pause au survol/touch
+  useEffect(() => {
+    const container = screenshotsContainerRef.current
+    if (!container) return
+    let currentIndex = 0
+
+    const scrollToIndex = (index: number) => {
+      const children = Array.from(container.children) as HTMLElement[]
+      if (children.length === 0) return
+      const clamped = ((index % children.length) + children.length) % children.length
+      const first = children[0]
+      const targetLeft = children[clamped].offsetLeft - first.offsetLeft
+      container.scrollTo({ left: targetLeft, behavior: 'smooth' })
+      currentIndex = clamped
+    }
+
+    const intervalId = window.setInterval(() => {
+      if (isSliderPaused) return
+      scrollToIndex(currentIndex + 1)
+    }, 3000)
+
+    const pause = () => setIsSliderPaused(true)
+    const resume = () => setIsSliderPaused(false)
+    container.addEventListener('mouseenter', pause)
+    container.addEventListener('mouseleave', resume)
+    container.addEventListener('touchstart', pause)
+    container.addEventListener('touchend', resume)
+
+    return () => {
+      window.clearInterval(intervalId)
+      container.removeEventListener('mouseenter', pause)
+      container.removeEventListener('mouseleave', resume)
+      container.removeEventListener('touchstart', pause)
+      container.removeEventListener('touchend', resume)
+    }
+  }, [isSliderPaused])
   return (
     <div className="min-h-screen">
       {/* Hero Section épurée et premium */}
@@ -142,36 +184,41 @@ export default function HomePage() {
               transition={{ duration: 0.5, ease: 'easeOut' }}
               className="text-center lg:text-left"
             >
-              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-md text-white/80 text-xs mb-5">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
-                Bêta publique – nouvelles animations boosters
-              </div>
-              <h1 className="text-5xl md:text-7xl font-extrabold mb-6 tracking-tight leading-[1.05] text-white">
-                Mugiwara TCG
-              </h1>
-              <p className="text-white/90 text-lg md:text-2xl leading-relaxed max-w-2xl mx-auto lg:mx-0">
-                L’appli fan‑made qui réinvente le One Piece Card Game pour les joueurs francophones.
-              </p>
+              <div className="relative inline-block mx-auto lg:mx-0 rounded-3xl border border-white/15 bg-black/30 md:bg-black/25 backdrop-blur-xl p-6 md:p-8">
+                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-md text-white/80 text-xs mb-5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Bêta publique – nouvelles animations boosters
+                </div>
+                <h1 className="text-5xl md:text-7xl font-extrabold mb-2 tracking-tight leading-[1.05] text-white">
+                  Mugiwara TCG
+                </h1>
+                <p className="text-white/90 text-lg md:text-2xl leading-relaxed max-w-2xl mx-auto lg:mx-0">
+                  L’appli fan‑made qui réinvente le One Piece Card Game pour les joueurs francophones.
+                </p>
+                <p className="text-white/80 text-sm md:text-base mt-2">Rejoins l’équipage, ouvre des trésors, deviens Roi des Pirates.</p>
 
-              <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-3">
-                <Link href="#download" className="group">
-                  <span className="inline-flex items-center gap-2 text-base md:text-lg px-6 py-3 rounded-xl text-white font-semibold transition-all duration-300 shadow-[0_10px_30px_rgba(234,88,12,.35)] bg-gradient-to-r from-[hsl(var(--op-red))] to-orange-600 group-hover:from-orange-600 group-active:scale-95">
-                    <Download className="w-5 h-5" />
-                    Télécharger l’application
-                  </span>
-                </Link>
-                <Link href="#beta" className="group">
-                  <span className="inline-flex items-center gap-2 text-base md:text-lg px-6 py-3 rounded-xl font-semibold transition-all duration-300 border border-white/15 text-white/90 hover:text-white hover:border-white/30 bg-white/5 backdrop-blur-md group-active:scale-95">
-                    <FlaskConical className="w-5 h-5" />
-                    Devenir Bêta Testeur
-                  </span>
-                </Link>
-              </div>
+                <div className="mt-8 flex flex-wrap justify-center lg:justify-start gap-3">
+                  <Link href="https://discord.gg/8Z8tUY85" target="_blank" rel="noopener noreferrer" className="group">
+                    <span className="inline-flex items-center gap-2 text-base md:text-lg px-6 py-3 rounded-xl text-white font-semibold transition-all duration-300 shadow-[0_12px_40px_rgba(255,170,40,.45)] ring-1 ring-amber-300/60 bg-gradient-to-r from-amber-600 via-orange-500 to-yellow-400 group-hover:from-orange-600 group-hover:to-yellow-300 group-active:scale-95 animate-pulse">
+                      <FlaskConical className="w-5 h-5" />
+                      Devenir Bêta Testeur
+                    </span>
+                  </Link>
+                  <Link href="/booster-opening" className="group">
+                    <span className="inline-flex items-center gap-2 text-base md:text-lg px-6 py-3 rounded-xl font-semibold transition-all duration-300 border border-white/15 text-white/90 hover:text-white hover:border-white/30 bg-white/5 backdrop-blur-md group-active:scale-95">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zm1 13.5h-2V12H7.5v-2H11V7.5h2V10h3.5v2H13v4.5z"/></svg>
+                      Voir l’ouverture de booster
+                    </span>
+                  </Link>
+                </div>
 
-              <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-4 text-xs text-white/60">
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">⚡ Animations fluides</div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">🎴 10k+ cartes</div>
-                <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">🛡️ Comptes sécurisés</div>
+                <p className="mt-2 text-xs text-white/70">Pas besoin de compte pour tester la démo.</p>
+
+                <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-4 text-xs text-white/70">
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">⚡ Animations fluides</div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">🎴 10k+ cartes</div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">🛡️ Comptes sécurisés</div>
+                </div>
               </div>
             </motion.div>
 
@@ -183,25 +230,33 @@ export default function HomePage() {
 
       {/* Présentation */}
       <section id="presentation" className="container mx-auto px-4 py-12 md:py-16">
-        <div className="grid md:grid-cols-2 gap-8 items-center">
-          <div>
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Application One Piece TCG en français</h2>
-            <p className="text-white/80 text-lg mb-4">
-              Mugiwara TCG est une application fan‑made, gratuite, pensée pour la communauté FR. Ouvre des boosters réalistes, gère ta collection, construis des decks et affronte d’autres pirates.
-            </p>
-            <p className="text-white/70">
-              Compatible mobile et desktop. Interface 100% francophone et normalisation des raretés du jeu.
-            </p>
-          </div>
-          <div className="relative mx-auto w-full max-w-lg aspect-[16/10] rounded-2xl overflow-hidden border border-white/10 bg-white/5">
-            <Image src="/images/deckbuild.png" alt="Aperçu de l’application Mugiwara TCG" fill className="object-cover" />
+        <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-10">
+          <div className="grid md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Application One Piece TCG en français</h2>
+              <p className="text-white/80 text-lg mb-4">Ouvre des boosters réalistes, collectionne tes cartes préférées, construis des decks et affronte tes amis en ligne.</p>
+              <p className="text-white/70">
+                Compatible mobile et desktop. Interface 100% francophone et normalisation des raretés du jeu.
+              </p>
+            </div>
+            <div className="relative mx-auto w-full max-w-2xl aspect-[16/9]">
+              {/* Mockup desktop */}
+              <div className="absolute left-0 top-4 right-20 bottom-0 rounded-2xl overflow-hidden border border-white/10 bg-white/5 shadow-[0_20px_60px_rgba(0,0,0,.35)]">
+                <Image src="/images/collection.png" alt="Aperçu desktop" fill className="object-cover" />
+              </div>
+              {/* Mockup mobile */}
+              <div className="absolute right-0 -bottom-4 w-40 sm:w-44 md:w-48 aspect-[9/19] rounded-3xl overflow-hidden border-2 border-white/20 shadow-2xl">
+                <Image src="/images/ouverture.png" alt="Aperçu mobile" fill className="object-cover" />
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Section des mises à jour */}
       <div className="container mx-auto px-4 py-16">
-        <h2 className="text-4xl font-bold text-center mb-12 text-white">Mises à jour Mugiwara TCG (FR)</h2>
+        <h2 className="text-4xl font-bold text-center mb-8 text-white">Mises à jour Mugiwara TCG (FR)</h2>
+        <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {updates.map((update) => {
             const Icon = update.icon
@@ -214,30 +269,38 @@ export default function HomePage() {
                 transition={{ duration: 0.5, ease: 'easeOut' }}
                 className="group relative"
               >
-                <div className="rounded-2xl p-[1px] bg-gradient-to-br from-white/20 to-white/5 group-hover:from-orange-400/40 group-hover:to-amber-200/20 transition-all duration-300">
-                  <div className="relative rounded-2xl p-6 bg-white/5 backdrop-blur-xl border border-white/10 group-hover:border-white/20 overflow-hidden">
+                <div className="rounded-2xl p-[1px] bg-gradient-to-br from-white/20 to-white/5 group-hover:from-white/40 group-hover:to-white/10 transition-all duration-300">
+                  <div className={`relative rounded-2xl p-6 bg-white/10 backdrop-blur-xl border border-white/15 group-hover:border-white/25 overflow-hidden min-h-[150px] transition-transform duration-300 group-hover:-translate-y-0.5 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1.5 ${update.category==='animation' ? 'before:bg-fuchsia-400' : update.category==='boosters' ? 'before:bg-amber-400' : update.category==='tech' ? 'before:bg-emerald-400' : 'before:bg-sky-400'}` }>
                     {/* Shine */}
                     <div className="pointer-events-none absolute -top-16 left-1/2 h-40 w-[140%] -translate-x-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
 
                     {/* Icône */}
-                    <div className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${update.color} mb-4`}> 
+                    <div className={`inline-flex p-3 rounded-lg bg-gradient-to-br ${update.color} mb-3 shadow-[0_6px_20px_rgba(0,0,0,.15)]`}> 
                       <Icon className="w-6 h-6 text-white" />
                     </div>
 
                     {/* Texte */}
-                    <h3 className="text-xl font-bold text-white mb-2">{update.title}</h3>
-                    <p className="text-white/80">{update.description}</p>
+                    <h3 className="text-xl font-bold text-white mb-1 tracking-tight">{update.title}</h3>
+                    <p className="text-white/85 line-clamp-2">{update.description}</p>
+                    <div className="mt-3 flex items-center gap-2 text-xs">
+                      <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full border text-white/90 ${update.category==='animation' ? 'border-fuchsia-400/50' : update.category==='boosters' ? 'border-amber-400/50' : update.category==='tech' ? 'border-emerald-400/50' : 'border-sky-400/50'}`}>
+                        {update.category==='animation' ? '⚡ Animation' : update.category==='boosters' ? '📦 Boosters' : update.category==='tech' ? '🔧 Technique' : '🎨 UI'}
+                      </span>
+                      <span className="text-white/60">{update.date}</span>
+                    </div>
                   </div>
                 </div>
               </motion.div>
             )
           })}
         </div>
+        </div>
       </div>
 
       {/* Section des fonctionnalités */}
       <div className="container mx-auto px-4 py-16">
-        <h2 className="text-4xl font-bold text-center mb-12 text-white">Fonctionnalités clés</h2>
+        <h2 className="text-4xl font-bold text-center mb-8 text-white">Fonctionnalités clés</h2>
+        <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature) => {
             const Icon = feature.icon
@@ -255,7 +318,7 @@ export default function HomePage() {
                 <div className="rounded-2xl p-[1px] bg-gradient-to-br from-white/20 to-white/5 group-hover:from-white/40 group-hover:to-white/10 transition-all duration-300">
                   <Link
                     href={feature.href}
-                    className="relative block overflow-hidden rounded-2xl p-6 bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300"
+                    className="relative block overflow-hidden rounded-2xl p-6 bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 min-h-[200px] group-hover:-translate-y-0.5"
                   >
                     {/* Overlay de gradient directionnel au hover */}
                     <div
@@ -269,7 +332,7 @@ export default function HomePage() {
                     </div>
 
                     <h3 className="text-xl font-bold text-white mb-2">{feature.title}</h3>
-                    <p className="text-white/80 mb-4">{feature.description}</p>
+                    <p className="text-white/80 mb-4 line-clamp-2">{feature.description}</p>
 
                     <span className="text-primary group-hover:text-white transition-colors flex items-center text-sm">
                       Explorer
@@ -283,40 +346,39 @@ export default function HomePage() {
             )
           })}
         </div>
+        </div>
       </div>
 
       {/* Galerie: Screenshots & démos */}
       <section id="galerie" className="container mx-auto px-4 py-16">
-        <h2 className="text-4xl font-bold text-center mb-12 text-white">Screenshots & démos</h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-          {[
-            { src: '/images/booster/op11.png', alt: 'Booster' },
-            { src: '/images/deckbuild.png', alt: 'Deck Builder' },
-            { src: '/images/deck.png', alt: 'Liste des decks' },
-            { src: '/images/home.png', alt: 'Accueil' },
-          ].map((shot, i) => (
-            <div key={`shot-${i}`} className="relative aspect-[16/10] rounded-xl overflow-hidden border border-white/10 bg-white/5">
-              <Image src={shot.src} alt={shot.alt} fill className="object-cover" />
+        <h2 className="text-4xl font-bold text-center mb-8 text-white">Screenshots & démos</h2>
+        <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 p-4 md:p-6">
+        <div ref={screenshotsContainerRef} className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2">
+          {galleryShots.map((shot) => (
+            <div key={shot.src} className="relative aspect-[16/10] rounded-xl overflow-hidden border border-white/10 bg-white/5 group min-w-[70%] md:min-w-[40%] lg:min-w-[32%] snap-center">
+              <Image src={shot.src} alt={shot.alt} fill className="object-cover transition-transform duration-500 group-hover:scale-[1.03]" />
+              <div className="absolute inset-x-0 bottom-0 p-2 bg-gradient-to-t from-black/60 to-transparent text-white text-xs md:text-sm">{shot.alt}</div>
             </div>
           ))}
+        </div>
         </div>
       </section>
 
       {/* Communauté */}
       <section id="beta" className="container mx-auto px-4 py-16">
-        <div className="rounded-2xl border border-white/10 bg-white/5 p-6 md:p-10 text-center">
+        <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 md:p-10 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Users className="w-6 h-6 text-white/90" />
             <h2 className="text-3xl font-bold text-white">Rejoins la communauté</h2>
           </div>
           <p className="text-white/80 mb-6 max-w-2xl mx-auto">Partage tes tirages, donne ton avis et aide à façonner le futur de Mugiwara TCG.</p>
           <div className="flex flex-wrap items-center justify-center gap-3">
-            <Link href="#discord" className="group">
+            <Link href="https://discord.gg/8Z8tUY85" target="_blank" rel="noopener noreferrer" className="group">
               <span className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white font-semibold bg-gradient-to-r from-indigo-500 to-violet-600 hover:from-indigo-400 hover:to-violet-500 transition-all">Rejoindre le Discord</span>
             </Link>
-            <Link href="#download" className="group">
+          {/*   <Link href="#download" className="group">
               <span className="inline-flex items-center gap-2 px-6 py-3 rounded-xl text-white/90 border border-white/15 hover:text-white hover:border-white/30 transition-all">Télécharger l’application</span>
-            </Link>
+            </Link> */}
           </div>
         </div>
       </section>
@@ -327,39 +389,18 @@ export default function HomePage() {
           <HelpCircle className="w-6 h-6 text-white/90" />
           <h2 className="text-3xl md:text-4xl font-bold text-white">FAQ</h2>
         </div>
-        <div className="space-y-4">
-          {faqItems.map((item, idx) => (
-            <details key={`faq-${idx}`} className="rounded-xl border border-white/10 bg-white/5 p-4 open:bg-white/7">
-              <summary className="cursor-pointer text-white font-semibold">{item.q}</summary>
-              <p className="text-white/80 mt-2 pl-1">{item.a}</p>
+        <div className="space-y-3">
+          {faqItems.map((item) => (
+            <details key={item.q} className="rounded-2xl border border-white/10 bg-white/5 p-4 open:bg-white/10 open:border-white/20 transition-colors">
+              <summary className="cursor-pointer text-white font-semibold list-none">{item.q}</summary>
+              <p className="text-white/80 mt-2 pl-0">{item.a}</p>
             </details>
           ))}
         </div>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }} />
       </section>
 
-      {/* Footer avec style One Piece */}
-      <footer className="relative overflow-hidden py-16 mt-16">
-        <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent backdrop-blur-sm"></div>
-        <div className="container mx-auto px-4 text-center relative z-10">
-          <div className="relative inline-block mb-6">
-            <Image 
-              src="/images/straw-hat.png" 
-              alt="Chapeau de Paille" 
-              width={80}
-              height={80}
-              className="w-20 h-20 mx-auto opacity-80 animate-float-slow"
-            />
-            <div className="absolute inset-0 opacity-30" style={{ background: 'radial-gradient(circle, rgba(234, 179, 8, 0.2) 0%, transparent 70%)' }}></div>
-          </div>
-          <p className="text-white/80 text-lg mb-4">© 2024 One Piece Card Game - L&apos;aventure continue</p>
-          <p className="text-white/60">
-            Ce site est un hommage créé par des fans, pour des fans.
-            <br />
-            One Piece est la propriété d&apos;Eiichiro Oda et de Bandai Namco.
-          </p>
-        </div>
-      </footer>
+      {/* Footer global déplacé dans le layout */}
     </div>
   )
 } 
@@ -379,11 +420,13 @@ function HeroShowcase() {
         <div className="group relative w-full h-full max-w-[520px] max-h-[440px] px-4">
           {/* Halo */}
           <div className="absolute -inset-6 rounded-[28px] bg-[radial-gradient(ellipse_at_center,_rgba(255,200,100,.15),_transparent_60%)] blur-xl" />
+          {/* Glow subtil */}
+          <div className="pointer-events-none absolute -inset-10 rounded-[32px] bg-[radial-gradient(ellipse_at_center,_rgba(255,255,255,.06),_transparent_70%)]" />
 
           {/* Carte showcase (gauche) */}
           <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 backdrop-blur-xl shadow-2xl transition-transform duration-500 group-hover:-translate-y-1 w-[70%] sm:w-[60%] md:w-[320px] aspect-[3/4]">
             <div className="relative w-full h-full">
-              <Image src="/images/OP05-119.webp" alt="Carte Showcase" fill className="object-cover opacity-95" />
+              <Image src="/images/OP09-093.webp" alt="Carte Showcase" fill className="object-cover opacity-95" />
               {/* Shimmer */}
               <div className="pointer-events-none absolute -top-8 left-1/2 h-48 w-[140%] -translate-x-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/15 to-transparent blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
             </div>
@@ -392,7 +435,9 @@ function HeroShowcase() {
           {/* Booster (droite, décalé) */}
           <div className="hidden sm:block absolute top-1/2 left-[64%] -translate-y-1/2 w-[160px] sm:w-[220px] md:w-[320px] aspect-[2/3]">
             <div className="relative w-full h-full animate-float-slow">
-              <Image src="/images/booster/op11.png" alt="Booster Pack" fill className="object-contain" />
+              <Image src="/images/booster/op12.png" alt="Booster Pack" fill className="object-contain" />
+              {/* Particules dorées discrètes */}
+              <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(255,215,130,.18),transparent_35%),radial-gradient(circle_at_70%_80%,rgba(255,235,180,.12),transparent_40%)] blur-[2px]" />
             </div>
           </div>
         </div>

@@ -3,6 +3,7 @@ import { Inter } from 'next/font/google'
 import Image from 'next/image'
 import { Navbar } from '@/components/Navbar'
 import { Providers } from './providers'
+import { Footer } from '@/components/Footer'
 import { Analytics } from '@vercel/analytics/react'
 import { cn } from "@/lib/utils"
 
@@ -10,7 +11,7 @@ const inter = Inter({ subsets: ['latin'] })
 
 export const metadata = {
   title: 'One Piece Card Game',
-  description: 'Plateforme de jeu One Piece Card Game - Créez des decks, ouvrez des boosters et jouez en ligne !',
+  description: 'Mugiwara TCG – L’application fan-made française du One Piece Card Game. Ouvre des boosters réalistes, collectionne tes cartes et affronte d’autres joueurs pirates.',
 }
 
 // Note: variante de layout réservée pour usage futur (supprimée pour éviter warn unused)
@@ -28,7 +29,7 @@ export default function RootLayout({
             {/* Fond: image + dégradés radiaux et overlay */}
             <div className="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
               <div
-                className="absolute inset-0 bg-[url('/images/home.png')] bg-center bg-no-repeat bg-[length:100%_auto]"
+                className="absolute inset-0 bg-[url('/images/home2.png')] bg-top md:bg-center bg-no-repeat bg-cover"
                 aria-hidden
               />
               <div className="absolute inset-0 bg-gradient-to-b from-[hsl(var(--op-ink)/_.25)] via-transparent to-[hsl(var(--op-ink)/_.35)]" />
@@ -43,6 +44,7 @@ export default function RootLayout({
             <main className="relative z-10 pt-16" suppressHydrationWarning>
               {children}
             </main>
+            <Footer />
           </div>
         </Providers>
         <Analytics />
