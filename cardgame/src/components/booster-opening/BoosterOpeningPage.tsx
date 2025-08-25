@@ -599,6 +599,7 @@ export default function BoosterOpeningPage() {
           <RareAnimation
             card={booster[currentCardIndex]}
             onComplete={() => setShowTestRare(false)}
+            shouldPlaySound={!audioPlayedRef.current.rare}
           />
         )}
 
@@ -607,6 +608,7 @@ export default function BoosterOpeningPage() {
           <UltraRareAnimation
             card={booster[currentCardIndex]}
             onComplete={() => setShowTestUltra(false)}
+            shouldPlaySound={!audioPlayedRef.current.ultra}
           />
         )}
 
@@ -615,6 +617,7 @@ export default function BoosterOpeningPage() {
           <AlternativeAnimation
             card={booster[currentCardIndex]}
             onComplete={() => setShowTestAlt(false)}
+            shouldPlaySound={!audioPlayedRef.current.alt}
           />
         )}
         

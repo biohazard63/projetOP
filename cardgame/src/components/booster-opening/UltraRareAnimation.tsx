@@ -10,9 +10,10 @@ import { Sparkles, Star } from 'lucide-react'
 interface UltraRareAnimationProps {
   card: ExtendedCardType
   onComplete: () => void
+  shouldPlaySound?: boolean
 }
 
-export default function UltraRareAnimation({ card, onComplete }: Readonly<UltraRareAnimationProps>) {
+export default function UltraRareAnimation({ card, onComplete, shouldPlaySound = false }: Readonly<UltraRareAnimationProps>) {
   const [isVisible, setIsVisible] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
   const { playUltraRareSound } = useAudio()
@@ -39,7 +40,7 @@ export default function UltraRareAnimation({ card, onComplete }: Readonly<UltraR
       reduceMotionRef.current = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false
     } catch { /* no-op */ }
 
-    if (!hasPlayedSound.current) {
+    if (shouldPlaySound && !hasPlayedSound.current) {
       playUltraRareSound()
       hasPlayedSound.current = true
     }
@@ -61,7 +62,7 @@ export default function UltraRareAnimation({ card, onComplete }: Readonly<UltraR
       for (const t of timersRef.current) window.clearTimeout(t)
       timersRef.current = []
     }
-  }, [onComplete, playUltraRareSound])
+  }, [onComplete, playUltraRareSound, shouldPlaySound])
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') skip() }
