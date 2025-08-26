@@ -24,6 +24,16 @@ export const metadata = {
   formatDetection: {
     telephone: false,
   },
+  icons: {
+    icon: [
+      { url: '/images/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/images/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+    apple: [
+      { url: '/images/icons/icon-192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/images/icons/icon-512.png', sizes: '512x512', type: 'image/png' },
+    ],
+  },
 }
 
 // Note: variante de layout réservée pour usage futur (supprimée pour éviter warn unused)
@@ -35,6 +45,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="fr" suppressHydrationWarning>
+      <head>
+        {/* Balises meta spécifiques pour iOS */}
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+        <meta name="apple-mobile-web-app-title" content="Mugiwara TCG" />
+        <link rel="apple-touch-icon" href="/images/icons/icon-192.png" />
+        <link rel="apple-touch-icon" sizes="192x192" href="/images/icons/icon-192.png" />
+        <link rel="apple-touch-icon" sizes="512x512" href="/images/icons/icon-512.png" />
+        <link rel="apple-touch-startup-image" href="/images/icons/icon-512.png" />
+      </head>
       <body suppressHydrationWarning className={cn(inter.className, "min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))] overflow-x-hidden")}>
         <Providers>
           <div className="relative min-h-screen">
