@@ -19,6 +19,11 @@ function GameContent() {
   type DeckLite = { id: string; name: string; cards: { id: string }[] }
   const [decks, setDecks] = useState<DeckLite[]>([])
   const [showDeckSelection, setShowDeckSelection] = useState(false)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   useEffect(() => {
     const fetchDecks = async () => {
@@ -243,6 +248,15 @@ function GameContent() {
       toast.error('Impossible de sélectionner le deck')
       setIsLoading(false)
     }
+  }
+
+  // Ne pas rendre si on n'est pas côté client
+  if (!isClient) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-900">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    )
   }
 
   if (isLoading && !showDeckSelection) {

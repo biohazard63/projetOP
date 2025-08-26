@@ -2,7 +2,7 @@
   "name": "Mugiwara TCG",
   "short_name": "Mugiwara TCG",
   "description": "L'application fan-made française du One Piece Card Game. Ouvre des boosters réalistes, collectionne tes cartes et affronte d'autres joueurs pirates.",
-  "start_url": "/",
+  "start_url": "/loading",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#f59e0b",
@@ -10,6 +10,34 @@
   "scope": "/",
   "lang": "fr",
   "categories": ["games", "entertainment"],
+  "prefer_related_applications": false,
+  "related_applications": [],
+  "shortcuts": [
+    {
+      "name": "Ouvrir un booster",
+      "short_name": "Booster",
+      "description": "Ouvrir un nouveau booster pack",
+      "url": "/booster-opening",
+      "icons": [
+        {
+          "src": "/images/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    },
+    {
+      "name": "Ma collection",
+      "short_name": "Collection",
+      "description": "Voir ma collection de cartes",
+      "url": "/collection",
+      "icons": [
+        {
+          "src": "/images/icons/icon-192.png",
+          "sizes": "192x192"
+        }
+      ]
+    }
+  ],
   "icons": [
     {
       "src": "/images/icons/icon-192.png",

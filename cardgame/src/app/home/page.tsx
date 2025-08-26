@@ -202,12 +202,33 @@ export default function HomePage() {
                       Devenir Bêta Testeur
                     </span>
                   </Link>
-                  <Link href="/booster-opening" className="group">
-                    <span className="inline-flex items-center gap-2 text-base md:text-lg px-6 py-3 rounded-xl font-semibold transition-all duration-300 border border-white/15 text-white/90 hover:text-white hover:border-white/30 bg-white/5 backdrop-blur-md group-active:scale-95">
-                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-5 h-5"><path d="M12 3a9 9 0 100 18 9 9 0 000-18zm1 13.5h-2V12H7.5v-2H11V7.5h2V10h3.5v2H13v4.5z"/></svg>
-                      Voir l’ouverture de booster
-                    </span>
-                  </Link>
+                  <button
+              id="install-pwa-btn"
+              className="group flex items-center space-x-3 bg-gradient-to-r from-orange-500 to-amber-500 hover:from-orange-600 hover:to-amber-600 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 shadow-[0_12px_40px_rgba(255,170,40,.45)] ring-1 ring-amber-300/60"
+              onClick={() => {
+                // Vérifier si l'installation PWA est supportée
+                const isStandalone = window.matchMedia('(display-mode: standalone)').matches
+                const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent)
+                
+                if (isStandalone) {
+                  alert('L\'app est déjà installée !')
+                  return
+                }
+                
+                if (isIOS) {
+                  alert('Sur iOS, utilise le bouton "Partager" puis "Sur l\'écran d\'accueil"')
+                  return
+                }
+                
+                // Déclencher l'installation PWA
+                const event = new Event('beforeinstallprompt')
+                window.dispatchEvent(event)
+              }}
+            >
+              <Download className="w-5 h-5" />
+              <span>Télécharger l&apos;app</span>
+              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+            </button>
                 </div>
 
                 <p className="mt-2 text-xs text-white/70">Pas besoin de compte pour tester la démo.</p>

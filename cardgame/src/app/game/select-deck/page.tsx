@@ -26,6 +26,11 @@ export default function SelectDeckPage() {
   const [decks, setDecks] = useState<Deck[]>([])
   const [selectedDeckId, setSelectedDeckId] = useState<string | null>(null)
   const [isLoading, setIsLoading] = useState(true)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   useEffect(() => {
     fetchDecks()
@@ -88,6 +93,15 @@ export default function SelectDeckPage() {
       console.error('Erreur lors de l\'activation du deck:', error)
       toast.error('Erreur lors de l\'activation du deck')
     }
+  }
+
+  // Ne pas rendre si on n'est pas côté client
+  if (!isClient) {
+    return (
+      <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-purple-900 to-pink-900 flex justify-center items-center">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    )
   }
 
   if (isLoading) {

@@ -37,6 +37,13 @@ interface Deck {
 export default function DecksPage() {
   const { status } = useSession()
   const router = useRouter()
+  
+  // Redirection si non authentifié
+  useEffect(() => {
+    if (status === 'unauthenticated') {
+      router.push('/login')
+    }
+  }, [status, router])
   const [decks, setDecks] = useState<Deck[]>([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -64,6 +71,11 @@ export default function DecksPage() {
   }
 
   useEffect(() => {
+    // Ne pas faire la requête si l'utilisateur n'est pas authentifié
+    if (status === 'unauthenticated') {
+      return
+    }
+    
     const fetchDecks = async () => {
       try {
         setLoading(true)
@@ -103,14 +115,9 @@ export default function DecksPage() {
     }
 
     fetchDecks()
-  }, [])
+  }, [status])
 
-  // Redirection si non connecté
-  useEffect(() => {
-    if (status === 'unauthenticated') {
-      router.push(`/login?callbackUrl=${encodeURIComponent('/decks')}`)
-    }
-  }, [status, router])
+
 
   // Détection mobile
   useEffect(() => {
@@ -291,7 +298,7 @@ export default function DecksPage() {
     {/* FAB mobile pour créer un deck */}
     {isMobile && (
       <Link href="/deck-builder">
-        <Button aria-label="Nouveau deck" className="fixed bottom-6 right-6 z-50 h-14 w-14 rounded-full p-0 bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-500 hover:to-red-500 shadow-xl">
+        <Button aria-label="Nouveau deck" className="fixed bottom-6 right-6 z-[110] h-14 w-14 rounded-full p-0 bg-gradient-to-r from-yellow-600 to-red-600 hover:from-yellow-500 hover:to-red-500 shadow-xl">
           <Plus className="h-6 w-6" />
         </Button>
       </Link>

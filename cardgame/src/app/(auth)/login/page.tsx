@@ -19,6 +19,7 @@ export default function LoginPage() {
   const [isPending, startTransition] = useTransition()
   const [captchaToken, setCaptchaToken] = useState('')
   const widgetRef = useRef<HTMLDivElement | null>(null)
+  const [isPWA, setIsPWA] = useState(false)
 
   // Propager une erreur éventuelle provenant du provider OAuth
   const oauthError = searchParams.get('error')
@@ -55,6 +56,14 @@ export default function LoginPage() {
       }
     })
   }
+
+  // Détecter si on est dans une PWA
+  useEffect(() => {
+    const isInPWA = window.matchMedia('(display-mode: standalone)').matches ||
+                   (window.navigator as { standalone?: boolean }).standalone === true ||
+                   document.referrer.includes('android-app://')
+    setIsPWA(isInPWA)
+  }, [])
 
   // Turnstile widget si configuré
   useEffect(() => {
@@ -105,6 +114,16 @@ export default function LoginPage() {
                 {error || oauthErrorMessage}
               </div>
             )}
+            {/* Avertissement PWA */}
+            {isPWA && (
+              <div className="rounded-lg border border-amber-500/30 bg-amber-500/10 text-amber-200 px-4 py-3 mb-4">
+                <p className="text-sm">
+                  <strong>💡 Conseil :</strong> Si la connexion Google ne fonctionne pas, 
+                  essayez d&apos;ouvrir l&apos;app dans votre navigateur.
+                </p>
+              </div>
+            )}
+
             <Button
               onClick={() => signIn('google', { callbackUrl })}
               className="w-full bg-white/10 hover:bg-white/20 text-white border-white/20"

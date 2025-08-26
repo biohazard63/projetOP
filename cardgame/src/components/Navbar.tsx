@@ -218,6 +218,11 @@ export function Navbar({ variant = 'default', className }: NavbarProps) {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [mounted, setMounted] = useState(false)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   // Gestion de l'état de chargement sans use()
   const isLoading = status === 'loading'
@@ -255,7 +260,7 @@ export function Navbar({ variant = 'default', className }: NavbarProps) {
     setIsMenuOpen(false)
   }, [pathname])
 
-  if (!mounted) {
+  if (!mounted || !isClient) {
     return null
   }
 

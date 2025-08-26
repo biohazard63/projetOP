@@ -148,13 +148,31 @@ export function useOnePieceTheme() {
 // Composant pour le sélecteur de thème
 function ThemeSelector() {
   const { currentTheme, setTheme, isTransitioning, availableThemes, themeConfig } = useOnePieceTheme()
+  const [isClient, setIsClient] = useState(false)
+  
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
+
+  // Ne pas afficher sur certaines pages
+  const pathname = typeof window !== 'undefined' ? window.location.pathname : ''
+  const shouldHide = [
+    '/loading',
+    '/game',
+    '/deck-builder',
+    '/booster-opening'
+  ].some(path => pathname.startsWith(path))
   
   const handleThemeChange = useCallback((theme: OnePieceTheme) => {
     setTheme(theme)
   }, [setTheme])
 
+  if (!isClient || shouldHide) {
+    return null
+  }
+
   return (
-    <div className="fixed bottom-4 right-4 z-50">
+    <div className="fixed bottom-4 right-4 z-[100]">
       <div className="relative group">
         <button
           className={cn(
@@ -213,49 +231,7 @@ function ThemeSelector() {
   )
 }
 
-// Composant pour les particules de thème
-function ThemeParticles() {
-  const { currentTheme, themeConfig } = useOnePieceTheme()
-  
-  return (
-    <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden">
-      <div className={cn(
-        "absolute inset-0 opacity-20",
-        themeConfig.animations.particles
-      )}>
-        {/* Particules personnalisées selon le thème */}
-        {currentTheme === 'impel-down' && (
-          <>
-            <div className="absolute top-10 left-10 w-1 h-1 bg-red-500 rounded-full animate-pulse" />
-            <div className="absolute top-20 right-20 w-1 h-1 bg-red-400 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-            <div className="absolute bottom-20 left-1/4 w-1 h-1 bg-red-600 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-          </>
-        )}
-        {currentTheme === 'thousand-sunny' && (
-          <>
-            <div className="absolute top-10 left-10 w-2 h-2 bg-yellow-400 rounded-full animate-float" />
-            <div className="absolute top-20 right-20 w-2 h-2 bg-blue-400 rounded-full animate-float-slow" />
-            <div className="absolute bottom-20 left-1/4 w-2 h-2 bg-yellow-300 rounded-full animate-float-slower" />
-          </>
-        )}
-        {currentTheme === 'wano' && (
-          <>
-            <div className="absolute top-10 left-10 w-1 h-1 bg-red-600 rounded-full animate-pulse" />
-            <div className="absolute top-20 right-20 w-1 h-1 bg-yellow-500 rounded-full animate-pulse" style={{ animationDelay: '1s' }} />
-            <div className="absolute bottom-20 left-1/4 w-1 h-1 bg-red-500 rounded-full animate-pulse" style={{ animationDelay: '2s' }} />
-          </>
-        )}
-        {currentTheme === 'skypiea' && (
-          <>
-            <div className="absolute top-10 left-10 w-2 h-2 bg-blue-300 rounded-full animate-float" />
-            <div className="absolute top-20 right-20 w-2 h-2 bg-purple-300 rounded-full animate-float-slow" />
-            <div className="absolute bottom-20 left-1/4 w-2 h-2 bg-blue-200 rounded-full animate-float-slower" />
-          </>
-        )}
-      </div>
-    </div>
-  )
-}
+
 
 // Provider principal pour les thèmes One Piece
 function OnePieceThemeProvider({ children }: { children: React.ReactNode }) {
@@ -309,10 +285,8 @@ function OnePieceThemeProvider({ children }: { children: React.ReactNode }) {
         "min-h-screen transition-all duration-500 ease-in-out",
         isTransitioning && "animate-pulse"
       )}>
-        <ThemeParticles />
         {children}
-        <ThemeSelector />
-      </div>
+   </div>
     </OnePieceThemeContext.Provider>
   )
 }

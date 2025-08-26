@@ -2,7 +2,7 @@ import Image from 'next/image'
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden py-16 mt-16">
+    <footer className="relative overflow-hidden py-16 mt-16 z-10">
       <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent backdrop-blur-sm"></div>
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className="relative inline-block mb-6">

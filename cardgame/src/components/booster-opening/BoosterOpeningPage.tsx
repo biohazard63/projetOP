@@ -56,12 +56,24 @@ export default function BoosterOpeningPage() {
   const [showTestUltra, setShowTestUltra] = useState(false)
   // Test animation alternative (debug)
   const [showTestAlt, setShowTestAlt] = useState(false)
-  const { playRareCardSound, playUltraRareSound, playAltArtSound } = useAudio()
+  const { playRareCardSound, playUltraRareSound, playAltArtSound, shouldPlaySound, enableExplicitSound, isIOS } = useAudio()
   const audioPlayedRef = useRef<{rare?: boolean; ultra?: boolean; alt?: boolean}>({})
   // Stage (coffre/pack) & FX
   const [stage, setStage] = useState<'chest' | 'pack'>('chest')
   const [stageFx, setStageFx] = useState<{opening:boolean}>({ opening: false })
-  const particleKeys = useMemo(() => Array.from({ length: 18 }, (_, i) => `gp-${i}`), [])
+  
+  // OPTIMISATIONS PERFORMANCE
+  const [performanceMode, setPerformanceMode] = useState(false)
+  const [consecutiveOpenings, setConsecutiveOpenings] = useState(0)
+  const lastOpeningTimeRef = useRef(0)
+  const performanceCheckIntervalRef = useRef<NodeJS.Timeout | null>(null)
+  
+  // Réduire le nombre de particules en mode performance
+  const particleKeys = useMemo(() => {
+    const baseCount = performanceMode ? 8 : 18
+    return Array.from({ length: baseCount }, (_, i) => `gp-${i}`)
+  }, [performanceMode])
+  
   interface SetRules {
     name: string
     rarityCounts: Record<string, number>
@@ -203,6 +215,66 @@ export default function BoosterOpeningPage() {
     setStage(selectedSet ? 'pack' : 'chest')
   }, [selectedSet])
 
+  // OPTIMISATIONS PERFORMANCE - Détection automatique du mode performance
+  useEffect(() => {
+    const checkPerformanceMode = () => {
+      const now = Date.now()
+      const timeSinceLastOpening = now - lastOpeningTimeRef.current
+      
+      // Si plusieurs ouvertures rapides (< 3 secondes), activer le mode performance
+      if (timeSinceLastOpening < 3000) {
+        setConsecutiveOpenings(prev => prev + 1)
+        if (consecutiveOpenings >= 2) {
+          setPerformanceMode(true)
+        }
+      } else {
+        // Reset après 10 secondes sans ouverture
+        setConsecutiveOpenings(0)
+        setPerformanceMode(false)
+      }
+      
+      lastOpeningTimeRef.current = now
+    }
+
+    // Vérifier les performances toutes les 5 secondes
+    performanceCheckIntervalRef.current = setInterval(checkPerformanceMode, 5000)
+
+    return () => {
+      if (performanceCheckIntervalRef.current) {
+        clearInterval(performanceCheckIntervalRef.current)
+      }
+    }
+  }, [consecutiveOpenings])
+
+  // Détection automatique des préférences de réduction de mouvement
+  useEffect(() => {
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+    if (prefersReducedMotion) {
+      setPerformanceMode(true)
+    }
+  }, [])
+
+  // Nettoyage des ressources pour éviter les fuites mémoire
+  useEffect(() => {
+    return () => {
+      // Nettoyer les timers et intervalles
+      if (performanceCheckIntervalRef.current) {
+        clearInterval(performanceCheckIntervalRef.current)
+      }
+      
+      // Restaurer le scroll si le composant est démonté pendant un swipe
+      if (isDragging && isMobile) {
+        document.body.style.overflow = '';
+        document.body.style.touchAction = '';
+      }
+      
+      // Forcer le garbage collection si possible
+      if (window.gc) {
+        window.gc()
+      }
+    }
+  }, [isDragging, isMobile])
+
   // Navigation entre les cartes (mémoïsé avant usage)
   const navigateCard = useCallback((direction: 'prev' | 'next') => {
     console.log('Tentative de navigation:', {
@@ -284,6 +356,38 @@ export default function BoosterOpeningPage() {
     }
   }, [session, loadUserCollection])
 
+  // Vérification de la rareté et lecture des effets (ALT > ULTRA > RARE)
+  const checkRarityAndPlayEffect = useCallback((card: ExtendedCardType) => {
+    const rarityRank: Record<string, number> = { C: 1, UC: 2, U: 2, R: 3, SR: 4, L: 5, SEC: 6, 'SP CARD': 7, TR: 8, P: 9 }
+    const rank = rarityRank[card.rarity] ?? 0
+    const isHighRarity = rank >= 4
+    const altSuffix = /_p\d+$/.test(card.id)
+    const hasP1 = /_p1$/.test(card.id)
+    const hasP2 = /_p2$/.test(card.id)
+    const hasP3Plus = /_p[3-9]$/.test(card.id)
+    const altLabel = /alt|parallel/i.test(card.rarity || '')
+
+    // 1) Alternative/Parallel: priorité absolue
+    if (altSuffix || altLabel) {
+      if (!audioPlayedRef.current.alt) { try { playAltArtSound() } catch {} audioPlayedRef.current.alt = true }
+      setShowTestAlt(true)
+      return
+    }
+
+    // 2) Ultra-rare et assimilés (hors alt déjà captés)
+    if (['SEC','SP CARD','TR','P','L'].includes(card.rarity) || (hasP3Plus && isHighRarity)) {
+      if (!audioPlayedRef.current.ultra) { try { playUltraRareSound() } catch {} audioPlayedRef.current.ultra = true }
+      setShowTestUltra(true)
+      return
+    }
+
+    // 3) Rare (SR non-alt, ou p2 sur hautes raretés)
+    if ((card.rarity === 'SR' && !hasP1 && !hasP3Plus) || (hasP2 && isHighRarity)) {
+      if (!audioPlayedRef.current.rare) { try { playRareCardSound() } catch {} audioPlayedRef.current.rare = true }
+      setShowTestRare(true)
+    }
+  }, [playAltArtSound, playUltraRareSound, playRareCardSound])
+
   // Chargement des règles du set
   useEffect(() => {
     if (selectedSet && session) {
@@ -348,37 +452,7 @@ export default function BoosterOpeningPage() {
   //   console.error('Erreur de chargement de l\'image pour la carte:', cardId)
   // }, [])
 
-  // Vérification de la rareté et lecture des effets (ALT > ULTRA > RARE)
-  const checkRarityAndPlayEffect = (card: ExtendedCardType) => {
-    const rarityRank: Record<string, number> = { C: 1, UC: 2, U: 2, R: 3, SR: 4, L: 5, SEC: 6, 'SP CARD': 7, TR: 8, P: 9 }
-    const rank = rarityRank[card.rarity] ?? 0
-    const isHighRarity = rank >= 4
-    const altSuffix = /_p\d+$/.test(card.id)
-    const hasP1 = /_p1$/.test(card.id)
-    const hasP2 = /_p2$/.test(card.id)
-    const hasP3Plus = /_p[3-9]$/.test(card.id)
-    const altLabel = /alt|parallel/i.test(card.rarity || '')
 
-    // 1) Alternative/Parallel: priorité absolue
-    if (altSuffix || altLabel) {
-      if (!audioPlayedRef.current.alt) { try { playAltArtSound() } catch {} audioPlayedRef.current.alt = true }
-      setShowTestAlt(true)
-      return
-    }
-
-    // 2) Ultra-rare et assimilés (hors alt déjà captés)
-    if (['SEC','SP CARD','TR','P','L'].includes(card.rarity) || (hasP3Plus && isHighRarity)) {
-      if (!audioPlayedRef.current.ultra) { try { playUltraRareSound() } catch {} audioPlayedRef.current.ultra = true }
-      setShowTestUltra(true)
-      return
-    }
-
-    // 3) Rare (SR non-alt, ou p2 sur hautes raretés)
-    if ((card.rarity === 'SR' && !hasP1 && !hasP3Plus) || (hasP2 && isHighRarity)) {
-      if (!audioPlayedRef.current.rare) { try { playRareCardSound() } catch {} audioPlayedRef.current.rare = true }
-      setShowTestRare(true)
-    }
-  }
 
   // Gestion du glissement des cartes
   const handleDragEnd = (
@@ -391,6 +465,13 @@ export default function BoosterOpeningPage() {
     }
 
     setIsDragging(false);
+    
+    // Restaurer le scroll après le swipe sur mobile
+    if (isMobile) {
+      document.body.style.overflow = '';
+      document.body.style.touchAction = '';
+    }
+    
     const threshold = 100; // Distance minimale pour déclencher le changement de carte
     
     console.log('Fin du glissement:', {
@@ -434,6 +515,12 @@ export default function BoosterOpeningPage() {
       carteActuelle: booster?.[currentCardIndex]?.name
     });
     setIsDragging(true);
+    
+    // Empêcher le scroll pendant le swipe sur mobile
+    if (isMobile) {
+      document.body.style.overflow = 'hidden';
+      document.body.style.touchAction = 'none';
+    }
   }
   
   const handleDrag = (
@@ -442,8 +529,23 @@ export default function BoosterOpeningPage() {
   ) => {
     if (!info) return;
     
+    // Annuler le swipe si le mouvement vertical est plus important que l'horizontal
+    const verticalMovement = Math.abs(info.offset.y);
+    const horizontalMovement = Math.abs(info.offset.x);
+    
+    if (verticalMovement > horizontalMovement && verticalMovement > 50) {
+      // C'est un scroll vertical, annuler le swipe
+      setIsDragging(false);
+      if (isMobile) {
+        document.body.style.overflow = '';
+        document.body.style.touchAction = '';
+      }
+      return;
+    }
+    
     console.log('Glissement en cours:', {
       offsetX: info.offset.x,
+      offsetY: info.offset.y,
       isMobile,
       currentIndex: currentCardIndex
     });
@@ -478,14 +580,25 @@ export default function BoosterOpeningPage() {
       return
     }
 
+    // OPTIMISATION: Réduire les animations en mode performance
+    const animationDelay = performanceMode ? 200 : 500
+    const shouldShowStageFx = !performanceMode
+
     // Petite anim d'ouverture (FX) avant l'anim principale
-    setStageFx({ opening: true })
-    setTimeout(() => {
-      setStageFx({ opening: false })
+    if (shouldShowStageFx) {
+      setStageFx({ opening: true })
+      setTimeout(() => {
+        setStageFx({ opening: false })
+        if (!showAnimation) {
+          startTransition(() => setShowAnimation(true))
+        }
+      }, animationDelay)
+    } else {
+      // En mode performance, passer directement à l'animation
       if (!showAnimation) {
         startTransition(() => setShowAnimation(true))
       }
-    }, 500)
+    }
 
     // Lancer la requête API en même temps que l'animation
     setIsLoading(true)
@@ -496,7 +609,8 @@ export default function BoosterOpeningPage() {
 
       console.log('Début de l\'ouverture du booster:', {
         setCode: selectedSetData.code,
-        isMobile
+        isMobile,
+        performanceMode
       });
 
       const response = await fetch('/api/booster/open', {
@@ -585,7 +699,7 @@ export default function BoosterOpeningPage() {
   }
 
   return (
-    <div className="min-h-screen relative w-full">
+    <div className={`min-h-screen relative w-full ${performanceMode ? 'performance-mode' : ''}`}>
       {/* Fond grille bleue + veines dorées + watermarks */}
     
      
@@ -607,6 +721,7 @@ export default function BoosterOpeningPage() {
             card={booster[currentCardIndex]}
             onComplete={() => setShowTestRare(false)}
             shouldPlaySound={!audioPlayedRef.current.rare}
+            performanceMode={performanceMode}
           />
         )}
 
@@ -616,6 +731,7 @@ export default function BoosterOpeningPage() {
             card={booster[currentCardIndex]}
             onComplete={() => setShowTestUltra(false)}
             shouldPlaySound={!audioPlayedRef.current.ultra}
+            performanceMode={performanceMode}
           />
         )}
 
@@ -625,6 +741,7 @@ export default function BoosterOpeningPage() {
             card={booster[currentCardIndex]}
             onComplete={() => setShowTestAlt(false)}
             shouldPlaySound={!audioPlayedRef.current.alt}
+            performanceMode={performanceMode}
           />
         )}
         
@@ -643,11 +760,50 @@ export default function BoosterOpeningPage() {
           {/* Scène centrale: coffre/pack + infos du set */}
           <div className="stage mb-6 sm:mb-8">
             <div aria-hidden className="stage-glow" />
+            
+            {/* Indicateur de mode performance */}
+            {performanceMode && (
+              <div className="absolute top-2 right-2 z-10 bg-amber-500/90 text-black text-xs px-2 py-1 rounded-full font-medium">
+                Mode Performance
+              </div>
+            )}
+            
+            {/* Bouton pour forcer le mode performance */}
+            <button
+              onClick={() => setPerformanceMode(!performanceMode)}
+              className="absolute top-2 left-2 z-10 bg-slate-700/80 hover:bg-slate-600/80 text-white text-xs px-2 py-1 rounded-full font-medium transition-colors"
+              title={performanceMode ? "Désactiver le mode performance" : "Activer le mode performance"}
+            >
+              {performanceMode ? "⚡" : "🐌"}
+            </button>
+            
+            {/* Indicateur de sons iOS */}
+            {isIOS && !shouldPlaySound() && (
+              <div className="absolute top-12 left-2 z-10 bg-red-500/90 text-white text-xs px-2 py-1 rounded-full font-medium">
+                🔇 Sons désactivés
+                <button
+                  onClick={enableExplicitSound}
+                  className="ml-2 bg-white/20 hover:bg-white/30 px-1 rounded text-xs"
+                  title="Activer les sons"
+                >
+                  Activer
+                </button>
+              </div>
+            )}
+            
             <motion.div
               className="relative stage-item"
               initial={false}
-              animate={{ scale: stageFx.opening ? 1.06 : 1, rotate: stageFx.opening ? -2 : 0 }}
-              transition={{ type:'spring', stiffness: 200, damping: 14 }}
+              animate={{ 
+                scale: stageFx.opening ? (performanceMode ? 1.02 : 1.06) : 1, 
+                rotate: stageFx.opening ? (performanceMode ? -1 : -2) : 0 
+              }}
+              transition={{ 
+                type: performanceMode ? 'tween' : 'spring', 
+                stiffness: performanceMode ? 100 : 200, 
+                damping: performanceMode ? 20 : 14,
+                duration: performanceMode ? 0.2 : undefined
+              }}
             >
               <NextImage
                 src={stage === 'pack' ? `/images/booster/${(selectedSetData?.code || '').toLowerCase()}.png` : '/images/boostercartoon.png'}
@@ -665,7 +821,7 @@ export default function BoosterOpeningPage() {
                 </>
               )}
               {/* Particules dorées lors de l'ouverture */}
-              {stageFx.opening && (
+              {stageFx.opening && !performanceMode && (
                 particleKeys.map((k, i) => (
                   <div
                     key={k}
@@ -674,7 +830,7 @@ export default function BoosterOpeningPage() {
                   />
                 ))
               )}
-              {stageFx.opening && (
+              {stageFx.opening && !performanceMode && (
                 <motion.div
                   className="absolute inset-0 pointer-events-none"
                   initial={{ opacity: 0 }}
@@ -822,7 +978,7 @@ export default function BoosterOpeningPage() {
           <div className="w-[96%] sm:max-w-6xl mx-auto px-2 sm:px-4 pb-28 md:pb-0">
             <div className="relative rounded-2xl p-3 sm:p-6 border border-white/10 shadow-xl">
               {/* Carte actuelle avec transition type pile */}
-              <div className="relative flex items-center justify-center min-h-[360px] sm:min-h-[420px] md:min-h-[500px]">
+              <div className={`relative flex items-center justify-center min-h-[360px] sm:min-h-[420px] md:min-h-[500px] swipe-container ${isDragging ? 'swiping' : ''}`}>
                 <AnimatePresence initial={false} custom={navDirection}>
                   <motion.div
                     key={booster[currentCardIndex]?.id ?? `idx-${currentCardIndex}`}
@@ -874,18 +1030,18 @@ export default function BoosterOpeningPage() {
                 <div aria-hidden className="pointer-events-none absolute inset-x-1/3 top-8 h-6 rounded-xl bg-black/30 blur-xl" />
               </div>
 
-              {/* Zones de tap latérales (mobile) */}
+              {/* Zones de tap latérales (mobile) - réduites pour éviter les conflits */}
               {isMobile && (
                 <>
                   <button
                     onClick={() => currentCardIndex > 0 && handleArrowClick('prev')}
                     aria-label="Carte précédente"
-                    className="md:hidden absolute left-0 top-0 h-full w-16 bg-gradient-to-r from-black/10 to-transparent"
+                    className="md:hidden absolute left-0 top-1/4 h-1/2 w-8 bg-gradient-to-r from-black/10 to-transparent"
                   />
                   <button
                     onClick={() => currentCardIndex < booster.length - 1 && handleArrowClick('next')}
                     aria-label="Carte suivante"
-                    className="md:hidden absolute right-0 top-0 h-full w-16 bg-gradient-to-l from-black/10 to-transparent"
+                    className="md:hidden absolute right-0 top-1/4 h-1/2 w-8 bg-gradient-to-l from-black/10 to-transparent"
                   />
                 </>
               )}

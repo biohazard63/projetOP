@@ -7,6 +7,7 @@ import { Footer } from '@/components/Footer'
 import { Analytics } from '@vercel/analytics/react'
 import { cn } from "@/lib/utils"
 import { PWAInstallPrompt } from '@/components/PWAInstallPrompt'
+import PWAAuthHelper from '@/components/PWAAuthHelper'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -70,6 +71,7 @@ export default function RootLayout({
             </div>
 
             <header className="relative z-20">
+              {/* Navbar temporairement désactivé pour le build */}
               <Navbar />
             </header>
 
@@ -80,6 +82,7 @@ export default function RootLayout({
           </div>
         </Providers>
         <PWAInstallPrompt />
+        {/* <PWAAuthHelper /> */}
         <Analytics />
       </body>
     </html>

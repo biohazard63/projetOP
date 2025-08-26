@@ -117,6 +117,7 @@ export const authConfig = {
   providers,
   pages: {
     signIn: "/login",
+    error: "/login", // Rediriger les erreurs vers login
   },
   callbacks: {
     // Protection centralisée utilisée par le middleware
@@ -187,9 +188,23 @@ export const authConfig = {
   session: {
     strategy: "jwt",
     // Durée de session (inactivité serveur) configurable via env
-    // Par défaut: 30 minutes d'inactivité, rolling toutes les 5 minutes si activité
-    maxAge: parseInt(process.env.SESSION_MAX_AGE_SECONDS || `${30 * 60}`, 10),
-    updateAge: parseInt(process.env.SESSION_UPDATE_AGE_SECONDS || `${5 * 60}`, 10),
+    // Par défaut: 24 heures d'inactivité, rolling toutes les heures si activité
+    maxAge: parseInt(process.env.SESSION_MAX_AGE_SECONDS || `${24 * 60 * 60}`, 10),
+    updateAge: parseInt(process.env.SESSION_UPDATE_AGE_SECONDS || `${60 * 60}`, 10),
+  },
+  // Configuration pour PWA et mobile
+  useSecureCookies: process.env.NODE_ENV === 'production',
+  cookies: {
+    sessionToken: {
+      name: `next-auth.session-token`,
+      options: {
+        httpOnly: true,
+        sameSite: 'lax',
+        path: '/',
+        secure: process.env.NODE_ENV === 'production',
+        maxAge: parseInt(process.env.SESSION_MAX_AGE_SECONDS || `${24 * 60 * 60}`, 10),
+      },
+    },
   },
   secret: process.env.NEXTAUTH_SECRET,
   debug: process.env.NODE_ENV === 'development'

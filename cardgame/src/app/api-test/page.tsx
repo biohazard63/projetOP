@@ -28,6 +28,11 @@ export default function ApiTestPage() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState('');
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   const fetchSets = async () => {
     setLoading(true);
@@ -59,6 +64,18 @@ export default function ApiTestPage() {
     set.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
     set.series.toLowerCase().includes(searchTerm.toLowerCase())
   );
+
+  // Ne pas rendre si on n'est pas côté client
+  if (!isClient) {
+    return (
+      <div className="container mx-auto p-4">
+        <div className="text-center py-8">
+          <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+          <p className="mt-2">Chargement...</p>
+        </div>
+      </div>
+    )
+  }
 
   return (
     <div className="container mx-auto p-4">

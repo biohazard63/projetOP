@@ -15,6 +15,11 @@ export default function RegisterPage() {
   const [passwordStrength, setPasswordStrength] = useState(0)
   const [captchaToken, setCaptchaToken] = useState<string>('')
   const widgetRef = useRef<HTMLDivElement | null>(null)
+  const [isClient, setIsClient] = useState(false)
+
+  useEffect(() => {
+    setIsClient(true)
+  }, [])
 
   // Fonction de validation d'email
   const isValidEmail = (email: string) => {
@@ -133,6 +138,15 @@ export default function RegisterPage() {
         setError(err instanceof Error ? err.message : 'Une erreur est survenue')
       }
     })
+  }
+
+  // Ne pas rendre si on n'est pas côté client
+  if (!isClient) {
+    return (
+      <div className="relative min-h-screen flex items-center justify-center px-4 py-12">
+        <div className="w-16 h-16 border-t-2 border-yellow-400 rounded-full animate-spin"></div>
+      </div>
+    )
   }
 
   return (

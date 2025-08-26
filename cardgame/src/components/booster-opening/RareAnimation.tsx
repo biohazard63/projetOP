@@ -11,12 +11,13 @@ interface UltraRareAnimationProps {
   card: ExtendedCardType
   onComplete: () => void
   shouldPlaySound?: boolean
+  performanceMode?: boolean
 }
 
-export default function UltraRareAnimation({ card, onComplete, shouldPlaySound = false }: Readonly<UltraRareAnimationProps>) {
+export default function UltraRareAnimation({ card, onComplete, shouldPlaySound = false, performanceMode = false }: Readonly<UltraRareAnimationProps>) {
   const [isVisible, setIsVisible] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
-  const { playRareCardSound } = useAudio()
+  const { playRareCardSound, shouldPlaySound: canPlaySound } = useAudio()
   const hasPlayedSound = useRef(false)
   const reduceMotionRef = useRef(false)
   const timersRef = useRef<number[]>([])
@@ -38,7 +39,7 @@ export default function UltraRareAnimation({ card, onComplete, shouldPlaySound =
       reduceMotionRef.current = globalThis.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches ?? false
     } catch { /* no-op */ }
 
-    if (shouldPlaySound && !hasPlayedSound.current) {
+    if (shouldPlaySound && !hasPlayedSound.current && canPlaySound()) {
       playRareCardSound()
       hasPlayedSound.current = true
     }
@@ -76,10 +77,11 @@ export default function UltraRareAnimation({ card, onComplete, shouldPlaySound =
   }
 
   const particleIds = useMemo(() => {
-    const len = isMobile ? 15 : 20
+    const baseLen = isMobile ? 15 : 20
+    const len = performanceMode ? Math.floor(baseLen * 0.4) : baseLen // Réduire de 60% en mode performance
     const makeId = () => (globalThis.crypto?.randomUUID?.() ?? `${Date.now()}-${Math.random()}`)
     return Array.from({ length: len }, () => makeId())
-  }, [isMobile])
+  }, [isMobile, performanceMode])
 
   const textParticleKeys = useMemo(() => ['p0','p1','p2','p3','p4','p5','p6','p7'], [])
 
