@@ -2,7 +2,7 @@
   "name": "Mugiwara TCG",
   "short_name": "Mugiwara TCG",
   "description": "L'application fan-made française du One Piece Card Game. Ouvre des boosters réalistes, collectionne tes cartes et affronte d'autres joueurs pirates.",
-  "start_url": "/",
+  "start_url": "/home",
   "display": "standalone",
   "background_color": "#0f172a",
   "theme_color": "#f59e0b",

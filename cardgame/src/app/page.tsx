@@ -1,6 +1,6 @@
 import { redirect } from 'next/navigation'
 
-// Redirection vers la page de chargement
+// Redirection vers la page d'accueil
 export default function HomePage() {
-  redirect('/loading')
+  redirect('/home')
 }

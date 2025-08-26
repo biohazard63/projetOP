@@ -157,7 +157,6 @@ function ThemeSelector() {
   // Ne pas afficher sur certaines pages
   const pathname = typeof window !== 'undefined' ? window.location.pathname : ''
   const shouldHide = [
-    '/loading',
     '/game',
     '/deck-builder',
     '/booster-opening'
