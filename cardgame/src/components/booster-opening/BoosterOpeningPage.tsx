@@ -771,26 +771,12 @@ export default function BoosterOpeningPage() {
             {/* Bouton pour forcer le mode performance */}
             <button
               onClick={() => setPerformanceMode(!performanceMode)}
-              className="absolute top-2 left-2 z-10 bg-slate-700/80 hover:bg-slate-600/80 text-white text-xs px-2 py-1 rounded-full font-medium transition-colors"
+              className="absolute top-2 left-2 z-10 bg-green-700/80 hover:bg-green-600/80 text-white text-xs px-2 py-1 rounded-full font-medium transition-colors"
               title={performanceMode ? "Désactiver le mode performance" : "Activer le mode performance"}
             >
-              {performanceMode ? "⚡" : "🐌"}
+              {performanceMode ? "⚡ Normal" : "🌿 Eco"}
             </button>
-            
-            {/* Indicateur de sons iOS */}
-            {isIOS && !shouldPlaySound() && (
-              <div className="absolute top-12 left-2 z-10 bg-red-500/90 text-white text-xs px-2 py-1 rounded-full font-medium">
-                🔇 Sons désactivés
-                <button
-                  onClick={enableExplicitSound}
-                  className="ml-2 bg-white/20 hover:bg-white/30 px-1 rounded text-xs"
-                  title="Activer les sons"
-                >
-                  Activer
-                </button>
-              </div>
-            )}
-            
+       
             <motion.div
               className="relative stage-item"
               initial={false}
