@@ -248,11 +248,7 @@ export default function CardReveal({
             height={506}
             sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 300px, (max-width: 1280px) 340px, 380px"
             loading="lazy"
-            className={`w-full h-auto rounded-xl shadow-2xl ${
-              isUltraRare ? 'ring-4 ring-yellow-400' :
-              isRare ? 'ring-4 ring-purple-400' :
-              isAlternative ? 'ring-4 ring-cyan-400' : ''
-            }`}
+            className="w-full h-auto rounded-xl shadow-2xl"
           />
         </motion.div>
 
@@ -273,11 +269,7 @@ export default function CardReveal({
               height={506}
               sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 300px, (max-width: 1280px) 340px, 380px"
               loading="lazy"
-              className={`w-full h-auto rounded-xl shadow-2xl ${
-                isUltraRare ? 'ring-4 ring-yellow-400' :
-                isRare ? 'ring-4 ring-purple-400' :
-                isAlternative ? 'ring-4 ring-emerald-400' : ''
-              }`}
+              className="w-full h-auto rounded-xl shadow-2xl"
             />
             {/* Shimmer au-dessus de la face avant */}
             {shimmer && (
@@ -313,21 +305,30 @@ export default function CardReveal({
             )}
 
            
-            {/* Texte de rareté */}
-            {(isUltraRare || isRare || isAlternative) && (
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.2 }}
-                className={`absolute  left-[20%] transform -translate-x-1/2 px-4 py-2 rounded-full font-bold text-white shadow-lg text-sm sm:text-base ${
-                  isUltraRare ? 'bg-yellow-500' :
-                  isRare ? 'bg-purple-500' :
-                  'bg-cyan-500'
-                }`}
-              >
-                {isUltraRare ? 'ULTRA RARE' : isRare ? 'RARE' : 'ALTERNATIVE'}
-              </motion.div>
-            )}
+            {/* Texte de rareté pour toutes les cartes */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 1.2 }}
+              className={`absolute left-[20%] bottom-[-9%] transform -translate-x-1/2 px-3 py-1.5 rounded-lg font-semibold text-white shadow-xl text-xs sm:text-sm backdrop-blur-sm border border-white/20 ${
+                isUltraRare ? 'bg-yellow-500/90' :
+                isRare ? 'bg-purple-500/90' :
+                isAlternative ? 'bg-cyan-500/90' :
+                card.rarity === 'C' ? 'bg-gray-500/90' :
+                card.rarity === 'UC' ? 'bg-blue-500/90' :
+                card.rarity === 'U' ? 'bg-blue-500/90' :
+                card.rarity === 'R' ? 'bg-green-500/90' :
+                card.rarity === 'SR' ? 'bg-orange-500/90' :
+                card.rarity === 'L' ? 'bg-red-500/90' :
+                card.rarity === 'SEC' ? 'bg-yellow-500/90' :
+                card.rarity === 'SP CARD' ? 'bg-pink-500/90' :
+                card.rarity === 'TR' ? 'bg-indigo-500/90' :
+                card.rarity === 'P' ? 'bg-teal-500/90' :
+                'bg-gray-600/90'
+              }`}
+            >
+              {card.rarity}
+            </motion.div>
           </div>
         </motion.div>
       </motion.div>

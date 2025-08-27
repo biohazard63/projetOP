@@ -199,9 +199,15 @@ export default function CardDetailsModal({
               </div>
             )}
           
-            <div className="mt-auto pt-4 border-t border-white/10">
+            <div className="mt-auto  flex  gap-1 pt-4 border-t border-white/10">
               <p className="text-xs text-gray-500">
                 ID: {card.id}
+              </p>
+              <p className="text-xs text-gray-500">
+                Rarity: {card.rarity} 
+              </p>
+              <p className="text-xs text-gray-500">
+                Parallel: {card.isParallel ? 'Yes' : 'No'}
               </p>
             </div>
           </div>
