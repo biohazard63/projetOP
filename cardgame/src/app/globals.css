@@ -81,45 +81,6 @@
   }
 }
 
-/* Optimisations iOS 18 - Prévention de la surchauffe */
-@supports (-webkit-touch-callout: none) {
-  /* Détection iOS */
-  * {
-    /* Désactiver les animations coûteuses sur iOS */
-    -webkit-transform: translateZ(0);
-    transform: translateZ(0);
-    /* Optimiser le rendu GPU */
-    -webkit-backface-visibility: hidden;
-    backface-visibility: hidden;
-    /* Réduire la complexité des animations */
-    -webkit-perspective: 1000px;
-    perspective: 1000px;
-  }
-  
-  /* Mode performance pour iOS */
-  .performance-mode {
-    /* Désactiver les animations complexes */
-    animation: none !important;
-    transition: none !important;
-    /* Réduire les effets de flou */
-    filter: none !important;
-    backdrop-filter: none !important;
-    /* Optimiser le scroll */
-    -webkit-overflow-scrolling: touch;
-    overflow-scrolling: touch;
-  }
-  
-  /* Optimisations spécifiques pour les animations de booster */
-  .booster-animation {
-    /* Limiter les transformations 3D */
-    transform-style: flat !important;
-    /* Réduire la qualité des ombres */
-    box-shadow: none !important;
-    /* Désactiver les effets de particules */
-    background: none !important;
-  }
-}
-
 /* Animations pour la page d'accueil */
 @keyframes fadeIn {
   from {

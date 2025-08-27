@@ -30,109 +30,46 @@ export function useSoundSetting() {
     return window.localStorage.getItem(SILENT_MODE_KEY) === 'true'
   })
 
-  // Détection du mode silencieux iOS optimisée pour iOS 18
+  // Détection du mode silencieux iOS
   useEffect(() => {
     if (!isIOS()) return
 
-    let audioContext: AudioContext | null = null
-
     const detectSilentMode = async () => {
       try {
-        // Méthode 1: Test avec AudioContext (plus fiable pour iOS 18)
-        if (!audioContext) {
-          audioContext = new (window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext)()
-        }
+        // Créer un audio temporaire pour tester le mode silencieux
+        const testAudio = new Audio()
+        testAudio.src = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT'
+        testAudio.volume = 0.1
         
-        // Vérifier l'état du contexte
-        if (audioContext.state === 'suspended') {
-          await audioContext.resume()
-        }
+        // Essayer de jouer l'audio
+        await testAudio.play()
         
-        // Créer un son de test très court et silencieux
-        const oscillator = audioContext.createOscillator()
-        const gainNode = audioContext.createGain()
-        
-        oscillator.frequency.setValueAtTime(8000, audioContext.currentTime) // Fréquence haute (moins audible)
-        gainNode.gain.setValueAtTime(0.0001, audioContext.currentTime) // Volume extrêmement bas
-        
-        oscillator.connect(gainNode)
-        gainNode.connect(audioContext.destination)
-        
-        oscillator.start(audioContext.currentTime)
-        oscillator.stop(audioContext.currentTime + 0.001)
-        
-        // Si on arrive ici, le son a été joué
+        // Si on arrive ici, l'audio a été joué (pas en mode silencieux)
         setIsSilentMode(false)
         window.localStorage.setItem(SILENT_MODE_KEY, 'false')
-        console.log('Mode silencieux iOS: NON détecté (AudioContext)')
+        
+        // Arrêter immédiatement
+        testAudio.pause()
+        testAudio.currentTime = 0
         
       } catch (error) {
-        // Méthode 2: Fallback avec Audio element
-        try {
-          const testAudio = new Audio()
-          testAudio.src = 'data:audio/wav;base64,UklGRnoGAABXQVZFZm10IBAAAAABAAEAQB8AAEAfAAABAAgAZGF0YQoGAACBhYqFbF1fdJivrJBhNjVgodDbq2EcBj+a2/LDciUFLIHO8tiJNwgZaLvt559NEAxQp+PwtmMcBjiR1/LMeSwFJHfH8N2QQAoUXrTp66hVFApGn+DyvmwhBSuBzvLZiTYIG2m98OScTgwOUarm7blmGgU7k9n1unEiBC13yO/eizEIHWq+8+OWT'
-          testAudio.volume = 0.01 // Volume encore plus bas
-          
-          await testAudio.play()
-          
-          setIsSilentMode(false)
-          window.localStorage.setItem(SILENT_MODE_KEY, 'false')
-          console.log('Mode silencieux iOS: NON détecté (Audio element)')
-          
-          testAudio.pause()
-          testAudio.currentTime = 0
-          
-        } catch (fallbackError) {
-          // Si les deux méthodes échouent, on est en mode silencieux
-          console.log('Mode silencieux détecté sur iOS (les deux méthodes ont échoué)')
-          setIsSilentMode(true)
-          window.localStorage.setItem(SILENT_MODE_KEY, 'true')
-        }
+        // Si l'audio ne peut pas être joué, on est probablement en mode silencieux
+        console.log('Mode silencieux détecté sur iOS')
+        setIsSilentMode(true)
+        window.localStorage.setItem(SILENT_MODE_KEY, 'true')
       }
     }
 
-    // Détecter au chargement avec un délai pour iOS 18
-    setTimeout(() => {
-      detectSilentMode()
-      
-      // Écouter les changements d'état du contexte audio après création
-      if (audioContext) {
-        audioContext.addEventListener('statechange', () => {
-          console.log('État du contexte audio iOS:', audioContext?.state)
-          if (audioContext?.state === 'running') {
-            setIsSilentMode(false)
-            window.localStorage.setItem(SILENT_MODE_KEY, 'false')
-          } else if (audioContext?.state === 'suspended') {
-            setIsSilentMode(true)
-            window.localStorage.setItem(SILENT_MODE_KEY, 'true')
-          }
-        })
-      }
-    }, 500)
+    // Détecter au chargement
+    detectSilentMode()
 
-    // Réécouter les changements de focus et visibilité
+    // Réécouter les changements de focus (quand l'utilisateur revient sur l'app)
     const handleFocus = () => {
-      setTimeout(detectSilentMode, 200)
-    }
-    
-    const handleVisibilityChange = () => {
-      if (!document.hidden) {
-        setTimeout(detectSilentMode, 300)
-      }
+      setTimeout(detectSilentMode, 100)
     }
 
     window.addEventListener('focus', handleFocus)
-    document.addEventListener('visibilitychange', handleVisibilityChange)
-    
-    return () => {
-      window.removeEventListener('focus', handleFocus)
-      document.removeEventListener('visibilitychange', handleVisibilityChange)
-      
-      // Nettoyer le contexte audio
-      if (audioContext) {
-        audioContext.close()
-      }
-    }
+    return () => window.removeEventListener('focus', handleFocus)
   }, [])
 
   useEffect(() => {

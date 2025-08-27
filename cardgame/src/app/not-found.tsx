@@ -2,12 +2,6 @@ import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Home, ArrowLeft } from 'lucide-react'
 
-// Métadonnées pour la page 404
-export const metadata = {
-  title: 'Page introuvable - One Piece Card Game',
-  description: 'La page que vous recherchez n\'existe pas.',
-}
-
 export default function NotFound() {
   return (
     <div className="min-h-screen flex items-center justify-center px-4">

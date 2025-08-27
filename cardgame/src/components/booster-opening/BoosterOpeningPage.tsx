@@ -215,40 +215,29 @@ export default function BoosterOpeningPage() {
     setStage(selectedSet ? 'pack' : 'chest')
   }, [selectedSet])
 
-  // OPTIMISATIONS PERFORMANCE - Détection automatique du mode éco pour iOS 18
+  // OPTIMISATIONS PERFORMANCE - Détection automatique du mode performance
   useEffect(() => {
     const checkPerformanceMode = () => {
       const now = Date.now()
       const timeSinceLastOpening = now - lastOpeningTimeRef.current
       
-      // Sur iOS, être plus agressif avec le mode éco
-      const isIOSDevice = /iphone|ipad|ipod/i.test(navigator.userAgent)
-      const performanceThreshold = isIOSDevice ? 2000 : 3000 // 2s sur iOS vs 3s sur autres
-      const consecutiveThreshold = isIOSDevice ? 1 : 2 // 1 ouverture sur iOS vs 2 sur autres
-      
-      if (timeSinceLastOpening < performanceThreshold) {
+      // Si plusieurs ouvertures rapides (< 3 secondes), activer le mode performance
+      if (timeSinceLastOpening < 3000) {
         setConsecutiveOpenings(prev => prev + 1)
-        if (consecutiveOpenings >= consecutiveThreshold) {
+        if (consecutiveOpenings >= 2) {
           setPerformanceMode(true)
-          console.log('Mode éco activé automatiquement (iOS optimisé)')
         }
       } else {
-        // Reset après 8 secondes sur iOS, 10 sur autres
-        const resetDelay = isIOSDevice ? 8000 : 10000
-        setTimeout(() => {
-          setConsecutiveOpenings(0)
-          setPerformanceMode(false)
-        }, resetDelay)
+        // Reset après 10 secondes sans ouverture
+        setConsecutiveOpenings(0)
+        setPerformanceMode(false)
       }
       
       lastOpeningTimeRef.current = now
     }
 
-    // Vérifier les performances plus fréquemment sur iOS
-    const isIOSDevice = /iphone|ipad|ipod/i.test(navigator.userAgent)
-    const checkInterval = isIOSDevice ? 3000 : 5000 // 3s sur iOS vs 5s sur autres
-    
-    performanceCheckIntervalRef.current = setInterval(checkPerformanceMode, checkInterval)
+    // Vérifier les performances toutes les 5 secondes
+    performanceCheckIntervalRef.current = setInterval(checkPerformanceMode, 5000)
 
     return () => {
       if (performanceCheckIntervalRef.current) {
@@ -584,20 +573,16 @@ export default function BoosterOpeningPage() {
     }
   }
 
-  // Gestion de l'ouverture du booster optimisée pour iOS 18
+  // Gestion de l'ouverture du booster
   const handleOpenBooster = useCallback(async () => {
     if (!selectedSet) {
       toast.error('Veuillez sélectionner un set')
       return
     }
 
-    // OPTIMISATION iOS 18: Réduire drastiquement les animations
-    const isIOSDevice = /iphone|ipad|ipod/i.test(navigator.userAgent)
-    const animationDelay = performanceMode || isIOSDevice ? 100 : 500
-    const shouldShowStageFx = !performanceMode && !isIOSDevice
-
-    // Masquer la modal immédiatement pour éviter le conflit avec le footer
-    setShowBoosterModal(false)
+    // OPTIMISATION: Réduire les animations en mode performance
+    const animationDelay = performanceMode ? 200 : 500
+    const shouldShowStageFx = !performanceMode
 
     // Petite anim d'ouverture (FX) avant l'anim principale
     if (shouldShowStageFx) {
@@ -609,7 +594,7 @@ export default function BoosterOpeningPage() {
         }
       }, animationDelay)
     } else {
-      // En mode éco ou iOS, passer directement à l'animation
+      // En mode performance, passer directement à l'animation
       if (!showAnimation) {
         startTransition(() => setShowAnimation(true))
       }
@@ -622,11 +607,10 @@ export default function BoosterOpeningPage() {
         throw new Error('Set non trouvé')
       }
 
-      console.log('Début de l\'ouverture du booster (iOS optimisé):', {
+      console.log('Début de l\'ouverture du booster:', {
         setCode: selectedSetData.code,
         isMobile,
-        performanceMode,
-        isIOS: isIOSDevice
+        performanceMode
       });
 
       const response = await fetch('/api/booster/open', {
@@ -676,7 +660,7 @@ export default function BoosterOpeningPage() {
     } finally {
       setIsLoading(false)
     }
-  }, [selectedSet, selectedSetData, showAnimation, isMobile, userCollection, startTransition, performanceMode])
+  }, [selectedSet, selectedSetData, showAnimation, isMobile, userCollection, startTransition])
 
   const handleAnimationComplete = useCallback(async () => {
     startTransition(() => setShowAnimation(false))
@@ -723,50 +707,42 @@ export default function BoosterOpeningPage() {
       <div className="relative z-10 min-h-screen pt-16 w-full">
         <Toaster position="top-center" />
         
-        {/* Animations existantes - Optimisées pour iOS 18 */}
+        {/* Animations existantes */}
         {showAnimation && (
-          <div className="booster-animation" style={{ zIndex: 9999 }}>
-            <BoosterPackAnimation 
-              onComplete={handleAnimationComplete} 
-              setCode={sets.find(set => set.id === selectedSet)?.code || ''}
-            />
-          </div>
+          <BoosterPackAnimation 
+            onComplete={handleAnimationComplete} 
+            setCode={sets.find(set => set.id === selectedSet)?.code || ''}
+          />
         )}
 
-        {/* Test: Animation rare (toggle avec 'R') - Audio désactivé par défaut */}
+        {/* Test: Animation rare (toggle avec 'R') */}
         {showTestRare && booster[currentCardIndex] && (
-          <div className="booster-animation" style={{ zIndex: 9999 }}>
-            <RareAnimation
-              card={booster[currentCardIndex]}
-              onComplete={() => setShowTestRare(false)}
-              shouldPlaySound={false} // Désactivé pour éviter la surchauffe
-              performanceMode={performanceMode}
-            />
-          </div>
+          <RareAnimation
+            card={booster[currentCardIndex]}
+            onComplete={() => setShowTestRare(false)}
+            shouldPlaySound={!audioPlayedRef.current.rare}
+            performanceMode={performanceMode}
+          />
         )}
 
-        {/* Test: Animation ultra-rare (toggle avec 'U') - Audio désactivé par défaut */}
+        {/* Test: Animation ultra-rare (toggle avec 'U') */}
         {showTestUltra && booster[currentCardIndex] && (
-          <div className="booster-animation" style={{ zIndex: 9999 }}>
-            <UltraRareAnimation
-              card={booster[currentCardIndex]}
-              onComplete={() => setShowTestUltra(false)}
-              shouldPlaySound={false} // Désactivé pour éviter la surchauffe
-              performanceMode={performanceMode}
-            />
-          </div>
+          <UltraRareAnimation
+            card={booster[currentCardIndex]}
+            onComplete={() => setShowTestUltra(false)}
+            shouldPlaySound={!audioPlayedRef.current.ultra}
+            performanceMode={performanceMode}
+          />
         )}
 
-        {/* Test: Animation alternative (toggle avec 'A') - Audio désactivé par défaut */}
+        {/* Test: Animation alternative (toggle avec 'A') */}
         {showTestAlt && booster[currentCardIndex] && (
-          <div className="booster-animation" style={{ zIndex: 9999 }}>
-            <AlternativeAnimation
-              card={booster[currentCardIndex]}
-              onComplete={() => setShowTestAlt(false)}
-              shouldPlaySound={false} // Désactivé pour éviter la surchauffe
-              performanceMode={performanceMode}
-            />
-          </div>
+          <AlternativeAnimation
+            card={booster[currentCardIndex]}
+            onComplete={() => setShowTestAlt(false)}
+            shouldPlaySound={!audioPlayedRef.current.alt}
+            performanceMode={performanceMode}
+          />
         )}
         
         {/* En-tête avec effet de verre dépoli */}
@@ -785,23 +761,20 @@ export default function BoosterOpeningPage() {
           <div className="stage mb-6 sm:mb-8">
             <div aria-hidden className="stage-glow" />
             
-            {/* Indicateur de mode éco */}
+            {/* Indicateur de mode performance */}
             {performanceMode && (
-              <div className="absolute top-2 right-2 z-10 bg-gradient-to-r from-emerald-500 to-green-500 text-white text-xs px-3 py-1.5 rounded-lg font-semibold shadow-lg border border-emerald-400/30">
-                🌱 Mode Éco
+              <div className="absolute top-2 right-2 z-10 bg-amber-500/90 text-black text-xs px-2 py-1 rounded-full font-medium">
+                Mode Performance
               </div>
             )}
             
-            {/* Bouton pour forcer le mode éco */}
+            {/* Bouton pour forcer le mode performance */}
             <button
               onClick={() => setPerformanceMode(!performanceMode)}
-              className="absolute top-2 left-2 z-10 bg-gradient-to-r from-emerald-600 to-green-600 hover:from-emerald-700 hover:to-green-700 text-white text-xs px-3 py-2 rounded-lg font-semibold transition-all duration-300 shadow-lg border border-emerald-500/30 hover:shadow-xl hover:scale-105"
-              title={performanceMode ? "Désactiver le mode éco" : "Activer le mode éco"}
+              className="absolute top-2 left-2 z-10 bg-slate-700/80 hover:bg-slate-600/80 text-white text-xs px-2 py-1 rounded-full font-medium transition-colors"
+              title={performanceMode ? "Désactiver le mode performance" : "Activer le mode performance"}
             >
-              <div className="flex items-center gap-1">
-                <span className="text-sm">{performanceMode ? "🌱" : "🌿"}</span>
-                <span className="font-bold">ÉCO</span>
-              </div>
+              {performanceMode ? "⚡" : "🐌"}
             </button>
             
             {/* Indicateur de sons iOS */}
