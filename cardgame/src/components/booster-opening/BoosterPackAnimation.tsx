@@ -15,7 +15,7 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
   const [showTear, setShowTear] = useState(false)
   const [showPulse, setShowPulse] = useState(false)
   const [showFlash, setShowFlash] = useState(false)
-  const audioRef = useRef<HTMLAudioElement | null>(null)
+  // Audio supprimé pour simplifier
   const [isMobile, setIsMobile] = useState(false)
   const reduceMotionRef = useRef(false)
   const cardIds = useMemo(() => {
@@ -52,26 +52,7 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
       return
     }
 
-    // Initialiser l'audio
-    audioRef.current = new Audio('/sounds/ouverture.mp3')
-    audioRef.current.preload = 'auto'
-    audioRef.current.volume = isMobile ? 0.35 : 0.5
-
-    // Jouer le son au début de l'animation en gérant la promesse
-    const audio = audioRef.current
-    const playPromise = audio.play()
-    if (playPromise !== undefined) {
-      playPromise
-        .then(() => {
-          didStartRef.current = true
-        })
-        .catch((error: unknown) => {
-          const errObj = error as { name?: unknown; message?: unknown }
-          if (errObj?.name === 'AbortError') return
-          if (typeof errObj?.message === 'string' && errObj.message.includes('interrupted by a new load request')) return
-          console.error('Erreur lors de la lecture du son:', error)
-        })
-    }
+    // Audio supprimé pour simplifier
 
     // Timeline mobile-first: déchirure -> cartes -> fin
     const tTear = window.setTimeout(() => {
@@ -99,12 +80,7 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
         window.clearTimeout(t)
       }
       timersRef.current = []
-      // Arrêter le son si le composant est démonté
-      const audioEl = audioRef.current
-      if (audioEl) {
-        audioEl.pause()
-        audioEl.currentTime = 0
-      }
+      // Audio supprimé pour simplifier
       didStartRef.current = false
     }
   }, [onComplete, isMobile])
@@ -127,11 +103,7 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
     // finish
     setIsVisible(false)
     onComplete()
-    const audioEl = audioRef.current
-    if (audioEl) {
-      audioEl.pause()
-      audioEl.currentTime = 0
-    }
+    // Audio supprimé pour simplifier
   }
 
   // Calcul des positions des cartes en fonction de la taille de l'écran
@@ -151,9 +123,9 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
   }
 
   return (
-    <AnimatePresence>
+    <AnimatePresence >
       {isVisible && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/75 z-[140]" aria-live="polite" aria-label="Animation d'ouverture du booster" onClick={skip}>
+        <div className="fixed  inset-0 flex items-center justify-center bg-black/75 z-[9999]" aria-live="polite" aria-label="Animation d'ouverture du booster" onClick={skip} >
           {/* Animation du booster */}
           <motion.div
             initial={{ scale: 1, rotate: 0 }}

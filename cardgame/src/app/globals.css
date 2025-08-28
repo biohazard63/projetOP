@@ -1009,6 +1009,39 @@
   animation-duration: 0.2s;
 }
 
+/* Low-end device optimizations */
+.low-end-device {
+  /* Reduce GPU load */
+  transform: translateZ(0);
+  will-change: auto;
+}
+
+.low-end-device * {
+  /* Disable complex animations */
+  animation-duration: 0.1s !important;
+  transition-duration: 0.1s !important;
+}
+
+.low-end-device .gold-particle {
+  display: none !important;
+}
+
+.low-end-device .tear-left,
+.low-end-device .tear-right {
+  display: none !important;
+}
+
+/* Optimize backdrop blur for performance */
+@media (max-width: 768px) {
+  .backdrop-blur-xl {
+    backdrop-filter: blur(8px);
+  }
+  
+  .backdrop-blur-sm {
+    backdrop-filter: blur(4px);
+  }
+}
+
 /* Amélioration de la gestion des swipes sur mobile */
 .swipe-container {
   touch-action: pan-y pinch-zoom;

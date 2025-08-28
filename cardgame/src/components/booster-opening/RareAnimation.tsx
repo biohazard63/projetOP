@@ -2,7 +2,7 @@
 
 import { motion, AnimatePresence } from 'framer-motion'
 import { useState, useEffect, useRef } from 'react'
-import { useAudio } from '@/hooks/useAudio'
+// Audio supprimé pour simplifier
 import { ExtendedCardType } from '@/types/card'
 import Image from 'next/image'
 import { Sparkles } from 'lucide-react'
@@ -10,15 +10,12 @@ import { Sparkles } from 'lucide-react'
 interface UltraRareAnimationProps {
   card: ExtendedCardType
   onComplete: () => void
-  shouldPlaySound?: boolean
   performanceMode?: boolean
 }
 
-export default function UltraRareAnimation({ card, onComplete, shouldPlaySound = false, performanceMode = false }: Readonly<UltraRareAnimationProps>) {
+export default function UltraRareAnimation({ card, onComplete, performanceMode = false }: Readonly<UltraRareAnimationProps>) {
   const [isVisible, setIsVisible] = useState(true)
   const [isMobile, setIsMobile] = useState(false)
-  const { playRareCardSound, shouldPlaySound: canPlaySound } = useAudio()
-  const hasPlayedSound = useRef(false)
   const timersRef = useRef<number[]>([])
 
   useEffect(() => {
@@ -33,12 +30,6 @@ export default function UltraRareAnimation({ card, onComplete, shouldPlaySound =
   }, [])
 
   useEffect(() => {
-    // Son
-    if (shouldPlaySound && !hasPlayedSound.current && canPlaySound()) {
-      playRareCardSound()
-      hasPlayedSound.current = true
-    }
-
     // Durée réduite pour moins de surchauffe
     const duration = performanceMode ? 1500 : 2000
     const tEnd = window.setTimeout(() => {
@@ -51,7 +42,7 @@ export default function UltraRareAnimation({ card, onComplete, shouldPlaySound =
       for (const t of timersRef.current) window.clearTimeout(t)
       timersRef.current = []
     }
-  }, [onComplete, playRareCardSound, shouldPlaySound, performanceMode])
+  }, [onComplete, performanceMode])
 
   useEffect(() => {
     const handleKey = (e: KeyboardEvent) => { if (e.key === 'Escape') skip() }

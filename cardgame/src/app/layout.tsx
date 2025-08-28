@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 import Image from 'next/image'
 import { Navbar } from '@/components/Navbar'
 import { Providers } from './providers'
-import { Footer } from '@/components/Footer'
+
 import { Analytics } from '@vercel/analytics/react'
 import { cn } from "@/lib/utils"
 import { PWAInstallPrompt } from '@/components/PWAInstallPrompt'
@@ -78,7 +78,7 @@ export default function RootLayout({
             <main className="relative z-10 pt-16" suppressHydrationWarning>
               {children}
             </main>
-            <Footer />
+         
           </div>
         </Providers>
         <PWAInstallPrompt />

@@ -199,15 +199,18 @@ export default function CardDetailsModal({
               </div>
             )}
           
-            <div className="mt-auto  flex  gap-1 pt-4 border-t border-white/10">
+            <div className="mt-auto  flex  gap-3 pt-4 border-t border-white/10">
               <p className="text-xs text-gray-500">
-                ID: {card.id}
+                <span className="font-bold text-white">ID:</span> {card.id}
               </p>
               <p className="text-xs text-gray-500">
-                Rarity: {card.rarity} 
+                <span className="font-bold text-white">Set:</span> {card.set}
               </p>
               <p className="text-xs text-gray-500">
-                Parallel: {card.isParallel ? 'Yes' : 'No'}
+                <span className="font-bold text-white">Rareté:</span> {card.rarity} 
+              </p>
+              <p className="text-xs text-gray-500">
+                <span className="font-bold text-white">Alternatif:</span> {card.isParallel ? 'Oui' : 'Non'}
               </p>
             </div>
           </div>
