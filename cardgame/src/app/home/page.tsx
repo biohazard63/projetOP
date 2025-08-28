@@ -231,11 +231,10 @@ export default function HomePage() {
             </button>
                 </div>
 
-                <p className="mt-2 text-xs text-white/70">Pas besoin de compte pour tester la démo.</p>
 
                 <div className="mt-6 flex flex-wrap justify-center lg:justify-start gap-4 text-xs text-white/70">
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">⚡ Animations fluides</div>
-                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">🎴 10k+ cartes</div>
+                  <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">🎴 3k+ cartes</div>
                   <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/5 border border-white/10">🛡️ Comptes sécurisés</div>
                 </div>
               </div>

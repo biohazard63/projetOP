@@ -22,6 +22,9 @@ import { useCollection } from '@/hooks/useCollection'
 import { useBooster } from '@/hooks/useBooster'
 import { ExtendedCardType } from '@/types/card'
 import BoosterPackAnimation from './BoosterPackAnimation'
+import RareAnimation from './RareAnimation'
+import UltraRareAnimation from './UltraRareAnimation'
+import AlternativeAnimation from './AlternativeAnimation'
 
 import { useRef } from 'react'
 
@@ -49,6 +52,12 @@ export default function BoosterOpeningPageOptimized() {
   const [navDirection, setNavDirection] = useState<'prev' | 'next'>('next')
   const [stage, setStage] = useState<'chest' | 'pack'>('chest')
   const [stageFx, setStageFx] = useState<{opening:boolean}>({ opening: false })
+  
+  // Animations de rareté
+  const [showRareAnimation, setShowRareAnimation] = useState(false)
+  const [showUltraRareAnimation, setShowUltraRareAnimation] = useState(false)
+  const [showAlternativeAnimation, setShowAlternativeAnimation] = useState(false)
+  const [rareCard, setRareCard] = useState<ExtendedCardType | null>(null)
   
   // OPTIMISATIONS PERFORMANCE AVANCÉES
   const [performanceMode, setPerformanceMode] = useState(false)
@@ -264,6 +273,33 @@ export default function BoosterOpeningPageOptimized() {
     }
   }, [isDragging, isMobile])
 
+  // Fonction pour déclencher l'animation de rareté lors de la navigation
+  const triggerRarityAnimation = useCallback((card: ExtendedCardType) => {
+    const rarity = card.rarity?.toUpperCase()
+    
+    // Délai court pour s'assurer que l'état est stable
+    setTimeout(() => {
+      // Détecter les cartes alternatives par leur ID (se termine par _pX)
+      const isAlternativeCard = card.id && card.id.includes('_p')
+      
+      // Ultra-Rare : TR, SEC, SP CARD
+      if (rarity === 'TR' || rarity === 'SEC' || rarity === 'SP CARD') {
+        setRareCard(card)
+        setShowUltraRareAnimation(true)
+      } 
+      // Rare : SR, L
+      else if (rarity === 'SR' || rarity === 'L') {
+        setRareCard(card)
+        setShowRareAnimation(true)
+      } 
+      // Alternative : ID se termine par _pX
+      else if (isAlternativeCard) {
+        setRareCard(card)
+        setShowAlternativeAnimation(true)
+      }
+    }, 100) // Délai de 100ms pour la stabilité
+  }, [])
+
   // Navigation entre les cartes (mémoïsé)
   const navigateCard = useCallback((direction: 'prev' | 'next') => {
     if (!booster || booster.length === 0) return;
@@ -275,12 +311,36 @@ export default function BoosterOpeningPageOptimized() {
       if (!prevCard) return;
       setCurrentCardIndex(currentCardIndex - 1);
       setIsNewCard(!userCollection.has(prevCard.id));
+      
+      // Déclencher l'animation de rareté si la carte est rare
+      const rarity = prevCard.rarity?.toUpperCase()
+      const isAlternativeCard = prevCard.id && prevCard.id.includes('_p')
+      
+      if (rarity === 'TR' || rarity === 'SEC' || rarity === 'SP CARD' || 
+          rarity === 'SR' || rarity === 'L' || isAlternativeCard) {
+        // Délai pour s'assurer que la navigation est terminée
+        setTimeout(() => {
+          triggerRarityAnimation(prevCard);
+        }, 150)
+      }
     } else if (direction === 'next' && currentCardIndex < booster.length - 1) {
       setNavDirection('next')
       const nextCard = booster[currentCardIndex + 1];
       if (!nextCard) return;
       setCurrentCardIndex(currentCardIndex + 1);
       setIsNewCard(!userCollection.has(nextCard.id));
+      
+      // Déclencher l'animation de rareté si la carte est rare
+      const rarity = nextCard.rarity?.toUpperCase()
+      const isAlternativeCard = nextCard.id && nextCard.id.includes('_p')
+      
+      if (rarity === 'TR' || rarity === 'SEC' || rarity === 'SP CARD' || 
+          rarity === 'SR' || rarity === 'L' || isAlternativeCard) {
+        // Délai pour s'assurer que la navigation est terminée
+        setTimeout(() => {
+          triggerRarityAnimation(nextCard);
+        }, 150)
+      }
       if (currentCardIndex + 1 === booster.length - 1) {
         const delay = isMobile ? (performanceMode ? 800 : 1200) : (performanceMode ? 1000 : 1500);
         setTimeout(async () => {
@@ -299,7 +359,7 @@ export default function BoosterOpeningPageOptimized() {
         }, delay);
       }
     }
-  }, [currentCardIndex, booster, userCollection, isMobile, addToCollection, loadUserCollection, performanceMode])
+  }, [currentCardIndex, booster, userCollection, isMobile, addToCollection, loadUserCollection, performanceMode, triggerRarityAnimation])
 
   // Gestionnaire des touches du clavier
   useEffect(() => {
@@ -447,6 +507,8 @@ export default function BoosterOpeningPageOptimized() {
     }
   }, [booster, currentCardIndex, navigateCard])
 
+
+
   // Gestion de l'ouverture du booster
   const handleOpenBooster = useCallback(async () => {
     if (!selectedSet) {
@@ -499,6 +561,7 @@ export default function BoosterOpeningPageOptimized() {
             setBooster(processedCards)
             if (processedCards.length > 0) {
               setIsNewCard(!userCollection.has(processedCards[0].id))
+              // Pas d'animation automatique à l'ouverture - seulement lors de la navigation
             }
           })
         } else {
@@ -518,11 +581,41 @@ export default function BoosterOpeningPageOptimized() {
   const handleAnimationComplete = useCallback(async () => {
     startTransition(() => setShowAnimation(false))
     if (booster.length > 0) {
-      startTransition(() => {
-        setCurrentCardIndex(0)
-      })
+      // Délai pour s'assurer que l'animation d'ouverture est bien terminée
+      setTimeout(() => {
+        startTransition(() => {
+          setCurrentCardIndex(0)
+          // Déclencher l'animation de rareté si la première carte est rare
+          const firstCard = booster[0]
+          if (firstCard) {
+            const rarity = firstCard.rarity?.toUpperCase()
+            const isAlternativeCard = firstCard.id && firstCard.id.includes('_p')
+            
+            if (rarity === 'TR' || rarity === 'SEC' || rarity === 'SP CARD' || 
+                rarity === 'SR' || rarity === 'L' || isAlternativeCard) {
+              triggerRarityAnimation(firstCard)
+            }
+          }
+        })
+      }, 200) // Délai de 200ms pour la stabilité
     }
-  }, [booster.length, startTransition])
+  }, [booster.length, startTransition, triggerRarityAnimation])
+
+  // Vérification de la rareté et déclenchement des animations
+  const checkRarityAndPlayEffect = useCallback((card: ExtendedCardType) => {
+    const rarity = card.rarity?.toUpperCase()
+    
+    if (rarity === 'SR' || rarity === 'SEC' || rarity === 'L') {
+      setRareCard(card)
+      setShowUltraRareAnimation(true)
+    } else if (rarity === 'R') {
+      setRareCard(card)
+      setShowRareAnimation(true)
+    } else if (rarity === 'P' || rarity === 'TR' || rarity === 'SP CARD') {
+      setRareCard(card)
+      setShowAlternativeAnimation(true)
+    }
+  }, [])
 
   // Réinitialiser l'état et ouvrir un nouveau booster
   const resetAndOpenNewBooster = useCallback(async () => {
@@ -568,6 +661,40 @@ export default function BoosterOpeningPageOptimized() {
           <BoosterPackAnimation 
             onComplete={handleAnimationComplete} 
             setCode={sets.find(set => set.id === selectedSet)?.code || ''}
+            performanceMode={performanceMode}
+          />
+        )}
+
+        {/* Animations de rareté */}
+        {showRareAnimation && rareCard && (
+          <RareAnimation
+            card={rareCard}
+            onComplete={() => {
+              // Délai avant de fermer l'animation
+              setTimeout(() => setShowRareAnimation(false), 1000)
+            }}
+            performanceMode={performanceMode}
+          />
+        )}
+
+        {showUltraRareAnimation && rareCard && (
+          <UltraRareAnimation
+            card={rareCard}
+            onComplete={() => {
+              // Délai avant de fermer l'animation
+              setTimeout(() => setShowUltraRareAnimation(false), 1000)
+            }}
+            performanceMode={performanceMode}
+          />
+        )}
+
+        {showAlternativeAnimation && rareCard && (
+          <AlternativeAnimation
+            card={rareCard}
+            onComplete={() => {
+              // Délai avant de fermer l'animation
+              setTimeout(() => setShowAlternativeAnimation(false), 1000)
+            }}
             performanceMode={performanceMode}
           />
         )}
