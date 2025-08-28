@@ -18,7 +18,10 @@ import { useCollection } from '@/hooks/useCollection'
 import { useBooster } from '@/hooks/useBooster'
 import { ExtendedCardType } from '@/types/card'
 import BoosterPackAnimation from './BoosterPackAnimation'
-
+import RareAnimation from './RareAnimation'
+import UltraRareAnimation from './UltraRareAnimation'
+import AlternativeAnimation from './AlternativeAnimation'
+import { useAudio } from '@/hooks/useAudio'
 import { useRef } from 'react'
 
 // LoadingSpinner retiré (non utilisé)
@@ -47,57 +50,28 @@ export default function BoosterOpeningPage() {
   const [query, setQuery] = useState('')
   // Direction de navigation pour l'animation de pile
   const [navDirection, setNavDirection] = useState<'prev' | 'next'>('next')
-  // Animations de rareté supprimées (plus de test)
-  // Audio supprimé pour simplifier et améliorer les performances
+  // Test animation rare (debug)
+  const [showTestRare, setShowTestRare] = useState(false)
+  // Test animation ultra-rare (debug)
+  const [showTestUltra, setShowTestUltra] = useState(false)
+  // Test animation alternative (debug)
+  const [showTestAlt, setShowTestAlt] = useState(false)
+  const { playRareCardSound, playUltraRareSound, playAltArtSound, shouldPlaySound, enableExplicitSound, isIOS } = useAudio()
+  const audioPlayedRef = useRef<{rare?: boolean; ultra?: boolean; alt?: boolean}>({})
   // Stage (coffre/pack) & FX
   const [stage, setStage] = useState<'chest' | 'pack'>('chest')
   const [stageFx, setStageFx] = useState<{opening:boolean}>({ opening: false })
   
-  // OPTIMISATIONS PERFORMANCE AVANCÉES
+  // OPTIMISATIONS PERFORMANCE
   const [performanceMode, setPerformanceMode] = useState(false)
   const [consecutiveOpenings, setConsecutiveOpenings] = useState(0)
-  const [isLowEndDevice, setIsLowEndDevice] = useState(false)
   const lastOpeningTimeRef = useRef(0)
   const performanceCheckIntervalRef = useRef<NodeJS.Timeout | null>(null)
   
-  // Détection d'appareil bas de gamme
-  useEffect(() => {
-    const detectLowEndDevice = () => {
-      const isMobile = window.innerWidth < 768
-      // @ts-expect-error - deviceMemory n'est pas dans les types TypeScript mais existe dans certains navigateurs
-      const hasLowMemory = navigator.deviceMemory && navigator.deviceMemory < 4
-      const hasSlowCPU = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4
-      const isOldDevice = /Android [1-6]|iPhone OS [1-9]/.test(navigator.userAgent)
-      
-      const shouldUseLowEndMode = isMobile && (hasLowMemory || hasSlowCPU || isOldDevice)
-      setIsLowEndDevice(shouldUseLowEndMode)
-      
-      if (shouldUseLowEndMode) {
-        setPerformanceMode(true)
-      }
-    }
-    
-    // Délai pour éviter les problèmes de rendu initial
-    const timer = setTimeout(detectLowEndDevice, 100)
-    
-    return () => clearTimeout(timer)
-  }, [])
-  
   // Réduire le nombre de particules en mode performance
   const particleKeys = useMemo(() => {
-    if (isLowEndDevice) return [] // Pas de particules sur appareils bas de gamme
-    const baseCount = performanceMode ? 4 : 12
+    const baseCount = performanceMode ? 8 : 18
     return Array.from({ length: baseCount }, (_, i) => `gp-${i}`)
-  }, [performanceMode, isLowEndDevice])
-
-  // Valeurs de transition sécurisées - Animations naturelles et fluides
-  const getTransitionValues = useCallback(() => {
-    return {
-      type: 'spring' as const, // Toujours spring pour plus de naturel
-      duration: performanceMode ? 0.8 : 1.1, // Plus doux et fluide
-      stiffness: performanceMode ? 120 : 180, // Plus naturel
-      damping: performanceMode ? 25 : 30 // Plus d'amortissement pour éviter les saccades
-    }
   }, [performanceMode])
   
   interface SetRules {
@@ -178,14 +152,11 @@ export default function BoosterOpeningPage() {
   useEffect(() => {
     const checkMobile = () => {
       const isMobileDevice = window.innerWidth < 768;
-      // Optimisation: réduire les logs en mode performance
-      if (!performanceMode) {
-        console.log('Détection appareil:', {
-          width: window.innerWidth,
-          isMobile: isMobileDevice,
-          userAgent: navigator.userAgent
-        });
-      }
+      console.log('Détection appareil:', {
+        width: window.innerWidth,
+        isMobile: isMobileDevice,
+        userAgent: navigator.userAgent
+      });
       setIsMobile(isMobileDevice);
     }
     
@@ -195,17 +166,14 @@ export default function BoosterOpeningPage() {
     return () => {
       window.removeEventListener('resize', checkMobile);
     }
-  }, [performanceMode]);
+  }, []);
 
   // Chargement des sets disponibles
   useEffect(() => {
     fetch('/api/sets')
       .then(res => res.json())
       .then(data => {
-        // Optimisation: réduire les logs en mode performance
-        if (!performanceMode) {
-          console.log('Sets chargés:', data.sets)
-        }
+        console.log('Sets chargés:', data.sets)
         
         // Filtrer les sets pour n'afficher que ceux dont le code commence par "OP", "EB" ou "PRB"
         const filteredSets = (data.sets ?? []).filter((set: ApiSet) => {
@@ -232,18 +200,15 @@ export default function BoosterOpeningPage() {
           return codeA.localeCompare(codeB);
         });
         
-        // Optimisation: réduire les logs en mode performance
-        if (!performanceMode) {
-          console.log('Sets filtrés (avec doublons):', filteredSets);
-          console.log('Sets uniques (sans doublons):', uniqueSets);
-          console.log('Nombre total de sets uniques:', uniqueSets.length);
-          console.log('Codes des sets uniques:', uniqueSets.map((set: ApiSet) => set.code));
-        }
+        console.log('Sets filtrés (avec doublons):', filteredSets);
+        console.log('Sets uniques (sans doublons):', uniqueSets);
+        console.log('Nombre total de sets uniques:', uniqueSets.length);
+        console.log('Codes des sets uniques:', uniqueSets.map((set: ApiSet) => set.code));
         
         setSets(uniqueSets);
       })
       .catch(error => console.error('Erreur lors du chargement des sets:', error))
-  }, [performanceMode])
+  }, [])
 
   // Basculer la scène (coffre ↔ pack) selon set
   useEffect(() => {
@@ -251,49 +216,43 @@ export default function BoosterOpeningPage() {
   }, [selectedSet])
 
   // OPTIMISATIONS PERFORMANCE - Détection automatique du mode performance
-  const [manualPerformanceMode, setManualPerformanceMode] = useState(false)
-  
   useEffect(() => {
     const checkPerformanceMode = () => {
       const now = Date.now()
       const timeSinceLastOpening = now - lastOpeningTimeRef.current
       
-      // Si plusieurs ouvertures rapides (< 2 secondes), activer le mode performance
-      if (timeSinceLastOpening < 2000) {
+      // Si plusieurs ouvertures rapides (< 3 secondes), activer le mode performance
+      if (timeSinceLastOpening < 3000) {
         setConsecutiveOpenings(prev => prev + 1)
-        if (consecutiveOpenings >= 1) { // Réduit de 2 à 1
+        if (consecutiveOpenings >= 2) {
           setPerformanceMode(true)
         }
       } else {
-        // Reset après 5 secondes sans ouverture (réduit de 10 à 5)
+        // Reset après 10 secondes sans ouverture
         setConsecutiveOpenings(0)
-        // Ne désactiver que si ce n'est pas un appareil bas de gamme ET pas activé manuellement
-        if (!isLowEndDevice && !manualPerformanceMode) {
-          setPerformanceMode(false)
-        }
+        setPerformanceMode(false)
       }
       
       lastOpeningTimeRef.current = now
     }
 
-    // Vérifier les performances toutes les 3 secondes (réduit de 5 à 3)
-    performanceCheckIntervalRef.current = setInterval(checkPerformanceMode, 3000)
+    // Vérifier les performances toutes les 5 secondes
+    performanceCheckIntervalRef.current = setInterval(checkPerformanceMode, 5000)
 
     return () => {
       if (performanceCheckIntervalRef.current) {
         clearInterval(performanceCheckIntervalRef.current)
       }
     }
-  }, [consecutiveOpenings, isLowEndDevice, manualPerformanceMode])
+  }, [consecutiveOpenings])
 
   // Détection automatique des préférences de réduction de mouvement
   useEffect(() => {
     const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion || isLowEndDevice) {
+    if (prefersReducedMotion) {
       setPerformanceMode(true)
-      // Ne pas marquer comme manuel si c'est automatique
     }
-  }, [isLowEndDevice])
+  }, [])
 
   // Nettoyage des ressources pour éviter les fuites mémoire
   useEffect(() => {
@@ -318,17 +277,14 @@ export default function BoosterOpeningPage() {
 
   // Navigation entre les cartes (mémoïsé avant usage)
   const navigateCard = useCallback((direction: 'prev' | 'next') => {
-    // Optimisation: réduire les logs en mode performance
-    if (!performanceMode) {
-      console.log('Tentative de navigation:', {
-        direction,
-        currentIndex: currentCardIndex,
-        booster: booster ? booster.length : 'undefined',
-        isMobile,
-        isDragging,
-        carteActuelle: booster?.[currentCardIndex]?.name
-      });
-    }
+    console.log('Tentative de navigation:', {
+      direction,
+      currentIndex: currentCardIndex,
+      booster: booster ? booster.length : 'undefined',
+      isMobile,
+      isDragging,
+      carteActuelle: booster?.[currentCardIndex]?.name
+    });
 
     if (!booster) return;
     if (booster.length === 0) return;
@@ -346,8 +302,9 @@ export default function BoosterOpeningPage() {
       if (!nextCard) return;
       setCurrentCardIndex(currentCardIndex + 1);
       setIsNewCard(!userCollection.has(nextCard.id));
+      checkRarityAndPlayEffect(nextCard);
       if (currentCardIndex + 1 === booster.length - 1) {
-        const delay = isMobile ? (performanceMode ? 800 : 1200) : (performanceMode ? 1000 : 1500); // Délais rallongés
+        const delay = isMobile ? 1000 : 2000;
         setTimeout(async () => {
           try {
             if (!booster || booster.length === 0) return;
@@ -364,7 +321,7 @@ export default function BoosterOpeningPage() {
         }, delay);
       }
     }
-  }, [currentCardIndex, booster, userCollection, isMobile, isDragging, addToCollection, loadUserCollection, performanceMode])
+  }, [currentCardIndex, booster, userCollection, isMobile, isDragging, addToCollection, loadUserCollection])
 
   // Gestionnaire des touches du clavier
   useEffect(() => {
@@ -372,8 +329,17 @@ export default function BoosterOpeningPage() {
       if (isMobile) return;
       if (event.key === 'ArrowLeft' && currentCardIndex > 0) {
         navigateCard('prev');
-            } else if (event.key === 'ArrowRight' && currentCardIndex < booster.length - 1) {
+      } else if (event.key === 'ArrowRight' && currentCardIndex < booster.length - 1) {
         navigateCard('next');
+      } else if (event.key.toLowerCase() === 'r' && booster.length > 0 && currentCardIndex >= 0) {
+        // R pour tester l'animation rare
+        setShowTestRare(true)
+      } else if (event.key.toLowerCase() === 'u' && booster.length > 0 && currentCardIndex >= 0) {
+        // U pour tester l'animation ultra-rare
+        setShowTestUltra(true)
+      } else if (event.key.toLowerCase() === 'a' && booster.length > 0 && currentCardIndex >= 0) {
+        // A pour tester l'animation alternative
+        setShowTestAlt(true)
       }
     };
 
@@ -390,7 +356,37 @@ export default function BoosterOpeningPage() {
     }
   }, [session, loadUserCollection])
 
-  // Vérification de la rareté supprimée (plus d'animations de test)
+  // Vérification de la rareté et lecture des effets (ALT > ULTRA > RARE)
+  const checkRarityAndPlayEffect = useCallback((card: ExtendedCardType) => {
+    const rarityRank: Record<string, number> = { C: 1, UC: 2, U: 2, R: 3, SR: 4, L: 5, SEC: 6, 'SP CARD': 7, TR: 8, P: 9 }
+    const rank = rarityRank[card.rarity] ?? 0
+    const isHighRarity = rank >= 4
+    const altSuffix = /_p\d+$/.test(card.id)
+    const hasP1 = /_p1$/.test(card.id)
+    const hasP2 = /_p2$/.test(card.id)
+    const hasP3Plus = /_p[3-9]$/.test(card.id)
+    const altLabel = /alt|parallel/i.test(card.rarity || '')
+
+    // 1) Alternative/Parallel: priorité absolue
+    if (altSuffix || altLabel) {
+      if (!audioPlayedRef.current.alt) { try { playAltArtSound() } catch {} audioPlayedRef.current.alt = true }
+      setShowTestAlt(true)
+      return
+    }
+
+    // 2) Ultra-rare et assimilés (hors alt déjà captés)
+    if (['SEC','SP CARD','TR','P','L'].includes(card.rarity) || (hasP3Plus && isHighRarity)) {
+      if (!audioPlayedRef.current.ultra) { try { playUltraRareSound() } catch {} audioPlayedRef.current.ultra = true }
+      setShowTestUltra(true)
+      return
+    }
+
+    // 3) Rare (SR non-alt, ou p2 sur hautes raretés)
+    if ((card.rarity === 'SR' && !hasP1 && !hasP3Plus) || (hasP2 && isHighRarity)) {
+      if (!audioPlayedRef.current.rare) { try { playRareCardSound() } catch {} audioPlayedRef.current.rare = true }
+      setShowTestRare(true)
+    }
+  }, [playAltArtSound, playUltraRareSound, playRareCardSound])
 
   // Chargement des règles du set
   useEffect(() => {
@@ -584,13 +580,10 @@ export default function BoosterOpeningPage() {
       return
     }
 
-    // OPTIMISATION: Réduire drastiquement les délais
-    const animationDelay = performanceMode ? 50 : (isLowEndDevice ? 25 : 200)
-    const shouldShowStageFx = !performanceMode && !isLowEndDevice
+    // OPTIMISATION: Réduire les animations en mode performance
+    const animationDelay = performanceMode ? 200 : 500
+    const shouldShowStageFx = !performanceMode
 
-    // Lancer la requête API IMMÉDIATEMENT
-    setIsLoading(true)
-    
     // Petite anim d'ouverture (FX) avant l'anim principale
     if (shouldShowStageFx) {
       setStageFx({ opening: true })
@@ -606,6 +599,9 @@ export default function BoosterOpeningPage() {
         startTransition(() => setShowAnimation(true))
       }
     }
+
+    // Lancer la requête API en même temps que l'animation
+    setIsLoading(true)
     try {
       if (!selectedSetData) {
         throw new Error('Set non trouvé')
@@ -672,6 +668,7 @@ export default function BoosterOpeningPage() {
     if (booster.length > 0) {
       startTransition(() => {
         setCurrentCardIndex(0)
+        audioPlayedRef.current = {}
       })
     }
   }, [booster.length, startTransition])
@@ -702,7 +699,7 @@ export default function BoosterOpeningPage() {
   }
 
   return (
-    <div className={`min-h-screen relative w-full bottom-12 ${performanceMode ? 'performance-mode' : ''} ${isLowEndDevice ? 'low-end-device' : ''}`}>
+    <div className={`min-h-screen relative w-full ${performanceMode ? 'performance-mode' : ''}`}>
       {/* Fond grille bleue + veines dorées + watermarks */}
     
      
@@ -715,11 +712,35 @@ export default function BoosterOpeningPage() {
           <BoosterPackAnimation 
             onComplete={handleAnimationComplete} 
             setCode={sets.find(set => set.id === selectedSet)?.code || ''}
+          />
+        )}
+
+        {/* Test: Animation rare (toggle avec 'R') */}
+        {showTestRare && booster[currentCardIndex] && (
+          <RareAnimation
+            card={booster[currentCardIndex]}
+            onComplete={() => setShowTestRare(false)}
             performanceMode={performanceMode}
           />
         )}
 
+        {/* Test: Animation ultra-rare (toggle avec 'U') */}
+        {showTestUltra && booster[currentCardIndex] && (
+          <UltraRareAnimation
+            card={booster[currentCardIndex]}
+            onComplete={() => setShowTestUltra(false)}
+            performanceMode={performanceMode}
+          />
+        )}
 
+        {/* Test: Animation alternative (toggle avec 'A') */}
+        {showTestAlt && booster[currentCardIndex] && (
+          <AlternativeAnimation
+            card={booster[currentCardIndex]}
+            onComplete={() => setShowTestAlt(false)}
+            performanceMode={performanceMode}
+          />
+        )}
         
         {/* En-tête avec effet de verre dépoli */}
         <div className="w-[95%] md:w-[90%] mx-auto p-2 sm:p-4 md:p-6">
@@ -727,10 +748,6 @@ export default function BoosterOpeningPage() {
           <motion.h1 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ 
-              duration: isMobile ? 1.5 : (performanceMode ? 1.0 : 1.3), 
-              ease: 'easeOut' 
-            }}
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center title-halo mx-auto w-fit"
           >
             <span className="shimmer-gold drop-shadow-glow">Ouverture de Booster</span>
@@ -744,22 +761,31 @@ export default function BoosterOpeningPage() {
             {/* Indicateur de mode performance */}
             {performanceMode && (
               <div className="absolute top-2 right-2 z-10 bg-amber-500/90 text-black text-xs px-2 py-1 rounded-full font-medium">
-                {isLowEndDevice ? "Mode Éco" : "Mode Performance"}
+                Mode Performance
               </div>
             )}
+            
+            {/* Bouton pour forcer le mode performance */}
+            <button
+              onClick={() => setPerformanceMode(!performanceMode)}
+              className="absolute top-2 left-2 z-10 bg-green-700/80 hover:bg-green-600/80 text-white text-xs px-2 py-1 rounded-full font-medium transition-colors"
+              title={performanceMode ? "Désactiver le mode performance" : "Activer le mode performance"}
+            >
+              {performanceMode ? "⚡ Normal" : "🌿 Eco"}
+            </button>
        
             <motion.div
               className="relative stage-item"
               initial={false}
               animate={{ 
-                scale: stageFx.opening ? (performanceMode ? 1.03 : (isLowEndDevice ? 1.02 : 1.06)) : 1, 
-                rotate: stageFx.opening ? (performanceMode ? -1 : (isLowEndDevice ? -0.5 : -2)) : 0 
+                scale: stageFx.opening ? (performanceMode ? 1.02 : 1.06) : 1, 
+                rotate: stageFx.opening ? (performanceMode ? -1 : -2) : 0 
               }}
               transition={{ 
-                type: 'spring' as const, // Toujours spring pour plus de naturel
-                stiffness: performanceMode ? 150 : (isLowEndDevice ? 100 : 250), 
-                damping: performanceMode ? 25 : (isLowEndDevice ? 20 : 25),
-                duration: performanceMode ? 0.6 : (isLowEndDevice ? 0.5 : 0.8)
+                type: performanceMode ? 'tween' : 'spring', 
+                stiffness: performanceMode ? 100 : 200, 
+                damping: performanceMode ? 20 : 14,
+                duration: performanceMode ? 0.2 : undefined
               }}
             >
               <NextImage
@@ -778,7 +804,7 @@ export default function BoosterOpeningPage() {
                 </>
               )}
               {/* Particules dorées lors de l'ouverture */}
-              {stageFx.opening && !performanceMode && !isLowEndDevice && (
+              {stageFx.opening && !performanceMode && (
                 particleKeys.map((k, i) => (
                   <div
                     key={k}
@@ -787,7 +813,7 @@ export default function BoosterOpeningPage() {
                   />
                 ))
               )}
-              {stageFx.opening && !performanceMode && !isLowEndDevice && (
+              {stageFx.opening && !performanceMode && (
                 <motion.div
                   className="absolute inset-0 pointer-events-none"
                   initial={{ opacity: 0 }}
@@ -827,26 +853,6 @@ export default function BoosterOpeningPage() {
               <div className="flex items-center gap-2">
                 <Package className="w-5 h-5" />
                 <span>Choisir un booster</span>
-              </div>
-            </Button>
-
-            {/* Bouton mode performance */}
-            <Button
-              onClick={() => {
-                const newMode = !performanceMode
-                setPerformanceMode(newMode)
-                setManualPerformanceMode(newMode) // Marquer comme activé manuellement
-              }}
-              aria-label={performanceMode ? "Désactiver le mode performance" : "Activer le mode performance"}
-              className={`w-auto px-4 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 ${
-                performanceMode 
-                  ? 'bg-green-600 hover:bg-green-700 text-white' 
-                  : 'bg-amber-600 hover:bg-amber-700 text-white'
-              }`}
-            >
-              <div className="flex items-center gap-2">
-                <span className="text-lg">{performanceMode ? "⚡" : "🌿"}</span>
-                <span className="text-sm font-medium">{performanceMode ? "Normal" : "Éco"}</span>
               </div>
             </Button>
 
@@ -900,23 +906,6 @@ export default function BoosterOpeningPage() {
                 className="flex-1 btn-crystal hover:brightness-110 text-white font-bold py-3 px-4 rounded-xl transition-all"
               >
                 Choisir
-              </Button>
-
-              {/* Bouton mode performance mobile */}
-              <Button
-                onClick={() => {
-                  const newMode = !performanceMode
-                  setPerformanceMode(newMode)
-                  setManualPerformanceMode(newMode) // Marquer comme activé manuellement
-                }}
-                aria-label={performanceMode ? "Désactiver le mode performance" : "Activer le mode performance"}
-                className={`px-3 py-3 rounded-xl transition-all ${
-                  performanceMode 
-                    ? 'bg-green-600 hover:bg-green-700 text-white' 
-                    : 'bg-amber-600 hover:bg-amber-700 text-white'
-                }`}
-              >
-                <span className="text-lg">{performanceMode ? "⚡" : "🌿"}</span>
               </Button>
 
               {booster.length === 0 ? (
@@ -979,9 +968,9 @@ export default function BoosterOpeningPage() {
                     custom={navDirection}
                     variants={{
                       enter: (dir: 'prev' | 'next') => ({
-                        x: dir === 'next' ? (performanceMode ? 100 : 160) : (performanceMode ? -100 : -160),
-                        y: performanceMode ? 15 : 30,
-                        rotate: dir === 'next' ? (performanceMode ? -8 : -12) : (performanceMode ? 8 : 12),
+                        x: dir === 'next' ? 140 : -140,
+                        y: 24,
+                        rotate: dir === 'next' ? -10 : 10,
                         opacity: 0
                       }),
                       center: {
@@ -989,19 +978,14 @@ export default function BoosterOpeningPage() {
                         y: 0,
                         rotate: 0,
                         opacity: 1,
-                        transition: { 
-                          type: 'spring' as const, // Toujours spring pour plus de naturel
-                          stiffness: performanceMode ? 250 : 350, 
-                          damping: performanceMode ? 28 : 35,
-                          duration: performanceMode ? 0.6 : 0.8
-                        }
+                        transition: { type: 'spring', stiffness: 500, damping: 35 }
                       },
                       exit: (dir: 'prev' | 'next') => ({
-                        x: dir === 'next' ? (performanceMode ? -100 : -160) : (performanceMode ? 100 : 160),
-                        y: performanceMode ? -15 : -30,
-                        rotate: dir === 'next' ? (performanceMode ? 8 : 12) : (performanceMode ? -8 : -12),
+                        x: dir === 'next' ? -140 : 140,
+                        y: -24,
+                        rotate: dir === 'next' ? 10 : -10,
                         opacity: 0,
-                        transition: { duration: performanceMode ? 0.5 : 0.6, ease: 'easeInOut' }
+                        transition: { duration: 0.25, ease: 'easeIn' }
                       })
                     }}
                     initial="enter"
@@ -1102,10 +1086,9 @@ export default function BoosterOpeningPage() {
               </div>
 
               <motion.div
-                initial={{ scale: performanceMode ? 0.95 : 0.9, opacity: 0, y: performanceMode ? 10 : 20 }}
+                initial={{ scale: 0.9, opacity: 0, y: 20 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: performanceMode ? 0.95 : 0.9, opacity: 0, y: performanceMode ? 10 : 20 }}
-                transition={getTransitionValues()}
+                exit={{ scale: 0.9, opacity: 0, y: 20 }}
                 className="relative z-[130] bg-white/5 backdrop-blur-xl rounded-2xl shadow-[0_0_60px_rgba(0,0,0,0.45)] w-[95%] sm:max-w-5xl max-h-[90vh] flex flex-col overflow-hidden border border-white/10"
                 onClick={e => e.stopPropagation()}
               >
@@ -1114,25 +1097,13 @@ export default function BoosterOpeningPage() {
                   <div className="flex flex-col gap-4">
                     <div className="flex justify-between items-center">
                       <div className="flex items-center gap-2 sm:gap-4">
-                        <motion.div
-                          animate={{ 
-                            y: performanceMode ? [-3, 3, -3] : [-4, 4, -4],
-                            rotate: performanceMode ? [-1.5, 1.5, -1.5] : [-2, 2, -2]
-                          }}
-                          transition={{
-                            duration: performanceMode ? 2.5 : 4,
-                            repeat: Infinity,
-                            ease: 'easeInOut'
-                          }}
-                        >
-                          <NextImage 
-                            src="/images/booster-ouvert.png" 
-                            alt="Trésor" 
-                            width={48}
-                            height={48}
-                            className="w-8 h-8 sm:w-12 sm:h-12"
-                          />
-                        </motion.div>
+                        <NextImage 
+                          src="/images/booster-ouvert.png" 
+                          alt="Trésor" 
+                          width={48}
+                          height={48}
+                          className="w-8 h-8 sm:w-12 sm:h-12 animate-float"
+                        />
                         <h2 id="choose-treasure-title" className="text-xl sm:text-3xl font-bold bg-gradient-to-r from-yellow-400 via-amber-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-[0_2px_2px_rgba(0,0,0,0.5)]">
                           Choisissez votre Trésor
                         </h2>
@@ -1189,17 +1160,11 @@ export default function BoosterOpeningPage() {
                           }
                         }}
                         whileHover={{ 
-                          scale: performanceMode ? 1.03 : 1.05,
-                          rotateY: performanceMode ? 3 : 5,
+                          scale: 1.05,
+                          rotateY: 5,
                           z: 20
                         }}
-                        whileTap={{ scale: performanceMode ? 0.98 : 0.95 }}
-                        transition={{
-                          type: 'spring' as const, // Toujours spring pour plus de naturel
-                          duration: performanceMode ? 0.5 : 0.6,
-                          stiffness: performanceMode ? 150 : 250,
-                          damping: performanceMode ? 22 : 28
-                        }}
+                        whileTap={{ scale: 0.95 }}
                       >
                         {/* Étiquette du nom */}
                         <div className="absolute -top-3 sm:-top-4 left-0 right-0 text-center z-10">
