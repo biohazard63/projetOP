@@ -7,9 +7,10 @@ import Image from 'next/image'
 interface BoosterPackAnimationProps {
   onComplete: () => void
   setCode: string
+  performanceMode?: boolean
 }
 
-export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<BoosterPackAnimationProps>) {
+export default function BoosterPackAnimation({ onComplete, setCode, performanceMode = false }: Readonly<BoosterPackAnimationProps>) {
   const [isVisible, setIsVisible] = useState(true)
   const [showCards, setShowCards] = useState(false)
   const [showTear, setShowTear] = useState(false)
@@ -135,7 +136,7 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
               y: [0, -24, 0]
             }}
             transition={{ 
-              duration: 2.2, // Rallongé pour une meilleure expérience
+              duration: performanceMode ? 2.8 : 3.2, // Plus fluide
               ease: "easeInOut"
             }}
             className="relative w-48 h-72 md:w-64 md:h-96 will-change-transform"
