@@ -101,9 +101,9 @@ export default function BoosterOpeningPage() {
   const getTransitionValues = useCallback(() => {
     return {
       type: performanceMode ? ('tween' as const) : ('spring' as const),
-      duration: performanceMode ? 0.2 : 0.3,
-      stiffness: performanceMode ? 100 : 200,
-      damping: performanceMode ? 15 : 20
+      duration: performanceMode ? 0.4 : 0.6, // Ralenti pour éviter la surchauffe
+      stiffness: performanceMode ? 80 : 150, // Moins rigide
+      damping: performanceMode ? 20 : 25 // Plus d'amortissement
     }
   }, [performanceMode])
   
@@ -355,14 +355,14 @@ export default function BoosterOpeningPage() {
       setIsNewCard(!userCollection.has(nextCard.id));
       checkRarityAndPlayEffect(nextCard);
       if (currentCardIndex + 1 === booster.length - 1) {
-        const delay = isMobile ? (performanceMode ? 300 : 500) : (performanceMode ? 500 : 1000);
+        const delay = isMobile ? (performanceMode ? 800 : 1200) : (performanceMode ? 1000 : 1500); // Délais rallongés
         setTimeout(async () => {
           try {
             if (!booster || booster.length === 0) return;
             const cardIds = booster.map(card => card.id);
             const result = await addToCollection(cardIds);
             if (result.success) {
-              toast.success('Cartes ajoutées à votre collection !', { duration: isMobile ? 2000 : 3000, position: isMobile ? 'bottom-center' : 'top-center' });
+              toast.success('Cartes ajoutées à votre collection !', { duration: isMobile ? 3000 : 4000, position: isMobile ? 'bottom-center' : 'top-center' });
               await loadUserCollection();
             }
           } catch (error) {

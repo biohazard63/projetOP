@@ -30,8 +30,8 @@ export default function UltraRareAnimation({ card, onComplete, performanceMode =
   }, [])
 
   useEffect(() => {
-    // Durée réduite pour moins de surchauffe
-    const duration = performanceMode ? 1600 : 2100
+    // Durée rallongée pour une meilleure expérience
+    const duration = performanceMode ? 2600 : 3100
     const tEnd = window.setTimeout(() => {
       setIsVisible(false)
       onComplete()
@@ -65,7 +65,7 @@ export default function UltraRareAnimation({ card, onComplete, performanceMode =
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.3 }}
           onClick={skip}
         >
           {/* Conteneur principal centré */}
@@ -88,7 +88,7 @@ export default function UltraRareAnimation({ card, onComplete, performanceMode =
               className="relative"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.2 }}
+              transition={{ duration: 0.7, delay: 0.3 }}
             >
               {/* Effet de brillance simple */}
               <motion.div
@@ -97,7 +97,7 @@ export default function UltraRareAnimation({ card, onComplete, performanceMode =
                   opacity: [0.3, 0.6, 0.3]
                 }}
                 transition={{
-                  duration: 1.5,
+                  duration: 2.0,
                   repeat: Infinity,
                   ease: 'easeInOut'
                 }}

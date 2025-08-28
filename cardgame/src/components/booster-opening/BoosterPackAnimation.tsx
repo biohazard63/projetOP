@@ -59,15 +59,15 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
       setShowTear(true)
       setShowPulse(true)
       setShowFlash(true)
-      const tFlash = window.setTimeout(() => setShowFlash(false), 180)
+      const tFlash = window.setTimeout(() => setShowFlash(false), 250) // Rallongé
       timersRef.current.push(tFlash)
-    }, 800)
-    const tCards = window.setTimeout(() => setShowCards(true), 1700)
+    }, 1200) // Rallongé
+    const tCards = window.setTimeout(() => setShowCards(true), 2200) // Rallongé
     // Durées et délais pour une sortie plus progressive (plus long)
-    const perCardDelay = 0.2 // s
-    const perCardDuration = 0.7 // s
-    const extraTail = 1.1 // s de marge après la dernière carte
-    const endMs = 1700 + ((cardIds.length - 1) * perCardDelay + perCardDuration + extraTail) * 1000
+    const perCardDelay = 0.3 // s - Rallongé
+    const perCardDuration = 0.9 // s - Rallongé
+    const extraTail = 1.5 // s de marge après la dernière carte - Rallongé
+    const endMs = 2200 + ((cardIds.length - 1) * perCardDelay + perCardDuration + extraTail) * 1000
     const tEnd = window.setTimeout(() => {
       setIsVisible(false)
       onComplete()
@@ -135,7 +135,7 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
               y: [0, -24, 0]
             }}
             transition={{ 
-              duration: 1.6,
+              duration: 2.2, // Rallongé pour une meilleure expérience
               ease: "easeInOut"
             }}
             className="relative w-48 h-72 md:w-64 md:h-96 will-change-transform"
@@ -145,7 +145,7 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
             <motion.div
               className="absolute inset-0"
               animate={showTear ? { x: [0, -2, 2, -1, 1, 0], y: [0, -1, 1, 0], rotate: [0, -1.2, 1.2, -0.6, 0] } : {}}
-              transition={{ duration: 0.35, ease: 'easeOut' }}
+              transition={{ duration: 0.5, ease: 'easeOut' }}
             />
             {/* Halo doré */}
             <div className="absolute -inset-6 pointer-events-none" style={{ background: 'radial-gradient(120px 80px at 50% 60%, rgba(255,215,0,.45), transparent 70%)', filter: 'blur(6px)' }} />
@@ -170,7 +170,7 @@ export default function BoosterPackAnimation({ onComplete, setCode }: Readonly<B
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
                   animate={{ opacity: [0, 0.9, 0], scale: [0.8, 1.35, 1.6] }}
-                  transition={{ duration: 0.9, ease: 'easeOut' }}
+                  transition={{ duration: 1.2, ease: 'easeOut' }}
                   className="absolute inset-0 rounded-2xl pointer-events-none"
                   style={{ boxShadow: '0 0 0 2px rgba(250,204,21,.45), 0 0 60px rgba(250,204,21,.35) inset' }}
                 />
