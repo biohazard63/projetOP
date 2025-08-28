@@ -94,9 +94,9 @@ export default function BoosterOpeningPage() {
   const getTransitionValues = useCallback(() => {
     return {
       type: 'spring' as const, // Toujours spring pour plus de naturel
-      duration: performanceMode ? 0.7 : 0.9, // Plus doux
-      stiffness: performanceMode ? 100 : 150, // Plus naturel
-      damping: performanceMode ? 20 : 25 // Plus d'amortissement
+      duration: performanceMode ? 0.8 : 1.1, // Plus doux et fluide
+      stiffness: performanceMode ? 120 : 180, // Plus naturel
+      damping: performanceMode ? 25 : 30 // Plus d'amortissement pour éviter les saccades
     }
   }, [performanceMode])
   
@@ -728,7 +728,7 @@ export default function BoosterOpeningPage() {
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ 
-              duration: performanceMode ? 0.8 : 1.2, 
+              duration: isMobile ? 1.5 : (performanceMode ? 1.0 : 1.3), 
               ease: 'easeOut' 
             }}
             className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4 sm:mb-6 text-center title-halo mx-auto w-fit"
@@ -752,14 +752,14 @@ export default function BoosterOpeningPage() {
               className="relative stage-item"
               initial={false}
               animate={{ 
-                scale: stageFx.opening ? (performanceMode ? 1.01 : (isLowEndDevice ? 1.005 : 1.06)) : 1, 
-                rotate: stageFx.opening ? (performanceMode ? -0.5 : (isLowEndDevice ? -0.2 : -2)) : 0 
+                scale: stageFx.opening ? (performanceMode ? 1.03 : (isLowEndDevice ? 1.02 : 1.06)) : 1, 
+                rotate: stageFx.opening ? (performanceMode ? -1 : (isLowEndDevice ? -0.5 : -2)) : 0 
               }}
               transition={{ 
                 type: 'spring' as const, // Toujours spring pour plus de naturel
-                stiffness: performanceMode ? 120 : (isLowEndDevice ? 80 : 200), 
-                damping: performanceMode ? 20 : (isLowEndDevice ? 15 : 18),
-                duration: performanceMode ? 0.5 : (isLowEndDevice ? 0.4 : 0.6)
+                stiffness: performanceMode ? 150 : (isLowEndDevice ? 100 : 250), 
+                damping: performanceMode ? 25 : (isLowEndDevice ? 20 : 25),
+                duration: performanceMode ? 0.6 : (isLowEndDevice ? 0.5 : 0.8)
               }}
             >
               <NextImage
@@ -991,9 +991,9 @@ export default function BoosterOpeningPage() {
                         opacity: 1,
                         transition: { 
                           type: 'spring' as const, // Toujours spring pour plus de naturel
-                          stiffness: performanceMode ? 200 : 300, 
-                          damping: performanceMode ? 22 : 30,
-                          duration: performanceMode ? 0.5 : 0.7
+                          stiffness: performanceMode ? 250 : 350, 
+                          damping: performanceMode ? 28 : 35,
+                          duration: performanceMode ? 0.6 : 0.8
                         }
                       },
                       exit: (dir: 'prev' | 'next') => ({
@@ -1001,7 +1001,7 @@ export default function BoosterOpeningPage() {
                         y: performanceMode ? -15 : -30,
                         rotate: dir === 'next' ? (performanceMode ? 8 : 12) : (performanceMode ? -8 : -12),
                         opacity: 0,
-                        transition: { duration: performanceMode ? 0.4 : 0.5, ease: 'easeInOut' }
+                        transition: { duration: performanceMode ? 0.5 : 0.6, ease: 'easeInOut' }
                       })
                     }}
                     initial="enter"
@@ -1116,11 +1116,11 @@ export default function BoosterOpeningPage() {
                       <div className="flex items-center gap-2 sm:gap-4">
                         <motion.div
                           animate={{ 
-                            y: performanceMode ? [-2, 2, -2] : [-4, 4, -4],
-                            rotate: performanceMode ? [-1, 1, -1] : [-2, 2, -2]
+                            y: performanceMode ? [-3, 3, -3] : [-4, 4, -4],
+                            rotate: performanceMode ? [-1.5, 1.5, -1.5] : [-2, 2, -2]
                           }}
                           transition={{
-                            duration: performanceMode ? 3 : 4,
+                            duration: performanceMode ? 2.5 : 4,
                             repeat: Infinity,
                             ease: 'easeInOut'
                           }}
@@ -1189,16 +1189,16 @@ export default function BoosterOpeningPage() {
                           }
                         }}
                         whileHover={{ 
-                          scale: performanceMode ? 1.02 : 1.05,
-                          rotateY: performanceMode ? 2 : 5,
+                          scale: performanceMode ? 1.03 : 1.05,
+                          rotateY: performanceMode ? 3 : 5,
                           z: 20
                         }}
                         whileTap={{ scale: performanceMode ? 0.98 : 0.95 }}
                         transition={{
                           type: 'spring' as const, // Toujours spring pour plus de naturel
-                          duration: performanceMode ? 0.4 : 0.5,
-                          stiffness: performanceMode ? 120 : 200,
-                          damping: performanceMode ? 18 : 22
+                          duration: performanceMode ? 0.5 : 0.6,
+                          stiffness: performanceMode ? 150 : 250,
+                          damping: performanceMode ? 22 : 28
                         }}
                       >
                         {/* Étiquette du nom */}
