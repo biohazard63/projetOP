@@ -129,11 +129,11 @@ export default function BoosterPackAnimation({ onComplete, setCode, performanceM
         <div className="fixed  inset-0 flex items-center justify-center bg-black/75 z-[9999]" aria-live="polite" aria-label="Animation d'ouverture du booster" onClick={skip} >
           {/* Animation du booster */}
           <motion.div
-            initial={{ scale: 1, rotate: 0 }}
+            initial={{ scale: 1, rotate: 0, y: 0 }}
             animate={{ 
-              scale: [1, 1.1],
-              rotate: [0, 4],
-              y: [0, -24]
+              scale: [1, 1.12],
+              rotate: [0, 3],
+              y: [0, -22]
             }}
             transition={{ 
               duration: 3.2,
@@ -145,7 +145,7 @@ export default function BoosterPackAnimation({ onComplete, setCode, performanceM
             {/* Micro-secousse à la déchirure */}
             <motion.div
               className="absolute inset-0"
-              animate={showTear ? { x: [0, -2], y: [0, -1], rotate: [0, -1.2] } : {}}
+              animate={showTear ? { x: [0, -2], y: [0, -1], rotate: [0, -1.5] } : {}}
               transition={{ duration: 0.5, ease: 'easeOut' }}
             />
             {/* Halo doré */}
@@ -165,21 +165,34 @@ export default function BoosterPackAnimation({ onComplete, setCode, performanceM
                 <div className="tear-right" />
               </>
             )}
-            {/* Pulse lumineux (anneau) */}
+            {/* Pulse lumineux amélioré (anneau) */}
             {showPulse && (
               <>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: [0, 0.9], scale: [0.8, 1.35] }}
-                  transition={{ duration: 1.2, ease: 'easeOut' }}
+                  animate={{ opacity: [0, 0.9, 0.6], scale: [0.8, 1.4, 1.6] }}
+                  transition={{ duration: 1.5, ease: 'easeOut' }}
                   className="absolute inset-0 rounded-2xl pointer-events-none"
-                  style={{ boxShadow: '0 0 0 2px rgba(250,204,21,.45), 0 0 60px rgba(250,204,21,.35) inset' }}
+                  style={{ 
+                    boxShadow: '0 0 0 3px rgba(250,204,21,.6), 0 0 80px rgba(250,204,21,.4) inset, 0 0 120px rgba(255,165,0,.3)',
+                    background: 'radial-gradient(ellipse at center, rgba(255,215,0,.2), transparent 70%)'
+                  }}
+                />
+                <motion.div
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: [0, 0.7, 0.3], scale: [0.9, 1.2, 1.5] }}
+                  transition={{ duration: 1.8, ease: 'easeOut', delay: 0.2 }}
+                  className="absolute inset-0 rounded-2xl pointer-events-none"
+                  style={{ 
+                    boxShadow: '0 0 0 2px rgba(255,165,0,.4), 0 0 60px rgba(255,165,0,.2) inset',
+                    background: 'radial-gradient(ellipse at center, rgba(255,165,0,.15), transparent 60%)'
+                  }}
                 />
                 <motion.div
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: [0, 0.8] }}
-                  transition={{ duration: 0.25 }}
-                  className="absolute inset-0 bg-white/50 mix-blend-overlay"
+                  animate={{ opacity: [0, 0.9, 0] }}
+                  transition={{ duration: 0.4, ease: 'easeOut' }}
+                  className="absolute inset-0 bg-white/60 mix-blend-overlay"
                 />
               </>
             )}
@@ -202,10 +215,10 @@ export default function BoosterPackAnimation({ onComplete, setCode, performanceM
                         rotate: 0
                       }}
                       animate={{ 
-                        scale: position.scale,
+                        scale: [0, position.scale * 1.05, position.scale],
                         x: position.x,
                         y: position.y,
-                        opacity: 1,
+                        opacity: [0, 1],
                         rotate: position.rotate
                       }}
                       exit={{ 
@@ -213,9 +226,10 @@ export default function BoosterPackAnimation({ onComplete, setCode, performanceM
                         opacity: 0
                       }}
                       transition={{ 
-                        duration: 0.7,
-                        delay: index * 0.18 + (Math.random() * 0.06),
-                        ease: "easeOut"
+                        duration: 0.75,
+                        delay: index * 0.12 + (Math.random() * 0.06),
+                        ease: "easeOut",
+                        times: [0, 0.6, 1]
                       }}
                       className="absolute w-32 h-44 md:w-48 md:h-64 will-change-transform"
                       style={{ zIndex: position.zIndex, boxShadow: '0 10px 24px rgba(0,0,0,0.35)' }}
@@ -231,25 +245,46 @@ export default function BoosterPackAnimation({ onComplete, setCode, performanceM
                     </motion.div>
                   )
                 })}
-                {/* Particules dorées */}
-                {Array.from({ length: 14 }).map((_, i) => (
-                  <div key={`gp-${i}`} className="gold-particle" style={{ left: `${45 + (i%6)*3}%`, animationDelay: `${i * 0.08}s` }} />
+                {/* Particules dorées améliorées */}
+                {Array.from({ length: 20 }).map((_, i) => (
+                  <div 
+                    key={`gp-${i}`} 
+                    className="gold-particle" 
+                    style={{ 
+                      left: `${40 + (i%8)*2.5}%`, 
+                      animationDelay: `${i * 0.06}s`,
+                      width: `${6 + (i % 3) * 2}px`,
+                      height: `${6 + (i % 3) * 2}px`,
+                      background: i % 3 === 0 ? '#facc15' : i % 3 === 1 ? '#fbbf24' : '#f59e0b'
+                    }} 
+                  />
                 ))}
               </>
             )}
           </AnimatePresence>
 
-          {/* Flash directionnel court */}
+          {/* Flash directionnel amélioré */}
           {showFlash && (
-            <motion.div
-              className="absolute inset-0 pointer-events-none"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, 0.9, 0] }}
-              transition={{ duration: 0.22, ease: 'easeOut' }}
-              style={{
-                background: 'radial-gradient(200px 120px at 60% 40%, rgba(255,255,255,.8), rgba(255,255,255,0) 70%)'
-              }}
-            />
+            <>
+              <motion.div
+                className="absolute inset-0 pointer-events-none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 0.9, 0.3, 0] }}
+                transition={{ duration: 0.4, ease: 'easeOut' }}
+                style={{
+                  background: 'radial-gradient(250px 150px at 60% 40%, rgba(255,255,255,.9), rgba(255,255,255,0.6) 30%, rgba(255,255,255,0) 70%)'
+                }}
+              />
+              <motion.div
+                className="absolute inset-0 pointer-events-none"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: [0, 0.6, 0] }}
+                transition={{ duration: 0.3, ease: 'easeOut', delay: 0.1 }}
+                style={{
+                  background: 'radial-gradient(180px 100px at 50% 50%, rgba(255,215,0,.8), rgba(255,165,0,.4) 40%, transparent 70%)'
+                }}
+              />
+            </>
           )}
 
           {/* Bouton Passer */}

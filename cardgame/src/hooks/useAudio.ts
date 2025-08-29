@@ -17,12 +17,12 @@ const SILENT_MODE_KEY = 'mugiwara:isSilentMode'
 
 export function useSoundSetting() {
   const [soundsEnabled, setSoundsEnabled] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return true
+    if (typeof window === 'undefined') return false
     const stored = window.localStorage.getItem(STORAGE_KEY)
     if (stored === 'true') return true
     if (stored === 'false') return false
-    // Par défaut: désactiver sur mobile pour respecter le mode silencieux, activer sur desktop
-    return !isMobileDevice()
+    // Par défaut global: désactivé pour éviter les surprises en public
+    return false
   })
 
   const [isSilentMode, setIsSilentMode] = useState<boolean>(() => {
@@ -88,26 +88,36 @@ export function useSoundSetting() {
 }
 
 export function useAudio() {
-  const { soundsEnabled, isSilentMode, isIOS } = useSoundSetting()
+  const isiOS = isIOS()
+
+  const getSoundsEnabled = () => {
+    if (typeof window === 'undefined') return false
+    return window.localStorage.getItem(STORAGE_KEY) === 'true'
+  }
+
+  const getIsSilentMode = () => {
+    if (typeof window === 'undefined') return false
+    return window.localStorage.getItem(SILENT_MODE_KEY) === 'true'
+  }
 
   const playIfAllowed = useCallback((src: string, maxMs = 2500) => {
-    // Ne pas jouer si les sons sont désactivés
-    if (!soundsEnabled) return
-    
-    // Sur iOS, vérifier le mode silencieux
-    if (isIOS && isSilentMode) {
+    // Ne pas jouer si les sons sont désactivés (préférence live)
+    if (!getSoundsEnabled()) return
+
+    // Sur iOS, vérifier le mode silencieux live
+    if (isiOS && getIsSilentMode()) {
       console.log('Son ignoré: mode silencieux iOS détecté')
       return
     }
-    
+
     try {
       const audio = new Audio(src)
       audio.volume = 0.3 // Volume réduit pour éviter les surprises
       audio.play().catch((error) => { 
-        console.log('Audio bloqué:', error.message)
+        console.log('Audio bloqué:', (error as Error)?.message || error)
         // Si l'audio est bloqué, on peut être en mode silencieux
-        if (isIOS) {
-          window.localStorage.setItem(SILENT_MODE_KEY, 'true')
+        if (isiOS) {
+          try { window.localStorage.setItem(SILENT_MODE_KEY, 'true') } catch {}
         }
       })
       window.setTimeout(() => { 
@@ -119,7 +129,7 @@ export function useAudio() {
     } catch (error) {
       console.log('Erreur audio:', error)
     }
-  }, [soundsEnabled, isSilentMode, isIOS])
+  }, [isiOS])
 
   const playRareCardSound = useCallback(() => {
     playIfAllowed('/sounds/rare-card.mp3')
@@ -137,16 +147,20 @@ export function useAudio() {
     playIfAllowed('/sounds/new-card.mp3')
   }, [playIfAllowed])
 
+  const playPackOpenSound = useCallback(() => {
+    // Son d'ouverture de booster
+    playIfAllowed('/sounds/ouverture.mp3', 3500)
+  }, [playIfAllowed])
+
   // Fonction pour forcer l'activation des sons (pour les utilisateurs qui veulent)
   const enableExplicitSound = useCallback(() => {
-    window.localStorage.setItem(SILENT_MODE_KEY, 'false')
-    window.location.reload() // Recharger pour appliquer les changements
+    try { window.localStorage.setItem(SILENT_MODE_KEY, 'false') } catch {}
   }, [])
 
   // Fonction pour vérifier si on peut jouer des sons
   const shouldPlaySound = useCallback(() => {
-    return soundsEnabled && (!isIOS || !isSilentMode)
-  }, [soundsEnabled, isIOS, isSilentMode])
+    return getSoundsEnabled() && (!isiOS || !getIsSilentMode())
+  }, [isiOS])
 
   return {
     useSoundSetting,
@@ -154,9 +168,10 @@ export function useAudio() {
     playAltArtSound,
     playUltraRareSound,
     playNewCardSound,
+    playPackOpenSound,
     enableExplicitSound,
     shouldPlaySound,
-    isSilentMode,
-    isIOS
+    isSilentMode: getIsSilentMode(),
+    isIOS: isiOS
   }
-} 
+}

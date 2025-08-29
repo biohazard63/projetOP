@@ -977,19 +977,21 @@
 
 /* Golden particles */
 @keyframes goldParticle {
-  0% { transform: translateY(0) scale(.8); opacity: 0; }
-  10% { opacity: .9; }
-  100% { transform: translateY(-160px) scale(1.1); opacity: 0; }
+  0% { transform: translateY(0) scale(.6); opacity: 0; }
+  15% { opacity: 1; transform: translateY(-20px) scale(1.2); }
+  50% { opacity: 0.8; transform: translateY(-80px) scale(1); }
+  100% { transform: translateY(-200px) scale(0.8); opacity: 0; }
 }
- .gold-particle { 
-  position:absolute; 
-  bottom:20%; 
-  width:6px; 
-  height:6px; 
-  background:#facc15; 
-  border-radius:9999px; 
-  box-shadow:0 0 10px rgba(250,204,21,.8); 
-  animation: goldParticle 1.2s ease-out forwards;
+
+.gold-particle { 
+  position: absolute; 
+  bottom: 20%; 
+  width: 8px; 
+  height: 8px; 
+  background: #facc15; 
+  border-radius: 9999px; 
+  box-shadow: 0 0 15px rgba(250,204,21,.9), 0 0 30px rgba(250,204,21,.6); 
+  animation: goldParticle 1.8s ease-out forwards;
   will-change: transform, opacity;
   transform: translateZ(0);
 }

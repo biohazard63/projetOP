@@ -34,40 +34,34 @@ const CardDisplay = memo(function CardDisplay({
   onDragEnd,
   onArrowClick
 }: CardDisplayProps) {
-  // Mémoisation des transitions pour éviter les recalculs
-  const cardTransitions = useMemo(() => ({
+  // Variants simplifiés: légère translation + fondu, sans rotation
+  const transitionDuration = performanceMode ? 0.22 : (isMobile ? 0.25 : 0.3)
+  const easing: number[] = [0.22, 1, 0.36, 1] // easeOutCubic-like
+
+  const variants = useMemo(() => ({
+    enter: (dir: 'prev' | 'next') => ({
+      x: dir === 'next' ? 40 : -40,
+      opacity: 0
+    }),
     center: {
       x: 0,
-      y: 0,
-      rotate: 0,
       opacity: 1,
-      transition: { 
-        type: 'spring' as const,
-        stiffness: performanceMode ? 120 : 180, 
-        damping: performanceMode ? 20 : 25,
-        duration: performanceMode ? 0.8 : 1.2
+      transition: {
+        type: 'tween' as const,
+        ease: 'easeOut' as const,
+        duration: transitionDuration
       }
     },
     exit: (dir: 'prev' | 'next') => ({
-      x: dir === 'next' ? (performanceMode ? -120 : -180) : (performanceMode ? 120 : 180),
-      y: performanceMode ? -20 : -25,
-      rotate: dir === 'next' ? (performanceMode ? 10 : 15) : (performanceMode ? -10 : -15),
+      x: dir === 'next' ? -40 : 40,
       opacity: 0,
-      transition: { 
-        type: 'spring' as const,
-        stiffness: performanceMode ? 150 : 200,
-        damping: performanceMode ? 25 : 30,
-        duration: performanceMode ? 0.7 : 0.9
+      transition: {
+        type: 'tween' as const,
+        ease: 'easeOut' as const,
+        duration: transitionDuration
       }
     })
-  }), [performanceMode])
-
-  const enterVariants = useMemo(() => (dir: 'prev' | 'next') => ({
-    x: dir === 'next' ? (performanceMode ? 120 : 180) : (performanceMode ? -120 : -180),
-    y: performanceMode ? 20 : 25,
-    rotate: dir === 'next' ? (performanceMode ? -10 : -15) : (performanceMode ? 10 : 15),
-    opacity: 0
-  }), [performanceMode])
+  }), [transitionDuration])
 
   if (booster.length === 0 || currentCardIndex < 0) return null
 
@@ -112,19 +106,15 @@ const CardDisplay = memo(function CardDisplay({
             }
           }}
         >
-          <AnimatePresence initial={false} custom={navDirection}>
+          <AnimatePresence mode="wait" initial={false} custom={navDirection}>
             <motion.div
               key={booster[currentCardIndex]?.id ?? `idx-${currentCardIndex}`}
               custom={navDirection}
-              variants={{
-                enter: enterVariants,
-                center: cardTransitions.center,
-                exit: cardTransitions.exit
-              }}
+              variants={variants}
               initial="enter"
               animate="center"
               exit="exit"
-              className="will-change-transform"
+              className="will-change-transform transform-gpu"
             >
               <CardReveal
                 card={booster[currentCardIndex]}

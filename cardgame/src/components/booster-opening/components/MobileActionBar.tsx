@@ -10,6 +10,8 @@ interface MobileActionBarProps {
   onSelectBooster: () => void
   onOpenBooster: () => void
   onResetAndOpenNewBooster: () => void
+  soundsEnabled: boolean
+  onToggleSounds: () => void
 }
 
 const MobileActionBar = memo(function MobileActionBar({
@@ -18,11 +20,22 @@ const MobileActionBar = memo(function MobileActionBar({
   boosterLength,
   onSelectBooster,
   onOpenBooster,
-  onResetAndOpenNewBooster
+  onResetAndOpenNewBooster,
+  soundsEnabled,
+  onToggleSounds
 }: MobileActionBarProps) {
   return (
     <div className="md:hidden fixed bottom-4 inset-x-4 z-40">
       <div className="rounded-2xl bg-black/40 backdrop-blur-xl border border-white/10 p-3 flex gap-3 shadow-2xl pb-[env(safe-area-inset-bottom)]">
+        <Button
+          onClick={onToggleSounds}
+          aria-label="Activer le son des boosters"
+          variant="outline"
+          className={`px-4 rounded-xl transition-all ${soundsEnabled ? 'bg-emerald-600/20 border-emerald-400/40 text-emerald-200' : 'bg-white/10 border-white/10 text-white/80'}`}
+          title="Activer le son des boosters"
+        >
+          {soundsEnabled ? 'Son: ON' : 'Son: OFF'}
+        </Button>
         <Button 
           onClick={onSelectBooster}
           aria-label="Choisir un booster"

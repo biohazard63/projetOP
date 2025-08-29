@@ -11,6 +11,8 @@ interface BoosterControlsProps {
   onSelectBooster: () => void
   onOpenBooster: () => void
   onResetAndOpenNewBooster: () => void
+  soundsEnabled: boolean
+  onToggleSounds: () => void
 }
 
 const BoosterControls = memo(function BoosterControls({
@@ -19,10 +21,21 @@ const BoosterControls = memo(function BoosterControls({
   boosterLength,
   onSelectBooster,
   onOpenBooster,
-  onResetAndOpenNewBooster
+  onResetAndOpenNewBooster,
+  soundsEnabled,
+  onToggleSounds
 }: BoosterControlsProps) {
   return (
     <div className="hidden md:flex flex-row justify-center items-center gap-4 mb-8">
+      <Button
+        onClick={onToggleSounds}
+        aria-label="Activer le son des boosters"
+        variant="outline"
+        className={`w-full sm:w-auto px-4 rounded-xl transition-all ${soundsEnabled ? 'bg-emerald-600/20 border-emerald-400/40 text-emerald-200' : 'bg-white/10 border-white/10 text-white/80'}`}
+        title="Activer le son des boosters"
+      >
+        {soundsEnabled ? 'Son: ON' : 'Son: OFF'}
+      </Button>
       <Button 
         onClick={onSelectBooster}
         aria-label="Choisir un booster"

@@ -27,6 +27,7 @@ import UltraRareAnimation from './UltraRareAnimation'
 import AlternativeAnimation from './AlternativeAnimation'
 
 import { useRef } from 'react'
+import { useAudio, useSoundSetting } from '@/hooks/useAudio'
 
 export default function BoosterOpeningPageOptimized() {
   // Hooks de base
@@ -61,6 +62,10 @@ export default function BoosterOpeningPageOptimized() {
   
   // Références
   const lastOpeningTimeRef = useRef(0)
+  
+  // Audio
+  const { playPackOpenSound, playRareCardSound, playUltraRareSound, playAltArtSound } = useAudio()
+  const { soundsEnabled, setSoundsEnabled } = useSoundSetting()
   
   // Particules pour les effets visuels
   const particleKeys = useMemo(() => {
@@ -123,7 +128,7 @@ export default function BoosterOpeningPageOptimized() {
   const handleSelectSet = useCallback((id: string) => {
     setSelectedSet(id)
     setShowBoosterModal(false)
-  }, [])
+  }, [playUltraRareSound, playRareCardSound, playAltArtSound])
 
   // Hooks personnalisés
   const { userCollection, loadUserCollection } = useCollection()
@@ -213,16 +218,19 @@ export default function BoosterOpeningPageOptimized() {
       if (rarity === 'TR' || rarity === 'SEC' || rarity === 'SP CARD') {
         setRareCard(card)
         setShowUltraRareAnimation(true)
+        try { playUltraRareSound() } catch {}
       } 
       // Rare : SR, L
       else if (rarity === 'SR' || rarity === 'L') {
         setRareCard(card)
         setShowRareAnimation(true)
+        try { playRareCardSound() } catch {}
       } 
       // Alternative : ID se termine par _pX
       else if (isAlternativeCard) {
         setRareCard(card)
         setShowAlternativeAnimation(true)
+        try { playAltArtSound() } catch {}
       }
     }, 100) // Délai de 100ms pour la stabilité
   }, [])
@@ -310,6 +318,8 @@ export default function BoosterOpeningPageOptimized() {
         startTransition(() => setShowAnimation(true))
       }
     }
+    // Jouer le son d'ouverture (si activé)
+    try { playPackOpenSound() } catch {}
     
     try {
       if (!selectedSetData) {
@@ -490,6 +500,8 @@ export default function BoosterOpeningPageOptimized() {
           onSelectBooster={handleSelectBooster}
           onOpenBooster={handleOpenBooster}
           onResetAndOpenNewBooster={resetAndOpenNewBooster}
+          soundsEnabled={soundsEnabled}
+          onToggleSounds={() => setSoundsEnabled(!soundsEnabled)}
         />
 
         {/* Barre d'action mobile optimisée */}
@@ -500,6 +512,8 @@ export default function BoosterOpeningPageOptimized() {
           onSelectBooster={handleSelectBooster}
           onOpenBooster={handleOpenBooster}
           onResetAndOpenNewBooster={resetAndOpenNewBooster}
+          soundsEnabled={soundsEnabled}
+          onToggleSounds={() => setSoundsEnabled(!soundsEnabled)}
         />
 
         {/* Indicateur de progression optimisé */}

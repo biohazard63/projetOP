@@ -35,7 +35,7 @@ export default function CardReveal({
   const [isRevealed, setIsRevealed] = useState(false)
   const [dragDirection, setDragDirection] = useState<DragDirection>(null)
   const [isDragging, setIsDragging] = useState(false)
-  const [shimmer, setShimmer] = useState(false)
+  // Shimmer désactivé pour éviter l'effet blanc
 
   const x = useMotionValue(0)
   const rotate = useTransform(x, [-200, 200], [-30, 30])
@@ -69,20 +69,20 @@ export default function CardReveal({
   const revealVariant = isUltraRare ? 'secret' : isRare || isAlternative ? 'rare' : 'common'
   type RevealKey = 'common' | 'rare' | 'secret'
   const appearanceTargets: Record<RevealKey, TargetAndTransition> = {
-    common: { 
+    common: {
       opacity: [0, 1], 
       y: [15, 0], 
-      scale: [0.98, 1], 
+      scale: [0.98, 1],
       transition: { 
         type: 'spring' as const,
-        stiffness: 120,
+        stiffness: 110,
         damping: 20,
-        duration: 0.6 
+        duration: 0.7 
       } 
     },
     rare: {
       opacity: [0, 1], 
-      y: [20, 0], 
+      y: [18, 0], 
       scale: [0.97, 1],
       transition: { 
         type: 'spring' as const,
@@ -93,13 +93,13 @@ export default function CardReveal({
     },
     secret: {
       opacity: [0, 1], 
-      y: [25, 0], 
+      y: [20, 0], 
       scale: [0.96, 1],
       boxShadow: ['0 0 0 rgba(0,0,0,0)', '0 0 50px rgba(250,204,21,.45)'],
       transition: { 
         type: 'tween' as const,
         duration: 1.0,
-        ease: 'easeOut'
+        ease: 'easeOut' as const
       }
     }
   }
@@ -116,14 +116,7 @@ export default function CardReveal({
     return () => { window.clearTimeout(t1); window.clearTimeout(t2) }
   }, [card.id])
 
-  // Déclenche le shimmer quand la carte se révèle
-  useEffect(() => {
-    if (!isRevealed) return
-    setShimmer(true)
-    const to = window.setTimeout(() => setShimmer(false), 700)
-    return () => window.clearTimeout(to)
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isRevealed])
+  // (Shimmer supprimé)
 
   // Pas d'effet: on anime directement via la prop animate
 
@@ -203,7 +196,8 @@ export default function CardReveal({
       <motion.div
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={isMobile ? 0.8 : 0.6}
+        dragElastic={isMobile ? 0.7 : 0.5}
+        dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
         onDragEnd={handleDragEnd}
         onDragStart={handleDragStart}
         onDrag={handleDrag}
@@ -334,24 +328,7 @@ export default function CardReveal({
               loading="lazy"
               className="w-full h-auto rounded-xl shadow-2xl"
             />
-            {/* Shimmer au-dessus de la face avant */}
-            {shimmer && (
-              <motion.div
-                className="pointer-events-none absolute inset-0 z-20 rounded-xl overflow-hidden"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1] }}
-                transition={{ 
-                  type: 'tween' as const,
-                  duration: 0.7,
-                  ease: 'easeOut'
-                }}
-                style={{
-                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
-                  transform: 'translateX(-100%)',
-                  animation: 'shimmer 0.7s ease-out forwards'
-                }}
-              />
-            )}
+            {/* Shimmer supprimé pour éviter un flash blanc désagréable */}
 
             {/* Badge "Nouvelle" pour les nouvelles cartes */}
             {isNewCard && (
