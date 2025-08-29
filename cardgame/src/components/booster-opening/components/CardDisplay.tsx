@@ -43,34 +43,75 @@ const CardDisplay = memo(function CardDisplay({
       opacity: 1,
       transition: { 
         type: 'spring' as const,
-        stiffness: performanceMode ? 250 : 350, 
-        damping: performanceMode ? 28 : 35,
-        duration: performanceMode ? 0.6 : 0.8
+        stiffness: performanceMode ? 120 : 180, 
+        damping: performanceMode ? 20 : 25,
+        duration: performanceMode ? 0.8 : 1.2
       }
     },
     exit: (dir: 'prev' | 'next') => ({
-      x: dir === 'next' ? (performanceMode ? -100 : -160) : (performanceMode ? 100 : 160),
-      y: performanceMode ? -15 : -30,
-      rotate: dir === 'next' ? (performanceMode ? 8 : 12) : (performanceMode ? -8 : -12),
+      x: dir === 'next' ? (performanceMode ? -120 : -180) : (performanceMode ? 120 : 180),
+      y: performanceMode ? -20 : -25,
+      rotate: dir === 'next' ? (performanceMode ? 10 : 15) : (performanceMode ? -10 : -15),
       opacity: 0,
-      transition: { duration: performanceMode ? 0.5 : 0.6, ease: 'easeInOut' as const }
+      transition: { 
+        type: 'spring' as const,
+        stiffness: performanceMode ? 150 : 200,
+        damping: performanceMode ? 25 : 30,
+        duration: performanceMode ? 0.7 : 0.9
+      }
     })
   }), [performanceMode])
 
   const enterVariants = useMemo(() => (dir: 'prev' | 'next') => ({
-    x: dir === 'next' ? (performanceMode ? 100 : 160) : (performanceMode ? -100 : -160),
-    y: performanceMode ? 15 : 30,
-    rotate: dir === 'next' ? (performanceMode ? -8 : -12) : (performanceMode ? 8 : 12),
+    x: dir === 'next' ? (performanceMode ? 120 : 180) : (performanceMode ? -120 : -180),
+    y: performanceMode ? 20 : 25,
+    rotate: dir === 'next' ? (performanceMode ? -10 : -15) : (performanceMode ? 10 : 15),
     opacity: 0
   }), [performanceMode])
 
   if (booster.length === 0 || currentCardIndex < 0) return null
 
   return (
-    <div className="w-[96%] sm:max-w-6xl mx-auto px-2 sm:px-4 pb-28 md:pb-0">
+    <div className="w-[96%] sm:max-w-6xl mx-auto px-2 sm:p-4 pb-28 md:pb-0">
       <div className="relative rounded-2xl p-3 sm:p-6 border border-white/10 shadow-xl">
         {/* Carte actuelle avec transition type pile */}
-        <div className={`relative flex items-center justify-center min-h-[360px] sm:min-h-[420px] md:min-h-[500px] swipe-container ${isDragging ? 'swiping' : ''}`}>
+        <div 
+          className={`relative flex items-center justify-center min-h-[360px] sm:min-h-[420px] md:min-h-[500px] swipe-container ${isDragging ? 'swiping' : ''}`}
+          style={{
+            touchAction: 'pan-y',
+            overscrollBehavior: 'contain'
+          }}
+          onTouchStart={(e) => {
+            // Permettre le scroll vertical
+            if (isMobile) {
+              e.stopPropagation();
+            }
+          }}
+          onTouchMove={(e) => {
+            // Empêcher la propagation des événements touch horizontaux
+            if (isMobile) {
+              const touch = e.touches[0];
+              const target = e.currentTarget as HTMLElement;
+              const startX = parseInt(target.dataset.touchStartX || '0');
+              const startY = parseInt(target.dataset.touchStartY || '0');
+              const deltaX = Math.abs(touch.clientX - startX);
+              const deltaY = Math.abs(touch.clientY - startY);
+              
+              // Si le mouvement est plus horizontal que vertical, empêcher le scroll
+              if (deltaX > deltaY && deltaX > 10) {
+                e.preventDefault();
+              }
+            }
+          }}
+          onTouchEnd={(e) => {
+            // Nettoyer les références
+            if (isMobile) {
+              const target = e.currentTarget as HTMLElement;
+              delete target.dataset.touchStartX;
+              delete target.dataset.touchStartY;
+            }
+          }}
+        >
           <AnimatePresence initial={false} custom={navDirection}>
             <motion.div
               key={booster[currentCardIndex]?.id ?? `idx-${currentCardIndex}`}

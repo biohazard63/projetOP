@@ -63,7 +63,15 @@ export default function UltraRareAnimation({ card, onComplete, performanceMode =
     <AnimatePresence>
       {isVisible && (
         <motion.div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/70"
+          className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm"
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            zIndex: 9999
+          }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -71,7 +79,16 @@ export default function UltraRareAnimation({ card, onComplete, performanceMode =
           onClick={skip}
         >
           {/* Conteneur principal centré */}
-          <div className="relative flex flex-col items-center justify-center">
+          <div 
+            className="relative flex flex-col items-center justify-center w-full h-full"
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              width: '100%',
+              height: '100%'
+            }}
+          >
             
             {/* Badge avec la vraie rareté */}
             <motion.div

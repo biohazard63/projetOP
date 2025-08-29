@@ -69,15 +69,39 @@ export default function CardReveal({
   const revealVariant = isUltraRare ? 'secret' : isRare || isAlternative ? 'rare' : 'common'
   type RevealKey = 'common' | 'rare' | 'secret'
   const appearanceTargets: Record<RevealKey, TargetAndTransition> = {
-    common: { opacity: [0, 1], y: [20, 0], scale: [0.96, 1], transition: { duration: 0.35 } },
+    common: { 
+      opacity: [0, 1], 
+      y: [15, 0], 
+      scale: [0.98, 1], 
+      transition: { 
+        type: 'spring' as const,
+        stiffness: 120,
+        damping: 20,
+        duration: 0.6 
+      } 
+    },
     rare: {
-      opacity: [0, 1], y: [24, 0], scale: [0.95, 1],
-      transition: { duration: 0.5 }
+      opacity: [0, 1], 
+      y: [20, 0], 
+      scale: [0.97, 1],
+      transition: { 
+        type: 'spring' as const,
+        stiffness: 100,
+        damping: 18,
+        duration: 0.8 
+      }
     },
     secret: {
-      opacity: [0, 1], y: [28, 0], scale: [0.94, 1],
+      opacity: [0, 1], 
+      y: [25, 0], 
+      scale: [0.96, 1],
       boxShadow: ['0 0 0 rgba(0,0,0,0)', '0 0 50px rgba(250,204,21,.45)', '0 0 0 rgba(0,0,0,0)'],
-      transition: { duration: 0.6 }
+      transition: { 
+        type: 'spring' as const,
+        stiffness: 80,
+        damping: 15,
+        duration: 1.0 
+      }
     }
   }
 
@@ -133,8 +157,17 @@ export default function CardReveal({
     }
   }, [onDragEnd, onCardClick, card, isDragging, isMobile, x])
   
-  const handleDragStart = useCallback(() => {
+  const handleDragStart = useCallback((event: MouseEvent | TouchEvent | PointerEvent) => {
     console.log('CardReveal - Début du glissement')
+    
+    // Stocker la position initiale pour détecter la direction
+    if (event instanceof TouchEvent) {
+      const touch = event.touches[0];
+      const target = event.currentTarget as HTMLElement;
+      target.dataset.touchStartX = touch.clientX.toString();
+      target.dataset.touchStartY = touch.clientY.toString();
+    }
+    
     setIsDragging(true)
     setDragDirection(null)
     onDragStart?.()
@@ -143,13 +176,21 @@ export default function CardReveal({
   const handleDrag = useCallback((event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
     console.log('CardReveal - Glissement en cours:', {
       offsetX: info.offset.x,
+      offsetY: info.offset.y,
       isDragging
     })
 
-    if (info.offset.x > 0) {
-      setDragDirection('right')
-    } else if (info.offset.x < 0) {
-      setDragDirection('left')
+    // Détecter la direction du mouvement
+    if (Math.abs(info.offset.x) > Math.abs(info.offset.y)) {
+      // Mouvement horizontal - swipe de carte
+      if (info.offset.x > 0) {
+        setDragDirection('right')
+      } else if (info.offset.x < 0) {
+        setDragDirection('left')
+      }
+    } else {
+      // Mouvement vertical - scroll de page
+      setDragDirection(null)
     }
 
     onDrag?.(event, info)
@@ -163,12 +204,13 @@ export default function CardReveal({
       <motion.div
         drag="x"
         dragConstraints={{ left: 0, right: 0 }}
-        dragElastic={isMobile ? 0.9 : 0.7}
+        dragElastic={isMobile ? 0.8 : 0.6}
         onDragEnd={handleDragEnd}
         onDragStart={handleDragStart}
         onDrag={handleDrag}
         dragMomentum={false}
         dragDirectionLock
+        dragPropagation={false}
         style={{ 
           x, 
           rotate, 
@@ -176,10 +218,10 @@ export default function CardReveal({
           transformStyle: 'preserve-3d',
           rotateY: isRevealed ? 180 : 0,
           cursor: isDragging ? 'grabbing' : 'pointer',
-          touchAction: 'pan-y pinch-zoom',
+          touchAction: isMobile ? 'pan-y' : 'none',
           marginBottom: '2rem'
         }}
-        initial={{ opacity: 0, y: 20, scale: 0.96 }}
+        initial={{ opacity: 0, y: 15, scale: 0.98 }}
         animate={appearanceTargets[revealVariant]}
         className="relative aspect-[3/4] w-[220px] sm:w-[260px] md:w-[300px] lg:w-[340px] xl:w-[380px]"
         onClick={(e) => {
@@ -189,6 +231,18 @@ export default function CardReveal({
             onCardClick?.(card);
           }
         }}
+        onTouchStart={(e) => {
+          // Permettre le scroll vertical sur mobile
+          if (isMobile) {
+            e.stopPropagation();
+          }
+        }}
+        onTouchMove={(e) => {
+          // Empêcher la propagation des événements touch sur mobile
+          if (isMobile) {
+            e.stopPropagation();
+          }
+        }}
       >
         {/* Effets spéciaux */}
         {isRare && !isUltraRare && (
@@ -196,7 +250,13 @@ export default function CardReveal({
             className="pointer-events-none absolute inset-0 rounded-xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, .6, 0] }}
-            transition={{ duration: 0.8, delay: 0.15 }}
+            transition={{ 
+              type: 'spring' as const,
+              stiffness: 80,
+              damping: 15,
+              duration: 1.2, 
+              delay: 0.2 
+            }}
             style={{ background: 'radial-gradient(280px 160px at 50% 50%, rgba(147, 197, 253,.25), transparent 70%)' }}
           />
         )}
@@ -205,7 +265,13 @@ export default function CardReveal({
             className="pointer-events-none absolute inset-0 rounded-xl"
             initial={{ opacity: 0 }}
             animate={{ opacity: [0, .9, 0] }}
-            transition={{ duration: 0.9, delay: 0.1 }}
+            transition={{ 
+              type: 'spring' as const,
+              stiffness: 60,
+              damping: 12,
+              duration: 1.4, 
+              delay: 0.15 
+            }}
             style={{ background: 'radial-gradient(300px 180px at 50% 50%, rgba(250,204,21,.35), transparent 70%)' }}
           />
         )}

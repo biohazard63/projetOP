@@ -67,20 +67,24 @@ export default function BoosterOpeningPageOptimized() {
   const lastOpeningTimeRef = useRef(0)
   const performanceCheckIntervalRef = useRef<NodeJS.Timeout | null>(null)
   
-  // Détection d'appareil bas de gamme
+  // Détection d'appareil bas de gamme - Mode normal par défaut sur mobile
   useEffect(() => {
     const detectLowEndDevice = () => {
       const isMobile = window.innerWidth < 768
       // @ts-expect-error - deviceMemory n'est pas dans les types TypeScript mais existe dans certains navigateurs
-      const hasLowMemory = navigator.deviceMemory && navigator.deviceMemory < 4
-      const hasSlowCPU = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 4
-      const isOldDevice = /Android [1-6]|iPhone OS [1-9]/.test(navigator.userAgent)
+      const hasVeryLowMemory = navigator.deviceMemory && navigator.deviceMemory < 2
+      const hasVerySlowCPU = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 2
+      const isVeryOldDevice = /Android [1-4]|iPhone OS [1-6]/.test(navigator.userAgent)
       
-      const shouldUseLowEndMode = isMobile && (hasLowMemory || hasSlowCPU || isOldDevice)
+      // Mode performance seulement pour les appareils vraiment très bas de gamme
+      const shouldUseLowEndMode = isMobile && (hasVeryLowMemory || hasVerySlowCPU || isVeryOldDevice)
       setIsLowEndDevice(shouldUseLowEndMode)
       
+      // Par défaut, mode normal sur mobile (sauf appareils très bas de gamme)
       if (shouldUseLowEndMode) {
         setPerformanceMode(true)
+      } else {
+        setPerformanceMode(false) // Mode normal par défaut
       }
     }
     
@@ -91,19 +95,19 @@ export default function BoosterOpeningPageOptimized() {
   // Réduire le nombre de particules en mode performance
   const particleKeys = useMemo(() => {
     if (isLowEndDevice) return []
-    const baseCount = performanceMode ? 4 : 12
+    const baseCount = performanceMode ? 4 : (isMobile ? 8 : 12) // Plus de particules en mode normal sur mobile
     return Array.from({ length: baseCount }, (_, i) => `gp-${i}`)
-  }, [performanceMode, isLowEndDevice])
+  }, [performanceMode, isLowEndDevice, isMobile])
 
   // Valeurs de transition sécurisées - Animations naturelles et fluides
   const getTransitionValues = useCallback(() => {
     return {
       type: 'spring' as const,
-      duration: performanceMode ? 0.8 : 1.1,
-      stiffness: performanceMode ? 120 : 180,
-      damping: performanceMode ? 25 : 30
+      duration: performanceMode ? 0.8 : (isMobile ? 1.0 : 1.1), // Durée adaptée pour mobile
+      stiffness: performanceMode ? 120 : (isMobile ? 160 : 180), // Stiffness adaptée pour mobile
+      damping: performanceMode ? 25 : (isMobile ? 28 : 30) // Damping adapté pour mobile
     }
-  }, [performanceMode])
+  }, [performanceMode, isMobile])
   
   interface SetRules {
     name: string
@@ -651,7 +655,35 @@ export default function BoosterOpeningPageOptimized() {
   }, [])
 
   return (
-    <div className={`min-h-screen relative w-full bottom-12 ${performanceMode ? 'performance-mode' : ''} ${isLowEndDevice ? 'low-end-device' : ''}`}>
+    <div 
+      className={`min-h-screen relative w-full bottom-12 ${performanceMode ? 'performance-mode' : ''} ${isLowEndDevice ? 'low-end-device' : ''}`}
+      style={{
+        touchAction: 'pan-y',
+        overscrollBehavior: 'auto'
+      }}
+      onTouchStart={(e) => {
+        // Permettre le scroll vertical sur mobile
+        if (isMobile) {
+          const touch = e.touches[0];
+          const target = e.currentTarget as HTMLElement;
+          target.dataset.touchStartY = touch.clientY.toString();
+        }
+      }}
+      onTouchMove={(e) => {
+        // Permettre le scroll vertical
+        if (isMobile) {
+          const touch = e.touches[0];
+          const target = e.currentTarget as HTMLElement;
+          const startY = parseInt(target.dataset.touchStartY || '0');
+          const deltaY = Math.abs(touch.clientY - startY);
+          
+          // Si le mouvement est principalement vertical, permettre le scroll
+          if (deltaY > 10) {
+            // Ne pas empêcher le scroll
+          }
+        }
+      }}
+    >
       {/* Contenu principal */}
       <div className="relative z-10 min-h-screen pt-16 w-full">
         <Toaster position="top-center" />
