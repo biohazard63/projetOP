@@ -235,27 +235,57 @@ export default function BoosterOpeningPageOptimized() {
     }, 100) // Délai de 100ms pour la stabilité
   }, [])
 
-  // Navigation entre les cartes (mémoïsé)
+  // Navigation entre les cartes
   const navigateCard = useCallback((direction: 'prev' | 'next') => {
-    if (!booster || booster.length === 0) return;
+    if (currentCardIndex === undefined || currentCardIndex === null) return;
     
-    const newIndex = direction === 'next' 
-      ? Math.min(currentCardIndex + 1, booster.length - 1)
-      : Math.max(currentCardIndex - 1, 0);
-    
-    if (newIndex !== currentCardIndex) {
-      setCurrentCardIndex(newIndex);
-      setNavDirection(direction);
+    if (direction === 'prev' && currentCardIndex > 0) {
+      setNavDirection('prev')
+      const prevCard = booster[currentCardIndex - 1];
+      if (!prevCard) return;
+      setCurrentCardIndex(currentCardIndex - 1);
+      setIsNewCard(!userCollection.has(prevCard.id));
+    } else if (direction === 'next' && currentCardIndex < booster.length - 1) {
+      setNavDirection('next')
+      const nextCard = booster[currentCardIndex + 1];
+      if (!nextCard) return;
+      setCurrentCardIndex(currentCardIndex + 1);
+      setIsNewCard(!userCollection.has(nextCard.id));
       
       // Déclencher l'animation de rareté pour la nouvelle carte
-      const newCard = booster[newIndex];
+      const newCard = booster[currentCardIndex + 1];
       if (newCard) {
         setTimeout(() => {
           triggerRarityAnimation(newCard);
         }, 150); // Délai pour la stabilité
       }
+      
+      // Ajouter automatiquement à la collection quand on arrive à la dernière carte
+      if (currentCardIndex + 1 === booster.length - 1) {
+        const delay = isMobile ? 1000 : 2000;
+        setTimeout(async () => {
+          try {
+            if (!booster || booster.length === 0) return;
+            const cardIds = booster.map(card => card.id);
+            const result = await addToCollection(cardIds);
+            if (result.success) {
+              toast.success('Cartes ajoutées à votre collection !', { 
+                duration: isMobile ? 3000 : 4000, 
+                position: isMobile ? 'bottom-center' : 'top-center' 
+              });
+              await loadUserCollection();
+            } else {
+              console.error('Erreur lors de l\'ajout à la collection:', result.error);
+              toast.error('Erreur lors de l\'ajout à la collection');
+            }
+          } catch (error) {
+            console.error('Erreur lors de l\'ajout automatique à la collection:', error);
+            toast.error('Erreur lors de l\'ajout à la collection');
+          }
+        }, delay);
+      }
     }
-  }, [currentCardIndex, booster, triggerRarityAnimation])
+  }, [currentCardIndex, booster, userCollection, isMobile, addToCollection, loadUserCollection, triggerRarityAnimation])
 
   // Gestion du clic sur une carte
   const handleCardClick = useCallback((card: ExtendedCardType) => {
