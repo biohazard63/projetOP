@@ -131,12 +131,12 @@ export default function BoosterPackAnimation({ onComplete, setCode, performanceM
           <motion.div
             initial={{ scale: 1, rotate: 0 }}
             animate={{ 
-              scale: [1, 1.1, 0.97, 1.18],
-              rotate: [0, 4, -4, 0],
-              y: [0, -24, 0]
+              scale: [1, 1.1],
+              rotate: [0, 4],
+              y: [0, -24]
             }}
             transition={{ 
-              duration: performanceMode ? 2.8 : 3.2, // Plus fluide
+              duration: 3.2,
               ease: "easeInOut"
             }}
             className="relative w-48 h-72 md:w-64 md:h-96 will-change-transform"
@@ -145,7 +145,7 @@ export default function BoosterPackAnimation({ onComplete, setCode, performanceM
             {/* Micro-secousse à la déchirure */}
             <motion.div
               className="absolute inset-0"
-              animate={showTear ? { x: [0, -2, 2, -1, 1, 0], y: [0, -1, 1, 0], rotate: [0, -1.2, 1.2, -0.6, 0] } : {}}
+              animate={showTear ? { x: [0, -2], y: [0, -1], rotate: [0, -1.2] } : {}}
               transition={{ duration: 0.5, ease: 'easeOut' }}
             />
             {/* Halo doré */}
@@ -170,14 +170,14 @@ export default function BoosterPackAnimation({ onComplete, setCode, performanceM
               <>
                 <motion.div
                   initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: [0, 0.9, 0], scale: [0.8, 1.35, 1.6] }}
+                  animate={{ opacity: [0, 0.9], scale: [0.8, 1.35] }}
                   transition={{ duration: 1.2, ease: 'easeOut' }}
                   className="absolute inset-0 rounded-2xl pointer-events-none"
                   style={{ boxShadow: '0 0 0 2px rgba(250,204,21,.45), 0 0 60px rgba(250,204,21,.35) inset' }}
                 />
                 <motion.div
                   initial={{ opacity: 0 }}
-                  animate={{ opacity: [0, 0.8, 0] }}
+                  animate={{ opacity: [0, 0.8] }}
                   transition={{ duration: 0.25 }}
                   className="absolute inset-0 bg-white/50 mix-blend-overlay"
                 />

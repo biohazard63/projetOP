@@ -59,55 +59,24 @@ export default function BoosterOpeningPageOptimized() {
   const [showAlternativeAnimation, setShowAlternativeAnimation] = useState(false)
   const [rareCard, setRareCard] = useState<ExtendedCardType | null>(null)
   
-  // OPTIMISATIONS PERFORMANCE AVANCÉES
-  const [performanceMode, setPerformanceMode] = useState(false)
-  const [consecutiveOpenings, setConsecutiveOpenings] = useState(0)
-  const [isLowEndDevice, setIsLowEndDevice] = useState(false)
-  const [manualPerformanceMode, setManualPerformanceMode] = useState(false)
+  // Références
   const lastOpeningTimeRef = useRef(0)
-  const performanceCheckIntervalRef = useRef<NodeJS.Timeout | null>(null)
   
-  // Détection d'appareil bas de gamme - Mode normal par défaut sur mobile
-  useEffect(() => {
-    const detectLowEndDevice = () => {
-      const isMobile = window.innerWidth < 768
-      // @ts-expect-error - deviceMemory n'est pas dans les types TypeScript mais existe dans certains navigateurs
-      const hasVeryLowMemory = navigator.deviceMemory && navigator.deviceMemory < 2
-      const hasVerySlowCPU = navigator.hardwareConcurrency && navigator.hardwareConcurrency < 2
-      const isVeryOldDevice = /Android [1-4]|iPhone OS [1-6]/.test(navigator.userAgent)
-      
-      // Mode performance seulement pour les appareils vraiment très bas de gamme
-      const shouldUseLowEndMode = isMobile && (hasVeryLowMemory || hasVerySlowCPU || isVeryOldDevice)
-      setIsLowEndDevice(shouldUseLowEndMode)
-      
-      // Par défaut, mode normal sur mobile (sauf appareils très bas de gamme)
-      if (shouldUseLowEndMode) {
-        setPerformanceMode(true)
-      } else {
-        setPerformanceMode(false) // Mode normal par défaut
-      }
-    }
-    
-    const timer = setTimeout(detectLowEndDevice, 100)
-    return () => clearTimeout(timer)
-  }, [])
-  
-  // Réduire le nombre de particules en mode performance
+  // Particules pour les effets visuels
   const particleKeys = useMemo(() => {
-    if (isLowEndDevice) return []
-    const baseCount = performanceMode ? 4 : (isMobile ? 8 : 12) // Plus de particules en mode normal sur mobile
+    const baseCount = isMobile ? 8 : 12
     return Array.from({ length: baseCount }, (_, i) => `gp-${i}`)
-  }, [performanceMode, isLowEndDevice, isMobile])
+  }, [isMobile])
 
-  // Valeurs de transition sécurisées - Animations naturelles et fluides
+  // Valeurs de transition optimisées
   const getTransitionValues = useCallback(() => {
     return {
       type: 'spring' as const,
-      duration: performanceMode ? 0.8 : (isMobile ? 1.0 : 1.1), // Durée adaptée pour mobile
-      stiffness: performanceMode ? 120 : (isMobile ? 160 : 180), // Stiffness adaptée pour mobile
-      damping: performanceMode ? 25 : (isMobile ? 28 : 30) // Damping adapté pour mobile
+      duration: isMobile ? 1.0 : 1.1,
+      stiffness: isMobile ? 160 : 180,
+      damping: isMobile ? 28 : 30
     }
-  }, [performanceMode, isMobile])
+  }, [isMobile])
   
   interface SetRules {
     name: string
@@ -216,63 +185,17 @@ export default function BoosterOpeningPageOptimized() {
       .catch(error => console.error('Erreur lors du chargement des sets:', error))
   }, [])
 
-  // Basculer la scène (coffre ↔ pack) selon set
+  // Effet pour mettre à jour le stage
   useEffect(() => {
     setStage(selectedSet ? 'pack' : 'chest')
   }, [selectedSet])
 
-  // OPTIMISATIONS PERFORMANCE - Détection automatique du mode performance
-  useEffect(() => {
-    const checkPerformanceMode = () => {
-      const now = Date.now()
-      const timeSinceLastOpening = now - lastOpeningTimeRef.current
-      
-      if (timeSinceLastOpening < 2000) {
-        setConsecutiveOpenings(prev => prev + 1)
-        if (consecutiveOpenings >= 1) {
-          setPerformanceMode(true)
-        }
-      } else {
-        setConsecutiveOpenings(0)
-        if (!isLowEndDevice && !manualPerformanceMode) {
-          setPerformanceMode(false)
-        }
-      }
-      
-      lastOpeningTimeRef.current = now
-    }
-
-    performanceCheckIntervalRef.current = setInterval(checkPerformanceMode, 3000)
-
-    return () => {
-      if (performanceCheckIntervalRef.current) {
-        clearInterval(performanceCheckIntervalRef.current)
-      }
-    }
-  }, [consecutiveOpenings, isLowEndDevice, manualPerformanceMode])
-
-  // Détection automatique des préférences de réduction de mouvement
-  useEffect(() => {
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-    if (prefersReducedMotion || isLowEndDevice) {
-      setPerformanceMode(true)
-    }
-  }, [isLowEndDevice])
-
   // Nettoyage des ressources
   useEffect(() => {
     return () => {
-      if (performanceCheckIntervalRef.current) {
-        clearInterval(performanceCheckIntervalRef.current)
-      }
-      
       if (isDragging && isMobile) {
         document.body.style.overflow = '';
         document.body.style.touchAction = '';
-      }
-      
-      if (window.gc) {
-        window.gc()
       }
     }
   }, [isDragging, isMobile])
@@ -307,211 +230,60 @@ export default function BoosterOpeningPageOptimized() {
   // Navigation entre les cartes (mémoïsé)
   const navigateCard = useCallback((direction: 'prev' | 'next') => {
     if (!booster || booster.length === 0) return;
-    if (currentCardIndex === undefined || currentCardIndex === null) return;
     
-    if (direction === 'prev' && currentCardIndex > 0) {
-      setNavDirection('prev')
-      const prevCard = booster[currentCardIndex - 1];
-      if (!prevCard) return;
-      setCurrentCardIndex(currentCardIndex - 1);
-      setIsNewCard(!userCollection.has(prevCard.id));
+    const newIndex = direction === 'next' 
+      ? Math.min(currentCardIndex + 1, booster.length - 1)
+      : Math.max(currentCardIndex - 1, 0);
+    
+    if (newIndex !== currentCardIndex) {
+      setCurrentCardIndex(newIndex);
+      setNavDirection(direction);
       
-      // Déclencher l'animation de rareté si la carte est rare
-      const rarity = prevCard.rarity?.toUpperCase()
-      const isAlternativeCard = prevCard.id && prevCard.id.includes('_p')
-      
-      if (rarity === 'TR' || rarity === 'SEC' || rarity === 'SP CARD' || 
-          rarity === 'SR' || rarity === 'L' || isAlternativeCard) {
-        // Délai pour s'assurer que la navigation est terminée
+      // Déclencher l'animation de rareté pour la nouvelle carte
+      const newCard = booster[newIndex];
+      if (newCard) {
         setTimeout(() => {
-          triggerRarityAnimation(prevCard);
-        }, 150)
-      }
-    } else if (direction === 'next' && currentCardIndex < booster.length - 1) {
-      setNavDirection('next')
-      const nextCard = booster[currentCardIndex + 1];
-      if (!nextCard) return;
-      setCurrentCardIndex(currentCardIndex + 1);
-      setIsNewCard(!userCollection.has(nextCard.id));
-      
-      // Déclencher l'animation de rareté si la carte est rare
-      const rarity = nextCard.rarity?.toUpperCase()
-      const isAlternativeCard = nextCard.id && nextCard.id.includes('_p')
-      
-      if (rarity === 'TR' || rarity === 'SEC' || rarity === 'SP CARD' || 
-          rarity === 'SR' || rarity === 'L' || isAlternativeCard) {
-        // Délai pour s'assurer que la navigation est terminée
-        setTimeout(() => {
-          triggerRarityAnimation(nextCard);
-        }, 150)
-      }
-      if (currentCardIndex + 1 === booster.length - 1) {
-        const delay = isMobile ? (performanceMode ? 800 : 1200) : (performanceMode ? 1000 : 1500);
-        setTimeout(async () => {
-          try {
-            if (!booster || booster.length === 0) return;
-            const cardIds = booster.map(card => card.id);
-            const result = await addToCollection(cardIds);
-            if (result.success) {
-              toast.success('Cartes ajoutées à votre collection !', { duration: isMobile ? 3000 : 4000, position: isMobile ? 'bottom-center' : 'top-center' });
-              await loadUserCollection();
-            }
-          } catch (error) {
-            console.error('Erreur lors de l\'ajout automatique à la collection:', error);
-            toast.error('Erreur lors de l\'ajout à la collection');
-          }
-        }, delay);
+          triggerRarityAnimation(newCard);
+        }, 150); // Délai pour la stabilité
       }
     }
-  }, [currentCardIndex, booster, userCollection, isMobile, addToCollection, loadUserCollection, performanceMode, triggerRarityAnimation])
+  }, [currentCardIndex, booster, triggerRarityAnimation])
 
-  // Gestionnaire des touches du clavier
-  useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (isMobile) return;
-      if (event.key === 'ArrowLeft' && currentCardIndex > 0) {
-        navigateCard('prev');
-      } else if (event.key === 'ArrowRight' && currentCardIndex < booster.length - 1) {
-        navigateCard('next');
-      }
-    };
-
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [currentCardIndex, booster.length, isMobile, navigateCard]);
-
-  // Chargement de la collection de l'utilisateur
-  useEffect(() => {
-    if (session) {
-      loadUserCollection()
-    }
-  }, [session, loadUserCollection])
-
-  // Chargement des règles du set
-  useEffect(() => {
-    if (selectedSet && session) {
-      const selectedSetData = sets.find(set => set.id === selectedSet);
-      if (selectedSetData) {
-        fetch(`/api/sets/${selectedSetData.code}/rules`)
-          .then(res => {
-            if (!res.ok) {
-              throw new Error(`Erreur HTTP: ${res.status}`);
-            }
-            return res.json();
-          })
-          .then(data => {
-            if (data.success) {
-              setSetRules(data.rules);
-            } else {
-              console.error('Erreur dans la réponse:', data.error);
-            }
-          })
-          .catch(error => {
-            console.error('Erreur lors du chargement des règles du set:', error);
-            setSetRules({
-              name: selectedSetData.name,
-              rarityCounts: {
-                'C': 45,
-                'UC': 30,
-                'R': 32,
-                'SR': 21,
-                'L': 12,
-                'SEC': 4,
-                'SP CARD': 6,
-                'TR': 0,
-                'P': 0
-              },
-              boosterRules: {
-                commonCount: 6,
-                uncommonCount: 3,
-                rareCount: 2,
-                superRareCount: 1,
-                leaderCount: 0,
-                characterCount: 4,
-                eventCount: 2,
-                stageCount: 0,
-                donCount: 1,
-                altArtChance: 0.1,
-                parallelChance: 0.05,
-                specialChance: 0.05
-              }
-            });
-          });
-      }
-    }
-  }, [selectedSet, sets, session]);
-
-  // Gestion du glissement des cartes
-  const handleDragEnd = useCallback((
-    event: MouseEvent | TouchEvent | PointerEvent,
-    info: { offset: { x: number; y: number } }
-  ) => {
-    if (!info) return;
-
-    setIsDragging(false);
+  // Gestion du clic sur une carte
+  const handleCardClick = useCallback((card: ExtendedCardType) => {
+    const now = Date.now();
+    if (now - lastClickTime < 300) return; // Anti-double-clic
+    setLastClickTime(now);
     
-    if (isMobile) {
-      document.body.style.overflow = '';
-      document.body.style.touchAction = '';
-    }
-    
-    const threshold = 100;
-    
-    if (!booster || booster.length === 0) return;
+    setSelectedCard(card);
+  }, [lastClickTime])
 
-    const isClick = Math.abs(info.offset.x) < threshold;
-    
-    if (isClick) return;
-
-    if (info.offset.x > threshold && currentCardIndex > 0) {
-      navigateCard('prev');
-    } else if (info.offset.x < -threshold && currentCardIndex < booster.length - 1) {
-      navigateCard('next');
-    }
-  }, [booster, currentCardIndex, isMobile, navigateCard])
-  
+  // Gestion du drag
   const handleDragStart = useCallback(() => {
     setIsDragging(true);
+  }, [])
+
+  const handleDrag = useCallback((event: MouseEvent | TouchEvent | PointerEvent, info: { offset: { x: number; y: number } }) => {
+    // Logique de drag existante
+  }, [])
+
+  const handleDragEnd = useCallback((event: MouseEvent | TouchEvent | PointerEvent, info: { offset: { x: number; y: number } }) => {
+    setIsDragging(false);
     
-    if (isMobile) {
-      document.body.style.overflow = 'hidden';
-      document.body.style.touchAction = 'none';
-    }
-  }, [isMobile])
-  
-  const handleDrag = useCallback((
-    event: MouseEvent | TouchEvent | PointerEvent,
-    info: { offset: { x: number; y: number } }
-  ) => {
-    if (!info) return;
-    
-    const verticalMovement = Math.abs(info.offset.y);
-    const horizontalMovement = Math.abs(info.offset.x);
-    
-    if (verticalMovement > horizontalMovement && verticalMovement > 50) {
-      setIsDragging(false);
-      if (isMobile) {
-        document.body.style.overflow = '';
-        document.body.style.touchAction = '';
+    const threshold = isMobile ? 60 : 100;
+    if (Math.abs(info.offset.x) > threshold) {
+      if (info.offset.x > threshold) {
+        navigateCard('prev');
+      } else {
+        navigateCard('next');
       }
-      return;
     }
-  }, [isMobile])
+  }, [isMobile, navigateCard])
 
-  // Gestion du clic sur les flèches
+  // Gestion des clics sur les flèches
   const handleArrowClick = useCallback((direction: 'prev' | 'next') => {
-    if (!booster || booster.length === 0) return;
-
-    if (direction === 'prev' && currentCardIndex > 0) {
-      navigateCard('prev');
-    } else if (direction === 'next' && currentCardIndex < booster.length - 1) {
-      navigateCard('next');
-    }
-  }, [booster, currentCardIndex, navigateCard])
-
-
+    navigateCard(direction);
+  }, [navigateCard])
 
   // Gestion de l'ouverture du booster
   const handleOpenBooster = useCallback(async () => {
@@ -520,8 +292,8 @@ export default function BoosterOpeningPageOptimized() {
       return
     }
 
-    const animationDelay = performanceMode ? 50 : (isLowEndDevice ? 25 : 200)
-    const shouldShowStageFx = !performanceMode && !isLowEndDevice
+    const animationDelay = 200 // Délai fixe pour l'animation
+    const shouldShowStageFx = false // Pas d'effet de stage pour le moment
 
     setIsLoading(true)
     
@@ -580,7 +352,7 @@ export default function BoosterOpeningPageOptimized() {
     } finally {
       setIsLoading(false)
     }
-  }, [selectedSet, selectedSetData, showAnimation, isMobile, userCollection, startTransition, performanceMode, isLowEndDevice])
+  }, [selectedSet, selectedSetData, showAnimation, startTransition, userCollection])
 
   const handleAnimationComplete = useCallback(async () => {
     startTransition(() => setShowAnimation(false))
@@ -632,58 +404,44 @@ export default function BoosterOpeningPageOptimized() {
     await handleOpenBooster()
   }, [handleOpenBooster, startTransition])
 
-  const handleCardClick = useCallback((card: ExtendedCardType) => {
-    const currentTime = new Date().getTime()
-    const timeDiff = currentTime - lastClickTime
-    
-    if (timeDiff < 300) {
-      setSelectedCard(card)
-    }
-    
-    setLastClickTime(currentTime)
-  }, [lastClickTime])
-
   // Handlers pour les composants
-  const handleTogglePerformanceMode = useCallback(() => {
-    const newMode = !performanceMode
-    setPerformanceMode(newMode)
-    setManualPerformanceMode(newMode)
-  }, [performanceMode])
-
   const handleSelectBooster = useCallback(() => {
     setShowBoosterModal(true)
   }, [])
 
   return (
-    <div 
-      className={`min-h-screen relative w-full bottom-12 ${performanceMode ? 'performance-mode' : ''} ${isLowEndDevice ? 'low-end-device' : ''}`}
-      style={{
-        touchAction: 'pan-y',
-        overscrollBehavior: 'auto'
-      }}
-      onTouchStart={(e) => {
-        // Permettre le scroll vertical sur mobile
-        if (isMobile) {
-          const touch = e.touches[0];
-          const target = e.currentTarget as HTMLElement;
-          target.dataset.touchStartY = touch.clientY.toString();
-        }
-      }}
-      onTouchMove={(e) => {
-        // Permettre le scroll vertical
-        if (isMobile) {
-          const touch = e.touches[0];
-          const target = e.currentTarget as HTMLElement;
-          const startY = parseInt(target.dataset.touchStartY || '0');
-          const deltaY = Math.abs(touch.clientY - startY);
-          
-          // Si le mouvement est principalement vertical, permettre le scroll
-          if (deltaY > 10) {
-            // Ne pas empêcher le scroll
-          }
-        }
-      }}
-    >
+    <div className="relative min-h-screen bg-gradient-to-b from-[#0b1020] to-[#0a0f1a] overflow-x-hidden">
+      {/* Animations de rareté - en dehors du conteneur principal */}
+      {showRareAnimation && rareCard && (
+        <RareAnimation
+          card={rareCard}
+          onComplete={() => {
+            // Délai avant de fermer l'animation
+            setTimeout(() => setShowRareAnimation(false), 1000)
+          }}
+        />
+      )}
+
+      {showUltraRareAnimation && rareCard && (
+        <UltraRareAnimation
+          card={rareCard}
+          onComplete={() => {
+            // Délai avant de fermer l'animation
+            setTimeout(() => setShowUltraRareAnimation(false), 1000)
+          }}
+        />
+      )}
+
+      {showAlternativeAnimation && rareCard && (
+        <AlternativeAnimation
+          card={rareCard}
+          onComplete={() => {
+            // Délai avant de fermer l'animation
+            setTimeout(() => setShowAlternativeAnimation(false), 1000)
+          }}
+        />
+      )}
+
       {/* Contenu principal */}
       <div className="relative z-10 min-h-screen pt-16 w-full">
         <Toaster position="top-center" />
@@ -693,49 +451,14 @@ export default function BoosterOpeningPageOptimized() {
           <BoosterPackAnimation 
             onComplete={handleAnimationComplete} 
             setCode={sets.find(set => set.id === selectedSet)?.code || ''}
-            performanceMode={performanceMode}
-          />
-        )}
-
-        {/* Animations de rareté */}
-        {showRareAnimation && rareCard && (
-          <RareAnimation
-            card={rareCard}
-            onComplete={() => {
-              // Délai avant de fermer l'animation
-              setTimeout(() => setShowRareAnimation(false), 1000)
-            }}
-            performanceMode={performanceMode}
-          />
-        )}
-
-        {showUltraRareAnimation && rareCard && (
-          <UltraRareAnimation
-            card={rareCard}
-            onComplete={() => {
-              // Délai avant de fermer l'animation
-              setTimeout(() => setShowUltraRareAnimation(false), 1000)
-            }}
-            performanceMode={performanceMode}
-          />
-        )}
-
-        {showAlternativeAnimation && rareCard && (
-          <AlternativeAnimation
-            card={rareCard}
-            onComplete={() => {
-              // Délai avant de fermer l'animation
-              setTimeout(() => setShowAlternativeAnimation(false), 1000)
-            }}
-            performanceMode={performanceMode}
           />
         )}
 
         {/* En-tête optimisé */}
         <BoosterHeader
           isMobile={isMobile}
-          performanceMode={performanceMode}
-          isLowEndDevice={isLowEndDevice}
+          performanceMode={false}
+          isLowEndDevice={false}
           stage={stage}
           stageFx={stageFx}
           selectedSetData={selectedSetData}
@@ -764,10 +487,7 @@ export default function BoosterOpeningPageOptimized() {
           selectedSet={selectedSet}
           isLoading={isLoading}
           boosterLength={booster.length}
-          performanceMode={performanceMode}
-
           onSelectBooster={handleSelectBooster}
-          onTogglePerformanceMode={handleTogglePerformanceMode}
           onOpenBooster={handleOpenBooster}
           onResetAndOpenNewBooster={resetAndOpenNewBooster}
         />
@@ -777,9 +497,7 @@ export default function BoosterOpeningPageOptimized() {
           selectedSet={selectedSet}
           isLoading={isLoading}
           boosterLength={booster.length}
-          performanceMode={performanceMode}
           onSelectBooster={handleSelectBooster}
-          onTogglePerformanceMode={handleTogglePerformanceMode}
           onOpenBooster={handleOpenBooster}
           onResetAndOpenNewBooster={resetAndOpenNewBooster}
         />
@@ -797,7 +515,7 @@ export default function BoosterOpeningPageOptimized() {
           isNewCard={isNewCard}
           isMobile={isMobile}
           isDragging={isDragging}
-          performanceMode={performanceMode}
+          performanceMode={false}
           navDirection={navDirection}
           onCardClick={handleCardClick}
           onDragStart={handleDragStart}
@@ -829,9 +547,9 @@ export default function BoosterOpeningPageOptimized() {
               </div>
 
               <motion.div
-                initial={{ scale: performanceMode ? 0.95 : 0.9, opacity: 0, y: performanceMode ? 10 : 20 }}
+                initial={{ scale: 0.9, opacity: 0, y: 20 }}
                 animate={{ scale: 1, opacity: 1, y: 0 }}
-                exit={{ scale: performanceMode ? 0.95 : 0.9, opacity: 0, y: performanceMode ? 10 : 20 }}
+                exit={{ scale: 0.9, opacity: 0, y: 20 }}
                 transition={getTransitionValues()}
                 className="relative z-[130] bg-white/5 backdrop-blur-xl rounded-2xl shadow-[0_0_60px_rgba(0,0,0,0.45)] w-[95%] sm:max-w-5xl max-h-[90vh] flex flex-col overflow-hidden border border-white/10"
                 onClick={e => e.stopPropagation()}
@@ -843,11 +561,11 @@ export default function BoosterOpeningPageOptimized() {
                       <div className="flex items-center gap-2 sm:gap-4">
                         <motion.div
                           animate={{ 
-                            y: performanceMode ? [-3, 3, -3] : [-4, 4, -4],
-                            rotate: performanceMode ? [-1.5, 1.5, -1.5] : [-2, 2, -2]
+                            y: [-3, 3, -3],
+                            rotate: [-1.5, 1.5, -1.5]
                           }}
                           transition={{
-                            duration: performanceMode ? 2.5 : 4,
+                            duration: 4,
                             repeat: Infinity,
                             ease: 'easeInOut'
                           }}
@@ -920,16 +638,16 @@ export default function BoosterOpeningPageOptimized() {
                           }
                         }}
                         whileHover={{ 
-                          scale: performanceMode ? 1.03 : 1.05,
-                          rotateY: performanceMode ? 3 : 5,
+                          scale: 1.05,
+                          rotateY: 5,
                           z: 20
                         }}
-                        whileTap={{ scale: performanceMode ? 0.98 : 0.95 }}
+                        whileTap={{ scale: 0.95 }}
                         transition={{
                           type: 'spring' as const,
-                          duration: performanceMode ? 0.5 : 0.6,
-                          stiffness: performanceMode ? 150 : 250,
-                          damping: performanceMode ? 22 : 28
+                          duration: 0.6,
+                          stiffness: 250,
+                          damping: 28
                         }}
                       >
                         {/* Étiquette du nom */}

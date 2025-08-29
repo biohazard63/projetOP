@@ -64,11 +64,16 @@ export default function UltraRareAnimation({ card, onComplete, performanceMode =
           className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/70 backdrop-blur-sm"
           style={{
             position: 'fixed',
-            top: 0,
-            left: 0,
-            right: 0,
-            bottom: 0,
-            zIndex: 9999
+            top: '0px',
+            left: '0px',
+            right: '0px',
+            bottom: '0px',
+            width: '100vw',
+            height: '100vh',
+            zIndex: 9999,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center'
           }}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -84,7 +89,8 @@ export default function UltraRareAnimation({ card, onComplete, performanceMode =
               alignItems: 'center',
               justifyContent: 'center',
               width: '100%',
-              height: '100%'
+              height: '100%',
+              position: 'relative'
             }}
           >
             
@@ -109,13 +115,14 @@ export default function UltraRareAnimation({ card, onComplete, performanceMode =
             >
               {/* Effet de brillance simple */}
               <motion.div
-                className="absolute -inset-2 bg-gradient-to-r from-blue-400 to-purple-500 rounded-xl blur-md"
+                className="absolute -inset-2 bg-gradient-to-r from-blue-400 to-indigo-500 rounded-xl blur-md"
                 animate={{
-                  opacity: [0.3, 0.6, 0.3]
+                  opacity: [0.3, 0.6]
                 }}
                 transition={{
                   duration: 2.0,
                   repeat: Infinity,
+                  repeatType: 'reverse' as const,
                   ease: 'easeInOut'
                 }}
               />

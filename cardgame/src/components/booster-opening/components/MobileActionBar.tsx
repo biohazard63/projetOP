@@ -7,9 +7,7 @@ interface MobileActionBarProps {
   selectedSet: string
   isLoading: boolean
   boosterLength: number
-  performanceMode: boolean
   onSelectBooster: () => void
-  onTogglePerformanceMode: () => void
   onOpenBooster: () => void
   onResetAndOpenNewBooster: () => void
 }
@@ -18,9 +16,7 @@ const MobileActionBar = memo(function MobileActionBar({
   selectedSet,
   isLoading,
   boosterLength,
-  performanceMode,
   onSelectBooster,
-  onTogglePerformanceMode,
   onOpenBooster,
   onResetAndOpenNewBooster
 }: MobileActionBarProps) {
@@ -33,19 +29,6 @@ const MobileActionBar = memo(function MobileActionBar({
           className="flex-1 btn-crystal hover:brightness-110 text-white font-bold py-3 px-4 rounded-xl transition-all"
         >
           Choisir
-        </Button>
-
-        {/* Bouton mode performance mobile */}
-        <Button
-          onClick={onTogglePerformanceMode}
-          aria-label={performanceMode ? "Désactiver le mode performance" : "Activer le mode performance"}
-          className={`px-3 py-3 rounded-xl transition-all ${
-            performanceMode 
-              ? 'bg-green-600 hover:bg-green-700 text-white' 
-              : 'bg-amber-600 hover:bg-amber-700 text-white'
-          }`}
-        >
-          <span className="text-lg">{performanceMode ? "⚡" : "🌿"}</span>
         </Button>
 
         {boosterLength === 0 ? (

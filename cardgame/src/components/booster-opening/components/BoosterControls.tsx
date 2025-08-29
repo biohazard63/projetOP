@@ -8,10 +8,7 @@ interface BoosterControlsProps {
   selectedSet: string
   isLoading: boolean
   boosterLength: number
-  performanceMode: boolean
-
   onSelectBooster: () => void
-  onTogglePerformanceMode: () => void
   onOpenBooster: () => void
   onResetAndOpenNewBooster: () => void
 }
@@ -20,10 +17,7 @@ const BoosterControls = memo(function BoosterControls({
   selectedSet,
   isLoading,
   boosterLength,
-  performanceMode,
-
   onSelectBooster,
-  onTogglePerformanceMode,
   onOpenBooster,
   onResetAndOpenNewBooster
 }: BoosterControlsProps) {
@@ -37,22 +31,6 @@ const BoosterControls = memo(function BoosterControls({
         <div className="flex items-center gap-2">
           <Package className="w-5 h-5" />
           <span>Choisir un booster</span>
-        </div>
-      </Button>
-
-      {/* Bouton mode performance */}
-      <Button
-        onClick={onTogglePerformanceMode}
-        aria-label={performanceMode ? "Désactiver le mode performance" : "Activer le mode performance"}
-        className={`w-auto px-4 py-3 rounded-xl transition-all duration-300 transform hover:scale-105 ${
-          performanceMode 
-            ? 'bg-green-600 hover:bg-green-700 text-white' 
-            : 'bg-amber-600 hover:bg-amber-700 text-white'
-        }`}
-      >
-        <div className="flex items-center gap-2">
-          <span className="text-lg">{performanceMode ? "⚡" : "🌿"}</span>
-          <span className="text-sm font-medium">{performanceMode ? "Normal" : "Éco"}</span>
         </div>
       </Button>
 

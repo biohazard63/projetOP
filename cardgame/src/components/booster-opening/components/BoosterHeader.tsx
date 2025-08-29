@@ -94,17 +94,11 @@ export default function BoosterHeader({
               />
             ))
           )}
-          {stageFx.opening && !performanceMode && !isLowEndDevice && (
-            <motion.div
-              className="absolute inset-0 pointer-events-none"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: [0, .9, 0] }}
-              transition={{ duration: .6 }}
-              style={{
-                background: 'radial-gradient(220px 120px at 50% 60%, rgba(255,215,0,.55), transparent 70%)'
-              }}
-            />
-          )}
+          <motion.div
+            className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-xl"
+            animate={{ opacity: [0, 0.9] }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          />
         </motion.div>
       </div>
     </div>

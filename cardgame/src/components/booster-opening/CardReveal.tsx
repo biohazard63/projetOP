@@ -95,12 +95,11 @@ export default function CardReveal({
       opacity: [0, 1], 
       y: [25, 0], 
       scale: [0.96, 1],
-      boxShadow: ['0 0 0 rgba(0,0,0,0)', '0 0 50px rgba(250,204,21,.45)', '0 0 0 rgba(0,0,0,0)'],
+      boxShadow: ['0 0 0 rgba(0,0,0,0)', '0 0 50px rgba(250,204,21,.45)'],
       transition: { 
-        type: 'spring' as const,
-        stiffness: 80,
-        damping: 15,
-        duration: 1.0 
+        type: 'tween' as const,
+        duration: 1.0,
+        ease: 'easeOut'
       }
     }
   }
@@ -249,13 +248,12 @@ export default function CardReveal({
           <motion.div
             className="pointer-events-none absolute inset-0 rounded-xl"
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0, .6, 0] }}
+            animate={{ opacity: [0, 0.6] }}
             transition={{ 
-              type: 'spring' as const,
-              stiffness: 80,
-              damping: 15,
+              type: 'tween' as const,
               duration: 1.2, 
-              delay: 0.2 
+              delay: 0.2,
+              ease: 'easeOut'
             }}
             style={{ background: 'radial-gradient(280px 160px at 50% 50%, rgba(147, 197, 253,.25), transparent 70%)' }}
           />
@@ -264,13 +262,12 @@ export default function CardReveal({
           <motion.div
             className="pointer-events-none absolute inset-0 rounded-xl"
             initial={{ opacity: 0 }}
-            animate={{ opacity: [0, .9, 0] }}
+            animate={{ opacity: [0, 0.9] }}
             transition={{ 
-              type: 'spring' as const,
-              stiffness: 60,
-              damping: 12,
+              type: 'tween' as const,
               duration: 1.4, 
-              delay: 0.15 
+              delay: 0.15,
+              ease: 'easeOut'
             }}
             style={{ background: 'radial-gradient(300px 180px at 50% 50%, rgba(250,204,21,.35), transparent 70%)' }}
           />
@@ -342,20 +339,18 @@ export default function CardReveal({
               <motion.div
                 className="pointer-events-none absolute inset-0 z-20 rounded-xl overflow-hidden"
                 initial={{ opacity: 0 }}
-                animate={{ opacity: [0, 1, 0] }}
-                transition={{ duration: 0.65 }}
-              >
-                <motion.div
-                  initial={{ x: '-120%' }}
-                  animate={{ x: '120%' }}
-                  transition={{ duration: 0.65, ease: 'easeOut' }}
-                  className="absolute top-0 bottom-0 w-[45%] -skew-x-12"
-                  style={{
-                    background:
-                      'linear-gradient(90deg, rgba(255,255,255,0) 0%, rgba(255,255,255,.45) 45%, rgba(255,255,255,0) 100%)'
-                  }}
-                />
-              </motion.div>
+                animate={{ opacity: [0, 1] }}
+                transition={{ 
+                  type: 'tween' as const,
+                  duration: 0.7,
+                  ease: 'easeOut'
+                }}
+                style={{
+                  background: 'linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent)',
+                  transform: 'translateX(-100%)',
+                  animation: 'shimmer 0.7s ease-out forwards'
+                }}
+              />
             )}
 
             {/* Badge "Nouvelle" pour les nouvelles cartes */}
