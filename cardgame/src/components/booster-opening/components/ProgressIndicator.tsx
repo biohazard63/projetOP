@@ -44,13 +44,13 @@ const ProgressIndicator = memo(function ProgressIndicator({
   if (booster.length === 0) return null
 
   return (
-    <div className="sticky top-16 z-30 w-[95%] md:w-[90%] mx-auto mb-6">
-      <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl px-3 py-2 shadow-xl">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-white/80 text-sm font-medium">Progression</span>
-          <span className="text-white text-sm font-bold">{Math.max(0, currentCardIndex + 1)} / {booster.length}</span>
+    <div className="sticky top-16 z-30 w-[95%] md:w-[90%] mx-auto mb-4 md:mb-6">
+      <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-xl px-2 py-1.5 md:px-3 md:py-2 shadow-xl">
+        <div className="flex items-center justify-between mb-1.5 md:mb-2">
+          <span className="text-white/80 text-xs md:text-sm font-medium">Progression</span>
+          <span className="text-white text-xs md:text-sm font-bold">{Math.max(0, currentCardIndex + 1)} / {booster.length}</span>
         </div>
-        <div className="grid grid-cols-12 gap-1">
+        <div className="grid grid-cols-12 gap-0.5 md:gap-1">
           {progressSegments}
         </div>
       </div>

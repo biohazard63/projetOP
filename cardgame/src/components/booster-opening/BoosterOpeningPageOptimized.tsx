@@ -421,15 +421,16 @@ export default function BoosterOpeningPageOptimized() {
   const checkRarityAndPlayEffect = useCallback((card: ExtendedCardType) => {
     const rarity = card.rarity?.toUpperCase()
     
-    if (rarity === 'SR' || rarity === 'SEC' || rarity === 'L') {
-      setRareCard(card)
-      setShowUltraRareAnimation(true)
-    } else if (rarity === 'R') {
-      setRareCard(card)
-      setShowRareAnimation(true)
-    } else if (rarity === 'P' || rarity === 'TR' || rarity === 'SP CARD') {
+    // Vérifier d'abord si c'est une carte alternative (priorité)
+    if (card.id.includes('_p')) {
       setRareCard(card)
       setShowAlternativeAnimation(true)
+    } else if (rarity === 'SEC' || rarity === 'SP CARD' || rarity === 'TR') {
+      setRareCard(card)
+      setShowUltraRareAnimation(true)
+    } else if (rarity === 'SR' || rarity === 'L') {
+      setRareCard(card)
+      setShowRareAnimation(true)
     }
   }, [])
 

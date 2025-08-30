@@ -34,27 +34,27 @@ const CardDisplay = memo(function CardDisplay({
   onDragEnd,
   onArrowClick
 }: CardDisplayProps) {
-  // Variants simplifiés: légère translation + fondu, sans rotation
-  const transitionDuration = performanceMode ? 0.22 : (isMobile ? 0.25 : 0.3)
-  const easing: number[] = [0.22, 1, 0.36, 1] // easeOutCubic-like
+  // Variants simplifiés: crossfade + léger zoom
+  const transitionDuration = performanceMode ? 0.18 : (isMobile ? 0.2 : 0.24)
+  const easing: number[] = [0.2, 0.8, 0.2, 1]
 
   const variants = useMemo(() => ({
-    enter: (dir: 'prev' | 'next') => ({
-      x: dir === 'next' ? 40 : -40,
-      opacity: 0
+    enter: (_dir: 'prev' | 'next') => ({
+      opacity: 0,
+      scale: 0.985
     }),
     center: {
-      x: 0,
       opacity: 1,
+      scale: 1,
       transition: {
         type: 'tween' as const,
         ease: 'easeOut' as const,
         duration: transitionDuration
       }
     },
-    exit: (dir: 'prev' | 'next') => ({
-      x: dir === 'next' ? -40 : 40,
+    exit: (_dir: 'prev' | 'next') => ({
       opacity: 0,
+      scale: 1.015,
       transition: {
         type: 'tween' as const,
         ease: 'easeOut' as const,
@@ -70,7 +70,7 @@ const CardDisplay = memo(function CardDisplay({
       <div className="relative rounded-2xl p-3 sm:p-6 border bg-gradient-to-b from-[#0b1020] to-[#0a0f1a] border-white/10 shadow-xl">
         {/* Carte actuelle avec transition type pile */}
         <div 
-          className={`relative flex items-center justify-center min-h-[360px] sm:min-h-[420px] md:min-h-[500px] swipe-container ${isDragging ? 'swiping' : ''}`}
+          className={`relative flex items-center justify-center min-h-[320px] sm:min-h-[420px] md:min-h-[500px] swipe-container ${isDragging ? 'swiping' : ''}`}
           style={{
             touchAction: 'pan-y',
             overscrollBehavior: 'contain'
@@ -154,9 +154,9 @@ const CardDisplay = memo(function CardDisplay({
             <button
               onClick={() => onArrowClick('prev')}
               aria-label="Carte précédente"
-              className="bg-white/10 hover:bg-white/20 p-3 md:p-3 rounded-full transition-all duration-300 w-14 h-14 md:w-auto md:h-auto flex items-center justify-center"
+              className="bg-white/10 hover:bg-white/20 p-2 md:p-3 rounded-full transition-all duration-300 w-10 h-10 md:w-auto md:h-auto flex items-center justify-center"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
               </svg>
             </button>
@@ -195,9 +195,9 @@ const CardDisplay = memo(function CardDisplay({
             <button
               onClick={() => onArrowClick('next')}
               aria-label="Carte suivante"
-              className="bg-white/10 hover:bg-white/20 p-3 md:p-3 rounded-full transition-all duration-300 w-14 h-14 md:w-auto md:h-auto flex items-center justify-center"
+              className="bg-white/10 hover:bg-white/20 p-2 md:p-3 rounded-full transition-all duration-300 w-10 h-10 md:w-auto md:h-auto flex items-center justify-center"
             >
-              <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
               </svg>
             </button>

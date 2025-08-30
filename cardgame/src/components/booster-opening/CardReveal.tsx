@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion'
+import { motion, useMotionValue, useTransform } from 'framer-motion'
 import type { TargetAndTransition } from 'framer-motion'
 import { useState, useEffect, useCallback } from 'react'
 import { ExtendedCardType } from '@/types/card'
@@ -32,7 +32,6 @@ export default function CardReveal({
   position,
   isMobile = false
 }: Readonly<CardRevealProps>) {
-  const [isRevealed, setIsRevealed] = useState(false)
   const [dragDirection, setDragDirection] = useState<DragDirection>(null)
   const [isDragging, setIsDragging] = useState(false)
   // Shimmer désactivé pour éviter l'effet blanc
@@ -74,10 +73,9 @@ export default function CardReveal({
       y: [15, 0], 
       scale: [0.98, 1],
       transition: { 
-        type: 'spring' as const,
-        stiffness: 110,
-        damping: 20,
-        duration: 0.7 
+        type: 'tween' as const,
+        ease: 'easeOut' as const,
+        duration: 0.25 
       } 
     },
     rare: {
@@ -85,10 +83,9 @@ export default function CardReveal({
       y: [18, 0], 
       scale: [0.97, 1],
       transition: { 
-        type: 'spring' as const,
-        stiffness: 100,
-        damping: 18,
-        duration: 0.8 
+        type: 'tween' as const,
+        ease: 'easeOut' as const,
+        duration: 0.3 
       }
     },
     secret: {
@@ -98,22 +95,14 @@ export default function CardReveal({
       boxShadow: ['0 0 0 rgba(0,0,0,0)', '0 0 50px rgba(250,204,21,.45)'],
       transition: { 
         type: 'tween' as const,
-        duration: 1.0,
+        duration: 0.35,
         ease: 'easeOut' as const
       }
     }
   }
 
   useEffect(() => {
-    setIsRevealed(false)
-    const t1 = window.setTimeout(() => {
-      setIsRevealed(true)
-    }, 420)
-    // Sécurité: si pour une raison quelconque le 1er timer est annulé, forcer après 1.2s
-    const t2 = window.setTimeout(() => {
-      setIsRevealed(true)
-    }, 1200)
-    return () => { window.clearTimeout(t1); window.clearTimeout(t2) }
+    // plus de dos: affichage direct
   }, [card.id])
 
   // (Shimmer supprimé)
@@ -188,7 +177,7 @@ export default function CardReveal({
   }, [isDragging, onDrag])
 
   return (
-    <div className="relative  flex items-center justify-center min-h-[360px] sm:min-h-[420px] md:min-h-[500px]">
+    <div className="relative flex items-center justify-center min-h-[360px] sm:min-h-[420px] md:min-h-[500px]">
     
 
       {/* Carte */}
@@ -213,7 +202,7 @@ export default function CardReveal({
         }}
         initial={{ opacity: 0, y: 15, scale: 0.98 }}
         animate={appearanceTargets[revealVariant]}
-        className="relative aspect-[3/4] w-[220px] sm:w-[260px] md:w-[300px] lg:w-[340px] xl:w-[380px]"
+        className="relative aspect-[3/4] w-[220px] sm:w-[260px] md:w-[300px] lg:w-[340px] xl:w-[380px] overflow-hidden rounded-xl bg-black/10"
         onTouchStart={(e) => {
           // Permettre le scroll vertical sur mobile
           if (isMobile) {
@@ -280,43 +269,8 @@ export default function CardReveal({
           </>
         )}
 
-        <AnimatePresence mode="wait">
-          {!isRevealed ? (
-            /* Face arrière (visible au début) */
-            <motion.div
-              key="card-back"
-              className="w-full h-full"
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              exit={{ opacity: 0, scale: 1.05 }}
-              transition={{ 
-                duration: 0.15,
-                ease: [0.4, 0.0, 0.2, 1]
-              }}
-            >
-              <Image
-                src="/images/card-back.jpg"
-                alt="Dos de la carte"
-                width={380}
-                height={506}
-                sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 300px, (max-width: 1280px) 340px, 380px"
-                loading="lazy"
-                className="w-full h-auto rounded-xl shadow-2xl"
-              />
-            </motion.div>
-          ) : (
-            /* Face avant (carte réelle) */
-            <motion.div
-              key="card-front"
-              className="w-full h-full"
-              initial={{ opacity: 0, scale: 0.95, y: 10 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 1.05, y: -10 }}
-              transition={{ 
-                duration: 0.2,
-                ease: [0.4, 0.0, 0.2, 1]
-              }}
-            >
+        {/* Face avant unique */}
+        <div className="w-full h-full">
           <div className="relative">
             <Image
               src={card.imageUrl}
@@ -327,26 +281,22 @@ export default function CardReveal({
               loading="lazy"
               className="w-full h-auto rounded-xl shadow-2xl"
             />
-            {/* Shimmer supprimé pour éviter un flash blanc désagréable */}
 
-            {/* Badge "Nouvelle" pour les nouvelles cartes */}
             {isNewCard && (
               <motion.div
                 initial={{ scale: 0, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 1, duration: 0.3 }}
-                className="absolute  right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
+                transition={{ delay: 0.6, duration: 0.25 }}
+                className="absolute right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
               >
                 Nouvelle!
               </motion.div>
             )}
 
-           
-            {/* Texte de rareté pour toutes les cartes */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.2 }}
+              transition={{ delay: 0.5, duration: 0.2 }}
               className={`absolute left-[20%] bottom-[-9%] transform -translate-x-1/2 px-3 py-1.5 rounded-lg font-semibold text-white shadow-xl text-xs sm:text-sm backdrop-blur-sm border border-white/20 ${
                 isUltraRare ? 'bg-yellow-500/90' :
                 isRare ? 'bg-purple-500/90' :
@@ -367,9 +317,7 @@ export default function CardReveal({
               {card.rarity}
             </motion.div>
           </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+        </div>
       </motion.div>
     </div>
   )
