@@ -142,12 +142,11 @@ export default function CardReveal({
         onDragEnd?.(event, info)
       }
     } else {
-      // Si le swipe est trop petit, on considère que c'est un clic
-      console.log('CardReveal - Swipe insuffisant, considéré comme un clic')
-      onCardClick?.(card)
+      // Si le swipe est trop petit, on ne fait rien (plus de clic automatique)
+      console.log('CardReveal - Swipe insuffisant, aucun effet')
       x.set(0)
     }
-  }, [onDragEnd, onCardClick, card, isDragging, isMobile, x])
+  }, [onDragEnd, isDragging, isMobile, x])
   
   const handleDragStart = useCallback((event: MouseEvent | TouchEvent | PointerEvent) => {
     console.log('CardReveal - Début du glissement')
@@ -217,13 +216,6 @@ export default function CardReveal({
         initial={{ opacity: 0, y: 15, scale: 0.98 }}
         animate={appearanceTargets[revealVariant]}
         className="relative aspect-[3/4] w-[220px] sm:w-[260px] md:w-[300px] lg:w-[340px] xl:w-[380px]"
-        onClick={(e) => {
-          // On ne gère le clic que si on n'est pas en train de glisser
-          if (!isDragging) {
-            e.stopPropagation();
-            onCardClick?.(card);
-          }
-        }}
         onTouchStart={(e) => {
           // Permettre le scroll vertical sur mobile
           if (isMobile) {

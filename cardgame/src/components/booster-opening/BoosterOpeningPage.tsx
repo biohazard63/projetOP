@@ -56,7 +56,7 @@ export default function BoosterOpeningPage() {
   const [showTestUltra, setShowTestUltra] = useState(false)
   // Test animation alternative (debug)
   const [showTestAlt, setShowTestAlt] = useState(false)
-  const { playRareCardSound, playUltraRareSound, playAltArtSound, shouldPlaySound, enableExplicitSound, isIOS } = useAudio()
+  const { playRareCardSound, playUltraRareSound, playAltArtSound, shouldPlaySound } = useAudio()
   const audioPlayedRef = useRef<{rare?: boolean; ultra?: boolean; alt?: boolean}>({})
   // Stage (coffre/pack) & FX
   const [stage, setStage] = useState<'chest' | 'pack'>('chest')
