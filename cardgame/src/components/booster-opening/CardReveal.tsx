@@ -1,6 +1,6 @@
 'use client'
 
-import { motion, useMotionValue, useTransform } from 'framer-motion'
+import { motion, useMotionValue, useTransform, AnimatePresence } from 'framer-motion'
 import type { TargetAndTransition } from 'framer-motion'
 import { useState, useEffect, useCallback } from 'react'
 import { ExtendedCardType } from '@/types/card'
@@ -207,8 +207,6 @@ export default function CardReveal({
           x, 
           rotate, 
           opacity,
-          transformStyle: 'preserve-3d',
-          rotateY: isRevealed ? 180 : 0,
           cursor: isDragging ? 'grabbing' : 'pointer',
           touchAction: isMobile ? 'pan-y' : 'none',
           marginBottom: '2rem'
@@ -282,34 +280,43 @@ export default function CardReveal({
           </>
         )}
 
-        {/* Face arrière (visible au début) */}
-        <motion.div
-          className="absolute inset-0 w-full h-full"
-          style={{
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
-          }}
-        >
-          <Image
-            src="/images/card-back.jpg"
-            alt="Dos de la carte"
-            width={380}
-            height={506}
-            sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 300px, (max-width: 1280px) 340px, 380px"
-            loading="lazy"
-            className="w-full h-auto rounded-xl shadow-2xl"
-          />
-        </motion.div>
-
-        {/* Face avant (carte réelle) */}
-        <motion.div
-          className="w-full h-full"
-          style={{
-            backfaceVisibility: 'hidden',
-            WebkitBackfaceVisibility: 'hidden',
-            transform: 'rotateY(180deg)',
-          }}
-        >
+        <AnimatePresence mode="wait">
+          {!isRevealed ? (
+            /* Face arrière (visible au début) */
+            <motion.div
+              key="card-back"
+              className="w-full h-full"
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ 
+                duration: 0.15,
+                ease: [0.4, 0.0, 0.2, 1]
+              }}
+            >
+              <Image
+                src="/images/card-back.jpg"
+                alt="Dos de la carte"
+                width={380}
+                height={506}
+                sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 300px, (max-width: 1280px) 340px, 380px"
+                loading="lazy"
+                className="w-full h-auto rounded-xl shadow-2xl"
+              />
+            </motion.div>
+          ) : (
+            /* Face avant (carte réelle) */
+            <motion.div
+              key="card-front"
+              className="w-full h-full"
+              initial={{ opacity: 0, scale: 0.95, y: 10 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 1.05, y: -10 }}
+              transition={{ 
+                duration: 0.2,
+                ease: [0.4, 0.0, 0.2, 1]
+              }}
+            >
           <div className="relative">
             <Image
               src={card.imageUrl}
@@ -360,7 +367,9 @@ export default function CardReveal({
               {card.rarity}
             </motion.div>
           </div>
-        </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
     </div>
   )
