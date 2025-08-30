@@ -188,7 +188,7 @@ export default function CardReveal({
   }, [isDragging, onDrag])
 
   return (
-    <div className="relative flex items-center justify-center min-h-[360px] sm:min-h-[420px] md:min-h-[500px]">
+    <div className="relative  flex items-center justify-center min-h-[360px] sm:min-h-[420px] md:min-h-[500px]">
     
 
       {/* Carte */}

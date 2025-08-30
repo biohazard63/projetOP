@@ -148,8 +148,38 @@ export default function BoosterPackAnimation({ onComplete, setCode, performanceM
               animate={showTear ? { x: [0, -2], y: [0, -1], rotate: [0, -1.5] } : {}}
               transition={{ duration: 0.5, ease: 'easeOut' }}
             />
-            {/* Halo doré */}
-            <div className="absolute -inset-6 pointer-events-none" style={{ background: 'radial-gradient(120px 80px at 50% 60%, rgba(255,215,0,.45), transparent 70%)', filter: 'blur(6px)' }} />
+            {/* Halo revisité: grande image du booster (presque la taille du halo) */}
+            <motion.div
+              className="absolute pointer-events-none"
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: [0, 0.55, 0.45], scale: [0.9, 1.12, 1.06] }}
+              transition={{ duration: 1.6, ease: 'easeOut' }}
+              style={{
+                inset: '-12%',
+                WebkitMaskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 85%)',
+                maskImage: 'radial-gradient(ellipse at center, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 85%)',
+                filter: 'blur(6px) saturate(1.05)'
+              }}
+            >
+              <Image
+                src={`/images/booster/${setCode.toLowerCase()}.png`}
+                alt={`Booster Pack ${setCode} Halo`}
+                fill
+                sizes="(max-width: 768px) 18rem, 22rem"
+                priority={false}
+                className="object-contain"
+                style={{ opacity: 0.55 }}
+              />
+            </motion.div>
+            {/* Léger glow doré sous-jacent, très subtil */}
+            <div
+              className="absolute pointer-events-none"
+              style={{
+                inset: '-10%',
+                background: 'radial-gradient(160px 110px at 50% 60%, rgba(255,215,0,.18), transparent 80%)',
+                filter: 'blur(10px)'
+              }}
+            />
             <Image
               src={`/images/booster/${setCode.toLowerCase()}.png`}
               alt={`Booster Pack ${setCode}`}
@@ -165,37 +195,7 @@ export default function BoosterPackAnimation({ onComplete, setCode, performanceM
                 <div className="tear-right" />
               </>
             )}
-            {/* Pulse lumineux amélioré (anneau) */}
-            {showPulse && (
-              <>
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: [0, 0.9, 0.6], scale: [0.8, 1.4, 1.6] }}
-                  transition={{ duration: 1.5, ease: 'easeOut' }}
-                  className="absolute inset-0 rounded-2xl pointer-events-none"
-                  style={{ 
-                    boxShadow: '0 0 0 3px rgba(250,204,21,.6), 0 0 80px rgba(250,204,21,.4) inset, 0 0 120px rgba(255,165,0,.3)',
-                    background: 'radial-gradient(ellipse at center, rgba(255,215,0,.2), transparent 70%)'
-                  }}
-                />
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.9 }}
-                  animate={{ opacity: [0, 0.7, 0.3], scale: [0.9, 1.2, 1.5] }}
-                  transition={{ duration: 1.8, ease: 'easeOut', delay: 0.2 }}
-                  className="absolute inset-0 rounded-2xl pointer-events-none"
-                  style={{ 
-                    boxShadow: '0 0 0 2px rgba(255,165,0,.4), 0 0 60px rgba(255,165,0,.2) inset',
-                    background: 'radial-gradient(ellipse at center, rgba(255,165,0,.15), transparent 60%)'
-                  }}
-                />
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: [0, 0.9, 0] }}
-                  transition={{ duration: 0.4, ease: 'easeOut' }}
-                  className="absolute inset-0 bg-white/60 mix-blend-overlay"
-                />
-              </>
-            )}
+            
           </motion.div>
 
           {/* Animation des cartes qui sortent */}

@@ -66,8 +66,8 @@ const CardDisplay = memo(function CardDisplay({
   if (booster.length === 0 || currentCardIndex < 0) return null
 
   return (
-    <div className="w-[96%] sm:max-w-6xl mx-auto px-2 sm:p-4 pb-28 md:pb-0">
-      <div className="relative rounded-2xl p-3 sm:p-6 border border-white/10 shadow-xl">
+    <div className="w-[96%]  sm:max-w-6xl mx-auto px-2 sm:p-4 pb-28 md:pb-0">
+      <div className="relative rounded-2xl p-3 sm:p-6 border bg-gradient-to-b from-[#0b1020] to-[#0a0f1a] border-white/10 shadow-xl">
         {/* Carte actuelle avec transition type pile */}
         <div 
           className={`relative flex items-center justify-center min-h-[360px] sm:min-h-[420px] md:min-h-[500px] swipe-container ${isDragging ? 'swiping' : ''}`}
@@ -171,12 +171,12 @@ const CardDisplay = memo(function CardDisplay({
             <button
               onClick={() => onCardClick(booster[currentCardIndex])}
               aria-label="Zoomer sur la carte"
-              className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300 w-14 h-14 flex items-center justify-center group"
+              className="bg-white/10 hover:bg-white/20 p-2 rounded-full transition-all duration-300 w-10 h-10 flex items-center justify-center group"
               title="Zoomer sur la carte"
             >
               <svg 
                 xmlns="http://www.w3.org/2000/svg" 
-                className="h-6 w-6 text-white group-hover:text-yellow-300 transition-colors duration-300" 
+                className="h-4 w-4 text-white group-hover:text-yellow-300 transition-colors duration-300" 
                 fill="none" 
                 viewBox="0 0 24 24" 
                 stroke="currentColor"

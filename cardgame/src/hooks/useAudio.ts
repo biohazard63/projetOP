@@ -74,8 +74,8 @@ export function useAudio() {
   }, [playIfAllowed])
 
   const playPackOpenSound = useCallback(() => {
-    // Son d'ouverture de booster
-    playIfAllowed('/sounds/ouverture.mp3', 3500)
+    // Son d'ouverture de booster - durée ajustée à l'animation
+    playIfAllowed('/sounds/ouverture.mp3', 8000)
   }, [playIfAllowed])
 
   // Fonction pour vérifier si on peut jouer des sons

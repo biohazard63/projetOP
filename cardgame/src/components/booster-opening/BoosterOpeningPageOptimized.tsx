@@ -450,7 +450,7 @@ export default function BoosterOpeningPageOptimized() {
   }, [])
 
   return (
-    <div className="relative min-h-screen bg-gradient-to-b from-[#0b1020] to-[#0a0f1a] overflow-x-hidden">
+    <div className="relative min-h-screen  overflow-x-hidden">
       {/* Animations de rareté - en dehors du conteneur principal */}
       {showRareAnimation && rareCard && (
         <RareAnimation

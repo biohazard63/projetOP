@@ -94,11 +94,6 @@ export default function BoosterHeader({
               />
             ))
           )}
-          <motion.div
-            className="absolute inset-0 bg-gradient-to-r from-yellow-400/20 to-orange-400/20 rounded-xl"
-            animate={{ opacity: [0, 0.9] }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-          />
         </motion.div>
       </div>
     </div>
