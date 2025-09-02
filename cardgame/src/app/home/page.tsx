@@ -264,7 +264,7 @@ export default function HomePage() {
               </div>
               {/* Mockup mobile */}
               <div className="absolute right-0 -bottom-4 w-40 sm:w-44 md:w-48 aspect-[9/19] rounded-3xl overflow-hidden border-2 border-white/20 shadow-2xl">
-                <Image src="/images/ouverture.png" alt="Aperçu mobile" fill className="object-cover" />
+                <Image src="/images/boosterpage.png" alt="Aperçu mobile" fill className="object-cover" />
               </div>
             </div>
           </div>
