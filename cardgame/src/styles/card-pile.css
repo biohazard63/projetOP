@@ -1,0 +1,52 @@
+/* Effets 3D pour la pile de cartes */
+.card-pile-container {
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.card-pile-card {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  will-change: transform;
+}
+
+
+/* Animation de transition fluide */
+.card-pile-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+
+/* Masquer complètement les informations des cartes d'arrière-plan */
+.card-pile-background img {
+  filter: brightness(0.7) saturate(0.8);
+}
+
+/* Effet de mystère pour les cartes d'arrière-plan */
+
+
+
+
+/* Effet de brillance sur les cartes */
+.card-pile-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+  border-radius: inherit;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+
+

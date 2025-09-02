@@ -19,6 +19,7 @@ interface CardRevealProps {
   onDragEnd?: (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => void
   position?: number
   isMobile?: boolean
+  isBackground?: boolean
 }
 
 export default function CardReveal({ 
@@ -30,7 +31,8 @@ export default function CardReveal({
   onDrag,
   onDragEnd,
   position,
-  isMobile = false
+  isMobile = false,
+  isBackground = false
 }: Readonly<CardRevealProps>) {
   const [dragDirection, setDragDirection] = useState<DragDirection>(null)
   const [isDragging, setIsDragging] = useState(false)
@@ -70,33 +72,33 @@ export default function CardReveal({
   const appearanceTargets: Record<RevealKey, TargetAndTransition> = {
     common: {
       opacity: [0, 1], 
-      y: [15, 0], 
-      scale: [0.98, 1],
+      y: [8, 0], 
+      scale: [0.99, 1],
       transition: { 
         type: 'tween' as const,
-        ease: 'easeOut' as const,
-        duration: 0.25 
+        ease: [0.25, 0.46, 0.45, 0.94] as const,
+        duration: 0.4 
       } 
     },
     rare: {
       opacity: [0, 1], 
-      y: [18, 0], 
-      scale: [0.97, 1],
+      y: [10, 0], 
+      scale: [0.99, 1],
       transition: { 
         type: 'tween' as const,
-        ease: 'easeOut' as const,
-        duration: 0.3 
+        ease: [0.25, 0.46, 0.45, 0.94] as const,
+        duration: 0.45 
       }
     },
     secret: {
       opacity: [0, 1], 
-      y: [20, 0], 
-      scale: [0.96, 1],
+      y: [12, 0], 
+      scale: [0.98, 1],
       boxShadow: ['0 0 0 rgba(0,0,0,0)', '0 0 50px rgba(250,204,21,.45)'],
       transition: { 
         type: 'tween' as const,
-        duration: 0.35,
-        ease: 'easeOut' as const
+        duration: 0.5,
+        ease: [0.25, 0.46, 0.45, 0.94] as const
       }
     }
   }
@@ -182,42 +184,42 @@ export default function CardReveal({
 
       {/* Carte */}
       <motion.div
-        drag="x"
+        drag={isBackground ? false : "x"}
         dragConstraints={{ left: 0, right: 0 }}
         dragElastic={isMobile ? 0.7 : 0.5}
         dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
-        onDragEnd={handleDragEnd}
-        onDragStart={handleDragStart}
-        onDrag={handleDrag}
+        onDragEnd={isBackground ? undefined : handleDragEnd}
+        onDragStart={isBackground ? undefined : handleDragStart}
+        onDrag={isBackground ? undefined : handleDrag}
         dragMomentum={false}
         dragDirectionLock
         dragPropagation={false}
         style={{ 
-          x, 
-          rotate, 
-          opacity,
-          cursor: isDragging ? 'grabbing' : 'pointer',
+          x: isBackground ? 0 : x, 
+          rotate: isBackground ? 0 : rotate, 
+          opacity: isBackground ? 1 : opacity,
+          cursor: isBackground ? 'default' : (isDragging ? 'grabbing' : 'pointer'),
           touchAction: isMobile ? 'pan-y' : 'none',
-          marginBottom: '2rem'
+          marginBottom: '4rem'
         }}
-        initial={{ opacity: 0, y: 15, scale: 0.98 }}
+        initial={{ opacity: 0, y: 8, scale: 0.99 }}
         animate={appearanceTargets[revealVariant]}
-        className="relative aspect-[3/4] w-[220px] sm:w-[260px] md:w-[300px] lg:w-[340px] xl:w-[380px] overflow-hidden rounded-xl bg-black/10"
-        onTouchStart={(e) => {
+        className="relative w-[220px] sm:w-[260px] md:w-[300px] lg:w-[300px] xl:w-[340px] overflow-visible rounded-xl bg-black/10"
+        onTouchStart={isBackground ? undefined : (e) => {
           // Permettre le scroll vertical sur mobile
           if (isMobile) {
             e.stopPropagation();
           }
         }}
-        onTouchMove={(e) => {
+        onTouchMove={isBackground ? undefined : (e) => {
           // Empêcher la propagation des événements touch sur mobile
           if (isMobile) {
             e.stopPropagation();
           }
         }}
       >
-        {/* Effets spéciaux */}
-        {isRare && !isUltraRare && (
+        {/* Effets spéciaux - seulement pour la carte active */}
+        {!isBackground && isRare && !isUltraRare && (
           <motion.div
             className="pointer-events-none absolute inset-0 rounded-xl"
             initial={{ opacity: 0 }}
@@ -231,7 +233,7 @@ export default function CardReveal({
             style={{ background: 'radial-gradient(280px 160px at 50% 50%, rgba(147, 197, 253,.25), transparent 70%)' }}
           />
         )}
-        {isUltraRare && (
+        {!isBackground && isUltraRare && (
           <motion.div
             className="pointer-events-none absolute inset-0 rounded-xl"
             initial={{ opacity: 0 }}
@@ -245,8 +247,8 @@ export default function CardReveal({
             style={{ background: 'radial-gradient(300px 180px at 50% 50%, rgba(250,204,21,.35), transparent 70%)' }}
           />
         )}
-        {/* Indicateurs de swipe */}
-        {isDragging && (
+        {/* Indicateurs de swipe - seulement pour la carte active */}
+        {!isBackground && isDragging && (
           <>
             <motion.div
               className="absolute left-0 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-r-lg"
@@ -269,53 +271,61 @@ export default function CardReveal({
           </>
         )}
 
-        {/* Face avant unique */}
-        <div className="w-full h-full">
-          <div className="relative">
-            <Image
-              src={card.imageUrl}
-              alt={typeof card.name === 'string' ? card.name : 'Carte'}
-              width={380}
-              height={506}
-              sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 300px, (max-width: 1280px) 340px, 380px"
-              loading="lazy"
-              className="w-full h-auto rounded-xl shadow-2xl"
-            />
+                    {/* Face avant unique */}
+            <div className="w-full h-full">
+              <div className="relative">
+                <Image
+                  src={card.imageUrl}
+                  alt={typeof card.name === 'string' ? card.name : 'Carte'}
+                  width={380}
+                  height={600}
+                  sizes="(max-width: 640px) 220px, (max-width: 768px) 260px, (max-width: 1024px) 300px, (max-width: 1280px) 340px, 380px"
+                  loading="lazy"
+                  className="w-full h-auto rounded-xl shadow-2xl"
+                />
 
-            {isNewCard && (
-              <motion.div
-                initial={{ scale: 0, opacity: 0 }}
-                animate={{ scale: 1, opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.25 }}
-                className="absolute right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
-              >
-                Nouvelle!
-              </motion.div>
-            )}
+                {/* Masquer les informations pour les cartes d'arrière-plan */}
+                {!isBackground && (
+                  <>
+                    {isNewCard && (
+                      <motion.div
+                        initial={{ scale: 0, opacity: 0 }}
+                        animate={{ scale: 1, opacity: 1 }}
+                        transition={{ delay: 0.6, duration: 0.25 }}
+                        className="absolute right-2 bg-green-500 text-white text-xs font-bold px-2 py-1 rounded-full shadow-lg"
+                      >
+                        Nouvelle!
+                      </motion.div>
+                    )}
+                  </>
+                )}
 
-            <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5, duration: 0.2 }}
-              className={`absolute left-[20%] bottom-[-9%] transform -translate-x-1/2 px-3 py-1.5 rounded-lg font-semibold text-white shadow-xl text-xs sm:text-sm backdrop-blur-sm border border-white/20 ${
-                isUltraRare ? 'bg-yellow-500/90' :
-                isRare ? 'bg-purple-500/90' :
-                isAlternative ? 'bg-cyan-500/90' :
-                card.rarity === 'C' ? 'bg-gray-500/90' :
-                card.rarity === 'UC' ? 'bg-blue-500/90' :
-                card.rarity === 'U' ? 'bg-blue-500/90' :
-                card.rarity === 'R' ? 'bg-green-500/90' :
-                card.rarity === 'SR' ? 'bg-orange-500/90' :
-                card.rarity === 'L' ? 'bg-red-500/90' :
-                card.rarity === 'SEC' ? 'bg-yellow-500/90' :
-                card.rarity === 'SP CARD' ? 'bg-pink-500/90' :
-                card.rarity === 'TR' ? 'bg-indigo-500/90' :
-                card.rarity === 'P' ? 'bg-teal-500/90' :
-                'bg-gray-600/90'
-              }`}
-            >
-              {card.rarity}
-            </motion.div>
+                {/* Badge de rareté en bas - seulement pour la carte active */}
+                {!isBackground && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 16 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.2 }}
+                    className={`absolute left-[20%] bottom-[-9%] transform -translate-x-1/2 px-3 py-1.5 rounded-lg font-semibold text-white shadow-xl text-xs sm:text-sm backdrop-blur-sm border border-white/20 ${
+                      isUltraRare ? 'bg-yellow-500/90' :
+                      isRare ? 'bg-purple-500/90' :
+                      isAlternative ? 'bg-cyan-500/90' :
+                      card.rarity === 'C' ? 'bg-gray-500/90' :
+                      card.rarity === 'UC' ? 'bg-blue-500/90' :
+                      card.rarity === 'U' ? 'bg-blue-500/90' :
+                      card.rarity === 'R' ? 'bg-green-500/90' :
+                      card.rarity === 'SR' ? 'bg-orange-500/90' :
+                      card.rarity === 'L' ? 'bg-red-500/90' :
+                      card.rarity === 'SEC' ? 'bg-yellow-500/90' :
+                      card.rarity === 'SP CARD' ? 'bg-pink-500/90' :
+                      card.rarity === 'TR' ? 'bg-indigo-500/90' :
+                      card.rarity === 'P' ? 'bg-teal-500/90' :
+                      'bg-gray-600/90'
+                    }`}
+                  >
+                    {card.rarity}
+                  </motion.div>
+                )}
           </div>
         </div>
       </motion.div>

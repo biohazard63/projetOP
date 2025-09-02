@@ -28,6 +28,7 @@ import AlternativeAnimation from './AlternativeAnimation'
 
 import { useRef } from 'react'
 import { useAudio, useSoundSetting } from '@/hooks/useAudio'
+import { Accordion } from '@/components/ui/Accordion'
 
 export default function BoosterOpeningPageOptimized() {
   // Hooks de base
@@ -35,7 +36,7 @@ export default function BoosterOpeningPageOptimized() {
   const router = useRouter()
   
   // États
-  const [sets, setSets] = useState<Array<{id: string, code: string, name: string}>>([])
+  const [sets, setSets] = useState<Array<{id: string, code: string, name: string, cardCount?: number}>>([])
   const [selectedSet, setSelectedSet] = useState<string>('')
   const [booster, setBooster] = useState<ExtendedCardType[]>([])
   const [currentCardIndex, setCurrentCardIndex] = useState<number>(-1)
@@ -86,6 +87,7 @@ export default function BoosterOpeningPageOptimized() {
   interface SetRules {
     name: string
     rarityCounts: Record<string, number>
+    typeCounts?: Record<string, number>
     boosterRules?: {
       commonCount: number
       uncommonCount: number
@@ -107,6 +109,69 @@ export default function BoosterOpeningPageOptimized() {
   const selectedSetData = useMemo(() => {
     return sets.find(set => set.id === selectedSet) ?? null
   }, [sets, selectedSet])
+
+  // Chargement des règles du set
+  useEffect(() => {
+    if (selectedSet && session) {
+      const selectedSetData = sets.find(set => set.id === selectedSet);
+      if (selectedSetData) {
+        console.log('Chargement des règles pour le set:', selectedSetData.code);
+        fetch(`/api/sets/${selectedSetData.code}/rules`)
+          .then(res => {
+            if (!res.ok) {
+              throw new Error(`Erreur HTTP: ${res.status}`);
+            }
+            return res.json();
+          })
+          .then(data => {
+            if (data.success) {
+              console.log('Règles du set chargées:', data.rules);
+              setSetRules(data.rules);
+            } else {
+              console.error('Erreur dans la réponse:', data.error);
+            }
+          })
+          .catch(error => {
+            console.error('Erreur lors du chargement des règles du set:', error);
+            // Règles par défaut si l'API échoue
+            setSetRules({
+              name: selectedSetData.name,
+              rarityCounts: {
+                'C': 45,
+                'UC': 30,
+                'R': 32,
+                'SR': 21,
+                'L': 12,
+                'SEC': 4,
+                'SP CARD': 6,
+                'TR': 0,
+                'P': 0
+              },
+              typeCounts: {
+                'CHARACTER': 118,
+                'LEADER': 12,
+                'EVENT': 20,
+                'STAGE': 2
+              },
+              boosterRules: {
+                commonCount: 6,
+                uncommonCount: 3,
+                rareCount: 2,
+                superRareCount: 1,
+                leaderCount: 0,
+                characterCount: 4,
+                eventCount: 2,
+                stageCount: 0,
+                donCount: 1,
+                altArtChance: 0.1,
+                parallelChance: 0.05,
+                specialChance: 0.05
+              }
+            });
+          });
+      }
+    }
+  }, [selectedSet, sets, session]);
 
   // Sets affichés dans la modale (filtre + recherche)
   const displayedSets = useMemo(() => {
@@ -484,7 +549,7 @@ export default function BoosterOpeningPageOptimized() {
       )}
 
       {/* Contenu principal */}
-      <div className="relative z-10 min-h-screen pt-16 w-full">
+      <div className="relative z-10 min-h-screen pt-16 pb-16 w-full">
         <Toaster position="top-center" />
         
         {/* Animations existantes */}
@@ -508,16 +573,124 @@ export default function BoosterOpeningPageOptimized() {
 
         {/* Informations du set */}
         {selectedSet && (
-          <div className="mx-auto max-w-xl bg-white/5 rounded-xl p-4 sm:p-6 border border-white/10 mb-6">
-            <h2 className="text-center text-xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent mb-2">
-              {selectedSetData?.name}
+          <div className="mx-auto w-full max-w-2xl bg-gradient-to-br from-white/15 via-white/10 to-white/5 rounded-xl p-4 sm:p-6 border border-white/25 mb-6 shadow-2xl backdrop-blur-sm">
+            <div className="text-center mb-4">
+              <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-yellow-400 to-amber-500 bg-clip-text text-transparent mb-2">
+                {setRules?.name || selectedSetData?.name || 'Set inconnu'}
             </h2>
-            {setRules?.boosterRules && (
-              <div className="grid grid-cols-2 gap-4 text-sm text-white/85">
-                <div className="flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full bg-gray-400"></span>{setRules.boosterRules.commonCount} Communes</div>
-                <div className="flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full bg-green-400"></span>{setRules.boosterRules.uncommonCount} Peu communes</div>
-                <div className="flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full bg-blue-400"></span>{setRules.boosterRules.rareCount} Rares</div>
-                <div className="flex items-center gap-2"><span className="w-2.5 h-2.5 rounded-full bg-purple-400"></span>{setRules.boosterRules.superRareCount} Super Rare</div>
+              <p className="text-white/70 text-sm sm:text-base">
+                Set {selectedSetData?.code || 'Code inconnu'}
+              </p>
+            </div>
+            
+            {setRules?.boosterRules && selectedSetData ? (
+              <div className="space-y-6">
+                {/* Accordéon pour les statistiques de rareté */}
+                {setRules?.rarityCounts && (
+                  <Accordion title="Statistiques du Set Complet" defaultOpen={false}>
+                    <div className="space-y-4">
+                      {/* Grille des raretés */}
+                      <div className="grid grid-cols-2 gap-3 sm:gap-4 sm:grid-cols-4">
+                        <div className="flex flex-col items-center gap-2 p-2 sm:p-3 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">
+                          <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-gray-400 shadow-lg"></span>
+                          <span className="text-white font-bold text-base sm:text-lg">{setRules.rarityCounts.C || 0}</span>
+                          <span className="text-white/80 text-xs sm:text-sm font-medium text-center">Communes</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2 p-2 sm:p-3 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">
+                          <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-green-400 shadow-lg"></span>
+                          <span className="text-white font-bold text-base sm:text-lg">{setRules.rarityCounts.UC || 0}</span>
+                          <span className="text-white/80 text-xs sm:text-sm font-medium text-center">Peu communes</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2 p-2 sm:p-3 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">
+                          <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-blue-400 shadow-lg"></span>
+                          <span className="text-white font-bold text-base sm:text-lg">{setRules.rarityCounts.R || 0}</span>
+                          <span className="text-white/80 text-xs sm:text-sm font-medium text-center">Rares</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2 p-2 sm:p-3 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">
+                          <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-purple-400 shadow-lg"></span>
+                          <span className="text-white font-bold text-base sm:text-lg">{setRules.rarityCounts.SR || 0}</span>
+                          <span className="text-white/80 text-xs sm:text-sm font-medium text-center">Super Rare</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2 p-2 sm:p-3 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">
+                          <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-red-500 shadow-lg"></span>
+                          <span className="text-white font-bold text-base sm:text-lg">{setRules.rarityCounts.L || 0}</span>
+                          <span className="text-white/80 text-xs sm:text-sm font-medium text-center">Leaders</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2 p-2 sm:p-3 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">
+                          <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-500 shadow-lg"></span>
+                          <span className="text-white font-bold text-base sm:text-lg">{setRules.rarityCounts.SEC || 0}</span>
+                          <span className="text-white/80 text-xs sm:text-sm font-medium text-center">Secret</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2 p-2 sm:p-3 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">
+                          <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-pink-500 shadow-lg"></span>
+                          <span className="text-white font-bold text-base sm:text-lg">{setRules.rarityCounts['SP CARD'] || 0}</span>
+                          <span className="text-white/80 text-xs sm:text-sm font-medium text-center">SP CARD</span>
+                        </div>
+                        <div className="flex flex-col items-center gap-2 p-2 sm:p-3 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">
+                          <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-indigo-500 shadow-lg"></span>
+                          <span className="text-white font-bold text-base sm:text-lg">{setRules.rarityCounts.TR || 0}</span>
+                          <span className="text-white/80 text-xs sm:text-sm font-medium text-center">TR</span>
+                        </div>
+                      </div>
+                      
+                      {/* Total des cartes du set */}
+                      <div className="pt-4 border-t border-white/20">
+                        <div className="text-center">
+                          <div className="inline-flex flex-col sm:flex-row items-center gap-2 sm:gap-3 px-4 sm:px-6 py-3 rounded-xl bg-gradient-to-r from-yellow-500/20 to-amber-500/20 border border-yellow-500/30">
+                            <span className="text-white font-semibold text-sm sm:text-base">Total du Set :</span>
+                            <span className="text-yellow-400 font-bold text-xl sm:text-2xl">
+                              {Object.values(setRules.rarityCounts).reduce((sum, count) => sum + count, 0)} cartes
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </Accordion>
+                )}
+                
+                {/* Accordéon pour les types de cartes */}
+                {setRules?.typeCounts && (
+                  <Accordion title="Types du Set Complet">
+                    <div className="space-y-3">
+                      <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">
+                        {setRules.typeCounts.CHARACTER && (
+                          <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">
+                            <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-blue-400 shadow-lg"></span>
+                            <span className="text-white font-bold text-base sm:text-lg">{setRules.typeCounts.CHARACTER}</span>
+                            <span className="text-white/80 text-sm sm:text-base font-medium">Personnages</span>
+                          </div>
+                        )}
+                        {setRules.typeCounts.LEADER && (
+                          <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">
+                            <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-yellow-400 shadow-lg"></span>
+                            <span className="text-white font-bold text-base sm:text-lg">{setRules.typeCounts.LEADER}</span>
+                            <span className="text-white/80 text-sm sm:text-base font-medium">Leaders</span>
+                          </div>
+                        )}
+                        {setRules.typeCounts.EVENT && (
+                          <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">
+                            <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-green-400 shadow-lg"></span>
+                            <span className="text-white font-bold text-base sm:text-lg">{setRules.typeCounts.EVENT}</span>
+                            <span className="text-white/80 text-sm sm:text-base font-medium">Événements</span>
+                          </div>
+                        )}
+                        {setRules.typeCounts.STAGE && (
+                          <div className="flex items-center gap-2 sm:gap-3 p-2 sm:p-3 rounded-lg bg-white/10 hover:bg-white/15 transition-colors">
+                            <span className="w-3 h-3 sm:w-4 sm:h-4 rounded-full bg-orange-400 shadow-lg"></span>
+                            <span className="text-white font-bold text-base sm:text-lg">{setRules.typeCounts.STAGE}</span>
+                            <span className="text-white/80 text-sm sm:text-base font-medium">Stages</span>
+                          </div>
+                        )}
+                      </div>
+                    </div>
+                  </Accordion>
+                )}
+              </div>
+            ) : (
+              <div className="text-center text-white/60 text-sm">
+                <p>Informations du set en cours de chargement...</p>
+                {!selectedSetData && <p className="mt-2 text-white/40">Sélection du set...</p>}
+                {selectedSetData && !setRules?.boosterRules && <p className="mt-2 text-white/40">Chargement des statistiques...</p>}
               </div>
             )}
           </div>

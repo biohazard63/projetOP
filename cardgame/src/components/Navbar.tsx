@@ -279,7 +279,7 @@ export function Navbar({ variant = 'default', className }: NavbarProps) {
             <Link href="/home" className="flex items-center space-x-3 group">
               <LogoIcon />
               <span className="text-xl font-bold bg-gradient-to-r from-orange-500 to-orange-400 bg-clip-text text-transparent">
-                One Piece TCG
+                Mugiwara TCG
               </span>
             </Link>
           </div>

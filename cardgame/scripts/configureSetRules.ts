@@ -367,6 +367,40 @@ export const SET_RULES: Record<string, SetRule> = {
       specialChance: 0.05
     }
   },
+  'OP12': {
+    name: 'THE NEW ERA',
+    rarityCounts: {
+      'C': 48,
+      'UC': 32,
+      'R': 35,
+      'SR': 24,
+      'L': 12,
+      'SEC': 6,
+      'SP CARD': 8,
+      'TR': 0,
+      'P': 0
+    },
+    typeCounts: {
+      'CHARACTER': 130,
+      'LEADER': 12,
+      'EVENT': 20,
+      'STAGE': 3
+    },
+    boosterRules: {
+      commonCount: 6,
+      uncommonCount: 3,
+      rareCount: 2,
+      superRareCount: 1,
+      leaderCount: 0,
+      characterCount: 4,
+      eventCount: 2,
+      stageCount: 0,
+      donCount: 1,
+      altArtChance: 0.12,
+      parallelChance: 0.06,
+      specialChance: 0.05
+    }
+  },
   'ST01': {
     name: 'Straw Hat Crew',
     rarityCounts: {
@@ -862,4 +896,4 @@ async function configureSetRules() {
   }
 }
 
-configureSetRules() 
+configureSetRules()
