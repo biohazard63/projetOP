@@ -183,6 +183,63 @@ export default function DeckBuilderPage() {
     loadDeck()
   }, [deckId])
 
+  // Fonction pour valider et nettoyer le deck selon le leader actuel
+  const validateAndCleanDeck = (newLeader?: DeckCard) => {
+    if (!newLeader) return; // Pas de leader, pas de validation
+    
+    console.log('🔍 Validation du deck avec le nouveau leader:', newLeader.name);
+    console.log('🔍 Cartes actuelles dans le deck:', selectedCards.map(c => `${c.name} (${c.type}, ${c.color})`));
+    
+    // Filtrer les cartes incompatibles (NE JAMAIS RETIRER LES LEADERS)
+    const removedCards: DeckCard[] = [];
+    const validCards = selectedCards.filter(card => {
+      // TOUJOURS garder les leaders, peu importe leur couleur
+      if (card.type === 'LEADER') {
+        console.log(`✅ Leader conservé: ${card.name} (${card.color})`);
+        return true;
+      }
+      
+      // Vérifier la compatibilité des cartes non-leader avec le NOUVEAU leader
+      const isCompatible = canPlayCardWithLeader(card, newLeader);
+      if (!isCompatible) {
+        removedCards.push(card);
+        console.log(`❌ Carte incompatible retirée: ${card.name} (${card.color})`);
+      } else {
+        console.log(`✅ Carte compatible conservée: ${card.name} (${card.color})`);
+      }
+      return isCompatible;
+    });
+    
+    console.log('🔍 Cartes valides après filtrage:', validCards.map(c => `${c.name} (${c.type}, ${c.color})`));
+    console.log('🔍 Cartes retirées:', removedCards.map(c => `${c.name} (${c.color})`));
+    
+    // Si des cartes ont été retirées, mettre à jour le deck et informer l'utilisateur
+    if (validCards.length !== selectedCards.length) {
+      console.log(`🧹 Mise à jour du deck: ${selectedCards.length} → ${validCards.length} cartes`);
+      setSelectedCards(validCards);
+      const removedCount = selectedCards.length - validCards.length;
+      console.log(`🧹 Deck nettoyé: ${removedCount} cartes incompatibles retirées`);
+      
+      // Informer l'utilisateur des cartes retirées
+      if (removedCards.length > 0) {
+        const removedNames = removedCards.map(c => `${c.name} (${c.color})`).join(', ');
+        alert(`🔄 Deck mis à jour !\n\n${removedCount} carte(s) incompatible(s) avec votre nouveau leader "${newLeader.name}" ont été retirée(s) :\n${removedNames}\n\nCes cartes ne correspondent pas aux couleurs autorisées par votre leader.`);
+      }
+    } else {
+      console.log('✅ Aucune carte incompatible trouvée, deck inchangé');
+    }
+  };
+
+  // useEffect pour valider le deck quand un leader est ajouté
+  useEffect(() => {
+    const leaderCards = selectedCards.filter(c => c.type === 'LEADER');
+    if (leaderCards.length > 0) {
+      const currentLeader = leaderCards[0];
+      console.log('🔍 useEffect: Leader détecté dans le deck, validation...');
+      validateAndCleanDeck(currentLeader);
+    }
+  }, [selectedCards]);
+
   const addCardToDeck = (card: DeckCard) => {
     // Vérifier si la carte est déjà dans le deck
     const existingCardIndex = selectedCards.findIndex(c => c.id === card.id)
@@ -225,6 +282,25 @@ export default function DeckBuilderPage() {
       return
     }
 
+    // NOUVELLE RÈGLE : Validation des couleurs selon le leader
+    if (card.type !== 'LEADER') {
+      const leaderCards = selectedCards.filter(c => c.type === 'LEADER')
+      
+      // Si on n'a pas encore de leader, permettre l'ajout temporaire
+      if (leaderCards.length === 0) {
+        // Permettre l'ajout mais afficher un avertissement
+        console.log('Aucun leader sélectionné, carte ajoutée temporairement')
+      } else {
+        // Vérifier que la carte peut être jouée avec le leader (inclut les cartes multicolores)
+        const leader = leaderCards[0]
+        if (!canPlayCardWithLeader(card, leader)) {
+          const leaderColors = getLeaderColors(leader).join('/')
+          alert(`⚠️ Cette carte (${card.color}) ne peut pas être jouée avec votre leader (${leaderColors}).\n\nVous pouvez la voir dans la liste mais elle ne peut pas être ajoutée au deck.`)
+          return
+        }
+      }
+    }
+
     if (existingCardIndex !== -1) {
       // Augmenter la quantité si la carte existe déjà
       const updatedCards = [...selectedCards]
@@ -235,13 +311,201 @@ export default function DeckBuilderPage() {
       setSelectedCards(updatedCards)
     } else {
       // Ajouter la carte avec une quantité de 1
-      setSelectedCards([...selectedCards, { ...card, quantity: 1 }])
+      const newCards = [...selectedCards, { ...card, quantity: 1 }];
+      setSelectedCards(newCards);
     }
+  }
+
+  // Fonction pour traduire les couleurs (français ↔ anglais)
+  const translateColor = (color: string): string => {
+    const colorMap: { [key: string]: string } = {
+      // Français vers Anglais
+      'Rouge': 'Red',
+      'Bleu': 'Blue', 
+      'Vert': 'Green',
+      'Violet': 'Purple',
+      'Noir': 'Black',
+      'Jaune': 'Yellow',
+      // Anglais vers Français (pour l'affichage)
+      'Red': 'Rouge',
+      'Blue': 'Bleu',
+      'Green': 'Vert', 
+      'Purple': 'Violet',
+      'Black': 'Noir',
+      'Yellow': 'Jaune'
+    };
+    
+    return colorMap[color] || color;
+  };
+
+  // Fonction pour normaliser les couleurs (toujours en anglais pour la logique)
+  const normalizeColor = (color: string): string => {
+    const colorMap: { [key: string]: string } = {
+      'Rouge': 'Red',
+      'Bleu': 'Blue',
+      'Vert': 'Green', 
+      'Violet': 'Purple',
+      'Noir': 'Black',
+      'Jaune': 'Yellow'
+    };
+    
+    return colorMap[color] || color;
+  };
+
+  // Fonction pour déterminer les couleurs autorisées selon le leader
+  const getLeaderColors = (leader: DeckCard): string[] => {
+    // Logique pour déterminer les couleurs du leader
+    if (!leader) return ['Red', 'Blue', 'Green', 'Purple', 'Black', 'Yellow'];
+    
+    // Vérifier d'abord si le leader a déjà une couleur multicolore (contient "/")
+    if (leader.color && typeof leader.color === 'string') {
+      const mainColor = leader.color;
+      
+      // Si la couleur contient "/", c'est un leader bicolore
+      if (mainColor.includes('/')) {
+        console.log('🎨 Leader bicolore détecté:', mainColor);
+        const colors = mainColor.split('/').map(c => c.trim());
+        console.log('🎨 Couleurs extraites:', colors);
+        // Normaliser et valider les couleurs (gérer français et anglais)
+        const validColors = colors
+          .map(color => {
+            // Traduire les couleurs françaises vers l'anglais
+            const colorMap: { [key: string]: string } = {
+              'Rouge': 'Red', 'Bleu': 'Blue', 'Vert': 'Green', 
+              'Violet': 'Purple', 'Noir': 'Black', 'Jaune': 'Yellow'
+            };
+            return colorMap[color] || color;
+          })
+          .filter(color => ['Red', 'Blue', 'Green', 'Purple', 'Black', 'Yellow'].includes(color));
+        console.log('✅ Couleurs valides normalisées:', validColors);
+        if (validColors.length > 0) {
+          return validColors;
+        }
+      }
+      
+      // Leaders mono-couleur - gérer français et anglais
+      const colorMap: { [key: string]: string } = {
+        'Rouge': 'Red', 'Bleu': 'Blue', 'Vert': 'Green', 
+        'Violet': 'Purple', 'Noir': 'Black', 'Jaune': 'Yellow'
+      };
+      const normalizedColor = colorMap[mainColor] || mainColor;
+      if (['Red', 'Blue', 'Green', 'Purple', 'Black', 'Yellow'].includes(normalizedColor)) {
+        console.log('🎨 Leader mono-couleur normalisé:', normalizedColor);
+        return [normalizedColor];
+      }
+    }
+    
+    // Leaders multi-couleurs - analyser le nom et les attributs
+    if (leader.name && typeof leader.name === 'string') {
+      const leaderName = leader.name.toLowerCase();
+      
+      // Leaders Rouge/Verte
+      if (leaderName.includes('luffy') || leaderName.includes('zoro') || 
+          leaderName.includes('sanji') || leaderName.includes('nami')) {
+        return ['Red', 'Green'];
+      }
+      
+      // Leaders Bleu/Violet
+      if (leaderName.includes('law') || leaderName.includes('robin') || 
+          leaderName.includes('chopper')) {
+        return ['Blue', 'Purple'];
+      }
+      
+      // Leaders Rouge/Bleu
+      if (leaderName.includes('ace') || leaderName.includes('sabo')) {
+        return ['Red', 'Blue'];
+      }
+      
+      // Leaders Vert/Jaune
+      if (leaderName.includes('yamato') || leaderName.includes('kaido')) {
+        return ['Green', 'Yellow'];
+      }
+      
+      // Leaders Rouge/Noir
+      if (leaderName.includes('akainu') || leaderName.includes('blackbeard')) {
+        return ['Red', 'Black'];
+      }
+      
+      // Leaders Violet/Noir
+      if (leaderName.includes('moria') || leaderName.includes('doflamingo')) {
+        return ['Purple', 'Black'];
+      }
+    }
+    
+    // Vérifier les attributs du leader
+    if (leader.attribute && typeof leader.attribute === 'string') {
+      const attribute = leader.attribute.toLowerCase();
+      
+      // Attributs multi-couleurs
+      if (attribute.includes('fire') || attribute.includes('flame')) {
+        return ['Red', 'Yellow'];
+      }
+      if (attribute.includes('ice') || attribute.includes('snow')) {
+        return ['Blue', 'White'];
+      }
+      if (attribute.includes('lightning') || attribute.includes('thunder')) {
+        return ['Yellow', 'Blue'];
+      }
+      if (attribute.includes('dark') || attribute.includes('shadow')) {
+        return ['Black', 'Purple'];
+      }
+    }
+    
+    // Fallback : si on ne peut pas déterminer, retourner la couleur principale
+    if (leader.color && typeof leader.color === 'string') {
+      return [leader.color];
+    }
+    
+    // Dernier fallback : toutes les couleurs
+    return ['Red', 'Blue', 'Green', 'Purple', 'Black', 'Yellow'];
+  }
+
+  // NOUVELLE FONCTION: Vérifier si une carte peut être jouée avec un leader
+  const canPlayCardWithLeader = (card: DeckCard, leader: DeckCard): boolean => {
+    if (card.type === 'LEADER') return true; // Les leaders peuvent toujours être ajoutés
+    
+    const leaderColors = getLeaderColors(leader);
+    const cardColor = card.color;
+    
+    console.log('🔍 canPlayCardWithLeader - Carte:', card.name, 'Couleur:', cardColor);
+    console.log('🔍 Leader couleurs:', leaderColors);
+    
+    // Si la carte est multicolore (contient "/")
+    if (cardColor.includes('/')) {
+      const cardColors = cardColor.split('/').map(c => c.trim());
+      console.log('🎨 Carte multicolore détectée:', cardColors);
+      // Normaliser les couleurs de la carte et vérifier la compatibilité
+      const normalizedCardColors = cardColors.map(color => {
+        const colorMap: { [key: string]: string } = {
+          'Rouge': 'Red', 'Bleu': 'Blue', 'Vert': 'Green', 
+          'Violet': 'Purple', 'Noir': 'Black', 'Jaune': 'Yellow'
+        };
+        return colorMap[color] || color;
+      });
+      console.log('🎨 Couleurs de la carte normalisées:', normalizedCardColors);
+      // La carte peut être jouée si le leader a au moins une des couleurs de la carte
+      const canPlay = normalizedCardColors.some(color => leaderColors.includes(color));
+      console.log('✅ Carte multicolore peut être jouée:', canPlay);
+      return canPlay;
+    }
+    
+    // Si la carte est mono-couleur - normaliser la couleur
+    const colorMap: { [key: string]: string } = {
+      'Rouge': 'Red', 'Bleu': 'Blue', 'Vert': 'Green', 
+      'Violet': 'Purple', 'Noir': 'Black', 'Jaune': 'Yellow'
+    };
+    const normalizedCardColor = colorMap[cardColor] || cardColor;
+    const canPlay = leaderColors.includes(normalizedCardColor);
+    console.log('✅ Carte mono-couleur normalisée:', normalizedCardColor, 'peut être jouée:', canPlay);
+    return canPlay;
   }
 
   const removeCardFromDeck = (cardId: string) => {
     const card = selectedCards.find(c => c.id === cardId);
     if (!card) return;
+
+    const wasLeader = card.type === 'LEADER';
+    const wasLastLeader = wasLeader && selectedCards.filter(c => c.type === 'LEADER').length === 1;
 
     if ((card.quantity || 1) > 1) {
       setSelectedCards(
@@ -253,6 +517,14 @@ export default function DeckBuilderPage() {
       );
     } else {
       setSelectedCards(selectedCards.filter(c => c.id !== cardId));
+    }
+
+    // Si on a retiré le dernier leader, valider le deck (toutes les cartes deviennent valides)
+    if (wasLastLeader) {
+      setTimeout(() => {
+        console.log('🔍 Dernier leader retiré, toutes les cartes deviennent valides');
+        // Pas besoin de nettoyer, toutes les cartes sont maintenant valides
+      }, 100);
     }
   };
 
@@ -284,13 +556,25 @@ export default function DeckBuilderPage() {
       }
       if (filters.favoritesOnly && !card.isFavorite) return false
       if (filters.onlyOwned && (card.quantity || 0) <= 0) return false
+      
+      // NOUVELLE RÈGLE: Filtrer les cartes selon les couleurs du leader
+      if (card.type !== 'LEADER') {
+        const leaderCards = selectedCards.filter(c => c.type === 'LEADER')
+        if (leaderCards.length > 0) {
+          const leader = leaderCards[0]
+          if (!canPlayCardWithLeader(card, leader)) {
+            return false // Carte non autorisée
+          }
+        }
+      }
+      
       return true
     })
     if (filters.leadersFirst) {
       list.sort((a, b) => (a.type === 'LEADER' ? -1 : 0) - (b.type === 'LEADER' ? -1 : 0))
     }
     return list
-  }, [availableCards, filters])
+  }, [availableCards, filters, selectedCards])
 
   // Calculer les cartes à afficher pour la page courante
   const { indexOfFirstCard, indexOfLastCard, currentCards, totalPages } = useMemo(() => {
@@ -321,20 +605,53 @@ export default function DeckBuilderPage() {
       const nonLeaderCount = nonLeaderCards.reduce((sum, card) => sum + (card.quantity || 1), 0);
       
       console.log('Validation du deck:', {
-        leaderCards: leaderCards.map(card => ({ name: card.name, quantity: card.quantity })),
-        nonLeaderCards: nonLeaderCards.map(card => ({ name: card.name, quantity: card.quantity })),
+        leaderCards: leaderCards.map(card => ({ name: card.name, quantity: card.quantity, color: card.color })),
+        nonLeaderCards: nonLeaderCards.map(card => ({ name: card.name, quantity: card.quantity, color: card.color })),
         leaderCount,
         nonLeaderCount,
         totalCards: leaderCount + nonLeaderCount
       });
 
+      // RÈGLE 1: Leader obligatoire
       if (leaderCount !== 1) {
         alert(`Le deck doit contenir exactement 1 leader (actuellement: ${leaderCount})`);
         return;
       }
       
+      // RÈGLE 2: 50 cartes non-leader exactement
       if (nonLeaderCount !== 50) {
         alert(`Le deck doit contenir exactement 50 cartes non-leader (actuellement: ${nonLeaderCount})`);
+        return;
+      }
+
+      // RÈGLE 3: Validation des couleurs selon le leader
+      const leader = leaderCards[0];
+      const leaderColors = getLeaderColors(leader);
+      const invalidCards = nonLeaderCards.filter(card => !canPlayCardWithLeader(card, leader));
+      
+      if (invalidCards.length > 0) {
+        const invalidCardNames = invalidCards.map(card => `${card.name} (${card.color})`).join(', ');
+        alert(`Les cartes suivantes ne peuvent pas être jouées avec votre leader (${leaderColors.join('/')}): ${invalidCardNames}`);
+        return;
+      }
+
+      // RÈGLE 4: Vérification des copies (déjà fait dans addCardToDeck, mais double vérification)
+      const cardCounts = new Map<string, number>();
+      for (const card of selectedCards) {
+        const key = card.id;
+        const currentCount = cardCounts.get(key) || 0;
+        cardCounts.set(key, currentCount + (card.quantity || 1));
+      }
+      
+      const overLimitCards = Array.from(cardCounts.entries())
+        .filter(([id, count]) => count > 4)
+        .map(([id]) => {
+          const card = selectedCards.find(c => c.id === id);
+          return card?.name || id;
+        });
+      
+      if (overLimitCards.length > 0) {
+        alert(`Les cartes suivantes dépassent la limite de 4 copies: ${overLimitCards.join(', ')}`);
         return;
       }
 
@@ -472,6 +789,17 @@ export default function DeckBuilderPage() {
               {selectedCards.filter(c => c.type === 'LEADER').reduce((s,c)=>s+(c.quantity||1),0) === 0 && (
                 <div className="mb-4 rounded-lg border border-white/10 bg-white/5 p-3 text-sm text-blue-200">
                   Commence par choisir un Leader. Astuce: sur mobile, un tap ajoute directement la carte au deck.
+                  Attention, les couleurs sont affichées en anglais.
+                  <br />
+                  pour une meilleure expérience, choisissez de jouer sur un grand écran.
+                </div>
+              )}
+              
+              {/* NOUVEAU: Message informatif sur la compatibilité des couleurs */}
+              {selectedCards.filter(c => c.type === 'LEADER').length > 0 && (
+                <div className="mb-4 rounded-lg border border-blue-500/30 bg-blue-500/10 p-3 text-sm text-blue-200">
+                  <p className="font-medium mb-1">🎨 Filtrage automatique des couleurs</p>
+                  <p>Seules les cartes compatibles avec votre leader sont affichées. Changez de leader pour voir d&apos;autres couleurs.</p>
                 </div>
               )}
               
@@ -740,6 +1068,31 @@ export default function DeckBuilderPage() {
                       <p className="font-medium">Stages: <span className="text-yellow-400">{selectedCards.filter(card => card.type === 'STAGE').reduce((sum, card) => sum + (card.quantity || 1), 0)}</span></p>
                     </div>
                   </div>
+                  
+                  {/* NOUVEAU: Indicateur des couleurs autorisées */}
+                  {selectedCards.filter(card => card.type === 'LEADER').length > 0 && (
+                    <div className="mt-3 pt-3 border-t border-gray-600">
+                      <p className="font-medium text-blue-300 mb-2">Couleurs autorisées:</p>
+                      <div className="flex flex-wrap gap-2">
+                        {getLeaderColors(selectedCards.find(card => card.type === 'LEADER')!).map(color => (
+                          <span
+                            key={color}
+                            className={`px-2 py-1 rounded text-xs font-medium ${
+                              color === 'Red' ? 'bg-red-500/20 text-red-300 border border-red-500/30' :
+                              color === 'Blue' ? 'bg-blue-500/20 text-blue-300 border border-blue-500/30' :
+                              color === 'Green' ? 'bg-green-500/20 text-green-300 border border-green-500/30' :
+                              color === 'Purple' ? 'bg-purple-500/20 text-purple-300 border border-purple-500/30' :
+                              color === 'Black' ? 'bg-gray-700/50 text-gray-300 border border-gray-600/50' :
+                              color === 'Yellow' ? 'bg-yellow-500/20 text-yellow-300 border border-yellow-500/30' :
+                              'bg-gray-600/50 text-gray-300 border border-gray-500/50'
+                            }`}
+                          >
+                            {color}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
 
                 <Button 
