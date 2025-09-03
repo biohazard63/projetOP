@@ -60,15 +60,15 @@ export default function BoosterPackAnimation({ onComplete, setCode, performanceM
       setShowTear(true)
       setShowPulse(true)
       setShowFlash(true)
-      const tFlash = window.setTimeout(() => setShowFlash(false), 250) // Rallongé
+      const tFlash = window.setTimeout(() => setShowFlash(false), 200) // Réduit
       timersRef.current.push(tFlash)
-    }, 1200) // Rallongé
-    const tCards = window.setTimeout(() => setShowCards(true), 2200) // Rallongé
-    // Durées et délais pour une sortie plus progressive (plus long)
-    const perCardDelay = 0.3 // s - Rallongé
-    const perCardDuration = 0.9 // s - Rallongé
-    const extraTail = 1.5 // s de marge après la dernière carte - Rallongé
-    const endMs = 2200 + ((cardIds.length - 1) * perCardDelay + perCardDuration + extraTail) * 1000
+    }, 800) // Réduit de 1200ms à 800ms
+    const tCards = window.setTimeout(() => setShowCards(true), 1400) // Réduit de 2200ms à 1400ms
+    // Durées et délais pour une sortie plus rapide
+    const perCardDelay = 0.15 // s - Réduit de 0.3s à 0.15s
+    const perCardDuration = 0.6 // s - Réduit de 0.9s à 0.6s
+    const extraTail = 0.8 // s de marge après la dernière carte - Réduit de 1.5s à 0.8s
+    const endMs = 1400 + ((cardIds.length - 1) * perCardDelay + perCardDuration + extraTail) * 1000
     const tEnd = window.setTimeout(() => {
       setIsVisible(false)
       onComplete()
@@ -136,7 +136,7 @@ export default function BoosterPackAnimation({ onComplete, setCode, performanceM
               y: [0, -22]
             }}
             transition={{ 
-              duration: 3.2,
+              duration: 2.2, // Réduit de 3.2s à 2.2s
               ease: "easeInOut"
             }}
             className="relative w-48 h-72 md:w-64 md:h-96 will-change-transform"
@@ -226,8 +226,8 @@ export default function BoosterPackAnimation({ onComplete, setCode, performanceM
                         opacity: 0
                       }}
                       transition={{ 
-                        duration: 0.75,
-                        delay: index * 0.12 + (Math.random() * 0.06),
+                        duration: 0.5, // Réduit de 0.75s à 0.5s
+                        delay: index * 0.08 + (Math.random() * 0.04), // Réduit de 0.12s à 0.08s
                         ease: "easeOut",
                         times: [0, 0.6, 1]
                       }}

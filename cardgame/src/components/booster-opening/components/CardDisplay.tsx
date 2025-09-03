@@ -1,7 +1,7 @@
 'use client'
 
 import { motion, AnimatePresence } from 'framer-motion'
-import { memo, useMemo, useEffect } from 'react'
+import { memo, useMemo, useEffect, useState } from 'react'
 import CardReveal from '../CardReveal'
 import { ExtendedCardType } from '@/types/card'
 import '@/styles/card-pile.css'
@@ -35,6 +35,9 @@ const CardDisplay = memo(function CardDisplay({
   onDragEnd,
   onArrowClick
 }: CardDisplayProps) {
+  const [isNavigating, setIsNavigating] = useState(false)
+  const [swipeDirection, setSwipeDirection] = useState<'prev' | 'next' | null>(null)
+  
   // Variants simplifiés: crossfade + léger zoom
   const transitionDuration = performanceMode ? 0.18 : (isMobile ? 0.2 : 0.24)
   const easing: number[] = [0.2, 0.8, 0.2, 1]
@@ -64,76 +67,44 @@ const CardDisplay = memo(function CardDisplay({
     })
   }), [transitionDuration])
 
-  // Fonction pour animer la transition entre les cartes
-  const animateCardTransition = (direction: 'prev' | 'next') => {
-    const activeCard = document.querySelector('[data-card-index="1"]') as HTMLElement;
-    const card2 = document.querySelector('[data-card-index="2"]') as HTMLElement;
-    const card3 = document.querySelector('[data-card-index="3"]') as HTMLElement;
+  // Fonction simplifiée pour déclencher l'animation de swipe
+  const triggerSwipeAnimation = (direction: 'prev' | 'next') => {
+    console.log('🚀 triggerSwipeAnimation appelé avec direction:', direction)
     
-    if (activeCard) {
-      // Animation de la carte active
-      const translateX = direction === 'next' ? -100 : 100;
-      activeCard.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-      activeCard.style.transform = `translateX(${translateX}px) rotateY(${direction === 'next' ? -15 : 15}deg) scale(0.95)`;
-      activeCard.style.opacity = '0';
+    if (isNavigating) {
+      console.log('❌ Navigation déjà en cours, sortie')
+      return
     }
     
-    if (card2) {
-      // Animation de la carte 2
-      card2.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-      card2.style.transform = 'translateY(0px) scale(1) rotateY(0deg)';
-      card2.style.opacity = '1';
-    }
+    setIsNavigating(true)
+    setSwipeDirection(direction)
+    console.log('✅ État isNavigating mis à true, swipeDirection:', direction)
     
-    if (card3) {
-      // Animation de la carte 3
-      card3.style.transition = 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)';
-      card3.style.transform = 'translateY(6px) scale(0.92) rotateY(1.5deg)';
-      card3.style.opacity = '0.6';
-    }
-    
-    // Remettre les cartes en position après l'animation
+    // Attendre que l'animation se termine avant de naviguer
     setTimeout(() => {
-      if (activeCard) {
-        activeCard.style.transition = '';
-        activeCard.style.transform = '';
-        activeCard.style.opacity = '';
-      }
-      if (card2) {
-        card2.style.transition = '';
-        card2.style.transform = 'translateY(8px) scale(0.94) rotateY(2deg)';
-        card2.style.opacity = '0.5';
-      }
-      if (card3) {
-        card3.style.transition = '';
-        card3.style.transform = 'translateY(16px) scale(0.88) rotateY(4deg)';
-        card3.style.opacity = '0.3';
-      }
-    }, 300);
-  };
+      console.log('🔄 Appel de onArrowClick avec direction:', direction)
+      onArrowClick(direction)
+      setIsNavigating(false)
+      setSwipeDirection(null)
+      console.log('✅ États remis à zéro')
+    }, 300)
+  }
 
   // Navigation au clavier avec les flèches
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'ArrowLeft' && currentCardIndex > 0) {
-        event.preventDefault();
-        animateCardTransition('prev');
-        setTimeout(() => onArrowClick('prev'), 300);
-      } else if (event.key === 'ArrowRight' && currentCardIndex < booster.length - 1) {
-        event.preventDefault();
-        animateCardTransition('next');
-        setTimeout(() => onArrowClick('next'), 300);
+      if (event.key === 'ArrowLeft' && currentCardIndex > 0 && !isNavigating) {
+        event.preventDefault()
+        triggerSwipeAnimation('prev')
+      } else if (event.key === 'ArrowRight' && currentCardIndex < booster.length - 1 && !isNavigating) {
+        event.preventDefault()
+        triggerSwipeAnimation('next')
       }
-    };
+    }
 
-    // Ajouter l'écouteur d'événements
-    window.addEventListener('keydown', handleKeyDown);
-
-    // Nettoyer l'écouteur d'événements
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [currentCardIndex, booster.length, onArrowClick]);
+    window.addEventListener('keydown', handleKeyDown)
+    return () => window.removeEventListener('keydown', handleKeyDown)
+  }, [currentCardIndex, booster.length, isNavigating])
 
   if (booster.length === 0 || currentCardIndex < 0) return null
 
@@ -149,33 +120,29 @@ const CardDisplay = memo(function CardDisplay({
             perspective: '1000px'
           }}
           onTouchStart={(e) => {
-            // Permettre le scroll vertical
             if (isMobile) {
-              e.stopPropagation();
+              e.stopPropagation()
             }
           }}
           onTouchMove={(e) => {
-            // Empêcher la propagation des événements touch horizontaux
             if (isMobile) {
-              const touch = e.touches[0];
-              const target = e.currentTarget as HTMLElement;
-              const startX = parseInt(target.dataset.touchStartX || '0');
-              const startY = parseInt(target.dataset.touchStartY || '0');
-              const deltaX = Math.abs(touch.clientX - startX);
-              const deltaY = Math.abs(touch.clientY - startY);
+              const touch = e.touches[0]
+              const target = e.currentTarget as HTMLElement
+              const startX = parseInt(target.dataset.touchStartX || '0')
+              const startY = parseInt(target.dataset.touchStartY || '0')
+              const deltaX = Math.abs(touch.clientX - startX)
+              const deltaY = Math.abs(touch.clientY - startY)
               
-              // Si le mouvement est plus horizontal que vertical, empêcher le scroll
               if (deltaX > deltaY && deltaX > 10) {
-                e.preventDefault();
+                e.preventDefault()
               }
             }
           }}
           onTouchEnd={(e) => {
-            // Nettoyer les références
             if (isMobile) {
-              const target = e.currentTarget as HTMLElement;
-              delete target.dataset.touchStartX;
-              delete target.dataset.touchStartY;
+              const target = e.currentTarget as HTMLElement
+              delete target.dataset.touchStartX
+              delete target.dataset.touchStartY
             }
           }}
         >
@@ -256,11 +223,15 @@ const CardDisplay = memo(function CardDisplay({
               style={{ zIndex: 20 }}
               initial={{ opacity: 0, scale: 0.98 }}
               animate={{ 
-                opacity: 1, 
-                scale: 1,
-                rotateY: 0,
-                x: 0,
+                opacity: swipeDirection ? 0 : 1, 
+                scale: swipeDirection ? 0.95 : 1,
+                rotateY: swipeDirection ? (swipeDirection === 'next' ? -15 : 15) : 0,
+                x: swipeDirection ? (swipeDirection === 'next' ? -150 : 150) : 0,
                 y: 0
+              }}
+              transition={{ 
+                duration: 0.3, 
+                ease: [0.4, 0, 0.2, 1] 
               }}
               drag={isMobile ? "x" : false}
               dragConstraints={{ left: -150, right: 150 }}
@@ -268,75 +239,71 @@ const CardDisplay = memo(function CardDisplay({
               dragTransition={{ bounceStiffness: 600, bounceDamping: 20 }}
               onDrag={(event, info) => {
                 // Rotation 3D basée sur la position X
-                const rotateY = info.offset.x * 0.15; // Rotation Y selon le swipe
-                const rotateX = Math.abs(info.offset.x) * 0.05; // Légère rotation X
+                const rotateY = info.offset.x * 0.15
+                const rotateX = Math.abs(info.offset.x) * 0.05
                 
                 // Mise à jour de la position des cartes d'arrière-plan
                 if (currentCardIndex + 1 < booster.length) {
-                  // Carte 2 suit légèrement
-                  const card2Element = document.querySelector('[data-card-index="2"]') as HTMLElement;
+                  const card2Element = document.querySelector('[data-card-index="2"]') as HTMLElement
                   if (card2Element) {
-                    card2Element.style.transform = `translateY(6px) scale(0.97) rotateY(${rotateY * 0.3}deg)`;
+                    card2Element.style.transform = `translateY(6px) scale(0.97) rotateY(${rotateY * 0.3}deg)`
                   }
                 }
                 
                 if (currentCardIndex + 2 < booster.length) {
-                  // Carte 3 suit encore plus
-                  const card3Element = document.querySelector('[data-card-index="3"]') as HTMLElement;
+                  const card3Element = document.querySelector('[data-card-index="3"]') as HTMLElement
                   if (card3Element) {
-                    card3Element.style.transform = `translateY(12px) scale(0.95) rotateY(${rotateY * 0.6}deg)`;
+                    card3Element.style.transform = `translateY(12px) scale(0.95) rotateY(${rotateY * 0.6}deg)`
                   }
                 }
               }}
               onDragEnd={(event, info) => {
-                const threshold = 100;
-                if (Math.abs(info.offset.x) > threshold) {
+                const threshold = 100
+                if (Math.abs(info.offset.x) > threshold && !isNavigating) {
                   // Swipe réussi - naviguer vers la carte suivante/précédente
                   if (info.offset.x > threshold) {
-                    onArrowClick('prev');
+                    triggerSwipeAnimation('prev')
                   } else {
-                    onArrowClick('next');
+                    triggerSwipeAnimation('next')
                   }
-                  // Pas de retour à la position initiale si on change de carte
                 } else {
                   // Swipe annulé - retour en douceur à la position initiale
                   setTimeout(() => {
                     // Remettre les cartes d'arrière-plan en position avec transition douce
                     if (currentCardIndex + 1 < booster.length) {
-                      const card2Element = document.querySelector('[data-card-index="2"]') as HTMLElement;
+                      const card2Element = document.querySelector('[data-card-index="2"]') as HTMLElement
                       if (card2Element) {
-                        card2Element.style.transition = 'all 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
-                        card2Element.style.transform = 'translateY(6px) scale(0.97) rotateY(1.5deg)';
+                        card2Element.style.transition = 'all 0.3s cubic-bezier(0.23, 1, 0.32, 1)'
+                        card2Element.style.transform = 'translateY(6px) scale(0.97) rotateY(1.5deg)'
                       }
                     }
                     
                     if (currentCardIndex + 2 < booster.length) {
-                      const card3Element = document.querySelector('[data-card-index="3"]') as HTMLElement;
+                      const card3Element = document.querySelector('[data-card-index="3"]') as HTMLElement
                       if (card3Element) {
-                        card3Element.style.transition = 'all 0.3s cubic-bezier(0.23, 1, 0.32, 1)';
-                        card3Element.style.transform = 'translateY(12px) scale(0.95) rotateY(3deg)';
+                        card3Element.style.transition = 'all 0.3s cubic-bezier(0.23, 1, 0.32, 1)'
+                        card3Element.style.transform = 'translateY(12px) scale(0.95) rotateY(3deg)'
                       }
                     }
                     
                     // Nettoyer les transitions après l'animation
                     setTimeout(() => {
                       if (currentCardIndex + 1 < booster.length) {
-                        const card2Element = document.querySelector('[data-card-index="2"]') as HTMLElement;
+                        const card2Element = document.querySelector('[data-card-index="2"]') as HTMLElement
                         if (card2Element) {
-                          card2Element.style.transition = '';
+                          card2Element.style.transition = ''
                         }
                       }
                       if (currentCardIndex + 2 < booster.length) {
-                        const card3Element = document.querySelector('[data-card-index="3"]') as HTMLElement;
+                        const card3Element = document.querySelector('[data-card-index="3"]') as HTMLElement
                         if (card3Element) {
-                          card3Element.style.transition = '';
+                          card3Element.style.transition = ''
                         }
                       }
-                    }, 300);
-                  }, 100);
+                    }, 300)
+                  }, 100)
                 }
               }}
-              transition={{ duration: 0.3, ease: [0.23, 1, 0.32, 1] }}
             >
               <CardReveal
                 card={booster[currentCardIndex]}
@@ -362,9 +329,8 @@ const CardDisplay = memo(function CardDisplay({
           <>
             <button
               onClick={() => {
-                if (currentCardIndex > 0) {
-                  animateCardTransition('prev');
-                  setTimeout(() => onArrowClick('prev'), 300);
+                if (currentCardIndex > 0 && !isNavigating) {
+                  triggerSwipeAnimation('prev')
                 }
               }}
               aria-label="Carte précédente"
@@ -372,9 +338,8 @@ const CardDisplay = memo(function CardDisplay({
             />
             <button
               onClick={() => {
-                if (currentCardIndex < booster.length - 1) {
-                  animateCardTransition('next');
-                  setTimeout(() => onArrowClick('next'), 300);
+                if (currentCardIndex < booster.length - 1 && !isNavigating) {
+                  triggerSwipeAnimation('next')
                 }
               }}
               aria-label="Carte suivante"
@@ -388,11 +353,13 @@ const CardDisplay = memo(function CardDisplay({
           {currentCardIndex > 0 && (
             <button
               onClick={() => {
-                animateCardTransition('prev');
-                setTimeout(() => onArrowClick('prev'), 300);
+                if (!isNavigating) {
+                  triggerSwipeAnimation('prev')
+                }
               }}
               aria-label="Carte précédente"
-              className="bg-white/10 hover:bg-white/20 p-2 md:p-3 rounded-full transition-all duration-300 w-10 h-10 md:w-auto md:h-auto flex items-center justify-center"
+              disabled={isNavigating}
+              className="bg-white/10 hover:bg-white/20 p-2 md:p-3 rounded-full transition-all duration-300 w-10 h-10 md:w-auto md:h-auto flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -432,11 +399,13 @@ const CardDisplay = memo(function CardDisplay({
           {currentCardIndex < booster.length - 1 && (
             <button
               onClick={() => {
-                animateCardTransition('next');
-                setTimeout(() => onArrowClick('next'), 300);
+                if (!isNavigating) {
+                  triggerSwipeAnimation('next')
+                }
               }}
               aria-label="Carte suivante"
-              className="bg-white/10 hover:bg-white/20 p-2 md:p-3 rounded-full transition-all duration-300 w-10 h-10 md:w-auto md:h-auto flex items-center justify-center"
+              disabled={isNavigating}
+              className="bg-white/10 hover:bg-white/20 p-2 md:p-3 rounded-full transition-all duration-300 w-10 h-10 md:w-auto md:h-auto flex items-center justify-center disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 md:h-6 md:w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
