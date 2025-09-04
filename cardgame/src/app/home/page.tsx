@@ -8,7 +8,7 @@ import { motion } from 'framer-motion'
 
 const features = [
   {
-    title: 'Ouverture de boosters réaliste',
+    title: 'Ouverture de boosters ',
     description: 'Revivez l’excitation d’un booster physique: animations épiques et raretés authentiques.',
     href: '/booster-opening',
     icon: Package,
@@ -37,7 +37,7 @@ const features = [
   description: 'Actions rapides : jouer, éditer, supprimer, avec option annuler.',
   href: '/decks',
   icon: Scroll,
-  color: 'from-gray-700 to-gray-900',
+  color: 'from-yellow-700 to-yellow-900',
  }
 
 ]
@@ -79,7 +79,7 @@ const updates = [
   },
   {
     title: 'Liste des decks',
-    description: 'Actions rapides : jouer, éditer, supprimer, avec option annuler.',
+    description: 'Actions rapides : éditer, supprimer, avec option annuler.',
     icon: Scroll,
     color: 'from-gray-700 to-gray-900',
     category: 'ui' as UpdateCategory,
@@ -180,7 +180,7 @@ export default function HomePage() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, ease: 'easeOut' }}
-              className="text-center lg:text-left"
+              className="text-center lg:text-left rounded-3xl bg-[#0B1120]/70 border border-white/10"
             >
               <div className="relative inline-block mx-auto lg:mx-0 rounded-3xl border border-white/15 bg-black/30 md:bg-black/25 backdrop-blur-xl p-6 md:p-8">
                 <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border border-white/15 bg-white/5 backdrop-blur-md text-white/80 text-xs mb-5">
@@ -248,7 +248,7 @@ export default function HomePage() {
 
       {/* Présentation */}
       <section id="presentation" className="container mx-auto px-4 py-12 md:py-16">
-        <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-10">
+        <div className="rounded-3xl bg-[#0B1120]/70 border border-white/10  p-6 md:p-10">
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">Application One Piece TCG en français</h2>
@@ -274,7 +274,7 @@ export default function HomePage() {
       {/* Section des mises à jour */}
       <div className="container mx-auto px-4 py-16">
         <h2 className="text-4xl font-bold text-center mb-8 text-white">Mises à jour Mugiwara TCG (FR)</h2>
-        <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8">
+        <div className="rounded-3xl bg-[#0B1120]/70 border border-white/10 backdrop-blur-xl  p-6 md:p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {updates.map((update) => {
             const Icon = update.icon
@@ -287,7 +287,7 @@ export default function HomePage() {
                 transition={{ duration: 0.5, ease: 'easeOut' }}
                 className="group relative"
               >
-                <div className="rounded-2xl p-[1px] bg-gradient-to-br from-white/20 to-white/5 group-hover:from-white/40 group-hover:to-white/10 transition-all duration-300">
+                <div className="rounded-2xl p-[1px]  bg-[#0B1120]/70 group-hover:from-white/40 group-hover:to-white/10 transition-all duration-300">
                   <div className={`relative rounded-2xl p-6 bg-white/10 backdrop-blur-xl border border-white/15 group-hover:border-white/25 overflow-hidden min-h-[150px] transition-transform duration-300 group-hover:-translate-y-0.5 before:absolute before:left-0 before:top-0 before:bottom-0 before:w-1.5 ${update.category==='animation' ? 'before:bg-fuchsia-400' : update.category==='boosters' ? 'before:bg-amber-400' : update.category==='tech' ? 'before:bg-emerald-400' : 'before:bg-sky-400'}` }>
                     {/* Shine */}
                     <div className="pointer-events-none absolute -top-16 left-1/2 h-40 w-[140%] -translate-x-1/2 rotate-12 bg-gradient-to-r from-transparent via-white/10 to-transparent blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
@@ -318,7 +318,7 @@ export default function HomePage() {
       {/* Section des fonctionnalités */}
       <div className="container mx-auto px-4 py-16">
         <h2 className="text-4xl font-bold text-center mb-8 text-white">Fonctionnalités clés</h2>
-        <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 p-6 md:p-8">
+        <div className=" backdrop-blur-xl rounded-3xl bg-[#0B1120]/70 border border-white/10 p-6 md:p-8">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature) => {
             const Icon = feature.icon
@@ -333,7 +333,7 @@ export default function HomePage() {
                 transition={{ duration: 0.5, ease: 'easeOut' }}
                 className="group"
               >
-                <div className="rounded-2xl p-[1px] bg-gradient-to-br from-white/20 to-white/5 group-hover:from-white/40 group-hover:to-white/10 transition-all duration-300">
+                <div className="rounded-2xl p-[1px]  bg-[#0B1120]/70  group-hover:from-white/40 group-hover:to-white/10 transition-all duration-300">
                   <Link
                     href={feature.href}
                     className="relative block overflow-hidden rounded-2xl p-6 bg-white/5 backdrop-blur-xl border border-white/10 hover:border-white/20 transition-all duration-300 min-h-[200px] group-hover:-translate-y-0.5"
@@ -370,7 +370,7 @@ export default function HomePage() {
       {/* Galerie: Screenshots & démos */}
       <section id="galerie" className="container mx-auto px-4 py-16">
         <h2 className="text-4xl font-bold text-center mb-8 text-white">Screenshots & démos</h2>
-        <div className="rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 p-4 md:p-6">
+        <div className="rounded-3xl bg-[#0B1120]/70 border border-white/10 backdrop-blur-xl  p-4 md:p-6">
         <div ref={screenshotsContainerRef} className="flex gap-4 overflow-x-auto snap-x snap-mandatory pb-2">
           {galleryShots.map((shot) => (
             <div key={shot.src} className="relative aspect-[16/10] rounded-xl overflow-hidden border border-white/10 bg-white/5 group min-w-[70%] md:min-w-[40%] lg:min-w-[32%] snap-center">
@@ -384,7 +384,7 @@ export default function HomePage() {
 
       {/* Communauté */}
       <section id="beta" className="container mx-auto px-4 py-16">
-        <div className="rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl p-6 md:p-10 text-center">
+        <div className="rounded-3xl bg-[#0B1120]/70 border border-white/10 backdrop-blur-xl p-6 md:p-10 text-center">
           <div className="flex items-center justify-center gap-3 mb-4">
             <Users className="w-6 h-6 text-white/90" />
             <h2 className="text-3xl font-bold text-white">Rejoins la communauté</h2>
@@ -433,7 +433,7 @@ export default function HomePage() {
         </div>
         <div className="space-y-3">
           {faqItems.map((item) => (
-            <details key={item.q} className="rounded-2xl border border-white/10 bg-white/5 p-4 open:bg-white/10 open:border-white/20 transition-colors">
+            <details key={item.q} className="rounded-3xl bg-[#0B1120]/70 border border-white/10 p-4 open:bg-[#0B1120]/70 open:border-white/10 transition-colors">
               <summary className="cursor-pointer text-white font-semibold list-none">{item.q}</summary>
               <p className="text-white/80 mt-2 pl-0">{item.a}</p>
             </details>
@@ -444,7 +444,7 @@ export default function HomePage() {
 
       {/* Footer global déplacé dans le layout */}
       <footer className="relative overflow-hidden py-16 mt-16 z-10">
-      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent backdrop-blur-sm"></div>
+      <div className="absolute inset-0  bg-[#0B1120]/70 border border-white/10 backdrop-blur-sm"></div>
       <div className="container mx-auto px-4 text-center relative z-10">
         <div className="relative inline-block mb-6">
           <Image 
@@ -481,7 +481,7 @@ function HeroShowcase() {
       initial={{ opacity: 0, y: 16 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.55, ease: 'easeOut', delay: 0.05 }}
-      className="relative h-[320px] sm:h-[380px] md:h-[440px] lg:h-[480px]"
+      className="relative h-[320px] sm:h-[380px] md:h-[440px] lg:h-[480px] rounded-3xl bg-[#0B1120]/70 border border-white/10"
     >
       <div className="absolute inset-0 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,.35)]" />
 
