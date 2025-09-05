@@ -24,16 +24,8 @@ export async function POST() {
       )
     }
 
-    // Vérifier que nous sommes en phase DRAW
-    if (currentGameState.currentPhase !== 'DRAW') {
-      return NextResponse.json(
-        { error: 'Action non autorisée. Vous devez être en phase DRAW pour piocher.' },
-        { status: 400 }
-      )
-    }
-
-    // Exécuter la phase DRAW
-    const updatedGameState = ManualGameService.executePhaseActions(currentGameState);
+    // Passer à la phase suivante
+    const updatedGameState = ManualGameService.nextPhase(currentGameState);
     
     // Sauvegarder l'état mis à jour
     await GamePersistenceService.saveGameState(
@@ -45,10 +37,10 @@ export async function POST() {
     return NextResponse.json(updatedGameState)
     
   } catch (error) {
-    console.error('❌ Erreur lors de la pioche:', error)
+    console.error('❌ Erreur lors du passage à la phase suivante:', error)
     return NextResponse.json(
       { error: 'Erreur serveur' },
       { status: 500 }
     )
   }
-} 
+}

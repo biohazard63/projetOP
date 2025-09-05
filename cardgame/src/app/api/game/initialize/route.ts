@@ -9,6 +9,8 @@ import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { cookies } from 'next/headers'
 import { GameState, GamePhase, SetupPhase, GameCard, CardType, CardColor } from '@/types/game'
+import { ManualGameService } from '@/lib/game/manualGameService'
+import { GamePersistenceService } from '@/lib/game/gamePersistenceService'
 
 export async function POST() {
   try {
@@ -136,7 +138,13 @@ export async function POST() {
         hasDoubleAttack: hasDoubleAttack,
         hasCounter: hasCounter,
         counterValue: card.counter || 0, // Utiliser directement le champ counter
-        isFaceUp: isFaceUp
+        isFaceUp: isFaceUp,
+        // Nouveaux champs pour le système de DON
+        isActive: true,
+        canAttack: true,
+        wasPlayedThisTurn: false,
+        attachedDons: 0,
+        donAttachments: []
       }
     }
 
@@ -217,7 +225,12 @@ export async function POST() {
       power: 0,
       imageUrl: '/don.png',
       effect: 'DON!! Card',
-      isFaceUp: false
+      isFaceUp: false,
+      isActive: true,
+      canAttack: false,
+      wasPlayedThisTurn: false,
+      attachedDons: 0,
+      donAttachments: []
     });
 
     // Créer 10 cartes DON pour chaque joueur
@@ -225,25 +238,37 @@ export async function POST() {
     const opponentDonDeck = Array.from({ length: 10 }, (_, i) => createDonCard(i + 10));
 
     console.log('✅ Decks DON préparés:', playerDonDeck.length, 'cartes pour chaque joueur')
+    console.log('🔍 DEBUG INIT: Player DON Deck:', playerDonDeck.length, 'cartes')
+    console.log('🔍 DEBUG INIT: Opponent DON Deck:', opponentDonDeck.length, 'cartes')
 
-    // Initialiser l'état du jeu
+    // Créer l'état initial du jeu directement
     console.log('🔄 Création de l\'état initial du jeu')
     const gameState: GameState = {
-      id: 'game_' + Date.now(),
+      id: 'manual_game',
       player: {
         id: 'player',
-        name: user.name || 'Joueur',
+        name: 'Joueur',
         lifePoints: 5,
         deck: playerDeck,
         hand: playerHand,
         field: [],
-        leader: playerLeader,
-        activeDon: 0,
+        leader: {
+          ...playerLeader,
+          isActive: true,
+          canAttack: true,
+          hasAttacked: false,
+          wasPlayedThisTurn: false,
+          attachedDons: 0,
+          donAttachments: []
+        },
         donDeck: playerDonDeck,
-        usedDonDeck: [],
+        donField: [],
+        donAddedThisTurn: false,
         discardPile: [],
         trash: [],
-        donAddedThisTurn: 0
+        donAttachments: [],
+        activeDon: 0,
+        usedDonDeck: []
       },
       opponent: {
         id: 'opponent',
@@ -252,27 +277,43 @@ export async function POST() {
         deck: opponentDeck,
         hand: opponentHand,
         field: [],
-        leader: opponentLeader,
-        activeDon: 0,
+        leader: {
+          ...opponentLeader,
+          isActive: true,
+          canAttack: true,
+          hasAttacked: false,
+          wasPlayedThisTurn: false,
+          attachedDons: 0,
+          donAttachments: []
+        },
         donDeck: opponentDonDeck,
-        usedDonDeck: [],
+        donField: [],
+        donAddedThisTurn: false,
         discardPile: [],
         trash: [],
-        donAddedThisTurn: 0
+        donAttachments: [],
+        activeDon: 0,
+        usedDonDeck: []
       },
-      currentPhase: 'SETUP' as GamePhase,
-      setupPhase: 'CHOOSE_LEADER' as SetupPhase,
+      currentPhase: 'SETUP',
       currentPlayer: 'player',
       turnNumber: 1,
-      winner: null,
-      canPlayCard: false,
-      canAttack: false,
-      canEndTurn: false,
-      gameOver: false,
+      canDrawDon: false,
+      hasKeptHand: false,
+      setupPhase: 'CHOOSE_LEADER',
+      battleStack: [],
       isFirstTurn: true
-    }
+    };
 
-    console.log('✅ État du jeu initialisé')
+    // Sauvegarder l'état du jeu en base de données
+    console.log('💾 Sauvegarde de l\'état du jeu en base de données')
+    const savedGameId = await GamePersistenceService.saveGameState(
+      gameState,
+      user.id,
+      user.id // Pour l'instant, l'adversaire est le même utilisateur (mode solo)
+    );
+    
+    console.log('✅ État du jeu sauvegardé avec l\'ID:', savedGameId)
     console.log('=== FIN INITIALISATION DU JEU ===')
 
     return NextResponse.json(gameState)

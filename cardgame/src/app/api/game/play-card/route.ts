@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
-
-import { prisma } from '@/lib/prisma'
+import { ManualGameService } from '@/lib/game/manualGameService'
+import { GamePersistenceService } from '@/lib/game/gamePersistenceService'
 
 export async function POST(request: Request) {
   try {
@@ -23,51 +23,40 @@ export async function POST(request: Request) {
       )
     }
 
-    // Récupérer la carte
-    const card = await prisma.card.findUnique({
-      where: { id: cardId },
-      select: { id: true, name: true, type: true, color: true, cost: true, power: true, imageUrl: true }
-    })
-
-    if (!card) {
+    // Récupérer l'état actuel du jeu depuis la base de données
+    const currentGameState = await GamePersistenceService.getActiveGameState(session.user.id);
+    
+    if (!currentGameState) {
       return NextResponse.json(
-        { error: 'Carte non trouvée' },
+        { error: 'Aucune partie en cours. Initialisez d\'abord le jeu.' },
         { status: 404 }
       )
     }
 
-    // Pour l'instant, on retourne simplement un état de jeu simulé
-    // Dans une implémentation complète, on mettrait à jour l'état du jeu en base de données
-    const gameState = {
-      player: {
-        id: 'player',
-        name: session.user.name || 'Joueur',
-        lifePoints: 5,
-        deck: [],
-        hand: [],
-        field: [card],
-        leader: null,
-        activeDon: 0
-      },
-      opponent: {
-        id: 'opponent',
-        name: 'Adversaire',
-        lifePoints: 5,
-        deck: [],
-        hand: [],
-        field: [],
-        leader: null,
-        activeDon: 0
-      },
-      currentPhase: 'MAIN',
-      currentPlayer: 'opponent',
-      turnNumber: 1,
-      gameOver: false
+    // Vérifier que l'action est valide
+    if (!ManualGameService.canPerformAction(currentGameState, 'playCard', 'player', cardId)) {
+      return NextResponse.json(
+        { error: 'Action non autorisée' },
+        { status: 400 }
+      )
     }
 
-    return NextResponse.json(gameState)
+    // Jouer la carte
+    const updatedGameState = ManualGameService.playCard(currentGameState, 'player', cardId);
+    
+    console.log('🎮 API playCard - updatedGameState.player.field:', updatedGameState.player.field);
+    
+    // Sauvegarder l'état mis à jour
+    await GamePersistenceService.saveGameState(
+      updatedGameState,
+      session.user.id,
+      session.user.id
+    );
+
+    return NextResponse.json(updatedGameState)
+    
   } catch (error) {
-    console.error('Erreur lors du jeu de la carte:', error)
+    console.error('❌ Erreur lors du jeu de carte:', error)
     return NextResponse.json(
       { error: 'Erreur serveur' },
       { status: 500 }

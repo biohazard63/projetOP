@@ -136,7 +136,7 @@ export default function GameBoard({ playerDeck, opponentDeck }: GameBoardProps) 
           currentPlayer={gameState.currentPlayer}
           canPlayCard={!!selectedCard && gameState.currentPhase === 'MAIN'}
           canAttack={!!selectedCard && !!targetCard}
-          canEndTurn={gameState.canEndTurn}
+          canEndTurn={gameState.canEndTurn || false}
           onDrawCard={() => drawCard('player')}
           onAddDon={() => addDon('player')}
           onEndTurn={handleEndTurn}

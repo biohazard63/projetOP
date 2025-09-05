@@ -20,6 +20,7 @@ function GameContent() {
   const [decks, setDecks] = useState<DeckLite[]>([])
   const [showDeckSelection, setShowDeckSelection] = useState(false)
   const [isClient, setIsClient] = useState(false)
+  const [selectedAttacker, setSelectedAttacker] = useState<string | null>(null)
 
   useEffect(() => {
     setIsClient(true)
@@ -121,24 +122,85 @@ function GameContent() {
   const handleCardClick = async (card: GameCard) => {
     if (!gameState) return
 
+    // En phase MAIN, jouer une carte normalement
+    if (gameState.currentPhase === 'MAIN') {
+      try {
+        const response = await fetch('/api/game/play-card', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({ cardId: card.id }),
+        })
+
+        if (!response.ok) {
+          throw new Error('Erreur lors du jeu de la carte')
+        }
+
+        const updatedState = await response.json()
+        console.log('🔄 État mis à jour après playCard:', updatedState);
+        console.log('🔄 Player field après playCard:', updatedState[updatedState.currentPlayer].field);
+        setGameState(updatedState)
+      } catch (error) {
+        console.error('Erreur:', error)
+        toast.error('Impossible de jouer la carte')
+      }
+    }
+  }
+
+  const handleSelectAttacker = (card: GameCard) => {
+    console.log('🎯 handleSelectAttacker called for card:', card.name, card.id);
+    if (!gameState) return
+
+    // Vérifier que la carte peut attaquer (est sur le terrain du joueur actif)
+    console.log('🎯 gameState.currentPlayer:', gameState.currentPlayer);
+    const player = gameState[gameState.currentPlayer]
+    console.log('🎯 Current player field IDs in handleSelectAttacker:', player.field.map(c => c.id)); // NEW LOG
+    const isOnField = player.field.some(c => c.id === card.id)
+    
+    console.log('🎯 Card canAttack:', card.canAttack, 'isOnField:', isOnField, 'hasAttacked:', card.hasAttacked);
+    
+    if (isOnField && card.canAttack && !card.hasAttacked) {
+      setSelectedAttacker(card.id)
+      console.log('🎯 setSelectedAttacker called with:', card.id);
+      toast.info(`Attaquant sélectionné: ${card.name}`)
+    } else if (!isOnField) {
+      toast.error('Cette carte n\'est pas sur votre terrain')
+    } else if (card.hasAttacked) {
+      toast.error('Cette carte a déjà attaqué ce tour')
+    } else {
+      toast.error('Cette carte ne peut pas attaquer')
+    }
+  }
+
+  const handleSelectTarget = async (card: GameCard) => {
+    if (!gameState || !selectedAttacker) return
+
     try {
-      const response = await fetch('/api/game/play-card', {
+      const response = await fetch('/api/game/attack', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ cardId: card.id }),
+        body: JSON.stringify({ 
+          attackerId: selectedAttacker,
+          targetId: card.id 
+        }),
       })
 
       if (!response.ok) {
-        throw new Error('Erreur lors du jeu de la carte')
+        const errorData = await response.json()
+        throw new Error(errorData.error || 'Erreur lors de l\'attaque')
       }
 
       const updatedState = await response.json()
       setGameState(updatedState)
+      setSelectedAttacker(null) // Réinitialiser la sélection
+      toast.success('Attaque lancée !')
     } catch (error) {
       console.error('Erreur:', error)
-      toast.error('Impossible de jouer la carte')
+      toast.error(error instanceof Error ? error.message : 'Impossible de lancer l\'attaque')
+      setSelectedAttacker(null) // Réinitialiser en cas d'erreur
     }
   }
 
@@ -156,6 +218,7 @@ function GameContent() {
 
       const updatedState = await response.json()
       setGameState(updatedState)
+      setSelectedAttacker(null) // Réinitialiser la sélection d'attaquant
     } catch (error) {
       console.error('Erreur:', error)
       toast.error('Impossible de terminer le tour')
@@ -322,14 +385,18 @@ function GameContent() {
   }
 
   return (
-      <GameBoard
-        gameState={gameState}
-        onCardClick={handleCardClick}
-        onEndTurn={handleEndTurn}
-        onDrawCard={handleDrawCard}
-      onMulligan={handleMulligan}
-      onKeepHand={handleKeepHand}
-      />
+              <GameBoard
+          gameState={gameState}
+          onCardClick={handleCardClick}
+          onEndTurn={handleEndTurn}
+          onDrawCard={handleDrawCard}
+          onMulligan={handleMulligan}
+          onKeepHand={handleKeepHand}
+          selectedAttacker={selectedAttacker}
+          onCancelAttack={() => setSelectedAttacker(null)}
+          onSelectAttacker={handleSelectAttacker}
+          onSelectTarget={handleSelectTarget}
+        />
   )
 }
 

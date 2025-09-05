@@ -252,10 +252,11 @@ model GameState {
   playerHand               Json[]
   playerField              Json[]
   playerDonDeck            Json[]
+  playerDonField           Json[]
   playerTrash              Json[]
   playerActiveDon          Int       @default(0)
   playerDonAddedThisTurn   Boolean   @default(false)
-  playerUsedDonDeck        Boolean   @default(false)
+  playerUsedDonDeck        Json[]
   playerDiscardPile        Json[]
   opponentLife             Int       @default(4)
   opponentLeader           Json?
@@ -263,10 +264,11 @@ model GameState {
   opponentHand             Json[]
   opponentField            Json[]
   opponentDonDeck          Json[]
+  opponentDonField         Json[]
   opponentTrash            Json[]
   opponentActiveDon        Int       @default(0)
   opponentDonAddedThisTurn Boolean   @default(false)
-  opponentUsedDonDeck      Boolean   @default(false)
+  opponentUsedDonDeck      Json[]
   opponentDiscardPile      Json[]
   gameLogs                 GameLog[]
   opponent                 User      @relation("OpponentGame", fields: [opponentId], references: [id])
