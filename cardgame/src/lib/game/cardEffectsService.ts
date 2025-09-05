@@ -250,7 +250,10 @@ export class CardEffectsService {
     
     // Piocher des cartes
     const cardsToDraw = Math.min(drawBonus, player.deck.length);
-    const drawnCards = player.deck.slice(0, cardsToDraw);
+    const drawnCards = player.deck.slice(0, cardsToDraw).map(card => ({
+      ...card,
+      isFaceUp: true // Les cartes piochées sont face visible
+    }));
     const updatedDeck = player.deck.slice(cardsToDraw);
     const updatedHand = [...player.hand, ...drawnCards];
     

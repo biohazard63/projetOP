@@ -211,7 +211,7 @@ export async function POST() {
     console.log('🔄 Distribution des mains initiales')
     const playerHand = shuffledPlayerDeck.slice(0, 5).map(card => ({ ...card, isFaceUp: true }))
     const playerDeck = shuffledPlayerDeck.slice(5).map(card => ({ ...card, isFaceUp: false }))
-    const opponentHand = shuffledOpponentDeck.slice(0, 5).map(card => ({ ...card, isFaceUp: false }))
+    const opponentHand = shuffledOpponentDeck.slice(0, 5).map(card => ({ ...card, isFaceUp: true }))
     const opponentDeck = shuffledOpponentDeck.slice(5).map(card => ({ ...card, isFaceUp: false }))
 
     // Créer les decks DON

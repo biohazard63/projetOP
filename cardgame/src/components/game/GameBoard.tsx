@@ -141,7 +141,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
   }, [localGameState]);
 
   const handleCardClick = (card: GameCard) => {
-    console.log('Carte cliquée:', {
+    console.log('🎴 Carte cliquée:', {
       nom: card.name,
       type: card.type,
       phase: localGameState.currentPhase,
@@ -151,6 +151,16 @@ export const GameBoard: React.FC<GameBoardProps> = ({
       attachedDons: card.attachedDons,
       attackMode,
       attackingCard: attackingCard?.name,
+    });
+    
+    // Debug: vérifier dans quelle main est la carte
+    const isInPlayerHand = localGameState.player.hand.some(c => c.id === card.id);
+    const isInOpponentHand = localGameState.opponent.hand.some(c => c.id === card.id);
+    console.log('🔍 Debug main:', {
+      isInPlayerHand,
+      isInOpponentHand,
+      playerHandSize: localGameState.player.hand.length,
+      opponentHandSize: localGameState.opponent.hand.length
     });
 
     // Gestion spéciale pour la phase de setup
@@ -185,12 +195,31 @@ export const GameBoard: React.FC<GameBoardProps> = ({
 
     // Gestion du jeu de cartes depuis la main
     if (localGameState.currentPhase === 'MAIN' && 
-        localGameState.currentPlayer === 'player' && 
-        card.type === 'CHARACTER' && 
-        localGameState.player.hand.some(c => c.id === card.id)) {
-      // Jouer la carte
-      handlePlayCard(card);
-      return;
+        (card.type === 'CHARACTER' || card.type === 'PERSONNAGE')) {
+      
+      // Vérifier si c'est une carte du joueur actif
+      const isPlayerCard = localGameState.player.hand.some(c => c.id === card.id);
+      const isOpponentCard = localGameState.opponent.hand.some(c => c.id === card.id);
+      
+      if ((localGameState.currentPlayer === 'player' && isPlayerCard) ||
+          (localGameState.currentPlayer === 'opponent' && isOpponentCard)) {
+        // Jouer la carte
+        console.log('✅ Conditions remplies pour jouer la carte:', {
+          currentPlayer: localGameState.currentPlayer,
+          isPlayerCard,
+          isOpponentCard,
+          cardName: card.name
+        });
+        handlePlayCard(card);
+        return;
+      } else {
+        console.log('❌ Conditions non remplies pour jouer la carte:', {
+          currentPlayer: localGameState.currentPlayer,
+          isPlayerCard,
+          isOpponentCard,
+          cardName: card.name
+        });
+      }
     }
 
     setSelectedCard(card);
@@ -259,6 +288,12 @@ export const GameBoard: React.FC<GameBoardProps> = ({
   const handlePlayCard = async (card: GameCard) => {
     try {
       console.log(`🎴 Tentative de jouer la carte: ${card.name}`);
+      console.log(`🔍 État du jeu:`, {
+        phase: localGameState.currentPhase,
+        currentPlayer: localGameState.currentPlayer,
+        cardType: card.type,
+        cardCost: card.cost
+      });
       
       // Vérifier que nous sommes en phase MAIN
       if (localGameState.currentPhase !== 'MAIN') {
@@ -266,15 +301,20 @@ export const GameBoard: React.FC<GameBoardProps> = ({
         return;
       }
 
-      // Vérifier que c'est notre tour
-      if (localGameState.currentPlayer !== 'player') {
-        toast.error('Ce n\'est pas votre tour');
+      // Vérifier que la carte est dans la main du joueur actif
+      const isPlayerCard = localGameState.player.hand.some(c => c.id === card.id);
+      const isOpponentCard = localGameState.opponent.hand.some(c => c.id === card.id);
+      
+      if (!isPlayerCard && !isOpponentCard) {
+        toast.error('Cette carte n\'est pas dans une main');
         return;
       }
-
-      // Vérifier que la carte est dans notre main
-      if (!localGameState.player.hand.some(c => c.id === card.id)) {
-        toast.error('Cette carte n\'est pas dans votre main');
+      
+      // Déterminer le joueur qui joue la carte
+      const playerId = isPlayerCard ? 'player' : 'opponent';
+      
+      if (localGameState.currentPlayer !== playerId) {
+        toast.error('Ce n\'est pas le tour de ce joueur');
         return;
       }
 
@@ -285,7 +325,8 @@ export const GameBoard: React.FC<GameBoardProps> = ({
       }
 
       // Vérifier qu'il y a assez de DON
-      if (localGameState.player.donField.length < card.cost) {
+      const playerDonField = playerId === 'player' ? localGameState.player.donField : localGameState.opponent.donField;
+      if (playerDonField.length < card.cost) {
         toast.error(`Pas assez de DON pour jouer ${card.name} (nécessite ${card.cost} DON)`);
         return;
       }
@@ -295,7 +336,10 @@ export const GameBoard: React.FC<GameBoardProps> = ({
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ cardId: card.id }),
+        body: JSON.stringify({ 
+          cardId: card.id,
+          playerId: playerId 
+        }),
       });
 
       if (!response.ok) {
@@ -331,7 +375,8 @@ export const GameBoard: React.FC<GameBoardProps> = ({
         },
         body: JSON.stringify({ 
           attackerId: attackingCard.id, 
-          targetId: attackTarget.id 
+          targetId: attackTarget.id,
+          playerId: localGameState.currentPlayer
         }),
       });
 
@@ -504,7 +549,8 @@ export const GameBoard: React.FC<GameBoardProps> = ({
         },
         body: JSON.stringify({ 
           attackerId: localSelectedAttacker,
-          targetId: card.id 
+          targetId: card.id,
+          playerId: localGameState.currentPlayer
         }),
       });
 
@@ -682,6 +728,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
           selectedAttacker={localSelectedAttacker}
           onSelectAttacker={handleSelectAttackerLocal}
           onSelectTarget={handleSelectTargetLocal}
+          currentPlayer={localGameState.currentPlayer}
         />
 
         <PlayerField
@@ -692,6 +739,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
           selectedAttacker={localSelectedAttacker}
           onSelectAttacker={handleSelectAttackerLocal}
           onSelectTarget={handleSelectTargetLocal}
+          currentPlayer={localGameState.currentPlayer}
         />
       </div>
 

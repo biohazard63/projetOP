@@ -1,5 +1,6 @@
 import React from 'react';
 import { Player, GameCard } from '@/types/game';
+import Image from 'next/image';
 import { Card } from './Card';
 import '@/styles/game.css';
 
@@ -12,6 +13,7 @@ interface PlayerFieldProps {
   selectedAttacker?: string | null; // ID de la carte attaquante sélectionnée
   onSelectAttacker?: (card: GameCard) => void;
   onSelectTarget?: (card: GameCard) => void;
+  currentPlayer?: 'player' | 'opponent';
 }
 
 export const PlayerField: React.FC<PlayerFieldProps> = ({
@@ -23,6 +25,7 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
   selectedAttacker,
   onSelectAttacker,
   onSelectTarget,
+  currentPlayer = 'player',
 }) => {
   // Debug: vérifier si les fonctions sont bien passées
   console.log('PlayerField - onSelectAttacker:', !!onSelectAttacker);
@@ -70,11 +73,13 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                     onClick={() => onCardClick(card)}
                     isSelected={selectedCard?.id === card.id}
                     onTogglePosition={onToggleCardPosition ? () => onToggleCardPosition(card) : undefined}
+                    currentPlayer={currentPlayer}
                     canTogglePosition={!isOpponent} // Seulement le joueur peut changer les positions
+                    isOnField={true} // Cette carte est sur le terrain
                   />
                   
                   {/* Boutons d'action en phase BATTLE */}
-                  {!isOpponent && (
+                  {((!isOpponent && currentPlayer === 'player') || (isOpponent && currentPlayer === 'opponent')) && (
                     <div className="flex gap-1 mt-2 justify-center">
                       {/* Bouton de test pour voir si les boutons s'affichent */}
                       <button
@@ -138,12 +143,13 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                     isOpponent={isOpponent}
                     onClick={() => onCardClick(player.leader!)}
                     isSelected={selectedCard?.id === player.leader?.id}
+                    currentPlayer={currentPlayer}
                     onTogglePosition={onToggleCardPosition ? () => onToggleCardPosition(player.leader!) : undefined}
                     canTogglePosition={!isOpponent} // Seulement le joueur peut changer les positions
                   />
                   
-                  {/* Bouton pour cibler le leader adverse */}
-                  {isOpponent && onSelectTarget && selectedAttacker && (
+                  {/* Bouton pour cibler le leader (peu importe lequel) */}
+                  {onSelectTarget && selectedAttacker && (
                     <div className="flex justify-center mt-2">
                       <button
                         onClick={() => onSelectTarget(player.leader!)}
@@ -175,12 +181,22 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
             <div className={`text-white text-sm mb-2 text-center ${isOpponent ? '-rotate-180' : ''}`}>DECK</div>
             <div className={`relative ${isOpponent ? '-rotate-180' : ''}`}>
               {Array.isArray(player.deck) && player.deck.length > 0 ? (
-                <Card 
-                  card={player.deck[0]} 
-                  isOpponent={isOpponent}
-                  onClick={() => onCardClick(player.deck[0])}
-                  isSelected={selectedCard?.id === player.deck[0].id}
-                />
+                <div className="relative">
+                  {/* Afficher le dos de carte pour le deck */}
+                  <div className="w-full h-80 border-2 border-dashed border-blue-600 rounded-lg bg-blue-900/20 flex items-center justify-center relative overflow-hidden">
+                    <Image
+                      src="/images/card-back.jpg"
+                      alt="Dos de carte"
+                      width={200}
+                      height={280}
+                      className="object-cover rounded-lg"
+                    />
+                    {/* Indicateur du nombre de cartes */}
+                    <div className="absolute top-2 right-2 bg-blue-600 text-white text-xs px-2 py-1 rounded-full">
+                      {player.deck.length}
+                    </div>
+                  </div>
+                </div>
               ) : (
                 <div className="h-80 border-2 border-dashed border-gray-600 rounded-lg flex items-center justify-center bg-gray-900/20">
                   <span className="text-gray-500">Deck</span>
@@ -208,6 +224,7 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                       isOpponent={isOpponent}
                       onClick={() => onCardClick(player.donDeck[0])}
                       isSelected={selectedCard?.id === player.donDeck[0].id}
+                      currentPlayer={currentPlayer}
                     />
                     {player.donDeck.length > 1 && (
                       <div className="absolute top-0 left-0 w-full">
@@ -221,12 +238,13 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                               zIndex: -1 - index
                             }}
                           >
-                            <Card 
-                              card={card} 
-                              isOpponent={isOpponent}
-                              onClick={() => onCardClick(card)}
-                              isSelected={selectedCard?.id === card.id}
-                            />
+                                              <Card 
+                    card={card} 
+                    isOpponent={isOpponent}
+                    onClick={() => onCardClick(card)}
+                    isSelected={selectedCard?.id === card.id}
+                    currentPlayer={currentPlayer}
+                  />
                           </div>
                         ))}
                       </div>
@@ -252,12 +270,13 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                           zIndex: index
                         }}
                       >
-                        <Card 
-                          card={card} 
-                          isOpponent={isOpponent}
-                          onClick={() => onCardClick(card)}
-                          isSelected={selectedCard?.id === card.id}
-                        />
+                                          <Card 
+                    card={card} 
+                    isOpponent={isOpponent}
+                    onClick={() => onCardClick(card)}
+                    isSelected={selectedCard?.id === card.id}
+                    currentPlayer={currentPlayer}
+                  />
                       </div>
                     ))}
                   </div>
@@ -282,6 +301,7 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                       isOpponent={isOpponent}
                       onClick={() => onCardClick(player.usedDonDeck[0])}
                       isSelected={selectedCard?.id === player.usedDonDeck[0].id}
+                      currentPlayer={currentPlayer}
                     />
                     {player.usedDonDeck.length > 1 && (
                       <div className="absolute top-2 left-2">
@@ -295,12 +315,13 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                               zIndex: -1 - index
                             }}
                           >
-                            <Card 
-                              card={card} 
-                              isOpponent={isOpponent}
-                              onClick={() => onCardClick(card)}
-                              isSelected={selectedCard?.id === card.id}
-                            />
+                                              <Card 
+                    card={card} 
+                    isOpponent={isOpponent}
+                    onClick={() => onCardClick(card)}
+                    isSelected={selectedCard?.id === card.id}
+                    currentPlayer={currentPlayer}
+                  />
                           </div>
                         ))}
                       </div>
@@ -327,6 +348,7 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                       isOpponent={isOpponent}
                       onClick={() => onCardClick(player.discardPile[0])}
                       isSelected={selectedCard?.id === player.discardPile[0].id}
+                      currentPlayer={currentPlayer}
                     />
                     {player.discardPile.length > 1 && (
                       <div className="absolute top-2 left-2">
@@ -340,12 +362,13 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                               zIndex: -1 - index
                             }}
                           >
-                            <Card 
-                              card={card} 
-                              isOpponent={isOpponent}
-                              onClick={() => onCardClick(card)}
-                              isSelected={selectedCard?.id === card.id}
-                            />
+                                              <Card 
+                    card={card} 
+                    isOpponent={isOpponent}
+                    onClick={() => onCardClick(card)}
+                    isSelected={selectedCard?.id === card.id}
+                    currentPlayer={currentPlayer}
+                  />
                           </div>
                         ))}
                       </div>
@@ -363,30 +386,47 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
           </div>
 
           {/* Hand */}
-          <div>
+          <div className="flex flex-col items-center">
             <div className={`text-white text-sm mb-2 text-center ${isOpponent ? '-rotate-180' : ''}`}>MAIN ({player.hand?.length || 0})</div>
-            <div className="relative flex justify-center" style={{ height: '330px' }}>
-              {Array.isArray(player.hand) && player.hand.map((card, index) => (
-                <div
-                  key={card.id}
-                  className={`absolute hover:[z-index:9999] transition-all duration-200 ease-in-out hover:scale-110 ${isOpponent ? '-rotate-180' : ''}`}
-                  style={{
-                    left: `${index * 60}px`,
-                    zIndex: index,
-                    transform: `rotate(${-10 + (index * (20 / Math.max(1, player.hand.length - 1)))}deg)`,
-                    transformOrigin: 'bottom center'
-                  }}
-                >
-                  <div className="relative">
-                    <Card
-                      card={card}
-                      isSelected={selectedCard?.id === card.id}
-                      isOpponent={isOpponent}
-                      onClick={() => onCardClick(card)}
-                    />
+            <div className="relative flex justify-center items-center" style={{ height: '330px', width: '100%' }}>
+              {Array.isArray(player.hand) && player.hand.map((card, index) => {
+                const totalCards = player.hand.length;
+                const centerOffset = (totalCards - 1) * 30; // Ajuster l'offset pour centrer
+                const cardPosition = (index * 60) - centerOffset;
+                
+                return (
+                  <div
+                    key={card.id}
+                    className={`absolute transition-all duration-300 ease-in-out hover:scale-110 hover:translate-y-[-20px] ${isOpponent ? '-rotate-180' : ''}`}
+                    style={{
+                      left: `calc(50% + ${cardPosition}px)`,
+                      top: isOpponent ? '80px' : 'auto',
+                      bottom: isOpponent ? 'auto' : '80px',
+                      transform: `translateX(-50%) rotate(${-12 + (index * (24 / Math.max(1, totalCards - 1)))}deg)`,
+                      transformOrigin: isOpponent ? 'top center' : 'bottom center',
+                      zIndex: index
+                    }}
+                    onMouseEnter={(e) => {
+                      // Mettre la carte au-dessus de toutes les autres au survol
+                      e.currentTarget.style.zIndex = '9999';
+                    }}
+                    onMouseLeave={(e) => {
+                      // Remettre le z-index original
+                      e.currentTarget.style.zIndex = index.toString();
+                    }}
+                  >
+                    <div className="relative">
+                      <Card
+                        card={card}
+                        isSelected={selectedCard?.id === card.id}
+                        isOpponent={isOpponent}
+                        onClick={() => onCardClick(card)}
+                        currentPlayer={currentPlayer}
+                      />
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </div>

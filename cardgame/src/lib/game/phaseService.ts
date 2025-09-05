@@ -297,7 +297,10 @@ export class PhaseService {
         };
       }
 
-      const drawnCard = playerWithDon.deck[0];
+      const drawnCard = {
+        ...playerWithDon.deck[0],
+        isFaceUp: true // Les cartes piochées sont face visible
+      };
       const updatedDeck = playerWithDon.deck.slice(1);
       const updatedHand = [...playerWithDon.hand, drawnCard];
 
@@ -321,7 +324,10 @@ export class PhaseService {
       return gameState;
     }
 
-    const drawnCard = player.deck[0];
+    const drawnCard = {
+      ...player.deck[0],
+      isFaceUp: true // Les cartes piochées sont face visible
+    };
     const updatedDeck = player.deck.slice(1);
     const updatedHand = [...player.hand, drawnCard];
 

@@ -9,6 +9,8 @@ interface CardProps {
   onClick?: () => void;
   onTogglePosition?: () => void; // Nouvelle prop pour changer la position
   canTogglePosition?: boolean; // Si la carte peut changer de position
+  currentPlayer?: 'player' | 'opponent'; // Joueur actif
+  isOnField?: boolean; // Si la carte est sur le terrain (field)
 }
 
 export const Card: React.FC<CardProps> = ({
@@ -18,6 +20,8 @@ export const Card: React.FC<CardProps> = ({
   onClick,
   onTogglePosition,
   canTogglePosition = false,
+  currentPlayer = 'player',
+  isOnField = false,
 }) => {
   const handleMouseEnter = () => {
     console.log('=== Informations détaillées de la carte ===');
@@ -66,14 +70,20 @@ export const Card: React.FC<CardProps> = ({
     // Le leader adverse est toujours visible
     if (card.type === 'LEADER' && isOpponent) return false;
     
-    // Les cartes de l'adversaire sont toujours face cachée (sauf le leader)
-    if (isOpponent) return true;
-    
     // Les cartes DON sont toujours face cachée
     if (card.type === 'DON') return true;
     
-    // Pour toutes les autres cartes, on utilise la propriété isFaceUp
-    return !card.isFaceUp;
+    // Les cartes jouées sur le terrain (field) sont TOUJOURS visibles
+    if (isOnField) return false;
+    
+    // Pour les cartes en main : seules les cartes de l'adversaire en main sont cachées
+    if (isOpponent) {
+      // Cartes de l'adversaire en main : visibles seulement quand c'est son tour
+      return currentPlayer !== 'opponent';
+    } else {
+      // Cartes du joueur en main : TOUJOURS visibles
+      return false;
+    }
   };
 
   const isFaceDown = shouldShowFaceDown();
@@ -82,7 +92,7 @@ export const Card: React.FC<CardProps> = ({
   // Déterminer l'image à afficher
   const getImageUrl = () => {
     if (isFaceDown) {
-      return card.type === 'DON' ? '/don.png' : '/card-back.jpg';
+      return card.type === 'DON' ? '/don.png' : '/images/card-back.jpg';
     }
     return card.imageUrl;
   };

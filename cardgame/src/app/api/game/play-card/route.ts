@@ -14,7 +14,7 @@ export async function POST(request: Request) {
       )
     }
 
-    const { cardId } = await request.json()
+    const { cardId, playerId = 'player' } = await request.json()
     
     if (!cardId) {
       return NextResponse.json(
@@ -34,7 +34,7 @@ export async function POST(request: Request) {
     }
 
     // Vérifier que l'action est valide
-    if (!ManualGameService.canPerformAction(currentGameState, 'playCard', 'player', cardId)) {
+    if (!ManualGameService.canPerformAction(currentGameState, 'playCard', playerId, cardId)) {
       return NextResponse.json(
         { error: 'Action non autorisée' },
         { status: 400 }
@@ -42,7 +42,7 @@ export async function POST(request: Request) {
     }
 
     // Jouer la carte
-    const updatedGameState = ManualGameService.playCard(currentGameState, 'player', cardId);
+    const updatedGameState = ManualGameService.playCard(currentGameState, playerId, cardId);
     
     console.log('🎮 API playCard - updatedGameState.player.field:', updatedGameState.player.field);
     

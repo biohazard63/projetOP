@@ -14,7 +14,7 @@ export async function POST(request: Request) {
       )
     }
 
-    const { attackerId, targetId } = await request.json()
+    const { attackerId, targetId, playerId = 'player' } = await request.json()
     
     if (!attackerId || !targetId) {
       return NextResponse.json(
@@ -42,7 +42,7 @@ export async function POST(request: Request) {
     }
 
     // Vérifier que l'action est valide
-    if (!ManualGameService.canPerformAction(currentGameState, 'attack', 'player', attackerId)) {
+    if (!ManualGameService.canPerformAction(currentGameState, 'attack', playerId, attackerId)) {
       return NextResponse.json(
         { error: 'Action non autorisée' },
         { status: 400 }
@@ -50,7 +50,7 @@ export async function POST(request: Request) {
     }
 
     // Exécuter l'attaque
-    const updatedGameState = ManualGameService.attack(currentGameState, attackerId, targetId, 'player');
+    const updatedGameState = ManualGameService.attack(currentGameState, attackerId, targetId, playerId);
     
     // Vérifier si la partie est terminée
     if (updatedGameState.opponent.lifePoints <= 0) {
