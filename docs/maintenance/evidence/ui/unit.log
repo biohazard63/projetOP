@@ -1,0 +1,182 @@
+
+> cardgame@0.1.0 test
+> node --import tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: per-set legacy slots generate exactly 6C 3UC 2R 1SR, with legitimate duplicates
+ok 1 - per-set legacy slots generate exactly 6C 3UC 2R 1SR, with legitimate duplicates
+  ---
+  duration_ms: 1.624833
+  type: 'test'
+  ...
+# Subtest: empty and incomplete sets fail instead of silently replacing rarities
+ok 2 - empty and incomplete sets fail instead of silently replacing rarities
+  ---
+  duration_ms: 0.651875
+  type: 'test'
+  ...
+# Subtest: a card from another extension is rejected, even with a similar alias
+ok 3 - a card from another extension is rejected, even with a similar alias
+  ---
+  duration_ms: 0.080375
+  type: 'test'
+  ...
+# Subtest: configuration rejects malformed weights, unknown fields and impossible special packs
+ok 4 - configuration rejects malformed weights, unknown fields and impossible special packs
+  ---
+  duration_ms: 3.564334
+  type: 'test'
+  ...
+# Subtest: weighted choice boundaries and zero-weight cards
+ok 5 - weighted choice boundaries and zero-weight cards
+  ---
+  duration_ms: 0.337959
+  type: 'test'
+  ...
+# Subtest: configured rarity and card probabilities hold over 40000 draws
+ok 6 - configured rarity and card probabilities hold over 40000 draws
+  ---
+  duration_ms: 85.422208
+  type: 'test'
+  ...
+# Subtest: variants are explicit pools; standard excludes alternative, parallel and special cards
+ok 7 - variants are explicit pools; standard excludes alternative, parallel and special cards
+  ---
+  duration_ms: 0.620209
+  type: 'test'
+  ...
+# Subtest: special packs replace all slots; configured 10% probability and required pools verified
+ok 8 - special packs replace all slots; configured 10% probability and required pools verified
+  ---
+  duration_ms: 122.701209
+  type: 'test'
+  ...
+# Subtest: historical God Pack retains explicit 1% occurrence with all 12 cards rare
+ok 9 - historical God Pack retains explicit 1% occurrence with all 12 cards rare
+  ---
+  duration_ms: 0.765584
+  type: 'test'
+  ...
+# Subtest: BoosterCard zero weights exclude cards and missing/negative values fail
+ok 10 - BoosterCard zero weights exclude cards and missing/negative values fail
+  ---
+  duration_ms: 0.614792
+  type: 'test'
+  ...
+# Subtest: legacy variant chances are disclosed instead of silently applied or claimed official
+ok 11 - legacy variant chances are disclosed instead of silently applied or claimed official
+  ---
+  duration_ms: 0.22175
+  type: 'test'
+  ...
+# Subtest: every available extension in the actual read-only inventory supports its configured slots
+ok 12 - every available extension in the actual read-only inventory supports its configured slots
+  ---
+  duration_ms: 13.042458
+  type: 'test'
+  ...
+# Subtest: booster illustrations differ per extension, preserve configured artwork and normalize aliases
+ok 13 - booster illustrations differ per extension, preserve configured artwork and normalize aliases
+  ---
+  duration_ms: 4.111916
+  type: 'test'
+  ...
+# Subtest: collector distinguishes copies, unique catalogue IDs and collected alternative versions
+ok 14 - collector distinguishes copies, unique catalogue IDs and collected alternative versions
+  ---
+  duration_ms: 0.77
+  type: 'test'
+  ...
+# Subtest: empty and uncollected catalogues return zero progression without fictional figures
+ok 15 - empty and uncollected catalogues return zero progression without fictional figures
+  ---
+  duration_ms: 0.48775
+  type: 'test'
+  ...
+# Subtest: visual effects use real variant metadata before configurable rarity names
+ok 16 - visual effects use real variant metadata before configurable rarity names
+  ---
+  duration_ms: 0.197625
+  type: 'test'
+  ...
+# Subtest: deck UI blocks unowned copies, incompatible colors, missing leader and copies across variants
+ok 17 - deck UI blocks unowned copies, incompatible colors, missing leader and copies across variants
+  ---
+  duration_ms: 0.505583
+  type: 'test'
+  ...
+# Subtest: deck analytics count quantities and exclude the leader from costs/types/colors
+ok 18 - deck analytics count quantities and exclude the leader from costs/types/colors
+  ---
+  duration_ms: 0.240459
+  type: 'test'
+  ...
+# Subtest: client deck rules reuse the server validator for a complete 1 plus 50 deck
+ok 19 - client deck rules reuse the server validator for a complete 1 plus 50 deck
+  ---
+  duration_ms: 0.279334
+  type: 'test'
+  ...
+# Subtest: legal 50-card deck with bilingual colors
+ok 20 - legal 50-card deck with bilingual colors
+  ---
+  duration_ms: 0.952458
+  type: 'test'
+  ...
+# Subtest: reject invalid quantities and names
+ok 21 - reject invalid quantities and names
+  ---
+  duration_ms: 2.114542
+  type: 'test'
+  ...
+# Subtest: reject forged leader, colors, unknown and duplicate IDs
+ok 22 - reject forged leader, colors, unknown and duplicate IDs
+  ---
+  duration_ms: 0.165916
+  type: 'test'
+  ...
+# Subtest: alternate arts share the four-copy cap
+ok 23 - alternate arts share the four-copy cap
+  ---
+  duration_ms: 0.203667
+  type: 'test'
+  ...
+# Subtest: bcrypt password limit uses bytes
+ok 24 - bcrypt password limit uses bytes
+  ---
+  duration_ms: 0.104417
+  type: 'test'
+  ...
+# Subtest: rate limit and login lock
+ok 25 - rate limit and login lock
+  ---
+  duration_ms: 0.153417
+  type: 'test'
+  ...
+# Subtest: configured captcha rejects missing token and secret
+ok 26 - configured captcha rejects missing token and secret
+  ---
+  duration_ms: 0.199084
+  type: 'test'
+  ...
+# Subtest: playing characters preserves summoning sickness and enforces turn and field cap
+ok 27 - playing characters preserves summoning sickness and enforces turn and field cap
+  ---
+  duration_ms: 0.405458
+  type: 'test'
+  ...
+# Subtest: collection colors normalize case, language and dual-color order
+ok 28 - collection colors normalize case, language and dual-color order
+  ---
+  duration_ms: 0.626708
+  type: 'test'
+  ...
+1..28
+# tests 28
+# suites 0
+# pass 28
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 506.535459

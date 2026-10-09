@@ -1,0 +1,258 @@
+
+> cardgame@0.1.0 build
+> next build
+
+   ▲ Next.js 15.5.27
+   - Environments: .env
+   - Experiments (use with caution):
+     · optimizePackageImports
+
+   Creating an optimized production build ...
+(node:21759) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/quentin/Documents/GitHub/projetOP/cardgame/tailwind.config.ts?id=1791566899916 is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/quentin/Documents/GitHub/projetOP/cardgame/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+ ✓ Compiled successfully in 10.4s
+   Linting and checking validity of types ...
+
+./src/app/api/auth/register/route.ts
+78:23  Warning: '_' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/api/decks/[deckId]/route.ts
+8:6  Warning: 'CardWithQuantity' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/api/decks/route.ts
+6:10  Warning: 'Prisma' is defined but never used.  @typescript-eslint/no-unused-vars
+10:11  Warning: 'CreateDeckRequest' is defined but never used.  @typescript-eslint/no-unused-vars
+21:11  Warning: 'RawDeckWithCards' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/api/game/initialize/route.ts
+11:21  Warning: 'GamePhase' is defined but never used.  @typescript-eslint/no-unused-vars
+11:32  Warning: 'SetupPhase' is defined but never used.  @typescript-eslint/no-unused-vars
+12:10  Warning: 'ManualGameService' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/api/game/keep-hand/route.ts
+6:28  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/api/game/mulligan/route.ts
+6:28  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/game/page.tsx
+21:29  Warning: 'setShowDeckSelection' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/providers.tsx
+264:10  Warning: 'isTransitioning' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/GameBoard.tsx
+2:1  Warning: Expected an assignment or function call and instead saw an expression.  @typescript-eslint/no-unused-expressions
+5:10  Warning: 'GameState' is defined but never used.  @typescript-eslint/no-unused-vars
+81:9  Warning: 'handlePlayCard' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/booster/BoosterCard.tsx
+32:3  Warning: 'imageError' is defined but never used.  @typescript-eslint/no-unused-vars
+35:3  Warning: 'isNewCard' is defined but never used.  @typescript-eslint/no-unused-vars
+42:3  Warning: 'onDragEnd' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/booster-opening/AlternativeAnimation.tsx
+51:6  Warning: React Hook useEffect has a missing dependency: 'skip'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/booster-opening/BoosterPackAnimation.tsx
+13:69  Warning: 'performanceMode' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+17:10  Warning: 'showPulse' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+87:6  Warning: React Hook useEffect has a missing dependency: 'cardIds.length'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+98:6  Warning: React Hook useEffect has a missing dependency: 'skip'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/booster-opening/CardDetailsModal.tsx
+164:31  Warning: 'e' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/booster-opening/CardReveal.tsx
+29:3  Warning: 'onCardClick' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/booster-opening/RareAnimation.tsx
+51:6  Warning: React Hook useEffect has a missing dependency: 'skip'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/booster-opening/UltraRareAnimation.tsx
+53:6  Warning: React Hook useEffect has a missing dependency: 'skip'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/booster-opening/components/CardDisplay.tsx
+3:18  Warning: 'AnimatePresence' is defined but never used.  @typescript-eslint/no-unused-vars
+31:3  Warning: 'navDirection' is defined but never used.  @typescript-eslint/no-unused-vars
+43:9  Warning: 'easing' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+45:9  Warning: 'variants' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+46:13  Warning: '_dir' is defined but never used.  @typescript-eslint/no-unused-vars
+59:12  Warning: '_dir' is defined but never used.  @typescript-eslint/no-unused-vars
+107:6  Warning: React Hook useEffect has a missing dependency: 'triggerSwipeAnimation'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+243:23  Warning: 'rotateX' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/game/Card.tsx
+127:10  Warning: 'showDetails' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+127:23  Warning: 'setShowDetails' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/game/CardEffectsPanel.tsx
+4:27  Warning: 'StrategyAnalysis' is defined but never used.  @typescript-eslint/no-unused-vars
+15:10  Warning: 'selectedCard' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+15:24  Warning: 'setSelectedCard' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+16:10  Warning: 'selectedTarget' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+16:26  Warning: 'setSelectedTarget' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+291:42  Warning: 'index' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/game/GameBoard.tsx
+5:8  Warning: 'Card' is defined but never used.  @typescript-eslint/no-unused-vars
+11:22  Warning: 'EndTurn' is defined but never used.  @typescript-eslint/no-unused-vars
+11:31  Warning: 'Zap' is defined but never used.  @typescript-eslint/no-unused-vars
+11:36  Warning: 'Target' is defined but never used.  @typescript-eslint/no-unused-vars
+11:44  Warning: 'Crown' is defined but never used.  @typescript-eslint/no-unused-vars
+15:10  Warning: 'Play' is defined but never used.  @typescript-eslint/no-unused-vars
+15:16  Warning: 'SkipForward' is defined but never used.  @typescript-eslint/no-unused-vars
+15:29  Warning: 'RefreshCw' is defined but never used.  @typescript-eslint/no-unused-vars
+15:40  Warning: 'RotateCw' is defined but never used.  @typescript-eslint/no-unused-vars
+15:50  Warning: 'Sword' is defined but never used.  @typescript-eslint/no-unused-vars
+33:3  Warning: 'onEndTurn' is defined but never used.  @typescript-eslint/no-unused-vars
+34:3  Warning: 'onDrawCard' is defined but never used.  @typescript-eslint/no-unused-vars
+35:3  Warning: 'onMulligan' is defined but never used.  @typescript-eslint/no-unused-vars
+36:3  Warning: 'onKeepHand' is defined but never used.  @typescript-eslint/no-unused-vars
+37:3  Warning: 'selectedAttacker' is defined but never used.  @typescript-eslint/no-unused-vars
+38:3  Warning: 'onCancelAttack' is defined but never used.  @typescript-eslint/no-unused-vars
+93:9  Warning: 'handleMarkCardAsPlayed' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+97:13  Warning: 'updatedState' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+363:9  Warning: 'handleAttack' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+436:9  Warning: 'handlePreviousPhase' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+574:9  Warning: 'cardToGameCard' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/game/PhaseActions.tsx
+3:10  Warning: 'PhaseService' is defined but never used.  @typescript-eslint/no-unused-vars
+22:40  Warning: 'canDrawDon' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/game/TestPanel.tsx
+10:21  Warning: 'GameCard' is defined but never used.  @typescript-eslint/no-unused-vars
+641:13  Warning: 'updatedState' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+672:15  Warning: 'updatedState' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+841:35  Warning: 'index' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/theme-provider.tsx
+149:10  Warning: 'ThemeSelector' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/hooks/useGame.ts
+2:31  Warning: 'PlayerState' is defined but never used.  @typescript-eslint/no-unused-vars
+2:55  Warning: 'SetupPhase' is defined but never used.  @typescript-eslint/no-unused-vars
+6:7  Warning: 'MAX_HAND_SIZE' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/auth.config.ts
+124:24  Warning: 'request' is defined but never used.  @typescript-eslint/no-unused-vars
+128:20  Warning: 'user' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/game/cardEffectsService.ts
+2:10  Warning: 'CombatService' is defined but never used.  @typescript-eslint/no-unused-vars
+3:10  Warning: 'CounterService' is defined but never used.  @typescript-eslint/no-unused-vars
+159:11  Warning: 'player' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+374:25  Warning: 'playerId' is defined but never used.  @typescript-eslint/no-unused-vars
+382:25  Warning: 'playerId' is defined but never used.  @typescript-eslint/no-unused-vars
+390:25  Warning: 'playerId' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/game/cardStateService.ts
+196:40  Warning: 'isCurrentPlayer' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/game/combatService.ts
+482:5  Warning: 'playerId' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/game/counterService.ts
+1:45  Warning: 'GamePhase' is defined but never used.  @typescript-eslint/no-unused-vars
+2:10  Warning: 'CombatService' is defined but never used.  @typescript-eslint/no-unused-vars
+77:5  Warning: 'targetAction' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/game/donService.ts
+1:54  Warning: 'DonState' is defined but never used.  @typescript-eslint/no-unused-vars
+185:11  Warning: 'donToUse' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+213:40  Warning: 'isCurrentPlayer' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/game/gameSimulationService.ts
+4:10  Warning: 'CardEffectsService' is defined but never used.  @typescript-eslint/no-unused-vars
+5:10  Warning: 'StrategyService' is defined but never used.  @typescript-eslint/no-unused-vars
+7:10  Warning: 'CardStateService' is defined but never used.  @typescript-eslint/no-unused-vars
+706:11  Warning: 'turnNumber' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/game/manualGameService.ts
+3:10  Warning: 'DonService' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/game/phaseService.ts
+4:10  Warning: 'DonService' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/game/strategyService.ts
+2:30  Warning: 'ComboEffect' is defined but never used.  @typescript-eslint/no-unused-vars
+284:65  Warning: 'playerId' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/types/next-auth.d.ts
+1:8  Warning: 'NextAuth' is defined but never used.  @typescript-eslint/no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+   Collecting page data ...
+   Generating static pages (0/40) ...
+   Generating static pages (10/40)
+   Generating static pages (20/40)
+   Generating static pages (30/40)
+ ✓ Generating static pages (40/40)
+   Finalizing page optimization ...
+   Collecting build traces ...
+
+Route (app)                                 Size  First Load JS
+┌ ○ /                                      250 B         103 kB
+├ ○ /_not-found                            250 B         103 kB
+├ ○ /api-test                            1.86 kB         110 kB
+├ ƒ /api/auth/[...nextauth]                250 B         103 kB
+├ ƒ /api/auth/register                     250 B         103 kB
+├ ƒ /api/booster                           250 B         103 kB
+├ ƒ /api/booster/add-to-collection         250 B         103 kB
+├ ƒ /api/booster/generate                  250 B         103 kB
+├ ƒ /api/booster/history                   250 B         103 kB
+├ ƒ /api/booster/open                      250 B         103 kB
+├ ƒ /api/booster/openings/[openingId]      250 B         103 kB
+├ ƒ /api/booster/rules                     250 B         103 kB
+├ ƒ /api/cards                             250 B         103 kB
+├ ƒ /api/collection                        250 B         103 kB
+├ ƒ /api/collection/add-cards              250 B         103 kB
+├ ƒ /api/collector                         250 B         103 kB
+├ ƒ /api/decks                             250 B         103 kB
+├ ƒ /api/decks/[deckId]                    250 B         103 kB
+├ ƒ /api/decks/[deckId]/activate           250 B         103 kB
+├ ƒ /api/decks/active                      250 B         103 kB
+├ ƒ /api/decks/random                      250 B         103 kB
+├ ƒ /api/game/attack                       250 B         103 kB
+├ ƒ /api/game/block                        250 B         103 kB
+├ ƒ /api/game/draw-card                    250 B         103 kB
+├ ƒ /api/game/end-turn                     250 B         103 kB
+├ ƒ /api/game/execute-effect               250 B         103 kB
+├ ƒ /api/game/initialize                   250 B         103 kB
+├ ƒ /api/game/keep-hand                    250 B         103 kB
+├ ƒ /api/game/mulligan                     250 B         103 kB
+├ ƒ /api/game/next-phase                   250 B         103 kB
+├ ƒ /api/game/play-card                    250 B         103 kB
+├ ƒ /api/game/start                        250 B         103 kB
+├ ƒ /api/sets                              250 B         103 kB
+├ ƒ /api/sets/[code]                       250 B         103 kB
+├ ƒ /api/sets/[code]/rules                 250 B         103 kB
+├ ƒ /api/user/cards                        250 B         103 kB
+├ ƒ /api/user/collection                   250 B         103 kB
+├ ƒ /api/user/favorites                    250 B         103 kB
+├ ƒ /api/user/favorites/[cardId]           250 B         103 kB
+├ ƒ /booster-opening                     9.86 kB         147 kB
+├ ƒ /boosters                            4.52 kB         119 kB
+├ ƒ /boosters/[code]                     1.85 kB         145 kB
+├ ƒ /collection                          1.41 kB         145 kB
+├ ƒ /deck-builder                        28.8 kB         165 kB
+├ ƒ /decks                                3.8 kB         138 kB
+├ ƒ /game                                27.8 kB         160 kB
+├ ƒ /game/select-deck                    5.01 kB         174 kB
+├ ƒ /history                             2.97 kB         140 kB
+├ ○ /home                                4.32 kB         144 kB
+├ ○ /login                               5.89 kB         124 kB
+├ ○ /opening-demo                        3.63 kB         144 kB
+├ ƒ /profile                             3.68 kB         113 kB
+└ ○ /register                            3.34 kB         158 kB
++ First Load JS shared by all             103 kB
+  ├ chunks/1255-641b25b9936c1d6d.js      46.4 kB
+  ├ chunks/4bd1b696-f785427dddbba9fb.js  54.2 kB
+  └ other shared chunks (total)          1.96 kB
+
+
+○  (Static)   prerendered as static content
+ƒ  (Dynamic)  server-rendered on demand

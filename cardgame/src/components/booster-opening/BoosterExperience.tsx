@@ -1,6 +1,10 @@
 'use client'
 
 import BoosterArtwork from './BoosterArtwork'
+import CinematicOpening, { CINEMATIC_DURATION } from './CinematicOpening'
+import { useCollectorPreferences } from '@/components/collector/Preferences'
+import { cardEffect } from '@/lib/collector/effects'
+import { useSearchParams } from 'next/navigation'
 
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { useSession } from 'next-auth/react'
@@ -14,7 +18,7 @@ import styles from './BoosterExperience.module.css'
 
 type Intent = { setCode: string; idempotencyKey: string; openingId?: string; revealed: number }
 type HistoryRow = { id: string; setName: string; setCode: string; openedAt: string; creditedAt: string | null; cardCount: number }
-const button = 'inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300 disabled:cursor-not-allowed disabled:opacity-40'
+const button = 'piece-button inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-semibold transition-colors focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-amber-300 disabled:cursor-not-allowed disabled:opacity-40'
 const rare = (card: OpeningCard) => ['SR', 'SEC', 'SP', 'SP CARD', 'SR SP', 'TR'].includes(card.rarity.toUpperCase()) || card.isAltArt || card.isParallel || card.isSpecial
 class ApiError extends Error { constructor(message: string, public status: number) { super(message) } }
 async function api<T>(path: string, body?: unknown): Promise<T> {
@@ -33,6 +37,8 @@ function CardImage({ card }: { card: OpeningCard }) {
 
 export default function BoosterExperience() {
   const { data: session, status } = useSession()
+  const preferences = useCollectorPreferences()
+  const requestedSet = useSearchParams().get('set')
   const [reducedMotion, setReducedMotion] = useState(true)
   const { soundsEnabled, setSoundsEnabled } = useSoundSetting()
   const audio = useAudio()
@@ -94,16 +100,17 @@ export default function BoosterExperience() {
       const count = Math.min(intent.revealed, data.opening.cards.length)
       setOpening(data.opening); setSelectedSet(data.opening.setCode); setRevealed(count)
       save({ ...intent, openingId: data.opening.id, revealed: count })
-      const shouldAnimate = animate && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
+      if (timer.current) clearTimeout(timer.current)
+      const shouldAnimate = animate && preferences.animations && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
       setAnimating(shouldAnimate)
-      if (shouldAnimate) timer.current = setTimeout(() => setAnimating(false), 900)
+      if (shouldAnimate) timer.current = setTimeout(() => setAnimating(false), CINEMATIC_DURATION + 1000)
       void loadHistory()
     } catch (e) {
       setError(e instanceof Error && e.name !== 'AbortError' ? e.message : 'Ouverture non confirmée. Réessayez cette ouverture pour récupérer le résultat.')
       setCanDiscard(!intent.openingId && e instanceof ApiError && [400, 422].includes(e.status))
     }
     finally { flight.current = false; setBusy(false) }
-  }, [save, loadHistory])
+  }, [save, loadHistory, preferences.animations])
 
   useEffect(() => {
     if (!session?.user?.id || resumedUser.current === session.user.id) return
@@ -129,8 +136,15 @@ export default function BoosterExperience() {
     return () => { active = false }
   }, [detail])
 
+  useEffect(() => {
+    if (!requestedSet || busy || (opening && revealed < opening.cards.length)) return
+    const matching = sets.find(set => set.code.replace(/[\s-]/g, '').toUpperCase() === requestedSet.replace(/[\s-]/g, '').toUpperCase())
+    if (matching) setSelectedSet(matching.code)
+  }, [requestedSet, sets, busy, opening, revealed])
+
   function reveal(count: number) {
     if (!opening) return
+    if (timer.current) clearTimeout(timer.current)
     const next = Math.min(count, opening.cards.length)
     setRevealed(next); setAnimating(false)
     if (pending?.openingId === opening.id) save({ ...pending, revealed: next })
@@ -173,16 +187,16 @@ export default function BoosterExperience() {
 
   if (status === 'loading') return <p className="p-12 text-center" role="status">Chargement de votre espace…</p>
   if (!session?.user) return <div className="p-12 text-center"><Link href="/login" className={button}>Connectez-vous pour ouvrir des boosters</Link></div>
-  return <main className="min-h-screen bg-slate-950 px-4 py-8 text-slate-100 sm:px-8 sm:py-12">
-    <div className="mx-auto max-w-6xl">
+  return <div className="piece-page">
+    <div className="mx-auto max-w-none">
       <div className="mb-8 flex items-start justify-between gap-4">
         <div><p className="mb-2 text-xs font-semibold tracking-[0.25em] text-amber-300">LA PROCHAINE CARTE VOUS ATTEND</p><h1 className="text-3xl font-bold sm:text-5xl">Ouvrez votre trésor.</h1><p className="mt-3 max-w-xl text-sm leading-6 text-slate-400">Choisissez une extension, découvrez vos cartes et enrichissez votre collection. Ouvertures gratuites du simulateur.</p></div>
         <button type="button" aria-label={soundsEnabled ? 'Désactiver les sons' : 'Activer les sons'} onClick={() => setSoundsEnabled(!soundsEnabled)} className={`${button} border border-slate-700 px-3`}>{soundsEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}</button>
       </div>
       {storageWarning && <p role="status" className="mb-4 rounded-xl bg-slate-800 p-4 text-sm">{storageWarning}</p>}
       {error && <div role="alert" className="mb-4 rounded-xl border border-red-500/40 bg-red-950/40 p-4"><p>{error}</p>{pending && <button type="button" disabled={busy} onClick={() => void requestOpening(pending, false)} className={`${button} mt-3 bg-white text-slate-950`}>Réessayer cette ouverture</button>}{canDiscard && <button type="button" disabled={busy} onClick={discardRejectedIntent} className={`${button} mt-3 border border-slate-600`}>Choisir une autre extension</button>}</div>}
-      <div className="grid gap-6 lg:grid-cols-[340px_1fr]">
-        <section aria-labelledby="extension-title" className="rounded-3xl border border-slate-800 bg-slate-900/60 p-6">
+      <div className={`piece-opening-layout grid gap-6 lg:grid-cols-[300px_1fr] ${animating ? 'is-cinematic' : ''}`}>
+        <section aria-labelledby="extension-title" className="piece-panel">
           <h2 id="extension-title" className="mb-5 text-lg font-semibold">Votre prochaine escale</h2>
           <label htmlFor="set-search" className="mb-2 block text-sm text-slate-300">Rechercher une extension</label>
           <input id="set-search" value={query} onChange={e => setQuery(e.target.value)} placeholder="OP-01, nom de l’extension…" className="mb-4 w-full rounded-xl border border-slate-700 bg-slate-950 px-3 py-3 text-sm" />
@@ -197,16 +211,16 @@ export default function BoosterExperience() {
           {chosen && <><h3 className="font-semibold">{chosen.name}</h3><p className="mt-2 text-sm text-slate-400">{chosen.cardCount} cartes dans le catalogue{chosen.packSize ? ` · ${chosen.packSize} cartes par ouverture` : ''}</p>{chosen.description && <p className="mt-2 text-sm text-slate-400">{chosen.description}</p>}{!chosen.available && <p role="status" className="mt-4 rounded-xl bg-amber-950/40 p-3 text-sm text-amber-200">{chosen.error}</p>}</>}
           {chosen?.rules && <details className="mt-5 text-xs leading-5 text-slate-400"><summary className="cursor-pointer text-slate-300">Composition et probabilités</summary><p className="my-2">{chosen.rules.source}. Ces taux ne sont pas présentés comme des taux officiels.</p><ol className="list-inside list-decimal">{chosen.rules.slots.map((slot, i) => <li key={i}>{slot.choices.map(choice => `${choice.rarity}${choice.variant !== 'any' ? ` (${choice.variant})` : ''} : ${(100 * choice.weight / slot.choices.reduce((sum, item) => sum + item.weight, 0)).toFixed(1)} %`).join(' · ')}</li>)}</ol>{chosen.rules.specialPacks.map(pack => <p key={pack.label}>{pack.label} : {(pack.probability * 100).toFixed(1)} % des packs ; composition spéciale remplaçant les slots ci-dessus.</p>)}{chosen.warnings.map(warning => <p key={warning} className="mt-2">{warning}</p>)}</details>}
         </section>
-        <section aria-label="Résultat de l’ouverture" className="min-w-0 rounded-3xl border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 p-5 sm:p-7">
+        <section aria-label="Résultat de l’ouverture" className="piece-panel piece-opening-result min-w-0">
           {!opening ? <div className="flex min-h-96 flex-col items-center justify-center text-center"><Sparkles className="mb-5 text-amber-300" size={40} /><h2 className="text-2xl font-semibold">Une nouvelle découverte</h2><p className="mt-3 max-w-sm text-sm leading-6 text-slate-400">Vos cartes sont ajoutées à la collection dès que le serveur confirme l’ouverture. Prenez ensuite le temps de les découvrir.</p></div> : <>
-            <div className="mb-5 flex flex-wrap items-start justify-between gap-3"><div><h2 className="text-xl font-semibold">{opening.setName}</h2><p className="mt-1 text-sm text-slate-400">{opening.setCode} · {new Date(opening.openedAt).toLocaleString('fr-FR')}</p></div>{opening.specialPack && <span className="rounded-full bg-amber-300 px-3 py-1 text-xs font-bold text-slate-950">{opening.specialPack}</span>}</div>
+            <div className="mb-5 flex flex-wrap items-start justify-between gap-3"><div><h2 className="text-xl font-semibold">{revealed === opening.cards.length ? 'Félicitations !' : opening.setName}</h2><p className="mt-1 text-sm text-slate-400">{opening.setName} · {opening.setCode} · {new Date(opening.openedAt).toLocaleString('fr-FR')}</p></div>{opening.specialPack && <span className="rounded-full bg-amber-300 px-3 py-1 text-xs font-bold text-slate-950">{opening.specialPack}</span>}</div>
             <p role="status" data-testid="collection-confirmation" className={`mb-5 flex items-start gap-2 rounded-xl p-3 text-sm ${opening.creditedAt ? 'bg-emerald-900/25 text-emerald-300' : 'bg-amber-900/25 text-amber-200'}`}><Check size={18} className="shrink-0" />{opening.creditedAt ? `${opening.cards.length} cartes ajoutées à votre collection · ${opening.newCardsCount} nouvelles cartes.` : 'Ouverture historique : ajout à la collection non vérifiable. Aucune nouvelle attribution.'}</p>
-            {animating ? <div data-testid="pack-animation" className="flex min-h-80 items-center justify-center"><div className={styles.packOpening}><BoosterArtwork key={opening.setCode} src={openedSet?.imageUrl} alt={`Ouverture du booster ${opening.setCode} en cours`} /></div></div> : <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
+            {animating ? <CinematicOpening imageUrl={openedSet?.imageUrl || null} setName={opening.setName} cardCount={opening.cards.length} onComplete={() => { if (timer.current) clearTimeout(timer.current); setAnimating(false) }} /> : <div className="piece-opening-cards grid grid-cols-2 gap-4 sm:grid-cols-3">
               {opening.cards.map((card, index) => <div key={`${opening.id}-${index}`} data-testid="draw-slot" className="min-w-0">
-                {index < revealed ? <button type="button" onClick={() => setDetail(card)} aria-label={`Détails de ${card.name}, carte ${index + 1}`} className={`${styles.cardReveal} w-full rounded-xl border-2 p-1 text-left motion-safe:transition-transform motion-safe:hover:-translate-y-1 ${rare(card) ? 'border-amber-300/70 shadow-lg shadow-amber-500/10' : 'border-slate-700'}`}><CardImage card={card} /><span className="mt-2 block truncate px-1 text-xs font-medium">{card.name}</span><span className="mt-1 flex flex-wrap gap-1 px-1 pb-1 text-[10px]"><span className={rare(card) ? 'text-amber-200' : 'text-slate-400'}>{card.rarity}{card.isAltArt ? ' · Alternative' : ''}{card.isParallel ? ' · Parallèle' : ''}{card.isSpecial ? ' · Spéciale' : ''}</span>{card.isDuplicate !== null && <span className={card.isDuplicate ? 'text-slate-400' : 'text-emerald-300'}>{card.isDuplicate ? `Doublon · ${card.quantityBefore} déjà possédée(s)` : 'Nouvelle !'}</span>}</span></button> : <button type="button" disabled={busy} onClick={() => reveal(index + 1)} aria-label={`Révéler jusqu’à la carte ${index + 1}`} className="relative w-full rounded-xl border-2 border-slate-800 p-1"><Image src="/images/card-back.jpg" alt="Carte à découvrir" width={300} height={420} sizes="(max-width: 640px) 44vw, 220px" className="h-auto w-full rounded-lg opacity-60" /><span className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-amber-200">{index + 1}</span></button>}
+                {index < revealed ? <button type="button" onClick={() => setDetail(card)} aria-label={`Détails de ${card.name}, carte ${index + 1}`} data-effect={cardEffect(card)} className={`${styles.cardReveal} piece-opening-card w-full rounded-xl border-2 p-1 text-left motion-safe:transition-transform motion-safe:hover:-translate-y-1 ${rare(card) ? 'border-amber-300/70 shadow-lg shadow-amber-500/10' : 'border-slate-700'}`}><CardImage card={card} /><span className="mt-2 block truncate px-1 text-xs font-medium">{card.name}</span><span className="mt-1 flex flex-wrap gap-1 px-1 pb-1 text-[10px]"><span className={rare(card) ? 'text-amber-200' : 'text-slate-400'}>{card.rarity}{card.isAltArt ? ' · Alternative' : ''}{card.isParallel ? ' · Parallèle' : ''}{card.isSpecial ? ' · Spéciale' : ''}</span>{card.isDuplicate !== null && <span className={card.isDuplicate ? 'text-slate-400' : 'text-emerald-300'}>{card.isDuplicate ? `Doublon · ${card.quantityBefore} déjà possédée(s)` : 'Nouvelle !'}</span>}</span></button> : <button type="button" disabled={busy} onClick={() => reveal(index + 1)} aria-label={`Révéler jusqu’à la carte ${index + 1}`} className="relative w-full rounded-xl border-2 border-slate-800 p-1"><Image src="/images/card-back.jpg" alt="Carte à découvrir" width={300} height={420} sizes="(max-width: 640px) 44vw, 220px" className="h-auto w-full rounded-lg opacity-60" /><span className="absolute inset-0 flex items-center justify-center text-2xl font-bold text-amber-200">{index + 1}</span></button>}
               </div>)}
             </div>}
-            <div className="sticky bottom-3 mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-700 bg-slate-950/95 p-3 backdrop-blur"><p aria-live="polite" className="text-sm text-slate-300">{revealed} / {opening.cards.length} cartes révélées</p>{revealed < opening.cards.length ? <div className="flex flex-wrap gap-2"><button type="button" disabled={busy} onClick={() => reveal(opening.cards.length)} className={`${button} border border-slate-600 px-3`}>Tout révéler</button><button type="button" disabled={busy} onClick={() => reveal(revealed + 1)} className={`${button} bg-amber-300 px-3 text-slate-950`}>Carte suivante <ChevronRight size={16} /></button></div> : <Link href="/collection" className={`${button} bg-slate-800`}>Voir ma collection <ChevronRight size={16} /></Link>}</div>
+            <div className="sticky bottom-3 mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-700 bg-slate-950/95 p-3 backdrop-blur"><p aria-live="polite" className="text-sm text-slate-300">{revealed} / {opening.cards.length} cartes révélées</p>{revealed < opening.cards.length ? <div className="flex flex-wrap gap-2"><button type="button" disabled={busy} onClick={() => reveal(opening.cards.length)} className={`${button} border border-slate-600 px-3`}>Tout révéler</button><button type="button" disabled={busy} onClick={() => reveal(revealed + 1)} className={`${button} bg-amber-300 px-3 text-slate-950`}>Carte suivante <ChevronRight size={16} /></button></div> : <div className="piece-actions"><Link href="/boosters" className={`${button} secondary`}>Choisir un autre booster</Link><Link href="/collection" className={button}>Voir ma collection <ChevronRight size={16} /></Link></div>}</div>
           </>}
         </section>
       </div>
@@ -219,5 +233,5 @@ export default function BoosterExperience() {
       </section>
       <Dialog open={Boolean(detail)} onOpenChange={open => { if (!open) setDetail(null) }}><DialogContent className="max-h-[90dvh] max-w-lg overflow-y-auto rounded-2xl border-slate-700 bg-slate-950 text-slate-100 motion-reduce:animate-none">{detail && <><DialogTitle>{detail.name}</DialogTitle><DialogDescription>{detail.code} · {detail.rarity} · {detail.color}</DialogDescription><div className="mx-auto w-52"><CardImage card={detail} /></div><p className="text-sm">{detail.type} · Coût : {detail.cost}{detail.power !== null ? ` · Puissance : ${detail.power}` : ''}{detail.counter ? ` · Contre : ${detail.counter}` : ''}</p>{detail.effect && <p className="text-sm leading-6">{detail.effect}</p>}{detail.trigger && <p className="text-sm text-amber-200">Trigger : {detail.trigger}</p>}<button type="button" disabled={favoriteBusy} onClick={() => void toggleFavorite()} className={`${button} border border-slate-700`}>{favorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}</button>{favoriteError && <p role="alert" className="text-sm text-red-300">{favoriteError}</p>}</>}</DialogContent></Dialog>
     </div>
-  </main>
+  </div>
 }

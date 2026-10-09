@@ -1,0 +1,21 @@
+{
+  "status": "PASS",
+  "database": "Original .env PostgreSQL, read-only checks",
+  "countsUnchanged": true,
+  "counts": {
+    "users": 3,
+    "cards": 3033,
+    "sets": 46,
+    "openings": 5,
+    "quantity": 28592,
+    "decks": 105
+  },
+  "overviewMatchesDatabase": true,
+  "images": {
+    "total": 36,
+    "loaded": 36,
+    "broken": 0
+  },
+  "apiWrites": [],
+  "javascriptErrors": []
+}

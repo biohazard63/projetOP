@@ -1,0 +1,107 @@
+[
+  {
+    "name": "Credentials login, persistent session and private overview ownership",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Reference sidebar dashboard uses real statistics and no placeholder figures",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Global card code search, binder filters, list toggle, reset and favorites persistence",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Missing cards, rarity/color facets, variants and immersive card details",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Booster carousel selection and empty extension remain explicit",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Deck builder leader, quantity limit, 50 cards, chart and real server save",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Saved deck loads, updates version, activates and remains private",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Concurrent replay on secure opening is credited exactly once",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Dedicated history receipt and new/duplicate cards are read only",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Profile display settings persist and session remains active",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Cinematic skips, resumes a receipt after refresh and never credits via animation",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "A completed receipt allows selection of another extension without attribution",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Responsive navigation, card grid and scroll 1440px",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Responsive navigation, card grid and scroll 820px",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Responsive navigation, card grid and scroll 390px",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Reduced motion demo and visual keyboard controls require no WebGL",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Deck deletion requires explicit confirmation and preserves owned cards",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Private pages redirect unauthenticated visitors and empty collection is explicit",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Network error state can retry safely",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "Logout clears the session and protects private pages",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  },
+  {
+    "name": "No browser JavaScript errors across collector routes",
+    "status": "PASS",
+    "detail": "Assertions passed"
+  }
+]

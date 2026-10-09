@@ -1,0 +1,31 @@
+.scene { position:relative; isolation:isolate; min-height:510px; overflow:hidden; border-radius:18px; background:radial-gradient(ellipse at 50% 65%,#112342,#070d19 65%); perspective:1000px; }
+.lightBlue,.lightGold { position:absolute; width:370px; height:370px; border-radius:50%; pointer-events:none; filter:blur(40px); opacity:.45; }
+.lightBlue { background:radial-gradient(ellipse,#297ff555,transparent 70%); top:20px; left:calc(50% - 300px); }
+.lightGold { background:radial-gradient(ellipse,#d9ad5745,transparent 70%); top:80px; left:calc(50% - 50px); }
+.orbit { position:absolute; width:350px; height:80px; left:calc(50% - 175px); top:340px; border:1px solid #5675a650; border-radius:50%; box-shadow:0 0 30px #438fff15; }
+.camera { position:absolute; inset:40px 0 auto; height:330px; transform-style:preserve-3d; animation:camera 3.4s ease-in-out both; }
+.pack { position:absolute; width:148px; height:240px; left:calc(50% - 74px); top:30px; transform-style:preserve-3d; filter:drop-shadow(0 20px 20px #000a); animation:float 3.4s ease-in-out both; }
+.packBody,.packTop { position:absolute; inset:0; transform-origin:50% 15%; }
+.packBody { clip-path:inset(13% 0 0); }
+.packTop { clip-path:inset(0 0 87%); }
+.foil { position:absolute; inset:0; pointer-events:none; opacity:.5; background:linear-gradient(115deg,transparent 10%,#ffffff30 27%,transparent 38%,#ffe8ba18 68%,transparent 82%); animation:foil 2s ease both; }
+.innerLight { position:absolute; width:180px; height:6px; top:31px; left:-16px; box-shadow:0 0 35px 20px #e4c88c80; background:#fff1cc; opacity:0; }
+.scene[data-phase="1"] .packTop,.scene[data-phase="2"] .packTop,.scene[data-phase="3"] .packTop { transform:translate3d(25px,-60px,30px) rotateZ(22deg); opacity:0; transition:transform .7s ease,opacity .7s ease; }
+.scene[data-phase="1"] .innerLight,.scene[data-phase="2"] .innerLight { opacity:1; transition:opacity .5s; }
+.scene[data-phase="2"] .pack,.scene[data-phase="3"] .pack { opacity:.15; transition:opacity .6s; }
+.cards { position:absolute; top:70px; left:50%; width:0; transform-style:preserve-3d; }
+.emergingCard { position:absolute; width:90px; left:-45px; top:120px; opacity:0; transform:translate3d(0,0,-30px); transition:transform .8s cubic-bezier(.2,.8,.3,1),opacity .4s; }
+.emergingCard img { border-radius:6px; border:1px solid #d9ad5760; box-shadow:0 10px 30px #0008; }
+.scene[data-phase="2"] .emergingCard,.scene[data-phase="3"] .emergingCard { opacity:1; transform:translate3d(calc((var(--card-index) - 2)*55px),-65px,40px) rotateZ(calc((var(--card-index) - 2)*9deg)); transition-delay:calc(var(--card-index)*60ms); }
+.particles { position:absolute; top:180px; left:50%; pointer-events:none; }
+.particles i { position:absolute; width:3px; height:3px; border-radius:50%; background:#ffe0a2; opacity:0; }
+.scene[data-phase="1"] .particles i,.scene[data-phase="2"] .particles i { animation:particle 1.5s ease-out both; animation-delay:calc(var(--particle-index)*25ms); }
+.caption { position:absolute; bottom:24px; left:0; right:0; text-align:center; color:#c2cfe3; font-size:.8rem; }
+@keyframes camera { 0%{transform:scale(.92) rotateY(-8deg)} 60%{transform:scale(1.05) rotateY(6deg)} 100%{transform:scale(1) rotateY(0)} }
+@keyframes float { 0%{transform:translateY(8px) rotateZ(-3deg)} 35%{transform:translateY(-9px) rotateZ(2deg)} 70%{transform:translateY(0)} 100%{transform:translateY(5px)} }
+@keyframes foil { from{background-position:-200px 0} to{background-position:200px 0} }
+@keyframes particle { 0%{opacity:0;transform:translate(0,0)} 20%{opacity:1} 100%{opacity:0;transform:translate(calc((var(--particle-index) - 8)*20px),calc(-60px - var(--particle-index)*7px))} }
+.scene[data-reduced=true] .particles,.scene[data-reduced=true] .foil { display:none; }
+.scene[data-reduced=true] :is(.camera,.pack) { animation:none; }
+@media(max-width:640px){.scene{min-height:440px}.camera{top:10px;transform:scale(.85)}.orbit{top:280px;width:280px;left:calc(50% - 140px)}}
+@media(prefers-reduced-motion:reduce){.scene *{animation:none!important;transition:none!important}.particles{display:none}}
