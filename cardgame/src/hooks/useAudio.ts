@@ -1,17 +1,12 @@
 import { useCallback, useEffect, useState } from 'react'
 
-function isMobileDevice() {
-  if (typeof window === 'undefined') return false
-  const ua = navigator.userAgent || navigator.vendor || ''
-  return /android|iphone|ipad|ipod|mobile/i.test(ua) || window.innerWidth < 768
-}
-
 const STORAGE_KEY = 'mugiwara:soundsEnabled'
 
 export function useSoundSetting() {
   const [soundsEnabled, setSoundsEnabled] = useState<boolean>(() => {
     if (typeof window === 'undefined') return true
-    const stored = window.localStorage.getItem(STORAGE_KEY)
+    let stored: string | null = null
+    try { stored = window.localStorage.getItem(STORAGE_KEY) } catch { return false }
     if (stored === 'true') return true
     if (stored === 'false') return false
     // Par défaut: activé pour que les utilisateurs puissent entendre les sons
@@ -20,7 +15,7 @@ export function useSoundSetting() {
 
   useEffect(() => {
     if (typeof window !== 'undefined') {
-      window.localStorage.setItem(STORAGE_KEY, String(soundsEnabled))
+      try { window.localStorage.setItem(STORAGE_KEY, String(soundsEnabled)) } catch { /* Sound preference is optional. */ }
     }
   }, [soundsEnabled])
 
@@ -33,7 +28,7 @@ export function useSoundSetting() {
 export function useAudio() {
   const getSoundsEnabled = () => {
     if (typeof window === 'undefined') return false
-    return window.localStorage.getItem(STORAGE_KEY) === 'true'
+    try { return window.localStorage.getItem(STORAGE_KEY) === 'true' } catch { return false }
   }
 
   const playIfAllowed = useCallback((src: string, maxMs = 2500) => {
