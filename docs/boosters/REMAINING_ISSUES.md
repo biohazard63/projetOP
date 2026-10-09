@@ -2,7 +2,7 @@
 
 | Point | État | Suite nécessaire |
 |---|---|---|
-| Ouverture non confirmée signalée en production | BLOCKED | Diagnostic local amélioré et erreur de colonne reproduite sur base isolée ; vraie cause à confirmer avec URL/logs ou inspection de la base du déploiement. Aucun correctif appliqué en production. Voir PRODUCTION_DIAGNOSTIC.md. |
+| Ouverture non confirmée signalée en production | BLOCKED | projet-op.vercel.app : catalogue public 200 (3033 cartes) et routes privées 401, POST utilisateur 500 en 2,06 s. Diagnostic local amélioré et erreur de colonne reproduite sur base isolée ; vraie cause à confirmer avec exception serveur ou inspection du schéma du déploiement. Aucun correctif appliqué en production. Voir PRODUCTION_DIAGNOSTIC.md. |
 | Migration de la base existante | PASS | Reconnexion demandée ensuite par l’utilisateur : base locale PostgreSQL 16.4 sauvegardée, migration additive appliquée, contenu des 30 tables existantes identique avant/après. Voir RECONNECTION.md. |
 | 18 extensions incompatibles avec leurs règles | BLOCKED | Examiner imports et modèle de slots par extension ; absence UC/R peut être légitime pour ST/EB. Aucun fallback ni carte inventée. Liste dans catalog-availability.json. |
 | Taux physiques/officiels | NOT_TESTED | Aucun taux officiel revendiqué. Obtenir des sources fiables et décider du modèle de simulation avant toute nouvelle configuration. |

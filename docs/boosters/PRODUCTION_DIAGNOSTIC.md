@@ -4,7 +4,15 @@
 
 L’utilisateur signale : « Ouverture non confirmée. Réessayez avec la même clé pour récupérer votre résultat. » Le texte exact vient du handler serveur `src/lib/boosters/http.ts`, pour une exception imprévue avec réponse HTTP 500. Le navigateur conserve volontairement la même clé pour éviter un second crédit. Ce message seul ne permet pas de conclure qu’aucune carte n’a été enregistrée.
 
-Les logs antérieurs indiquaient seulement « Opération booster échouée », sans code exploitable. Aucune URL de production ni erreur serveur détaillée n’est disponible à ce stade. La production n’a pas été testée et son problème n’est **pas déclaré résolu**.
+Les logs antérieurs indiquaient seulement « Opération booster échouée », sans code exploitable. L’utilisateur a fourni l’URL `https://projet-op.vercel.app` et le relevé de la requête, mais pas encore l’exception serveur détaillée. Son problème n’est **pas déclaré résolu**.
+
+### Relevé reçu et contrôles publics
+
+POST /api/booster/open, 9 octobre 2026 à 20:50:57 Europe/Paris, HTTP 500, request bfhh4-1791571857150-b370de9a3c95, déploiement dpl_FsgZ7VR3ayJYzS6aLDxedoP9k51Y sur main. Runtime Node 24.x, exécution 2,06 s, pare-feu autorisé. La durée ne montre pas une interruption par dépassement du temps maximal Vercel. Node 24 respecte les engines du package (>=22 <25).
+
+La référence distante origin/main contient la fusion de la refonte (3bf891b) et le handler générique, mais pas le correctif local f5fdbeb. L’origine Git ne permet pas à elle seule de certifier le SHA du déploiement Vercel.
+
+Contrôles **GET uniquement et anonymes** à 20:53 : /api/cards 200 avec 3033 cartes ; ST-28 contient 15 cartes (L 1, UC 4, C 6, R 2, SR 2). /api/sets 200. /api/booster, /api/booster/history et /api/collector retournent 401. La connexion de lecture et les protections anonymes fonctionnent. Ces contrôles ne vérifient ni les colonnes des reçus, ni le droit d’écriture, ni la transaction. « Aucune API externe » dans le relevé Vercel ne permet pas de conclure à l’absence de connexion PostgreSQL TCP. Aucun POST ni cookie d’utilisateur utilisé.
 
 ## Hypothèse à confirmer
 
@@ -21,13 +29,25 @@ Un schéma dépourvu de ces colonnes produit bien P2022, reproduit sur PostgreSQ
 
 ## Diagnostic à effectuer sur la vraie destination
 
-Obtenir l’URL de production et les logs de POST /api/booster/open. Sur un environnement disposant déjà des variables sécurisées de **la base utilisée par la production**, depuis cardgame :
+Obtenir les lignes de console de POST /api/booster/open ou inspecter le schéma de sa base. Sur un environnement disposant déjà des variables sécurisées de **la base utilisée par la production**, depuis cardgame :
 
 ```bash
 node --import tsx scripts/checkBoosterDatabase.ts
 ```
 
 Un PASS sur le .env local ne valide pas la production. Si la cible n’est pas celle du déploiement, ne pas en déduire la cause de l’incident.
+
+À défaut d’accès au script, dans l’éditeur SQL de la base réellement utilisée par Vercel, ce SELECT ne lit que les métadonnées :
+
+```sql
+SELECT column_name
+FROM information_schema.columns
+WHERE table_schema = 'public'
+  AND table_name = 'BoosterOpening'
+  AND column_name IN ('idempotencyKey', 'creditedAt', 'resultSnapshot', 'rulesSnapshot');
+```
+
+Quatre lignes sont attendues pour le schéma public standard. Un autre schéma dans l’URL de connexion nécessite de sélectionner ce schéma ; ne jamais partager l’URL ou ses identifiants. Une absence de colonne doit être confirmée sur la bonne destination avant toute migration.
 
 Si des colonnes ou index manquent, examiner l’historique complet des migrations et obtenir une sauvegarde avant de proposer une application de migration à la production. Ne pas lancer migrate deploy aveuglément : il applique toutes les migrations en attente. Une base créée auparavant par db push peut nécessiter un baseline examiné. Aucun reset, db push forcé ou modification de données n’a été exécuté. Aucun automatisme de migration ajouté au build.
 
@@ -47,7 +67,8 @@ Les fichiers sont dans `evidence/production-diagnostic/`.
 | ESLint | PASS | eslint.log : 0 erreur, 99 avertissements existants |
 | Build de production local | PASS | build.log, sortie 0 |
 | Schéma de la base habituelle locale | PASS | local-schema.json : colonnes et index présents, migration enregistrée |
-| Cause exacte de l’incident en production | BLOCKED | URL/logs ou inspection de la vraie base manquants |
+| Catalogue public et protection des APIs privées en production | PASS | public-readonly-check.json : 2 GET 200 et 3 GET 401 |
+| Cause exacte de l’incident en production | BLOCKED | Exception serveur ou inspection du schéma de la vraie base manquante |
 | Ouverture réelle en production | NOT_TESTED | Aucune ouverture de test sur une base réelle |
 | Nouveau handler HTTP avec erreurs injectées | NOT_TESTED | Classification unit-testée et moteur réellement testé ; pas de nouvelle injection HTTP |
 
