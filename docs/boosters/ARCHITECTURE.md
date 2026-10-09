@@ -40,7 +40,7 @@ Animation du pack 900 ms, apparition de carte 240 ms. `prefers-reduced-motion` e
 
 ## Migration et isolation
 
-Migration additive : `20261009120000_secure_booster_openings`. Colonnes nullable pour les anciens reçus, index unique et index d'historique, contraintes restrictives. Aucun reset/DML de collection. Les 17 migrations ont été appliquées seulement à la nouvelle base `op_boosters_test` (PostgreSQL 16, port 55432). La base configurée dans .env a été inventoriée en READ ONLY et **n'est pas migrée**.
+Migration additive : `20261009120000_secure_booster_openings`. Colonnes nullable pour les anciens reçus, index unique et index d'historique, contraintes restrictives. Aucun reset/DML de collection. Les 17 migrations ont été appliquées seulement à la nouvelle base `op_boosters_test` (PostgreSQL 16, port 55432). Lors de la phase initiale, la base configurée dans .env avait seulement été inventoriée en READ ONLY. Elle a ensuite été sauvegardée et migrée à la demande explicite de l'utilisateur pour reconnecter l'application ; voir RECONNECTION.md.
 
 Avant utilisation sur une base existante, vérifier son historique Prisma, disposer d'une sauvegarde et examiner la migration. Une base anciennement créée via db push exige une procédure de baseline adaptée ; ne pas lancer migrate deploy aveuglément. Les contraintes Restrict peuvent volontairement bloquer des scripts de suppression du catalogue.
 

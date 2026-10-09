@@ -2,7 +2,7 @@
 
 | Point | État | Suite nécessaire |
 |---|---|---|
-| Migration de la base existante | BLOCKED | Base existante laissée intacte. Confirmer son rôle et son historique Prisma, sauvegarder, examiner la migration additive et adapter la baseline si nécessaire. |
+| Migration de la base existante | PASS | Reconnexion demandée ensuite par l’utilisateur : base locale PostgreSQL 16.4 sauvegardée, migration additive appliquée, contenu des 30 tables existantes identique avant/après. Voir RECONNECTION.md. |
 | 18 extensions incompatibles avec leurs règles | BLOCKED | Examiner imports et modèle de slots par extension ; absence UC/R peut être légitime pour ST/EB. Aucun fallback ni carte inventée. Liste dans catalog-availability.json. |
 | Taux physiques/officiels | NOT_TESTED | Aucun taux officiel revendiqué. Obtenir des sources fiables et décider du modèle de simulation avant toute nouvelle configuration. |
 | Anciennes chances de variantes/DON/types | BLOCKED | Leur signification n'est pas assez précise pour les traduire en contraintes simultanées. Champs conservés et avertissement affiché ; format v1 disponible. |

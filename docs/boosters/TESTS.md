@@ -112,3 +112,7 @@ Signalement utilisateur : impossible de descendre pour voir les cartes. Le layou
 - Après correction : molette desktop **PASS**, geste tactile mobile via Chrome DevTools Protocol **PASS**, ensemble des **16 scénarios API/navigateur PASS**. TypeScript et ESLint ciblé PASS. Les preuves navigateur et captures sont actualisées.
 
 Le serveur de développement dans le Terminal séparé reste actif ; un rafraîchissement charge le layout corrigé. Aucun changement de tirage, crédit, collection ou base existante.
+
+## Reconnexion ultérieure à la base habituelle — PASS
+
+À la demande explicite de l'utilisateur, base locale existante sauvegardée puis migration des boosters appliquée. L'historique de migration était complet et le diff limité au changement prévu. Vérification des 30 tables : données inchangées. Application relancée dans le Terminal séparé sur la base issue de .env ; contrôles HTTP authentifiés en lecture seule PASS, catalogue de 46 extensions et collection existante de 589 cartes distinctes correctement chargée. Aucune ouverture, création de compte ni donnée de test ajoutée à cette base. Voir RECONNECTION.md et evidence/database-reconnection.json / reconnection-http.json / reconnection-collection.json. Le blocage initial de migration est donc résolu.
