@@ -25,7 +25,9 @@
     "typecheck": "tsc --noEmit",
     "postinstall": "prisma generate",
     "test": "node --import tsx --test tests/*.test.ts",
-    "test:functional": "node tests/functional.mjs"
+    "test:functional": "node tests/functional.mjs",
+    "test:boosters:integration": "node --import tsx --test tests/boosters.integration.ts",
+    "test:boosters:browser": "node tests/boosters.browser.mjs"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.10.0",
