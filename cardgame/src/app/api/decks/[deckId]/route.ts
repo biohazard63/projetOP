@@ -1,3 +1,4 @@
+import { deckInput, validateDeck } from '@/lib/deckValidation'
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 
@@ -27,7 +28,8 @@ export async function GET(request: Request) {
 
     const deck = await prisma.deck.findUnique({
       where: {
-        id: deckId
+        id: deckId,
+        OR: [{ userId: null }, { user: { email: session.user.email.toLowerCase() } }]
       },
       include: {
         versions: {
@@ -111,33 +113,18 @@ export async function PUT(request: Request) {
       )
     }
 
-    const body = await request.json()
-    const { name, cards } = body
+    const ownedDeck = await prisma.deck.findFirst({
+      where: { id: deckId, user: { email: session.user.email.toLowerCase() } },
+      select: { id: true },
+    })
+    if (!ownedDeck) return NextResponse.json({ error: 'Deck non trouvé' }, { status: 404 })
 
-    type IncomingCard = { id: string; type: string; quantity?: number }
-    console.log('Validation du deck côté serveur: nombre de cartes', Array.isArray(cards) ? cards.length : 0)
-
-    // Vérifier les règles du deck
-    const normalizedCards: IncomingCard[] = Array.isArray(cards) ? cards : []
-    const leaderCards = normalizedCards.filter((card) => card.type === 'LEADER')
-    const nonLeaderCards = normalizedCards.filter((card) => card.type !== 'LEADER')
-    
-    const leaderCount = leaderCards.reduce((sum: number, card) => sum + (card.quantity || 1), 0)
-    const nonLeaderCount = nonLeaderCards.reduce((sum: number, card) => sum + (card.quantity || 1), 0)
-
-    if (leaderCount !== 1) {
-      return NextResponse.json(
-        { error: 'Le deck doit contenir exactement 1 leader' },
-        { status: 400 }
-      )
-    }
-
-    if (nonLeaderCount !== 50) {
-      return NextResponse.json(
-        { error: 'Le deck doit contenir exactement 50 cartes (sans compter le leader)' },
-        { status: 400 }
-      )
-    }
+    const parsed = deckInput.safeParse(await request.json())
+    if (!parsed.success) return NextResponse.json({ error: 'Deck invalide' }, { status: 400 })
+    const { name, cards: normalizedCards } = parsed.data
+    const storedCards = await prisma.card.findMany({ where: { id: { in: normalizedCards.map(c => c.id) } } })
+    const validationError = validateDeck(normalizedCards, storedCards)
+    if (validationError) return NextResponse.json({ error: validationError }, { status: 400 })
 
     // Créer une nouvelle version du deck
     const updatedDeck = await prisma.$transaction(async (tx) => {
@@ -245,6 +232,12 @@ export async function DELETE(request: Request) {
         { status: 401 }
       )
     }
+
+    const ownedDeck = await prisma.deck.findFirst({
+      where: { id: deckId, user: { email: session.user.email.toLowerCase() } },
+      select: { id: true },
+    })
+    if (!ownedDeck) return NextResponse.json({ error: 'Deck non trouvé' }, { status: 404 })
 
     await prisma.deck.delete({
       where: {

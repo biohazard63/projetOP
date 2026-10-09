@@ -75,7 +75,7 @@ export function clearFailures(key: string) {
 export function isStrongPassword(password: string): boolean {
   if (typeof password !== 'string') return false
   const pw = password.trim()
-  if (pw.length < 8 || pw.length > 72) return false
+  if (pw.length < 8 || new TextEncoder().encode(password).length > 72) return false
   const hasUpper = /[A-Z]/.test(pw)
   const hasLower = /[a-z]/.test(pw)
   const hasNum = /[0-9]/.test(pw)

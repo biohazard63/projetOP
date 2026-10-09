@@ -1,0 +1,41 @@
+[
+  {
+    "path": "/home",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/login",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/register",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/api/cards",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/api/sets",
+    "status": 200,
+    "pass": true
+  },
+  {
+    "path": "/api/decks anonymous",
+    "status": 401,
+    "pass": true
+  },
+  {
+    "path": "private page browser redirect",
+    "pass": true
+  },
+  {
+    "path": "public JavaScript",
+    "pass": true,
+    "errors": []
+  }
+]

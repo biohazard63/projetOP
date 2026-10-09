@@ -18,10 +18,12 @@ export function useGame(playerDeck: GameCard[], opponentDeck: GameCard[]) {
       donDeck: [],
       trash: [],
       activeDon: 0,
-      donAddedThisTurn: 0,
+      donAddedThisTurn: false,
       leader: null,
       usedDonDeck: [],
-      discardPile: []
+      discardPile: [],
+      donField: [],
+      donAttachments: []
     },
     opponent: {
       id: 'opponent',
@@ -33,10 +35,12 @@ export function useGame(playerDeck: GameCard[], opponentDeck: GameCard[]) {
       donDeck: [],
       trash: [],
       activeDon: 0,
-      donAddedThisTurn: 0,
+      donAddedThisTurn: false,
       leader: null,
       usedDonDeck: [],
-      discardPile: []
+      discardPile: [],
+      donField: [],
+      donAttachments: []
     },
     currentPhase: 'SETUP',
     setupPhase: 'CHOOSE_FIRST',
@@ -47,7 +51,10 @@ export function useGame(playerDeck: GameCard[], opponentDeck: GameCard[]) {
     canEndTurn: false,
     gameOver: false,
     isFirstTurn: true,
-    winner: null
+    winner: undefined,
+    hasKeptHand: false,
+    canDrawDon: false,
+    battleStack: []
   })
 
   const chooseFirst = useCallback((player: 'player' | 'opponent') => {
@@ -321,7 +328,7 @@ export function useGame(playerDeck: GameCard[], opponentDeck: GameCard[]) {
     setGameState(prevState => {
       const player = prevState[playerId]
       if (player.donDeck.length >= 10) return prevState
-      if (player.donAddedThisTurn >= 2) return prevState
+      if (player.donAddedThisTurn) return prevState
 
       const newDon: GameCard = {
         id: `don-${Date.now()}`,
@@ -340,7 +347,7 @@ export function useGame(playerDeck: GameCard[], opponentDeck: GameCard[]) {
           ...player,
           donDeck: [...player.donDeck, newDon],
           activeDon: (player.activeDon || 0) + 2,
-          donAddedThisTurn: (player.donAddedThisTurn || 0) + 1
+          donAddedThisTurn: true
         },
         lastAction: `${player.name} a ajouté 2 DON!!`,
       }

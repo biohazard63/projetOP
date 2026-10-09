@@ -1,10 +1,3 @@
-const withPWA = require('next-pwa')({
-  dest: 'public',
-  register: true,
-  skipWaiting: true,
-  disable: process.env.NODE_ENV === 'development'
-})
-
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   // Configuration pour Next.js 15
@@ -12,15 +5,24 @@ const nextConfig = {
     // Activer les nouvelles fonctionnalités de Next.js 15
     optimizePackageImports: ['lucide-react', '@radix-ui/react-icons'],
   },
+  async headers() {
+    return [{ source: '/api/:path*', headers: [{ key: 'Cache-Control', value: 'no-store' }] }, { source: '/sw.js', headers: [{ key: 'Cache-Control', value: 'no-cache' }] }]
+  },
   images: {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'en.onepiece-cardgame.com',
+        pathname: '/images/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'fr.onepiece-cardgame.com',
+        pathname: '/images/**',
       },
     ],
-    domains: ['en.onepiece-cardgame.com'],
-    unoptimized: true,
+    // Serve official artwork through the same-origin optimizer: the upstream
+    // Cross-Origin-Resource-Policy blocks direct browser requests from localhost.
   },
   typescript: {
     // Les erreurs TypeScript ne seront plus ignorées
@@ -29,4 +31,4 @@ const nextConfig = {
   reactStrictMode: true,
 }
 
-module.exports = withPWA(nextConfig) 
+module.exports = nextConfig

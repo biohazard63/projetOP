@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
-
-import { prisma } from '@/lib/prisma'
+import { ManualGameService } from '@/lib/game/manualGameService'
+import { GamePersistenceService } from '@/lib/game/gamePersistenceService'
 
 export async function POST() {
   try {
@@ -14,42 +14,38 @@ export async function POST() {
       )
     }
 
-    // Récupérer une carte aléatoire pour la pioche
-    const allCards = await prisma.card.findMany({ select: { id: true, name: true, type: true, color: true, cost: true, power: true, imageUrl: true } })
-    const randomCard = allCards[Math.floor(Math.random() * allCards.length)]
-
-    // Pour l'instant, on retourne simplement un état de jeu simulé
-    // Dans une implémentation complète, on mettrait à jour l'état du jeu en base de données
-    const gameState = {
-      player: {
-        id: 'player',
-        name: session.user.name || 'Joueur',
-        lifePoints: 5,
-        deck: [],
-        hand: [randomCard],
-        field: [],
-        leader: null,
-        activeDon: 0
-      },
-      opponent: {
-        id: 'opponent',
-        name: 'Adversaire',
-        lifePoints: 5,
-        deck: [],
-        hand: [],
-        field: [],
-        leader: null,
-        activeDon: 0
-      },
-      currentPhase: 'MAIN',
-      currentPlayer: 'player',
-      turnNumber: 1,
-      gameOver: false
+    // Récupérer l'état actuel du jeu depuis la base de données
+    const currentGameState = await GamePersistenceService.getActiveGameState(session.user.id);
+    
+    if (!currentGameState) {
+      return NextResponse.json(
+        { error: 'Aucune partie en cours. Initialisez d\'abord le jeu.' },
+        { status: 404 }
+      )
     }
 
-    return NextResponse.json(gameState)
+    // Vérifier que nous sommes en phase DRAW
+    if (currentGameState.currentPhase !== 'DRAW') {
+      return NextResponse.json(
+        { error: 'Action non autorisée. Vous devez être en phase DRAW pour piocher.' },
+        { status: 400 }
+      )
+    }
+
+    // Exécuter la phase DRAW
+    const updatedGameState = ManualGameService.executePhaseActions(currentGameState);
+    
+    // Sauvegarder l'état mis à jour
+    await GamePersistenceService.saveGameState(
+      updatedGameState,
+      session.user.id,
+      session.user.id
+    );
+
+    return NextResponse.json(updatedGameState)
+    
   } catch (error) {
-    console.error('Erreur lors de la pioche de carte:', error)
+    console.error('❌ Erreur lors de la pioche:', error)
     return NextResponse.json(
       { error: 'Erreur serveur' },
       { status: 500 }

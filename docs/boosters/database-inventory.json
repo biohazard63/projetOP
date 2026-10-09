@@ -1,0 +1,2325 @@
+{
+  "sets": [
+    {
+      "code": "PRB-01",
+      "name": "Set PRB-01",
+      "_count": {
+        "cards": 304,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "EB-02",
+      "name": "Set EB-02",
+      "_count": {
+        "cards": 82,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "OP-12",
+      "name": "Set OP-12",
+      "_count": {
+        "cards": 154,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-04",
+      "name": "Set ST-04",
+      "_count": {
+        "cards": 17,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-01",
+      "name": "Set ST-01",
+      "_count": {
+        "cards": 17,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "OP-05",
+      "name": "Set OP-05",
+      "_count": {
+        "cards": 137,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-14",
+      "name": "Set ST-14",
+      "_count": {
+        "cards": 16,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-03",
+      "name": "Set ST-03",
+      "_count": {
+        "cards": 17,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "OP-08",
+      "name": "Set OP-08",
+      "_count": {
+        "cards": 146,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-19",
+      "name": "Set ST-19",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "CARDS-PROMO",
+      "name": "Set CARDS-PROMO",
+      "_count": {
+        "cards": 29,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-07",
+      "name": "Set ST-07",
+      "_count": {
+        "cards": 17,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "OP-04",
+      "name": "Set OP-04",
+      "_count": {
+        "cards": 138,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "OP-09",
+      "name": "Set OP-09",
+      "_count": {
+        "cards": 159,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "OP-06",
+      "name": "Set OP-06",
+      "_count": {
+        "cards": 143,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "CARDS-OTHER",
+      "name": "Set CARDS-OTHER",
+      "_count": {
+        "cards": 0,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-11",
+      "name": "Set ST-11",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-18",
+      "name": "Set ST-18",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "OP-02",
+      "name": "Set OP-02",
+      "_count": {
+        "cards": 144,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-20",
+      "name": "Set ST-20",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "OP-03",
+      "name": "Set OP-03",
+      "_count": {
+        "cards": 146,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-10",
+      "name": "Set ST-10",
+      "_count": {
+        "cards": 19,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-02",
+      "name": "Set ST-02",
+      "_count": {
+        "cards": 17,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "OP-01",
+      "name": "Set OP-01",
+      "_count": {
+        "cards": 143,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-28",
+      "name": "Set ST-28",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-21",
+      "name": "Set ST-21",
+      "_count": {
+        "cards": 32,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "CARDS-OTHEREN",
+      "name": "Set CARDS-OTHEREN",
+      "_count": {
+        "cards": 41,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-24",
+      "name": "Set ST-24",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-27",
+      "name": "Set ST-27",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-16",
+      "name": "Set ST-16",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-15",
+      "name": "Set ST-15",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-13",
+      "name": "Set ST-13",
+      "_count": {
+        "cards": 34,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-09",
+      "name": "Set ST-09",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-05",
+      "name": "Set ST-05",
+      "_count": {
+        "cards": 17,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-25",
+      "name": "Set ST-25",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-12",
+      "name": "Set ST-12",
+      "_count": {
+        "cards": 17,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-08",
+      "name": "Set ST-08",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "CARDS-PROMOEN",
+      "name": "Set CARDS-PROMOEN",
+      "_count": {
+        "cards": 280,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-26",
+      "name": "Set ST-26",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-06",
+      "name": "Set ST-06",
+      "_count": {
+        "cards": 17,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "OP-10",
+      "name": "Set OP-10",
+      "_count": {
+        "cards": 150,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-17",
+      "name": "Set ST-17",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "OP-07",
+      "name": "Set OP-07",
+      "_count": {
+        "cards": 145,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "EB-01",
+      "name": "Set EB-01",
+      "_count": {
+        "cards": 74,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "ST-23",
+      "name": "Set ST-23",
+      "_count": {
+        "cards": 15,
+        "boosters": 0
+      }
+    },
+    {
+      "code": "OP-11",
+      "name": "Set OP-11",
+      "_count": {
+        "cards": 156,
+        "boosters": 0
+      }
+    }
+  ],
+  "cards": [
+    {
+      "_count": 3,
+      "setCode": "ST-23",
+      "rarity": "R"
+    },
+    {
+      "_count": 18,
+      "setCode": "EB-02",
+      "rarity": "SR"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-20",
+      "rarity": "UC"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-09",
+      "rarity": "L"
+    },
+    {
+      "_count": 71,
+      "setCode": "PRB-01",
+      "rarity": "C"
+    },
+    {
+      "_count": 2,
+      "setCode": "OP-12",
+      "rarity": "R SP"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-14",
+      "rarity": "L"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-04",
+      "rarity": "SR"
+    },
+    {
+      "_count": 14,
+      "setCode": "ST-12",
+      "rarity": "C"
+    },
+    {
+      "_count": 6,
+      "setCode": "ST-27",
+      "rarity": "C"
+    },
+    {
+      "_count": 35,
+      "setCode": "OP-11",
+      "rarity": "R"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-15",
+      "rarity": "L"
+    },
+    {
+      "_count": 26,
+      "setCode": "EB-01",
+      "rarity": "R"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-24",
+      "rarity": "SR"
+    },
+    {
+      "_count": 3,
+      "setCode": "ST-20",
+      "rarity": "R"
+    },
+    {
+      "_count": 20,
+      "setCode": "OP-11",
+      "rarity": "SR"
+    },
+    {
+      "_count": 5,
+      "setCode": "CARDS-OTHEREN",
+      "rarity": "UC"
+    },
+    {
+      "_count": 8,
+      "setCode": "OP-11",
+      "rarity": "SP CARD"
+    },
+    {
+      "_count": 3,
+      "setCode": "CARDS-PROMOEN",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 27,
+      "setCode": "CARDS-PROMOEN",
+      "rarity": "UC"
+    },
+    {
+      "_count": 18,
+      "setCode": "OP-03",
+      "rarity": "SR"
+    },
+    {
+      "_count": 108,
+      "setCode": "CARDS-PROMOEN",
+      "rarity": "P"
+    },
+    {
+      "_count": 9,
+      "setCode": "PRB-01",
+      "rarity": "P"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-15",
+      "rarity": "SR"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-12",
+      "rarity": "L"
+    },
+    {
+      "_count": 12,
+      "setCode": "ST-09",
+      "rarity": "C"
+    },
+    {
+      "_count": 2,
+      "setCode": "OP-06",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 30,
+      "setCode": "OP-06",
+      "rarity": "UC"
+    },
+    {
+      "_count": 3,
+      "setCode": "EB-01",
+      "rarity": "L"
+    },
+    {
+      "_count": 20,
+      "setCode": "OP-08",
+      "rarity": "SR"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-27",
+      "rarity": "SR"
+    },
+    {
+      "_count": 31,
+      "setCode": "OP-03",
+      "rarity": "R"
+    },
+    {
+      "_count": 6,
+      "setCode": "ST-28",
+      "rarity": "C"
+    },
+    {
+      "_count": 5,
+      "setCode": "ST-24",
+      "rarity": "UC"
+    },
+    {
+      "_count": 3,
+      "setCode": "OP-12",
+      "rarity": "SR SP"
+    },
+    {
+      "_count": 3,
+      "setCode": "ST-25",
+      "rarity": "UC"
+    },
+    {
+      "_count": 11,
+      "setCode": "ST-10",
+      "rarity": "C"
+    },
+    {
+      "_count": 3,
+      "setCode": "OP-08",
+      "rarity": "SP CARD"
+    },
+    {
+      "_count": 5,
+      "setCode": "ST-25",
+      "rarity": "C"
+    },
+    {
+      "_count": 8,
+      "setCode": "ST-20",
+      "rarity": "C"
+    },
+    {
+      "_count": 12,
+      "setCode": "OP-04",
+      "rarity": "L"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-06",
+      "rarity": "L"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-08",
+      "rarity": "L"
+    },
+    {
+      "_count": 33,
+      "setCode": "OP-09",
+      "rarity": "R"
+    },
+    {
+      "_count": 3,
+      "setCode": "ST-10",
+      "rarity": "L"
+    },
+    {
+      "_count": 8,
+      "setCode": "ST-17",
+      "rarity": "C"
+    },
+    {
+      "_count": 7,
+      "setCode": "ST-26",
+      "rarity": "C"
+    },
+    {
+      "_count": 29,
+      "setCode": "EB-02",
+      "rarity": "C"
+    },
+    {
+      "_count": 67,
+      "setCode": "CARDS-PROMOEN",
+      "rarity": "R"
+    },
+    {
+      "_count": 30,
+      "setCode": "OP-11",
+      "rarity": "UC"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-19",
+      "rarity": "R"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-18",
+      "rarity": "SR"
+    },
+    {
+      "_count": 15,
+      "setCode": "OP-03",
+      "rarity": "L"
+    },
+    {
+      "_count": 7,
+      "setCode": "OP-09",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 12,
+      "setCode": "CARDS-PROMO",
+      "rarity": "SR"
+    },
+    {
+      "_count": 12,
+      "setCode": "OP-10",
+      "rarity": "L"
+    },
+    {
+      "_count": 3,
+      "setCode": "OP-03",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-09",
+      "rarity": "SR"
+    },
+    {
+      "_count": 6,
+      "setCode": "ST-16",
+      "rarity": "P"
+    },
+    {
+      "_count": 6,
+      "setCode": "OP-06",
+      "rarity": "SP CARD"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-23",
+      "rarity": "L"
+    },
+    {
+      "_count": 5,
+      "setCode": "OP-08",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 3,
+      "setCode": "ST-15",
+      "rarity": "R"
+    },
+    {
+      "_count": 8,
+      "setCode": "CARDS-PROMO",
+      "rarity": "R"
+    },
+    {
+      "_count": 15,
+      "setCode": "PRB-01",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 4,
+      "setCode": "ST-28",
+      "rarity": "UC"
+    },
+    {
+      "_count": 45,
+      "setCode": "OP-04",
+      "rarity": "C"
+    },
+    {
+      "_count": 5,
+      "setCode": "OP-10",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-11",
+      "rarity": "L"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-25",
+      "rarity": "L"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-02",
+      "rarity": "SR"
+    },
+    {
+      "_count": 34,
+      "setCode": "OP-02",
+      "rarity": "UC"
+    },
+    {
+      "_count": 44,
+      "setCode": "OP-05",
+      "rarity": "C"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-21",
+      "rarity": "L"
+    },
+    {
+      "_count": 3,
+      "setCode": "CARDS-PROMO",
+      "rarity": "C"
+    },
+    {
+      "_count": 3,
+      "setCode": "ST-26",
+      "rarity": "UC"
+    },
+    {
+      "_count": 12,
+      "setCode": "OP-11",
+      "rarity": "L"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-17",
+      "rarity": "SR"
+    },
+    {
+      "_count": 31,
+      "setCode": "OP-04",
+      "rarity": "R"
+    },
+    {
+      "_count": 51,
+      "setCode": "PRB-01",
+      "rarity": "SR"
+    },
+    {
+      "_count": 30,
+      "setCode": "OP-10",
+      "rarity": "UC"
+    },
+    {
+      "_count": 1,
+      "setCode": "OP-11",
+      "rarity": "TR"
+    },
+    {
+      "_count": 45,
+      "setCode": "OP-07",
+      "rarity": "C"
+    },
+    {
+      "_count": 31,
+      "setCode": "CARDS-PROMOEN",
+      "rarity": "SR"
+    },
+    {
+      "_count": 31,
+      "setCode": "OP-06",
+      "rarity": "R"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-18",
+      "rarity": "P"
+    },
+    {
+      "_count": 14,
+      "setCode": "ST-03",
+      "rarity": "C"
+    },
+    {
+      "_count": 45,
+      "setCode": "OP-06",
+      "rarity": "C"
+    },
+    {
+      "_count": 46,
+      "setCode": "OP-02",
+      "rarity": "C"
+    },
+    {
+      "_count": 3,
+      "setCode": "CARDS-PROMO",
+      "rarity": "P"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-24",
+      "rarity": "L"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-05",
+      "rarity": "SR"
+    },
+    {
+      "_count": 32,
+      "setCode": "OP-01",
+      "rarity": "UC"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-10",
+      "rarity": "R"
+    },
+    {
+      "_count": 2,
+      "setCode": "OP-01",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-18",
+      "rarity": "UC"
+    },
+    {
+      "_count": 12,
+      "setCode": "OP-08",
+      "rarity": "L"
+    },
+    {
+      "_count": 3,
+      "setCode": "ST-25",
+      "rarity": "R"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-01",
+      "rarity": "L"
+    },
+    {
+      "_count": 16,
+      "setCode": "OP-02",
+      "rarity": "SR"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-12",
+      "rarity": "SR"
+    },
+    {
+      "_count": 29,
+      "setCode": "OP-05",
+      "rarity": "R"
+    },
+    {
+      "_count": 32,
+      "setCode": "OP-07",
+      "rarity": "R"
+    },
+    {
+      "_count": 15,
+      "setCode": "OP-01",
+      "rarity": "SR"
+    },
+    {
+      "_count": 7,
+      "setCode": "ST-18",
+      "rarity": "C"
+    },
+    {
+      "_count": 2,
+      "setCode": "OP-05",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 5,
+      "setCode": "CARDS-OTHEREN",
+      "rarity": "SR"
+    },
+    {
+      "_count": 2,
+      "setCode": "OP-12",
+      "rarity": "SP SR"
+    },
+    {
+      "_count": 4,
+      "setCode": "ST-21",
+      "rarity": "SR"
+    },
+    {
+      "_count": 34,
+      "setCode": "OP-12",
+      "rarity": "R"
+    },
+    {
+      "_count": 28,
+      "setCode": "EB-01",
+      "rarity": "C"
+    },
+    {
+      "_count": 12,
+      "setCode": "ST-08",
+      "rarity": "C"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-19",
+      "rarity": "L"
+    },
+    {
+      "_count": 30,
+      "setCode": "OP-04",
+      "rarity": "UC"
+    },
+    {
+      "_count": 4,
+      "setCode": "ST-19",
+      "rarity": "UC"
+    },
+    {
+      "_count": 3,
+      "setCode": "CARDS-PROMO",
+      "rarity": "UC"
+    },
+    {
+      "_count": 31,
+      "setCode": "OP-02",
+      "rarity": "R"
+    },
+    {
+      "_count": 26,
+      "setCode": "ST-21",
+      "rarity": "C"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-28",
+      "rarity": "L"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-23",
+      "rarity": "UC"
+    },
+    {
+      "_count": 1,
+      "setCode": "OP-04",
+      "rarity": "SP CARD"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-20",
+      "rarity": "SR"
+    },
+    {
+      "_count": 16,
+      "setCode": "OP-06",
+      "rarity": "SR"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-06",
+      "rarity": "SR"
+    },
+    {
+      "_count": 13,
+      "setCode": "CARDS-OTHEREN",
+      "rarity": "C"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-14",
+      "rarity": "SR"
+    },
+    {
+      "_count": 18,
+      "setCode": "OP-07",
+      "rarity": "SR"
+    },
+    {
+      "_count": 4,
+      "setCode": "ST-10",
+      "rarity": "SR"
+    },
+    {
+      "_count": 5,
+      "setCode": "CARDS-OTHEREN",
+      "rarity": "P"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-25",
+      "rarity": "SR"
+    },
+    {
+      "_count": 32,
+      "setCode": "OP-03",
+      "rarity": "UC"
+    },
+    {
+      "_count": 45,
+      "setCode": "OP-08",
+      "rarity": "C"
+    },
+    {
+      "_count": 4,
+      "setCode": "OP-07",
+      "rarity": "SP CARD"
+    },
+    {
+      "_count": 27,
+      "setCode": "EB-02",
+      "rarity": "R"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-07",
+      "rarity": "SR"
+    },
+    {
+      "_count": 30,
+      "setCode": "OP-12",
+      "rarity": "UC"
+    },
+    {
+      "_count": 31,
+      "setCode": "OP-08",
+      "rarity": "R"
+    },
+    {
+      "_count": 11,
+      "setCode": "OP-05",
+      "rarity": "L"
+    },
+    {
+      "_count": 3,
+      "setCode": "OP-02",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 20,
+      "setCode": "OP-10",
+      "rarity": "SR"
+    },
+    {
+      "_count": 45,
+      "setCode": "OP-12",
+      "rarity": "C"
+    },
+    {
+      "_count": 12,
+      "setCode": "OP-09",
+      "rarity": "L"
+    },
+    {
+      "_count": 80,
+      "setCode": "PRB-01",
+      "rarity": "R"
+    },
+    {
+      "_count": 5,
+      "setCode": "OP-11",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-17",
+      "rarity": "R"
+    },
+    {
+      "_count": 30,
+      "setCode": "OP-08",
+      "rarity": "UC"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-26",
+      "rarity": "R"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-18",
+      "rarity": "R"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-20",
+      "rarity": "L"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-17",
+      "rarity": "L"
+    },
+    {
+      "_count": 45,
+      "setCode": "OP-11",
+      "rarity": "C"
+    },
+    {
+      "_count": 2,
+      "setCode": "EB-01",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 14,
+      "setCode": "ST-01",
+      "rarity": "C"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-15",
+      "rarity": "UC"
+    },
+    {
+      "_count": 33,
+      "setCode": "OP-10",
+      "rarity": "R"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-28",
+      "rarity": "SR"
+    },
+    {
+      "_count": 45,
+      "setCode": "OP-03",
+      "rarity": "C"
+    },
+    {
+      "_count": 4,
+      "setCode": "ST-27",
+      "rarity": "R"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-13",
+      "rarity": "R"
+    },
+    {
+      "_count": 4,
+      "setCode": "CARDS-PROMOEN",
+      "rarity": "L"
+    },
+    {
+      "_count": 13,
+      "setCode": "ST-14",
+      "rarity": "C"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-27",
+      "rarity": "L"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-07",
+      "rarity": "L"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-16",
+      "rarity": "L"
+    },
+    {
+      "_count": 16,
+      "setCode": "OP-04",
+      "rarity": "SR"
+    },
+    {
+      "_count": 20,
+      "setCode": "OP-12",
+      "rarity": "SR"
+    },
+    {
+      "_count": 3,
+      "setCode": "EB-02",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 1,
+      "setCode": "OP-12",
+      "rarity": "TR"
+    },
+    {
+      "_count": 30,
+      "setCode": "OP-05",
+      "rarity": "UC"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-03",
+      "rarity": "SR"
+    },
+    {
+      "_count": 30,
+      "setCode": "OP-09",
+      "rarity": "UC"
+    },
+    {
+      "_count": 4,
+      "setCode": "OP-07",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 4,
+      "setCode": "OP-05",
+      "rarity": "SP CARD"
+    },
+    {
+      "_count": 5,
+      "setCode": "OP-12",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 8,
+      "setCode": "ST-15",
+      "rarity": "C"
+    },
+    {
+      "_count": 8,
+      "setCode": "ST-11",
+      "rarity": "C"
+    },
+    {
+      "_count": 14,
+      "setCode": "ST-07",
+      "rarity": "C"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-05",
+      "rarity": "L"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-11",
+      "rarity": "R"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-01",
+      "rarity": "SR"
+    },
+    {
+      "_count": 15,
+      "setCode": "EB-01",
+      "rarity": "SR"
+    },
+    {
+      "_count": 3,
+      "setCode": "ST-24",
+      "rarity": "R"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-02",
+      "rarity": "L"
+    },
+    {
+      "_count": 14,
+      "setCode": "ST-06",
+      "rarity": "C"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-11",
+      "rarity": "SR"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-19",
+      "rarity": "SR"
+    },
+    {
+      "_count": 14,
+      "setCode": "ST-02",
+      "rarity": "C"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-17",
+      "rarity": "P"
+    },
+    {
+      "_count": 2,
+      "setCode": "OP-03",
+      "rarity": "SP CARD"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-25",
+      "rarity": "P"
+    },
+    {
+      "_count": 15,
+      "setCode": "OP-01",
+      "rarity": "L"
+    },
+    {
+      "_count": 6,
+      "setCode": "ST-13",
+      "rarity": "L"
+    },
+    {
+      "_count": 76,
+      "setCode": "PRB-01",
+      "rarity": "UC"
+    },
+    {
+      "_count": 11,
+      "setCode": "CARDS-OTHEREN",
+      "rarity": "R"
+    },
+    {
+      "_count": 2,
+      "setCode": "CARDS-OTHEREN",
+      "rarity": "L"
+    },
+    {
+      "_count": 4,
+      "setCode": "ST-24",
+      "rarity": "C"
+    },
+    {
+      "_count": 14,
+      "setCode": "ST-05",
+      "rarity": "C"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-28",
+      "rarity": "R"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-04",
+      "rarity": "L"
+    },
+    {
+      "_count": 8,
+      "setCode": "ST-13",
+      "rarity": "SR"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-08",
+      "rarity": "SR"
+    },
+    {
+      "_count": 17,
+      "setCode": "OP-05",
+      "rarity": "SR"
+    },
+    {
+      "_count": 12,
+      "setCode": "OP-06",
+      "rarity": "L"
+    },
+    {
+      "_count": 5,
+      "setCode": "EB-02",
+      "rarity": "L"
+    },
+    {
+      "_count": 6,
+      "setCode": "ST-19",
+      "rarity": "C"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-27",
+      "rarity": "UC"
+    },
+    {
+      "_count": 18,
+      "setCode": "ST-13",
+      "rarity": "C"
+    },
+    {
+      "_count": 7,
+      "setCode": "ST-23",
+      "rarity": "C"
+    },
+    {
+      "_count": 14,
+      "setCode": "ST-04",
+      "rarity": "C"
+    },
+    {
+      "_count": 22,
+      "setCode": "OP-09",
+      "rarity": "SR"
+    },
+    {
+      "_count": 12,
+      "setCode": "OP-07",
+      "rarity": "L"
+    },
+    {
+      "_count": 10,
+      "setCode": "OP-09",
+      "rarity": "SP CARD"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-17",
+      "rarity": "UC"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-18",
+      "rarity": "L"
+    },
+    {
+      "_count": 3,
+      "setCode": "ST-16",
+      "rarity": "SR"
+    },
+    {
+      "_count": 14,
+      "setCode": "OP-02",
+      "rarity": "L"
+    },
+    {
+      "_count": 40,
+      "setCode": "CARDS-PROMOEN",
+      "rarity": "C"
+    },
+    {
+      "_count": 45,
+      "setCode": "OP-09",
+      "rarity": "C"
+    },
+    {
+      "_count": 5,
+      "setCode": "ST-16",
+      "rarity": "C"
+    },
+    {
+      "_count": 30,
+      "setCode": "OP-01",
+      "rarity": "R"
+    },
+    {
+      "_count": 12,
+      "setCode": "OP-12",
+      "rarity": "L"
+    },
+    {
+      "_count": 30,
+      "setCode": "OP-07",
+      "rarity": "UC"
+    },
+    {
+      "_count": 1,
+      "setCode": "OP-06",
+      "rarity": "TR"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-11",
+      "rarity": "UC"
+    },
+    {
+      "_count": 3,
+      "setCode": "OP-04",
+      "rarity": "SEC"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-26",
+      "rarity": "L"
+    },
+    {
+      "_count": 1,
+      "setCode": "ST-03",
+      "rarity": "L"
+    },
+    {
+      "_count": 2,
+      "setCode": "PRB-01",
+      "rarity": "L"
+    },
+    {
+      "_count": 45,
+      "setCode": "OP-10",
+      "rarity": "C"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-26",
+      "rarity": "SR"
+    },
+    {
+      "_count": 2,
+      "setCode": "ST-23",
+      "rarity": "SR"
+    },
+    {
+      "_count": 49,
+      "setCode": "OP-01",
+      "rarity": "C"
+    },
+    {
+      "_count": 5,
+      "setCode": "OP-10",
+      "rarity": "SP CARD"
+    }
+  ],
+  "unlinkedCards": 0,
+  "rules": [
+    {
+      "code": "OP02",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "OP03",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "OP04",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "OP05",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "OP06",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "OP07",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "OP08",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "OP09",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST01",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST02",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST03",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST04",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST05",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST06",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST07",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST08",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST09",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST10",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST11",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST12",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST13",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST14",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST15",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST16",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST17",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST18",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST19",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST20",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST21",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST23",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST24",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST25",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST26",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST27",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "ST28",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "EB01",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.15,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.08,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "EB02",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.18,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.1,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "OP01",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "OP10",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.12,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.06,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "OP11",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.12,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.06,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "OP12",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "CARDSOTHER",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "CARDSOTHEREN",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "PRB01",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 3,
+        "eventCount": 1,
+        "stageCount": 0,
+        "commonCount": 4,
+        "leaderCount": 1,
+        "altArtChance": 0.25,
+        "specialChance": 0.1,
+        "uncommonCount": 2,
+        "characterCount": 3,
+        "parallelChance": 0.15,
+        "superRareCount": 2
+      }
+    },
+    {
+      "code": "CARDSPROMO",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    },
+    {
+      "code": "CARDSPROMOEN",
+      "boosterRules": {
+        "donCount": 1,
+        "rareCount": 2,
+        "eventCount": 2,
+        "stageCount": 0,
+        "commonCount": 6,
+        "leaderCount": 0,
+        "altArtChance": 0.1,
+        "specialChance": 0.05,
+        "uncommonCount": 3,
+        "characterCount": 4,
+        "parallelChance": 0.05,
+        "superRareCount": 1
+      }
+    }
+  ],
+  "boosters": []
+}

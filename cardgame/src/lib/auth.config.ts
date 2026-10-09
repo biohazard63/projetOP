@@ -28,7 +28,7 @@ providers.push(
     clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
     // Autoriser le rattachement d'un compte Google au même email qu'un compte existant
     // (sécurisé par la vérification d'email dans le callback signIn ci-dessous)
-    allowDangerousEmailAccountLinking: true,
+    allowDangerousEmailAccountLinking: false,
   })
 )
 
@@ -81,7 +81,7 @@ providers.push(
 
       if (!user) {
         registerFailure(lockKey, 5, 15 * 60 * 1000) // 5 erreurs => 15min lock
-        throw new Error("Aucun utilisateur trouvé avec cet email")
+        throw new Error("Identifiants invalides")
       }
 
       if (!user.password) {
@@ -92,7 +92,7 @@ providers.push(
 
       if (!isPasswordValid) {
         registerFailure(lockKey, 5, 15 * 60 * 1000)
-        throw new Error("Mot de passe incorrect")
+        throw new Error("Identifiants invalides")
       }
 
       // Exiger email vérifié pour credentials si EmailProvider activé
@@ -131,7 +131,7 @@ export const authConfig = {
         const verified = (profile && typeof profile === 'object' && 'email_verified' in profile)
           ? (profile as { email_verified?: boolean }).email_verified
           : undefined
-        if (verified === false) return false
+        if (verified !== true) return false
       }
       // Les nouveaux comptes credentials sont gérés lors de l'inscription (API register)
       return true
@@ -153,7 +153,6 @@ export const authConfig = {
         session.user.id = token.id as string
         session.user.email = token.email as string
         session.user.name = token.name as string
-        session.accessToken = token.accessToken as string
         session.provider = token.provider as string
       }
       return session
@@ -207,5 +206,5 @@ export const authConfig = {
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
-  debug: process.env.NODE_ENV === 'development'
+  debug: false
 } satisfies NextAuthConfig

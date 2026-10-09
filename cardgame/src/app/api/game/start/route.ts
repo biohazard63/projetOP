@@ -1,3 +1,1 @@
-import { prisma } from '@/lib/prisma'
-
-// ... existing code ... 
+export { POST } from '../initialize/route'

@@ -1,7 +1,7 @@
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
-
-import { prisma } from '@/lib/prisma'
+import { ManualGameService } from '@/lib/game/manualGameService'
+import { GamePersistenceService } from '@/lib/game/gamePersistenceService'
 
 export async function POST() {
   try {
@@ -14,38 +14,39 @@ export async function POST() {
       )
     }
 
-    // Pour l'instant, on retourne simplement un état de jeu simulé
-    // Dans une implémentation complète, on mettrait à jour l'état du jeu en base de données
-    const gameState = {
-      player: {
-        id: 'player',
-        name: session.user.name || 'Joueur',
-        lifePoints: 5,
-        deck: [],
-        hand: [],
-        field: [],
-        leader: null,
-        activeDon: 0
-      },
-      opponent: {
-        id: 'opponent',
-        name: 'Adversaire',
-        lifePoints: 5,
-        deck: [],
-        hand: [],
-        field: [],
-        leader: null,
-        activeDon: 0
-      },
-      currentPhase: 'DRAW',
-      currentPlayer: 'player',
-      turnNumber: 2,
-      gameOver: false
+    // Récupérer l'état actuel du jeu depuis la base de données
+    const currentGameState = await GamePersistenceService.getActiveGameState(session.user.id);
+    
+    if (!currentGameState) {
+      return NextResponse.json(
+        { error: 'Aucune partie en cours. Initialisez d\'abord le jeu.' },
+        { status: 404 }
+      )
     }
 
-    return NextResponse.json(gameState)
+    // Vérifier que l'action est valide pour le joueur actif
+    const currentPlayer = currentGameState.currentPlayer;
+    if (!ManualGameService.canPerformAction(currentGameState, 'endTurn', currentPlayer)) {
+      return NextResponse.json(
+        { error: 'Action non autorisée' },
+        { status: 400 }
+      )
+    }
+
+    // Terminer le tour
+    const updatedGameState = ManualGameService.endTurn(currentGameState);
+    
+    // Sauvegarder l'état mis à jour
+    await GamePersistenceService.saveGameState(
+      updatedGameState,
+      session.user.id,
+      session.user.id
+    );
+
+    return NextResponse.json(updatedGameState)
+    
   } catch (error) {
-    console.error('Erreur lors de la fin du tour:', error)
+    console.error('❌ Erreur lors de la fin de tour:', error)
     return NextResponse.json(
       { error: 'Erreur serveur' },
       { status: 500 }

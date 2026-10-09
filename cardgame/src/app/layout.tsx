@@ -1,22 +1,23 @@
 import './globals.css'
+import './collector.css'
+import { CollectorPreferencesProvider } from '@/components/collector/Preferences'
+import Link from 'next/link'
 import { Inter } from 'next/font/google'
-import Image from 'next/image'
 import { Navbar } from '@/components/Navbar'
 import { Providers } from './providers'
 
 import { Analytics } from '@vercel/analytics/react'
 import { cn } from "@/lib/utils"
 import { PWAInstallPrompt } from '@/components/PWAInstallPrompt'
-import PWAAuthHelper from '@/components/PWAAuthHelper'
 
 const inter = Inter({ subsets: ['latin'] })
+
+export const viewport = { width: 'device-width', initialScale: 1, themeColor: '#080F1F' }
 
 export const metadata = {
   title: 'One Piece Card Game',
   description: 'Mugiwara TCG – L\'application fan-made française du One Piece Card Game. Ouvre des boosters réalistes, collectionne tes cartes et affronte d\'autres joueurs pirates.',
   manifest: '/manifest.json',
-  themeColor: '#f59e0b',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',
@@ -58,20 +59,21 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning className={cn(inter.className, "min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))] overflow-x-hidden")}>
         <Providers>
+          <CollectorPreferencesProvider>
+          <a className="piece-skip" href="#main-content">Aller au contenu</a>
           <div className="relative min-h-screen">
             {/* Fond: image + dégradés radiaux et overlay */}
        
 
-            <header className="relative z-20">
-              {/* Navbar temporairement désactivé pour le build */}
-              <Navbar />
-            </header>
+            <Navbar />
 
-            <main className="relative z-10 pt-16" suppressHydrationWarning>
+            <main id="main-content" tabIndex={-1} className="piece-main relative z-10" suppressHydrationWarning>
               {children}
             </main>
          
           </div>
+          <footer className="piece-footer"><span>MUGIWARA TCG · Votre aventure, carte après carte.</span><span>Projet de fans · Simulation gratuite <Link href="/opening-demo" className="ml-4 text-amber-200">Démo cinématique</Link></span></footer>
+          </CollectorPreferencesProvider>
         </Providers>
         <PWAInstallPrompt />
         {/* <PWAAuthHelper /> */}

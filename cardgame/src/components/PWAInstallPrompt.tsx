@@ -15,6 +15,9 @@ export function PWAInstallPrompt() {
   const [isSupported, setIsSupported] = useState(false)
 
   useEffect(() => {
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('/sw.js').catch(() => console.error('Service worker indisponible'));
+    }
     // Vérifier si le navigateur supporte l'installation PWA
     const checkPWASupport = () => {
       const isStandalone = window.matchMedia('(display-mode: standalone)').matches

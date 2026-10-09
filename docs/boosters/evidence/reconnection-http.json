@@ -1,0 +1,17 @@
+[
+  {
+    "path": "/api/booster",
+    "status": "PASS",
+    "items": 46
+  },
+  {
+    "path": "/api/booster/history",
+    "status": "PASS",
+    "items": 0
+  },
+  {
+    "path": "/api/user/collection",
+    "status": "PASS",
+    "items": 0
+  }
+]

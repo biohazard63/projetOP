@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@config "../../tailwind.config.ts";
 
 @layer base {
   :root {
@@ -109,20 +110,20 @@
   }
 }
 
-.grid > div {
+.legacy-card-grid > div {
   animation: cardAppear 0.5s ease-out forwards;
   opacity: 0;
 }
 
 /* Délai d'animation pour chaque carte */
-.grid > div:nth-child(1) { animation-delay: 0.1s; }
-.grid > div:nth-child(2) { animation-delay: 0.2s; }
-.grid > div:nth-child(3) { animation-delay: 0.3s; }
-.grid > div:nth-child(4) { animation-delay: 0.4s; }
-.grid > div:nth-child(5) { animation-delay: 0.5s; }
-.grid > div:nth-child(6) { animation-delay: 0.6s; }
-.grid > div:nth-child(7) { animation-delay: 0.7s; }
-.grid > div:nth-child(8) { animation-delay: 0.8s; }
+.legacy-card-grid > div:nth-child(1) { animation-delay: 0.1s; }
+.legacy-card-grid > div:nth-child(2) { animation-delay: 0.2s; }
+.legacy-card-grid > div:nth-child(3) { animation-delay: 0.3s; }
+.legacy-card-grid > div:nth-child(4) { animation-delay: 0.4s; }
+.legacy-card-grid > div:nth-child(5) { animation-delay: 0.5s; }
+.legacy-card-grid > div:nth-child(6) { animation-delay: 0.6s; }
+.legacy-card-grid > div:nth-child(7) { animation-delay: 0.7s; }
+.legacy-card-grid > div:nth-child(8) { animation-delay: 0.8s; }
 
 /* Styles pour l'animation 3D des cartes */
 .perspective-1000 {

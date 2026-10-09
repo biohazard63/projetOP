@@ -181,10 +181,17 @@ model BoosterOpening {
   id        String               @id @default(cuid())
   userId    String
   boosterId String
+  idempotencyKey String?
+  creditedAt DateTime?
+  resultSnapshot Json?
+  rulesSnapshot Json?
   openedAt  DateTime             @default(now())
-  booster   Booster              @relation(fields: [boosterId], references: [id], onDelete: Cascade)
+  booster   Booster              @relation(fields: [boosterId], references: [id], onDelete: Restrict)
   user      User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
   cards     BoosterOpeningCard[]
+
+  @@unique([userId, idempotencyKey])
+  @@index([userId, openedAt, id])
 }
 
 model BoosterOpeningCard {
@@ -193,7 +200,7 @@ model BoosterOpeningCard {
   cardId           String
   position         Int
   boosterOpening   BoosterOpening @relation(fields: [boosterOpeningId], references: [id], onDelete: Cascade)
-  card             Card           @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  card             Card           @relation(fields: [cardId], references: [id], onDelete: Restrict)
 
   @@unique([boosterOpeningId, position])
 }
@@ -252,10 +259,11 @@ model GameState {
   playerHand               Json[]
   playerField              Json[]
   playerDonDeck            Json[]
+  playerDonField           Json[]
   playerTrash              Json[]
   playerActiveDon          Int       @default(0)
   playerDonAddedThisTurn   Boolean   @default(false)
-  playerUsedDonDeck        Boolean   @default(false)
+  playerUsedDonDeck        Json[]
   playerDiscardPile        Json[]
   opponentLife             Int       @default(4)
   opponentLeader           Json?
@@ -263,10 +271,11 @@ model GameState {
   opponentHand             Json[]
   opponentField            Json[]
   opponentDonDeck          Json[]
+  opponentDonField         Json[]
   opponentTrash            Json[]
   opponentActiveDon        Int       @default(0)
   opponentDonAddedThisTurn Boolean   @default(false)
-  opponentUsedDonDeck      Boolean   @default(false)
+  opponentUsedDonDeck      Json[]
   opponentDiscardPile      Json[]
   gameLogs                 GameLog[]
   opponent                 User      @relation("OpponentGame", fields: [opponentId], references: [id])

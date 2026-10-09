@@ -1,3 +1,4 @@
+import OpponentField from '@/components/game/OpponentField';
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -115,9 +116,8 @@ export default function GameBoard({ playerDeck, opponentDeck }: GameBoardProps) 
     <div className="min-h-screen bg-gray-900 p-4">
       <div className="container mx-auto space-y-8">
         {/* Champ de l'adversaire */}
-        <PlayerField
+        <OpponentField
           player={gameState.opponent}
-          isOpponent={true}
           onCardClick={(card) => setTargetCard(card)}
           selectedCard={targetCard || undefined}
         />
@@ -125,7 +125,6 @@ export default function GameBoard({ playerDeck, opponentDeck }: GameBoardProps) 
         {/* Champ du joueur */}
         <PlayerField
           player={gameState.player}
-          isOpponent={false}
           onCardClick={(card) => handleCardClick(card, 'field')}
           selectedCard={selectedCard || undefined}
         />
@@ -136,7 +135,7 @@ export default function GameBoard({ playerDeck, opponentDeck }: GameBoardProps) 
           currentPlayer={gameState.currentPlayer}
           canPlayCard={!!selectedCard && gameState.currentPhase === 'MAIN'}
           canAttack={!!selectedCard && !!targetCard}
-          canEndTurn={gameState.canEndTurn}
+          canEndTurn={gameState.canEndTurn || false}
           onDrawCard={() => drawCard('player')}
           onAddDon={() => addDon('player')}
           onEndTurn={handleEndTurn}

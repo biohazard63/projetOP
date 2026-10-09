@@ -1,0 +1,191 @@
+
+> cardgame@0.1.0 lint
+> eslint src
+
+
+<cardgame>/src/app/api/auth/register/route.ts
+  78:23  warning  '_' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/app/api/decks/[deckId]/route.ts
+  8:6  warning  'CardWithQuantity' is defined but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/app/api/decks/route.ts
+   6:10  warning  'Prisma' is defined but never used             @typescript-eslint/no-unused-vars
+  10:11  warning  'CreateDeckRequest' is defined but never used  @typescript-eslint/no-unused-vars
+  21:11  warning  'RawDeckWithCards' is defined but never used   @typescript-eslint/no-unused-vars
+
+<cardgame>/src/app/api/game/initialize/route.ts
+  11:21  warning  'GamePhase' is defined but never used          @typescript-eslint/no-unused-vars
+  11:32  warning  'SetupPhase' is defined but never used         @typescript-eslint/no-unused-vars
+  12:10  warning  'ManualGameService' is defined but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/app/api/game/keep-hand/route.ts
+  6:28  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/app/api/game/mulligan/route.ts
+  6:28  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/app/deck-builder/page.tsx
+  241:6   warning  React Hook useEffect has a missing dependency: 'validateAndCleanDeck'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  320:9   warning  'translateColor' is assigned a value but never used                                                                      @typescript-eslint/no-unused-vars
+  342:9   warning  'normalizeColor' is assigned a value but never used                                                                      @typescript-eslint/no-unused-vars
+  577:6   warning  React Hook useMemo has a missing dependency: 'canPlayCardWithLeader'. Either include it or remove the dependency array   react-hooks/exhaustive-deps
+  647:19  warning  'id' is defined but never used                                                                                           @typescript-eslint/no-unused-vars
+
+<cardgame>/src/app/game/page.tsx
+  21:29  warning  'setShowDeckSelection' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/app/home/page.tsx
+  6:24  warning  'Sword' is defined but never used   @typescript-eslint/no-unused-vars
+  6:54  warning  'Globe' is defined but never used   @typescript-eslint/no-unused-vars
+  6:94  warning  'Images' is defined but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/app/layout.tsx
+   3:8  warning  'Image' is defined but never used          @typescript-eslint/no-unused-vars
+  10:8  warning  'PWAAuthHelper' is defined but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/app/providers.tsx
+  264:10  warning  'isTransitioning' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/components/GameBoard.tsx
+   2:1   warning  Expected an assignment or function call and instead saw an expression  @typescript-eslint/no-unused-expressions
+   5:10  warning  'GameState' is defined but never used                                  @typescript-eslint/no-unused-vars
+  81:9   warning  'handlePlayCard' is assigned a value but never used                    @typescript-eslint/no-unused-vars
+
+<cardgame>/src/components/booster-opening/AlternativeAnimation.tsx
+  51:6  warning  React Hook useEffect has a missing dependency: 'skip'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+<cardgame>/src/components/booster-opening/BoosterPackAnimation.tsx
+  13:69  warning  'performanceMode' is assigned a value but never used                                                               @typescript-eslint/no-unused-vars
+  17:10  warning  'showPulse' is assigned a value but never used                                                                     @typescript-eslint/no-unused-vars
+  87:6   warning  React Hook useEffect has a missing dependency: 'cardIds.length'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  98:6   warning  React Hook useEffect has a missing dependency: 'skip'. Either include it or remove the dependency array            react-hooks/exhaustive-deps
+
+<cardgame>/src/components/booster-opening/CardDetailsModal.tsx
+  164:31  warning  'e' is defined but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/components/booster-opening/CardReveal.tsx
+  29:3  warning  'onCardClick' is defined but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/components/booster-opening/RareAnimation.tsx
+  51:6  warning  React Hook useEffect has a missing dependency: 'skip'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+<cardgame>/src/components/booster-opening/UltraRareAnimation.tsx
+  53:6  warning  React Hook useEffect has a missing dependency: 'skip'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+
+<cardgame>/src/components/booster-opening/components/CardDisplay.tsx
+    3:18  warning  'AnimatePresence' is defined but never used                                                                               @typescript-eslint/no-unused-vars
+   31:3   warning  'navDirection' is defined but never used                                                                                  @typescript-eslint/no-unused-vars
+   43:9   warning  'easing' is assigned a value but never used                                                                               @typescript-eslint/no-unused-vars
+   45:9   warning  'variants' is assigned a value but never used                                                                             @typescript-eslint/no-unused-vars
+   46:13  warning  '_dir' is defined but never used                                                                                          @typescript-eslint/no-unused-vars
+   59:12  warning  '_dir' is defined but never used                                                                                          @typescript-eslint/no-unused-vars
+  107:6   warning  React Hook useEffect has a missing dependency: 'triggerSwipeAnimation'. Either include it or remove the dependency array  react-hooks/exhaustive-deps
+  243:23  warning  'rotateX' is assigned a value but never used                                                                              @typescript-eslint/no-unused-vars
+
+<cardgame>/src/components/booster/BoosterCard.tsx
+  32:3  warning  'imageError' is defined but never used  @typescript-eslint/no-unused-vars
+  35:3  warning  'isNewCard' is defined but never used   @typescript-eslint/no-unused-vars
+  42:3  warning  'onDragEnd' is defined but never used   @typescript-eslint/no-unused-vars
+
+<cardgame>/src/components/game/Card.tsx
+  127:10  warning  'showDetails' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  127:23  warning  'setShowDetails' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/components/game/CardEffectsPanel.tsx
+    4:27  warning  'StrategyAnalysis' is defined but never used            @typescript-eslint/no-unused-vars
+   15:10  warning  'selectedCard' is assigned a value but never used       @typescript-eslint/no-unused-vars
+   15:24  warning  'setSelectedCard' is assigned a value but never used    @typescript-eslint/no-unused-vars
+   16:10  warning  'selectedTarget' is assigned a value but never used     @typescript-eslint/no-unused-vars
+   16:26  warning  'setSelectedTarget' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  291:42  warning  'index' is defined but never used                       @typescript-eslint/no-unused-vars
+
+<cardgame>/src/components/game/GameBoard.tsx
+    5:8   warning  'Card' is defined but never used                             @typescript-eslint/no-unused-vars
+   11:22  warning  'EndTurn' is defined but never used                          @typescript-eslint/no-unused-vars
+   11:31  warning  'Zap' is defined but never used                              @typescript-eslint/no-unused-vars
+   11:36  warning  'Target' is defined but never used                           @typescript-eslint/no-unused-vars
+   11:44  warning  'Crown' is defined but never used                            @typescript-eslint/no-unused-vars
+   15:10  warning  'Play' is defined but never used                             @typescript-eslint/no-unused-vars
+   15:16  warning  'SkipForward' is defined but never used                      @typescript-eslint/no-unused-vars
+   15:29  warning  'RefreshCw' is defined but never used                        @typescript-eslint/no-unused-vars
+   15:40  warning  'RotateCw' is defined but never used                         @typescript-eslint/no-unused-vars
+   15:50  warning  'Sword' is defined but never used                            @typescript-eslint/no-unused-vars
+   33:3   warning  'onEndTurn' is defined but never used                        @typescript-eslint/no-unused-vars
+   34:3   warning  'onDrawCard' is defined but never used                       @typescript-eslint/no-unused-vars
+   35:3   warning  'onMulligan' is defined but never used                       @typescript-eslint/no-unused-vars
+   36:3   warning  'onKeepHand' is defined but never used                       @typescript-eslint/no-unused-vars
+   37:3   warning  'selectedAttacker' is defined but never used                 @typescript-eslint/no-unused-vars
+   38:3   warning  'onCancelAttack' is defined but never used                   @typescript-eslint/no-unused-vars
+   93:9   warning  'handleMarkCardAsPlayed' is assigned a value but never used  @typescript-eslint/no-unused-vars
+   97:13  warning  'updatedState' is assigned a value but never used            @typescript-eslint/no-unused-vars
+  363:9   warning  'handleAttack' is assigned a value but never used            @typescript-eslint/no-unused-vars
+  436:9   warning  'handlePreviousPhase' is assigned a value but never used     @typescript-eslint/no-unused-vars
+  574:9   warning  'cardToGameCard' is assigned a value but never used          @typescript-eslint/no-unused-vars
+
+<cardgame>/src/components/game/PhaseActions.tsx
+   3:10  warning  'PhaseService' is defined but never used         @typescript-eslint/no-unused-vars
+  22:40  warning  'canDrawDon' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/components/game/TestPanel.tsx
+   10:21  warning  'GameCard' is defined but never used               @typescript-eslint/no-unused-vars
+  641:13  warning  'updatedState' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  672:15  warning  'updatedState' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  841:35  warning  'index' is defined but never used                  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/components/theme-provider.tsx
+  149:10  warning  'ThemeSelector' is defined but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/hooks/useGame.ts
+  2:31  warning  'PlayerState' is defined but never used             @typescript-eslint/no-unused-vars
+  2:55  warning  'SetupPhase' is defined but never used              @typescript-eslint/no-unused-vars
+  6:7   warning  'MAX_HAND_SIZE' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/lib/auth.config.ts
+  124:24  warning  'request' is defined but never used  @typescript-eslint/no-unused-vars
+  128:20  warning  'user' is defined but never used     @typescript-eslint/no-unused-vars
+
+<cardgame>/src/lib/game/cardEffectsService.ts
+    2:10  warning  'CombatService' is defined but never used    @typescript-eslint/no-unused-vars
+    3:10  warning  'CounterService' is defined but never used   @typescript-eslint/no-unused-vars
+  159:11  warning  'player' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  374:25  warning  'playerId' is defined but never used         @typescript-eslint/no-unused-vars
+  382:25  warning  'playerId' is defined but never used         @typescript-eslint/no-unused-vars
+  390:25  warning  'playerId' is defined but never used         @typescript-eslint/no-unused-vars
+
+<cardgame>/src/lib/game/cardStateService.ts
+  196:40  warning  'isCurrentPlayer' is defined but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/lib/game/combatService.ts
+  482:5  warning  'playerId' is defined but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/lib/game/counterService.ts
+   1:45  warning  'GamePhase' is defined but never used      @typescript-eslint/no-unused-vars
+   2:10  warning  'CombatService' is defined but never used  @typescript-eslint/no-unused-vars
+  77:5   warning  'targetAction' is defined but never used   @typescript-eslint/no-unused-vars
+
+<cardgame>/src/lib/game/donService.ts
+    1:54  warning  'DonState' is defined but never used           @typescript-eslint/no-unused-vars
+  185:11  warning  'donToUse' is assigned a value but never used  @typescript-eslint/no-unused-vars
+  213:40  warning  'isCurrentPlayer' is defined but never used    @typescript-eslint/no-unused-vars
+
+<cardgame>/src/lib/game/gameSimulationService.ts
+    4:10  warning  'CardEffectsService' is defined but never used   @typescript-eslint/no-unused-vars
+    5:10  warning  'StrategyService' is defined but never used      @typescript-eslint/no-unused-vars
+    7:10  warning  'CardStateService' is defined but never used     @typescript-eslint/no-unused-vars
+  706:11  warning  'turnNumber' is assigned a value but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/lib/game/manualGameService.ts
+  3:10  warning  'DonService' is defined but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/lib/game/phaseService.ts
+  4:10  warning  'DonService' is defined but never used  @typescript-eslint/no-unused-vars
+
+<cardgame>/src/lib/game/strategyService.ts
+    2:30  warning  'ComboEffect' is defined but never used  @typescript-eslint/no-unused-vars
+  284:65  warning  'playerId' is defined but never used     @typescript-eslint/no-unused-vars
+
+<cardgame>/src/types/next-auth.d.ts
+  1:8  warning  'NextAuth' is defined but never used  @typescript-eslint/no-unused-vars
+
+✖ 109 problems (0 errors, 109 warnings)

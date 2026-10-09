@@ -1,0 +1,5 @@
+
+> cardgame@0.1.0 test:boosters
+> tsx scripts/testBoosters.ts --set OP-TEST --runs 1000
+
+{"setCode":"OP-TEST","runs":1000,"packSize":12,"source":"SetRules.boosterRules historique ; configuration de simulateur, non officielle","counts":{"C":6000,"UC":3000,"R":2000,"SR":1000},"special":0,"warnings":["Les anciens champs altArtChance/parallelChance/specialChance, typeCounts et donCount ne définissent pas des slots exploitables. Ils ne sont pas appliqués ; les variantes présentes restent éligibles selon leur rareté. Configurer le format v1 pour des probabilités de variantes explicites."]}
