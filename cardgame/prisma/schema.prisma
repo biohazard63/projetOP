@@ -181,10 +181,17 @@ model BoosterOpening {
   id        String               @id @default(cuid())
   userId    String
   boosterId String
+  idempotencyKey String?
+  creditedAt DateTime?
+  resultSnapshot Json?
+  rulesSnapshot Json?
   openedAt  DateTime             @default(now())
-  booster   Booster              @relation(fields: [boosterId], references: [id], onDelete: Cascade)
+  booster   Booster              @relation(fields: [boosterId], references: [id], onDelete: Restrict)
   user      User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
   cards     BoosterOpeningCard[]
+
+  @@unique([userId, idempotencyKey])
+  @@index([userId, openedAt, id])
 }
 
 model BoosterOpeningCard {
@@ -193,7 +200,7 @@ model BoosterOpeningCard {
   cardId           String
   position         Int
   boosterOpening   BoosterOpening @relation(fields: [boosterOpeningId], references: [id], onDelete: Cascade)
-  card             Card           @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  card             Card           @relation(fields: [cardId], references: [id], onDelete: Restrict)
 
   @@unique([boosterOpeningId, position])
 }
