@@ -196,7 +196,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
 
     // Gestion du jeu de cartes depuis la main
     if (localGameState.currentPhase === 'MAIN' && 
-        (card.type === 'CHARACTER' || card.type === 'PERSONNAGE')) {
+        (card.type === 'CHARACTER')) {
       
       // Vérifier si c'est une carte du joueur actif
       const isPlayerCard = localGameState.player.hand.some(c => c.id === card.id);
@@ -786,7 +786,7 @@ export const GameBoard: React.FC<GameBoardProps> = ({
                   onClick={() => setLocalSelectedAttacker(null)}
                   className="px-3 py-1.5 rounded-md bg-red-600 hover:bg-red-700 text-white text-sm transition-colors"
                 >
-                  Annuler l'attaque
+                  Annuler l&apos;attaque
                 </button>
               </div>
             )}

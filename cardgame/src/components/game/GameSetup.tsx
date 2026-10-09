@@ -1,3 +1,4 @@
+import OpponentField from '@/components/game/OpponentField';
 import { useState } from 'react';
 import { GameState, GameCard } from '@/types/game';
 import { PlayerField } from './PlayerField';
@@ -160,16 +161,14 @@ export function GameSetup({
     <div className="min-h-screen bg-gray-900 p-4">
       <div className="container mx-auto space-y-8">
         {/* Champ de l'adversaire */}
-        <PlayerField
+        <OpponentField
           player={gameState.opponent}
-          isOpponent={true}
           onCardClick={() => {}}
         />
 
         {/* Champ du joueur */}
         <PlayerField
           player={gameState.player}
-          isOpponent={false}
           onCardClick={() => {}}
         />
 

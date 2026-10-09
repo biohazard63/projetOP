@@ -703,7 +703,7 @@ export class GameSimulationService {
     logCallback('🎯 Objectif: Faire gagner le premier joueur rapidement');
     
     let currentState = { ...initialGameState };
-    let turnNumber = 1;
+    const turnNumber = 1;
     
     try {
       // Configuration rapide

@@ -153,7 +153,7 @@ export class CardEffectsService {
    */
   private static applyComboBonus(
     gameState: GameState,
-    bonus: any,
+    bonus: NonNullable<ComboEffect['bonus']>,
     playerId: 'player' | 'opponent'
   ): GameState {
     const player = gameState[playerId];

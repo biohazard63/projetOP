@@ -147,8 +147,6 @@ export class CardStateService {
    * Vérifie si une carte peut attaquer après le refresh
    */
   private static canCardAttackAfterRefresh(card: GameCard): boolean {
-    // TEMPORAIRE: Toutes les cartes peuvent attaquer pour tester
-    return true;
     
     // Le Leader peut toujours attaquer
     if (card.type === 'LEADER') {

@@ -1,7 +1,7 @@
 export type CardType = 'LEADER' | 'CHARACTER' | 'EVENT' | 'STAGE' | 'DON';
 export type CardColor = 'RED' | 'BLUE' | 'GREEN' | 'BLACK' | 'PURPLE' | 'YELLOW';
 export type CardPosition = 'ACTIVE' | 'RESTED';
-export type GamePhase = 'SETUP' | 'START' | 'DRAW' | 'MAIN' | 'BATTLE' | 'END';
+export type GamePhase = 'SETUP' | 'START' | 'DRAW' | 'DON' | 'MAIN' | 'BATTLE' | 'END';
 export type SetupPhase = 'CHOOSE_FIRST' | 'CHOOSE_LEADER' | 'SET_LIFE' | 'SET_DON' | 'DRAW_STARTING' | 'MULLIGAN' | 'READY';
 export type CardEffectType = 'ON_PLAY' | 'ON_ATTACK' | 'ON_DEFEND' | 'ON_DISCARD' | 'ON_DRAW' | 'TRIGGER';
 export type CardEffectTiming = 'IMMEDIATE' | 'RESPONSE' | 'END_TURN' | 'START_TURN';

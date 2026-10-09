@@ -59,7 +59,7 @@ export class ManualGameService {
     }));
 
     return {
-      id: 'manual_game',
+      id: crypto.randomUUID(),
       player: {
         id: 'player',
         name: 'Joueur',
@@ -131,6 +131,9 @@ export class ManualGameService {
   ): GameState {
     const player = gameState[playerId];
     
+    if (gameState.currentPlayer !== playerId || gameState.currentPhase !== 'MAIN') throw new Error('Action hors tour ou hors phase');
+    if (player.field.length >= 5) throw new Error('Zone de combat pleine');
+
     // Trouver la carte dans la main
     const card = player.hand.find(c => c.id === cardId);
     if (!card) {
@@ -153,9 +156,9 @@ export class ManualGameService {
     // Ajouter la carte au terrain
     const updatedField = [...player.field, {
       ...card,
-      isActive: false, // Position Rested
+      isActive: true, // Les personnages entrent actifs
       wasPlayedThisTurn: true,
-      canAttack: true, // TEMPORAIRE: Permettre l'attaque immédiate pour tester
+      canAttack: Boolean(card.hasRush),
       hasAttacked: false
     }];
     
@@ -327,7 +330,7 @@ export class ManualGameService {
         if (!cardId) return false;
         const attacker = player.field.find(c => c.id === cardId);
         if (!attacker) return false;
-        return attacker.isActive && !attacker.hasAttacked && (attacker.canAttack !== false);
+        return Boolean(attacker.isActive) && !attacker.hasAttacked && (attacker.canAttack !== false);
         
       case 'endTurn':
         return gameState.currentPlayer === playerId;

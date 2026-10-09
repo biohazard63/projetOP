@@ -59,7 +59,7 @@ export async function POST(request: Request) {
       const gameEndState = {
         ...updatedGameState,
         gameOver: true,
-        winner: 'player'
+        winner: 'player' as const
       };
       
       // Sauvegarder l'état final
@@ -78,7 +78,7 @@ export async function POST(request: Request) {
       const gameEndState = {
         ...updatedGameState,
         gameOver: true,
-        winner: 'opponent'
+        winner: 'opponent' as const
       };
       
       // Sauvegarder l'état final

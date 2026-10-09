@@ -20,7 +20,7 @@ export default function CardEffectsPanel({ gameState, onGameStateUpdate, playerI
   const strategies = StrategyService.suggestStrategies(gameState, playerId);
   const victoryCheck = CardEffectsService.checkAdvancedVictoryConditions(gameState);
 
-  const handleExecuteEffect = async (effect: any, sourceCard: GameCard, targetCard?: GameCard) => {
+  const handleExecuteEffect = async (effect: { id: string; type: string; description: string; cost?: number }, sourceCard: GameCard, targetCard?: GameCard) => {
     try {
       const response = await fetch('/api/game/execute-effect', {
         method: 'POST',

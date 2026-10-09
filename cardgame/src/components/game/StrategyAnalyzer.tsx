@@ -9,8 +9,8 @@ interface StrategyAnalyzerProps {
 }
 
 export default function StrategyAnalyzer({ gameState, playerId }: StrategyAnalyzerProps) {
-  const [analysis, setAnalysis] = useState<any>(null);
-  const [position, setPosition] = useState<any>(null);
+  const [analysis, setAnalysis] = useState<ReturnType<typeof StrategyService.analyzeGameState> | null>(null);
+  const [position, setPosition] = useState<ReturnType<typeof StrategyService.evaluatePosition> | null>(null);
   const [recommendations, setRecommendations] = useState<string[]>([]);
   const [lastUpdate, setLastUpdate] = useState<Date>(new Date());
 

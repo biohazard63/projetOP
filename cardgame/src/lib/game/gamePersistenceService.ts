@@ -1,3 +1,4 @@
+import { Prisma, GameState as StoredGameState } from '@prisma/client';
 import { prisma } from '@/lib/prisma';
 import { GameState, GameCard } from '@/types/game';
 
@@ -32,7 +33,7 @@ export class GamePersistenceService {
       // Créer ou mettre à jour l'état du jeu
       const savedGameState = await prisma.gameState.upsert({
         where: {
-          id: gameState.id
+          id: gameState.id, playerId, opponentId
         },
         update: {
           currentPhase: gameState.currentPhase,
@@ -152,7 +153,8 @@ export class GamePersistenceService {
             { opponentId: userId }
           ],
           isActive: true
-        }
+        },
+        orderBy: { updatedAt: "desc" }
       });
 
       if (!dbGameState) {
@@ -184,79 +186,25 @@ export class GamePersistenceService {
   /**
    * Convertit une carte en format JSON pour le stockage
    */
-  private static convertCardToJson(card: GameCard | null): any {
-    if (!card) return null;
-    
-    return {
-      id: card.id,
-      name: card.name,
-      type: card.type,
-      color: card.color,
-      cost: card.cost,
-      power: card.power,
-      imageUrl: card.imageUrl,
-      effect: card.effect,
-      trigger: card.trigger,
-      isLeader: card.isLeader,
-      isDon: card.isDon,
-      hasAttacked: card.hasAttacked,
-      hasRush: card.hasRush,
-      hasBlocker: card.hasBlocker,
-      hasDoubleAttack: card.hasDoubleAttack,
-      hasTrigger: card.hasTrigger,
-      hasCounter: card.hasCounter,
-      counterValue: card.counterValue,
-      attachedDons: card.attachedDons,
-      donAttachments: card.donAttachments,
-      isFaceUp: card.isFaceUp,
-      isActive: card.isActive,
-      canAttack: card.canAttack,
-      wasPlayedThisTurn: card.wasPlayedThisTurn,
-      isAttacking: card.isAttacking,
-      isBlocking: card.isBlocking,
-      isBlocked: card.isBlocked,
-      blocker: card.blocker ? this.convertCardToJson(card.blocker) : undefined
-    };
+  private static convertCardToJson(card: GameCard): Prisma.InputJsonObject;
+  private static convertCardToJson(card: GameCard | null): Prisma.InputJsonObject | typeof Prisma.JsonNull;
+  private static convertCardToJson(card: GameCard | null): Prisma.InputJsonObject | typeof Prisma.JsonNull {
+    if (!card) return Prisma.JsonNull;
+    // JSON strips optional undefined fields; preserve all serializable card state.
+    return JSON.parse(JSON.stringify(card)) as Prisma.InputJsonObject;
   }
 
   /**
    * Convertit le JSON de la base de données en GameState
    */
-  private static convertJsonToGameState(dbGameState: any): GameState {
-    const convertJsonToCard = (jsonCard: any): GameCard => ({
-      id: jsonCard.id,
-      name: jsonCard.name,
-      type: jsonCard.type,
-      color: jsonCard.color,
-      cost: jsonCard.cost,
-      power: jsonCard.power,
-      imageUrl: jsonCard.imageUrl,
-      effect: jsonCard.effect,
-      trigger: jsonCard.trigger,
-      isLeader: jsonCard.isLeader,
-      isDon: jsonCard.isDon,
-      hasAttacked: jsonCard.hasAttacked,
-      hasRush: jsonCard.hasRush,
-      hasBlocker: jsonCard.hasBlocker,
-      hasDoubleAttack: jsonCard.hasDoubleAttack,
-      hasTrigger: jsonCard.hasTrigger,
-      hasCounter: jsonCard.hasCounter,
-      counterValue: jsonCard.counterValue,
-      attachedDons: jsonCard.attachedDons,
-      donAttachments: jsonCard.donAttachments,
-      isFaceUp: jsonCard.isFaceUp,
-      isActive: jsonCard.isActive,
-      canAttack: jsonCard.canAttack,
-      wasPlayedThisTurn: jsonCard.wasPlayedThisTurn,
-      isAttacking: jsonCard.isAttacking,
-      isBlocking: jsonCard.isBlocking,
-      isBlocked: jsonCard.isBlocked,
-      blocker: jsonCard.blocker ? convertJsonToCard(jsonCard.blocker) : undefined
-    });
-
-    const convertJsonArrayToCards = (jsonArray: any[]): GameCard[] => {
-      return Array.isArray(jsonArray) ? jsonArray.map(convertJsonToCard) : [];
+  private static convertJsonToGameState(dbGameState: StoredGameState): GameState {
+    const convertJsonToCard = (jsonCard: Prisma.JsonValue): GameCard => {
+      if (!jsonCard || typeof jsonCard !== 'object' || Array.isArray(jsonCard) || typeof jsonCard.id !== 'string') {
+        throw new Error('Carte sauvegardée invalide');
+      }
+      return jsonCard as unknown as GameCard;
     };
+    const convertJsonArrayToCards = (jsonArray: Prisma.JsonValue[]): GameCard[] => jsonArray.map(convertJsonToCard);
 
     return {
       id: dbGameState.id,
@@ -294,14 +242,19 @@ export class GamePersistenceService {
         trash: convertJsonArrayToCards(dbGameState.opponentTrash),
         donAttachments: []
       },
-      currentPhase: dbGameState.currentPhase,
-      currentPlayer: dbGameState.currentPlayer,
+      currentPhase: dbGameState.currentPhase as GameState["currentPhase"],
+      currentPlayer: dbGameState.currentPlayer as GameState["currentPlayer"],
       setupPhase: 'COMPLETE', // Par défaut
       hasKeptHand: dbGameState.hasKeptHand,
       canDrawDon: true, // À gérer selon la logique du jeu
       battleStack: [],
       turnNumber: dbGameState.turnNumber,
-      isFirstTurn: false // Par défaut, pas le premier tour
+      isFirstTurn: dbGameState.isFirstTurn,
+      gameOver: dbGameState.gameOver,
+      winner: dbGameState.winner === 'player' || dbGameState.winner === 'opponent' ? dbGameState.winner : undefined,
+      canPlayCard: dbGameState.canPlayCard,
+      canAttack: dbGameState.canAttack,
+      canEndTurn: dbGameState.canEndTurn
     };
   }
 }

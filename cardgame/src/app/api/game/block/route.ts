@@ -1,10 +1,15 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { CombatService } from '@/lib/game/combatService';
-import { GameState } from '@/types/game';
+import { auth } from '@/lib/auth';
+import { GamePersistenceService } from '@/lib/game/gamePersistenceService';
 
 export async function POST(request: NextRequest) {
   try {
-    const { gameState, blockerId, attackActionId, playerId } = await request.json();
+    const session = await auth();
+    if (!session?.user?.id) return NextResponse.json({ error: 'Non autorisé' }, { status: 401 });
+    const { blockerId, attackActionId, playerId } = await request.json();
+    if (playerId !== 'player' && playerId !== 'opponent') return NextResponse.json({ error: 'Joueur invalide' }, { status: 400 });
+    const gameState = await GamePersistenceService.getActiveGameState(session.user.id);
 
     if (!gameState || !blockerId || !attackActionId || !playerId) {
       return NextResponse.json(
@@ -29,7 +34,7 @@ export async function POST(request: NextRequest) {
     // Exécuter le blocage
     const updatedState = CombatService.executeBlock(gameState, blockerId, attackActionId, playerId);
 
-    console.log('✅ Blocage exécuté !');
+    await GamePersistenceService.saveGameState(updatedState, session.user.id, session.user.id);
 
     return NextResponse.json({
       success: true,

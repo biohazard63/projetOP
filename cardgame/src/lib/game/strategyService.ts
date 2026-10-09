@@ -1,4 +1,4 @@
-import { GameState, GameCard } from '@/types/game';
+import { GameState, GameCard, Player } from '@/types/game';
 import { CardEffectsService, ComboEffect } from './cardEffectsService';
 import { CombatService } from './combatService';
 
@@ -61,7 +61,7 @@ export class StrategyService {
   /**
    * Calcule la force du terrain
    */
-  private static calculateFieldStrength(player: any): number {
+  private static calculateFieldStrength(player: Player): number {
     let strength = 0;
     
     // Power des cartes du terrain
@@ -82,7 +82,7 @@ export class StrategyService {
   /**
    * Calcule la qualité de la main
    */
-  private static calculateHandQuality(player: any): number {
+  private static calculateHandQuality(player: Player): number {
     let quality = 0;
     
     // Bonus pour chaque carte
@@ -104,7 +104,7 @@ export class StrategyService {
   /**
    * Calcule l'efficacité du deck
    */
-  private static calculateDeckEfficiency(player: any): number {
+  private static calculateDeckEfficiency(player: Player): number {
     let efficiency = 0;
     
     // Bonus pour un deck bien rempli
@@ -367,7 +367,7 @@ export class StrategyService {
    * Génère des recommandations basées sur l'analyse
    */
   private static generateRecommendations(
-    analysis: any,
+    analysis: ReturnType<typeof StrategyService.analyzeGameState>,
     position: 'WINNING' | 'LOSING' | 'EVEN'
   ): string[] {
     const recommendations: string[] = [];

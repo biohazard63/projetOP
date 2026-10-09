@@ -65,6 +65,8 @@ export async function POST() {
       },
       include: {
         versions: {
+          orderBy: { createdAt: 'desc' },
+          take: 1,
           include: {
             cards: {
               include: {
@@ -84,7 +86,7 @@ export async function POST() {
     }
 
     // Obtenir la dernière version du deck
-    const latestVersion = deck.versions[deck.versions.length - 1];
+    const latestVersion = deck.versions[0];
     if (!latestVersion) {
       return NextResponse.json(
         { error: 'Aucune version du deck trouvée' },
@@ -123,7 +125,7 @@ export async function POST() {
       const hasCounter = card.counter !== null && card.counter !== undefined; // Utiliser le champ counter
       
       return {
-        id: card.id,
+        id: `${card.id}:${crypto.randomUUID()}`,
         name: card.name,
         type: card.type as CardType,
         color: card.color as CardColor,
@@ -150,7 +152,7 @@ export async function POST() {
 
     // Préparer les cartes du joueur
     console.log('🔄 Préparation des cartes du joueur')
-    const playerCards = deckCards.map(dc => convertToGameCard(dc, dc.type === 'LEADER'))
+    const playerCards = deckCards.flatMap(dc => Array.from({ length: dc.quantity }, () => convertToGameCard(dc, dc.type === 'LEADER')))
     
     // Séparer le leader des autres cartes
     const playerLeader = playerCards.find(card => card.type === 'LEADER')
@@ -244,7 +246,7 @@ export async function POST() {
     // Créer l'état initial du jeu directement
     console.log('🔄 Création de l\'état initial du jeu')
     const gameState: GameState = {
-      id: 'manual_game',
+      id: crypto.randomUUID(),
       player: {
         id: 'player',
         name: 'Joueur',

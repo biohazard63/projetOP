@@ -162,5 +162,5 @@ export const testDonService = () => {
 
 // Exporter pour utilisation dans la console du navigateur
 if (typeof window !== 'undefined') {
-  (window as any).testDonService = testDonService;
+  (window as Window & { testDonService?: typeof testDonService }).testDonService = testDonService;
 }
