@@ -1,0 +1,27 @@
+[
+  {
+    "path": "/api/booster",
+    "status": "PASS",
+    "http": 401
+  },
+  {
+    "path": "/api/booster/history",
+    "status": "PASS",
+    "http": 401
+  },
+  {
+    "path": "/api/booster/openings/missing",
+    "status": "PASS",
+    "http": 401
+  },
+  {
+    "path": "/api/sets/OP-TEST/rules",
+    "status": "PASS",
+    "http": 200
+  },
+  {
+    "path": "POST /api/booster/open",
+    "status": "PASS",
+    "http": 401
+  }
+]
