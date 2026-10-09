@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 
     const { cardIds } = await request.json()
     
-    if (!cardIds || !Array.isArray(cardIds) || cardIds.length === 0) {
+    if (!Array.isArray(cardIds) || cardIds.length === 0 || cardIds.length > 100 || cardIds.some(id => typeof id !== 'string' || !id)) {
       return NextResponse.json(
         { error: 'Aucune carte à ajouter' },
         { status: 400 }

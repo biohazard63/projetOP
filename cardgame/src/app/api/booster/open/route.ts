@@ -19,7 +19,7 @@ export async function POST(request: Request) {
     const { setCode } = await request.json()
     console.log(`[BOOSTER-OPEN] Code du set demandé: ${setCode}`);
 
-    if (!setCode) {
+    if (typeof setCode !== 'string' || !/^[A-Za-z0-9-]{2,20}$/.test(setCode)) {
       console.log('[BOOSTER-OPEN] Code de set manquant');
       return NextResponse.json({ 
         success: false, 
@@ -86,6 +86,8 @@ export async function POST(request: Request) {
       cards = await generateBooster(setRules as MinimalSetRules)
       console.log(`[BOOSTER-OPEN] Booster généré avec ${cards.length} cartes`);
     }
+
+    if (!cards.length) return NextResponse.json({ success: false, error: 'Aucune carte disponible pour ce set' }, { status: 404 })
 
     // Vérifier si l'utilisateur a déjà ces cartes
     const user = await prisma.user.findUnique({

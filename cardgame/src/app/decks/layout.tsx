@@ -1,10 +1,14 @@
+import { auth } from '@/lib/auth'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
-export default function DecksLayout({
+export default async function DecksLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const session = await auth()
+  if (!session?.user?.id) redirect('/login')
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 via-gray-800 to-gray-900 text-white relative overflow-hidden pt-16">
       {/* Fond avec effet de guerre */}

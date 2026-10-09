@@ -11,12 +11,12 @@ import PWAAuthHelper from '@/components/PWAAuthHelper'
 
 const inter = Inter({ subsets: ['latin'] })
 
+export const viewport = { width: 'device-width', initialScale: 1, themeColor: '#f59e0b' }
+
 export const metadata = {
   title: 'One Piece Card Game',
   description: 'Mugiwara TCG – L\'application fan-made française du One Piece Card Game. Ouvre des boosters réalistes, collectionne tes cartes et affronte d\'autres joueurs pirates.',
   manifest: '/manifest.json',
-  themeColor: '#f59e0b',
-  viewport: 'width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no',
   appleWebApp: {
     capable: true,
     statusBarStyle: 'default',

@@ -15,7 +15,7 @@ export async function POST(request: Request) {
 
     const { cardIds } = (await request.json()) as { cardIds: unknown }
 
-    if (!Array.isArray(cardIds) || cardIds.some((id) => typeof id !== 'string')) {
+    if (!Array.isArray(cardIds) || cardIds.length > 100 || cardIds.some((id) => typeof id !== 'string' || !id)) {
       return NextResponse.json(
         { success: false, error: 'Format de données invalide' },
         { status: 400 }

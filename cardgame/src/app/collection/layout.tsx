@@ -1,10 +1,14 @@
+import { auth } from '@/lib/auth'
+import { redirect } from 'next/navigation'
 import React from 'react'
 
-export default function CollectionLayout({
+export default async function CollectionLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const session = await auth()
+  if (!session?.user?.id) redirect('/login')
   return (
     <div className="min-h-screen  text-white relative overflow-hidden">
       {/* Arrière-plan Impel Down moderne (mobile-first) */}

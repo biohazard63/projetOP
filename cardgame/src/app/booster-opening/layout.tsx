@@ -1,11 +1,15 @@
+import { auth } from '@/lib/auth'
+import { redirect } from 'next/navigation'
 import React from 'react'
 import Image from 'next/image'
 
-export default function BoosterOpeningLayout({
+export default async function BoosterOpeningLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
 }>) {
+  const session = await auth()
+  if (!session?.user?.id) redirect('/login')
   return (
     <div className="min-h-screen text-white relative overflow-hidden pt-16 overscroll-none">
       {/* Fond image plein écran */}

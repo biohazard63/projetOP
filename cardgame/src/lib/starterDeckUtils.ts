@@ -53,7 +53,7 @@ export async function addStarterDeckCardsToUser(userId: string): Promise<void> {
       try {
         await prisma.userCard.upsert({
           where: { userId_cardId: { userId, cardId: card.id } },
-          update: { quantity: targetQty },
+          update: {}, // Ne jamais écraser les quantités existantes
           create: { userId, cardId: card.id, quantity: targetQty }
         });
         updated++;

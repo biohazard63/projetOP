@@ -1,3 +1,4 @@
+import { deckInput, validateDeck } from '@/lib/deckValidation'
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 
@@ -127,29 +128,12 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Utilisateur non trouvé' }, { status: 404 })
     }
 
-    const body: CreateDeckRequest = await request.json()
-    const { name, cards } = body
-
-    // Vérifier les règles du deck en tenant compte des quantités
-    const leaderCards = cards.filter(card => card.type === 'LEADER')
-    const nonLeaderCards = cards.filter(card => card.type !== 'LEADER')
-    
-    const leaderCount = leaderCards.reduce((sum, card) => sum + (card.quantity || 1), 0)
-    const nonLeaderCount = nonLeaderCards.reduce((sum, card) => sum + (card.quantity || 1), 0)
-
-    if (leaderCount !== 1) {
-      return NextResponse.json(
-        { error: 'Le deck doit contenir exactement 1 leader' },
-        { status: 400 }
-      )
-    }
-
-    if (nonLeaderCount !== 50) {
-      return NextResponse.json(
-        { error: 'Le deck doit contenir exactement 50 cartes (sans compter le leader)' },
-        { status: 400 }
-      )
-    }
+    const parsed = deckInput.safeParse(await request.json())
+    if (!parsed.success) return NextResponse.json({ error: 'Deck invalide' }, { status: 400 })
+    const { name, cards: cards } = parsed.data
+    const storedCards = await prisma.card.findMany({ where: { id: { in: cards.map(c => c.id) } } })
+    const validationError = validateDeck(cards, storedCards)
+    if (validationError) return NextResponse.json({ error: validationError }, { status: 400 })
 
     // Créer le deck avec sa première version
     const deck = await prisma.$transaction(async (tx) => {

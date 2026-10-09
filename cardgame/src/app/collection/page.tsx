@@ -1,5 +1,6 @@
 'use client'
 
+import { normalizeCardColors } from '@/lib/cardColors'
 import React, { useState, useEffect, useCallback, useMemo } from 'react'
 import { useSession } from 'next-auth/react'
 import { useRouter } from 'next/navigation'
@@ -374,7 +375,7 @@ export default function CollectionPage() {
       }
       
       if (filters.type !== 'all' && card.type !== filters.type) return false;
-      if (filters.color !== 'all' && card.color !== filters.color) return false;
+      if (filters.color !== 'all' && normalizeCardColors(card.color).join('/') !== normalizeCardColors(filters.color).join('/')) return false;
       if (filters.rarity !== 'all' && card.rarity !== filters.rarity) return false;
       if (filters.set !== 'all' && card.set !== filters.set) return false;
       

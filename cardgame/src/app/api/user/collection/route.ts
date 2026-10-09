@@ -28,14 +28,14 @@ export async function GET() {
 
     // Récupérer les cartes de l'utilisateur via UserCard
     const userCards = await prisma.userCard.findMany({
-      where: { userId: user.id },
+      where: { userId: user.id, quantity: { gt: 0 } },
       include: {
         card: true
       }
     })
 
     // Transformer les résultats pour n'avoir que les cartes
-    const cards = userCards.map(userCard => userCard.card)
+    const cards = userCards.map(userCard => ({ ...userCard.card, quantity: userCard.quantity }))
 
     return NextResponse.json({
       success: true,
@@ -63,7 +63,7 @@ export async function POST(request: Request) {
 
     const { cardIds } = await request.json()
 
-    if (!Array.isArray(cardIds)) {
+    if (!Array.isArray(cardIds) || cardIds.length > 100 || cardIds.some((id) => typeof id !== 'string' || !id)) {
       return NextResponse.json({ 
         success: false, 
         error: 'Format de données invalide' 

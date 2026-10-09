@@ -48,10 +48,12 @@ export async function GET() {
     // Récupérer le deck actif
     const deck = await prisma.deck.findUnique({
       where: {
-        id: activeDeckId
+        id: activeDeckId, userId: user.id
       },
       include: {
         versions: {
+          orderBy: { createdAt: 'desc' },
+          take: 1,
           include: {
             cards: {
               include: {
@@ -72,8 +74,8 @@ export async function GET() {
     }
 
     // Obtenir la dernière version du deck
-    const latestVersion = deck.versions[deck.versions.length - 1];
-    const cards = latestVersion ? latestVersion.cards.map(dc => dc.card) : [];
+    const latestVersion = deck.versions[0];
+    const cards = latestVersion ? latestVersion.cards.map(dc => ({ ...dc.card, quantity: dc.quantity })) : [];
 
     console.log('Deck actif trouvé:', deck.name, 'avec', cards.length, 'cartes')
 
