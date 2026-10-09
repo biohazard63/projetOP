@@ -1,0 +1,74 @@
+
+> cardgame@0.1.0 test:boosters:browser
+> node tests/boosters.browser.mjs
+
+{
+  name: 'Unauthenticated opening, catalog, receipts and history rejected',
+  status: 'PASS',
+  detail: 'Assertions passed'
+}
+{
+  name: 'Forged cards, identity, probabilities and missing operation keys rejected',
+  status: 'PASS',
+  detail: 'Assertions passed'
+}
+{
+  name: 'Cross-site POST refused without credit',
+  status: 'PASS',
+  detail: 'Assertions passed'
+}
+{
+  name: 'Empty, incomplete and nonexistent sets produce explicit errors',
+  status: 'PASS',
+  detail: 'Assertions passed'
+}
+{
+  name: 'All three API aliases share one receipt and never credit a replay',
+  status: 'PASS',
+  detail: 'Assertions passed'
+}
+{
+  name: 'Private history, receipt, acknowledgement and cursor ownership',
+  status: 'PASS',
+  detail: 'Assertions passed'
+}
+{
+  name: 'HTTP concurrent replay and distinct operations persist exact quantities',
+  status: 'PASS',
+  detail: 'Assertions passed'
+}
+{
+  name: 'Desktop double click, animation and reveal never repeat the attribution',
+  status: 'PASS',
+  detail: 'Assertions passed'
+}
+{
+  name: 'Natural wheel scrolling reaches cards below the viewport',
+  status: 'FAIL',
+  detail: 'Wheel trapped inside booster layout; document does not scroll'
+}
+{
+  name: 'Refresh during pack animation retrieves the receipt and keeps one credit',
+  status: 'PASS',
+  detail: 'Assertions passed'
+}
+{
+  name: 'Lost response after server commit retries the same key without a second credit',
+  status: 'PASS',
+  detail: 'Assertions passed'
+}
+{
+  name: 'Mobile and reduced motion, images and card details remain usable',
+  status: 'PASS',
+  detail: 'Assertions passed'
+}
+{
+  name: 'Viewing history uses only GET and preserves credited collection quantities',
+  status: 'PASS',
+  detail: 'Assertions passed'
+}
+{
+  name: 'History pagination contains only the authenticated owner',
+  status: 'PASS',
+  detail: 'Assertions passed'
+}

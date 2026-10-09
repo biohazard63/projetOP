@@ -1,5 +1,5 @@
 {
-  "date": "2026-10-09T10:39:13.151Z",
+  "date": "2026-10-09T10:43:01.364Z",
   "environment": "macOS Apple Silicon · Google Chrome · isolated PostgreSQL 16 op_boosters_test",
   "results": [
     {
@@ -43,6 +43,11 @@
       "detail": "Assertions passed"
     },
     {
+      "name": "Natural wheel scrolling reaches cards below the viewport",
+      "status": "PASS",
+      "detail": "Assertions passed"
+    },
+    {
       "name": "Refresh during pack animation retrieves the receipt and keeps one credit",
       "status": "PASS",
       "detail": "Assertions passed"
@@ -54,6 +59,11 @@
     },
     {
       "name": "Mobile and reduced motion, images and card details remain usable",
+      "status": "PASS",
+      "detail": "Assertions passed"
+    },
+    {
+      "name": "Mobile touch scrolling reaches the opening cards",
       "status": "PASS",
       "detail": "Assertions passed"
     },

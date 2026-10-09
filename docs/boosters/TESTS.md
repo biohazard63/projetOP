@@ -102,3 +102,13 @@ Le script navigateur suppose Chrome macOS au chemin `/Applications/Google Chrome
 Le bouton « Ouvrir le booster » est remonté juste sous le sélecteur d'extension, avant l'illustration. Dans la base locale de démonstration, OP-TEST (« Trésors de test ») est sélectionné par défaut lorsqu'il est disponible ; les extensions sans ce code conservent leur sélection habituelle. Le bouton existait auparavant sous l'image et pouvait nécessiter de défiler sur mobile ; la page exacte du signalement n'a pas été confirmée.
 
 Validation : TypeScript PASS, ESLint ciblé PASS sans avertissement, 14 scénarios API/navigateur PASS rejoués. Les captures et browser-results.json sont actualisés. Le serveur reste ouvert dans le Terminal séparé demandé par l'utilisateur. La preuve du build de production ci-dessus concerne la validation précédente ; le build n'a pas été relancé pour ce déplacement d'interface pendant le serveur de développement.
+
+## Régression de défilement reproduite et corrigée
+
+Signalement utilisateur : impossible de descendre pour voir les cartes. Le layout de /booster-opening associait `overflow-hidden` et `overscroll-none`, créant un conteneur qui interceptait le défilement naturel au lieu de le transmettre au document. Les anciens tests déplaçaient la page par scrollTo ou par l'autoscroll de Playwright ; ils ne vérifiaient pas la molette réelle.
+
+- Avant correction : nouveau test `page.mouse.wheel` **FAIL**, document immobile malgré un contenu dépassant la fenêtre. Preuve : evidence/scroll-before.txt.
+- Correction : `overflow-x-clip` pour éviter le débordement latéral sans créer ce conteneur ; suppression de `overscroll-none` ; fond décoratif `pointer-events-none`.
+- Après correction : molette desktop **PASS**, geste tactile mobile via Chrome DevTools Protocol **PASS**, ensemble des **16 scénarios API/navigateur PASS**. TypeScript et ESLint ciblé PASS. Les preuves navigateur et captures sont actualisées.
+
+Le serveur de développement dans le Terminal séparé reste actif ; un rafraîchissement charge le layout corrigé. Aucun changement de tirage, crédit, collection ou base existante.

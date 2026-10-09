@@ -11,9 +11,9 @@ export default async function BoosterOpeningLayout({
   const session = await auth()
   if (!session?.user?.id) redirect('/login')
   return (
-    <div className="min-h-screen text-white relative overflow-hidden pt-16 overscroll-none">
+    <div className="min-h-screen text-white relative overflow-x-clip pt-16">
       {/* Fond image plein écran */}
-      <div aria-hidden="true" className="fixed inset-0 top-16 -z-10 overflow-hidden">
+      <div aria-hidden="true" className="pointer-events-none fixed inset-0 top-16 -z-10 overflow-hidden">
         <Image
           src="/images/layoutBooster.png"
           alt=""

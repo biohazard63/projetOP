@@ -100,6 +100,13 @@ await check('Desktop double click, animation and reveal never repeat the attribu
  await page.evaluate(() => window.scrollTo(0, 0));
  await page.screenshot({ path: new URL('desktop.png', evidence).pathname, fullPage: true });
 });
+await check('Natural wheel scrolling reaches cards below the viewport', async () => {
+ await page.evaluate(() => window.scrollTo(0, 0));
+ await page.mouse.move(950, 600);
+ await page.mouse.wheel(0, 700);
+ await page.waitForTimeout(400);
+ assert.ok(await page.evaluate(() => window.scrollY > 100), 'Wheel trapped inside booster layout; document does not scroll');
+});
 await check('Refresh during pack animation retrieves the receipt and keeps one credit', async () => {
  const before = await quantity(); const sent = posts.length;
  await page.getByRole('button', { name: 'Ouvrir un autre booster', exact: true }).click();
@@ -139,6 +146,20 @@ await check('Mobile and reduced motion, images and card details remain usable', 
  assert.equal(await page.evaluate(() => Array.from(document.images).filter(img => img.complete && img.naturalWidth === 0).length), 0, 'Broken images');
  await page.evaluate(() => window.scrollTo(0, 0));
  await page.screenshot({ path: new URL('mobile.png', evidence).pathname, fullPage: true });
+});
+await check('Mobile touch scrolling reaches the opening cards', async () => {
+ await page.evaluate(() => window.scrollTo(0, 0));
+ const cdp = await context.newCDPSession(page);
+ await cdp.send('Emulation.setTouchEmulationEnabled', { enabled: true, maxTouchPoints: 1 });
+ await cdp.send('Input.dispatchTouchEvent', { type: 'touchStart', touchPoints: [{ x: 195, y: 700 }] });
+ for (const y of [600, 500, 400, 300, 200]) {
+  await cdp.send('Input.dispatchTouchEvent', { type: 'touchMove', touchPoints: [{ x: 195, y }] });
+  await page.waitForTimeout(30);
+ }
+ await cdp.send('Input.dispatchTouchEvent', { type: 'touchEnd', touchPoints: [] });
+ await page.waitForTimeout(400);
+ assert.ok(await page.evaluate(() => window.scrollY > 100), 'Touch gesture did not scroll the document');
+ await cdp.detach();
 });
 await check('Viewing history uses only GET and preserves credited collection quantities', async () => {
  const before = await quantity(); const sent = posts.length;
