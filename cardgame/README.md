@@ -1,5 +1,7 @@
 # 🏴‍☠️ One Piece Card Game
 
+Maintenance du 9 octobre 2026 : consulter le [guide de récupération Mac](../docs/maintenance/RECOVERY_GUIDE.md), le [diagnostic](../docs/maintenance/AUDIT.md) et les [tests vérifiés](../docs/maintenance/FUNCTIONAL_TESTS.md). Certaines commandes et promesses ci-dessous sont historiques ; les guides de maintenance font foi pour le démarrage actuel.
+
 Une application web pour gérer votre collection de cartes One Piece, construire des decks et jouer en ligne.
 
 ## 📋 Table des matières

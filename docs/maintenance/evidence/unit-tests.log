@@ -1,0 +1,68 @@
+
+> cardgame@0.1.0 test
+> node --import tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: legal 50-card deck with bilingual colors
+ok 1 - legal 50-card deck with bilingual colors
+  ---
+  duration_ms: 0.743708
+  type: 'test'
+  ...
+# Subtest: reject invalid quantities and names
+ok 2 - reject invalid quantities and names
+  ---
+  duration_ms: 1.572958
+  type: 'test'
+  ...
+# Subtest: reject forged leader, colors, unknown and duplicate IDs
+ok 3 - reject forged leader, colors, unknown and duplicate IDs
+  ---
+  duration_ms: 0.134708
+  type: 'test'
+  ...
+# Subtest: alternate arts share the four-copy cap
+ok 4 - alternate arts share the four-copy cap
+  ---
+  duration_ms: 0.166417
+  type: 'test'
+  ...
+# Subtest: bcrypt password limit uses bytes
+ok 5 - bcrypt password limit uses bytes
+  ---
+  duration_ms: 0.084916
+  type: 'test'
+  ...
+# Subtest: rate limit and login lock
+ok 6 - rate limit and login lock
+  ---
+  duration_ms: 0.1315
+  type: 'test'
+  ...
+# Subtest: configured captcha rejects missing token and secret
+ok 7 - configured captcha rejects missing token and secret
+  ---
+  duration_ms: 0.159792
+  type: 'test'
+  ...
+# Subtest: playing characters preserves summoning sickness and enforces turn and field cap
+ok 8 - playing characters preserves summoning sickness and enforces turn and field cap
+  ---
+  duration_ms: 0.324208
+  type: 'test'
+  ...
+# Subtest: collection colors normalize case, language and dual-color order
+ok 9 - collection colors normalize case, language and dual-color order
+  ---
+  duration_ms: 0.488209
+  type: 'test'
+  ...
+1..9
+# tests 9
+# suites 0
+# pass 9
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 207.165917

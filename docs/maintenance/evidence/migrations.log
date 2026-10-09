@@ -1,0 +1,60 @@
+Environment variables loaded from .env
+Prisma schema loaded from prisma/schema.prisma
+Datasource "db": PostgreSQL database "op_recovery_migrations", schema "public" at "127.0.0.1:55432"
+
+16 migrations found in prisma/migrations
+
+Applying migration `20250413132207_add_set_to_cards`
+Applying migration `20250413133815_add_code_field`
+Applying migration `20250413153757_add_deck_card_model`
+Applying migration `20250413205413_add_user_points`
+Applying migration `20250427094104_add_game_state`
+Applying migration `20250427105028_update_schema`
+Applying migration `20250427112811_make_deck_userid_nullable`
+Applying migration `20250428113705_add_card_special_fields`
+Applying migration `20250428170807_add_booster_opening_cards`
+Applying migration `20250429091219_add_booster_rules`
+Applying migration `20250429102215_add_set_rules`
+Applying migration `20250503104438_add_oauth_support`
+Applying migration `20250505090703_add_game_logs_relation`
+Applying migration `20250904163118_add_game_state_fields`
+Applying migration `20250905073432_add_don_field`
+Applying migration `20250905081215_fix_used_don_deck_type`
+
+The following migration(s) have been applied:
+
+migrations/
+  └─ 20250413132207_add_set_to_cards/
+    └─ migration.sql
+  └─ 20250413133815_add_code_field/
+    └─ migration.sql
+  └─ 20250413153757_add_deck_card_model/
+    └─ migration.sql
+  └─ 20250413205413_add_user_points/
+    └─ migration.sql
+  └─ 20250427094104_add_game_state/
+    └─ migration.sql
+  └─ 20250427105028_update_schema/
+    └─ migration.sql
+  └─ 20250427112811_make_deck_userid_nullable/
+    └─ migration.sql
+  └─ 20250428113705_add_card_special_fields/
+    └─ migration.sql
+  └─ 20250428170807_add_booster_opening_cards/
+    └─ migration.sql
+  └─ 20250429091219_add_booster_rules/
+    └─ migration.sql
+  └─ 20250429102215_add_set_rules/
+    └─ migration.sql
+  └─ 20250503104438_add_oauth_support/
+    └─ migration.sql
+  └─ 20250505090703_add_game_logs_relation/
+    └─ migration.sql
+  └─ 20250904163118_add_game_state_fields/
+    └─ migration.sql
+  └─ 20250905073432_add_don_field/
+    └─ migration.sql
+  └─ 20250905081215_fix_used_don_deck_type/
+    └─ migration.sql
+      
+All migrations have been successfully applied.

@@ -1,0 +1,90 @@
+[
+  {
+    "name": "Public cards and sets",
+    "status": "PASS"
+  },
+  {
+    "name": "Unauthenticated API protection",
+    "status": "PASS"
+  },
+  {
+    "name": "Private pages redirect metadata",
+    "status": "PASS"
+  },
+  {
+    "name": "Registration and normalized email",
+    "status": "PASS"
+  },
+  {
+    "name": "Invalid registration types",
+    "status": "PASS"
+  },
+  {
+    "name": "Login and session persistence",
+    "status": "PASS"
+  },
+  {
+    "name": "Collection add and quantities persist",
+    "status": "PASS"
+  },
+  {
+    "name": "Collection invalid payload",
+    "status": "PASS"
+  },
+  {
+    "name": "Deck creation and load",
+    "status": "PASS"
+  },
+  {
+    "name": "Deck ownership GET PUT DELETE",
+    "status": "PASS"
+  },
+  {
+    "name": "Deck rejects forged types and quantities",
+    "status": "PASS"
+  },
+  {
+    "name": "Deck update and activation",
+    "status": "PASS"
+  },
+  {
+    "name": "Booster generation and add to collection",
+    "status": "PASS"
+  },
+  {
+    "name": "Missing booster set is explicit",
+    "status": "PASS"
+  },
+  {
+    "name": "Solo game initialization and isolated IDs",
+    "status": "PASS"
+  },
+  {
+    "name": "Unsupported effects explicit",
+    "status": "PASS"
+  },
+  {
+    "name": "Private pages redirect in browser",
+    "status": "PASS"
+  },
+  {
+    "name": "Desktop navigation and JavaScript",
+    "status": "PASS"
+  },
+  {
+    "name": "Collection search and type/color filters",
+    "status": "PASS"
+  },
+  {
+    "name": "Mobile collection layout and images",
+    "status": "PASS"
+  },
+  {
+    "name": "Deck delete",
+    "status": "PASS"
+  },
+  {
+    "name": "Logout clears session",
+    "status": "PASS"
+  }
+]
