@@ -1,0 +1,10 @@
+{
+  "readOnly": true,
+  "target": "local",
+  "status": "PASS",
+  "missingColumns": [],
+  "idempotencyIndex": true,
+  "positionsIndex": true,
+  "migrationRecorded": true,
+  "migration": "20261009120000_secure_booster_openings"
+}

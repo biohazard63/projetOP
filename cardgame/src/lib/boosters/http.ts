@@ -1,15 +1,19 @@
 import { NextResponse } from 'next/server'
+import { randomUUID } from 'node:crypto'
 import { z } from 'zod'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { BoosterError } from './rules'
 import { getBoosterCatalog, getOpening, openBooster } from './service'
+import { describeBoosterFailure } from './failure'
 
 const requestSchema = z.object({ setCode: z.string().trim().min(2).max(64), idempotencyKey: z.string().uuid() }).strict()
 function failure(error: unknown) {
-  if (error instanceof BoosterError) return NextResponse.json({ success: false, code: error.code, error: error.message }, { status: error.status })
-  console.error('Opération booster échouée')
-  return NextResponse.json({ success: false, code: 'SERVER_ERROR', error: 'Ouverture non confirmée. Réessayez avec la même clé pour récupérer votre résultat.' }, { status: 500 })
+  const detail = describeBoosterFailure(error)
+  if (error instanceof BoosterError) return NextResponse.json({ success: false, code: detail.code, error: detail.message }, { status: detail.status })
+  const reference = randomUUID()
+  console.error('Opération booster échouée', { reference, code: detail.code, databaseCode: detail.databaseCode })
+  return NextResponse.json({ success: false, code: detail.code, reference, error: `${detail.message} Référence : ${reference}` }, { status: detail.status })
 }
 async function json(request: Request): Promise<unknown> {
   if (!request.body) throw new BoosterError('INVALID_REQUEST', 'Corps JSON requis', 400)
