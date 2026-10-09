@@ -1,0 +1,107 @@
+[
+  {
+    "code": "EB-01",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/eb01/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 79271
+  },
+  {
+    "code": "EB-02",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/eb02/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 75039
+  },
+  {
+    "code": "OP-01",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/op01/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 32355
+  },
+  {
+    "code": "OP-02",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/op02/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 21381
+  },
+  {
+    "code": "OP-03",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/op03/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 22481
+  },
+  {
+    "code": "OP-04",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/op04/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 22678
+  },
+  {
+    "code": "OP-05",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/op05/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 28507
+  },
+  {
+    "code": "OP-06",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/op06/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 31347
+  },
+  {
+    "code": "OP-07",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/op07/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 31356
+  },
+  {
+    "code": "OP-08",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/op08/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 24510
+  },
+  {
+    "code": "OP-09",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/op09/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 23597
+  },
+  {
+    "code": "OP-10",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/op10/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 23557
+  },
+  {
+    "code": "OP-11",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/op11/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 24400
+  },
+  {
+    "code": "OP-12",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/op12/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 22759
+  },
+  {
+    "code": "PRB-01",
+    "url": "https://en.onepiece-cardgame.com/images/products/boosters/prb01/img_thumbnail.png",
+    "status": 200,
+    "type": "image/png",
+    "bytes": 25516
+  }
+]

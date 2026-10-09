@@ -7,7 +7,7 @@
 | Taux physiques/officiels | NOT_TESTED | Aucun taux officiel revendiqué. Obtenir des sources fiables et décider du modèle de simulation avant toute nouvelle configuration. |
 | Anciennes chances de variantes/DON/types | BLOCKED | Leur signification n'est pas assez précise pour les traduire en contraintes simultanées. Champs conservés et avertissement affiché ; format v1 disponible. |
 | Anciens crédits d'ouverture | BLOCKED | Absence de preuve transactionnelle. Historique lisible, aucune attribution rétroactive automatique. Une éventuelle réconciliation exige une analyse des données. |
-| Images distantes du catalogue réel | NOT_TESTED | Navigateur testé avec images locales synthétiques. Config Next existante conservée ; contrôler les hébergeurs réels avant de conclure sur leur disponibilité. |
+| Images distantes du catalogue réel | PASS sur échantillons | CORP corrigé via Next Image. Chrome : 36 cartes chargées, 0 cassée. EN/FR et sélection OP-01/09/12 vérifiés ; pas de contrôle exhaustif. Voir IMAGES.md. |
 | Safari/iOS et Android physiques | NOT_TESTED | Desktop/mobile testés dans Chrome macOS, viewport 390×844 et mouvement réduit. Compléter sur appareils réels. |
 | Stockage navigateur refusé, crash complet avant réponse | NOT_TESTED | Code de tolérance et historique serveur présents ; rafraîchissement et réponse perdue réellement testés. Ajouter un scénario navigateur de stockage totalement refusé si nécessaire. |
 | Test de charge soutenu / plusieurs machines | NOT_TESTED | Verrou et unicité PostgreSQL partagés, tests concurrents réels sur une machine. Aucun quota métier ajouté à la simulation gratuite. Évaluer une limitation de débit distribuée en cas de publication. |

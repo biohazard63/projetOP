@@ -94,3 +94,12 @@ test('every available extension in the actual read-only inventory supports its c
  }
  assert.equal(available, 28); assert.equal(blocked, 18)
 })
+
+test('booster illustrations differ per extension, preserve configured artwork and normalize aliases', async () => {
+ const { getBoosterArtwork } = await import('../src/lib/boosters/artwork')
+ assert.notEqual(getBoosterArtwork('OP-01', null), getBoosterArtwork('OP-09', null))
+ assert.equal(getBoosterArtwork('OP-01', null), getBoosterArtwork('op01', null))
+ assert.equal(getBoosterArtwork('OP-01', '/images/custom-pack.png'), '/images/custom-pack.png')
+ assert.equal(getBoosterArtwork('UNKNOWN', null), null)
+ for (let n = 1; n <= 12; n++) assert.match(getBoosterArtwork(`OP-${String(n).padStart(2, '0')}`, null)!, /\/img_thumbnail\.png$/)
+})

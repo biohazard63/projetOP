@@ -116,3 +116,7 @@ Le serveur de développement dans le Terminal séparé reste actif ; un rafraîc
 ## Reconnexion ultérieure à la base habituelle — PASS
 
 À la demande explicite de l'utilisateur, base locale existante sauvegardée puis migration des boosters appliquée. L'historique de migration était complet et le diff limité au changement prévu. Vérification des 30 tables : données inchangées. Application relancée dans le Terminal séparé sur la base issue de .env ; contrôles HTTP authentifiés en lecture seule PASS, catalogue de 46 extensions et collection existante de 589 cartes distinctes correctement chargée. Aucune ouverture, création de compte ni donnée de test ajoutée à cette base. Voir RECONNECTION.md et evidence/database-reconnection.json / reconnection-http.json / reconnection-collection.json. Le blocage initial de migration est donc résolu.
+
+## Correction des images et illustrations par extension
+
+22 tests unitaires PASS, TypeScript PASS, ESLint ciblé PASS. Quatre contrôles de proxy/image Chrome PASS ; collection réelle vérifiée en lecture seule : 36 images chargées et aucune cassée. Sélection OP-01, OP-09, OP-12 : visuels distincts chargés PASS. Cadrage du paquet sans marge beige inspecté et confirmé par l’utilisateur. Voir IMAGES.md pour les sources, commandes et limites. Aucun nouveau build exécuté après ce changement.

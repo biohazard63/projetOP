@@ -1,0 +1,26 @@
+{
+  "artwork": [
+    {
+      "code": "OP-01",
+      "loaded": true,
+      "src": "http://localhost:3000/_next/image?url=https%3A%2F%2Fen.onepiece-cardgame.com%2Fimages%2Fproducts%2Fboosters%2Fop01%2Fimg_thumbnail.png&w=3840&q=75"
+    },
+    {
+      "code": "OP-09",
+      "loaded": true,
+      "src": "http://localhost:3000/_next/image?url=https%3A%2F%2Fen.onepiece-cardgame.com%2Fimages%2Fproducts%2Fboosters%2Fop09%2Fimg_thumbnail.png&w=3840&q=75"
+    },
+    {
+      "code": "OP-12",
+      "loaded": true,
+      "src": "http://localhost:3000/_next/image?url=https%3A%2F%2Fen.onepiece-cardgame.com%2Fimages%2Fproducts%2Fboosters%2Fop12%2Fimg_thumbnail.png&w=3840&q=75"
+    }
+  ],
+  "status": "PASS",
+  "images": {
+    "total": 589,
+    "loaded": 36,
+    "broken": 0
+  },
+  "failedRequests": []
+}

@@ -12,11 +12,17 @@ const nextConfig = {
     remotePatterns: [
       {
         protocol: 'https',
-        hostname: '**',
+        hostname: 'en.onepiece-cardgame.com',
+        pathname: '/images/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'fr.onepiece-cardgame.com',
+        pathname: '/images/**',
       },
     ],
-    domains: ['en.onepiece-cardgame.com'],
-    unoptimized: true,
+    // Serve official artwork through the same-origin optimizer: the upstream
+    // Cross-Origin-Resource-Policy blocks direct browser requests from localhost.
   },
   typescript: {
     // Les erreurs TypeScript ne seront plus ignorées

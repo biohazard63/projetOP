@@ -2,6 +2,7 @@ import { createHash, randomInt } from 'node:crypto'
 import { Prisma, type PrismaClient, type Card, type CardSet, type SetRules, type BoosterCard, type Booster } from '@prisma/client'
 import { BoosterError, normalizeSetCode, resolveRules } from './rules'
 import { generateBooster, validatePools } from './generator'
+import { getBoosterArtwork } from './artwork'
 import type { BoosterCatalogItem, OpeningResult } from './types'
 
 type DB = Prisma.TransactionClient
@@ -43,7 +44,7 @@ export async function getBoosterCatalog(db: DB): Promise<BoosterCatalogItem[]> {
   return sets.map(set => {
     const setCards = cards.filter(card => card.setCode === set.code)
     const row = rules.find(rule => rule.code === set.code) || rules.find(rule => rule.code === normalizeSetCode(set.code)) || null
-    const base = { code: set.code, name: set.name, imageUrl: set.imageUrl, description: set.description, cardCount: setCards.length, mode: 'free-simulation' as const }
+    const base = { code: set.code, name: set.name, imageUrl: getBoosterArtwork(set.code, set.imageUrl), description: set.description, cardCount: setCards.length, mode: 'free-simulation' as const }
     try {
       const ctx = context(set, setCards, row, boosters.find(b => b.id === boosterId(set.code)) || null)
       return { ...base, available: true, error: null, packSize: ctx.rules.slots.length, rules: { label: ctx.rules.label, source: ctx.rules.source, slots: ctx.rules.slots, specialPacks: ctx.rules.specialPacks }, warnings: ctx.warnings }
