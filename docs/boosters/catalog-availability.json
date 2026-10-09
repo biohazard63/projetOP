@@ -1,0 +1,77 @@
+{
+  "available": 28,
+  "unavailable": [
+    {
+      "code": "EB-02",
+      "reason": "Extension incomplète : pool manquant pour UC/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "ST-04",
+      "reason": "Extension incomplète : pool manquant pour UC/any, R/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "ST-01",
+      "reason": "Extension incomplète : pool manquant pour UC/any, R/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "ST-14",
+      "reason": "Extension incomplète : pool manquant pour UC/any, R/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "ST-03",
+      "reason": "Extension incomplète : pool manquant pour UC/any, R/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "ST-07",
+      "reason": "Extension incomplète : pool manquant pour UC/any, R/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "CARDS-OTHER",
+      "reason": "Cette extension ne contient aucune carte éligible"
+    },
+    {
+      "code": "ST-10",
+      "reason": "Extension incomplète : pool manquant pour UC/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "ST-02",
+      "reason": "Extension incomplète : pool manquant pour UC/any, R/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "ST-21",
+      "reason": "Extension incomplète : pool manquant pour UC/any, R/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "ST-16",
+      "reason": "Extension incomplète : pool manquant pour UC/any, R/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "ST-13",
+      "reason": "Extension incomplète : pool manquant pour UC/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "ST-09",
+      "reason": "Extension incomplète : pool manquant pour UC/any, R/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "ST-05",
+      "reason": "Extension incomplète : pool manquant pour UC/any, R/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "ST-12",
+      "reason": "Extension incomplète : pool manquant pour UC/any, R/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "ST-08",
+      "reason": "Extension incomplète : pool manquant pour UC/any, R/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "ST-06",
+      "reason": "Extension incomplète : pool manquant pour UC/any, R/any. Aucun remplacement de rareté n’est effectué."
+    },
+    {
+      "code": "EB-01",
+      "reason": "Extension incomplète : pool manquant pour UC/any. Aucun remplacement de rareté n’est effectué."
+    }
+  ]
+}
