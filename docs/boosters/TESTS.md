@@ -96,3 +96,9 @@ Le script navigateur suppose Chrome macOS au chemin `/Applications/Google Chrome
 | Initialiseur en aperçu | PASS — aucune écriture, extensions incompatibles ignorées explicitement | npx tsx scripts/initBoosters.ts, sortie vérifiée |
 
 Échecs finaux : **0** dans les suites exécutées. La compilation de l'ensemble de l'application ne constitue pas un test fonctionnel des modules exclus. Les 12 vulnérabilités high signalées par npm ci concernent les dépendances déjà documentées dans la maintenance ; aucun audit fix --force exécuté et aucune dépendance changée pendant cette phase.
+
+## Ajustement de visibilité du bouton après retour utilisateur
+
+Le bouton « Ouvrir le booster » est remonté juste sous le sélecteur d'extension, avant l'illustration. Dans la base locale de démonstration, OP-TEST (« Trésors de test ») est sélectionné par défaut lorsqu'il est disponible ; les extensions sans ce code conservent leur sélection habituelle. Le bouton existait auparavant sous l'image et pouvait nécessiter de défiler sur mobile ; la page exacte du signalement n'a pas été confirmée.
+
+Validation : TypeScript PASS, ESLint ciblé PASS sans avertissement, 14 scénarios API/navigateur PASS rejoués. Les captures et browser-results.json sont actualisés. Le serveur reste ouvert dans le Terminal séparé demandé par l'utilisateur. La preuve du build de production ci-dessus concerne la validation précédente ; le build n'a pas été relancé pour ce déplacement d'interface pendant le serveur de développement.

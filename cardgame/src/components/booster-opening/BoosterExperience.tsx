@@ -106,7 +106,7 @@ export default function BoosterExperience() {
     if (!session?.user?.id || resumedUser.current === session.user.id) return
     resumedUser.current = session.user.id
     void api<{ sets: BoosterCatalogItem[] }>('/api/booster').then(data => {
-      setSets(data.sets); setSelectedSet(old => old || data.sets.find(set => set.available)?.code || data.sets[0]?.code || '')
+      setSets(data.sets); setSelectedSet(old => old || data.sets.find(set => set.code === 'OP-TEST' && set.available)?.code || data.sets.find(set => set.available)?.code || data.sets[0]?.code || '')
     }).catch(e => setCatalogError(e instanceof Error ? e.message : 'Extensions indisponibles'))
     void loadHistory()
     try {
@@ -189,9 +189,9 @@ export default function BoosterExperience() {
             {sets.filter(set => set.code === selectedSet || `${set.code} ${set.name}`.toLowerCase().includes(query.toLowerCase())).map(set => <option key={set.code} value={set.code}>{set.code} · {set.name}{!set.available ? ' · indisponible' : ''}</option>)}
           </select>
           {catalogError && <p role="alert" className="mt-4 text-red-300">{catalogError}</p>}
+          <button type="button" onClick={startOpening} disabled={!chosen?.available || busy || Boolean(pending && !pending.openingId) || Boolean(opening && revealed < opening.cards.length)} className={`${button} mt-6 w-full bg-amber-300 text-slate-950 hover:bg-amber-200`}><Sparkles size={18} />{busy ? 'Confirmation serveur…' : opening ? 'Ouvrir un autre booster' : 'Ouvrir le booster'}</button>
           <div className="relative mx-auto my-7 w-44 motion-safe:transition-transform motion-safe:hover:-rotate-3"><Image src={chosen?.imageUrl || '/images/booster-pack.png'} alt={`Booster ${chosen?.code || ''}`} width={200} height={280} sizes="176px" className="h-60 w-full object-contain drop-shadow-2xl" onError={e => { if (!e.currentTarget.dataset.fallback) { e.currentTarget.dataset.fallback = 'true'; e.currentTarget.srcset = ''; e.currentTarget.src = '/images/booster-pack.png' } }} /></div>
           {chosen && <><h3 className="font-semibold">{chosen.name}</h3><p className="mt-2 text-sm text-slate-400">{chosen.cardCount} cartes dans le catalogue{chosen.packSize ? ` · ${chosen.packSize} cartes par ouverture` : ''}</p>{chosen.description && <p className="mt-2 text-sm text-slate-400">{chosen.description}</p>}{!chosen.available && <p role="status" className="mt-4 rounded-xl bg-amber-950/40 p-3 text-sm text-amber-200">{chosen.error}</p>}</>}
-          <button type="button" onClick={startOpening} disabled={!chosen?.available || busy || Boolean(pending && !pending.openingId) || Boolean(opening && revealed < opening.cards.length)} className={`${button} mt-6 w-full bg-amber-300 text-slate-950 hover:bg-amber-200`}><Sparkles size={18} />{busy ? 'Confirmation serveur…' : opening ? 'Ouvrir un autre booster' : 'Ouvrir le booster'}</button>
           {chosen?.rules && <details className="mt-5 text-xs leading-5 text-slate-400"><summary className="cursor-pointer text-slate-300">Composition et probabilités</summary><p className="my-2">{chosen.rules.source}. Ces taux ne sont pas présentés comme des taux officiels.</p><ol className="list-inside list-decimal">{chosen.rules.slots.map((slot, i) => <li key={i}>{slot.choices.map(choice => `${choice.rarity}${choice.variant !== 'any' ? ` (${choice.variant})` : ''} : ${(100 * choice.weight / slot.choices.reduce((sum, item) => sum + item.weight, 0)).toFixed(1)} %`).join(' · ')}</li>)}</ol>{chosen.rules.specialPacks.map(pack => <p key={pack.label}>{pack.label} : {(pack.probability * 100).toFixed(1)} % des packs ; composition spéciale remplaçant les slots ci-dessus.</p>)}{chosen.warnings.map(warning => <p key={warning} className="mt-2">{warning}</p>)}</details>}
         </section>
         <section aria-label="Résultat de l’ouverture" className="min-w-0 rounded-3xl border border-slate-800 bg-gradient-to-b from-slate-900 to-slate-950 p-5 sm:p-7">
