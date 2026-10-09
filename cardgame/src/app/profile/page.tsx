@@ -1,0 +1,14 @@
+'use client'
+import { signOut } from 'next-auth/react'
+import { useRemote } from '@/hooks/useRemote'
+import { useCollectorPreferences } from '@/components/collector/Preferences'
+import { useSoundSetting } from '@/hooks/useAudio'
+import type { CollectorOverview } from '@/lib/collector/types'
+import { PageHeading, LoadState, Progress } from '@/components/collector/Primitives'
+export default function ProfilePage() {
+  const overview=useRemote<CollectorOverview>('/api/collector')
+  const prefs=useCollectorPreferences()
+  const sound=useSoundSetting()
+  const profile=overview.data?.profile
+  return <div className="piece-page"><PageHeading eyebrow="À bord du Thousand Sunny" title="Votre espace." description="Votre compte, votre collection et une expérience à votre rythme." /><LoadState loading={overview.loading} error={overview.error} retry={overview.retry} /><div className="piece-two-columns"><section className="piece-panel"><h2>Votre profil</h2>{profile&&<><dl className="piece-card-facts"><div><dt>Nom</dt><dd>{profile.name || 'Non renseigné'}</dd></div><div><dt>Adresse email</dt><dd className="break-all">{profile.email}</dd></div><div><dt>Membre depuis</dt><dd>{new Date(profile.createdAt).toLocaleDateString('fr-FR')}</dd></div><div><dt>Cartes uniques</dt><dd>{overview.data!.unique}</dd></div></dl><p className="piece-muted mb-4">{overview.data!.total} exemplaires · {overview.data!.decks} decks · {overview.data!.percentage}% du catalogue</p><Progress value={overview.data!.percentage} label="Progression de collection" /></>}<button className="piece-button secondary mt-8" onClick={()=>void signOut({callbackUrl:'/login'})}>Se déconnecter</button></section><section className="piece-panel"><h2>Votre expérience</h2><p className="piece-muted mt-3 mb-5">Préférences conservées dans ce navigateur. Le réglage d’animations réduites du système est toujours respecté.</p><label className="piece-checkbox"><input type="checkbox" checked={prefs.animations} onChange={e=>prefs.update({animations:e.target.checked})} />Cinématiques d’ouverture</label><label className="piece-checkbox"><input type="checkbox" checked={sound.soundsEnabled} onChange={e=>sound.setSoundsEnabled(e.target.checked)} />Sons de révélation</label><label className="piece-checkbox"><input type="checkbox" checked={prefs.reducedEffects} onChange={e=>prefs.update({reducedEffects:e.target.checked})} />Réduire les effets visuels</label><label className="piece-field mt-5">Affichage du classeur<select value={prefs.density} onChange={e=>prefs.update({density:e.target.value==='compact'?'compact':'comfortable'})}><option value="comfortable">Confortable</option><option value="compact">Compact</option></select></label>{!prefs.storageAvailable&&<p className="piece-muted !text-amber-200 mt-4" role="status">Le stockage local est indisponible : ces préférences seront temporaires.</p>}</section></div></div>
+}

@@ -3,7 +3,7 @@ import { prisma } from '@/lib/prisma'
 
 export const dynamic = 'force-dynamic'
 
-// Cache en mémoire pour stocker les cartes
+// Format public du catalogue, relu pour rendre les nouveaux imports visibles.
 type CardSummary = {
   id: string
   code: string
@@ -26,17 +26,8 @@ type CardSummary = {
   isAltArt: boolean | null
   isSpecial: boolean | null
 }
-let cachedCards: CardSummary[] | null = null
-let lastFetchTime = 0
-const CACHE_DURATION = 24 * 60 * 60 * 1000 // 24 heures en millisecondes
-
 export async function GET() {
   try {
-    const now = Date.now()
-    if (cachedCards && now - lastFetchTime < CACHE_DURATION) {
-      return NextResponse.json(cachedCards)
-    }
-
     const cards = await prisma.card.findMany({
       select: {
         id: true,
@@ -86,9 +77,6 @@ export async function GET() {
       isAltArt: c.isAltArt,
       isSpecial: c.isSpecial,
     }))
-
-    cachedCards = normalized
-    lastFetchTime = now
 
     return NextResponse.json(normalized)
   } catch (error) {

@@ -12,7 +12,7 @@ export async function GET() {
       where: { userId: session.user.id, quantity: { gt: 0 } },
       include: { card: true },
     })
-    return NextResponse.json({ cards: rows.map(row => ({ ...row.card, quantity: row.quantity })) })
+    return NextResponse.json({ cards: rows.map(row => ({ ...row.card, quantity: row.quantity, acquiredAt: row.createdAt.toISOString() })) })
   } catch {
     console.error('Collection indisponible')
     return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 })
