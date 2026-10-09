@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { Card } from './Card';
 import '@/styles/game.css';
 
-interface PlayerFieldProps {
+interface OpponentFieldProps {
   player: Player;
   onCardClick: (card: GameCard) => void;
   selectedCard?: GameCard;
@@ -15,7 +15,7 @@ interface PlayerFieldProps {
   currentPlayer?: 'player' | 'opponent';
 }
 
-export const PlayerField: React.FC<PlayerFieldProps> = ({
+export const OpponentField: React.FC<OpponentFieldProps> = ({
   player,
   onCardClick,
   selectedCard,
@@ -26,49 +26,49 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
   currentPlayer = 'player',
 }) => {
   return (
-    <div className="flex flex-col gap-8 w-full player-field p-4">
-      {/* Info joueur */}
-      <div className="flex justify-between items-center w-full px-4">
-        <span className="text-white font-bold text-lg">Joueur</span>
+    <div className="flex flex-col gap-8 w-full rotate-180 self-end opponent-field p-4">
+      {/* Info adversaire */}
+      <div className="flex justify-between items-center w-full px-4 -rotate-180">
+        <span className="text-white font-bold text-lg">Adversaire</span>
         <span className="text-white">Points de vie: {player.lifePoints}</span>
       </div>
 
       {/* CHARACTER AREA */}
       <div className="w-full px-4">
-        <div className="text-white text-sm mb-2 text-center bg-gray-800 py-1 rounded-t-lg">CHARACTER AREA</div>
+        <div className="text-white text-sm mb-2 text-center bg-gray-800 py-1 rounded-t-lg -rotate-180">CHARACTER AREA</div>
         <div className="grid grid-cols-6 gap-4">
           {/* LIFE */}
           <div className="col-span-1">
-            <div className="text-white text-sm mb-2 text-center">LIFE</div>
+            <div className="text-white text-sm mb-2 text-center -rotate-180">LIFE</div>
             <div className="h-80 border-2 border-dashed border-red-600 rounded-lg flex items-center justify-center bg-red-900/20">
-              <span className="text-red-500 font-bold text-xl">{player.lifePoints}</span>
+              <span className="text-red-500 font-bold text-xl -rotate-180">{player.lifePoints}</span>
             </div>
           </div>
 
           {/* Game Field (5 slots) */}
           <div className="col-span-5">
-            <div className="text-white text-sm mb-2 text-center">Zone de Combat</div>
+            <div className="text-white text-sm mb-2 text-center -rotate-180">Zone de Combat</div>
             <div className="grid grid-cols-5 gap-4">
               {Array.isArray(player.field) && player.field.slice(0, 5).map((card) => (
                 <div 
                   key={card.id} 
-                  className={`${
+                  className={`-rotate-180 ${
                     selectedAttacker === card.id ? 'ring-4 ring-yellow-400 ring-opacity-75 rounded-lg' : ''
                   }`}
                 >
                   <Card 
                     card={card} 
-                    isOpponent={false}
+                    isOpponent={true}
                     onClick={() => onCardClick(card)}
                     isSelected={selectedCard?.id === card.id}
                     onTogglePosition={onToggleCardPosition ? () => onToggleCardPosition(card) : undefined}
                     currentPlayer={currentPlayer}
-                    canTogglePosition={true} // Le joueur peut changer les positions
+                    canTogglePosition={false} // L'adversaire ne peut pas changer les positions
                     isOnField={true}
                   />
                   
-                  {/* Boutons d'action en phase BATTLE - seulement si c'est le tour du joueur */}
-                  {currentPlayer === 'player' && (
+                  {/* Boutons d'action en phase BATTLE - seulement si c'est le tour de l'adversaire */}
+                  {currentPlayer === 'opponent' && (
                     <div className="flex gap-1 mt-2 justify-center">
                       {onSelectAttacker && (
                         <button
@@ -100,7 +100,7 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
               {Array.from({ length: Math.max(0, 5 - (player.field?.length || 0)) }).map((_, index) => (
                 <div 
                   key={`empty-${index}`} 
-                  className="h-80 border-2 border-dashed border-gray-600 rounded-lg bg-gray-900/20"
+                  className="h-80 border-2 border-dashed border-gray-600 rounded-lg bg-gray-900/20 -rotate-180"
                 />
               ))}
             </div>
@@ -113,18 +113,18 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
         <div className="flex justify-end gap-4">
           {/* LEADER CARD */}
           <div className="w-56">
-            <div className="text-white text-sm mb-2 text-center">LEADER CARD</div>
-            <div className="relative">
+            <div className="text-white text-sm mb-2 text-center -rotate-180">LEADER CARD</div>
+            <div className="relative -rotate-180">
               {player.leader ? (
                 <>
                   <Card 
                     card={player.leader} 
-                    isOpponent={false}
+                    isOpponent={true}
                     onClick={() => onCardClick(player.leader!)}
                     isSelected={selectedCard?.id === player.leader?.id}
                     currentPlayer={currentPlayer}
                     onTogglePosition={onToggleCardPosition ? () => onToggleCardPosition(player.leader!) : undefined}
-                    canTogglePosition={true}
+                    canTogglePosition={false}
                   />
                   
                   {/* Bouton pour cibler le leader - seulement si un attaquant est sélectionné */}
@@ -149,16 +149,16 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
 
           {/* STAGE CARD */}
           <div className="w-56">
-            <div className="text-white text-sm mb-2 text-center">STAGE CARD</div>
-            <div className="h-80 border-2 border-dashed border-yellow-600 rounded-lg flex items-center justify-center bg-yellow-900/20">
+            <div className="text-white text-sm mb-2 text-center -rotate-180">STAGE CARD</div>
+            <div className="h-80 border-2 border-dashed border-yellow-600 rounded-lg flex items-center justify-center bg-yellow-900/20 -rotate-180">
               <span className="text-yellow-500">Stage</span>
             </div>
           </div>
 
           {/* DECK */}
           <div className="w-56">
-            <div className="text-white text-sm mb-2 text-center">DECK</div>
-            <div className="relative">
+            <div className="text-white text-sm mb-2 text-center -rotate-180">DECK</div>
+            <div className="relative -rotate-180">
               {Array.isArray(player.deck) && player.deck.length > 0 ? (
                 <div className="relative">
                   <div className="w-full h-80 border-2 border-dashed border-blue-600 rounded-lg bg-blue-900/20 flex items-center justify-center relative overflow-hidden">
@@ -186,19 +186,19 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
 
       {/* COST AREA */}
       <div className="w-full px-4">
-        <div className="text-white text-sm mb-2 text-center bg-gray-800 py-1 rounded-t-lg">COST AREA</div>
+        <div className="text-white text-sm mb-2 text-center bg-gray-800 py-1 rounded-t-lg -rotate-180">COST AREA</div>
         <div className="flex flex-col gap-4">
           {/* DON et TRASH */}
           <div className="grid grid-cols-4 gap-4">
             {/* DON Deck */}
             <div>
-              <div className="text-white text-sm mb-2 text-center">DON DECK</div>
-              <div className="relative">
+              <div className="text-white text-sm mb-2 text-center -rotate-180">DON DECK</div>
+              <div className="relative -rotate-180">
                 {Array.isArray(player.donDeck) && player.donDeck.length > 0 && (
                   <div className="relative">
                     <Card 
                       card={player.donDeck[0]} 
-                      isOpponent={false}
+                      isOpponent={true}
                       onClick={() => onCardClick(player.donDeck[0])}
                       isSelected={selectedCard?.id === player.donDeck[0].id}
                       currentPlayer={currentPlayer}
@@ -217,7 +217,7 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                           >
                             <Card 
                               card={card} 
-                              isOpponent={false}
+                              isOpponent={true}
                               onClick={() => onCardClick(card)}
                               isSelected={selectedCard?.id === card.id}
                               currentPlayer={currentPlayer}
@@ -233,8 +233,8 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
 
             {/* DON Active */}
             <div>
-              <div className="text-white text-sm mb-2 text-center">DON Active</div>
-              <div className="relative">
+              <div className="text-white text-sm mb-2 text-center -rotate-180">DON Active</div>
+              <div className="relative -rotate-180">
                 {Array.isArray(player.donField) && player.donField.length > 0 ? (
                   <div className="relative border-2 border-dashed border-yellow-600 rounded-lg bg-yellow-900/20 p-2">
                     {player.donField.map((card, index) => (
@@ -249,7 +249,7 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                       >
                         <Card 
                           card={card} 
-                          isOpponent={false}
+                          isOpponent={true}
                           onClick={() => onCardClick(card)}
                           isSelected={selectedCard?.id === card.id}
                           currentPlayer={currentPlayer}
@@ -269,13 +269,13 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
 
             {/* DON Épuisé */}
             <div>
-              <div className="text-white text-sm mb-2 text-center">DON Épuisé</div>
-              <div className="relative">
+              <div className="text-white text-sm mb-2 text-center -rotate-180">DON Épuisé</div>
+              <div className="relative -rotate-180">
                 {Array.isArray(player.usedDonDeck) && player.usedDonDeck.length > 0 ? (
                   <div className="relative border-2 border-dashed border-red-600 rounded-lg bg-red-900/20 p-2">
                     <Card 
                       card={player.usedDonDeck[0]} 
-                      isOpponent={false}
+                      isOpponent={true}
                       onClick={() => onCardClick(player.usedDonDeck[0])}
                       isSelected={selectedCard?.id === player.usedDonDeck[0].id}
                       currentPlayer={currentPlayer}
@@ -294,7 +294,7 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                           >
                             <Card 
                               card={card} 
-                              isOpponent={false}
+                              isOpponent={true}
                               onClick={() => onCardClick(card)}
                               isSelected={selectedCard?.id === card.id}
                               currentPlayer={currentPlayer}
@@ -316,13 +316,13 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
 
             {/* Trash/Discard */}
             <div>
-              <div className="text-white text-sm mb-2 text-center">TRASH</div>
-              <div className="relative">
+              <div className="text-white text-sm mb-2 text-center -rotate-180">TRASH</div>
+              <div className="relative -rotate-180">
                 {Array.isArray(player.discardPile) && player.discardPile.length > 0 ? (
                   <div className="relative border-2 border-dashed border-purple-600 rounded-lg bg-purple-900/20 p-2">
                     <Card 
                       card={player.discardPile[0]} 
-                      isOpponent={false}
+                      isOpponent={true}
                       onClick={() => onCardClick(player.discardPile[0])}
                       isSelected={selectedCard?.id === player.discardPile[0].id}
                       currentPlayer={currentPlayer}
@@ -341,7 +341,7 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                           >
                             <Card 
                               card={card} 
-                              isOpponent={false}
+                              isOpponent={true}
                               onClick={() => onCardClick(card)}
                               isSelected={selectedCard?.id === card.id}
                               currentPlayer={currentPlayer}
@@ -364,7 +364,7 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
 
           {/* Hand */}
           <div className="flex flex-col items-center">
-            <div className="text-white text-sm mb-2 text-center">MAIN ({player.hand?.length || 0})</div>
+            <div className="text-white text-sm mb-2 text-center -rotate-180">MAIN ({player.hand?.length || 0})</div>
             <div className="relative flex justify-center items-center" style={{ height: '330px', width: '100%' }}>
               {Array.isArray(player.hand) && player.hand.map((card, index) => {
                 const totalCards = player.hand.length;
@@ -374,12 +374,12 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                 return (
                   <div
                     key={card.id}
-                    className="absolute transition-all duration-300 ease-in-out hover:scale-110 hover:translate-y-[-20px]"
+                    className="absolute transition-all duration-300 ease-in-out hover:scale-110 hover:translate-y-[-20px] -rotate-180"
                     style={{
                       left: `calc(50% + ${cardPosition}px)`,
-                      bottom: '80px',
+                      top: '80px',
                       transform: `translateX(-50%) rotate(${-12 + (index * (24 / Math.max(1, totalCards - 1)))}deg)`,
-                      transformOrigin: 'bottom center',
+                      transformOrigin: 'top center',
                       zIndex: index
                     }}
                     onMouseEnter={(e) => {
@@ -393,7 +393,7 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
                       <Card
                         card={card}
                         isSelected={selectedCard?.id === card.id}
-                        isOpponent={false}
+                        isOpponent={true}
                         onClick={() => onCardClick(card)}
                         currentPlayer={currentPlayer}
                       />
@@ -409,4 +409,4 @@ export const PlayerField: React.FC<PlayerFieldProps> = ({
   );
 };
 
-export default PlayerField;
+export default OpponentField;

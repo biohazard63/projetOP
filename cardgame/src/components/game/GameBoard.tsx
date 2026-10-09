@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { GameState, GameCard } from '@/types/game';
 import PlayerField from './PlayerField';
+import OpponentField from './OpponentField';
 import Card from './Card';
 import { TestPanel } from './TestPanel';
 
@@ -720,9 +721,8 @@ export const GameBoard: React.FC<GameBoardProps> = ({
 
       {/* Plateau de jeu */}
       <div className="flex-1 flex flex-col justify-between">
-        <PlayerField
+        <OpponentField
           player={localGameState.opponent}
-          isOpponent={true}
           onCardClick={handleCardClick}
           selectedCard={selectedCard}
           selectedAttacker={localSelectedAttacker}
