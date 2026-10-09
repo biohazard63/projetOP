@@ -26,3 +26,11 @@ Le serveur connecté à la base isolée a été arrêté. Le Terminal séparé a
 Des sessions locales temporaires, non consignées et limitées à 120 secondes, ont permis de vérifier en lecture seule les API avec des comptes existants ; aucun mot de passe ni compte modifié. Catalogue : 46 extensions, historique et collection : HTTP 200. Vérification supplémentaire d'une collection non vide : voir evidence/reconnection-collection.json. Aucune ouverture réelle déclenchée pour tester.
 
 L'application utilise désormais les comptes et collections habituels. Les cookies de la session de test précédente sont invalides avec le secret habituel : se reconnecter avec son compte existant. Les 18 extensions incompatibles avec leurs règles restent annoncées indisponibles ; reconnecter la base ne change pas leurs règles.
+
+## Adresse locale rétablie pour Google OAuth
+
+Le premier redémarrage sur localhost:3007 surchargeait l'adresse initialement configurée (localhost:3000) et générait `http://localhost:3007/api/auth/callback/google`. L'utilisateur a ensuite signalé une erreur Google redirect_uri_mismatch.
+
+Le serveur a été remis sur **http://localhost:3000**, dans le même Terminal, avec NEXTAUTH_URL issue de .env et sans override AUTH_URL/NEXTAUTH_URL du port de test. Base, secrets et identifiants OAuth inchangés. Le flux sign-in local a été interrogé sans suivre la redirection Google : callback généré vérifié **http://localhost:3000/api/auth/callback/google**, PASS. Preuve : evidence/google-callback.json. Connexion Google complète : NOT_TESTED, elle nécessite le consentement de l'utilisateur.
+
+Google exige une correspondance exacte avec une URI de redirection autorisée du client OAuth (protocole, hôte, port, chemin et slash). Si l'erreur persiste sur le port 3000, vérifier dans Google Cloud Console l'autorisation exacte de `http://localhost:3000/api/auth/callback/google` pour le client utilisé par .env. Aucun accès ni modification de Google Cloud Console n'a été effectué. Référence officielle : https://developers.google.com/identity/protocols/oauth2/web-server#authorization-errors-redirect-uri-mismatch.
