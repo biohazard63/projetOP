@@ -83,3 +83,44 @@ Fichiers modifiés : src/components/collector/CatalogueGrid.tsx, CardDetail.tsx 
 Suite : accueil/historique/profil mobiles, listes privées et finition PWA ; cinématique tactile après stabilisation serveur. Aucun push ni déploiement. Application locale relancée avec sa configuration habituelle après tests.
 
 Précision de preuve : le glissement est simulé par événements Pointer dans Chrome ; les gestes sur appareil physique restent NOT_TESTED. Les captures finales ont été régénérées après correction des legends ; les radios sont sélectionnées par clic Playwright réel, sans invocation JavaScript de click().
+
+## 10 octobre 2026 — accueil, historique, profil, progression et PWA
+
+Accueil mobile : héros et accès direct au choix de booster, trois statistiques compactes issues des données (desktop en conserve quatre), cartes récentes et progression en carrousels, lien decks et historique. Les cartes rares restent accessibles ; états vides compactés. Aucun chiffre, niveau ou succès fictif.
+
+Historique : liste compacte, reçu en plein écran mobile, consultation via URL canonique ?opening=, cartes et indicateurs de doublons issus du snapshot enregistré. Une fiche carte imbriquée se ferme sans fermer le reçu ; Escape restitue le focus à la ligne d’historique. Le desktop conserve le résultat dans la page. Aucun POST déclenché par consultation ou rechargement.
+
+Progression : nouvelle page privée /progress, accessible depuis Accueil et Profil, recherche/familles tirées du catalogue, uniques / total, exemplaires séparés, manquantes et variantes spéciales. Lien direct vers /collection?set=...&ownership=missing ; paramètres explicites pris en compte à chaque navigation. Navigation Collection active sur la progression.
+
+Profil : accès à historique/progression, thèmes, sons, cinématiques, effets, densité et vibrations indépendantes. Vibrations désactivées par défaut, conservées par utilisateur et utilisées uniquement lors d’une révélation manuelle si navigator.vibrate existe ; aucune promesse de retour natif uniforme. La couleur de barre navigateur suit le thème résolu.
+
+PWA : manifest cohérent, icônes existantes vérifiées 192/512 px, orientation libre ; déclarations de screenshots aux dimensions incorrectes retirées. Worker limité à offline.html et trois icônes publiques. Sessions, API, reçus et pages privées ne sont jamais ajoutés au cache. Navigation hors ligne : écran public générique sans compte ; retour en ligne vérifié. Mise à jour explicite/reportable, masquée sur les parcours d’ouverture et bloquée par une intention non confirmée ; nouvelle vérification avant rechargement si la navigation change pendant l’activation. Aide d’installation iOS dans Profil. Voir PWA_GUIDE.md.
+
+| Contrôle effectué | État | Preuve |
+|---|---|---|
+| Accueil et statistiques réelles compactes | PASS | evidence/phase-6-pwa/results.json |
+| Historique, fiche imbriquée, rechargement et absence de crédit supplémentaire | PASS | Reçu réel généré une fois sur la base isolée ; zéro POST depuis l’interface de consultation |
+| Confidentialité du reçu et cache-control historique | PASS | Autre utilisateur : 404 ; réponse no-store |
+| Progression et lien vers cartes manquantes de l’extension | PASS | Quantités/uniques vérifiées, nombre de résultats exact |
+| Préférences indépendantes et conservées après rechargement | PASS | Cinématiques/sons/effets/vibrations testés dans le navigateur |
+| Quatre pages aux sept résolutions | PASS | 28 vues sans débordement, captures 390 et 1440 px en sombre |
+| Quatre pages en clair et couleur de barre navigateur | PASS | Captures 390 px, changement de thème sans rechargement |
+| Manifest, icônes et vrai CacheStorage | PASS | Cache réel contient seulement offline.html et trois icônes |
+| Hors connexion et retour réseau | PASS | Page Profil remplacée par écran public, aucune information du compte |
+| Prompt d’installation et aide iOS | PASS pour interface | Prompt simulé ; user-agent iPhone dans Chrome. Pas d’installation native attestée |
+| Mise à jour et intention non confirmée | PASS pour interface | Worker simulé : aucune activation avec intention non confirmée ; activation explicite ; rechargement reporté si navigation vers ouverture |
+| Absence d’erreurs JavaScript et de récompenses supplémentaires | PASS | 13 scénarios navigateur finaux réussis, un seul reçu de préparation |
+| Politique de cache du worker | PASS | Quatre nouveaux tests : allowlist, activation manuelle, purge de namespace, données privées hors cache |
+| TypeScript, ESLint, unitaires et build | PASS | Journaux dédiés ; 38/38 tests, zéro erreur ESLint et 99 avertissements existants |
+| Installation et mise à jour sur appareils iOS/Android physiques | NOT_TESTED | Chrome macOS seulement, pas de publication native |
+| Safe areas matérielles et vibrations réelles | NOT_TESTED | Préparation CSS/API, pas d’appareil physique |
+| Listes personnalisées | NOT_TESTED | Lot distinct avec migration additive et tests de droits à préparer |
+| Ouvertures Neon et nouvelle cinématique intégrée | BLOCKED | Migration de production toujours non autorisée/appliquée ; génération inchangée |
+
+Défauts détectés/corrigés durant validation : fermeture des deux modales au lieu de la seule fiche carte (dialogue désormais imbriqué avec gardes Escape/interactions) ; première installation confondue avec mise à jour (contrôle d’un worker déjà actif) ; mise à jour sans option de report ; contraste des liens/illustrations de progression en clair ; espacement excessif du reçu plein écran ; réglages modifiables avant chargement de l’identité (contrôles désormais désactivés tant que la clé du compte n’est pas chargée, scénario réseau retardé ajouté). TypeScript a aussi détecté import.meta dans un nouveau test incompatible avec la configuration module existante : lecture du worker adaptée, sans modifier ou désactiver TypeScript. Les échecs intermédiaires sont décrits ici ; results.json contient le dernier essai complet réussi.
+
+Fichiers principaux modifiés : src/app/home/page.tsx, history/page.tsx, profile/page.tsx, layout.tsx, collector.css ; components/Navbar.tsx, PWAInstallPrompt.tsx, collector/Preferences.tsx, ThemeSelector.tsx, CatalogueGrid.tsx ; components/booster-opening/BoosterExperience.tsx (retour tactile uniquement) ; public/manifest.json et sw.js. Ajouts : app/progress/page.tsx et layout.tsx, collector/InstallHelp.tsx, hooks/useVibration.ts, public/offline.html, tests/pwa-policy.test.ts et mobile-pages-pwa.browser.mjs, PWA_GUIDE.md et preuves phase-6-pwa. Aucune dépendance, migration, modèle ou API métier modifié.
+
+Commandes exécutées : npm test, npm run typecheck, npm run lint, npm run build ; npm run start -- --port 3007 avec URL strictement isolée, puis node tests/mobile-pages-pwa.browser.mjs avec la même garde. Serveur habituel arrêté pendant les builds puis relancé par npm run dev -- --port 3000. Worker volontairement non enregistré en mode dev ; tests PWA exécutés sur la version compilée. Fixtures conservées, aucun reset, suppression, déploiement ou push.
+
+Suite : listes personnalisées privées et validation exhaustive des régressions ; cinématique tactile après stabilisation du schéma serveur. Toutes les nouvelles statistiques restent basées sur les données utilisateur.

@@ -16,8 +16,8 @@ const inter = Inter({ subsets: ['latin'] })
 export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover', themeColor: [{ media: '(prefers-color-scheme: dark)', color: '#071222' }, { media: '(prefers-color-scheme: light)', color: '#F8F6F0' }] }
 
 export const metadata = {
-  title: 'One Piece Card Game',
-  description: 'Mugiwara TCG – L\'application fan-made française du One Piece Card Game. Ouvre des boosters réalistes, collectionne tes cartes et affronte d\'autres joueurs pirates.',
+  title: 'Mugiwara TCG',
+  description: 'Mugiwara TCG – L\'application fan-made française du One Piece Card Game. Collectionne tes cartes, ouvre des boosters et construis tes decks.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
@@ -74,9 +74,8 @@ export default function RootLayout({
          
           </div>
           <footer className="piece-footer"><span>MUGIWARA TCG · Votre aventure, carte après carte.</span><span>Projet de fans · Simulation gratuite <Link href="/opening-demo" className="ml-4 text-amber-200">Démo cinématique</Link></span></footer>
-          </OpeningPresentationProvider></CollectorPreferencesProvider>
+            <PWAInstallPrompt /></OpeningPresentationProvider></CollectorPreferencesProvider>
         </Providers>
-        <PWAInstallPrompt />
         {/* <PWAAuthHelper /> */}
         <Analytics />
       </body>

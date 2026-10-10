@@ -17,6 +17,8 @@ export default function CatalogueGrid({ cards, authenticated = true, collection 
   const [filtersOpen, setFiltersOpen] = useState(false)
   const [family, setFamily] = useState('')
   const parameters = useSearchParams()
+  const requestedSet = parameters.get('set') || ''
+  const requestedOwnership = parameters.get('ownership')
   const preferences = useCollectorPreferences()
   const query = useSearchParams().get('q') || ''
   const [search, setSearch] = useState(query)
@@ -28,6 +30,8 @@ export default function CatalogueGrid({ cards, authenticated = true, collection 
   const [color, setColor] = useState('')
   const [type, setType] = useState('')
   const [ownership, setOwnership] = useState(parameters.get('ownership') === 'missing' ? 'missing' : collection ? 'owned' : 'all')
+  useEffect(()=>{setSet(requestedSet);setFamily('')},[requestedSet])
+  useEffect(()=>{setOwnership(requestedOwnership==='missing'?'missing':requestedOwnership==='all'?'all':collection?'owned':'all')},[requestedOwnership,collection])
   const [sort, setSort] = useState('code')
   const [favorites, setFavorites] = useState(false)
   const [alternatives, setAlternatives] = useState(false)

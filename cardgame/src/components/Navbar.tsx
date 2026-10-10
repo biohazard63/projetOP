@@ -30,7 +30,7 @@ export function Navbar() {
     document.addEventListener('keydown', key)
     return () => document.removeEventListener('keydown', key)
   }, [open])
-  const active = (href: string) => href.includes('?') ? pathname === '/boosters' && parameters.get('view') === 'extensions' : (href === '/boosters' ? parameters.get('view') !== 'extensions' && (pathname.startsWith('/boosters') || pathname === '/booster-opening') : pathname === href || (href === '/decks' && pathname === '/deck-builder'))
+  const active = (href: string) => href.includes('?') ? pathname === '/boosters' && parameters.get('view') === 'extensions' : (href === '/boosters' ? parameters.get('view') !== 'extensions' && (pathname.startsWith('/boosters') || pathname === '/booster-opening') : pathname === href || (href === '/collection' && pathname === '/progress') || (href === '/decks' && pathname === '/deck-builder'))
   const brand = <Link href="/home" className="piece-brand" aria-label="Mugiwara TCG, accueil"><Image src="/images/jolly-roger.png" alt="" width={42} height={42} /><span><strong>MUGIWARA</strong><small>ONE PIECE CARD GAME</small></span></Link>
   const menu = links.map(({ href, label, icon: Icon }) => <Link key={href} href={href} aria-current={active(href) ? 'page' : undefined}><Icon size={17} />{label}</Link>)
   if (cinematic) return null
