@@ -14,7 +14,13 @@ La référence distante origin/main contient la fusion de la refonte (3bf891b) e
 
 Contrôles **GET uniquement et anonymes** à 20:53 : /api/cards 200 avec 3033 cartes ; ST-28 contient 15 cartes (L 1, UC 4, C 6, R 2, SR 2). /api/sets 200. /api/booster, /api/booster/history et /api/collector retournent 401. La connexion de lecture et les protections anonymes fonctionnent. Ces contrôles ne vérifient ni les colonnes des reçus, ni le droit d’écriture, ni la transaction. « Aucune API externe » dans le relevé Vercel ne permet pas de conclure à l’absence de connexion PostgreSQL TCP. Aucun POST ni cookie d’utilisateur utilisé.
 
-## Hypothèse à confirmer
+## Diagnostic confirmé le 10 octobre 2026
+
+Inspection de la connexion Neon fournie par l’utilisateur, dans une transaction PostgreSQL explicitement READ ONLY : les quatre colonnes idempotencyKey, creditedAt, resultSnapshot et rulesSnapshot sont absentes, ainsi que l’index unique utilisateur/clé. Le schéma ne satisfait donc pas le contrat de la route d’ouverture sécurisée. La base contient 3033 cartes, 46 extensions et zéro ouverture au moment du contrôle. Aucun compte ni donnée personnelle consulté. Preuve : evidence/production-diagnostic/production-schema-readonly.json. La correspondance de cette connexion avec la variable Vercel repose sur la destination indiquée par l’utilisateur ; aucune variable Vercel n’a été lue.
+
+Douze migrations sont enregistrées ; cinq migrations du dépôt restent absentes, dont quatre concernent le jeu et sont hors périmètre. Ne pas lancer un migrate deploy global. Préparer une sauvegarde, vérifier les contraintes et appliquer uniquement le SQL 20261009120000_secure_booster_openings après autorisation de production, puis enregistrer cette seule migration dans le journal Prisma après vérification. Aucune de ces écritures n’a été exécutée.
+
+### Hypothèse antérieure et reproduction isolée
 
 Le modèle utilise désormais idempotencyKey, creditedAt, resultSnapshot et rulesSnapshot. La migration `20261009120000_secure_booster_openings` a été appliquée à la base locale, mais aucune application à une base de production n’est attestée. Le script vercel-build fait prisma generate et next build, sans migration. Générer Prisma Client ne modifie pas le schéma distant.
 
@@ -68,7 +74,8 @@ Les fichiers sont dans `evidence/production-diagnostic/`.
 | Build de production local | PASS | build.log, sortie 0 |
 | Schéma de la base habituelle locale | PASS | local-schema.json : colonnes et index présents, migration enregistrée |
 | Catalogue public et protection des APIs privées en production | PASS | public-readonly-check.json : 2 GET 200 et 3 GET 401 |
-| Cause exacte de l’incident en production | BLOCKED | Exception serveur ou inspection du schéma de la vraie base manquante |
+| Incompatibilité du schéma Neon fourni | FAIL confirmé | production-schema-readonly.json : quatre colonnes et index d’idempotence absents |
+| Application du correctif en production | BLOCKED | Autorisation de migration et sauvegarde préalables ; quatre migrations de jeu à exclure |
 | Ouverture réelle en production | NOT_TESTED | Aucune ouverture de test sur une base réelle |
 | Nouveau handler HTTP avec erreurs injectées | NOT_TESTED | Classification unit-testée et moteur réellement testé ; pas de nouvelle injection HTTP |
 
