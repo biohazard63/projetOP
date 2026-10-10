@@ -1,0 +1,481 @@
+// DRAFT ONLY. Do not migrate/deploy this file without review and production authorization.
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id                    String            @id @default(cuid())
+  name                  String?
+  email                 String            @unique
+  emailVerified        DateTime?
+  image                String?
+  createdAt             DateTime          @default(now())
+  password              String?
+  updatedAt             DateTime          @updatedAt
+  hasStarterDecks       Boolean           @default(false)
+  battleInvitesSent     BattleInvite[]    @relation("InviteSender")
+  battleInvitesReceived BattleInvite[]    @relation("InviteReceiver")
+  boosterOpenings       BoosterOpening[]
+  coinTransactions      CoinTransaction[]
+  decks                 Deck[]
+  favorites             FavoriteCard[]
+  opponentHistory       GameHistory[]     @relation("OpponentHistory")
+  playerHistory         GameHistory[]     @relation("PlayerHistory")
+  winnerHistory         GameHistory[]     @relation("WinnerHistory")
+  gameLogs              GameLog[]
+  opponentGames         GameState[]       @relation("OpponentGame")
+  playerGames           GameState[]       @relation("PlayerGame")
+  tournamentMatchesA    TournamentMatch[] @relation("PlayerA")
+  tournamentMatchesB    TournamentMatch[] @relation("PlayerB")
+  tournamentWins        TournamentMatch[] @relation("TournamentWinner")
+  tradesOffered         Trade[]           @relation("TradeOfferer")
+  tradesReceived        Trade[]           @relation("TradeReceiver")
+  achievements          UserAchievement[]
+  userCards             UserCard[]
+  inventory             UserInventory[]
+  stats                 UserStats?
+  accounts              Account[]
+  sessions              Session[]
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
+model Card {
+  catalogLinks CatalogLegacyLink[]
+  id                  String               @id @default(cuid())
+  name                String
+  type                String
+  color               String
+  cost                Int?
+  power               Int?
+  counter             String?
+  effect              String?
+  rarity              String
+  imageUrl            String
+  set                 String?
+  attribute           String?
+  attributeImage      String?
+  family              String?
+  ability             String?
+  trigger             String?
+  notes               String?
+  code                String
+  rarityName          String?
+  setCode             String?
+  isAltArt            Boolean              @default(false)
+  isParallel          Boolean              @default(false)
+  isSpecial           Boolean              @default(false)
+  boosterCards        BoosterCard[]
+  boosterOpeningCards BoosterOpeningCard[]
+  rarityInfo          CardRarity?          @relation(fields: [rarityName], references: [name])
+  cardSet             CardSet?             @relation(fields: [setCode], references: [code])
+  deckCards           DeckCard[]
+  favorites           FavoriteCard[]
+  gameLogs            GameLog[]
+  userCards           UserCard[]
+}
+
+model UserCard {
+  id        String   @id @default(cuid())
+  userId    String
+  cardId    String
+  quantity  Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  card      Card     @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, cardId])
+}
+
+model FavoriteCard {
+  id        String   @id @default(cuid())
+  userId    String
+  cardId    String
+  createdAt DateTime @default(now())
+  card      Card     @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, cardId])
+}
+
+model CardSet {
+  id          String    @id @default(cuid())
+  name        String
+  code        String    @unique
+  releaseDate DateTime?
+  description String?
+  imageUrl    String?
+  boosters    Booster[]
+  cards       Card[]
+}
+
+model CardRarity {
+  id       String @id @default(cuid())
+  name     String @unique
+  color    String
+  dropRate Float
+  cards    Card[]
+}
+
+model Booster {
+  id          String           @id @default(cuid())
+  name        String
+  description String?
+  price       Int
+  setCode     String
+  imageUrl    String?
+  cardSet     CardSet          @relation(fields: [setCode], references: [code])
+  cards       BoosterCard[]
+  openings    BoosterOpening[]
+}
+
+model BoosterCard {
+  id          String  @id @default(cuid())
+  boosterId   String
+  cardId      String
+  probability Float   @default(0)
+  booster     Booster @relation(fields: [boosterId], references: [id], onDelete: Cascade)
+  card        Card    @relation(fields: [cardId], references: [id], onDelete: Cascade)
+
+  @@unique([boosterId, cardId])
+}
+
+model BoosterOpening {
+  id        String               @id @default(cuid())
+  userId    String
+  boosterId String
+  idempotencyKey String?
+  creditedAt DateTime?
+  resultSnapshot Json?
+  rulesSnapshot Json?
+  openedAt  DateTime             @default(now())
+  booster   Booster              @relation(fields: [boosterId], references: [id], onDelete: Restrict)
+  user      User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cards     BoosterOpeningCard[]
+
+  @@unique([userId, idempotencyKey])
+  @@index([userId, openedAt, id])
+}
+
+model BoosterOpeningCard {
+  id               String         @id @default(cuid())
+  boosterOpeningId String
+  cardId           String
+  position         Int
+  boosterOpening   BoosterOpening @relation(fields: [boosterOpeningId], references: [id], onDelete: Cascade)
+  card             Card           @relation(fields: [cardId], references: [id], onDelete: Restrict)
+
+  @@unique([boosterOpeningId, position])
+}
+
+model Deck {
+  id          String        @id @default(cuid())
+  name        String
+  description String?
+  userId      String?
+  createdAt   DateTime      @default(now())
+  updatedAt   DateTime      @updatedAt
+  user        User?         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  versions    DeckVersion[]
+}
+
+model DeckVersion {
+  id        String     @id @default(cuid())
+  deckId    String
+  name      String
+  createdAt DateTime   @default(now())
+  cards     DeckCard[]
+  deck      Deck       @relation(fields: [deckId], references: [id], onDelete: Cascade)
+}
+
+model DeckCard {
+  id            String      @id @default(cuid())
+  cardId        String
+  quantity      Int         @default(1)
+  deckVersionId String
+  card          Card        @relation(fields: [cardId], references: [id], onDelete: Cascade)
+  deckVersion   DeckVersion @relation(fields: [deckVersionId], references: [id], onDelete: Cascade)
+
+  @@unique([deckVersionId, cardId])
+}
+
+model GameState {
+  id                       String    @id @default(cuid())
+  createdAt                DateTime  @default(now())
+  updatedAt                DateTime  @updatedAt
+  isActive                 Boolean   @default(true)
+  playerId                 String
+  opponentId               String
+  currentPhase             String
+  currentPlayer            String
+  turnNumber               Int       @default(1)
+  winner                   String?
+  gameOver                 Boolean   @default(false)
+  isFirstTurn              Boolean   @default(true)
+  canPlayCard              Boolean   @default(false)
+  canAttack                Boolean   @default(false)
+  canEndTurn               Boolean   @default(false)
+  hasKeptHand              Boolean   @default(false)
+  playerLife               Int       @default(4)
+  playerLeader             Json?
+  playerDeck               Json[]
+  playerHand               Json[]
+  playerField              Json[]
+  playerDonDeck            Json[]
+  playerDonField           Json[]
+  playerTrash              Json[]
+  playerActiveDon          Int       @default(0)
+  playerDonAddedThisTurn   Boolean   @default(false)
+  playerUsedDonDeck        Json[]
+  playerDiscardPile        Json[]
+  opponentLife             Int       @default(4)
+  opponentLeader           Json?
+  opponentDeck             Json[]
+  opponentHand             Json[]
+  opponentField            Json[]
+  opponentDonDeck          Json[]
+  opponentDonField         Json[]
+  opponentTrash            Json[]
+  opponentActiveDon        Int       @default(0)
+  opponentDonAddedThisTurn Boolean   @default(false)
+  opponentUsedDonDeck      Json[]
+  opponentDiscardPile      Json[]
+  gameLogs                 GameLog[]
+  opponent                 User      @relation("OpponentGame", fields: [opponentId], references: [id])
+  player                   User      @relation("PlayerGame", fields: [playerId], references: [id])
+}
+
+model GameHistory {
+  id         String   @id @default(cuid())
+  playerId   String
+  opponentId String
+  winnerId   String?
+  createdAt  DateTime @default(now())
+  duration   Int
+  opponent   User     @relation("OpponentHistory", fields: [opponentId], references: [id])
+  player     User     @relation("PlayerHistory", fields: [playerId], references: [id])
+  winner     User?    @relation("WinnerHistory", fields: [winnerId], references: [id])
+}
+
+model GameLog {
+  id        String    @id @default(cuid())
+  gameId    String
+  playerId  String
+  action    String
+  cardId    String?
+  phase     String?
+  createdAt DateTime  @default(now())
+  card      Card?     @relation(fields: [cardId], references: [id])
+  game      GameState @relation(fields: [gameId], references: [id], onDelete: Cascade)
+  player    User      @relation(fields: [playerId], references: [id])
+}
+
+model Achievement {
+  id               String            @id @default(cuid())
+  code             String
+  title            String
+  description      String
+  points           Int
+  userAchievements UserAchievement[]
+}
+
+model UserAchievement {
+  id            String      @id @default(cuid())
+  userId        String
+  achievementId String
+  unlockedAt    DateTime    @default(now())
+  achievement   Achievement @relation(fields: [achievementId], references: [id], onDelete: Cascade)
+  user          User        @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Trade {
+  id            String   @id @default(cuid())
+  offerUserId   String
+  requestUserId String
+  status        String
+  createdAt     DateTime @default(now())
+  offerUser     User     @relation("TradeOfferer", fields: [offerUserId], references: [id])
+  requestUser   User     @relation("TradeReceiver", fields: [requestUserId], references: [id])
+}
+
+model Tournament {
+  id        String            @id @default(cuid())
+  name      String
+  startDate DateTime
+  format    String
+  prize     String?
+  matches   TournamentMatch[]
+}
+
+model TournamentMatch {
+  id           String     @id @default(cuid())
+  tournamentId String
+  playerAId    String
+  playerBId    String
+  winnerId     String?
+  score        String?
+  playerA      User       @relation("PlayerA", fields: [playerAId], references: [id])
+  playerB      User       @relation("PlayerB", fields: [playerBId], references: [id])
+  tournament   Tournament @relation(fields: [tournamentId], references: [id], onDelete: Cascade)
+  winner       User?      @relation("TournamentWinner", fields: [winnerId], references: [id])
+}
+
+model BattleInvite {
+  id         String   @id @default(cuid())
+  fromUserId String
+  toUserId   String
+  status     String
+  createdAt  DateTime @default(now())
+  fromUser   User     @relation("InviteSender", fields: [fromUserId], references: [id])
+  toUser     User     @relation("InviteReceiver", fields: [toUserId], references: [id])
+}
+
+model UserStats {
+  id             String  @id @default(cuid())
+  userId         String  @unique
+  gamesPlayed    Int     @default(0)
+  gamesWon       Int     @default(0)
+  boostersOpened Int     @default(0)
+  favoriteDeck   String?
+  favoriteCard   String?
+  winRate        Float   @default(0)
+  totalPlayTime  Int     @default(0)
+  user           User    @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model CoinTransaction {
+  id        String   @id @default(cuid())
+  userId    String
+  amount    Int
+  type      String
+  createdAt DateTime @default(now())
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model ShopItem {
+  id          String  @id @default(cuid())
+  name        String
+  description String?
+  price       Int
+  imageUrl    String?
+}
+
+model UserInventory {
+  id          String   @id @default(cuid())
+  userId      String
+  itemId      String
+  purchasedAt DateTime @default(now())
+  quantity    Int      @default(1)
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, itemId])
+}
+
+model SetRules {
+  id           String    @id @default(cuid())
+  code         String    @unique
+  rarityCounts Json
+  typeCounts   Json
+  boosterRules Json
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  name         String?
+  releaseDate  DateTime?
+}
+
+// Additive catalogue proposal: legacy Card/player relations above remain intact.
+model CatalogIdentity {
+  number String @id
+  variants CatalogVariant[]
+}
+model CatalogVariant {
+  key String @id
+  number String
+  artToken String
+  payload Json
+  digest String
+  identity CatalogIdentity @relation(fields: [number], references: [number], onDelete: Restrict, onUpdate: NoAction)
+  memberships CatalogMembership[]
+  images CatalogImage[]
+  translations CatalogTranslation[]
+  legacyLinks CatalogLegacyLink[]
+  @@unique([number, artToken])
+}
+model CatalogEdition {
+  code String @id
+  family String
+  name Json
+  memberships CatalogMembership[]
+}
+model CatalogMembership {
+  variantKey String
+  editionCode String
+  variant CatalogVariant @relation(fields: [variantKey], references: [key], onDelete: Restrict, onUpdate: NoAction)
+  edition CatalogEdition @relation(fields: [editionCode], references: [code], onDelete: Restrict, onUpdate: NoAction)
+  @@id([variantKey, editionCode])
+}
+model CatalogImage {
+  variantKey String
+  key String
+  payload Json
+  variant CatalogVariant @relation(fields: [variantKey], references: [key], onDelete: Restrict, onUpdate: NoAction)
+  @@id([variantKey, key])
+}
+model CatalogTranslation {
+  variantKey String
+  field String
+  payload Json
+  variant CatalogVariant @relation(fields: [variantKey], references: [key], onDelete: Restrict, onUpdate: NoAction)
+  @@id([variantKey, field])
+}
+model CatalogLegacyLink {
+  cardId String
+  variantKey String
+  card Card @relation(fields: [cardId], references: [id], onDelete: Restrict, onUpdate: NoAction)
+  variant CatalogVariant @relation(fields: [variantKey], references: [key], onDelete: Restrict, onUpdate: NoAction)
+  @@id([cardId, variantKey])
+}
+model CatalogImportRun {
+  digest String @id
+  completedAt DateTime @default(now()) @db.Timestamptz(6)
+  counts Json
+}

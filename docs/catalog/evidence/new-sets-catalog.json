@@ -1,0 +1,80 @@
+[
+  {
+    "code": "OP-13",
+    "cards": 171,
+    "available": true,
+    "error": null
+  },
+  {
+    "code": "OP-16",
+    "cards": 155,
+    "available": true,
+    "error": null
+  },
+  {
+    "code": "OP-17",
+    "cards": 169,
+    "available": true,
+    "error": null
+  },
+  {
+    "code": "OP14-EB04",
+    "cards": 196,
+    "available": true,
+    "error": null
+  },
+  {
+    "code": "OP15-EB04",
+    "cards": 196,
+    "available": true,
+    "error": null
+  },
+  {
+    "code": "ST-29",
+    "cards": 31,
+    "available": false,
+    "error": "Extension incomplète : pool manquant pour UC/any, R/any, SEC/any, SP CARD/any, TR/any. Aucun remplacement de rareté n’est effectué."
+  },
+  {
+    "code": "ST-30",
+    "cards": 34,
+    "available": false,
+    "error": "Extension incomplète : pool manquant pour UC/any, R/any, SEC/any, SP CARD/any, TR/any. Aucun remplacement de rareté n’est effectué."
+  },
+  {
+    "code": "ST-31",
+    "cards": 14,
+    "available": false,
+    "error": "Extension incomplète : pool manquant pour SEC/any, SP CARD/any, TR/any. Aucun remplacement de rareté n’est effectué."
+  },
+  {
+    "code": "ST-32",
+    "cards": 15,
+    "available": false,
+    "error": "Extension incomplète : pool manquant pour SEC/any, SP CARD/any, TR/any. Aucun remplacement de rareté n’est effectué."
+  },
+  {
+    "code": "ST-33",
+    "cards": 15,
+    "available": false,
+    "error": "Extension incomplète : pool manquant pour SEC/any, SP CARD/any, TR/any. Aucun remplacement de rareté n’est effectué."
+  },
+  {
+    "code": "ST-34",
+    "cards": 15,
+    "available": false,
+    "error": "Extension incomplète : pool manquant pour SEC/any, SP CARD/any, TR/any. Aucun remplacement de rareté n’est effectué."
+  },
+  {
+    "code": "ST-35",
+    "cards": 15,
+    "available": false,
+    "error": "Extension incomplète : pool manquant pour SEC/any, SP CARD/any, TR/any. Aucun remplacement de rareté n’est effectué."
+  },
+  {
+    "code": "ST-36",
+    "cards": 15,
+    "available": false,
+    "error": "Extension incomplète : pool manquant pour SEC/any, SP CARD/any, TR/any. Aucun remplacement de rareté n’est effectué."
+  }
+]

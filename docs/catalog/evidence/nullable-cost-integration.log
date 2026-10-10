@@ -1,0 +1,16 @@
+TAP version 13
+# Subtest: absent printed costs persist as NULL with original rule text, rollback preserves cards
+ok 1 - absent printed costs persist as NULL with original rule text, rollback preserves cards
+  ---
+  duration_ms: 145.320375
+  type: 'test'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 1
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 498.692083

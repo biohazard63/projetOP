@@ -1,0 +1,14 @@
+
+> cardgame@0.1.0 catalog:translate
+> node --import tsx scripts/catalog/cli.ts translate
+
+{
+  "translations": {
+    "official": 13964,
+    "validated": 0,
+    "machine": 11794,
+    "review_required": 6192
+  },
+  "missing": 301,
+  "note": "Glossaire local et traductions archivées ; aucune traduction externe facturée ni validation humaine inventée."
+}

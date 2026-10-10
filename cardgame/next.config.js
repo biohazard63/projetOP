@@ -20,6 +20,21 @@ const nextConfig = {
         hostname: 'fr.onepiece-cardgame.com',
         pathname: '/images/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'fr.onepiece-cardgame.com',
+        pathname: '/products/boosters/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'fr.onepiece-cardgame.com',
+        pathname: '/renewal/images/products/boosters/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'en.onepiece-cardgame.com',
+        pathname: '/onepiececg/bccard/en/products/**',
+      },
     ],
     // Serve official artwork through the same-origin optimizer: the upstream
     // Cross-Origin-Resource-Policy blocks direct browser requests from localhost.

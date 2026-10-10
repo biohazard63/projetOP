@@ -19,7 +19,7 @@ async function checkCardSets() {
     // Afficher les détails pour chaque set
     for (const set of cardSets) {
       console.log(`=== Set: ${set.name} (${set.code}) ===`)
-      console.log(`Date de sortie: ${set.releaseDate.toLocaleDateString()}`)
+      console.log(`Date de sortie: ${set.releaseDate?.toLocaleDateString() || 'Non renseignée'}`)
       console.log(`Description: ${set.description || 'Non spécifiée'}`)
       console.log(`Image URL: ${set.imageUrl || 'Non spécifiée'}`)
       console.log(`Nombre de cartes: ${set.cards.length}`)
@@ -57,4 +57,4 @@ async function checkCardSets() {
   }
 }
 
-checkCardSets() 
+checkCardSets()

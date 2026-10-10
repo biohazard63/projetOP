@@ -572,12 +572,15 @@ export const GameBoard: React.FC<GameBoardProps> = ({
   };
 
   const cardToGameCard = (card: PrismaCard, isFaceUp: boolean = true): GameCard => {
+    if (card.cost === null && !['LEADER', 'DON'].includes(card.type)) {
+      throw new Error('Cette carte ne peut pas être jouée : coût non renseigné dans le catalogue.');
+    }
     return {
       id: card.id,
       name: card.name,
       type: card.type as GameCard['type'],
       color: card.color as GameCard['color'],
-      cost: card.cost,
+      cost: card.cost ?? 0,
       power: card.power || 0,
       imageUrl: card.imageUrl,
       effect: card.effect || undefined,
@@ -806,4 +809,4 @@ export const GameBoard: React.FC<GameBoardProps> = ({
       </div>
     </div>
   );
-}; 
+};

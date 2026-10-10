@@ -1,0 +1,96 @@
+{
+  "requested": 15,
+  "sets": [
+    {
+      "code": "OP-13",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    },
+    {
+      "code": "OP-14",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    },
+    {
+      "code": "OP-15",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    },
+    {
+      "code": "OP-16",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    },
+    {
+      "code": "OP-17",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    },
+    {
+      "code": "PRB-02",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    },
+    {
+      "code": "EB-03",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    },
+    {
+      "code": "ST-29",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    },
+    {
+      "code": "ST-30",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    },
+    {
+      "code": "ST-31",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    },
+    {
+      "code": "ST-32",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    },
+    {
+      "code": "ST-33",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    },
+    {
+      "code": "ST-34",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    },
+    {
+      "code": "ST-35",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    },
+    {
+      "code": "ST-36",
+      "localVariants": 0,
+      "status": "BLOCKED",
+      "reason": "Source autorisée nécessaire avant collecte ; aucune collecte distante exécutée"
+    }
+  ],
+  "productionTouched": false
+}

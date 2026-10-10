@@ -1,0 +1,44 @@
+
+> cardgame@0.1.0 test:catalog:full-import
+> node --import tsx --test tests/catalog.full-import.ts
+
+TAP version 13
+# Subtest: complete reconstructed catalogue imports twice without changes to existing app/player tables
+ok 1 - complete reconstructed catalogue imports twice without changes to existing app/player tables
+  ---
+  duration_ms: 60204.01975
+  type: 'test'
+  ...
+# {
+#   "scope": "Conversion locale seulement ; aucune attribution, aucune écriture SQL. Images distantes non vérifiées, autorisation de publication à confirmer.",
+#   "variants": 4179,
+#   "distinctNumbers": 2667,
+#   "frenchCompleteVariants": 4033,
+#   "readyVariants": 3786,
+#   "readyDistinctNumbers": 2523,
+#   "provisionalReadyVariants": 3786,
+#   "fullyVerifiedReadyVariants": 0,
+#   "blockedVariants": 393,
+#   "reasons": {
+#     "fr_missing:ability": 139,
+#     "fr_missing:effect": 133,
+#     "fr_missing:trigger": 11,
+#     "unknown_required_cost": 93,
+#     "unresolved_numeric_conflict": 157
+#   }
+# }
+# Subtest: French export is accepted by the current Prisma Card model and rolled back
+ok 2 - French export is accepted by the current Prisma Card model and rolled back
+  ---
+  duration_ms: 1123.166584
+  type: 'test'
+  ...
+1..2
+# tests 2
+# suites 0
+# pass 2
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 61602.79375

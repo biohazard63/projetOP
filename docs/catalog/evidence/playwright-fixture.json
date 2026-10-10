@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "scope": "Playwright Chromium, DOM bilingue et variantes sur fixture synthétique locale ; aucune collecte distante.",
+  "checks": [
+    "automatic-series-discovery",
+    "unknown-real-family",
+    "leader-life-not-cost",
+    "French-effect",
+    "stable-alternate-art-key"
+  ]
+}

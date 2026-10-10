@@ -1,0 +1,92 @@
+
+> cardgame@0.1.0 test:boosters:integration
+> node --import tsx --test tests/boosters.integration.ts
+
+TAP version 13
+# Subtest: database readiness verifies receipt columns and unique indexes without crediting cards
+ok 1 - database readiness verifies receipt columns and unique indexes without crediting cards
+  ---
+  duration_ms: 201.460916
+  type: 'test'
+  ...
+# Subtest: an unmigrated isolated schema reproduces the hidden production-style column error
+ok 2 - an unmigrated isolated schema reproduces the hidden production-style column error
+  ---
+  duration_ms: 82.308042
+  type: 'test'
+  ...
+# Subtest: catalog explicitly distinguishes eligible, empty and incomplete extensions
+ok 3 - catalog explicitly distinguishes eligible, empty and incomplete extensions
+  ---
+  duration_ms: 173.235958
+  type: 'test'
+  ...
+# Subtest: server draw atomically persists ordered cards, receipt and exact collection quantities
+ok 4 - server draw atomically persists ordered cards, receipt and exact collection quantities
+  ---
+  duration_ms: 71.209417
+  type: 'test'
+  ...
+# Subtest: 10 concurrent requests with the same key produce exactly one opening and one credit
+ok 5 - 10 concurrent requests with the same key produce exactly one opening and one credit
+  ---
+  duration_ms: 92.87925
+  type: 'test'
+  ...
+# Subtest: 8 concurrent distinct operations credit every opening without lost increments
+ok 6 - 8 concurrent distinct operations credit every opening without lost increments
+  ---
+  duration_ms: 283.759042
+  type: 'test'
+  ...
+# Subtest: unknown users, empty and incomplete sets never receive cards or opening records
+ok 7 - unknown users, empty and incomplete sets never receive cards or opening records
+  ---
+  duration_ms: 31.974625
+  type: 'test'
+  ...
+# Subtest: history is owned, immutable across card edits, and no longer cascades on card deletion
+ok 8 - history is owned, immutable across card edits, and no longer cascades on card deletion
+  ---
+  duration_ms: 65.958
+  type: 'test'
+  ...
+# Subtest: an injected collection failure rolls back the entire opening; the same key then succeeds
+ok 9 - an injected collection failure rolls back the entire opening; the same key then succeeds
+  ---
+  duration_ms: 134.936417
+  type: 'test'
+  ...
+# Subtest: a price requirement is rejected rather than inventing a payment or ignoring it
+ok 10 - a price requirement is rejected rather than inventing a payment or ignoring it
+  ---
+  duration_ms: 20.388042
+  type: 'test'
+  ...
+# Subtest: legacy history is readable without retroactive credit or guessed duplicate state
+ok 11 - legacy history is readable without retroactive credit or guessed duplicate state
+  ---
+  duration_ms: 16.449209
+  type: 'test'
+  ...
+# Subtest: BoosterCard configured weights control eligibility and reject foreign-set links
+ok 12 - BoosterCard configured weights control eligibility and reject foreign-set links
+  ---
+  duration_ms: 60.102667
+  type: 'test'
+  ...
+# Subtest: operation keys are scoped to the user and exact extensions cannot collide through aliases
+ok 13 - operation keys are scoped to the user and exact extensions cannot collide through aliases
+  ---
+  duration_ms: 131.078708
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1750.659167

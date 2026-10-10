@@ -26,7 +26,7 @@ for (const context of [alice, bob]) {
  assert.ok(res.status() < 400, 'Test login failed');
  assert.equal((await (await context.get('/api/auth/session')).json()).user?.id, user.id);
 }
-const payload = () => ({ setCode: 'OP-TEST', idempotencyKey: randomUUID() });
+const payload = () => ({ setCode: 'OP-999991', idempotencyKey: randomUUID() });
 async function quantity(user = users[0]) { return (await db.userCard.aggregate({ where: { userId: user.id }, _sum: { quantity: true } }))._sum.quantity || 0; }
 let first;
 await check('Unauthenticated opening, catalog, receipts and history rejected', async () => {
@@ -34,11 +34,11 @@ await check('Unauthenticated opening, catalog, receipts and history rejected', a
  for (const path of ['/api/booster', '/api/booster/history', '/api/booster/openings/unknown']) assert.equal((await anon.get(path)).status(), 401, path);
 });
 await check('Forged cards, identity, probabilities and missing operation keys rejected', async () => {
- for (const extra of [{ cardIds: ['booster-test-OP-TEST-SR-0'] }, { userId: users[1].id }, { slots: [] }, { probability: 1 }]) assert.equal((await alice.post('/api/booster/open', { data: { ...payload(), ...extra } })).status(), 400);
- assert.equal((await alice.post('/api/booster/open', { data: { setCode: 'OP-TEST' } })).status(), 400);
+ for (const extra of [{ cardIds: ['booster-test-OP-999991-SR-0'] }, { userId: users[1].id }, { slots: [] }, { probability: 1 }]) assert.equal((await alice.post('/api/booster/open', { data: { ...payload(), ...extra } })).status(), 400);
+ assert.equal((await alice.post('/api/booster/open', { data: { setCode: 'OP-999991' } })).status(), 400);
  assert.equal((await alice.post('/api/booster/open', { data: { ...payload(), extra: 'x'.repeat(5000) } })).status(), 400);
  assert.equal((await alice.post('/api/booster/open', { data: '{bad-json', headers: { 'content-type': 'application/json' } })).status(), 400);
- for (const path of ['/api/booster/add-to-collection', '/api/collection/add-cards', '/api/user/collection']) assert.equal((await alice.post(path, { data: { cardIds: ['booster-test-OP-TEST-SR-0'] } })).status(), 400, path);
+ for (const path of ['/api/booster/add-to-collection', '/api/collection/add-cards', '/api/user/collection']) assert.equal((await alice.post(path, { data: { cardIds: ['booster-test-OP-999991-SR-0'] } })).status(), 400, path);
  assert.equal(await quantity(), 0);
 });
 await check('Cross-site POST refused without credit', async () => {
@@ -46,11 +46,11 @@ await check('Cross-site POST refused without credit', async () => {
  assert.equal(await quantity(), 0);
 });
 await check('Empty, incomplete and nonexistent sets produce explicit errors', async () => {
- for (const [setCode, status] of [['OP-EMPTY', 422], ['OP-INCOMPLETE', 422], ['MISSING', 404]]) assert.equal((await alice.post('/api/booster/open', { data: { ...payload(), setCode } })).status(), status);
+ for (const [setCode, status] of [['OP-999992', 422], ['OP-999993', 422], ['MISSING', 403]]) assert.equal((await alice.post('/api/booster/open', { data: { ...payload(), setCode } })).status(), status);
  assert.equal(await quantity(), 0);
  const catalog = await (await alice.get('/api/booster')).json();
- assert.equal(catalog.sets.find(s => s.code === 'OP-INCOMPLETE').available, false);
- const rules = await (await alice.get('/api/sets/OP-TEST/rules')).json();
+ assert.equal(catalog.sets.find(s => s.code === 'OP-999993').available, false);
+ const rules = await (await alice.get('/api/sets/OP-999991/rules')).json();
  assert.equal(rules.rules.slots.length, 12);
 });
 await check('All three API aliases share one receipt and never credit a replay', async () => {
@@ -87,7 +87,7 @@ const context = await browser.newContext({ storageState: await alice.storageStat
 const page = await context.newPage(); const jsErrors = []; const posts = [];
 page.on('pageerror', e => jsErrors.push(e.message));
 page.on('request', req => { if (req.url().endsWith('/api/booster/open') && req.method() === 'POST') posts.push(JSON.parse(req.postData())); });
-async function ready() { await page.goto(baseURL + '/booster-opening'); await page.locator('#booster-set').selectOption('OP-TEST'); await page.getByRole('button', { name: 'Ouvrir le booster', exact: true }).waitFor(); }
+async function ready() { await page.goto(baseURL + '/booster-opening'); await page.locator('#booster-set').selectOption('OP-999991'); await page.getByRole('button', { name: 'Ouvrir le booster', exact: true }).waitFor(); }
 await check('Desktop double click, animation and reveal never repeat the attribution', async () => {
  await ready(); const before = await quantity(); const sent = posts.length;
  await page.getByRole('button', { name: 'Ouvrir le booster', exact: true }).evaluate(button => { button.click(); button.click(); });

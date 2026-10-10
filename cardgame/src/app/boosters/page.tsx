@@ -12,17 +12,20 @@ import { PageHeading, LoadState, EmptyState, Progress, SectionHeading } from '@/
 import SetTile from '@/components/collector/SetTile'
 import { extensionFamily, extensionFamilies } from '@/lib/collector/extension-family'
 import BoosterArtwork from '@/components/booster-opening/BoosterArtwork'
+import { isBoosterProduct } from '@/lib/boosters/products'
 export default function BoostersPage() {
   const { data: session } = useSession()
   const parameters=useSearchParams()
   const router=useRouter()
   const catalogue = useRemote<{sets:BoosterCatalogItem[]}>('/api/booster')
+  const gallery=parameters.get('view')==='extensions'
+  const products=catalogue.data?.sets.filter(s=>gallery || isBoosterProduct(s.code)) || []
   const overview = useRemote<CollectorOverview>(session?.user?.id ? '/api/collector' : null)
   const [query,setQuery]=useState('')
   const [onlyAvailable,setOnlyAvailable]=useState(false)
   const [family,setFamily]=useState('Toutes')
   const [selectedCode,setSelectedCode]=useState(parameters.get('set') || '')
-  const families=extensionFamilies(catalogue.data?.sets.map(s=>s.code) || [])
+  const families=extensionFamilies(products.map(s=>s.code))
   useEffect(()=>{ const code=parameters.get('set'); if(code) setSelectedCode(code) },[parameters])
   function select(index:number) {
     const code=sets[index]?.code; if(!code) return
@@ -30,13 +33,12 @@ export default function BoostersPage() {
     const params=new URLSearchParams(parameters.toString()); params.set('set',code)
     router.replace(`/boosters?${params.toString()}`,{scroll:false})
   }
-  const sets = catalogue.data?.sets.filter(s=>(family==='Toutes' || extensionFamily(s.code)===family) && (!onlyAvailable || s.available) && `${s.code} ${s.name}`.toLowerCase().includes(query.toLowerCase())) || []
+  const sets = products.filter(s=>(family==='Toutes' || extensionFamily(s.code)===family) && (!onlyAvailable || s.available) && `${s.code} ${s.name}`.toLowerCase().includes(query.toLowerCase()))
   const current=Math.max(0,sets.findIndex(s=>s.code===selectedCode))
   const selected=sets[current]
   const progress=overview.data?.sets.find(s=>s.code===selected?.code)
   const previous=sets[(current-1+sets.length)%sets.length]
   const next=sets[(current+1)%sets.length]
-  const gallery=parameters.get('view')==='extensions'
   return <div className="piece-page piece-boosters-page"><PageHeading eyebrow="Boosters One Piece TCG" title={gallery?'Explorez les extensions.':'Choisir une extension.'} description="Retrouvez vos cartes manquantes et découvrez votre prochain trésor."><Link className="piece-button secondary" href="/opening-demo">Démo d’ouverture</Link></PageHeading>
     <div className="piece-family-tabs" role="group" aria-label="Familles d’extensions">{['Toutes',...families].map(value=><button key={value} type="button" aria-pressed={family===value} onClick={()=>setFamily(value)}>{value}</button>)}</div>
     <div className="piece-toolbar"><label className="piece-field search">Rechercher une extension<input type="search" placeholder="OP-01, nom de l’extension…" value={query} onChange={e=>setQuery(e.target.value)} /></label><label className="piece-checkbox"><input type="checkbox" checked={onlyAvailable} onChange={e=>setOnlyAvailable(e.target.checked)} />Disponibles à l’ouverture</label><span className="piece-muted">Simulation gratuite</span></div>

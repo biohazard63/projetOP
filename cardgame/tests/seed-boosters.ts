@@ -5,9 +5,9 @@ export function isolatedBoosterDb() {
  return new PrismaClient()
 }
 export async function seedBoosters(db: PrismaClient) {
- for (const code of ['OP-TEST', 'OP-EMPTY', 'OP-INCOMPLETE', 'OP-OTHER']) await db.cardSet.upsert({ where: { code }, update: {}, create: { code, name: code === 'OP-TEST' ? 'Trésors de test' : code, releaseDate: new Date('2026-01-01') } })
- for (const code of ['OP-TEST', 'OP-EMPTY', 'OP-INCOMPLETE', 'OP-OTHER']) await db.setRules.upsert({ where: { code }, update: {}, create: { code, name: code, rarityCounts: {}, typeCounts: {}, boosterRules: { commonCount: 6, uncommonCount: 3, rareCount: 2, superRareCount: 1, leaderCount: 0 } } })
- for (const code of ['OP-TEST', 'OP-INCOMPLETE', 'OP-OTHER']) for (const rarity of code === 'OP-INCOMPLETE' ? ['C'] : ['C', 'UC', 'R', 'SR']) for (let i = 0; i < 3; i++) {
+ for (const code of ['OP-999991', 'OP-999992', 'OP-999993', 'OP-999994']) await db.cardSet.upsert({ where: { code }, update: {}, create: { code, name: code === 'OP-999991' ? 'Trésors de test' : code, releaseDate: new Date('2026-01-01') } })
+ for (const code of ['OP-999991', 'OP-999992', 'OP-999993', 'OP-999994']) await db.setRules.upsert({ where: { code }, update: {}, create: { code, name: code, rarityCounts: {}, typeCounts: {}, boosterRules: { commonCount: 6, uncommonCount: 3, rareCount: 2, superRareCount: 1, leaderCount: 0 } } })
+ for (const code of ['OP-999991', 'OP-999993', 'OP-999994']) for (const rarity of code === 'OP-999993' ? ['C'] : ['C', 'UC', 'R', 'SR']) for (let i = 0; i < 3; i++) {
   const id = `booster-test-${code}-${rarity}-${i}`
   await db.card.upsert({ where: { id }, update: {}, create: { id, name: `${rarity} · Carte ${i + 1}`, code: id, type: 'CHARACTER', color: 'RED', cost: 1, power: 2000, rarity, imageUrl: '/images/card-back.jpg', setCode: code, set: code } })
  }
