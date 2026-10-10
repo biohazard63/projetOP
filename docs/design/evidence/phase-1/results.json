@@ -1,0 +1,74 @@
+[
+  {
+    "test": "360x800 light: theme/navigation/overflow/touch targets",
+    "status": "PASS"
+  },
+  {
+    "test": "360x800 dark: theme/navigation/overflow/touch targets",
+    "status": "PASS"
+  },
+  {
+    "test": "375x667 light: theme/navigation/overflow/touch targets",
+    "status": "PASS"
+  },
+  {
+    "test": "375x667 dark: theme/navigation/overflow/touch targets",
+    "status": "PASS"
+  },
+  {
+    "test": "390x844 light: theme/navigation/overflow/touch targets",
+    "status": "PASS"
+  },
+  {
+    "test": "390x844 dark: theme/navigation/overflow/touch targets",
+    "status": "PASS"
+  },
+  {
+    "test": "430x932 light: theme/navigation/overflow/touch targets",
+    "status": "PASS"
+  },
+  {
+    "test": "430x932 dark: theme/navigation/overflow/touch targets",
+    "status": "PASS"
+  },
+  {
+    "test": "768x1024 light: theme/navigation/overflow/touch targets",
+    "status": "PASS"
+  },
+  {
+    "test": "768x1024 dark: theme/navigation/overflow/touch targets",
+    "status": "PASS"
+  },
+  {
+    "test": "1280x800 light: theme/navigation/overflow/touch targets",
+    "status": "PASS"
+  },
+  {
+    "test": "1280x800 dark: theme/navigation/overflow/touch targets",
+    "status": "PASS"
+  },
+  {
+    "test": "1440x900 light: theme/navigation/overflow/touch targets",
+    "status": "PASS"
+  },
+  {
+    "test": "1440x900 dark: theme/navigation/overflow/touch targets",
+    "status": "PASS"
+  },
+  {
+    "test": "Explicit theme retained after reload",
+    "status": "PASS"
+  },
+  {
+    "test": "System theme reacts without reload",
+    "status": "PASS"
+  },
+  {
+    "test": "Navigation hidden during cinematic and restored after skip",
+    "status": "PASS"
+  },
+  {
+    "test": "Reduced motion returns to result with navigation",
+    "status": "PASS"
+  }
+]

@@ -222,12 +222,14 @@ function ProvidersInitializer({
     window.addEventListener('mousemove', onActivity)
     window.addEventListener('keydown', onActivity)
     window.addEventListener('click', onActivity)
+    window.addEventListener('pointerdown', onActivity)
     window.addEventListener('scroll', onActivity)
     return () => {
       if (timer) window.clearTimeout(timer)
       window.removeEventListener('mousemove', onActivity)
       window.removeEventListener('keydown', onActivity)
       window.removeEventListener('click', onActivity)
+      window.removeEventListener('pointerdown', onActivity)
       window.removeEventListener('scroll', onActivity)
     }
   }, [])
@@ -245,11 +247,11 @@ function ProvidersInitializer({
 
   if (!isInitialized) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-50 to-orange-100">
+      <div className="min-h-screen flex items-center justify-center piece-provider-loading">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600 mx-auto mb-4"></div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-2">Initialisation...</h2>
-          <p className="text-gray-600">Chargement des services</p>
+          <h2 className="text-xl font-semibold text-[var(--piece-text)] mb-2">Initialisation...</h2>
+          <p className="text-[var(--piece-muted)]">Chargement des services</p>
         </div>
       </div>
     )
@@ -278,16 +280,12 @@ export function Providers({ children }: { children: React.ReactNode }) {
   }), [config, updateConfig])
 
   return (
+    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
     <ProvidersContext.Provider value={contextValue}>
       <ErrorBoundary>
         <ProvidersInitializer config={config}>
           <SessionProvider>
-            <ThemeProvider
-              attribute="class"
-              defaultTheme="dark"
-              enableSystem={false}
-              disableTransitionOnChange
-            >
+            <>
               <Suspense fallback={
                 <div className="min-h-screen flex items-center justify-center bg-gray-50">
                   <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-orange-600"></div>
@@ -315,11 +313,12 @@ export function Providers({ children }: { children: React.ReactNode }) {
 
                              {config.enableAnalytics && <Analytics />}
                {config.enablePerformanceMonitoring && <PerformanceMonitor />}
-            </ThemeProvider>
+            </>
           </SessionProvider>
         </ProvidersInitializer>
       </ErrorBoundary>
     </ProvidersContext.Provider>
+    </ThemeProvider>
   )
 }
 

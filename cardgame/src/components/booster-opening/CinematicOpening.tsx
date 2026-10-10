@@ -3,9 +3,12 @@ import { useEffect, useRef, useState } from 'react'
 import Image from 'next/image'
 import BoosterArtwork from './BoosterArtwork'
 import { useCollectorPreferences } from '@/components/collector/Preferences'
+import { useOpeningPresentation } from '@/components/collector/OpeningPresentation'
 import styles from './CinematicOpening.module.css'
 export const CINEMATIC_DURATION = 3400
 export default function CinematicOpening({ imageUrl, setName, cardCount, onComplete }: { imageUrl: string | null; setName: string; cardCount: number; onComplete: () => void }) {
+  const { setCinematic } = useOpeningPresentation()
+  useEffect(() => { setCinematic(true); return () => setCinematic(false) }, [setCinematic])
   const settings=useCollectorPreferences()
   const [phase,setPhase]=useState(0)
   const [reduced,setReduced]=useState<boolean | null>(null)
