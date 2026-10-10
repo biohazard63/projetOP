@@ -3,32 +3,25 @@ import { useCallback, useEffect, useState } from 'react'
 const STORAGE_KEY = 'mugiwara:soundsEnabled'
 
 export function useSoundSetting() {
-  const [soundsEnabled, setSoundsEnabled] = useState<boolean>(() => {
-    if (typeof window === 'undefined') return true
-    let stored: string | null = null
-    try { stored = window.localStorage.getItem(STORAGE_KEY) } catch { return false }
-    if (stored === 'true') return true
-    if (stored === 'false') return false
-    // Par défaut: activé pour que les utilisateurs puissent entendre les sons
-    return true
-  })
-
+  const [soundsEnabled, updateSounds] = useState(false)
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      try { window.localStorage.setItem(STORAGE_KEY, String(soundsEnabled)) } catch { /* Sound preference is optional. */ }
-    }
-  }, [soundsEnabled])
-
-  return { 
-    soundsEnabled, 
-    setSoundsEnabled
+    const read = () => { try { updateSounds(window.localStorage.getItem(STORAGE_KEY) !== 'false') } catch { updateSounds(false) } }
+    read()
+    window.addEventListener('mugiwara:sound-preference', read)
+    window.addEventListener('storage', read)
+    return () => { window.removeEventListener('mugiwara:sound-preference', read); window.removeEventListener('storage', read) }
+  }, [])
+  const setSoundsEnabled = (enabled: boolean) => {
+    updateSounds(enabled)
+    try { window.localStorage.setItem(STORAGE_KEY, String(enabled)); window.dispatchEvent(new Event('mugiwara:sound-preference')) } catch { /* Optional preference remains in memory. */ }
   }
+  return { soundsEnabled, setSoundsEnabled }
 }
 
 export function useAudio() {
   const getSoundsEnabled = () => {
     if (typeof window === 'undefined') return false
-    try { return window.localStorage.getItem(STORAGE_KEY) === 'true' } catch { return false }
+    try { return window.localStorage.getItem(STORAGE_KEY) !== 'false' } catch { return false }
   }
 
   const playIfAllowed = useCallback((src: string, maxMs = 2500) => {

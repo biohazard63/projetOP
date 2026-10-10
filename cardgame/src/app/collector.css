@@ -558,3 +558,25 @@ body { background: var(--piece-bg); color: var(--piece-text); }
 }
 
 .piece-history-result { align-content:start; gap:12px; }
+/* Booster journey: keep the artwork and controls clear on small phones. */
+.piece-opening-immersive>div>div:first-child{display:none}
+.piece-opening-immersive .piece-opening-result{padding:12px;max-width:640px;margin:auto;width:100%;min-width:0}
+.piece-opening-immersive .piece-opening-result>div:first-child,.piece-opening-immersive .piece-opening-result>[data-testid=collection-confirmation]{display:none}
+.piece-opening-immersive{padding-top:12px;padding-bottom:calc(20px + env(safe-area-inset-bottom))}
+.piece-carousel-tabs button{min-height:44px}.piece-carousel-counts{flex-wrap:wrap}
+@media(max-width:640px){.piece-opening-layout:not(.is-cinematic){grid-template-columns:minmax(0,1fr)}.piece-opening-layout:not(.is-cinematic) .piece-opening-result:has(>div>h2){min-height:0}.piece-opening-immersive .piece-opening-result{border:0}.piece-opening-cards{gap:10px}}
+@media(max-width:640px){.piece-opening-empty{display:none}.piece-opening-layout>section:first-child #extension-title{font-size:1.1rem}.piece-opening-layout>section:first-child>.my-7{margin-top:24px;margin-bottom:24px}}
+.piece-main:has(.piece-opening-immersive){margin-left:0;background:#071222;min-height:100dvh}
+body:has(.piece-opening-immersive) .piece-footer{display:none}
+.piece-opening-immersive{background:#071222;min-height:100dvh;padding-top:calc(12px + env(safe-area-inset-top));color:#f7f9fc}
+.piece-opening-immersive .piece-opening-result{background:transparent!important;border:0}
+
+.piece-opening-immersive [data-testid=pack-animation],.piece-opening-immersive [data-testid=single-card-reveal]{min-height:calc(100dvh - 48px)}
+.piece-opening-immersive [data-opening-camera]{--pack-scale:1.6;top:calc(50% - 190px)}
+.piece-opening-immersive .piece-button.secondary{background:#0d2036;border-color:#27415d;color:#f7f9fc}
+
+/* User-supplied logos: full lockup on desktop, compact emblem on mobile. */
+.piece-sidebar .piece-brand-desktop { flex-direction:column; gap:8px; min-height:64px; }
+.piece-sidebar .piece-brand-desktop img { width:168px; max-width:100%; height:auto; object-fit:contain; border-radius:6px; }
+.piece-brand-name { color:var(--piece-gold); font-size:.65rem; font-weight:700; letter-spacing:.15em; }
+.piece-mobile-brand .piece-brand img { width:48px; height:44px; object-fit:contain; border-radius:6px; }

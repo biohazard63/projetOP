@@ -1,8 +1,8 @@
 'use client'
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react'
 import { useSession } from 'next-auth/react'
-type Preferences = { animations: boolean; vibrations: boolean; reducedEffects: boolean; density: 'comfortable' | 'compact' }
-const defaults: Preferences = { animations: true, vibrations: false, reducedEffects: false, density: 'comfortable' }
+type Preferences = { animations: boolean; vibrations: boolean; reducedEffects: boolean; density: 'comfortable' | 'compact'; quickOpening: boolean; openingSpeed: 'slow' | 'normal' | 'fast' }
+const defaults: Preferences = { animations: true, vibrations: false, reducedEffects: false, density: 'comfortable', quickOpening: false, openingSpeed: 'normal' }
 const Context = createContext<Preferences & { update: (patch: Partial<Preferences>) => void; storageAvailable: boolean; ready: boolean }>({ ...defaults, update: () => {}, storageAvailable: true, ready: false })
 export function CollectorPreferencesProvider({ children }: { children: ReactNode }) {
   const { data: session, status } = useSession()
@@ -18,7 +18,8 @@ export function CollectorPreferencesProvider({ children }: { children: ReactNode
       setSettings({ animations: typeof stored.animations === 'boolean' ? stored.animations : true,
         vibrations: typeof stored.vibrations === 'boolean' ? stored.vibrations : false,
         reducedEffects: typeof stored.reducedEffects === 'boolean' ? stored.reducedEffects : false,
-        density: stored.density === 'compact' ? 'compact' : 'comfortable' })
+        density: stored.density === 'compact' ? 'compact' : 'comfortable',
+        quickOpening: stored.quickOpening === true, openingSpeed: ['slow', 'fast'].includes(stored.openingSpeed) ? stored.openingSpeed : 'normal' })
       setStorageAvailable(true)
     } catch { setSettings(defaults); setStorageAvailable(false) }
     setLoadedKey(key)

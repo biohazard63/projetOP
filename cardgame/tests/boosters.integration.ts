@@ -1,9 +1,15 @@
+import { execFile } from 'node:child_process'
+import { promisify } from 'node:util'
+import { mkdtemp, writeFile } from 'node:fs/promises'
+import { tmpdir } from 'node:os'
+import path from 'node:path'
 import { test, before, after } from 'node:test'
 import assert from 'node:assert/strict'
 import { randomUUID, createHash } from 'node:crypto'
 import { Prisma, PrismaClient } from '@prisma/client'
 import { isolatedBoosterDb, seedBoosters } from './seed-boosters'
 import { openBooster, getOpening, getBoosterCatalog } from '../src/lib/boosters/service'
+import { drawIdentity } from '../src/lib/boosters/generator'
 import { BoosterError } from '../src/lib/boosters/rules'
 import { inspectBoosterDatabase } from '../src/lib/boosters/database-check'
 import { describeBoosterFailure } from '../src/lib/boosters/failure'
@@ -55,7 +61,8 @@ test('server draw atomically persists ordered cards, receipt and exact collectio
  assert.deepEqual(opening.cards.map(c => c.position), Array.from({ length: 12 }, (_, i) => i + 1))
  assert.equal(await quantity(), before + 12)
  assert.ok(opening.cards.every(c => c.setCode === 'OP-999991'))
- assert.ok(opening.cards.some(c => c.isDuplicate), 'duplicates within a pack are identified')
+ assert.equal(new Set(opening.cards.map(drawIdentity)).size, 12)
+ assert.ok(opening.cards.every(c => c.isNew && !c.isDuplicate))
  const row = await db.boosterOpening.findUniqueOrThrow({ where: { id: opening.id }, include: { cards: true } })
  assert.equal(row.cards.length, 12); assert.ok(row.rulesSnapshot); assert.deepEqual(row.resultSnapshot, JSON.parse(JSON.stringify(opening)))
  const quantities = new Map<string, number>()
@@ -151,4 +158,84 @@ test('operation keys are scoped to the user and exact extensions cannot collide 
  await db.card.create({ data: { id: code, code, name: code, rarity: 'C', type: 'CHARACTER', color: 'RED', cost: 1, imageUrl: '/images/card-back.jpg', setCode: code } })
  const aliasKey = randomUUID(); await openBooster(db, userId, code, aliasKey)
  await assert.rejects(openBooster(db, userId, alias, aliasKey), errorCode('IDEMPOTENCY_CONFLICT'))
+})
+
+
+test('already owned cards remain eligible while every new pack contains unique numbers', async () => {
+ const {opening} = await openBooster(db, userId, 'OP-999991', randomUUID())
+ for (const card of opening.cards) {
+  const owned = await db.userCard.findUniqueOrThrow({where: {userId_cardId: {userId, cardId: card.id}}})
+  assert.equal(owned.quantity, card.quantityBefore! + 1)
+  assert.equal(card.isDuplicate, card.quantityBefore! > 0)
+ }
+ assert.equal(new Set(opening.cards.map(drawIdentity)).size, opening.cards.length)
+})
+test('insufficient unique numbers never credit cards or persist a receipt', async () => {
+ const code = `OP-6${parseInt(tag, 16)}`
+ await db.cardSet.create({data: {code, name: 'Unique-number capacity fixture'}})
+ await db.setRules.create({data: {code, rarityCounts: {}, typeCounts: {}, boosterRules: {commonCount: 2, uncommonCount: 0, rareCount: 0, superRareCount: 0}}})
+ for (const suffix of ['', '_p1']) await db.card.create({data: {id: `capacity-${tag}${suffix}`, code: `unique-${tag}${suffix}`, name: 'Same number', rarity: 'C', type: 'CHARACTER', color: 'RED', cost: 1, imageUrl: '/images/card-back.jpg', setCode: code, isAltArt: Boolean(suffix)}})
+ const before = await quantity(); const key = randomUUID()
+ await assert.rejects(openBooster(db, userId, code, key), errorCode('INSUFFICIENT_UNIQUE_CARDS'))
+ assert.equal(await quantity(), before)
+ assert.equal(await db.boosterOpening.count({where: {userId, idempotencyKey: key}}), 0)
+})
+
+
+test('managed profiles use the existing transactional receipt and concurrency protection', async () => {
+ const code = `OP-5${parseInt(tag,16)}`
+ await db.cardSet.create({data:{code,name:'Managed profile fixture'}})
+ const slot = (rarity:string,variant:string) => ({choices:[{rarity,variant,weight:1}]})
+ const common = slot('C','standard')
+ const profiles = [{label:'SR standard',weight:80,slots:[common,slot('SR','standard')]},{label:'ALT SR',weight:20,slots:[common,slot('SR','alt')]}]
+ await db.setRules.create({data:{code,rarityCounts:{},typeCounts:{},boosterRules:{version:1,label:'Managed test',source:'Synthetic non-official fixture',selection:'number',variantPolicy:'metadata',slots:profiles[0].slots,packProfiles:profiles,specialPacks:[]}}})
+ for(const [suffix,rarity,isAltArt] of [['C','C',false],['SR','SR',false],['SR_p1','SR',true]] as const)await db.card.create({data:{id:`managed-${tag}-${suffix}`,code:`managed-${tag}-${suffix}`,name:suffix,rarity,type:'CHARACTER',color:'RED',cost:1,imageUrl:'/images/card-back.jpg',setCode:code,isAltArt}})
+ const before=await quantity();const key=randomUUID()
+ const results=await Promise.all(Array.from({length:10},()=>openBooster(db,userId,code,key)))
+ assert.equal(new Set(results.map(r=>r.opening.id)).size,1)
+ assert.equal(await quantity(),before+2)
+ const opening=results[0].opening
+ assert.equal(new Set(opening.cards.map(drawIdentity)).size,2)
+ const receipt=await db.boosterOpening.findUniqueOrThrow({where:{id:opening.id}})
+ const snapshot=receipt.rulesSnapshot as {generatorVersion:number;selection:string;selectedProfile:string}
+ assert.ok(opening.cards.every(c=>c.drawVariant=== (c.isAltArt ? 'alt' : 'standard')));
+ assert.equal(snapshot.generatorVersion,3);assert.equal(snapshot.selection,'number');assert.ok(profiles.some(p=>p.label===snapshot.selectedProfile))
+ assert.deepEqual((await openBooster(db,userId,code,key)).opening,opening)
+ assert.equal((await getBoosterCatalog(db)).find(s=>s.code===code)?.rules?.packProfiles?.length,2)
+})
+test('an impossible managed outcome disables the product before any credit, even at tiny probability', async () => {
+ const code = `OP-4${parseInt(tag,16)}`
+ await db.cardSet.create({data:{code,name:'Invalid complete profile fixture'}})
+ const slot={choices:[{rarity:'SR',variant:'standard',weight:1}]}
+ const alt={choices:[{rarity:'SR',variant:'alt',weight:1}]}
+ await db.setRules.create({data:{code,rarityCounts:{},typeCounts:{},boosterRules:{version:1,label:'Invalid managed test',source:'Synthetic fixture',selection:'number',variantPolicy:'metadata',slots:[slot,slot],packProfiles:[{label:'normal',weight:99.999,slots:[slot,slot]},{label:'impossible',weight:.001,slots:[alt,alt]}],specialPacks:[]}}})
+ for(const [suffix,isAltArt] of [['one',false],['two',false],['one_p1',true]] as const)await db.card.create({data:{id:`invalid-managed-${tag}-${suffix}`,code:`invalid-managed-${tag}-${suffix}`,name:suffix,rarity:'SR',type:'CHARACTER',color:'RED',cost:1,imageUrl:'/images/card-back.jpg',setCode:code,isAltArt}})
+ const before=await quantity();const key=randomUUID()
+ await assert.rejects(openBooster(db,userId,code,key),errorCode('INSUFFICIENT_UNIQUE_CARDS'))
+ assert.equal(await quantity(),before)
+ assert.equal(await db.boosterOpening.count({where:{userId,idempotencyKey:key}}),0)
+ assert.equal((await getBoosterCatalog(db)).find(s=>s.code===code)?.available,false)
+})
+
+
+test('test-only profile CLI applies a reviewed file without changing player data', async () => {
+ const code=`OP-5${parseInt(tag,16)}`
+ const folder=await mkdtemp(path.join(tmpdir(),'mugiwara-profiles-fixture-'))
+ const file=path.join(folder,'proposal.json')
+ const proposal={status:'proposal',setCode:code,source:'Synthetic CLI fixture only',base:[{rarity:'C',variant:'standard',count:1}],outcomes:[{label:'SR',rarity:'SR',variant:'standard',weight:75},{label:'ALT',rarity:'SR',variant:'alt',weight:25}],omittedBonusPools:[]}
+ await writeFile(file,JSON.stringify({sets:[{code,status:'PASS',proposal}]}),{mode:0o600})
+ const before=await quantity();const openings=await db.boosterOpening.count()
+ const run=promisify(execFile)
+ const result=await run(process.execPath,['--import','tsx','scripts/boosters/profiles.ts','--apply-test','--file',file],{env:process.env})
+ assert.equal(JSON.parse(result.stdout).playerDataPreserved,true)
+ const row=await db.setRules.findUniqueOrThrow({where:{code}})
+ assert.equal((row.boosterRules as {packProfiles:{weight:number}[]}).packProfiles[1].weight,25)
+ const beforeRules=JSON.stringify(row.boosterRules)
+ const initialized=await run(process.execPath,['--import','tsx','scripts/autoConfigureSetRules.ts','--set',code],{env:process.env})
+ assert.ok(initialized.stdout.includes('Profil explicite conservé'))
+ assert.equal(JSON.stringify((await db.setRules.findUniqueOrThrow({where:{code}})).boosterRules),beforeRules)
+ assert.equal(await quantity(),before);assert.equal(await db.boosterOpening.count(),openings)
+ await assert.rejects(run(process.execPath,['--import','tsx','scripts/boosters/profiles.ts','--apply-test','--file',file],{env:{...process.env,DATABASE_URL:'postgresql://synthetic:synthetic@example.invalid/neondb'}}),e=>{
+  assert.ok(e&&typeof e==='object'&&'stderr' in e&&String(e.stderr).includes('Production interdite'));return true
+ })
 })

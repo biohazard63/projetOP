@@ -38,7 +38,11 @@
     "catalog:discover": "node scripts/scrape-onepiece-fr.js --list-sets",
     "test:catalog:integration": "node --import tsx --test tests/catalog.integration.ts",
     "test:catalog:browser": "node --import tsx tests/catalog.browser.ts",
-    "test:catalog:full-import": "node --import tsx --test tests/catalog.full-import.ts"
+    "test:catalog:full-import": "node --import tsx --test tests/catalog.full-import.ts",
+    "boosters:profiles:preview": "node --import tsx scripts/boosters/profiles.ts",
+    "boosters:profiles:apply-test": "node --import tsx scripts/boosters/profiles.ts --apply-test",
+    "test:boosters:profiles:browser": "node tests/booster-profiles.browser.mjs",
+    "test:boosters:journey:browser": "node tests/booster-journey.browser.mjs"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.10.0",

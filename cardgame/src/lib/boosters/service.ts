@@ -1,7 +1,7 @@
 import { createHash, randomInt } from 'node:crypto'
 import { Prisma, type PrismaClient, type Card, type CardSet, type SetRules, type BoosterCard, type Booster } from '@prisma/client'
-import { BoosterError, normalizeSetCode, resolveRules } from './rules'
-import { generateBooster, validatePools } from './generator'
+import { BoosterError, normalizeSetCode, normalizeRarity, resolveRules } from './rules'
+import { generateBooster, validatePools, metadataVariant } from './generator'
 import { getBoosterArtwork } from './artwork'
 import type { BoosterCatalogItem, OpeningResult } from './types'
 import { isBoosterProduct } from './products'
@@ -10,7 +10,7 @@ type DB = Prisma.TransactionClient
 const boosterId = (code: string) => `simulation:${createHash('sha256').update(code).digest('hex')}`
 export const getSimulationBoosterId = boosterId
 const asJson = (value: unknown) => JSON.parse(JSON.stringify(value)) as Prisma.InputJsonValue
-const isRare = (card: Card) => ['R', 'SR', 'L', 'SEC', 'SP CARD', 'SR SP', 'TR'].includes(card.rarity.toUpperCase()) || card.isAltArt || card.isParallel || card.isSpecial
+const isRare = (card: Card) => ['R', 'SR', 'L', 'SEC', 'SP CARD', 'TR'].includes(normalizeRarity(card.rarity)) || card.isAltArt || card.isParallel || card.isSpecial
 function context(set: CardSet, cards: Card[], row: SetRules | null, booster: (Booster & { cards: BoosterCard[] }) | null) {
   if (!isBoosterProduct(set.code)) throw new BoosterError('NOT_A_BOOSTER', 'Ce produit est consultable dans Extensions, mais ne peut pas être ouvert comme un booster.', 403)
   if (booster && booster.price !== 0) throw new BoosterError('PAID_BOOSTER_UNSUPPORTED', 'Ce booster exige un droit d’ouverture non configuré. Aucun paiement n’est effectué.', 403)
@@ -50,7 +50,7 @@ export async function getBoosterCatalog(db: DB): Promise<BoosterCatalogItem[]> {
     const base = { code: set.code, name: set.name, imageUrl: getBoosterArtwork(set.code, set.imageUrl), description: set.description, cardCount: setCards.length, mode: 'free-simulation' as const }
     try {
       const ctx = context(set, setCards, row, boosters.find(b => b.id === boosterId(set.code)) || null)
-      return { ...base, available: true, error: null, packSize: ctx.rules.slots.length, rules: { label: ctx.rules.label, source: ctx.rules.source, slots: ctx.rules.slots, specialPacks: ctx.rules.specialPacks }, warnings: ctx.warnings }
+      return { ...base, available: true, error: null, packSize: ctx.rules.slots.length, rules: { label: ctx.rules.label, source: ctx.rules.source, slots: ctx.rules.slots, specialPacks: ctx.rules.specialPacks, packProfiles: ctx.rules.packProfiles, selection: ctx.rules.selection, variantPolicy: ctx.rules.variantPolicy }, warnings: ctx.warnings }
     } catch (error) {
       if (!(error instanceof BoosterError)) throw error
       return { ...base, available: false, error: error.message, packSize: null, rules: null, warnings: [] }
@@ -83,13 +83,13 @@ export async function openBooster(db: PrismaClient, userId: string, setCode: str
         const resultCards = draw.cards.map((card, index) => {
           const quantityBefore = (quantities.get(card.id) || 0) + (counts.get(card.id) || 0)
           counts.set(card.id, (counts.get(card.id) || 0) + 1)
-          return { ...card, position: index + 1, quantityBefore, isDuplicate: quantityBefore > 0, isNew: quantityBefore === 0 }
+          return { ...card, ...(ctx.rules.variantPolicy === 'metadata' ? {drawVariant: metadataVariant(card)} : {}), position: index + 1, quantityBefore, isDuplicate: quantityBefore > 0, isNew: quantityBefore === 0 }
         })
-        const created = await tx.boosterOpening.create({ data: { userId, boosterId: booster.id, idempotencyKey, creditedAt: new Date(), rulesSnapshot: asJson({ generatorVersion: 1, sampling: 'with-replacement', rules: ctx.rules, cardWeights: ctx.weights ? Object.fromEntries(ctx.weights) : null }), cards: { create: resultCards.map(card => ({ cardId: card.id, position: card.position })) } } })
+        const created = await tx.boosterOpening.create({ data: { userId, boosterId: booster.id, idempotencyKey, creditedAt: new Date(), rulesSnapshot: asJson({ generatorVersion: ctx.rules.selection === 'number' ? 3 : 2, sampling: 'without-replacement-by-card-number', selection: ctx.rules.selection || 'card', selectedProfile: draw.profile || null, rules: ctx.rules, cardWeights: ctx.weights ? Object.fromEntries(ctx.weights) : null }), cards: { create: resultCards.map(card => ({ cardId: card.id, position: card.position })) } } })
         for (const [cardId, quantity] of [...counts].sort(([a], [b]) => a.localeCompare(b))) {
           await tx.userCard.upsert({ where: { userId_cardId: { userId, cardId } }, update: { quantity: { increment: quantity } }, create: { userId, cardId, quantity } })
         }
-        const opening: OpeningResult = { id: created.id, boosterId: booster.id, setCode: ctx.set.code, setName: ctx.set.name, openedAt: created.openedAt.toISOString(), creditedAt: created.creditedAt!.toISOString(), cards: resultCards, specialPack: draw.specialPack, rules: { label: ctx.rules.label, source: ctx.rules.source, slotCount: ctx.rules.slots.length }, newCardsCount: resultCards.filter(card => card.isNew).length, hasRareCard: resultCards.some(isRare), legacy: false }
+        const opening: OpeningResult = { id: created.id, boosterId: booster.id, setCode: ctx.set.code, setName: ctx.set.name, openedAt: created.openedAt.toISOString(), creditedAt: created.creditedAt!.toISOString(), cards: resultCards, specialPack: draw.specialPack, rules: { label: draw.profile ? `${ctx.rules.label} · ${draw.profile}` : ctx.rules.label, source: ctx.rules.source, slotCount: ctx.rules.slots.length }, newCardsCount: resultCards.filter(card => card.isNew).length, hasRareCard: resultCards.some(isRare), legacy: false }
         await tx.boosterOpening.update({ where: { id: created.id }, data: { resultSnapshot: asJson(opening) } })
         return { opening, replayed: false }
       }, { maxWait: 10000, timeout: 20000, isolationLevel: Prisma.TransactionIsolationLevel.ReadCommitted })

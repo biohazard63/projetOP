@@ -131,3 +131,7 @@ Git diff --check passe. La liste des fichiers créés/modifiés est dans `eviden
 - Dépendances inchangées : l’ancien audit final conserve 12 alertes élevées (chaînes Auth/Nodemailer, ESLint et Prisma). Pas de nouvel audit npm dans cette phase ; ne pas annoncer une sécurité globale sans réserves.
 - La cinématique CSS est légère ; l’illustration de bannière et les effets ne reproduisent pas chaque détail peint de la maquette. Retouches artistiques et validation utilisateur restent utiles.
 - Tests réels Safari/mobile, accessibilité complète, OAuth et performance à charge restent à réaliser. Combat, matchmaking, IA, paiement et échanges restent hors périmètre.
+
+## Parcours boosters interactif — 10 octobre 2026
+
+Refonte mobile du carrousel, confirmation, déchirure au geste/clic, révélation individuelle, récapitulatif et préférences. Référence : `Flux complet d’ouverture des boosters Mugiwara.png`. Transactions et probabilités conservées ; aucune écriture sur Neon. Rapport du lot et preuves : `docs/boosters/EXPERIENCE_REDESIGN.md`. Tests locaux : 71 unitaires, 18 intégration, 24 contrôles navigateur, TypeScript, ESLint sans erreur et build. Safari iOS et appareils physiques restent non testés.
