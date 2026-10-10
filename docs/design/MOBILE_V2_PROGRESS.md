@@ -52,3 +52,34 @@ Captures : evidence/phase-1/390-light.png, 390-dark.png, 1440-light.png, 1440-da
 Pour lancer : cd cardgame puis npm run dev ; ouvrir http://localhost:3000. Pour répéter les fondations : node tests/mobile-foundations.browser.mjs. Le scénario boosters requiert un serveur explicitement branché sur la base isolée et DATABASE_URL de test ; ne jamais le lancer avec Neon.
 
 Suite : classeur mobile et deck builder indépendants ; cinématique tactile après stabilisation serveur. Aucun push ni déploiement.
+
+## 10 octobre 2026 — classeur tactile et deck builder mobile
+
+Phase 4 (présentation du classeur) : filtres dans un bottom sheet Radix avec fermeture explicite/Escape, focus restitué au bouton, recherche et famille déduite du catalogue, filtres combinables et compteur réel. Un seul jeu de contrôles selon le viewport, sans duplication des groupes radio. Les filtres latéraux desktop sont conservés. Les liens ?set= et ?ownership=missing initialisent le classeur.
+
+Fiche carte : présentation plein écran mobile, illustration agrandissable dans une zone défilable, fallback image, cartes précédente/suivante selon les résultats filtrés ; glissement horizontal optionnel, désactivé pendant l’agrandissement. Favoris persistants via l’API existante. Aucun changement de quantité, aucune attribution. Les gestes de zoom natifs et les safe areas physiques nécessitent encore une vérification sur appareil.
+
+Phase 5 : Catalogue / Mon deck sur mobile, état de composition conservé entre onglets, clavier flèches/Home/End, compteurs possédées/dans le deck, leader et 50 cartes, boutons quantités de 44 px, panneau secondaire statistiques/validation, miniatures bornées avec fallback. Desktop conserve ses panneaux. Règles de validation et API de sauvegarde réutilisées ; banlist et règles spéciales restent explicitement non couvertes.
+
+| Contrôle | État | Preuve |
+|---|---|---|
+| Filtres combinés, réinitialisation et retour du focus | PASS | evidence/phase-4-5/results.json, interaction navigateur réelle |
+| Zoom, cartes précédente/suivante, glissement et favoris persistants | PASS | Suite mobile-collection-deck.browser.mjs |
+| Collection et builder aux sept tailles demandées | PASS | 14 captures ; absence de débordement et présentation mobile/desktop contrôlée |
+| Construction 1 leader + 50 cartes, limite de propriété et sauvegarde | PASS | Nouveau compte synthétique, API réelle, version du deck vérifiée en PostgreSQL isolée |
+| Chargement du deck et navigation clavier des onglets | PASS | Compteur 50/50 et nom persistants |
+| Nouvelles vues en thème clair | PASS | Captures collection, filtres et builder |
+| Collection conservée et aucune ouverture créée | PASS | 53 exemplaires identiques avant/après, zéro ouverture pour le compte fixture |
+| TypeScript, ESLint et unitaires | PASS | typescript.log sortie 0 ; eslint.log 0 erreur/99 avertissements ; unit.log 34/34 |
+| Build de production | PASS | build.log sortie 0, relancé après corrections visuelles |
+| Appareils physiques, gestes multi-touch et zoom Safari iOS | NOT_TESTED | Chrome macOS/émulation seulement |
+| Listes personnalisées et migration associée | NOT_TESTED | Non implémentées dans ce lot ; Phase 4 globale demeure partielle |
+| Nouvelle cinématique tactile / stabilisation Neon | BLOCKED pour intégration production | Schéma de production non migré ; présentation actuelle conservée |
+
+Défauts détectés puis corrigés : propriété CSS translate indépendante de transform dans Tailwind 4 décalant le panneau ; zone de défilement sans hauteur contrainte ; anciens legends flottants masquant les options dans la sheet. Revue visuelle des captures en complément des assertions ; interaction radio passée à un clic réel. Premier essai interrompu après le défaut de panneau (initial-failure.json conservé). Deux erreurs du script de test corrigées : sélection ambiguë de role=alert avec l’annonceur Next.js, puis lecture des cartes via DeckVersion selon le modèle réel. Les résultats finaux remplacent ces essais pour la validation.
+
+Fichiers modifiés : src/components/collector/CatalogueGrid.tsx, CardDetail.tsx ; src/app/deck-builder/page.tsx, collector.css. Ajouts : src/hooks/useMobileLayout.ts, src/components/collector/CardThumbnail.tsx, tests/mobile-collection-deck.browser.mjs, evidence/phase-4-5/. Aucune dépendance, modèle Prisma ou route serveur changé. Tests avec garde stricte de destination 127.0.0.1:55432/op_boosters_test ; fixtures conservées, aucun reset ni suppression.
+
+Suite : accueil/historique/profil mobiles, listes privées et finition PWA ; cinématique tactile après stabilisation serveur. Aucun push ni déploiement. Application locale relancée avec sa configuration habituelle après tests.
+
+Précision de preuve : le glissement est simulé par événements Pointer dans Chrome ; les gestes sur appareil physique restent NOT_TESTED. Les captures finales ont été régénérées après correction des legends ; les radios sont sélectionnées par clic Playwright réel, sans invocation JavaScript de click().

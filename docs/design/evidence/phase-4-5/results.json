@@ -1,0 +1,30 @@
+[
+  {
+    "name": "Mobile sheet combines family and rarity, resets and returns focus",
+    "status": "PASS"
+  },
+  {
+    "name": "Card zoom, accessible next/previous, swipe and favorite persistence",
+    "status": "PASS"
+  },
+  {
+    "name": "Collection and builder remain usable at all seven viewports",
+    "status": "PASS"
+  },
+  {
+    "name": "Mobile builder tabs preserve entries, validate quantities and save 50 cards",
+    "status": "PASS"
+  },
+  {
+    "name": "Saved deck loads with 50 cards and keyboard switches mobile tabs",
+    "status": "PASS"
+  },
+  {
+    "name": "Light theme collection, filter sheet and deck remain readable without overflow",
+    "status": "PASS"
+  },
+  {
+    "name": "No rewards or collection quantities modified by UI operations",
+    "status": "PASS"
+  }
+]
