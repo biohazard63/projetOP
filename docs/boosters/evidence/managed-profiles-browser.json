@@ -1,0 +1,39 @@
+{
+  "baseURL": "http://localhost:3011",
+  "isolatedDatabase": true,
+  "productionModified": false,
+  "results": [
+    {
+      "test": "Authentication required",
+      "status": "PASS"
+    },
+    {
+      "test": "Credentials login and session",
+      "status": "PASS"
+    },
+    {
+      "test": "Client profile injection rejected",
+      "status": "PASS"
+    },
+    {
+      "test": "Real HTTP concurrency credits exactly one two-card result",
+      "status": "PASS"
+    },
+    {
+      "test": "Private receipt",
+      "status": "PASS"
+    },
+    {
+      "test": "Actual odds displayed without overflow at 390×844",
+      "status": "PASS"
+    },
+    {
+      "test": "Actual odds displayed without overflow at 1440×900",
+      "status": "PASS"
+    },
+    {
+      "test": "No browser JavaScript error",
+      "status": "PASS"
+    }
+  ]
+}

@@ -4,7 +4,7 @@
 .lightGold { background:radial-gradient(ellipse,#d9ad5745,transparent 70%); top:80px; left:calc(50% - 50px); }
 .orbit { position:absolute; width:350px; height:80px; left:calc(50% - 175px); top:340px; border:1px solid #5675a650; border-radius:50%; box-shadow:0 0 30px #438fff15; }
 .camera { position:absolute; inset:40px 0 auto; height:330px; transform-style:preserve-3d; animation:camera 3.4s ease-in-out both; }
-.pack { position:absolute; width:148px; height:240px; left:calc(50% - 74px); top:30px; transform-style:preserve-3d; filter:drop-shadow(0 20px 20px #000a); animation:float 3.4s ease-in-out both; }
+.pack { scale:var(--pack-scale,1); position:absolute; width:148px; height:240px; left:calc(50% - 74px); top:30px; transform-style:preserve-3d; filter:drop-shadow(0 20px 20px #000a); animation:float 3.4s ease-in-out both; }
 .packBody,.packTop { position:absolute; inset:0; transform-origin:50% 15%; }
 .packBody { clip-path:inset(13% 0 0); }
 .packTop { clip-path:inset(0 0 87%); }
@@ -29,3 +29,11 @@
 .scene[data-reduced=true] :is(.camera,.pack) { animation:none; }
 @media(max-width:640px){.scene{min-height:440px}.camera{top:10px;transform:scale(.85)}.orbit{top:280px;width:280px;left:calc(50% - 140px)}}
 @media(prefers-reduced-motion:reduce){.scene *{animation:none!important;transition:none!important}.particles{display:none}}
+
+.scene[data-started=false] .camera,.scene[data-started=false] .pack{animation:none}
+.camera,.pack{animation-duration:var(--opening-duration,3400ms)}
+.gesture{position:absolute;top:12px;left:10px;right:10px;z-index:3;min-height:70px;color:#f5c45c;font-weight:700;text-align:center;touch-action:pan-x}
+.gesture span{display:block;font-size:28px}.gesture small{display:block;color:#a8b9d0;font-size:12px;font-weight:400}
+.scene{touch-action:pan-x}.camera{cursor:pointer}.pack{top:65px}
+
+.back{position:absolute;z-index:4;top:12px;left:12px;width:44px;height:44px;display:grid;place-items:center;border-radius:50%;border:1px solid #27415d;color:#f7f9fc;background:#071222}

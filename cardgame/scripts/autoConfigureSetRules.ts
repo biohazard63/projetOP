@@ -1,3 +1,4 @@
+import { hasExplicitRules, normalizeSetCode } from '../src/lib/boosters/rules'
 import { PrismaClient, Prisma } from '@prisma/client'
 
 const prisma = new PrismaClient()
@@ -182,10 +183,14 @@ const SPECIAL_SET_RULES: Record<string, SetRule> = {
 
 async function autoConfigureSetRules() {
   try {
+    const setIndex=process.argv.indexOf('--set')
+    const requested=setIndex<0?undefined:process.argv[setIndex+1]
+    if(setIndex>=0&&(!requested||requested.startsWith('--')))throw new Error('Code requis après --set')
     console.log('🔍 Analyse automatique des sets dans la base de données...')
     
     // Récupérer tous les sets existants avec le nombre de cartes
     const existingSets = await prisma.cardSet.findMany({
+      where: requested ? {code:requested} : undefined,
       select: { 
         code: true, 
         name: true,
@@ -243,7 +248,12 @@ async function autoConfigureSetRules() {
       }
       
       // Sauvegarder les règles
-      await prisma.setRules.upsert({
+      const wrote = await prisma.$transaction(async tx => {
+        const normalized=normalizeSetCode(setCode)
+        await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${`set-rules:${normalized}`}, 0))`
+        const current=await tx.$queryRaw<{boosterRules:unknown}[]>`SELECT "boosterRules" FROM "SetRules" WHERE upper(regexp_replace(code, '[[:space:]-]', '', 'g'))=${normalized} FOR UPDATE`
+        if(current.some(row=>hasExplicitRules(row.boosterRules)))return false
+      await tx.setRules.upsert({
         where: { code: setCode },
         update: {
           name: setRules.name,
@@ -262,7 +272,10 @@ async function autoConfigureSetRules() {
           updatedAt: new Date()
         }
       })
-      
+        return true
+      })
+      if(!wrote){console.log(`Profil explicite conservé pour ${setCode}`);continue}
+
       console.log(`✅ Règles configurées pour ${setCode} (${totalCards} cartes)`)
     }
     

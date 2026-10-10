@@ -1,3 +1,4 @@
+import { hasExplicitRules, normalizeSetCode } from '../src/lib/boosters/rules'
 import { PrismaClient, Prisma } from '@prisma/client'
 
 type BoosterRules = {
@@ -845,9 +846,13 @@ export const SET_RULES: Record<string, SetRule> = {
 
 async function configureSetRules() {
   try {
+    const setIndex=process.argv.indexOf('--set')
+    const requested=setIndex<0?undefined:process.argv[setIndex+1]
+    if(setIndex>=0&&(!requested||requested.startsWith('--')))throw new Error('Code requis après --set')
     console.log('Configuration des règles des sets...')
 
     for (const [code, rules] of Object.entries(SET_RULES)) {
+      if(requested&&normalizeSetCode(code)!==normalizeSetCode(requested))continue
       const defaultBoosterRules = {
         commonCount: 6,
         uncommonCount: 3,
@@ -870,7 +875,12 @@ async function configureSetRules() {
         boosterRules: rules.boosterRules || defaultBoosterRules
       }
 
-      await prisma.setRules.upsert({
+      const wrote = await prisma.$transaction(async tx => {
+        const normalized=normalizeSetCode(code)
+        await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${`set-rules:${normalized}`}, 0))`
+        const current=await tx.$queryRaw<{boosterRules:unknown}[]>`SELECT "boosterRules" FROM "SetRules" WHERE upper(regexp_replace(code, '[[:space:]-]', '', 'g'))=${normalized} FOR UPDATE`
+        if(current.some(row=>hasExplicitRules(row.boosterRules)))return false
+      await tx.setRules.upsert({
         where: { code },
         update: {
           ...setData,
@@ -879,12 +889,16 @@ async function configureSetRules() {
         create: {
           code,
           name: setData.name,
-          rarityCounts: setData.rarityCounts as any,
-          typeCounts: setData.typeCounts as any,
-          boosterRules: (setData.boosterRules || {}) as any,
+          rarityCounts: setData.rarityCounts as unknown as Prisma.InputJsonValue,
+          typeCounts: setData.typeCounts as unknown as Prisma.InputJsonValue,
+          boosterRules: (setData.boosterRules || {}) as unknown as Prisma.InputJsonValue,
           updatedAt: new Date()
         }
       })
+        return true
+      })
+      if(!wrote){console.log(`Profil explicite conservé pour ${code}`);continue}
+
       console.log(`Règles configurées pour le set ${code}`)
     }
 

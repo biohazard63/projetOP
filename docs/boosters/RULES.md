@@ -8,7 +8,13 @@ Règle SetRules avec code exact, puis code normalisé (OP01/OP-01). Sinon profil
 
 Tous les pools positifs de tous les slots normaux **et spéciaux** doivent exister avant d'ouvrir. Un pool vide, extension vide, poids invalides ou carte étrangère bloque avec 422. Les probabilités ne sont jamais renormalisées en supprimant une rareté absente. Les poids valides sont en revanche normalisés **dans leur distribution configurée**, ce qui permet des poids 3:1.
 
-Tirage avec remise : les probabilités restent constantes d'un slot à l'autre et une carte peut apparaître plusieurs fois. Les occurrences sont créditées et leurs doublons affichés. Ce choix rend explicite un comportement déjà possible avec les anciens fallbacks ; il ne prétend pas reproduire la collation physique.
+Depuis la version 2 du générateur : tirage **sans répétition du numéro officiel dans un même booster**, illustrations alternatives comprises. Les cartes déjà présentes dans la collection restent éligibles et sont signalées comme doublons de collection. Les anciennes ouvertures et leurs reçus restent inchangés.
+
+La rareté/variante de chaque slot est sélectionnée une seule fois selon la configuration. Les cartes sont ensuite choisies avec leurs poids relatifs parmi les numéros compatibles encore disponibles. Un appariement réserve les numéros nécessaires aux slots restants, y compris lorsque leurs pools se chevauchent. Les numéros qui empêcheraient de compléter le booster sont exclus ; les probabilités des cartes sont donc conditionnées à cette contrainte d’unicité.
+
+Un profil sans appariement possible est bloqué avant ouverture. Une combinaison de raretés sélectionnée impossible est également refusée avec `INSUFFICIENT_UNIQUE_CARDS`, sans attribution, sans nouveau tirage de rareté et sans remplacement silencieux. La distribution des ouvertures réussies peut par conséquent être conditionnée par ces refus : les profils concernés doivent être revus avant de garantir leurs taux effectifs.
+
+Les nouvelles ouvertures archivent `generatorVersion: 2` et `sampling: without-replacement-by-card-number`. Ce choix ne prétend pas reproduire la collation physique.
 
 ## Format version 1
 
@@ -61,3 +67,10 @@ Sans liens sur le Booster canonique de simulation : choix uniforme des cartes da
 ## Catalogue observé
 
 3033 cartes / 46 extensions / 46 SetRules / aucun Booster à l'audit. 28 extensions satisfont les règles ; 18 ne les satisfont pas (voir catalog-availability.json), dont des ST et EB où UC/R requis sont absents, et CARDS-OTHER vide. Il faut examiner les imports **ou adapter explicitement les règles du simulateur** ; ne pas inventer des cartes ou des taux physiques. L'analyse de disponibilité utilise uniquement les comptages réellement lus ; elle ne crédite rien dans la base existante.
+
+
+## Profils complets optionnels
+
+Le format v1 accepte maintenant packProfiles, selection=number et variantPolicy=metadata. Chaque profil fixe une seule rareté et une seule variante par slot ; tous les profils ont la même taille et sont validés avant tirage. Les profils et les anciens specialPacks sont mutuellement exclusifs. Voir MANAGED_PROFILES.md et proposed-profiles.json : ce sont des propositions non activées en base réelle.
+
+Le générateur version 3 choisit un numéro puis son illustration et archive le profil dans rulesSnapshot. Les alias SP SR et R SP sont normalisés en SP CARD, comme SR SP. Les nouvelles probabilités ne s’appliquent que lorsque les JSON validés sont explicitement enregistrés dans SetRules.

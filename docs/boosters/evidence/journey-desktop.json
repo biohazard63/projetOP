@@ -1,0 +1,10 @@
+{
+  "isolatedDatabase": true,
+  "readOnlyReceiptReview": true,
+  "results": [
+    {
+      "test": "Native desktop Chrome: sidebar, carousel, single-card receipt review, no overflow or credit",
+      "status": "PASS"
+    }
+  ]
+}

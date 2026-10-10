@@ -1,0 +1,21 @@
+{
+  "branch": "maintenance/catalog-rebuild",
+  "testedBuildMatchesWorkspace": true,
+  "sourceHashes": {
+    "cardgame/src/app/boosters/page.tsx": "e689a489a7131e5b47fec3290b127abc5a947d268a77fe67994381b8caaca094",
+    "cardgame/src/app/collector.css": "18803cd203443440fe50db11937a6f112455c500596a68f60971eeae14fb8443",
+    "cardgame/src/components/booster-opening/BoosterCarousel.tsx": "df48a6ed39210b7226d79520b59f47c3911a7e8c152d795126d482c4f321091b",
+    "cardgame/src/components/booster-opening/BoosterCarousel.module.css": "fc999bbf89511b2b2e1f4d540b69724e488591a2b15503eadb547614b89d7912",
+    "cardgame/src/components/booster-opening/BoosterArtwork.tsx": "60a9cb563404b753956bab035550b4ea15d016793909c5fc24a86325182fc01b",
+    "cardgame/src/components/booster-opening/BoosterExperience.tsx": "dedb446fe92621e3be979b63d5658aaf99ec72de3e65e9d48bd4ebb3c8dc4ab8",
+    "cardgame/src/components/booster-opening/CinematicOpening.tsx": "7bba7054e0ff14e77df08cc359de917fbff9f23051afd6722e00c71f822ecba8",
+    "cardgame/src/components/booster-opening/CinematicOpening.module.css": "7f009b8dc961de211c7652a76ebfeec37d8faae46c8781f28ac5c7ee0e0d2350",
+    "cardgame/src/components/booster-opening/SingleCardReveal.tsx": "af0a18487457c9c90a6d94ece83a9550d7f98ba76c6c56047b4515b16b7cadfa",
+    "cardgame/src/components/booster-opening/SingleCardReveal.module.css": "3f2dd48ad0b43ead593aa32bc52b9cf8556ba9441cecdde70ff4fd5b8c9da06f",
+    "cardgame/src/components/booster-opening/OpeningSettings.tsx": "fe7fbb0961e7e6776c4ccdc096d5eb87c9eb5d781ceb1037cedd294d5ef58d17",
+    "cardgame/src/components/collector/Preferences.tsx": "be85720eeff20395346b8728527b9b5189139a4d32c1edf9e5d9c99f64a39119",
+    "cardgame/src/components/collector/ExtensionDetail.tsx": "d45fc8dff91e34b312c87275be4151c5488d61f381cf10a5cb3a8eac93a7f626",
+    "cardgame/src/hooks/useAudio.ts": "97e8e9e76be0badeb00041b6e7d53546f9395217d71579f5ca8e7f7935402866",
+    "cardgame/src/lib/boosters/presentation.ts": "f83486ad44339a0c194ca0bffc66fc3b847233edd3e5ed83333497c45bd5f85a"
+  }
+}

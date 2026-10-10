@@ -1,18 +1,19 @@
 import { test } from 'node:test'
+import { isBoosterProduct } from '../src/lib/boosters/products'
 import assert from 'node:assert/strict'
-import { generateBooster, validatePools, weightedIndex, type DrawCard } from '../src/lib/boosters/generator'
+import { generateBooster, validatePools, weightedIndex, drawIdentity, type DrawCard } from '../src/lib/boosters/generator'
 import { resolveRules, rulesSchema, legacyDefaultRules, BoosterError } from '../src/lib/boosters/rules'
 const card = (id: string, rarity: string, flags = {}): DrawCard => ({ id, rarity, setCode: 'OP-TEST', isAltArt: false, isParallel: false, isSpecial: false, ...flags })
-const pool = ['C', 'UC', 'R', 'SR', 'L', 'SEC', 'SP CARD', 'TR'].map(rarity => card(rarity, rarity))
+const pool = ['C', 'UC', 'R', 'SR', 'L', 'SEC', 'SP CARD', 'TR'].flatMap(rarity => Array.from({ length: 12 }, (_, i) => card(`${rarity}-${i}`, rarity)))
 const fixed = resolveRules({ commonCount: 6, uncommonCount: 3, rareCount: 2, superRareCount: 1 }).rules
 const rules = (choices: unknown[], specialPacks: unknown[] = []) => rulesSchema.parse({ version: 1, label: 'Synthetic test', source: 'Test fixture; non official', slots: [{ choices }], specialPacks })
 function rng(seed: number) { return () => { seed = (1664525 * seed + 1013904223) >>> 0; return seed / 0x100000000 } }
 const code = (value: string) => (e: unknown) => e instanceof BoosterError && e.code === value
 
-test('per-set legacy slots generate exactly 6C 3UC 2R 1SR, with legitimate duplicates', () => {
+test('per-set legacy slots generate exactly 6C 3UC 2R 1SR, without repeated card numbers', () => {
  const draw = generateBooster(pool, 'OP-TEST', fixed, () => .5)
  assert.deepEqual(draw.cards.map(c => c.rarity), [...Array(6).fill('C'), ...Array(3).fill('UC'), 'R', 'R', 'SR'])
- assert.equal(draw.cards.length, 12); assert.equal(draw.specialPack, null)
+ assert.equal(new Set(draw.cards.map(drawIdentity)).size, 12); assert.equal(draw.cards.length, 12); assert.equal(draw.specialPack, null)
  assert.ok(draw.cards.every(c => c.setCode === 'OP-TEST'))
 })
 test('empty and incomplete sets fail instead of silently replacing rarities', () => {
@@ -80,19 +81,19 @@ test('legacy variant chances are disclosed instead of silently applied or claime
 
 test('every available extension in the actual read-only inventory supports its configured slots', async () => {
  const { readFile } = await import('node:fs/promises')
- const inventory = JSON.parse(await readFile('../docs/boosters/database-inventory.json', 'utf8')) as { sets: { code: string }[]; cards: { setCode: string; rarity: string }[]; rules: { code: string; boosterRules: unknown }[] }
+ const inventory = JSON.parse(await readFile('../docs/boosters/database-inventory.json', 'utf8')) as { sets: { code: string }[]; cards: { setCode: string; rarity: string; _count: number }[]; rules: { code: string; boosterRules: unknown }[] }
  let available = 0; let blocked = 0
- for (const set of inventory.sets) {
+ for (const set of inventory.sets.filter(s => isBoosterProduct(s.code))) {
   const row = inventory.rules.find(r => r.code === set.code || r.code === set.code.replace(/-/g, ''))
-  const cards = inventory.cards.filter(c => c.setCode === set.code).map(c => card(`${set.code}-${c.rarity}`, c.rarity, { setCode: set.code }))
+  const cards = inventory.cards.filter(c => c.setCode === set.code).flatMap(c => Array.from({length: c._count}, (_, i) => card(`${set.code}-${c.rarity}-${i}`, c.rarity, { setCode: set.code })))
   try {
    const configuration = resolveRules(row?.boosterRules).rules
    const draw = generateBooster(cards, set.code, configuration, rng(42))
    assert.equal(draw.cards.length, configuration.slots.length)
    assert.ok(draw.cards.every(c => c.setCode === set.code)); available++
-  } catch (e) { assert.ok(e instanceof BoosterError && ['EMPTY_SET', 'INCOMPLETE_SET'].includes(e.code)); blocked++ }
+  } catch (e) { assert.ok(e instanceof BoosterError && ['EMPTY_SET', 'INCOMPLETE_SET', 'INSUFFICIENT_UNIQUE_CARDS'].includes(e.code)); blocked++ }
  }
- assert.equal(available, 28); assert.equal(blocked, 18)
+ assert.equal(available, 13); assert.equal(blocked, 2)
 })
 
 test('booster illustrations differ per extension, preserve configured artwork and normalize aliases', async () => {
@@ -102,4 +103,31 @@ test('booster illustrations differ per extension, preserve configured artwork an
  assert.equal(getBoosterArtwork('OP-01', '/images/custom-pack.png'), '/images/custom-pack.png')
  assert.equal(getBoosterArtwork('UNKNOWN', null), null)
  for (let n = 1; n <= 12; n++) assert.match(getBoosterArtwork(`OP-${String(n).padStart(2, '0')}`, null)!, /\/img_thumbnail\.png$/)
+})
+
+
+test('standard and alternative editions of the same number cannot share a pack', () => {
+ const cards = [card('OP01-001', 'R', {code: 'OP01-001'}), card('OP01-001_p1', 'R', {code: 'OP-01-001_p1', isAltArt: true}), card('OP01-002', 'R')]
+ const config = rules([{rarity: 'R', weight: 1}]); config.slots.push(config.slots[0])
+ for (let seed = 0; seed < 100; seed++) {
+  const draw = generateBooster(cards, 'OP-TEST', config, rng(seed))
+  assert.equal(new Set(draw.cards.map(drawIdentity)).size, 2)
+ }
+})
+test('insufficient positive unique numbers block instead of duplicating or changing rarity', () => {
+ const config = rules([{rarity: 'R', weight: 1}]); config.slots.push(config.slots[0])
+ const cards = [card('OP01-001', 'R'), card('OP01-001_p1', 'R')]
+ assert.throws(() => generateBooster(cards, 'OP-TEST', config, () => .5), code('INSUFFICIENT_UNIQUE_CARDS'))
+ assert.throws(() => generateBooster([card('one', 'R'), card('two', 'R')], 'OP-TEST', config, () => .5, new Map([['one', 1], ['two', 0]])), code('INSUFFICIENT_UNIQUE_CARDS'))
+})
+test('overlapping pools reserve the only eligible card for a later variant slot', () => {
+ const cards = [card('alt', 'R', {isAltArt: true}), card('standard', 'R')]
+ const config = rules([{rarity: 'R', weight: 1}]); config.slots.push({choices: [{rarity: 'R', variant: 'alt', weight: 1}]})
+ const draw = generateBooster(cards, 'OP-TEST', config, () => 0)
+ assert.deepEqual(draw.cards.map(c => c.id), ['standard', 'alt'])
+})
+test('an impossible selected composition does not reroll its rarity probabilities', () => {
+ const cards = [card('r', 'R'), card('sr', 'SR')]
+ const config = rules([{rarity: 'R', weight: 1}, {rarity: 'SR', weight: 1}]); config.slots.push(config.slots[0])
+ assert.throws(() => generateBooster(cards, 'OP-TEST', config, () => 0), code('INSUFFICIENT_UNIQUE_CARDS'))
 })

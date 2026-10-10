@@ -11,10 +11,24 @@ export const rulesSchema = z.object({
   label: z.string().min(1).max(200),
   source: z.string().min(1).max(300),
   slots: z.array(slotSchema).min(1).max(30),
+  selection: z.enum(['card', 'number']).optional(),
+  variantPolicy: z.enum(['legacy', 'metadata']).optional(),
+  packProfiles: z.array(z.object({ label: z.string().min(1).max(100), weight: z.number().finite().positive(), slots: z.array(slotSchema).min(1).max(30), special: z.boolean().default(false) }).strict()).min(1).max(20).optional(),
   specialPacks: z.array(z.object({ label: z.string().min(1).max(100), probability: z.number().finite().positive().max(1), slots: z.array(slotSchema).min(1).max(30) }).strict()).max(10).default([]),
 }).strict().superRefine((rules, ctx) => {
   if (rules.specialPacks.reduce((sum, pack) => sum + pack.probability, 0) > 1) ctx.addIssue({ code: 'custom', message: 'La somme des probabilités spéciales dépasse 1' })
   if (rules.specialPacks.some(pack => pack.slots.length !== rules.slots.length)) ctx.addIssue({ code: 'custom', message: 'Les packs spéciaux doivent conserver le nombre de slots' })
+  if (rules.packProfiles) {
+    if (rules.selection !== 'number' || rules.variantPolicy !== 'metadata') ctx.addIssue({ code: 'custom', message: 'Les profils exigent une sélection par numéro et les métadonnées de variante.' })
+    if (rules.specialPacks.length) ctx.addIssue({ code: 'custom', message: 'Ne pas mélanger profils complets et anciens specialPacks.' })
+    if (new Set(rules.packProfiles.map(p => p.label)).size !== rules.packProfiles.length) ctx.addIssue({ code: 'custom', message: 'Libellés de profils dupliqués.' })
+    if (!Number.isFinite(rules.packProfiles.reduce((sum, p) => sum + p.weight, 0))) ctx.addIssue({ code: 'custom', message: 'Somme des poids de profils invalide.' })
+    for (const profile of rules.packProfiles) {
+      if (profile.slots.length !== rules.slots.length) ctx.addIssue({ code: 'custom', message: 'Tous les profils doivent conserver le nombre de cartes.' })
+      if (profile.slots.some(s => s.choices.length !== 1 || s.choices[0].variant === 'any' || s.choices[0].rarity === '*')) ctx.addIssue({ code: 'custom', message: 'Chaque slot de profil fixe une rareté et une variante explicites.' })
+    }
+    if (JSON.stringify(rules.slots) !== JSON.stringify(rules.packProfiles[0].slots)) ctx.addIssue({ code: 'custom', message: 'La composition de référence doit être celle du premier profil.' })
+  }
 })
 export type BoosterRules = z.infer<typeof rulesSchema>
 export type SlotChoice = BoosterRules['slots'][number]['choices'][number]
@@ -24,7 +38,7 @@ export class BoosterError extends Error {
 export const normalizeSetCode = (code: string) => code.trim().toUpperCase().replace(/[\s-]/g, '')
 export const normalizeRarity = (rarity: string) => {
   const value = rarity.trim().toUpperCase().replace(/\s+/g, ' ')
-  return value === 'U' ? 'UC' : ['SP', 'SPCARD', 'SR SP'].includes(value) ? 'SP CARD' : value
+  return value === 'U' ? 'UC' : ['SP', 'SPCARD', 'SR SP', 'SP SR', 'R SP'].includes(value) ? 'SP CARD' : value
 }
 const slot = (weights: Record<string, number>) => ({ choices: Object.entries(weights).map(([rarity, weight]) => ({ rarity, weight, variant: 'any' as const })) })
 // These are existing simulator weights from the active API, never official rates.
@@ -37,7 +51,7 @@ const countsSchema = z.object({ commonCount: z.number().int().min(0).max(30), un
 
 export function resolveRules(value: unknown): { rules: BoosterRules; warnings: string[] } {
   if (value == null) return { rules: legacyDefaultRules, warnings: ['Aucune règle propre à cette extension : ancien profil de simulation explicite.'] }
-  if (typeof value === 'object' && value !== null && ('version' in value || 'slots' in value)) {
+  if (hasExplicitRules(value)) {
     const parsed = rulesSchema.safeParse(value)
     if (!parsed.success) throw new BoosterError('INVALID_RULES', 'La configuration des slots est invalide')
     return { rules: parsed.data, warnings: [] }
@@ -51,4 +65,9 @@ export function resolveRules(value: unknown): { rules: BoosterRules; warnings: s
     rules: { version: 1, label: 'Répartition configurée pour cette extension', source: 'SetRules.boosterRules historique ; configuration de simulateur, non officielle', slots, specialPacks: [] },
     warnings: ['Les anciens champs altArtChance/parallelChance/specialChance, typeCounts et donCount ne définissent pas des slots exploitables. Ils ne sont pas appliqués ; les variantes présentes restent éligibles selon leur rareté. Configurer le format v1 pour des probabilités de variantes explicites.'],
   }
+}
+
+// Initializers must never replace an explicit profile with historical defaults.
+export function hasExplicitRules(value: unknown): boolean {
+  return typeof value === 'object' && value !== null && !Array.isArray(value) && ('version' in value || 'slots' in value || 'packProfiles' in value || 'selection' in value || 'variantPolicy' in value)
 }

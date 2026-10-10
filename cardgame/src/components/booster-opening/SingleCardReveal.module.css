@@ -1,0 +1,18 @@
+.scene{position:relative;isolation:isolate;display:flex;flex-direction:column;align-items:center;gap:18px;border-radius:20px;padding:18px;background:radial-gradient(ellipse at center,#132b45,#071222 75%);color:#f7f9fc;--halo:#28435c;min-width:0}
+.toolbar{width:100%;display:flex;align-items:center;justify-content:space-between;gap:12px}.toolbar>span{font-weight:700}
+.stage{position:relative;perspective:1000px;width:min(75vw,300px);max-width:100%;touch-action:pan-y;margin:12px 0}
+.stack{position:absolute;inset:0;border:1px solid #d9ad5770;border-radius:12px;background:#102139;transform:translate(8px,8px) rotate(3deg)}
+.card{position:relative;display:block;width:100%;border:2px solid var(--halo);border-radius:12px;box-shadow:0 0 30px var(--halo);overflow:hidden;min-height:44px}
+.card img{display:block;width:100%;height:auto;aspect-ratio:5/7;object-fit:contain;background:#0d2036}.card[data-face-up=true]{animation:flip var(--reveal-duration) ease-out both}
+.caption{text-align:center;min-height:80px}.caption h3{font-size:1.1rem;font-weight:700}.caption p{font-size:.85rem;margin-top:6px;color:#c5d1e2}
+.scene[data-effect=uncommon]{--halo:#31bda388}.scene[data-effect=rare]{--halo:#9162faaa}.scene[data-effect=super]{--halo:#e7b74caa}.scene[data-effect=secret]{--halo:#ffb33ddd}.scene[data-effect=holographic]{--halo:#82dbffbb}
+.scene[data-effect=holographic] .card[data-face-up=true]::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(115deg,transparent 25%,#86e8ff45,#e5a9ff35,transparent 75%);animation:shine 900ms ease-out both}
+.scene[data-effect=secret] .stage::after,.scene[data-effect=super] .stage::after,.scene[data-effect=rare] .stage::after{content:'';position:absolute;inset:-15px;pointer-events:none;border:1px solid var(--halo);border-radius:16px;animation:burst 900ms ease-out both}
+@keyframes flip{from{opacity:.5;transform:rotateY(-85deg)}to{opacity:1;transform:rotateY(0)}}@keyframes shine{from{transform:translateX(-100%)}to{transform:translateX(100%)}}@keyframes burst{from{opacity:.8;transform:scale(.9)}to{opacity:0;transform:scale(1.15)}}
+.scene[data-animations=off] *{animation:none!important}.scene[data-animations=off] .stage::after,.scene[data-animations=off] .card::after{display:none}
+@media(max-height:740px){.stage{width:min(65vw,245px)}.scene{gap:10px;padding:12px}.caption{min-height:65px}}
+@media(prefers-reduced-motion:reduce){.scene *{animation:none!important}.stage::after,.card::after{display:none}}
+
+.particles{position:absolute;inset:0;pointer-events:none;z-index:2}.particles i{position:absolute;top:50%;left:50%;width:4px;height:9px;border-radius:3px;background:var(--halo);animation:spark 1s ease-out both;animation-delay:calc(var(--particle)*25ms)}
+@keyframes spark{from{opacity:0;transform:rotate(calc(var(--particle)*36deg)) translateY(0)}20%{opacity:1}to{opacity:0;transform:rotate(calc(var(--particle)*36deg)) translateY(-190px)}}
+@media(prefers-reduced-motion:reduce){.particles{display:none}}

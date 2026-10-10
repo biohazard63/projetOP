@@ -1,0 +1,99 @@
+{
+  "baseURL": "http://localhost:3011",
+  "isolatedDatabase": true,
+  "productionModified": false,
+  "results": [
+    {
+      "test": "Credentials login and session",
+      "status": "PASS"
+    },
+    {
+      "test": "Carousel arrows, keyboard and real touch dispatch synchronize selection",
+      "status": "PASS"
+    },
+    {
+      "test": "Mouse drag follows movement and snaps to a valid neighbour",
+      "status": "PASS"
+    },
+    {
+      "test": "Extension detail lists catalogue cards and retains selected extension on return",
+      "status": "PASS"
+    },
+    {
+      "test": "Double click gives one server-confirmed opening before animation",
+      "status": "PASS"
+    },
+    {
+      "test": "Reload during opening restores result without another POST or credit",
+      "status": "PASS"
+    },
+    {
+      "test": "Single-card reveal layout 360×800",
+      "status": "PASS"
+    },
+    {
+      "test": "Single-card reveal layout 375×667",
+      "status": "PASS"
+    },
+    {
+      "test": "Single-card reveal layout 390×844",
+      "status": "PASS"
+    },
+    {
+      "test": "Single-card reveal layout 430×932",
+      "status": "PASS"
+    },
+    {
+      "test": "Single-card reveal layout 768×1024",
+      "status": "PASS"
+    },
+    {
+      "test": "Single-card reveal layout 1280×800",
+      "status": "PASS"
+    },
+    {
+      "test": "Single-card reveal layout 1440×900",
+      "status": "PASS"
+    },
+    {
+      "test": "Individual tap sequence reaches exact recorded summary with no new credit",
+      "status": "PASS"
+    },
+    {
+      "test": "Completed reveal persists through reload",
+      "status": "PASS"
+    },
+    {
+      "test": "Touch swipe advances a revealed card without interfering with server attribution",
+      "status": "PASS"
+    },
+    {
+      "test": "Drag opening and reveal-all remain presentation-only",
+      "status": "PASS"
+    },
+    {
+      "test": "History review is read-only",
+      "status": "PASS"
+    },
+    {
+      "test": "Speed and sound preferences persist",
+      "status": "PASS"
+    },
+    {
+      "test": "Fast mode goes directly to persisted summary without changing pack size",
+      "status": "PASS"
+    },
+    {
+      "test": "Reduced motion skips cinematic and preserves server result",
+      "status": "PASS"
+    },
+    {
+      "test": "Lost response after server commit retries the same key without double credit",
+      "status": "PASS"
+    },
+    {
+      "test": "No browser JavaScript error",
+      "status": "PASS"
+    }
+  ]
+}

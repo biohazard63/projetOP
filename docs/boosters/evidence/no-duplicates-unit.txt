@@ -1,0 +1,356 @@
+
+> cardgame@0.1.0 test
+> node --import tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: missing production tables and columns give an actionable schema error
+ok 1 - missing production tables and columns give an actionable schema error
+  ---
+  duration_ms: 1.942625
+  type: 'test'
+  ...
+# Subtest: connection and transaction failures keep the original opening recoverable
+ok 2 - connection and transaction failures keep the original opening recoverable
+  ---
+  duration_ms: 0.47675
+  type: 'test'
+  ...
+# Subtest: operational failures never expose secrets, SQL, stack traces or untrusted codes
+ok 3 - operational failures never expose secrets, SQL, stack traces or untrusted codes
+  ---
+  duration_ms: 0.366792
+  type: 'test'
+  ...
+# Subtest: known business errors retain their existing code, message and status
+ok 4 - known business errors retain their existing code, message and status
+  ---
+  duration_ms: 0.10725
+  type: 'test'
+  ...
+# Subtest: booster families include OP, combined OP/EB, EB and PRB only
+ok 5 - booster families include OP, combined OP/EB, EB and PRB only
+  ---
+  duration_ms: 0.716458
+  type: 'test'
+  ...
+# Subtest: direct starter-deck opening is rejected before any database access
+ok 6 - direct starter-deck opening is rejected before any database access
+  ---
+  duration_ms: 0.407209
+  type: 'test'
+  ...
+# Subtest: per-set legacy slots generate exactly 6C 3UC 2R 1SR, without repeated card numbers
+ok 7 - per-set legacy slots generate exactly 6C 3UC 2R 1SR, without repeated card numbers
+  ---
+  duration_ms: 4.795291
+  type: 'test'
+  ...
+# Subtest: empty and incomplete sets fail instead of silently replacing rarities
+ok 8 - empty and incomplete sets fail instead of silently replacing rarities
+  ---
+  duration_ms: 0.834167
+  type: 'test'
+  ...
+# Subtest: a card from another extension is rejected, even with a similar alias
+ok 9 - a card from another extension is rejected, even with a similar alias
+  ---
+  duration_ms: 0.096625
+  type: 'test'
+  ...
+# Subtest: configuration rejects malformed weights, unknown fields and impossible special packs
+ok 10 - configuration rejects malformed weights, unknown fields and impossible special packs
+  ---
+  duration_ms: 4.078292
+  type: 'test'
+  ...
+# Subtest: weighted choice boundaries and zero-weight cards
+ok 11 - weighted choice boundaries and zero-weight cards
+  ---
+  duration_ms: 0.352792
+  type: 'test'
+  ...
+# Subtest: configured rarity and card probabilities hold over 40000 draws
+ok 12 - configured rarity and card probabilities hold over 40000 draws
+  ---
+  duration_ms: 216.563667
+  type: 'test'
+  ...
+# Subtest: variants are explicit pools; standard excludes alternative, parallel and special cards
+ok 13 - variants are explicit pools; standard excludes alternative, parallel and special cards
+  ---
+  duration_ms: 0.587375
+  type: 'test'
+  ...
+# Subtest: special packs replace all slots; configured 10% probability and required pools verified
+ok 14 - special packs replace all slots; configured 10% probability and required pools verified
+  ---
+  duration_ms: 1475.781209
+  type: 'test'
+  ...
+# Subtest: historical God Pack retains explicit 1% occurrence with all 12 cards rare
+ok 15 - historical God Pack retains explicit 1% occurrence with all 12 cards rare
+  ---
+  duration_ms: 7.064333
+  type: 'test'
+  ...
+# Subtest: BoosterCard zero weights exclude cards and missing/negative values fail
+ok 16 - BoosterCard zero weights exclude cards and missing/negative values fail
+  ---
+  duration_ms: 0.661041
+  type: 'test'
+  ...
+# Subtest: legacy variant chances are disclosed instead of silently applied or claimed official
+ok 17 - legacy variant chances are disclosed instead of silently applied or claimed official
+  ---
+  duration_ms: 0.323541
+  type: 'test'
+  ...
+# Subtest: every available extension in the actual read-only inventory supports its configured slots
+ok 18 - every available extension in the actual read-only inventory supports its configured slots
+  ---
+  duration_ms: 30.861708
+  type: 'test'
+  ...
+# Subtest: booster illustrations differ per extension, preserve configured artwork and normalize aliases
+ok 19 - booster illustrations differ per extension, preserve configured artwork and normalize aliases
+  ---
+  duration_ms: 4.100125
+  type: 'test'
+  ...
+# Subtest: standard and alternative editions of the same number cannot share a pack
+ok 20 - standard and alternative editions of the same number cannot share a pack
+  ---
+  duration_ms: 2.054208
+  type: 'test'
+  ...
+# Subtest: insufficient positive unique numbers block instead of duplicating or changing rarity
+ok 21 - insufficient positive unique numbers block instead of duplicating or changing rarity
+  ---
+  duration_ms: 0.216125
+  type: 'test'
+  ...
+# Subtest: overlapping pools reserve the only eligible card for a later variant slot
+ok 22 - overlapping pools reserve the only eligible card for a later variant slot
+  ---
+  duration_ms: 0.134542
+  type: 'test'
+  ...
+# Subtest: an impossible selected composition does not reroll its rarity probabilities
+ok 23 - an impossible selected composition does not reroll its rarity probabilities
+  ---
+  duration_ms: 0.13
+  type: 'test'
+  ...
+# Subtest: standard, alternate and reprint remain distinct without overwriting art
+ok 24 - standard, alternate and reprint remain distinct without overwriting art
+  ---
+  duration_ms: 21.255667
+  type: 'test'
+  ...
+# Subtest: partial and repeated source merges preserve all identities, languages, images and memberships
+ok 25 - partial and repeated source merges preserve all identities, languages, images and memberships
+  ---
+  duration_ms: 1.3475
+  type: 'test'
+  ...
+# Subtest: French official and validated data outrank English and provisional translation
+ok 26 - French official and validated data outrank English and provisional translation
+  ---
+  duration_ms: 0.137875
+  type: 'test'
+  ...
+# Subtest: unknown numerics stay null, contradictory rules are reported and never silently replaced
+ok 27 - unknown numerics stay null, contradictory rules are reported and never silently replaced
+  ---
+  duration_ms: 0.272041
+  type: 'test'
+  ...
+# Subtest: JSON NaN repair preserves text, records repair, never writes historical input
+ok 28 - JSON NaN repair preserves text, records repair, never writes historical input
+  ---
+  duration_ms: 0.195666
+  type: 'test'
+  ...
+# Subtest: language-independent stable art key retains the original legacy id
+ok 29 - language-independent stable art key retains the original legacy id
+  ---
+  duration_ms: 0.241417
+  type: 'test'
+  ...
+# Subtest: discovery supports arbitrary numbered families and unnamed actual series
+ok 30 - discovery supports arbitrary numbered families and unnamed actual series
+  ---
+  duration_ms: 0.39125
+  type: 'test'
+  ...
+# Subtest: translation guard preserves numbers, card references, DON!! and trait symbols
+ok 31 - translation guard preserves numbers, card references, DON!! and trait symbols
+  ---
+  duration_ms: 0.197208
+  type: 'test'
+  ...
+# Subtest: production and arbitrary local databases cannot be used for writes
+ok 32 - production and arbitrary local databases cannot be used for writes
+  ---
+  duration_ms: 0.37825
+  type: 'test'
+  ...
+# Subtest: JSONB object key ordering cannot produce false changes or new import receipts
+ok 33 - JSONB object key ordering cannot produce false changes or new import receipts
+  ---
+  duration_ms: 0.446583
+  type: 'test'
+  ...
+# Subtest: same-card French reuse is provisional and refuses changed rule numerics
+ok 34 - same-card French reuse is provisional and refuses changed rule numerics
+  ---
+  duration_ms: 0.613542
+  type: 'test'
+  ...
+# Subtest: local machine translation is guarded, resumable through memory, never official
+ok 35 - local machine translation is guarded, resumable through memory, never official
+  ---
+  duration_ms: 2.895959
+  type: 'test'
+  ...
+# Subtest: image download resumes a partial body, verifies content and reuses checksum without requests
+ok 36 - image download resumes a partial body, verifies content and reuses checksum without requests
+  ---
+  duration_ms: 1016.123083
+  type: 'test'
+  ...
+# Subtest: collector distinguishes copies, unique catalogue IDs and collected alternative versions
+ok 37 - collector distinguishes copies, unique catalogue IDs and collected alternative versions
+  ---
+  duration_ms: 0.889291
+  type: 'test'
+  ...
+# Subtest: empty and uncollected catalogues return zero progression without fictional figures
+ok 38 - empty and uncollected catalogues return zero progression without fictional figures
+  ---
+  duration_ms: 0.908709
+  type: 'test'
+  ...
+# Subtest: visual effects use real variant metadata before configurable rarity names
+ok 39 - visual effects use real variant metadata before configurable rarity names
+  ---
+  duration_ms: 0.32125
+  type: 'test'
+  ...
+# Subtest: deck UI blocks unowned copies, incompatible colors, missing leader and copies across variants
+ok 40 - deck UI blocks unowned copies, incompatible colors, missing leader and copies across variants
+  ---
+  duration_ms: 0.607875
+  type: 'test'
+  ...
+# Subtest: deck analytics count quantities and exclude the leader from costs/types/colors
+ok 41 - deck analytics count quantities and exclude the leader from costs/types/colors
+  ---
+  duration_ms: 0.319125
+  type: 'test'
+  ...
+# Subtest: client deck rules reuse the server validator for a complete 1 plus 50 deck
+ok 42 - client deck rules reuse the server validator for a complete 1 plus 50 deck
+  ---
+  duration_ms: 0.290666
+  type: 'test'
+  ...
+# Subtest: extension families accept real hyphenated and compact codes without guessing unknown labels
+ok 43 - extension families accept real hyphenated and compact codes without guessing unknown labels
+  ---
+  duration_ms: 0.646541
+  type: 'test'
+  ...
+# Subtest: families reflect only catalogue entries, deduplicated and ordered
+ok 44 - families reflect only catalogue entries, deduplicated and ordered
+  ---
+  duration_ms: 0.574583
+  type: 'test'
+  ...
+# Subtest: PWA install caches only explicit public files and never auto-activates updates
+ok 45 - PWA install caches only explicit public files and never auto-activates updates
+  ---
+  duration_ms: 14.128
+  type: 'test'
+  ...
+# Subtest: PWA activation only removes its own outdated public namespace
+ok 46 - PWA activation only removes its own outdated public namespace
+  ---
+  duration_ms: 0.703875
+  type: 'test'
+  ...
+# Subtest: API sessions receipts private data mutations and foreign hosts bypass caching
+ok 47 - API sessions receipts private data mutations and foreign hosts bypass caching
+  ---
+  duration_ms: 0.541916
+  type: 'test'
+  ...
+# Subtest: Offline private navigations use generic public fallback without retaining the page
+ok 48 - Offline private navigations use generic public fallback without retaining the page
+  ---
+  duration_ms: 6.971459
+  type: 'test'
+  ...
+# Subtest: legal 50-card deck with bilingual colors
+ok 49 - legal 50-card deck with bilingual colors
+  ---
+  duration_ms: 0.910583
+  type: 'test'
+  ...
+# Subtest: reject invalid quantities and names
+ok 50 - reject invalid quantities and names
+  ---
+  duration_ms: 2.071042
+  type: 'test'
+  ...
+# Subtest: reject forged leader, colors, unknown and duplicate IDs
+ok 51 - reject forged leader, colors, unknown and duplicate IDs
+  ---
+  duration_ms: 0.160709
+  type: 'test'
+  ...
+# Subtest: alternate arts share the four-copy cap
+ok 52 - alternate arts share the four-copy cap
+  ---
+  duration_ms: 0.207875
+  type: 'test'
+  ...
+# Subtest: bcrypt password limit uses bytes
+ok 53 - bcrypt password limit uses bytes
+  ---
+  duration_ms: 0.101834
+  type: 'test'
+  ...
+# Subtest: rate limit and login lock
+ok 54 - rate limit and login lock
+  ---
+  duration_ms: 0.151959
+  type: 'test'
+  ...
+# Subtest: configured captcha rejects missing token and secret
+ok 55 - configured captcha rejects missing token and secret
+  ---
+  duration_ms: 0.193833
+  type: 'test'
+  ...
+# Subtest: playing characters preserves summoning sickness and enforces turn and field cap
+ok 56 - playing characters preserves summoning sickness and enforces turn and field cap
+  ---
+  duration_ms: 0.40225
+  type: 'test'
+  ...
+# Subtest: collection colors normalize case, language and dual-color order
+ok 57 - collection colors normalize case, language and dual-color order
+  ---
+  duration_ms: 0.621958
+  type: 'test'
+  ...
+1..57
+# tests 57
+# suites 0
+# pass 57
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 2431.281375

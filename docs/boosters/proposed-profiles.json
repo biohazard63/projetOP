@@ -1,0 +1,2998 @@
+{
+  "status": "proposal",
+  "productionModified": false,
+  "readOnly": true,
+  "seed": 20261010,
+  "runsPerSet": 500,
+  "notice": "Les taux proposés sont internes, non officiels ; aucun profil en base n’a été modifié. Les flags de variantes hérités restent à vérifier, notamment PRB.",
+  "sets": [
+    {
+      "code": "EB-01",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "EB-01",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 8
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 3
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 66
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 4
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 13.333333333333334
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2.6666666666666665
+          }
+        ],
+        "omittedBonusPools": [
+          "SP CARD/special",
+          "TR/alt",
+          "C/alt",
+          "UC/alt",
+          "L/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 66
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 4
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 13.333333333333336
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2.666666666666666
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SR standard": 329,
+        "ALT SEC": 14,
+        "ALT SR": 56,
+        "SEC standard": 64,
+        "ALT R": 18,
+        "Leader standard": 19
+      },
+      "cardsInCatalogue": 74,
+      "cardsEligible": 74,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "EB-02",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "EB-02",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 8
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 3
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 66
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 11.11111111111111
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2.2222222222222223
+          }
+        ],
+        "omittedBonusPools": [
+          "SP CARD/special",
+          "TR/alt",
+          "C/alt",
+          "UC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 66
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 11.11111111111111
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2.2222222222222223
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SR standard": 335,
+        "SEC standard": 56,
+        "ALT SEC": 14,
+        "Leader standard": 25,
+        "ALT L": 7,
+        "ALT SR": 49,
+        "ALT R": 14
+      },
+      "cardsInCatalogue": 82,
+      "cardsEligible": 82,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-01",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-01",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 66
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "ALT C",
+            "rarity": "C",
+            "variant": "alt",
+            "weight": 1.1111111111111112
+          },
+          {
+            "label": "ALT UC",
+            "rarity": "UC",
+            "variant": "alt",
+            "weight": 1.1111111111111112
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 11.11111111111111
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          }
+        ],
+        "omittedBonusPools": [
+          "SP CARD/special",
+          "TR/alt",
+          "SEC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 66
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "ALT C",
+          "rarity": "C",
+          "variant": "alt",
+          "percent": 1.1111111111111112
+        },
+        {
+          "label": "ALT UC",
+          "rarity": "UC",
+          "variant": "alt",
+          "percent": 1.1111111111111112
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 11.11111111111111
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SEC standard": 49,
+        "SR standard": 334,
+        "Leader standard": 26,
+        "ALT SR": 50,
+        "ALT UC": 7,
+        "ALT C": 5,
+        "ALT L": 16,
+        "ALT R": 13
+      },
+      "cardsInCatalogue": 143,
+      "cardsEligible": 143,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-02",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-02",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 66
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "ALT C",
+            "rarity": "C",
+            "variant": "alt",
+            "weight": 1
+          },
+          {
+            "label": "ALT UC",
+            "rarity": "UC",
+            "variant": "alt",
+            "weight": 1
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 10
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2
+          }
+        ],
+        "omittedBonusPools": [
+          "SP CARD/special",
+          "TR/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 66
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "ALT C",
+          "rarity": "C",
+          "variant": "alt",
+          "percent": 1
+        },
+        {
+          "label": "ALT UC",
+          "rarity": "UC",
+          "variant": "alt",
+          "percent": 1
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 10
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SR standard": 337,
+        "ALT SR": 45,
+        "ALT UC": 8,
+        "SEC standard": 51,
+        "Leader standard": 19,
+        "ALT R": 13,
+        "ALT SEC": 10,
+        "ALT C": 2,
+        "ALT L": 15
+      },
+      "cardsInCatalogue": 144,
+      "cardsEligible": 144,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-03",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-03",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65.2
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 11.11111111111111
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2.2222222222222223
+          }
+        ],
+        "omittedBonusPools": [
+          "TR/alt",
+          "C/alt",
+          "UC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65.2
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 11.11111111111111
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2.2222222222222223
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "Leader standard": 18,
+        "SEC standard": 52,
+        "ALT R": 9,
+        "SR standard": 331,
+        "ALT SR": 57,
+        "Carte spéciale": 4,
+        "ALT L": 20,
+        "ALT SEC": 9
+      },
+      "cardsInCatalogue": 146,
+      "cardsEligible": 146,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-04",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-04",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65.2
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 11.11111111111111
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2.2222222222222223
+          }
+        ],
+        "omittedBonusPools": [
+          "TR/alt",
+          "C/alt",
+          "UC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65.2
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 11.11111111111111
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2.2222222222222223
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SR standard": 326,
+        "Leader standard": 11,
+        "SEC standard": 57,
+        "ALT SR": 55,
+        "ALT R": 19,
+        "ALT L": 22,
+        "ALT SEC": 7,
+        "Carte spéciale": 3
+      },
+      "cardsInCatalogue": 138,
+      "cardsEligible": 138,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-05",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-05",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65.2
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.75
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 12.5
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.75
+          }
+        ],
+        "omittedBonusPools": [
+          "TR/alt",
+          "C/alt",
+          "UC/alt",
+          "SEC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65.2
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.75
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 12.5
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.75
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SR standard": 325,
+        "SEC standard": 42,
+        "ALT SR": 63,
+        "ALT R": 28,
+        "Leader standard": 21,
+        "ALT L": 18,
+        "Carte spéciale": 3
+      },
+      "cardsInCatalogue": 137,
+      "cardsEligible": 137,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-06",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-06",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "Treasure Rare",
+            "rarity": "TR",
+            "variant": "alt",
+            "weight": 0.2
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.75
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 12.5
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.75
+          }
+        ],
+        "omittedBonusPools": [
+          "C/alt",
+          "UC/alt",
+          "SEC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "Treasure Rare",
+          "rarity": "TR",
+          "variant": "alt",
+          "percent": 0.2
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.75
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 12.5
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.75
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SR standard": 320,
+        "ALT R": 20,
+        "SEC standard": 44,
+        "ALT SR": 66,
+        "Leader standard": 19,
+        "ALT L": 22,
+        "Treasure Rare": 2,
+        "Carte spéciale": 7
+      },
+      "cardsInCatalogue": 143,
+      "cardsEligible": 143,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-07",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-07",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65.2
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 11.11111111111111
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2.2222222222222223
+          }
+        ],
+        "omittedBonusPools": [
+          "TR/alt",
+          "C/alt",
+          "UC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65.2
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 11.11111111111111
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2.2222222222222223
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "ALT R": 22,
+        "SR standard": 348,
+        "Leader standard": 20,
+        "ALT SR": 48,
+        "Carte spéciale": 2,
+        "SEC standard": 41,
+        "ALT L": 10,
+        "ALT SEC": 9
+      },
+      "cardsInCatalogue": 145,
+      "cardsEligible": 145,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-08",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-08",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65.2
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 11.11111111111111
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2.2222222222222223
+          }
+        ],
+        "omittedBonusPools": [
+          "TR/alt",
+          "C/alt",
+          "UC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65.2
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 11.11111111111111
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2.2222222222222223
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SEC standard": 51,
+        "ALT SEC": 18,
+        "SR standard": 320,
+        "ALT SR": 53,
+        "ALT R": 21,
+        "Carte spéciale": 5,
+        "ALT L": 13,
+        "Leader standard": 19
+      },
+      "cardsInCatalogue": 146,
+      "cardsEligible": 146,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-09",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-09",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65.2
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 11.11111111111111
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2.2222222222222223
+          }
+        ],
+        "omittedBonusPools": [
+          "TR/alt",
+          "C/alt",
+          "UC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65.2
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 11.11111111111111
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2.2222222222222223
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SR standard": 326,
+        "SEC standard": 54,
+        "Carte spéciale": 8,
+        "ALT SR": 45,
+        "Leader standard": 27,
+        "ALT L": 12,
+        "ALT R": 16,
+        "ALT SEC": 12
+      },
+      "cardsInCatalogue": 159,
+      "cardsEligible": 159,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-10",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-10",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65.2
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 11.11111111111111
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2.2222222222222223
+          }
+        ],
+        "omittedBonusPools": [
+          "TR/alt",
+          "C/alt",
+          "UC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65.2
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 11.11111111111111
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2.2222222222222223
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SEC standard": 58,
+        "ALT SR": 59,
+        "SR standard": 328,
+        "ALT L": 11,
+        "Leader standard": 16,
+        "ALT SEC": 14,
+        "ALT R": 12,
+        "Carte spéciale": 2
+      },
+      "cardsInCatalogue": 150,
+      "cardsEligible": 150,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-11",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-11",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "Treasure Rare",
+            "rarity": "TR",
+            "variant": "alt",
+            "weight": 0.2
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 11.11111111111111
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2.2222222222222223
+          }
+        ],
+        "omittedBonusPools": [
+          "C/alt",
+          "UC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "Treasure Rare",
+          "rarity": "TR",
+          "variant": "alt",
+          "percent": 0.2
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 11.11111111111111
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2.2222222222222223
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SR standard": 325,
+        "ALT R": 15,
+        "SEC standard": 62,
+        "ALT SEC": 11,
+        "Leader standard": 17,
+        "ALT SR": 52,
+        "ALT L": 13,
+        "Carte spéciale": 5
+      },
+      "cardsInCatalogue": 156,
+      "cardsEligible": 156,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-12",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-12",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "Treasure Rare",
+            "rarity": "TR",
+            "variant": "alt",
+            "weight": 0.2
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 11.11111111111111
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2.2222222222222223
+          }
+        ],
+        "omittedBonusPools": [
+          "C/alt",
+          "UC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "Treasure Rare",
+          "rarity": "TR",
+          "variant": "alt",
+          "percent": 0.2
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 11.11111111111111
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2.2222222222222223
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "ALT R": 17,
+        "SR standard": 320,
+        "ALT SR": 49,
+        "ALT SEC": 12,
+        "SEC standard": 60,
+        "Leader standard": 20,
+        "ALT L": 18,
+        "Carte spéciale": 2,
+        "Treasure Rare": 2
+      },
+      "cardsInCatalogue": 154,
+      "cardsEligible": 154,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-13",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-13",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "Treasure Rare",
+            "rarity": "TR",
+            "variant": "alt",
+            "weight": 0.2
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 11.11111111111111
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2.2222222222222223
+          }
+        ],
+        "omittedBonusPools": [
+          "C/alt",
+          "UC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "Treasure Rare",
+          "rarity": "TR",
+          "variant": "alt",
+          "percent": 0.2
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 11.11111111111111
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2.2222222222222223
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "ALT SR": 53,
+        "SEC standard": 38,
+        "SR standard": 340,
+        "Leader standard": 17,
+        "ALT SEC": 15,
+        "ALT R": 18,
+        "Carte spéciale": 3,
+        "ALT L": 16
+      },
+      "cardsInCatalogue": 171,
+      "cardsEligible": 171,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-16",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-16",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "Treasure Rare",
+            "rarity": "TR",
+            "variant": "alt",
+            "weight": 0.2
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 11.11111111111111
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2.2222222222222223
+          }
+        ],
+        "omittedBonusPools": [
+          "C/alt",
+          "UC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "Treasure Rare",
+          "rarity": "TR",
+          "variant": "alt",
+          "percent": 0.2
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 11.11111111111111
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2.2222222222222223
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SR standard": 328,
+        "Leader standard": 22,
+        "ALT SEC": 12,
+        "SEC standard": 50,
+        "ALT L": 18,
+        "ALT SR": 47,
+        "ALT R": 17,
+        "Carte spéciale": 6
+      },
+      "cardsInCatalogue": 155,
+      "cardsEligible": 155,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP-17",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP-17",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "Treasure Rare",
+            "rarity": "TR",
+            "variant": "alt",
+            "weight": 0.2
+          },
+          {
+            "label": "ALT C",
+            "rarity": "C",
+            "variant": "alt",
+            "weight": 1
+          },
+          {
+            "label": "ALT UC",
+            "rarity": "UC",
+            "variant": "alt",
+            "weight": 1
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 10
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2
+          }
+        ],
+        "omittedBonusPools": []
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "Treasure Rare",
+          "rarity": "TR",
+          "variant": "alt",
+          "percent": 0.2
+        },
+        {
+          "label": "ALT C",
+          "rarity": "C",
+          "variant": "alt",
+          "percent": 1
+        },
+        {
+          "label": "ALT UC",
+          "rarity": "UC",
+          "variant": "alt",
+          "percent": 1
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 10
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SR standard": 315,
+        "ALT SR": 58,
+        "ALT SEC": 19,
+        "Leader standard": 18,
+        "SEC standard": 50,
+        "ALT R": 17,
+        "ALT UC": 4,
+        "ALT L": 12,
+        "ALT C": 5,
+        "Carte spéciale": 2
+      },
+      "cardsInCatalogue": 169,
+      "cardsEligible": 169,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP14-EB04",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP14-EB04",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "Treasure Rare",
+            "rarity": "TR",
+            "variant": "alt",
+            "weight": 0.2
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 11.11111111111111
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2.2222222222222223
+          }
+        ],
+        "omittedBonusPools": [
+          "C/alt",
+          "UC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "Treasure Rare",
+          "rarity": "TR",
+          "variant": "alt",
+          "percent": 0.2
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 11.11111111111111
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2.2222222222222223
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SR standard": 324,
+        "ALT R": 16,
+        "ALT SR": 49,
+        "SEC standard": 55,
+        "Leader standard": 25,
+        "ALT SEC": 12,
+        "ALT L": 16,
+        "Carte spéciale": 3
+      },
+      "cardsInCatalogue": 196,
+      "cardsEligible": 196,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "OP15-EB04",
+      "status": "PASS",
+      "error": null,
+      "proposal": {
+        "status": "proposal",
+        "setCode": "OP15-EB04",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 6
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 2
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 65
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "Carte spéciale",
+            "rarity": "SP CARD",
+            "variant": "special",
+            "weight": 0.8
+          },
+          {
+            "label": "Treasure Rare",
+            "rarity": "TR",
+            "variant": "alt",
+            "weight": 0.2
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 11.11111111111111
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3.3333333333333335
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2.2222222222222223
+          }
+        ],
+        "omittedBonusPools": [
+          "C/alt",
+          "UC/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 65
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "Carte spéciale",
+          "rarity": "SP CARD",
+          "variant": "special",
+          "percent": 0.8
+        },
+        {
+          "label": "Treasure Rare",
+          "rarity": "TR",
+          "variant": "alt",
+          "percent": 0.2
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 11.11111111111111
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3.333333333333334
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2.2222222222222223
+        }
+      ],
+      "simulations": 500,
+      "observedProfiles": {
+        "SR standard": 321,
+        "ALT L": 15,
+        "Leader standard": 21,
+        "SEC standard": 55,
+        "ALT SR": 57,
+        "ALT R": 19,
+        "Treasure Rare": 1,
+        "Carte spéciale": 4,
+        "ALT SEC": 7
+      },
+      "cardsInCatalogue": 196,
+      "cardsEligible": 196,
+      "cardsOutsideProfile": 0
+    },
+    {
+      "code": "PRB-01",
+      "status": "BLOCKED",
+      "error": "Extension incomplète : pool manquant pour C/standard, SR/standard, SEC/standard. Aucun remplacement de rareté n’est effectué.",
+      "proposal": {
+        "status": "proposal",
+        "setCode": "PRB-01",
+        "source": "Proposition interne Mugiwara, taux non officiels, validation requise avant production",
+        "base": [
+          {
+            "rarity": "C",
+            "variant": "standard",
+            "count": 4
+          },
+          {
+            "rarity": "UC",
+            "variant": "standard",
+            "count": 2
+          },
+          {
+            "rarity": "R",
+            "variant": "standard",
+            "count": 3
+          },
+          {
+            "rarity": "L",
+            "variant": "standard",
+            "count": 1
+          },
+          {
+            "rarity": "SR",
+            "variant": "standard",
+            "count": 1
+          }
+        ],
+        "outcomes": [
+          {
+            "label": "SR standard",
+            "rarity": "SR",
+            "variant": "standard",
+            "weight": 66
+          },
+          {
+            "label": "SEC standard",
+            "rarity": "SEC",
+            "variant": "standard",
+            "weight": 10
+          },
+          {
+            "label": "Leader standard",
+            "rarity": "L",
+            "variant": "standard",
+            "weight": 4
+          },
+          {
+            "label": "ALT C",
+            "rarity": "C",
+            "variant": "alt",
+            "weight": 1
+          },
+          {
+            "label": "ALT UC",
+            "rarity": "UC",
+            "variant": "alt",
+            "weight": 1
+          },
+          {
+            "label": "ALT R",
+            "rarity": "R",
+            "variant": "alt",
+            "weight": 3
+          },
+          {
+            "label": "ALT SR",
+            "rarity": "SR",
+            "variant": "alt",
+            "weight": 10
+          },
+          {
+            "label": "ALT L",
+            "rarity": "L",
+            "variant": "alt",
+            "weight": 3
+          },
+          {
+            "label": "ALT SEC",
+            "rarity": "SEC",
+            "variant": "alt",
+            "weight": 2
+          }
+        ],
+        "omittedBonusPools": [
+          "SP CARD/special",
+          "TR/alt"
+        ]
+      },
+      "expectedBonusPercent": [
+        {
+          "label": "SR standard",
+          "rarity": "SR",
+          "variant": "standard",
+          "percent": 66
+        },
+        {
+          "label": "SEC standard",
+          "rarity": "SEC",
+          "variant": "standard",
+          "percent": 10
+        },
+        {
+          "label": "Leader standard",
+          "rarity": "L",
+          "variant": "standard",
+          "percent": 4
+        },
+        {
+          "label": "ALT C",
+          "rarity": "C",
+          "variant": "alt",
+          "percent": 1
+        },
+        {
+          "label": "ALT UC",
+          "rarity": "UC",
+          "variant": "alt",
+          "percent": 1
+        },
+        {
+          "label": "ALT R",
+          "rarity": "R",
+          "variant": "alt",
+          "percent": 3
+        },
+        {
+          "label": "ALT SR",
+          "rarity": "SR",
+          "variant": "alt",
+          "percent": 10
+        },
+        {
+          "label": "ALT L",
+          "rarity": "L",
+          "variant": "alt",
+          "percent": 3
+        },
+        {
+          "label": "ALT SEC",
+          "rarity": "SEC",
+          "variant": "alt",
+          "percent": 2
+        }
+      ],
+      "simulations": 0,
+      "observedProfiles": {},
+      "cardsInCatalogue": 304,
+      "cardsEligible": 295,
+      "cardsOutsideProfile": 9
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+
+> cardgame@0.1.0 test:boosters:integration
+> node --import tsx --test tests/boosters.integration.ts
+
+TAP version 13
+# Subtest: database readiness verifies receipt columns and unique indexes without crediting cards
+ok 1 - database readiness verifies receipt columns and unique indexes without crediting cards
+  ---
+  duration_ms: 758.953083
+  type: 'test'
+  ...
+# Subtest: an unmigrated isolated schema reproduces the hidden production-style column error
+ok 2 - an unmigrated isolated schema reproduces the hidden production-style column error
+  ---
+  duration_ms: 104.498167
+  type: 'test'
+  ...
+# Subtest: catalog explicitly distinguishes eligible, empty and incomplete extensions
+ok 3 - catalog explicitly distinguishes eligible, empty and incomplete extensions
+  ---
+  duration_ms: 212.580125
+  type: 'test'
+  ...
+# Subtest: server draw atomically persists ordered cards, receipt and exact collection quantities
+ok 4 - server draw atomically persists ordered cards, receipt and exact collection quantities
+  ---
+  duration_ms: 166.6935
+  type: 'test'
+  ...
+# Subtest: 10 concurrent requests with the same key produce exactly one opening and one credit
+ok 5 - 10 concurrent requests with the same key produce exactly one opening and one credit
+  ---
+  duration_ms: 317.426292
+  type: 'test'
+  ...
+# Subtest: 8 concurrent distinct operations credit every opening without lost increments
+ok 6 - 8 concurrent distinct operations credit every opening without lost increments
+  ---
+  duration_ms: 539.590625
+  type: 'test'
+  ...
+# Subtest: unknown users, empty and incomplete sets never receive cards or opening records
+ok 7 - unknown users, empty and incomplete sets never receive cards or opening records
+  ---
+  duration_ms: 32.377875
+  type: 'test'
+  ...
+# Subtest: history is owned, immutable across card edits, and no longer cascades on card deletion
+ok 8 - history is owned, immutable across card edits, and no longer cascades on card deletion
+  ---
+  duration_ms: 63.242375
+  type: 'test'
+  ...
+# Subtest: an injected collection failure rolls back the entire opening; the same key then succeeds
+ok 9 - an injected collection failure rolls back the entire opening; the same key then succeeds
+  ---
+  duration_ms: 90.953458
+  type: 'test'
+  ...
+# Subtest: a price requirement is rejected rather than inventing a payment or ignoring it
+ok 10 - a price requirement is rejected rather than inventing a payment or ignoring it
+  ---
+  duration_ms: 15.846166
+  type: 'test'
+  ...
+# Subtest: legacy history is readable without retroactive credit or guessed duplicate state
+ok 11 - legacy history is readable without retroactive credit or guessed duplicate state
+  ---
+  duration_ms: 13.511208
+  type: 'test'
+  ...
+# Subtest: BoosterCard configured weights control eligibility and reject foreign-set links
+ok 12 - BoosterCard configured weights control eligibility and reject foreign-set links
+  ---
+  duration_ms: 47.924667
+  type: 'test'
+  ...
+# Subtest: operation keys are scoped to the user and exact extensions cannot collide through aliases
+ok 13 - operation keys are scoped to the user and exact extensions cannot collide through aliases
+  ---
+  duration_ms: 104.108292
+  type: 'test'
+  ...
+# Subtest: already owned cards remain eligible while every new pack contains unique numbers
+ok 14 - already owned cards remain eligible while every new pack contains unique numbers
+  ---
+  duration_ms: 48.292125
+  type: 'test'
+  ...
+# Subtest: insufficient unique numbers never credit cards or persist a receipt
+ok 15 - insufficient unique numbers never credit cards or persist a receipt
+  ---
+  duration_ms: 17.855417
+  type: 'test'
+  ...
+# Subtest: managed profiles use the existing transactional receipt and concurrency protection
+ok 16 - managed profiles use the existing transactional receipt and concurrency protection
+  ---
+  duration_ms: 216.238958
+  type: 'test'
+  ...
+# Subtest: an impossible managed outcome disables the product before any credit, even at tiny probability
+ok 17 - an impossible managed outcome disables the product before any credit, even at tiny probability
+  ---
+  duration_ms: 172.681917
+  type: 'test'
+  ...
+# Subtest: test-only profile CLI applies a reviewed file without changing player data
+ok 18 - test-only profile CLI applies a reviewed file without changing player data
+  ---
+  duration_ms: 1271.32975
+  type: 'test'
+  ...
+1..18
+# tests 18
+# suites 0
+# pass 18
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 4538.304834

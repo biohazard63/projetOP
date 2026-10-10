@@ -1,0 +1,25 @@
+
+> cardgame@0.1.0 boosters:profiles:preview
+> node --import tsx scripts/boosters/profiles.ts --runs 500
+
+{"code":"EB-01","status":"PASS","error":null,"simulations":500}
+{"code":"EB-02","status":"PASS","error":null,"simulations":500}
+{"code":"OP-01","status":"PASS","error":null,"simulations":500}
+{"code":"OP-02","status":"PASS","error":null,"simulations":500}
+{"code":"OP-03","status":"PASS","error":null,"simulations":500}
+{"code":"OP-04","status":"PASS","error":null,"simulations":500}
+{"code":"OP-05","status":"PASS","error":null,"simulations":500}
+{"code":"OP-06","status":"PASS","error":null,"simulations":500}
+{"code":"OP-07","status":"PASS","error":null,"simulations":500}
+{"code":"OP-08","status":"PASS","error":null,"simulations":500}
+{"code":"OP-09","status":"PASS","error":null,"simulations":500}
+{"code":"OP-10","status":"PASS","error":null,"simulations":500}
+{"code":"OP-11","status":"PASS","error":null,"simulations":500}
+{"code":"OP-12","status":"PASS","error":null,"simulations":500}
+{"code":"OP-13","status":"PASS","error":null,"simulations":500}
+{"code":"OP-16","status":"PASS","error":null,"simulations":500}
+{"code":"OP-17","status":"PASS","error":null,"simulations":500}
+{"code":"OP14-EB04","status":"PASS","error":null,"simulations":500}
+{"code":"OP15-EB04","status":"PASS","error":null,"simulations":500}
+{"code":"PRB-01","status":"BLOCKED","error":"Extension incomplète : pool manquant pour C/standard, SR/standard, SEC/standard. Aucun remplacement de rareté n’est effectué.","simulations":0}
+{"report":"../docs/boosters/proposed-profiles.json","ready":19,"blocked":1,"productionModified":false}

@@ -1,0 +1,13 @@
+
+/Users/quentin/Documents/GitHub/projetOP/cardgame/scripts/autoConfigureSetRules.ts
+   71:31  warning  'setCode' is defined but never used                          @typescript-eslint/no-unused-vars
+   71:48  warning  'totalCards' is defined but never used                       @typescript-eslint/no-unused-vars
+  306:10  warning  'updateSpecialRulesWithRealCount' is defined but never used  @typescript-eslint/no-unused-vars
+  343:10  warning  'generateAutomaticRules' is defined but never used           @typescript-eslint/no-unused-vars
+
+/Users/quentin/Documents/GitHub/projetOP/cardgame/scripts/configureSetRules.ts
+   4:6  warning  'BoosterRules' is defined but never used  @typescript-eslint/no-unused-vars
+  19:6  warning  'RarityCounts' is defined but never used  @typescript-eslint/no-unused-vars
+  23:6  warning  'TypeCounts' is defined but never used    @typescript-eslint/no-unused-vars
+
+✖ 7 problems (0 errors, 7 warnings)
