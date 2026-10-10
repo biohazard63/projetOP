@@ -1,0 +1,555 @@
+// Node 18+
+// Lancer: node scrape-onepiece-fr.js
+import fs from "fs";
+import fsp from "fs/promises";
+import path from "path";
+import { chromium } from "playwright";
+
+const START_URL = "https://fr.onepiece-cardgame.com/cardlist/"; // par défaut FR
+const OUT_DIR = path.resolve("./out");
+const IMG_DIR = path.join(OUT_DIR, "images");
+const JSON_PATH = path.join(OUT_DIR, "cards-fr.json");
+
+// CLI: --set OP-12[,OP-06]
+function parseSetFilters(argv) {
+  let raw = null;
+  for (let i = 0; i < argv.length; i++) {
+    const a = argv[i];
+    if (a === "--set" && i + 1 < argv.length) {
+      raw = argv[i + 1];
+      break;
+    }
+    if (a.startsWith("--set=")) {
+      raw = a.slice("--set=".length);
+      break;
+    }
+  }
+  const all = argv.includes("--all") || argv.includes("--all-sets");
+  if (!raw) return { withDash: [], noDash: [], tokens: [], all };
+  const list = raw
+    .split(",")
+    .map((s) => s.trim())
+    .filter(Boolean);
+  const withDash = Array.from(new Set(list));
+  const noDash = Array.from(new Set(list.map((s) => s.replace(/-/g, ""))));
+  const tokens = Array.from(new Set(list));
+  return { withDash, noDash, tokens, all };
+}
+
+function deriveSetIdFromCard(card) {
+  // 1) Priorité à l'extension affichée (ex: "... [OP-12]") pour inclure les réimpressions
+  const ext = (card.extension || '').toUpperCase();
+  const mExt = ext.match(/\[([A-Z]{2,}-?\d{2})\]/);
+  if (mExt) return mExt[1];
+  // 2) Sinon, depuis le code: OP11-001 -> OP-11
+  const code = (card.code || '').toUpperCase();
+  const mCode = code.match(/^(OP)(\d{2})/);
+  if (mCode) return `${mCode[1]}-${mCode[2]}`;
+  return 'UNKNOWN';
+}
+
+async function ensureDirs() {
+  await fsp.mkdir(OUT_DIR, { recursive: true });
+  await fsp.mkdir(IMG_DIR, { recursive: true });
+}
+
+function sanitizeFilename(s) {
+  return (s || "").replace(/[\\/:*?"<>|]+/g, "_").trim();
+}
+
+async function downloadImage(url, destPath) {
+  const res = await fetch(url, { headers: { "User-Agent": "Mozilla/5.0" } });
+  if (!res.ok) throw new Error(`HTTP ${res.status} on ${url}`);
+  const buf = Buffer.from(await res.arrayBuffer());
+  await fsp.writeFile(destPath, buf);
+}
+
+async function saveJSON(data, filePath) {
+  await fsp.writeFile(filePath, JSON.stringify(data, null, 2), "utf8");
+}
+
+async function debugDump(page, tag) {
+  try {
+    const html = await page.content();
+    const file = path.join(OUT_DIR, `debug-${tag}.html`);
+    await fsp.writeFile(file, html, 'utf8');
+  } catch {}
+  try {
+    const imgFile = path.join(OUT_DIR, `debug-${tag}.png`);
+    await page.screenshot({ path: imgFile, fullPage: true });
+  } catch {}
+}
+
+async function acceptCookiesIfAny(page) {
+  // Essaie plusieurs libellés fréquents
+  const selectors = [
+    'button:has-text("Tout accepter")',
+    'button:has-text("Accepter")',
+    'button:has-text("J’accepte")',
+    'button:has-text("J\'accepte")',
+    'button:has-text("OK")',
+    'button:has-text("Accept all")',
+    'button:has-text("ACCEPT ALL")',
+    'button:has-text("Accept")',
+    'button:has-text("I agree")',
+  ];
+  for (const sel of selectors) {
+    const btn = page.locator(sel).first();
+    if (await btn.count()) {
+      try {
+        await btn.click({ timeout: 2000 });
+        break;
+      } catch {}
+    }
+  }
+}
+
+async function clickSearchIfAny(page) {
+  // La page charge parfois la liste seulement après "RECHERCHER" (peut être dans un iframe)
+  const frames = page.frames();
+  const selectors = [
+    'button:has-text("RECHERCHER")',
+    'button:has-text("Rechercher")',
+    'button:has-text("SEARCH")',
+    'a:has-text("RECHERCHER")',
+    'a:has-text("SEARCH")',
+  ];
+  for (const frame of frames) {
+    for (const sel of selectors) {
+      const loc = frame.locator(sel).first();
+      if (!(await loc.count())) continue;
+      try {
+        await loc.click({ timeout: 2000 });
+        await frame.waitForFunction(() => document.querySelectorAll('a[href*="card_id="]').length > 0, { timeout: 10000 });
+        return;
+    } catch {}
+    }
+  }
+}
+
+async function extractSpecs(page) {
+  const rows = await page.$$eval("table tr", (trs) =>
+    trs
+      .map((tr) => {
+        const th = tr.querySelector("th");
+        const td = tr.querySelector("td");
+        if (!th || !td) return null;
+        const key = th.textContent?.trim() || "";
+        const val = td.textContent?.replace(/\s+\n/g, " ").replace(/\s{2,}/g, " ").trim() || "";
+        return { key, val };
+      })
+      .filter(Boolean)
+  );
+  const map = {};
+  for (const { key, val } of rows) map[key] = val;
+  return map;
+}
+
+async function scrapeCardDetail(browser, url) {
+  const page = await browser.newPage();
+  await page.goto(url, { waitUntil: "domcontentloaded" });
+
+  // Titre
+  let name = "";
+  try {
+    name = (await page.locator("h1, h2").first().innerText()).trim();
+  } catch {}
+
+  // Image (prendre la plus grande visible)
+  let imgUrl = "";
+  try {
+    const imgs = await page.$$eval("img", (nodes) => {
+      const c = nodes
+        .map((n) => ({
+          src: n.getAttribute("src") || "",
+          w: n.naturalWidth || 0,
+          h: n.naturalHeight || 0,
+        }))
+        .filter((x) => x.src && !x.src.startsWith("data:"));
+      c.sort((a, b) => b.w - a.w || b.h - a.h);
+      return c.map((x) => x.src);
+    });
+    imgUrl = imgs[0] || "";
+    if (imgUrl.startsWith("/")) imgUrl = new URL(imgUrl, url).toString();
+  } catch {}
+
+  const specs = await extractSpecs(page);
+  await page.close();
+
+  return {
+    url,
+    name: name || specs["Nom de carte"] || "",
+    code: specs["No. de carte"] || specs["N° de carte"] || "",
+    rarity: specs["Rareté"] || "",
+    color: specs["Couleur"] || "",
+    type: specs["Type de carte"] || "",
+    attribute: specs["Attribut"] || "",
+    cost: specs["Coût"] || specs["Coût de déploiement"] || "",
+    power: specs["Puissance"] || "",
+    counter: specs["Contre"] || specs["Contre (+)"] || "",
+    types: specs["Type"] || specs["Types"] || "",
+    effect: specs["Texte de carte"] || specs["Effet"] || "",
+    trigger: specs["Déclenchement"] || specs["Trigger"] || "",
+    image: imgUrl,
+  };
+}
+
+async function scrapeAllCards() {
+  await ensureDirs();
+
+  const browser = await chromium.launch({ headless: true });
+  const page = await browser.newPage();
+  // User-Agent "desktop" pour éviter certaines versions mobiles
+  await page.setExtraHTTPHeaders({ "User-Agent": "Mozilla/5.0" });
+
+  // Choix langue via CLI: --lang=en pour site anglais
+  const argv = process.argv.slice(2);
+  let lang = argv.includes('--lang=en') || argv.includes('--en') ? 'en' : 'fr';
+  let baseUrl = lang === 'en' ? 'https://en.onepiece-cardgame.com/cardlist/' : START_URL;
+  await page.goto(baseUrl, { waitUntil: "domcontentloaded" });
+  await debugDump(page, 'loaded');
+  await acceptCookiesIfAny(page);
+  await clickSearchIfAny(page);
+  await debugDump(page, 'after-search');
+  // expose les filtres au contexte page pour le filtrage évalué côté DOM
+  const setFilter = parseSetFilters(process.argv.slice(2));
+  await page.exposeFunction('__noop', () => {});
+  await page.addInitScript((filters) => {
+    try { window.__SET_FILTERS__ = filters; } catch {}
+  }, setFilter);
+  // aussi injecter immédiatement dans le document courant
+  await page.evaluate((filters) => {
+    try { window.__SET_FILTERS__ = filters; } catch {}
+  }, setFilter);
+
+  const seenIds = new Set();
+  const cards = [];
+  let currentSeriesId = null; // défini lors de la sélection d'une série (ex: OP-11)
+  let currentCollector = null; // si défini, collectPageCards poussera dans ce tableau
+
+  // Si --all, récupérer la liste des valeurs de select "series" pour booter chaque set
+  async function readSeriesOptions() {
+    return await page.evaluate(() => {
+      const sel = document.querySelector('select#series');
+      if (!sel) return [];
+      return Array.from(sel.querySelectorAll('option'))
+        .map((o) => ({ value: o.value || '', label: (o.textContent || '').trim() }));
+    });
+  }
+  let seriesOptions = await readSeriesOptions();
+  const wantedCodes = (setFilter.withDash || []).map((s) => s.toUpperCase());
+  let targetSeries = setFilter.all
+    ? seriesOptions.filter((o) => /\[[A-Z]{2,}-?\d{2}\]/.test(o.label) || /promo/i.test(o.label))
+    : setFilter.tokens.length
+      ? seriesOptions.filter((o) => {
+          const L = o.label.toUpperCase();
+          return setFilter.tokens.some((t) => L.includes(`[${t.toUpperCase()}]`) || L.includes(t.toUpperCase()));
+        })
+      : [];
+
+  // Fallback auto vers EN si aucune série trouvée en FR
+  if (targetSeries.length === 0 && setFilter.tokens.length > 0 && lang === 'fr') {
+    baseUrl = 'https://en.onepiece-cardgame.com/cardlist/';
+    lang = 'en';
+    await page.goto(baseUrl, { waitUntil: 'domcontentloaded' });
+    await acceptCookiesIfAny(page);
+    await clickSearchIfAny(page);
+    seriesOptions = await readSeriesOptions();
+    targetSeries = setFilter.all
+      ? seriesOptions.filter((o) => /\[[A-Z]{2,}-?\d{2}\]/.test(o.label) || /promotion\s*card/i.test(o.label) || /other\s*product\s*card/i.test(o.label))
+      : seriesOptions.filter((o) => {
+          const L = o.label.toUpperCase();
+          return setFilter.tokens.some((t) => L.includes(`[${t.toUpperCase()}]`) || L.includes(t.toUpperCase()));
+        });
+  }
+
+  // fonction utilitaire pour extraire les cartes de la page courante
+  async function collectPageCards() {
+    const pageCards = await page.evaluate(() => {
+      const result = [];
+      const root = document;
+      const dls = Array.from(root.querySelectorAll('dl.modalCol'));
+      for (const dl of dls) {
+        const id = dl.getAttribute('id') || '';
+        const infoCol = dl.querySelector('.infoCol');
+        const spans = infoCol ? Array.from(infoCol.querySelectorAll('span')).map(s => (s.textContent || '').trim()) : [];
+        const code = spans[0] || '';
+        const rarity = spans[1] || '';
+        const type = spans[2] || '';
+        const name = (dl.querySelector('.cardName')?.textContent || '').trim();
+
+        const back = dl.querySelector('.backCol');
+        const norm = (s) => (s || '').trim().replace(/\s+/g, ' ');
+        const headerMatches = (h, expects) => expects.some(exp => norm(h) === norm(exp));
+        const getText = (selector, headers) => {
+          const expects = Array.isArray(headers) ? headers : [headers];
+          const el = back ? Array.from(back.querySelectorAll(selector)).find(n => headerMatches(n.querySelector('h3')?.textContent || '', expects)) : null;
+          if (!el) return '';
+          const h3 = el.querySelector('h3');
+          if (!h3) return (el.textContent || '').trim();
+          const clone = el.cloneNode(true);
+          const h3c = clone.querySelector('h3');
+          if (h3c) h3c.remove();
+          return (clone.textContent || '').replace(/\s+/g,' ').trim();
+        };
+
+        const cost = getText('.cost', ['Coût','Cost']);
+        let attribute = back ? (back.querySelector('.attribute i')?.textContent || '').trim() : '';
+        if (!attribute) attribute = getText('.attribute', ['Attribut','Attribute']);
+        const power = getText('.power', ['Puissance','Power']);
+        const counter = getText('.counter', ['Contre','Counter']);
+        const color = getText('.color', ['Couleur','Color']);
+        const types = getText('.feature', ['Type','Types']);
+        const effect = getText('.text', ['Effet','Effect','Card Text']);
+        const trigger = getText('.trigger', ['Déclenchement','Trigger']);
+        let extension = back ? (back.querySelector('.getInfo')?.textContent || '').replace(/\s+/g,' ').trim() : '';
+        if (!extension) {
+          // EN layout: header "Card Set(s)"
+          const cs = Array.from(back?.querySelectorAll('div') || []).find(n => /Card Set\(s\)/i.test(n.querySelector('h3')?.textContent || ''));
+          if (cs) {
+            const clone = cs.cloneNode(true);
+            const h = clone.querySelector('h3');
+            if (h) h.remove();
+            extension = `Card Set(s)-${(clone.textContent || '').replace(/\s+/g,' ').trim()}`;
+          }
+        }
+
+        // image associée via <a.modalOpen data-src="#ID"><img ... data-src/src></a>
+        let img = '';
+        const a = id ? root.querySelector(`a.modalOpen[data-src="#${CSS.escape(id)}"]`) : null;
+        const imgEl = a ? a.querySelector('img') : null;
+        if (imgEl) {
+          img = imgEl.getAttribute('data-src') || imgEl.getAttribute('src') || '';
+          if (img) {
+            try { img = new URL(img, location.href).toString(); } catch {}
+          }
+        }
+
+        result.push({ id, code, rarity, type, name, cost, attribute, power, counter, color, types, effect, trigger, extension, image: img, url: location.href + (id ? '#' + id : '') });
+      }
+      return result;
+    });
+
+    for (const c of pageCards) {
+      // Si aucune série n'est sélectionnée, appliquer un filtre par code/extension si demandé
+      if (!currentSeriesId) {
+        // Exemples acceptés: OP-12, OP12
+        const filters = { withDash: [], noDash: [] };
+        try { Object.assign(filters, window.__SET_FILTERS__ || {}); } catch {}
+        if (filters.withDash.length || filters.noDash.length) {
+          const codeNoDash = (c.code || '').replace(/-/g, '');
+          const ext = (c.extension || '').toUpperCase();
+          const matchCode = filters.withDash.some((s) => (c.code || '').toUpperCase().includes(s.toUpperCase())) ||
+                            filters.noDash.some((s) => codeNoDash.toUpperCase().includes(s.toUpperCase()));
+          const matchExt = filters.withDash.some((s) => ext.includes('[' + s.toUpperCase() + ']')) ||
+                           filters.noDash.some((s) => ext.includes('[' + s.toUpperCase() + ']') || ext.includes('[' + s.toUpperCase().replace(/-/g,'') + ']'));
+          if (!(matchCode || matchExt)) continue;
+        }
+      }
+      if (c.id && seenIds.has(c.id)) continue;
+      if (c.id) seenIds.add(c.id);
+      if (currentCollector) currentCollector.push(c); else cards.push(c);
+    }
+  }
+
+  // fonction pour cliquer “SUIV.”
+  async function goNextPage() {
+    // Cherche un bouton/lien "Suiv." robuste via plusieurs sélecteurs (dans tous les frames)
+    const nextSelectors = [
+      "a.nextBtn",
+      'a[rel="next"]',
+      '.pagination a.next',
+      'li.next a',
+      'a:has-text("SUIV")',
+      'button:has-text("SUIV")',
+    ];
+
+    let nextHandle = null;
+    const frames = page.frames();
+    for (const frame of frames) {
+      for (const sel of nextSelectors) {
+        const loc = frame.locator(sel).first();
+        if (!(await loc.count())) continue;
+        const isDisabled = await loc
+          .evaluate((el) => {
+      return (
+              el.getAttribute('aria-disabled') === 'true' ||
+              el.classList.contains('disabled') ||
+              getComputedStyle(el).pointerEvents === 'none'
+            );
+          })
+          .catch(() => false);
+        if (isDisabled) continue;
+        const h = await loc.elementHandle();
+        if (h) {
+          nextHandle = h;
+          break;
+        }
+      }
+      if (nextHandle) break;
+    }
+    if (!nextHandle) return false;
+
+    // Marqueurs avant navigation
+    const beforeState = await page.evaluate(() => {
+      const active = document.querySelector('.pager .pageBtn.current, .pagination .is-active, .pagination .active, .pagination .current');
+      const num = active ? (active.textContent || '').trim() : null;
+      const firstDl = document.querySelector('dl.modalCol');
+      const firstId = firstDl ? firstDl.getAttribute('id') : null;
+      return { num, firstId };
+    });
+
+    // Clique via JS (ne requiert pas la visibilité)
+    await page.evaluate((el) => el.click(), nextHandle);
+
+    // Attendre un vrai changement (numéro de page ou premier lien différent)
+    await page.waitForFunction(
+      (prev) => {
+        const active = document.querySelector('.pager .pageBtn.current, .pagination .is-active, .pagination .active, .pagination .current');
+        const num = active ? (active.textContent || '').trim() : null;
+        const firstDl = document.querySelector('dl.modalCol');
+        const firstId = firstDl ? firstDl.getAttribute('id') : null;
+        return (num && num !== prev.num) || (firstId && firstId !== prev.firstId);
+      },
+      beforeState,
+      { timeout: 30000 }
+    );
+
+    return true;
+  }
+
+  // Utilitaires pagination par numéros
+  async function getMaxPageNum() {
+    return await page.evaluate(() => {
+      const btns = Array.from(document.querySelectorAll('.pager a.pageBtn'));
+      const nums = btns.map((a) => parseInt((a.textContent || '').trim(), 10)).filter((n) => !Number.isNaN(n));
+      return nums.length ? Math.max(...nums) : 1;
+    });
+  }
+
+  async function getCurrentPageNum() {
+    return await page.evaluate(() => {
+      const cur = document.querySelector('.pager a.pageBtn.current');
+      const n = cur ? parseInt((cur.textContent || '').trim(), 10) : 1;
+      return Number.isNaN(n) ? 1 : n;
+    });
+  }
+
+  async function goToPage(targetNum) {
+    const before = await getCurrentPageNum();
+    if (before === targetNum) return true;
+    const clicked = await page.evaluate((n) => {
+      const btns = Array.from(document.querySelectorAll('.pager a.pageBtn'));
+      const target = btns.find((a) => (a.textContent || '').trim() === String(n));
+      if (target) {
+        target.click();
+        return true;
+      }
+      return false;
+    }, targetNum);
+    if (!clicked) return false;
+    await page.waitForFunction(
+      (n) => {
+        const cur = document.querySelector('.pager a.pageBtn.current');
+        return cur && (cur.textContent || '').trim() === String(n);
+      },
+      targetNum,
+      { timeout: 30000 }
+    );
+    await page.waitForFunction(
+      (n) => document.querySelectorAll('a.modalOpen.pcPage-' + String(n)).length > 0,
+      targetNum,
+      { timeout: 30000 }
+    );
+    return true;
+  }
+
+  async function scrapeCurrentSeries() {
+    const maxPage = await getMaxPageNum();
+    await collectPageCards();
+    for (let p = 2; p <= maxPage; p++) {
+      const ok = await goToPage(p);
+      if (!ok) break;
+      await collectPageCards();
+    }
+  }
+
+  if (targetSeries.length) {
+    for (const s of targetSeries) {
+      console.log(`== Série: ${s.label} (${s.value}) ==`);
+      // aller directement sur l'URL de la série
+      const url = `${baseUrl}?series=${encodeURIComponent(s.value)}`;
+      await page.goto(url, { waitUntil: 'domcontentloaded' });
+      await clickSearchIfAny(page);
+      // définir l'ID humain lisible (OP-xx)
+      {
+        const m = s.label.match(/\[([A-Z]{2,}-?\d{2})\]/);
+        if (m) {
+          currentSeriesId = m[1];
+        } else if (/Promotion\s*card/i.test(s.label) || /Carte\s*promo/i.test(s.label)) {
+          currentSeriesId = (/Promotion\s*card/i.test(s.label) && lang === 'en') ? 'PROMO_EN' : 'PROMO';
+        } else if (/Other\s*Product\s*Card/i.test(s.label) || /Autre(s)?\s*produit(s)?/i.test(s.label)) {
+          currentSeriesId = (/Other\s*Product\s*Card/i.test(s.label) && lang === 'en') ? 'OTHER_EN' : 'OTHER';
+        } else {
+          currentSeriesId = null;
+        }
+      }
+      // réinitialiser les IDs vus et le collecteur pour cette série
+      seenIds.clear();
+      const seriesCards = [];
+      currentCollector = seriesCards;
+      // attendre la présence des cartes
+      try {
+        await page.waitForFunction(() => document.querySelectorAll('dl.modalCol').length > 0, { timeout: 30000 });
+      } catch {}
+      await scrapeCurrentSeries();
+      currentCollector = null;
+
+      // Téléchargement images + sauvegarde pour CETTE série uniquement
+      const setId = currentSeriesId || s.label.match(/\[([A-Z]{2,}-?\d{2})\]/)?.[1] || 'UNKNOWN';
+      const setJsonDir = path.join(OUT_DIR, setId);
+      await fsp.mkdir(setJsonDir, { recursive: true });
+      const setImgDir = path.join(IMG_DIR, setId);
+      await fsp.mkdir(setImgDir, { recursive: true });
+
+      let idx = 0;
+      for (const card of seriesCards) {
+        idx++;
+        // Classement: forcer le setId courant pour garder les réimpressions dans la série sélectionnée
+    if (card.image) {
+      try {
+        const ext = path.extname(new URL(card.image).pathname || ".jpg") || ".jpg";
+            const baseName = sanitizeFilename(card.code || card.name || `card_${idx}`) + ext;
+            const imgPath = path.join(setImgDir, baseName);
+        await downloadImage(card.image, imgPath);
+            card.image_local = `images/${setId}/${baseName}`;
+      } catch (e) {
+        console.warn("Image DL fail:", e.message);
+      }
+        }
+        await new Promise((r) => setTimeout(r, 120));
+      }
+
+      const setJsonPath = path.join(setJsonDir, `cards-${setId}.json`);
+      await saveJSON(seriesCards, setJsonPath);
+      // Also append to global list
+      cards.push(...seriesCards);
+    }
+  } else {
+    await scrapeCurrentSeries();
+  }
+
+  console.log(`Trouvé ${cards.length} fiches.`);
+
+  // Si on a itéré par séries, les JSON/images par série sont déjà écrits.
+  // Sauvegarde JSON global agrégé (toutes séries confondues)
+  await saveJSON(cards, JSON_PATH);
+  await browser.close();
+
+  console.log(`OK. JSON: ${JSON_PATH} | Images: ${IMG_DIR}`);
+}
+
+scrapeAllCards().catch((err) => {
+  console.error(err);
+  process.exit(1);
+});

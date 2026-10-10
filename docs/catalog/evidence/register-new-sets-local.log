@@ -1,0 +1,86 @@
+{
+  "target": "local-cardgame",
+  "sets": [
+    {
+      "code": "OP-13",
+      "linked": 171,
+      "preservedReprints": 4,
+      "total": 171
+    },
+    {
+      "code": "OP-16",
+      "linked": 155,
+      "preservedReprints": 0,
+      "total": 155
+    },
+    {
+      "code": "OP-17",
+      "linked": 169,
+      "preservedReprints": 0,
+      "total": 169
+    },
+    {
+      "code": "OP14-EB04",
+      "linked": 196,
+      "preservedReprints": 3,
+      "total": 196
+    },
+    {
+      "code": "OP15-EB04",
+      "linked": 196,
+      "preservedReprints": 0,
+      "total": 196
+    },
+    {
+      "code": "ST-29",
+      "linked": 31,
+      "preservedReprints": 0,
+      "total": 31
+    },
+    {
+      "code": "ST-30",
+      "linked": 34,
+      "preservedReprints": 0,
+      "total": 34
+    },
+    {
+      "code": "ST-31",
+      "linked": 14,
+      "preservedReprints": 1,
+      "total": 14
+    },
+    {
+      "code": "ST-32",
+      "linked": 15,
+      "preservedReprints": 0,
+      "total": 15
+    },
+    {
+      "code": "ST-33",
+      "linked": 15,
+      "preservedReprints": 0,
+      "total": 15
+    },
+    {
+      "code": "ST-34",
+      "linked": 15,
+      "preservedReprints": 0,
+      "total": 15
+    },
+    {
+      "code": "ST-35",
+      "linked": 15,
+      "preservedReprints": 0,
+      "total": 15
+    },
+    {
+      "code": "ST-36",
+      "linked": 15,
+      "preservedReprints": 0,
+      "total": 15
+    }
+  ],
+  "playerHashBefore": "096ef6310e7894b4d064fd00f94cf10e1e14ae5ca54cc923490e5a19962c601c",
+  "playerHashAfter": "096ef6310e7894b4d064fd00f94cf10e1e14ae5ca54cc923490e5a19962c601c",
+  "rulesChanged": 0
+}

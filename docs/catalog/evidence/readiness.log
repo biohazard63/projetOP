@@ -1,0 +1,22 @@
+
+> cardgame@0.1.0 catalog:ready
+> node --import tsx scripts/catalog/readiness.ts
+
+{
+  "scope": "Conversion locale seulement ; aucune attribution, aucune écriture SQL. Images distantes non vérifiées, autorisation de publication à confirmer.",
+  "variants": 4179,
+  "distinctNumbers": 2667,
+  "frenchCompleteVariants": 4033,
+  "readyVariants": 3786,
+  "readyDistinctNumbers": 2523,
+  "provisionalReadyVariants": 3786,
+  "fullyVerifiedReadyVariants": 0,
+  "blockedVariants": 393,
+  "reasons": {
+    "fr_missing:ability": 139,
+    "fr_missing:effect": 133,
+    "fr_missing:trigger": 11,
+    "unknown_required_cost": 93,
+    "unresolved_numeric_conflict": 157
+  }
+}

@@ -27,7 +27,18 @@
     "test": "node --import tsx --test tests/*.test.ts",
     "test:functional": "node tests/functional.mjs",
     "test:boosters:integration": "node --import tsx --test tests/boosters.integration.ts",
-    "test:boosters:browser": "node tests/boosters.browser.mjs"
+    "test:boosters:browser": "node tests/boosters.browser.mjs",
+    "catalog:audit": "node --import tsx scripts/catalog/cli.ts audit",
+    "catalog:sync": "node --import tsx scripts/catalog/cli.ts sync",
+    "catalog:translate": "node --import tsx scripts/catalog/cli.ts translate",
+    "catalog:validate": "node --import tsx scripts/catalog/cli.ts validate",
+    "catalog:ready": "node --import tsx scripts/catalog/readiness.ts",
+    "catalog:import:dry-run": "node --import tsx scripts/catalog/cli.ts import",
+    "catalog:import:test": "node --import tsx scripts/catalog/cli.ts import --apply-test --prepare-schema",
+    "catalog:discover": "node scripts/scrape-onepiece-fr.js --list-sets",
+    "test:catalog:integration": "node --import tsx --test tests/catalog.integration.ts",
+    "test:catalog:browser": "node --import tsx tests/catalog.browser.ts",
+    "test:catalog:full-import": "node --import tsx --test tests/catalog.full-import.ts"
   },
   "dependencies": {
     "@auth/prisma-adapter": "^2.10.0",

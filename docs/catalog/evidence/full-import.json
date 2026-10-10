@@ -1,0 +1,30 @@
+{
+  "status": "PASS",
+  "isolated": true,
+  "variants": 4179,
+  "extensions": 74,
+  "memberships": 4821,
+  "legacyRowsModified": 0,
+  "protectedRowsDigestBefore": "9bddede4d32959335f4e8d33d16a860a199b6649ea740d2a48f6e2bc66f22673",
+  "protectedRowsDigestAfter": "9bddede4d32959335f4e8d33d16a860a199b6649ea740d2a48f6e2bc66f22673",
+  "first": {
+    "replayed": false,
+    "digest": "af4c56ef7f162729fcddc3c11c9f35fddcb07155fcdcf550c627d58b41f50092",
+    "counts": {
+      "identities": 2667,
+      "variants": 4179,
+      "extensions": 74,
+      "legacyRowsModified": 0
+    }
+  },
+  "second": {
+    "replayed": true,
+    "digest": "af4c56ef7f162729fcddc3c11c9f35fddcb07155fcdcf550c627d58b41f50092"
+  },
+  "previewCounts": {
+    "variantsCreated": 1041,
+    "variantsUpdated": 12,
+    "conflicts": 0,
+    "missingTranslations": 283
+  }
+}

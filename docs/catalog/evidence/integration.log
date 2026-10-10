@@ -1,0 +1,50 @@
+
+> cardgame@0.1.0 test:catalog:integration
+> node --import tsx --test tests/catalog.integration.ts
+
+TAP version 13
+# Subtest: additive schema preparation preserves every existing player/card/rules row
+ok 1 - additive schema preparation preserves every existing player/card/rules row
+  ---
+  duration_ms: 562.805709
+  type: 'test'
+  ...
+# Subtest: dry run performs no writes and reports exact legacy mapping without reassignment
+ok 2 - dry run performs no writes and reports exact legacy mapping without reassignment
+  ---
+  duration_ms: 1039.042084
+  type: 'test'
+  ...
+# Subtest: transaction failure leaves no catalogue identity, variant or successful run
+ok 3 - transaction failure leaves no catalogue identity, variant or successful run
+  ---
+  duration_ms: 28.957291
+  type: 'test'
+  ...
+# Subtest: two identical and concurrent imports create exactly two variants, three memberships, one receipt
+ok 4 - two identical and concurrent imports create exactly two variants, three memberships, one receipt
+  ---
+  duration_ms: 1017.334583
+  type: 'test'
+  ...
+# Subtest: partial later import cannot remove earlier art, reprints, translations or legacy links
+ok 5 - partial later import cannot remove earlier art, reprints, translations or legacy links
+  ---
+  duration_ms: 229.787584
+  type: 'test'
+  ...
+# Subtest: recorded opening and existing deck references remain identical after catalogue imports
+ok 6 - recorded opening and existing deck references remain identical after catalogue imports
+  ---
+  duration_ms: 15.167834
+  type: 'test'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 6
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3173.330417

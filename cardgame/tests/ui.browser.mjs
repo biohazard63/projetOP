@@ -38,7 +38,7 @@ try{
   const catalogue=await(await alice.get('/api/cards')).json();assert.ok(catalogue.some(card=>card.id===fixtureCards[0].id),'Fresh imported cards must be visible');
   const other=await(await bob.get('/api/collector')).json();assert.equal(other.total,0);assert.equal(other.unique,0);assert.equal(other.profile.email,users[1].email);
  });
- for(const route of ['/home','/collection','/boosters','/boosters/OP-EMPTY','/deck-builder','/decks','/history','/profile','/opening-demo','/login'])await alice.get(route);
+ for(const route of ['/home','/collection','/boosters','/boosters/OP-999992','/deck-builder','/decks','/history','/profile','/opening-demo','/login'])await alice.get(route);
  browser=await chromium.launch({executablePath:'/Applications/Google Chrome.app/Contents/MacOS/Google Chrome',headless:true});
  const context=await browser.newContext({storageState:await alice.storageState(),viewport:{width:1440,height:1000}});contexts.push(context);
  const page=await context.newPage();page.setDefaultTimeout(20000);
@@ -65,7 +65,7 @@ try{
  });
  await check('Booster carousel selection and empty extension remain explicit',async()=>{
   await page.goto(baseURL+'/boosters');await page.locator('.piece-carousel-active').waitFor();const initial=await page.getByTestId('selected-booster-artwork').getAttribute('alt');await page.getByRole('button',{name:'Extension suivante',exact:true}).click();await page.waitForFunction(alt=>document.querySelector('[data-testid=selected-booster-artwork]')?.alt!==alt,initial);assert.notEqual(await page.getByTestId('selected-booster-artwork').getAttribute('alt'),initial);
-  await page.goto(baseURL+'/boosters/OP-EMPTY');await page.getByRole('heading',{name:'Catalogue encore vide'}).waitFor();assert.equal(await page.getByRole('link',{name:'Ouvrir ce booster',exact:true}).count(),0);
+  await page.goto(baseURL+'/boosters/OP-999992');await page.getByRole('heading',{name:'Catalogue encore vide'}).waitFor();assert.equal(await page.getByRole('link',{name:'Ouvrir ce booster',exact:true}).count(),0);
  });
  let deckId;
  await check('Deck builder leader, quantity limit, 50 cards, chart and real server save',async()=>{
@@ -87,7 +87,7 @@ try{
  let opening;
  await check('Concurrent replay on secure opening is credited exactly once',async()=>{
   const before=(await db.userCard.aggregate({where:{userId:users[0].id},_sum:{quantity:true}}))._sum.quantity;
-  const body={setCode:'OP-TEST',idempotencyKey:randomUUID()};const responses=await Promise.all(Array.from({length:5},()=>alice.post('/api/booster/open',{data:body})));const data=await Promise.all(responses.map(r=>r.json()));opening=data[0].opening;
+  const body={setCode:'OP-999991',idempotencyKey:randomUUID()};const responses=await Promise.all(Array.from({length:5},()=>alice.post('/api/booster/open',{data:body})));const data=await Promise.all(responses.map(r=>r.json()));opening=data[0].opening;
   assert.equal(new Set(data.map(d=>d.opening.id)).size,1);assert.equal((await db.userCard.aggregate({where:{userId:users[0].id},_sum:{quantity:true}}))._sum.quantity,before+12);
   assert.equal((await bob.get(`/api/booster/openings/${opening.id}`)).status(),404);
  });
@@ -103,12 +103,12 @@ try{
   await page.getByLabel('Cinématiques d’ouverture').check();await page.getByLabel('Réduire les effets visuels').uncheck();
  });
  await check('Cinematic skips, resumes a receipt after refresh and never credits via animation',async()=>{
-  await page.goto(baseURL+'/booster-opening?set=OP-TEST');await page.locator('#booster-set').selectOption('OP-TEST');const before=(await db.boosterOpening.count({where:{userId:users[0].id}}));let posts=0;const listener=r=>{if(r.method()==='POST'&&new URL(r.url()).pathname==='/api/booster/open')posts++};page.on('request',listener);
+  await page.goto(baseURL+'/booster-opening?set=OP-999991');await page.locator('#booster-set').selectOption('OP-999991');const before=(await db.boosterOpening.count({where:{userId:users[0].id}}));let posts=0;const listener=r=>{if(r.method()==='POST'&&new URL(r.url()).pathname==='/api/booster/open')posts++};page.on('request',listener);
   await page.getByRole('button',{name:'Ouvrir le booster',exact:true}).click();await page.getByTestId('pack-animation').waitFor();await page.reload();await page.getByTestId('draw-slot').first().waitFor();await page.getByRole('button',{name:'Tout révéler',exact:true}).click();assert.equal(posts,1);assert.equal(await db.boosterOpening.count({where:{userId:users[0].id}}),before+1);page.off('request',listener);
   await page.screenshot({path:new URL('opening-result-desktop.png',evidence).pathname,fullPage:true});
  });
  await check('A completed receipt allows selection of another extension without attribution',async()=>{
-  const before=await db.boosterOpening.count({where:{userId:users[0].id}});await page.goto(baseURL+'/booster-opening?set=OP-OTHER');await page.getByTestId('draw-slot').first().waitFor();await page.waitForFunction(()=>document.querySelector('#booster-set')?.value==='OP-OTHER');assert.equal(await db.boosterOpening.count({where:{userId:users[0].id}}),before);
+  const before=await db.boosterOpening.count({where:{userId:users[0].id}});await page.goto(baseURL+'/booster-opening?set=OP-999994');await page.getByTestId('draw-slot').first().waitFor();await page.waitForFunction(()=>document.querySelector('#booster-set')?.value==='OP-999994');assert.equal(await db.boosterOpening.count({where:{userId:users[0].id}}),before);
  });
  for(const viewport of [{width:1440,height:1000},{width:820,height:1180},{width:390,height:844}]){
   await check(`Responsive navigation, card grid and scroll ${viewport.width}px`,async()=>{

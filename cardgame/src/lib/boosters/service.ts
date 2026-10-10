@@ -4,6 +4,7 @@ import { BoosterError, normalizeSetCode, resolveRules } from './rules'
 import { generateBooster, validatePools } from './generator'
 import { getBoosterArtwork } from './artwork'
 import type { BoosterCatalogItem, OpeningResult } from './types'
+import { isBoosterProduct } from './products'
 
 type DB = Prisma.TransactionClient
 const boosterId = (code: string) => `simulation:${createHash('sha256').update(code).digest('hex')}`
@@ -11,6 +12,7 @@ export const getSimulationBoosterId = boosterId
 const asJson = (value: unknown) => JSON.parse(JSON.stringify(value)) as Prisma.InputJsonValue
 const isRare = (card: Card) => ['R', 'SR', 'L', 'SEC', 'SP CARD', 'SR SP', 'TR'].includes(card.rarity.toUpperCase()) || card.isAltArt || card.isParallel || card.isSpecial
 function context(set: CardSet, cards: Card[], row: SetRules | null, booster: (Booster & { cards: BoosterCard[] }) | null) {
+  if (!isBoosterProduct(set.code)) throw new BoosterError('NOT_A_BOOSTER', 'Ce produit est consultable dans Extensions, mais ne peut pas être ouvert comme un booster.', 403)
   if (booster && booster.price !== 0) throw new BoosterError('PAID_BOOSTER_UNSUPPORTED', 'Ce booster exige un droit d’ouverture non configuré. Aucun paiement n’est effectué.', 403)
   const { rules, warnings } = resolveRules(row?.boosterRules)
   const links = booster?.cards || []
@@ -21,6 +23,7 @@ function context(set: CardSet, cards: Card[], row: SetRules | null, booster: (Bo
   return { set, rules, warnings, pool, weights, boosterId: boosterId(set.code) }
 }
 export async function getBoosterDrawContext(db: DB, requested: string) {
+  if (!isBoosterProduct(requested)) throw new BoosterError('NOT_A_BOOSTER', 'Ce produit ne peut pas être ouvert comme un booster.', 403)
   let set = await db.cardSet.findUnique({ where: { code: requested.trim().toUpperCase() } })
   if (!set) {
     const sets = await db.cardSet.findMany()

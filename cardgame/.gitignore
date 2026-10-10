@@ -59,3 +59,6 @@ Thumbs.db
 
 # Private local database backups (never commit)
 /.local-backups/
+
+# Rebuilt catalogues/snapshots: generated locally; rights and translations require review.
+/data/onepiece/

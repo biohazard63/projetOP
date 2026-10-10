@@ -1,0 +1,35 @@
+{
+  "scope": "Conversion locale seulement ; aucune attribution, aucune écriture SQL. Images distantes non vérifiées, autorisation de publication à confirmer.",
+  "variants": 4179,
+  "distinctNumbers": 2667,
+  "frenchCompleteVariants": 4033,
+  "readyVariants": 3786,
+  "readyDistinctNumbers": 2523,
+  "provisionalReadyVariants": 3786,
+  "fullyVerifiedReadyVariants": 0,
+  "blockedVariants": 393,
+  "reasons": {
+    "fr_missing:ability": 139,
+    "fr_missing:effect": 133,
+    "fr_missing:trigger": 11,
+    "unknown_required_cost": 93,
+    "unresolved_numeric_conflict": 157
+  }
+}
+{
+  "mode": "dry-run",
+  "files": 13,
+  "sourceVariants": 1049,
+  "insertable": 0,
+  "existingPreserved": 1049,
+  "blocked": 0,
+  "missingCardSets": [],
+  "cardSetsCreated": 0,
+  "existingCardsUpdated": 0,
+  "userRowsModified": 0,
+  "protectedBefore": "fe0fa38881dae03ee82196603dfba9437b555f4b828777ef012effe9e8e5a6ce",
+  "protectedAfter": "fe0fa38881dae03ee82196603dfba9437b555f4b828777ef012effe9e8e5a6ce",
+  "inserted": 0,
+  "cardsBefore": 4074,
+  "cardsAfter": 4074
+}

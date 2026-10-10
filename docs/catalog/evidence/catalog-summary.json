@@ -1,0 +1,415 @@
+{
+  "inventory": {
+    "observations": 20849,
+    "extensions": 74,
+    "distinctCards": 2667,
+    "variants": 4179,
+    "reprintedVariants": 485,
+    "memberships": 4821,
+    "translations": {
+      "official": 13964,
+      "validated": 0,
+      "machine": 11794,
+      "review_required": 6192
+    },
+    "untranslatedFields": 301,
+    "reviewFields": 18027,
+    "unassignedVariants": 0
+  },
+  "readiness": {
+    "scope": "Conversion locale seulement ; aucune attribution, aucune écriture SQL. Images distantes non vérifiées, autorisation de publication à confirmer.",
+    "variants": 4179,
+    "distinctNumbers": 2667,
+    "frenchCompleteVariants": 4033,
+    "readyVariants": 3786,
+    "readyDistinctNumbers": 2523,
+    "provisionalReadyVariants": 3786,
+    "fullyVerifiedReadyVariants": 0,
+    "blockedVariants": 393,
+    "reasons": {
+      "fr_missing:ability": 139,
+      "fr_missing:effect": 133,
+      "fr_missing:trigger": 11,
+      "unknown_required_cost": 93,
+      "unresolved_numeric_conflict": 157
+    },
+    "extensions": [
+      {
+        "code": "ANIME",
+        "variants": 1,
+        "ready": 1
+      },
+      {
+        "code": "CARDS-OTHER",
+        "variants": 0,
+        "ready": 0
+      },
+      {
+        "code": "CARDS-OTHEREN",
+        "variants": 41,
+        "ready": 28
+      },
+      {
+        "code": "CARDS-PROMO",
+        "variants": 29,
+        "ready": 29
+      },
+      {
+        "code": "CARDS-PROMOEN",
+        "variants": 280,
+        "ready": 167
+      },
+      {
+        "code": "EB-01",
+        "variants": 80,
+        "ready": 74
+      },
+      {
+        "code": "EB-02",
+        "variants": 105,
+        "ready": 80
+      },
+      {
+        "code": "EVENT",
+        "variants": 4,
+        "ready": 4
+      },
+      {
+        "code": "GC-01",
+        "variants": 13,
+        "ready": 12
+      },
+      {
+        "code": "INCLUDED",
+        "variants": 37,
+        "ready": 36
+      },
+      {
+        "code": "OP-01",
+        "variants": 154,
+        "ready": 135
+      },
+      {
+        "code": "OP-02",
+        "variants": 154,
+        "ready": 134
+      },
+      {
+        "code": "OP-03",
+        "variants": 154,
+        "ready": 138
+      },
+      {
+        "code": "OP-04",
+        "variants": 149,
+        "ready": 137
+      },
+      {
+        "code": "OP-05",
+        "variants": 154,
+        "ready": 139
+      },
+      {
+        "code": "OP-06",
+        "variants": 151,
+        "ready": 137
+      },
+      {
+        "code": "OP-07",
+        "variants": 151,
+        "ready": 139
+      },
+      {
+        "code": "OP-08",
+        "variants": 151,
+        "ready": 139
+      },
+      {
+        "code": "OP-09",
+        "variants": 167,
+        "ready": 155
+      },
+      {
+        "code": "OP-10",
+        "variants": 151,
+        "ready": 151
+      },
+      {
+        "code": "OP-11",
+        "variants": 156,
+        "ready": 156
+      },
+      {
+        "code": "OP-12",
+        "variants": 155,
+        "ready": 155
+      },
+      {
+        "code": "OP-13",
+        "variants": 175,
+        "ready": 160
+      },
+      {
+        "code": "OP-16",
+        "variants": 155,
+        "ready": 142
+      },
+      {
+        "code": "OP-17",
+        "variants": 169,
+        "ready": 152
+      },
+      {
+        "code": "OP14-EB04",
+        "variants": 199,
+        "ready": 185
+      },
+      {
+        "code": "OP15-EB04",
+        "variants": 196,
+        "ready": 173
+      },
+      {
+        "code": "OTHER",
+        "variants": 50,
+        "ready": 36
+      },
+      {
+        "code": "PIRATES",
+        "variants": 6,
+        "ready": 5
+      },
+      {
+        "code": "PRB-01",
+        "variants": 400,
+        "ready": 397
+      },
+      {
+        "code": "PRE-RELEASE",
+        "variants": 4,
+        "ready": 4
+      },
+      {
+        "code": "PREMIUM",
+        "variants": 22,
+        "ready": 20
+      },
+      {
+        "code": "PROMO",
+        "variants": 322,
+        "ready": 206
+      },
+      {
+        "code": "REGIONAL",
+        "variants": 3,
+        "ready": 3
+      },
+      {
+        "code": "SEALED",
+        "variants": 10,
+        "ready": 9
+      },
+      {
+        "code": "SPECIAL",
+        "variants": 1,
+        "ready": 0
+      },
+      {
+        "code": "ST-01",
+        "variants": 17,
+        "ready": 14
+      },
+      {
+        "code": "ST-02",
+        "variants": 17,
+        "ready": 16
+      },
+      {
+        "code": "ST-03",
+        "variants": 17,
+        "ready": 16
+      },
+      {
+        "code": "ST-04",
+        "variants": 17,
+        "ready": 16
+      },
+      {
+        "code": "ST-05",
+        "variants": 17,
+        "ready": 16
+      },
+      {
+        "code": "ST-06",
+        "variants": 17,
+        "ready": 16
+      },
+      {
+        "code": "ST-07",
+        "variants": 17,
+        "ready": 16
+      },
+      {
+        "code": "ST-08",
+        "variants": 15,
+        "ready": 14
+      },
+      {
+        "code": "ST-09",
+        "variants": 15,
+        "ready": 14
+      },
+      {
+        "code": "ST-10",
+        "variants": 19,
+        "ready": 15
+      },
+      {
+        "code": "ST-11",
+        "variants": 15,
+        "ready": 11
+      },
+      {
+        "code": "ST-12",
+        "variants": 17,
+        "ready": 16
+      },
+      {
+        "code": "ST-13",
+        "variants": 35,
+        "ready": 29
+      },
+      {
+        "code": "ST-14",
+        "variants": 17,
+        "ready": 12
+      },
+      {
+        "code": "ST-15",
+        "variants": 18,
+        "ready": 16
+      },
+      {
+        "code": "ST-16",
+        "variants": 18,
+        "ready": 17
+      },
+      {
+        "code": "ST-17",
+        "variants": 20,
+        "ready": 19
+      },
+      {
+        "code": "ST-18",
+        "variants": 18,
+        "ready": 17
+      },
+      {
+        "code": "ST-19",
+        "variants": 21,
+        "ready": 20
+      },
+      {
+        "code": "ST-20",
+        "variants": 17,
+        "ready": 16
+      },
+      {
+        "code": "ST-21",
+        "variants": 32,
+        "ready": 32
+      },
+      {
+        "code": "ST-23",
+        "variants": 15,
+        "ready": 15
+      },
+      {
+        "code": "ST-24",
+        "variants": 15,
+        "ready": 15
+      },
+      {
+        "code": "ST-25",
+        "variants": 15,
+        "ready": 15
+      },
+      {
+        "code": "ST-26",
+        "variants": 15,
+        "ready": 15
+      },
+      {
+        "code": "ST-27",
+        "variants": 15,
+        "ready": 15
+      },
+      {
+        "code": "ST-28",
+        "variants": 15,
+        "ready": 15
+      },
+      {
+        "code": "ST-29",
+        "variants": 31,
+        "ready": 29
+      },
+      {
+        "code": "ST-30",
+        "variants": 34,
+        "ready": 32
+      },
+      {
+        "code": "ST-31",
+        "variants": 15,
+        "ready": 12
+      },
+      {
+        "code": "ST-32",
+        "variants": 15,
+        "ready": 14
+      },
+      {
+        "code": "ST-33",
+        "variants": 15,
+        "ready": 14
+      },
+      {
+        "code": "ST-34",
+        "variants": 15,
+        "ready": 14
+      },
+      {
+        "code": "ST-35",
+        "variants": 15,
+        "ready": 14
+      },
+      {
+        "code": "ST-36",
+        "variants": 15,
+        "ready": 14
+      },
+      {
+        "code": "SUPER",
+        "variants": 2,
+        "ready": 2
+      },
+      {
+        "code": "TOURNAMENT",
+        "variants": 28,
+        "ready": 28
+      },
+      {
+        "code": "WINNER",
+        "variants": 1,
+        "ready": 1
+      }
+    ]
+  },
+  "untranslatedByField": {
+    "effect": 133,
+    "ability": 139,
+    "trigger": 11,
+    "extension": 18
+  }
+}

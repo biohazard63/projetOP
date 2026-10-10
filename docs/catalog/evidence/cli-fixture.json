@@ -1,0 +1,12 @@
+{
+  "status": "PASS",
+  "syntheticFixture": true,
+  "checks": [
+    "list-sets",
+    "multiple-targets",
+    "sync-new-only",
+    "update-existing",
+    "dry-run-master-unchanged",
+    "unauthorized-remote-blocked"
+  ]
+}

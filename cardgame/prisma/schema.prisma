@@ -82,7 +82,7 @@ model Card {
   name                String
   type                String
   color               String
-  cost                Int
+  cost                Int?
   power               Int?
   counter             String?
   effect              String?
@@ -139,7 +139,7 @@ model CardSet {
   id          String    @id @default(cuid())
   name        String
   code        String    @unique
-  releaseDate DateTime
+  releaseDate DateTime?
   description String?
   imageUrl    String?
   boosters    Booster[]

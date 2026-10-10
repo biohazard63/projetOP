@@ -1,0 +1,17 @@
+(node:10090) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/quentin/Documents/GitHub/projetOP/cardgame/scripts/scrape-onepiece-fr.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/quentin/Documents/GitHub/projetOP/cardgame/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10104) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/quentin/Documents/GitHub/projetOP/cardgame/scripts/scrape-onepiece-fr.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/quentin/Documents/GitHub/projetOP/cardgame/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10118) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/quentin/Documents/GitHub/projetOP/cardgame/scripts/scrape-onepiece-fr.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/quentin/Documents/GitHub/projetOP/cardgame/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+(node:10129) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/quentin/Documents/GitHub/projetOP/cardgame/scripts/scrape-onepiece-fr.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/quentin/Documents/GitHub/projetOP/cardgame/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+{"status":"PASS","syntheticFixture":true,"checks":["list-sets","multiple-targets","sync-new-only","update-existing","dry-run-master-unchanged","unauthorized-remote-blocked"]}

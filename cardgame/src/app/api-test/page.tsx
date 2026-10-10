@@ -15,7 +15,7 @@ interface Set {
     expanded: string;
   };
   ptcgoCode: string;
-  releaseDate: string;
+  releaseDate: string | null;
   updatedAt: string;
   images: {
     symbol: string;
@@ -136,7 +136,7 @@ export default function ApiTestPage() {
                 
                 <div className="text-sm text-gray-600">
                   <p><span className="font-medium">Série:</span> {set.series}</p>
-                  <p><span className="font-medium">Date de sortie:</span> {new Date(set.releaseDate).toLocaleDateString()}</p>
+                  <p><span className="font-medium">Date de sortie:</span> {set.releaseDate ? new Date(set.releaseDate).toLocaleDateString() : 'Non renseignée'}</p>
                   <p><span className="font-medium">Cartes:</span> {set.printedTotal} / {set.total}</p>
                   <p><span className="font-medium">Code:</span> {set.ptcgoCode || 'N/A'}</p>
                 </div>
@@ -163,4 +163,4 @@ export default function ApiTestPage() {
       </div>
     </div>
   );
-} 
+}

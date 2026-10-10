@@ -1,0 +1,27 @@
+
+> cardgame@0.1.0 catalog:sync
+> node --import tsx scripts/catalog/cli.ts sync
+
+{
+  "observations": 19800,
+  "extensions": 61,
+  "distinctCards": 1938,
+  "variants": 3138,
+  "reprintedVariants": 480,
+  "memberships": 3772,
+  "translations": {
+    "official": 7809,
+    "validated": 0,
+    "machine": 10166,
+    "review_required": 6753
+  },
+  "untranslatedFields": 419,
+  "reviewFields": 16960,
+  "unassignedVariants": 0,
+  "conflicts": 221,
+  "missingLocalImages": 3138,
+  "database": {
+    "status": "NOT_TESTED",
+    "reason": "Audit fichiers uniquement"
+  }
+}
