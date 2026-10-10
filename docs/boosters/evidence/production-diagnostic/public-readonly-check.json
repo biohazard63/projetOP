@@ -1,0 +1,36 @@
+{
+  "date": "2026-10-09T18:53:03.687Z",
+  "host": "projet-op.vercel.app",
+  "method": "GET only, unauthenticated",
+  "results": [
+    {
+      "path": "/api/cards",
+      "status": 200,
+      "cards": 3033,
+      "selectedSetCards": 15,
+      "rarities": {
+        "L": 1,
+        "UC": 4,
+        "C": 6,
+        "R": 2,
+        "SR": 2
+      }
+    },
+    {
+      "path": "/api/sets",
+      "status": 200
+    },
+    {
+      "path": "/api/booster",
+      "status": 401
+    },
+    {
+      "path": "/api/booster/history",
+      "status": 401
+    },
+    {
+      "path": "/api/collector",
+      "status": 401
+    }
+  ]
+}

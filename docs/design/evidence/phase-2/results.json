@@ -1,0 +1,26 @@
+[
+  {
+    "test": "Explicit extension URL determines selected booster",
+    "status": "PASS"
+  },
+  {
+    "test": "Real OP/EB/ST family tabs restrict extensions",
+    "status": "PASS"
+  },
+  {
+    "test": "Search and selected extension persist through reload",
+    "status": "PASS"
+  },
+  {
+    "test": "Empty search state is explicit",
+    "status": "PASS"
+  },
+  {
+    "test": "Empty fixture extension cannot be opened",
+    "status": "PASS"
+  },
+  {
+    "test": "Mobile/desktop layout, no JavaScript errors and no opening attribution",
+    "status": "PASS"
+  }
+]

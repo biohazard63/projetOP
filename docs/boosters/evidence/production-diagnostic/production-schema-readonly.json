@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-10T07:30:46.400Z",
+  "target": "Production PostgreSQL Neon (user-supplied connection)",
+  "status": "FAIL",
+  "missingColumns": [
+    "idempotencyKey",
+    "creditedAt",
+    "resultSnapshot",
+    "rulesSnapshot"
+  ],
+  "readOnly": true,
+  "transactionReadOnly": [
+    {
+      "transaction_read_only": "on"
+    }
+  ],
+  "columns": [
+    {
+      "table_name": "BoosterOpening",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_name": "BoosterOpening",
+      "column_name": "userId",
+      "data_type": "text"
+    },
+    {
+      "table_name": "BoosterOpening",
+      "column_name": "boosterId",
+      "data_type": "text"
+    },
+    {
+      "table_name": "BoosterOpening",
+      "column_name": "openedAt",
+      "data_type": "timestamp without time zone"
+    },
+    {
+      "table_name": "BoosterOpeningCard",
+      "column_name": "id",
+      "data_type": "text"
+    },
+    {
+      "table_name": "BoosterOpeningCard",
+      "column_name": "boosterOpeningId",
+      "data_type": "text"
+    },
+    {
+      "table_name": "BoosterOpeningCard",
+      "column_name": "cardId",
+      "data_type": "text"
+    },
+    {
+      "table_name": "BoosterOpeningCard",
+      "column_name": "position",
+      "data_type": "integer"
+    }
+  ],
+  "indexes": [
+    {
+      "tablename": "BoosterOpening",
+      "indexdef": "CREATE UNIQUE INDEX \"BoosterOpening_pkey\" ON public.\"BoosterOpening\" USING btree (id)"
+    },
+    {
+      "tablename": "BoosterOpeningCard",
+      "indexdef": "CREATE UNIQUE INDEX \"BoosterOpeningCard_pkey\" ON public.\"BoosterOpeningCard\" USING btree (id)"
+    },
+    {
+      "tablename": "BoosterOpeningCard",
+      "indexdef": "CREATE UNIQUE INDEX \"BoosterOpeningCard_boosterOpeningId_position_key\" ON public.\"BoosterOpeningCard\" USING btree (\"boosterOpeningId\", \"position\")"
+    }
+  ],
+  "migrations": [
+    {
+      "migration_name": "20250413132207_add_set_to_cards",
+      "finished_at": "2025-05-03T10:49:34.085Z",
+      "rolled_back_at": null
+    },
+    {
+      "migration_name": "20250413133815_add_code_field",
+      "finished_at": "2025-05-03T10:49:34.263Z",
+      "rolled_back_at": null
+    },
+    {
+      "migration_name": "20250413153757_add_deck_card_model",
+      "finished_at": "2025-05-03T10:49:34.437Z",
+      "rolled_back_at": null
+    },
+    {
+      "migration_name": "20250413205413_add_user_points",
+      "finished_at": "2025-05-03T10:49:34.624Z",
+      "rolled_back_at": null
+    },
+    {
+      "migration_name": "20250427094104_add_game_state",
+      "finished_at": "2025-05-03T10:49:34.811Z",
+      "rolled_back_at": null
+    },
+    {
+      "migration_name": "20250427105028_update_schema",
+      "finished_at": "2025-05-03T10:49:35.078Z",
+      "rolled_back_at": null
+    },
+    {
+      "migration_name": "20250427112811_make_deck_userid_nullable",
+      "finished_at": "2025-05-03T10:49:35.255Z",
+      "rolled_back_at": null
+    },
+    {
+      "migration_name": "20250428113705_add_card_special_fields",
+      "finished_at": "2025-05-03T10:49:35.428Z",
+      "rolled_back_at": null
+    },
+    {
+      "migration_name": "20250428170807_add_booster_opening_cards",
+      "finished_at": "2025-05-03T10:49:35.602Z",
+      "rolled_back_at": null
+    },
+    {
+      "migration_name": "20250429091219_add_booster_rules",
+      "finished_at": "2025-05-03T10:49:35.781Z",
+      "rolled_back_at": null
+    },
+    {
+      "migration_name": "20250429102215_add_set_rules",
+      "finished_at": "2025-05-03T10:49:35.947Z",
+      "rolled_back_at": null
+    },
+    {
+      "migration_name": "20250503104438_add_oauth_support",
+      "finished_at": "2025-05-03T10:49:36.135Z",
+      "rolled_back_at": null
+    }
+  ],
+  "counts": [
+    {
+      "cards": 3033,
+      "sets": 46,
+      "openings": 0
+    }
+  ]
+}

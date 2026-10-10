@@ -1,10 +1,12 @@
 import { test, before, after } from 'node:test'
 import assert from 'node:assert/strict'
 import { randomUUID, createHash } from 'node:crypto'
-import { Prisma } from '@prisma/client'
+import { Prisma, PrismaClient } from '@prisma/client'
 import { isolatedBoosterDb, seedBoosters } from './seed-boosters'
 import { openBooster, getOpening, getBoosterCatalog } from '../src/lib/boosters/service'
 import { BoosterError } from '../src/lib/boosters/rules'
+import { inspectBoosterDatabase } from '../src/lib/boosters/database-check'
+import { describeBoosterFailure } from '../src/lib/boosters/failure'
 const db = isolatedBoosterDb()
 const tag = randomUUID(); let userId: string
 const canonical = (code: string) => `simulation:${createHash('sha256').update(code).digest('hex')}`
@@ -12,6 +14,33 @@ before(async () => { await seedBoosters(db); userId = (await db.user.create({ da
 after(async () => db.$disconnect())
 const errorCode = (code: string) => (e: unknown) => e instanceof BoosterError && e.code === code
 async function quantity(id = userId) { return (await db.userCard.aggregate({ where: { userId: id }, _sum: { quantity: true } }))._sum.quantity || 0 }
+
+test('database readiness verifies receipt columns and unique indexes without crediting cards', async () => {
+ const before = await quantity(); const openings = await db.boosterOpening.count()
+ const result = await inspectBoosterDatabase(db)
+ assert.equal(result.status, 'PASS'); assert.deepEqual(result.missingColumns, [])
+ assert.equal(result.idempotencyIndex, true); assert.equal(result.positionsIndex, true)
+ assert.equal(await quantity(), before); assert.equal(await db.boosterOpening.count(), openings)
+})
+test('an unmigrated isolated schema reproduces the hidden production-style column error', async () => {
+ // New isolated fixture schema only. No existing table is altered or reset.
+ const schema = `booster_diag_${randomUUID().replaceAll('-', '')}`
+ await db.$executeRawUnsafe(`CREATE SCHEMA "${schema}"`)
+ await db.$executeRawUnsafe(`CREATE TABLE "${schema}"."BoosterOpening" ("id" TEXT PRIMARY KEY, "userId" TEXT, "boosterId" TEXT)`)
+ const url = new URL(process.env.DATABASE_URL!); url.searchParams.set('schema', schema)
+ const fixture = new PrismaClient({ datasourceUrl: url.toString() })
+ try {
+  const result = await inspectBoosterDatabase(fixture)
+  assert.equal(result.status, 'FAIL'); assert.equal(result.missingColumns.length, 4)
+  assert.equal(result.migrationRecorded, false); assert.equal(result.idempotencyIndex, false)
+  await assert.rejects(openBooster(fixture, userId, 'OP-TEST', randomUUID()), error => {
+   const failure = describeBoosterFailure(error)
+   assert.equal(failure.databaseCode, 'P2022'); assert.equal(failure.code, 'DATABASE_SCHEMA_OUTDATED')
+   return true
+  })
+  assert.equal(await fixture.$queryRaw<{ count: bigint }[]>`SELECT count(*) FROM "BoosterOpening"`.then(rows => Number(rows[0].count)), 0)
+ } finally { await fixture.$disconnect() }
+})
 
 test('catalog explicitly distinguishes eligible, empty and incomplete extensions', async () => {
  const catalog = await getBoosterCatalog(db)

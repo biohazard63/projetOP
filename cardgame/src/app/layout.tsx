@@ -2,6 +2,7 @@ import './globals.css'
 import './collector.css'
 import { CollectorPreferencesProvider } from '@/components/collector/Preferences'
 import Link from 'next/link'
+import { OpeningPresentationProvider } from '@/components/collector/OpeningPresentation'
 import { Inter } from 'next/font/google'
 import { Navbar } from '@/components/Navbar'
 import { Providers } from './providers'
@@ -12,11 +13,11 @@ import { PWAInstallPrompt } from '@/components/PWAInstallPrompt'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export const viewport = { width: 'device-width', initialScale: 1, themeColor: '#080F1F' }
+export const viewport = { width: 'device-width', initialScale: 1, viewportFit: 'cover', themeColor: [{ media: '(prefers-color-scheme: dark)', color: '#071222' }, { media: '(prefers-color-scheme: light)', color: '#F8F6F0' }] }
 
 export const metadata = {
-  title: 'One Piece Card Game',
-  description: 'Mugiwara TCG – L\'application fan-made française du One Piece Card Game. Ouvre des boosters réalistes, collectionne tes cartes et affronte d\'autres joueurs pirates.',
+  title: 'Mugiwara TCG',
+  description: 'Mugiwara TCG – L\'application fan-made française du One Piece Card Game. Collectionne tes cartes, ouvre des boosters et construis tes decks.',
   manifest: '/manifest.json',
   appleWebApp: {
     capable: true,
@@ -59,7 +60,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning className={cn(inter.className, "min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))] overflow-x-hidden")}>
         <Providers>
-          <CollectorPreferencesProvider>
+          <CollectorPreferencesProvider><OpeningPresentationProvider>
           <a className="piece-skip" href="#main-content">Aller au contenu</a>
           <div className="relative min-h-screen">
             {/* Fond: image + dégradés radiaux et overlay */}
@@ -73,9 +74,8 @@ export default function RootLayout({
          
           </div>
           <footer className="piece-footer"><span>MUGIWARA TCG · Votre aventure, carte après carte.</span><span>Projet de fans · Simulation gratuite <Link href="/opening-demo" className="ml-4 text-amber-200">Démo cinématique</Link></span></footer>
-          </CollectorPreferencesProvider>
+            <PWAInstallPrompt /></OpeningPresentationProvider></CollectorPreferencesProvider>
         </Providers>
-        <PWAInstallPrompt />
         {/* <PWAAuthHelper /> */}
         <Analytics />
       </body>

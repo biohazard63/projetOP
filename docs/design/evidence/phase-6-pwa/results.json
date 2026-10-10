@@ -1,0 +1,54 @@
+[
+  {
+    "name": "Compact home uses real unique/copy/deck statistics and three mobile tiles",
+    "status": "PASS"
+  },
+  {
+    "name": "Mobile history opens recorded result, nested card and closes back to row without credit",
+    "status": "PASS"
+  },
+  {
+    "name": "Private receipts refuse another user and history is no-store",
+    "status": "PASS"
+  },
+  {
+    "name": "Extension progression links to only missing cards of the selected real set",
+    "status": "PASS"
+  },
+  {
+    "name": "Profile preferences persist independently and installation guidance is accessible",
+    "status": "PASS"
+  },
+  {
+    "name": "Preferences wait for identity and never write the guest key for an authenticated account",
+    "status": "PASS"
+  },
+  {
+    "name": "Home history profile progress are responsive at seven viewports",
+    "status": "PASS"
+  },
+  {
+    "name": "Light theme pages and browser theme color follow the chosen preference",
+    "status": "PASS"
+  },
+  {
+    "name": "Manifest assets and real service worker cache only public allowlist",
+    "status": "PASS"
+  },
+  {
+    "name": "Offline private navigation shows generic fallback without personal content",
+    "status": "PASS"
+  },
+  {
+    "name": "Install prompt UI and iOS manual guidance use supported paths",
+    "status": "PASS"
+  },
+  {
+    "name": "Update UI refuses an unconfirmed intent and requires explicit activation",
+    "status": "PASS"
+  },
+  {
+    "name": "No JavaScript errors or extra rewards across mobile pages",
+    "status": "PASS"
+  }
+]

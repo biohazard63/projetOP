@@ -1,6 +1,7 @@
 'use client'
 
 import BoosterArtwork from './BoosterArtwork'
+import { useVibration } from '@/hooks/useVibration'
 import CinematicOpening, { CINEMATIC_DURATION } from './CinematicOpening'
 import { useCollectorPreferences } from '@/components/collector/Preferences'
 import { cardEffect } from '@/lib/collector/effects'
@@ -37,6 +38,7 @@ function CardImage({ card }: { card: OpeningCard }) {
 
 export default function BoosterExperience() {
   const { data: session, status } = useSession()
+  const vibrate = useVibration()
   const preferences = useCollectorPreferences()
   const requestedSet = useSearchParams().get('set')
   const [reducedMotion, setReducedMotion] = useState(true)
@@ -144,6 +146,7 @@ export default function BoosterExperience() {
 
   function reveal(count: number) {
     if (!opening) return
+    vibrate()
     if (timer.current) clearTimeout(timer.current)
     const next = Math.min(count, opening.cards.length)
     setRevealed(next); setAnimating(false)
