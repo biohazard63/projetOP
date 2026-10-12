@@ -5,6 +5,7 @@ import { PURPLE_CARDS, M3_FULL_REGISTRY } from '../../game/cards/m3PurpleDeck'
 import { effectiveStatus } from '../../game/cards/certification'
 import { M3_RULESET } from '../../game/rulesets/m3'
 import { M5_RULESET } from '../../game/rulesets/m5'
+import { FREE_RULESET } from '../../game/rulesets/free'
 import { M5_CARDS } from '../../game/cards/m5Catalog'
 import { validateRegistry, type EffectRegistry } from '../../game/effects/contracts'
 import type { CardDefinition, CardInput, CardPrinting } from '../../game/cards/types'
@@ -26,7 +27,10 @@ export const m3EngineCatalog = (): { definitions: CardDefinition[]; printings: C
 export const engineCatalog = (): { definitions: CardDefinition[]; printings: CardPrinting[] } => consolidated([...m3Cards(), ...M5_CARDS])
 export const engineRegistry = (): EffectRegistry => validateRegistry(structuredClone(M3_FULL_REGISTRY))
 export const m3EngineRuleset = (): Ruleset => structuredClone(M3_RULESET)
-export const engineRuleset = (): Ruleset => structuredClone(M5_RULESET)
+/** Ruleset of new /play games: the permanent free format. Existing games keep the ruleset stored in their state. */
+export const engineRuleset = (): Ruleset => structuredClone(FREE_RULESET)
+/** Official reviewed subset (restriction snapshot of 2026-10-12), kept for a future distinct official format. */
+export const officialSubsetRuleset = (): Ruleset => structuredClone(M5_RULESET)
 
 export type PrismaCardRow = { id: string; code: string; name: string; type: string; color: string; cost: number | null; power: number | null; counter: string | null; imageUrl: string; isAltArt: boolean; isParallel: boolean; isSpecial: boolean }
 export type CardDisplay = { definitionId: string; number: string; name: string; category: CardDefinition['category']; colors: string[]; cost: number | null; power: number | null; counter: number | null; life: number | null; text: string; trigger: string; imageUrl: string | null; certified: boolean }

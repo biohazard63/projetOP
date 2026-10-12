@@ -1,11 +1,17 @@
 import type { CardDefinition, CardPrinting } from '../cards/types'
 export type Restriction = { kind: 'banned'; number: string; effectiveFrom: string; source: string } | { kind: 'limited'; number: string; limit: number; effectiveFrom: string; source: string } | { kind: 'pair'; numbers: [string, string]; effectiveFrom: string; source: string }
-export type Ruleset = { id: string; date: string; rulesVersion: string; competitive: boolean; restrictionWindow: { from: string; through: string }; restrictions: Restriction[]; allowedNumbers: string[]; capabilities: string[]; allowedBlocks?: string[] }
+// format OFFICIAL_SUBSET (default): an official restriction snapshot valid inside its window. format FREE: a permanent
+// Mugiwara format with no official ban list and no window; every structural rule (CR §5-1-2) still applies.
+export type RulesetFormat = 'OFFICIAL_SUBSET' | 'FREE'
+export type Ruleset = { id: string; format?: RulesetFormat; date: string; rulesVersion: string; competitive: boolean; restrictionWindow: { from: string; through: string } | null; restrictions: Restriction[]; allowedNumbers: string[]; capabilities: string[]; allowedBlocks?: string[] }
 export type DeckEntry = { printingKey: string; quantity: number }
 // Composition mode validates data only; it must never authorize launching a game.
 export function validateEngineDeck(entries: DeckEntry[], definitions: CardDefinition[], printings: CardPrinting[], ruleset: Ruleset, mode: 'playable' | 'composition' = 'playable'): string[] {
   const errors: string[] = []
-  if (!/^\d{4}-\d{2}-\d{2}$/.test(ruleset.date) || ruleset.date < ruleset.restrictionWindow.from || ruleset.date > ruleset.restrictionWindow.through) errors.push('RESTRICTIONS_OUT_OF_DATE')
+  if (ruleset.format === 'FREE') {
+    // A free format is permanent only if it carries no official element that could expire or need re-reading.
+    if (ruleset.restrictionWindow !== null || ruleset.restrictions.length || ruleset.competitive || ruleset.allowedBlocks) errors.push('INVALID_FREE_FORMAT')
+  } else if (!/^\d{4}-\d{2}-\d{2}$/.test(ruleset.date) || !ruleset.restrictionWindow || ruleset.date < ruleset.restrictionWindow.from || ruleset.date > ruleset.restrictionWindow.through) errors.push('RESTRICTIONS_OUT_OF_DATE')
   if (ruleset.competitive && !ruleset.allowedBlocks) errors.push('FORMAT_NOT_VERIFIED')
   const byId = new Map(definitions.map(d => [d.definitionId, d]))
   const byPrinting = new Map(printings.map(p => [p.printingKey, p]))

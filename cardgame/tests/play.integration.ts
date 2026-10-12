@@ -71,7 +71,9 @@ test('M5 (PostgreSQL): the bot level is stored, statistics are derived per user,
   const created = await playHandlers.start(user.id, { deck: { kind: 'reference', id: 'reference-purple' }, botLevel: 'hard' }, play, new PrismaDeckSource(db))
   assert.equal(created.status, 201)
   const game = (created.body as { game: { gameId: string; botLevel: string } }).game
-  assert.equal(game.botLevel, 'hard'); assert.equal((await db.engineGame.findUniqueOrThrow({ where: { id: game.gameId } })).botLevel, 'hard')
+  assert.equal(game.botLevel, 'hard')
+  const row = await db.engineGame.findUniqueOrThrow({ where: { id: game.gameId } })
+  assert.equal(row.botLevel, 'hard'); assert.equal(row.rulesetId, 'MUGIWARA_FREE', 'new games use the permanent free format'); assert.equal((row.state as { ruleset: { id: string } }).ruleset.id, 'MUGIWARA_FREE')
   await playHandlers.concede(user.id, game.gameId, { id: 'm5-stop' }, play)
   const stats = (await playHandlers.stats(user.id, play)).body as { stats: { played: number; losses: number; concessions: number; byLevel: Record<string, { played: number }> } }
   assert.deepEqual([stats.stats.played, stats.stats.losses, stats.stats.concessions, stats.stats.byLevel.hard.played], [1, 1, 1, 1])

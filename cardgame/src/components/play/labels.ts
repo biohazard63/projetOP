@@ -20,6 +20,7 @@ const DECK_ERRORS: [RegExp, string][] = [
   [/^EXACTLY_FIFTY_MAIN/, 'ne compte pas exactement 50 cartes'], [/^EXACTLY_ONE_LEADER/, 'n’a pas exactement un Leader'], [/^INCOMPATIBLE_COLOR/, 'contient une couleur absente du Leader'],
   [/^TOO_MANY_COPIES/, 'dépasse 4 exemplaires d’un numéro'], [/^RESTRICTED|^BANNED/, 'contient une carte interdite ou restreinte'], [/^UNKNOWN_PRINTING|^NOT_ADMITTED|^UNSUPPORTED/, 'contient une carte non prise en charge'],
   [/^RESTRICTIONS_OUT_OF_DATE/, 'ne peut pas être validé : liste de restrictions à revérifier'],
+  [/^INVALID_FREE_FORMAT/, 'ne peut pas être validé : format libre mal configuré'],
 ]
 export const deckErrorLabel = (code: string) => DECK_ERRORS.find(([pattern]) => pattern.test(code))?.[1] ?? 'n’est pas jouable'
 const MINE: Record<string, string> = {
