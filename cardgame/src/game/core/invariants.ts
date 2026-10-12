@@ -67,13 +67,15 @@ export function assertGameInvariants(state: GameState): void {
   }
   if (seen.size !== 122 || Object.keys(state.instances).length !== 122) throw new Error('CARD_CONSERVATION')
   if (state.phase === 'CHOOSE_FIRST') {
-    if (state.version !== 0 || state.firstPlayerId !== null || state.activePlayerId !== null || state.decisionPlayerId !== state.chooserId || state.turn !== 0) throw new Error('INVALID_CHOICE_STATE')
+    const conceded = state.result?.reason === 'CONCESSION' ? 1 : 0
+    if (state.version !== conceded || state.firstPlayerId !== null || state.activePlayerId !== null || state.decisionPlayerId !== (conceded ? null : state.chooserId) || state.turn !== 0) throw new Error('INVALID_CHOICE_STATE')
   } else {
     if (!ids.includes(state.firstPlayerId!) || state.activePlayerId !== (state.turn <= 1 || state.turn % 2 === 1 ? state.firstPlayerId : ids.find(id => id !== state.firstPlayerId))) throw new Error('INVALID_FIRST_PLAYER')
     const ordered = [...state.players].sort(p => p.id === state.firstPlayerId ? -1 : 1)
     if (ordered[0].mulligan === 'PENDING' && ordered[1].mulligan !== 'PENDING') throw new Error('MULLIGAN_OUT_OF_ORDER')
-    if (state.phase === 'MULLIGAN' && (state.decisionPlayerId !== ordered.find(p => p.mulligan === 'PENDING')?.id || state.turn !== 0)) throw new Error('INVALID_DECISION_PLAYER')
-    if (state.phase === 'MULLIGAN' && state.version !== 1 + state.players.filter(p => p.mulligan !== 'PENDING').length) throw new Error('INVALID_MULLIGAN_VERSION')
+    // A concession may end the game during the mulligan: nobody has a decision left (CR 1-2-3).
+    if (state.phase === 'MULLIGAN' && ((state.result ? state.decisionPlayerId !== null : state.decisionPlayerId !== ordered.find(p => p.mulligan === 'PENDING')?.id) || state.turn !== 0)) throw new Error('INVALID_DECISION_PLAYER')
+    if (state.phase === 'MULLIGAN' && state.version !== 1 + state.players.filter(p => p.mulligan !== 'PENDING').length + (state.result?.reason === 'CONCESSION' ? 1 : 0)) throw new Error('INVALID_MULLIGAN_VERSION')
     if (state.scope === 'SETUP_ONLY' && state.phase === 'REFRESH' && (state.version !== 3 || state.decisionPlayerId !== null || state.turn !== 1)) throw new Error('INVALID_PREPARED_STATE')
   }
   const running = !['CHOOSE_FIRST', 'MULLIGAN'].includes(state.phase)
@@ -83,6 +85,9 @@ export function assertGameInvariants(state: GameState): void {
     if (state.scope !== 'BASIC_TURNS') throw new Error('INVALID_RESULT')
     if (state.result.reason === 'EMPTY_DECK') {
       if (!losers.length || JSON.stringify(losers) !== JSON.stringify(state.result.loserIds) || state.result.winnerId !== (losers.length === 1 ? ids.find(id => id !== losers[0]) : null)) throw new Error('INVALID_RESULT')
+    } else if (state.result.reason === 'CONCESSION') {
+      const loserId = state.result.loserIds[0]
+      if (state.result.loserIds.length !== 1 || state.result.winnerId !== ids.find(id => id !== loserId) || !state.commands.some(c => c.type === 'CONCEDE' && c.actorId === loserId)) throw new Error('INVALID_RESULT')
     } else {
       const loserId = state.result.loserIds[0]
       if (state.result.loserIds.length !== 1 || !loserId || state.players.find(p => p.id === loserId)?.zones.life.length !== 0

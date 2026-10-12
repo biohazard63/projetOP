@@ -1,0 +1,5524 @@
+{
+ "schemaVersion": 1,
+ "revision": "m5-2026-10-12",
+ "checkedAt": "2026-10-12",
+ "method": "Extracted from the official English card lists (en.onepiece-cardgame.com/cardlist, 61 series) on 2026-10-12. Kept only Characters whose Effect is \"-\" (no ability) or exactly the [Blocker] keyword with its reminder text, with no [Trigger]; excluded every number appearing in any of the 47 official FAQ PDFs (en.onepiece-cardgame.com/rules/faq/) or on the errata page, and every number already defined by the engine.",
+ "sources": {
+  "cardList": "https://en.onepiece-cardgame.com/cardlist/?series=",
+  "faqIndex": "https://en.onepiece-cardgame.com/rules/faq/",
+  "errata": "https://en.onepiece-cardgame.com/rules/errata_card/"
+ },
+ "cards": [
+  {
+   "number": "ST02-002",
+   "name": "Vito",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "Firetank Pirates"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569002"
+  },
+  {
+   "number": "ST02-004",
+   "name": "Capone\"Gang\"Bege",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Supernovas",
+    "Firetank Pirates"
+   ],
+   "cost": 1,
+   "power": 1000,
+   "counter": null,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569002"
+  },
+  {
+   "number": "ST02-006",
+   "name": "Koby",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569002"
+  },
+  {
+   "number": "ST02-011",
+   "name": "Heat",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Kid Pirates"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569002"
+  },
+  {
+   "number": "ST02-012",
+   "name": "Bepo",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Minks",
+    "Heart Pirates"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569002"
+  },
+  {
+   "number": "ST03-002",
+   "name": "Edward Weevil",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "The Seven Warlords of the Sea"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569003"
+  },
+  {
+   "number": "ST03-006",
+   "name": "Jinbe",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Fish-Man",
+    "The Seven Warlords of the Sea",
+    "The Sun Pirates"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569003"
+  },
+  {
+   "number": "ST03-008",
+   "name": "Trafalgar Law",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "The Seven Warlords of the Sea",
+    "Heart Pirates"
+   ],
+   "cost": 1,
+   "power": 1000,
+   "counter": null,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569003"
+  },
+  {
+   "number": "ST03-011",
+   "name": "Buggy",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "The Seven Warlords of the Sea",
+    "Buggy's Delivery"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569003"
+  },
+  {
+   "number": "ST03-012",
+   "name": "Pacifista",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Biological Weapon",
+    "Navy"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569003"
+  },
+  {
+   "number": "ST05-003",
+   "name": "Ann",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "FILM",
+    "The Pirates Fest"
+   ],
+   "cost": 2,
+   "power": 3000,
+   "counter": null,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569005"
+  },
+  {
+   "number": "ST05-007",
+   "name": "Gordon",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "FILM"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569005"
+  },
+  {
+   "number": "ST05-012",
+   "name": "Baccarat",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "FILM",
+    "Grantesoro"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569005"
+  },
+  {
+   "number": "ST05-013",
+   "name": "Bins",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "FILM",
+    "Neo Navy"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569005"
+  },
+  {
+   "number": "ST05-015",
+   "name": "Dr. Indigo",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "FILM",
+    "Scientist",
+    "Golden Lion Pirates"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569005"
+  },
+  {
+   "number": "ST06-003",
+   "name": "Jango",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569006"
+  },
+  {
+   "number": "ST06-007",
+   "name": "Tsuru",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569006"
+  },
+  {
+   "number": "ST06-009",
+   "name": "Fullbody",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569006"
+  },
+  {
+   "number": "ST06-011",
+   "name": "Momonga",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569006"
+  },
+  {
+   "number": "ST06-013",
+   "name": "T-Bone",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569006"
+  },
+  {
+   "number": "ST07-002",
+   "name": "Charlotte Anana",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Big Mom Pirates"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569007"
+  },
+  {
+   "number": "ST07-006",
+   "name": "Charlotte Flampe",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "Big Mom Pirates"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569007"
+  },
+  {
+   "number": "ST07-012",
+   "name": "Baron Tamago",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Big Mom Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569007"
+  },
+  {
+   "number": "ST07-014",
+   "name": "Pekoms",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Minks",
+    "Big Mom Pirates"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569007"
+  },
+  {
+   "number": "ST08-003",
+   "name": "Gaimon",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "East Blue"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569008"
+  },
+  {
+   "number": "ST08-010",
+   "name": "Monkey.D.Garp",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569008"
+  },
+  {
+   "number": "ST08-011",
+   "name": "Monkey.D.Luffy",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Straw Hat Crew"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569008"
+  },
+  {
+   "number": "ST08-012",
+   "name": "Laboon",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569008"
+  },
+  {
+   "number": "ST09-003",
+   "name": "Ulti",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal Kingdom Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569009"
+  },
+  {
+   "number": "ST09-006",
+   "name": "Kouzuki Momonosuke",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Land of Wano",
+    "Kouzuki Clan"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569009"
+  },
+  {
+   "number": "ST09-011",
+   "name": "Monkey.D.Luffy",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Land of Wano",
+    "Straw Hat Crew"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569009"
+  },
+  {
+   "number": "ST09-013",
+   "name": "Yamato",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Land of Wano"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569009"
+  },
+  {
+   "number": "ST12-004",
+   "name": "Humandrill",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Animal",
+    "Muggy Kingdom"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569012"
+  },
+  {
+   "number": "ST12-005",
+   "name": "Perona",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Muggy Kingdom",
+    "Thriller Bark Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569012"
+  },
+  {
+   "number": "ST12-009",
+   "name": "Elephant True Bluefin",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569012"
+  },
+  {
+   "number": "ST12-015",
+   "name": "Patty & Carne",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "East Blue"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569012"
+  },
+  {
+   "number": "ST14-005",
+   "name": "Tony Tony.Chopper",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Animal",
+    "Straw Hat Crew"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569014"
+  },
+  {
+   "number": "ST14-010",
+   "name": "Brook",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Straw Hat Crew"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569014"
+  },
+  {
+   "number": "ST14-013",
+   "name": "Roronoa Zoro",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Straw Hat Crew"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569014"
+  },
+  {
+   "number": "ST21-005",
+   "name": "Jinbe",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Fish-Man",
+    "Straw Hat Crew"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569021"
+  },
+  {
+   "number": "ST21-006",
+   "name": "Stussy",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Egghead"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569021"
+  },
+  {
+   "number": "ST21-007",
+   "name": "Sentomaru",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Egghead",
+    "Navy"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "blocker",
+   "series": "569021"
+  },
+  {
+   "number": "ST21-008",
+   "name": "Tony Tony.Chopper",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Animal",
+    "Straw Hat Crew"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569021"
+  },
+  {
+   "number": "ST21-013",
+   "name": "Vegapunk",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Scientist",
+    "Egghead"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569021"
+  },
+  {
+   "number": "ST22-004",
+   "name": "Elmy",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Whitebeard Pirates Allies"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569022"
+  },
+  {
+   "number": "ST22-008",
+   "name": "Decalvan Brothers",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Whitebeard Pirates Allies"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569022"
+  },
+  {
+   "number": "ST22-009",
+   "name": "Vista",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 1,
+   "power": 1000,
+   "counter": null,
+   "block": "3",
+   "kind": "blocker",
+   "series": "569022"
+  },
+  {
+   "number": "ST22-010",
+   "name": "Portgas.D.Ace",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569022"
+  },
+  {
+   "number": "ST22-013",
+   "name": "LittleOars Jr.",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Giant",
+    "Whitebeard Pirates Allies"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569022"
+  },
+  {
+   "number": "ST22-014",
+   "name": "A.O.",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Whitebeard Pirates Allies"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569022"
+  },
+  {
+   "number": "ST29-006",
+   "name": "Stussy",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Egghead"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569029"
+  },
+  {
+   "number": "ST29-010",
+   "name": "Franky",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "Egghead",
+    "Straw Hat Crew"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569029"
+  },
+  {
+   "number": "ST29-011",
+   "name": "Brook",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Egghead",
+    "Straw Hat Crew"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "4",
+   "kind": "blocker",
+   "series": "569029"
+  },
+  {
+   "number": "ST30-005",
+   "name": "Jozu",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569030"
+  },
+  {
+   "number": "ST30-013",
+   "name": "Mr.2.Bon.Kurei(Bentham)",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Impel Down",
+    "Former Baroque Works"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569030"
+  },
+  {
+   "number": "OP01-036",
+   "name": "Otsuru",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Land of Wano"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569101"
+  },
+  {
+   "number": "OP01-043",
+   "name": "Shinobu",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Land of Wano"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569101"
+  },
+  {
+   "number": "OP01-045",
+   "name": "Jean Bart",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Heart Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569101"
+  },
+  {
+   "number": "OP01-053",
+   "name": "Wire",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Kid Pirates"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569101"
+  },
+  {
+   "number": "OP01-065",
+   "name": "Vergo",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Navy",
+    "Donquixote Pirates",
+    "Punk Hazard"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569101"
+  },
+  {
+   "number": "OP01-066",
+   "name": "Krieg",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Krieg Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569101"
+  },
+  {
+   "number": "OP01-076",
+   "name": "Bellamy",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Dressrosa"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569101"
+  },
+  {
+   "number": "OP01-081",
+   "name": "Mocha",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Punk Hazard"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569101"
+  },
+  {
+   "number": "OP01-100",
+   "name": "Kurozumi Higurashi",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Land of Wano",
+    "Kurozumi Clan"
+   ],
+   "cost": 2,
+   "power": 3000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569101"
+  },
+  {
+   "number": "OP02-003",
+   "name": "Atmos",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-006",
+   "name": "Kingdew",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-007",
+   "name": "Thatch",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-012",
+   "name": "Blenheim",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 2,
+   "power": 3000,
+   "counter": null,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-020",
+   "name": "LittleOars Jr.",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Giant",
+    "Whitebeard Pirates Allies"
+   ],
+   "cost": 7,
+   "power": 9000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-028",
+   "name": "Usopp",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "FILM",
+    "Straw Hat Crew"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-033",
+   "name": "Jinbe",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "FILM",
+    "Fish-Man",
+    "Straw Hat Crew"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-038",
+   "name": "Nekomamushi",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Minks",
+    "Land of Wano",
+    "The Akazaya Nine"
+   ],
+   "cost": 3,
+   "power": 4000,
+   "counter": null,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-039",
+   "name": "Franky",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "FILM",
+    "Straw Hat Crew"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-043",
+   "name": "Roronoa Zoro",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "FILM",
+    "Supernovas",
+    "Straw Hat Crew"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-053",
+   "name": "Crocodile",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Impel Down",
+    "Former Baroque Works"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-054",
+   "name": "Gecko Moria",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "The Seven Warlords of the Sea",
+    "Thriller Bark Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-055",
+   "name": "Dracule Mihawk",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "The Seven Warlords of the Sea"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-060",
+   "name": "Mohji",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Buggy Pirates"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-081",
+   "name": "Domino",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Impel Down"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-084",
+   "name": "Blugori",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Animal",
+    "Impel Down"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-088",
+   "name": "Sphinx",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal",
+    "Impel Down"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-097",
+   "name": "Komille",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-107",
+   "name": "Doberman",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-108",
+   "name": "Donquixote Rosinante",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Navy",
+    "Donquixote Pirates"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-109",
+   "name": "Jaguar.D.Saul",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Giant",
+    "Navy"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP02-116",
+   "name": "Yamakaji",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569102"
+  },
+  {
+   "number": "OP03-006",
+   "name": "Speed Jil",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-007",
+   "name": "Namule",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Fish-Man",
+    "Whitebeard Pirates"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-010",
+   "name": "Fossa",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-023",
+   "name": "Alvida",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "East Blue",
+    "Alvida Pirates"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-031",
+   "name": "Pearl",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "East Blue",
+    "Krieg Pirates"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-035",
+   "name": "Momoo",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal",
+    "East Blue"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-046",
+   "name": "Genzo",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "East Blue"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-052",
+   "name": "Merry",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "East Blue"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-061",
+   "name": "Kiwi & Mozu",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Water Seven",
+    "The Franky Family"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-065",
+   "name": "Chimney & Gonbe",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Animal",
+    "Water Seven"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-082",
+   "name": "Kumadori",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "CP9"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-084",
+   "name": "Jerry",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "CP6"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-085",
+   "name": "Jabra",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "CP9"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-087",
+   "name": "Nero",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "CP9"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-101",
+   "name": "Camie",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Merfolk"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-103",
+   "name": "Bobbin the Disposer",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Big Mom Pirates"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-106",
+   "name": "Charlotte Opera",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Big Mom Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-107",
+   "name": "Charlotte Galette",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Big Mom Pirates"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569103"
+  },
+  {
+   "number": "OP03-111",
+   "name": "Charlotte Praline",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Merfolk",
+    "The Sun Pirates"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569103"
+  },
+  {
+   "number": "OP04-007",
+   "name": "Sanji",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Alabasta",
+    "Straw Hat Crew"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569104"
+  },
+  {
+   "number": "OP04-023",
+   "name": "Kuro",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "East Blue",
+    "Black Cat Pirates"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569104"
+  },
+  {
+   "number": "OP04-054",
+   "name": "Rokki",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Giant",
+    "Animal Kingdom Pirates"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569104"
+  },
+  {
+   "number": "OP04-077",
+   "name": "Ideo",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Dressrosa"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569104"
+  },
+  {
+   "number": "OP04-078",
+   "name": "Oimo & Kashii",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Giant",
+    "World Government"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569104"
+  },
+  {
+   "number": "OP04-087",
+   "name": "Trafalgar Law",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Dressrosa",
+    "Heart Pirates"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569104"
+  },
+  {
+   "number": "OP04-107",
+   "name": "Charlotte Perospero",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Big Mom Pirates"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569104"
+  },
+  {
+   "number": "OP04-114",
+   "name": "Randolph",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Big Mom Pirates",
+    "Homies"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569104"
+  },
+  {
+   "number": "OP05-013",
+   "name": "Bunny Joe",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "Revolutionary Army"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569105"
+  },
+  {
+   "number": "OP05-024",
+   "name": "Kuween",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Donquixote Pirates"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569105"
+  },
+  {
+   "number": "OP05-035",
+   "name": "Bellamy",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Donquixote Pirates"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569105"
+  },
+  {
+   "number": "OP05-044",
+   "name": "John Giant",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Giant",
+    "Navy"
+   ],
+   "cost": 8,
+   "power": 10000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569105"
+  },
+  {
+   "number": "OP05-052",
+   "name": "Maynard",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569105"
+  },
+  {
+   "number": "OP05-065",
+   "name": "San-Gorou",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Straw Hat Crew"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569105"
+  },
+  {
+   "number": "OP05-083",
+   "name": "Sterry",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Goa Kingdom"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569105"
+  },
+  {
+   "number": "OP05-108",
+   "name": "Nola",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal",
+    "Sky Island"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569105"
+  },
+  {
+   "number": "OP05-110",
+   "name": "Holly",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal",
+    "Sky Island"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569105"
+  },
+  {
+   "number": "OP05-113",
+   "name": "Yama",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Sky Island"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569105"
+  },
+  {
+   "number": "OP06-005",
+   "name": "Gasparde",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "FILM",
+    "Former Navy",
+    "Gasparde Pirates"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569106"
+  },
+  {
+   "number": "OP06-008",
+   "name": "Schneider",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "FILM",
+    "Mugiwara Chase"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569106"
+  },
+  {
+   "number": "OP06-032",
+   "name": "Hammond",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Fish-Man",
+    "New Fish-Man Pirates"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "blocker",
+   "series": "569106"
+  },
+  {
+   "number": "OP06-037",
+   "name": "Wadatsumi",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Fish-Man",
+    "Flying Pirates"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569106"
+  },
+  {
+   "number": "OP06-049",
+   "name": "Sengoku",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569106"
+  },
+  {
+   "number": "OP06-070",
+   "name": "Eldoraggo",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "FILM",
+    "Eldoraggo Crew"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569106"
+  },
+  {
+   "number": "OP06-087",
+   "name": "Cerberus",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Thriller Bark Pirates"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "blocker",
+   "series": "569106"
+  },
+  {
+   "number": "OP06-105",
+   "name": "Genbo",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Sky Island",
+    "Shandian Warrior"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569106"
+  },
+  {
+   "number": "OP07-007",
+   "name": "Dice",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "FILM",
+    "Grantesoro"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569107"
+  },
+  {
+   "number": "OP07-027",
+   "name": "Jinbe",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Fish-Man",
+    "The Sun Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569107"
+  },
+  {
+   "number": "OP07-028",
+   "name": "Scratchmen Apoo",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "Supernovas",
+    "On-Air Pirates"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569107"
+  },
+  {
+   "number": "OP07-067",
+   "name": "Tonjit",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Long Ring Long Land"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569107"
+  },
+  {
+   "number": "OP07-084",
+   "name": "Gismonda",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "CP0"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "blocker",
+   "series": "569107"
+  },
+  {
+   "number": "OP07-089",
+   "name": "Maha",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "CP0"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569107"
+  },
+  {
+   "number": "OP07-108",
+   "name": "Vega Force 01",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Egghead"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569107"
+  },
+  {
+   "number": "OP08-003",
+   "name": "Twenty Doctors",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Drum Kingdom"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "blocker",
+   "series": "569108"
+  },
+  {
+   "number": "OP08-009",
+   "name": "Maria Onion Bear",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Drum Kingdom"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569108"
+  },
+  {
+   "number": "OP08-011",
+   "name": "Musshuru",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "FILM",
+    "Drum Kingdom"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569108"
+  },
+  {
+   "number": "OP08-027",
+   "name": "Tristan",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Minks"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569108"
+  },
+  {
+   "number": "OP08-035",
+   "name": "BB",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Minks"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569108"
+  },
+  {
+   "number": "OP08-048",
+   "name": "Sweetpea",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Amazon Lily"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569108"
+  },
+  {
+   "number": "OP08-065",
+   "name": "Charlotte Smoothie",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Big Mom Pirates"
+   ],
+   "cost": 7,
+   "power": 9000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569108"
+  },
+  {
+   "number": "OP08-078",
+   "name": "Ulti",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal Kingdom Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569108"
+  },
+  {
+   "number": "OP08-089",
+   "name": "Basil Hawkins",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Animal Kingdom Pirates",
+    "Hawkins Pirates"
+   ],
+   "cost": 7,
+   "power": 9000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569108"
+  },
+  {
+   "number": "OP08-099",
+   "name": "Kalgara",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Jaya",
+    "Sky Island",
+    "Shandian Warrior"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569108"
+  },
+  {
+   "number": "OP08-108",
+   "name": "Mont Blanc Cricket",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Jaya",
+    "Monkey Mountain Alliance"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569108"
+  },
+  {
+   "number": "OP09-006",
+   "name": "Howling Gab",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Red-Haired Pirates"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569109"
+  },
+  {
+   "number": "OP09-016",
+   "name": "Rockstar",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Red-Haired Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569109"
+  },
+  {
+   "number": "OP09-038",
+   "name": "Rob Lucci",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "ODYSSEY",
+    "CP9"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569109"
+  },
+  {
+   "number": "OP09-049",
+   "name": "Jozu",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569109"
+  },
+  {
+   "number": "OP09-054",
+   "name": "Richie",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal",
+    "Cross Guild"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "blocker",
+   "series": "569109"
+  },
+  {
+   "number": "OP09-055",
+   "name": "Mr.1(Daz.Bonez)",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Cross Guild",
+    "Former Baroque Works"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569109"
+  },
+  {
+   "number": "OP09-063",
+   "name": "Usopp",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "Straw Hat Crew"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569109"
+  },
+  {
+   "number": "OP09-067",
+   "name": "Jinbe",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Fish-Man",
+    "Straw Hat Crew"
+   ],
+   "cost": 7,
+   "power": 9000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569109"
+  },
+  {
+   "number": "OP09-071",
+   "name": "Nico Robin",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Straw Hat Crew"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "blocker",
+   "series": "569109"
+  },
+  {
+   "number": "OP09-082",
+   "name": "Avalo Pizarro",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Blackbeard Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569109"
+  },
+  {
+   "number": "OP09-091",
+   "name": "Vasco Shot",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Blackbeard Pirates"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "blocker",
+   "series": "569109"
+  },
+  {
+   "number": "OP09-094",
+   "name": "Peachbeard",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Peachbeard Pirates",
+    "Blackbeard Pirates Allies"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569109"
+  },
+  {
+   "number": "OP09-113",
+   "name": "Morley",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Giant",
+    "Revolutionary Army"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569109"
+  },
+  {
+   "number": "OP10-012",
+   "name": "Dragon Number Thirteen",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Biological Weapon",
+    "Punk Hazard"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "blocker",
+   "series": "569110"
+  },
+  {
+   "number": "OP10-013",
+   "name": "Nami",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Punk Hazard",
+    "Straw Hat Crew"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569110"
+  },
+  {
+   "number": "OP10-014",
+   "name": "Franky",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal",
+    "Punk Hazard",
+    "Straw Hat Crew"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569110"
+  },
+  {
+   "number": "OP10-031",
+   "name": "Sengoku",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Dressrosa",
+    "Navy"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569110"
+  },
+  {
+   "number": "OP10-050",
+   "name": "Hajrudin",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Giant",
+    "Dressrosa",
+    "New Giant Pirates"
+   ],
+   "cost": 7,
+   "power": 9000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569110"
+  },
+  {
+   "number": "OP10-054",
+   "name": "Blue Gilly",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Dressrosa"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569110"
+  },
+  {
+   "number": "OP10-064",
+   "name": "Clone Soldier",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "Kingdom of GERMA"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "blocker",
+   "series": "569110"
+  },
+  {
+   "number": "OP10-068",
+   "name": "Diamante",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Donquixote Pirates"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569110"
+  },
+  {
+   "number": "OP10-073",
+   "name": "Buffalo",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Donquixote Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569110"
+  },
+  {
+   "number": "OP10-084",
+   "name": "Sanjuan.Wolf",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Giant",
+    "Blackbeard Pirates"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569110"
+  },
+  {
+   "number": "OP10-089",
+   "name": "Nico Robin",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Dressrosa",
+    "Straw Hat Crew"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569110"
+  },
+  {
+   "number": "OP10-101",
+   "name": "Urouge",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Supernovas",
+    "Fallen Monk Pirates"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569110"
+  },
+  {
+   "number": "OP10-105",
+   "name": "Cavendish",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Dressrosa",
+    "Supernovas",
+    "Beautiful Pirates"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569110"
+  },
+  {
+   "number": "OP11-003",
+   "name": "Usopp",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "Straw Hat Crew"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-011",
+   "name": "Bins",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "FILM",
+    "Neo Navy"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-015",
+   "name": "Mocha",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Punk Hazard"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-017",
+   "name": "X.Drake",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Navy",
+    "SWORD",
+    "Drake Pirates"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-026",
+   "name": "Scaled Neptunian",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Neptunian"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-032",
+   "name": "Surume",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal",
+    "Fish-Man Island"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-033",
+   "name": "Bird Neptunian",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Neptunian"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-045",
+   "name": "Vinsmoke Niji",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "The Vinsmoke Family",
+    "GERMA 66"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-052",
+   "name": "Charlotte Lola",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Firetank Pirates",
+    "Former Rolling Pirates"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-053",
+   "name": "Tony Tony.Chopper",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal",
+    "Straw Hat Crew"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-055",
+   "name": "Bartolomeo",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Dressrosa",
+    "Supernovas"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-064",
+   "name": "Saldeath",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Impel Down"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-068",
+   "name": "Charlotte Daifuku",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Big Mom Pirates"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-078",
+   "name": "Decuplets",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Big Mom Pirates"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-087",
+   "name": "Miss Sarahebi",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Animal Kingdom Pirates",
+    "SMILE"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-089",
+   "name": "Black Maria",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Animal Kingdom Pirates"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-090",
+   "name": "Briscola",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal Kingdom Pirates",
+    "SMILE"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "blocker",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-093",
+   "name": "Bogard",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-094",
+   "name": "Morgan",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-105",
+   "name": "Charlotte Chiffon",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Firetank Pirates",
+    "Former Big Mom Pirates"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-111",
+   "name": "Mamboshi",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Merfolk",
+    "Fish-Man Island"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP11-113",
+   "name": "Ryuboshi",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Merfolk",
+    "Fish-Man Island"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569111"
+  },
+  {
+   "number": "OP12-002",
+   "name": "Edward.Newgate",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-005",
+   "name": "Shiki",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "FILM",
+    "Golden Lion Pirates"
+   ],
+   "cost": 8,
+   "power": 10000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-010",
+   "name": "Douglas Bullet",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "FILM",
+    "The Pirates Fest",
+    "Former Roger Pirates"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-011",
+   "name": "Duval",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "The Flying Fish Riders"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-023",
+   "name": "Kawamatsu",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Fish-Man",
+    "Land of Wano",
+    "The Akazaya Nine"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-025",
+   "name": "Kin'emon",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Land of Wano",
+    "The Akazaya Nine"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-032",
+   "name": "Nekomamushi",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Minks",
+    "Land of Wano",
+    "The Akazaya Nine"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-035",
+   "name": "Morgan",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "East Blue",
+    "Navy"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-045",
+   "name": "Jango",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-049",
+   "name": "Buggy",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "The Four Emperors",
+    "Cross Guild"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-050",
+   "name": "Jaguar.D.Saul",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Giant",
+    "Ohara",
+    "Navy"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "blocker",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-052",
+   "name": "Fullbody",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-064",
+   "name": "Vergo",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Punk Hazard",
+    "Navy",
+    "Donquixote Pirates"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-067",
+   "name": "Carmen",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "East Blue"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-068",
+   "name": "Gin",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "East Blue",
+    "Krieg Pirates"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-076",
+   "name": "Monet",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Punk Hazard",
+    "Donquixote Pirates"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-082",
+   "name": "Issho",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Dressrosa",
+    "Navy"
+   ],
+   "cost": 8,
+   "power": 10000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-083",
+   "name": "Inazuma",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Revolutionary Army"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-088",
+   "name": "Bastille",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Dressrosa",
+    "Navy"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-092",
+   "name": "Mizerka",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal Kingdom Pirates",
+    "SMILE"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-103",
+   "name": "Seto",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Jaya",
+    "Sky Island",
+    "Shandian Warrior"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-106",
+   "name": "Trafalgar Law",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Dressrosa",
+    "Supernovas",
+    "Heart Pirates"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "blocker",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-110",
+   "name": "Buffalo",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Donquixote Pirates"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-111",
+   "name": "Baby 5",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Donquixote Pirates"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP12-114",
+   "name": "Wyper",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "Sky Island",
+    "Shandian Warrior"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569112"
+  },
+  {
+   "number": "OP13-010",
+   "name": "Lord of the Coast",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Neptunian",
+    "East Blue"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-011",
+   "name": "Nefeltari Cobra",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Alabasta"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-018",
+   "name": "Wapol",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Evil Black Drum Kingdom"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-029",
+   "name": "Jinbe",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Fish-Man",
+    "FILM",
+    "Straw Hat Crew"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-036",
+   "name": "Helmeppo",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "FILM",
+    "Navy"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-048",
+   "name": "Blamenco",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-049",
+   "name": "Blenheim",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-070",
+   "name": "Napoleon",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Homies",
+    "Big Mom Pirates"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-073",
+   "name": "Prometheus",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Homies",
+    "Big Mom Pirates"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-085",
+   "name": "Saint Jalmac",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "Celestial Dragons"
+   ],
+   "cost": 2,
+   "power": 4000,
+   "counter": 1000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-088",
+   "name": "Terry Gilteo",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Revolutionary Army"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-090",
+   "name": "Hack",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Fish-Man",
+    "Dressrosa",
+    "Revolutionary Army"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-101",
+   "name": "Atlas",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Egghead",
+    "Scientist"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-103",
+   "name": "Gyogyo",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Bonney Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-107",
+   "name": "Shaka",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Egghead",
+    "Scientist"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP13-111",
+   "name": "Pythagoras",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Egghead",
+    "Scientist"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569113"
+  },
+  {
+   "number": "OP14-007",
+   "name": "Jewelry Bonney",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Supernovas",
+    "Bonney Pirates"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569114"
+  },
+  {
+   "number": "OP14-008",
+   "name": "Scratchmen Apoo",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Supernovas",
+    "On-Air Pirates"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569114"
+  },
+  {
+   "number": "OP14-030",
+   "name": "Chaka & Pell",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Alabasta"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569114"
+  },
+  {
+   "number": "OP14-055",
+   "name": "The Macro Gang",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Fish-Man",
+    "The Sun Pirates"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569114"
+  },
+  {
+   "number": "OP14-066",
+   "name": "Diamante",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Donquixote Pirates"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569114"
+  },
+  {
+   "number": "OP14-073",
+   "name": "Machvise",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Donquixote Pirates"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569114"
+  },
+  {
+   "number": "OP14-095",
+   "name": "Mr.9",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Baroque Works"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569114"
+  },
+  {
+   "number": "OP14-101",
+   "name": "Oars",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Giant",
+    "Thriller Bark Pirates"
+   ],
+   "cost": 8,
+   "power": 10000,
+   "counter": 1000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569114"
+  },
+  {
+   "number": "OP15-016",
+   "name": "Fullbody",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569115"
+  },
+  {
+   "number": "OP15-030",
+   "name": "Hyouzou",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Merfolk",
+    "Fish-Man Island"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569115"
+  },
+  {
+   "number": "OP15-049",
+   "name": "Hajrudin",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Giant",
+    "Dressrosa",
+    "New Giant Pirates"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569115"
+  },
+  {
+   "number": "OP15-062",
+   "name": "Captain Seamars",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "The Moon",
+    "Space Pirates"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569115"
+  },
+  {
+   "number": "OP15-089",
+   "name": "Franky",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Straw Hat Crew"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569115"
+  },
+  {
+   "number": "OP15-107",
+   "name": "Tony Tony.Chopper",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal",
+    "Sky Island",
+    "Straw Hat Crew"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569115"
+  },
+  {
+   "number": "OP16-004",
+   "name": "Curiel",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 7,
+   "power": 8000,
+   "counter": 2000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569116"
+  },
+  {
+   "number": "OP16-016",
+   "name": "Ramba",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Whitebeard Pirates Allies"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569116"
+  },
+  {
+   "number": "OP16-023",
+   "name": "Arlong",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Fish-Man",
+    "Impel Down",
+    "The Sun Pirates"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569116"
+  },
+  {
+   "number": "OP16-028",
+   "name": "Smoker",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569116"
+  },
+  {
+   "number": "OP16-044",
+   "name": "Emporio.Ivankov",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Impel Down",
+    "Revolutionary Army"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "5",
+   "kind": "blocker",
+   "series": "569116"
+  },
+  {
+   "number": "OP16-046",
+   "name": "Jinbe",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Fish-Man",
+    "Impel Down",
+    "The Sun Pirates"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569116"
+  },
+  {
+   "number": "OP16-061",
+   "name": "Older Brother Marine",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569116"
+  },
+  {
+   "number": "OP16-062",
+   "name": "Younger Brother Marine",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569116"
+  },
+  {
+   "number": "OP16-086",
+   "name": "Sanji",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Land of Wano",
+    "Straw Hat Crew"
+   ],
+   "cost": 8,
+   "power": 9000,
+   "counter": 2000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569116"
+  },
+  {
+   "number": "OP16-088",
+   "name": "Shimotsuki Ushimaru",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Land of Wano"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "5",
+   "kind": "blocker",
+   "series": "569116"
+  },
+  {
+   "number": "OP16-112",
+   "name": "Boa Hancock",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Kuja Pirates"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569116"
+  },
+  {
+   "number": "OP17-006",
+   "name": "Kingdew",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 7,
+   "power": 8000,
+   "counter": 2000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569117"
+  },
+  {
+   "number": "OP17-035",
+   "name": "Roronoa Zoro",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "East Blue",
+    "Straw Hat Crew"
+   ],
+   "cost": 7,
+   "power": 8000,
+   "counter": 2000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569117"
+  },
+  {
+   "number": "OP17-051",
+   "name": "Jinbe",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Fish-Man",
+    "Impel Down",
+    "The Sun Pirates"
+   ],
+   "cost": 7,
+   "power": 8000,
+   "counter": 2000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569117"
+  },
+  {
+   "number": "OP17-070",
+   "name": "Scratchmen Apoo",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "On-Air Pirates",
+    "Animal Kingdom Pirates"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 2000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569117"
+  },
+  {
+   "number": "OP17-088",
+   "name": "Hajrudin",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Giant",
+    "Elbaph",
+    "New Giant Pirates"
+   ],
+   "cost": 7,
+   "power": 8000,
+   "counter": 2000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569117"
+  },
+  {
+   "number": "OP17-100",
+   "name": "Capone\"Gang\"Bege",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "Supernovas",
+    "Firetank Pirates"
+   ],
+   "cost": 7,
+   "power": 8000,
+   "counter": 2000,
+   "block": "5",
+   "kind": "vanilla",
+   "series": "569117"
+  },
+  {
+   "number": "EB01-005",
+   "name": "Doma",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Whitebeard Pirates Allies"
+   ],
+   "cost": 1,
+   "power": 3000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569201"
+  },
+  {
+   "number": "EB01-017",
+   "name": "Blueno",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "FILM",
+    "CP0"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "blocker",
+   "series": "569201"
+  },
+  {
+   "number": "EB01-018",
+   "name": "Mountain God",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal",
+    "Land of Wano"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569201"
+  },
+  {
+   "number": "EB01-025",
+   "name": "Fourtricks",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Animal Kingdom Pirates",
+    "SMILE"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569201"
+  },
+  {
+   "number": "EB01-032",
+   "name": "Army Wolves",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal",
+    "Impel Down"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569201"
+  },
+  {
+   "number": "EB01-041",
+   "name": "Crocus",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Former Roger Pirates"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569201"
+  },
+  {
+   "number": "EB01-055",
+   "name": "Charlotte Compote",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Big Mom Pirates"
+   ],
+   "cost": 7,
+   "power": 9000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569201"
+  },
+  {
+   "number": "EB02-001",
+   "name": "Karoo",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal",
+    "Alabasta"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569202"
+  },
+  {
+   "number": "EB02-004",
+   "name": "Don Accino",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Accino Family"
+   ],
+   "cost": 8,
+   "power": 10000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569202"
+  },
+  {
+   "number": "EB02-029",
+   "name": "Grandpa Ryu",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Animal",
+    "East Blue"
+   ],
+   "cost": 3,
+   "power": 5000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569202"
+  },
+  {
+   "number": "EB02-034",
+   "name": "Komei",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Navy",
+    "Foxy Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569202"
+  },
+  {
+   "number": "EB02-042",
+   "name": "All-Hunt Grount",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569202"
+  },
+  {
+   "number": "EB02-043",
+   "name": "Jonathan",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "WISDOM",
+   "traits": [
+    "Navy"
+   ],
+   "cost": 7,
+   "power": 9000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569202"
+  },
+  {
+   "number": "EB03-002",
+   "name": "Ain",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "FILM",
+    "Neo Navy"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569203"
+  },
+  {
+   "number": "EB03-019",
+   "name": "Wanda",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SLASH",
+   "traits": [
+    "Minks"
+   ],
+   "cost": 6,
+   "power": 7000,
+   "counter": 1000,
+   "block": "4",
+   "kind": "blocker",
+   "series": "569203"
+  },
+  {
+   "number": "EB03-030",
+   "name": "Viola",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Dressrosa"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569203"
+  },
+  {
+   "number": "EB03-040",
+   "name": "Kalifa",
+   "category": "CHARACTER",
+   "colors": [
+    "BLACK"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "CP9"
+   ],
+   "cost": 5,
+   "power": 6000,
+   "counter": 2000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569203"
+  },
+  {
+   "number": "P-018",
+   "name": "Bartolomeo",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "FILM",
+    "Supernovas",
+    "Barto Club"
+   ],
+   "cost": 2,
+   "power": 3000,
+   "counter": null,
+   "block": "1",
+   "kind": "blocker",
+   "series": "569901"
+  },
+  {
+   "number": "P-021",
+   "name": "Benn.Beckman",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "FILM",
+    "Red-Haired Pirates"
+   ],
+   "cost": 7,
+   "power": 9000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569901"
+  },
+  {
+   "number": "P-022",
+   "name": "Monkey.D.Luffy",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "FILM",
+    "Supernovas",
+    "Straw Hat Crew"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569901"
+  },
+  {
+   "number": "P-023",
+   "name": "Yasopp",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "RANGED",
+   "traits": [
+    "FILM",
+    "Red-Haired Pirates"
+   ],
+   "cost": 6,
+   "power": 8000,
+   "counter": 1000,
+   "block": "1",
+   "kind": "vanilla",
+   "series": "569901"
+  },
+  {
+   "number": "P-041",
+   "name": "Monkey.D.Luffy",
+   "category": "CHARACTER",
+   "colors": [
+    "PURPLE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "The Four Emperors",
+    "Straw Hat Crew"
+   ],
+   "cost": 10,
+   "power": 12000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569901"
+  },
+  {
+   "number": "P-061",
+   "name": "Monkey.D.Luffy",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "FILM",
+    "Straw Hat Crew"
+   ],
+   "cost": 8,
+   "power": 10000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "vanilla",
+   "series": "569901"
+  },
+  {
+   "number": "P-070",
+   "name": "Carrot",
+   "category": "CHARACTER",
+   "colors": [
+    "GREEN"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Minks"
+   ],
+   "cost": 2,
+   "power": 2000,
+   "counter": 1000,
+   "block": "2",
+   "kind": "blocker",
+   "series": "569901"
+  },
+  {
+   "number": "P-089",
+   "name": "Tony Tony.Chopper",
+   "category": "CHARACTER",
+   "colors": [
+    "YELLOW"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Animal",
+    "Straw Hat Crew"
+   ],
+   "cost": 5,
+   "power": 7000,
+   "counter": 1000,
+   "block": "3",
+   "kind": "vanilla",
+   "series": "569901"
+  },
+  {
+   "number": "P-110",
+   "name": "Monkey.D.Luffy",
+   "category": "CHARACTER",
+   "colors": [
+    "BLUE"
+   ],
+   "attribute": "STRIKE",
+   "traits": [
+    "Elbaph",
+    "The Four Emperors",
+    "Straw Hat Crew"
+   ],
+   "cost": 7,
+   "power": 9000,
+   "counter": 1000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569901"
+  },
+  {
+   "number": "P-119",
+   "name": "Portgas.D.Ace",
+   "category": "CHARACTER",
+   "colors": [
+    "RED"
+   ],
+   "attribute": "SPECIAL",
+   "traits": [
+    "Whitebeard Pirates"
+   ],
+   "cost": 4,
+   "power": 6000,
+   "counter": 1000,
+   "block": "4",
+   "kind": "vanilla",
+   "series": "569901"
+  }
+ ]
+}

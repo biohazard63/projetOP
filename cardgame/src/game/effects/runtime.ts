@@ -41,6 +41,9 @@ function condition(s: GameState, c: Condition, controller: string, source?: Effe
   }
   return false
 }
+// CR 1.2.1 §1-2-3: a concession may end the game while an ability waits for a choice. That choice is then frozen
+// (nothing resolves after the end of the game) and stays bound to the version at which the concession was made.
+function pendingVersion(s: GameState): number { return s.result?.reason === 'CONCESSION' && s.commands.at(-1)?.type === 'CONCEDE' ? s.version - 1 : s.version }
 function next(r: EffectRuntime, gameId: string, kind: string): string { return `${gameId}:fx:${kind}:${r.nextId++}` }
 const usageKey = (id: string, revision: string, source: EffectContext['source'], actor: string, turn: number) =>
   [id, revision, source.kind === 'CARD' ? `${source.presence.instanceId}:${source.presence.generation}` : source.kind === 'SYNTHETIC' ? source.extension : source.definitionId, actor, turn].map(part => { const text = String(part); return `${text.length}:${text}` }).join(':')
@@ -374,7 +377,7 @@ export function assertEffectState(s: GameState): void {
   // A command may only publish a completed or suspended resolution, never an in-flight mutation.
   const c = r.continuation, choice = r.choice
   if (a.status !== 'SUSPENDED' || !c || !choice || c.definitionId !== d.id || c.definitionRevision !== d.revision || c.pc >= d.program.length
-    || choice.continuationId !== c.id || (!c.interception && choice.actorId !== a.context.controllerId) || choice.expectedVersion !== s.version
+    || choice.continuationId !== c.id || (!c.interception && choice.actorId !== a.context.controllerId) || choice.expectedVersion !== pendingVersion(s)
     || JSON.stringify(c.context) !== JSON.stringify(a.context) || JSON.stringify(choice.context) !== JSON.stringify(a.context)) throw new Error('INVALID_EFFECT_CONTINUATION')
   if (c.interception) { assertReplacementChoice(s); return }
   const step = d.program[c.pc]
@@ -656,7 +659,7 @@ function assertReplacementChoice(s: GameState, checkVersion = true) {
     || pending.operation.controllerId !== c.context.controllerId || pending.operation.resolutionId !== c.context.effectInstanceId || pending.operation.type !== 'KO' || pending.operation.outcome !== 'PROPOSED'
     || step.kind !== 'OPERATION' || step.operation.primitive !== 'koCharacter' || !c.bindings[step.operation.subjectBinding]?.some(ref => ref.instanceId === subject.id && ref.generation === subject.zoneGeneration)
     || choice.actorId !== pending.ownerId || choice.bind !== '__replacement' || choice.visibility !== 'PRIVATE' || choice.min !== 0 || choice.max !== 1 || !choice.optional || choice.choiceType !== 'SELECT'
-    || (checkVersion && choice.expectedVersion !== s.version) || JSON.stringify(choice.options.map(o => o.presence.instanceId)) !== JSON.stringify(replacementOptions(s, pending.ownerId, pending.replacementId))
+    || (checkVersion && choice.expectedVersion !== pendingVersion(s)) || JSON.stringify(choice.options.map(o => o.presence.instanceId)) !== JSON.stringify(replacementOptions(s, pending.ownerId, pending.replacementId))
     || new Set(choice.options.map(o => o.token)).size !== choice.options.length || choice.options.some(o => s.instances[o.presence.instanceId]?.zoneGeneration !== o.presence.generation)) throw new Error('INVALID_REPLACEMENT_CHOICE')
 }
 export type { EffectRegistry }
@@ -749,7 +752,7 @@ function assertScheduler(s: GameState) {
  if (resolving.length!==(q.resolvingId?1:0) || (q.resolvingId && (resolving[0].id!==q.resolvingId || r.active?.definitionId!==resolving[0].definitionId || JSON.stringify(r.active.context.source)!==JSON.stringify(resolving[0].source)))) throw new Error('INVALID_TRIGGER_RESOLUTION')
  if (q.orderChoice) {
   const order=q.orderChoice, eligible=nextTriggers(structuredClone(q))
-  if (r.choice || r.continuation || q.resolvingId || order.expectedVersion!==s.version || order.batchId!==q.batches[0]?.id || order.actorId!==eligible[0]?.controllerId || eligible.length<2 || JSON.stringify(order.options.map(o=>o.triggerId))!==JSON.stringify(eligible.map(t=>t.id)) || new Set(order.options.map(o=>o.token)).size!==order.options.length) throw new Error('INVALID_ORDER_CHOICE')
+  if (r.choice || r.continuation || q.resolvingId || order.expectedVersion!==pendingVersion(s) || order.batchId!==q.batches[0]?.id || order.actorId!==eligible[0]?.controllerId || eligible.length<2 || JSON.stringify(order.options.map(o=>o.triggerId))!==JSON.stringify(eligible.map(t=>t.id)) || new Set(order.options.map(o=>o.token)).size!==order.options.length) throw new Error('INVALID_ORDER_CHOICE')
  }
  if (r.operations.some(o=>!s.instances[o.subject.instanceId] || !s.players.some(p=>p.id===o.controllerId)) || new Set(r.operations.map(o=>o.id)).size!==r.operations.length) throw new Error('INVALID_UNIFIED_OPERATION')
 }
@@ -768,7 +771,7 @@ function suspendLeaderReplacement(s:GameState,op:NonNullable<EffectRuntime['card
 function assertLeaderReplacement(s:GameState,checkVersion=true) {
  const r=s.effects!, c=r.continuation!, pending=c.interception!, choice=r.choice!, op=pending.operation
  const i=s.instances[op.subject.instanceId], candidates=leaderReplacementCandidates(s,i.id), step=r.registry.definitions.find(d=>d.id===c.definitionId)!.program[c.pc]
- if (candidates.length!==1 || candidates[0].id!==pending.replacementId || i.zone!=='characters' || i.zoneGeneration!==op.subject.generation || pending.ownerId!==i.controller || op.type!=='KO' || op.outcome!=='PROPOSED' || op.controllerId!==c.context.controllerId || op.resolutionId!==c.context.effectInstanceId || step.kind!=='OPERATION' || step.operation.primitive!=='koCharacter' || !c.bindings[step.operation.subjectBinding]?.some(ref=>ref.instanceId===i.id && ref.generation===i.zoneGeneration) || choice.actorId!==i.controller || choice.bind!=='__replacement' || choice.visibility!=='PRIVATE' || choice.choiceType!=='SELECT' || !choice.optional || choice.min!==0 || choice.max!==1 || choice.options.length!==1 || JSON.stringify(choice.options[0].presence)!==JSON.stringify(op.subject) || (checkVersion && choice.expectedVersion!==s.version)) throw new Error('INVALID_REPLACEMENT_CHOICE')
+ if (candidates.length!==1 || candidates[0].id!==pending.replacementId || i.zone!=='characters' || i.zoneGeneration!==op.subject.generation || pending.ownerId!==i.controller || op.type!=='KO' || op.outcome!=='PROPOSED' || op.controllerId!==c.context.controllerId || op.resolutionId!==c.context.effectInstanceId || step.kind!=='OPERATION' || step.operation.primitive!=='koCharacter' || !c.bindings[step.operation.subjectBinding]?.some(ref=>ref.instanceId===i.id && ref.generation===i.zoneGeneration) || choice.actorId!==i.controller || choice.bind!=='__replacement' || choice.visibility!=='PRIVATE' || choice.choiceType!=='SELECT' || !choice.optional || choice.min!==0 || choice.max!==1 || choice.options.length!==1 || JSON.stringify(choice.options[0].presence)!==JSON.stringify(op.subject) || (checkVersion && choice.expectedVersion!==pendingVersion(s))) throw new Error('INVALID_REPLACEMENT_CHOICE')
 }
 function answerLeaderReplacement(s:GameState,refs:{instanceId:string;generation:number}[]) {
  assertLeaderReplacement(s,false)

@@ -114,7 +114,7 @@ export function getLegalActions(state: GameState, actorId: string): LegalAction[
 function commandIsValid(raw: unknown): raw is Command {
   if (!raw || typeof raw !== 'object' || Array.isArray(raw)) return false
   const c = raw as Record<string, unknown>
-  const fields: Record<string, string[]> = { CHOOSE_FIRST: ['choice'], MULLIGAN: ['redraw'], ADVANCE_PHASE: [], END_MAIN: [], PLAY_CARD: ['instanceId', 'donIds', 'replaceId'], ATTACH_DON: ['donIds', 'targetId'], START_EFFECT: ['effectId'], ANSWER_CHOICE: ['choiceId', 'tokens'], ANSWER_TRIGGER: ['choiceId', 'activate'], DECLARE_ATTACK: ['attackerId', 'targetId'], ACTIVATE_BLOCKER: ['blockerId', 'battleId'], PASS_BLOCKER: ['battleId'], PLAY_COUNTER_CHARACTER: ['cardId', 'targetId', 'battleId'], PLAY_COUNTER_EVENT: ['cardId', 'targetId', 'paymentDonIds', 'donMinusIds', 'battleId'], PASS_COUNTER: ['battleId'], RESOLVE_BATTLE: ['battleId'], CONTINUE_LIFE_DAMAGE: ['battleId'] }
+  const fields: Record<string, string[]> = { CHOOSE_FIRST: ['choice'], MULLIGAN: ['redraw'], ADVANCE_PHASE: [], END_MAIN: [], PLAY_CARD: ['instanceId', 'donIds', 'replaceId'], ATTACH_DON: ['donIds', 'targetId'], START_EFFECT: ['effectId'], CONCEDE: [], ANSWER_CHOICE: ['choiceId', 'tokens'], ANSWER_TRIGGER: ['choiceId', 'activate'], DECLARE_ATTACK: ['attackerId', 'targetId'], ACTIVATE_BLOCKER: ['blockerId', 'battleId'], PASS_BLOCKER: ['battleId'], PLAY_COUNTER_CHARACTER: ['cardId', 'targetId', 'battleId'], PLAY_COUNTER_EVENT: ['cardId', 'targetId', 'paymentDonIds', 'donMinusIds', 'battleId'], PASS_COUNTER: ['battleId'], RESOLVE_BATTLE: ['battleId'], CONTINUE_LIFE_DAMAGE: ['battleId'] }
   const extra = typeof c.type === 'string' && Object.hasOwn(fields, c.type) ? fields[c.type] : undefined
   if (!extra || !validId(c.id) || !validId(c.actorId) || !Number.isSafeInteger(c.expectedVersion) || Number(c.expectedVersion) < 0) return false
   const required = ['id', 'actorId', 'expectedVersion', 'type', ...extra]
@@ -149,11 +149,17 @@ export function applyCommand(previous: GameState, raw: unknown, generator: Rando
   if (prior) return sameCommand(prior, command) ? { ok: true, state: structuredClone(previous), events: [], replayed: true } : { ok: false, error: 'COMMAND_ID_CONFLICT' }
   if (!previous.players.some(p => p.id === command.actorId)) return { ok: false, error: 'UNKNOWN_ACTOR' }
   if (command.expectedVersion !== previous.version) return { ok: false, error: 'STALE_VERSION' }
-  if (!getLegalActions(previous, command.actorId).some(a => a.type === command.type)) return { ok: false, error: 'ILLEGAL_ACTION' }
+  // CR 1.2.1 §1-2-3/§1-2-4: a player may concede at any point of a started game; it is never a listed action
+  // (it is always available) and no card can prevent or replace it.
+  if (command.type === 'CONCEDE' ? previous.scope !== 'BASIC_TURNS' || !!previous.result : !getLegalActions(previous, command.actorId).some(a => a.type === command.type)) return { ok: false, error: 'ILLEGAL_ACTION' }
   const state = structuredClone(previous)
   const fromEvent = state.events.length
   try {
-    if (command.type === 'CHOOSE_FIRST') {
+    if (command.type === 'CONCEDE') {
+      state.result = { reason: 'CONCESSION', loserIds: [command.actorId], winnerId: state.players.find(p => p.id !== command.actorId)!.id }
+      state.decisionPlayerId = null
+      event(state, 'GAME_ENDED', command.actorId)
+    } else if (command.type === 'CHOOSE_FIRST') {
       state.firstPlayerId = command.choice === 'FIRST' ? command.actorId : state.players.find(p => p.id !== command.actorId)!.id
       state.activePlayerId = state.firstPlayerId; state.decisionPlayerId = state.firstPlayerId; state.phase = 'MULLIGAN'
       event(state, 'ORDER_CHOSEN', command.actorId)
@@ -211,6 +217,8 @@ export function projectState(state: GameState, viewerId: string | null) {
     gameId: state.gameId, version: state.version, scope: state.scope, phase: state.phase, firstPlayerId: state.firstPlayerId,
     activePlayerId: state.activePlayerId, decisionPlayerId: state.decisionPlayerId, turn: state.turn, automaticPlayReady: false, result: structuredClone(state.result ?? null),
     battle: state.battle ? { id: state.battle.id, step: state.battle.step, attacker: state.battle.attacker.instanceId, target: state.battle.target.instanceId, attackerControllerId: state.battle.attackerControllerId, defenderId: state.battle.defenderId,
+      // Public: Counters already played on the battle target (each COUNTER_PLAYED is a public event).
+      counterBonus: state.battle.counterModifiers.filter(m => m.target.instanceId === state.battle!.target.instanceId && m.target.generation === state.battle!.target.generation).reduce((n, m) => n + m.amount, 0),
       lifeTrigger: state.battle.pendingLifeTrigger ? state.battle.pendingLifeTrigger.actorId === viewerId ? { choiceId: state.battle.pendingLifeTrigger.id, choices: [false, true] } : { waiting: true } : null } : null,
     players: state.players.map(p => ({
       id: p.id, turns: p.turns, mulligan: p.mulligan,
