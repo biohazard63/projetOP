@@ -1,0 +1,132 @@
+TAP version 13
+# Subtest: M15D accepts versioned existing definitions and ON_KO
+ok 1 - M15D accepts versioned existing definitions and ON_KO
+  ---
+  duration_ms: 6.542417
+  type: 'test'
+  ...
+# Subtest: M15D preserves old registry and refuses legacy ON_KO
+ok 2 - M15D preserves old registry and refuses legacy ON_KO
+  ---
+  duration_ms: 3.270875
+  type: 'test'
+  ...
+# Subtest: M15D rejects unknown primitives and incompatible versions
+ok 3 - M15D rejects unknown primitives and incompatible versions
+  ---
+  duration_ms: 1.629333
+  type: 'test'
+  ...
+# Subtest: M15D scheduler retains initial B before cascade C and active player first
+ok 4 - M15D scheduler retains initial B before cascade C and active player first
+  ---
+  duration_ms: 0.240542
+  type: 'test'
+  ...
+# Subtest: M15D real Caribou ON_KO cascades after Shanks across series
+ok 5 - M15D real Caribou ON_KO cascades after Shanks across series
+  ---
+  duration_ms: 60.086834
+  type: 'test'
+  ...
+# Subtest: M15D simultaneous real ON_PLAY definitions require ordering, never registry sorting
+ok 6 - M15D simultaneous real ON_PLAY definitions require ordering, never registry sorting
+  ---
+  duration_ms: 20.752375
+  type: 'test'
+  ...
+# Subtest: M15D composite cost initially impossible pays nothing
+ok 7 - M15D composite cost initially impossible pays nothing
+  ---
+  duration_ms: 18.534416
+  type: 'test'
+  ...
+# Subtest: M15D interrupted composite payment retains paid operation and skips remainder
+ok 8 - M15D interrupted composite payment retains paid operation and skips remainder
+  ---
+  duration_ms: 14.68925
+  type: 'test'
+  ...
+# Subtest: M15D real Sabo replacement prevents Usopp ON_KO
+ok 9 - M15D real Sabo replacement prevents Usopp ON_KO
+  ---
+  duration_ms: 25.388666
+  type: 'test'
+  ...
+# Subtest: M15D real Sabo decline permits Usopp ON_KO and leaves usage free
+ok 10 - M15D real Sabo decline permits Usopp ON_KO and leaves usage free
+  ---
+  duration_ms: 24.565416
+  type: 'test'
+  ...
+# Subtest: M15D interrupted activation commits payment and skips body via applyCommand
+ok 11 - M15D interrupted activation commits payment and skips body via applyCommand
+  ---
+  duration_ms: 18.140291
+  type: 'test'
+  ...
+# Subtest: M15D order choice recovery is private and duplicate answers are idempotent
+ok 12 - M15D order choice recovery is private and duplicate answers are idempotent
+  ---
+  duration_ms: 27.34425
+  type: 'test'
+  ...
+# Subtest: M15D forged ON_KO capture and ordering save are rejected
+ok 13 - M15D forged ON_KO capture and ordering save are rejected
+  ---
+  duration_ms: 22.750083
+  type: 'test'
+  ...
+# Subtest: M15D explicit simultaneous replacement and KO batch refusals preserve state
+ok 14 - M15D explicit simultaneous replacement and KO batch refusals preserve state
+  ---
+  duration_ms: 42.757917
+  type: 'test'
+  ...
+# Subtest: M15D Sabo requires DON and opponent turn and consumes only accepted usage
+ok 15 - M15D Sabo requires DON and opponent turn and consumes only accepted usage
+  ---
+  duration_ms: 39.916916
+  type: 'test'
+  ...
+# Subtest: M15D normal play payment and movement use common operations
+not ok 16 - M15D normal play payment and movement use common operations
+  ---
+  duration_ms: 16.694875
+  type: 'test'
+  location: '/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:2:17876'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    0 !== 10
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 10
+  actual: 0
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:148:72)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: M15D Sunny rest and power gain are confirmed operations
+ok 17 - M15D Sunny rest and power gain are confirmed operations
+  ---
+  duration_ms: 16.713833
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 16
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 806.744166

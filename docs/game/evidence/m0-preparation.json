@@ -1,0 +1,15 @@
+{
+  "definitions": 14,
+  "printings": 33,
+  "preservedSnapshotIds": 29,
+  "leadersCorrected": 284,
+  "missingLife": [],
+  "errors": [],
+  "automaticGameReady": false,
+  "compositionErrors": [],
+  "playabilityErrors": [
+    "UNSUPPORTED_EFFECT:ST01-001",
+    "UNSUPPORTED_EFFECT:ST01-006",
+    "UNSUPPORTED_EFFECT:ST01-007"
+  ]
+}

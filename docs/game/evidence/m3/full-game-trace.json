@@ -1,0 +1,3777 @@
+{
+ "seed": 52,
+ "rulesVersion": "1.2.1",
+ "ruleset": "m3-reviewed-subset-2026-10-12",
+ "decks": {
+  "alice": [
+   {
+    "printingKey": "ST04-001::standard",
+    "quantity": 1
+   },
+   {
+    "printingKey": "ST04-009::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "ST04-007::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "OP02-080::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "ST04-013::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "OP02-077::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "ST04-012::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "OP01-103::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "OP01-107::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "OP04-062::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "OP01-110::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "OP01-092::standard",
+    "quantity": 2
+   },
+   {
+    "printingKey": "ST04-011::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "ST04-016::standard",
+    "quantity": 4
+   }
+  ],
+  "bob": [
+   {
+    "printingKey": "ST01-001::standard",
+    "quantity": 1
+   },
+   {
+    "printingKey": "ST01-003::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "ST01-006::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "ST01-007::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "ST01-008::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "ST01-009::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "ST01-010::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "OP01-016::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "OP06-009::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "OP06-013::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "ST01-014::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "OP06-017::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "OP06-018::standard",
+    "quantity": 4
+   },
+   {
+    "printingKey": "P-016::standard",
+    "quantity": 2
+   }
+  ]
+ },
+ "result": {
+  "reason": "LEADER_DAMAGED_AT_ZERO_LIFE",
+  "loserIds": [
+   "bob"
+  ],
+  "winnerId": "alice"
+ },
+ "turns": 17,
+ "commandCount": 327,
+ "checkpoints": 13,
+ "leaks": [],
+ "coverage": {
+  "CHOOSE_FIRST": 1,
+  "MULLIGAN": 2,
+  "ADVANCE_PHASE": 67,
+  "PLAY_CARD": 13,
+  "PLAY:ST04-009": 1,
+  "END_MAIN": 16,
+  "PLAY:OP02-077": 1,
+  "DECLARE_ATTACK": 42,
+  "PASS_BLOCKER": 39,
+  "PASS_COUNTER": 42,
+  "RESOLVE_BATTLE": 42,
+  "PLAY:ST01-003": 1,
+  "PLAY:ST01-007": 1,
+  "START_EFFECT": 10,
+  "START_EFFECT:ST01-001.activate-main-give-rested-don": 4,
+  "ANSWER_CHOICE": 29,
+  "START_EFFECT:ST01-007.activate-main-give-rested-don": 4,
+  "PLAY:OP04-062": 1,
+  "ANSWER_TRIGGER": 1,
+  "CONTINUE_LIFE_DAMAGE": 1,
+  "PLAY:OP06-009": 1,
+  "PLAY:ST01-006": 1,
+  "START_EFFECT:ST04-001.activate-main-trash-top-life": 1,
+  "ACTIVATE_BLOCKER": 3,
+  "PLAY_COUNTER_EVENT": 5,
+  "COUNTER_EVENT:OP06-017": 1,
+  "PLAY_COUNTER_CHARACTER": 7,
+  "PLAY:OP01-016": 1,
+  "START_EFFECT:OP06-018.main-power-condition": 1,
+  "ATTACH_DON": 7,
+  "COUNTER_EVENT:ST01-014": 1,
+  "PLAY:OP06-013": 1,
+  "COUNTER_EVENT:ST04-016": 3,
+  "PLAY:ST04-011": 1,
+  "PLAY:ST04-013": 1,
+  "PLAY:OP01-107": 1,
+  "PLAY:OP01-110": 1,
+  "EVENT:CREATED": 1,
+  "EVENT:ORDER_CHOSEN": 1,
+  "EVENT:HANDS_DEALT": 1,
+  "EVENT:HAND_REDRAWN": 1,
+  "EVENT:HAND_KEPT": 1,
+  "EVENT:PREPARED": 1,
+  "EVENT:REFRESHED": 17,
+  "EVENT:DRAW_SKIPPED": 1,
+  "EVENT:DON_ADDED": 17,
+  "EVENT:CARD_REVEALED": 15,
+  "EVENT:CARD_PLAYED": 13,
+  "EVENT:MAIN_ENDED": 16,
+  "EVENT:TURN_ENDED": 16,
+  "EVENT:DRAWN": 16,
+  "EVENT:ATTACK_DECLARED": 42,
+  "EVENT:LIFE_DAMAGED": 9,
+  "EVENT:BATTLE_RESOLVED": 41,
+  "EVENT:CHARACTER_KO": 9,
+  "EVENT:TRIGGER_ACTIVATED": 1,
+  "EVENT:CARD_TRASHED": 2,
+  "EVENT:LIFE_TRASHED": 1,
+  "EVENT:BLOCKER_ACTIVATED": 3,
+  "EVENT:LIFE_PAID": 1,
+  "EVENT:COUNTER_PLAYED": 12,
+  "EVENT:DON_ATTACHED": 36,
+  "EVENT:GAME_ENDED": 1
+ },
+ "commands": [
+  {
+   "v": 0,
+   "actor": "alice",
+   "type": "CHOOSE_FIRST",
+   "choice": "FIRST"
+  },
+  {
+   "v": 1,
+   "actor": "alice",
+   "type": "MULLIGAN",
+   "redraw": true
+  },
+  {
+   "v": 2,
+   "actor": "bob",
+   "type": "MULLIGAN",
+   "redraw": false
+  },
+  {
+   "v": 3,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 4,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 5,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 6,
+   "actor": "alice",
+   "type": "PLAY_CARD",
+   "instanceId": "m3-full-game:p0:c3",
+   "donIds": [
+    "m3-full-game:p0:c51"
+   ],
+   "replaceId": null
+  },
+  {
+   "v": 7,
+   "actor": "alice",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 8,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 9,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 10,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 11,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 12,
+   "actor": "bob",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 13,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 14,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 15,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 16,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 17,
+   "actor": "alice",
+   "type": "PLAY_CARD",
+   "instanceId": "m3-full-game:p0:c20",
+   "donIds": [
+    "m3-full-game:p0:c51",
+    "m3-full-game:p0:c52",
+    "m3-full-game:p0:c53"
+   ],
+   "replaceId": null
+  },
+  {
+   "v": 18,
+   "actor": "alice",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p0:c0",
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 19,
+   "actor": "bob",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:18"
+  },
+  {
+   "v": 20,
+   "actor": "bob",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:18"
+  },
+  {
+   "v": 21,
+   "actor": "alice",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:18"
+  },
+  {
+   "v": 22,
+   "actor": "alice",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p0:c3",
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 23,
+   "actor": "bob",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:22"
+  },
+  {
+   "v": 24,
+   "actor": "bob",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:22"
+  },
+  {
+   "v": 25,
+   "actor": "alice",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:22"
+  },
+  {
+   "v": 26,
+   "actor": "alice",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 27,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 28,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 29,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 30,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 31,
+   "actor": "bob",
+   "type": "PLAY_CARD",
+   "instanceId": "m3-full-game:p1:c1",
+   "donIds": [
+    "m3-full-game:p1:c51"
+   ],
+   "replaceId": null
+  },
+  {
+   "v": 32,
+   "actor": "bob",
+   "type": "PLAY_CARD",
+   "instanceId": "m3-full-game:p1:c10",
+   "donIds": [
+    "m3-full-game:p1:c52"
+   ],
+   "replaceId": null
+  },
+  {
+   "v": 33,
+   "actor": "bob",
+   "type": "START_EFFECT",
+   "effectId": "ST01-001.activate-main-give-rested-don:m3-full-game:p1:c0:0"
+  },
+  {
+   "v": 34,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:24",
+   "tokens": [
+    "m3-full-game:fx:choice:24:option:0"
+   ]
+  },
+  {
+   "v": 35,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:25",
+   "tokens": [
+    "m3-full-game:fx:choice:25:option:0"
+   ]
+  },
+  {
+   "v": 36,
+   "actor": "bob",
+   "type": "START_EFFECT",
+   "effectId": "ST01-007.activate-main-give-rested-don:m3-full-game:p1:c10:2"
+  },
+  {
+   "v": 37,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:29",
+   "tokens": [
+    "m3-full-game:fx:choice:29:option:0"
+   ]
+  },
+  {
+   "v": 38,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:30",
+   "tokens": [
+    "m3-full-game:fx:choice:30:option:0"
+   ]
+  },
+  {
+   "v": 39,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c0",
+   "targetId": "m3-full-game:p0:c3"
+  },
+  {
+   "v": 40,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:39"
+  },
+  {
+   "v": 41,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:39"
+  },
+  {
+   "v": 42,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:39"
+  },
+  {
+   "v": 43,
+   "actor": "bob",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 44,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 45,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 46,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 47,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 48,
+   "actor": "alice",
+   "type": "PLAY_CARD",
+   "instanceId": "m3-full-game:p0:c33",
+   "donIds": [
+    "m3-full-game:p0:c51",
+    "m3-full-game:p0:c52",
+    "m3-full-game:p0:c53",
+    "m3-full-game:p0:c54",
+    "m3-full-game:p0:c55"
+   ],
+   "replaceId": null
+  },
+  {
+   "v": 49,
+   "actor": "alice",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p0:c0",
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 50,
+   "actor": "bob",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:49"
+  },
+  {
+   "v": 51,
+   "actor": "bob",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:49"
+  },
+  {
+   "v": 52,
+   "actor": "alice",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:49"
+  },
+  {
+   "v": 53,
+   "actor": "bob",
+   "type": "ANSWER_TRIGGER",
+   "choiceId": "m3-full-game:battle:49:trigger:0",
+   "activate": true
+  },
+  {
+   "v": 54,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:47",
+   "tokens": [
+    "m3-full-game:fx:choice:47:option:0"
+   ]
+  },
+  {
+   "v": 55,
+   "actor": "alice",
+   "type": "CONTINUE_LIFE_DAMAGE",
+   "battleId": "m3-full-game:battle:49"
+  },
+  {
+   "v": 56,
+   "actor": "alice",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 57,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 58,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 59,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 60,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 61,
+   "actor": "bob",
+   "type": "PLAY_CARD",
+   "instanceId": "m3-full-game:p1:c29",
+   "donIds": [
+    "m3-full-game:p1:c53",
+    "m3-full-game:p1:c54",
+    "m3-full-game:p1:c51"
+   ],
+   "replaceId": null
+  },
+  {
+   "v": 62,
+   "actor": "bob",
+   "type": "PLAY_CARD",
+   "instanceId": "m3-full-game:p1:c5",
+   "donIds": [
+    "m3-full-game:p1:c52"
+   ],
+   "replaceId": null
+  },
+  {
+   "v": 63,
+   "actor": "bob",
+   "type": "START_EFFECT",
+   "effectId": "ST01-001.activate-main-give-rested-don:m3-full-game:p1:c0:0"
+  },
+  {
+   "v": 64,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:62",
+   "tokens": [
+    "m3-full-game:fx:choice:62:option:0"
+   ]
+  },
+  {
+   "v": 65,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:63",
+   "tokens": [
+    "m3-full-game:fx:choice:63:option:0"
+   ]
+  },
+  {
+   "v": 66,
+   "actor": "bob",
+   "type": "START_EFFECT",
+   "effectId": "ST01-007.activate-main-give-rested-don:m3-full-game:p1:c10:2"
+  },
+  {
+   "v": 67,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:67",
+   "tokens": [
+    "m3-full-game:fx:choice:67:option:0"
+   ]
+  },
+  {
+   "v": 68,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:68",
+   "tokens": [
+    "m3-full-game:fx:choice:68:option:0"
+   ]
+  },
+  {
+   "v": 69,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c0",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 70,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:69"
+  },
+  {
+   "v": 71,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:69"
+  },
+  {
+   "v": 72,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:69"
+  },
+  {
+   "v": 73,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c1",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 74,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:73"
+  },
+  {
+   "v": 75,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:73"
+  },
+  {
+   "v": 76,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:73"
+  },
+  {
+   "v": 77,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c10",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 78,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:77"
+  },
+  {
+   "v": 79,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:77"
+  },
+  {
+   "v": 80,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:77"
+  },
+  {
+   "v": 81,
+   "actor": "bob",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 82,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 83,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 84,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 85,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 86,
+   "actor": "alice",
+   "type": "START_EFFECT",
+   "effectId": "ST04-001.activate-main-trash-top-life:m3-full-game:p0:c0:0",
+   "donMinusIds": [
+    "m3-full-game:p0:c51",
+    "m3-full-game:p0:c52",
+    "m3-full-game:p0:c53",
+    "m3-full-game:p0:c54",
+    "m3-full-game:p0:c55",
+    "m3-full-game:p0:c56",
+    "m3-full-game:p0:c57"
+   ]
+  },
+  {
+   "v": 87,
+   "actor": "alice",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:85",
+   "tokens": [
+    "m3-full-game:fx:choice:85:option:0"
+   ]
+  },
+  {
+   "v": 88,
+   "actor": "alice",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p0:c33",
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 89,
+   "actor": "bob",
+   "type": "ACTIVATE_BLOCKER",
+   "blockerId": "m3-full-game:p1:c29",
+   "battleId": "m3-full-game:battle:88"
+  },
+  {
+   "v": 90,
+   "actor": "bob",
+   "type": "PLAY_COUNTER_EVENT",
+   "cardId": "m3-full-game:p1:c42",
+   "battleId": "m3-full-game:battle:88",
+   "paymentDonIds": [
+    "m3-full-game:p1:c55",
+    "m3-full-game:p1:c56"
+   ],
+   "donMinusIds": [],
+   "targetId": null,
+   "lifePayment": true
+  },
+  {
+   "v": 91,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:99",
+   "tokens": [
+    "m3-full-game:fx:choice:99:option:0"
+   ]
+  },
+  {
+   "v": 92,
+   "actor": "bob",
+   "type": "PLAY_COUNTER_CHARACTER",
+   "cardId": "m3-full-game:p1:c50",
+   "targetId": "m3-full-game:p1:c29",
+   "battleId": "m3-full-game:battle:88"
+  },
+  {
+   "v": 93,
+   "actor": "bob",
+   "type": "PLAY_COUNTER_CHARACTER",
+   "cardId": "m3-full-game:p1:c31",
+   "targetId": "m3-full-game:p1:c29",
+   "battleId": "m3-full-game:battle:88"
+  },
+  {
+   "v": 94,
+   "actor": "bob",
+   "type": "PLAY_COUNTER_CHARACTER",
+   "cardId": "m3-full-game:p1:c33",
+   "targetId": "m3-full-game:p1:c29",
+   "battleId": "m3-full-game:battle:88"
+  },
+  {
+   "v": 95,
+   "actor": "bob",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:88"
+  },
+  {
+   "v": 96,
+   "actor": "alice",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:88"
+  },
+  {
+   "v": 97,
+   "actor": "alice",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p0:c0",
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 98,
+   "actor": "bob",
+   "type": "ACTIVATE_BLOCKER",
+   "blockerId": "m3-full-game:p1:c5",
+   "battleId": "m3-full-game:battle:97"
+  },
+  {
+   "v": 99,
+   "actor": "bob",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:97"
+  },
+  {
+   "v": 100,
+   "actor": "alice",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:97"
+  },
+  {
+   "v": 101,
+   "actor": "alice",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 102,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 103,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 104,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 105,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 106,
+   "actor": "bob",
+   "type": "PLAY_CARD",
+   "instanceId": "m3-full-game:p1:c28",
+   "donIds": [
+    "m3-full-game:p1:c51"
+   ],
+   "replaceId": null
+  },
+  {
+   "v": 107,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:117",
+   "tokens": [
+    "m3-full-game:fx:choice:117:option:0"
+   ]
+  },
+  {
+   "v": 108,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:118",
+   "tokens": [
+    "m3-full-game:fx:choice:118:option:0",
+    "m3-full-game:fx:choice:118:option:1",
+    "m3-full-game:fx:choice:118:option:2",
+    "m3-full-game:fx:choice:118:option:3"
+   ]
+  },
+  {
+   "v": 109,
+   "actor": "bob",
+   "type": "START_EFFECT",
+   "effectId": "OP06-018.main-power-condition:m3-full-game:p1:c48:1"
+  },
+  {
+   "v": 110,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:124",
+   "tokens": [
+    "m3-full-game:fx:choice:124:option:0"
+   ]
+  },
+  {
+   "v": 111,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:126",
+   "tokens": [
+    "m3-full-game:fx:choice:126:option:0"
+   ]
+  },
+  {
+   "v": 112,
+   "actor": "bob",
+   "type": "START_EFFECT",
+   "effectId": "ST01-001.activate-main-give-rested-don:m3-full-game:p1:c0:0"
+  },
+  {
+   "v": 113,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:130",
+   "tokens": [
+    "m3-full-game:fx:choice:130:option:0"
+   ]
+  },
+  {
+   "v": 114,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:131",
+   "tokens": [
+    "m3-full-game:fx:choice:131:option:0"
+   ]
+  },
+  {
+   "v": 115,
+   "actor": "bob",
+   "type": "START_EFFECT",
+   "effectId": "ST01-007.activate-main-give-rested-don:m3-full-game:p1:c10:2"
+  },
+  {
+   "v": 116,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:135",
+   "tokens": [
+    "m3-full-game:fx:choice:135:option:0"
+   ]
+  },
+  {
+   "v": 117,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:136",
+   "tokens": [
+    "m3-full-game:fx:choice:136:option:0"
+   ]
+  },
+  {
+   "v": 118,
+   "actor": "bob",
+   "type": "ATTACH_DON",
+   "donIds": [
+    "m3-full-game:p1:c53",
+    "m3-full-game:p1:c54",
+    "m3-full-game:p1:c57",
+    "m3-full-game:p1:c58"
+   ],
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 119,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c0",
+   "targetId": "m3-full-game:p0:c33"
+  },
+  {
+   "v": 120,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:119"
+  },
+  {
+   "v": 121,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:119"
+  },
+  {
+   "v": 122,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:119"
+  },
+  {
+   "v": 123,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c29",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 124,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:123"
+  },
+  {
+   "v": 125,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:123"
+  },
+  {
+   "v": 126,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:123"
+  },
+  {
+   "v": 127,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c1",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 128,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:127"
+  },
+  {
+   "v": 129,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:127"
+  },
+  {
+   "v": 130,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:127"
+  },
+  {
+   "v": 131,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c10",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 132,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:131"
+  },
+  {
+   "v": 133,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:131"
+  },
+  {
+   "v": 134,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:131"
+  },
+  {
+   "v": 135,
+   "actor": "bob",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 136,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 137,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 138,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 139,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 140,
+   "actor": "alice",
+   "type": "ATTACH_DON",
+   "donIds": [
+    "m3-full-game:p0:c59"
+   ],
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 141,
+   "actor": "alice",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p0:c0",
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 142,
+   "actor": "bob",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:141"
+  },
+  {
+   "v": 143,
+   "actor": "bob",
+   "type": "PLAY_COUNTER_EVENT",
+   "cardId": "m3-full-game:p1:c37",
+   "battleId": "m3-full-game:battle:141",
+   "paymentDonIds": [
+    "m3-full-game:p1:c56"
+   ],
+   "donMinusIds": [],
+   "targetId": null
+  },
+  {
+   "v": 144,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:160",
+   "tokens": [
+    "m3-full-game:fx:choice:160:option:0"
+   ]
+  },
+  {
+   "v": 145,
+   "actor": "bob",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:141"
+  },
+  {
+   "v": 146,
+   "actor": "alice",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:141"
+  },
+  {
+   "v": 147,
+   "actor": "alice",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 148,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 149,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 150,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 151,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 152,
+   "actor": "bob",
+   "type": "PLAY_CARD",
+   "instanceId": "m3-full-game:p1:c35",
+   "donIds": [
+    "m3-full-game:p1:c55",
+    "m3-full-game:p1:c56"
+   ],
+   "replaceId": null
+  },
+  {
+   "v": 153,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:176",
+   "tokens": []
+  },
+  {
+   "v": 154,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:177",
+   "tokens": [
+    "m3-full-game:fx:choice:177:option:0",
+    "m3-full-game:fx:choice:177:option:1",
+    "m3-full-game:fx:choice:177:option:2"
+   ]
+  },
+  {
+   "v": 155,
+   "actor": "bob",
+   "type": "START_EFFECT",
+   "effectId": "ST01-001.activate-main-give-rested-don:m3-full-game:p1:c0:0"
+  },
+  {
+   "v": 156,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:180",
+   "tokens": [
+    "m3-full-game:fx:choice:180:option:0"
+   ]
+  },
+  {
+   "v": 157,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:181",
+   "tokens": [
+    "m3-full-game:fx:choice:181:option:0"
+   ]
+  },
+  {
+   "v": 158,
+   "actor": "bob",
+   "type": "START_EFFECT",
+   "effectId": "ST01-007.activate-main-give-rested-don:m3-full-game:p1:c10:2"
+  },
+  {
+   "v": 159,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:185",
+   "tokens": [
+    "m3-full-game:fx:choice:185:option:0"
+   ]
+  },
+  {
+   "v": 160,
+   "actor": "bob",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:186",
+   "tokens": [
+    "m3-full-game:fx:choice:186:option:0"
+   ]
+  },
+  {
+   "v": 161,
+   "actor": "bob",
+   "type": "ATTACH_DON",
+   "donIds": [
+    "m3-full-game:p1:c53",
+    "m3-full-game:p1:c54",
+    "m3-full-game:p1:c57",
+    "m3-full-game:p1:c58",
+    "m3-full-game:p1:c59",
+    "m3-full-game:p1:c60"
+   ],
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 162,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c0",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 163,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:162"
+  },
+  {
+   "v": 164,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:162"
+  },
+  {
+   "v": 165,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:162"
+  },
+  {
+   "v": 166,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c29",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 167,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:166"
+  },
+  {
+   "v": 168,
+   "actor": "alice",
+   "type": "PLAY_COUNTER_EVENT",
+   "cardId": "m3-full-game:p0:c49",
+   "battleId": "m3-full-game:battle:166",
+   "paymentDonIds": [
+    "m3-full-game:p0:c58"
+   ],
+   "donMinusIds": [
+    "m3-full-game:p0:c58"
+   ],
+   "targetId": null
+  },
+  {
+   "v": 169,
+   "actor": "alice",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:205",
+   "tokens": [
+    "m3-full-game:fx:choice:205:option:0"
+   ]
+  },
+  {
+   "v": 170,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:166"
+  },
+  {
+   "v": 171,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:166"
+  },
+  {
+   "v": 172,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c1",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 173,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:172"
+  },
+  {
+   "v": 174,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:172"
+  },
+  {
+   "v": 175,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:172"
+  },
+  {
+   "v": 176,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c28",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 177,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:176"
+  },
+  {
+   "v": 178,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:176"
+  },
+  {
+   "v": 179,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:176"
+  },
+  {
+   "v": 180,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c10",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 181,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:180"
+  },
+  {
+   "v": 182,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:180"
+  },
+  {
+   "v": 183,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:180"
+  },
+  {
+   "v": 184,
+   "actor": "bob",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 185,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 186,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 187,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 188,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 189,
+   "actor": "alice",
+   "type": "PLAY_CARD",
+   "instanceId": "m3-full-game:p0:c44",
+   "donIds": [
+    "m3-full-game:p0:c59",
+    "m3-full-game:p0:c60"
+   ],
+   "replaceId": null
+  },
+  {
+   "v": 190,
+   "actor": "alice",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p0:c0",
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 191,
+   "actor": "bob",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:190"
+  },
+  {
+   "v": 192,
+   "actor": "bob",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:190"
+  },
+  {
+   "v": 193,
+   "actor": "alice",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:190"
+  },
+  {
+   "v": 194,
+   "actor": "alice",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 195,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 196,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 197,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 198,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 199,
+   "actor": "bob",
+   "type": "ATTACH_DON",
+   "donIds": [
+    "m3-full-game:p1:c55",
+    "m3-full-game:p1:c56",
+    "m3-full-game:p1:c53",
+    "m3-full-game:p1:c54",
+    "m3-full-game:p1:c57",
+    "m3-full-game:p1:c58",
+    "m3-full-game:p1:c59",
+    "m3-full-game:p1:c60"
+   ],
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 200,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c0",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 201,
+   "actor": "alice",
+   "type": "ACTIVATE_BLOCKER",
+   "blockerId": "m3-full-game:p0:c44",
+   "battleId": "m3-full-game:battle:200"
+  },
+  {
+   "v": 202,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:200"
+  },
+  {
+   "v": 203,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:200"
+  },
+  {
+   "v": 204,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c29",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 205,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:204"
+  },
+  {
+   "v": 206,
+   "actor": "alice",
+   "type": "PLAY_COUNTER_EVENT",
+   "cardId": "m3-full-game:p0:c48",
+   "battleId": "m3-full-game:battle:204",
+   "paymentDonIds": [
+    "m3-full-game:p0:c51"
+   ],
+   "donMinusIds": [
+    "m3-full-game:p0:c51"
+   ],
+   "targetId": null
+  },
+  {
+   "v": 207,
+   "actor": "alice",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:247",
+   "tokens": [
+    "m3-full-game:fx:choice:247:option:0"
+   ]
+  },
+  {
+   "v": 208,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:204"
+  },
+  {
+   "v": 209,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:204"
+  },
+  {
+   "v": 210,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c1",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 211,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:210"
+  },
+  {
+   "v": 212,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:210"
+  },
+  {
+   "v": 213,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:210"
+  },
+  {
+   "v": 214,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c35",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 215,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:214"
+  },
+  {
+   "v": 216,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:214"
+  },
+  {
+   "v": 217,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:214"
+  },
+  {
+   "v": 218,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c28",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 219,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:218"
+  },
+  {
+   "v": 220,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:218"
+  },
+  {
+   "v": 221,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:218"
+  },
+  {
+   "v": 222,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c10",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 223,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:222"
+  },
+  {
+   "v": 224,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:222"
+  },
+  {
+   "v": 225,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:222"
+  },
+  {
+   "v": 226,
+   "actor": "bob",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 227,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 228,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 229,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 230,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 231,
+   "actor": "alice",
+   "type": "PLAY_CARD",
+   "instanceId": "m3-full-game:p0:c13",
+   "donIds": [
+    "m3-full-game:p0:c59",
+    "m3-full-game:p0:c60",
+    "m3-full-game:p0:c52"
+   ],
+   "replaceId": null
+  },
+  {
+   "v": 232,
+   "actor": "alice",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p0:c0",
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 233,
+   "actor": "bob",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:232"
+  },
+  {
+   "v": 234,
+   "actor": "bob",
+   "type": "PLAY_COUNTER_CHARACTER",
+   "cardId": "m3-full-game:p1:c2",
+   "targetId": "m3-full-game:p1:c0",
+   "battleId": "m3-full-game:battle:232"
+  },
+  {
+   "v": 235,
+   "actor": "bob",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:232"
+  },
+  {
+   "v": 236,
+   "actor": "alice",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:232"
+  },
+  {
+   "v": 237,
+   "actor": "alice",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 238,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 239,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 240,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 241,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 242,
+   "actor": "bob",
+   "type": "ATTACH_DON",
+   "donIds": [
+    "m3-full-game:p1:c55",
+    "m3-full-game:p1:c56",
+    "m3-full-game:p1:c53",
+    "m3-full-game:p1:c54",
+    "m3-full-game:p1:c57",
+    "m3-full-game:p1:c58",
+    "m3-full-game:p1:c59",
+    "m3-full-game:p1:c60"
+   ],
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 243,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c0",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 244,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:243"
+  },
+  {
+   "v": 245,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:243"
+  },
+  {
+   "v": 246,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:243"
+  },
+  {
+   "v": 247,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c29",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 248,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:247"
+  },
+  {
+   "v": 249,
+   "actor": "alice",
+   "type": "PLAY_COUNTER_EVENT",
+   "cardId": "m3-full-game:p0:c50",
+   "battleId": "m3-full-game:battle:247",
+   "paymentDonIds": [
+    "m3-full-game:p0:c53"
+   ],
+   "donMinusIds": [
+    "m3-full-game:p0:c53"
+   ],
+   "targetId": null
+  },
+  {
+   "v": 250,
+   "actor": "alice",
+   "type": "ANSWER_CHOICE",
+   "choiceId": "m3-full-game:fx:choice:289",
+   "tokens": [
+    "m3-full-game:fx:choice:289:option:0"
+   ]
+  },
+  {
+   "v": 251,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:247"
+  },
+  {
+   "v": 252,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:247"
+  },
+  {
+   "v": 253,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c1",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 254,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:253"
+  },
+  {
+   "v": 255,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:253"
+  },
+  {
+   "v": 256,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:253"
+  },
+  {
+   "v": 257,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c35",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 258,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:257"
+  },
+  {
+   "v": 259,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:257"
+  },
+  {
+   "v": 260,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:257"
+  },
+  {
+   "v": 261,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c28",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 262,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:261"
+  },
+  {
+   "v": 263,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:261"
+  },
+  {
+   "v": 264,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:261"
+  },
+  {
+   "v": 265,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c10",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 266,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:265"
+  },
+  {
+   "v": 267,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:265"
+  },
+  {
+   "v": 268,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:265"
+  },
+  {
+   "v": 269,
+   "actor": "bob",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 270,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 271,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 272,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 273,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 274,
+   "actor": "alice",
+   "type": "PLAY_CARD",
+   "instanceId": "m3-full-game:p0:c29",
+   "donIds": [
+    "m3-full-game:p0:c59",
+    "m3-full-game:p0:c60",
+    "m3-full-game:p0:c52",
+    "m3-full-game:p0:c54",
+    "m3-full-game:p0:c55"
+   ],
+   "replaceId": null
+  },
+  {
+   "v": 275,
+   "actor": "alice",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p0:c0",
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 276,
+   "actor": "bob",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:275"
+  },
+  {
+   "v": 277,
+   "actor": "bob",
+   "type": "PLAY_COUNTER_CHARACTER",
+   "cardId": "m3-full-game:p1:c14",
+   "targetId": "m3-full-game:p1:c0",
+   "battleId": "m3-full-game:battle:275"
+  },
+  {
+   "v": 278,
+   "actor": "bob",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:275"
+  },
+  {
+   "v": 279,
+   "actor": "alice",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:275"
+  },
+  {
+   "v": 280,
+   "actor": "alice",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p0:c13",
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 281,
+   "actor": "bob",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:280"
+  },
+  {
+   "v": 282,
+   "actor": "bob",
+   "type": "PLAY_COUNTER_CHARACTER",
+   "cardId": "m3-full-game:p1:c15",
+   "targetId": "m3-full-game:p1:c0",
+   "battleId": "m3-full-game:battle:280"
+  },
+  {
+   "v": 283,
+   "actor": "bob",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:280"
+  },
+  {
+   "v": 284,
+   "actor": "alice",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:280"
+  },
+  {
+   "v": 285,
+   "actor": "alice",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 286,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 287,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 288,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 289,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 290,
+   "actor": "bob",
+   "type": "ATTACH_DON",
+   "donIds": [
+    "m3-full-game:p1:c55",
+    "m3-full-game:p1:c56",
+    "m3-full-game:p1:c53",
+    "m3-full-game:p1:c54",
+    "m3-full-game:p1:c57",
+    "m3-full-game:p1:c58",
+    "m3-full-game:p1:c59",
+    "m3-full-game:p1:c60"
+   ],
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 291,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c0",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 292,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:291"
+  },
+  {
+   "v": 293,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:291"
+  },
+  {
+   "v": 294,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:291"
+  },
+  {
+   "v": 295,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c29",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 296,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:295"
+  },
+  {
+   "v": 297,
+   "actor": "alice",
+   "type": "PLAY_COUNTER_CHARACTER",
+   "cardId": "m3-full-game:p0:c28",
+   "targetId": "m3-full-game:p0:c0",
+   "battleId": "m3-full-game:battle:295"
+  },
+  {
+   "v": 298,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:295"
+  },
+  {
+   "v": 299,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:295"
+  },
+  {
+   "v": 300,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c1",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 301,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:300"
+  },
+  {
+   "v": 302,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:300"
+  },
+  {
+   "v": 303,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:300"
+  },
+  {
+   "v": 304,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c35",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 305,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:304"
+  },
+  {
+   "v": 306,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:304"
+  },
+  {
+   "v": 307,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:304"
+  },
+  {
+   "v": 308,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c28",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 309,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:308"
+  },
+  {
+   "v": 310,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:308"
+  },
+  {
+   "v": 311,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:308"
+  },
+  {
+   "v": 312,
+   "actor": "bob",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p1:c10",
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 313,
+   "actor": "alice",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:312"
+  },
+  {
+   "v": 314,
+   "actor": "alice",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:312"
+  },
+  {
+   "v": 315,
+   "actor": "bob",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:312"
+  },
+  {
+   "v": 316,
+   "actor": "bob",
+   "type": "END_MAIN"
+  },
+  {
+   "v": 317,
+   "actor": "bob",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 318,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 319,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 320,
+   "actor": "alice",
+   "type": "ADVANCE_PHASE"
+  },
+  {
+   "v": 321,
+   "actor": "alice",
+   "type": "PLAY_CARD",
+   "instanceId": "m3-full-game:p0:c40",
+   "donIds": [
+    "m3-full-game:p0:c59",
+    "m3-full-game:p0:c60",
+    "m3-full-game:p0:c52",
+    "m3-full-game:p0:c54",
+    "m3-full-game:p0:c55",
+    "m3-full-game:p0:c56"
+   ],
+   "replaceId": null
+  },
+  {
+   "v": 322,
+   "actor": "alice",
+   "type": "ATTACH_DON",
+   "donIds": [
+    "m3-full-game:p0:c57"
+   ],
+   "targetId": "m3-full-game:p0:c0"
+  },
+  {
+   "v": 323,
+   "actor": "alice",
+   "type": "DECLARE_ATTACK",
+   "attackerId": "m3-full-game:p0:c29",
+   "targetId": "m3-full-game:p1:c0"
+  },
+  {
+   "v": 324,
+   "actor": "bob",
+   "type": "PASS_BLOCKER",
+   "battleId": "m3-full-game:battle:323"
+  },
+  {
+   "v": 325,
+   "actor": "bob",
+   "type": "PASS_COUNTER",
+   "battleId": "m3-full-game:battle:323"
+  },
+  {
+   "v": 326,
+   "actor": "alice",
+   "type": "RESOLVE_BATTLE",
+   "battleId": "m3-full-game:battle:323"
+  }
+ ],
+ "publicEvents": [
+  {
+   "seq": 0,
+   "type": "CREATED",
+   "actor": null
+  },
+  {
+   "seq": 1,
+   "type": "ORDER_CHOSEN",
+   "actor": "alice"
+  },
+  {
+   "seq": 2,
+   "type": "HANDS_DEALT",
+   "actor": null
+  },
+  {
+   "seq": 3,
+   "type": "HAND_REDRAWN",
+   "actor": "alice"
+  },
+  {
+   "seq": 4,
+   "type": "HAND_KEPT",
+   "actor": "bob"
+  },
+  {
+   "seq": 5,
+   "type": "PREPARED",
+   "actor": null
+  },
+  {
+   "seq": 6,
+   "type": "REFRESHED",
+   "actor": "alice"
+  },
+  {
+   "seq": 7,
+   "type": "DRAW_SKIPPED",
+   "actor": "alice"
+  },
+  {
+   "seq": 8,
+   "type": "DON_ADDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 9,
+   "type": "CARD_REVEALED",
+   "actor": "alice"
+  },
+  {
+   "seq": 10,
+   "type": "CARD_PLAYED",
+   "actor": "alice"
+  },
+  {
+   "seq": 11,
+   "type": "MAIN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 12,
+   "type": "TURN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 13,
+   "type": "REFRESHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 14,
+   "type": "DRAWN",
+   "actor": "bob"
+  },
+  {
+   "seq": 15,
+   "type": "DON_ADDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 16,
+   "type": "MAIN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 17,
+   "type": "TURN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 18,
+   "type": "REFRESHED",
+   "actor": "alice"
+  },
+  {
+   "seq": 19,
+   "type": "DRAWN",
+   "actor": "alice"
+  },
+  {
+   "seq": 20,
+   "type": "DON_ADDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 21,
+   "type": "CARD_REVEALED",
+   "actor": "alice"
+  },
+  {
+   "seq": 22,
+   "type": "CARD_PLAYED",
+   "actor": "alice"
+  },
+  {
+   "seq": 23,
+   "type": "ATTACK_DECLARED",
+   "actor": "alice"
+  },
+  {
+   "seq": 24,
+   "type": "LIFE_DAMAGED",
+   "actor": "bob"
+  },
+  {
+   "seq": 25,
+   "type": "BATTLE_RESOLVED",
+   "actor": "alice"
+  },
+  {
+   "seq": 26,
+   "type": "ATTACK_DECLARED",
+   "actor": "alice"
+  },
+  {
+   "seq": 27,
+   "type": "BATTLE_RESOLVED",
+   "actor": "alice"
+  },
+  {
+   "seq": 28,
+   "type": "MAIN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 29,
+   "type": "TURN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 30,
+   "type": "REFRESHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 31,
+   "type": "DRAWN",
+   "actor": "bob"
+  },
+  {
+   "seq": 32,
+   "type": "DON_ADDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 33,
+   "type": "CARD_REVEALED",
+   "actor": "bob"
+  },
+  {
+   "seq": 34,
+   "type": "CARD_PLAYED",
+   "actor": "bob"
+  },
+  {
+   "seq": 35,
+   "type": "CARD_REVEALED",
+   "actor": "bob"
+  },
+  {
+   "seq": 36,
+   "type": "CARD_PLAYED",
+   "actor": "bob"
+  },
+  {
+   "seq": 37,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 38,
+   "type": "CHARACTER_KO",
+   "actor": "bob"
+  },
+  {
+   "seq": 39,
+   "type": "CHARACTER_KO",
+   "actor": "bob"
+  },
+  {
+   "seq": 40,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 41,
+   "type": "MAIN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 42,
+   "type": "TURN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 43,
+   "type": "REFRESHED",
+   "actor": "alice"
+  },
+  {
+   "seq": 44,
+   "type": "DRAWN",
+   "actor": "alice"
+  },
+  {
+   "seq": 45,
+   "type": "DON_ADDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 46,
+   "type": "CARD_REVEALED",
+   "actor": "alice"
+  },
+  {
+   "seq": 47,
+   "type": "CARD_PLAYED",
+   "actor": "alice"
+  },
+  {
+   "seq": 48,
+   "type": "ATTACK_DECLARED",
+   "actor": "alice"
+  },
+  {
+   "seq": 49,
+   "type": "LIFE_DAMAGED",
+   "actor": "bob"
+  },
+  {
+   "seq": 50,
+   "type": "CARD_REVEALED",
+   "actor": "bob"
+  },
+  {
+   "seq": 51,
+   "type": "TRIGGER_ACTIVATED",
+   "actor": "bob"
+  },
+  {
+   "seq": 52,
+   "type": "CHARACTER_KO",
+   "actor": "bob"
+  },
+  {
+   "seq": 53,
+   "type": "CARD_TRASHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 54,
+   "type": "BATTLE_RESOLVED",
+   "actor": "alice"
+  },
+  {
+   "seq": 55,
+   "type": "MAIN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 56,
+   "type": "TURN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 57,
+   "type": "REFRESHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 58,
+   "type": "DRAWN",
+   "actor": "bob"
+  },
+  {
+   "seq": 59,
+   "type": "DON_ADDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 60,
+   "type": "CARD_REVEALED",
+   "actor": "bob"
+  },
+  {
+   "seq": 61,
+   "type": "CARD_PLAYED",
+   "actor": "bob"
+  },
+  {
+   "seq": 62,
+   "type": "CARD_REVEALED",
+   "actor": "bob"
+  },
+  {
+   "seq": 63,
+   "type": "CARD_PLAYED",
+   "actor": "bob"
+  },
+  {
+   "seq": 64,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 65,
+   "type": "LIFE_DAMAGED",
+   "actor": "alice"
+  },
+  {
+   "seq": 66,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 67,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 68,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 69,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 70,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 71,
+   "type": "MAIN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 72,
+   "type": "TURN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 73,
+   "type": "REFRESHED",
+   "actor": "alice"
+  },
+  {
+   "seq": 74,
+   "type": "DRAWN",
+   "actor": "alice"
+  },
+  {
+   "seq": 75,
+   "type": "DON_ADDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 76,
+   "type": "LIFE_TRASHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 77,
+   "type": "CARD_TRASHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 78,
+   "type": "ATTACK_DECLARED",
+   "actor": "alice"
+  },
+  {
+   "seq": 79,
+   "type": "BLOCKER_ACTIVATED",
+   "actor": "bob"
+  },
+  {
+   "seq": 80,
+   "type": "LIFE_PAID",
+   "actor": "bob"
+  },
+  {
+   "seq": 81,
+   "type": "COUNTER_PLAYED",
+   "actor": "bob"
+  },
+  {
+   "seq": 82,
+   "type": "COUNTER_PLAYED",
+   "actor": "bob"
+  },
+  {
+   "seq": 83,
+   "type": "COUNTER_PLAYED",
+   "actor": "bob"
+  },
+  {
+   "seq": 84,
+   "type": "COUNTER_PLAYED",
+   "actor": "bob"
+  },
+  {
+   "seq": 85,
+   "type": "BATTLE_RESOLVED",
+   "actor": "alice"
+  },
+  {
+   "seq": 86,
+   "type": "ATTACK_DECLARED",
+   "actor": "alice"
+  },
+  {
+   "seq": 87,
+   "type": "BLOCKER_ACTIVATED",
+   "actor": "bob"
+  },
+  {
+   "seq": 88,
+   "type": "CHARACTER_KO",
+   "actor": "alice"
+  },
+  {
+   "seq": 89,
+   "type": "CHARACTER_KO",
+   "actor": "alice"
+  },
+  {
+   "seq": 90,
+   "type": "BATTLE_RESOLVED",
+   "actor": "alice"
+  },
+  {
+   "seq": 91,
+   "type": "MAIN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 92,
+   "type": "TURN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 93,
+   "type": "REFRESHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 94,
+   "type": "DRAWN",
+   "actor": "bob"
+  },
+  {
+   "seq": 95,
+   "type": "DON_ADDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 96,
+   "type": "CARD_REVEALED",
+   "actor": "bob"
+  },
+  {
+   "seq": 97,
+   "type": "CARD_PLAYED",
+   "actor": "bob"
+  },
+  {
+   "seq": 98,
+   "type": "CARD_REVEALED",
+   "actor": "bob"
+  },
+  {
+   "seq": 99,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 100,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 101,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 102,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 103,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 104,
+   "type": "CHARACTER_KO",
+   "actor": "bob"
+  },
+  {
+   "seq": 105,
+   "type": "CHARACTER_KO",
+   "actor": "bob"
+  },
+  {
+   "seq": 106,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 107,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 108,
+   "type": "LIFE_DAMAGED",
+   "actor": "alice"
+  },
+  {
+   "seq": 109,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 110,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 111,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 112,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 113,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 114,
+   "type": "MAIN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 115,
+   "type": "TURN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 116,
+   "type": "REFRESHED",
+   "actor": "alice"
+  },
+  {
+   "seq": 117,
+   "type": "DRAWN",
+   "actor": "alice"
+  },
+  {
+   "seq": 118,
+   "type": "DON_ADDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 119,
+   "type": "DON_ATTACHED",
+   "actor": "alice"
+  },
+  {
+   "seq": 120,
+   "type": "ATTACK_DECLARED",
+   "actor": "alice"
+  },
+  {
+   "seq": 121,
+   "type": "COUNTER_PLAYED",
+   "actor": "bob"
+  },
+  {
+   "seq": 122,
+   "type": "BATTLE_RESOLVED",
+   "actor": "alice"
+  },
+  {
+   "seq": 123,
+   "type": "MAIN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 124,
+   "type": "TURN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 125,
+   "type": "REFRESHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 126,
+   "type": "DRAWN",
+   "actor": "bob"
+  },
+  {
+   "seq": 127,
+   "type": "DON_ADDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 128,
+   "type": "CARD_REVEALED",
+   "actor": "bob"
+  },
+  {
+   "seq": 129,
+   "type": "CARD_PLAYED",
+   "actor": "bob"
+  },
+  {
+   "seq": 130,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 131,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 132,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 133,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 134,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 135,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 136,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 137,
+   "type": "LIFE_DAMAGED",
+   "actor": "alice"
+  },
+  {
+   "seq": 138,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 139,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 140,
+   "type": "COUNTER_PLAYED",
+   "actor": "alice"
+  },
+  {
+   "seq": 141,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 142,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 143,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 144,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 145,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 146,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 147,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 148,
+   "type": "MAIN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 149,
+   "type": "TURN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 150,
+   "type": "REFRESHED",
+   "actor": "alice"
+  },
+  {
+   "seq": 151,
+   "type": "DRAWN",
+   "actor": "alice"
+  },
+  {
+   "seq": 152,
+   "type": "DON_ADDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 153,
+   "type": "CARD_REVEALED",
+   "actor": "alice"
+  },
+  {
+   "seq": 154,
+   "type": "CARD_PLAYED",
+   "actor": "alice"
+  },
+  {
+   "seq": 155,
+   "type": "ATTACK_DECLARED",
+   "actor": "alice"
+  },
+  {
+   "seq": 156,
+   "type": "LIFE_DAMAGED",
+   "actor": "bob"
+  },
+  {
+   "seq": 157,
+   "type": "BATTLE_RESOLVED",
+   "actor": "alice"
+  },
+  {
+   "seq": 158,
+   "type": "MAIN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 159,
+   "type": "TURN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 160,
+   "type": "REFRESHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 161,
+   "type": "DRAWN",
+   "actor": "bob"
+  },
+  {
+   "seq": 162,
+   "type": "DON_ADDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 163,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 164,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 165,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 166,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 167,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 168,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 169,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 170,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 171,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 172,
+   "type": "BLOCKER_ACTIVATED",
+   "actor": "alice"
+  },
+  {
+   "seq": 173,
+   "type": "CHARACTER_KO",
+   "actor": "bob"
+  },
+  {
+   "seq": 174,
+   "type": "CHARACTER_KO",
+   "actor": "bob"
+  },
+  {
+   "seq": 175,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 176,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 177,
+   "type": "COUNTER_PLAYED",
+   "actor": "alice"
+  },
+  {
+   "seq": 178,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 179,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 180,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 181,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 182,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 183,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 184,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 185,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 186,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 187,
+   "type": "MAIN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 188,
+   "type": "TURN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 189,
+   "type": "REFRESHED",
+   "actor": "alice"
+  },
+  {
+   "seq": 190,
+   "type": "DRAWN",
+   "actor": "alice"
+  },
+  {
+   "seq": 191,
+   "type": "DON_ADDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 192,
+   "type": "CARD_REVEALED",
+   "actor": "alice"
+  },
+  {
+   "seq": 193,
+   "type": "CARD_PLAYED",
+   "actor": "alice"
+  },
+  {
+   "seq": 194,
+   "type": "ATTACK_DECLARED",
+   "actor": "alice"
+  },
+  {
+   "seq": 195,
+   "type": "COUNTER_PLAYED",
+   "actor": "bob"
+  },
+  {
+   "seq": 196,
+   "type": "BATTLE_RESOLVED",
+   "actor": "alice"
+  },
+  {
+   "seq": 197,
+   "type": "MAIN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 198,
+   "type": "TURN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 199,
+   "type": "REFRESHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 200,
+   "type": "DRAWN",
+   "actor": "bob"
+  },
+  {
+   "seq": 201,
+   "type": "DON_ADDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 202,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 203,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 204,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 205,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 206,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 207,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 208,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 209,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 210,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 211,
+   "type": "LIFE_DAMAGED",
+   "actor": "alice"
+  },
+  {
+   "seq": 212,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 213,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 214,
+   "type": "COUNTER_PLAYED",
+   "actor": "alice"
+  },
+  {
+   "seq": 215,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 216,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 217,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 218,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 219,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 220,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 221,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 222,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 223,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 224,
+   "type": "MAIN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 225,
+   "type": "TURN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 226,
+   "type": "REFRESHED",
+   "actor": "alice"
+  },
+  {
+   "seq": 227,
+   "type": "DRAWN",
+   "actor": "alice"
+  },
+  {
+   "seq": 228,
+   "type": "DON_ADDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 229,
+   "type": "CARD_REVEALED",
+   "actor": "alice"
+  },
+  {
+   "seq": 230,
+   "type": "CARD_PLAYED",
+   "actor": "alice"
+  },
+  {
+   "seq": 231,
+   "type": "ATTACK_DECLARED",
+   "actor": "alice"
+  },
+  {
+   "seq": 232,
+   "type": "COUNTER_PLAYED",
+   "actor": "bob"
+  },
+  {
+   "seq": 233,
+   "type": "BATTLE_RESOLVED",
+   "actor": "alice"
+  },
+  {
+   "seq": 234,
+   "type": "ATTACK_DECLARED",
+   "actor": "alice"
+  },
+  {
+   "seq": 235,
+   "type": "COUNTER_PLAYED",
+   "actor": "bob"
+  },
+  {
+   "seq": 236,
+   "type": "BATTLE_RESOLVED",
+   "actor": "alice"
+  },
+  {
+   "seq": 237,
+   "type": "MAIN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 238,
+   "type": "TURN_ENDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 239,
+   "type": "REFRESHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 240,
+   "type": "DRAWN",
+   "actor": "bob"
+  },
+  {
+   "seq": 241,
+   "type": "DON_ADDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 242,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 243,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 244,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 245,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 246,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 247,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 248,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 249,
+   "type": "DON_ATTACHED",
+   "actor": "bob"
+  },
+  {
+   "seq": 250,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 251,
+   "type": "LIFE_DAMAGED",
+   "actor": "alice"
+  },
+  {
+   "seq": 252,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 253,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 254,
+   "type": "COUNTER_PLAYED",
+   "actor": "alice"
+  },
+  {
+   "seq": 255,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 256,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 257,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 258,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 259,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 260,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 261,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 262,
+   "type": "ATTACK_DECLARED",
+   "actor": "bob"
+  },
+  {
+   "seq": 263,
+   "type": "BATTLE_RESOLVED",
+   "actor": "bob"
+  },
+  {
+   "seq": 264,
+   "type": "MAIN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 265,
+   "type": "TURN_ENDED",
+   "actor": "bob"
+  },
+  {
+   "seq": 266,
+   "type": "REFRESHED",
+   "actor": "alice"
+  },
+  {
+   "seq": 267,
+   "type": "DRAWN",
+   "actor": "alice"
+  },
+  {
+   "seq": 268,
+   "type": "DON_ADDED",
+   "actor": "alice"
+  },
+  {
+   "seq": 269,
+   "type": "CARD_REVEALED",
+   "actor": "alice"
+  },
+  {
+   "seq": 270,
+   "type": "CARD_PLAYED",
+   "actor": "alice"
+  },
+  {
+   "seq": 271,
+   "type": "DON_ATTACHED",
+   "actor": "alice"
+  },
+  {
+   "seq": 272,
+   "type": "ATTACK_DECLARED",
+   "actor": "alice"
+  },
+  {
+   "seq": 273,
+   "type": "LIFE_DAMAGED",
+   "actor": "bob"
+  },
+  {
+   "seq": 274,
+   "type": "GAME_ENDED",
+   "actor": "alice"
+  }
+ ]
+}

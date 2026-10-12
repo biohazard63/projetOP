@@ -1,0 +1,37 @@
+{
+  "seed": 77,
+  "officialCards": [
+    "OP06-009",
+    "OP06-017",
+    "OP06-013"
+  ],
+  "declarations": [
+    {
+      "sequence": 19,
+      "type": "ATTACK_DECLARED",
+      "actorId": "alice",
+      "publicInstanceId": "m2-game:p0:c50"
+    },
+    {
+      "sequence": 20,
+      "type": "COUNTER_PLAYED",
+      "actorId": "bob",
+      "publicInstanceId": "m2-game:p1:c50"
+    },
+    {
+      "sequence": 21,
+      "type": "LIFE_DAMAGED",
+      "actorId": "bob"
+    },
+    {
+      "sequence": 23,
+      "type": "TRIGGER_ACTIVATED",
+      "actorId": "bob",
+      "publicInstanceId": "m2-game:p1:c48"
+    }
+  ],
+  "lifeCardFinalZone": "trash",
+  "searchedFilmFinalZone": "hand",
+  "suspendedAndRestored": true,
+  "battleCompleted": true
+}

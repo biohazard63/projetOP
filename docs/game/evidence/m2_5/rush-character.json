@@ -1,0 +1,9 @@
+{
+  "seed": 77,
+  "keyword": "RUSH_CHARACTER",
+  "attacker": "m2-game:p0:c12",
+  "allowedTargets": [
+    "m2-game:p1:c42"
+  ],
+  "prohibitedTarget": "m2-game:p1:c0"
+}

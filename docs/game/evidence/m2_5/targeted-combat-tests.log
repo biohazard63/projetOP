@@ -1,0 +1,94 @@
+TAP version 13
+# Subtest: M2A: legacy state restores with an empty battle context and exposes no attack outside legal combat window
+ok 1 - M2A: legacy state restores with an empty battle context and exposes no attack outside legal combat window
+  ---
+  duration_ms: 67.635625
+  type: 'test'
+  ...
+# Subtest: M2A: first turn restriction removes attacks for the active player
+ok 2 - M2A: first turn restriction removes attacks for the active player
+  ---
+  duration_ms: 111.124875
+  type: 'test'
+  ...
+# Subtest: M2.5: Rush permits a newly played Character to attack; Rush Character restricts its target
+ok 3 - M2.5: Rush permits a newly played Character to attack; Rush Character restricts its target
+  ---
+  duration_ms: 68.675125
+  type: 'test'
+  ...
+# Subtest: M2A: attack command is versioned, replay-safe and cannot be controlled by the defender
+ok 4 - M2A: attack command is versioned, replay-safe and cannot be controlled by the defender
+  ---
+  duration_ms: 54.205209
+  type: 'test'
+  ...
+# Subtest: M2A: confirmed battle compares current power, KOs a rested Character and conserves every instance
+ok 5 - M2A: confirmed battle compares current power, KOs a rested Character and conserves every instance
+  ---
+  duration_ms: 112.035333
+  type: 'test'
+  ...
+# Subtest: M2D: confirmed battle KO enters M1.5D ON_KO scheduler and resumes after a private serialized choice
+ok 6 - M2D: confirmed battle KO enters M1.5D ON_KO scheduler and resumes after a private serialized choice
+  ---
+  duration_ms: 170.342209
+  type: 'test'
+  ...
+# Subtest: M2B: Blocker redirects once, Counter Character adds power, then battle resolves
+ok 7 - M2B: Blocker redirects once, Counter Character adds power, then battle resolves
+  ---
+  duration_ms: 73.459
+  type: 'test'
+  ...
+# Subtest: M2C: Leader damage moves only the top Life card to hidden hand and zero Life alone is not defeat
+ok 8 - M2C: Leader damage moves only the top Life card to hidden hand and zero Life alone is not defeat
+  ---
+  duration_ms: 41.334166
+  type: 'test'
+  ...
+# Subtest: M2.5: Double Attack resolves two Life damage instances from its keyword metadata
+ok 9 - M2.5: Double Attack resolves two Life damage instances from its keyword metadata
+  ---
+  duration_ms: 43.394291
+  type: 'test'
+  ...
+# Subtest: M2.5: Banish sends damaged Life to public Trash without adding it to hand
+ok 10 - M2.5: Banish sends damaged Life to public Trash without adding it to hand
+  ---
+  duration_ms: 16.571458
+  type: 'test'
+  ...
+# Subtest: M2.5: Unblockable removes Blocker from the response window
+ok 11 - M2.5: Unblockable removes Blocker from the response window
+  ---
+  duration_ms: 32.825584
+  type: 'test'
+  ...
+# Subtest: M2.5: reviewed Counter Event pays printed cost and DON!! minus through the operation pipeline
+ok 12 - M2.5: reviewed Counter Event pays printed cost and DON!! minus through the operation pipeline
+  ---
+  duration_ms: 79.50125
+  type: 'test'
+  ...
+# Subtest: M2.5: unsupported Trigger during Life damage is refused without partial state mutation
+ok 13 - M2.5: unsupported Trigger during Life damage is refused without partial state mutation
+  ---
+  duration_ms: 37.906375
+  type: 'test'
+  ...
+# Subtest: M2C: damage to a Leader with zero Life ends the game; removing the final Life alone does not
+ok 14 - M2C: damage to a Leader with zero Life ends the game; removing the final Life alone does not
+  ---
+  duration_ms: 53.467875
+  type: 'test'
+  ...
+1..14
+# tests 14
+# suites 0
+# pass 14
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1700.591458

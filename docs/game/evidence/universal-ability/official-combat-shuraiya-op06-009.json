@@ -1,0 +1,46 @@
+{
+  "seed": 77,
+  "cards": [
+    "OP06-009",
+    "ST01-001"
+  ],
+  "attackPower": {
+    "printed": 4000,
+    "base": 5000,
+    "current": 6000
+  },
+  "blockerBasePower": 5000,
+  "countersUsed": 2,
+  "battleCompleted": true,
+  "events": [
+    {
+      "sequence": 19,
+      "type": "ATTACK_DECLARED",
+      "actorId": "alice",
+      "publicInstanceId": "m2-game:p0:c50"
+    },
+    {
+      "sequence": 20,
+      "type": "BLOCKER_ACTIVATED",
+      "actorId": "bob",
+      "publicInstanceId": "m2-game:p1:c50"
+    },
+    {
+      "sequence": 21,
+      "type": "COUNTER_PLAYED",
+      "actorId": "bob",
+      "publicInstanceId": "m2-game:p1:c47"
+    },
+    {
+      "sequence": 22,
+      "type": "COUNTER_PLAYED",
+      "actorId": "bob",
+      "publicInstanceId": "m2-game:p1:c31"
+    },
+    {
+      "sequence": 23,
+      "type": "BATTLE_RESOLVED",
+      "actorId": "alice"
+    }
+  ]
+}

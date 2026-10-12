@@ -1,0 +1,142 @@
+TAP version 13
+# Subtest: M15D accepts versioned existing definitions and ON_KO
+ok 1 - M15D accepts versioned existing definitions and ON_KO
+  ---
+  duration_ms: 6.416292
+  type: 'test'
+  ...
+# Subtest: M15D preserves old registry and refuses legacy ON_KO
+ok 2 - M15D preserves old registry and refuses legacy ON_KO
+  ---
+  duration_ms: 3.028209
+  type: 'test'
+  ...
+# Subtest: M15D rejects unknown primitives and incompatible versions
+ok 3 - M15D rejects unknown primitives and incompatible versions
+  ---
+  duration_ms: 1.941333
+  type: 'test'
+  ...
+# Subtest: M15D scheduler retains initial B before cascade C and active player first
+ok 4 - M15D scheduler retains initial B before cascade C and active player first
+  ---
+  duration_ms: 0.28675
+  type: 'test'
+  ...
+# Subtest: M15D real Caribou ON_KO cascades after Shanks across series
+ok 5 - M15D real Caribou ON_KO cascades after Shanks across series
+  ---
+  duration_ms: 53.546625
+  type: 'test'
+  ...
+# Subtest: M15D simultaneous real ON_PLAY definitions require ordering, never registry sorting
+ok 6 - M15D simultaneous real ON_PLAY definitions require ordering, never registry sorting
+  ---
+  duration_ms: 18.801875
+  type: 'test'
+  ...
+# Subtest: M15D composite cost initially impossible pays nothing
+not ok 7 - M15D composite cost initially impossible pays nothing
+  ---
+  duration_ms: 16.379208
+  type: 'test'
+  location: '/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:2:10768'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'PAID'
+    - 'INITIAL_UNPAYABLE'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'INITIAL_UNPAYABLE'
+  actual: 'PAID'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:99:9)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: M15D interrupted composite payment retains paid operation and skips remainder
+not ok 8 - M15D interrupted composite payment retains paid operation and skips remainder
+  ---
+  duration_ms: 13.606083
+  type: 'test'
+  location: '/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:2:11248'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    + actual - expected
+    
+    + 'PAID'
+    - 'INTERRUPTED'
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 'INTERRUPTED'
+  actual: 'PAID'
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:104:65)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: M15D real Sabo replacement prevents Usopp ON_KO
+not ok 9 - M15D real Sabo replacement prevents Usopp ON_KO
+  ---
+  duration_ms: 13.373333
+  type: 'test'
+  location: '/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:2:12638'
+  failureType: 'testCodeFailure'
+  error: 'INVALID_SETUP_COUNTS'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    assertGameInvariants (/Users/quentin/Documents/GitHub/projetOP/cardgame/src/game/core/invariants.ts:49:237)
+    saboScenario (/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:111:143)
+    TestContext.<anonymous> (/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:114:8)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: M15D real Sabo decline permits Usopp ON_KO and leaves usage free
+not ok 10 - M15D real Sabo decline permits Usopp ON_KO and leaves usage free
+  ---
+  duration_ms: 14.385083
+  type: 'test'
+  location: '/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:2:13290'
+  failureType: 'testCodeFailure'
+  error: 'INVALID_SETUP_COUNTS'
+  code: 'ERR_TEST_FAILURE'
+  stack: |-
+    assertGameInvariants (/Users/quentin/Documents/GitHub/projetOP/cardgame/src/game/core/invariants.ts:49:237)
+    saboScenario (/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:111:143)
+    TestContext.<anonymous> (/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:118:8)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 6
+# fail 4
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 514.890708

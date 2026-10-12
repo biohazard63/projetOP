@@ -1,0 +1,190 @@
+TAP version 13
+# Subtest: contracts and TEST-FUTURE-SET serialize and validate
+ok 1 - contracts and TEST-FUTURE-SET serialize and validate
+  ---
+  duration_ms: 35.497584
+  type: 'test'
+  ...
+# Subtest: malformed registry/unknown fields fail closed
+ok 2 - malformed registry/unknown fields fail closed
+  ---
+  duration_ms: 0.595
+  type: 'test'
+  ...
+# Subtest: unknown primitive and incompatible versions are refused
+ok 3 - unknown primitive and incompatible versions are refused
+  ---
+  duration_ms: 0.417458
+  type: 'test'
+  ...
+# Subtest: unimplemented costs/card bindings/public hand choices rejected
+ok 4 - unimplemented costs/card bindings/public hand choices rejected
+  ---
+  duration_ms: 1.50625
+  type: 'test'
+  ...
+# Subtest: giveRestedDon preserves identity/conservation and confirms exhausted arrival
+ok 5 - giveRestedDon preserves identity/conservation and confirms exhausted arrival
+  ---
+  duration_ms: 14.758
+  type: 'test'
+  ...
+# Subtest: exhausted DON deck cannot add eleventh DON and leaves original intact
+ok 6 - exhausted DON deck cannot add eleventh DON and leaves original intact
+  ---
+  duration_ms: 34.009459
+  type: 'test'
+  ...
+# Subtest: restrictions prevent operation without successful event
+ok 7 - restrictions prevent operation without successful event
+  ---
+  duration_ms: 8.543333
+  type: 'test'
+  ...
+# Subtest: invalid recipient rejected at state trust boundary
+ok 8 - invalid recipient rejected at state trust boundary
+  ---
+  duration_ms: 1.300625
+  type: 'test'
+  ...
+# Subtest: recipient derives from program not client; opponent gains DON
+ok 9 - recipient derives from program not client; opponent gains DON
+  ---
+  duration_ms: 10.090833
+  type: 'test'
+  ...
+# Subtest: START_EFFECT exact replay idempotent; same key changed intention conflict
+ok 10 - START_EFFECT exact replay idempotent; same key changed intention conflict
+  ---
+  duration_ms: 9.7505
+  type: 'test'
+  ...
+# Subtest: once per turn and optional zero choice supported
+ok 11 - once per turn and optional zero choice supported
+  ---
+  duration_ms: 17.61875
+  type: 'test'
+  ...
+# Subtest: suspension, JSON restore and continuation resume exactly once
+ok 12 - suspension, JSON restore and continuation resume exactly once
+  ---
+  duration_ms: 10.811416
+  type: 'test'
+  ...
+# Subtest: multiple selections require valid distinct options and min/max
+ok 13 - multiple selections require valid distinct options and min/max
+  ---
+  duration_ms: 17.263417
+  type: 'test'
+  ...
+# Subtest: ORDER requires complete permutation, arbitrary legitimate order retained
+ok 14 - ORDER requires complete permutation, arbitrary legitimate order retained
+  ---
+  duration_ms: 10.839208
+  type: 'test'
+  ...
+# Subtest: wrong actor/choice/token/stale rejected with generic errors, no hidden identity
+ok 15 - wrong actor/choice/token/stale rejected with generic errors, no hidden identity
+  ---
+  duration_ms: 11.7585
+  type: 'test'
+  ...
+# Subtest: concurrent/normal commands cannot bypass pending resolution
+ok 16 - concurrent/normal commands cannot bypass pending resolution
+  ---
+  duration_ms: 12.384542
+  type: 'test'
+  ...
+# Subtest: answer replay no double operation; stale concurrent answer and old choice rejected
+ok 17 - answer replay no double operation; stale concurrent answer and old choice rejected
+  ---
+  duration_ms: 12.734125
+  type: 'test'
+  ...
+# Subtest: private choice/projection and restoration do not leak options to opponent/spectator
+ok 18 - private choice/projection and restoration do not leak options to opponent/spectator
+  ---
+  duration_ms: 11.42525
+  type: 'test'
+  ...
+# Subtest: public/private confirmed journals filtered and internal proposals hidden
+ok 19 - public/private confirmed journals filtered and internal proposals hidden
+  ---
+  duration_ms: 25.193209
+  type: 'test'
+  ...
+# Subtest: replacement intercepts proposed exhausted move, confirms only actual ready move
+ok 20 - replacement intercepts proposed exhausted move, confirms only actual ready move
+  ---
+  duration_ms: 16.327833
+  type: 'test'
+  ...
+# Subtest: PREVENT replacement has no successful event or mutation
+ok 21 - PREVENT replacement has no successful event or mutation
+  ---
+  duration_ms: 8.072042
+  type: 'test'
+  ...
+# Subtest: replacement cannot loop on same effect
+ok 22 - replacement cannot loop on same effect
+  ---
+  duration_ms: 7.994
+  type: 'test'
+  ...
+# Subtest: multiple eligible replacements refused rather than guessed, atomic refusal
+ok 23 - multiple eligible replacements refused rather than guessed, atomic refusal
+  ---
+  duration_ms: 7.096917
+  type: 'test'
+  ...
+# Subtest: non-applicable replacement does not intercept
+ok 24 - non-applicable replacement does not intercept
+  ---
+  duration_ms: 7.80275
+  type: 'test'
+  ...
+# Subtest: invalid replacement cannot move unrelated recipient instance
+ok 25 - invalid replacement cannot move unrelated recipient instance
+  ---
+  duration_ms: 6.377208
+  type: 'test'
+  ...
+# Subtest: late failure after earlier operations leaves input wholly unchanged
+ok 26 - late failure after earlier operations leaves input wholly unchanged
+  ---
+  duration_ms: 5.927792
+  type: 'test'
+  ...
+# Subtest: corrupted continuation/choice/primitive-version snapshots refused
+ok 27 - corrupted continuation/choice/primitive-version snapshots refused
+  ---
+  duration_ms: 9.454541
+  type: 'test'
+  ...
+# Subtest: copied registry and known primitive in fictitious extension deterministic across JSON boundaries
+ok 28 - copied registry and known primitive in fictitious extension deterministic across JSON boundaries
+  ---
+  duration_ms: 26.905
+  type: 'test'
+  ...
+# Subtest: continuous modifier structure preserves null/zero, cycles diagnosed without evaluation
+ok 29 - continuous modifier structure preserves null/zero, cycles diagnosed without evaluation
+  ---
+  duration_ms: 8.956792
+  type: 'test'
+  ...
+# Subtest: v1 saves remain valid, no implicit effect grant; base v1/v2 commands unchanged
+ok 30 - v1 saves remain valid, no implicit effect grant; base v1/v2 commands unchanged
+  ---
+  duration_ms: 17.433417
+  type: 'test'
+  ...
+1..30
+# tests 30
+# suites 0
+# pass 30
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 835.705917

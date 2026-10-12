@@ -1,0 +1,214 @@
+TAP version 13
+# Subtest: M15D accepts versioned existing definitions and ON_KO
+ok 1 - M15D accepts versioned existing definitions and ON_KO
+  ---
+  duration_ms: 6.502041
+  type: 'test'
+  ...
+# Subtest: M15D preserves old registry and refuses legacy ON_KO
+ok 2 - M15D preserves old registry and refuses legacy ON_KO
+  ---
+  duration_ms: 3.703916
+  type: 'test'
+  ...
+# Subtest: M15D rejects unknown primitives and incompatible versions
+ok 3 - M15D rejects unknown primitives and incompatible versions
+  ---
+  duration_ms: 1.663083
+  type: 'test'
+  ...
+# Subtest: M15D scheduler retains initial B before cascade C and active player first
+ok 4 - M15D scheduler retains initial B before cascade C and active player first
+  ---
+  duration_ms: 0.248291
+  type: 'test'
+  ...
+# Subtest: M15D real Caribou ON_KO cascades after Shanks across series
+ok 5 - M15D real Caribou ON_KO cascades after Shanks across series
+  ---
+  duration_ms: 56.750209
+  type: 'test'
+  ...
+# Subtest: M15D real ON_PLAY plus future fixture requires ordering, never registry sorting
+ok 6 - M15D real ON_PLAY plus future fixture requires ordering, never registry sorting
+  ---
+  duration_ms: 20.2105
+  type: 'test'
+  ...
+# Subtest: M15D composite cost initially impossible pays nothing
+ok 7 - M15D composite cost initially impossible pays nothing
+  ---
+  duration_ms: 13.240625
+  type: 'test'
+  ...
+# Subtest: M15D interrupted composite payment retains paid operation and skips remainder
+ok 8 - M15D interrupted composite payment retains paid operation and skips remainder
+  ---
+  duration_ms: 15.680291
+  type: 'test'
+  ...
+# Subtest: M15D real Sabo replacement prevents Usopp ON_KO
+ok 9 - M15D real Sabo replacement prevents Usopp ON_KO
+  ---
+  duration_ms: 21.810959
+  type: 'test'
+  ...
+# Subtest: M15D real Sabo decline permits Usopp ON_KO and leaves usage free
+ok 10 - M15D real Sabo decline permits Usopp ON_KO and leaves usage free
+  ---
+  duration_ms: 25.912917
+  type: 'test'
+  ...
+# Subtest: M15D interrupted activation commits payment and skips body via applyCommand
+ok 11 - M15D interrupted activation commits payment and skips body via applyCommand
+  ---
+  duration_ms: 14.311208
+  type: 'test'
+  ...
+# Subtest: M15D order choice recovery is private and duplicate answers are idempotent
+ok 12 - M15D order choice recovery is private and duplicate answers are idempotent
+  ---
+  duration_ms: 24.523666
+  type: 'test'
+  ...
+# Subtest: M15D forged ON_KO capture and ordering save are rejected
+ok 13 - M15D forged ON_KO capture and ordering save are rejected
+  ---
+  duration_ms: 17.995833
+  type: 'test'
+  ...
+# Subtest: M15D explicit simultaneous replacement and KO batch refusals preserve state
+ok 14 - M15D explicit simultaneous replacement and KO batch refusals preserve state
+  ---
+  duration_ms: 29.488917
+  type: 'test'
+  ...
+# Subtest: M15D Sabo requires DON and opponent turn and consumes only accepted usage
+ok 15 - M15D Sabo requires DON and opponent turn and consumes only accepted usage
+  ---
+  duration_ms: 35.263291
+  type: 'test'
+  ...
+# Subtest: M15D normal play payment and movement use common operations
+ok 16 - M15D normal play payment and movement use common operations
+  ---
+  duration_ms: 11.372333
+  type: 'test'
+  ...
+# Subtest: M15D Sunny rest and power gain are confirmed operations
+ok 17 - M15D Sunny rest and power gain are confirmed operations
+  ---
+  duration_ms: 13.526959
+  type: 'test'
+  ...
+# Subtest: M15D both controllers pending from one KO resolve active player first
+ok 18 - M15D both controllers pending from one KO resolve active player first
+  ---
+  duration_ms: 16.4165
+  type: 'test'
+  ...
+# Subtest: M15D reproducible real KO confirmed, cascade and saved recovery traces
+ok 19 - M15D reproducible real KO confirmed, cascade and saved recovery traces
+  ---
+  duration_ms: 50.637791
+  type: 'test'
+  ...
+# Subtest: M15D reproducible real prevented KO trace
+ok 20 - M15D reproducible real prevented KO trace
+  ---
+  duration_ms: 23.542041
+  type: 'test'
+  ...
+# Subtest: M15D simultaneous abilities finish before generated cascade trace
+ok 21 - M15D simultaneous abilities finish before generated cascade trace
+  ---
+  duration_ms: 29.300833
+  type: 'test'
+  ...
+# Subtest: M15D future new card definition registers and resolves after JSON restore
+ok 22 - M15D future new card definition registers and resolves after JSON restore
+  ---
+  duration_ms: 34.964584
+  type: 'test'
+  ...
+# Subtest: M15D older saves retain pinned engine and definitions
+ok 23 - M15D older saves retain pinned engine and definitions
+  ---
+  duration_ms: 12.149416
+  type: 'test'
+  ...
+# Subtest: M15D order save rejects forged options, actor and version
+ok 24 - M15D order save rejects forged options, actor and version
+  ---
+  duration_ms: 15.768875
+  type: 'test'
+  ...
+# Subtest: M15D private replacement and payment logs absent from opponent projection
+ok 25 - M15D private replacement and payment logs absent from opponent projection
+  ---
+  duration_ms: 15.087125
+  type: 'test'
+  ...
+# Subtest: M15D determinism and conservation across repeated real cascade runs
+ok 26 - M15D determinism and conservation across repeated real cascade runs
+  ---
+  duration_ms: 43.151
+  type: 'test'
+  ...
+# Subtest: M15D review regression: interrupted PLAY_CARD retains paid DON and does not play
+ok 27 - M15D review regression: interrupted PLAY_CARD retains paid DON and does not play
+  ---
+  duration_ms: 10.757792
+  type: 'test'
+  ...
+# Subtest: M15D review regression: automatic once per turn survives KO cascades
+ok 28 - M15D review regression: automatic once per turn survives KO cascades
+  ---
+  duration_ms: 21.109083
+  type: 'test'
+  ...
+# Subtest: M15D review regression: fabricated cause, batch actor, pending history and missing suspension rejected
+ok 29 - M15D review regression: fabricated cause, batch actor, pending history and missing suspension rejected
+  ---
+  duration_ms: 14.044833
+  type: 'test'
+  ...
+# Subtest: M15D Usopp uses base power when target current power exceeds threshold
+ok 30 - M15D Usopp uses base power when target current power exceeds threshold
+  ---
+  duration_ms: 14.951541
+  type: 'test'
+  ...
+# Subtest: M15D pending ordinary automatic source KO before activation is invalidated
+ok 31 - M15D pending ordinary automatic source KO before activation is invalidated
+  ---
+  duration_ms: 18.591916
+  type: 'test'
+  ...
+# Subtest: M15D new field presence resets activation limit without reusing old generation
+ok 32 - M15D new field presence resets activation limit without reusing old generation
+  ---
+  duration_ms: 15.543333
+  type: 'test'
+  ...
+# Subtest: M15D Sabo cannot replace a second eligible victim after accepting once
+ok 33 - M15D Sabo cannot replace a second eligible victim after accepting once
+  ---
+  duration_ms: 17.703417
+  type: 'test'
+  ...
+# Subtest: M15D Sabo own-turn protection is unavailable
+ok 34 - M15D Sabo own-turn protection is unavailable
+  ---
+  duration_ms: 16.849417
+  type: 'test'
+  ...
+1..34
+# tests 34
+# suites 0
+# pass 34
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1087.916333

@@ -1,0 +1,72 @@
+{
+  "newTests": {
+    "status": "PASS",
+    "passed": 43,
+    "failed": 0,
+    "command": "node --import tsx --test tests/game-m1-5b.test.ts"
+  },
+  "allTests": {
+    "status": "PASS",
+    "passed": 158,
+    "failed": 0,
+    "command": "npm test"
+  },
+  "typescript": {
+    "status": "PASS",
+    "exitCode": 0,
+    "command": "npx tsc --noEmit"
+  },
+  "coreLint": {
+    "status": "PASS",
+    "exitCode": 0,
+    "command": "npx eslint src/game/core src/game/effects tests/game-m1-5b.test.ts"
+  },
+  "applicationLint": {
+    "status": "PASS",
+    "exitCode": 0,
+    "errors": 0,
+    "warnings": 99,
+    "command": "npm run lint"
+  },
+  "productionBuild": {
+    "status": "PASS",
+    "exitCode": 0,
+    "command": "npm run build",
+    "directory": "/private/tmp/mugiwara-m15b-build-8ipij0k4",
+    "gameSourcesIdentical": true,
+    "environmentFilesCopied": false
+  },
+  "gitDiffCheck": {
+    "status": "PASS",
+    "exitCode": 0
+  },
+  "branch": "maintenance/catalog-rebuild",
+  "sourceSha256": {
+    "cardgame/src/game/core/invariants.ts": "b3ce2354c4cf2184dddc83278d390a7103b38969e0bc52d07288566f1b636c47",
+    "cardgame/src/game/core/turns.ts": "9dece607eebbc834f4eaef5365e14fa4c85cdffd7a36c42f82b035c4e871100f",
+    "cardgame/src/game/core/random.ts": "aee6e2988b6b1a770ace7d82ecde679de8143bf27b90a19d580883b135030088",
+    "cardgame/src/game/core/types.ts": "b11ecfb6a692b2d5bd8225dbcfa8a23bcdb3dd94c9a377025a43cc400ccf8f2d",
+    "cardgame/src/game/core/game.ts": "d12aa8cc62e55edf9529fc63c3b3819a065598f4de9cf0471b2e5aafdd7c4136",
+    "cardgame/src/game/core/index.ts": "d5de476ad7944cce7cc3e6521acc815bfe15128e2aa4836270563e2ef6870b2f",
+    "cardgame/src/game/cards/catalogAdapter.ts": "832e48ff624584b1a2177dae58a80ac22e3b689ce507c1b29a59e765a9134577",
+    "cardgame/src/game/cards/reviewedCards.ts": "9737baaf1192c842e0eb063a644bc97cee29fcc558020139d4fa88e2d347aa4d",
+    "cardgame/src/game/cards/types.ts": "97c99f8bbf1b2f4683ccc29d25e216deb4ab680bad921cad0ef1e45bd702a193",
+    "cardgame/src/game/cards/adapter.ts": "33707cd8ee052855d7292b070b12b71441f59bc2cfaa0a9ecfd041dabac621b2",
+    "cardgame/src/game/cards/leaderLife.ts": "f2e8fba602651b7c420f0008e872ada5e98d98b91140cb4a407f1c8ed0a58e54",
+    "cardgame/src/game/rulesets/m0.ts": "4cfdd68056fb701f4bc6a215bc03b4db0ff2621023047f510e8ca078b77340ff",
+    "cardgame/src/game/rulesets/decks.ts": "55d8c939d5fffd6b6d383161f93707b8169b06eca84044df971495bf7d1cb8dd",
+    "cardgame/src/game/effects/contracts.ts": "5aa12f059457fcf0cee6c816dd04e7539f4cd2648a42a6f76ac4c8427851f8c2",
+    "cardgame/src/game/effects/runtime.ts": "d88f0ab746a68f59ddc4e4de7a918580fd5e468a4cf934d3fcdbf7db2d15595c"
+  },
+  "scopePreservation": {
+    "status": "PASS",
+    "changedExistingProtectedFiles": [
+      "src/game/core/game.ts",
+      "src/game/core/index.ts",
+      "src/game/core/invariants.ts",
+      "src/game/core/types.ts"
+    ],
+    "unexpectedChanges": [],
+    "scope": "Prisma, scraper, scripts, raw catalogue and master SHA unchanged; no DB access"
+  }
+}

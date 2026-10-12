@@ -1,0 +1,11 @@
+{
+  "status": "PASS",
+  "changedExistingProtectedFiles": [
+    "src/game/core/game.ts",
+    "src/game/core/index.ts",
+    "src/game/core/invariants.ts",
+    "src/game/core/types.ts"
+  ],
+  "unexpectedChanges": [],
+  "scope": "Prisma, scraper, scripts, raw catalogue and master SHA unchanged; no DB access"
+}

@@ -1,0 +1,22 @@
+{
+  "cardgame/src/game/core/invariants.ts": "983a01cf76d4a31a59a0c1052a790e0be16ae4f6d9cd4b954f65b26a73988fe8",
+  "cardgame/src/game/core/turns.ts": "fc55cd865efa8e67819480f7b305e6313cda10f56322d319c6ede8b37dbf7df9",
+  "cardgame/src/game/core/random.ts": "aee6e2988b6b1a770ace7d82ecde679de8143bf27b90a19d580883b135030088",
+  "cardgame/src/game/core/types.ts": "6a76bfecc9892f380fc84b25494353a7fd12d8749befe3cbdb3ec7663d3baf23",
+  "cardgame/src/game/core/game.ts": "0252bdacfc5ebd2b9000868c8f2d53aa3e9799b85edf326ef519811b438deb3b",
+  "cardgame/src/game/core/index.ts": "aa75eeeb84c8bc9f7c0945e6c8142ede1698c0d8f9675ea23ee42dda488bc8f1",
+  "cardgame/src/game/cards/catalogAdapter.ts": "832e48ff624584b1a2177dae58a80ac22e3b689ce507c1b29a59e765a9134577",
+  "cardgame/src/game/cards/reviewedCards.ts": "9737baaf1192c842e0eb063a644bc97cee29fcc558020139d4fa88e2d347aa4d",
+  "cardgame/src/game/cards/types.ts": "4c86dc46cba8a5a939a2229d06be62810113563e65ae84de9810c6f8a9df051d",
+  "cardgame/src/game/cards/adapter.ts": "33707cd8ee052855d7292b070b12b71441f59bc2cfaa0a9ecfd041dabac621b2",
+  "cardgame/src/game/cards/effectPrototype.ts": "2137316ac7bf6ed307546c2d5b278966ee9d138f7bd9acabec03afff693b7c3a",
+  "cardgame/src/game/cards/leaderLife.ts": "f2e8fba602651b7c420f0008e872ada5e98d98b91140cb4a407f1c8ed0a58e54",
+  "cardgame/src/game/cards/effectScheduling.ts": "d8f0b2e542464a4cc8d322b599d4abac3d6560700e2a9fa11502dba7ce4eec12",
+  "cardgame/src/game/rulesets/m0.ts": "4cfdd68056fb701f4bc6a215bc03b4db0ff2621023047f510e8ca078b77340ff",
+  "cardgame/src/game/rulesets/decks.ts": "55d8c939d5fffd6b6d383161f93707b8169b06eca84044df971495bf7d1cb8dd",
+  "cardgame/src/game/effects/scheduler.ts": "59b0a259c95204f5c63ed1f65ad6d8d441b3d52dc2b1dabba6982cdc7f2966fc",
+  "cardgame/src/game/effects/contracts.ts": "389a14abda876995638d694fda7dccf89ec720efec44c239a686cd51a5a8ff34",
+  "cardgame/src/game/effects/operations.ts": "14018dc0af33dd8541b9fbe8bf076e0f3fb6129f6186d825c5357e9d2c5b10dc",
+  "cardgame/src/game/effects/runtime.ts": "ee9f49b52113903c8215facde0ff523ca412ad354af2c8ac4d3c7baac2b1415a",
+  "cardgame/src/game/effects/characteristics.ts": "14209f8a6680e72513896f229c548884c6e16b4a0b0ed92b8eac48ca7536785e"
+}

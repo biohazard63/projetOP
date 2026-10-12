@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-11",
+  "audit": {
+    "status": "PASS",
+    "command": "node --import tsx ../docs/game/evidence/m1_5a/audit.ts",
+    "proof": "audit.log"
+  },
+  "auditConsistency": {
+    "status": "PASS",
+    "command": "python3 docs/game/evidence/m1_5a/check-audit.py",
+    "proof": "audit-check.log",
+    "note": "Empreintes métier identiques ; .DS_Store Finder exclu"
+  },
+  "tests": {
+    "status": "PASS",
+    "command": "npm test",
+    "tests": 115,
+    "pass": 115,
+    "fail": 0,
+    "skipped": 0,
+    "proof": "tests.log"
+  },
+  "typecheck": {
+    "status": "PASS",
+    "command": "npx tsc --noEmit",
+    "proof": "typecheck.log"
+  },
+  "lint": {
+    "status": "PASS",
+    "command": "npm run lint",
+    "errors": 0,
+    "warnings": 99,
+    "proof": "lint.log"
+  },
+  "gitDiffCheck": {
+    "status": "PASS",
+    "command": "git diff --check"
+  },
+  "build": {
+    "status": "NOT_TESTED",
+    "reason": "Audit documentaire uniquement ; résultat antérieur PASS dans evidence/m1_5/build.log"
+  },
+  "effectRuntime": {
+    "status": "NOT_TESTED",
+    "reason": "Aucune implémentation autorisée"
+  },
+  "databaseNetworkDevices": {
+    "status": "NOT_TESTED",
+    "reason": "Hors audit, aucune base connectée"
+  }
+}

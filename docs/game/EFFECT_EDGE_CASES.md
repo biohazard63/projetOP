@@ -1,0 +1,40 @@
+Date : 11 octobre 2026. M1.5A : conception uniquement, aucun moteur ou service modifié.
+
+# Cas complexes et scénarios de référence
+
+Références consultées : [FAQ OP17 du 21/08/2026](https://en.onepiece-cardgame.com/pdf/qa_op17.pdf?20260821=), [FAQ OP12 du 06/02/2026](https://en.onepiece-cardgame.com/pdf/qa_op12.pdf?20260206=), [FAQ OP10 du 28/02/2025](https://en.onepiece-cardgame.com/pdf/qa_op10.pdf?20250228=). Fiches OP10 et OP12 consultées dans leur catalogue officiel EN. Les liens catalogue OP17 FR/EN ont échoué dans l'outil : leurs textes locaux sont analysés, mais seuls les cas couverts par FAQ sont confirmés ici. Aucune carte de cette table n'est déclarée jouable.
+
+Pour chaque scénario, source/contrôleur de l'opération et présence sont obligatoires. Les indications de coûts ci-dessous concernent les capacités ; jouer depuis main conserve aussi le coût imprimé disponible dans l'inventaire.
+
+| Carte | Événement / fenêtre | Conditions et choix/coûts | Visibilité / modifications / conséquences / durée | Validation |
+|---|---|---|---|---|
+| OP17-015 Marco | Sortie terrain envisagée par effet adverse ; remplacement, puis On KO | Choix remplacement par contrôleur ; KO source. Ensuite coût défausse main avec type Barbe Blanche pour rejouer depuis trash selon texte local | Batch sortie peut inclure source ; KO réellement créé, DON rendus, auto KO activé avant départ ; carte rejouée nouvelle présence, On Play possible | FAQ confirme remplacement si Marco et A KO ensemble : seul Marco KO ; aussi retour main/bottom peut devenir KO. Corps complet non vérifié en ligne |
+| OP17-005 Newgate | Permanent de coût main ; auto On Play | Adverse Personnage puissance ≥10000 ; coût main −4 ; Leader monocolore pour base8000 selon local | Définition imprimée intacte ; caractéristique en main calculée sans fuite ; modifier Leader persiste jusqu'à fin prochaine End adverse | FAQ précise monocolore ; texte intégral OP17 non accessible. Interactions base à tester |
+| OP17-020 Shanks | Activate Main, once | Choix coût : discard main OU rest DON ; main vide n'interdit pas branche DON ; sélectionner jusqu'à1 adverse rested | Coût et choix cibles séparés ; interdire redressement à prochaine Refresh adverse ; expire à frontière désignée, pas permanence ; génération cible préservée | FAQ confirme branche DON avec main vide. Candidat déjà actif et paiement remplacé à vérifier |
+| OP17-001 Newgate | Déclaration attaque adverse, avant Block/Counter | Once, discard1 main : impossible main0 ; choix jusqu'à1 Leader/Character propre | Discard public puis modifier puissance +4000 jusqu'à fin combat ; effets adverses When Attacking ordonnés avant fenêtre ; expiration battleId | FAQ confirme main0 refusée ; texte complet non accessible |
+| OP17-019 Événement | Main + Trigger indépendant | Coût événement normal en Main ; inspection top5, choix0..1 type contenant Barbe Blanche ; ordre restant | Consultation privée dans deck, révélation choisi puis main, restant bottom ordre privé ; auto éventuels après corps. Trigger local +1000 Leader jusqu'à fin tour, sans coût Main | Texte local seulement ; aucune entrée FAQ trouvée, pas de certification |
+| OP12-102 Shirahoshi | Remplacement sortie adverse coût BASE≤6 ; permanent tour adverse | Retourner top Vie face-up ; aucune substitution si opération impossible ; autre Shirahoshi BASE2 désactive buff ; types Neptunian | Vie reste ordonnée, face-up publique ; buff dynamique +2000 conditionnel ; source sortant peut elle-même être protégée ; recalcul après chaque mutation | Catalogue + FAQ : source elle-même admissible. Top Vie déjà visible / batches et portée restent cas à contrôler |
+| OP10-082 Kuzan | Protection permanente sortie par effet adverse ; Activate Main | Trash self coût propre permis ; draw1 puis play0..1 Blackbeard trash coût≤5 hors nom Kuzan | Sortie coût ≠ KO ; protection pas suppression de coût propre ; main piochée privée ; carte jouée publique nouvelle présence + On Play après résolution | Texte catalogue confirmé ; pas entrée spécifique dans FAQ consultée. Si draw vide déclenche défaite, ne pas poursuivre play |
+| OP10-078 Événement | Main hors combat OU Counter défense | Coût imprimé1, programme partagé ; search top3, exclusion nom propre et type Donquixote | Reveal choisi, main, rest bottom permutation ; options privées contrôleur ; événement trash public ; CardActivation distinct EffectActivation | Texte catalogue confirmé ; aucune FAQ spécifique trouvée |
+| OP10-116 Damned Punk | Main ; Trigger Vie séparé | Inspection0..1 top Vie propre/adverse ; choisir top/bottom, puis KO0..1 adverse coût≤5 ; Trigger draw2/discard1 | LOOK privé, pas déplacement hors Vie ; maintenir face-up ; absence de Vie n'empêche pas KO ; aucun LifeTrigger parce qu'on regarde ; Trigger hors zone pendant résolution | Texte + FAQ confirment Vie vide permet KO et maintien face-up |
+
+## Interactions entre séries
+
+- OP17-015 et OP12-102 sur même sortie : choix de remplacement ordonné, source incluse dans batch, garde anti-répétition. Le résultat de choisir Marco KO puis remplacement Shirahoshi doit dépendre des opérations encore applicables et de la cause réattribuée ; scénario non arbitrable automatiquement sans revue officielle détaillée, `AMBIGUOUS_RULE` pour cette interaction avant certification.
+- OP10-082 face à retrait adverse protégé : aucune sortie proposée admissible ; ne pas offrir un remplacement sur un mouvement interdit. Paiement own trash permis. Cause remplacée par un effet du propriétaire peut changer la qualification « adverse » : couverture spécifique nécessaire.
+- OP10-042 Usopp + OP02-106 Tsuru : cost base3, permanent+1 puis −2 →2. Avec OP07-080 Kaku −3, le seuil de permanent cesse de s'appliquer →0. Avec OP03-078 Issho permanent actif −3, priorité effets actifs conduit aussi0. Ces résultats sont explicitement dans FAQ OP10 ; éviter un évaluateur naïf « somme constante ».
+- OP17-008 Jozu et autre fixation base7000 : FAQ donne8000 ; plusieurs bases ≠ ordre dernier-écrit générique. OP17-043 sur base7000 garde7000 selon FAQ. Chaque modifier est calculé avec règle de base, ses conditions et durée, pas modification du texte imprimé.
+- OP10-090 Franky KO invoque OP04-092 Rebecca tandis qu'Usopp OP10-042 attend : FAQ donne Usopp avant On Play Rebecca. Nécessite lots initiaux/nouveaux, pas callbacks récursifs immédiats.
+- OP10-098 Liberation annulant effet KO : pas de déclenchement imprimé annulé ; capacité accordée par autre source distincte. FAQ distingue annulation du texte de construction et légalité d'une partie déjà commencée. Ne pas réexécuter automatiquement validation de deck après chaque annulation.
+- OP12-081 Koala + OP06-119 Sanji + OP08-069 Linlin : cause « jouer par effet Personnage » distincte d'un Trigger de Personnage ; choix d'activation possible à plusieurs événements sans consommation si décliné. Vie peut changer pendant cascade : capturer timing et revalider conditions au point prescrit.
+
+## Risques et questions ouvertes
+
+Q-E01 : preuves complètes de texte/errata OP17 indisponibles via outil actuel, compléter avant écriture defs jouables.
+Q-E02 : opération face-up déjà face-up ne réalise pas changement (1-3-2-1) ; obtenir cas FAQ précisant admissibilité remplacement et batches Shirahoshi avant activation.
+Q-E03 : politique précise de dépendances continues non stabilisables ou ordres multiples : formaliser choix et appliquer section11 seulement si cycle démontré, pas après seuil arbitraire.
+Q-E04 : aliases de noms/tous types/attributs et règles de construction non inclus dans adaptateur M0 ; nouveaux contrats et scénarios sont requis, pas fusion par nom traduit.
+Q-E05 : réimpression changeant texte/règle : errata et date déterminent defRevision, pas artwork ; plusieurs textes de sources historiques ne permettent pas une décision automatique.
+Q-E06 : format/région/blocs et restrictions après fenêtre M0 à actualiser. Aucun état compétitif global certifié.
+
+Les scénarios ci-dessus sont spécifiés et sourcés, pas exécutés. Leur statut runtime est NOT_TESTED. Une entrée FAQ absente n'est pas une preuve d'absence d'ambiguïté.

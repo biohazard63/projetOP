@@ -1,0 +1,34 @@
+{
+  "date": "2026-10-10",
+  "scope": "Local files only; no database or collection network access",
+  "masterSha256": "373045edebc1b43a02d382e65a48c4582f70fe7511ceb345cb2770de548a022e",
+  "numbers": 2667,
+  "variants": 4179,
+  "groups": 74,
+  "multiGroupVariants": 485,
+  "fieldPresent": {
+    "cost": 4086,
+    "power": 3376,
+    "counter": 2408,
+    "life": 0,
+    "block": 0
+  },
+  "originalTypes": {
+    "LEADER": 284,
+    "CHARACTER": 1442,
+    "PERSONNAGE": 1864,
+    "EVENT": 216,
+    "STAGE": 28,
+    "ÉVÉNEMENTS": 315,
+    "LIEU": 30
+  },
+  "frenchEffectPresent": 3664,
+  "effectStatus": {
+    "official": 2186,
+    "review_required": 1553,
+    "machine": 58
+  },
+  "duplicateVariantKeys": 0,
+  "leaders": 284,
+  "leadersWithoutLife": 284
+}

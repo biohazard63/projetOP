@@ -1,0 +1,37 @@
+{
+  "seed": 77,
+  "card": "OP06-017",
+  "paidPrintedCost": 2,
+  "paidOptionalLife": true,
+  "powerAfter": 8000,
+  "opponentLifeAfterBattle": 4,
+  "events": [
+    {
+      "sequence": 18,
+      "type": "DON_ADDED",
+      "actorId": "alice"
+    },
+    {
+      "sequence": 19,
+      "type": "ATTACK_DECLARED",
+      "actorId": "alice",
+      "publicInstanceId": "m2-game:p0:c0"
+    },
+    {
+      "sequence": 20,
+      "type": "LIFE_PAID",
+      "actorId": "bob"
+    },
+    {
+      "sequence": 21,
+      "type": "COUNTER_PLAYED",
+      "actorId": "bob",
+      "publicInstanceId": "m2-game:p1:c50"
+    },
+    {
+      "sequence": 22,
+      "type": "BATTLE_RESOLVED",
+      "actorId": "alice"
+    }
+  ]
+}
