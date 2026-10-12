@@ -19,11 +19,12 @@ if (fs.existsSync(new URL('results.json', evidence))) throw Error(`${evidence.pa
 const results = [], seen = { anims: new Set(), controls: new Set() }, perf = {}
 const shot = (page, name) => page.screenshot({ path: new URL(`${name}.png`, evidence).pathname })
 async function check(name, fn) { const t = Date.now(); try { await fn(); results.push({ name, status: 'PASS', ms: Date.now() - t }) } catch (e) { results.push({ name, status: 'FAIL', detail: String(e?.message ?? e).slice(0, 500) }) } console.log(JSON.stringify(results.at(-1))) }
+const accounts = []
 async function account() {
   const user = await db.user.create({ data: { name: 'M5 fixture', email: `m5-${randomUUID()}@example.test`, password: await bcrypt.hash(password, 10), hasStarterDecks: true } })
   const api = await request.newContext({ baseURL }), csrf = await (await api.get('/api/auth/csrf')).json()
   await api.post('/api/auth/callback/credentials', { form: { email: user.email, password, csrfToken: csrf.csrfToken, callbackUrl: baseURL } })
-  assert.equal((await api.get('/api/play/games/active')).status(), 200); return { user, api }
+  assert.equal((await api.get('/api/play/games/active')).status(), 200); accounts.push({ user, api }); return { user, api }
 }
 const payloads = []
 async function open(browser, api, opts) {
@@ -147,6 +148,8 @@ try {
   browser = await chromium.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: true })
   const phone = { viewport: { width: 390, height: 844 }, deviceScaleFactor: 3, isMobile: true, hasTouch: true, userAgent: 'Mozilla/5.0 (iPhone; CPU iPhone OS 17_0 like Mac OS X) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/17.0 Mobile/15E148 Safari/604.1' }
 
+  // ONLY=nav runs only the navigation scenarios (each scenario logs in a new account; logins are rate limited per IP).
+  if (process.env.ONLY !== 'nav') {
   // ---------- A. phone, tutorial, touch gestures, animations, refresh, victory vs easy, performance ----------
   const a = await account(), A = await open(browser, a.api, phone)
   await check('Phone 390x844: the picker offers difficulty, tutorial, decks, collection compatibility and statistics', async () => {
@@ -267,14 +270,56 @@ try {
   })
   await E.ctx.close()
 
+  }
+  // ---------- F. navigation: « Jouer » in the main navigation (mobile bottom bar, mobile menu, desktop sidebar), both themes ----------
+  const nav = await account(), others = { '/home': 'Accueil', '/boosters': 'Boosters', '/collection': 'Collection', '/decks': 'Decks', '/profile': 'Profil' }
+  for (const theme of ['dark', 'light']) {
+    const M = await open(browser, nav.api, phone)
+    await M.page.addInitScript(t => { try { localStorage.setItem('theme', t) } catch {} }, theme)
+    await check(`Navigation (phone, ${theme}): « Jouer » is in the bottom bar and the menu, opens /play, is marked active and never covers the picker or the board`, async () => {
+      await M.page.goto(baseURL + '/home'); await M.page.waitForLoadState('networkidle')
+      assert.equal(await M.page.evaluate(() => document.documentElement.classList.contains('light')), theme === 'light')
+      const bar = M.page.getByRole('navigation', { name: 'Navigation principale mobile' }), link = bar.getByRole('link', { name: 'Jouer' })
+      assert.ok(await link.isVisible()); for (const [href, label] of Object.entries(others)) assert.equal(await bar.locator(`a[href="${href}"]`).innerText(), label, `${label} kept`)
+      assert.ok(await link.locator('svg').count(), 'icon like the other entries')
+      await M.page.getByRole('button', { name: 'Ouvrir le menu' }).click(); assert.ok(await M.page.getByRole('navigation', { name: 'Navigation mobile' }).getByRole('link', { name: 'Jouer' }).isVisible()); await M.page.getByRole('button', { name: 'Fermer le menu' }).click()
+      await link.click(); await M.page.waitForFunction(() => location.pathname === '/play').catch(async e => { await shot(M.page, `nav-phone-${theme}-failure`); throw new Error(`${e.message} — url ${M.page.url()}`) }); await M.page.getByRole('heading', { name: 'Prêt à prendre la mer ?' }).waitFor()
+      assert.equal(await bar.getByRole('link', { name: 'Jouer' }).getAttribute('aria-current'), 'page'); assert.equal(await bar.locator('a[href="/home"]').getAttribute('aria-current'), null)
+      const colors = await bar.getByRole('link', { name: 'Jouer' }).evaluate(a => ({ active: getComputedStyle(a).color, idle: getComputedStyle(a.parentElement.querySelector('a[href="/home"]')).color }))
+      assert.notEqual(colors.active, colors.idle, 'the active entry is visually distinct')
+      // The last picker control can be scrolled above the bottom bar (no overlap with the page content).
+      const last = M.page.locator('.play-picker button').last(); await last.scrollIntoViewIfNeeded()
+      assert.ok(await last.evaluate(b => { const r = b.getBoundingClientRect(), hit = document.elementFromPoint(r.left + r.width / 2, r.top + r.height / 2); return !!hit && (hit === b || b.contains(hit)) }), 'picker controls are not covered by the navigation')
+      await shot(M.page, `nav-phone-${theme}`)
+      // In a game, the board covers the whole screen: the bottom bar is under it, never on top of it.
+      await button(M.page, 'Kaido — Animal Kingdom Pirates').first().click(); await M.page.getByRole('dialog', { name: 'Qui commence ?' }).waitFor()
+      assert.ok(await M.page.evaluate(() => { const b = document.querySelector('.piece-bottom-nav').getBoundingClientRect(); return document.elementFromPoint(b.left + b.width / 2, b.top + b.height / 2)?.closest('.play-layer') !== null }), 'the board is above the navigation')
+      await button(M.page, 'Jouer en premier').click(); await M.page.getByRole('dialog', { name: 'Votre main de départ' }).waitFor({ timeout: 20000 }); await button(M.page, 'Garder').click(); await settle(M.page)
+      await M.page.getByRole('button', { name: 'Menu de la partie' }).click(); await button(M.page, 'Abandonner la partie').click(); await button(M.page, 'Abandonner').last().click(); await M.page.getByRole('dialog', { name: 'Fin de partie' }).waitFor()
+    })
+    await M.ctx.close()
+  }
+  const W = await open(browser, nav.api, { viewport: { width: 1440, height: 900 } })
+  await check('Navigation (desktop): « Jouer » is in the sidebar, reachable with the keyboard, active on /play', async () => {
+    await W.page.goto(baseURL + '/collection'); await W.page.waitForLoadState('networkidle')
+    const side = W.page.getByRole('navigation', { name: 'Navigation principale' }), link = side.getByRole('link', { name: 'Jouer' })
+    assert.ok(await link.isVisible()); for (const label of ['Accueil', 'Boosters', 'Collection', 'Mes decks', 'Extensions', 'Historique', 'Profil']) assert.ok(await side.getByRole('link', { name: label }).isVisible(), `${label} kept`)
+    let reached = false
+    for (let i = 0; i < 40 && !reached; i++) { await W.page.keyboard.press('Tab'); reached = await W.page.evaluate(() => document.activeElement?.getAttribute('href') === '/play' && !!document.activeElement.closest('nav')) }
+    assert.ok(reached, 'Tab reaches « Jouer »'); await W.page.keyboard.press('Enter'); await W.page.waitForFunction(() => location.pathname === '/play').catch(async e => { await shot(W.page, 'nav-desktop-failure'); throw new Error(`${e.message} — url ${W.page.url()}`) }); await W.page.getByRole('heading', { name: 'Prêt à prendre la mer ?' }).waitFor()
+    assert.equal(await side.getByRole('link', { name: 'Jouer' }).getAttribute('aria-current'), 'page'); seen.controls.add('nav-keyboard')
+    await shot(W.page, 'nav-desktop')
+  })
+  await W.ctx.close()
+
   await check('Every /api/play response is no-store and carries no engine state, seed, PRNG or hidden zone', async () => {
-    assert.ok(payloads.length > 50)
+    assert.ok(payloads.length > (process.env.ONLY === 'nav' ? 5 : 50))
     for (const p of payloads) { assert.match(p.cache || '', /no-store/, p.url); for (const key of ['"random"', '"seed"', '"instances"', '"zones"', '"registry"', '"catalog"', '"commands"']) assert.equal(p.body.includes(key), false, `${key} in ${p.url}`) }
   })
   await check('Statistics recorded the finished games of each player only, without touching collection or coins', async () => {
-    for (const { user } of [a, b, c, d, e]) { const games = await db.engineGame.findMany({ where: { userId: user.id } }); assert.ok(games.length >= 1 && games.every(g => g.status === 'FINISHED')); assert.equal(await db.coinTransaction.count({ where: { userId: user.id } }), 0); assert.equal(await db.userCard.count({ where: { userId: user.id } }), 0) }
-    const levels = (await db.engineGame.findMany({ where: { userId: { in: [a.user.id, b.user.id, c.user.id, d.user.id] } }, select: { botLevel: true } })).map(g => g.botLevel)
-    for (const l of ['easy', 'normal', 'hard']) assert.ok(levels.includes(l), `a game was played against ${l}`)
+    for (const { user } of accounts) { const games = await db.engineGame.findMany({ where: { userId: user.id } }); assert.ok(games.length >= 1 && games.every(g => g.status === 'FINISHED')); assert.equal(await db.coinTransaction.count({ where: { userId: user.id } }), 0); assert.equal(await db.userCard.count({ where: { userId: user.id } }), 0) }
+    const levels = (await db.engineGame.findMany({ where: { userId: { in: accounts.map(x => x.user.id) } }, select: { botLevel: true } })).map(g => g.botLevel)
+    if (process.env.ONLY !== 'nav') for (const l of ['easy', 'normal', 'hard']) assert.ok(levels.includes(l), `a game was played against ${l}`)
   })
 } finally {
   await browser?.close(); await db.$disconnect()
