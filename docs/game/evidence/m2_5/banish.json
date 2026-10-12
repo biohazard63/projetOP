@@ -1,0 +1,12 @@
+{
+  "seed": 77,
+  "keyword": "BANISH",
+  "lifeInstance": "m2-game:p1:c17",
+  "finalZone": "trash",
+  "publicTrashEvent": {
+    "sequence": 20,
+    "type": "CARD_TRASHED",
+    "actorId": "bob",
+    "publicInstanceId": "m2-game:p1:c17"
+  }
+}

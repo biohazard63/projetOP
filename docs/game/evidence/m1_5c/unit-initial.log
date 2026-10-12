@@ -1,0 +1,144 @@
+TAP version 13
+# Subtest: reviewed card bundle validates and pins DSL 1.1 independently of artwork
+ok 1 - reviewed card bundle validates and pins DSL 1.1 independently of artwork
+  ---
+  duration_ms: 34.188084
+  type: 'test'
+  ...
+# Subtest: real Luffy zero choice completes without mandatory recipient or DON
+ok 2 - real Luffy zero choice completes without mandatory recipient or DON
+  ---
+  duration_ms: 21.32
+  type: 'test'
+  ...
+# Subtest: Luffy uses only rested cost DON, never attached or DON-deck cards
+ok 3 - Luffy uses only rested cost DON, never attached or DON-deck cards
+  ---
+  duration_ms: 133.500917
+  type: 'test'
+  ...
+# Subtest: Nami can target herself; two distinct presences have separate once limits
+ok 4 - Nami can target herself; two distinct presences have separate once limits
+  ---
+  duration_ms: 51.939916
+  type: 'test'
+  ...
+# Subtest: source in hand/trash, opponent actor and wrong phase cannot activate
+ok 5 - source in hand/trash, opponent actor and wrong phase cannot activate
+  ---
+  duration_ms: 14.26425
+  type: 'test'
+  ...
+# Subtest: real effect JSON recovery across both choices, replay never doubles DON
+ok 6 - real effect JSON recovery across both choices, replay never doubles DON
+  ---
+  duration_ms: 52.398208
+  type: 'test'
+  ...
+# Subtest: pending real choice rejects normal command and invalid options without partial state
+ok 7 - pending real choice rejects normal command and invalid options without partial state
+  ---
+  duration_ms: 12.679375
+  type: 'test'
+  ...
+# Subtest: private hand, deck and Life remain hidden throughout real public choice
+not ok 8 - private hand, deck and Life remain hidden throughout real public choice
+  ---
+  duration_ms: 21.713
+  type: 'test'
+  location: '/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5c.test.ts:2:9055'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(!json.includes(id))
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5c.test.ts:54:357)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: Brook triggers from confirmed PLAY_CARD and can give zero, one or two DON
+ok 9 - Brook triggers from confirmed PLAY_CARD and can give zero, one or two DON
+  ---
+  duration_ms: 185.580917
+  type: 'test'
+  ...
+# Subtest: Brook cannot be manually activated or triggered by an invalid play
+ok 10 - Brook cannot be manually activated or triggered by an invalid play
+  ---
+  duration_ms: 57.888458
+  type: 'test'
+  ...
+# Subtest: Brook confirmed play replay cannot enqueue a second trigger
+ok 11 - Brook confirmed play replay cannot enqueue a second trigger
+  ---
+  duration_ms: 53.876792
+  type: 'test'
+  ...
+# Subtest: Brook auto trigger does not recreate after serialization or later phase
+ok 12 - Brook auto trigger does not recreate after serialization or later phase
+  ---
+  duration_ms: 48.795167
+  type: 'test'
+  ...
+# Subtest: Zoro continuous bonus includes both turns while normal DON bonus is own-turn only
+ok 13 - Zoro continuous bonus includes both turns while normal DON bonus is own-turn only
+  ---
+  duration_ms: 27.833917
+  type: 'test'
+  ...
+# Subtest: Sunny pays REST_SOURCE before choice, cannot pay again while rested
+ok 14 - Sunny pays REST_SOURCE before choice, cannot pay again while rested
+  ---
+  duration_ms: 56.93425
+  type: 'test'
+  ...
+# Subtest: Sunny excludes non-Straw-Hat cards and modifier lasts through End only
+ok 15 - Sunny excludes non-Straw-Hat cards and modifier lasts through End only
+  ---
+  duration_ms: 60.297875
+  type: 'test'
+  ...
+# Subtest: invalid post-cost choice preserves paid cost and suspended prior command
+ok 16 - invalid post-cost choice preserves paid cost and suspended prior command
+  ---
+  duration_ms: 46.505334
+  type: 'test'
+  ...
+# Subtest: missing card program or incompatible registry blocks preparation explicitly
+ok 17 - missing card program or incompatible registry blocks preparation explicitly
+  ---
+  duration_ms: 2.663667
+  type: 'test'
+  ...
+# Subtest: future definition registers same generic attach program without a core change
+ok 18 - future definition registers same generic attach program without a core change
+  ---
+  duration_ms: 14.088125
+  type: 'test'
+  ...
+# Subtest: real-card runs deterministic and conserve all 122 instances over seeds
+ok 19 - real-card runs deterministic and conserve all 122 instances over seeds
+  ---
+  duration_ms: 95.44825
+  type: 'test'
+  ...
+1..19
+# tests 19
+# suites 0
+# pass 18
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1352.937792

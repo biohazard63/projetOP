@@ -1,0 +1,39 @@
+{
+  "test": "synthetic TEST-FUTURE-SET only",
+  "commands": [
+    {
+      "id": "when-attacking",
+      "actorId": "alice",
+      "expectedVersion": 16,
+      "type": "DECLARE_ATTACK",
+      "attackerId": "m2-game:p0:c0",
+      "targetId": "m2-game:p1:c0"
+    }
+  ],
+  "event": {
+    "sequence": 19,
+    "type": "ATTACK_DECLARED",
+    "actorId": "alice",
+    "publicInstanceId": "m2-game:p0:c0"
+  },
+  "trigger": {
+    "id": "m2-game:fx:trigger:8",
+    "definitionId": "TEST-FUTURE-SET.when-attacking",
+    "revision": "1",
+    "controllerId": "alice",
+    "source": {
+      "kind": "CARD",
+      "definitionId": "ST01-001@m0-2026-10-10",
+      "presence": {
+        "instanceId": "m2-game:p0:c0",
+        "generation": 0
+      }
+    },
+    "causeId": "m2-game:event:19",
+    "timing": "WHEN_ATTACKING",
+    "status": "RESOLVING",
+    "activatedOnField": false
+  },
+  "privateChoiceController": "alice",
+  "stateRestores": true
+}

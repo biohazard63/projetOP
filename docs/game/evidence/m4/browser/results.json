@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-12T12:08:46.529Z",
+  "viewport": "390x844 @3x, touch, Chrome headless",
+  "results": [
+    {
+      "name": "Deck picker lists the playable reference decks on a phone",
+      "status": "PASS"
+    },
+    {
+      "name": "Starting a game asks who goes first, then shows the opening hand to keep",
+      "status": "PASS"
+    },
+    {
+      "name": "The hand is a horizontal strip that scrolls with a real touch swipe",
+      "status": "PASS"
+    },
+    {
+      "name": "Only hand cards with a legal action are highlighted, and a tap shows the card with its actions",
+      "status": "PASS"
+    },
+    {
+      "name": "A whole game is played from the touch interface until a result is shown, with a refresh in the middle",
+      "status": "PASS"
+    },
+    {
+      "name": "A second whole game with the red deck reaches its result; its Life [Trigger] window is answered from the screen",
+      "status": "PASS"
+    },
+    {
+      "name": "Every /api/play response is no-store and carries no engine state, seed or PRNG",
+      "status": "PASS"
+    },
+    {
+      "name": "A second game is conceded from the menu and shows a defeat",
+      "status": "PASS"
+    },
+    {
+      "name": "Anonymous and foreign requests are refused",
+      "status": "PASS"
+    },
+    {
+      "name": "Collection, decks and coins of the player were not written by playing",
+      "status": "PASS"
+    }
+  ],
+  "usedControls": [
+    "attack",
+    "attack-target",
+    "block",
+    "choice",
+    "concede",
+    "counter",
+    "end-turn",
+    "first",
+    "kaido",
+    "keep",
+    "menu",
+    "new-game",
+    "order",
+    "pass-block",
+    "pass-counter",
+    "pick",
+    "play-card",
+    "refresh",
+    "resolve",
+    "second",
+    "start",
+    "start-red",
+    "swipe",
+    "trigger"
+  ],
+  "redGamesUntilTrigger": 1,
+  "plays": 14,
+  "replacements": 0
+}

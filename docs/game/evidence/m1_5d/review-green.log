@@ -1,0 +1,184 @@
+TAP version 13
+# Subtest: M15D accepts versioned existing definitions and ON_KO
+ok 1 - M15D accepts versioned existing definitions and ON_KO
+  ---
+  duration_ms: 6.756375
+  type: 'test'
+  ...
+# Subtest: M15D preserves old registry and refuses legacy ON_KO
+ok 2 - M15D preserves old registry and refuses legacy ON_KO
+  ---
+  duration_ms: 3.016833
+  type: 'test'
+  ...
+# Subtest: M15D rejects unknown primitives and incompatible versions
+ok 3 - M15D rejects unknown primitives and incompatible versions
+  ---
+  duration_ms: 1.701625
+  type: 'test'
+  ...
+# Subtest: M15D scheduler retains initial B before cascade C and active player first
+ok 4 - M15D scheduler retains initial B before cascade C and active player first
+  ---
+  duration_ms: 0.245084
+  type: 'test'
+  ...
+# Subtest: M15D real Caribou ON_KO cascades after Shanks across series
+ok 5 - M15D real Caribou ON_KO cascades after Shanks across series
+  ---
+  duration_ms: 54.718125
+  type: 'test'
+  ...
+# Subtest: M15D real ON_PLAY plus future fixture requires ordering, never registry sorting
+ok 6 - M15D real ON_PLAY plus future fixture requires ordering, never registry sorting
+  ---
+  duration_ms: 19.221083
+  type: 'test'
+  ...
+# Subtest: M15D composite cost initially impossible pays nothing
+ok 7 - M15D composite cost initially impossible pays nothing
+  ---
+  duration_ms: 12.668917
+  type: 'test'
+  ...
+# Subtest: M15D interrupted composite payment retains paid operation and skips remainder
+ok 8 - M15D interrupted composite payment retains paid operation and skips remainder
+  ---
+  duration_ms: 11.682209
+  type: 'test'
+  ...
+# Subtest: M15D real Sabo replacement prevents Usopp ON_KO
+ok 9 - M15D real Sabo replacement prevents Usopp ON_KO
+  ---
+  duration_ms: 21.921459
+  type: 'test'
+  ...
+# Subtest: M15D real Sabo decline permits Usopp ON_KO and leaves usage free
+ok 10 - M15D real Sabo decline permits Usopp ON_KO and leaves usage free
+  ---
+  duration_ms: 24.578833
+  type: 'test'
+  ...
+# Subtest: M15D interrupted activation commits payment and skips body via applyCommand
+ok 11 - M15D interrupted activation commits payment and skips body via applyCommand
+  ---
+  duration_ms: 14.215916
+  type: 'test'
+  ...
+# Subtest: M15D order choice recovery is private and duplicate answers are idempotent
+ok 12 - M15D order choice recovery is private and duplicate answers are idempotent
+  ---
+  duration_ms: 25.005875
+  type: 'test'
+  ...
+# Subtest: M15D forged ON_KO capture and ordering save are rejected
+ok 13 - M15D forged ON_KO capture and ordering save are rejected
+  ---
+  duration_ms: 19.098375
+  type: 'test'
+  ...
+# Subtest: M15D explicit simultaneous replacement and KO batch refusals preserve state
+ok 14 - M15D explicit simultaneous replacement and KO batch refusals preserve state
+  ---
+  duration_ms: 30.389666
+  type: 'test'
+  ...
+# Subtest: M15D Sabo requires DON and opponent turn and consumes only accepted usage
+ok 15 - M15D Sabo requires DON and opponent turn and consumes only accepted usage
+  ---
+  duration_ms: 32.187208
+  type: 'test'
+  ...
+# Subtest: M15D normal play payment and movement use common operations
+ok 16 - M15D normal play payment and movement use common operations
+  ---
+  duration_ms: 11.852791
+  type: 'test'
+  ...
+# Subtest: M15D Sunny rest and power gain are confirmed operations
+ok 17 - M15D Sunny rest and power gain are confirmed operations
+  ---
+  duration_ms: 13.955708
+  type: 'test'
+  ...
+# Subtest: M15D both controllers pending from one KO resolve active player first
+ok 18 - M15D both controllers pending from one KO resolve active player first
+  ---
+  duration_ms: 15.664375
+  type: 'test'
+  ...
+# Subtest: M15D reproducible real KO confirmed, cascade and saved recovery traces
+ok 19 - M15D reproducible real KO confirmed, cascade and saved recovery traces
+  ---
+  duration_ms: 50.112375
+  type: 'test'
+  ...
+# Subtest: M15D reproducible real prevented KO trace
+ok 20 - M15D reproducible real prevented KO trace
+  ---
+  duration_ms: 23.534625
+  type: 'test'
+  ...
+# Subtest: M15D simultaneous abilities finish before generated cascade trace
+ok 21 - M15D simultaneous abilities finish before generated cascade trace
+  ---
+  duration_ms: 28.711834
+  type: 'test'
+  ...
+# Subtest: M15D future new card definition registers and resolves after JSON restore
+ok 22 - M15D future new card definition registers and resolves after JSON restore
+  ---
+  duration_ms: 34.28
+  type: 'test'
+  ...
+# Subtest: M15D older saves retain pinned engine and definitions
+ok 23 - M15D older saves retain pinned engine and definitions
+  ---
+  duration_ms: 9.556417
+  type: 'test'
+  ...
+# Subtest: M15D order save rejects forged options, actor and version
+ok 24 - M15D order save rejects forged options, actor and version
+  ---
+  duration_ms: 15.803709
+  type: 'test'
+  ...
+# Subtest: M15D private replacement and payment logs absent from opponent projection
+ok 25 - M15D private replacement and payment logs absent from opponent projection
+  ---
+  duration_ms: 14.614458
+  type: 'test'
+  ...
+# Subtest: M15D determinism and conservation across repeated real cascade runs
+ok 26 - M15D determinism and conservation across repeated real cascade runs
+  ---
+  duration_ms: 50.255125
+  type: 'test'
+  ...
+# Subtest: M15D review regression: interrupted PLAY_CARD retains paid DON and does not play
+ok 27 - M15D review regression: interrupted PLAY_CARD retains paid DON and does not play
+  ---
+  duration_ms: 10.437
+  type: 'test'
+  ...
+# Subtest: M15D review regression: automatic once per turn survives KO cascades
+ok 28 - M15D review regression: automatic once per turn survives KO cascades
+  ---
+  duration_ms: 21.221417
+  type: 'test'
+  ...
+# Subtest: M15D review regression: fabricated cause, batch actor, pending history and missing suspension rejected
+ok 29 - M15D review regression: fabricated cause, batch actor, pending history and missing suspension rejected
+  ---
+  duration_ms: 13.545958
+  type: 'test'
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 29
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 997.574083

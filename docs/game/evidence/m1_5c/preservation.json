@@ -1,0 +1,11 @@
+{
+  "changed_existing_files": [
+    "cardgame/src/game/core/turns.ts",
+    "cardgame/src/game/core/game.ts",
+    "cardgame/src/game/core/index.ts",
+    "cardgame/src/game/cards/types.ts",
+    "cardgame/src/game/effects/contracts.ts",
+    "cardgame/src/game/effects/runtime.ts"
+  ],
+  "missing_existing_files": []
+}

@@ -1,0 +1,11 @@
+{
+  "seed": 77,
+  "damageEvent": {
+    "sequence": 20,
+    "type": "LIFE_DAMAGED",
+    "actorId": "bob"
+  },
+  "lifeCount": 4,
+  "result": null,
+  "secretCardAbsentFromOpponentProjection": true
+}

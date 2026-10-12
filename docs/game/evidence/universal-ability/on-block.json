@@ -1,0 +1,56 @@
+{
+  "test": "synthetic TEST-FUTURE-SET only",
+  "commands": [
+    {
+      "id": "on-block-attack",
+      "actorId": "alice",
+      "expectedVersion": 16,
+      "type": "DECLARE_ATTACK",
+      "attackerId": "m2-game:p0:c0",
+      "targetId": "m2-game:p1:c0"
+    },
+    {
+      "id": "on-block",
+      "actorId": "bob",
+      "expectedVersion": 17,
+      "type": "ACTIVATE_BLOCKER",
+      "blockerId": "m2-game:p1:c7",
+      "battleId": "m2-game:battle:16"
+    }
+  ],
+  "events": [
+    {
+      "sequence": 19,
+      "type": "ATTACK_DECLARED",
+      "actorId": "alice",
+      "publicInstanceId": "m2-game:p0:c0"
+    },
+    {
+      "sequence": 20,
+      "type": "BLOCKER_ACTIVATED",
+      "actorId": "bob",
+      "publicInstanceId": "m2-game:p1:c7"
+    }
+  ],
+  "trigger": {
+    "id": "m2-game:fx:trigger:9",
+    "definitionId": "TEST-FUTURE-SET.on-block",
+    "revision": "1",
+    "controllerId": "bob",
+    "source": {
+      "kind": "CARD",
+      "definitionId": "ST01-006@m0-2026-10-10",
+      "presence": {
+        "instanceId": "m2-game:p1:c7",
+        "generation": 1
+      }
+    },
+    "causeId": "m2-game:event:20",
+    "timing": "ON_BLOCK",
+    "status": "RESOLVING",
+    "activatedOnField": false
+  },
+  "privateChoiceController": "bob",
+  "attackerProjectionContainsChoiceId": false,
+  "stateRestores": true
+}

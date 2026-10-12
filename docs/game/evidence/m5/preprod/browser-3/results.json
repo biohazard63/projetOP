@@ -1,0 +1,142 @@
+{
+  "date": "2026-10-12T18:25:53.158Z",
+  "browser": "Google Chrome (headless) with device emulation; no Safari, no physical device",
+  "results": [
+    {
+      "name": "Phone 390x844: the picker offers difficulty, tutorial, decks, collection compatibility and statistics",
+      "status": "PASS",
+      "ms": 1254
+    },
+    {
+      "name": "Phone: the tutorial guides the first steps and advances on the confirmed card play",
+      "status": "PASS",
+      "ms": 3885
+    },
+    {
+      "name": "Phone: a long press inspects a card; a swipe scrolls the hand without playing anything",
+      "status": "PASS",
+      "ms": 1937
+    },
+    {
+      "name": "Phone: dragging a card up from the hand plays it, and the tutorial moves on to attacking",
+      "status": "PASS",
+      "ms": 1696
+    },
+    {
+      "name": "Phone (CPU x4): a whole game against the easy bot ends in a VICTORY on screen, with animations and a refresh",
+      "status": "PASS",
+      "ms": 511577
+    },
+    {
+      "name": "Small phone 360x740: the board fits, and a purple game against the normal bot reaches its result on screen",
+      "status": "PASS",
+      "ms": 118742
+    },
+    {
+      "name": "Tablet 820x1180 with reduced motion: no animation is played and the game stays playable; conceding shows a defeat",
+      "status": "PASS",
+      "ms": 18097
+    },
+    {
+      "name": "Desktop 1440x900: journal always visible, keyboard opens and closes a card, a mouse game reaches its result",
+      "status": "PASS",
+      "ms": 147805
+    },
+    {
+      "name": "Phone: a revealed [Trigger] shows its card and text, and activating it is confirmed by the server",
+      "status": "PASS",
+      "ms": 14776
+    },
+    {
+      "name": "Navigation (phone, dark): « Jouer » is in the bottom bar and the menu, opens /play, is marked active and never covers the picker or the board",
+      "status": "FAIL",
+      "detail": "page.waitForFunction: Timeout 30000ms exceeded."
+    },
+    {
+      "name": "Navigation (phone, light): « Jouer » is in the bottom bar and the menu, opens /play, is marked active and never covers the picker or the board",
+      "status": "PASS",
+      "ms": 5098
+    },
+    {
+      "name": "Navigation (desktop): « Jouer » is in the sidebar, reachable with the keyboard, active on /play",
+      "status": "PASS",
+      "ms": 979
+    },
+    {
+      "name": "Every /api/play response is no-store and carries no engine state, seed, PRNG or hidden zone",
+      "status": "PASS",
+      "ms": 41
+    },
+    {
+      "name": "Statistics recorded the finished games of each player only, without touching collection or coins",
+      "status": "PASS",
+      "ms": 98
+    }
+  ],
+  "animationsSeen": [
+    "ability",
+    "attack",
+    "counter",
+    "don-attach",
+    "don-rest",
+    "draw",
+    "life",
+    "play",
+    "power",
+    "result",
+    "turn"
+  ],
+  "controlsUsed": [
+    "choice",
+    "concede-confirm",
+    "continue",
+    "counter",
+    "don-minus",
+    "don-minus-confirm",
+    "drag-attack-mouse",
+    "drag-attack-touch",
+    "drag-don",
+    "drag-play-mouse",
+    "drag-play-touch",
+    "end-turn",
+    "end-turn-confirm",
+    "keep",
+    "keyboard",
+    "long-press",
+    "nav-keyboard",
+    "order",
+    "pass",
+    "pick",
+    "reachable-1440",
+    "reachable-360",
+    "reachable-390",
+    "reachable-820",
+    "refresh",
+    "replace",
+    "resolve",
+    "swipe",
+    "trigger",
+    "tutorial-next"
+  ],
+  "performance": {
+    "cpuThrottle": 4,
+    "viewport": "390x844@3",
+    "frames": 19970,
+    "frameP50ms": 17,
+    "frameP95ms": 17,
+    "framesOver50ms": 4,
+    "longTasks": 4,
+    "commandRoundTripP50ms": 84,
+    "commandRoundTripP95ms": 119,
+    "commands": 107,
+    "plays": 3,
+    "attacks": 25,
+    "donDrags": 6,
+    "smallPhone": {
+      "kaido": 1,
+      "replacements": 0,
+      "plays": 4
+    },
+    "triggerFixtureSeed": 2
+  }
+}

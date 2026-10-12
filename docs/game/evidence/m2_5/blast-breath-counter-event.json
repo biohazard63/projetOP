@@ -1,0 +1,36 @@
+{
+  "seed": 77,
+  "definition": "ST04-016",
+  "firstActivation": {
+    "eventZone": "trash",
+    "paidCost": [
+      {
+        "type": "REST",
+        "outcome": "CONFIRMED"
+      },
+      {
+        "type": "MOVE_CARD",
+        "from": "cost",
+        "to": "donDeck",
+        "outcome": "CONFIRMED"
+      }
+    ],
+    "donMinusPower": 4000
+  },
+  "optionalMinusOmitted": {
+    "eventZone": "trash",
+    "counterModifiers": 1
+  },
+  "initialUnpayableError": "COUNTER_EVENT_INITIAL_UNPAYABLE",
+  "interruptedPayment": {
+    "eventZone": "hand",
+    "firstDonRested": true,
+    "secondDonRested": false,
+    "outcomes": [
+      "CONFIRMED",
+      "PREVENTED"
+    ],
+    "replayed": true,
+    "restoreEqual": true
+  }
+}

@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-11",
+  "rulesVersion": "1.2.1",
+  "source": "https://en.onepiece-cardgame.com/pdf/rule_comprehensive.pdf",
+  "scope": "BASIC_TURNS, combat and abilities disabled",
+  "commands": [
+    {
+      "command": "npm run test:game:m1-5",
+      "exitCode": 0,
+      "tests": 17,
+      "pass": 17,
+      "fail": 0
+    },
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "tests": 115,
+      "pass": 115,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "command": "npx tsc --noEmit",
+      "exitCode": 0
+    },
+    {
+      "command": "npx eslint src/game/core tests/game-m1-5.test.ts",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "warnings": 99,
+      "errors": 0
+    },
+    {
+      "command": "npm run build",
+      "directory": "/private/tmp/mugiwara-managed-build-pwwqpcx8",
+      "exitCode": 0
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "databaseModified": false,
+  "deployed": false,
+  "sourceHashes": {
+    "cardgame/src/game/core/invariants.ts": "33652052f15c50ec3b6cc41a66b4963c6035ceb99c67b24c1596b45bcf564706",
+    "cardgame/src/game/core/turns.ts": "9dece607eebbc834f4eaef5365e14fa4c85cdffd7a36c42f82b035c4e871100f",
+    "cardgame/src/game/core/random.ts": "aee6e2988b6b1a770ace7d82ecde679de8143bf27b90a19d580883b135030088",
+    "cardgame/src/game/core/types.ts": "cf388c077c851b4cc72a3a9147eda044b1031d20451ed3cc1a041d33afb8a14d",
+    "cardgame/src/game/core/game.ts": "9301384d5cd8d6c75ae6661e89a7e6fc116377a8e09ac31faddddc72af215a02",
+    "cardgame/src/game/core/index.ts": "3d26ba00f4bd4ae16a08ba4bbede18e3ec6d0d6e697fdba09b662d66f18e82d0",
+    "cardgame/tests/game-m1-5.test.ts": "29e86aa0a3f2475891f4f3c075327525e9e948d968d6984d709abdc48ecc3bd8"
+  }
+}

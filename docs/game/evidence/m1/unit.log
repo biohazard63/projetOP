@@ -1,0 +1,116 @@
+
+> cardgame@0.1.0 test:game:m1
+> node --import tsx --test tests/game-m1.test.ts
+
+TAP version 13
+# Subtest: M1 creates 122 unique instances and initializes all zones without mutating inputs
+ok 1 - M1 creates 122 unique instances and initializes all zones without mutating inputs
+  ---
+  duration_ms: 7.062834
+  type: 'test'
+  ...
+# Subtest: M1 validates decks, DON count, player identity, data provenance and ruleset before shuffling
+ok 2 - M1 validates decks, DON count, player identity, data provenance and ruleset before shuffling
+  ---
+  duration_ms: 5.322375
+  type: 'test'
+  ...
+# Subtest: M1 chooser may choose second; only chooser has the decision action
+ok 3 - M1 chooser may choose second; only chooser has the decision action
+  ---
+  duration_ms: 3.102
+  type: 'test'
+  ...
+# Subtest: M1 random determination is injected and reproducible, supporting either chooser
+ok 4 - M1 random determination is injected and reproducible, supporting either chooser
+  ---
+  duration_ms: 4.728833
+  type: 'test'
+  ...
+# Subtest: M1 full mulligan uses the entire deck once and conserves every instance
+ok 5 - M1 full mulligan uses the entire deck once and conserves every instance
+  ---
+  duration_ms: 3.448166
+  type: 'test'
+  ...
+# Subtest: M1 Life is Leader-specific, reversed from deck and remains hidden from its owner
+ok 6 - M1 Life is Leader-specific, reversed from deck and remains hidden from its owner
+  ---
+  duration_ms: 3.48525
+  type: 'test'
+  ...
+# Subtest: M1 same seed and commands give identical states, including after JSON rehydration
+ok 7 - M1 same seed and commands give identical states, including after JSON rehydration
+  ---
+  duration_ms: 24.250125
+  type: 'test'
+  ...
+# Subtest: M1 projections disclose only own hand, public cards and counts; spectator sees no hand
+ok 8 - M1 projections disclose only own hand, public cards and counts; spectator sees no hand
+  ---
+  duration_ms: 4.549166
+  type: 'test'
+  ...
+# Subtest: M1 stale, spoofed, extra fields, invalid phase and malformed commands never mutate state
+ok 9 - M1 stale, spoofed, extra fields, invalid phase and malformed commands never mutate state
+  ---
+  duration_ms: 6.131041
+  type: 'test'
+  ...
+# Subtest: M1 duplicate command is idempotent and same ID with changed intent is rejected
+ok 10 - M1 duplicate command is idempotent and same ID with changed intent is rejected
+  ---
+  duration_ms: 3.472292
+  type: 'test'
+  ...
+# Subtest: M1 invariants reject lost, duplicated or misplaced cards and invalid snapshots
+ok 11 - M1 invariants reject lost, duplicated or misplaced cards and invalid snapshots
+  ---
+  duration_ms: 7.550333
+  type: 'test'
+  ...
+# Subtest: M1 failed injected RNG rolls back the entire mulligan
+ok 12 - M1 failed injected RNG rolls back the entire mulligan
+  ---
+  duration_ms: 4.69625
+  type: 'test'
+  ...
+# Subtest: M1 conservation and deterministic setup hold across 100 seeded mulligan combinations
+ok 13 - M1 conservation and deterministic setup hold across 100 seeded mulligan combinations
+  ---
+  duration_ms: 276.349
+  type: 'test'
+  ...
+# Subtest: M1 Fisher-Yates is an injected shuffle, not sort with random comparisons
+ok 14 - M1 Fisher-Yates is an injected shuffle, not sort with random comparisons
+  ---
+  duration_ms: 0.217542
+  type: 'test'
+  ...
+# Subtest: M1 prepares two real M0 decks while preventing execution of their unsupported effects
+ok 15 - M1 prepares two real M0 decks while preventing execution of their unsupported effects
+  ---
+  duration_ms: 4.246666
+  type: 'test'
+  ...
+# Subtest: M1 no default Life; explicit zero is kept and ambiguous evidence is rejected
+ok 16 - M1 no default Life; explicit zero is kept and ambiguous evidence is rejected
+  ---
+  duration_ms: 2.473791
+  type: 'test'
+  ...
+# Subtest: M1 rejects a setup timing disguised as a known effect and out-of-order restored decisions
+ok 17 - M1 rejects a setup timing disguised as a known effect and out-of-order restored decisions
+  ---
+  duration_ms: 3.424541
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 542.700958

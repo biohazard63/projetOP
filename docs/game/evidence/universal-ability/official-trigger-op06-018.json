@@ -1,0 +1,11 @@
+{
+  "seed": 77,
+  "card": "OP06-018",
+  "triggerLifeInstance": "m2-game:p1:c48",
+  "privatePromptForDefender": true,
+  "choiceTarget": "m2-game:p0:c4",
+  "targetZone": "trash",
+  "triggerZone": "trash",
+  "lifeRemaining": 4,
+  "resumedAfterJson": true
+}

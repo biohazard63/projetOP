@@ -1,0 +1,116 @@
+
+> cardgame@0.1.0 test:game:m1-5
+> node --import tsx --test tests/game-m1-5.test.ts
+
+TAP version 13
+# Subtest: M1.5 both orders execute the first two turns with exact Draw and DON exceptions
+ok 1 - M1.5 both orders execute the first two turns with exact Draw and DON exceptions
+  ---
+  duration_ms: 36.637167
+  type: 'test'
+  ...
+# Subtest: M1.5 phases expose only active-player decisions and cannot be skipped
+ok 2 - M1.5 phases expose only active-player decisions and cannot be skipped
+  ---
+  duration_ms: 10.717958
+  type: 'test'
+  ...
+# Subtest: M1.5 DON distribution handles one remaining and zero, preserving all ten per player
+ok 3 - M1.5 DON distribution handles one remaining and zero, preserving all ten per player
+  ---
+  duration_ms: 57.897792
+  type: 'test'
+  ...
+# Subtest: M1.5 playing a Character pays its exact cost and preserves all instances
+ok 4 - M1.5 playing a Character pays its exact cost and preserves all instances
+  ---
+  duration_ms: 7.017
+  type: 'test'
+  ...
+# Subtest: M1.5 rejects insufficient, duplicate, foreign and already rested payment without mutations
+ok 5 - M1.5 rejects insufficient, duplicate, foreign and already rested payment without mutations
+  ---
+  duration_ms: 56.47475
+  type: 'test'
+  ...
+# Subtest: M1.5 sixth Character requires a chosen replacement and returns its attached DON rested
+ok 6 - M1.5 sixth Character requires a chosen replacement and returns its attached DON rested
+  ---
+  duration_ms: 55.61975
+  type: 'test'
+  ...
+# Subtest: M1.5 Stage play replaces the existing Stage; wrong replacement and premature trash are rejected
+ok 7 - M1.5 Stage play replaces the existing Stage; wrong replacement and premature trash are rejected
+  ---
+  duration_ms: 51.063667
+  type: 'test'
+  ...
+# Subtest: M1.5 attachments affect power only on own turn and Refresh restores all field resources
+ok 8 - M1.5 attachments affect power only on own turn and Refresh restores all field resources
+  ---
+  duration_ms: 49.952083
+  type: 'test'
+  ...
+# Subtest: M1.5 attachment rejects stages, opponents, rested DON, duplicates and empty lists
+ok 9 - M1.5 attachment rejects stages, opponents, rested DON, duplicates and empty lists
+  ---
+  duration_ms: 54.503
+  type: 'test'
+  ...
+# Subtest: M1.5 actions list affordable hand cards and active DON only; Events and abilities are unavailable
+ok 10 - M1.5 actions list affordable hand cards and active DON only; Events and abilities are unavailable
+  ---
+  duration_ms: 6.441167
+  type: 'test'
+  ...
+# Subtest: M1.5 zero-cost fixture can be played without DON; zero Life alone is not defeat
+ok 11 - M1.5 zero-cost fixture can be played without DON; zero Life alone is not defeat
+  ---
+  duration_ms: 6.5955
+  type: 'test'
+  ...
+# Subtest: M1.5 drawing the last deck card ends the game and disables every action
+ok 12 - M1.5 drawing the last deck card ends the game and disables every action
+  ---
+  duration_ms: 20.929625
+  type: 'test'
+  ...
+# Subtest: M1.5 an already empty deck resolves at the next rule boundary without inventing a card
+ok 13 - M1.5 an already empty deck resolves at the next rule boundary without inventing a card
+  ---
+  duration_ms: 6.443125
+  type: 'test'
+  ...
+# Subtest: M1.5 repeated phase, play and attachment commands are idempotent; stale changes are refused
+ok 14 - M1.5 repeated phase, play and attachment commands are idempotent; stale changes are refused
+  ---
+  duration_ms: 54.328458
+  type: 'test'
+  ...
+# Subtest: M1.5 projection reveals public field/trash/attachments, never hidden cards or payment history
+ok 15 - M1.5 projection reveals public field/trash/attachments, never hidden cards or payment history
+  ---
+  duration_ms: 44.306416
+  type: 'test'
+  ...
+# Subtest: M1.5 serializable loop integrates setup, legal actions, immutable commands and restoration deterministically
+ok 16 - M1.5 serializable loop integrates setup, legal actions, immutable commands and restoration deterministically
+  ---
+  duration_ms: 275.495625
+  type: 'test'
+  ...
+# Subtest: M1.5 scripted pass-only game reaches real deck exhaustion solely through legal commands
+ok 17 - M1.5 scripted pass-only game reaches real deck exhaustion solely through legal commands
+  ---
+  duration_ms: 329.11675
+  type: 'test'
+  ...
+1..17
+# tests 17
+# suites 0
+# pass 17
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 1416.9555

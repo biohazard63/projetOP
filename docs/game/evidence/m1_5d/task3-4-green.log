@@ -1,0 +1,70 @@
+TAP version 13
+# Subtest: M15D accepts versioned existing definitions and ON_KO
+ok 1 - M15D accepts versioned existing definitions and ON_KO
+  ---
+  duration_ms: 6.485042
+  type: 'test'
+  ...
+# Subtest: M15D preserves old registry and refuses legacy ON_KO
+ok 2 - M15D preserves old registry and refuses legacy ON_KO
+  ---
+  duration_ms: 3.599125
+  type: 'test'
+  ...
+# Subtest: M15D rejects unknown primitives and incompatible versions
+ok 3 - M15D rejects unknown primitives and incompatible versions
+  ---
+  duration_ms: 1.7795
+  type: 'test'
+  ...
+# Subtest: M15D scheduler retains initial B before cascade C and active player first
+ok 4 - M15D scheduler retains initial B before cascade C and active player first
+  ---
+  duration_ms: 0.285667
+  type: 'test'
+  ...
+# Subtest: M15D real Caribou ON_KO cascades after Shanks across series
+ok 5 - M15D real Caribou ON_KO cascades after Shanks across series
+  ---
+  duration_ms: 57.357083
+  type: 'test'
+  ...
+# Subtest: M15D simultaneous real ON_PLAY definitions require ordering, never registry sorting
+ok 6 - M15D simultaneous real ON_PLAY definitions require ordering, never registry sorting
+  ---
+  duration_ms: 22.2105
+  type: 'test'
+  ...
+# Subtest: M15D composite cost initially impossible pays nothing
+ok 7 - M15D composite cost initially impossible pays nothing
+  ---
+  duration_ms: 16.504083
+  type: 'test'
+  ...
+# Subtest: M15D interrupted composite payment retains paid operation and skips remainder
+ok 8 - M15D interrupted composite payment retains paid operation and skips remainder
+  ---
+  duration_ms: 16.181709
+  type: 'test'
+  ...
+# Subtest: M15D real Sabo replacement prevents Usopp ON_KO
+ok 9 - M15D real Sabo replacement prevents Usopp ON_KO
+  ---
+  duration_ms: 27.761458
+  type: 'test'
+  ...
+# Subtest: M15D real Sabo decline permits Usopp ON_KO and leaves usage free
+ok 10 - M15D real Sabo decline permits Usopp ON_KO and leaves usage free
+  ---
+  duration_ms: 29.294917
+  type: 'test'
+  ...
+1..10
+# tests 10
+# suites 0
+# pass 10
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 920.488041

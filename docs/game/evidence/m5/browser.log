@@ -1,0 +1,13 @@
+{"name":"Phone 390x844: the picker offers difficulty, tutorial, decks, collection compatibility and statistics","status":"PASS","ms":1315}
+{"name":"Phone: the tutorial guides the first steps and advances on the confirmed card play","status":"PASS","ms":3872}
+{"name":"Phone: a long press inspects a card; a swipe scrolls the hand without playing anything","status":"PASS","ms":1953}
+{"name":"Phone: dragging a card up from the hand plays it, and the tutorial moves on to attacking","status":"PASS","ms":1694}
+{"name":"Phone (CPU x4): a whole game against the easy bot ends in a VICTORY on screen, with animations and a refresh","status":"PASS","ms":199676}
+{"name":"Small phone 360x740: the board fits, and a purple game against the normal bot reaches its result on screen","status":"PASS","ms":87709}
+{"name":"Tablet 820x1180 with reduced motion: no animation is played and the game stays playable; conceding shows a defeat","status":"PASS","ms":17944}
+{"name":"Desktop 1440x900: journal always visible, keyboard opens and closes a card, a mouse game reaches its result","status":"PASS","ms":172671}
+{"name":"Phone: a revealed [Trigger] shows its card and text, and activating it is confirmed by the server","status":"PASS","ms":14859}
+{"name":"Every /api/play response is no-store and carries no engine state, seed, PRNG or hidden zone","status":"PASS","ms":36}
+{"name":"Statistics recorded the finished games of each player only, without touching collection or coins","status":"PASS","ms":85}
+{"pass":11,"fail":0}
+exit 0

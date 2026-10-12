@@ -1,0 +1,19 @@
+{
+  "cardgame/src/game/core/invariants.ts": "b3ce2354c4cf2184dddc83278d390a7103b38969e0bc52d07288566f1b636c47",
+  "cardgame/src/game/core/turns.ts": "bd804a5aabb0ce88ce2faca4d1b57148973b251c14be1b0ae257d4fd7762a11a",
+  "cardgame/src/game/core/random.ts": "aee6e2988b6b1a770ace7d82ecde679de8143bf27b90a19d580883b135030088",
+  "cardgame/src/game/core/types.ts": "b11ecfb6a692b2d5bd8225dbcfa8a23bcdb3dd94c9a377025a43cc400ccf8f2d",
+  "cardgame/src/game/core/game.ts": "28ba2fb0cc12f49d1a2b308ce5e44fbf268f4d6b4be40ff1b900873ba3dafe27",
+  "cardgame/src/game/core/index.ts": "aa75eeeb84c8bc9f7c0945e6c8142ede1698c0d8f9675ea23ee42dda488bc8f1",
+  "cardgame/src/game/cards/catalogAdapter.ts": "832e48ff624584b1a2177dae58a80ac22e3b689ce507c1b29a59e765a9134577",
+  "cardgame/src/game/cards/reviewedCards.ts": "9737baaf1192c842e0eb063a644bc97cee29fcc558020139d4fa88e2d347aa4d",
+  "cardgame/src/game/cards/types.ts": "4c86dc46cba8a5a939a2229d06be62810113563e65ae84de9810c6f8a9df051d",
+  "cardgame/src/game/cards/adapter.ts": "33707cd8ee052855d7292b070b12b71441f59bc2cfaa0a9ecfd041dabac621b2",
+  "cardgame/src/game/cards/effectPrototype.ts": "2137316ac7bf6ed307546c2d5b278966ee9d138f7bd9acabec03afff693b7c3a",
+  "cardgame/src/game/cards/leaderLife.ts": "f2e8fba602651b7c420f0008e872ada5e98d98b91140cb4a407f1c8ed0a58e54",
+  "cardgame/src/game/rulesets/m0.ts": "4cfdd68056fb701f4bc6a215bc03b4db0ff2621023047f510e8ca078b77340ff",
+  "cardgame/src/game/rulesets/decks.ts": "55d8c939d5fffd6b6d383161f93707b8169b06eca84044df971495bf7d1cb8dd",
+  "cardgame/src/game/effects/contracts.ts": "2c406a8b821e2c6e841552ac3e2c9aea16c85657073237fe745f07333af20cfb",
+  "cardgame/src/game/effects/runtime.ts": "20203715c91543ec6b43103fccfdbcb6b8a79914f0dc65e15906d8b2192e6a11",
+  "cardgame/src/game/effects/characteristics.ts": "14209f8a6680e72513896f229c548884c6e16b4a0b0ed92b8eac48ca7536785e"
+}

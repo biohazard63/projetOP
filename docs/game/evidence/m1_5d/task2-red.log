@@ -1,0 +1,44 @@
+TAP version 13
+# node:internal/modules/cjs/loader:1383
+#   const err = new Error(message);
+#               ^
+# Error: Cannot find module '../src/game/cards/effectScheduling'
+# Require stack:
+# - /Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts
+#     at node:internal/modules/cjs/loader:1383:15
+#     at nextResolveSimple (/Users/quentin/Documents/GitHub/projetOP/cardgame/node_modules/tsx/dist/register-B1c7OH6V.cjs:23:1010)
+#     at /Users/quentin/Documents/GitHub/projetOP/cardgame/node_modules/tsx/dist/register-B1c7OH6V.cjs:22:4512
+#     at /Users/quentin/Documents/GitHub/projetOP/cardgame/node_modules/tsx/dist/register-B1c7OH6V.cjs:22:2830
+#     at resolveTsPaths (/Users/quentin/Documents/GitHub/projetOP/cardgame/node_modules/tsx/dist/register-B1c7OH6V.cjs:23:762)
+#     at /Users/quentin/Documents/GitHub/projetOP/cardgame/node_modules/tsx/dist/register-B1c7OH6V.cjs:23:1203
+#     at j._resolveFilename (file:///Users/quentin/Documents/GitHub/projetOP/cardgame/node_modules/tsx/dist/register-nyXW-TH3.mjs:2:18825)
+#     at defaultResolveImpl (node:internal/modules/cjs/loader:1025:19)
+#     at resolveForCJSWithHooks (node:internal/modules/cjs/loader:1030:22)
+#     at Function._load (node:internal/modules/cjs/loader:1192:37) {
+#   code: 'MODULE_NOT_FOUND',
+#   requireStack: [
+#     '/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts'
+#   ]
+# }
+# Node.js v22.22.2
+# Subtest: tests/game-m1-5d.test.ts
+not ok 1 - tests/game-m1-5d.test.ts
+  ---
+  duration_ms: 417.01275
+  type: 'test'
+  location: '/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..1
+# tests 1
+# suites 0
+# pass 0
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 424.523333

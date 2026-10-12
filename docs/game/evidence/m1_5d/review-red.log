@@ -1,0 +1,238 @@
+TAP version 13
+# Subtest: M15D accepts versioned existing definitions and ON_KO
+ok 1 - M15D accepts versioned existing definitions and ON_KO
+  ---
+  duration_ms: 6.229
+  type: 'test'
+  ...
+# Subtest: M15D preserves old registry and refuses legacy ON_KO
+ok 2 - M15D preserves old registry and refuses legacy ON_KO
+  ---
+  duration_ms: 4.278916
+  type: 'test'
+  ...
+# Subtest: M15D rejects unknown primitives and incompatible versions
+ok 3 - M15D rejects unknown primitives and incompatible versions
+  ---
+  duration_ms: 1.797458
+  type: 'test'
+  ...
+# Subtest: M15D scheduler retains initial B before cascade C and active player first
+ok 4 - M15D scheduler retains initial B before cascade C and active player first
+  ---
+  duration_ms: 0.265584
+  type: 'test'
+  ...
+# Subtest: M15D real Caribou ON_KO cascades after Shanks across series
+ok 5 - M15D real Caribou ON_KO cascades after Shanks across series
+  ---
+  duration_ms: 53.965708
+  type: 'test'
+  ...
+# Subtest: M15D real ON_PLAY plus future fixture requires ordering, never registry sorting
+ok 6 - M15D real ON_PLAY plus future fixture requires ordering, never registry sorting
+  ---
+  duration_ms: 19.178542
+  type: 'test'
+  ...
+# Subtest: M15D composite cost initially impossible pays nothing
+ok 7 - M15D composite cost initially impossible pays nothing
+  ---
+  duration_ms: 12.740166
+  type: 'test'
+  ...
+# Subtest: M15D interrupted composite payment retains paid operation and skips remainder
+ok 8 - M15D interrupted composite payment retains paid operation and skips remainder
+  ---
+  duration_ms: 11.618167
+  type: 'test'
+  ...
+# Subtest: M15D real Sabo replacement prevents Usopp ON_KO
+ok 9 - M15D real Sabo replacement prevents Usopp ON_KO
+  ---
+  duration_ms: 21.091834
+  type: 'test'
+  ...
+# Subtest: M15D real Sabo decline permits Usopp ON_KO and leaves usage free
+ok 10 - M15D real Sabo decline permits Usopp ON_KO and leaves usage free
+  ---
+  duration_ms: 24.488
+  type: 'test'
+  ...
+# Subtest: M15D interrupted activation commits payment and skips body via applyCommand
+ok 11 - M15D interrupted activation commits payment and skips body via applyCommand
+  ---
+  duration_ms: 13.549417
+  type: 'test'
+  ...
+# Subtest: M15D order choice recovery is private and duplicate answers are idempotent
+ok 12 - M15D order choice recovery is private and duplicate answers are idempotent
+  ---
+  duration_ms: 23.019875
+  type: 'test'
+  ...
+# Subtest: M15D forged ON_KO capture and ordering save are rejected
+ok 13 - M15D forged ON_KO capture and ordering save are rejected
+  ---
+  duration_ms: 16.568791
+  type: 'test'
+  ...
+# Subtest: M15D explicit simultaneous replacement and KO batch refusals preserve state
+ok 14 - M15D explicit simultaneous replacement and KO batch refusals preserve state
+  ---
+  duration_ms: 29.848125
+  type: 'test'
+  ...
+# Subtest: M15D Sabo requires DON and opponent turn and consumes only accepted usage
+ok 15 - M15D Sabo requires DON and opponent turn and consumes only accepted usage
+  ---
+  duration_ms: 31.54125
+  type: 'test'
+  ...
+# Subtest: M15D normal play payment and movement use common operations
+ok 16 - M15D normal play payment and movement use common operations
+  ---
+  duration_ms: 12.598416
+  type: 'test'
+  ...
+# Subtest: M15D Sunny rest and power gain are confirmed operations
+ok 17 - M15D Sunny rest and power gain are confirmed operations
+  ---
+  duration_ms: 14.220875
+  type: 'test'
+  ...
+# Subtest: M15D both controllers pending from one KO resolve active player first
+ok 18 - M15D both controllers pending from one KO resolve active player first
+  ---
+  duration_ms: 16.559584
+  type: 'test'
+  ...
+# Subtest: M15D reproducible real KO confirmed, cascade and saved recovery traces
+ok 19 - M15D reproducible real KO confirmed, cascade and saved recovery traces
+  ---
+  duration_ms: 48.942209
+  type: 'test'
+  ...
+# Subtest: M15D reproducible real prevented KO trace
+ok 20 - M15D reproducible real prevented KO trace
+  ---
+  duration_ms: 21.925458
+  type: 'test'
+  ...
+# Subtest: M15D simultaneous abilities finish before generated cascade trace
+ok 21 - M15D simultaneous abilities finish before generated cascade trace
+  ---
+  duration_ms: 29.014417
+  type: 'test'
+  ...
+# Subtest: M15D future new card definition registers and resolves after JSON restore
+ok 22 - M15D future new card definition registers and resolves after JSON restore
+  ---
+  duration_ms: 35.685167
+  type: 'test'
+  ...
+# Subtest: M15D older saves retain pinned engine and definitions
+ok 23 - M15D older saves retain pinned engine and definitions
+  ---
+  duration_ms: 10.019458
+  type: 'test'
+  ...
+# Subtest: M15D order save rejects forged options, actor and version
+ok 24 - M15D order save rejects forged options, actor and version
+  ---
+  duration_ms: 15.811917
+  type: 'test'
+  ...
+# Subtest: M15D private replacement and payment logs absent from opponent projection
+ok 25 - M15D private replacement and payment logs absent from opponent projection
+  ---
+  duration_ms: 13.777833
+  type: 'test'
+  ...
+# Subtest: M15D determinism and conservation across repeated real cascade runs
+ok 26 - M15D determinism and conservation across repeated real cascade runs
+  ---
+  duration_ms: 45.588834
+  type: 'test'
+  ...
+# Subtest: M15D review regression: interrupted PLAY_CARD retains paid DON and does not play
+not ok 27 - M15D review regression: interrupted PLAY_CARD retains paid DON and does not play
+  ---
+  duration_ms: 16.593125
+  type: 'test'
+  location: '/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:2:26526'
+  failureType: 'testCodeFailure'
+  error: |-
+    The expression evaluated to a falsy value:
+    
+      assert.ok(r.ok)
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: true
+  actual: false
+  operator: '=='
+  stack: |-
+    TestContext.<anonymous> (/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:206:37)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: M15D review regression: automatic once per turn survives KO cascades
+not ok 28 - M15D review regression: automatic once per turn survives KO cascades
+  ---
+  duration_ms: 29.684333
+  type: 'test'
+  location: '/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:2:27464'
+  failureType: 'testCodeFailure'
+  error: |-
+    Expected values to be strictly equal:
+    
+    2 !== 1
+    
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  expected: 1
+  actual: 2
+  operator: 'strictEqual'
+  stack: |-
+    TestContext.<anonymous> (/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:217:134)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+# Subtest: M15D review regression: fabricated cause, batch actor, pending history and missing suspension rejected
+not ok 29 - M15D review regression: fabricated cause, batch actor, pending history and missing suspension rejected
+  ---
+  duration_ms: 12.453458
+  type: 'test'
+  location: '/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:2:28986'
+  failureType: 'testCodeFailure'
+  error: 'Missing expected exception: cause'
+  code: 'ERR_ASSERTION'
+  name: 'AssertionError'
+  operator: 'throws'
+  stack: |-
+    TestContext.<anonymous> (/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/game-m1-5d.test.ts:221:447)
+    Test.runInAsyncScope (node:async_hooks:214:14)
+    Test.run (node:internal/test_runner/test:1047:25)
+    Test.processPendingSubtests (node:internal/test_runner/test:744:18)
+    Test.postRun (node:internal/test_runner/test:1173:19)
+    Test.run (node:internal/test_runner/test:1101:12)
+    async Test.processPendingSubtests (node:internal/test_runner/test:744:7)
+  ...
+1..29
+# tests 29
+# suites 0
+# pass 26
+# fail 3
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 971.520125

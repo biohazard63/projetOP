@@ -1,0 +1,32 @@
+{
+  "targeted_tests": {
+    "command": "M15C_REPORT_TRACES=1 node --import tsx --test tests/game-m1-5c.test.ts",
+    "exit_code": 0,
+    "passed": 42
+  },
+  "global_tests": {
+    "command": "npm test",
+    "exit_code": 0,
+    "passed": 200
+  },
+  "typecheck": {
+    "command": "npx tsc --noEmit",
+    "exit_code": 0
+  },
+  "core_lint": {
+    "command": "npx eslint src/game tests/game-m1-5c.test.ts",
+    "exit_code": 0
+  },
+  "application_lint": {
+    "command": "npm run lint",
+    "exit_code": 0,
+    "errors": 0,
+    "warnings": 99
+  },
+  "isolated_build": {
+    "command": "npm run build",
+    "exit_code": 0,
+    "source_mismatch": [],
+    "directory": "/var/folders/rm/zx_lwlr15zv7zlrkq6phxp4c0000gn/T/mugiwara-m15c-build-s18qcvee"
+  }
+}

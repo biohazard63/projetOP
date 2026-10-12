@@ -1,0 +1,21 @@
+{
+  "totals": {
+    "numbers": 2667,
+    "variants": 4179,
+    "groups": 74,
+    "reprintedVariants": 485,
+    "mechanics": 56,
+    "leadersWithoutLife": 284,
+    "missingBlock": 4179,
+    "effectAndTrigger": 658,
+    "multiParagraph": 863,
+    "withoutEffectOrTrigger": 319
+  },
+  "files": 67,
+  "jsonFiles": 1625,
+  "cardFiles": 824,
+  "rawObservations": 20849,
+  "errors": [],
+  "characteristicDifferences": 15,
+  "textDifferences": 1978
+}

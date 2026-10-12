@@ -1,0 +1,262 @@
+TAP version 13
+# Subtest: reviewed card bundle validates and pins DSL 1.1 independently of artwork
+ok 1 - reviewed card bundle validates and pins DSL 1.1 independently of artwork
+  ---
+  duration_ms: 43.762291
+  type: 'test'
+  ...
+# Subtest: real Luffy zero choice completes without mandatory recipient or DON
+ok 2 - real Luffy zero choice completes without mandatory recipient or DON
+  ---
+  duration_ms: 25.224042
+  type: 'test'
+  ...
+# Subtest: Luffy uses only rested cost DON, never attached or DON-deck cards
+ok 3 - Luffy uses only rested cost DON, never attached or DON-deck cards
+  ---
+  duration_ms: 67.628417
+  type: 'test'
+  ...
+# Subtest: Nami can target herself and observes her once-per-turn limit
+ok 4 - Nami can target herself and observes her once-per-turn limit
+  ---
+  duration_ms: 57.764667
+  type: 'test'
+  ...
+# Subtest: source in hand/trash, opponent actor and wrong phase cannot activate
+ok 5 - source in hand/trash, opponent actor and wrong phase cannot activate
+  ---
+  duration_ms: 15.550541
+  type: 'test'
+  ...
+# Subtest: real effect JSON recovery across both choices, replay never doubles DON
+ok 6 - real effect JSON recovery across both choices, replay never doubles DON
+  ---
+  duration_ms: 55.791584
+  type: 'test'
+  ...
+# Subtest: pending real choice rejects normal command and invalid options without partial state
+ok 7 - pending real choice rejects normal command and invalid options without partial state
+  ---
+  duration_ms: 13.436458
+  type: 'test'
+  ...
+# Subtest: private hand, deck and Life remain hidden throughout real public choice
+ok 8 - private hand, deck and Life remain hidden throughout real public choice
+  ---
+  duration_ms: 13.989791
+  type: 'test'
+  ...
+# Subtest: Brook triggers from confirmed PLAY_CARD and can give zero, one or two DON
+ok 9 - Brook triggers from confirmed PLAY_CARD and can give zero, one or two DON
+  ---
+  duration_ms: 202.711416
+  type: 'test'
+  ...
+# Subtest: Brook cannot be manually activated or triggered by an invalid play
+ok 10 - Brook cannot be manually activated or triggered by an invalid play
+  ---
+  duration_ms: 62.073166
+  type: 'test'
+  ...
+# Subtest: Brook confirmed play replay cannot enqueue a second trigger
+ok 11 - Brook confirmed play replay cannot enqueue a second trigger
+  ---
+  duration_ms: 57.208875
+  type: 'test'
+  ...
+# Subtest: Brook auto trigger does not recreate after serialization or later phase
+ok 12 - Brook auto trigger does not recreate after serialization or later phase
+  ---
+  duration_ms: 54.918166
+  type: 'test'
+  ...
+# Subtest: Zoro continuous bonus includes both turns while normal DON bonus is own-turn only
+ok 13 - Zoro continuous bonus includes both turns while normal DON bonus is own-turn only
+  ---
+  duration_ms: 31.529958
+  type: 'test'
+  ...
+# Subtest: Sunny pays REST_SOURCE before choice, cannot pay again while rested
+ok 14 - Sunny pays REST_SOURCE before choice, cannot pay again while rested
+  ---
+  duration_ms: 68.37225
+  type: 'test'
+  ...
+# Subtest: Sunny excludes non-Straw-Hat cards and modifier lasts through End only
+ok 15 - Sunny excludes non-Straw-Hat cards and modifier lasts through End only
+  ---
+  duration_ms: 41.270708
+  type: 'test'
+  ...
+# Subtest: invalid post-cost choice preserves paid cost and suspended prior command
+ok 16 - invalid post-cost choice preserves paid cost and suspended prior command
+  ---
+  duration_ms: 43.854542
+  type: 'test'
+  ...
+# Subtest: missing card program or incompatible registry blocks preparation explicitly
+ok 17 - missing card program or incompatible registry blocks preparation explicitly
+  ---
+  duration_ms: 2.932625
+  type: 'test'
+  ...
+# Subtest: future new card definition executes an actual attachment with unchanged core and saved registry
+ok 18 - future new card definition executes an actual attachment with unchanged core and saved registry
+  ---
+  duration_ms: 63.048125
+  type: 'test'
+  ...
+# Subtest: real-card runs deterministic and conserve all 122 instances over seeds
+ok 19 - real-card runs deterministic and conserve all 122 instances over seeds
+  ---
+  duration_ms: 102.483375
+  type: 'test'
+  ...
+# Subtest: another Nami presence has an independent once-per-turn ledger
+ok 20 - another Nami presence has an independent once-per-turn ledger
+  ---
+  duration_ms: 176.657542
+  type: 'test'
+  ...
+# Subtest: ability identity captures source generation and rejects a forged former presence
+ok 21 - ability identity captures source generation and rejects a forged former presence
+  ---
+  duration_ms: 35.62425
+  type: 'test'
+  ...
+# Subtest: a suspended card-source identity cannot be forged in a saved resolution
+ok 22 - a suspended card-source identity cannot be forged in a saved resolution
+  ---
+  duration_ms: 11.328917
+  type: 'test'
+  ...
+# Subtest: wrong source zone and absent continuous source rejected at creation
+ok 23 - wrong source zone and absent continuous source rejected at creation
+  ---
+  duration_ms: 4.188208
+  type: 'test'
+  ...
+# Subtest: unverified simultaneous On Play abilities are blocked rather than ordered lexically
+ok 24 - unverified simultaneous On Play abilities are blocked rather than ordered lexically
+  ---
+  duration_ms: 49.065458
+  type: 'test'
+  ...
+# Subtest: known additive modifiers compose and projection consults the same evaluator
+ok 25 - known additive modifiers compose and projection consults the same evaluator
+  ---
+  duration_ms: 110.929625
+  type: 'test'
+  ...
+# Subtest: Luffy interacts with OP01 Hajrudin using the same DON primitive, no set branch
+ok 26 - Luffy interacts with OP01 Hajrudin using the same DON primitive, no set branch
+  ---
+  duration_ms: 146.502583
+  type: 'test'
+  ...
+# Subtest: modifiers with unknown dependency/mode are rejected, not guessed
+ok 27 - modifiers with unknown dependency/mode are rejected, not guessed
+  ---
+  duration_ms: 0.540875
+  type: 'test'
+  ...
+# Subtest: Shanks On Play confirms ordinary KO only after choosing a legal opponent target
+ok 28 - Shanks On Play confirms ordinary KO only after choosing a legal opponent target
+  ---
+  duration_ms: 93.826917
+  type: 'test'
+  ...
+# Subtest: real replacement discards Sunny instead of KO; never produces a false KO event
+ok 29 - real replacement discards Sunny instead of KO; never produces a false KO event
+  ---
+  duration_ms: 93.822791
+  type: 'test'
+  ...
+# Subtest: replacement private options belong to defender; Shanks controller cannot answer
+ok 30 - replacement private options belong to defender; Shanks controller cannot answer
+  ---
+  duration_ms: 109.058042
+  type: 'test'
+  ...
+# Subtest: replacement resume is idempotent, stale response fails and no double hand discard
+ok 31 - replacement resume is idempotent, stale response fails and no double hand discard
+  ---
+  duration_ms: 92.846458
+  type: 'test'
+  ...
+# Subtest: replacement cannot use a Character from hand or a forged card
+ok 32 - replacement cannot use a Character from hand or a forged card
+  ---
+  duration_ms: 91.567666
+  type: 'test'
+  ...
+# Subtest: no payable replacement performs real KO directly, matching official EB01 FAQ
+ok 33 - no payable replacement performs real KO directly, matching official EB01 FAQ
+  ---
+  duration_ms: 90.100833
+  type: 'test'
+  ...
+# Subtest: Shanks zero targets completes without a KO or replacement choice
+ok 34 - Shanks zero targets completes without a KO or replacement choice
+  ---
+  duration_ms: 89.199666
+  type: 'test'
+  ...
+# Subtest: simultaneous real replacements explicitly blocked with no partial mutation
+ok 35 - simultaneous real replacements explicitly blocked with no partial mutation
+  ---
+  duration_ms: 89.240875
+  type: 'test'
+  ...
+# Subtest: forged replacement continuation/actor/subject fails restoration
+ok 36 - forged replacement continuation/actor/subject fails restoration
+  ---
+  duration_ms: 93.440292
+  type: 'test'
+  ...
+# Subtest: paid replacement once-per-turn blocks a second KO in the same turn and presence
+ok 37 - paid replacement once-per-turn blocks a second KO in the same turn and presence
+  ---
+  duration_ms: 91.647166
+  type: 'test'
+  ...
+# Subtest: pending KO is a proposal, never a confirmed operation before defender choice
+ok 38 - pending KO is a proposal, never a confirmed operation before defender choice
+  ---
+  duration_ms: 154.637333
+  type: 'test'
+  ...
+# Subtest: replacement already consumed cannot be forged into a pending saved choice
+ok 39 - replacement already consumed cannot be forged into a pending saved choice
+  ---
+  duration_ms: 95.093875
+  type: 'test'
+  ...
+# Subtest: unsupported On KO trigger timing is refused at admission, never treated as vanilla
+ok 40 - unsupported On KO trigger timing is refused at admission, never treated as vanilla
+  ---
+  duration_ms: 0.403083
+  type: 'test'
+  ...
+# Subtest: Shanks targeting consults actual continuous power and excludes cards above threshold
+ok 41 - Shanks targeting consults actual continuous power and excludes cards above threshold
+  ---
+  duration_ms: 94.476166
+  type: 'test'
+  ...
+# Subtest: resolution trace records proposed KO, private choice and actual replacement in order
+ok 42 - resolution trace records proposed KO, private choice and actual replacement in order
+  ---
+  duration_ms: 92.491334
+  type: 'test'
+  ...
+1..42
+# tests 42
+# suites 0
+# pass 42
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 3516.57675

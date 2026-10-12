@@ -1,0 +1,93 @@
+{
+  "fixture": "OP06-007 versus EB01-008; ST01-017 hand payment",
+  "before": {
+    "victimZone": "characters",
+    "operations": 0
+  },
+  "suspended": {
+    "operation": {
+      "id": "real-fx:fx:operation:3",
+      "resolutionId": "real-fx:fx:resolution:0",
+      "subject": {
+        "instanceId": "real-fx:p0:c13",
+        "generation": 2
+      },
+      "controllerId": "bob",
+      "type": "KO",
+      "outcome": "PROPOSED"
+    },
+    "choice": {
+      "actor": "alice",
+      "visibility": "PRIVATE",
+      "min": 0,
+      "max": 1
+    }
+  },
+  "after": {
+    "operations": [
+      {
+        "id": "real-fx:fx:operation:3",
+        "resolutionId": "real-fx:fx:resolution:0",
+        "subject": {
+          "instanceId": "real-fx:p0:c13",
+          "generation": 2
+        },
+        "controllerId": "bob",
+        "type": "KO",
+        "outcome": "REPLACED",
+        "replacementId": "EB01-008.protect"
+      },
+      {
+        "id": "real-fx:fx:operation:5",
+        "resolutionId": "real-fx:fx:resolution:0",
+        "subject": {
+          "instanceId": "real-fx:p0:c23",
+          "generation": 1
+        },
+        "controllerId": "alice",
+        "type": "TRASH_HAND",
+        "outcome": "CONFIRMED",
+        "replacementId": "EB01-008.protect"
+      }
+    ],
+    "events": [
+      {
+        "sequence": 0,
+        "type": "ABILITY_ACTIVATED",
+        "controllerId": "bob",
+        "subjectId": "real-fx:p1:c19",
+        "resolutionId": "real-fx:fx:resolution:0"
+      },
+      {
+        "sequence": 1,
+        "type": "ON_PLAY_CAPTURED",
+        "controllerId": "bob",
+        "subjectId": "real-fx:p1:c19",
+        "resolutionId": "real-fx:fx:resolution:0"
+      },
+      {
+        "sequence": 2,
+        "type": "HAND_CARD_TRASHED",
+        "controllerId": "alice",
+        "subjectId": "real-fx:p0:c23",
+        "resolutionId": "real-fx:fx:resolution:0"
+      },
+      {
+        "sequence": 3,
+        "type": "KO_REPLACED",
+        "controllerId": "alice",
+        "subjectId": "real-fx:p0:c13",
+        "resolutionId": "real-fx:fx:resolution:0"
+      },
+      {
+        "sequence": 4,
+        "type": "ABILITY_COMPLETED",
+        "controllerId": "bob",
+        "subjectId": "real-fx:p1:c19",
+        "resolutionId": "real-fx:fx:resolution:0"
+      }
+    ],
+    "victimZone": "characters",
+    "instanceCount": 122
+  }
+}

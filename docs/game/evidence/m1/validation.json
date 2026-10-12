@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-11",
+  "scope": "setup only, through entry to first Refresh",
+  "commands": [
+    {
+      "command": "npm run test:game:m1",
+      "exitCode": 0,
+      "tests": 17,
+      "pass": 17,
+      "fail": 0
+    },
+    {
+      "command": "npm test",
+      "exitCode": 0,
+      "tests": 98,
+      "pass": 98,
+      "fail": 0,
+      "skipped": 0
+    },
+    {
+      "command": "npx tsc --noEmit",
+      "exitCode": 0
+    },
+    {
+      "command": "npx eslint src/game/core tests/game-m1.test.ts",
+      "exitCode": 0
+    },
+    {
+      "command": "npm run lint",
+      "exitCode": 0,
+      "warnings": 99,
+      "errors": 0
+    },
+    {
+      "command": "npm run build",
+      "exitCode": 0,
+      "directory": "/private/tmp/mugiwara-managed-build-pwwqpcx8"
+    },
+    {
+      "command": "git diff --check",
+      "exitCode": 0
+    }
+  ],
+  "databaseRead": false,
+  "databaseModified": false,
+  "deployed": false,
+  "sourceHashes": {
+    "cardgame/src/game/core/invariants.ts": "7d1931470d5ecb66c6a8a78ec1f068b3f24e61fb89ed4081310e89b44df2503d",
+    "cardgame/src/game/core/random.ts": "aee6e2988b6b1a770ace7d82ecde679de8143bf27b90a19d580883b135030088",
+    "cardgame/src/game/core/types.ts": "80e11748cffd4186c79a9276fbf6c0362825e57b7bfbc6e0da4ded4ef080f7e0",
+    "cardgame/src/game/core/game.ts": "e99959b93d9f18a2d5299cee438296effa0812db9819296c00a0edaab4bccc0c",
+    "cardgame/src/game/core/index.ts": "3d26ba00f4bd4ae16a08ba4bbede18e3ec6d0d6e697fdba09b662d66f18e82d0",
+    "cardgame/tests/game-m1.test.ts": "ae4a936132c893c08643eb34efb52a38a49705601a40d159d5d36dd8e9f1e505"
+  }
+}

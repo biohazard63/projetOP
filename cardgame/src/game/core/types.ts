@@ -1,0 +1,31 @@
+import type { EffectRegistry, EffectRuntime } from '../effects/contracts'
+import type { CardDefinition, CardPrinting } from '../cards/types'
+import type { DeckEntry, Ruleset } from '../rulesets/decks'
+import type { RandomState } from './random'
+
+export const ZONES = ['leader', 'deck', 'hand', 'life', 'characters', 'stage', 'trash', 'donDeck', 'cost', 'attached', 'temporary'] as const
+export type Zone = typeof ZONES[number]
+export type Phase = 'CHOOSE_FIRST' | 'MULLIGAN' | 'REFRESH' | 'DRAW' | 'DON' | 'MAIN' | 'END'
+export type Instance = { id: string; owner: string; controller: string; printingKey: string | null; definitionId: string | null; kind: 'CARD' | 'DON'; zone: Zone; rested: boolean; faceUp: boolean; attachedTo: string | null; zoneGeneration: number; playedOnTurn?: number | null }
+export type PlayerState = { id: string; zones: Record<Zone, string[]>; mulligan: 'PENDING' | 'KEPT' | 'REDRAWN'; turns: number }
+export type PlayerDeck = { id: string; cards: DeckEntry[]; donCount: number }
+export type TurnIntent = { type: 'ADVANCE_PHASE' } | { type: 'END_MAIN' } | { type: 'PLAY_CARD'; instanceId: string; donIds: string[]; replaceId: string | null } | { type: 'ATTACH_DON'; donIds: string[]; targetId: string }
+export type BattlePresence = { instanceId: string; generation: number }
+export type BattleState = { id: string; step: 'BLOCKER' | 'COUNTER' | 'DAMAGE' | 'LIFE_TRIGGER' | 'LIFE_CONTINUE'; attacker: BattlePresence; attackerControllerId: string; target: BattlePresence; defenderId: string; blockersUsed: number; powerBonus: number; counterModifiers: { target: BattlePresence; amount: number }[]; lifeDamage?: { remaining: number; damageIndex: number; banish: boolean }; pendingLifeTrigger?: { id: string; actorId: string; presence: BattlePresence } }
+export type CombatCommand = { type: 'DECLARE_ATTACK'; attackerId: string; targetId: string } | { type: 'ACTIVATE_BLOCKER'; blockerId: string; battleId: string } | { type: 'PASS_BLOCKER'; battleId: string } | { type: 'PLAY_COUNTER_CHARACTER'; cardId: string; targetId: string; battleId: string } | { type: 'PLAY_COUNTER_EVENT'; cardId: string; targetId: string | null; paymentDonIds: string[]; donMinusIds: string[]; lifePayment?: boolean; battleId: string } | { type: 'PASS_COUNTER'; battleId: string } | { type: 'RESOLVE_BATTLE'; battleId: string } | { type: 'CONTINUE_LIFE_DAMAGE'; battleId: string } | { type: 'ANSWER_TRIGGER'; choiceId: string; activate: boolean }
+export type Command = { id: string; expectedVersion: number; actorId: string } & ({ type: 'CHOOSE_FIRST'; choice: 'FIRST' | 'SECOND' } | { type: 'MULLIGAN'; redraw: boolean } | TurnIntent | CombatCommand | { type: 'START_EFFECT'; effectId: string; payOptionalCost?: boolean; donMinusIds?: string[] } | { type: 'CONCEDE' } | { type: 'ANSWER_CHOICE'; choiceId: string; tokens: string[] })
+export type PublicEvent = { sequence: number; type: 'CREATED' | 'ORDER_CHOSEN' | 'HANDS_DEALT' | 'HAND_KEPT' | 'HAND_REDRAWN' | 'PREPARED' | 'REFRESHED' | 'DRAWN' | 'DRAW_SKIPPED' | 'DON_ADDED' | 'CARD_REVEALED' | 'CARD_MOVED' | 'TRIGGER_ACTIVATED' | 'CARD_TRASHED' | 'CARD_PLAYED' | 'DON_ATTACHED' | 'ATTACK_DECLARED' | 'BLOCKER_ACTIVATED' | 'COUNTER_PLAYED' | 'LIFE_DAMAGED' | 'LIFE_PAID' | 'LIFE_TRASHED' | 'BATTLE_RESOLVED' | 'CHARACTER_KO' | 'MAIN_ENDED' | 'TURN_ENDED' | 'GAME_ENDED'; actorId?: string; publicInstanceId?: string; revealedCard?: { definitionId: string; printingKey: string } }
+export type GameState = {
+  schemaVersion: 1 | 2; effects?: EffectRuntime; battle: BattleState | null; gameId: string; version: number; scope: 'SETUP_ONLY' | 'BASIC_TURNS'; phase: Phase
+  players: [PlayerState, PlayerState]; instances: Record<string, Instance>
+  catalog: { definitions: CardDefinition[]; printings: CardPrinting[] }; ruleset: Ruleset
+  random: RandomState; chooserId: string; firstPlayerId: string | null; activePlayerId: string | null; decisionPlayerId: string | null
+  turn: number; automaticPlayReady: false; unsupportedEffects: string[]
+  events: PublicEvent[]; commands: Command[]
+  result?: { reason: 'EMPTY_DECK' | 'LEADER_DAMAGED_AT_ZERO_LIFE' | 'CONCESSION'; loserIds: string[]; winnerId: string | null } | null
+}
+export type Transition = { ok: true; state: GameState; events: PublicEvent[]; replayed: boolean } | { ok: false; error: string }
+export type GameInput = { gameId: string; seed: number; players: [PlayerDeck, PlayerDeck]; definitions: CardDefinition[]; printings: CardPrinting[]; ruleset: Ruleset; chooserId?: string; scope?: 'SETUP_ONLY' | 'BASIC_TURNS'; effectRegistry?: EffectRegistry }
+export type LegalAction = EffectLegalAction | { type: 'CHOOSE_FIRST'; choices: ['FIRST', 'SECOND'] } | { type: 'MULLIGAN'; choices: [false, true] } | { type: 'ADVANCE_PHASE' } | { type: 'END_MAIN' } | { type: 'PLAY_CARD'; instanceId: string; cost: number; eligibleDonIds: string[]; replacementIds: string[]; requiresReplacement: boolean } | { type: 'ATTACH_DON'; eligibleDonIds: string[]; targetIds: string[] } | { type: 'DECLARE_ATTACK'; attackerIds: string[]; targetIds: string[]; targetIdsByAttacker?: Record<string, string[]> } | { type: 'ACTIVATE_BLOCKER'; blockerIds: string[]; battleId: string } | { type: 'PASS_BLOCKER'; battleId: string } | { type: 'PLAY_COUNTER_CHARACTER'; cardIds: string[]; targetIds: string[]; battleId: string } | { type: 'PLAY_COUNTER_EVENT'; eventIds: string[]; targetIds: string[]; paymentDonIds: string[]; donMinusIds: string[]; battleId: string } | { type: 'PASS_COUNTER'; battleId: string } | { type: 'RESOLVE_BATTLE'; battleId: string } | { type: 'CONTINUE_LIFE_DAMAGE'; battleId: string } | { type: 'ANSWER_TRIGGER'; choiceId: string; choices: [false, true] }
+
+export type EffectLegalAction = { type: 'START_EFFECT'; effectId: string; optionalCost?: 'TAKE_TOP_LIFE_TO_HAND'; donMinus?: { amount: number; eligibleDonIds: string[] } } | { type: 'ANSWER_CHOICE'; choiceId: string; choiceType: 'SELECT' | 'ORDER'; optional: boolean; min: number; max: number; options: ({ token: string; instanceId?: string } | { token: string; triggerId: string })[] }

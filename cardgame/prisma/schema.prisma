@@ -27,6 +27,7 @@ model User {
   playerHistory         GameHistory[]     @relation("PlayerHistory")
   winnerHistory         GameHistory[]     @relation("WinnerHistory")
   gameLogs              GameLog[]
+  engineGames           EngineGame[]
   opponentGames         GameState[]       @relation("OpponentGame")
   playerGames           GameState[]       @relation("PlayerGame")
   tournamentMatchesA    TournamentMatch[] @relation("PlayerA")
@@ -280,6 +281,49 @@ model GameState {
   gameLogs                 GameLog[]
   opponent                 User      @relation("OpponentGame", fields: [opponentId], references: [id])
   player                   User      @relation("PlayerGame", fields: [playerId], references: [id])
+}
+
+// M4 server-authoritative games of the pure engine (src/game). Separate from the historic GameState model.
+// `state` is the full engine GameState (hidden zones, PRNG): server-only, never returned by an API.
+model EngineGame {
+  id            String          @id @default(cuid())
+  userId        String
+  status        String          @default("ACTIVE")
+  humanSeat     String
+  botSeat       String
+  deckRef       String
+  botDeckRef    String
+  botLevel      String          @default("normal")
+  rulesetId     String
+  engineVersion String
+  version       Int
+  state         Json
+  result        Json?
+  createdAt     DateTime        @default(now())
+  updatedAt     DateTime        @updatedAt
+  finishedAt    DateTime?
+  user          User            @relation(fields: [userId], references: [id], onDelete: Cascade)
+  commands      EngineCommand[]
+
+  @@index([userId, status])
+  @@index([userId, finishedAt])
+}
+
+// Accepted commands, in order; (gameId, commandId) makes a retried command idempotent.
+model EngineCommand {
+  id            String     @id @default(cuid())
+  gameId        String
+  seq           Int
+  commandId     String
+  actorSeat     String
+  type          String
+  payload       Json
+  resultVersion Int
+  createdAt     DateTime   @default(now())
+  game          EngineGame @relation(fields: [gameId], references: [id], onDelete: Cascade)
+
+  @@unique([gameId, seq])
+  @@unique([gameId, commandId])
 }
 
 model GameHistory {

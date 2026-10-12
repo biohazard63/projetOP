@@ -1,0 +1,17 @@
+{
+  "seed": 77,
+  "played": "OP06-013",
+  "selected": "OP06-009",
+  "abilityCompleted": true,
+  "publicRevealEvent": {
+    "sequence": 19,
+    "type": "CARD_REVEALED",
+    "actorId": "alice",
+    "revealedCard": {
+      "definitionId": "OP06-013@official-2026-10-11",
+      "printingKey": "OP06-013::standard"
+    }
+  },
+  "privateSelectionBeforeReveal": true,
+  "remainderMovedToBottom": true
+}

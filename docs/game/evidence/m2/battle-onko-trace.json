@@ -1,0 +1,75 @@
+{
+  "seed": 77,
+  "combatCommands": [
+    {
+      "id": "attack",
+      "actorId": "alice",
+      "expectedVersion": 16,
+      "type": "DECLARE_ATTACK",
+      "attackerId": "m2-game:p0:c0",
+      "targetId": "m2-game:p1:c3"
+    },
+    {
+      "id": "block-pass",
+      "actorId": "bob",
+      "expectedVersion": 17,
+      "type": "PASS_BLOCKER",
+      "battleId": "m2-game:battle:16"
+    },
+    {
+      "id": "counter-pass",
+      "actorId": "bob",
+      "expectedVersion": 18,
+      "type": "PASS_COUNTER",
+      "battleId": "m2-game:battle:16"
+    },
+    {
+      "id": "damage",
+      "actorId": "alice",
+      "expectedVersion": 19,
+      "type": "RESOLVE_BATTLE",
+      "battleId": "m2-game:battle:16"
+    }
+  ],
+  "events": [
+    {
+      "sequence": 19,
+      "type": "ATTACK_DECLARED",
+      "actorId": "alice",
+      "publicInstanceId": "m2-game:p0:c0"
+    },
+    {
+      "sequence": 20,
+      "type": "CHARACTER_KO",
+      "actorId": "alice",
+      "publicInstanceId": "m2-game:p1:c3"
+    },
+    {
+      "sequence": 21,
+      "type": "CHARACTER_KO",
+      "actorId": "alice",
+      "publicInstanceId": "m2-game:p1:c3"
+    },
+    {
+      "sequence": 22,
+      "type": "BATTLE_RESOLVED",
+      "actorId": "alice"
+    }
+  ],
+  "ko": {
+    "id": "m2-game:fx:operation:8",
+    "resolutionId": "m2-game:battle:16",
+    "subject": {
+      "instanceId": "m2-game:p1:c3",
+      "generation": 1
+    },
+    "controllerId": "alice",
+    "type": "KO",
+    "outcome": "CONFIRMED"
+  },
+  "pendingChoice": {
+    "actorId": "bob",
+    "type": "SELECT"
+  },
+  "opponentCanSeeChoiceId": false
+}

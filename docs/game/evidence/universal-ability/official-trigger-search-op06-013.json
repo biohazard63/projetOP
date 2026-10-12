@@ -1,0 +1,10 @@
+{
+  "card": "OP06-013",
+  "chosen": "OP06-009",
+  "choicesPrivateBeforeReveal": true,
+  "revealedByEffect": true,
+  "remainderOrderedAndBottomed": true,
+  "resumedAfterRestore": true,
+  "triggerZone": "trash",
+  "resultLife": 4
+}

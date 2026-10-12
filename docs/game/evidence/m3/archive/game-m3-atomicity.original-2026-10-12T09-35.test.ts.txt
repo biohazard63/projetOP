@@ -1,0 +1,155 @@
+import test from 'node:test'
+import assert from 'node:assert/strict'
+import { consolidateDefinitions } from './src/game/cards/adapter'
+import { REVIEWED_CARDS } from './src/game/cards/reviewedCards'
+import { OFFICIAL_ABILITY_CARDS, OFFICIAL_ABILITY_REGISTRY } from './src/game/cards/officialAbilities'
+import { M0_RULESET } from './src/game/rulesets/m0'
+import { createGame, applyCommand, getLegalActions, projectState, restoreGame } from './src/game/core/game'
+import type { CardInput } from './src/game/cards/types'
+import type { Command, GameInput, GameState } from './src/game/core/types'
+import { validateRegistry } from './src/game/effects/contracts'
+import { M3_ABILITY_CARDS, M3_ABILITY_REGISTRY } from './src/game/cards/m3Abilities'
+function fixture(): GameInput {
+  const cards: CardInput[] = Object.entries(REVIEWED_CARDS).map(([number, facts]) => ({ ...structuredClone(facts), number, printingKey: `${number}::standard`, extensions: [], databaseIds: [], life: facts.category === 'LEADER' ? 5 : null, lifeEvidence: facts.category === 'LEADER' ? [{ field: 'life', value: 5, source: 'https://en.onepiece-cardgame.com/cardlist/?series=569001', checkedAt: '2026-10-10', language: 'en' }] : [] }))
+  const catalog = consolidateDefinitions(cards); assert.deepEqual(catalog.errors, [])
+  const characters = cards.filter(c => c.category === 'CHARACTER')
+  const deck = characters.slice(0, 12).map(c => ({ printingKey: c.printingKey, quantity: 4 }))
+  deck.push({ printingKey: characters[12].printingKey, quantity: 2 })
+  deck.unshift({ printingKey: 'ST01-001::standard', quantity: 1 })
+  return { ...catalog, gameId: 'm2-game', seed: 77, scope: 'BASIC_TURNS', chooserId: 'alice', players: [{ id: 'alice', cards: structuredClone(deck), donCount: 10 }, { id: 'bob', cards: structuredClone(deck), donCount: 10 }], ruleset: structuredClone(M0_RULESET) }
+}
+function prepared(targetTurn = 3, input: GameInput = fixture()): GameState {
+  let s = createGame(input)
+  let r = applyCommand(s, { id: 'first', actorId: 'alice', expectedVersion: s.version, type: 'CHOOSE_FIRST', choice: 'FIRST' }); assert.ok(r.ok); s = r.state
+  for (let n = 0; n < 2; n++) { r = applyCommand(s, { id: `keep-${n}`, actorId: s.decisionPlayerId!, expectedVersion: s.version, type: 'MULLIGAN', redraw: false }); assert.ok(r.ok); s = r.state }
+  while (s.phase !== 'MAIN') { r = applyCommand(s, { id: `phase-${s.version}`, actorId: s.activePlayerId!, expectedVersion: s.version, type: 'ADVANCE_PHASE' }); assert.ok(r.ok); s = r.state }
+  while (s.turn < targetTurn) {
+    r = applyCommand(s, { id: `end-${s.version}`, actorId: s.activePlayerId!, expectedVersion: s.version, type: 'END_MAIN' }); assert.ok(r.ok); s = r.state
+    for (let n = 0; n < 4; n++) { r = applyCommand(s, { id: `phase-${s.version}`, actorId: s.activePlayerId!, expectedVersion: s.version, type: 'ADVANCE_PHASE' }); assert.ok(r.ok); s = r.state }
+  }
+  return s
+}
+function counterFixture(number = 'OP06-017'): {s: GameState, cardId: string} {
+  const input = fixture(), cards = structuredClone(M3_ABILITY_CARDS)
+  const meteor = cards.find(c => c.number === number)!
+  const catalog = consolidateDefinitions(cards); assert.deepEqual(catalog.errors, [])
+  input.definitions.push(...catalog.definitions); input.printings.push(...catalog.printings)
+  input.ruleset.allowedNumbers.push(...cards.map(c=>c.number))
+  input.effectRegistry=validateRegistry(structuredClone(M3_ABILITY_REGISTRY))
+  for(const p of input.players) {p.cards.find(e=>e.quantity===4)!.quantity--;p.cards.push({printingKey:meteor.printingKey,quantity:1})}
+  let s=prepared(3,input), owner=s.players[1]
+  const cardId=owner.zones.deck.find(id=>s.instances[id].definitionId===catalog.definitions.find(d=>d.number===number)!.definitionId)!
+  owner.zones.deck.splice(owner.zones.deck.indexOf(cardId),1);owner.zones.hand.push(cardId);s.instances[cardId].zone='hand';s.instances[cardId].zoneGeneration++
+  s=send(s,'alice',{type:'DECLARE_ATTACK',attackerId:s.players[0].zones.leader[0],targetId:owner.zones.leader[0]})
+  s=send(s,'bob',{type:'PASS_BLOCKER',battleId:s.battle!.id})
+  return {s,cardId}
+}
+type Intent = Command extends infer C ? C extends Command ? Omit<C,'id'|'actorId'|'expectedVersion'> : never : never
+function send(s:GameState,actorId:string,intent:Intent) {const r=applyCommand(s,{...intent,actorId,id:`m3-${s.version}`,expectedVersion:s.version});assert.ok(r.ok,r.ok?'':r.error);return r.state}
+
+// Test 1: Atomicity violation - partial payment failure leaves DONs rested
+test('M3 atomicity: partial payment failure restores DON states', () => {
+  let {s,cardId}=counterFixture()
+  const cost=s.players[1].zones.cost.slice(0,3)  // 3 DONS, need 2 printedCost, so 1 will be rejected
+  const cmd={type:'PLAY_COUNTER_EVENT' as const,cardId,battleId:s.battle!.id,paymentDonIds:cost,targetId:null}
+  const initialRested= cost.map(id=>s.instances[id].rested)
+  const result=applyCommand(s,cmd)  
+  const card=s.instances[cardId]
+  assert.ok(result.ok,result.error?result.error:'');
+  assert.equal(card.zone,'trash')
+  for(let i=0;i<cost.length;i++) {
+    const wasRested = s.instances[cost[i]].rested
+    assert.equal(wasRested, initialRested[i], `DON ${cost[i]} should not be rested after failed payment`)
+  }
+})
+
+// Test 2: Invalid optional target choice rolls back payments
+test('M3 atomicity: invalid option choice restores DON states', () => {
+  let {s,cardId}=counterFixture('ST01-014')
+  const cost=s.players[1].zones.cost.find(id=>!s.instances[id].rested)!
+  const cmd={type:'PLAY_COUNTER_EVENT',cardId,battleId:s.battle!.id,paymentDonIds:[cost],donMinusIds:[],targetId:null}
+  let result=applyCommand(s,cmd)
+  assert.ok(result.ok)
+  const don=s.instances[cost]
+  assert.equal(don.rested,true)
+  const q=s.effects!.choice!
+  const invalidTarget=alice.zones.characters.find(id=>s.instances[id].definitionId!==s.instances[q.options[0].presence.instanceId].definitionId && !s.instances[id].rested)
+  assert.ok(invalidTarget)
+  result=applyCommand(s,{type:'ANSWER_CHOICE',id:'forged',actorId:'alice',expectedVersion:s.version,choiceId:q.id,tokens:[q.options.find(o=>o.presence.instanceId===invalidTarget)!.token]})
+  assert.equal(result.ok,false)
+  assert.equal(don.rested,true, 'DON should remain rested after invalid choice')
+  assert.equal(s.effects!.choice,null, 'Choice should be cleared after invalid answer')
+})
+
+// Test 3: Repeated resume does not apply effect twice
+test('M3 atomicity: repeated resume prevents double application', () => {
+  let {s,cardId}=counterFixture()
+  const cmd={type:'PLAY_COUNTER_EVENT' as const,cardId,battleId:s.battle!.id,paymentDonIds:s.players[1].zones.cost.slice(0,2),donMinusIds:[],targetId:null,lifePayment:true}
+  s=send(s,'bob',cmd)
+  assert.equal(s.instances[cardId].zone,'trash')
+  const initialPowerModifiers=s.effects!.powerModifiers!.length
+  const lifeBefore=s.players[1].zones.life.length
+  assert.ok(s.effects!.choice)
+  const q=s.effects!.choice!
+  const leader=s.players[1].zones.leader[0]
+  const answer={type:'ANSWER_CHOICE' as const,choiceId:q.id,tokens:[q.options.find(o=>o.presence.instanceId===leader)!.token]}
+  s=send(s,'bob',answer)
+  const powerAfter=s.effects!.powerModifiers!.length
+  assert.equal(powerAfter,initialPowerModifiers+1)
+  assert.equal(s.players[1].zones.life.length,lifeBefore-1)
+  const card=s.instances[cardId]
+  const snapshot1=JSON.stringify(s)
+  s=restoreGame(snapshot1)
+  assert.equal(s.effects!.choice,null, 'Second restore should clear choice')
+  const stateAfterResume=restoreGame(snapshot1)
+  assert.equal(stateAfterResume.effects!.choice,null, 'Repeated resume should not recreate choice')
+  assert.equal(stateAfterResume.effects!.powerModifiers!.length,powerAfter, 'Should not double apply power modifier')
+})
+
+// Test 4: M3 Counter Events - payment failure via life cost interruption
+test('M3 atomicity: life payment interruption restores DON states', () => {
+  let {s,cardId}=counterFixture()
+  const cost=s.players[1].zones.cost.slice(0,2)
+  const cmd={type:'PLAY_COUNTER_EVENT' as const,cardId,battleId:s.battle!.id,paymentDonIds:cost,donMinusIds:[],targetId:null,lifePayment:true}
+  let result=applyCommand(s,cmd)
+  assert.ok(result.ok,result.error?result.error:'')
+  const card=s.instances[cardId]
+  assert.equal(card.zone,'trash')
+  const lifeAfter=s.players[1].zones.life.length
+  for(const donId of cost) {
+    const don=s.instances[donId]
+    assert.equal(don.rested,false, `DON ${donId} should not be rested after life payment interruption`)
+  }
+})
+
+// Test 5: Guard Point optional target decline maintains payment atomicity
+test('M3 atomicity: optional target decline preserves payment atomicity', () => {
+  let {s,cardId}=counterFixture('ST01-014')
+  const cost=s.players[1].zones.cost.find(id=>!s.instances[id].rested)!
+  const cmd={type:'PLAY_COUNTER_EVENT',cardId,battleId:s.battle!.id,paymentDonIds:[cost],donMinusIds:[],targetId:null}
+  let result=applyCommand(s,cmd)
+  assert.ok(result.ok)
+  const don=s.instances[cost]
+  assert.equal(don.rested,true)
+  const beforeMod=s.battle!.counterModifiers.length
+  result=applyCommand(s,{type:'ANSWER_CHOICE',id:'decline',actorId:'bob',expectedVersion:s.version,choiceId:s.effects!.choice!.id,tokens:[]})
+  assert.ok(result.ok)
+  assert.equal(s.battle!.counterModifiers.length,beforeMod, 'No power bonus should be created')
+  assert.equal(don.rested,true, 'DON should remain rested after decline')
+  assert.equal(s.effects!.choice,null, 'Choice should be cleared after decline')
+})
+
+// Test 6: M3 Counter Events - invalid payment triggers proper cleanup
+test('M3 atomicity: invalid payment triggers proper DON cleanup', () => {
+  let {s,cardId}=counterFixture()
+  const cost=s.players[1].zones.cost.slice(0,2)
+  const cmd={type:'PLAY_COUNTER_EVENT' as const,cardId,battleId:s.battle!.id,paymentDonIds:cost,targetId:null}
+  const result=applyCommand(s,cmd)
+  assert.ok(result.ok,result.error?result.error:'');
+  assert.equal(s.instances[cardId].zone,'trash')
+  for(const donId of cost) {
+    const wasRested = s.instances[donId].rested
+    assert.equal(wasRested,false, `DON ${donId} should not be rested`)
+  }
+  assert.equal(s.effects!.choice,null, 'No choice should be present')
+})
