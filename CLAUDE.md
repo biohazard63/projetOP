@@ -6,7 +6,7 @@ Lis d’abord `docs/handoff/01_PROJECT_OVERVIEW.md`, puis `docs/handoff/04_CURRE
 
 Mugiwara TCG est une application de collection One Piece Card Game. Le sous-projet applicatif se trouve dans `cardgame/` et utilise Next.js, React, TypeScript, Prisma, PostgreSQL et NextAuth. Il contient le catalogue, les boosters, la collection, les decks, l’historique et l’interface `/game`. Un moteur déterministe indépendant de l’interface est développé dans `cardgame/src/game/`.
 
-Le simulateur visé doit appliquer les règles officielles Bandai, ne jamais ignorer une mécanique inconnue et ne certifier `PLAYABLE_VERIFIED` qu’avec des définitions réglementaires vérifiées et des tests pertinents. Le 12 octobre 2026 en fin de journée, M3 est **COMPLETE** (`docs/game/M3_REPORT.md`), sans nouvelle carte `PLAYABLE_VERIFIED`.
+Le simulateur visé doit appliquer les règles officielles Bandai, ne jamais ignorer une mécanique inconnue et ne certifier `PLAYABLE_VERIFIED` qu’avec des définitions réglementaires vérifiées et des tests pertinents. Le 12 octobre 2026, M3 est **COMPLETE** (`docs/game/M3_REPORT.md`). M4 livre `/play`, une partie jouable contre un bot côté serveur (`docs/game/M4_REPORT.md`) ; la certification passe uniquement par `src/game/cards/certification.ts` (23 révisions certifiées). M5 (`docs/game/M5_REPORT.md`) en fait une expérience complète : animations, gestes, bots à 3 niveaux, tutoriel, statistiques ; 331 cartes reconnues, 116 révisions certifiées. Les migrations `20261012120000_engine_games` et `20261012180000_engine_bot_level` ne sont appliquées à aucune base réelle. Le ruleset `m5-reviewed-subset-2026-10-12` est à renouveler avant toute partie après le 12/10/2026.
 
 ## Architecture utile
 

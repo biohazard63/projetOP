@@ -1,0 +1,177 @@
+{
+  "description": "M5-4 bot tournament: every level pairing, seeds 1..10 (engine seed = seed*7+3), both reference decks swapped, both seats swapped. Commands are public commands checked by the engine; a fallback is a strategy intent not backed by a legal action, replaced by the first legal action.",
+  "ruleset": "m5-reviewed-subset-2026-10-12",
+  "decks": [
+    "reference-purple",
+    "reference-red"
+  ],
+  "seeds": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10
+  ],
+  "totals": {
+    "games": 240,
+    "unfinished": 0,
+    "fallbacks": 0,
+    "refusedCommands": 0
+  },
+  "pairings": [
+    {
+      "x": "easy",
+      "y": "easy",
+      "games": 40,
+      "winsOfX": 20,
+      "winRateOfX": 0.5,
+      "averageTurns": 13,
+      "averageCommands": 115,
+      "fallbacks": 0,
+      "refused": 0
+    },
+    {
+      "x": "easy",
+      "y": "normal",
+      "games": 40,
+      "winsOfX": 0,
+      "winRateOfX": 0,
+      "averageTurns": 8.7,
+      "averageCommands": 110,
+      "fallbacks": 0,
+      "refused": 0
+    },
+    {
+      "x": "easy",
+      "y": "hard",
+      "games": 40,
+      "winsOfX": 0,
+      "winRateOfX": 0,
+      "averageTurns": 8.1,
+      "averageCommands": 97,
+      "fallbacks": 0,
+      "refused": 0
+    },
+    {
+      "x": "normal",
+      "y": "normal",
+      "games": 40,
+      "winsOfX": 20,
+      "winRateOfX": 0.5,
+      "averageTurns": 14.4,
+      "averageCommands": 268,
+      "fallbacks": 0,
+      "refused": 0
+    },
+    {
+      "x": "normal",
+      "y": "hard",
+      "games": 40,
+      "winsOfX": 16,
+      "winRateOfX": 0.4,
+      "averageTurns": 13.8,
+      "averageCommands": 256,
+      "fallbacks": 0,
+      "refused": 0
+    },
+    {
+      "x": "hard",
+      "y": "hard",
+      "games": 40,
+      "winsOfX": 20,
+      "winRateOfX": 0.5,
+      "averageTurns": 14.2,
+      "averageCommands": 243,
+      "fallbacks": 0,
+      "refused": 0
+    }
+  ],
+  "behaviourAcrossMixedPairings": {
+    "easy": {
+      "CHOOSE_FIRST": 40,
+      "MULLIGAN": 80,
+      "ADVANCE_PHASE": 1264,
+      "END_MAIN": 316,
+      "PLAY_CARD": 89,
+      "DECLARE_ATTACK": 236,
+      "RESOLVE_BATTLE": 236,
+      "PASS_BLOCKER": 567,
+      "PASS_COUNTER": 567,
+      "CONTINUE_LIFE_DAMAGE": 12,
+      "ANSWER_CHOICE": 36,
+      "ANSWER_TRIGGER": 31
+    },
+    "normal": {
+      "MULLIGAN": 80,
+      "ADVANCE_PHASE": 1772,
+      "PLAY_CARD": 353,
+      "ANSWER_CHOICE": 724,
+      "START_EFFECT": 307,
+      "END_MAIN": 401,
+      "PASS_BLOCKER": 561,
+      "PASS_COUNTER": 574,
+      "DECLARE_ATTACK": 1079,
+      "RESOLVE_BATTLE": 1079,
+      "ANSWER_TRIGGER": 18,
+      "PLAY_COUNTER_EVENT": 110,
+      "ATTACH_DON:leader": 773,
+      "CHOOSE_FIRST": 40,
+      "CONTINUE_LIFE_DAMAGE": 22,
+      "PLAY_COUNTER_CHARACTER": 269,
+      "ACTIVATE_BLOCKER": 13
+    },
+    "hard": {
+      "MULLIGAN": 72,
+      "ADVANCE_PHASE": 1732,
+      "PLAY_CARD": 434,
+      "START_EFFECT": 334,
+      "ANSWER_CHOICE": 756,
+      "END_MAIN": 385,
+      "PASS_BLOCKER": 823,
+      "PASS_COUNTER": 862,
+      "DECLARE_ATTACK": 688,
+      "RESOLVE_BATTLE": 688,
+      "PLAY_COUNTER_CHARACTER": 250,
+      "ANSWER_TRIGGER": 11,
+      "ATTACH_DON:character": 346,
+      "ATTACH_DON:leader": 133,
+      "CHOOSE_FIRST": 40,
+      "MULLIGAN_REDRAW": 8,
+      "CONTINUE_LIFE_DAMAGE": 26,
+      "PLAY_COUNTER_EVENT": 65,
+      "ACTIVATE_BLOCKER": 39
+    }
+  },
+  "note": "msPerCommand is machine dependent and indicative only (wall clock of the whole engine + strategy loop).",
+  "msPerCommand": {
+    "easy/easy": {
+      "p50": 5.135,
+      "max": 10.424
+    },
+    "easy/normal": {
+      "p50": 5.315,
+      "max": 7.025
+    },
+    "easy/hard": {
+      "p50": 5.133,
+      "max": 6.149
+    },
+    "normal/normal": {
+      "p50": 6.959,
+      "max": 8.325
+    },
+    "normal/hard": {
+      "p50": 6.852,
+      "max": 11.56
+    },
+    "hard/hard": {
+      "p50": 6.811,
+      "max": 9.861
+    }
+  }
+}

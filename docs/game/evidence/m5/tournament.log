@@ -1,0 +1,79 @@
+{
+ "out": "../docs/game/evidence/m5/bot-tournament.json",
+ "sha256": "beb475d4aeb986da66dfc11e429fccf9d069d6ff9ee1846530a728fd0d3cb521",
+ "totals": {
+  "games": 240,
+  "unfinished": 0,
+  "fallbacks": 0,
+  "refusedCommands": 0
+ },
+ "pairings": [
+  {
+   "x": "easy",
+   "y": "easy",
+   "games": 40,
+   "winsOfX": 20,
+   "winRateOfX": 0.5,
+   "averageTurns": 13,
+   "averageCommands": 115,
+   "fallbacks": 0,
+   "refused": 0
+  },
+  {
+   "x": "easy",
+   "y": "normal",
+   "games": 40,
+   "winsOfX": 0,
+   "winRateOfX": 0,
+   "averageTurns": 8.7,
+   "averageCommands": 110,
+   "fallbacks": 0,
+   "refused": 0
+  },
+  {
+   "x": "easy",
+   "y": "hard",
+   "games": 40,
+   "winsOfX": 0,
+   "winRateOfX": 0,
+   "averageTurns": 8.1,
+   "averageCommands": 97,
+   "fallbacks": 0,
+   "refused": 0
+  },
+  {
+   "x": "normal",
+   "y": "normal",
+   "games": 40,
+   "winsOfX": 20,
+   "winRateOfX": 0.5,
+   "averageTurns": 14.4,
+   "averageCommands": 268,
+   "fallbacks": 0,
+   "refused": 0
+  },
+  {
+   "x": "normal",
+   "y": "hard",
+   "games": 40,
+   "winsOfX": 16,
+   "winRateOfX": 0.4,
+   "averageTurns": 13.8,
+   "averageCommands": 256,
+   "fallbacks": 0,
+   "refused": 0
+  },
+  {
+   "x": "hard",
+   "y": "hard",
+   "games": 40,
+   "winsOfX": 20,
+   "winRateOfX": 0.5,
+   "averageTurns": 14.2,
+   "averageCommands": 243,
+   "fallbacks": 0,
+   "refused": 0
+  }
+ ]
+}
+exit 0

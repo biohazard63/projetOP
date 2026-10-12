@@ -1,28 +1,28 @@
 # 09 — Prochaines étapes opérationnelles
 
-Priorités au 12 octobre 2026, après la clôture de M3 (`docs/game/M3_REPORT.md`). Aucune étape ci-dessous n'est commencée.
+Priorités au 12 octobre 2026, après M5 (`docs/game/M5_REPORT.md`, section 12). Aucune étape n'est commencée.
 
-## P0 — Préserver le travail
+## P0 — Urgent
+1. Préproduction : voir `docs/game/PREPROD_REPORT.md` (migrations Neon, branche, isolation Vercel à confirmer).
+2. Revoir puis commiter le travail M4 + M5 (branche `feature/tcg-m5`). Cela demande une autorisation explicite.
+3. Tester `/play` sur un iPhone (Safari) et un Android réels.
 
-Le moteur, les tests et les preuves de M1 à M3 ne sont pas suivis par Git. Avant tout nouveau lot, le propriétaire du dépôt doit décider de leur mise sous contrôle de version : commit sur une branche dédiée. Cette opération demande une autorisation explicite.
+## P1 — Avant tout déploiement
+1. Sauvegarder la base, puis appliquer les migrations additives `20261012120000_engine_games` et `20261012180000_engine_bot_level` (`prisma migrate deploy`) **avec autorisation**. Vérifier ensuite `migrate status`.
+2. Remplacer la limitation de débit en mémoire par une limitation partagée si le serveur tourne en plusieurs instances.
+3. Relire les journaux de preuves (chemins locaux) avant un push.
 
-## P1 — Certification de cartes (M4 proposé)
+## P2 — Certification (C3)
+- Corriger la révision de P-015 (attribut Wisdom), puis la certifier.
+- Certifier les capacités déjà exécutables : Kaido ST04-001, Blast Breath, ST01-001/007, ST01-014, OP06-xxx, OP01-016. Chaque certification exige ses preuves et ses scénarios réels.
 
-1. **Définir le modèle de certification par révision.** Chaque révision porte sa propre preuve ; une certification n'est jamais héritée par clonage. Voir le test `M3-1` sur les révisions.
-2. **Certifier d'abord les cartes du deck violet et du deck rouge de M3.** Pour chacune : texte, FAQ et errata relus ; toutes les capacités et restrictions exécutables ; tests positifs et négatifs ; scénarios réels. Les cartes sans effet sont les candidates naturelles.
-3. **Kaido ST04-001.** Retrouver la question FAQ ST04-016 illisible et le cas « Life adverse à 0 » de la FAQ ST04-001 dans une partie réelle (le test unitaire est impossible par mutation, l'invariant Life l'interdit).
-
-## P2 — Dette technique ciblée
-
-- **Voie Counter legacy** : aligner `payments` et le contrôle `MOVE_DON` du DON!! −1, ou la retirer au profit des profils déclaratifs. Cela demande une décision, car les sauvegardes historiques en dépendent.
-- **Parties M0/M1 sans registre** : exiger un exécuteur pour `giveRestedDon`, ou documenter l'interdiction de ces scopes en jeu.
-- **Invariant `PRIVATE_INSTANCE_IN_PUBLIC_EVENT`** : à généraliser avant toute carte qui renvoie en main une carte citée publiquement.
-- **Ruleset M3** : renouveler la fenêtre de restrictions (`m3-reviewed-subset-2026-10-12`) à chaque mise à jour Bandai.
-
-## P3 — Intégration interface
-
-Seulement sur demande : un adaptateur serveur autoritaire de `/game` vers le moteur pur (`createGame`, `applyCommand`, `getLegalActions`, `projectState`, `restoreGame`), sans jamais exposer `GameState`. Préserver le mobile et la PWA, les collections et les decks existants. Aucune migration Prisma sans plan ni autorisation.
+## P3 — Jeu (M6)
+- Faits en M5 : animations pas à pas du bot, nom de la capacité dans les choix, bots à 3 niveaux, tutoriel, statistiques.
+- Traduire dans le DSL des familles de capacités fréquentes, puis certifier par révision ; ajouter des Leaders d'autres couleurs pour certifier les 203 cartes M5 reconnues.
+- Afficher les illustrations alternatives.
+- Ajouter un délai d'inactivité et l'historique de fin de partie.
+- Joueur contre joueur (`BattleInvite`), puis retrait programmé de l'ancien `/game`.
+- Élargir le pool de cartes, sans branche par numéro de carte dans le noyau.
 
 ## Axe collection (indépendant)
-
-Ouverture de boosters mobile, swipe, cartes rares et monnaie : aucun travail fait pendant M3. Un audit séparé des tests navigateur (`*.browser.mjs`) reste à mener avant toute évolution.
+Aucune modification en M4. La monnaie reste indépendante du jeu.
