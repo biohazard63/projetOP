@@ -88,13 +88,14 @@ function Inspect({ view, id, onClose }: { view: View; id: string; onClose: () =>
 function ChoiceSheet({ view, action, send }: { view: View; action: Extract<View['legalActions'][number], { type: 'ANSWER_CHOICE' }>; send: Send }) {
   const [picked, setPicked] = useState<string[]>([])
   const ordering = action.choiceType === 'ORDER', options = action.options, source = view.choiceSource
+  const allOrNone = 'allOrNone' in action && action.allOrNone === true
   const label = (o: (typeof options)[number], i: number) => 'triggerId' in o ? `Effet ${i + 1}` : o.instanceId ? cardName(view, o.instanceId) : `Carte cachée ${i + 1}`
   const toggle = (token: string) => setPicked(p => p.includes(token) ? p.filter(t => t !== token) : ordering || action.max > 1 ? [...p, token] : [token])
-  const valid = picked.length >= action.min && picked.length <= action.max && (!action.allOrNone || picked.length === 0 || picked.length === action.max)
+  const valid = picked.length >= action.min && picked.length <= action.max && (!allOrNone || picked.length === 0 || picked.length === action.max)
   const title = ordering ? (action.max === 1 && options.some(o => 'triggerId' in o) ? 'Ordre de résolution' : 'Ordre des cartes (sous le deck, de haut en bas)') : action.max === 0 ? 'Aucune carte éligible' : `Choisissez ${action.min === action.max ? action.max : `jusqu’à ${action.max}`} carte${action.max > 1 ? 's' : ''}`
   return <Sheet title={title} wide>
     {source && <div className="play-source"><strong>{source.trigger ? '[Trigger] ' : ''}{source.name}</strong><p>{source.text}</p></div>}
-    <p className="piece-muted play-consequence">{ordering ? 'Touchez les cartes dans l’ordre voulu.' : action.allOrNone ? `Choisissez les ${action.max} cartes, ou aucune : c’est tout ou rien.` : action.min === 0 ? 'Ce choix est facultatif : vous pouvez ne rien choisir.' : 'Ce choix est obligatoire.'}</p>
+    <p className="piece-muted play-consequence">{ordering ? 'Touchez les cartes dans l’ordre voulu.' : allOrNone ? `Choisissez les ${action.max} cartes, ou aucune : c’est tout ou rien.` : action.min === 0 ? 'Ce choix est facultatif : vous pouvez ne rien choisir.' : 'Ce choix est obligatoire.'}</p>
     <div className="play-pick-grid">{options.map((o, i) => {
       const instanceId = 'instanceId' in o ? o.instanceId : undefined, key = instanceId ? (findVisible(view, instanceId)?.printingKey ?? view.privateCards.options[instanceId]) : undefined
       const rank = picked.indexOf(o.token)
