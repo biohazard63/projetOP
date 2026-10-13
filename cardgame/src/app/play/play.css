@@ -606,3 +606,45 @@ html:has(.play-layer), body:has(.play-layer) { overflow:hidden; overscroll-behav
 @media (prefers-reduced-motion:reduce) {
   .play-board::before, .play-hand-card, .tbl-log-panel, .play-inspect-backdrop { transition:none !important; animation:none !important; }
 }
+
+/* Phone landscape: a dedicated layout, not a scaled-down desktop. Each side is one row (Leader + Life | 5 Characters |
+   compact column with Stage, piles and DON!!), zone captions are dropped (counts and aria-labels stay), and card sizes
+   come from the side height so cards use the whole row. The hand bleeds below the screen edge; a picked card rises. */
+@media (orientation:landscape) and (max-height:500px) {
+  .play-surface { grid-template-rows:37fr 2fr 37fr 24fr; --hand-card-width:min(calc(36cqh * .716), 10.5cqw); }
+  .tbl-field { grid-template-rows:37fr 2fr 37fr; }
+  .tbl-side.foe, .tbl-side.me {
+    --card-sm:max(30px, min(calc((100cqh - 18px) * .716), calc((100cqw - 290px) / 5.5)));
+    --card-leader:var(--card-sm);
+    --card-xs:min(calc((100cqh - 16px) * .5 * .716), 40px);
+    grid-template-columns:auto minmax(0,1fr) auto;
+    grid-template-rows:minmax(0,1fr) auto;
+    grid-template-areas:'anchor characters utility' 'anchor characters don';
+    column-gap:6px; row-gap:3px; padding:4px 6px;
+  }
+  .tbl-side.foe { grid-template-areas:'utility characters anchor' 'don characters anchor'; }
+  .tbl-side-core { display:contents; }
+  .tbl-side .tbl-zone-label, .tbl-character-heading, .tbl-side-utility .tbl-pile small, .tbl-stage-empty { display:none; }
+  .tbl-side-anchor { align-self:center; gap:4px; }
+  .tbl-character-area { align-self:center; justify-self:center; width:auto; padding:2px 4px; border-color:#f1ca7430; }
+  .tbl-character-area { grid-template-rows:minmax(0,1fr); }
+  .tbl-character-grid { grid-template-columns:repeat(5,var(--card-sm)); gap:4px; padding:0 0 8px; }
+  .tbl-character-grid > .play-slot, .tbl-character-empty { width:var(--card-sm); }
+  .tbl-side-utility { display:flex; align-items:center; justify-content:center; gap:4px; align-self:end; }
+  .tbl-side-utility .tbl-stack-col { width:auto; }
+  .tbl-side-utility .tbl-piles { grid-template-columns:repeat(3,var(--card-xs)); width:auto; gap:3px; }
+  .tbl-pile .tbl-count { top:calc(var(--card-xs) * .7 - 7px); font-size:.55rem; }
+  .tbl-stage-zone:not(:has(.play-slot)) { display:none; }
+  .tbl-don { grid-area:don; flex-direction:column; align-items:center; justify-content:flex-start; gap:1px; min-height:0; padding:0; border-top:0; background:none; align-self:start; }
+  .tbl-don-token { width:calc((100cqh - 16px) * .3 * .716); height:calc((100cqh - 16px) * .3); }
+  .tbl-don-token + .tbl-don-token { margin-left:calc((100cqh - 16px) * -.13); }
+  .tbl-don-token.rested { margin-inline:calc((100cqh - 16px) * -.08); }
+  .tbl-don-token.draggable { min-width:30px; min-height:30px; }
+  .tbl-don-count { font-size:.52rem; }
+  .tbl-don-count span { display:none; }
+  .play-hint { display:none; }
+  .play-battle { font-size:.6rem; padding:1px 8px; }
+  .play-hand-track { overflow:visible; align-items:flex-start; padding:3px 8px 0; }
+  .play-hand-fan { align-items:flex-start; margin:0 auto; }
+  .play-hand-card:hover, .play-hand-card:focus-visible, .play-hand-card.selected { transform:rotate(0) translateY(-42%) scale(1.04); }
+}
