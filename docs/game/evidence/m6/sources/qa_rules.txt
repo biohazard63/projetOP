@@ -1,0 +1,371 @@
+Category
+Question
+Answer
+Basic Rules
+Can I place my deck and reveal my Leader card in
+any order?
+No. After you and your opponent place your decks,
+you will then reveal your Leader cards to each other.
+Basic Rules
+Are there any rules regarding the order in which Life
+cards are placed?
+Yes, there are.<br>Place the card at the top of your
+deck so that it is at the bottom of your Life cards.
+Basic Rules
+What happens to a Character when its power is
+reduced to 0 or less by an effect?
+The Character remains on the field with a power of 0
+or less.
+Basic Rules
+Can I transfer a DON!! card already given to a
+Character to another Character during the Main
+Phase?
+No, you cannot.
+Basic Rules
+Can I play another Stage card if there is already a
+Stage card on my field?
+Yes, you can. You will need to reveal the Stage card
+being played, pay the cost, trash the card already in
+the Stage area, and then place the new Stage card in
+the Stage area.
+Basic Rules
+Is there a limit to the number of cards I can have in
+my hand?
+No, there is not.
+Basic Rules
+activated against a Character with 6000 power?
+Basic Rules
+What happens if 1 DON!! card is given to a Character
+Basic Rules
+Can a Character's cost be less than 0?
+No, it cannot. When a Character's cost falls below 0,
+it is treated as 0.
+Basic Rules
+If a Character is on the field with negative cost and
+then returned to my hand, can I play that Character
+at negative cost?
+No, you cannot. When a Character subject to some
+effects is moved from one area to another, it loses
+the effects it was subject to in the original area.
+Basic Rules
+Does 'with a type including "XX"' include cards with
+types such as "Former XX" and "XX Allies"?
+Yes, it does.
+Basic Rules
+Can I use a card with 0 cost if I have no DON!! cards
+in my cost area?
+Yes, you can.
+Basic Rules
+In the Refresh Phase, can I choose not to return a
+DON!! card and leave it as given to a card?
+No, you must always return DON!! cards to the cost
+area.
+Basic Rules
+What happens if the Character that is attacking or the
+Character that is the target of an attack is moved to a
+different area during the Attack Step, Block Step, or
+Counter Step?
+At the end of each step, if the Character that is
+attacking or is the target of an attack has moved to
+another area, the battle ends without proceeding to
+the next step.
+Basic Rules
+the battle?
+and your opponent's Character will be K.O.'d. If the
+card you attacked was a Leader, your Character
+would also win the battle and you would deal 1
+damage to your opponent.
+Basic Rules
+I won a battle by using a Character with 0 power to
+attack a Character with 0 power. Will my opponent's
+Character be K.O.'d?
+Yes, your opponent's Character will be K.O.'d.
+Keywords
+has more than the specified number of DON!! cards?
+Yes, the effect can still be activated.
+Keywords
+When returning DON!! cards to my DON!! deck
+DON!! cards that have already been given to my
+Characters or Leader?
+Yes, you can. You can choose to return any DON!!
+cards from your Leader area, Stage area, Character
+area, or cost area.
+Keywords
+Can I activate Counters of Characters on the field like
+[Counter +1000]?
+No, you can only activate the Counters of cards in
+your hand.
+Keywords
+Can I use a Counter to increase the power of a card
+not being attacked?
+Yes, you can. However, the effect will end at the end
+of the current battle.
+Keywords
+Do I need to pay a cost to use a Character's Counter?
+No, there is no cost for using a Character card's
+Counter.
+Keywords
+Can I activate an Event card's [Counter] effect during
+my Main Phase?
+No, you cannot. You can only activate an Event card's
+[Counter] effect during the Counter Step of a battle in
+which your opponent has attacked.
+Keywords
+If I have 5 Characters and play another Character,
+when I trash a Character, will its [On K.O.] effect
+activate?
+No, it will not. The trashed Character is not K.O.'d,
+but directly moved to your trash.
+Keywords
+Does [On K.O.] mean that this effect activates when
+the Character with this effect is K.O.'d?<br>Or does
+it mean that it activates when the Character with this
+effect K.O.'s an opponent's Character?
+The effect activates when the Character with the
+effect is K.O.'d. The effect does not activate when the
+Character with the effect K.O.'s an opponent's
+Character.
+Keywords
+If there are cards of the same name with [Once Per
+Turn] effects, can I activate each of these cards'
+[Once Per Turn] effects during the same turn?
+Yes, you can.
+Keywords
+Can I play a Character card with an [On Play] effect
+without activating this [On Play] effect?
+No, you must activate the [On Play] effect whenever
+possible.<br>However, if the effect has a cost, you
+can choose not to pay that cost and play the card
+without activating the effect.
+Keywords
+Does [When Attacking] mean that this effect activates
+when the card with this effect attacks?<br>Does this
+effect also activate when another card without this
+effect attacks?
+This effect activates when the card with this effect
+attacks. This effect does not activate when another
+card without this effect attacks.
+Keyword Effects
+Can I use 2 or more [Blocker] effects in a single
+battle?
+No, you cannot. During a single Block Step, you can
+activate up to 1 [Blocker] effect.
+Keyword Effects
+Can I activate the [Blocker] of a Character being
+attacked?
+No, you cannot.
+Keyword Effects
+When I activate a card's [Blocker], can I use a
+Counter to increase that card's power?
+Yes, you can.
+Keyword Effects
+When my opponent is attacking, if I have a [Blocker]
+Character, do I have to activate that [Blocker]?
+No, you can choose not to activate a [Blocker].
+Keyword Effects
+Can I activate the [Blocker] of a rested Character?
+No, you cannot.
+Keyword Effects
+Can I choose not to trash a Life card if I succeed in
+dealing damage using a Character with [Banish]?
+No, you cannot.
+Keyword Effects
+Can I choose to deal 1 damage if I succeed in dealing
+damage using a Character with [Double Attack]?
+No, you cannot.
+Keyword Effects
+When dealing 2 damage with [Double Attack], if this
+Character loses its [Double Attack] or leaves the field
+due to a Trigger effect from the initial damage, is the
+remaining damage no longer dealt?
+No, the remaining damage is still dealt. Since the
+damage to be dealt is fixed at 2, 2 damage will be
+dealt even if the Character leaves the field or has
+their [Double Attack] effect disabled due to a
+[Trigger] effect or for any other reason.
+Keyword Effects
+If my opponent has 1 Life card, can I win the game
+by using a [Double Attack] to deal 2 damage?
+No, you cannot.
+Keyword Effects
+Can I add a card to my hand without activating its
+[Trigger]?
+Yes, you can.
+Keyword Effects
+When I move a Life card with a [Trigger] due to an
+effect such as "Add 1 card from the top of your Life
+cards to your hand" or "Trash up to 1 card from the
+top of your Life cards", can I activate that [Trigger]
+effect?
+No, you cannot.<br>[Trigger] effects can only be
+activated upon taking damage.
+Basic Rules
+If an effect states "up to" a specified number of
+cards, can I choose 0 cards?
+Yes, you can choose 0 cards.
+Basic Rules
+Can I activate the effect of a card with a specified
+target if that target is not present at that time?
+Yes, you can. However, nothing will happen in that
+case.
+Basic Rules
+Where an effect that states "during this turn" is
+activated and resolved by an [Activate: Main] or
+other effect, is that "during this turn" effect still valid
+during the turn if the card that activated that effect is
+moved to another area?
+Yes, it is valid.
+Basic Rules
+When adding a Life card to my hand upon taking
+damage, the Event card had a [Trigger] effect so I
+activated that Event card's [Trigger] effect instead of
+adding it to my hand. In this case, will effects that
+state "when you activate an Event" be activated?
+No, they will not.
+Basic Rules
+When text refers to 1 card from the top or bottom of
+the Life cards, what card is it referring to?
+It is referring to the card at the very top or very
+bottom of the Life cards.
+Basic Rules
+When directed to place a card at the top or bottom of
+the Life cards, where should I place the card?
+Place the card at the very top or very bottom of the
+Life cards. If there are no cards in the Life area, place
+the card in the Life area. The card must be placed
+face-down unless you are directed otherwise.
+Basic Rules
+When I add a card from my deck to my Life cards,
+can I or my opponent look at that card?
+No, you cannot.
+Basic Rules
+Can I activate the Trigger of a card placed face-up in
+my Life area?
+Yes, you can.
+Basic Rules
+During online regionals and other online matches,
+when a card effect allows me to look at my
+opponent's Life card(s), what is the proper
+procedure?
+For upcoming English version online events only, this
+effect will be treated as "Look at up to 1 card from
+the top of your life cards, or your opponent reveals
+up to 1 card from the top of their life cards." in order
+to accommodate for the practical limitations of a
+webcam tournament.
+Advanced Rules
+Where an effect states "Look at up to 1 card from the
+top of your or your opponent's Life cards, and place it
+at the top or bottom of the Life cards.", can I look at
+a card from the top of my Life cards, and place it at
+the top or bottom of my opponent's Life cards?
+No, you cannot. After looking at the Life card, place it
+at the top or bottom of that card's owner's Life cards.
+Advanced Rules
+Where an effect states "Look at up to 1 card from the
+top of your or your opponent's Life cards, and place it
+at the top or bottom of the Life cards.", can I look at
+a card from the top of my opponent's Life cards, and
+place it at the top or bottom of my Life cards?
+No, you cannot. After looking at the Life card, place it
+at the top or bottom of that card's owner's Life cards.
+Basic Rules
+Can DON!! cards given to Characters or Leaders, or
+DON!! cards in the DON!! deck be set as active or
+rested according to effects?
+No, they cannot.
+Keyword Effects
+I have taken 2 damage from my opponent's
+Character with [Double Attack]. If the card from the
+first damage has a [Trigger], do I activate this
+[Trigger] effect before the second damage is dealt?
+Yes, the [Trigger] is activated before the second
+damage is dealt. If you still have 1 or more Life cards
+left after you have activated the [Trigger] effect from
+the first damage, check a Life card according to the
+second damage.
+Keyword Effects
+When I activate [OP03-074: Top Knot]'s [Trigger]
+effect "Activate this card's [Main] effect.", can I
+2" activation cost?
+No, you cannot.
+Keyword Effects
+Which activates first, the [When Attacking] effect of a
+card that has attacked on my opponent's turn or my
+[On Your Opponent's Attack] effect?
+Your opponent's [When Attacking] efect activates
+first.
+Keyword Effects
+If I have a card with an [On Your Opponent's Attack]
+effect on my field and my opponent targets a
+different card to attack, can I still activate the [On
+Your Opponent's Attack] effect?
+Yes, you can.
+Advanced Rules
+If a Leader with the effect "This Leader is treated as a
+card with all card names, types, and attributes."
+attacks a Character with the effect "This Character
+cannot be K.O.'d in battle by <Slash> attribute
+cards.", can that Leader K.O. that Character in battle?
+No, it cannot.
+Advanced Rules
+Can a Leader with the effect "This Leader is treated
+as a card with all card names, types, and attributes."
+fulfill the effect condition "If your Leader has the
+{XX} type"?
+Yes, it can.
+Advanced Rules
+Can a Leader with the effect "This Leader is treated
+as a card with all card names, types, and attributes."
+fulfill the effect condition "If your Leader's type
+includes "XX""?
+Yes, it can.
+Advanced Rules
+If my Leader has the effect "This Leader is treated as
+a card with all card names, types, and attributes.",
+can my [OP04-005 Kung Fu Jugon] on the field gain
+[Blocker] according to the effect  "If you have a
+[Kung Fu Jugon] other than this Character, this
+Character gains [Blocker]."?
+Yes, it can.
+Advanced Rules
+When an effect states "You may rest 1 of your DON!!
+rest the specified number of DON!! cards in your cost
+area.):"?
+Yes, both refer to activation costs that can be paid by
+resting one of the active DON!! cards in your cost
+area.
+Advanced Rules
+Do effects that read "cannot be rested" mean that the
+affected Characters cannot attack?
+Yes, the affected Characters cannot attack.
+These effects make the affected Characters unable to
+perform any actions that require them to be rested,
+such as attacking or activating [Blocker].
+Advanced Rules
+Do effects that read "cannot be rested" mean that the
+affected Characters cannot activate effects such as
+"[Activate: Main] You may rest this Character:" and
+other similar effects?
+Yes, the affected Characters cannot activate those
+effects.
+These effects make the affected Characters unable to
+perform any actions that require them to be rested,
+such as attacking or activating [Blocker].
+Advanced Rules
+Do effects that read "cannot be rested" mean that the
+affected Characters cannot activate [Blocker]?
+Yes, the affected Characters cannot activate
+[Blocker].
+These effects make the affected Characters unable to
+perform any actions that require them to be rested,
+such as attacking or activating [Blocker].
+Advanced Rules
+Do effects that read "cannot be rested" mean that the
+affected Characters cannot become rested by the
+effects of your or your opponent's other cards?
+Yes, the affected Characters cannot be rested by the
+effects of other cards.
+These effects make the affected Characters unable to
+perform any actions that require them to be rested,
+such as attacking or activating [Blocker].

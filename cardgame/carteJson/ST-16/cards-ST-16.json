@@ -119,7 +119,7 @@
     "rarity": "L",
     "type": "LEADER",
     "name": "Uta",
-    "cost": "",
+    "cost": "5",
     "attribute": "Spécial",
     "power": "5000",
     "counter": "-",

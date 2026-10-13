@@ -1,0 +1,98 @@
+Card No.
+Card Name
+Question
+Answer
+ST10-001
+Trafalgar Law
+Can I still use this [Activate: Main] effect to play up to 1
+Character card with a cost of 4 or less from my hand if my
+opponent has no Characters with 3000 power or less?
+Yes, you can.
+ST10-001
+Trafalgar Law
+Can I use this [Activate: Main] effect to place up to 1 of
+my opponent's Characters with 3000 power or less at the
+bottom of the owner's deck without playing 1 Character
+card with a cost of 4 or less from my hand?
+Yes, you can.
+ST10-002
+Monkey.D.Luffy
+If it is the start of the game and I have no DON!! cards on
+my field, can I use this [Activate: Main] effect to add up to
+1 DON!! card from my DON!! deck and set it as active?
+No, you cannot.
+ST10-002
+Monkey.D.Luffy
+What does "you have 0 DON!! cards on your field" mean?
+It means you have no DON!! cards either in your cost area
+or on your field.
+ST10-004
+Sanji
+I played this Character and gained [Rush] from this [On
+Play] effect, and then the situation changed during that
+turn such that my opponent no longer has a Character
+with 5000 or more power on their field. Can this Character
+still attack during that turn?
+Yes, it can.
+ST10-006
+Monkey.D.Luffy
+Can I use this [Once Per Turn] effect to K.O. a Character
+other than my opponent's Character that activated
+[Blocker]?
+Yes, you can.
+ST10-006
+Monkey.D.Luffy
+I attacked with this Character and my opponent activated
+[Blocker]. If I use this Character's [Once Per Turn] effect
+to K.O. my opponent's Character that activated [Blocker],
+what happens to this Character's attack?
+The battle will end without moving to the Counter Step.
+ST10-007
+Killer
+Does this [Your Turn] effect activate if a DON!! card on
+my field is returned to my DON!! deck by the effect of an
+opponent's card?
+Yes, it does.
+ST10-010
+Trafalgar Law
+If my opponent has 7 or more cards in their hand, which
+player chooses the cards to be trashed according to this
+[On Play] effect?
+The player who activated this [On Play] effect chooses 2
+cards from their opponent's hand face-down.
+ST10-011
+Heat
+Does this [Your Turn] effect activate if a DON!! card on
+my field is returned to my DON!! deck by the effect of an
+opponent's card?
+Yes, it does.
+ST10-014
+Wire
+Does this [Once Per Turn] effect activate if a DON!! card
+on my field is returned to my DON!! deck by the effect of
+an opponent's card?
+Yes, it does.
+ST10-014
+Wire
+Can I choose not to draw a card according to this [Once
+Per Turn] effect when a DON!! card on my field is
+returned to my DON!! deck?
+No, you cannot. You must draw 1 card and trash 1 card
+from your hand.
+ST10-016
+Gum-Gum Kong Gatling
+Until when is this [Trigger] ("until the end of your next
+turn") effective?
+It is effective until it has become your turn again and that
+turn has concluded.
+ST10-001
+Trafalgar Law
+I have no "Monkey.D.Luffy" on my field when I use this
+Leader's [Activate: Main] effect to select my opponent's
+"OP05-100 Enel" with 3000 power or less, and play a
+"Monkey.D.Luffy" with a cost of 4 or less from my hand.
+Can my opponent use the [Once Per Turn] effect of
+"OP05-100 Enel" to trash 1 card from the top of their Life
+cards instead of placing this "Enel" at the bottom of their
+deck?
+Yes, they can.

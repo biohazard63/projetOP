@@ -1,0 +1,419 @@
+Card No.
+Card Name
+Question
+Answer
+OP04-002
+Igaram
+Can I activate this [Activate: Main] effect when my
+active Leader's power has been reduced to 0 by
+another effect?
+Yes, you can. In this case, your Leader will
+OP04-003
+Usopp
+What is "base power"?
+The power value written on the card.
+OP04-004
+Karoo
+What happens according to this [Activate: Main]
+effect if I don't have enough rested DON!! cards in
+my cost area to give 1 to each of my {Alabasta}
+type Characters?
+You will select as many {Alabasta} type
+Characters as you have rested DON!! cards in
+your cost area and give each of them 1 rested
+DON!! card from your cost area.
+OP04-004
+Karoo
+Can I use this [Activate: Main] effect to give a
+Character a DON!! card that has already been given
+to another Character?
+No, you cannot. This [Activate: Main] effect
+directs you to give a rested DON!! card from
+your cost area.
+OP04-006
+Koza
+Can I activate this [When Attacking] effect when
+my active Leader's power has been reduced to 0 by
+another effect?
+Yes, you can. In this case, your Leader will
+OP04-008
+Chaka
+3000 power to a Character and K.O. a different
+Character with 0 power or less?
+Yes, you can.
+OP04-009
+Super Spot-Billed Duck Troops
+Can I activate this [When Attacking] effect when
+my active Leader's power has been reduced to 0 by
+another effect?
+Yes, you can. In this case, your Leader will
+OP04-011
+Nami
+Can I choose not to reveal a card from the top of
+my deck on using this Character to attack?
+No, you must reveal a card.
+OP04-016
+Bad Manners Kick Course
+Can I choose not to trash 1 card from my hand on
+activating this card during the Counter Step?
+Yes, you can. In that case, you cannot give 1
+of your cards +3000 power.
+OP04-017
+Happiness Punch
+If my Leader is active, can I use this [Counter]
+Yes, you can.
+OP04-018
+Enchanting Vertigo Dance
+Can I use this [Main] effect to give 1 of my
+No, you cannot.
+OP04-019
+Donquixote Doflamingo
+Can I use this [End of Your Turn] effect to set
+DON!! cards already given to a Character as active?
+No, you cannot.
+OP04-020
+Issho
+Can I use this [End of Your Turn] effect to rest
+DON!! cards that were changed from rested to
+active by another of my [End of Your Turn] effects?
+Yes, you can.
+OP04-024
+Sugar
+If this Character is rested on a turn in which I have
+not yet used this [Opponent's Turn] effect, can I
+use this [Opponent's Turn] effect to rest my
+opponent's Character?
+Yes, you can.
+OP04-024
+Sugar
+If I have not yet used this [Opponent's Turn] effect
+during a turn, can I decide not to use this
+[Opponent's Turn] effect to rest a Character my
+opponent plays, and instead rest the next Character
+played?
+No, you cannot.
+OP04-024
+Sugar
+If my Leader does not have the {Donquixote
+Pirates} type, can I still use this [On Play] effect to
+rest up to 1 of my opponent's Characters with a
+cost of 4 or less?
+Yes, you can.
+OP04-024
+Sugar
+I had this Character on my field when my opponent
+played [OP03-013 Marco] and used its [On Play]
+effect to K.O. this Character. In this case, can I still
+activate this Character's [Opponent's Turn] effect?
+No, you cannot.
+OP04-026
+Senor Pink
+If I activate this Character's [When Attacking] effect
+and this Character then leaves the field, can I still
+set up to 1 of my DON!! cards as active at the end
+of this turn?
+Yes, you can.
+OP04-028
+Diamante
+When calculating my active DON!! cards for this
+[End of Your Turn] effect, can I include DON!! cards
+that have been changed from rested to active by
+another of my [End of Your Turn] effects?
+Yes, you can.
+OP04-031
+Donquixote Doflamingo
+If I select my opponent's rested Character for this
+[On Play] effect and it then becomes active during
+that turn due to another effect, will that Character
+be rested during my opponent's next Refresh
+Phase?
+No, it will not.
+OP04-031
+Donquixote Doflamingo
+Which player chooses the Leader or Character cards
+that do not become active according to this [On
+Play] effect?
+The player who activated this [On Play] effect
+chooses the cards upon activating this [On
+Play] effect.
+OP04-031
+Donquixote Doflamingo
+Can I choose 3 of my opponent's Characters
+according to this [On Play] effect?
+Yes, you can.
+OP04-033
+Machvise
+If my Leader does not have the {Donquixote
+Pirates} type, can I still use this [On Play] effect to
+set up to 1 of my DON!! cards as active?
+No, you cannot.
+OP04-033
+Machvise
+If I activate this Character's [On Play] effect and
+this Character then leaves the field, can I still set up
+to 1 of my DON!! cards as active at the end of this
+turn?
+Yes, you can.
+OP04-034
+Lao.G
+When calculating my active DON!! cards for this
+[End of Your Turn] effect, can I include DON!! cards
+that have been changed from rested to active by
+another of my [End of Your Turn] effects?
+Yes, you can.
+OP04-035
+Spiderweb
+If a Character that is being attacked is set to active
+by this [Counter] effect, is the attack nullified?
+No. The attack is not nullified because the
+attack's target has already been set.
+OP04-035
+Spiderweb
+Can I activate the [Blocker] of a Character set as
+active by this [Counter] effect during this battle?
+No. You cannot activate it because this battle's
+Block Step has already concluded.
+OP04-036
+Donquixote Family
+Can I activate this card from my hand during the
+Main Phase of my turn?
+No, you cannot.
+OP04-038
+The Weak Do Not Have the Right to Choose How They Die!!!
+Can I use this card's [Main]/[Counter] effect to rest
+a Character with a cost of 6 or less and then K.O.
+that Character?
+Yes, you can.
+OP04-040
+Queen
+If I have a total of 4 or less cards in my Life area
+and hand, and I have a Character with a cost of 8
+or more, can I use this [When Attacking] effect to
+draw 1 card without adding up to 1 card from the
+top of my deck to my Life cards?
+Yes, you can.
+OP04-043
+Ulti
+Can I use this [When Attacking] effect to return my
+own Character to my hand or the bottom of my
+deck?
+Yes, you can.
+OP04-043
+Ulti
+Which player chooses whether to return the
+selected Character to their hand or the bottom of
+their deck according to this [When Attacking]
+effect?
+The choice is made by the player who
+activated this [When Attacking] effect.
+OP04-046
+Queen
+Can I use this [On Play] effect to add 2 [Plague
+Rounds] or 2 [Ice Oni] cards to my hand?
+Yes, you can.
+OP04-047
+Ice Oni
+I attacked with this Character and won the battle
+against my opponent's Character. In this case, is
+the Character that was K.O.'d in this battle placed
+at the bottom of the owner's deck at the end of the
+battle?
+No, the Character is trashed.
+OP04-053
+Page One
+If I activate my Event's [Trigger] effect, can I use
+this [DON!! x1] effect to draw a card?
+No. Activating a [Trigger] is not the same as
+activating an Event.
+OP04-055
+Plague Rounds
+If I activate this [Main] effect, trash 1 [Ice Oni]
+from my hand, and place 1 Character with a cost of
+4 or less at the bottom of the owner's deck, can I
+choose not to play an [Ice Oni]?
+No, you cannot.
+OP04-055
+Plague Rounds
+Can I use this [Main] effect to place my own
+Character with a cost of 4 or less at the bottom of
+my deck?
+Yes, you can.
+OP04-055
+Plague Rounds
+Can I activate this [Main] effect and trash 1 [Ice
+Oni] from my hand or play 1 [Ice Oni] from my
+trash without placing 1 Character with a cost of 4 or
+less at the bottom of the owner's deck?
+No, you cannot.
+OP04-058
+Crocodile
+If this card's [Opponent's Turn] effect is activated
+Play this card.", which effect is activated first, the
+[On Play] effect of the Character played according
+to this [Trigger] or this [Opponent's Turn] effect?
+In this case, the player with this Leader can
+choose the order in which the [On Play] effect
+of the Character played according to the
+[Trigger] effect and this [Opponent's Turn]
+effect are activated.
+OP04-064
+Ms. All Sunday
+My Leader is [OP04-058 Crocodile] and I have 6
+DON!! cards on my field when I activate this
+Character's [Trigger], return 2 DON!! cards from
+my field to my DON!! deck, and play this Character
+with 4 DON!! cards on my field. At this time, can I
+use this Character's [On Play] effect to draw 1
+card?
+Yes, you can. Your Leader's [Opponent's Turn]
+effect will have activated first, so you will have
+added 1 DON!! card, meaning you have 5
+DON!! cards. Then, you will add 1 more DON!!
+card with this Character's [On Play] effect, so
+you will be able to draw 1 card.
+OP04-064
+Ms. All Sunday
+Can I use this [Trigger] effect to return DON!! cards
+to my DON!! deck without playing this Character?
+No, you cannot. In this case, you must play
+this Character.
+OP04-066
+Miss.Valentine(Mikita)
+Can I use this [On Play] effect to add another
+[Miss.Valentine(Mikita)] card to my hand?
+Yes, you can.
+OP04-066
+Miss.Valentine(Mikita)
+Can I use this [Trigger] effect to return DON!! cards
+to my DON!! deck without playing this Character?
+No, you cannot. In this case, you must play
+this Character.
+OP04-069
+Mr.2.Bon.Kurei(Bentham)
+Can I use this [Trigger] effect to return DON!! cards
+to my DON!! deck without playing this Character?
+No, you cannot. In this case, you must play
+this Character.
+OP04-079
+Orlumbus
+Can I choose a Character with a "cannot be K.O.'d
+by effects." effect for this [Activate: Main] effect's
+"K.O. 1 of your {Dressrosa} type Characters."?
+Yes, you can. In this case, after you give up to
+during this turn and trash 2 cards from the top
+of your deck, the Character you chose will not
+be K.O.'d.
+OP04-079
+Orlumbus
+If this is the only Character I have, can I choose not
+to K.O. my Character according to this [Activate:
+Main] effect?
+No, you cannot.
+OP04-079
+Orlumbus
+Can I activate this [Activate: Main] effect and
+choose not to trash cards from my deck?
+No, you cannot.
+OP04-081
+Cavendish
+Can I activate this [When Attacking] effect and
+choose not to trash cards from my deck?
+No, you cannot.
+OP04-082
+Kyros
+Can I activate this [On Play] effect and choose not
+to trash a card from my deck?
+No, you cannot.
+OP04-083
+Sabo
+Will Characters I play after activating this [On Play]
+effect be unable to be K.O.'d by effects until the
+start of my next turn?
+No, they will be able to be K.O.'d.
+OP04-085
+Suleiman
+Can I activate this [On Play]/[When Attacking]
+effect and choose not to trash a card from my
+deck?
+No, you cannot.
+OP04-091
+Leo
+Can I activate this [On Play] effect and choose not
+to trash cards from my deck?
+No, you cannot.
+OP04-093
+Gum-Gum King Kong
+Gun
+I activated this [Main] effect when I had 14 cards in
+my trash. At this time, will my chosen Character
+gain [Double Attack]?
+In this case, you will have 15 cards in your
+trash including this card, so the Character will
+gain [Double Attack].
+OP04-094
+Trueno Bastardo
+I activated this [Main] effect when I had 14 cards in
+my trash. At this time, can I choose a Character
+with a cost of 6?
+In this case, you will have 15 cards in your
+trash including this card, so you will be able to
+choose a Character with a cost of 6 or less.
+OP04-095
+Barrier!!
+I activated this [Counter] effect when I had 14
+cards in my trash. At this time, can I give 1 of my
+Leader or Character cards a total of +4000 power?
+Yes, you can.
+OP04-095
+Barrier!!
+I activated this [Counter] effect when I had 15 or
+more cards in my trash. At this time, can I choose 2
+of my Leader or Character cards and give them
++2000 power each?
+No, you cannot.
+OP04-099
+Olin
+My Leader took 1 damage while I had 2 Life cards.
+At this time, I checked the card at the top of my
+Life cards and it was this card. Can I play this card
+according to this [Trigger] effect?
+Yes, you can.
+OP04-111
+Hera
+If I have 2 of this card on my field, can I use 1 of
+their [Activate: Main] effects to trash the other
+card?
+Yes, you can.
+OP04-118
+Nefeltari Vivi
+If a Character that does not have [Rush] gains
+[Rush] according to this Character's effect, can that
+Character attack on the turn in which it is played if
+it has had its cost reduced to less than 3 by another
+effect during that turn?
+No, it cannot.
+OP04-119
+Donquixote Rosinante
+What is "base cost"?
+The cost value written on the card.
+OP04-090
+Monkey.D.Luffy
+When returning 7 cards from my trash to the
+bottom of my deck according to this [Activate:
+Main] effect, do I reveal both the cards and their
+order to my opponent?
+After revealing the 7 cards to be returned from your
+trash to your deck to your opponent, rearrange
+their order out of your opponent's view and place
+them at the bottom of your deck.
+OP04-119
+Donquixote Rosinante
+When this rested Character and my active
+Characters with a base cost of 5 would be K.O.'d be
+a single effect at the same time during my
+opponent's turn, does this [Opponent's Turn] effect
+still prevent my active Characters with a base cost
+of 5 from being K.O.'d?
+Yes, it does. Your "OP04-119 Donquixote
+Rosinante" will be K.O.'d, but your active
+Characters with a base cost of 5 will not be K.O.'d.

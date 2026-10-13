@@ -1,0 +1,11 @@
+{
+  "source": "cardgame/carteJson/ST-01/cards-ST-01.json",
+  "cardNumber": "ST01-005",
+  "abilityId": "ST01-005.when-attacking",
+  "condition": "one DON!! attached to source",
+  "targetRule": "up to one own Leader or Character other than the source",
+  "operation": "+1000 power until turn end",
+  "targetPowerAfter": 6000,
+  "restoredDuringPrivateChoice": true,
+  "certification": "PLAYABLE_VERIFIED"
+}

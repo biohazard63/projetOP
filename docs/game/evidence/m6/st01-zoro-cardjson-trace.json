@@ -1,0 +1,9 @@
+{
+  "source": "cardgame/carteJson/ST-01/cards-ST-01.json",
+  "cardNumber": "ST01-013",
+  "continuousId": "ST01-013.attached-don-power",
+  "attachedDon": 1,
+  "printedPower": 5000,
+  "currentPowerDuringControllerTurn": 7000,
+  "certification": "DATA_VALID_EFFECT_PENDING"
+}

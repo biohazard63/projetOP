@@ -1,0 +1,155 @@
+Card No.
+Card Name
+Question
+Answer
+EB03-003
+Uta
+If my Leader is not [Uta], can I still play up to 1
+Character card with 6000 power or less and no
+base effect from my hand?
+No, you cannot.
+EB03-004
+Carina
+If the [When Attacking]/[On Block] effect of my
+"OP06-009 Shuraiya" causes it to have 6000 base
+power or more, does this Character gain +4000
+power with its [Opponent's Turn] effect?
+No, it will not. In this case, because [Shuraiya]
+has 6000 base power or more, you will have a
+Character "with 6000 base power or more", and
+therefore [Carina] will not gain +4000 power.
+EB03-006
+Nami
+If my Leader is active and currently has 0 power
+or less, can I still use this [On Play] effect to give
+Yes, you can.
+EB03-008
+Hibari
+If my Leader is "OP11-001 Koby", can I use this
+[On Play] effect to choose this character itself to
+attack my opponent's active Characters?
+Yes, you can.
+EB03-013
+Carrot
+Can I still play up to 1 [Zou] from my hand even
+if I do not K.O. one of my opponent's Characters
+with this [Activate: Main] effect?
+Yes, you can.
+EB03-017
+Jewelry Bonney
+Can I still use the "Then, up to 1 of your
+opponent's Characters with a cost of 8 or less
+cannot be rested until the end of your opponent's
+next End Phase." effect if my Leader does not
+have the {Supernovas} type?
+No, you cannot.
+EB03-020
+There You Are, Sore
+Loser!
+Can I give +2000 power each to 2 different cards
+with this [Counter] effect?
+No, you cannot.
+EB03-021
+Alvida
+Can I use this [On Play] effect to place a
+Character which has a base cost of 4 or more but
+has had its cost reduced to 3 or less by another
+effect at the bottom of its owner's deck?
+No, you cannot.
+EB03-025
+Hina
+Can I use this [On Play] effect to return a
+Character with less than 6000 base power to the
+owner's hand?
+No, you cannot.
+EB03-026
+Boa Hancock
+Can I use this [Activate: Main] effect to place this
+Character at the bottom of its owner's deck, then
+give my Leader and 1 Character up to 1 rested
+DON!! card each?
+Yes, you can.
+EB03-027
+Marguerite
+Can I use this [On Play] effect to return a
+Character with less than 7000 base power to the
+owner's hand?
+No, you cannot.
+EB03-031
+Vinsmoke Reiju
+When using this [On Play] effect to activate the
+[Main] effect of an Event card, can I activate the
+"When you activate an Event" effects of cards
+such as "OP04-053 Page One"?
+No, you cannot. Activating the [Main] effect of an
+Event card with this [On Play] effect differs from
+activating the Event card itself.
+EB03-038
+Can still I use this [Main] effect to add up to 2
+DON!! cards from my DON!! deck and rest them
+if I have 0 Characters on my field?
+No, you cannot.
+EB03-039
+Ulti
+If my Leader does not have the {Animal Kingdom
+Pirates} type, can I still play up to 1 Character
+card with 6000 power or less and no base effect
+from my hand?
+No, you cannot.
+EB03-051
+Charlotte Smoothie
+I have a face-up Life card and my opponent has a
+Character with a cost of 2 or less. If I choose not
+to K.O. my opponent's Character with a cost of 2
+or less with this [On Play] effect, do I still turn all
+of my Life cards face-down?
+In this case, you would still turn all of your Life
+cards face-down.
+EB03-051
+Charlotte Smoothie
+If I have a face-up Life card, and my opponent
+does not have a Character with a cost of 2 or
+less, do I still turn all of my Life cards face-down
+with this [On Play] effect?
+In this case, you would still turn all of your Life
+cards face-down.
+EB03-055
+Nico Robin
+When my opponent uses this card's [On K.O.]
+effect, can I activate a [Blocker] or [Counter]
+from my hand to prevent the damage?
+No, you cannot.
+EB03-055
+Nico Robin
+Can I activate the [Trigger] effect of a card added
+to my hand from my Life cards when my
+opponent uses this card's [On K.O.] effect to deal
+damage to me?
+Yes, you can.
+EB03-055
+Nico Robin
+If this card has [Banish] when activating its [On
+K.O.] effect, are the cards added to the hand
+from the player's Life cards trashed instead?
+No, they are not. [Banish] only causes cards
+added to the hand from the player's Life cards by
+damage dealt from an attack to be trashed
+instead.
+EB03-055
+Nico Robin
+If this card has [Double Attack] when I activate
+its [On K.O.] effect, can I deal 2 damage?
+No, you cannot. The effect of [Double Attack]
+only deals 2 damage when attacking.
+EB03-055
+Nico Robin
+Can I win the game by dealing damage with this
+[On K.O.] effect if my opponent has 0 Life cards?
+Yes, you can.
+EB03-061
+Uta
+If I do not have any rested DON!! cards in my
+Cost Area, can I still use this [Activate: Main]
+effect to rest up to 1 of my opponent's DON!!
+cards or Characters with a cost of 4 or less?
+Yes, you can.

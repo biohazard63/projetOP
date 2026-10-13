@@ -17,6 +17,7 @@ export function botIntent(s: GameState, actor: string, actions: LegalAction[]): 
   if (choice) {
     if (choice.choiceType === 'ORDER') return { type: 'ANSWER_CHOICE', choiceId: choice.choiceId, tokens: choice.options.slice(0, choice.max).map(o => o.token) }
     if (choice.max === 0 || !choice.options.length) return { type: 'ANSWER_CHOICE', choiceId: choice.choiceId, tokens: [] }
+    if (choice.allOrNone) return { type: 'ANSWER_CHOICE', choiceId: choice.choiceId, tokens: choice.options.slice(0, choice.max).map(o => o.token) }
     const leader = choice.options.find(o => 'instanceId' in o && o.instanceId === me.zones.leader[0])
     if (choice.min > 1) return { type: 'ANSWER_CHOICE', choiceId: choice.choiceId, tokens: choice.options.slice(0, choice.min).map(o => o.token) }
     return { type: 'ANSWER_CHOICE', choiceId: choice.choiceId, tokens: [(leader ?? choice.options[0]).token] }

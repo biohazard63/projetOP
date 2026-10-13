@@ -43,7 +43,8 @@ function privateCards(state: GameState, seat: string, actions: LegalAction[]): P
     // An option carries an instance id only when the viewer may identify it (runtime visibleOption).
     if (!('instanceId' in option) || !option.instanceId) continue
     const instance = state.instances[option.instanceId]
-    if (instance?.owner === seat && instance.printingKey) options[option.instanceId] = instance.printingKey
+    // A Life card carries its id only in a private peek of its chooser (either player's Life, ST07-003/008/016).
+    if ((instance?.owner === seat || instance?.zone === 'life') && instance.printingKey) options[option.instanceId] = instance.printingKey
   }
   const pending = state.battle?.pendingLifeTrigger
   const life = pending && pending.actorId === seat ? state.instances[pending.presence.instanceId] : undefined

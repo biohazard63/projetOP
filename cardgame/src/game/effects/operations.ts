@@ -4,6 +4,11 @@ const next=(s:GameState,kind:string)=>`${s.gameId}:fx:${kind}:${s.effects!.nextI
 export function recordOperation(s:GameState,op:UnifiedOperation):void { s.effects!.operations!.push(structuredClone(op)) }
 // The replacement decision is made before calling this commit boundary. The
 // same discriminated operation and validation path serve costs and effects.
+/** "When a DON!! card on your field is returned to your DON!! deck" (any cause, FAQ ST10-007): announced only for games whose
+ * registry listens to it, so that other games keep their historical public event sequence. */
+export function noteDonReturned(s:GameState,ownerId:string):void {
+ if (s.effects?.version==='1.3.0' && s.effects.registry.definitions.some(d=>d.timing==='ON_DON_RETURNED')) s.events.push({sequence:s.events.length,type:'DON_RETURNED',actorId:ownerId})
+}
 export function processOperation(s:GameState,op:UnifiedOperation,details:{rested?:boolean;targetId?:string}={}):boolean {
  const i=s.instances[op.subject.instanceId],p=i && s.players.find(p=>p.id===i.owner)
  if (!i || !p || i.zoneGeneration!==op.subject.generation || !s.players.some(p=>p.id===op.controllerId)) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
@@ -20,7 +25,9 @@ export function processOperation(s:GameState,op:UnifiedOperation,details:{rested
   i.zone=to;i.zoneGeneration++;i.rested=details.rested??false;i.attachedTo=details.targetId??null;i.faceUp=['leader','characters','stage','trash','cost','attached'].includes(to)
   if (!['leader','characters','stage'].includes(to)) i.playedOnTurn=null
  }
- recordOperation(s,{...op,outcome:'CONFIRMED'});return true
+ recordOperation(s,{...op,outcome:'CONFIRMED'})
+ if (op.type==='MOVE_DON' && op.to==='donDeck' && op.from!=='donDeck') noteDonReturned(s,i.owner)
+ return true
 }
 export function confirmRest(s:GameState,subject:{instanceId:string;generation:number},context:EffectContext):boolean {
  return processOperation(s,{id:next(s,'operation'),resolutionId:context.effectInstanceId,subject,controllerId:context.controllerId,type:'REST',intent:'COST',outcome:'CONFIRMED'})

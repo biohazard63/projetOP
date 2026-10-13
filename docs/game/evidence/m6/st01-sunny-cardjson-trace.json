@@ -1,0 +1,12 @@
+{
+  "source": "cardgame/carteJson/ST-01/cards-ST-01.json",
+  "cardNumber": "ST01-017",
+  "abilityId": "ST01-017.activate-main-boost",
+  "cost": "rest source Stage",
+  "target": "m6-local-st01-jinbe:p0:c0",
+  "targetTrait": "Straw Hat Crew",
+  "powerBefore": 5000,
+  "powerAfter": 6000,
+  "choiceRestoredFromJson": true,
+  "certification": "DATA_VALID_EFFECT_PENDING"
+}

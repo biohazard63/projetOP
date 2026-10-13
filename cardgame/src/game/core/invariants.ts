@@ -8,14 +8,19 @@ export function assertGameInvariants(state: GameState): void {
   if (state.battle !== null && state.battle !== undefined) {
     const battle = state.battle
     const attacker = state.instances[battle.attacker.instanceId], target = state.instances[battle.target.instanceId]
-    if (!battle.id || !['BLOCKER', 'COUNTER', 'DAMAGE', 'LIFE_TRIGGER', 'LIFE_CONTINUE'].includes(battle.step) || !state.players.some(p => p.id === battle.attackerControllerId) || !state.players.some(p => p.id === battle.defenderId)
+    // While an effect is still resolving, it may have moved the attacker or the target; the battle then ends once the
+    // effect completes (endInterruptedBattle). Their presence is only required outside such a resolution.
+    const resolving = !!(state.effects?.continuation || state.effects?.scheduler?.resolvingId || state.effects?.scheduler?.orderChoice)
+    const gone = (i: typeof attacker, ref: { generation: number }) => !!i && (!['leader', 'characters'].includes(i.zone) || i.zoneGeneration !== ref.generation)
+    const interrupted = resolving && !['LIFE_TRIGGER', 'LIFE_CONTINUE'].includes(battle.step) && (gone(attacker, battle.attacker) || gone(target, battle.target))
+    if (!interrupted && (!battle.id || !['BLOCKER', 'COUNTER', 'DAMAGE', 'LIFE_TRIGGER', 'LIFE_CONTINUE'].includes(battle.step) || !state.players.some(p => p.id === battle.attackerControllerId) || !state.players.some(p => p.id === battle.defenderId)
       || battle.attackerControllerId === battle.defenderId || !Number.isSafeInteger(battle.blockersUsed) || battle.blockersUsed < 0 || battle.blockersUsed > 1 || !Number.isSafeInteger(battle.powerBonus)
       || !attacker || attacker.controller !== battle.attackerControllerId || (!['LIFE_TRIGGER', 'LIFE_CONTINUE'].includes(battle.step) && (!['leader', 'characters'].includes(attacker.zone) || attacker.zoneGeneration !== battle.attacker.generation || !attacker.rested))
       || !target || target.controller !== battle.defenderId || !['leader', 'characters'].includes(target.zone) || (target.zone === 'characters' && !target.rested) || target.zoneGeneration !== battle.target.generation || state.phase !== 'MAIN'
       || !Array.isArray(battle.counterModifiers) || battle.counterModifiers.some(m => !state.instances[m.target.instanceId] || !Number.isSafeInteger(m.target.generation) || !Number.isSafeInteger(m.amount) || m.amount < 0)
       || (['LIFE_TRIGGER', 'LIFE_CONTINUE'].includes(battle.step) && (!battle.lifeDamage || target.zone !== 'leader' || !Number.isSafeInteger(battle.lifeDamage.remaining) || battle.lifeDamage.remaining < 0 || battle.lifeDamage.remaining > 2 || !Number.isSafeInteger(battle.lifeDamage.damageIndex) || battle.lifeDamage.damageIndex < 0))
       || (battle.step === 'LIFE_TRIGGER' && (!battle.pendingLifeTrigger || battle.pendingLifeTrigger.actorId !== battle.defenderId || state.players.find(p => p.id === battle.defenderId)?.zones.life[0] !== battle.pendingLifeTrigger.presence.instanceId || state.instances[battle.pendingLifeTrigger.presence.instanceId]?.zoneGeneration !== battle.pendingLifeTrigger.presence.generation))
-      || (battle.step !== 'LIFE_TRIGGER' && !!battle.pendingLifeTrigger)) throw new Error('INVALID_BATTLE_STATE')
+      || (battle.step !== 'LIFE_TRIGGER' && !!battle.pendingLifeTrigger))) throw new Error('INVALID_BATTLE_STATE')
   }
   assertEffectState(state)
   if (!state.players.every(p => typeof p.id === 'string' && p.id.length > 0) || state.players[0].id === state.players[1].id) throw new Error('INVALID_PLAYERS')
@@ -24,6 +29,7 @@ export function assertGameInvariants(state: GameState): void {
   const ids = state.players.map(p => p.id)
   if (!ids.includes(state.chooserId)) throw new Error('INVALID_CHOOSER')
   const seen = new Set<string>()
+  const faceUpLife = new Set(state.events.filter(e => e.type === 'LIFE_ADDED' && e.publicInstanceId).map(e => e.publicInstanceId!))
   for (const p of state.players) {
     if (!['PENDING', 'KEPT', 'REDRAWN'].includes(p.mulligan)) throw new Error('INVALID_MULLIGAN')
     const own = Object.values(state.instances).filter(i => i.owner === p.id)
@@ -35,7 +41,8 @@ export function assertGameInvariants(state: GameState): void {
         if (seen.has(id) || !i || i.id !== id || i.owner !== p.id || i.controller !== p.id || i.zone !== zone) throw new Error('DUPLICATE_OR_MISPLACED_INSTANCE')
         seen.add(id)
         if (typeof i.rested !== 'boolean' || !Number.isSafeInteger(i.zoneGeneration) || i.zoneGeneration < 0 || (state.scope === 'SETUP_ONLY' && (i.rested || i.attachedTo !== null))) throw new Error('INVALID_INSTANCE_STATE')
-        if (i.faceUp !== ['leader', 'characters', 'stage', 'trash', 'cost', 'attached', 'temporary'].includes(zone)) throw new Error('INVALID_VISIBILITY')
+        // A Life card is face-down unless an effect placed it face-up (LIFE_ADDED naming it, e.g. ST07-017).
+        if (i.faceUp !== ['leader', 'characters', 'stage', 'trash', 'cost', 'attached', 'temporary'].includes(zone) && !(zone === 'life' && i.faceUp && faceUpLife.has(id))) throw new Error('INVALID_VISIBILITY')
         if (i.kind === 'DON') {
           if (!['donDeck', 'cost', 'attached'].includes(zone) || i.definitionId !== null || i.printingKey !== null) throw new Error('INVALID_DON')
         } else {
@@ -58,8 +65,13 @@ export function assertGameInvariants(state: GameState): void {
     if (life.status !== 'verified' || life.life !== leader.life) throw new Error('UNVERIFIED_LEADER_LIFE')
     const prepared = !['CHOOSE_FIRST', 'MULLIGAN'].includes(state.phase)
     const expectedHand = state.phase === 'CHOOSE_FIRST' ? 0 : 5
-    const confirmedLifeDamage = state.events.filter(e => (e.type === 'LIFE_DAMAGED' || e.type === 'LIFE_PAID' || e.type === 'LIFE_TRASHED') && e.actorId === p.id).length
-    const expectedLife = prepared ? Math.max(0, leader.life! - confirmedLifeDamage) : 0
+    // Life leaves by damage, payment, trash or effect (LIFE_TO_HAND) and comes back by effect (LIFE_ADDED). A damage
+    // at 0 Life removes nothing (it ends the game), hence the floor at each step.
+    let expectedLife = prepared ? leader.life! : 0
+    if (prepared) for (const e of state.events) if (e.actorId === p.id) {
+      if (e.type === 'LIFE_DAMAGED' || e.type === 'LIFE_PAID' || e.type === 'LIFE_TRASHED' || e.type === 'LIFE_TO_HAND') expectedLife = Math.max(0, expectedLife - 1)
+      else if (e.type === 'LIFE_ADDED') expectedLife++
+    }
     if (p.zones.life.length !== expectedLife || ((!prepared || state.scope === 'SETUP_ONLY') && (p.zones.hand.length !== expectedHand || p.zones.deck.length !== 50 - expectedHand - (prepared ? leader.life! : 0)))) throw new Error('INVALID_SETUP_COUNTS')
     if (prepared && p.mulligan === 'PENDING') throw new Error('UNFINISHED_MULLIGAN')
     if (state.phase === 'CHOOSE_FIRST' && p.mulligan !== 'PENDING') throw new Error('EARLY_MULLIGAN')
@@ -98,5 +110,9 @@ export function assertGameInvariants(state: GameState): void {
   if (state.events.some(e=>e.revealedCard && (e.type!=='CARD_REVEALED' || !['1.2.0','1.3.0'].includes(state.effects?.version ?? '') || e.publicInstanceId || !state.catalog.printings.some(p=>p.printingKey===e.revealedCard!.printingKey && p.definitionId===e.revealedCard!.definitionId)))) throw new Error('INVALID_REVEALED_CARD_EVENT')
   // DON!! cards are interchangeable and the DON!! deck is an open area (CR 1.2.1 §3-3-2): a DON!! given then
   // returned by DON!! −X stays nameable. Other cards named by a public event must still be face up.
-  if (state.events.some(e => e.publicInstanceId && (!['CARD_REVEALED', 'CARD_MOVED', 'TRIGGER_ACTIVATED', 'CARD_TRASHED', 'CARD_PLAYED', 'DON_ATTACHED', 'CHARACTER_KO', 'ATTACK_DECLARED', 'BLOCKER_ACTIVATED', 'COUNTER_PLAYED'].includes(e.type) || (!state.instances[e.publicInstanceId]?.faceUp && state.instances[e.publicInstanceId]?.kind !== 'DON')))) throw new Error('PRIVATE_INSTANCE_IN_PUBLIC_EVENT')
+  // A card named by an earlier public event may since have been moved to a hidden zone by a traced effect operation
+  // (return to hand, bottom of deck). Projections never show hidden-zone instances of the opponent, so this is not a leak.
+  // A face-up Life card (LIFE_ADDED names it) was public when placed; it may later leave the Life for the hand by damage.
+  const hiddenByEffect = new Set((state.effects?.operations ?? []).filter(o => o.type === 'MOVE_CARD' && o.outcome === 'CONFIRMED' && ['hand', 'deck'].includes(o.to ?? '')).map(o => o.subject.instanceId))
+  if (state.events.some(e => e.publicInstanceId && (!['CARD_REVEALED', 'CARD_MOVED', 'TRIGGER_ACTIVATED', 'CARD_TRASHED', 'CARD_PLAYED', 'DON_ATTACHED', 'CHARACTER_KO', 'ATTACK_DECLARED', 'BLOCKER_ACTIVATED', 'COUNTER_PLAYED', 'CHARACTER_BATTLED', 'BATTLE_PAIRED', 'LIFE_ADDED'].includes(e.type) || (!state.instances[e.publicInstanceId]?.faceUp && state.instances[e.publicInstanceId]?.kind !== 'DON' && !hiddenByEffect.has(e.publicInstanceId) && e.type !== 'LIFE_ADDED')))) throw new Error('PRIVATE_INSTANCE_IN_PUBLIC_EVENT')
 }

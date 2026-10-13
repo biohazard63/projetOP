@@ -89,7 +89,8 @@ function ChoiceSheet({ view, action, send }: { view: View; action: Extract<View[
   const [picked, setPicked] = useState<string[]>([])
   const ordering = action.choiceType === 'ORDER', options = action.options, source = view.choiceSource
   const allOrNone = 'allOrNone' in action && action.allOrNone === true
-  const label = (o: (typeof options)[number], i: number) => 'triggerId' in o ? `Effet ${i + 1}` : o.instanceId ? cardName(view, o.instanceId) : `Carte cachée ${i + 1}`
+  const slot = (o: (typeof options)[number]) => 'slot' in o && o.slot ? o.slot.kind === 'MODE' ? `Option ${(o.slot.index ?? 0) + 1}` : o.slot.kind === 'DECK_TOP' ? 'Dessus du deck (sans la regarder)' : `${o.slot.kind === 'LIFE_TOP' ? 'Dessus' : 'Dessous'} des Vies ${o.slot.ownerId === view.seat ? '(vous)' : '(adversaire)'}` : null
+  const label = (o: (typeof options)[number], i: number) => 'triggerId' in o ? `Effet ${i + 1}` : o.instanceId ? `${cardName(view, o.instanceId)}${slot(o) ? ` — ${slot(o)}` : ''}` : slot(o) ?? `Carte cachée ${i + 1}`
   const toggle = (token: string) => setPicked(p => p.includes(token) ? p.filter(t => t !== token) : ordering || action.max > 1 ? [...p, token] : [token])
   const valid = picked.length >= action.min && picked.length <= action.max && (!allOrNone || picked.length === 0 || picked.length === action.max)
   const title = ordering ? (action.max === 1 && options.some(o => 'triggerId' in o) ? 'Ordre de résolution' : 'Ordre des cartes (sous le deck, de haut en bas)') : action.max === 0 ? 'Aucune carte éligible' : `Choisissez ${action.min === action.max ? action.max : `jusqu’à ${action.max}`} carte${action.max > 1 ? 's' : ''}`

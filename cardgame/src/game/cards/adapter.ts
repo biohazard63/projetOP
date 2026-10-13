@@ -47,7 +47,9 @@ export function adaptCard(input: CardInput): AdapterResult {
   if (['CHARACTER', 'EVENT', 'STAGE'].includes(category) && values.cost === null) errors.push('MISSING_COST')
   if (category !== 'LEADER' && values.life !== null) errors.push('UNEXPECTED_LIFE')
   if (['LEADER', 'DON'].includes(category) && values.cost !== null) errors.push('UNEXPECTED_COST')
-  if (input.review === undefined || !input.review.revision || !input.review.references.length || !input.review.faqChecked || !input.review.errataChecked) errors.push('UNREVIEWED_DEFINITION')
+  // Data-only local imports may be normalized before regulatory review. They remain non-playable until
+  // reviewed and explicitly certified; FAQ/errata flags are enforced by certificationErrors().
+  if (input.review === undefined || !input.review.revision || !input.review.references.length) errors.push('UNREVIEWED_DEFINITION')
   if (errors.length || !number || !category || !input.review) return { ok: false, errors }
   const definitionId = `${number}@${input.review.revision}`
   return { ok: true, card: {

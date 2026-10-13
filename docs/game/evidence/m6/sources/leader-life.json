@@ -1,0 +1,2606 @@
+{
+ "retrievedAt": "2026-10-12",
+ "source": "https://en.onepiece-cardgame.com/cardlist/?series=<series> (official card list pages downloaded during M5, cached; \"Life\" field of each LEADER)",
+ "note": "Life written into the cost field of LEADER rows in cardgame/carteJson (cost is used as Life for Leaders), at the user request of 2026-10-13.",
+ "leaders": {
+  "EB01-001": {
+   "life": 4,
+   "series": [
+    "569201",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "8b0162d42b7b601dbd5b1c4c81a7707e4d8e0f301a6a1ec5950dfc699d142695"
+   ]
+  },
+  "EB01-021": {
+   "life": 4,
+   "series": [
+    "569201",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "8b0162d42b7b601dbd5b1c4c81a7707e4d8e0f301a6a1ec5950dfc699d142695"
+   ]
+  },
+  "EB01-040": {
+   "life": 4,
+   "series": [
+    "569201",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "8b0162d42b7b601dbd5b1c4c81a7707e4d8e0f301a6a1ec5950dfc699d142695"
+   ]
+  },
+  "EB02-010": {
+   "life": 4,
+   "series": [
+    "569202",
+    "569801",
+    "569901"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "5aea929445fb0d9b3cfb4b6791e1b0476d027ed15be66e5fb9fdbb24944e8979",
+    "b3422d9fb59bf5facc69e79c063775a12e19d7ec5a59bf075d93fdd36ad86d37"
+   ]
+  },
+  "EB03-001": {
+   "life": 4,
+   "series": [
+    "569203"
+   ],
+   "pageSha256": [
+    "099e18f12cb23d7841ba3c01ba4888b588db144f8231aae0cd47521005b859a6"
+   ]
+  },
+  "EB04-001": {
+   "life": 4,
+   "series": [
+    "569115"
+   ],
+   "pageSha256": [
+    "ac9197b830621276c38a1fc8730f294039c41fd88cd9786cb5bb2bb235e30986"
+   ]
+  },
+  "OP01-001": {
+   "life": 5,
+   "series": [
+    "569101",
+    "569801"
+   ],
+   "pageSha256": [
+    "5aea929445fb0d9b3cfb4b6791e1b0476d027ed15be66e5fb9fdbb24944e8979",
+    "ad50e6fdafc855030448b2a56e76c892aaffbd34aeb66142f7e7dce620287254"
+   ]
+  },
+  "OP01-002": {
+   "life": 4,
+   "series": [
+    "569101"
+   ],
+   "pageSha256": [
+    "ad50e6fdafc855030448b2a56e76c892aaffbd34aeb66142f7e7dce620287254"
+   ]
+  },
+  "OP01-003": {
+   "life": 4,
+   "series": [
+    "569101"
+   ],
+   "pageSha256": [
+    "ad50e6fdafc855030448b2a56e76c892aaffbd34aeb66142f7e7dce620287254"
+   ]
+  },
+  "OP01-031": {
+   "life": 5,
+   "series": [
+    "569101"
+   ],
+   "pageSha256": [
+    "ad50e6fdafc855030448b2a56e76c892aaffbd34aeb66142f7e7dce620287254"
+   ]
+  },
+  "OP01-060": {
+   "life": 5,
+   "series": [
+    "569017",
+    "569101"
+   ],
+   "pageSha256": [
+    "77b922c553ca4575d5357dd6ac221924e1c89cbd5cc3403d0630453284882d76",
+    "ad50e6fdafc855030448b2a56e76c892aaffbd34aeb66142f7e7dce620287254"
+   ]
+  },
+  "OP01-061": {
+   "life": 4,
+   "series": [
+    "569101"
+   ],
+   "pageSha256": [
+    "ad50e6fdafc855030448b2a56e76c892aaffbd34aeb66142f7e7dce620287254"
+   ]
+  },
+  "OP01-062": {
+   "life": 4,
+   "series": [
+    "569101"
+   ],
+   "pageSha256": [
+    "ad50e6fdafc855030448b2a56e76c892aaffbd34aeb66142f7e7dce620287254"
+   ]
+  },
+  "OP01-091": {
+   "life": 5,
+   "series": [
+    "569101"
+   ],
+   "pageSha256": [
+    "ad50e6fdafc855030448b2a56e76c892aaffbd34aeb66142f7e7dce620287254"
+   ]
+  },
+  "OP02-001": {
+   "life": 6,
+   "series": [
+    "569015",
+    "569102"
+   ],
+   "pageSha256": [
+    "440810b7877fb370fea25b6e5647de65d4bc6f5bca13e6b7d767431e3390fa6b",
+    "da9c4ddcd949a726a1eccffd9a5c52d522dd0500e6af97039c66d017d6193545"
+   ]
+  },
+  "OP02-002": {
+   "life": 4,
+   "series": [
+    "569102"
+   ],
+   "pageSha256": [
+    "da9c4ddcd949a726a1eccffd9a5c52d522dd0500e6af97039c66d017d6193545"
+   ]
+  },
+  "OP02-025": {
+   "life": 5,
+   "series": [
+    "569102"
+   ],
+   "pageSha256": [
+    "da9c4ddcd949a726a1eccffd9a5c52d522dd0500e6af97039c66d017d6193545"
+   ]
+  },
+  "OP02-026": {
+   "life": 4,
+   "series": [
+    "569102"
+   ],
+   "pageSha256": [
+    "da9c4ddcd949a726a1eccffd9a5c52d522dd0500e6af97039c66d017d6193545"
+   ]
+  },
+  "OP02-049": {
+   "life": 5,
+   "series": [
+    "569102"
+   ],
+   "pageSha256": [
+    "da9c4ddcd949a726a1eccffd9a5c52d522dd0500e6af97039c66d017d6193545"
+   ]
+  },
+  "OP02-071": {
+   "life": 5,
+   "series": [
+    "569102"
+   ],
+   "pageSha256": [
+    "da9c4ddcd949a726a1eccffd9a5c52d522dd0500e6af97039c66d017d6193545"
+   ]
+  },
+  "OP02-072": {
+   "life": 4,
+   "series": [
+    "569102"
+   ],
+   "pageSha256": [
+    "da9c4ddcd949a726a1eccffd9a5c52d522dd0500e6af97039c66d017d6193545"
+   ]
+  },
+  "OP02-093": {
+   "life": 5,
+   "series": [
+    "569019",
+    "569102"
+   ],
+   "pageSha256": [
+    "da9c4ddcd949a726a1eccffd9a5c52d522dd0500e6af97039c66d017d6193545",
+    "e14c2915d4003a9f2f8ad8e2dc633f97f688a863284838a55051c8949d8eb975"
+   ]
+  },
+  "OP03-001": {
+   "life": 5,
+   "series": [
+    "569103",
+    "569801"
+   ],
+   "pageSha256": [
+    "5aea929445fb0d9b3cfb4b6791e1b0476d027ed15be66e5fb9fdbb24944e8979",
+    "95f304190c8fafa075bc3c37f8e100467dacef522dd221d7060d82aff3aca7e9"
+   ]
+  },
+  "OP03-021": {
+   "life": 5,
+   "series": [
+    "569103"
+   ],
+   "pageSha256": [
+    "95f304190c8fafa075bc3c37f8e100467dacef522dd221d7060d82aff3aca7e9"
+   ]
+  },
+  "OP03-022": {
+   "life": 4,
+   "series": [
+    "569103"
+   ],
+   "pageSha256": [
+    "95f304190c8fafa075bc3c37f8e100467dacef522dd221d7060d82aff3aca7e9"
+   ]
+  },
+  "OP03-040": {
+   "life": 5,
+   "series": [
+    "569103"
+   ],
+   "pageSha256": [
+    "95f304190c8fafa075bc3c37f8e100467dacef522dd221d7060d82aff3aca7e9"
+   ]
+  },
+  "OP03-058": {
+   "life": 5,
+   "series": [
+    "569103"
+   ],
+   "pageSha256": [
+    "95f304190c8fafa075bc3c37f8e100467dacef522dd221d7060d82aff3aca7e9"
+   ]
+  },
+  "OP03-076": {
+   "life": 5,
+   "series": [
+    "569103"
+   ],
+   "pageSha256": [
+    "95f304190c8fafa075bc3c37f8e100467dacef522dd221d7060d82aff3aca7e9"
+   ]
+  },
+  "OP03-077": {
+   "life": 4,
+   "series": [
+    "569103"
+   ],
+   "pageSha256": [
+    "95f304190c8fafa075bc3c37f8e100467dacef522dd221d7060d82aff3aca7e9"
+   ]
+  },
+  "OP03-099": {
+   "life": 5,
+   "series": [
+    "569020",
+    "569103"
+   ],
+   "pageSha256": [
+    "20f5a64782b9e450fefad2ff5348613ddd351653eab3814f9f287af89c8b05f3",
+    "95f304190c8fafa075bc3c37f8e100467dacef522dd221d7060d82aff3aca7e9"
+   ]
+  },
+  "OP04-001": {
+   "life": 5,
+   "series": [
+    "569104"
+   ],
+   "pageSha256": [
+    "6a4f99ab208eb43dd415771a29556ec021aa7810100ff70bf617dff5b360011c"
+   ]
+  },
+  "OP04-019": {
+   "life": 4,
+   "series": [
+    "569104"
+   ],
+   "pageSha256": [
+    "6a4f99ab208eb43dd415771a29556ec021aa7810100ff70bf617dff5b360011c"
+   ]
+  },
+  "OP04-020": {
+   "life": 4,
+   "series": [
+    "569104"
+   ],
+   "pageSha256": [
+    "6a4f99ab208eb43dd415771a29556ec021aa7810100ff70bf617dff5b360011c"
+   ]
+  },
+  "OP04-039": {
+   "life": 5,
+   "series": [
+    "569104"
+   ],
+   "pageSha256": [
+    "6a4f99ab208eb43dd415771a29556ec021aa7810100ff70bf617dff5b360011c"
+   ]
+  },
+  "OP04-040": {
+   "life": 4,
+   "series": [
+    "569104"
+   ],
+   "pageSha256": [
+    "6a4f99ab208eb43dd415771a29556ec021aa7810100ff70bf617dff5b360011c"
+   ]
+  },
+  "OP04-058": {
+   "life": 4,
+   "series": [
+    "569104"
+   ],
+   "pageSha256": [
+    "6a4f99ab208eb43dd415771a29556ec021aa7810100ff70bf617dff5b360011c"
+   ]
+  },
+  "OP05-001": {
+   "life": 4,
+   "series": [
+    "569105",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "5dc093ac729c72374d75e1ca9a3791aee9fb13312d99bb9b7de2009dae5b3d15"
+   ]
+  },
+  "OP05-002": {
+   "life": 4,
+   "series": [
+    "569105",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "5dc093ac729c72374d75e1ca9a3791aee9fb13312d99bb9b7de2009dae5b3d15"
+   ]
+  },
+  "OP05-022": {
+   "life": 4,
+   "series": [
+    "569105",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "5dc093ac729c72374d75e1ca9a3791aee9fb13312d99bb9b7de2009dae5b3d15"
+   ]
+  },
+  "OP05-041": {
+   "life": 4,
+   "series": [
+    "569105"
+   ],
+   "pageSha256": [
+    "5dc093ac729c72374d75e1ca9a3791aee9fb13312d99bb9b7de2009dae5b3d15"
+   ]
+  },
+  "OP05-060": {
+   "life": 5,
+   "series": [
+    "569018",
+    "569105",
+    "569202",
+    "569901"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "5dc093ac729c72374d75e1ca9a3791aee9fb13312d99bb9b7de2009dae5b3d15",
+    "625f9fcb5065bcbf752c30ce9bc5028be1bc4900f19c9108ef94786fc062dd4b",
+    "b3422d9fb59bf5facc69e79c063775a12e19d7ec5a59bf075d93fdd36ad86d37"
+   ]
+  },
+  "OP05-098": {
+   "life": 4,
+   "series": [
+    "569105",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "5dc093ac729c72374d75e1ca9a3791aee9fb13312d99bb9b7de2009dae5b3d15"
+   ]
+  },
+  "OP06-001": {
+   "life": 4,
+   "series": [
+    "569106",
+    "569202"
+   ],
+   "pageSha256": [
+    "264a16b8482800355aa5ab6fd06ac2cce1cc4c01d4c028718cb406cc3bccc49c",
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79"
+   ]
+  },
+  "OP06-020": {
+   "life": 5,
+   "series": [
+    "569106",
+    "569202"
+   ],
+   "pageSha256": [
+    "264a16b8482800355aa5ab6fd06ac2cce1cc4c01d4c028718cb406cc3bccc49c",
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79"
+   ]
+  },
+  "OP06-021": {
+   "life": 4,
+   "series": [
+    "569106",
+    "569202"
+   ],
+   "pageSha256": [
+    "264a16b8482800355aa5ab6fd06ac2cce1cc4c01d4c028718cb406cc3bccc49c",
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79"
+   ]
+  },
+  "OP06-022": {
+   "life": 4,
+   "series": [
+    "569028",
+    "569106",
+    "569202"
+   ],
+   "pageSha256": [
+    "264a16b8482800355aa5ab6fd06ac2cce1cc4c01d4c028718cb406cc3bccc49c",
+    "36bd36c437045bab0fd59e258415178c631e5a69afc2b75bb39f6284546a0b51",
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79"
+   ]
+  },
+  "OP06-042": {
+   "life": 4,
+   "series": [
+    "569106",
+    "569202"
+   ],
+   "pageSha256": [
+    "264a16b8482800355aa5ab6fd06ac2cce1cc4c01d4c028718cb406cc3bccc49c",
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79"
+   ]
+  },
+  "OP06-080": {
+   "life": 5,
+   "series": [
+    "569106",
+    "569202"
+   ],
+   "pageSha256": [
+    "264a16b8482800355aa5ab6fd06ac2cce1cc4c01d4c028718cb406cc3bccc49c",
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79"
+   ]
+  },
+  "OP07-001": {
+   "life": 5,
+   "series": [
+    "569107",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "da0bfffee60d718990b91f6dcb0d53ea758f9785c0ae74b4500a6b0815f18834"
+   ]
+  },
+  "OP07-019": {
+   "life": 5,
+   "series": [
+    "569024",
+    "569107",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "acfee58f722700b093ca6f0b83aae99a677a5f17553ed4cacaf2b96587fc4166",
+    "da0bfffee60d718990b91f6dcb0d53ea758f9785c0ae74b4500a6b0815f18834"
+   ]
+  },
+  "OP07-038": {
+   "life": 5,
+   "series": [
+    "569107",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "da0bfffee60d718990b91f6dcb0d53ea758f9785c0ae74b4500a6b0815f18834"
+   ]
+  },
+  "OP07-059": {
+   "life": 5,
+   "series": [
+    "569107",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "da0bfffee60d718990b91f6dcb0d53ea758f9785c0ae74b4500a6b0815f18834"
+   ]
+  },
+  "OP07-079": {
+   "life": 5,
+   "series": [
+    "569107",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "da0bfffee60d718990b91f6dcb0d53ea758f9785c0ae74b4500a6b0815f18834"
+   ]
+  },
+  "OP07-097": {
+   "life": 2,
+   "series": [
+    "569107",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "da0bfffee60d718990b91f6dcb0d53ea758f9785c0ae74b4500a6b0815f18834"
+   ]
+  },
+  "OP08-001": {
+   "life": 4,
+   "series": [
+    "569108",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "da8ca20b7530de1f7c93433f0772057daa8597ba2c0c023a499392382ecdb94f"
+   ]
+  },
+  "OP08-002": {
+   "life": 4,
+   "series": [
+    "569108",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "da8ca20b7530de1f7c93433f0772057daa8597ba2c0c023a499392382ecdb94f"
+   ]
+  },
+  "OP08-021": {
+   "life": 5,
+   "series": [
+    "569108",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "da8ca20b7530de1f7c93433f0772057daa8597ba2c0c023a499392382ecdb94f"
+   ]
+  },
+  "OP08-057": {
+   "life": 4,
+   "series": [
+    "569108",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "da8ca20b7530de1f7c93433f0772057daa8597ba2c0c023a499392382ecdb94f"
+   ]
+  },
+  "OP08-058": {
+   "life": 4,
+   "series": [
+    "569108",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "da8ca20b7530de1f7c93433f0772057daa8597ba2c0c023a499392382ecdb94f"
+   ]
+  },
+  "OP08-098": {
+   "life": 5,
+   "series": [
+    "569108",
+    "569202"
+   ],
+   "pageSha256": [
+    "49249c12429cec1affd0549d1130cd1b8baf870185f040bc38adb24e16d4fd79",
+    "da8ca20b7530de1f7c93433f0772057daa8597ba2c0c023a499392382ecdb94f"
+   ]
+  },
+  "OP09-001": {
+   "life": 5,
+   "series": [
+    "569023",
+    "569109"
+   ],
+   "pageSha256": [
+    "457e8e46de54dc48d27804d4de0b192aaeb59f1106f5e94e31b01d2c4b3c237c",
+    "c82b3073aa6fcac36b35e9030f9b6bbc10e04d4f79fdb39eedcd2bdba0010c9f"
+   ]
+  },
+  "OP09-022": {
+   "life": 4,
+   "series": [
+    "569109"
+   ],
+   "pageSha256": [
+    "457e8e46de54dc48d27804d4de0b192aaeb59f1106f5e94e31b01d2c4b3c237c"
+   ]
+  },
+  "OP09-042": {
+   "life": 5,
+   "series": [
+    "569025",
+    "569109"
+   ],
+   "pageSha256": [
+    "457e8e46de54dc48d27804d4de0b192aaeb59f1106f5e94e31b01d2c4b3c237c",
+    "76e939ec314ee773602f0a0f261444d4be654590a1f57536775f0a4963006035"
+   ]
+  },
+  "OP09-061": {
+   "life": 4,
+   "series": [
+    "569026",
+    "569109"
+   ],
+   "pageSha256": [
+    "457e8e46de54dc48d27804d4de0b192aaeb59f1106f5e94e31b01d2c4b3c237c",
+    "cf9107e6a492886a41cfb88bfb588cc65d2178967a07961e952f4d314f7ba5a1"
+   ]
+  },
+  "OP09-062": {
+   "life": 4,
+   "series": [
+    "569109"
+   ],
+   "pageSha256": [
+    "457e8e46de54dc48d27804d4de0b192aaeb59f1106f5e94e31b01d2c4b3c237c"
+   ]
+  },
+  "OP09-081": {
+   "life": 5,
+   "series": [
+    "569027",
+    "569109"
+   ],
+   "pageSha256": [
+    "457e8e46de54dc48d27804d4de0b192aaeb59f1106f5e94e31b01d2c4b3c237c",
+    "e1568d1688c4119cf4360f601be3ee54924fbdf1e9a3235f911e5cf4e8be245e"
+   ]
+  },
+  "OP10-001": {
+   "life": 4,
+   "series": [
+    "569110"
+   ],
+   "pageSha256": [
+    "17195f046165192c1b484fd2b233472b77684daafa0e8044e9aff5d5ea7c6f58"
+   ]
+  },
+  "OP10-002": {
+   "life": 4,
+   "series": [
+    "569110"
+   ],
+   "pageSha256": [
+    "17195f046165192c1b484fd2b233472b77684daafa0e8044e9aff5d5ea7c6f58"
+   ]
+  },
+  "OP10-003": {
+   "life": 4,
+   "series": [
+    "569110"
+   ],
+   "pageSha256": [
+    "17195f046165192c1b484fd2b233472b77684daafa0e8044e9aff5d5ea7c6f58"
+   ]
+  },
+  "OP10-022": {
+   "life": 4,
+   "series": [
+    "569110"
+   ],
+   "pageSha256": [
+    "17195f046165192c1b484fd2b233472b77684daafa0e8044e9aff5d5ea7c6f58"
+   ]
+  },
+  "OP10-042": {
+   "life": 4,
+   "series": [
+    "569110",
+    "569801"
+   ],
+   "pageSha256": [
+    "17195f046165192c1b484fd2b233472b77684daafa0e8044e9aff5d5ea7c6f58",
+    "5aea929445fb0d9b3cfb4b6791e1b0476d027ed15be66e5fb9fdbb24944e8979"
+   ]
+  },
+  "OP10-099": {
+   "life": 5,
+   "series": [
+    "569036",
+    "569110"
+   ],
+   "pageSha256": [
+    "17195f046165192c1b484fd2b233472b77684daafa0e8044e9aff5d5ea7c6f58",
+    "cff53ef1ffc8a0648683ee66b2d1c86bac61bdd20cbb331ed7fd3460e9cb3fe1"
+   ]
+  },
+  "OP11-001": {
+   "life": 4,
+   "series": [
+    "569111"
+   ],
+   "pageSha256": [
+    "8c7746354b49f70f18e9199a5e75c6f031f072c69d49be560f944603de7326e2"
+   ]
+  },
+  "OP11-021": {
+   "life": 5,
+   "series": [
+    "569111"
+   ],
+   "pageSha256": [
+    "8c7746354b49f70f18e9199a5e75c6f031f072c69d49be560f944603de7326e2"
+   ]
+  },
+  "OP11-022": {
+   "life": 5,
+   "series": [
+    "569111"
+   ],
+   "pageSha256": [
+    "8c7746354b49f70f18e9199a5e75c6f031f072c69d49be560f944603de7326e2"
+   ]
+  },
+  "OP11-040": {
+   "life": 3,
+   "series": [
+    "569111"
+   ],
+   "pageSha256": [
+    "8c7746354b49f70f18e9199a5e75c6f031f072c69d49be560f944603de7326e2"
+   ]
+  },
+  "OP11-041": {
+   "life": 4,
+   "series": [
+    "569111",
+    "569801"
+   ],
+   "pageSha256": [
+    "5aea929445fb0d9b3cfb4b6791e1b0476d027ed15be66e5fb9fdbb24944e8979",
+    "8c7746354b49f70f18e9199a5e75c6f031f072c69d49be560f944603de7326e2"
+   ]
+  },
+  "OP11-062": {
+   "life": 5,
+   "series": [
+    "569034",
+    "569111"
+   ],
+   "pageSha256": [
+    "4515df876b23ea533431b56fa513928037f8fe5ad23e5e2868290529d8018fc3",
+    "8c7746354b49f70f18e9199a5e75c6f031f072c69d49be560f944603de7326e2"
+   ]
+  },
+  "OP12-001": {
+   "life": 5,
+   "series": [
+    "569112"
+   ],
+   "pageSha256": [
+    "0278a959cf96be52cdf713062e9de59388d748c6b1070f9ca4b91eed34b8edc8"
+   ]
+  },
+  "OP12-020": {
+   "life": 5,
+   "series": [
+    "569032",
+    "569112",
+    "569801",
+    "569901"
+   ],
+   "pageSha256": [
+    "0278a959cf96be52cdf713062e9de59388d748c6b1070f9ca4b91eed34b8edc8",
+    "1f9f046c9f988b6b82bdaaa9eadefdca36e4630e0e2ff83076c094fee499fe81",
+    "5aea929445fb0d9b3cfb4b6791e1b0476d027ed15be66e5fb9fdbb24944e8979",
+    "b3422d9fb59bf5facc69e79c063775a12e19d7ec5a59bf075d93fdd36ad86d37"
+   ]
+  },
+  "OP12-040": {
+   "life": 5,
+   "series": [
+    "569033",
+    "569112"
+   ],
+   "pageSha256": [
+    "0278a959cf96be52cdf713062e9de59388d748c6b1070f9ca4b91eed34b8edc8",
+    "7572292038fa294f471e1d5878f6626ef235b0e48efb03386f68312c2e0418fe"
+   ]
+  },
+  "OP12-041": {
+   "life": 4,
+   "series": [
+    "569112"
+   ],
+   "pageSha256": [
+    "0278a959cf96be52cdf713062e9de59388d748c6b1070f9ca4b91eed34b8edc8"
+   ]
+  },
+  "OP12-061": {
+   "life": 4,
+   "series": [
+    "569112"
+   ],
+   "pageSha256": [
+    "0278a959cf96be52cdf713062e9de59388d748c6b1070f9ca4b91eed34b8edc8"
+   ]
+  },
+  "OP12-081": {
+   "life": 4,
+   "series": [
+    "569112"
+   ],
+   "pageSha256": [
+    "0278a959cf96be52cdf713062e9de59388d748c6b1070f9ca4b91eed34b8edc8"
+   ]
+  },
+  "OP13-001": {
+   "life": 4,
+   "series": [
+    "569113"
+   ],
+   "pageSha256": [
+    "5f5d0b3518102eb36415b9c55035932624992fe2038a439396f9795ba47d55a5"
+   ]
+  },
+  "OP13-002": {
+   "life": 3,
+   "series": [
+    "569113"
+   ],
+   "pageSha256": [
+    "5f5d0b3518102eb36415b9c55035932624992fe2038a439396f9795ba47d55a5"
+   ]
+  },
+  "OP13-003": {
+   "life": 5,
+   "series": [
+    "569113"
+   ],
+   "pageSha256": [
+    "5f5d0b3518102eb36415b9c55035932624992fe2038a439396f9795ba47d55a5"
+   ]
+  },
+  "OP13-004": {
+   "life": 5,
+   "series": [
+    "569035",
+    "569113"
+   ],
+   "pageSha256": [
+    "33647cc1339e921036ead0346fd4d7bb4d017280444ee6defffdf8b169dffa18",
+    "5f5d0b3518102eb36415b9c55035932624992fe2038a439396f9795ba47d55a5"
+   ]
+  },
+  "OP13-079": {
+   "life": 4,
+   "series": [
+    "569113"
+   ],
+   "pageSha256": [
+    "5f5d0b3518102eb36415b9c55035932624992fe2038a439396f9795ba47d55a5"
+   ]
+  },
+  "OP13-100": {
+   "life": 5,
+   "series": [
+    "569113"
+   ],
+   "pageSha256": [
+    "5f5d0b3518102eb36415b9c55035932624992fe2038a439396f9795ba47d55a5"
+   ]
+  },
+  "OP14-001": {
+   "life": 5,
+   "series": [
+    "569114"
+   ],
+   "pageSha256": [
+    "0f7a21983da686ab1736f79e1a22aa6d4e9faec6c85208dcdde27b7bc39de5cd"
+   ]
+  },
+  "OP14-020": {
+   "life": 5,
+   "series": [
+    "569114"
+   ],
+   "pageSha256": [
+    "0f7a21983da686ab1736f79e1a22aa6d4e9faec6c85208dcdde27b7bc39de5cd"
+   ]
+  },
+  "OP14-040": {
+   "life": 5,
+   "series": [
+    "569114"
+   ],
+   "pageSha256": [
+    "0f7a21983da686ab1736f79e1a22aa6d4e9faec6c85208dcdde27b7bc39de5cd"
+   ]
+  },
+  "OP14-041": {
+   "life": 4,
+   "series": [
+    "569114"
+   ],
+   "pageSha256": [
+    "0f7a21983da686ab1736f79e1a22aa6d4e9faec6c85208dcdde27b7bc39de5cd"
+   ]
+  },
+  "OP14-060": {
+   "life": 5,
+   "series": [
+    "569114"
+   ],
+   "pageSha256": [
+    "0f7a21983da686ab1736f79e1a22aa6d4e9faec6c85208dcdde27b7bc39de5cd"
+   ]
+  },
+  "OP14-079": {
+   "life": 5,
+   "series": [
+    "569114"
+   ],
+   "pageSha256": [
+    "0f7a21983da686ab1736f79e1a22aa6d4e9faec6c85208dcdde27b7bc39de5cd"
+   ]
+  },
+  "OP14-080": {
+   "life": 4,
+   "series": [
+    "569114"
+   ],
+   "pageSha256": [
+    "0f7a21983da686ab1736f79e1a22aa6d4e9faec6c85208dcdde27b7bc39de5cd"
+   ]
+  },
+  "OP15-001": {
+   "life": 4,
+   "series": [
+    "569115"
+   ],
+   "pageSha256": [
+    "ac9197b830621276c38a1fc8730f294039c41fd88cd9786cb5bb2bb235e30986"
+   ]
+  },
+  "OP15-002": {
+   "life": 4,
+   "series": [
+    "569115"
+   ],
+   "pageSha256": [
+    "ac9197b830621276c38a1fc8730f294039c41fd88cd9786cb5bb2bb235e30986"
+   ]
+  },
+  "OP15-022": {
+   "life": 4,
+   "series": [
+    "569115"
+   ],
+   "pageSha256": [
+    "ac9197b830621276c38a1fc8730f294039c41fd88cd9786cb5bb2bb235e30986"
+   ]
+  },
+  "OP15-039": {
+   "life": 5,
+   "series": [
+    "569115"
+   ],
+   "pageSha256": [
+    "ac9197b830621276c38a1fc8730f294039c41fd88cd9786cb5bb2bb235e30986"
+   ]
+  },
+  "OP15-058": {
+   "life": 5,
+   "series": [
+    "569115"
+   ],
+   "pageSha256": [
+    "ac9197b830621276c38a1fc8730f294039c41fd88cd9786cb5bb2bb235e30986"
+   ]
+  },
+  "OP15-098": {
+   "life": 5,
+   "series": [
+    "569115"
+   ],
+   "pageSha256": [
+    "ac9197b830621276c38a1fc8730f294039c41fd88cd9786cb5bb2bb235e30986"
+   ]
+  },
+  "OP16-001": {
+   "life": 5,
+   "series": [
+    "569116"
+   ],
+   "pageSha256": [
+    "71ef0d57ab5b2fd417f8d7e293e7e51f8cb71c966432546dd4c1da13e62bbe77"
+   ]
+  },
+  "OP16-022": {
+   "life": 4,
+   "series": [
+    "569116"
+   ],
+   "pageSha256": [
+    "71ef0d57ab5b2fd417f8d7e293e7e51f8cb71c966432546dd4c1da13e62bbe77"
+   ]
+  },
+  "OP16-041": {
+   "life": 5,
+   "series": [
+    "569116"
+   ],
+   "pageSha256": [
+    "71ef0d57ab5b2fd417f8d7e293e7e51f8cb71c966432546dd4c1da13e62bbe77"
+   ]
+  },
+  "OP16-060": {
+   "life": 5,
+   "series": [
+    "569116"
+   ],
+   "pageSha256": [
+    "71ef0d57ab5b2fd417f8d7e293e7e51f8cb71c966432546dd4c1da13e62bbe77"
+   ]
+  },
+  "OP16-079": {
+   "life": 5,
+   "series": [
+    "569116"
+   ],
+   "pageSha256": [
+    "71ef0d57ab5b2fd417f8d7e293e7e51f8cb71c966432546dd4c1da13e62bbe77"
+   ]
+  },
+  "OP16-080": {
+   "life": 4,
+   "series": [
+    "569116"
+   ],
+   "pageSha256": [
+    "71ef0d57ab5b2fd417f8d7e293e7e51f8cb71c966432546dd4c1da13e62bbe77"
+   ]
+  },
+  "OP17-001": {
+   "life": 5,
+   "series": [
+    "569117"
+   ],
+   "pageSha256": [
+    "6f8638dfd30e6abfc0f04a69c7c6d9d482fd65877a1011743636388f25ac4a1c"
+   ]
+  },
+  "OP17-020": {
+   "life": 5,
+   "series": [
+    "569117"
+   ],
+   "pageSha256": [
+    "6f8638dfd30e6abfc0f04a69c7c6d9d482fd65877a1011743636388f25ac4a1c"
+   ]
+  },
+  "OP17-039": {
+   "life": 5,
+   "series": [
+    "569117"
+   ],
+   "pageSha256": [
+    "6f8638dfd30e6abfc0f04a69c7c6d9d482fd65877a1011743636388f25ac4a1c"
+   ]
+  },
+  "OP17-058": {
+   "life": 5,
+   "series": [
+    "569117"
+   ],
+   "pageSha256": [
+    "6f8638dfd30e6abfc0f04a69c7c6d9d482fd65877a1011743636388f25ac4a1c"
+   ]
+  },
+  "OP17-079": {
+   "life": 5,
+   "series": [
+    "569117"
+   ],
+   "pageSha256": [
+    "6f8638dfd30e6abfc0f04a69c7c6d9d482fd65877a1011743636388f25ac4a1c"
+   ]
+  },
+  "OP17-099": {
+   "life": 5,
+   "series": [
+    "569117"
+   ],
+   "pageSha256": [
+    "6f8638dfd30e6abfc0f04a69c7c6d9d482fd65877a1011743636388f25ac4a1c"
+   ]
+  },
+  "P-011": {
+   "life": 5,
+   "series": [
+    "569901"
+   ],
+   "pageSha256": [
+    "b3422d9fb59bf5facc69e79c063775a12e19d7ec5a59bf075d93fdd36ad86d37"
+   ]
+  },
+  "P-047": {
+   "life": 5,
+   "series": [
+    "569801",
+    "569901"
+   ],
+   "pageSha256": [
+    "5aea929445fb0d9b3cfb4b6791e1b0476d027ed15be66e5fb9fdbb24944e8979",
+    "b3422d9fb59bf5facc69e79c063775a12e19d7ec5a59bf075d93fdd36ad86d37"
+   ]
+  },
+  "P-076": {
+   "life": 4,
+   "series": [
+    "569901"
+   ],
+   "pageSha256": [
+    "b3422d9fb59bf5facc69e79c063775a12e19d7ec5a59bf075d93fdd36ad86d37"
+   ]
+  },
+  "P-117": {
+   "life": 5,
+   "series": [
+    "569901"
+   ],
+   "pageSha256": [
+    "b3422d9fb59bf5facc69e79c063775a12e19d7ec5a59bf075d93fdd36ad86d37"
+   ]
+  },
+  "PRB01-001": {
+   "life": 5,
+   "series": [
+    "569301"
+   ],
+   "pageSha256": [
+    "ea83e17a1b728437afbd678416abe7b9ff029de026da26c35e365ab71086e348"
+   ]
+  },
+  "ST01-001": {
+   "life": 5,
+   "series": [
+    "569001"
+   ],
+   "pageSha256": [
+    "c6d6d527c9f34dde7527433232517c709e4f83b08f6bf11e92ed96ba1625f0e5"
+   ]
+  },
+  "ST02-001": {
+   "life": 5,
+   "series": [
+    "569002"
+   ],
+   "pageSha256": [
+    "a465c056525d1b0f587ee78a78136c1d019e4e6d0e4d2b1e5d9813df3ed84091"
+   ]
+  },
+  "ST03-001": {
+   "life": 5,
+   "series": [
+    "569003"
+   ],
+   "pageSha256": [
+    "f45f81ff2baa4c596b254279a7e93a214d51afac39c5b573f97ede43cb374295"
+   ]
+  },
+  "ST04-001": {
+   "life": 5,
+   "series": [
+    "569004"
+   ],
+   "pageSha256": [
+    "016e64b22652b2eea574891538bcaca36d92f227a3384b4fd86bb14d0eab11df"
+   ]
+  },
+  "ST05-001": {
+   "life": 5,
+   "series": [
+    "569005"
+   ],
+   "pageSha256": [
+    "b871971f0691e5ae1fdcd37d3207a9712d0bfb4f8b347309fde25d22053a902e"
+   ]
+  },
+  "ST06-001": {
+   "life": 5,
+   "series": [
+    "569006"
+   ],
+   "pageSha256": [
+    "a4eeebc10916eed5a547613ed896eee99943f54747ea08c8ccbb3665886d21ce"
+   ]
+  },
+  "ST07-001": {
+   "life": 5,
+   "series": [
+    "569007"
+   ],
+   "pageSha256": [
+    "00edf0e5d3a07ac15a41ca9c5275945df89d233b6341f72f859924ae69924bce"
+   ]
+  },
+  "ST08-001": {
+   "life": 5,
+   "series": [
+    "569008"
+   ],
+   "pageSha256": [
+    "483fe355949be951ac7595c50c14e0588cdc2ec8399d0296ba9108044dfaea19"
+   ]
+  },
+  "ST09-001": {
+   "life": 5,
+   "series": [
+    "569009"
+   ],
+   "pageSha256": [
+    "bb359f6edecb90a596783d2badd93965027cce4d4a927ff63f6254e4f99357ce"
+   ]
+  },
+  "ST10-001": {
+   "life": 4,
+   "series": [
+    "569010"
+   ],
+   "pageSha256": [
+    "c0f46c002aa20fa7cffb2ed2c67ff1de0d4d6a8027d67ab2358d123f46c9f97e"
+   ]
+  },
+  "ST10-002": {
+   "life": 3,
+   "series": [
+    "569010"
+   ],
+   "pageSha256": [
+    "c0f46c002aa20fa7cffb2ed2c67ff1de0d4d6a8027d67ab2358d123f46c9f97e"
+   ]
+  },
+  "ST10-003": {
+   "life": 5,
+   "series": [
+    "569010"
+   ],
+   "pageSha256": [
+    "c0f46c002aa20fa7cffb2ed2c67ff1de0d4d6a8027d67ab2358d123f46c9f97e"
+   ]
+  },
+  "ST11-001": {
+   "life": 5,
+   "series": [
+    "569011",
+    "569016"
+   ],
+   "pageSha256": [
+    "0745f6c82bd5e967d90fbc1464a7d697e96da244395f472bc648f4d7f06e0c60",
+    "6f5d5324c474d1a5aed4da610506ca00dcb6418769d1e2094b79e7d08bfa1cce"
+   ]
+  },
+  "ST12-001": {
+   "life": 4,
+   "series": [
+    "569012"
+   ],
+   "pageSha256": [
+    "f755e897b2ec9fc6e66b88191e14d6f51f0307c7d2c7e78bdf14d13699daf7dd"
+   ]
+  },
+  "ST13-001": {
+   "life": 4,
+   "series": [
+    "569013"
+   ],
+   "pageSha256": [
+    "aaabe2d5bb28b3c51acfbca6d2e2188975785810941cda980a798d6ec3d5ad4e"
+   ]
+  },
+  "ST13-002": {
+   "life": 4,
+   "series": [
+    "569013"
+   ],
+   "pageSha256": [
+    "aaabe2d5bb28b3c51acfbca6d2e2188975785810941cda980a798d6ec3d5ad4e"
+   ]
+  },
+  "ST13-003": {
+   "life": 4,
+   "series": [
+    "569013",
+    "569901"
+   ],
+   "pageSha256": [
+    "aaabe2d5bb28b3c51acfbca6d2e2188975785810941cda980a798d6ec3d5ad4e",
+    "b3422d9fb59bf5facc69e79c063775a12e19d7ec5a59bf075d93fdd36ad86d37"
+   ]
+  },
+  "ST14-001": {
+   "life": 5,
+   "series": [
+    "569014"
+   ],
+   "pageSha256": [
+    "71940c3a55c36f67795ce8953a5e54c398315d0a300777a13d2d7aab3a06db30"
+   ]
+  },
+  "ST21-001": {
+   "life": 5,
+   "series": [
+    "569021",
+    "569801"
+   ],
+   "pageSha256": [
+    "16a02c0e68c23c100033241ff5845ca4ca890f90a3bf887f57f189398f294e8b",
+    "5aea929445fb0d9b3cfb4b6791e1b0476d027ed15be66e5fb9fdbb24944e8979"
+   ]
+  },
+  "ST21-001_r1": {
+   "life": 5,
+   "series": [
+    "569031"
+   ],
+   "pageSha256": [
+    "199eb8ded114ea1193a6d6fca9879756ead51b8065dbf4ee451eb031de86a20c"
+   ]
+  },
+  "ST22-001": {
+   "life": 5,
+   "series": [
+    "569022"
+   ],
+   "pageSha256": [
+    "9b5e73fb0c0982468e47a482bbf699ab137c3082eb5c6f49333f8284c35e5338"
+   ]
+  },
+  "ST29-001": {
+   "life": 6,
+   "series": [
+    "569029"
+   ],
+   "pageSha256": [
+    "279ce25f898e128ba1806a0821eb2850cc18dbd6613fef1b5564c07c400eaa88"
+   ]
+  },
+  "ST30-001": {
+   "life": 4,
+   "series": [
+    "569030"
+   ],
+   "pageSha256": [
+    "4971aaf76972cd6031c2741c612392bd5bf171b4879583a6bca041f438e2bde5"
+   ]
+  }
+ },
+ "rowsUpdated": [
+  {
+   "file": "carteJson/EB-01/cards-EB-01.json",
+   "code": "EB01-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-01/cards-EB-01.json",
+   "code": "EB01-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-01/cards-EB-01.json",
+   "code": "EB01-021",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-01/cards-EB-01.json",
+   "code": "EB01-021",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-01/cards-EB-01.json",
+   "code": "EB01-040",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-01/cards-EB-01.json",
+   "code": "EB01-040",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "EB01-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "EB01-021",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "EB01-040",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "EB02-010",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "EB02-010",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP05-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP05-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP05-022",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP05-060",
+   "life": 5
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP05-098",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP06-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP06-020",
+   "life": 5
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP06-021",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP06-022",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP06-042",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP06-080",
+   "life": 5
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP07-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP07-019",
+   "life": 5
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP07-038",
+   "life": 5
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP07-059",
+   "life": 5
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP07-079",
+   "life": 5
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP07-097",
+   "life": 2
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP08-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP08-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP08-021",
+   "life": 5
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP08-057",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP08-058",
+   "life": 4
+  },
+  {
+   "file": "carteJson/EB-02/cards-EB-02.json",
+   "code": "OP08-098",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-003",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-003",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-031",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-031",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-060",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-060",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-061",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-061",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-062",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-062",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-091",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-01/cards-OP-01.json",
+   "code": "OP01-091",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-001",
+   "life": 6
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-001",
+   "life": 6
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-025",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-025",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-026",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-026",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-049",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-049",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-071",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-071",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-072",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-072",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-093",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-02/cards-OP-02.json",
+   "code": "OP02-093",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-021",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-021",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-022",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-022",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-040",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-040",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-058",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-058",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-076",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-076",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-077",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-077",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-099",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-03/cards-OP-03.json",
+   "code": "OP03-099",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-04/cards-OP-04.json",
+   "code": "OP04-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-04/cards-OP-04.json",
+   "code": "OP04-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-04/cards-OP-04.json",
+   "code": "OP04-019",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-04/cards-OP-04.json",
+   "code": "OP04-019",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-04/cards-OP-04.json",
+   "code": "OP04-020",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-04/cards-OP-04.json",
+   "code": "OP04-020",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-04/cards-OP-04.json",
+   "code": "OP04-039",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-04/cards-OP-04.json",
+   "code": "OP04-039",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-04/cards-OP-04.json",
+   "code": "OP04-040",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-04/cards-OP-04.json",
+   "code": "OP04-040",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-04/cards-OP-04.json",
+   "code": "OP04-058",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-04/cards-OP-04.json",
+   "code": "OP04-058",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-05/cards-OP-05.json",
+   "code": "OP05-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-05/cards-OP-05.json",
+   "code": "OP05-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-05/cards-OP-05.json",
+   "code": "OP05-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-05/cards-OP-05.json",
+   "code": "OP05-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-05/cards-OP-05.json",
+   "code": "OP05-022",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-05/cards-OP-05.json",
+   "code": "OP05-022",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-05/cards-OP-05.json",
+   "code": "OP05-041",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-05/cards-OP-05.json",
+   "code": "OP05-041",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-05/cards-OP-05.json",
+   "code": "OP05-060",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-05/cards-OP-05.json",
+   "code": "OP05-060",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-05/cards-OP-05.json",
+   "code": "OP05-098",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-05/cards-OP-05.json",
+   "code": "OP05-098",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-06/cards-OP-06.json",
+   "code": "OP06-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-06/cards-OP-06.json",
+   "code": "OP06-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-06/cards-OP-06.json",
+   "code": "OP06-020",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-06/cards-OP-06.json",
+   "code": "OP06-020",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-06/cards-OP-06.json",
+   "code": "OP06-021",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-06/cards-OP-06.json",
+   "code": "OP06-021",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-06/cards-OP-06.json",
+   "code": "OP06-022",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-06/cards-OP-06.json",
+   "code": "OP06-022",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-06/cards-OP-06.json",
+   "code": "OP06-042",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-06/cards-OP-06.json",
+   "code": "OP06-042",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-06/cards-OP-06.json",
+   "code": "OP06-080",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-06/cards-OP-06.json",
+   "code": "OP06-080",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-07/cards-OP-07.json",
+   "code": "OP07-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-07/cards-OP-07.json",
+   "code": "OP07-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-07/cards-OP-07.json",
+   "code": "OP07-019",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-07/cards-OP-07.json",
+   "code": "OP07-019",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-07/cards-OP-07.json",
+   "code": "OP07-038",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-07/cards-OP-07.json",
+   "code": "OP07-038",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-07/cards-OP-07.json",
+   "code": "OP07-059",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-07/cards-OP-07.json",
+   "code": "OP07-059",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-07/cards-OP-07.json",
+   "code": "OP07-079",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-07/cards-OP-07.json",
+   "code": "OP07-079",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-07/cards-OP-07.json",
+   "code": "OP07-097",
+   "life": 2
+  },
+  {
+   "file": "carteJson/OP-07/cards-OP-07.json",
+   "code": "OP07-097",
+   "life": 2
+  },
+  {
+   "file": "carteJson/OP-08/cards-OP-08.json",
+   "code": "OP08-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-08/cards-OP-08.json",
+   "code": "OP08-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-08/cards-OP-08.json",
+   "code": "OP08-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-08/cards-OP-08.json",
+   "code": "OP08-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-08/cards-OP-08.json",
+   "code": "OP08-021",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-08/cards-OP-08.json",
+   "code": "OP08-021",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-08/cards-OP-08.json",
+   "code": "OP08-057",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-08/cards-OP-08.json",
+   "code": "OP08-057",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-08/cards-OP-08.json",
+   "code": "OP08-058",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-08/cards-OP-08.json",
+   "code": "OP08-058",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-08/cards-OP-08.json",
+   "code": "OP08-098",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-08/cards-OP-08.json",
+   "code": "OP08-098",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-09/cards-OP-09.json",
+   "code": "OP09-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-09/cards-OP-09.json",
+   "code": "OP09-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-09/cards-OP-09.json",
+   "code": "OP09-022",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-09/cards-OP-09.json",
+   "code": "OP09-022",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-09/cards-OP-09.json",
+   "code": "OP09-042",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-09/cards-OP-09.json",
+   "code": "OP09-042",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-09/cards-OP-09.json",
+   "code": "OP09-061",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-09/cards-OP-09.json",
+   "code": "OP09-061",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-09/cards-OP-09.json",
+   "code": "OP09-062",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-09/cards-OP-09.json",
+   "code": "OP09-062",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-09/cards-OP-09.json",
+   "code": "OP09-081",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-09/cards-OP-09.json",
+   "code": "OP09-081",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-10/cards-OP-10.json",
+   "code": "OP10-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-10/cards-OP-10.json",
+   "code": "OP10-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-10/cards-OP-10.json",
+   "code": "OP10-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-10/cards-OP-10.json",
+   "code": "OP10-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-10/cards-OP-10.json",
+   "code": "OP10-003",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-10/cards-OP-10.json",
+   "code": "OP10-003",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-10/cards-OP-10.json",
+   "code": "OP10-022",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-10/cards-OP-10.json",
+   "code": "OP10-022",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-10/cards-OP-10.json",
+   "code": "OP10-042",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-10/cards-OP-10.json",
+   "code": "OP10-042",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-10/cards-OP-10.json",
+   "code": "OP10-099",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-10/cards-OP-10.json",
+   "code": "OP10-099",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-11/cards-OP-11.json",
+   "code": "OP11-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-11/cards-OP-11.json",
+   "code": "OP11-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-11/cards-OP-11.json",
+   "code": "OP11-021",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-11/cards-OP-11.json",
+   "code": "OP11-021",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-11/cards-OP-11.json",
+   "code": "OP11-022",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-11/cards-OP-11.json",
+   "code": "OP11-022",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-11/cards-OP-11.json",
+   "code": "OP11-040",
+   "life": 3
+  },
+  {
+   "file": "carteJson/OP-11/cards-OP-11.json",
+   "code": "OP11-040",
+   "life": 3
+  },
+  {
+   "file": "carteJson/OP-11/cards-OP-11.json",
+   "code": "OP11-041",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-11/cards-OP-11.json",
+   "code": "OP11-041",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-11/cards-OP-11.json",
+   "code": "OP11-062",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-11/cards-OP-11.json",
+   "code": "OP11-062",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-12/cards-OP-12.json",
+   "code": "OP12-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-12/cards-OP-12.json",
+   "code": "OP12-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-12/cards-OP-12.json",
+   "code": "OP12-020",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-12/cards-OP-12.json",
+   "code": "OP12-020",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-12/cards-OP-12.json",
+   "code": "OP12-040",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-12/cards-OP-12.json",
+   "code": "OP12-040",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OP-12/cards-OP-12.json",
+   "code": "OP12-041",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-12/cards-OP-12.json",
+   "code": "OP12-041",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-12/cards-OP-12.json",
+   "code": "OP12-061",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-12/cards-OP-12.json",
+   "code": "OP12-061",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-12/cards-OP-12.json",
+   "code": "OP12-081",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OP-12/cards-OP-12.json",
+   "code": "OP12-081",
+   "life": 4
+  },
+  {
+   "file": "carteJson/OTHER/cards-OTHER.json",
+   "code": "OP01-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OTHER/cards-OTHER.json",
+   "code": "OP03-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OTHER_EN/cards-OTHER_EN.json",
+   "code": "OP01-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/OTHER_EN/cards-OTHER_EN.json",
+   "code": "OP03-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/PRB-01/cards-PRB-01.json",
+   "code": "PRB01-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/PRB-01/cards-PRB-01.json",
+   "code": "PRB01-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/PROMO/cards-PROMO.json",
+   "code": "ST13-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/PROMO/cards-PROMO.json",
+   "code": "ST13-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/PROMO/cards-PROMO.json",
+   "code": "ST13-003",
+   "life": 4
+  },
+  {
+   "file": "carteJson/PROMO_EN/cards-PROMO_EN.json",
+   "code": "EB02-010",
+   "life": 4
+  },
+  {
+   "file": "carteJson/PROMO_EN/cards-PROMO_EN.json",
+   "code": "OP05-060",
+   "life": 5
+  },
+  {
+   "file": "carteJson/PROMO_EN/cards-PROMO_EN.json",
+   "code": "P-011",
+   "life": 5
+  },
+  {
+   "file": "carteJson/PROMO_EN/cards-PROMO_EN.json",
+   "code": "P-047",
+   "life": 5
+  },
+  {
+   "file": "carteJson/PROMO_EN/cards-PROMO_EN.json",
+   "code": "P-076",
+   "life": 4
+  },
+  {
+   "file": "carteJson/PROMO_EN/cards-PROMO_EN.json",
+   "code": "ST13-003",
+   "life": 4
+  },
+  {
+   "file": "carteJson/ST-01/cards-ST-01.json",
+   "code": "ST01-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-02/cards-ST-02.json",
+   "code": "ST02-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-03/cards-ST-03.json",
+   "code": "ST03-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-04/cards-ST-04.json",
+   "code": "ST04-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-05/cards-ST-05.json",
+   "code": "ST05-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-06/cards-ST-06.json",
+   "code": "ST06-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-07/cards-ST-07.json",
+   "code": "ST07-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-08/cards-ST-08.json",
+   "code": "ST08-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-09/cards-ST-09.json",
+   "code": "ST09-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-10/cards-ST-10.json",
+   "code": "ST10-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/ST-10/cards-ST-10.json",
+   "code": "ST10-002",
+   "life": 3
+  },
+  {
+   "file": "carteJson/ST-10/cards-ST-10.json",
+   "code": "ST10-003",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-11/cards-ST-11.json",
+   "code": "ST11-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-12/cards-ST-12.json",
+   "code": "ST12-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/ST-13/cards-ST-13.json",
+   "code": "ST13-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/ST-13/cards-ST-13.json",
+   "code": "ST13-001",
+   "life": 4
+  },
+  {
+   "file": "carteJson/ST-13/cards-ST-13.json",
+   "code": "ST13-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/ST-13/cards-ST-13.json",
+   "code": "ST13-002",
+   "life": 4
+  },
+  {
+   "file": "carteJson/ST-13/cards-ST-13.json",
+   "code": "ST13-003",
+   "life": 4
+  },
+  {
+   "file": "carteJson/ST-13/cards-ST-13.json",
+   "code": "ST13-003",
+   "life": 4
+  },
+  {
+   "file": "carteJson/ST-14/cards-ST-14.json",
+   "code": "ST14-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-15/cards-ST-15.json",
+   "code": "OP02-001",
+   "life": 6
+  },
+  {
+   "file": "carteJson/ST-16/cards-ST-16.json",
+   "code": "ST11-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-17/cards-ST-17.json",
+   "code": "OP01-060",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-18/cards-ST-18.json",
+   "code": "OP05-060",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-19/cards-ST-19.json",
+   "code": "OP02-093",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-20/cards-ST-20.json",
+   "code": "OP03-099",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-21/cards-ST-21.json",
+   "code": "ST21-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-21/cards-ST-21.json",
+   "code": "ST21-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-23/cards-ST-23.json",
+   "code": "OP09-001",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-24/cards-ST-24.json",
+   "code": "OP07-019",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-25/cards-ST-25.json",
+   "code": "OP09-042",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-26/cards-ST-26.json",
+   "code": "OP09-061",
+   "life": 4
+  },
+  {
+   "file": "carteJson/ST-27/cards-ST-27.json",
+   "code": "OP09-081",
+   "life": 5
+  },
+  {
+   "file": "carteJson/ST-28/cards-ST-28.json",
+   "code": "OP06-022",
+   "life": 4
+  }
+ ]
+}

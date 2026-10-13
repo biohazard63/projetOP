@@ -1,0 +1,157 @@
+# M6 — Passation (Claude Code → Codex)
+
+## CURRENT STATE — ST-03 via le script de composition (13 octobre 2026)
+
+- Consigne utilisateur : faire confiance à `cardgame/scripts/rebuildStarterDecks.ts` pour les compositions (lu comme texte, jamais exécuté).
+- L’extracteur applique désormais aussi le repli inter-sets du script (`resolveByRebuildScriptName`, accepté seulement s’il donne un numéro unique). ST-03 : « Desert Spada » ×4 → OP01-088, « Perfume Femur » ×2 → OP07-057 (aucune carte ST-03 ne porte ces noms).
+- OP01-088 et OP07-057 sont implémentées (`m6LocalST03OPCards.ts`), certifiées (`ST03_OP_CERTIFICATIONS`, FAQ OP-01, errata 2023-02-17) et admises au ruleset libre.
+- **ST-03 est jouable** dans /play : 8 Starter Decks (ST-01, 02, 03, 04, 06, 07, 08, 12) + 3 decks de référence.
+- Mesuré : 470 définitions, 294 certificats, registre 186. `npm test` 556/556, typecheck PASS, lint 0 erreur / 99 avertissements, build isolé PASS, `git diff --check` PASS, preuves inchangées.
+- Même avec le script, restent illégaux : ST-05 (5 noms introuvables), ST-09 (couleurs hors Leader, noms manquants), ST-10 (3 Leaders), ST-11 (21 cartes, couleurs hors Leader), ST-13+ (noms ambigus ou manquants).
+- Test navigateur de ST-03 non exécuté.
+
+## CURRENT STATE — Claude Code, fast track ST-07..ST-12 (13 octobre 2026, fin de session)
+
+- Branche `feature/tcg-m5`, **rien de commité**, aucun push/déploiement/migration/accès à une base réelle (seule la base jetable locale `127.0.0.1:55433/op_play_test` a reçu un utilisateur de test pour les tests navigateur). Aucune action Git destructive.
+- Mesuré : **468 définitions**, **292 certificats** (207 → +85), registre courant 182 définitions d’effets.
+- Certifiés : **ST-07 17/17**, **ST-08 15/15**, **ST-12 17/17**, **ST-10 17/17**, **ST-11 5/5** (ST11-001..005 ; les réimpressions OP02 du produit ne sont pas traitées), **ST-09 14/15** — ST09-010 Portgas.D.Ace n'est pas intégré : son remplacement « If this Character would be K.O.'d ... instead » exige un choix pendant le Damage Step (non exécutable).
+- **Decks jouables dans `/play` : 7 Starter Decks** — ST-01, ST-02, ST-04, ST-06 (avant) et **ST-07, ST-08, ST-12** (cette session) — plus les 3 decks de référence.
+- Bloqués par la composition (cartes prêtes) : ST-03, ST-05 (deux noms ambigus de quantités différentes), ST-09 (13 noms absents de ST-09), ST-10 (3 Leaders, 56 cartes), ST-11 (37 cartes). Une liste officielle de produit ou une confirmation utilisateur est nécessaire.
+- ST-12 résolu de façon démontrable : alias `Elephant Tuna → ST12-009` (seul nom local contenant « Elephant », seul Personnage restant, quantité 4) ; « Shishi Sonson » / « Mouton Shot » ↔ ST12-016 / ST12-017 ont chacune la quantité 2 : `equalQuantityGroups` (`starterDecks.ts`) accepte ce groupe sans choisir d'association.
+
+### Validation finale (mesurée)
+- `npm test` : **547/547 PASS**. Empreintes SHA-256 de `docs/game/evidence/` identiques avant/après (et identiques au début de session).
+- `npm run typecheck` PASS ; `npm run lint` 0 erreur, 99 avertissements préexistants ; `git diff --check` PASS.
+- Build isolé (export `git ls-files -co --exclude-standard`, sans `.env`, `npm ci` + `npm run build`) : **PASS**.
+- Navigateur (Chrome système, build isolé sur le port 3008, base jetable) : `cardgame/tests/m6-starters.browser.mjs` — **6/6 PASS** : ST-07, ST-08, ST-12 démarrent, plateau atteint, main de 5, pas de débordement horizontal, abandon OK, en bureau 1440×900 et mobile paysage 844×390. Captures : `docs/game/evidence/m6/browser-st07-st12/`. En portrait le plateau affiche « Tournez votre téléphone » (comportement existant). Les choix « Vie dessus/dessous », « Option 1/2 » n'ont été vérifiés qu'en tests moteur, **NOT TESTED** au navigateur.
+- Parties bots : `tests/game-m6-starter-decks-07-08-12.test.ts` (9 parties) et `tests/game-m6-certified-decks-09-10-11.test.ts` (5 decks de cartes certifiées ST-09/10/11), sans fallback ni commande refusée.
+
+### Nouvelles briques DSL 1.3.0 (génériques, aucune logique par numéro)
+- Conditions : `YOUR_TURN`, `OPPONENT_TURN`, `ALL_OF`, `ANY_OF` (non imbriquées), `LIFE_AT_MOST`, `LIFE_AT_LEAST`, `LIFE_LESS_THAN_OPPONENT`, `OWN_CHARACTERS_AT_MOST`, `ACTIVE_DON_AT_LEAST`, `FIELD_DON_AT_MOST`, `LEADER_NAME_IS`.
+- Sélecteur `CARDS` : zones `life` (+ `lifeEnd: TOP | TOP_OR_BOTTOM`) et `leader`, `colorsAny`, `attributesAny`, `traitOrAttribute`, `battledWithSource`, `inBinding` ; main adverse seulement pour un choix `conceal` (face cachée, ST10-010).
+- Choix : `reveal: 'CHOOSER'` (regard privé), `conceal`, `skipIfNone` ; options avec `slot` (`LIFE_TOP`, `LIFE_BOTTOM`, `DECK_TOP`, `HAND_CARD`, `MODE`) libellées par `Board.tsx`. Étape `MODE` (« choose one », `chooser: 'OPPONENT'`, garde). Garde `whenBindingNonempty` sur `SEARCH_TOP_DECK`.
+- Opérations : `lifeToHand`, `addToLife` (face visible, `side`, `bottomBinding`), `placeLife`, `triggerCardToHand`, `koCharacter` `player: 'ANY'` (lot, curseur `koCursor`) + `resultBinding`, `grantKeyword` `THIS_BATTLE`, `playCard.rested`, `addPower` `UNTIL_START_OF_YOUR_NEXT_TURN` / `UNTIL_END_OF_YOUR_NEXT_TURN`.
+- Moments : `ON_DON_RETURNED` (événement public `DON_RETURNED`, émis seulement si le registre l'écoute), `ON_OPPONENT_BLOCKER`. `CHARACTER_BATTLED` aussi pour le Personnage défenseur (porte `battled`) ; Hawkins ST02-010 a désormais `ALL_OF[DON!! x1, YOUR_TURN]`.
+- Registre : continus de Leader (`zone: 'leader'`, `duringOpponentTurn`, `maximumOwnLife`, `minimumOwnLife`), `koProtections` `byLeaders` / `minimumAttachedDon` / `maximumOwnLife`. Manifeste de primitives : nouvelle variante, anciennes sauvegardes lisibles.
+- Moteur : +X « pendant ce combat » compte pour l'attaquant ; événements `LIFE_TO_HAND` / `LIFE_ADDED` et comptage de Vie recalculé ; Vie face visible admise si `LIFE_ADDED` la nomme, `projectState.lifeFaceUp` seulement s'il y en a ; un Trigger peut finir en main ; invariants de confidentialité : une carte nommée publiquement puis renvoyée en main/deck, ou un DON!! revenu au deck DON!!, reste admis. Le K.O. en lot reste refusé (`KO_BATCH_NOT_IMPLEMENTED`) pour les registres 1.2.0.
+- Donnée locale signalée, non modifiée : ST11-005 a le type « 音楽/FILM » dans `carteJson`.
+
+### Fichiers ajoutés / modifiés (cette session)
+- Ajoutés : `src/game/cards/m6LocalST07Cards.ts`, `m6LocalST09Cards.ts`, `m6LocalST10Cards.ts`, `m6LocalST11Cards.ts`, `m6LocalST12Cards.ts` ; tests `game-m6-st07/st08/st09/st10/st11/st12-certification.test.ts`, `game-m6-starter-decks-07-08-12.test.ts`, `game-m6-certified-decks-09-10-11.test.ts`, `m6-starters.browser.mjs` ; preuves `docs/game/evidence/m6/browser-st07-st12/`.
+- Modifiés : `m6LocalST08Cards.ts`, `m6LocalST02Cards.ts`, `dsl.ts`, `certification.ts`, `starterDecks.ts`, `starterCompositionResolution.ts`, `starter-compositions.json` (régénéré par l'extraction en lecture seule), `rulesets/free.ts`, `effects/contracts.ts`, `effects/runtime.ts`, `effects/operations.ts`, `effects/characteristics.ts`, `core/combat.ts`, `core/game.ts`, `core/invariants.ts`, `core/types.ts`, `lib/engine/catalog.ts`, `lib/engine/view.ts`, `components/play/Board.tsx`, `anim.ts`, `labels.ts` ; tests `game-m4-certification`, `game-m5-certification`, `game-m6-packs`.
+
+### Étapes suivantes
+1. Compositions ST-03/ST-05/ST-09/ST-10/ST-11 : liste officielle ou confirmation utilisateur (ST-03 : Desert Spada ×4 / Perfume Femur ×2 ↔ ST03-015 Sables / ST03-017 Love-Love Mellow ; ST-05 : Shishi Odoshi ×2 / Armor Mode ×4 ↔ ST05-016 / ST05-017).
+2. ST09-010 Ace : remplacement de K.O. avec choix du contrôleur, en combat comme par effet.
+3. Réimpressions OP01/OP02 des produits ST-10/ST-11 si leurs decks deviennent résolvables.
+4. Test navigateur d'une partie complète avec choix de Vie et de mode.
+
+## CURRENT STATE — reprise Codex (13 octobre 2026)
+
+- Workspace conservé sur `feature/tcg-m5`; aucune action Git destructive, aucun commit, push, déploiement ou accès à une base n'a eu lieu.
+- Vérifié dans le code après reprise : **404 définitions**, **207 certificats**, dont ST-01..ST-06 = 102/102 numéros certifiés.
+- Compositions résolues à partir du parseur en lecture seule du manifeste de `scripts/rebuildStarterDecks.ts` : ST-01, ST-02, ST-04 et ST-06 ont chacun 1 Leader + 50 cartes et sont proposés dans `/play`. Le script destructif n'a pas été exécuté. Les quantités Prisma n'ont pas été interrogées pendant cette reprise.
+- ST-03 reste bloqué par Desert Spada / Perfume Femur ; ST-05 par Shishi Odoshi Goshojimaki / Armor Mode. Les alternatives sont dans `src/game/cards/starterCompositionResolution.ts` et restent explicitement ambiguës.
+- Vérifié : parties bots complètes ST-04 et ST-06 contre le deck rouge de référence, sans fallback ni commande refusée (`tests/game-m6-starter-decks-04-06.test.ts`).
+- ST-08 : 5 profils d'effets exécutables déclaratifs (ST08-004, -006, -008, -009, -015), **0 certification**. Tests ciblés 5/5 PASS. Les autres capacités du deck restent non prises en charge; le deck ne peut donc pas être proposé.
+- ST-07, ST-09, ST-10, ST-11 et ST-12 restent partiels ou bloqués selon les définitions et compositions locales. ST-22 reste sans fiche locale.
+- Tests navigateur desktop/mobile : **NOT TESTED**. Playwright est dépendance présente, mais aucun navigateur Playwright n'est installé et aucun serveur local de test n'était actif.
+- Validation finale de cette reprise : **469/469 tests PASS** (`npm test -- --test-reporter=dot`), TypeScript PASS (`npm run typecheck`), ESLint PASS avec 0 erreur et 99 avertissements préexistants, build isolé PASS, `git diff --check` PASS. Les tests n'ont modifié aucun fichier de preuve historique.
+- Le premier essai de build isolé a échoué car un ancien `node_modules-ci-attempt` dans la copie temporaire était inclus par le glob TypeScript; ce dossier généré a été déplacé hors de la copie de build puis le build complet a réussi. Le workspace n'a pas été modifié par cette correction.
+- Reprise recommandée : commencer ST-07 par une cartographie effet par effet dans `carteJson/ST-07/cards-ST-07.json`. Ses effets principaux nécessitent une primitive générique de déplacement / réorganisation de Life, traitement de Life face visible et choix contrôlé par l'adversaire, puis vérifier l'interaction avec Banish / Double Attack; ces mécanismes ne sont pas couverts par les cinq profils ST-08 et aucune carte ST-07 n'est certifiée ici. Continuer ensuite ST-09..ST-12 en ne certifiant qu'après validation des effets complets.
+
+Les états ci-dessous décrivent l'historique au 13 octobre avant les corrections de composition et le lot ST-08; ils sont conservés comme archive.
+
+Date : 13 octobre 2026. Branche `feature/tcg-m5`. **Rien n'est commité** depuis `b086ee2` : tout le travail M6 (Codex puis Claude) est dans l'arbre de travail. Aucun push, aucun déploiement, aucune modification de base réelle.
+
+Lis d'abord `CLAUDE.md` (règles impératives), puis ce fichier, puis `M6_CHECKPOINT.md`.
+
+## 1. État réel
+
+| Starter | Numéros certifiés | Composition exacte | Proposé dans `/play` | Statut |
+|---|---|---|---|---|
+| ST-01 | 17/17 | oui (script, 1 + 50) | oui (`starter-st01`) | **PASS** |
+| ST-02 | 17/17 | oui (script, 1 + 50) | oui (`starter-st02`) | **PASS** |
+| ST-03 | 17/17 | non : 2 noms du script inconnus (« Desert Spada », « Perfume Femur ») | non | **PARTIAL** (cartes PASS, deck BLOCKED) |
+| ST-04 | 17/17 | non : « All-Star 'Calamity' » inconnu | non | **PARTIAL** |
+| ST-05 | 17/17 | non : 5 noms (« Karina », « Guild Tesoro », « Scarlett », « Shishi Odoshi Goshojimaki », « Armor Mode ») | non | **PARTIAL** |
+| ST-06 | 17/17 | non : « Navy Headquarters » | non | **PARTIAL** |
+
+Compteurs mesurés (`engineCatalog()`, `CERTIFICATIONS`) : **399 définitions**, **207 certificats** (120 au début de la session → +87), registre courant 96 définitions d'effets.
+
+Correspondances **proposées, non appliquées** (à faire confirmer par l'utilisateur avant d'ajouter les decks) :
+- ST-04 « All-Star 'Calamity' » ×2 → ST04-014 Lead Performer "Disaster" (seul numéro restant).
+- ST-06 « Navy Headquarters » ×2 → ST06-017 Navy HQ (seul numéro restant).
+- ST-05 : variantes d'orthographe Karina → ST05-005 Carina, Guild Tesoro → ST05-006 Gild Tesoro, Scarlett → ST05-009 Scarlet ; « Shishi Odoshi Goshojimaki » et « Armor Mode » ↔ ST05-016 / ST05-017 (attribution ambiguë).
+- ST-03 « Desert Spada » ×4 / « Perfume Femur » ×2 ↔ ST03-015 Sables / ST03-017 Love-Love Mellow (attribution ambiguë).
+
+Un deck n'apparaît dans `/play` que si **toutes** ses cartes sont certifiées **et** si sa composition est entièrement résolue (`src/game/cards/starterDecks.ts`, `src/lib/engine/decks.ts`). Après confirmation, corriger les noms dans l'extraction (pas dans le script destructif) et relancer `npx tsx scripts/game/extract-starter-compositions.ts src/game/cards/starter-compositions.json`.
+
+## 2. Sources et données
+
+- Fiches : `cardgame/carteJson/` uniquement. Les sources officielles relues (FAQ ST-01..04, ST-05, ST-06, errata) sont archivées avec URL et empreintes dans `docs/game/evidence/m6/sources/` (`SOURCES.json`, extraits `.txt`, `errata-st01-st06.json`).
+- **Vie des Leaders** : absente des données locales ; lue (à la demande de l'utilisateur) sur les pages officielles de liste de cartes mises en cache le 12/10/2026, et **écrite dans le champ `cost` des Leaders** de 46 fichiers `carteJson` (240 lignes). Preuve : `evidence/m6/sources/leader-life.json`. Pour un Leader, `cost` = Vie. Le pont base ↔ moteur (`bridgeCards`) traite `cost` NULL ou 0 comme « non renseigné ».
+- Base : `scripts/game/sync-leader-life.ts` copie ces Vies dans `Card.cost` (à blanc par défaut, `--apply` pour écrire, `--allow-remote` exigé hors localhost). **Jamais exécuté sur Neon.** Les 4 migrations Neon (dont `engine_games`, `engine_bot_level`) ne sont pas appliquées (voir `PREPROD_REPORT.md`).
+- Compositions : `src/game/cards/starter-compositions.json` (extraction **en lecture seule** de `scripts/rebuildStarterDecks.ts` ; ne jamais exécuter ce script, il supprime des decks).
+
+## 3. Architecture ajoutée (générique, aucune logique par numéro dans le runtime)
+
+Fichiers de cartes (données + programmes DSL) :
+- `src/game/cards/localCards.ts` — projecteur générique ligne `carteJson` → `CardInput` revue (références officielles, Vie de Leader, puissance « - » → 0 signalée).
+- `src/game/cards/dsl.ts` — constructeurs réutilisables : `ability`, `upTo`, `ko`, `returnToHand`, `toDeckBottom`, `rest`, `setActive`, `power`, `powerSelf`, `draw`, `drawThenTrash`, `trashFromHand`, `addDon`, `donMinus`, `after`, `playChosen`, `playThisCardSteps`, `lookTopAndPlace`, `bindAll`, `check`, `addCost`, `preventKO`, `grantRush`, `grantDoubleAttack`, `moveFromTrashToHand`, `shuffleDeck`, `opponentTrashesFromHand`, `ownLeaderOrCharacter`.
+- Packs : `m6LocalStarterCards.ts` (ST-01, Codex), `m6LocalST02Cards.ts`, `m6LocalST03ST04Cards.ts`, `m6LocalST05ST06Cards.ts`, branchés dans `src/lib/engine/catalog.ts` (`currentPacks`).
+- Certificats : `src/game/cards/certification.ts` (`ST01_CERTIFICATIONS`, `ST02_CERTIFICATIONS`, `ST03_ST04_CERTIFICATIONS`, `ST05_ST06_CERTIFICATIONS`) ; admission : `src/game/rulesets/free.ts`.
+
+DSL 1.3.0 (`src/game/effects/contracts.ts`, `runtime.ts`), nouvelles briques :
+- Sélecteur **`CARDS`** : `side` (OWN/OPPONENT/ANY), `zone` (characters, leaderOrCharacters, hand, trash, deck, cost, fieldDon), filtres `categories`, `minCost`/`maxCost`, `maxPower` (+`powerBasis`), `rested`, `traitsAny`, `nameIs`/`nameNot`, `hasBlocker` (vrai [Blocker] seulement), `excludeSource`, `topN` (deck). Main/deck/trash/fieldDon : côté OWN seulement ; main/deck : choix PRIVATE obligatoire.
+- Champs de choix : `allOrNone` (0 ou X, DON!! −X), `clampMin` (« whenever possible »), `chooser: 'OPPONENT'` ; étapes `BIND_ALL`, `CHECK`.
+- Opérations : `returnToHand`, `moveToDeckBottom`, `restCard`, `setActive`, `playCard`, `returnDon`, `grantKeyword`, `arrangeTopDeck`, `addCost`, `preventKO` ; garde `whenBindingNonempty` sur les opérations ; `playSelfFromTrigger.replaceBinding`.
+- Conditions : `HAND_AT_LEAST` (+`traitsAny`), `OWN_CHARACTERS_AT_LEAST`, `DON_DECK_AT_LEAST`, `LEADER_HAS_TRAIT`, `FIELD_DON_AT_LEAST`, `OPPONENT_MORE_FIELD_DON`, `BATTLE_OPPONENT_ATTRIBUTE`.
+- Moments : `END_OF_YOUR_TURN` (capturé sur `MAIN_ENDED`), `END_OF_BATTLE_WITH_CHARACTER` (événement `CHARACTER_BATTLED`), `ON_BATTLE_PAIRED` (événement `BATTLE_PAIRED` à la fin du Block Step). Ces événements ne sont émis que si le registre contient une capacité qui les écoute (traces historiques inchangées).
+- Registre : effets continus conditionnels et **auras** (`minimumOwnCharacters`, `duringYourTurn`, `sourceRested`, `targets.traitsAny`), mots-clés conditionnels `whenAnyCharacterCostAtMost`, protections `koProtections` (BATTLE/EFFECT, `minimumFieldDon`). Runtime : `keywordGrants`, `costModifiers`, `koImmunities`. Limite du registre : 1024 définitions.
+- Manifeste de primitives 1.3.0 : une variante `starterPrimitiveList` supplémentaire ; les anciennes sauvegardes restent lisibles.
+
+Règles corrigées (avec test) :
+- CR §3-7-6-1 / §3-8-5-1 : jouer dans une zone pleine défausse d'abord 1 Personnage choisi (traitement de règle, pas un K.O.).
+- Le [Trigger] d'un Événement ne paie pas son coût imprimé (FAQ ST02-015) ; avant, il était annulé faute de DON!!.
+- Un combat dont l'attaquant ou la cible quitte le terrain se termine sans effet (FAQ ST03-003/016, règles).
+- Capture des déclencheurs par événement (un même Personnage nommé par deux événements n'est plus capturé deux fois).
+- Invariant de confidentialité : une carte publique déplacée vers main/deck par une opération tracée reste admise.
+- Un Événement [Counter] est certifiable s'il nomme son programme COUNTER testé (`certificationErrors`).
+
+Bots et `/play` : choix génériques ; `allOrNone` géré par les bots (paient X) et par l'interface (`Board.tsx`, validation 0 ou X).
+
+## 4. Recette pour intégrer une carte (ST-07 et suivants)
+
+1. Lire la ligne `carteJson` et les entrées FAQ / errata. Les extraits texte de **toutes** les FAQ officielles téléchargées le 12/10/2026 (ST, OP, EB, PRB, promos, règles) sont dans `evidence/m6/sources/` avec URL et SHA-256 du PDF (`SOURCES.json`) ; l'errata officiel complet (toutes séries) est extrait dans `errata-all.json` (`after` = texte en vigueur) ; comparer le texte `carteJson` au texte après erratum (ex. ST04-001 : la fiche locale garde l'ancien texte).
+2. Écrire les capacités avec `dsl.ts` dans un pack `m6LocalSTxx…Cards.ts` ; profil `localCard(row, set, path, revision, faqUrl, reviewedAt, { abilityIds, blocker, counterEvent, keywords })`. Une capacité non exécutable ⇒ **ne pas projeter la carte** (jamais d'effet ignoré).
+3. Ajouter le pack dans `catalog.ts`.
+4. Tests : `tests/helpers/m6.ts` (`newGame`, `deckFor`, `toMain`, `put`, `inHand`, `attachDon`, `playCard`, `startEffect`, `choose`, `attack`, `finishBattle`, `roundTrip`…). Un test par décision FAQ + cas négatifs + `roundTrip` ; titres sans apostrophe échappée (le vérificateur M4 cherche le titre littéral).
+5. Certificat dans `certification.ts` : une entrée `declarative` par carte (regroupant ses capacités déclaratives), `trigger`/`counterEvent`/`blocker` selon le cas ; ajouter le lot à l'exclusion de `tests/game-m4-certification.test.ts` (et `game-m5-certification` pour les révisions M5).
+6. Admettre les numéros dans `free.ts` seulement une fois certifiés.
+
+## 5. Validation (fin de session Claude, résultats réels)
+
+| Contrôle | Résultat | Journal |
+|---|---|---|
+| `npm test` | **459/459 PASS**, 0 skip/todo ; preuves historiques (hors m6) identiques avant/après | `evidence/m6/claude-lots-abc-npm-test.log` |
+| typecheck | PASS | `claude-lots-abc-typecheck.log` |
+| lint | 0 erreur, 99 avertissements (antérieurs) | `claude-lots-abc-lint.log` |
+| build isolé (fichiers suivis + non suivis non ignorés, sans `.env`, `npm ci` + `vercel-build`) | PASS | `claude-lots-abc-isolated-build.log` |
+| `git diff --check` | PASS | — |
+| Parties complètes bots (ST-01, ST-02 exacts, 4 niveaux/graines chacun) | gagnant à chaque partie, 0 repli, 0 refus | tests `game-m6-st01/st02-certification` |
+
+**Non fait** : tests navigateur desktop/mobile des decks `starter-st01`/`starter-st02` (exigés pour la certification complète d'un deck dans la mission) ; parties bots pour ST-03..06 (compositions bloquées).
+
+## 6. Pièges connus
+
+- `npm test` **réécrit** des preuves JSON (17 historiques ; les tests M6 de Codex réécrivent aussi `evidence/m6/st01-*`). Toujours hacher `docs/game/evidence` avant/après ; restaurer depuis `git show HEAD:<fichier>` si une preuve suivie change.
+- La connexion Credentials est limitée à 10 tentatives / 10 min / IP (tests navigateur répétés → redirection `/login`).
+- `deckFor` (harnais) met 3 exemplaires par défaut ; au tour 2, le second joueur ne peut pas attaquer ; chaque commande renvoie un **nouvel** état (ne pas réutiliser une référence de joueur d'avant la commande).
+- Le serveur local de test (port 3007, base temporaire 127.0.0.1:55433) est hors dépôt.
+
+## 7. Prochain lot recommandé
+
+1. Faire confirmer les correspondances de noms (§1) puis proposer ST-03..ST-06 dans `/play`, avec parties bots et tests navigateur desktop/mobile pour les 6 decks.
+2. ST-07 à ST-09 (FAQ en cache à archiver), puis ST-10+.
+3. Appliquer `sync-leader-life.ts` et les migrations sur une base de préproduction confirmée (autorisation explicite requise).

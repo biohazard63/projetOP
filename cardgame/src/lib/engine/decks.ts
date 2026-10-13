@@ -2,7 +2,9 @@ import { createGame } from '../../game/core/game'
 import { validateEngineDeck, type DeckEntry } from '../../game/rulesets/decks'
 import { PURPLE_DECK } from '../../game/cards/m3PurpleDeck'
 import type { CardPrinting } from '../../game/cards/types'
-import { engineCatalog, engineRegistry, engineRuleset, type CardBridge } from './catalog'
+import { STARTER_DECKS, type StarterDeck } from '../../game/cards/starterDecks'
+import { effectiveStatus } from '../../game/cards/certification'
+import { engineCatalog, currentEngineRegistry, engineRuleset, type CardBridge } from './catalog'
 
 // Reference decks: legal decks whose every card has an executable reviewed definition (M3).
 export const RED_M3_DECK: DeckEntry[] = [
@@ -20,7 +22,13 @@ export const REFERENCE_DECKS: ReferenceDeck[] = [
   { id: 'reference-purple', name: 'Kaido — Animal Kingdom Pirates', leader: 'ST04-001', description: 'Deck violet de référence M3 : Personnages, Black Maria et Blast Breath.', entries: PURPLE_DECK },
   { id: 'reference-red', name: 'Luffy — Interséries', leader: 'ST01-001', description: 'Deck rouge de référence M3 : ST-01, OP-01, OP-06, Counters et Triggers.', entries: RED_M3_DECK },
   { id: 'reference-red-classic', name: 'Luffy — Équipage', leader: 'ST01-001', description: 'Deck rouge composé surtout de cartes certifiées en M4.', entries: RED_CERTIFIED_DECK },
+  // M6: an official Starter Deck is offered only when every one of its cards is certified (computed, not declared).
+  ...certifiedStarterDecks().map(d => ({ id: d.id, name: `Starter ${d.name}`, leader: d.leader, description: `Composition exacte du Starter Deck ${d.deckCode} : toutes ses cartes sont certifiées.`, entries: d.entries })),
 ]
+function certifiedStarterDecks(): StarterDeck[] {
+  const { definitions, printings } = engineCatalog()
+  return STARTER_DECKS.filter(d => d.entries.every(e => { const p = printings.find(x => x.printingKey === e.printingKey); const def = p && definitions.find(x => x.definitionId === p.definitionId); return !!def && effectiveStatus(def) === 'PLAYABLE_VERIFIED' }))
+}
 
 export type DeckEligibility = { ok: boolean; errors: string[] }
 /** Same checks as the real start: construction rules in playable mode, then createGame's effect checks. */
@@ -29,7 +37,7 @@ export function deckEligibility(entries: DeckEntry[], printings: CardPrinting[] 
   const errors = validateEngineDeck(entries, definitions, printings, ruleset, 'playable')
   if (errors.length) return { ok: false, errors }
   try {
-    createGame({ gameId: 'eligibility', seed: 1, scope: 'BASIC_TURNS', chooserId: 'p1', definitions, printings, ruleset, effectRegistry: engineRegistry(),
+    createGame({ gameId: 'eligibility', seed: 1, scope: 'BASIC_TURNS', chooserId: 'p1', definitions, printings, ruleset, effectRegistry: currentEngineRegistry(),
       players: [{ id: 'p1', cards: structuredClone(entries), donCount: 10 }, { id: 'p2', cards: structuredClone(REFERENCE_DECKS[0].entries), donCount: 10 }] })
     return { ok: true, errors: [] }
   } catch (e) {

@@ -1,0 +1,98 @@
+Card No.
+Card Name
+Question
+Answer
+ST30-001
+Luffy & Ace
+If I have 0 Character cards, does it mean this Leader
+No, it doesn't.
+ST30-001
+Luffy & Ace
+Can I use this [Opponent's Turn] effect to give this
+Leader +3000 power?
+No, you cannot.
+ST30-002
+Inazuma
+Does "Character card with 6000 power" also include
+Characters with 5000 power or less?
+No, it must be a Character card with exactly 6000
+power.
+ST30-003
+Edward.Newgate
+Does "Characters with 6000 base power" also include
+Characters with 5000 base power or less?
+No, they must be Characters with exactly 6000 base
+power.
+ST30-004
+Emporio.Ivankov
+Does "Character cards with 6000 power" also include
+Character cards with 5000 power or less?
+No, they must be Character cards with exactly 6000
+power.
+ST30-006
+Jinbe
+Does "Character card with 6000 power" also include
+Character cards with 5000 power or less?
+No, it must be a Character card with exactly 6000
+power.
+ST30-007
+Portgas.D.Ace
+If I play this Character at a time when I have 4 active
+DON!! cards, but my number of active DON!! cards
+then becomes 0, can this Character still gain [Rush]
+from its [On Play] effect?
+No, it cannot.
+ST30-008
+Marco
+Does "Character card with 6000 power" also include
+Character cards with 5000 power or less?
+No, it must be a Character card with exactly 6000
+power.
+ST30-009
+LittleOars Jr.
+Does "Character with 6000 base power" also include
+Characters with 5000 base power or less?
+No, it must be a Character with exactly 6000 base
+power.
+ST30-011
+Buggy
+Does "Character with 6000 base power" also include
+Characters with 5000 base power or less?
+No, it must be a Character with exactly 6000 base
+power.
+ST30-012
+Monkey.D.Luffy
+If I play this Character at a time when I have 4 active
+DON!! cards, but my number of active DON!! cards
+then becomes 0, can this Character still gain [Rush]
+from its [On Play] effect?
+No, it cannot.
+ST30-014
+Mr.3(Galdino)
+Does "Characters with 6000 base power" also include
+Characters with 5000 base power or less?
+No, they must be Characters with exactly 6000 base
+power.
+ST30-015
+The Name of This Era Is
+"Whitebeard"!!
+Does "Characters with 6000 base power" also include
+Characters with 5000 base power or less?
+No, they must be Characters card with exactly 6000
+base power.
+ST30-016
+Can You Still Fight, Luffy?!
+Of Course!!
+Does "Characters with 6000 base power" also include
+Characters with 5000 base power or less?
+No. After gaining +3000 power, you can only draw 1
+card if you have both a [Portgas.D.Ace] Character with
+exactly 6000 base power and a [Monkey.D.Luffy]
+Character with exactly 6000 base power on your field.
+ST30-017
+And You Get Yourself in
+Big Trouble!!
+Does "Character card with 6000 power" also include
+Characters with 5000 power or less?
+No, it must be a Character card with exactly 6000
+power.

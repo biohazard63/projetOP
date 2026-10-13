@@ -1,0 +1,246 @@
+{
+ "retrievedAt": "2026-10-12",
+ "note": "Official Bandai documents downloaded during M5 (2026-10-12) and re-read for M6. Text extracts are pdftotext output; the PDF hashes identify the exact files read.",
+ "documents": [
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-01-st-04.pdf?20240405",
+   "pdfSha256": "28ed85edaa56ab308bd2a6b43d704fc56b91a1904eb02faae0ff25bdc16edd2b",
+   "extract": "qa_st-01-st-04.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-05.pdf?20230127",
+   "pdfSha256": "bb3ed032225f58da3c2c2ede9b9e0a7594ae16daa69240c70728f2ca41b0377b",
+   "extract": "qa_st-05.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-06.pdf?20230303",
+   "pdfSha256": "a1b533c204e3696cd3af9fecc13d556b4486f434f30ce15a569762c0a1959fff",
+   "extract": "qa_st-06.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/rules/errata_card/",
+   "htmlSha256": "97da7f8cc5f8108701432fda6748d12a69ff18e11389bc196579ac3ed43d1c28",
+   "extract": "errata-st01-st06.json"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/faq_op15-eb04.pdf?20260313",
+   "pdfSha256": "99dcae26f10e586193aaf9317a9d8957c53c6f7d28098b26957ae0a6746832ad",
+   "extract": "faq_op15-eb04.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_eb01.pdf?20240419",
+   "pdfSha256": "d3795eab00b60a94f75649a51b0110b650bf264f33e4aa006e8e420f7fdc566f",
+   "extract": "qa_eb01.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_eb02.pdf?20250425",
+   "pdfSha256": "ead533581de3464a69e9085cfa029fbcad17050e0a92fd5d09cfb75b0b920e56",
+   "extract": "qa_eb02.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_eb03.pdf?20260206",
+   "pdfSha256": "815409c424313ba177834e6619d6740a34027eb232df23fd9591aff204bb0828",
+   "extract": "qa_eb03.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op01.pdf?20240405",
+   "pdfSha256": "01044ea7ed05c5b5fd039b9280f099fd8680573b70872ba9a3477aff54682783",
+   "extract": "qa_op01.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op02.pdf?20240405",
+   "pdfSha256": "34d717825fb2adcf5d47ea052668668a26eb6af6433b7b047153abe558a194d2",
+   "extract": "qa_op02.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op03.pdf?20240405",
+   "pdfSha256": "8566666e827e3e77f5cd780294f80aa302a342b6a07e47b1a28f8e098f35f623",
+   "extract": "qa_op03.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op04.pdf?20240405",
+   "pdfSha256": "302bfe24dc5bca4bef05bc01b35b87f60a641916dae2774eebbac6a47eefa883",
+   "extract": "qa_op04.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op05.pdf?20240405",
+   "pdfSha256": "998457503708d534b97111b30f02cf68d7d92f8ac76b94093767bc9772d23c26",
+   "extract": "qa_op05.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op06.pdf?20240419",
+   "pdfSha256": "0adf4ac2acc78e1315356e4ddab2be6c2b789187ea40ba726055c9981256a7ee",
+   "extract": "qa_op06.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op07.pdf?20250228",
+   "pdfSha256": "c478fe124d42dcb5c681f673171829437e0e196479500faac098969d95a52752",
+   "extract": "qa_op07.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op08.pdf?20240830",
+   "pdfSha256": "2ae0b5551d59104ac469da729dc8f0e032bb6abf36be5fbd5b1829895d75bead",
+   "extract": "qa_op08.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op09.pdf?20241129",
+   "pdfSha256": "fb2b817d6df7aea584e53a6e1b253ecb1b39d0a71c179462abdccbf09382dffe",
+   "extract": "qa_op09.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op10.pdf?20250228",
+   "pdfSha256": "b4a558254d4694e2f7a83744b33dc140556168b6bde71ec43d4f9f04d3c2f524",
+   "extract": "qa_op10.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op11.pdf?20250523",
+   "pdfSha256": "c725484db93821e33e835f6818e550b48770de0b7b821822a36b6cd97d197c0b",
+   "extract": "qa_op11.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op12.pdf?20260206",
+   "pdfSha256": "15f820d20d5b758e890baa8eb2919ff7ba4354d00afe13e6e86995b6a36c2fe9",
+   "extract": "qa_op12.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op13.pdf?20260206",
+   "pdfSha256": "993a3853dd47f914ea7e3881143bf990613c9816ed1570e64673ff929cae157c",
+   "extract": "qa_op13.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op14_eb04.pdf?20260626",
+   "pdfSha256": "1308cc51cb124015155abc1f4d0cd1e5d21db6e774c74779faa193f144be9de5",
+   "extract": "qa_op14_eb04.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op16.pdf?20260821",
+   "pdfSha256": "b42026fc26f9cf6140c27914846f79e65ffafa3cf802e756b20eaf820179f6a0",
+   "extract": "qa_op16.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_op17.pdf?20260821",
+   "pdfSha256": "2502fee9464727d870076e2e6687138e39c4dee4b5e9e299d9d4fcb6719a3442",
+   "extract": "qa_op17.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_prb01.pdf?20241025",
+   "pdfSha256": "ca8d0e0898a8f9118e830ca2303e1981523183214875f3bfda492452473c20b0",
+   "extract": "qa_prb01.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_prb02.pdf?20250919",
+   "pdfSha256": "2ebc32753af5fdc047eeaf397c96d16ff6cda8b472b41809936c2d9212d57f14",
+   "extract": "qa_prb02.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_promotion-cards.pdf?20260206",
+   "pdfSha256": "685437f5f82fce04dfd4317ace999d3abda14da29d626eefe385383126304b35",
+   "extract": "qa_promotion-cards.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_rules.pdf?20250228",
+   "pdfSha256": "c9a65c930bd383db1b719950e87e6734e01e1eb95f7fb341c7cfcf69266e49d5",
+   "extract": "qa_rules.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-07.pdf?20230609",
+   "pdfSha256": "255a1b1fda1da3905b260a522fe04150048be8bf4717c1aa0b6f806bd4c8a44e",
+   "extract": "qa_st-07.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-08.pdf?20230728",
+   "pdfSha256": "c9e1fc2b1ee0f40fdce62f74a6d5b61a2e0c83690697acad5f7dd3e6b2f1ded7",
+   "extract": "qa_st-08.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-09.pdf?20230728",
+   "pdfSha256": "f74eec95a994f5f68aa9293d7698af3a62e0b329839e89b60c5611fad3b3fb4b",
+   "extract": "qa_st-09.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-10.pdf?20240405",
+   "pdfSha256": "4e172283eb2c50ffa688af7336308ead8fd25c51c49b4f65a1af4a262cecc549",
+   "extract": "qa_st-10.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-11.pdf?20240119",
+   "pdfSha256": "9f7b38785fab00839bbd5401241948d9af786b0efd10c96ccd9f2feeecaab8a5",
+   "extract": "qa_st-11.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-12.pdf?20240301",
+   "pdfSha256": "eb851ee1a1bb76fda7fa252c43ef6459afa7b698eee3873e05fd2648d40e1598",
+   "extract": "qa_st-12.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-13.pdf?20240405",
+   "pdfSha256": "4d01f6b95083023c4e76e54f8bc4dba19cb640d57f0bbf36ab59d7e2d3ac69a7",
+   "extract": "qa_st-13.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-14.pdf?20240802",
+   "pdfSha256": "e83deff4a203089e49e68f77306c239cfd985c4207be368c6e4fbb826d764a88",
+   "extract": "qa_st-14.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-15-20.pdf?20241011",
+   "pdfSha256": "3f36c084187a98845b4d24785f1b2f2f0dc1c15f683c2c761654638e7491cd43",
+   "extract": "qa_st-15-20.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-21.pdf?20250228",
+   "pdfSha256": "d62ad0f9de9cca23fb64d574d875b703ed926e8c39fb9a31892d70d7c1049218",
+   "extract": "qa_st-21.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-22.pdf?20250822",
+   "pdfSha256": "08c523000e1420e1f45773c53f8c0b4cd9907c4b235e59086273e0416799894a",
+   "extract": "qa_st-22.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-23-28.pdf?20250530",
+   "pdfSha256": "61c623f0dc9afefc7d1653c16e04d58f7584773e8c07d71d3591f9ab751c2985",
+   "extract": "qa_st-23-28.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-29.pdf?20260109",
+   "pdfSha256": "de9ee35f3f8640c1269cc4c0e9e5af83a7b153e188f53df6263a8c4e21f9cbf4",
+   "extract": "qa_st-29.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-30.pdf?20260529",
+   "pdfSha256": "f5377c14017da1940f7a9e90c341778d10df3d47898ceeaca4ab2ac46d5549b7",
+   "extract": "qa_st-30.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-31.pdf?20260717",
+   "pdfSha256": "294aa2023cd90313cfd0c83e0b70c8bda3fb4c1cb08e469051ac3dfca720c813",
+   "extract": "qa_st-31.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-32.pdf?20260717",
+   "pdfSha256": "de97ea5a79671d47039a16add56bd7f829337c63728f4033041b8e7c5ff424ef",
+   "extract": "qa_st-32.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-33.pdf?20260717",
+   "pdfSha256": "93f8171ea2816551009ca3a24bbc3e6dafb0ebb4f9f523bf0b0fb6226545fc91",
+   "extract": "qa_st-33.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-34.pdf?20260821",
+   "pdfSha256": "47286fc37416f5ba6c1fe8dce1b44e801e958079ad58c4a602821201b4e3570e",
+   "extract": "qa_st-34.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-35.pdf?20260717",
+   "pdfSha256": "53d0cb9f1ffc45c7aaaa60a7c08f1ecc7513ad249770fe4739f176a97d0f5a0f",
+   "extract": "qa_st-35.txt"
+  },
+  {
+   "url": "https://en.onepiece-cardgame.com/pdf/qa_st-36.pdf?20260717",
+   "pdfSha256": "4506d191124254e663590d2ad1492f5fd9729ca4dec1e6bd264715277685807b",
+   "extract": "qa_st-36.txt"
+  }
+ ]
+}

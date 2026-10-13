@@ -1,0 +1,2374 @@
+
+> cardgame@0.1.0 test
+> node --import tsx --test tests/*.test.ts
+
+TAP version 13
+# Subtest: missing production tables and columns give an actionable schema error
+ok 1 - missing production tables and columns give an actionable schema error
+  ---
+  duration_ms: 0.787416
+  type: 'test'
+  ...
+# Subtest: connection and transaction failures keep the original opening recoverable
+ok 2 - connection and transaction failures keep the original opening recoverable
+  ---
+  duration_ms: 0.28475
+  type: 'test'
+  ...
+# Subtest: operational failures never expose secrets, SQL, stack traces or untrusted codes
+ok 3 - operational failures never expose secrets, SQL, stack traces or untrusted codes
+  ---
+  duration_ms: 0.170792
+  type: 'test'
+  ...
+# Subtest: known business errors retain their existing code, message and status
+ok 4 - known business errors retain their existing code, message and status
+  ---
+  duration_ms: 0.083833
+  type: 'test'
+  ...
+# Subtest: A card requires reveal then advance; final card leads to summary without overflowing
+ok 5 - A card requires reveal then advance; final card leads to summary without overflowing
+  ---
+  duration_ms: 2.604708
+  type: 'test'
+  ...
+# Subtest: No cards and single-card packs have finite reveal states
+ok 6 - No cards and single-card packs have finite reveal states
+  ---
+  duration_ms: 0.1185
+  type: 'test'
+  ...
+# Subtest: Variants remain distinct from rarity and managed metadata overrides legacy flags
+ok 7 - Variants remain distinct from rarity and managed metadata overrides legacy flags
+  ---
+  duration_ms: 0.179625
+  type: 'test'
+  ...
+# Subtest: Speed and fast mode only configure presentation duration
+ok 8 - Speed and fast mode only configure presentation duration
+  ---
+  duration_ms: 0.173625
+  type: 'test'
+  ...
+# Subtest: booster families include OP, combined OP/EB, EB and PRB only
+ok 9 - booster families include OP, combined OP/EB, EB and PRB only
+  ---
+  duration_ms: 0.681625
+  type: 'test'
+  ...
+# Subtest: direct starter-deck opening is rejected before any database access
+ok 10 - direct starter-deck opening is rejected before any database access
+  ---
+  duration_ms: 0.449709
+  type: 'test'
+  ...
+# Subtest: complete profile probabilities control alternatives independently of catalogue size
+ok 11 - complete profile probabilities control alternatives independently of catalogue size
+  ---
+  duration_ms: 932.110959
+  type: 'test'
+  ...
+# Subtest: five illustrations of a number do not make it five times more likely
+ok 12 - five illustrations of a number do not make it five times more likely
+  ---
+  duration_ms: 356.534542
+  type: 'test'
+  ...
+# Subtest: explicit card weights define max number weight then relative art weights
+ok 13 - explicit card weights define max number weight then relative art weights
+  ---
+  duration_ms: 175.762917
+  type: 'test'
+  ...
+# Subtest: all complete compositions are feasible before any RNG is called
+ok 14 - all complete compositions are feasible before any RNG is called
+  ---
+  duration_ms: 0.914083
+  type: 'test'
+  ...
+# Subtest: complete profiles cannot hide independent rarity choices or wildcard variants
+ok 15 - complete profiles cannot hide independent rarity choices or wildcard variants
+  ---
+  duration_ms: 1.857666
+  type: 'test'
+  ...
+# Subtest: managed classification uses flags instead of assuming every _p suffix is ALT
+ok 16 - managed classification uses flags instead of assuming every _p suffix is ALT
+  ---
+  duration_ms: 0.256417
+  type: 'test'
+  ...
+# Subtest: managed overlapping variant pools never block a valid prevalidated composition
+ok 17 - managed overlapping variant pools never block a valid prevalidated composition
+  ---
+  duration_ms: 13.358792
+  type: 'test'
+  ...
+# Subtest: EB proposals contain no UC and show unavailable bonus pools explicitly
+ok 18 - EB proposals contain no UC and show unavailable bonus pools explicitly
+  ---
+  duration_ms: 3.024
+  type: 'test'
+  ...
+# Subtest: JSON storage and resolution retain the exact managed profile weights
+ok 19 - JSON storage and resolution retain the exact managed profile weights
+  ---
+  duration_ms: 1.357166
+  type: 'test'
+  ...
+# Subtest: low-frequency special outcomes keep explicit 0.8% and 0.2% pack weights
+ok 20 - low-frequency special outcomes keep explicit 0.8% and 0.2% pack weights
+  ---
+  duration_ms: 725.443208
+  type: 'test'
+  ...
+# Subtest: per-set legacy slots generate exactly 6C 3UC 2R 1SR, without repeated card numbers
+ok 21 - per-set legacy slots generate exactly 6C 3UC 2R 1SR, without repeated card numbers
+  ---
+  duration_ms: 7.093083
+  type: 'test'
+  ...
+# Subtest: empty and incomplete sets fail instead of silently replacing rarities
+ok 22 - empty and incomplete sets fail instead of silently replacing rarities
+  ---
+  duration_ms: 0.729667
+  type: 'test'
+  ...
+# Subtest: a card from another extension is rejected, even with a similar alias
+ok 23 - a card from another extension is rejected, even with a similar alias
+  ---
+  duration_ms: 0.095333
+  type: 'test'
+  ...
+# Subtest: configuration rejects malformed weights, unknown fields and impossible special packs
+ok 24 - configuration rejects malformed weights, unknown fields and impossible special packs
+  ---
+  duration_ms: 6.513166
+  type: 'test'
+  ...
+# Subtest: weighted choice boundaries and zero-weight cards
+ok 25 - weighted choice boundaries and zero-weight cards
+  ---
+  duration_ms: 0.4095
+  type: 'test'
+  ...
+# Subtest: configured rarity and card probabilities hold over 40000 draws
+ok 26 - configured rarity and card probabilities hold over 40000 draws
+  ---
+  duration_ms: 378.145084
+  type: 'test'
+  ...
+# Subtest: variants are explicit pools; standard excludes alternative, parallel and special cards
+ok 27 - variants are explicit pools; standard excludes alternative, parallel and special cards
+  ---
+  duration_ms: 0.602791
+  type: 'test'
+  ...
+# Subtest: special packs replace all slots; configured 10% probability and required pools verified
+ok 28 - special packs replace all slots; configured 10% probability and required pools verified
+  ---
+  duration_ms: 2504.957167
+  type: 'test'
+  ...
+# Subtest: historical God Pack retains explicit 1% occurrence with all 12 cards rare
+ok 29 - historical God Pack retains explicit 1% occurrence with all 12 cards rare
+  ---
+  duration_ms: 12.172916
+  type: 'test'
+  ...
+# Subtest: BoosterCard zero weights exclude cards and missing/negative values fail
+ok 30 - BoosterCard zero weights exclude cards and missing/negative values fail
+  ---
+  duration_ms: 0.646916
+  type: 'test'
+  ...
+# Subtest: legacy variant chances are disclosed instead of silently applied or claimed official
+ok 31 - legacy variant chances are disclosed instead of silently applied or claimed official
+  ---
+  duration_ms: 0.21775
+  type: 'test'
+  ...
+# Subtest: every available extension in the actual read-only inventory supports its configured slots
+ok 32 - every available extension in the actual read-only inventory supports its configured slots
+  ---
+  duration_ms: 129.857709
+  type: 'test'
+  ...
+# Subtest: booster illustrations differ per extension, preserve configured artwork and normalize aliases
+ok 33 - booster illustrations differ per extension, preserve configured artwork and normalize aliases
+  ---
+  duration_ms: 15.5475
+  type: 'test'
+  ...
+# Subtest: standard and alternative editions of the same number cannot share a pack
+ok 34 - standard and alternative editions of the same number cannot share a pack
+  ---
+  duration_ms: 2.078209
+  type: 'test'
+  ...
+# Subtest: insufficient positive unique numbers block instead of duplicating or changing rarity
+ok 35 - insufficient positive unique numbers block instead of duplicating or changing rarity
+  ---
+  duration_ms: 0.211917
+  type: 'test'
+  ...
+# Subtest: overlapping pools reserve the only eligible card for a later variant slot
+ok 36 - overlapping pools reserve the only eligible card for a later variant slot
+  ---
+  duration_ms: 0.224666
+  type: 'test'
+  ...
+# Subtest: an impossible selected composition does not reroll its rarity probabilities
+ok 37 - an impossible selected composition does not reroll its rarity probabilities
+  ---
+  duration_ms: 0.115
+  type: 'test'
+  ...
+# Subtest: standard, alternate and reprint remain distinct without overwriting art
+ok 38 - standard, alternate and reprint remain distinct without overwriting art
+  ---
+  duration_ms: 21.50425
+  type: 'test'
+  ...
+# Subtest: partial and repeated source merges preserve all identities, languages, images and memberships
+ok 39 - partial and repeated source merges preserve all identities, languages, images and memberships
+  ---
+  duration_ms: 1.814958
+  type: 'test'
+  ...
+# Subtest: French official and validated data outrank English and provisional translation
+ok 40 - French official and validated data outrank English and provisional translation
+  ---
+  duration_ms: 0.145166
+  type: 'test'
+  ...
+# Subtest: unknown numerics stay null, contradictory rules are reported and never silently replaced
+ok 41 - unknown numerics stay null, contradictory rules are reported and never silently replaced
+  ---
+  duration_ms: 0.281
+  type: 'test'
+  ...
+# Subtest: JSON NaN repair preserves text, records repair, never writes historical input
+ok 42 - JSON NaN repair preserves text, records repair, never writes historical input
+  ---
+  duration_ms: 0.211458
+  type: 'test'
+  ...
+# Subtest: language-independent stable art key retains the original legacy id
+ok 43 - language-independent stable art key retains the original legacy id
+  ---
+  duration_ms: 0.251917
+  type: 'test'
+  ...
+# Subtest: discovery supports arbitrary numbered families and unnamed actual series
+ok 44 - discovery supports arbitrary numbered families and unnamed actual series
+  ---
+  duration_ms: 0.404708
+  type: 'test'
+  ...
+# Subtest: translation guard preserves numbers, card references, DON!! and trait symbols
+ok 45 - translation guard preserves numbers, card references, DON!! and trait symbols
+  ---
+  duration_ms: 0.20875
+  type: 'test'
+  ...
+# Subtest: production and arbitrary local databases cannot be used for writes
+ok 46 - production and arbitrary local databases cannot be used for writes
+  ---
+  duration_ms: 0.385333
+  type: 'test'
+  ...
+# Subtest: JSONB object key ordering cannot produce false changes or new import receipts
+ok 47 - JSONB object key ordering cannot produce false changes or new import receipts
+  ---
+  duration_ms: 0.456667
+  type: 'test'
+  ...
+# Subtest: same-card French reuse is provisional and refuses changed rule numerics
+ok 48 - same-card French reuse is provisional and refuses changed rule numerics
+  ---
+  duration_ms: 0.664042
+  type: 'test'
+  ...
+# Subtest: local machine translation is guarded, resumable through memory, never official
+ok 49 - local machine translation is guarded, resumable through memory, never official
+  ---
+  duration_ms: 2.896042
+  type: 'test'
+  ...
+# Subtest: image download resumes a partial body, verifies content and reuses checksum without requests
+ok 50 - image download resumes a partial body, verifies content and reuses checksum without requests
+  ---
+  duration_ms: 1070.312542
+  type: 'test'
+  ...
+# Subtest: collector distinguishes copies, unique catalogue IDs and collected alternative versions
+ok 51 - collector distinguishes copies, unique catalogue IDs and collected alternative versions
+  ---
+  duration_ms: 0.947
+  type: 'test'
+  ...
+# Subtest: empty and uncollected catalogues return zero progression without fictional figures
+ok 52 - empty and uncollected catalogues return zero progression without fictional figures
+  ---
+  duration_ms: 1.104875
+  type: 'test'
+  ...
+# Subtest: visual effects use real variant metadata before configurable rarity names
+ok 53 - visual effects use real variant metadata before configurable rarity names
+  ---
+  duration_ms: 0.319291
+  type: 'test'
+  ...
+# Subtest: deck UI blocks unowned copies, incompatible colors, missing leader and copies across variants
+ok 54 - deck UI blocks unowned copies, incompatible colors, missing leader and copies across variants
+  ---
+  duration_ms: 0.993333
+  type: 'test'
+  ...
+# Subtest: deck analytics count quantities and exclude the leader from costs/types/colors
+ok 55 - deck analytics count quantities and exclude the leader from costs/types/colors
+  ---
+  duration_ms: 0.290334
+  type: 'test'
+  ...
+# Subtest: client deck rules reuse the server validator for a complete 1 plus 50 deck
+ok 56 - client deck rules reuse the server validator for a complete 1 plus 50 deck
+  ---
+  duration_ms: 0.523417
+  type: 'test'
+  ...
+# Subtest: extension families accept real hyphenated and compact codes without guessing unknown labels
+ok 57 - extension families accept real hyphenated and compact codes without guessing unknown labels
+  ---
+  duration_ms: 0.6215
+  type: 'test'
+  ...
+# Subtest: families reflect only catalogue entries, deduplicated and ordered
+ok 58 - families reflect only catalogue entries, deduplicated and ordered
+  ---
+  duration_ms: 0.651958
+  type: 'test'
+  ...
+# (node:6750) ExperimentalWarning: The MockTimers API is an experimental feature and might change at any time
+# (Use `node --trace-warnings ...` to show where the warning was created)
+# Subtest: MUGIWARA_FREE is the default, permanent and carries no official restriction
+ok 59 - MUGIWARA_FREE is the default, permanent and carries no official restriction
+  ---
+  duration_ms: 3.748
+  type: 'test'
+  ...
+# Subtest: MUGIWARA_FREE ignores official bans (synthetic restriction) that the official subset applies
+ok 60 - MUGIWARA_FREE ignores official bans (synthetic restriction) that the official subset applies
+  ---
+  duration_ms: 0.501667
+  type: 'test'
+  ...
+# Subtest: MUGIWARA_FREE keeps the structural rules: 50 cards, 4 copies, Leader colours, implemented cards only
+ok 61 - MUGIWARA_FREE keeps the structural rules: 50 cards, 4 copies, Leader colours, implemented cards only
+  ---
+  duration_ms: 4.278417
+  type: 'test'
+  ...
+# Subtest: /play creates games with the three reference decks on 2026-10-12
+ok 62 - /play creates games with the three reference decks on 2026-10-12
+  ---
+  duration_ms: 462.184583
+  type: 'test'
+  ...
+# Subtest: /play creates games with the three reference decks on 2026-10-13
+ok 63 - /play creates games with the three reference decks on 2026-10-13
+  ---
+  duration_ms: 387.940791
+  type: 'test'
+  ...
+# Subtest: /play creates games with the three reference decks on 2026-11-01
+ok 64 - /play creates games with the three reference decks on 2026-11-01
+  ---
+  duration_ms: 285.420042
+  type: 'test'
+  ...
+# Subtest: /play creates games with the three reference decks on 2031-02-28
+ok 65 - /play creates games with the three reference decks on 2031-02-28
+  ---
+  duration_ms: 337.094042
+  type: 'test'
+  ...
+# Subtest: existing games keep their stored ruleset (M4 subset and M5 subset) and can still be played
+ok 66 - existing games keep their stored ruleset (M4 subset and M5 subset) and can still be played
+  ---
+  duration_ms: 749.361042
+  type: 'test'
+  ...
+# Subtest: Leader Life has explicit official provenance and no fallback, including zero vs absent
+ok 67 - Leader Life has explicit official provenance and no fallback, including zero vs absent
+  ---
+  duration_ms: 2.104292
+  type: 'test'
+  ...
+# Subtest: Canonical numbers and artwork identities stay distinct; arbitrary suffixes rejected
+ok 68 - Canonical numbers and artwork identities stay distinct; arbitrary suffixes rejected
+  ---
+  duration_ms: 0.794167
+  type: 'test'
+  ...
+# Subtest: Multicolour Leaders support French and English without accepting unknown colours
+ok 69 - Multicolour Leaders support French and English without accepting unknown colours
+  ---
+  duration_ms: 0.236375
+  type: 'test'
+  ...
+# Subtest: Unknown characteristics are rejected and zero is preserved without coercing strings
+ok 70 - Unknown characteristics are rejected and zero is preserved without coercing strings
+  ---
+  duration_ms: 0.415125
+  type: 'test'
+  ...
+# Subtest: Repeated imports are idempotent, reprints remain memberships and contradictory variants are excluded
+ok 71 - Repeated imports are idempotent, reprints remain memberships and contradictory variants are excluded
+  ---
+  duration_ms: 2.980292
+  type: 'test'
+  ...
+# Subtest: Official Life parser only accepts labelled Life/Vie on Leaders, never other numeric fields
+ok 72 - Official Life parser only accepts labelled Life/Vie on Leaders, never other numeric fields
+  ---
+  duration_ms: 3.340375
+  type: 'test'
+  ...
+# Subtest: Deck rules count artwork copies by number and enforce 1 Leader + 50, colours and quantities
+ok 73 - Deck rules count artwork copies by number and enforce 1 Leader + 50, colours and quantities
+  ---
+  duration_ms: 1.703958
+  type: 'test'
+  ...
+# Subtest: Restrictions respect effective dates, limits, pairs, expired snapshots and competitive block policy
+ok 74 - Restrictions respect effective dates, limits, pairs, expired snapshots and competitive block policy
+  ---
+  duration_ms: 0.974208
+  type: 'test'
+  ...
+# Subtest: Actual reviewed specs retain FAQ/errata semantics and unimplemented effects cannot be admitted
+ok 75 - Actual reviewed specs retain FAQ/errata semantics and unimplemented effects cannot be admitted
+  ---
+  duration_ms: 1.383416
+  type: 'test'
+  ...
+# Subtest: Real 284 Leader variants have official evidence; preparing the subset preserves historical IDs and source data
+ok 76 - Real 284 Leader variants have official evidence; preparing the subset preserves historical IDs and source data
+  ---
+  duration_ms: 955.662083
+  type: 'test'
+  ...
+# Subtest: M1.5 both orders execute the first two turns with exact Draw and DON exceptions
+ok 77 - M1.5 both orders execute the first two turns with exact Draw and DON exceptions
+  ---
+  duration_ms: 59.607458
+  type: 'test'
+  ...
+# Subtest: M1.5 phases expose only active-player decisions and cannot be skipped
+ok 78 - M1.5 phases expose only active-player decisions and cannot be skipped
+  ---
+  duration_ms: 12.585959
+  type: 'test'
+  ...
+# Subtest: M1.5 DON distribution handles one remaining and zero, preserving all ten per player
+ok 79 - M1.5 DON distribution handles one remaining and zero, preserving all ten per player
+  ---
+  duration_ms: 108.701
+  type: 'test'
+  ...
+# Subtest: M1.5 playing a Character pays its exact cost and preserves all instances
+ok 80 - M1.5 playing a Character pays its exact cost and preserves all instances
+  ---
+  duration_ms: 13.187875
+  type: 'test'
+  ...
+# Subtest: M1.5 rejects insufficient, duplicate, foreign and already rested payment without mutations
+ok 81 - M1.5 rejects insufficient, duplicate, foreign and already rested payment without mutations
+  ---
+  duration_ms: 112.005333
+  type: 'test'
+  ...
+# Subtest: M1.5 sixth Character requires a chosen replacement and returns its attached DON rested
+ok 82 - M1.5 sixth Character requires a chosen replacement and returns its attached DON rested
+  ---
+  duration_ms: 88.425666
+  type: 'test'
+  ...
+# Subtest: M1.5 Stage play replaces the existing Stage; wrong replacement and premature trash are rejected
+ok 83 - M1.5 Stage play replaces the existing Stage; wrong replacement and premature trash are rejected
+  ---
+  duration_ms: 73.451375
+  type: 'test'
+  ...
+# Subtest: M1.5 attachments affect power only on own turn and Refresh restores all field resources
+ok 84 - M1.5 attachments affect power only on own turn and Refresh restores all field resources
+  ---
+  duration_ms: 65.091167
+  type: 'test'
+  ...
+# Subtest: M1.5 attachment rejects stages, opponents, rested DON, duplicates and empty lists
+ok 85 - M1.5 attachment rejects stages, opponents, rested DON, duplicates and empty lists
+  ---
+  duration_ms: 89.22525
+  type: 'test'
+  ...
+# Subtest: M1.5 actions list affordable hand cards and active DON only; Events and abilities are unavailable
+ok 86 - M1.5 actions list affordable hand cards and active DON only; Events and abilities are unavailable
+  ---
+  duration_ms: 6.122083
+  type: 'test'
+  ...
+# Subtest: M1.5 zero-cost fixture can be played without DON; zero Life alone is not defeat
+ok 87 - M1.5 zero-cost fixture can be played without DON; zero Life alone is not defeat
+  ---
+  duration_ms: 6.970708
+  type: 'test'
+  ...
+# Subtest: M1.5 drawing the last deck card ends the game and disables every action
+ok 88 - M1.5 drawing the last deck card ends the game and disables every action
+  ---
+  duration_ms: 62.226917
+  type: 'test'
+  ...
+# Subtest: M1.5 an already empty deck resolves at the next rule boundary without inventing a card
+ok 89 - M1.5 an already empty deck resolves at the next rule boundary without inventing a card
+  ---
+  duration_ms: 9.855416
+  type: 'test'
+  ...
+# Subtest: M1.5 repeated phase, play and attachment commands are idempotent; stale changes are refused
+ok 90 - M1.5 repeated phase, play and attachment commands are idempotent; stale changes are refused
+  ---
+  duration_ms: 105.159541
+  type: 'test'
+  ...
+# Subtest: M1.5 projection reveals public field/trash/attachments, never hidden cards or payment history
+ok 91 - M1.5 projection reveals public field/trash/attachments, never hidden cards or payment history
+  ---
+  duration_ms: 53.478042
+  type: 'test'
+  ...
+# Subtest: M1.5 serializable loop integrates setup, legal actions, immutable commands and restoration deterministically
+ok 92 - M1.5 serializable loop integrates setup, legal actions, immutable commands and restoration deterministically
+  ---
+  duration_ms: 425.014667
+  type: 'test'
+  ...
+# Subtest: M1.5 scripted pass-only game reaches real deck exhaustion solely through legal commands
+ok 93 - M1.5 scripted pass-only game reaches real deck exhaustion solely through legal commands
+  ---
+  duration_ms: 627.137291
+  type: 'test'
+  ...
+# Subtest: contracts and TEST-FUTURE-SET serialize and validate
+ok 94 - contracts and TEST-FUTURE-SET serialize and validate
+  ---
+  duration_ms: 39.176542
+  type: 'test'
+  ...
+# Subtest: malformed registry/unknown fields fail closed
+ok 95 - malformed registry/unknown fields fail closed
+  ---
+  duration_ms: 1.059417
+  type: 'test'
+  ...
+# Subtest: unknown primitive and incompatible versions are refused
+ok 96 - unknown primitive and incompatible versions are refused
+  ---
+  duration_ms: 0.522125
+  type: 'test'
+  ...
+# Subtest: unimplemented costs/card bindings/public hand choices rejected
+ok 97 - unimplemented costs/card bindings/public hand choices rejected
+  ---
+  duration_ms: 1.735375
+  type: 'test'
+  ...
+# Subtest: giveRestedDon preserves identity/conservation and confirms exhausted arrival
+ok 98 - giveRestedDon preserves identity/conservation and confirms exhausted arrival
+  ---
+  duration_ms: 31.505166
+  type: 'test'
+  ...
+# Subtest: exhausted DON deck cannot add eleventh DON and leaves original intact
+ok 99 - exhausted DON deck cannot add eleventh DON and leaves original intact
+  ---
+  duration_ms: 36.765625
+  type: 'test'
+  ...
+# Subtest: restrictions prevent operation without successful event
+ok 100 - restrictions prevent operation without successful event
+  ---
+  duration_ms: 17.11075
+  type: 'test'
+  ...
+# Subtest: invalid recipient rejected at state trust boundary
+ok 101 - invalid recipient rejected at state trust boundary
+  ---
+  duration_ms: 1.6305
+  type: 'test'
+  ...
+# Subtest: recipient derives from program not client; opponent gains DON
+ok 102 - recipient derives from program not client; opponent gains DON
+  ---
+  duration_ms: 14.902083
+  type: 'test'
+  ...
+# Subtest: START_EFFECT exact replay idempotent; same key changed intention conflict
+ok 103 - START_EFFECT exact replay idempotent; same key changed intention conflict
+  ---
+  duration_ms: 22.036917
+  type: 'test'
+  ...
+# Subtest: once per turn and optional zero choice supported
+ok 104 - once per turn and optional zero choice supported
+  ---
+  duration_ms: 45.660083
+  type: 'test'
+  ...
+# Subtest: suspension, JSON restore and continuation resume exactly once
+ok 105 - suspension, JSON restore and continuation resume exactly once
+  ---
+  duration_ms: 13.187125
+  type: 'test'
+  ...
+# Subtest: multiple selections require valid distinct options and min/max
+ok 106 - multiple selections require valid distinct options and min/max
+  ---
+  duration_ms: 14.286375
+  type: 'test'
+  ...
+# Subtest: ORDER requires complete permutation, arbitrary legitimate order retained
+ok 107 - ORDER requires complete permutation, arbitrary legitimate order retained
+  ---
+  duration_ms: 15.977125
+  type: 'test'
+  ...
+# Subtest: wrong actor/choice/token/stale rejected with generic errors, no hidden identity
+ok 108 - wrong actor/choice/token/stale rejected with generic errors, no hidden identity
+  ---
+  duration_ms: 18.326042
+  type: 'test'
+  ...
+# Subtest: concurrent/normal commands cannot bypass pending resolution
+ok 109 - concurrent/normal commands cannot bypass pending resolution
+  ---
+  duration_ms: 23.432542
+  type: 'test'
+  ...
+# Subtest: answer replay no double operation; stale concurrent answer and old choice rejected
+ok 110 - answer replay no double operation; stale concurrent answer and old choice rejected
+  ---
+  duration_ms: 29.547792
+  type: 'test'
+  ...
+# Subtest: private choice/projection and restoration do not leak options to opponent/spectator
+ok 111 - private choice/projection and restoration do not leak options to opponent/spectator
+  ---
+  duration_ms: 18.941417
+  type: 'test'
+  ...
+# Subtest: public/private confirmed journals filtered and internal proposals hidden
+ok 112 - public/private confirmed journals filtered and internal proposals hidden
+  ---
+  duration_ms: 29.645667
+  type: 'test'
+  ...
+# Subtest: replacement intercepts proposed exhausted move, confirms only actual ready move
+ok 113 - replacement intercepts proposed exhausted move, confirms only actual ready move
+  ---
+  duration_ms: 17.735
+  type: 'test'
+  ...
+# Subtest: PREVENT replacement has no successful event or mutation
+ok 114 - PREVENT replacement has no successful event or mutation
+  ---
+  duration_ms: 8.092542
+  type: 'test'
+  ...
+# Subtest: replacement cannot loop on same effect
+ok 115 - replacement cannot loop on same effect
+  ---
+  duration_ms: 17.508
+  type: 'test'
+  ...
+# Subtest: multiple eligible replacements refused rather than guessed, atomic refusal
+ok 116 - multiple eligible replacements refused rather than guessed, atomic refusal
+  ---
+  duration_ms: 7.288875
+  type: 'test'
+  ...
+# Subtest: non-applicable replacement does not intercept
+ok 117 - non-applicable replacement does not intercept
+  ---
+  duration_ms: 7.834125
+  type: 'test'
+  ...
+# Subtest: invalid replacement cannot move unrelated recipient instance
+ok 118 - invalid replacement cannot move unrelated recipient instance
+  ---
+  duration_ms: 15.824917
+  type: 'test'
+  ...
+# Subtest: late failure after earlier operations leaves input wholly unchanged
+ok 119 - late failure after earlier operations leaves input wholly unchanged
+  ---
+  duration_ms: 17.171791
+  type: 'test'
+  ...
+# Subtest: corrupted continuation/choice/primitive-version snapshots refused
+ok 120 - corrupted continuation/choice/primitive-version snapshots refused
+  ---
+  duration_ms: 12.255292
+  type: 'test'
+  ...
+# Subtest: copied registry and known primitive in fictitious extension deterministic across JSON boundaries
+ok 121 - copied registry and known primitive in fictitious extension deterministic across JSON boundaries
+  ---
+  duration_ms: 62.033791
+  type: 'test'
+  ...
+# Subtest: continuous modifier structure preserves null/zero, cycles diagnosed without evaluation
+ok 122 - continuous modifier structure preserves null/zero, cycles diagnosed without evaluation
+  ---
+  duration_ms: 13.105833
+  type: 'test'
+  ...
+# Subtest: v1 saves remain valid, no implicit effect grant; base v1/v2 commands unchanged
+ok 123 - v1 saves remain valid, no implicit effect grant; base v1/v2 commands unchanged
+  ---
+  duration_ms: 49.537833
+  type: 'test'
+  ...
+# Subtest: selected DON identities drive operations, including zero/multiple selections after restore
+ok 124 - selected DON identities drive operations, including zero/multiple selections after restore
+  ---
+  duration_ms: 14.111
+  type: 'test'
+  ...
+# Subtest: unbound subject and invalid selection kind/source are rejected without mutations
+ok 125 - unbound subject and invalid selection kind/source are rejected without mutations
+  ---
+  duration_ms: 10.45225
+  type: 'test'
+  ...
+# Subtest: restrictions prevent a prohibited proposal before replacement
+ok 126 - restrictions prevent a prohibited proposal before replacement
+  ---
+  duration_ms: 11.159667
+  type: 'test'
+  ...
+# Subtest: DON condition false excludes activation, recipient and unknown IDs fail explicitly
+ok 127 - DON condition false excludes activation, recipient and unknown IDs fail explicitly
+  ---
+  duration_ms: 40.470416
+  type: 'test'
+  ...
+# Subtest: schema mismatch refuses implicit upgrade/downgrade and effects in SETUP_ONLY
+ok 128 - schema mismatch refuses implicit upgrade/downgrade and effects in SETUP_ONLY
+  ---
+  duration_ms: 13.125209
+  type: 'test'
+  ...
+# Subtest: declarative registry rejects executable data rather than silently dropping functions
+ok 129 - declarative registry rejects executable data rather than silently dropping functions
+  ---
+  duration_ms: 0.4715
+  type: 'test'
+  ...
+# Subtest: unknown primitive and version errors identify compatibility failure
+ok 130 - unknown primitive and version errors identify compatibility failure
+  ---
+  duration_ms: 0.227583
+  type: 'test'
+  ...
+# Subtest: two successive suspended choices resume at distinct program counters and IDs
+ok 131 - two successive suspended choices resume at distinct program counters and IDs
+  ---
+  duration_ms: 11.518792
+  type: 'test'
+  ...
+# Subtest: confirmed journal corruption and ID counter rollback are detected on restoration
+ok 132 - confirmed journal corruption and ID counter rollback are detected on restoration
+  ---
+  duration_ms: 15.072375
+  type: 'test'
+  ...
+# Subtest: minor invalid envelope fields and extra actor-selected recipient cannot reach pipeline
+ok 133 - minor invalid envelope fields and extra actor-selected recipient cannot reach pipeline
+  ---
+  duration_ms: 8.488625
+  type: 'test'
+  ...
+# Subtest: stable effect IDs may contain version namespace separators
+ok 134 - stable effect IDs may contain version namespace separators
+  ---
+  duration_ms: 7.302083
+  type: 'test'
+  ...
+# Subtest: determinism and conservation over 20 injected seeds including private suspension
+ok 135 - determinism and conservation over 20 injected seeds including private suspension
+  ---
+  duration_ms: 446.338375
+  type: 'test'
+  ...
+# Subtest: prototype-property bindings are refused at the declarative boundary
+ok 136 - prototype-property bindings are refused at the declarative boundary
+  ---
+  duration_ms: 4.475375
+  type: 'test'
+  ...
+# Subtest: reviewed card bundle validates and pins DSL 1.1 independently of artwork
+ok 137 - reviewed card bundle validates and pins DSL 1.1 independently of artwork
+  ---
+  duration_ms: 51.349875
+  type: 'test'
+  ...
+# Subtest: real Luffy zero choice completes without mandatory recipient or DON
+ok 138 - real Luffy zero choice completes without mandatory recipient or DON
+  ---
+  duration_ms: 32.624208
+  type: 'test'
+  ...
+# Subtest: Luffy uses only rested cost DON, never attached or DON-deck cards
+ok 139 - Luffy uses only rested cost DON, never attached or DON-deck cards
+  ---
+  duration_ms: 86.250291
+  type: 'test'
+  ...
+# Subtest: Nami can target herself and observes her once-per-turn limit
+ok 140 - Nami can target herself and observes her once-per-turn limit
+  ---
+  duration_ms: 75.405084
+  type: 'test'
+  ...
+# Subtest: source in hand/trash, opponent actor and wrong phase cannot activate
+ok 141 - source in hand/trash, opponent actor and wrong phase cannot activate
+  ---
+  duration_ms: 32.378166
+  type: 'test'
+  ...
+# Subtest: real effect JSON recovery across both choices, replay never doubles DON
+ok 142 - real effect JSON recovery across both choices, replay never doubles DON
+  ---
+  duration_ms: 107.380875
+  type: 'test'
+  ...
+# Subtest: pending real choice rejects normal command and invalid options without partial state
+ok 143 - pending real choice rejects normal command and invalid options without partial state
+  ---
+  duration_ms: 42.492042
+  type: 'test'
+  ...
+# Subtest: private hand, deck and Life remain hidden throughout real public choice
+ok 144 - private hand, deck and Life remain hidden throughout real public choice
+  ---
+  duration_ms: 26.971917
+  type: 'test'
+  ...
+# Subtest: Brook triggers from confirmed PLAY_CARD and can give zero, one or two DON
+ok 145 - Brook triggers from confirmed PLAY_CARD and can give zero, one or two DON
+  ---
+  duration_ms: 444.903708
+  type: 'test'
+  ...
+# Subtest: Brook cannot be manually activated or triggered by an invalid play
+ok 146 - Brook cannot be manually activated or triggered by an invalid play
+  ---
+  duration_ms: 127.515333
+  type: 'test'
+  ...
+# Subtest: Brook confirmed play replay cannot enqueue a second trigger
+ok 147 - Brook confirmed play replay cannot enqueue a second trigger
+  ---
+  duration_ms: 92.194667
+  type: 'test'
+  ...
+# Subtest: Brook auto trigger does not recreate after serialization or later phase
+ok 148 - Brook auto trigger does not recreate after serialization or later phase
+  ---
+  duration_ms: 124.651125
+  type: 'test'
+  ...
+# Subtest: Zoro continuous bonus includes both turns while normal DON bonus is own-turn only
+ok 149 - Zoro continuous bonus includes both turns while normal DON bonus is own-turn only
+  ---
+  duration_ms: 48.398959
+  type: 'test'
+  ...
+# Subtest: Sunny pays REST_SOURCE before choice, cannot pay again while rested
+ok 150 - Sunny pays REST_SOURCE before choice, cannot pay again while rested
+  ---
+  duration_ms: 83.5055
+  type: 'test'
+  ...
+# Subtest: Sunny excludes non-Straw-Hat cards and modifier lasts through End only
+ok 151 - Sunny excludes non-Straw-Hat cards and modifier lasts through End only
+  ---
+  duration_ms: 229.568042
+  type: 'test'
+  ...
+# Subtest: invalid post-cost choice preserves paid cost and suspended prior command
+ok 152 - invalid post-cost choice preserves paid cost and suspended prior command
+  ---
+  duration_ms: 79.963375
+  type: 'test'
+  ...
+# Subtest: missing card program or incompatible registry blocks preparation explicitly
+ok 153 - missing card program or incompatible registry blocks preparation explicitly
+  ---
+  duration_ms: 18.64525
+  type: 'test'
+  ...
+# Subtest: future new card definition executes an actual attachment with unchanged core and saved registry
+ok 154 - future new card definition executes an actual attachment with unchanged core and saved registry
+  ---
+  duration_ms: 160.899459
+  type: 'test'
+  ...
+# Subtest: real-card runs deterministic and conserve all 122 instances over seeds
+ok 155 - real-card runs deterministic and conserve all 122 instances over seeds
+  ---
+  duration_ms: 276.602584
+  type: 'test'
+  ...
+# Subtest: another Nami presence has an independent once-per-turn ledger
+ok 156 - another Nami presence has an independent once-per-turn ledger
+  ---
+  duration_ms: 461.357792
+  type: 'test'
+  ...
+# Subtest: ability identity captures source generation and rejects a forged former presence
+ok 157 - ability identity captures source generation and rejects a forged former presence
+  ---
+  duration_ms: 71.222583
+  type: 'test'
+  ...
+# Subtest: a suspended card-source identity cannot be forged in a saved resolution
+ok 158 - a suspended card-source identity cannot be forged in a saved resolution
+  ---
+  duration_ms: 30.128583
+  type: 'test'
+  ...
+# Subtest: wrong source zone and absent continuous source rejected at creation
+ok 159 - wrong source zone and absent continuous source rejected at creation
+  ---
+  duration_ms: 10.831833
+  type: 'test'
+  ...
+# Subtest: unverified simultaneous On Play abilities are blocked rather than ordered lexically
+ok 160 - unverified simultaneous On Play abilities are blocked rather than ordered lexically
+  ---
+  duration_ms: 191.737042
+  type: 'test'
+  ...
+# Subtest: known additive modifiers compose and projection consults the same evaluator
+ok 161 - known additive modifiers compose and projection consults the same evaluator
+  ---
+  duration_ms: 277.228625
+  type: 'test'
+  ...
+# Subtest: Luffy interacts with OP01 Hajrudin using the same DON primitive, no set branch
+ok 162 - Luffy interacts with OP01 Hajrudin using the same DON primitive, no set branch
+  ---
+  duration_ms: 309.528042
+  type: 'test'
+  ...
+# Subtest: modifiers with unknown dependency/mode are rejected, not guessed
+ok 163 - modifiers with unknown dependency/mode are rejected, not guessed
+  ---
+  duration_ms: 1.618666
+  type: 'test'
+  ...
+# Subtest: Shanks On Play confirms ordinary KO only after choosing a legal opponent target
+ok 164 - Shanks On Play confirms ordinary KO only after choosing a legal opponent target
+  ---
+  duration_ms: 196.994375
+  type: 'test'
+  ...
+# Subtest: real replacement discards Sunny instead of KO; never produces a false KO event
+ok 165 - real replacement discards Sunny instead of KO; never produces a false KO event
+  ---
+  duration_ms: 113.74825
+  type: 'test'
+  ...
+# Subtest: replacement private options belong to defender; Shanks controller cannot answer
+ok 166 - replacement private options belong to defender; Shanks controller cannot answer
+  ---
+  duration_ms: 253.377875
+  type: 'test'
+  ...
+# Subtest: replacement resume is idempotent, stale response fails and no double hand discard
+ok 167 - replacement resume is idempotent, stale response fails and no double hand discard
+  ---
+  duration_ms: 171.461334
+  type: 'test'
+  ...
+# Subtest: replacement cannot use a Character from hand or a forged card
+ok 168 - replacement cannot use a Character from hand or a forged card
+  ---
+  duration_ms: 155.200542
+  type: 'test'
+  ...
+# Subtest: no payable replacement performs real KO directly, matching official EB01 FAQ
+ok 169 - no payable replacement performs real KO directly, matching official EB01 FAQ
+  ---
+  duration_ms: 193.023792
+  type: 'test'
+  ...
+# Subtest: Shanks zero targets completes without a KO or replacement choice
+ok 170 - Shanks zero targets completes without a KO or replacement choice
+  ---
+  duration_ms: 167.970459
+  type: 'test'
+  ...
+# Subtest: simultaneous real replacements explicitly blocked with no partial mutation
+ok 171 - simultaneous real replacements explicitly blocked with no partial mutation
+  ---
+  duration_ms: 186.039708
+  type: 'test'
+  ...
+# Subtest: forged replacement continuation/actor/subject fails restoration
+ok 172 - forged replacement continuation/actor/subject fails restoration
+  ---
+  duration_ms: 761.08775
+  type: 'test'
+  ...
+# Subtest: paid replacement once-per-turn blocks a second KO in the same turn and presence
+ok 173 - paid replacement once-per-turn blocks a second KO in the same turn and presence
+  ---
+  duration_ms: 390.352208
+  type: 'test'
+  ...
+# Subtest: pending KO is a proposal, never a confirmed operation before defender choice
+ok 174 - pending KO is a proposal, never a confirmed operation before defender choice
+  ---
+  duration_ms: 348.256708
+  type: 'test'
+  ...
+# Subtest: replacement already consumed cannot be forged into a pending saved choice
+ok 175 - replacement already consumed cannot be forged into a pending saved choice
+  ---
+  duration_ms: 207.659167
+  type: 'test'
+  ...
+# Subtest: unsupported On KO trigger timing is refused at admission, never treated as vanilla
+ok 176 - unsupported On KO trigger timing is refused at admission, never treated as vanilla
+  ---
+  duration_ms: 0.962459
+  type: 'test'
+  ...
+# Subtest: Shanks targeting consults actual continuous power and excludes cards above threshold
+ok 177 - Shanks targeting consults actual continuous power and excludes cards above threshold
+  ---
+  duration_ms: 237.183625
+  type: 'test'
+  ...
+# Subtest: resolution trace records proposed KO, private choice and actual replacement in order
+ok 178 - resolution trace records proposed KO, private choice and actual replacement in order
+  ---
+  duration_ms: 254.46875
+  type: 'test'
+  ...
+# Subtest: M15D accepts versioned existing definitions and ON_KO
+ok 179 - M15D accepts versioned existing definitions and ON_KO
+  ---
+  duration_ms: 7.690125
+  type: 'test'
+  ...
+# Subtest: M15D preserves old registry and refuses legacy ON_KO
+ok 180 - M15D preserves old registry and refuses legacy ON_KO
+  ---
+  duration_ms: 5.3395
+  type: 'test'
+  ...
+# Subtest: M15D rejects unknown primitives and incompatible versions
+ok 181 - M15D rejects unknown primitives and incompatible versions
+  ---
+  duration_ms: 3.44475
+  type: 'test'
+  ...
+# Subtest: M15D scheduler retains initial B before cascade C and active player first
+ok 182 - M15D scheduler retains initial B before cascade C and active player first
+  ---
+  duration_ms: 0.27975
+  type: 'test'
+  ...
+# Subtest: M15D real Caribou ON_KO cascades after Shanks across series
+ok 183 - M15D real Caribou ON_KO cascades after Shanks across series
+  ---
+  duration_ms: 81.513958
+  type: 'test'
+  ...
+# Subtest: M15D real ON_PLAY plus future fixture requires ordering, never registry sorting
+ok 184 - M15D real ON_PLAY plus future fixture requires ordering, never registry sorting
+  ---
+  duration_ms: 35.2065
+  type: 'test'
+  ...
+# Subtest: M15D composite cost initially impossible pays nothing
+ok 185 - M15D composite cost initially impossible pays nothing
+  ---
+  duration_ms: 19.92025
+  type: 'test'
+  ...
+# Subtest: M15D interrupted composite payment retains paid operation and skips remainder
+ok 186 - M15D interrupted composite payment retains paid operation and skips remainder
+  ---
+  duration_ms: 50.867041
+  type: 'test'
+  ...
+# Subtest: M15D real Sabo replacement prevents Usopp ON_KO
+ok 187 - M15D real Sabo replacement prevents Usopp ON_KO
+  ---
+  duration_ms: 33.415667
+  type: 'test'
+  ...
+# Subtest: M15D real Sabo decline permits Usopp ON_KO and leaves usage free
+ok 188 - M15D real Sabo decline permits Usopp ON_KO and leaves usage free
+  ---
+  duration_ms: 42.821625
+  type: 'test'
+  ...
+# Subtest: M15D interrupted activation commits payment and skips body via applyCommand
+ok 189 - M15D interrupted activation commits payment and skips body via applyCommand
+  ---
+  duration_ms: 33.281541
+  type: 'test'
+  ...
+# Subtest: M15D order choice recovery is private and duplicate answers are idempotent
+ok 190 - M15D order choice recovery is private and duplicate answers are idempotent
+  ---
+  duration_ms: 35.678792
+  type: 'test'
+  ...
+# Subtest: M15D forged ON_KO capture and ordering save are rejected
+ok 191 - M15D forged ON_KO capture and ordering save are rejected
+  ---
+  duration_ms: 29.475916
+  type: 'test'
+  ...
+# Subtest: M15D explicit simultaneous replacement and KO batch refusals preserve state
+ok 192 - M15D explicit simultaneous replacement and KO batch refusals preserve state
+  ---
+  duration_ms: 88.100333
+  type: 'test'
+  ...
+# Subtest: M15D Sabo requires DON and opponent turn and consumes only accepted usage
+ok 193 - M15D Sabo requires DON and opponent turn and consumes only accepted usage
+  ---
+  duration_ms: 49.267667
+  type: 'test'
+  ...
+# Subtest: M15D normal play payment and movement use common operations
+ok 194 - M15D normal play payment and movement use common operations
+  ---
+  duration_ms: 17.331375
+  type: 'test'
+  ...
+# Subtest: M15D Sunny rest and power gain are confirmed operations
+ok 195 - M15D Sunny rest and power gain are confirmed operations
+  ---
+  duration_ms: 40.375042
+  type: 'test'
+  ...
+# Subtest: M15D both controllers pending from one KO resolve active player first
+ok 196 - M15D both controllers pending from one KO resolve active player first
+  ---
+  duration_ms: 34.508208
+  type: 'test'
+  ...
+# Subtest: M15D reproducible real KO confirmed, cascade and saved recovery traces
+ok 197 - M15D reproducible real KO confirmed, cascade and saved recovery traces
+  ---
+  duration_ms: 108.619583
+  type: 'test'
+  ...
+# Subtest: M15D reproducible real prevented KO trace
+ok 198 - M15D reproducible real prevented KO trace
+  ---
+  duration_ms: 42.887875
+  type: 'test'
+  ...
+# Subtest: M15D simultaneous abilities finish before generated cascade trace
+ok 199 - M15D simultaneous abilities finish before generated cascade trace
+  ---
+  duration_ms: 57.497917
+  type: 'test'
+  ...
+# Subtest: M15D future new card definition registers and resolves after JSON restore
+ok 200 - M15D future new card definition registers and resolves after JSON restore
+  ---
+  duration_ms: 62.786
+  type: 'test'
+  ...
+# Subtest: M15D older saves retain pinned engine and definitions
+ok 201 - M15D older saves retain pinned engine and definitions
+  ---
+  duration_ms: 30.150875
+  type: 'test'
+  ...
+# Subtest: M15D order save rejects forged options, actor and version
+ok 202 - M15D order save rejects forged options, actor and version
+  ---
+  duration_ms: 49.258458
+  type: 'test'
+  ...
+# Subtest: M15D private replacement and payment logs absent from opponent projection
+ok 203 - M15D private replacement and payment logs absent from opponent projection
+  ---
+  duration_ms: 37.771292
+  type: 'test'
+  ...
+# Subtest: M15D determinism and conservation across repeated real cascade runs
+ok 204 - M15D determinism and conservation across repeated real cascade runs
+  ---
+  duration_ms: 129.248542
+  type: 'test'
+  ...
+# Subtest: M15D review regression: interrupted PLAY_CARD retains paid DON and does not play
+ok 205 - M15D review regression: interrupted PLAY_CARD retains paid DON and does not play
+  ---
+  duration_ms: 9.799458
+  type: 'test'
+  ...
+# Subtest: M15D review regression: automatic once per turn survives KO cascades
+ok 206 - M15D review regression: automatic once per turn survives KO cascades
+  ---
+  duration_ms: 26.847
+  type: 'test'
+  ...
+# Subtest: M15D review regression: fabricated cause, batch actor, pending history and missing suspension rejected
+ok 207 - M15D review regression: fabricated cause, batch actor, pending history and missing suspension rejected
+  ---
+  duration_ms: 27.977
+  type: 'test'
+  ...
+# Subtest: M15D Usopp uses base power when target current power exceeds threshold
+ok 208 - M15D Usopp uses base power when target current power exceeds threshold
+  ---
+  duration_ms: 70.934209
+  type: 'test'
+  ...
+# Subtest: M15D pending ordinary automatic source KO before activation is invalidated
+ok 209 - M15D pending ordinary automatic source KO before activation is invalidated
+  ---
+  duration_ms: 101.620125
+  type: 'test'
+  ...
+# Subtest: M15D new field presence resets activation limit without reusing old generation
+ok 210 - M15D new field presence resets activation limit without reusing old generation
+  ---
+  duration_ms: 68.793209
+  type: 'test'
+  ...
+# Subtest: M15D Sabo cannot replace a second eligible victim after accepting once
+ok 211 - M15D Sabo cannot replace a second eligible victim after accepting once
+  ---
+  duration_ms: 26.860917
+  type: 'test'
+  ...
+# Subtest: M15D Sabo own-turn protection is unavailable
+ok 212 - M15D Sabo own-turn protection is unavailable
+  ---
+  duration_ms: 51.391958
+  type: 'test'
+  ...
+# Subtest: M1 creates 122 unique instances and initializes all zones without mutating inputs
+ok 213 - M1 creates 122 unique instances and initializes all zones without mutating inputs
+  ---
+  duration_ms: 10.38625
+  type: 'test'
+  ...
+# Subtest: M1 validates decks, DON count, player identity, data provenance and ruleset before shuffling
+ok 214 - M1 validates decks, DON count, player identity, data provenance and ruleset before shuffling
+  ---
+  duration_ms: 4.827042
+  type: 'test'
+  ...
+# Subtest: M1 chooser may choose second; only chooser has the decision action
+ok 215 - M1 chooser may choose second; only chooser has the decision action
+  ---
+  duration_ms: 5.653958
+  type: 'test'
+  ...
+# Subtest: M1 random determination is injected and reproducible, supporting either chooser
+ok 216 - M1 random determination is injected and reproducible, supporting either chooser
+  ---
+  duration_ms: 8.232875
+  type: 'test'
+  ...
+# Subtest: M1 full mulligan uses the entire deck once and conserves every instance
+ok 217 - M1 full mulligan uses the entire deck once and conserves every instance
+  ---
+  duration_ms: 5.229292
+  type: 'test'
+  ...
+# Subtest: M1 Life is Leader-specific, reversed from deck and remains hidden from its owner
+ok 218 - M1 Life is Leader-specific, reversed from deck and remains hidden from its owner
+  ---
+  duration_ms: 4.202958
+  type: 'test'
+  ...
+# Subtest: M1 same seed and commands give identical states, including after JSON rehydration
+ok 219 - M1 same seed and commands give identical states, including after JSON rehydration
+  ---
+  duration_ms: 26.3805
+  type: 'test'
+  ...
+# Subtest: M1 projections disclose only own hand, public cards and counts; spectator sees no hand
+ok 220 - M1 projections disclose only own hand, public cards and counts; spectator sees no hand
+  ---
+  duration_ms: 9.076
+  type: 'test'
+  ...
+# Subtest: M1 stale, spoofed, extra fields, invalid phase and malformed commands never mutate state
+ok 221 - M1 stale, spoofed, extra fields, invalid phase and malformed commands never mutate state
+  ---
+  duration_ms: 7.339292
+  type: 'test'
+  ...
+# Subtest: M1 duplicate command is idempotent and same ID with changed intent is rejected
+ok 222 - M1 duplicate command is idempotent and same ID with changed intent is rejected
+  ---
+  duration_ms: 5.683125
+  type: 'test'
+  ...
+# Subtest: M1 invariants reject lost, duplicated or misplaced cards and invalid snapshots
+ok 223 - M1 invariants reject lost, duplicated or misplaced cards and invalid snapshots
+  ---
+  duration_ms: 11.500916
+  type: 'test'
+  ...
+# Subtest: M1 failed injected RNG rolls back the entire mulligan
+ok 224 - M1 failed injected RNG rolls back the entire mulligan
+  ---
+  duration_ms: 4.908792
+  type: 'test'
+  ...
+# Subtest: M1 conservation and deterministic setup hold across 100 seeded mulligan combinations
+ok 225 - M1 conservation and deterministic setup hold across 100 seeded mulligan combinations
+  ---
+  duration_ms: 529.466958
+  type: 'test'
+  ...
+# Subtest: M1 Fisher-Yates is an injected shuffle, not sort with random comparisons
+ok 226 - M1 Fisher-Yates is an injected shuffle, not sort with random comparisons
+  ---
+  duration_ms: 0.201209
+  type: 'test'
+  ...
+# Subtest: M1 prepares two real M0 decks while preventing execution of their unsupported effects
+ok 227 - M1 prepares two real M0 decks while preventing execution of their unsupported effects
+  ---
+  duration_ms: 6.667917
+  type: 'test'
+  ...
+# Subtest: M1 no default Life; explicit zero is kept and ambiguous evidence is rejected
+ok 228 - M1 no default Life; explicit zero is kept and ambiguous evidence is rejected
+  ---
+  duration_ms: 2.94725
+  type: 'test'
+  ...
+# Subtest: M1 rejects a setup timing disguised as a known effect and out-of-order restored decisions
+ok 229 - M1 rejects a setup timing disguised as a known effect and out-of-order restored decisions
+  ---
+  duration_ms: 3.466167
+  type: 'test'
+  ...
+# Subtest: universal engine: a confirmed attack schedules and suspends its declarative When Attacking ability
+ok 230 - universal engine: a confirmed attack schedules and suspends its declarative When Attacking ability
+  ---
+  duration_ms: 81.553833
+  type: 'test'
+  ...
+# Subtest: universal engine: On Block uses the same scheduler and does not expose its pending choice to the attacker
+ok 231 - universal engine: On Block uses the same scheduler and does not expose its pending choice to the attacker
+  ---
+  duration_ms: 41.657875
+  type: 'test'
+  ...
+# Subtest: universal engine: official OP06-009 Shuraiya resolves When Attacking, On Block and Counter in one battle
+ok 232 - universal engine: official OP06-009 Shuraiya resolves When Attacking, On Block and Counter in one battle
+  ---
+  duration_ms: 92.549833
+  type: 'test'
+  ...
+# Subtest: universal engine: certification is limited to official cards whose full listed capabilities have executable definitions
+ok 233 - universal engine: certification is limited to official cards whose full listed capabilities have executable definitions
+  ---
+  duration_ms: 0.339
+  type: 'test'
+  ...
+# Subtest: universal engine: official OP06-017 Counter Event pays its printed cost and optional Life for +3000
+ok 234 - universal engine: official OP06-017 Counter Event pays its printed cost and optional Life for +3000
+  ---
+  duration_ms: 82.427292
+  type: 'test'
+  ...
+# Subtest: universal engine: OP06-018 Trigger suspends Life damage, resolves its real K.O. choice and resumes after JSON restore
+ok 235 - universal engine: OP06-018 Trigger suspends Life damage, resolves its real K.O. choice and resumes after JSON restore
+  ---
+  duration_ms: 90.189083
+  type: 'test'
+  ...
+# Subtest: universal engine: declining OP06-018 Trigger adds Life to hand unrevealed and does not run its K.O.
+ok 236 - universal engine: declining OP06-018 Trigger adds Life to hand unrevealed and does not run its K.O.
+  ---
+  duration_ms: 115.668166
+  type: 'test'
+  ...
+# Subtest: universal engine: official OP06-013 Trigger privately searches, reveals a FILM card, orders the rest, then resumes Life damage
+ok 237 - universal engine: official OP06-013 Trigger privately searches, reveals a FILM card, orders the rest, then resumes Life damage
+  ---
+  duration_ms: 212.805334
+  type: 'test'
+  ...
+# Subtest: universal engine: official OP06-013 On Play executes the same declarative search program
+ok 238 - universal engine: official OP06-013 On Play executes the same declarative search program
+  ---
+  duration_ms: 73.369917
+  type: 'test'
+  ...
+# Subtest: universal engine: complete official cross-set battle resolves Shuraiya, Meteor-Strike Counter and OP06-013 Trigger
+ok 239 - universal engine: complete official cross-set battle resolves Shuraiya, Meteor-Strike Counter and OP06-013 Trigger
+  ---
+  duration_ms: 148.4655
+  type: 'test'
+  ...
+# Subtest: universal engine: OP06-018 Main is offered from hand only in Main Phase and its official two-step effect resolves
+ok 240 - universal engine: OP06-018 Main is offered from hand only in Main Phase and its official two-step effect resolves
+  ---
+  duration_ms: 71.107083
+  type: 'test'
+  ...
+# Subtest: universal engine: OP06-017 Main pays its optional Life cost before applying +3000
+ok 241 - universal engine: OP06-017 Main pays its optional Life cost before applying +3000
+  ---
+  duration_ms: 70.433125
+  type: 'test'
+  ...
+# Subtest: universal engine: declining OP06-017 Main optional Life cost consumes printed Event cost but skips its effect
+ok 242 - universal engine: declining OP06-017 Main optional Life cost consumes printed Event cost but skips its effect
+  ---
+  duration_ms: 62.740959
+  type: 'test'
+  ...
+# Subtest: universal engine: [Activate: Main] validates phase, pays REST_SOURCE and enforces Once Per Turn
+ok 243 - universal engine: [Activate: Main] validates phase, pays REST_SOURCE and enforces Once Per Turn
+  ---
+  duration_ms: 52.8605
+  type: 'test'
+  ...
+# Subtest: universal engine: future Event composes optional search, private selection, reveal, zone move and deterministic shuffle
+ok 244 - universal engine: future Event composes optional search, private selection, reveal, zone move and deterministic shuffle
+  ---
+  duration_ms: 98.658541
+  type: 'test'
+  ...
+# Subtest: universal engine: public definitions cannot leak hidden-zone selections or movement into hidden zones
+ok 245 - universal engine: public definitions cannot leak hidden-zone selections or movement into hidden zones
+  ---
+  duration_ms: 1.197625
+  type: 'test'
+  ...
+# Subtest: M2A: legacy state restores with an empty battle context and exposes no attack outside legal combat window
+ok 246 - M2A: legacy state restores with an empty battle context and exposes no attack outside legal combat window
+  ---
+  duration_ms: 15.670667
+  type: 'test'
+  ...
+# Subtest: M2A: first turn restriction removes attacks for the active player
+ok 247 - M2A: first turn restriction removes attacks for the active player
+  ---
+  duration_ms: 9.568875
+  type: 'test'
+  ...
+# Subtest: M2.5: Rush permits a newly played Character to attack; Rush Character restricts its target
+ok 248 - M2.5: Rush permits a newly played Character to attack; Rush Character restricts its target
+  ---
+  duration_ms: 55.571209
+  type: 'test'
+  ...
+# Subtest: M2A: attack command is versioned, replay-safe and cannot be controlled by the defender
+ok 249 - M2A: attack command is versioned, replay-safe and cannot be controlled by the defender
+  ---
+  duration_ms: 34.30425
+  type: 'test'
+  ...
+# Subtest: M2A: confirmed battle compares current power, KOs a rested Character and conserves every instance
+ok 250 - M2A: confirmed battle compares current power, KOs a rested Character and conserves every instance
+  ---
+  duration_ms: 24.50425
+  type: 'test'
+  ...
+# Subtest: M2D: confirmed battle KO enters M1.5D ON_KO scheduler and resumes after a private serialized choice
+ok 251 - M2D: confirmed battle KO enters M1.5D ON_KO scheduler and resumes after a private serialized choice
+  ---
+  duration_ms: 38.665917
+  type: 'test'
+  ...
+# Subtest: M2B: Blocker redirects once, Counter Character adds power, then battle resolves
+ok 252 - M2B: Blocker redirects once, Counter Character adds power, then battle resolves
+  ---
+  duration_ms: 28.808042
+  type: 'test'
+  ...
+# Subtest: M2C: Leader damage moves only the top Life card to hidden hand and zero Life alone is not defeat
+ok 253 - M2C: Leader damage moves only the top Life card to hidden hand and zero Life alone is not defeat
+  ---
+  duration_ms: 26.074292
+  type: 'test'
+  ...
+# Subtest: M2.5: Double Attack resolves two Life damage instances from its keyword metadata
+ok 254 - M2.5: Double Attack resolves two Life damage instances from its keyword metadata
+  ---
+  duration_ms: 28.16225
+  type: 'test'
+  ...
+# Subtest: M2.5: Banish sends damaged Life to public Trash without adding it to hand
+ok 255 - M2.5: Banish sends damaged Life to public Trash without adding it to hand
+  ---
+  duration_ms: 36.209416
+  type: 'test'
+  ...
+# Subtest: M2.5: Unblockable removes Blocker from the response window
+ok 256 - M2.5: Unblockable removes Blocker from the response window
+  ---
+  duration_ms: 37.237542
+  type: 'test'
+  ...
+# Subtest: M2.5: reviewed Counter Event pays printed cost and DON!! minus through the operation pipeline
+ok 257 - M2.5: reviewed Counter Event pays printed cost and DON!! minus through the operation pipeline
+  ---
+  duration_ms: 52.243208
+  type: 'test'
+  ...
+# Subtest: M2.5: unsupported Trigger during Life damage is refused without partial state mutation
+ok 258 - M2.5: unsupported Trigger during Life damage is refused without partial state mutation
+  ---
+  duration_ms: 43.340125
+  type: 'test'
+  ...
+# Subtest: universal engine: Double Attack checks zero Life at the second damage, and Banish suppresses Trigger
+ok 259 - universal engine: Double Attack checks zero Life at the second damage, and Banish suppresses Trigger
+  ---
+  duration_ms: 74.447375
+  type: 'test'
+  ...
+# Subtest: M2C: damage to a Leader with zero Life ends the game; removing the final Life alone does not
+ok 260 - M2C: damage to a Leader with zero Life ends the game; removing the final Life alone does not
+  ---
+  duration_ms: 31.024875
+  type: 'test'
+  ...
+# Subtest: M3-1: Love-Love Mellow draws when the hand holds 3 cards once the Event is trashed (FAQ ST03-017)
+ok 261 - M3-1: Love-Love Mellow draws when the hand holds 3 cards once the Event is trashed (FAQ ST03-017)
+  ---
+  duration_ms: 161.420334
+  type: 'test'
+  ...
+# Subtest: M3-1: Love-Love Mellow does not draw when 4 cards remain in hand after the Event is trashed
+ok 262 - M3-1: Love-Love Mellow does not draw when 4 cards remain in hand after the Event is trashed
+  ---
+  duration_ms: 88.317209
+  type: 'test'
+  ...
+# Subtest: M3-1: Love-Love Mellow resumes once from JSON and a repeated answer neither redraws nor rebuffs
+ok 263 - M3-1: Love-Love Mellow resumes once from JSON and a repeated answer neither redraws nor rebuffs
+  ---
+  duration_ms: 86.533917
+  type: 'test'
+  ...
+# Subtest: M3-1: Blast Breath with DON!! -1 returns one DON!! and grants +4000 during this battle
+ok 264 - M3-1: Blast Breath with DON!! -1 returns one DON!! and grants +4000 during this battle
+  ---
+  duration_ms: 231.640917
+  type: 'test'
+  ...
+# Subtest: M3-1: Blast Breath without DON!! -1 is activated but its effect does not apply (FAQ ST04-016)
+ok 265 - M3-1: Blast Breath without DON!! -1 is activated but its effect does not apply (FAQ ST04-016)
+  ---
+  duration_ms: 76.510208
+  type: 'test'
+  ...
+# Subtest: M3-1: Blast Breath refuses a DON!! -1 that is not one of the player's field DON!!
+ok 266 - M3-1: Blast Breath refuses a DON!! -1 that is not one of the player's field DON!!
+  ---
+  duration_ms: 75.013792
+  type: 'test'
+  ...
+# Subtest: M3-1: no card introduced by M3 is declared PLAYABLE_VERIFIED
+ok 267 - M3-1: no card introduced by M3 is declared PLAYABLE_VERIFIED
+  ---
+  duration_ms: 0.140166
+  type: 'test'
+  ...
+# Subtest: M3-1: a cloned card whose abilities changed in M3 does not keep an inherited PLAYABLE_VERIFIED
+ok 268 - M3-1: a cloned card whose abilities changed in M3 does not keep an inherited PLAYABLE_VERIFIED
+  ---
+  duration_ms: 0.175833
+  type: 'test'
+  ...
+# Subtest: M3-1: M3 revisions get distinct definitionIds and every M3 program points at an M3 catalog definition
+ok 269 - M3-1: M3 revisions get distinct definitionIds and every M3 program points at an M3 catalog definition
+  ---
+  duration_ms: 6.571167
+  type: 'test'
+  ...
+# Subtest: M3-1: Love-Love Mellow still draws when its optional target is declined (CR 4-10-2)
+ok 270 - M3-1: Love-Love Mellow still draws when its optional target is declined (CR 4-10-2)
+  ---
+  duration_ms: 92.752958
+  type: 'test'
+  ...
+# Subtest: M3-1: Meteor-Strike of Love without its optional Life cost is activated but its effect does not apply
+ok 271 - M3-1: Meteor-Strike of Love without its optional Life cost is activated but its effect does not apply
+  ---
+  duration_ms: 63.910583
+  type: 'test'
+  ...
+# Subtest: M3-1: Guard Point [Trigger] from real Life damage gives +1000 during this turn and stays private until revealed
+ok 272 - M3-1: Guard Point [Trigger] from real Life damage gives +1000 during this turn and stays private until revealed
+  ---
+  duration_ms: 153.658583
+  type: 'test'
+  ...
+# Subtest: M3-2: Nami with zero candidates offers an empty selection, reveals nothing and puts the 5 cards at the bottom
+ok 273 - M3-2: Nami with zero candidates offers an empty selection, reveals nothing and puts the 5 cards at the bottom
+  ---
+  duration_ms: 261.424042
+  type: 'test'
+  ...
+# Subtest: M3-2: Nami excludes Nami, may choose zero cards, and a choice above the maximum is refused
+ok 274 - M3-2: Nami excludes Nami, may choose zero cards, and a choice above the maximum is refused
+  ---
+  duration_ms: 120.123792
+  type: 'test'
+  ...
+# Subtest: M3-2: two successive Nami searches each look at the current top 5 and keep both remainders at the bottom
+ok 275 - M3-2: two successive Nami searches each look at the current top 5 and keep both remainders at the bottom
+  ---
+  duration_ms: 116.32475
+  type: 'test'
+  ...
+# Subtest: M3-2: a search on a deck shorter than its amount looks at every remaining card (FAQ OP01-016)
+ok 276 - M3-2: a search on a deck shorter than its amount looks at every remaining card (FAQ OP01-016)
+  ---
+  duration_ms: 106.888833
+  type: 'test'
+  ...
+# Subtest: M3-2: taking the last card of the deck makes its owner lose at once, even before the rest is ordered (CR 9-1-2, 9-2-1-2)
+ok 277 - M3-2: taking the last card of the deck makes its owner lose at once, even before the rest is ordered (CR 9-1-2, 9-2-1-2)
+  ---
+  duration_ms: 98.455375
+  type: 'test'
+  ...
+# Subtest: M3-2: OP06-013 FILM search keeps the deck private, restores from JSON at both stages and replays idempotently
+ok 278 - M3-2: OP06-013 FILM search keeps the deck private, restores from JSON at both stages and replays idempotently
+  ---
+  duration_ms: 131.663
+  type: 'test'
+  ...
+# Subtest: M3-2: a rule-imposed shuffle (mulligan, CR 5-2-1-6-1) consumes the serialized PRNG deterministically
+ok 279 - M3-2: a rule-imposed shuffle (mulligan, CR 5-2-1-6-1) consumes the serialized PRNG deterministically
+  ---
+  duration_ms: 39.718458
+  type: 'test'
+  ...
+# Subtest: M3-3: every purple reference card adapts from reviewed Bandai data and the Leader Life is verified
+ok 280 - M3-3: every purple reference card adapts from reviewed Bandai data and the Leader Life is verified
+  ---
+  duration_ms: 3.936084
+  type: 'test'
+  ...
+# Subtest: M3-3: the purple deck satisfies every construction rule in playable mode and wrong variants are refused
+ok 281 - M3-3: the purple deck satisfies every construction rule in playable mode and wrong variants are refused
+  ---
+  duration_ms: 2.273125
+  type: 'test'
+  ...
+# Subtest: M3-3: a game between the purple and red legal decks starts through public commands with hidden zones private
+ok 282 - M3-3: a game between the purple and red legal decks starts through public commands with hidden zones private
+  ---
+  duration_ms: 165.911791
+  type: 'test'
+  ...
+# Subtest: M3-3: Blast Breath from a naturally drawn hand defends in the legal purple deck, DON!! -1 returning the DON!! that paid it (CR 10-2-10-1)
+ok 283 - M3-3: Blast Breath from a naturally drawn hand defends in the legal purple deck, DON!! -1 returning the DON!! that paid it (CR 10-2-10-1)
+  ---
+  duration_ms: 293.986334
+  type: 'test'
+  ...
+# Subtest: M3-3: Kaido pays DON!! -7, trashes the top Life card of the opponent and stays once per turn
+ok 284 - M3-3: Kaido pays DON!! -7, trashes the top Life card of the opponent and stays once per turn
+  ---
+  duration_ms: 214.994875
+  type: 'test'
+  ...
+# Subtest: M3-3: Kaido may choose zero Life cards after paying, and its cost requires 7 distinct own field DON!!, attached ones included
+ok 285 - M3-3: Kaido may choose zero Life cards after paying, and its cost requires 7 distinct own field DON!!, attached ones included
+  ---
+  duration_ms: 229.249833
+  type: 'test'
+  ...
+# Subtest: M3-3: Kaido is not offered below 7 field DON!! and a MOVE_DON prohibition makes its cost unpayable
+ok 286 - M3-3: Kaido is not offered below 7 field DON!! and a MOVE_DON prohibition makes its cost unpayable
+  ---
+  duration_ms: 218.489458
+  type: 'test'
+  ...
+# Subtest: M3-4: red OP06-009 Shuraiya blocks purple Kaido, copies its Leader power On Block, and ST01-014 Guard Point saves it
+ok 287 - M3-4: red OP06-009 Shuraiya blocks purple Kaido, copies its Leader power On Block, and ST01-014 Guard Point saves it
+  ---
+  duration_ms: 578.134334
+  type: 'test'
+  ...
+# Subtest: M3-4: purple damage reveals the red OP06-013 [Trigger], whose private search is answered across JSON restores before Life damage resumes
+ok 288 - M3-4: purple damage reveals the red OP06-013 [Trigger], whose private search is answered across JSON restores before Life damage resumes
+  ---
+  duration_ms: 259.412708
+  type: 'test'
+  ...
+# Subtest: M3-4: Kaido trashing a Life card with [Trigger] is not damage: no Trigger window opens and the Life count drops by one
+ok 289 - M3-4: Kaido trashing a Life card with [Trigger] is not damage: no Trigger window opens and the Life count drops by one
+  ---
+  duration_ms: 352.342792
+  type: 'test'
+  ...
+# Subtest: M3-4: a MOVE_DON prohibition refuses Blast Breath DON!! -1 like Kaido DON!! -7, while the printed Counter stays playable without it
+ok 290 - M3-4: a MOVE_DON prohibition refuses Blast Breath DON!! -1 like Kaido DON!! -7, while the printed Counter stays playable without it
+  ---
+  duration_ms: 217.658416
+  type: 'test'
+  ...
+# Subtest: M3-4: the red ST01-001 Leader ability is executable in the M3 game and a 1.3.0 registry without its program is refused
+ok 291 - M3-4: the red ST01-001 Leader ability is executable in the M3 game and a 1.3.0 registry without its program is refused
+  ---
+  duration_ms: 128.990834
+  type: 'test'
+  ...
+# Subtest: M3-5: both decks are legal in playable mode for the M3 ruleset
+ok 292 - M3-5: both decks are legal in playable mode for the M3 ruleset
+  ---
+  duration_ms: 3.962
+  type: 'test'
+  ...
+# Subtest: M3-5: the reference game reaches a regulatory victory through real commands
+ok 293 - M3-5: the reference game reaches a regulatory victory through real commands
+  ---
+  duration_ms: 35.992375
+  type: 'test'
+  ...
+# Subtest: M3-5: the game covers setup, turns, abilities, battles, counters, triggers, Life and victory
+ok 294 - M3-5: the game covers setup, turns, abilities, battles, counters, triggers, Life and victory
+  ---
+  duration_ms: 0.123542
+  type: 'test'
+  ...
+# Subtest: M3-5: no projection ever exposed a hidden hand, deck or Life card
+ok 295 - M3-5: no projection ever exposed a hidden hand, deck or Life card
+  ---
+  duration_ms: 0.068959
+  type: 'test'
+  ...
+# Subtest: M3-5: the command log alone reproduces the game, and every command is idempotent on replay
+ok 296 - M3-5: the command log alone reproduces the game, and every command is idempotent on replay
+  ---
+  duration_ms: 8723.891666
+  type: 'test'
+  ...
+# Subtest: M3-5: other seeds also end in a victory without leaks or refused commands
+ok 297 - M3-5: other seeds also end in a victory without leaks or refused commands
+  ---
+  duration_ms: 13086.367375
+  type: 'test'
+  ...
+# Subtest: M3 atomicity: an initially unpayable declarative Counter is refused without paying anything
+ok 298 - M3 atomicity: an initially unpayable declarative Counter is refused without paying anything
+  ---
+  duration_ms: 177.775208
+  type: 'test'
+  ...
+# Subtest: M3 atomicity: an invalid Guard Point answer is refused while the confirmed payment and pending choice remain
+ok 299 - M3 atomicity: an invalid Guard Point answer is refused while the confirmed payment and pending choice remain
+  ---
+  duration_ms: 141.389958
+  type: 'test'
+  ...
+# Subtest: M3 atomicity: repeated resume from one snapshot and a replayed answer apply the effect once
+ok 300 - M3 atomicity: repeated resume from one snapshot and a replayed answer apply the effect once
+  ---
+  duration_ms: 215.601
+  type: 'test'
+  ...
+# Subtest: M3 atomicity: optional costs the program does not offer are refused without paying
+ok 301 - M3 atomicity: optional costs the program does not offer are refused without paying
+  ---
+  duration_ms: 183.037958
+  type: 'test'
+  ...
+# Subtest: M3 atomicity: declining the optional Guard Point target keeps the paid cost and creates no bonus
+ok 302 - M3 atomicity: declining the optional Guard Point target keeps the paid cost and creates no bonus
+  ---
+  duration_ms: 59.443417
+  type: 'test'
+  ...
+# Subtest: M3 atomicity: an invalid declarative Counter declaration is refused without state change
+ok 303 - M3 atomicity: an invalid declarative Counter declaration is refused without state change
+  ---
+  duration_ms: 79.540083
+  type: 'test'
+  ...
+# Subtest: M3 atomicity: observed behaviour of an interrupted declarative Counter payment
+ok 304 - M3 atomicity: observed behaviour of an interrupted declarative Counter payment
+  ---
+  duration_ms: 63.4355
+  type: 'test'
+  ...
+# Subtest: M3 atomicity: a paid declarative Counter records its printed cost as PAID next to the ability cost
+ok 305 - M3 atomicity: a paid declarative Counter records its printed cost as PAID next to the ability cost
+  ---
+  duration_ms: 101.760167
+  type: 'test'
+  ...
+# Subtest: M3: declarative Meteor Counter suspends after payment and resumes without a second credit
+ok 306 - M3: declarative Meteor Counter suspends after payment and resumes without a second credit
+  ---
+  duration_ms: 164.646208
+  type: 'test'
+  ...
+# Subtest: M3: Guard Point Counter offers an optional target and keeps the battle modifier after JSON restore
+ok 307 - M3: Guard Point Counter offers an optional target and keeps the battle modifier after JSON restore
+  ---
+  duration_ms: 196.57275
+  type: 'test'
+  ...
+# Subtest: M3: Guard Point can decline its optional target without creating a power bonus
+ok 308 - M3: Guard Point can decline its optional target without creating a power bonus
+  ---
+  duration_ms: 70.013208
+  type: 'test'
+  ...
+# Subtest: M3: official OP01-016 Nami excludes every Nami and resolves a private search after restoration
+ok 309 - M3: official OP01-016 Nami excludes every Nami and resolves a private search after restoration
+  ---
+  duration_ms: 98.807708
+  type: 'test'
+  ...
+# Subtest: M4-C1: every certification binds one exact revision, re-checked sources, executable abilities and tests
+ok 310 - M4-C1: every certification binds one exact revision, re-checked sources, executable abilities and tests
+  ---
+  duration_ms: 2.149708
+  type: 'test'
+  ...
+# Subtest: M4-C1: every test title cited by a certification exists in the repository suites
+ok 311 - M4-C1: every test title cited by a certification exists in the repository suites
+  ---
+  duration_ms: 8.093375
+  type: 'test'
+  ...
+# Subtest: M4-C1: PLAYABLE_VERIFIED comes only from a certification, never from review metadata, a clone or a deck
+ok 312 - M4-C1: PLAYABLE_VERIFIED comes only from a certification, never from review metadata, a clone or a deck
+  ---
+  duration_ms: 0.532208
+  type: 'test'
+  ...
+# Subtest: M4-C2: every certified character is played for its printed cost, battles with its printed power and counters with its printed value
+ok 313 - M4-C2: every certified character is played for its printed cost, battles with its printed power and counters with its printed value
+  ---
+  duration_ms: 7231.539417
+  type: 'test'
+  ...
+# Subtest: M4-C2: certified [Blocker] characters redirect a real attack by resting themselves
+ok 314 - M4-C2: certified [Blocker] characters redirect a real attack by resting themselves
+  ---
+  duration_ms: 251.464292
+  type: 'test'
+  ...
+# Subtest: M4-I1: CONCEDE ends the game at once for the conceding player, in any window, and is idempotent
+ok 315 - M4-I1: CONCEDE ends the game at once for the conceding player, in any window, and is idempotent
+  ---
+  duration_ms: 315.51825
+  type: 'test'
+  ...
+# Subtest: M4-I1: CONCEDE is never a listed legal action and is refused outside a playing scope or with extra fields
+ok 316 - M4-I1: CONCEDE is never a listed legal action and is refused outside a playing scope or with extra fields
+  ---
+  duration_ms: 28.436083
+  type: 'test'
+  ...
+# Subtest: M4-I1: server seeds come from a CSPRNG within the engine range and are not reproduced
+ok 317 - M4-I1: server seeds come from a CSPRNG within the engine range and are not reproduced
+  ---
+  duration_ms: 30.609334
+  type: 'test'
+  ...
+# Subtest: M4-I4: every /api/play handler refuses an anonymous request
+ok 318 - M4-I4: every /api/play handler refuses an anonymous request
+  ---
+  duration_ms: 1.33325
+  type: 'test'
+  ...
+# Subtest: M4-I3: a started game is persisted, private, owned by its user and resumes after a refresh
+ok 319 - M4-I3: a started game is persisted, private, owned by its user and resumes after a refresh
+  ---
+  duration_ms: 242.398709
+  type: 'test'
+  ...
+# Subtest: M4-I3: a second tab with the same version is refused, retries are idempotent, a reused id with another intent conflicts
+ok 320 - M4-I3: a second tab with the same version is refused, retries are idempotent, a reused id with another intent conflicts
+  ---
+  duration_ms: 173.987667
+  type: 'test'
+  ...
+# Subtest: M4-I4: the client cannot choose a seat, forge identity fields or send an illegal command
+ok 321 - M4-I4: the client cannot choose a seat, forge identity fields or send an illegal command
+  ---
+  duration_ms: 125.791458
+  type: 'test'
+  ...
+# Subtest: M4-I4: the server bot answers every decision it owns and a whole game ends with a result
+ok 322 - M4-I4: the server bot answers every decision it owns and a whole game ends with a result
+  ---
+  duration_ms: 14196.475709
+  type: 'test'
+  ...
+# Subtest: M4-I4: conceding finishes the game as a defeat and frees the user for a new game
+ok 323 - M4-I4: conceding finishes the game as a defeat and frees the user for a new game
+  ---
+  duration_ms: 265.165416
+  type: 'test'
+  ...
+# Subtest: M4-I2: stored decks are bridged from Prisma rows, checked before start, and conflicts or unknown cards are refused
+ok 324 - M4-I2: stored decks are bridged from Prisma rows, checked before start, and conflicts or unknown cards are refused
+  ---
+  duration_ms: 262.676292
+  type: 'test'
+  ...
+# Subtest: M4-I5: every decision window the human meets has a screen action, and a whole game is played from the screen
+ok 325 - M4-I5: every decision window the human meets has a screen action, and a whole game is played from the screen
+  ---
+  duration_ms: 10109.85375
+  type: 'test'
+  ...
+# Subtest: M4-I5: card actions only come from legal actions and target lists come from the engine
+ok 326 - M4-I5: card actions only come from legal actions and target lists come from the engine
+  ---
+  duration_ms: 355.440583
+  type: 'test'
+  ...
+# Subtest: M4-I5: labels are French, feedback lists only new events and unknown codes stay generic
+ok 327 - M4-I5: labels are French, feedback lists only new events and unknown codes stay generic
+  ---
+  duration_ms: 168.856458
+  type: 'test'
+  ...
+# Subtest: M5-4: a strategy context holds only its projection, legal actions and public rules
+ok 328 - M5-4: a strategy context holds only its projection, legal actions and public rules
+  ---
+  duration_ms: 1121.087542
+  type: 'test'
+  ...
+# Subtest: M5-4: forged or unusable intents are refused by the legality check and the fallback is always legal
+ok 329 - M5-4: forged or unusable intents are refused by the legality check and the fallback is always legal
+  ---
+  duration_ms: 152.031167
+  type: 'test'
+  ...
+# Subtest: M5-4: all three levels finish every match with legal decisions and no fallback
+ok 330 - M5-4: all three levels finish every match with legal decisions and no fallback
+  ---
+  duration_ms: 30394.528125
+  type: 'test'
+  ...
+# Subtest: M5-4: the levels are measurably ordered: hard and normal beat easy, hard beats normal
+ok 331 - M5-4: the levels are measurably ordered: hard and normal beat easy, hard beats normal
+  ---
+  duration_ms: 33956.122125
+  type: 'test'
+  ...
+# Subtest: M5-4: defence and resources differ by level (easy never defends nor gives DON!!, hard blocks more and spends DON!! on attackers)
+ok 332 - M5-4: defence and resources differ by level (easy never defends nor gives DON!!, hard blocks more and spends DON!! on attackers)
+  ---
+  duration_ms: 21031.42475
+  type: 'test'
+  ...
+# Subtest: M5-4: a victory scenario — hard reaches the opposing Leader with 0 Life and wins by damage
+ok 333 - M5-4: a victory scenario — hard reaches the opposing Leader with 0 Life and wins by damage
+  ---
+  duration_ms: 403.946459
+  type: 'test'
+  ...
+# Subtest: M5-5: the M5 data file adds only no-ability or exact [Blocker] Characters, distinct from the certified subset
+ok 334 - M5-5: the M5 data file adds only no-ability or exact [Blocker] Characters, distinct from the certified subset
+  ---
+  duration_ms: 5.442834
+  type: 'test'
+  ...
+# Subtest: M5-5: every certified M5 Character is played in a legal deck for its cost, keeps its power and defends with its Counter or [Blocker]
+ok 335 - M5-5: every certified M5 Character is played in a legal deck for its cost, keeps its power and defends with its Counter or [Blocker]
+  ---
+  duration_ms: 28265.384833
+  type: 'test'
+  ...
+# Subtest: CR 1-2-3: a concession is accepted in every reached state, including a suspended ability choice
+ok 336 - CR 1-2-3: a concession is accepted in every reached state, including a suspended ability choice
+  ---
+  duration_ms: 60685.290375
+  type: 'test'
+  ...
+# Subtest: M5-2: animations come only from events after the last shown one, in order, with hidden cards face down
+ok 337 - M5-2: animations come only from events after the last shown one, in order, with hidden cards face down
+  ---
+  duration_ms: 2367.642084
+  type: 'test'
+  ...
+# Subtest: M5-3: a drop becomes an intent only when a legal action allows it
+ok 338 - M5-3: a drop becomes an intent only when a legal action allows it
+  ---
+  duration_ms: 237.335583
+  type: 'test'
+  ...
+# Subtest: M5-5: the tutorial covers Leader/Life, DON!!, playing, attacking, Counter, Blocker, end of turn and victory
+ok 339 - M5-5: the tutorial covers Leader/Life, DON!!, playing, attacking, Counter, Blocker, end of turn and victory
+  ---
+  duration_ms: 0.13275
+  type: 'test'
+  ...
+# Subtest: M5-5: statistics count games, wins, losses and concessions by deck and level for the user only
+ok 340 - M5-5: statistics count games, wins, losses and concessions by deck and level for the user only
+  ---
+  duration_ms: 428.629041
+  type: 'test'
+  ...
+# Subtest: M5-2: every animation kind is produced from real server views (draw … result), hidden cards staying face down
+ok 341 - M5-2: every animation kind is produced from real server views (draw … result), hidden cards staying face down
+  ---
+  duration_ms: 24892.166792
+  type: 'test'
+  ...
+# Subtest: M6 local ST-01 Jinbe resolves its cardJson When Attacking text through the shared scheduler
+ok 342 - M6 local ST-01 Jinbe resolves its cardJson When Attacking text through the shared scheduler
+  ---
+  duration_ms: 583.204708
+  type: 'test'
+  ...
+# Subtest: M6 local ST-01 Jinbe does not activate its DON!!-gated ability without an attached DON!!
+ok 343 - M6 local ST-01 Jinbe does not activate its DON!!-gated ability without an attached DON!!
+  ---
+  duration_ms: 333.739583
+  type: 'test'
+  ...
+# Subtest: M6 local ST-01 Gum-Gum Jet Pistol is loaded from cardJson as Main and Trigger DSL programs
+ok 344 - M6 local ST-01 Gum-Gum Jet Pistol is loaded from cardJson as Main and Trigger DSL programs
+  ---
+  duration_ms: 16.356875
+  type: 'test'
+  ...
+# Subtest: M6 local ST-01 Gum-Gum Jet Pistol Main KOs only an opposing Character at 6000 power or less
+ok 345 - M6 local ST-01 Gum-Gum Jet Pistol Main KOs only an opposing Character at 6000 power or less
+  ---
+  duration_ms: 243.365167
+  type: 'test'
+  ...
+# Subtest: M6 local ST-01 Gum-Gum Jet Pistol Main can decline and excludes Characters above its printed power limit
+ok 346 - M6 local ST-01 Gum-Gum Jet Pistol Main can decline and excludes Characters above its printed power limit
+  ---
+  duration_ms: 345.631834
+  type: 'test'
+  ...
+# Subtest: M6 local ST-01 Gum-Gum Jet Pistol Trigger reuses the declared KO program and resumes the suspended Life damage
+ok 347 - M6 local ST-01 Gum-Gum Jet Pistol Trigger reuses the declared KO program and resumes the suspended Life damage
+  ---
+  duration_ms: 335.244625
+  type: 'test'
+  ...
+# Subtest: M6 local ST-01 profiles compile Usopp, Rush Luffy, and Diable Jambe from their cardJson text
+ok 348 - M6 local ST-01 profiles compile Usopp, Rush Luffy, and Diable Jambe from their cardJson text
+  ---
+  duration_ms: 18.999791
+  type: 'test'
+  ...
+# Subtest: M6 ST-01 Rush Luffy attacks on entry and its When Attacking ability suppresses Blocker for that battle
+ok 349 - M6 ST-01 Rush Luffy attacks on entry and its When Attacking ability suppresses Blocker for that battle
+  ---
+  duration_ms: 245.372541
+  type: 'test'
+  ...
+# Subtest: M6 ST-01 Usopp blocks only Blocker Characters with at least 5000 current power for this battle
+ok 350 - M6 ST-01 Usopp blocks only Blocker Characters with at least 5000 current power for this battle
+  ---
+  duration_ms: 278.183333
+  type: 'test'
+  ...
+# Subtest: M6 ST-01 Diable Jambe Main selects only a Straw Hat and suppresses Blocker when it attacks this turn
+ok 351 - M6 ST-01 Diable Jambe Main selects only a Straw Hat and suppresses Blocker when it attacks this turn
+  ---
+  duration_ms: 217.473792
+  type: 'test'
+  ...
+# Subtest: M6 ST-01 Usopp Trigger plays the actual Life card into Characters through a serializable primitive
+ok 352 - M6 ST-01 Usopp Trigger plays the actual Life card into Characters through a serializable primitive
+  ---
+  duration_ms: 248.514792
+  type: 'test'
+  ...
+# Subtest: M6 ST-01 Diable Jambe Trigger privately selects and KOs only an opposing Blocker costing at most 3
+ok 353 - M6 ST-01 Diable Jambe Trigger privately selects and KOs only an opposing Blocker costing at most 3
+  ---
+  duration_ms: 275.2305
+  type: 'test'
+  ...
+# Subtest: M6 local ST-01 Jinbe permits declining its up-to-one target after the condition is met
+ok 354 - M6 local ST-01 Jinbe permits declining its up-to-one target after the condition is met
+  ---
+  duration_ms: 208.753083
+  type: 'test'
+  ...
+# Subtest: M6 local ST-01 Brook and Thousand Sunny are compiled from cardJson into generic effect definitions
+ok 355 - M6 local ST-01 Brook and Thousand Sunny are compiled from cardJson into generic effect definitions
+  ---
+  duration_ms: 12.375875
+  type: 'test'
+  ...
+# Subtest: M6 local ST-01 Sanji retains conditional Rush as a data-driven rule, not a printed always-on keyword
+ok 356 - M6 local ST-01 Sanji retains conditional Rush as a data-driven rule, not a printed always-on keyword
+  ---
+  duration_ms: 5.340125
+  type: 'test'
+  ...
+# Subtest: M6 local ST-01 Sanji gains Rush only after attaching two DON!! and can attack on its entry turn
+ok 357 - M6 local ST-01 Sanji gains Rush only after attaching two DON!! and can attack on its entry turn
+  ---
+  duration_ms: 377.282334
+  type: 'test'
+  ...
+# Subtest: M6 local ST-01 Brook attaches up to two rested DON!! to one chosen character and survives JSON recovery
+ok 358 - M6 local ST-01 Brook attaches up to two rested DON!! to one chosen character and survives JSON recovery
+  ---
+  duration_ms: 145.273125
+  type: 'test'
+  ...
+# Subtest: M6 local ST-01 Thousand Sunny rests as its activation cost and boosts only a Straw Hat target
+ok 359 - M6 local ST-01 Thousand Sunny rests as its activation cost and boosts only a Straw Hat target
+  ---
+  duration_ms: 241.945125
+  type: 'test'
+  ...
+# Subtest: M6 local ST-01 Zoro uses the shared continuous characteristic evaluator when DON!! is attached
+ok 360 - M6 local ST-01 Zoro uses the shared continuous characteristic evaluator when DON!! is attached
+  ---
+  duration_ms: 221.666792
+  type: 'test'
+  ...
+# Subtest: M6 ST-01 Leader Luffy reuses the generic once-per-turn rested-DON attachment ability
+ok 361 - M6 ST-01 Leader Luffy reuses the generic once-per-turn rested-DON attachment ability
+  ---
+  duration_ms: 166.920375
+  type: 'test'
+  ...
+# Subtest: M6 ST-01 Nami may attach the selected rested DON!! to herself through the shared effect path
+ok 362 - M6 ST-01 Nami may attach the selected rested DON!! to herself through the shared effect path
+  ---
+  duration_ms: 160.537042
+  type: 'test'
+  ...
+# Subtest: M6 official card pack contains reviewed OP01-006 and OP01-007 declarative abilities
+ok 363 - M6 official card pack contains reviewed OP01-006 and OP01-007 declarative abilities
+  ---
+  duration_ms: 20.090625
+  type: 'test'
+  ...
+# Subtest: M6 official Otama lowers only a chosen opposing Character and permits choosing zero
+ok 364 - M6 official Otama lowers only a chosen opposing Character and permits choosing zero
+  ---
+  duration_ms: 262.861833
+  type: 'test'
+  ...
+# Subtest: M6 official Otama choosing zero does not create a power modifier
+ok 365 - M6 official Otama choosing zero does not create a power modifier
+  ---
+  duration_ms: 235.128083
+  type: 'test'
+  ...
+# Subtest: M6 official OP01-016 Nami resolves its private search through the /play MUGIWARA_FREE catalogue
+ok 366 - M6 official OP01-016 Nami resolves its private search through the /play MUGIWARA_FREE catalogue
+  ---
+  duration_ms: 168.316459
+  type: 'test'
+  ...
+# Subtest: M6 official Caribou On K.O. resolves only after a confirmed battle K.O. and filters current power
+ok 367 - M6 official Caribou On K.O. resolves only after a confirmed battle K.O. and filters current power
+  ---
+  duration_ms: 334.774125
+  type: 'test'
+  ...
+# Subtest: M6 official OP01 ability cards have valid revision-bound certifications in the /play catalog
+ok 368 - M6 official OP01 ability cards have valid revision-bound certifications in the /play catalog
+  ---
+  duration_ms: 36.305625
+  type: 'test'
+  ...
+# Subtest: M6 server catalogue uses the extended strict registry rather than an ID-specific runtime path
+ok 369 - M6 server catalogue uses the extended strict registry rather than an ID-specific runtime path
+  ---
+  duration_ms: 8.515125
+  type: 'test'
+  ...
+# Subtest: M6 card packs preserve prior definitions and add the executable local ST-01 profile
+ok 370 - M6 card packs preserve prior definitions and add the executable local ST-01 profile
+  ---
+  duration_ms: 63.48475
+  type: 'test'
+  ...
+# Subtest: a future series adds a declarative card and known primitive without a core change
+ok 371 - a future series adds a declarative card and known primitive without a core change
+  ---
+  duration_ms: 18.41275
+  type: 'test'
+  ...
+# Subtest: a card from a new data pack executes its existing On Play primitive in the current game core
+ok 372 - a card from a new data pack executes its existing On Play primitive in the current game core
+  ---
+  duration_ms: 126.853416
+  type: 'test'
+  ...
+# Subtest: future packs fail closed on unknown primitives and unbound card abilities
+ok 373 - future packs fail closed on unknown primitives and unbound card abilities
+  ---
+  duration_ms: 3.615666
+  type: 'test'
+  ...
+# Subtest: pack IDs and conflicting/unknown card schemas are rejected
+ok 374 - pack IDs and conflicting/unknown card schemas are rejected
+  ---
+  duration_ms: 1.847292
+  type: 'test'
+  ...
+# Subtest: M6 reads ST-01 directly from cardJson and preserves all 17 distinct local card records
+ok 375 - M6 reads ST-01 directly from cardJson and preserves all 17 distinct local card records
+  ---
+  duration_ms: 10.333959
+  type: 'test'
+  ...
+# Subtest: M6 compares local ST-01 records with the engine without claiming the missing copies or abilities are playable
+ok 376 - M6 compares local ST-01 records with the engine without claiming the missing copies or abilities are playable
+  ---
+  duration_ms: 56.661417
+  type: 'test'
+  ...
+# Subtest: M6 joins database deck quantities to local cardJson by canonical card number without changing source rows
+ok 377 - M6 joins database deck quantities to local cardJson by canonical card number without changing source rows
+  ---
+  duration_ms: 11.30425
+  type: 'test'
+  ...
+# Subtest: M6 refuses invalid database deck quantities instead of inferring a default
+ok 378 - M6 refuses invalid database deck quantities instead of inferring a default
+  ---
+  duration_ms: 0.883792
+  type: 'test'
+  ...
+# Subtest: M6 local starter loader reports missing ST-22 explicitly and rejects path-like set identifiers
+ok 379 - M6 local starter loader reports missing ST-22 explicitly and rejects path-like set identifiers
+  ---
+  duration_ms: 0.221416
+  type: 'test'
+  ...
+# Subtest: M6 normalizes every locally present Starter Deck format and preserves repeated canonical cards as printings
+ok 380 - M6 normalizes every locally present Starter Deck format and preserves repeated canonical cards as printings
+  ---
+  duration_ms: 25.148958
+  type: 'test'
+  ...
+# Subtest: PWA install caches only explicit public files and never auto-activates updates
+ok 381 - PWA install caches only explicit public files and never auto-activates updates
+  ---
+  duration_ms: 21.096416
+  type: 'test'
+  ...
+# Subtest: PWA activation only removes its own outdated public namespace
+ok 382 - PWA activation only removes its own outdated public namespace
+  ---
+  duration_ms: 0.623417
+  type: 'test'
+  ...
+# Subtest: API sessions receipts private data mutations and foreign hosts bypass caching
+ok 383 - API sessions receipts private data mutations and foreign hosts bypass caching
+  ---
+  duration_ms: 0.585125
+  type: 'test'
+  ...
+# Subtest: Offline private navigations use generic public fallback without retaining the page
+ok 384 - Offline private navigations use generic public fallback without retaining the page
+  ---
+  duration_ms: 2.195791
+  type: 'test'
+  ...
+# Subtest: legal 50-card deck with bilingual colors
+ok 385 - legal 50-card deck with bilingual colors
+  ---
+  duration_ms: 0.953167
+  type: 'test'
+  ...
+# Subtest: reject invalid quantities and names
+ok 386 - reject invalid quantities and names
+  ---
+  duration_ms: 2.100417
+  type: 'test'
+  ...
+# Subtest: reject forged leader, colors, unknown and duplicate IDs
+ok 387 - reject forged leader, colors, unknown and duplicate IDs
+  ---
+  duration_ms: 0.163541
+  type: 'test'
+  ...
+# Subtest: alternate arts share the four-copy cap
+ok 388 - alternate arts share the four-copy cap
+  ---
+  duration_ms: 0.201125
+  type: 'test'
+  ...
+# Subtest: bcrypt password limit uses bytes
+ok 389 - bcrypt password limit uses bytes
+  ---
+  duration_ms: 0.103667
+  type: 'test'
+  ...
+# Subtest: rate limit and login lock
+ok 390 - rate limit and login lock
+  ---
+  duration_ms: 0.153875
+  type: 'test'
+  ...
+# Subtest: configured captcha rejects missing token and secret
+ok 391 - configured captcha rejects missing token and secret
+  ---
+  duration_ms: 0.203167
+  type: 'test'
+  ...
+# Subtest: playing characters preserves summoning sickness and enforces turn and field cap
+ok 392 - playing characters preserves summoning sickness and enforces turn and field cap
+  ---
+  duration_ms: 0.405333
+  type: 'test'
+  ...
+# Subtest: collection colors normalize case, language and dual-color order
+ok 393 - collection colors normalize case, language and dual-color order
+  ---
+  duration_ms: 0.643584
+  type: 'test'
+  ...
+1..393
+# tests 393
+# suites 0
+# pass 393
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 93107.4685
