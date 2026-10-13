@@ -1,0 +1,3718 @@
+{
+ "source": "cardgame/scripts/rebuildStarterDecks.ts (parsed as text, not executed) + cardgame/carteJson",
+ "note": "Quantities come from the rebuild script; numbers are resolved inside each deck's own cardJson set, else by the script's own cross-set name lookup when it gives one card number. ST-29..ST-36 are absent from the script.",
+ "decks": [
+  {
+   "deckCode": "ST-01",
+   "deckName": "Straw Hat Crew",
+   "localCards": true,
+   "leaders": [
+    "ST01-001"
+   ],
+   "mainCount": 50,
+   "unresolved": 0,
+   "entries": [
+    {
+     "name": "Monkey D. Luffy",
+     "quantity": 1,
+     "number": "ST01-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Usopp",
+     "quantity": 4,
+     "number": "ST01-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Karoo",
+     "quantity": 4,
+     "number": "ST01-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Sanji",
+     "quantity": 4,
+     "number": "ST01-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Jinbe",
+     "quantity": 4,
+     "number": "ST01-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Tony Tony Chopper",
+     "quantity": 4,
+     "number": "ST01-006",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Nami",
+     "quantity": 4,
+     "number": "ST01-007",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Nico Robin",
+     "quantity": 4,
+     "number": "ST01-008",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Nefeltari Vivi",
+     "quantity": 4,
+     "number": "ST01-009",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Franky",
+     "quantity": 4,
+     "number": "ST01-010",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Brook",
+     "quantity": 2,
+     "number": "ST01-011",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Monkey D. Luffy (character)",
+     "quantity": 2,
+     "number": "ST01-012",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Roronoa Zoro",
+     "quantity": 2,
+     "number": "ST01-013",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Guard Point",
+     "quantity": 2,
+     "number": "ST01-014",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Gum-Gum Jet Pistol",
+     "quantity": 2,
+     "number": "ST01-015",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Diable Jambe",
+     "quantity": 2,
+     "number": "ST01-016",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Thousand Sunny",
+     "quantity": 2,
+     "number": "ST01-017",
+     "status": "RESOLVED"
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-02",
+   "deckName": "Worst Generation",
+   "localCards": true,
+   "leaders": [
+    "ST02-001"
+   ],
+   "mainCount": 50,
+   "unresolved": 0,
+   "entries": [
+    {
+     "name": "Eustass Kid",
+     "quantity": 1,
+     "number": "ST02-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Vito",
+     "quantity": 4,
+     "number": "ST02-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Capone Bege",
+     "quantity": 4,
+     "number": "ST02-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Koby",
+     "quantity": 4,
+     "number": "ST02-006",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Jewelry Bonney",
+     "quantity": 4,
+     "number": "ST02-007",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Scratchmen Apoo",
+     "quantity": 4,
+     "number": "ST02-008",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Heat",
+     "quantity": 4,
+     "number": "ST02-011",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Bepo",
+     "quantity": 4,
+     "number": "ST02-012",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "X Drake",
+     "quantity": 4,
+     "number": "ST02-014",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Repel",
+     "quantity": 4,
+     "number": "ST02-016",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Urouge",
+     "quantity": 2,
+     "number": "ST02-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Killer",
+     "quantity": 2,
+     "number": "ST02-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Trafalgar Law",
+     "quantity": 2,
+     "number": "ST02-009",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Basil Hawkins",
+     "quantity": 2,
+     "number": "ST02-010",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Eustass Kid (character)",
+     "quantity": 2,
+     "number": "ST02-013",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Scalpel",
+     "quantity": 2,
+     "number": "ST02-015",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Straw Sword",
+     "quantity": 2,
+     "number": "ST02-017",
+     "status": "RESOLVED"
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-03",
+   "deckName": "Seven Warlords of the Sea",
+   "localCards": true,
+   "leaders": [
+    "ST03-001"
+   ],
+   "mainCount": 50,
+   "unresolved": 0,
+   "entries": [
+    {
+     "name": "Crocodile",
+     "quantity": 1,
+     "number": "ST03-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Edward Weevil",
+     "quantity": 4,
+     "number": "ST03-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Crocodile (character)",
+     "quantity": 2,
+     "number": "ST03-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Gecko Moria",
+     "quantity": 2,
+     "number": "ST03-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Dracule Mihawk",
+     "quantity": 2,
+     "number": "ST03-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Jinbe",
+     "quantity": 4,
+     "number": "ST03-006",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Sentomaru",
+     "quantity": 2,
+     "number": "ST03-007",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Trafalgar Law",
+     "quantity": 4,
+     "number": "ST03-008",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Donquixote Doflamingo",
+     "quantity": 2,
+     "number": "ST03-009",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Bartholomew Kuma",
+     "quantity": 4,
+     "number": "ST03-010",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Buggy",
+     "quantity": 4,
+     "number": "ST03-011",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Pacifista",
+     "quantity": 4,
+     "number": "ST03-012",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Boa Hancock",
+     "quantity": 4,
+     "number": "ST03-013",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Marshall D. Teach",
+     "quantity": 2,
+     "number": "ST03-014",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Desert Spada",
+     "quantity": 4,
+     "number": "OP01-088",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Thrust Pad Cannon",
+     "quantity": 4,
+     "number": "ST03-016",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Perfume Femur",
+     "quantity": 2,
+     "number": "OP07-057",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-04",
+   "deckName": "Animal Kingdom Pirates",
+   "localCards": true,
+   "leaders": [
+    "ST04-001"
+   ],
+   "mainCount": 50,
+   "unresolved": 0,
+   "entries": [
+    {
+     "name": "Kaido",
+     "quantity": 1,
+     "number": "ST04-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Ulti",
+     "quantity": 4,
+     "number": "ST04-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Kaido (character)",
+     "quantity": 2,
+     "number": "ST04-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "King",
+     "quantity": 2,
+     "number": "ST04-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Queen",
+     "quantity": 2,
+     "number": "ST04-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Sasaki",
+     "quantity": 4,
+     "number": "ST04-006",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Sheepshead",
+     "quantity": 4,
+     "number": "ST04-007",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Jack",
+     "quantity": 2,
+     "number": "ST04-008",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Ginrummy",
+     "quantity": 4,
+     "number": "ST04-009",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Who’s-Who",
+     "quantity": 2,
+     "number": "ST04-010",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Black Maria",
+     "quantity": 4,
+     "number": "ST04-011",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Page One",
+     "quantity": 4,
+     "number": "ST04-012",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "X Drake",
+     "quantity": 4,
+     "number": "ST04-013",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "All-Star ‘Calamity’",
+     "quantity": 2,
+     "number": "ST04-014",
+     "status": "RESOLVED",
+     "method": "VERIFIED_ALIAS"
+    },
+    {
+     "name": "Brachio Bomber",
+     "quantity": 2,
+     "number": "ST04-015",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Blast Breath",
+     "quantity": 4,
+     "number": "ST04-016",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Onigashima",
+     "quantity": 4,
+     "number": "ST04-017",
+     "status": "RESOLVED"
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-05",
+   "deckName": "ONE PIECE FILM Edition",
+   "localCards": true,
+   "leaders": [
+    "ST05-001"
+   ],
+   "mainCount": 50,
+   "unresolved": 2,
+   "entries": [
+    {
+     "name": "Shanks",
+     "quantity": 1,
+     "number": "ST05-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Ain",
+     "quantity": 4,
+     "number": "ST05-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Ann",
+     "quantity": 4,
+     "number": "ST05-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Uta",
+     "quantity": 2,
+     "number": "ST05-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Karina",
+     "quantity": 2,
+     "number": "ST05-005",
+     "status": "RESOLVED",
+     "method": "VERIFIED_ALIAS"
+    },
+    {
+     "name": "Guild Tesoro",
+     "quantity": 2,
+     "number": "ST05-006",
+     "status": "RESOLVED",
+     "method": "VERIFIED_ALIAS"
+    },
+    {
+     "name": "Gordon",
+     "quantity": 4,
+     "number": "ST05-007",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Shiki",
+     "quantity": 2,
+     "number": "ST05-008",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Scarlett",
+     "quantity": 4,
+     "number": "ST05-009",
+     "status": "RESOLVED",
+     "method": "VERIFIED_ALIAS"
+    },
+    {
+     "name": "Zephyr (Z)",
+     "quantity": 2,
+     "number": "ST05-010",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Douglas Bullet",
+     "quantity": 2,
+     "number": "ST05-011",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Baccarat",
+     "quantity": 4,
+     "number": "ST05-012",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Bins",
+     "quantity": 4,
+     "number": "ST05-013",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Buena Festa",
+     "quantity": 4,
+     "number": "ST05-014",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Dr. Indigo",
+     "quantity": 4,
+     "number": "ST05-015",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Shishi Odoshi Goshojimaki",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "ST05-016",
+      "ST05-017"
+     ]
+    },
+    {
+     "name": "Armor Mode",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "ST05-016",
+      "ST05-017"
+     ]
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-06",
+   "deckName": "Absolute Justice",
+   "localCards": true,
+   "leaders": [
+    "ST06-001"
+   ],
+   "mainCount": 50,
+   "unresolved": 0,
+   "entries": [
+    {
+     "name": "Sakazuki",
+     "quantity": 1,
+     "number": "ST06-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Koby",
+     "quantity": 2,
+     "number": "ST06-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Jango",
+     "quantity": 4,
+     "number": "ST06-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Smoker",
+     "quantity": 2,
+     "number": "ST06-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Sengoku",
+     "quantity": 4,
+     "number": "ST06-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Tashigi",
+     "quantity": 4,
+     "number": "ST06-006",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Tsuru",
+     "quantity": 4,
+     "number": "ST06-007",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Hina",
+     "quantity": 2,
+     "number": "ST06-008",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Fullbody",
+     "quantity": 4,
+     "number": "ST06-009",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Helmeppo",
+     "quantity": 4,
+     "number": "ST06-010",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Momonga",
+     "quantity": 4,
+     "number": "ST06-011",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Monkey D. Garp",
+     "quantity": 2,
+     "number": "ST06-012",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "T-Bone",
+     "quantity": 4,
+     "number": "ST06-013",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Shockwave",
+     "quantity": 2,
+     "number": "ST06-014",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Great Eruption",
+     "quantity": 2,
+     "number": "ST06-015",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "White Out",
+     "quantity": 4,
+     "number": "ST06-016",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Navy Headquarters",
+     "quantity": 2,
+     "number": "ST06-017",
+     "status": "RESOLVED",
+     "method": "VERIFIED_ALIAS"
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-07",
+   "deckName": "Big Mom Pirates",
+   "localCards": true,
+   "leaders": [
+    "ST07-001"
+   ],
+   "mainCount": 50,
+   "unresolved": 0,
+   "entries": [
+    {
+     "name": "Charlotte Linlin",
+     "quantity": 1,
+     "number": "ST07-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Anana",
+     "quantity": 4,
+     "number": "ST07-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Katakuri",
+     "quantity": 2,
+     "number": "ST07-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Snack",
+     "quantity": 4,
+     "number": "ST07-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Daifuku",
+     "quantity": 2,
+     "number": "ST07-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Flampe",
+     "quantity": 4,
+     "number": "ST07-006",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Brûlée",
+     "quantity": 2,
+     "number": "ST07-007",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Pudding",
+     "quantity": 4,
+     "number": "ST07-008",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Mont-d’Or",
+     "quantity": 2,
+     "number": "ST07-009",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Linlin (character)",
+     "quantity": 2,
+     "number": "ST07-010",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Zeus",
+     "quantity": 4,
+     "number": "ST07-011",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Baron Tamago",
+     "quantity": 4,
+     "number": "ST07-012",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Prometheus",
+     "quantity": 4,
+     "number": "ST07-013",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Pekoms",
+     "quantity": 4,
+     "number": "ST07-014",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Soul Pocus",
+     "quantity": 4,
+     "number": "ST07-015",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Power Mochi",
+     "quantity": 2,
+     "number": "ST07-016",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Queen Mama Chanter",
+     "quantity": 2,
+     "number": "ST07-017",
+     "status": "RESOLVED"
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-08",
+   "deckName": "Side Monkey D. Luffy",
+   "localCards": true,
+   "leaders": [
+    "ST08-001"
+   ],
+   "mainCount": 50,
+   "unresolved": 0,
+   "entries": [
+    {
+     "name": "Monkey D. Luffy",
+     "quantity": 1,
+     "number": "ST08-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Uta",
+     "quantity": 2,
+     "number": "ST08-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Gaimon",
+     "quantity": 4,
+     "number": "ST08-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Koby",
+     "quantity": 4,
+     "number": "ST08-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Shanks",
+     "quantity": 2,
+     "number": "ST08-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Shirahoshi",
+     "quantity": 4,
+     "number": "ST08-006",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Nefeltari Vivi",
+     "quantity": 4,
+     "number": "ST08-007",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Higuma",
+     "quantity": 4,
+     "number": "ST08-008",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Makino",
+     "quantity": 4,
+     "number": "ST08-009",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Monkey D. Garp",
+     "quantity": 4,
+     "number": "ST08-010",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Monkey D. Luffy (character)",
+     "quantity": 4,
+     "number": "ST08-011",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Laboon",
+     "quantity": 4,
+     "number": "ST08-012",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Mr. 2 Bon Kurei (Bentham)",
+     "quantity": 4,
+     "number": "ST08-013",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Gum-Gum Bell",
+     "quantity": 4,
+     "number": "ST08-014",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Gum-Gum Pistol",
+     "quantity": 2,
+     "number": "ST08-015",
+     "status": "RESOLVED"
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-09",
+   "deckName": "Side Yamato",
+   "localCards": true,
+   "leaders": [
+    "ST09-001"
+   ],
+   "mainCount": 50,
+   "unresolved": 10,
+   "entries": [
+    {
+     "name": "Yamato",
+     "quantity": 1,
+     "number": "ST09-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Kozuki Oden",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Shinobu",
+     "quantity": 2,
+     "number": "ST09-007",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Kin’emon",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Inuarashi",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-034",
+      "OP02-027",
+      "OP06-100",
+      "OP08-022"
+     ]
+    },
+    {
+     "name": "Nekomamushi",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-048",
+      "OP02-038",
+      "OP06-110",
+      "OP08-028"
+     ]
+    },
+    {
+     "name": "Ashura Doji",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-032",
+      "ST28-001"
+     ]
+    },
+    {
+     "name": "Kikunojo",
+     "quantity": 4,
+     "number": "OP06-104",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Raizo",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-052",
+      "OP06-112"
+     ]
+    },
+    {
+     "name": "Izo",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB01-002",
+      "OP01-033",
+      "OP01-052",
+      "OP03-003",
+      "OP06-112",
+      "OP09-044",
+      "ST28-002"
+     ]
+    },
+    {
+     "name": "Momonosuke",
+     "quantity": 4,
+     "number": "ST09-006",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Shogun Frankie (General Franky)",
+     "quantity": 2,
+     "number": "P-027",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Toki",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-108",
+      "OP02-031",
+      "OP06-052",
+      "OP06-076"
+     ]
+    },
+    {
+     "name": "Akazaya Nine Gathering",
+     "quantity": 2,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Paradise Totsuka",
+     "quantity": 4,
+     "number": "OP02-047",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Onigashima’s Ambush",
+     "quantity": 2,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-10",
+   "deckName": "Ultimate Deck - The Three Captains",
+   "localCards": true,
+   "leaders": [
+    "ST10-002",
+    "ST10-001",
+    "ST10-003"
+   ],
+   "mainCount": 56,
+   "unresolved": 10,
+   "entries": [
+    {
+     "name": "Monkey D. Luffy (Leader)",
+     "quantity": 1,
+     "number": "ST10-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Trafalgar Law (Leader)",
+     "quantity": 1,
+     "number": "ST10-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Eustass Kid (Leader)",
+     "quantity": 1,
+     "number": "ST10-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Monkey D. Luffy (character)",
+     "quantity": 4,
+     "number": "ST10-006",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Trafalgar Law (character)",
+     "quantity": 4,
+     "number": "ST10-010",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Eustass Kid (character)",
+     "quantity": 4,
+     "number": "ST10-013",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Boa Hancock",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-078",
+      "OP02-059",
+      "OP07-051",
+      "OP12-014",
+      "ST03-013",
+      "ST17-004"
+     ]
+    },
+    {
+     "name": "Dracule Mihawk",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-070",
+      "OP02-055",
+      "OP07-044",
+      "OP09-048",
+      "OP10-029",
+      "OP12-030",
+      "P-052",
+      "P-081",
+      "ST03-005",
+      "ST12-003"
+     ]
+    },
+    {
+     "name": "Edward Newgate",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-004",
+      "OP10-024",
+      "OP12-002",
+      "ST15-002"
+     ]
+    },
+    {
+     "name": "Charlotte Linlin",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP03-114",
+      "OP08-069",
+      "OP11-073",
+      "ST07-010",
+      "ST20-005"
+     ]
+    },
+    {
+     "name": "Kaido",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-094",
+      "OP04-044",
+      "OP05-118",
+      "OP08-079",
+      "OP08-119",
+      "P-005",
+      "P-010",
+      "ST04-003",
+      "ST09-004"
+     ]
+    },
+    {
+     "name": "Yamato (character)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB01-007",
+      "EB02-006",
+      "OP01-121",
+      "OP02-042",
+      "OP04-112",
+      "P-008",
+      "P-046",
+      "ST09-012",
+      "ST09-013",
+      "ST13-016",
+      "ST28-005"
+     ]
+    },
+    {
+     "name": "Shanks (character)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-120",
+      "OP06-007",
+      "OP09-004",
+      "OP12-007",
+      "OP12-008",
+      "P-016",
+      "P-051",
+      "P-083",
+      "ST08-005",
+      "ST13-009",
+      "ST16-004",
+      "ST23-002"
+     ]
+    },
+    {
+     "name": "Porchemy",
+     "quantity": 4,
+     "number": "OP07-012",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Red-Haired Pirates",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Straw Hat Crew",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Worst Generation",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-11",
+   "deckName": "Ultra Deck - Uta",
+   "localCards": true,
+   "leaders": [
+    "ST11-001"
+   ],
+   "mainCount": 37,
+   "unresolved": 8,
+   "entries": [
+    {
+     "name": "Uta",
+     "quantity": 1,
+     "number": "ST11-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Uta (FILM Leader)",
+     "quantity": 1,
+     "number": "ST11-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Buena Festa",
+     "quantity": 4,
+     "number": "ST05-014",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Guild Tesoro",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Shiki",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-075",
+      "OP06-073",
+      "OP12-005",
+      "ST05-008"
+     ]
+    },
+    {
+     "name": "Douglas Bullet",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-079",
+      "OP06-010",
+      "OP12-010",
+      "ST05-011"
+     ]
+    },
+    {
+     "name": "Zephyr (Z)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP06-074",
+      "ST05-010"
+     ]
+    },
+    {
+     "name": "Gordon",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-011",
+      "P-013",
+      "ST05-007",
+      "ST16-002"
+     ]
+    },
+    {
+     "name": "Harry",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Uta’s New Genesis",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Uta’s Song: I’m Invincible",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-12",
+   "deckName": "Starter Deck - Zoro & Sanji",
+   "localCards": true,
+   "leaders": [
+    "ST12-001"
+   ],
+   "mainCount": 50,
+   "unresolved": 2,
+   "entries": [
+    {
+     "name": "Roronoa Zoro & Sanji",
+     "quantity": 1,
+     "number": "ST12-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Kuina",
+     "quantity": 4,
+     "number": "ST12-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Dracule Mihawk",
+     "quantity": 2,
+     "number": "ST12-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Humandrill",
+     "quantity": 4,
+     "number": "ST12-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Perona",
+     "quantity": 4,
+     "number": "ST12-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Yosaku & Johnny",
+     "quantity": 4,
+     "number": "ST12-006",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Rika",
+     "quantity": 4,
+     "number": "ST12-007",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Roronoa Zoro (character)",
+     "quantity": 2,
+     "number": "ST12-008",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Elephant Tuna",
+     "quantity": 4,
+     "number": "ST12-009",
+     "status": "RESOLVED",
+     "method": "VERIFIED_ALIAS"
+    },
+    {
+     "name": "Emporio Ivankov",
+     "quantity": 2,
+     "number": "ST12-010",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Sanji (character)",
+     "quantity": 2,
+     "number": "ST12-011",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Pudding",
+     "quantity": 4,
+     "number": "ST12-012",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Zeff",
+     "quantity": 4,
+     "number": "ST12-013",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Duval",
+     "quantity": 2,
+     "number": "ST12-014",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Patty & Carne",
+     "quantity": 4,
+     "number": "ST12-015",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Shishi Sonson",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "ST12-016",
+      "ST12-017"
+     ]
+    },
+    {
+     "name": "Mouton Shot",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "ST12-016",
+      "ST12-017"
+     ]
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-13",
+   "deckName": "Ultimate Deck - The Three Brothers",
+   "localCards": true,
+   "leaders": [
+    "ST13-003",
+    "ST13-002",
+    "ST13-001"
+   ],
+   "mainCount": 52,
+   "unresolved": 12,
+   "entries": [
+    {
+     "name": "Monkey D. Luffy (Black/Yellow Leader)",
+     "quantity": 1,
+     "number": "ST13-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Portgas D. Ace (Blue/Yellow Leader)",
+     "quantity": 1,
+     "number": "ST13-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Sabo (Red/Yellow Leader)",
+     "quantity": 1,
+     "number": "ST13-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Monkey D. Luffy (character)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "ST13-014",
+      "ST13-015"
+     ]
+    },
+    {
+     "name": "Portgas D. Ace (character)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "ST13-010",
+      "ST13-011"
+     ]
+    },
+    {
+     "name": "Sabo (character)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "ST13-007",
+      "ST13-008"
+     ]
+    },
+    {
+     "name": "Ivankov",
+     "quantity": 4,
+     "number": "ST13-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Koala",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-086",
+      "OP05-006",
+      "OP07-024",
+      "OP09-103",
+      "OP10-047",
+      "OP12-086",
+      "P-069"
+     ]
+    },
+    {
+     "name": "Hack",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP05-012",
+      "OP10-051",
+      "OP12-089"
+     ]
+    },
+    {
+     "name": "Morley",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-061",
+      "OP05-016",
+      "OP09-113",
+      "OP12-093"
+     ]
+    },
+    {
+     "name": "Lindbergh",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP05-017",
+      "OP09-114",
+      "OP12-095"
+     ]
+    },
+    {
+     "name": "Belo Betty",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP05-015",
+      "OP09-112",
+      "OP12-090"
+     ]
+    },
+    {
+     "name": "Sabotage Plan",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Fire Fist",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP03-018",
+      "OP05-019"
+     ]
+    },
+    {
+     "name": "Gum-Gum Red Hawk",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Mera Mera no Mi (Flame-Flame Fruit)",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-14",
+   "deckName": "Starter Deck - 3D2Y",
+   "localCards": true,
+   "leaders": [
+    "ST14-001"
+   ],
+   "mainCount": 50,
+   "unresolved": 3,
+   "entries": [
+    {
+     "name": "Monkey D. Luffy",
+     "quantity": 1,
+     "number": "ST14-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Usopp",
+     "quantity": 4,
+     "number": "ST14-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Sanji",
+     "quantity": 2,
+     "number": "ST14-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Jinbe",
+     "quantity": 4,
+     "number": "ST14-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Tony Tony Chopper",
+     "quantity": 4,
+     "number": "ST14-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Nami",
+     "quantity": 2,
+     "number": "ST14-006",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Nico Robin",
+     "quantity": 4,
+     "number": "ST14-007",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Heracles",
+     "quantity": 4,
+     "number": "ST14-011",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Franky",
+     "quantity": 4,
+     "number": "ST14-009",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Brook",
+     "quantity": 4,
+     "number": "ST14-010",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Hercules",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Monkey D. Luffy (Gear 2)",
+     "quantity": 2,
+     "number": "ST14-012",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Roronoa Zoro",
+     "quantity": 4,
+     "number": "ST14-013",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Gum-Gum Giant Whip",
+     "quantity": 2,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Gum-Gum Diable Three-Sword Phoenix",
+     "quantity": 2,
+     "number": "ST14-015",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Friends’ Sake Cups!!",
+     "quantity": 2,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Thousand Sunny",
+     "quantity": 2,
+     "number": "ST14-017",
+     "status": "RESOLVED"
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-15",
+   "deckName": "Deck de démarrage Rouge : Edward Newgate",
+   "localCards": true,
+   "leaders": [
+    "OP02-001"
+   ],
+   "mainCount": 50,
+   "unresolved": 3,
+   "entries": [
+    {
+     "name": "Edward Newgate",
+     "quantity": 1,
+     "number": "OP02-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Atmos",
+     "quantity": 4,
+     "number": "ST15-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Edward Newgate (personnage)",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-004",
+      "OP10-024",
+      "OP12-002",
+      "ST15-002"
+     ]
+    },
+    {
+     "name": "Kingdew",
+     "quantity": 4,
+     "number": "ST15-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Thatch",
+     "quantity": 2,
+     "number": "ST15-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Portgas D. Ace",
+     "quantity": 2,
+     "number": "ST15-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Jozu",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-008",
+      "OP08-047"
+     ]
+    },
+    {
+     "name": "Marco",
+     "quantity": 4,
+     "number": "OP02-018",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Rakuyo",
+     "quantity": 4,
+     "number": "OP02-019",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Izo",
+     "quantity": 4,
+     "number": "OP03-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Speed Jil",
+     "quantity": 4,
+     "number": "OP03-006",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Namur",
+     "quantity": 4,
+     "number": "OP03-007",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Haruta",
+     "quantity": 4,
+     "number": "OP03-009",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Fossa",
+     "quantity": 4,
+     "number": "OP03-010",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "« Tu es peut-être un idiot… »",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-16",
+   "deckName": "Deck de démarrage Vert : Uta",
+   "localCards": true,
+   "leaders": [
+    "ST11-001"
+   ],
+   "mainCount": 34,
+   "unresolved": 4,
+   "entries": [
+    {
+     "name": "Uta",
+     "quantity": 1,
+     "number": "ST11-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Uta (personnage)",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-005",
+      "OP02-120",
+      "OP03-009",
+      "OP08-019",
+      "OP09-002",
+      "P-031",
+      "ST05-004",
+      "ST08-002",
+      "ST11-002",
+      "ST16-001",
+      "ST23-001"
+     ]
+    },
+    {
+     "name": "Gordon",
+     "quantity": 4,
+     "number": "ST16-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Katakuri",
+     "quantity": 4,
+     "number": "ST16-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Shanks",
+     "quantity": 2,
+     "number": "ST16-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Monkey D. Luffy",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "P-061",
+      "ST16-005"
+     ]
+    },
+    {
+     "name": "Bartolomeo",
+     "quantity": 4,
+     "number": "P-029",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Monkey D. Luffy (Promo)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "P-061",
+      "ST16-005"
+     ]
+    },
+    {
+     "name": "Backlight",
+     "quantity": 4,
+     "number": "ST11-003",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Nouvelle ère",
+     "quantity": 4,
+     "number": "ST11-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Je suis invincible!",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-17",
+   "deckName": "Deck de démarrage Bleu : Donquichotte Doflamingo",
+   "localCards": true,
+   "leaders": [],
+   "mainCount": 51,
+   "unresolved": 8,
+   "entries": [
+    {
+     "name": "Donquichotte Doflamingo",
+     "quantity": 1,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-060",
+      "OP04-019"
+     ]
+    },
+    {
+     "name": "Crocodile",
+     "quantity": 4,
+     "number": "ST17-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Trafalgar Law",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "ST03-008",
+      "ST17-002"
+     ]
+    },
+    {
+     "name": "Buggy",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-058",
+      "OP03-008",
+      "OP03-032",
+      "ST03-011",
+      "ST17-003"
+     ]
+    },
+    {
+     "name": "Boa Hancock",
+     "quantity": 2,
+     "number": "ST17-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Marshall D. Teach",
+     "quantity": 4,
+     "number": "ST17-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Donquichotte Doflamingo (personnage)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-073",
+      "OP02-056",
+      "OP04-031",
+      "OP05-028",
+      "OP05-029",
+      "OP07-048",
+      "ST03-009"
+     ]
+    },
+    {
+     "name": "Gecko Moria",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-054",
+      "ST03-004"
+     ]
+    },
+    {
+     "name": "Bartholomew Kuma",
+     "quantity": 4,
+     "number": "OP02-057",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Trafalgar Law (ST-03)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "ST03-008",
+      "ST17-002"
+     ]
+    },
+    {
+     "name": "Edward Weevil",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB01-023",
+      "OP07-039",
+      "OP08-042",
+      "ST03-002"
+     ]
+    },
+    {
+     "name": "Gecko Moria (ST-03)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-054",
+      "ST03-004"
+     ]
+    },
+    {
+     "name": "Dracule Mihawk",
+     "quantity": 4,
+     "number": "ST03-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Jinbe",
+     "quantity": 4,
+     "number": "P-030",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Overheat",
+     "quantity": 4,
+     "number": "OP01-086",
+     "status": "RESOLVED"
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-18",
+   "deckName": "Deck de démarrage Violet : Monkey D. Luffy",
+   "localCards": true,
+   "leaders": [
+    "OP05-060"
+   ],
+   "mainCount": 50,
+   "unresolved": 10,
+   "entries": [
+    {
+     "name": "Monkey D. Luffy",
+     "quantity": 1,
+     "number": "OP05-060",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Usopp (Usohachi)",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB02-022",
+      "OP01-004",
+      "OP02-028",
+      "OP03-041",
+      "OP03-042",
+      "OP03-054",
+      "OP04-003",
+      "OP07-099",
+      "OP09-024",
+      "OP09-063",
+      "OP10-081",
+      "OP11-003",
+      "P-049",
+      "ST01-002",
+      "ST14-002",
+      "ST21-002"
+     ]
+    },
+    {
+     "name": "Nami (O-Nami)",
+     "quantity": 4,
+     "number": "ST18-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Sanji (Sangoro)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB01-014",
+      "EB02-035",
+      "EB02-054",
+      "OP01-013",
+      "OP03-056",
+      "OP03-102",
+      "OP04-007",
+      "OP04-104",
+      "OP06-119",
+      "OP07-061",
+      "OP07-064",
+      "OP09-028",
+      "OP09-065",
+      "OP09-105",
+      "OP10-005",
+      "OP10-063",
+      "OP11-051",
+      "OP12-070",
+      "P-034",
+      "P-050",
+      "P-068",
+      "ST01-004",
+      "ST10-004",
+      "ST12-011",
+      "ST14-003",
+      "ST21-003"
+     ]
+    },
+    {
+     "name": "Zoro (Zorojuro)",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP05-067",
+      "ST18-004"
+     ]
+    },
+    {
+     "name": "Luffy (Luffytaro)",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "P-041",
+      "ST18-005"
+     ]
+    },
+    {
+     "name": "Usopp (Usohachi – reprint)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB02-022",
+      "OP01-004",
+      "OP02-028",
+      "OP03-041",
+      "OP03-042",
+      "OP03-054",
+      "OP04-003",
+      "OP07-099",
+      "OP09-024",
+      "OP09-063",
+      "OP10-081",
+      "OP11-003",
+      "P-049",
+      "ST01-002",
+      "ST14-002",
+      "ST21-002"
+     ]
+    },
+    {
+     "name": "Nico Robin (O-Robi)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB02-036",
+      "OP01-017",
+      "OP02-037",
+      "OP05-010",
+      "OP07-104",
+      "OP09-033",
+      "OP09-071",
+      "OP09-107",
+      "OP10-089",
+      "OP11-009",
+      "OP12-087",
+      "ST01-008",
+      "ST14-007",
+      "ST21-010",
+      "ST26-003"
+     ]
+    },
+    {
+     "name": "Jinbe",
+     "quantity": 4,
+     "number": "OP05-066",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Zoro (Zorojuro – rare)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP05-067",
+      "ST18-004"
+     ]
+    },
+    {
+     "name": "Chopper (Chopaemon)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB01-006",
+      "EB02-003",
+      "EB02-016",
+      "OP01-015",
+      "OP02-034",
+      "OP04-010",
+      "OP07-066",
+      "OP07-103",
+      "OP08-007",
+      "OP09-029",
+      "OP09-068",
+      "OP10-011",
+      "OP10-087",
+      "OP11-053",
+      "P-065",
+      "P-089",
+      "ST01-006",
+      "ST14-005",
+      "ST21-008",
+      "ST26-002"
+     ]
+    },
+    {
+     "name": "Franky (Fura no-suke)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB02-037",
+      "OP01-021",
+      "OP02-039",
+      "OP04-063",
+      "OP07-107",
+      "OP09-041",
+      "OP09-072",
+      "OP10-014",
+      "OP10-034",
+      "OP10-090",
+      "OP11-012",
+      "P-027",
+      "ST01-010",
+      "ST14-009",
+      "ST21-011",
+      "ST26-004"
+     ]
+    },
+    {
+     "name": "Brook (Bone Kichi)",
+     "quantity": 4,
+     "number": "OP05-072",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Monkey D. Luffy (Promo)",
+     "quantity": 4,
+     "number": "P-041",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "« En mer, tu affrontes des pirates ! »",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-19",
+   "deckName": "Deck de démarrage Noir : Smoker",
+   "localCards": true,
+   "leaders": [
+    "OP02-093"
+   ],
+   "mainCount": 42,
+   "unresolved": 8,
+   "entries": [
+    {
+     "name": "Smoker",
+     "quantity": 1,
+     "number": "OP02-093",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Tashigi",
+     "quantity": 4,
+     "number": "ST19-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Smoker (character)",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-102",
+      "OP10-030",
+      "OP11-005",
+      "P-025",
+      "ST06-004",
+      "ST19-001"
+     ]
+    },
+    {
+     "name": "Hina",
+     "quantity": 2,
+     "number": "ST19-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Vergo",
+     "quantity": 4,
+     "number": "OP03-079",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Momousagi (Gion)",
+     "quantity": 4,
+     "number": "OP06-044",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Tokikake",
+     "quantity": 4,
+     "number": "OP06-052",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Kuzan (Aokiji)",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-096",
+      "OP02-121",
+      "OP06-045",
+      "OP09-101",
+      "OP10-082",
+      "OP11-084",
+      "OP12-043",
+      "ST27-003"
+     ]
+    },
+    {
+     "name": "Borsalino (Kizaru)",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-114",
+      "OP05-051",
+      "OP06-054",
+      "OP11-014",
+      "OP12-053"
+     ]
+    },
+    {
+     "name": "Sakazuki (Akainu)",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-099",
+      "OP06-046",
+      "OP09-026",
+      "OP12-044"
+     ]
+    },
+    {
+     "name": "Issho (Fujitora)",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP03-078",
+      "OP05-042",
+      "OP10-023",
+      "OP12-082"
+     ]
+    },
+    {
+     "name": "X Drake (Navy)",
+     "quantity": 4,
+     "number": "ST06-017",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "« Smoker, en action ! »",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Plume-Plume : White Blow",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Salle d’Embrasement",
+     "quantity": 2,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-20",
+   "deckName": "Deck de démarrage Jaune : Charlotte Katakuri",
+   "localCards": true,
+   "leaders": [
+    "OP03-099"
+   ],
+   "mainCount": 50,
+   "unresolved": 7,
+   "entries": [
+    {
+     "name": "Charlotte Katakuri",
+     "quantity": 1,
+     "number": "OP03-099",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Cracker",
+     "quantity": 4,
+     "number": "ST20-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Perospero",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP03-113",
+      "OP04-107",
+      "OP08-068"
+     ]
+    },
+    {
+     "name": "Charlotte Smoothie",
+     "quantity": 2,
+     "number": "OP03-110",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Pudding",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP03-112",
+      "ST20-004"
+     ]
+    },
+    {
+     "name": "Charlotte Brûlée",
+     "quantity": 4,
+     "number": "ST20-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Anana",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP11-065",
+      "ST07-002"
+     ]
+    },
+    {
+     "name": "Charlotte Galette",
+     "quantity": 4,
+     "number": "OP03-107",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Opera",
+     "quantity": 4,
+     "number": "OP03-106",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Charlotte Linlin (character)",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP03-114",
+      "OP08-069",
+      "OP11-073",
+      "ST07-010",
+      "ST20-005"
+     ]
+    },
+    {
+     "name": "Bobbin",
+     "quantity": 4,
+     "number": "OP03-103",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Charlotte Mondée",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Charlotte Broyé",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Charlotte Compote",
+     "quantity": 4,
+     "number": "EB01-055",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "« Mont d’Or, active la prison de livres ! »",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-21",
+   "deckName": "Deck de démarrage EX - Gear 5",
+   "localCards": true,
+   "leaders": [
+    "ST21-001"
+   ],
+   "mainCount": 54,
+   "unresolved": 11,
+   "entries": [
+    {
+     "name": "Monkey D. Luffy (Gear 5)",
+     "quantity": 1,
+     "number": "ST21-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Hyogoro",
+     "quantity": 4,
+     "number": "OP01-020",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Bepo",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-049",
+      "OP05-071",
+      "OP09-074",
+      "P-019",
+      "ST02-012",
+      "ST10-012",
+      "ST24-004"
+     ]
+    },
+    {
+     "name": "Killer",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB01-003",
+      "OP01-039",
+      "OP05-064",
+      "OP09-064",
+      "OP10-106",
+      "ST02-005",
+      "ST10-007",
+      "ST24-002"
+     ]
+    },
+    {
+     "name": "Jinbe",
+     "quantity": 2,
+     "number": "ST21-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Caribou",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-007",
+      "OP07-023",
+      "OP10-104",
+      "OP11-083"
+     ]
+    },
+    {
+     "name": "Marguerite",
+     "quantity": 4,
+     "number": "OP07-054",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Boa Hancock",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-078",
+      "OP02-059",
+      "OP07-051",
+      "OP12-014",
+      "ST03-013",
+      "ST17-004"
+     ]
+    },
+    {
+     "name": "Bartholomew Kuma",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-074",
+      "OP02-057",
+      "OP05-011",
+      "OP09-108",
+      "OP12-119",
+      "ST03-010"
+     ]
+    },
+    {
+     "name": "Cavendish",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB01-012",
+      "OP01-008",
+      "OP04-081",
+      "OP10-045",
+      "OP10-105"
+     ]
+    },
+    {
+     "name": "Bartolomeo",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-019",
+      "OP04-089",
+      "OP07-031",
+      "OP10-052",
+      "OP11-055",
+      "P-018",
+      "P-029"
+     ]
+    },
+    {
+     "name": "Donquichotte Rosinante",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-108",
+      "OP04-119",
+      "OP05-030"
+     ]
+    },
+    {
+     "name": "Byrndi World",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Chinjao",
+     "quantity": 4,
+     "number": "OP04-086",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Canon Gomu Gomu",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Roi Kong Gun",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-22",
+   "deckName": "Deck de démarrage EX - Ace & Newgate",
+   "localCards": false,
+   "leaders": [],
+   "mainCount": 41,
+   "unresolved": 8,
+   "entries": [
+    {
+     "name": "Portgas D. Ace & Edward Newgate",
+     "quantity": 1,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Portgas D. Ace (character)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB02-028",
+      "OP02-013",
+      "OP09-035",
+      "P-028",
+      "ST13-011",
+      "ST15-005"
+     ]
+    },
+    {
+     "name": "Edward Newgate (character)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-004",
+      "OP10-024",
+      "OP12-002",
+      "ST15-002"
+     ]
+    },
+    {
+     "name": "Whitey Bay",
+     "quantity": 4,
+     "number": "OP02-014",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Oars Jr.",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB01-008",
+      "OP02-020"
+     ]
+    },
+    {
+     "name": "Little Oars Jr.",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Thunderlord McGuy",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Great Eruption",
+     "quantity": 4,
+     "number": "ST06-015",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Flame Emperor",
+     "quantity": 4,
+     "number": "OP03-016",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "« On n’arrête pas d’hériter de la volonté ! »",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Battle of Marineford",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-23",
+   "deckName": "Deck de démarrage Rouge : Shanks",
+   "localCards": true,
+   "leaders": [
+    "OP09-001"
+   ],
+   "mainCount": 52,
+   "unresolved": 5,
+   "entries": [
+    {
+     "name": "Shanks",
+     "quantity": 1,
+     "number": "OP09-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Uta",
+     "quantity": 4,
+     "number": "ST23-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Benn Beckman",
+     "quantity": 2,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Lucky Roo",
+     "quantity": 4,
+     "number": "OP09-015",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Yasopp",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP09-013",
+      "ST23-005"
+     ]
+    },
+    {
+     "name": "Limejuice",
+     "quantity": 4,
+     "number": "OP09-014",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Bonk Punch",
+     "quantity": 4,
+     "number": "OP09-010",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Monster (Red Hair)",
+     "quantity": 4,
+     "number": "OP09-012",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Building Snake",
+     "quantity": 4,
+     "number": "OP09-008",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Hongo",
+     "quantity": 4,
+     "number": "OP09-011",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Howling Gab",
+     "quantity": 4,
+     "number": "OP09-006",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Daruma",
+     "quantity": 4,
+     "number": "OP06-029",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Shanks (character)",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-120",
+      "OP06-007",
+      "OP09-004",
+      "OP12-007",
+      "OP12-008",
+      "P-016",
+      "P-051",
+      "P-083",
+      "ST08-005",
+      "ST13-009",
+      "ST16-004",
+      "ST23-002"
+     ]
+    },
+    {
+     "name": "Roger’s Legacy",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Red-Hair Pirates’ Sake Cup",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-24",
+   "deckName": "Deck de démarrage Vert : Jewelry Bonney",
+   "localCards": true,
+   "leaders": [
+    "OP07-019"
+   ],
+   "mainCount": 52,
+   "unresolved": 7,
+   "entries": [
+    {
+     "name": "Jewelry Bonney",
+     "quantity": 1,
+     "number": "OP07-019",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Eustass Kid",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Killer",
+     "quantity": 2,
+     "number": "ST24-002",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Roronoa Zoro",
+     "quantity": 4,
+     "number": "OP07-034",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Basil Hawkins",
+     "quantity": 2,
+     "number": "ST24-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Scratchmen Apoo",
+     "quantity": 4,
+     "number": "EB01-015",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Capone Bege",
+     "quantity": 2,
+     "number": "ST24-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Urouge",
+     "quantity": 4,
+     "number": "OP07-021",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "X Drake",
+     "quantity": 4,
+     "number": "ST24-005",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Heat",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-086",
+      "OP09-007",
+      "OP10-110",
+      "ST02-011",
+      "ST10-011"
+     ]
+    },
+    {
+     "name": "Bepo",
+     "quantity": 4,
+     "number": "ST24-004",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Shachi",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-044",
+      "OP09-003",
+      "ST10-008"
+     ]
+    },
+    {
+     "name": "Penguin",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-050",
+      "ST10-008"
+     ]
+    },
+    {
+     "name": "Jean Bart",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-045",
+      "OP09-066",
+      "ST10-009"
+     ]
+    },
+    {
+     "name": "Wire",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-053",
+      "OP09-017",
+      "OP10-110",
+      "ST10-014"
+     ]
+    },
+    {
+     "name": "« La pire génération est réunie ! »",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-25",
+   "deckName": "Deck de démarrage Bleu : Buggy",
+   "localCards": true,
+   "leaders": [],
+   "mainCount": 51,
+   "unresolved": 12,
+   "entries": [
+    {
+     "name": "Buggy",
+     "quantity": 1,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-058",
+      "OP03-008",
+      "OP03-032",
+      "ST03-011",
+      "ST17-003"
+     ]
+    },
+    {
+     "name": "Dracule Mihawk",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-070",
+      "OP02-055",
+      "OP07-044",
+      "OP09-048",
+      "OP10-029",
+      "OP12-030",
+      "P-052",
+      "P-081",
+      "ST03-005",
+      "ST12-003"
+     ]
+    },
+    {
+     "name": "Mr. 3 (Galdino)",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP09-055",
+      "OP09-056"
+     ]
+    },
+    {
+     "name": "Crocodile",
+     "quantity": 2,
+     "number": "ST25-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Don Quichotte Doflamingo",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Boa Hancock",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-078",
+      "OP02-059",
+      "OP07-051",
+      "OP12-014",
+      "ST03-013",
+      "ST17-004"
+     ]
+    },
+    {
+     "name": "Bartholomew Kuma",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-074",
+      "OP02-057",
+      "OP05-011",
+      "OP09-108",
+      "OP12-119",
+      "ST03-010"
+     ]
+    },
+    {
+     "name": "Rob Lucci",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP03-071",
+      "OP03-092",
+      "OP05-093",
+      "OP07-093",
+      "OP09-038"
+     ]
+    },
+    {
+     "name": "Kaku",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP03-059",
+      "OP03-080",
+      "OP07-080"
+     ]
+    },
+    {
+     "name": "Blueno",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB01-017",
+      "EB01-033",
+      "EB02-047",
+      "OP03-090"
+     ]
+    },
+    {
+     "name": "Jabra",
+     "quantity": 4,
+     "number": "OP03-085",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Kumadori",
+     "quantity": 4,
+     "number": "OP03-082",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Fukuro",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-110",
+      "OP03-088"
+     ]
+    },
+    {
+     "name": "Kalifa",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB01-031",
+      "OP03-060",
+      "OP03-081",
+      "OP07-081"
+     ]
+    },
+    {
+     "name": "« L’évasion d’Impel Down ! »",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-26",
+   "deckName": "Deck de démarrage Violet/Noir : Monkey D. Luffy",
+   "localCards": true,
+   "leaders": [
+    "OP09-061"
+   ],
+   "mainCount": 52,
+   "unresolved": 10,
+   "entries": [
+    {
+     "name": "Monkey D. Luffy",
+     "quantity": 1,
+     "number": "OP09-061",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Crocodile",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB02-023",
+      "OP01-067",
+      "OP02-053",
+      "OP04-060",
+      "OP07-040",
+      "OP09-025",
+      "OP09-046",
+      "OP12-069",
+      "P-004",
+      "P-082",
+      "ST03-003",
+      "ST17-001",
+      "ST25-003"
+     ]
+    },
+    {
+     "name": "Marshall D. Teach",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP09-092",
+      "OP09-093",
+      "OP12-054",
+      "ST17-005",
+      "ST27-005"
+     ]
+    },
+    {
+     "name": "Jesus Burgess",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP09-086",
+      "OP10-085"
+     ]
+    },
+    {
+     "name": "Shiliew",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP09-088",
+      "OP10-086"
+     ]
+    },
+    {
+     "name": "Laffitte",
+     "quantity": 4,
+     "number": "OP09-095",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Catarina Devon",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP09-084",
+      "ST27-002"
+     ]
+    },
+    {
+     "name": "Sanjuan Wolf",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP10-084",
+      "ST27-004"
+     ]
+    },
+    {
+     "name": "Avalo Pizarro",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP09-082",
+      "ST27-001"
+     ]
+    },
+    {
+     "name": "Vasco Shot",
+     "quantity": 4,
+     "number": "OP09-091",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Doc Q",
+     "quantity": 4,
+     "number": "OP09-090",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Van Augur",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "« L’équipage du Chapeau de Paille se reforme ! »",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "« La pire génération contre-attaque ! »",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-27",
+   "deckName": "Deck de démarrage Noir : Marshall D. Teach",
+   "localCards": true,
+   "leaders": [
+    "OP09-081"
+   ],
+   "mainCount": 44,
+   "unresolved": 6,
+   "entries": [
+    {
+     "name": "Marshall D. Teach",
+     "quantity": 1,
+     "number": "OP09-081",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Magellan",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "EB02-038",
+      "OP02-085"
+     ]
+    },
+    {
+     "name": "Shiryu",
+     "quantity": 4,
+     "number": "OP02-076",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Hannyabal",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-083",
+      "OP11-076"
+     ]
+    },
+    {
+     "name": "Domino",
+     "quantity": 2,
+     "number": "OP02-081",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Saldeath",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-074",
+      "OP11-064"
+     ]
+    },
+    {
+     "name": "Sadi",
+     "quantity": 2,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP02-073",
+      "OP11-063"
+     ]
+    },
+    {
+     "name": "Minotaurus",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Minokoala",
+     "quantity": 4,
+     "number": "OP02-086",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Minozebra",
+     "quantity": 4,
+     "number": "OP03-068",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Minorhinoceros",
+     "quantity": 4,
+     "number": "OP03-069",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "« Impel Down – Le plan d’évasion commence ! »",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Judgment of Hell",
+     "quantity": 4,
+     "number": "OP02-089",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    }
+   ]
+  },
+  {
+   "deckCode": "ST-28",
+   "deckName": "Deck de démarrage Vert/Jaune : Yamato",
+   "localCards": true,
+   "leaders": [
+    "OP06-022"
+   ],
+   "mainCount": 56,
+   "unresolved": 7,
+   "entries": [
+    {
+     "name": "Yamato",
+     "quantity": 1,
+     "number": "OP06-022",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Oden Kozuki",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP09-047",
+      "OP12-004"
+     ]
+    },
+    {
+     "name": "Ashura Doji",
+     "quantity": 4,
+     "number": "ST28-001",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Kawamatsu",
+     "quantity": 4,
+     "number": "OP06-103",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Denjiro",
+     "quantity": 4,
+     "number": "OP06-109",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Izou",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Kiku",
+     "quantity": 4,
+     "number": "OP06-104",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Kin’emon",
+     "quantity": 4,
+     "number": "ST28-003",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Shinobu",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP01-043",
+      "ST09-007"
+     ]
+    },
+    {
+     "name": "Kanjuro",
+     "quantity": 4,
+     "number": "OP01-038",
+     "status": "RESOLVED",
+     "method": "REBUILD_SCRIPT_NAME"
+    },
+    {
+     "name": "Raizo",
+     "quantity": 4,
+     "number": "OP06-112",
+     "status": "RESOLVED"
+    },
+    {
+     "name": "Onimaru",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "Hiyori Kozuki",
+     "quantity": 4,
+     "number": null,
+     "status": "AMBIGUOUS",
+     "candidates": [
+      "OP06-106",
+      "OP12-028"
+     ]
+    },
+    {
+     "name": "Tokugawa",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    },
+    {
+     "name": "« La bataille décisive de Onigashima »",
+     "quantity": 4,
+     "number": null,
+     "status": "NOT_FOUND",
+     "candidates": []
+    }
+   ]
+  }
+ ]
+}

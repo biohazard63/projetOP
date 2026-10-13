@@ -3,10 +3,11 @@ import assert from 'node:assert/strict'
 import { readdirSync, readFileSync } from 'node:fs'
 import { join } from 'node:path'
 import { fullGameInput } from '../scripts/game/m3-full-game'
-import { CERTIFICATIONS as ALL_CERTIFICATIONS, CERTIFICATION_BLOCKERS, CERTIFIED_PLAY_TEST, BLOCKER_TEST, M5_CERTIFIED_TEST, certificationErrors, certificationOf, effectiveStatus } from '../src/game/cards/certification'
+import { CERTIFICATIONS as ALL_CERTIFICATIONS, CERTIFICATION_BLOCKERS, CERTIFIED_PLAY_TEST, BLOCKER_TEST, M5_CERTIFIED_TEST, ST01_CERTIFICATIONS, ST02_CERTIFICATIONS, ST03_ST04_CERTIFICATIONS, ST05_ST06_CERTIFICATIONS, ST07_CERTIFICATIONS, ST08_CERTIFICATIONS, ST12_CERTIFICATIONS, ST09_CERTIFICATIONS, ST11_CERTIFICATIONS, ST10_CERTIFICATIONS, ST03_OP_CERTIFICATIONS, certificationErrors, certificationOf, effectiveStatus } from '../src/game/cards/certification'
 import { M5_REVISION } from '../src/game/cards/m5Catalog'
-// The M4 batch only (the M5 batch is played by tests/game-m5-certification.test.ts on the M5 catalogue).
-const CERTIFICATIONS = ALL_CERTIFICATIONS.filter(c => !c.definitionId.endsWith(`@${M5_REVISION}`))
+// Keep the M4 mechanics batch scoped here; M5 and the newer M6 card profiles have their own game-command suites.
+const M6_CERTIFIED_DEFINITIONS = new Set(['OP01-006@m6-2026-10-12', 'OP01-007@m6-2026-10-12', 'OP01-016@m3-2026-10-12', 'OP06-013@official-2026-10-11'])
+const CERTIFICATIONS = ALL_CERTIFICATIONS.filter(c => !c.definitionId.endsWith(`@${M5_REVISION}`) && !M6_CERTIFIED_DEFINITIONS.has(c.definitionId) && ![...ST01_CERTIFICATIONS, ...ST02_CERTIFICATIONS, ...ST03_ST04_CERTIFICATIONS, ...ST05_ST06_CERTIFICATIONS, ...ST07_CERTIFICATIONS, ...ST08_CERTIFICATIONS, ...ST12_CERTIFICATIONS, ...ST09_CERTIFICATIONS, ...ST11_CERTIFICATIONS, ...ST10_CERTIFICATIONS, ...ST03_OP_CERTIFICATIONS].some(x => x.definitionId === c.definitionId))
 import { M3_FULL_REGISTRY } from '../src/game/cards/m3PurpleDeck'
 import { createGame, applyCommand, getLegalActions } from '../src/game/core/game'
 import { assertGameInvariants } from '../src/game/core/invariants'
@@ -56,7 +57,9 @@ test('M4-C1: PLAYABLE_VERIFIED comes only from a certification, never from revie
   }
   const historic=catalog.definitions.filter(d=>d.review.playabilityStatus==='PLAYABLE_VERIFIED')
   for (const d of historic) assert.equal(effectiveStatus(d), certificationOf(d.definitionId) ? 'PLAYABLE_VERIFIED' : 'DATA_VALID_EFFECT_PENDING', `${d.definitionId}: laboratory status is not a certification`)
-  for (const number of ['ST04-001','ST04-016','OP06-017','ST01-001','ST01-007','ST01-014','P-015']) assert.equal(effectiveStatus(catalog.definitions.find(d=>d.number===number)!)==='PLAYABLE_VERIFIED', false, `${number} is not certified in C2`)
+  // ST01-001/007/014 were not certified in C2; M6 Lot A certifies them in its own suite (game-m6-st01-certification).
+  for (const number of ['OP06-017','P-015']) assert.equal(effectiveStatus(catalog.definitions.find(d=>d.number===number)!)==='PLAYABLE_VERIFIED', false, `${number} is not certified in C2`)
+  for (const number of ['ST01-001','ST01-007','ST01-014','ST04-001','ST04-016']) assert.ok(!CERTIFICATIONS.some(c=>c.definitionId.startsWith(`${number}@`)), `${number} is not part of the C2 batch`)
   assert.equal(CERTIFICATION_BLOCKERS.find(b=>b.definitionId==='P-015@m0-2026-10-10')?.reason, 'DATA_CONFLICT')
   assert.ok(catalog.definitions.some(d=>d.number==='P-015'&&d.attributes.includes('STRIKE')), 'the m0 revision is kept unchanged; the conflict blocks certification')
 })

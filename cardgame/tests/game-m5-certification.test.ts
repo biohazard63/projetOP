@@ -1,6 +1,6 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { CERTIFICATIONS, M5_CERTIFIABLE, M5_CERTIFIED_TEST, certificationErrors, effectiveStatus } from '../src/game/cards/certification'
+import { CERTIFICATIONS, M5_CERTIFIABLE, M5_CERTIFIED_TEST, ST02_CERTIFICATIONS, ST03_ST04_CERTIFICATIONS, ST05_ST06_CERTIFICATIONS, ST07_CERTIFICATIONS, ST08_CERTIFICATIONS, ST12_CERTIFICATIONS, ST09_CERTIFICATIONS, ST11_CERTIFICATIONS, ST10_CERTIFICATIONS, certificationErrors, effectiveStatus } from '../src/game/cards/certification'
 import { M5_CARDS, M5_REVISION } from '../src/game/cards/m5Catalog'
 import { M3_FULL_REGISTRY } from '../src/game/cards/m3PurpleDeck'
 import { engineCatalog, engineRegistry, engineRuleset } from '../src/lib/engine/catalog'
@@ -38,9 +38,12 @@ test('M5-5: the M5 data file adds only no-ability or exact [Blocker] Characters,
   }
   const d = (n: string) => cat.definitions.find(def => def.number === n)!
   const certified = M5_CARDS.filter(c => effectiveStatus(d(c.number)) === 'PLAYABLE_VERIFIED')
-  assert.equal(certified.length, M5_CERTIFIABLE.length, 'only the red/purple batch is certified')
+  // M6 certifies a few more M5 revisions through their own Starter Deck suites (ST02_CERTIFICATIONS).
+  const starter = [...ST02_CERTIFICATIONS, ...ST03_ST04_CERTIFICATIONS, ...ST05_ST06_CERTIFICATIONS, ...ST07_CERTIFICATIONS, ...ST08_CERTIFICATIONS, ...ST12_CERTIFICATIONS, ...ST09_CERTIFICATIONS, ...ST11_CERTIFICATIONS, ...ST10_CERTIFICATIONS]
+  const viaStarter = starter.filter(c => c.definitionId.endsWith(`@${M5_REVISION}`)).length
+  assert.equal(certified.length, M5_CERTIFIABLE.length + viaStarter, 'the red/purple batch plus the M6 starter certifications')
   assert.ok(M5_CARDS.some(c => effectiveStatus(d(c.number)) !== 'PLAYABLE_VERIFIED'), 'recognised is not certified')
-  for (const c of CERTIFICATIONS.filter(c => c.definitionId.endsWith(`@${M5_REVISION}`))) assert.deepEqual(certificationErrors(c, d(c.definitionId.split('@')[0]), M3_FULL_REGISTRY), [], c.definitionId)
+  for (const c of CERTIFICATIONS.filter(c => c.definitionId.endsWith(`@${M5_REVISION}`) && !starter.includes(c))) assert.deepEqual(certificationErrors(c, d(c.definitionId.split('@')[0]), M3_FULL_REGISTRY), [], c.definitionId)
 })
 
 test(M5_CERTIFIED_TEST, () => {

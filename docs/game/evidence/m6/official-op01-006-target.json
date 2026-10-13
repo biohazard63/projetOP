@@ -1,0 +1,13 @@
+{
+  "ruleset": "MUGIWARA_FREE",
+  "rulesVersion": "1.2.1",
+  "card": "OP01-006",
+  "target": "ST01-008",
+  "selectedPowerBefore": 5000,
+  "selectedPowerAfter": 3000,
+  "unselectedPowerBefore": 3000,
+  "unselectedPowerAfter": 3000,
+  "optional": true,
+  "pendingChoicePrivateToController": true,
+  "restored": true
+}

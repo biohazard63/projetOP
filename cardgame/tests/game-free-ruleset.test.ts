@@ -7,6 +7,7 @@ import { engineCatalog, engineRegistry, engineRuleset, officialSubsetRuleset, m3
 import { FREE_RULESET, FREE_RULESET_ID } from '../src/game/rulesets/free'
 import { validateEngineDeck, type DeckEntry } from '../src/game/rulesets/decks'
 import { createGame, getLegalActions, restoreGame } from '../src/game/core/game'
+import { effectiveStatus } from '../src/game/cards/certification'
 
 // MUGIWARA_FREE: permanent format for /play. No calendar window and no official ban list; structural rules,
 // implemented-cards-only admission, command legality and privacy are unchanged.
@@ -18,7 +19,10 @@ test('MUGIWARA_FREE is the default, permanent and carries no official restrictio
   const r = engineRuleset()
   assert.equal(r.id, FREE_RULESET_ID); assert.equal(r.format, 'FREE')
   assert.equal(r.restrictionWindow, null); assert.deepEqual(r.restrictions, []); assert.equal(r.competitive, false)
-  assert.deepEqual([...r.allowedNumbers].sort(), [...officialSubsetRuleset().allowedNumbers].sort(), 'same implemented cards as the reviewed catalogue')
+  const official = new Set(officialSubsetRuleset().allowedNumbers)
+  assert.ok([...official].every(n => r.allowedNumbers.includes(n)), 'every card of the reviewed subset stays admitted')
+  // Cards admitted beyond the official subset (M6) must each have a certified definition.
+  for (const n of r.allowedNumbers.filter(n => !official.has(n))) assert.equal(effectiveStatus(cat.definitions.find(d => d.number === n)!), 'PLAYABLE_VERIFIED', `${n} admitted only once certified`)
   assert.notEqual(officialSubsetRuleset().id, FREE_RULESET_ID, 'the official subset stays a distinct format')
   assert.deepEqual(validateEngineDeck(deck(0), cat.definitions, cat.printings, { ...r, restrictionWindow: { from: '2026-10-12', through: '2026-10-12' } }), ['INVALID_FREE_FORMAT'], 'a free format cannot carry an expiring window')
   assert.ok(validateEngineDeck(deck(0), cat.definitions, cat.printings, { ...r, restrictions: [{ kind: 'banned', number: 'ST01-001', effectiveFrom: '2026-01-01', source: 'synthetic' }] }).includes('INVALID_FREE_FORMAT'))

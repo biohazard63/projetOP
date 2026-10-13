@@ -18,6 +18,8 @@ function choose(ctx: BotContext): Intent | null {
   if (!choice) return null
   if (choice.choiceType === 'ORDER') return { type: 'ANSWER_CHOICE', choiceId: choice.choiceId, tokens: choice.options.slice(0, choice.max).map(o => o.token) }
   if (choice.max === 0 || !choice.options.length) return { type: 'ANSWER_CHOICE', choiceId: choice.choiceId, tokens: [] }
+  // DON!! −X: pay in full (the effect it unlocks is worth it for every level) — never a partial answer.
+  if (choice.allOrNone) return { type: 'ANSWER_CHOICE', choiceId: choice.choiceId, tokens: choice.options.slice(0, choice.max).map(o => o.token) }
   const { me } = seats(ctx), battle = ctx.projection.battle
   const ids = choice.options.map(o => ('instanceId' in o ? o.instanceId : undefined))
   const foeOptions = choice.options.filter((o, i) => ids[i] && visible(ctx, ids[i]!) && !seats(ctx).myField.some(v => v.id === ids[i]) && !(me.hand ?? []).some(v => (v as Visible).id === ids[i]))

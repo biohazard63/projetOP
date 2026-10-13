@@ -4,7 +4,7 @@ import type { Command, GameState } from '../../game/core/types'
 import type { DeckEntry } from '../../game/rulesets/decks'
 import type { CardPrinting } from '../../game/cards/types'
 import { botDecision, BOT_LEVELS, type BotLevel } from './strategy'
-import { engineCatalog, engineRegistry, engineRuleset } from './catalog'
+import { engineCatalog, currentEngineRegistry, engineRuleset } from './catalog'
 import { REFERENCE_DECKS, deckEligibility } from './decks'
 import { createSecureSeed } from './seed'
 import { playerView, type PlayerView } from './view'
@@ -61,7 +61,7 @@ export class PlayService {
     if (!eligibility.ok) throw new PlayError(422, 'DECK_NOT_PLAYABLE', { errors: eligibility.errors })
     const leader = deck.entries.map(e => printings.find(p => p.printingKey === e.printingKey)).map(p => p && catalog.definitions.find(d => d.definitionId === p.definitionId)).find(d => d?.category === 'LEADER')
     const bot = REFERENCE_DECKS.find(d => d.id === (leader?.colors.includes('PURPLE') ? 'reference-red' : 'reference-purple'))!
-    let state = createGame({ gameId: `play-${Date.now().toString(36)}`, seed: this.seed(), scope: 'BASIC_TURNS', chooserId: HUMAN_SEAT, definitions: catalog.definitions, printings, ruleset: engineRuleset(), effectRegistry: engineRegistry(),
+    let state = createGame({ gameId: `play-${Date.now().toString(36)}`, seed: this.seed(), scope: 'BASIC_TURNS', chooserId: HUMAN_SEAT, definitions: catalog.definitions, printings, ruleset: engineRuleset(), effectRegistry: currentEngineRegistry(),
       players: [{ id: HUMAN_SEAT, cards: structuredClone(deck.entries), donCount: 10 }, { id: BOT_SEAT, cards: structuredClone(bot.entries), donCount: 10 }] })
     const advanced = advanceBot(state, BOT_SEAT, HUMAN_SEAT, botLevel); state = advanced.state
     const game = await this.repo.create({ userId, status: statusOf(state), humanSeat: HUMAN_SEAT, botSeat: BOT_SEAT, deckRef: deck.ref, botDeckRef: bot.id, botLevel, rulesetId: state.ruleset.id, engineVersion: ENGINE_VERSION,

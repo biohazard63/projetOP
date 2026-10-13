@@ -1,0 +1,583 @@
+{
+ "source": "https://en.onepiece-cardgame.com/rules/errata_card/",
+ "entries": {
+  "ST01-001": [
+   {
+    "number": "ST01-001",
+    "name": "Monkey.D.Luffy",
+    "before": [
+     "[Activate: Main] [Once Per Turn] Give this Leader or 1 of your Characters 1 rested DON!! card."
+    ],
+    "after": [
+     "[Activate: Main] [Once Per Turn] Give this Leader or 1 of your Characters",
+     "up to",
+     "1 rested DON!! card."
+    ],
+    "mode": null
+   }
+  ],
+  "ST01-005": [
+   {
+    "number": "ST01-005",
+    "name": "Jinbe",
+    "before": [
+     "[DON!! x1] [When Attacking] Your Leader or 1 of your Characters other than this card gains +1000 power during this turn."
+    ],
+    "after": [
+     "[DON!! x1] [When Attacking]",
+     "Up to 1 of your",
+     "Leader or",
+     "Character cards",
+     "other than this card gains +1000 power during this turn."
+    ],
+    "mode": null
+   }
+  ],
+  "ST01-007": [
+   {
+    "number": "ST01-007",
+    "name": "Nami",
+    "before": [
+     "[Activate: Main] [Once Per Turn] Give 1 rested DON!! card to your Leader or 1 of your Characters."
+    ],
+    "after": [
+     "[Activate: Main] [Once Per Turn] Give",
+     "up to",
+     "1 rested DON!! card to your Leader or 1 of your Characters."
+    ],
+    "mode": null
+   }
+  ],
+  "ST01-014": [
+   {
+    "number": "ST01-014",
+    "name": "Guard Point",
+    "before": [
+     "[Counter] Your Leader or 1 of your Characters gains +3000 power during this battle.",
+     "[Trigger] Your Leader or 1 of your Characters gains +1000 power during this turn."
+    ],
+    "after": [
+     "[Counter]",
+     "Up to 1 of your",
+     "Leader or",
+     "Character cards",
+     "gains +3000 power during this battle.",
+     "[Trigger]",
+     "Up to 1 of your",
+     "Leader or",
+     "Character cards",
+     "gains +1000 power during this turn."
+    ],
+    "mode": null
+   }
+  ],
+  "ST01-015": [
+   {
+    "number": "ST01-015",
+    "name": "Gum-Gum Jet Pistol",
+    "before": [
+     "[Main] K.O. 1 of your opponent's Characters with 6000 power or less.",
+     "[Trigger] Activate this card's [Main] effect."
+    ],
+    "after": [
+     "[Main] K.O.",
+     "up to",
+     "1 of your opponent's Characters with 6000 power or less.",
+     "[Trigger] Activate this card's [Main] effect."
+    ],
+    "mode": null
+   }
+  ],
+  "ST01-016": [
+   {
+    "number": "ST01-016",
+    "name": "Diable Jambe",
+    "before": [
+     "[Main] Select 1 of your {Straw Hat Crew} type Leader or Character cards. Your opponent cannot activate [Blocker] if that Leader or Character attacks during this turn.",
+     "[Trigger] K.O. 1 of your opponent's [Blocker] Characters with a cost of 3 or less."
+    ],
+    "after": [
+     "[Main] Select",
+     "up to",
+     "1 of your {Straw Hat Crew} type Leader or Character cards. Your opponent cannot activate [Blocker] if that Leader or Character attacks during this turn.",
+     "[Trigger] K.O.",
+     "up to",
+     "1 of your opponent's [Blocker] Characters with a cost of 3 or less."
+    ],
+    "mode": null
+   }
+  ],
+  "ST01-017": [
+   {
+    "number": "ST01-017",
+    "name": "Thousand Sunny",
+    "before": [
+     "[Activate: Main] You may rest this Stage: 1 {Straw Hat Crew} type Leader or Character card on your field gains +1000 power during this turn."
+    ],
+    "after": [
+     "[Activate: Main] You may rest this Stage:",
+     "Up to",
+     "1 {Straw Hat Crew} type Leader or Character card on your field gains +1000 power during this turn."
+    ],
+    "mode": null
+   }
+  ],
+  "ST02-005": [
+   {
+    "number": "ST02-005",
+    "name": "Killer",
+    "before": [
+     "[On Play] K.O. 1 of your opponent's rested Characters with a cost of 3 or less.",
+     "[Trigger] Play this card."
+    ],
+    "after": [
+     "[On Play] K.O.",
+     "up to",
+     "1 of your opponent's rested Characters with a cost of 3 or less.",
+     "[Trigger] Play this card."
+    ],
+    "mode": null
+   }
+  ],
+  "ST02-007": [
+   {
+    "number": "ST02-007",
+    "name": "Jewelry Bonney",
+    "before": [
+     "[Activate: Main] ➀ (You may rest the specified number of DON!! cards in your cost area.) You may rest this card: Look at up to 5 cards from the top of your deck; reveal 1 {Supernovas} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order."
+    ],
+    "after": [
+     "[Activate: Main] ➀ (You may rest the specified number of DON!! cards in your cost area.) You may rest this",
+     "Character",
+     ": Look at",
+     "5 cards",
+     "from the top of your deck; reveal up to 1 {Supernovas} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order."
+    ],
+    "mode": null
+   }
+  ],
+  "ST02-008": [
+   {
+    "number": "ST02-008",
+    "name": "Scratchmen Apoo",
+    "before": [
+     "[DON!! x1] [When Attacking] Rest 1 of your opponent's DON!! cards."
+    ],
+    "after": [
+     "[DON!! x1] [When Attacking] Rest",
+     "up to",
+     "1 of your opponent's DON!! cards."
+    ],
+    "mode": null
+   }
+  ],
+  "ST02-009": [
+   {
+    "number": "ST02-009",
+    "name": "Trafalgar Law",
+    "before": [
+     "[On Play] Set 1 of your {Supernovas} or {Heart Pirates} type rested Characters with a cost of 5 or less as active."
+    ],
+    "after": [
+     "[On Play] Set",
+     "up to",
+     "1 of your {Supernovas} or {Heart Pirates} type rested Characters with a cost of 5 or less as active."
+    ],
+    "mode": null
+   }
+  ],
+  "ST02-013": [
+   {
+    "number": "ST02-013",
+    "name": "Eustass\"Captain\"Kid",
+    "before": [
+     "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
+     "[DON!! x1] [End of Your Turn] Set this card as active."
+    ],
+    "after": [
+     "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
+     "[DON!! x1] [End of Your Turn] Set this",
+     "Character",
+     "as active."
+    ],
+    "mode": null
+   }
+  ],
+  "ST02-015": [
+   {
+    "number": "ST02-015",
+    "name": "Scalpel",
+    "before": [
+     "[Counter] Your Leader or 1 of your Characters gains +2000 power during this battle. Then, set 1 of your DON!! cards as active.",
+     "[Trigger] Set up to 2 of your DON!! cards as active."
+    ],
+    "after": [
+     "[Counter]",
+     "Up to 1 of your",
+     "Leader or",
+     "Character cards",
+     "gains +2000 power during this battle. Then, set",
+     "up to",
+     "1 of your DON!! cards as active.",
+     "[Trigger] Set up to 2 of your DON!! cards as active."
+    ],
+    "mode": null
+   }
+  ],
+  "ST02-016": [
+   {
+    "number": "ST02-016",
+    "name": "Repel",
+    "before": [
+     "[Counter] Your Leader or 1 of your Characters gains +4000 power during this battle. Then, set 1 of your DON!! cards as active."
+    ],
+    "after": [
+     "[Counter]",
+     "Up to 1 of your",
+     "Leader or",
+     "Character cards",
+     "gains +4000 power during this battle. Then, set",
+     "up to",
+     "1 of your DON!! cards as active."
+    ],
+    "mode": null
+   }
+  ],
+  "ST02-017": [
+   {
+    "number": "ST02-017",
+    "name": "Straw Sword",
+    "before": [
+     "[Main] Rest 1 of your opponent's Characters.",
+     "[Trigger] Play 1 {Supernovas} type card with a cost of 2 or less from your hand."
+    ],
+    "after": [
+     "[Main] Rest",
+     "up to",
+     "1 of your opponent's Characters.",
+     "[Trigger] Play",
+     "up to",
+     "1 {Supernovas} type card with a cost of 2 or less from your hand."
+    ],
+    "mode": null
+   }
+  ],
+  "ST03-001": [
+   {
+    "number": "ST03-001",
+    "name": "Crocodile",
+    "before": [
+     "[Activate: Main] [Once Per Turn] DON!! −4 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Return 1 Character with a cost of 5 or less to the owner's hand."
+    ],
+    "after": [
+     "[Activate: Main] [Once Per Turn] DON!! −4 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Return",
+     "up to",
+     "1 Character with a cost of 5 or less to the owner's hand."
+    ],
+    "mode": null
+   }
+  ],
+  "ST03-003": [
+   {
+    "number": "ST03-003",
+    "name": "Crocodile",
+    "before": [
+     "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
+     "[DON!! x1] [On Block] Place 1 Character with a cost of 2 or less at the bottom of the owner's deck."
+    ],
+    "after": [
+     "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
+     "[DON!! x1] [On Block] Place",
+     "up to",
+     "1 Character with a cost of 2 or less at the bottom of the owner's deck."
+    ],
+    "mode": null
+   }
+  ],
+  "ST03-004": [
+   {
+    "number": "ST03-004",
+    "name": "Gecko Moria",
+    "before": [
+     "[On Play] Add 1 {The Seven Warlords of the Sea} or {Thriller Bark Pirates} type Character with a cost of 4 or less other than [Gecko Moria] from your trash to your hand."
+    ],
+    "after": [
+     "[On Play] Add",
+     "up to",
+     "1 {The Seven Warlords of the Sea} or {Thriller Bark Pirates} type Character with a cost of 4 or less other than [Gecko Moria] from your trash to your hand."
+    ],
+    "mode": null
+   }
+  ],
+  "ST03-007": [
+   {
+    "number": "ST03-007",
+    "name": "Sentomaru",
+    "before": [
+     "[DON!! x1] [Activate: Main] [Once Per Turn] ➁ (You may rest the specified number of DON!! cards in your cost area.): Play 1 [Pacifista] with a cost of 4 or less from your deck, then shuffle your deck."
+    ],
+    "after": [
+     "[DON!! x1] [Activate: Main] [Once Per Turn] ➁ (You may rest the specified number of DON!! cards in your cost area.): Play",
+     "up to",
+     "1 [Pacifista] with a cost of 4 or less from your deck, then shuffle your deck."
+    ],
+    "mode": null
+   }
+  ],
+  "ST03-009": [
+   {
+    "number": "ST03-009",
+    "name": "Donquixote Doflamingo",
+    "before": [
+     "[On Play] Return 1 Character with a cost of 7 or less to the owner's hand."
+    ],
+    "after": [
+     "[On Play] Return",
+     "up to",
+     "1 Character with a cost of 7 or less to the owner's hand."
+    ],
+    "mode": null
+   }
+  ],
+  "ST03-014": [
+   {
+    "number": "ST03-014",
+    "name": "Marshall.D.Teach",
+    "before": [
+     "[On Play] Return 1 Character with a cost of 3 or less to the owner's hand."
+    ],
+    "after": [
+     "[On Play] Return",
+     "up to",
+     "1 Character with a cost of 3 or less to the owner's hand."
+    ],
+    "mode": null
+   }
+  ],
+  "ST03-015": [
+   {
+    "number": "ST03-015",
+    "name": "Sables",
+    "before": [
+     "[Main] Return 1 Character with a cost of 7 or less to the owner's hand.",
+     "[Trigger] Activate this card's [Main] effect."
+    ],
+    "after": [
+     "[Main] Return",
+     "up to",
+     "1 Character with a cost of 7 or less to the owner's hand.",
+     "[Trigger] Activate this card's [Main] effect."
+    ],
+    "mode": null
+   }
+  ],
+  "ST03-016": [
+   {
+    "number": "ST03-016",
+    "name": "Thrust Pad Cannon",
+    "before": [
+     "[Counter] Return 1 Character with a cost of 3 or less to the owner's hand.",
+     "[Trigger] Activate this card's [Counter] effect."
+    ],
+    "after": [
+     "[Counter] Return",
+     "up to",
+     "1 Character with a cost of 3 or less to the owner's hand.",
+     "[Trigger] Activate this card's [Counter] effect."
+    ],
+    "mode": null
+   }
+  ],
+  "ST03-017": [
+   {
+    "number": "ST03-017",
+    "name": "Love-Love Mellow",
+    "before": [
+     "[Counter] Your Leader or 1 of your Characters gains +4000 power during this battle. Then, draw 1 card if you have 3 or less cards in your hand."
+    ],
+    "after": [
+     "[Counter]",
+     "Up to 1 of your",
+     "Leader or",
+     "Character cards",
+     "gains +4000 power during this battle. Then, draw 1 card if you have 3 or less cards in your hand."
+    ],
+    "mode": null
+   }
+  ],
+  "ST04-001": [
+   {
+    "number": "ST04-001",
+    "name": "Kaido",
+    "before": [
+     "[Activate: Main] [Once Per Turn] DON!! −7 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Trash 1 of your opponent's Life cards."
+    ],
+    "after": [
+     "[Activate: Main] [Once Per Turn] DON!! −7 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Trash",
+     "up to",
+     "1 of your opponent's cards from the top of their Life cards."
+    ],
+    "mode": null
+   }
+  ],
+  "ST04-002": [
+   {
+    "number": "ST04-002",
+    "name": "Ulti",
+    "before": [
+     "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Play 1 [Page One] card with a cost of 4 or less from your hand."
+    ],
+    "after": [
+     "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Play",
+     "up to",
+     "1 [Page One] card with a cost of 4 or less from your hand."
+    ],
+    "mode": null
+   }
+  ],
+  "ST04-003": [
+   {
+    "number": "ST04-003",
+    "name": "Kaido",
+    "before": [
+     "[On Play] DON!! −5 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. 1 of your opponent's Characters with a cost of 6 or less. This Character gains [Rush] during this turn.",
+     "(This card can attack on the turn in which it is played.)"
+    ],
+    "after": [
+     "[On Play] DON!! −5 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O.",
+     "up to",
+     "1 of your opponent's Characters with a cost of 6 or less. This Character gains [Rush] during this turn.",
+     "(This card can attack on the turn in which it is played.)"
+    ],
+    "mode": null
+   }
+  ],
+  "ST04-004": [
+   {
+    "number": "ST04-004",
+    "name": "King",
+    "before": [
+     "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. 1 of your opponent's Characters with a cost of 4 or less."
+    ],
+    "after": [
+     "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O.",
+     "up to",
+     "1 of your opponent's Characters with a cost of 4 or less."
+    ],
+    "mode": null
+   }
+  ],
+  "ST04-008": [
+   {
+    "number": "ST04-008",
+    "name": "Jack",
+    "before": [
+     "[On Play] You may trash 1 card from your hand: Add 1 card from your DON!! deck and set it as active."
+    ],
+    "after": [
+     "[On Play] You may trash",
+     "1 card from your hand: Add",
+     "up to",
+     "1",
+     "DON!!",
+     "card from your DON!! deck and set it as active."
+    ],
+    "mode": null
+   }
+  ],
+  "ST04-010": [
+   {
+    "number": "ST04-010",
+    "name": "Who's.Who",
+    "before": [
+     "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. 1 of your opponent's Characters with a cost of 3 or less.",
+     "[Trigger] Play this card."
+    ],
+    "after": [
+     "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O.",
+     "up to",
+     "1 of your opponent's Characters with a cost of 3 or less.",
+     "[Trigger] Play this card."
+    ],
+    "mode": null
+   }
+  ],
+  "ST04-014": [
+   {
+    "number": "ST04-014",
+    "name": "Lead Performer \"Disaster\"",
+    "before": [
+     "[Main] Draw 1 card, then add 1 card from your DON!! deck and set it as active.",
+     "[Trigger] Activate this card's [Main] effect."
+    ],
+    "after": [
+     "[Main] Draw 1 card, then add",
+     "up to",
+     "1",
+     "DON!!",
+     "card from your DON!! deck and set it as active.",
+     "[Trigger] Activate this card's [Main] effect."
+    ],
+    "mode": null
+   }
+  ],
+  "ST04-015": [
+   {
+    "number": "ST04-015",
+    "name": "Brachio Bomber",
+    "before": [
+     "[Main] K.O. 1 of your opponent's Characters with a cost 6 or less, then add 1 DON!! card from your DON!! deck and set it as active.",
+     "[Trigger] Add 1 DON!! card from your DON!! deck and set it as active."
+    ],
+    "after": [
+     "[Main] K.O.",
+     "up to",
+     "1 of your opponent's Characters with a cost",
+     "of",
+     "6 or less, then add",
+     "up to",
+     "1 DON!! card from your DON!! deck and set it as active.",
+     "[Trigger] Add",
+     "up to",
+     "1 DON!! card from your DON!!",
+     "deck",
+     "and set it as active."
+    ],
+    "mode": null
+   }
+  ],
+  "ST04-016": [
+   {
+    "number": "ST04-016",
+    "name": "Blast Breath",
+    "before": [
+     "[Counter] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Your Leader or 1 of your Characters gains +4000 power during this battle."
+    ],
+    "after": [
+     "[Counter] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.):",
+     "Up to 1 of your",
+     "Leader or",
+     "Character cards",
+     "gains +4000 power during this battle."
+    ],
+    "mode": null
+   }
+  ],
+  "ST04-017": [
+   {
+    "number": "ST04-017",
+    "name": "Onigashima Island",
+    "before": [
+     "[Activate: Main] You may rest this Stage: If your Leader has the {Animal Kingdom Pirates} type, add 1 DON!! card from your DON!! deck and rest it."
+    ],
+    "after": [
+     "[Activate: Main] You may rest this Stage: If your Leader has the {Animal Kingdom Pirates} type, add",
+     "up to",
+     "1 DON!! card from your DON!! deck and rest it.",
+     "This is an image of the fixed, post-errata version."
+    ],
+    "mode": null
+   }
+  ]
+ }
+}

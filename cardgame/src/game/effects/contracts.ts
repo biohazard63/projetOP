@@ -10,22 +10,80 @@ export const sourceSchema = z.discriminatedUnion('kind', [
   z.strictObject({ kind: z.literal('CARD_DEFINITION'), definitionId: id, zone: z.enum(['leader', 'characters', 'stage', 'temporary', 'hand']) }),
 ])
 export type EffectSource = z.infer<typeof sourceSchema>
-export const conditionSchema = z.discriminatedUnion('kind', [
+const baseConditions = [
   z.strictObject({ kind: z.literal('ALWAYS') }),
   z.strictObject({ kind: z.literal('DON_AVAILABLE'), player }),
   z.strictObject({ kind: z.literal('SOURCE_ATTACHED_DON_AT_LEAST'), minimum: integer.max(10) }),
   z.strictObject({ kind: z.literal('HAND_AT_MOST'), player, maximum: integer.max(50) }),
   z.strictObject({ kind: z.literal('OPPONENT_CHARACTER_POWER_AT_LEAST'), minimum: z.number().int(), powerBasis: z.enum(['CURRENT', 'BASE']).default('CURRENT') }),
-])
+  z.strictObject({ kind: z.literal('HAND_AT_LEAST'), player, minimum: integer.min(1).max(50), traitsAny: z.array(z.string().min(1).max(128)).min(1).max(8).optional() }),
+  z.strictObject({ kind: z.literal('OPPONENT_MORE_FIELD_DON') }),
+  // The source is in the current battle and the card it battles is a Character with this attribute.
+  z.strictObject({ kind: z.literal('BATTLE_OPPONENT_ATTRIBUTE'), attribute: z.enum(['STRIKE', 'SLASH', 'RANGED', 'SPECIAL', 'WISDOM']) }),
+  z.strictObject({ kind: z.literal('OWN_CHARACTERS_AT_LEAST'), minimum: integer.min(1).max(5) }),
+  z.strictObject({ kind: z.literal('FIELD_CHARACTER_COST_AT_MOST'), maximum: integer.max(20) }),
+  z.strictObject({ kind: z.literal('DON_DECK_AT_LEAST'), minimum: integer.min(1).max(10) }),
+  z.strictObject({ kind: z.literal('LEADER_HAS_TRAIT'), trait: z.string().min(1).max(128) }),
+  // DON!! on the controller's field (cost area and given DON!!), as counted by CR 1.2.1 §10-2-10-1 for DON!! −X.
+  z.strictObject({ kind: z.literal('FIELD_DON_AT_LEAST'), minimum: integer.min(1).max(10) }),
+  // [Your Turn]: the controller is the turn player.
+  z.strictObject({ kind: z.literal('YOUR_TURN') }),
+  // Life counts (the Life area is secret but its size is public).
+  z.strictObject({ kind: z.literal('LIFE_AT_MOST'), player, maximum: integer.max(20) }),
+  z.strictObject({ kind: z.literal('LIFE_AT_LEAST'), player, minimum: integer.min(1).max(20) }),
+  z.strictObject({ kind: z.literal('LIFE_LESS_THAN_OPPONENT') }),
+  z.strictObject({ kind: z.literal('OWN_CHARACTERS_AT_MOST'), maximum: integer.max(5) }),
+  // Active DON!! in the controller's cost area (an optional ➁ cost inside an automatic ability is paid in full or not at all).
+  z.strictObject({ kind: z.literal('ACTIVE_DON_AT_LEAST'), minimum: integer.min(1).max(10) }),
+  // [Opponent's Turn].
+  z.strictObject({ kind: z.literal('OPPONENT_TURN') }),
+  // "If your Leader is [X]" (card name).
+  z.strictObject({ kind: z.literal('LEADER_NAME_IS'), name: z.string().min(1).max(128) }),
+  z.strictObject({ kind: z.literal('FIELD_DON_AT_MOST'), maximum: integer.max(10) }),
+] as const
+const baseConditionSchema = z.discriminatedUnion('kind', [...baseConditions])
+// Several printed conditions of one ability ("[DON!! x1] [Your Turn]"), all required. Not nested.
+export const conditionSchema = z.discriminatedUnion('kind', [...baseConditions, z.strictObject({ kind: z.literal('ALL_OF'), conditions: z.array(baseConditionSchema).min(2).max(4) }),
+  // "If you have 0 ... or 8 or more ...": one of the printed alternatives.
+  z.strictObject({ kind: z.literal('ANY_OF'), conditions: z.array(baseConditionSchema).min(2).max(4) })])
 export type Condition = z.infer<typeof conditionSchema>
+// M6 generic card filter. Hidden zones (hand, trash list order is public but hand is secret) can only be read on the
+// controller's own side; the cost zone holds DON!! cards. Every filter is optional and combined with AND.
+export const cardsSelectorSchema = z.strictObject({ kind: z.literal('CARDS'), side: z.enum(['OWN', 'OPPONENT', 'ANY']),
+  zone: z.enum(['characters', 'leader', 'leaderOrCharacters', 'hand', 'trash', 'deck', 'cost', 'fieldDon', 'life']),
+  categories: z.array(z.enum(['CHARACTER', 'EVENT', 'STAGE'])).min(1).max(3).optional(),
+  minCost: integer.max(20).optional(), maxCost: integer.max(20).optional(), maxPower: z.number().int().optional(), powerBasis: z.enum(['CURRENT', 'BASE']).optional(),
+  rested: z.boolean().optional(), traitsAny: z.array(z.string().min(1).max(128)).min(1).max(8).optional(),
+  nameIs: z.string().min(1).max(128).optional(), nameNot: z.string().min(1).max(128).optional(), hasBlocker: z.literal(true).optional(), excludeSource: z.boolean().optional(),
+  topN: integer.min(1).max(10).optional(),
+  colorsAny: z.array(z.enum(['RED', 'GREEN', 'BLUE', 'PURPLE', 'BLACK', 'YELLOW'])).min(1).max(6).optional(),
+  // The card the effect's source battled in the battle that just ended (CHARACTER_BATTLED announcement).
+  battledWithSource: z.literal(true).optional(),
+  // Life (CR 1.2.1 §3-10-2): only the top card, or the top and the bottom card ("from the top or bottom of your Life").
+  lifeEnd: z.enum(['TOP', 'TOP_OR_BOTTOM']).optional(),
+  attributesAny: z.array(z.enum(['STRIKE', 'SLASH', 'RANGED', 'SPECIAL', 'WISDOM'])).min(1).max(5).optional(),
+  // "{X} type or <Y> attribute": traitsAny and attributesAny are alternatives instead of both being required.
+  traitOrAttribute: z.literal(true).optional(),
+  // Only cards still bound (same presence) by an earlier step ("the revealed card", "the rest").
+  inBinding: id.optional() })
+  .refine(c => !c.traitOrAttribute || (c.traitsAny !== undefined && c.attributesAny !== undefined))
+  .refine(c => (c.zone === 'life') === (c.lifeEnd !== undefined), { message: 'LIFE_END_ONLY_FOR_LIFE' })
+  .refine(c => c.topN === undefined || c.zone === 'deck', { message: 'TOP_N_ONLY_FOR_DECK' })
+  // The opponent's hand only for a concealed choice ("choose 2 cards from your opponent's hand face-down", checked per program).
+  .refine(c => !['hand', 'trash', 'deck', 'fieldDon'].includes(c.zone) || c.side === 'OWN' || (c.zone === 'hand' && c.side === 'OPPONENT'), { message: 'HIDDEN_ZONE_SELECTOR' })
+  .refine(c => c.minCost === undefined || c.maxCost === undefined || c.minCost <= c.maxCost)
 export const selectorSchema = z.discriminatedUnion('kind', [
   z.strictObject({ kind: z.literal('OWN_ZONE'), zone: z.enum(['hand', 'cost', 'donDeck', 'deck']), cardKind: z.enum(['CARD', 'DON']) }),
   z.strictObject({ kind: z.literal('OWN_RESTED_DON') }),
-  z.strictObject({ kind: z.literal('OPPONENT_CHARACTER'), maximumPower: z.number().int(), powerBasis: z.enum(['CURRENT', 'BASE']).optional() }),
+  // If no maximum is supplied, any opposing Character is a legal target.
+  z.strictObject({ kind: z.literal('OPPONENT_CHARACTER'), maximumPower: z.number().int().optional(), powerBasis: z.enum(['CURRENT', 'BASE']).optional() }),
+  z.strictObject({ kind: z.literal('OPPONENT_BLOCKER_COST_AT_MOST'), maximumCost: integer.max(10) }),
+  z.strictObject({ kind: z.literal('OPPONENT_RESTED_CHARACTER_COST_AT_MOST'), maximumCost: integer.max(10) }),
   z.strictObject({ kind: z.literal('OWN_FIELD'), trait: z.string().min(1).max(128).optional(), excludeSource: z.boolean().optional() }),
-  z.strictObject({ kind: z.literal('OWN_LEADER_OR_CHARACTER') }),
+  z.strictObject({ kind: z.literal('OWN_LEADER_OR_CHARACTER'), excludeSource: z.boolean().optional() }),
   // CR 1.2.1 §3-10-2: a card leaving the Life area is the top card unless the text says otherwise.
   z.strictObject({ kind: z.literal('OPPONENT_TOP_LIFE') }),
+  cardsSelectorSchema,
 ])
 export type Selector = z.infer<typeof selectorSchema>
 const atomicCostSchema = z.discriminatedUnion('kind', [
@@ -50,9 +108,11 @@ export const usageSchema = z.discriminatedUnion('kind', [
 ])
 export type EffectUsageLimit = z.infer<typeof usageSchema>
 export const operationSpecSchema = z.discriminatedUnion('primitive', [
-  z.strictObject({ primitive: z.literal('koCharacter'), version: z.literal('1.0.0'), player: z.literal('OPPONENT'), audience: z.literal('PUBLIC'), subjectBinding: id }),
+  // player ANY (M6): the bound Characters of both players ("K.O. all Characters ...", "K.O. this Character"); several bound
+  // Characters are K.O.'d one after the other in binding order. `resultBinding` receives the ones actually K.O.'d ("If you do").
+  z.strictObject({ primitive: z.literal('koCharacter'), version: z.literal('1.0.0'), player: z.enum(['OPPONENT', 'ANY']), audience: z.literal('PUBLIC'), subjectBinding: id, resultBinding: id.optional() }),
   z.strictObject({ primitive: z.literal('attachRestedDon'), version: z.literal('1.0.0'), player, audience: z.enum(['PUBLIC', 'CONTROLLER']), subjectBinding: id, targetBinding: id }),
-  z.strictObject({ primitive: z.literal('addPower'), version: z.literal('1.0.0'), player, audience: z.enum(['PUBLIC', 'CONTROLLER']), subjectBinding: id.optional(), amount: z.number().int().min(-100000).max(100000), duration: z.enum(['THIS_TURN', 'THIS_BATTLE']) }),
+  z.strictObject({ primitive: z.literal('addPower'), version: z.literal('1.0.0'), player, audience: z.enum(['PUBLIC', 'CONTROLLER']), subjectBinding: id.optional(), amount: z.number().int().min(-100000).max(100000), duration: z.enum(['THIS_TURN', 'THIS_BATTLE', 'UNTIL_START_OF_YOUR_NEXT_TURN', 'UNTIL_END_OF_YOUR_NEXT_TURN']) }),
   z.strictObject({ primitive: z.literal('setBasePowerFromOpponentLeader'), version: z.literal('1.0.0'), player: z.literal('CONTROLLER'), audience: z.literal('PUBLIC'), duration: z.literal('UNTIL_START_OF_NEXT_TURN') }),
   z.strictObject({ primitive: z.literal('moveCard'), version: z.literal('1.0.0'), player, audience: z.enum(['PUBLIC', 'CONTROLLER']), subjectBinding: id, from: z.enum(['hand', 'deck', 'trash']), to: z.enum(['hand', 'deck', 'trash']) }).refine(o => o.from !== o.to && (!['hand','deck'].includes(o.to) || o.audience === 'CONTROLLER')),
   z.strictObject({ primitive: z.literal('drawCards'), version: z.literal('1.0.0'), player, audience: z.literal('CONTROLLER'), amount: integer.max(10) }),
@@ -60,20 +120,73 @@ export const operationSpecSchema = z.discriminatedUnion('primitive', [
   z.strictObject({ primitive: z.literal('moveDon'), version: z.literal('1.0.0'), player, audience: z.enum(['PUBLIC', 'CONTROLLER']), subjectBinding: id.optional(), from: z.enum(['donDeck', 'cost']), to: z.enum(['donDeck', 'cost']), rested: z.boolean() })
     .refine(o => o.from !== o.to && (o.to !== 'donDeck' || !o.rested)),
   z.strictObject({ primitive: z.literal('trashLife'), version: z.literal('1.0.0'), player: z.literal('OPPONENT'), audience: z.literal('PUBLIC'), subjectBinding: id }),
+  z.strictObject({ primitive: z.literal('preventBlocker'), version: z.literal('1.0.0'), player: z.literal('OPPONENT'), audience: z.literal('PUBLIC'), subjectBinding: id.optional(), minimumBlockerPower: integer.optional(), duration: z.enum(['THIS_BATTLE', 'THIS_TURN']) }),
+  // CR 1.2.1 §3-7-6-1: with 5 Characters, the Character bound by `replaceBinding` is trashed (rule processing) first.
+  z.strictObject({ primitive: z.literal('playSelfFromTrigger'), version: z.literal('1.0.0'), player: z.literal('CONTROLLER'), audience: z.literal('PUBLIC'), replaceBinding: id.optional() }),
+  // M6 generic field moves. The subject may belong to either player; it always goes to its OWNER's hand / deck bottom.
+  z.strictObject({ primitive: z.literal('returnToHand'), version: z.literal('1.0.0'), audience: z.literal('PUBLIC'), subjectBinding: id }),
+  z.strictObject({ primitive: z.literal('moveToDeckBottom'), version: z.literal('1.0.0'), audience: z.literal('PUBLIC'), subjectBinding: id }),
+  z.strictObject({ primitive: z.literal('restCard'), version: z.literal('1.0.0'), audience: z.literal('PUBLIC'), subjectBinding: id }),
+  // Without a binding, setActive applies to the effect's own source card.
+  z.strictObject({ primitive: z.literal('setActive'), version: z.literal('1.0.0'), audience: z.literal('PUBLIC'), subjectBinding: id.optional() }),
+  // Plays the bound own Character/Stage without paying its cost (its On Play is captured as usual); full area: §3-7-6-1.
+  z.strictObject({ primitive: z.literal('playCard'), version: z.literal('1.0.0'), audience: z.literal('PUBLIC'), subjectBinding: id, from: z.enum(['hand', 'deck', 'trash']), replaceBinding: id.optional(), rested: z.literal(true).optional() }),
+  // CR 1.2.1 §10-2-10-1 DON!! −X paid inside a program: the bound field DON!! return to the DON!! deck (active, detached).
+  z.strictObject({ primitive: z.literal('returnDon'), version: z.literal('1.0.0'), audience: z.literal('PUBLIC'), subjectBinding: id }),
+  // "Look at N cards from the top of your deck and return them to the top or bottom in any order" (FAQ ST03-010: all
+  // N go to the same place). `orderBinding` holds the N in the chosen order; a non-empty `bottomBinding` sends them all down.
+  z.strictObject({ primitive: z.literal('arrangeTopDeck'), version: z.literal('1.0.0'), audience: z.literal('CONTROLLER'), orderBinding: id, bottomBinding: id }),
+  // "Give up to 1 of your opponent's Characters −X cost during this turn" (cost never below 0, rules FAQ).
+  z.strictObject({ primitive: z.literal('addCost'), version: z.literal('1.0.0'), audience: z.literal('PUBLIC'), subjectBinding: id, amount: z.number().int().min(-20).max(20), duration: z.literal('THIS_TURN') }),
+  // "... cannot be K.O.'d during this turn" (by effects and in battle) for the bound cards or the source.
+  z.strictObject({ primitive: z.literal('preventKO'), version: z.literal('1.0.0'), audience: z.literal('PUBLIC'), subjectBinding: id.optional(), duration: z.literal('THIS_TURN') }),
+  // "This Character gains [Rush] during this turn": a temporary keyword on the bound card or the source.
+  z.strictObject({ primitive: z.literal('grantKeyword'), version: z.literal('1.0.0'), audience: z.literal('PUBLIC'), keyword: z.enum(['RUSH', 'DOUBLE_ATTACK', 'BANISH']), duration: z.enum(['THIS_TURN', 'THIS_BATTLE']), subjectBinding: id.optional() }),
+  // M6 Life family. lifeToHand: the bound card of the controller's Life (top or bottom) goes to the controller's hand.
+  z.strictObject({ primitive: z.literal('lifeToHand'), version: z.literal('1.0.0'), audience: z.literal('CONTROLLER'), subjectBinding: id }),
+  // addToLife: the bound card (controller's hand / deck, or a Character on the field) goes to the top of its OWNER's Life,
+  // face-down or face-up as printed.
+  z.strictObject({ primitive: z.literal('addToLife'), version: z.literal('1.0.0'), audience: z.enum(['PUBLIC', 'CONTROLLER']), subjectBinding: id, from: z.enum(['hand', 'deck', 'characters']), faceUp: z.boolean(),
+    // An opposing Character (ST09-015) goes to ITS owner's Life; `bottomBinding` non-empty places it at the bottom.
+    side: z.enum(['OWN', 'OPPONENT']).optional(), bottomBinding: id.optional() }),
+  // "... and add this card to your hand": the resolving [Trigger] card goes from its temporary area to its owner's hand.
+  z.strictObject({ primitive: z.literal('triggerCardToHand'), version: z.literal('1.0.0'), audience: z.literal('CONTROLLER') }),
+  // placeLife: the bound top Life card (either player) stays on top, or goes to the bottom when `bottomBinding` is non-empty.
+  z.strictObject({ primitive: z.literal('placeLife'), version: z.literal('1.0.0'), audience: z.literal('PUBLIC'), subjectBinding: id, bottomBinding: id }),
 ])
 export type OperationSpec = z.infer<typeof operationSpecSchema>
-const searchTopDeckSchema = z.strictObject({ kind: z.literal('SEARCH_TOP_DECK'), amount: integer.min(1).max(10), trait: z.string().min(1).max(128).optional(), category: z.enum(['CHARACTER','EVENT','STAGE']).optional(), excludeRulesName: z.string().min(1).max(128).optional(), maxSelected: integer.min(1).max(10), bind: id, revealSelected: z.literal(true), destination: z.literal('hand'), remainder: z.literal('BOTTOM_ANY_ORDER') }).refine(step=>step.maxSelected<=step.amount)
+const searchTopDeckSchema = z.strictObject({ kind: z.literal('SEARCH_TOP_DECK'), amount: integer.min(1).max(10), trait: z.string().min(1).max(128).optional(), category: z.enum(['CHARACTER','EVENT','STAGE']).optional(), excludeRulesName: z.string().min(1).max(128).optional(), maxSelected: integer.min(1).max(10), bind: id, revealSelected: z.literal(true), destination: z.literal('hand'), remainder: z.literal('BOTTOM_ANY_ORDER'), whenBindingNonempty: id.optional() }).refine(step=>step.maxSelected<=step.amount)
 const shuffleDeckSchema = z.strictObject({ kind: z.literal('SHUFFLE_DECK'), player })
 const revealBindingSchema = z.strictObject({ kind: z.literal('REVEAL_BINDING'), bind: id })
+// "All of your ... gain": binds every matching card at resolution, without a choice.
+const bindAllSchema = z.strictObject({ kind: z.literal('BIND_ALL'), selector: z.lazy(() => cardsSelectorSchema), bind: id })
+// "If ..., <two operations>": the condition is evaluated once; the bind holds the source when it was met, else nothing.
+const checkSchema = z.strictObject({ kind: z.literal('CHECK'), condition: z.lazy(() => conditionSchema), bind: id })
+// "(Your opponent) chooses one: - A - B": the chooser picks one mode; `${bind}.${index}` holds the source for the chosen
+// mode and nothing for the others (later steps are guarded with whenBindingNonempty).
+const modeSchema = z.strictObject({ kind: z.literal('MODE'), modes: integer.min(2).max(4), bind: id, chooser: z.literal('OPPONENT').optional(), whenBindingNonempty: id.optional() })
 export const stepSchema = z.discriminatedUnion('kind', [
-  z.strictObject({ kind: z.literal('OPERATION'), operation: operationSpecSchema, whenCondition: conditionSchema.optional() }),
+  z.strictObject({ kind: z.literal('OPERATION'), operation: operationSpecSchema, whenCondition: conditionSchema.optional(), whenBindingNonempty: id.optional() }),
   z.strictObject({ kind: z.literal('CHOICE'), choiceType: z.enum(['SELECT', 'ORDER']), selector: selectorSchema,
-    optional: z.boolean(), min: integer.max(10), max: integer.max(10), bind: id, visibility: z.enum(['PRIVATE', 'PUBLIC']), whenBindingNonempty: id.optional(), whenCondition: conditionSchema.optional() })
-    .refine(c => c.min <= c.max && (!c.optional || c.min === 0)),
-  searchTopDeckSchema, shuffleDeckSchema, revealBindingSchema,
+    optional: z.boolean(), min: integer.max(10), max: integer.max(10), bind: id, visibility: z.enum(['PRIVATE', 'PUBLIC']), whenBindingNonempty: id.optional(), whenCondition: conditionSchema.optional(),
+    // allOrNone: exactly 0 or `max` options ("DON!! −X" paid in full or not at all). clampMin: a mandatory choice takes
+    // every available option when fewer than `min` exist ("trash 2 cards" whenever possible).
+    allOrNone: z.literal(true).optional(), clampMin: z.literal(true).optional(),
+    // "Your opponent chooses ...": the opponent makes the choice; OWN in the selector then means the chooser's side.
+    chooser: z.literal('OPPONENT').optional(),
+    // "Look at ...": the chooser sees the hidden cards offered (a private peek, never shown to the other player).
+    reveal: z.literal('CHOOSER').optional(),
+    // "Add up to 1 card from the top of your deck to ...": a hidden card chosen without being looked at (position only).
+    conceal: z.literal(true).optional(),
+    // With no eligible card the step is skipped (nothing to choose, e.g. the revealed card was played).
+    skipIfNone: z.literal(true).optional() })
+    .refine(c => !c.reveal || c.visibility === 'PRIVATE')
+    .refine(c => !(c.reveal && c.conceal))
+    .refine(c => c.min <= c.max && (!c.optional || c.min === 0) && (!c.allOrNone || c.optional) && (!c.clampMin || !c.optional)),
+  searchTopDeckSchema, shuffleDeckSchema, revealBindingSchema, bindAllSchema, checkSchema, modeSchema,
 ])
 export const effectDefinitionSchema = z.strictObject({
-  id, revision: id, dslVersion: z.enum(['1.0.0', '1.1.0', '1.2.0', '1.3.0']), source: sourceSchema, timing: z.enum(['MAIN', 'ACTIVATE_MAIN', 'COUNTER', 'ON_PLAY', 'ON_KO', 'ON_CHARACTER_KO', 'WHEN_ATTACKING', 'ON_BLOCK', 'WHEN_ATTACKING_OR_ON_BLOCK', 'TRIGGER']),
+  id, revision: id, dslVersion: z.enum(['1.0.0', '1.1.0', '1.2.0', '1.3.0']), source: sourceSchema, timing: z.enum(['MAIN', 'ACTIVATE_MAIN', 'COUNTER', 'ON_PLAY', 'ON_KO', 'ON_CHARACTER_KO', 'WHEN_ATTACKING', 'ON_BLOCK', 'WHEN_ATTACKING_OR_ON_BLOCK', 'TRIGGER', 'END_OF_YOUR_TURN', 'END_OF_BATTLE_WITH_CHARACTER', 'ON_BATTLE_PAIRED', 'ON_DON_RETURNED', 'ON_OPPONENT_BLOCKER']),
   condition: conditionSchema, cost: costSchema, optionalCost: z.enum(['TAKE_TOP_LIFE_TO_HAND', 'RETURN_ONE_DON']).optional(), usage: usageSchema, program: z.array(stepSchema).min(1).max(32),
 }).superRefine((d, ctx) => {
   if (d.dslVersion === '1.0.0' && d.source.kind !== 'SYNTHETIC') ctx.addIssue({ code: 'custom', message: 'CARD_BINDING_NOT_IMPLEMENTED' })
@@ -89,15 +202,27 @@ export const effectDefinitionSchema = z.strictObject({
   if (d.cost.kind === 'ALTERNATIVE' || (!['1.2.0','1.3.0'].includes(d.dslVersion) && d.cost.kind === 'SEQUENCE')) ctx.addIssue({ code:'custom', message:'COST_NOT_IMPLEMENTED' })
   const costParts = d.cost.kind === 'SEQUENCE' ? d.cost.parts : d.cost.kind === 'ALTERNATIVE' ? d.cost.options : [d.cost]
   if ((d.cost.kind !== 'DON_MINUS' && costParts.some(part => part.kind === 'DON_MINUS')) || (d.cost.kind === 'DON_MINUS' && (d.dslVersion !== '1.3.0' || d.timing !== 'ACTIVATE_MAIN'))) ctx.addIssue({ code:'custom', message:'COST_NOT_IMPLEMENTED' })
-  if (d.dslVersion !== '1.3.0' && d.program.some(s => (s.kind === 'CHOICE' && s.selector.kind === 'OPPONENT_TOP_LIFE') || (s.kind === 'OPERATION' && s.operation.primitive === 'trashLife'))) ctx.addIssue({ code:'custom', message:'INCOMPATIBLE_VERSION' })
+  if (d.dslVersion !== '1.3.0' && (['END_OF_YOUR_TURN', 'END_OF_BATTLE_WITH_CHARACTER', 'ON_BATTLE_PAIRED', 'ON_DON_RETURNED', 'ON_OPPONENT_BLOCKER'].includes(d.timing) || d.condition.kind === 'HAND_AT_LEAST' || d.condition.kind === 'OWN_CHARACTERS_AT_LEAST' || d.condition.kind === 'FIELD_CHARACTER_COST_AT_MOST' || d.condition.kind === 'DON_DECK_AT_LEAST' || d.condition.kind === 'LEADER_HAS_TRAIT' || d.condition.kind === 'FIELD_DON_AT_LEAST' || d.condition.kind === 'OPPONENT_MORE_FIELD_DON' || d.condition.kind === 'BATTLE_OPPONENT_ATTRIBUTE' || d.condition.kind === 'YOUR_TURN' || d.condition.kind === 'ALL_OF' || d.condition.kind === 'OWN_CHARACTERS_AT_MOST' || d.condition.kind === 'ACTIVE_DON_AT_LEAST' || d.condition.kind === 'OPPONENT_TURN' || d.condition.kind === 'LEADER_NAME_IS' || d.condition.kind === 'ANY_OF' || d.condition.kind === 'FIELD_DON_AT_MOST' || d.program.some(s => (s.kind === 'OPERATION' && (s.whenBindingNonempty !== undefined || ['returnToHand','moveToDeckBottom','restCard','setActive','playCard','returnDon','grantKeyword','arrangeTopDeck','addCost','preventKO'].includes(s.operation.primitive)) || s.kind === 'BIND_ALL' || s.kind === 'CHECK' || (s.kind === 'CHOICE' && s.chooser !== undefined)) || (s.kind === 'CHOICE' && s.selector.kind === 'CARDS')))) ctx.addIssue({ code:'custom', message:'INCOMPATIBLE_VERSION' })
+  if (d.dslVersion !== '1.3.0' && d.program.some(s => (s.kind === 'CHOICE' && (s.selector.kind === 'OPPONENT_TOP_LIFE' || s.selector.kind === 'OPPONENT_BLOCKER_COST_AT_MOST' || s.selector.kind === 'OPPONENT_RESTED_CHARACTER_COST_AT_MOST')) || (s.kind === 'OPERATION' && ['trashLife','preventBlocker','playSelfFromTrigger'].includes(s.operation.primitive)))) ctx.addIssue({ code:'custom', message:'INCOMPATIBLE_VERSION' })
+  if (d.dslVersion !== '1.3.0' && (['LIFE_AT_MOST', 'LIFE_AT_LEAST', 'LIFE_LESS_THAN_OPPONENT'].includes(d.condition.kind) || d.program.some(s => s.kind === 'MODE' || (s.kind === 'OPERATION' && ['lifeToHand', 'addToLife', 'placeLife', 'triggerCardToHand'].includes(s.operation.primitive))))) ctx.addIssue({ code:'custom', message:'INCOMPATIBLE_VERSION' })
+  if (d.dslVersion !== '1.3.0' && d.program.some(s => s.kind === 'OPERATION' && s.operation.primitive === 'koCharacter' && (s.operation.player !== 'OPPONENT' || s.operation.resultBinding !== undefined || s.whenBindingNonempty !== undefined || s.whenCondition !== undefined))) ctx.addIssue({ code:'custom', message:'INCOMPATIBLE_VERSION' })
   if (d.timing === 'ON_KO' && (d.source.kind !== 'CARD_DEFINITION' || d.source.zone !== 'characters' || d.cost.kind !== 'NONE')) ctx.addIssue({ code: 'custom', message: 'ON_KO_COST_NOT_IMPLEMENTED' })
   const available = new Set<string>()
   for (const step of d.program) {
     if (step.kind === 'CHOICE') {
       if (step.whenBindingNonempty && !available.has(step.whenBindingNonempty)) ctx.addIssue({ code: 'custom', message: 'UNBOUND_GUARD' })
       if (step.visibility === 'PUBLIC' && step.selector.kind === 'OWN_ZONE' && ['hand','deck','life'].includes(step.selector.zone)) ctx.addIssue({ code:'custom', message:'PUBLIC_HIDDEN_ZONE_CHOICE' })
+      if (step.visibility === 'PUBLIC' && step.selector.kind === 'CARDS' && ['hand','deck'].includes(step.selector.zone)) ctx.addIssue({ code:'custom', message:'PUBLIC_HIDDEN_ZONE_CHOICE' })
+      if (step.selector.kind === 'CARDS' && step.selector.zone === 'hand' && step.selector.side !== 'OWN' && !(step.conceal && step.selector.side === 'OPPONENT' && !step.chooser)) ctx.addIssue({ code:'custom', message:'HIDDEN_ZONE_SELECTOR' })
       available.add(step.bind)
+    } else if (step.kind === 'BIND_ALL' || step.kind === 'CHECK') {
+      if (step.kind === 'BIND_ALL' && step.selector.zone === 'hand' && step.selector.side !== 'OWN') ctx.addIssue({ code:'custom', message:'HIDDEN_ZONE_SELECTOR' })
+      available.add(step.bind)
+    } else if (step.kind === 'MODE') {
+      if (step.whenBindingNonempty && !available.has(step.whenBindingNonempty)) ctx.addIssue({ code: 'custom', message: 'UNBOUND_GUARD' })
+      for (let index = 0; index < step.modes; index++) available.add(`${step.bind}.${index}`)
     } else if (step.kind === 'SEARCH_TOP_DECK') {
+      if (step.whenBindingNonempty && !available.has(step.whenBindingNonempty)) ctx.addIssue({ code: 'custom', message: 'UNBOUND_GUARD' })
       available.add(step.bind)
     } else if (step.kind === 'REVEAL_BINDING') {
       if (!available.has(step.bind)) ctx.addIssue({ code:'custom', message:'UNBOUND_REVEAL' })
@@ -105,6 +230,11 @@ export const effectDefinitionSchema = z.strictObject({
     else if (step.kind === 'OPERATION') {
       if ('subjectBinding' in step.operation && step.operation.subjectBinding && !available.has(step.operation.subjectBinding)) ctx.addIssue({ code: 'custom', message: 'UNBOUND_SUBJECT' })
       if (step.operation.primitive === 'attachRestedDon' && !available.has(step.operation.targetBinding)) ctx.addIssue({ code: 'custom', message: 'UNBOUND_TARGET' })
+      if (step.operation.primitive === 'koCharacter' && step.operation.resultBinding) available.add(step.operation.resultBinding)
+      if (step.whenBindingNonempty && !available.has(step.whenBindingNonempty)) ctx.addIssue({ code: 'custom', message: 'UNBOUND_GUARD' })
+      if (step.operation.primitive === 'placeLife' && !available.has(step.operation.bottomBinding)) ctx.addIssue({ code: 'custom', message: 'UNBOUND_SUBJECT' })
+      if (step.operation.primitive === 'addToLife' && step.operation.bottomBinding && !available.has(step.operation.bottomBinding)) ctx.addIssue({ code: 'custom', message: 'UNBOUND_SUBJECT' })
+      if (step.operation.primitive === 'arrangeTopDeck' && (!available.has(step.operation.orderBinding) || !available.has(step.operation.bottomBinding))) ctx.addIssue({ code: 'custom', message: 'UNBOUND_SUBJECT' })
     }
   }
   const binds = d.program.filter(s => s.kind === 'CHOICE').map(s => s.bind)
@@ -116,19 +246,42 @@ export const replacementSchema = z.strictObject({ id, condition: conditionSchema
   action: z.discriminatedUnion('kind', [z.strictObject({ kind: z.literal('PREVENT') }), z.strictObject({ kind: z.literal('REPLACE'), operation: operationSpecSchema })]),
 })
 export const restrictionSchema = z.strictObject({ id, playerId: id, prohibited: z.enum(['ADD_DON', 'MOVE_DON', 'REST']), afterRestedDon: integer.max(10).optional() })
-export const continuousDefinitionSchema = z.strictObject({ id, definitionId: id, zone: z.literal('characters'), characteristic: z.enum(['POWER', 'COST']), amount: z.number().int().min(-100000).max(100000), minimumAttachedDon: integer.max(10) })
+// M6 optional conditions: count of the controller's Characters (source included), the controller's turn only, the
+// source being rested. `targets` makes an aura over the controller's Leader/Characters having at least one trait
+// (each source applies once per card, FAQ ST02-014); without it the modifier applies to the source itself.
+export const continuousDefinitionSchema = z.strictObject({ id, definitionId: id, zone: z.enum(['characters', 'leader']), characteristic: z.enum(['POWER', 'COST']), amount: z.number().int().min(-100000).max(100000), minimumAttachedDon: integer.max(10),
+  minimumOwnCharacters: integer.min(1).max(5).optional(), duringYourTurn: z.literal(true).optional(), sourceRested: z.literal(true).optional(),
+  // [Opponent's Turn]; "If you have N or less Life cards".
+  duringOpponentTurn: z.literal(true).optional(), maximumOwnLife: integer.max(20).optional(), minimumOwnLife: integer.min(1).max(20).optional(),
+  targets: z.strictObject({ traitsAny: z.array(z.string().min(1).max(128)).min(1).max(8) }).optional() })
+export const conditionalKeywordSchema = z.strictObject({ id, definitionId: id, zone: z.enum(['characters', 'leader']), keyword: z.enum(['RUSH', 'RUSH_CHARACTER', 'DOUBLE_ATTACK', 'BANISH', 'UNBLOCKABLE']), minimumAttachedDon: integer.max(10),
+  // M6: only while a Character (either side) has a current cost of at most this value (FAQ ST06-004: checked continuously).
+  whenAnyCharacterCostAtMost: integer.max(20).optional() })
+// M6 continuous K.O. protection of a printed card: in battle or by effects, optionally with N field DON!! (FAQ ST05-008).
+export const koProtectionSchema = z.strictObject({ id, definitionId: id, zone: z.literal('characters'), from: z.enum(['BATTLE', 'EFFECT']), minimumFieldDon: integer.max(10).optional(),
+  // "cannot be K.O.'d in battle by Leaders" (BATTLE only): the attacker is a Leader.
+  byLeaders: z.literal(true).optional(),
+  // [DON!! xN] and "If you have N or less Life cards" (ST09-004).
+  minimumAttachedDon: integer.min(1).max(10).optional(), maximumOwnLife: integer.max(20).optional() }).refine(k => !k.byLeaders || k.from === 'BATTLE')
+export const blockerRestrictionSchema = z.strictObject({ id, source: sourceSchema, subject: presenceSchema, controllerId: id, scope: z.enum(['BATTLE', 'TURN']), battleId: id.optional(), turnId: integer.optional(), minimumBlockerPower: integer.optional() }).superRefine((value, ctx) => {
+  if ((value.scope === 'BATTLE') !== (value.battleId !== undefined) || (value.scope === 'TURN') !== (value.turnId !== undefined)) ctx.addIssue({ code: 'custom', message: 'INVALID_BLOCKER_RESTRICTION_DURATION' })
+})
 export const cardReplacementSchema = z.strictObject({ id, definitionId: id, zone: z.literal('characters'), match: z.literal('SELF_KO_BY_EFFECT'), action: z.literal('TRASH_HAND_INSTEAD'), categories: z.array(z.enum(['EVENT', 'STAGE'])).min(1).max(2), usage: z.literal('ONCE_PER_TURN') })
 export const cardOperationSchema = z.strictObject({ id, resolutionId: id, subject: presenceSchema, controllerId: id, type: z.enum(['KO', 'TRASH_HAND']), outcome: z.enum(['PROPOSED', 'CONFIRMED', 'REPLACED']), replacementId: id.optional() })
 export const registrySchema = z.strictObject({ version: z.enum(['1.0.0', '1.1.0', '1.2.0', '1.3.0']), dslVersion: z.enum(['1.0.0', '1.1.0', '1.2.0', '1.3.0']),
   leaderReplacements: z.array(z.strictObject({ id, definitionId: id, minimumAttachedDon: integer, minimumPower: z.number().int(), amount: z.number().int().negative(), usage: z.literal('ONCE_PER_TURN') })).max(32).optional(),
   cardReplacements: z.array(cardReplacementSchema).max(32).optional(),
   continuous: z.array(continuousDefinitionSchema).max(256).optional(),
-  definitions: z.array(effectDefinitionSchema).max(256), replacements: z.array(replacementSchema).max(32), restrictions: z.array(restrictionSchema).max(32),
+  conditionalKeywords: z.array(conditionalKeywordSchema).max(256).optional(),
+  koProtections: z.array(koProtectionSchema).max(256).optional(),
+  blockerRestrictions: z.array(blockerRestrictionSchema).max(256).optional(),
+  definitions: z.array(effectDefinitionSchema).max(1024), replacements: z.array(replacementSchema).max(32), restrictions: z.array(restrictionSchema).max(32),
 }).superRefine((r, ctx) => {
   if (r.restrictions.some(rule => (!['1.2.0','1.3.0'].includes(r.version) && (rule.prohibited === 'REST' || rule.afterRestedDon !== undefined)) || (rule.afterRestedDon !== undefined && rule.prohibited !== 'REST'))) ctx.addIssue({ code:'custom', message:'INCOMPATIBLE_VERSION' })
   if (!['1.2.0','1.3.0'].includes(r.version) && r.leaderReplacements !== undefined) ctx.addIssue({ code: 'custom', message: 'INCOMPATIBLE_VERSION' })
-  if (r.version !== r.dslVersion || r.definitions.some(d => d.dslVersion !== r.dslVersion) || (r.version === '1.0.0' && (r.continuous !== undefined || r.cardReplacements !== undefined))) ctx.addIssue({ code: 'custom', message: 'INCOMPATIBLE_VERSION' })
-  for (const list of [r.leaderReplacements || [], r.cardReplacements || [], r.continuous || [], r.definitions, r.replacements, r.restrictions]) if (new Set(list.map(d => d.id)).size !== list.length) ctx.addIssue({ code: 'custom', message: 'DUPLICATE_REGISTRY_ID' })
+  if ((r.continuous ?? []).some(m => m.minimumOwnCharacters !== undefined || m.duringYourTurn || m.sourceRested || m.targets || m.duringOpponentTurn || m.maximumOwnLife !== undefined || m.minimumOwnLife !== undefined || m.zone !== 'characters') && r.version !== '1.3.0') ctx.addIssue({ code: 'custom', message: 'INCOMPATIBLE_VERSION' })
+  if (r.version !== r.dslVersion || r.definitions.some(d => d.dslVersion !== r.dslVersion) || (r.version === '1.0.0' && (r.continuous !== undefined || r.cardReplacements !== undefined || r.conditionalKeywords !== undefined)) || (r.version !== '1.3.0' && r.conditionalKeywords !== undefined)) ctx.addIssue({ code: 'custom', message: 'INCOMPATIBLE_VERSION' })
+  for (const list of [r.leaderReplacements || [], r.cardReplacements || [], r.continuous || [], r.conditionalKeywords || [], r.definitions, r.replacements, r.restrictions]) if (new Set(list.map(d => d.id)).size !== list.length) ctx.addIssue({ code: 'custom', message: 'DUPLICATE_REGISTRY_ID' })
 })
 export type EffectRegistry = z.infer<typeof registrySchema>
 const legacyPrimitiveRegistrySchema = z.strictObject({ version: z.literal('1.0.0'), primitives: z.tuple([
@@ -142,17 +295,21 @@ const modernPrimitiveList = [
   z.strictObject({ id: z.literal('addPower'), version: z.literal('1.0.0') }),
   z.strictObject({ id: z.literal('koCharacter'), version: z.literal('1.0.0') }),
 ] as const
-const universalPrimitiveList = [...modernPrimitiveList, z.strictObject({ id: z.literal('drawCards'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('setBasePowerFromOpponentLeader'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('moveCard'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('shuffleDeck'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('searchTopDeck'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('revealCards'), version: z.literal('1.0.0') })] as const
+const preBlockerUniversalList = [...modernPrimitiveList, z.strictObject({ id: z.literal('drawCards'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('setBasePowerFromOpponentLeader'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('moveCard'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('shuffleDeck'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('searchTopDeck'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('revealCards'), version: z.literal('1.0.0') })] as const
+const universalPrimitiveList = [...preBlockerUniversalList, z.strictObject({ id: z.literal('preventBlocker'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('playSelfFromTrigger'), version: z.literal('1.0.0') })] as const
+const starterPrimitiveListBase = [...universalPrimitiveList, z.strictObject({ id: z.literal('trashLife'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('returnToHand'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('moveToDeckBottom'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('restCard'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('setActive'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('playCard'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('returnDon'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('grantKeyword'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('arrangeTopDeck'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('addCost'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('preventKO'), version: z.literal('1.0.0') })] as const
+// M6 Life family (ST-07). Saves created before it keep the previous manifest.
+const starterPrimitiveList = [...starterPrimitiveListBase, z.strictObject({ id: z.literal('lifeToHand'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('addToLife'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('placeLife'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('triggerCardToHand'), version: z.literal('1.0.0') })] as const
 export const primitiveRegistrySchema = z.union([legacyPrimitiveRegistrySchema,
   z.strictObject({ version: z.literal('1.1.0'), primitives: z.tuple(modernPrimitiveList) }),
   z.strictObject({ version: z.literal('1.2.0'), primitives: z.tuple([...modernPrimitiveList, z.strictObject({ id: z.literal('drawCards'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('setBasePowerFromOpponentLeader'), version: z.literal('1.0.0') })]) }),
-  // 1.3.0 saves created before M3-3 lack trashLife; they stay readable, and a program using it needs the longer manifest.
-  z.strictObject({ version: z.literal('1.3.0'), primitives: z.union([z.tuple(universalPrimitiveList), z.tuple([...universalPrimitiveList, z.strictObject({ id: z.literal('trashLife'), version: z.literal('1.0.0') })])]) }),
+  // Older 1.3.0 saves stay readable; newly created states advertise the extended combat primitive.
+  z.strictObject({ version: z.literal('1.3.0'), primitives: z.union([z.tuple(preBlockerUniversalList), z.tuple([...preBlockerUniversalList, z.strictObject({ id: z.literal('trashLife'), version: z.literal('1.0.0') })]), z.tuple([...preBlockerUniversalList, z.strictObject({ id: z.literal('preventBlocker'), version: z.literal('1.0.0') }), z.strictObject({ id: z.literal('trashLife'), version: z.literal('1.0.0') })]), z.tuple([...universalPrimitiveList, z.strictObject({ id: z.literal('trashLife'), version: z.literal('1.0.0') })]), z.tuple(starterPrimitiveListBase), z.tuple(starterPrimitiveList)]) }),
 ])
 export type PrimitiveRegistry = z.infer<typeof primitiveRegistrySchema>
 export const PRIMITIVES: PrimitiveRegistry = { version: '1.0.0', primitives: [{ id: 'giveRestedDon', version: '1.0.0' }, { id: 'moveDon', version: '1.0.0' }] }
 export const CARD_PRIMITIVES: PrimitiveRegistry = { version: '1.1.0', primitives: [{ id: 'giveRestedDon', version: '1.0.0' }, { id: 'moveDon', version: '1.0.0' }, { id: 'attachRestedDon', version: '1.0.0' }, { id: 'addPower', version: '1.0.0' }, { id: 'koCharacter', version: '1.0.0' }] }
-export const UNIVERSAL_PRIMITIVES: PrimitiveRegistry = { version:'1.3.0', primitives:[...CARD_PRIMITIVES.primitives, {id:'drawCards',version:'1.0.0'}, {id:'setBasePowerFromOpponentLeader',version:'1.0.0'}, {id:'moveCard',version:'1.0.0'}, {id:'shuffleDeck',version:'1.0.0'}, {id:'searchTopDeck',version:'1.0.0'}, {id:'revealCards',version:'1.0.0'}, {id:'trashLife',version:'1.0.0'}] }
+export const UNIVERSAL_PRIMITIVES: PrimitiveRegistry = { version:'1.3.0', primitives:[...CARD_PRIMITIVES.primitives, {id:'drawCards',version:'1.0.0'}, {id:'setBasePowerFromOpponentLeader',version:'1.0.0'}, {id:'moveCard',version:'1.0.0'}, {id:'shuffleDeck',version:'1.0.0'}, {id:'searchTopDeck',version:'1.0.0'}, {id:'revealCards',version:'1.0.0'}, {id:'preventBlocker',version:'1.0.0'}, {id:'playSelfFromTrigger',version:'1.0.0'}, {id:'trashLife',version:'1.0.0'}, {id:'returnToHand',version:'1.0.0'}, {id:'moveToDeckBottom',version:'1.0.0'}, {id:'restCard',version:'1.0.0'}, {id:'setActive',version:'1.0.0'}, {id:'playCard',version:'1.0.0'}, {id:'returnDon',version:'1.0.0'}, {id:'grantKeyword',version:'1.0.0'}, {id:'arrangeTopDeck',version:'1.0.0'}, {id:'addCost',version:'1.0.0'}, {id:'preventKO',version:'1.0.0'}, {id:'lifeToHand',version:'1.0.0'}, {id:'addToLife',version:'1.0.0'}, {id:'placeLife',version:'1.0.0'}, {id:'triggerCardToHand',version:'1.0.0'}] }
 export const contextSchema = z.strictObject({ controllerId: id, source: sourceSchema, effectInstanceId: id, turnId: integer, windowId: id })
 export type EffectContext = z.infer<typeof contextSchema>
 export type ResolutionContext = EffectContext
@@ -165,12 +322,13 @@ export const committedEventSchema = z.strictObject({ sequence: integer, operatio
   type: z.literal('DON_MOVED'), subjectId: id, playerId: id, from: z.enum(['donDeck', 'cost']), to: z.enum(['donDeck', 'cost', 'attached']), targetId: id.optional(), rested: z.boolean(), appliedReplacements: z.array(id).max(32), audience: z.enum(['PUBLIC', 'CONTROLLER']), controllerId: id })
 export type CommittedEvent = z.infer<typeof committedEventSchema>
 export const continuationSchema = z.strictObject({ id, definitionId: id, definitionRevision: id, pc: integer.max(32), context: contextSchema,
-  bindings: z.record(id, z.array(presenceSchema).max(10)), interception: z.strictObject({ operation: cardOperationSchema, replacementId: id, ownerId: id }).optional(),
+  bindings: z.record(id, z.array(presenceSchema).max(10)), koCursor: integer.max(9).optional(), interception: z.strictObject({ operation: cardOperationSchema, replacementId: id, ownerId: id }).optional(),
   searchFlow: z.strictObject({ stage: z.enum(['SELECT', 'ORDER']), topCards: z.array(presenceSchema).max(10), candidates: z.array(presenceSchema).max(10), selected: z.array(presenceSchema).max(10), remainder: z.array(presenceSchema).max(10), bind: id }).optional() })
 export type SerializableContinuation = z.infer<typeof continuationSchema>
 export const pendingChoiceSchema = z.strictObject({ id, actorId: id, expectedVersion: integer, choiceType: z.enum(['SELECT', 'ORDER']),
   optional: z.boolean(), min: integer.max(10), max: integer.max(10), visibility: z.enum(['PRIVATE', 'PUBLIC']),
-  options: z.array(z.strictObject({ token: id, presence: presenceSchema })).max(50), continuationId: id, context: contextSchema, bind: id })
+  options: z.array(z.strictObject({ token: id, presence: presenceSchema })).max(50), continuationId: id, context: contextSchema, bind: id, allOrNone: z.literal(true).optional(),
+  reveal: z.literal('CHOOSER').optional(), conceal: z.literal(true).optional(), modes: integer.min(2).max(4).optional() })
 export type PendingChoice = z.infer<typeof pendingChoiceSchema>
 export const effectInstanceSchema = z.strictObject({ id, definitionId: id, revision: id, context: contextSchema, status: resolutionStatusSchema })
 export type EffectInstance = z.infer<typeof effectInstanceSchema>
@@ -183,7 +341,7 @@ export const modifierSchema = z.strictObject({ id, subject: presenceSchema, sour
 export type CharacteristicModifier = z.infer<typeof modifierSchema>
 export const scheduledTriggerSchema = z.strictObject({
   id, definitionId: id, revision: id, controllerId: id, source: sourceSchema,
-  causeId: id, timing: z.enum(['ON_PLAY', 'ON_KO', 'ON_CHARACTER_KO', 'WHEN_ATTACKING', 'ON_BLOCK', 'WHEN_ATTACKING_OR_ON_BLOCK', 'TRIGGER']), status: z.enum(['PENDING', 'RESOLVING', 'RESOLVED', 'INVALIDATED']),
+  causeId: id, timing: z.enum(['ON_PLAY', 'ON_KO', 'ON_CHARACTER_KO', 'WHEN_ATTACKING', 'ON_BLOCK', 'WHEN_ATTACKING_OR_ON_BLOCK', 'TRIGGER', 'END_OF_YOUR_TURN', 'END_OF_BATTLE_WITH_CHARACTER', 'ON_BATTLE_PAIRED', 'ON_DON_RETURNED', 'ON_OPPONENT_BLOCKER']), status: z.enum(['PENDING', 'RESOLVING', 'RESOLVED', 'INVALIDATED']),
   activatedOnField: z.boolean(), expectedTrashGeneration: integer.optional(),
 })
 export type ScheduledTrigger = z.infer<typeof scheduledTriggerSchema>
@@ -202,16 +360,20 @@ export const unifiedOperationSchema = z.strictObject({ id, resolutionId: id, sub
 })
 export type UnifiedOperation = z.infer<typeof unifiedOperationSchema>
 export const runtimeSchema = z.strictObject({ version: z.enum(['1.0.0', '1.1.0', '1.2.0', '1.3.0']), engineVersion: z.enum(['m1.5b-1', 'm1.5c-1', 'm1.5d-1', 'm1.5e-1']), rulesVersion: z.literal('1.2.1'),
+  blockerRestrictions: z.array(blockerRestrictionSchema).max(256).optional(),
+  keywordGrants: z.array(z.strictObject({ id, subject: presenceSchema, keyword: z.enum(['RUSH', 'DOUBLE_ATTACK', 'BANISH']), turnId: integer, battleId: id.optional() })).max(256).optional(),
+  costModifiers: z.array(z.strictObject({ id, subject: presenceSchema, amount: z.number().int(), turnId: integer })).max(256).optional(),
+  koImmunities: z.array(z.strictObject({ id, subject: presenceSchema, turnId: integer })).max(256).optional(),
   scheduler: schedulerSchema.optional(), operations: z.array(unifiedOperationSchema).optional(), payments: z.array(z.strictObject({ resolutionId: id, outcome: paymentOutcomeSchema, paidOperationIds: z.array(id) })).optional(),
   registry: registrySchema, primitives: primitiveRegistrySchema, nextId: integer,
   active: effectInstanceSchema.nullable(), continuation: continuationSchema.nullable(), choice: pendingChoiceSchema.nullable(),
   usage: z.record(z.string().min(1).max(2048), integer), events: z.array(committedEventSchema),
   trace: z.array(z.strictObject({ operation: operationSchema, outcome: z.enum(['CONFIRMED', 'PREVENTED', 'REPLACED']) })),
   choiceHistory: z.array(z.strictObject({ choiceId: id, actorId: id, tokens: z.array(id).max(10), visibility: z.enum(['PRIVATE', 'PUBLIC']) })),
-  powerModifiers: z.array(z.strictObject({ id, subject: presenceSchema, source: sourceSchema, amount: z.number().int(), turnId: integer })).optional(),
+  powerModifiers: z.array(z.strictObject({ id, subject: presenceSchema, source: sourceSchema, amount: z.number().int(), turnId: integer, untilTurn: integer.optional() })).optional(),
   basePowerModifiers: z.array(z.strictObject({ id, subject: presenceSchema, source: sourceSchema, value: z.number().int().nonnegative(), expiresForPlayerId: id, expiresAtPlayerTurn: integer })).optional(),
   cardOperations: z.array(cardOperationSchema).optional(),
-  cardEvents: z.array(z.strictObject({ sequence: integer, type: z.enum(['DON_ATTACHED_BY_EFFECT', 'SOURCE_RESTED', 'POWER_MODIFIER_CREATED', 'ABILITY_ACTIVATED', 'ABILITY_COMPLETED', 'ON_PLAY_CAPTURED', 'CARD_KO', 'HAND_CARD_TRASHED', 'KO_REPLACED', 'EVENT_ACTIVATED']), controllerId: id, subjectId: id, resolutionId: id })).optional(),
+  cardEvents: z.array(z.strictObject({ sequence: integer, type: z.enum(['DON_ATTACHED_BY_EFFECT', 'SOURCE_RESTED', 'POWER_MODIFIER_CREATED', 'BLOCKER_RESTRICTION_CREATED', 'ABILITY_ACTIVATED', 'ABILITY_COMPLETED', 'ON_PLAY_CAPTURED', 'CARD_KO', 'HAND_CARD_TRASHED', 'KO_REPLACED', 'EVENT_ACTIVATED', 'CARD_RESTED', 'CARD_SET_ACTIVE']), controllerId: id, subjectId: id, resolutionId: id })).optional(),
   modifiers: z.array(modifierSchema).max(0), // Contract exists; evaluator deliberately unavailable.
 })
 export type EffectRuntime = z.infer<typeof runtimeSchema>

@@ -1,0 +1,10 @@
+{
+  "source": "cardgame/carteJson/ST-01/cards-ST-01.json",
+  "cardNumber": "ST01-001",
+  "abilityId": "ST01-001.activate-main-give-rested-don",
+  "oncePerTurn": true,
+  "target": "m6-local-st01-jinbe:p0:c0",
+  "attachedDonAfterResolution": 1,
+  "repeatedActivationOffered": false,
+  "certification": "PLAYABLE_VERIFIED"
+}

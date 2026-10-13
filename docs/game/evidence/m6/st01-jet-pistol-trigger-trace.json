@@ -1,0 +1,9 @@
+{
+  "source": "cardgame/carteJson/ST-01/cards-ST-01.json",
+  "cardNumber": "ST01-015",
+  "lifeTriggerAccepted": true,
+  "koTarget": "ST01-003",
+  "lifeDamageResumedAfterJsonRestore": true,
+  "triggerCardDestination": "trash",
+  "certification": "PLAYABLE_VERIFIED"
+}

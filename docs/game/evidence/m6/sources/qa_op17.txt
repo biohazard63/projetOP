@@ -1,0 +1,386 @@
+Card No.
+Card Name
+Question
+Answer
+OP17-001
+Edward.Newgate
+If I have 0 cards in my hand, can I give up to 1 of my
+Leader or Character cards +4000 power during this
+battle with this [On Your Opponent's Attack] effect?
+No, you cannot.
+OP17-005
+Edward.Newgate
+It refers to a Leader that has only 1 color and does not
+have 2 or more colors.
+OP17-008
+Jozu
+If the base power of my Leader [Edward.Newgate] has
+been changed to 7000 by another effect that states
+Play] effect, what will my Leader's base power be?
+In this case, its base power will be 8000 until the end
+of your opponent's next End Phase.
+OP17-010
+Fossa
+this Character gain [Blocker] and +2000 power with
+this [Activate: Main] effect?
+No. In this case, this Character cannot gain [Blocker]
+and does not gain +2000 power.
+OP17-015
+Marco
+If this Character and another one of my Characters,
+Character A, would be K.O.'d at the same time by an
+opponent's effect, can I use this Character's effect to
+K.O. this Character instead?
+Yes, you can. In this case, only this Character is K.O.'d,
+and Character A remains on the field.
+OP17-015
+Marco
+If this Character would be returned to my hand or
+placed at the bottom of my deck by an opponent's
+effect, can I K.O. this Character instead?
+Yes, you can.
+OP17-020
+Shanks
+If I have no cards in my hand, can I rest 1 of my
+DON!! cards with this [Activate: Main] effect?
+Yes, you can. In this case, by resting 1 of your DON!!
+opponent's rested Characters will not become active in
+OP17-021
+Crone Oli
+If this Character itself would leave the field, can I rest 1
+of my cards instead?
+Yes, you can.
+OP17-021
+Crone Oli
+Can I rest this Character itself as the card to be rested
+instead with this effect?
+Yes, you can.
+OP17-021
+Crone Oli
+If 2 of my Characters with a type including "Red-Haired
+Pirates" would leave the field at the same time, do I
+have to rest 2 cards?
+No. In this case, rest 1 of your cards, and neither
+Character leaves the field.
+OP17-023
+Nami
+If this Character itself would be K.O.'d, can I rest this
+Character instead?
+Yes, you can.
+OP17-023
+Nami
+If 2 of my Characters with the {East Blue} or {Straw
+Hat Crew} type would be K.O.'d at the same time, can
+I rest this Character so that neither of them is K.O.'d?
+Yes, you can.
+OP17-034
+Rockstar
+If my opponent's Leader has 5000 power or less, can
+my Leader with the {Red-Haired Pirates} type have its
+base power set to 6000 until the end of my opponent's
+next End Phase?
+No, you cannot.
+OP17-039
+Rocks.D.Xebec
+What happens to the card revealed with this [When
+Attacking] effect?
+If the revealed card has a type including "Rocks
+Pirates", draw 2 cards from the top of your deck,
+including the revealed card. If the revealed card does
+not have a type including "Rocks Pirates", return it
+face-down to the top of your deck.
+OP17-040
+Edward.Newgate
+During my opponent's turn, when my Leader with a
+type including "Rocks Pirates" is attacked, which do I
+activate first: this [Once Per Turn] effect or my
+[Blocker] or Counter?
+timing as your [On Your Opponent's Attack] effects,
+before activating your [Blocker] or Counter.
+OP17-043
+Ganzui
+If my Leader's base power has been changed to 7000
+when this [On Play] effect is activated?
+In this case, the effect that sets the base power to
+7000 takes priority.
+OP17-044
+Captain John
+Leader is treated as a card with all card names, types,
+In this case, your opponent can attack either your
+rested [Eustass"Captain"Kid] or your rested [Captain
+John].
+OP17-045
+Kyo
+No, you cannot.
+OP17-047
+Shiki
+With this [End of Your Turn] effect, which player
+chooses the card to be placed at the bottom of the
+deck?
+The opponent of the player who activated this [End of
+Your Turn] effect chooses 1 card from their own hand
+and places it at the bottom of their deck.
+OP17-049
+Charlotte Linlin
+[On Play] effect, which player draws the cards?
+In this case, the player who activated this [On Play]
+effect draws 2 cards.
+OP17-049
+Charlotte Linlin
+which player chooses the cards to be trashed?
+The opponent of the player who activated this [On
+Play] effect chooses 2 cards from their own hand and
+trashes them.
+OP17-049
+Charlotte Linlin
+If my opponent has 1 or fewer cards in their hand
+when this [On Play] effect is activated, can they choose
+Yes, they can. In this case, if your opponent has 1 card
+in their hand, they trash that card. If they have 0 cards
+in their hand, nothing happens.
+OP17-050
+Streusen
+Of the 2 cards from the deck looked at with this [On
+Play] effect, can I place 1 card on top of the deck and 1
+card at the bottom of the deck?
+No, you cannot.
+OP17-053
+Barbell
+With this [On K.O.] effect, which player chooses the
+cards to be placed at the bottom of the deck?
+The opponent of the player who activated this [On
+K.O.] effect chooses 2 cards from their own hand and
+places them at the bottom of their deck in any order.
+OP17-058
+Kaido
+An opponent's Character attacked, and I chose not to
+activate this Leader's [On Your Opponent's Attack]
+effect. If another opponent's Character attacks later
+during the same turn, can I activate this Leader's [On
+Your Opponent's Attack] effect?
+Yes, you can.
+OP17-063
+Kaido
+happens to Character cards in my hand with 8000
+power or more and no Counter?
+In this case, they are treated as having Counter
++2000.
+OP17-072
+Black Maria
+An opponent's Character attacked, and I chose not to
+activate this Character's [On Your Opponent's Attack]
+effect. If another opponent's Character attacks later
+during the same turn, can I activate this Character's
+[On Your Opponent's Attack] effect?
+Yes, you can.
+OP17-075
+X.Drake
+With this [On Play] effect, which player chooses the
+card to be trashed?
+The player who activated this [On Play] effect chooses
+1 card from the opponent's hand while it is face-down.
+OP17-079
+Monkey.D.Luffy
+If this Leader's effect is negated by another effect such
+12 or more lose [Blocker] while that effect is negated?
+Yes, they do.
+OP17-079
+Monkey.D.Luffy
+If one of my Characters with a cost of 12 or more has
+gained [Blocker] from this Leader's effect, and that
+therefore becomes lower than 12, it loses [Blocker]
+while that effect is negated.
+OP17-085
+Dorry
+give this card +12 cost while it is in my hand, trash, or
+deck?
+No. This effect only gives this Character +12 cost while
+this card is on the field.
+OP17-089
+Jaguar.D.Saul
+give this card +12 cost while it is in my hand, trash, or
+deck?
+No. This effect only gives this Character +12 cost while
+this card is on the field.
+OP17-091
+Brook
+With this [On Play] effect, which player chooses the
+card to be trashed?
+The opponent of the player who activated this [On
+Play] effect chooses 1 card from their own hand and
+trashes it.
+OP17-092
+Brogy
+give this card +12 cost while it is in my hand, trash, or
+deck?
+No. This effect only gives this Character +12 cost while
+this card is on the field.
+OP17-094
+Rodo
+give this card +12 cost while it is in my hand, trash, or
+deck?
+No. This effect only gives this Character +12 cost while
+this card is on the field.
+OP17-095
+Roronoa Zoro
+If this Character itself would leave the field due to an
+opponent's effect, can I instead place 3 cards from my
+trash at the bottom of my deck in any order?
+Yes, you can.
+OP17-095
+Roronoa Zoro
+If 2 of my Characters would leave the field at the same
+time due to an opponent's effect, do I have to place 6
+cards from my trash at the bottom of my deck in any
+order?
+In this case, you can place 3 cards from your trash at
+the bottom of your deck in any order, and if you do,
+neither Character leaves the field.
+OP17-097
+I'll Feed on This Rage and
+Use It to Bring the World
+to Ruin!!!
+After activating this [Main] effect, do opponent's
+cost from this effect?
+No, they do not.
+OP17-099
+Charlotte Linlin
+After activating this [When Attacking] effect and
+trashing 1 card from my hand, if my opponent chooses
+card from the top of your deck to the top of your Life
+The player who activated this [When Attacking] effect
+trashes 1 additional card from their hand, then adds up
+to 1 card from the top of their deck to the top of their
+Life cards.
+OP17-099
+Charlotte Linlin
+If I have 1 card in my hand and activate this [When
+Attacking] effect by trashing that card, then my
+Then, add up to 1 card from the top of your deck to
+In this case, since you have no cards in your hand
+add up to 1 card from the top of your deck to the top
+to 1 card from the top of your deck to the top of your
+Life cards.
+OP17-099
+Charlotte Linlin
+After activating this [When Attacking] effect and
+trashing 1 card from my hand, if my opponent chooses
+the card to be trashed chosen?
+In this case, the player who activated this [When
+Attacking] effect randomly chooses 1 card from their
+opponent's hand without looking at it, and the
+opponent trashes that card.
+OP17-103
+Charlotte Katakuri
+If my Leader has the {Big Mom Pirates} type and my
+opponent has 0 Characters, can I add up to 1 card
+from the top of my deck to the top of my Life cards
+with this [On Play] effect?
+Yes, you can.
+OP17-103
+Charlotte Katakuri
+If this Character is played during my opponent's turn,
+can this [On Play] effect be activated?
+No, it cannot.
+OP17-104
+Charlotte Cracker
+If this Character is played during my opponent's turn,
+can this [On Play] effect be activated?
+No, it cannot.
+OP17-105
+Charlotte Chiffon
+With this [On Play] effect, can I return to the hand an
+opponent's Character that does not have a [Trigger]
+No, you cannot. This effect returns to the hand a
+Character that has an actual [Trigger] effect beginning
+OP17-106
+Charlotte Smoothie
+With this [On Play] effect, which player chooses the
+card to be trashed?
+The opponent of the player who activated this [On
+Play] effect chooses 1 card from their own hand and
+trashes it.
+OP17-106
+Charlotte Smoothie
+If this Character is played during my opponent's turn,
+can this [On Play] effect be activated?
+No, it cannot.
+OP17-110
+Charlotte Perospero
+Which Character gains [Rush] with this [On Play]
+effect?
+This [Charlotte Perospero] itself gains [Rush].
+OP17-110
+Charlotte Perospero
+If this Character is played during my opponent's turn,
+can this [On Play] effect be activated?
+No, it cannot.
+OP17-112
+Charlotte Linlin
+With this [On Play] effect, which player chooses
+to 1 card from the top of your opponent's Life cards to
+The player who activated this [On Play] effect chooses.
+OP17-112
+Charlotte Linlin
+Does a Character whose base power has become 8000
+with this [Your Turn] effect also count as having 4000
+base power?
+No, it does not.
+OP17-114
+Sweet 3 Generals
+If this Character is played during my opponent's turn,
+can this [On Play] effect be activated?
+No, it cannot.
+OP17-117
+Maser Saber
+When my opponent trashes cards with this [Trigger]
+effect, which player makes the choice?
+The opponent of the player who activated this [Trigger]
+chooses whether to trash 3 cards from their own hand
+or do nothing. If the opponent does not trash 3 cards
+from their hand as a result, the player who activated
+this [Trigger] KOs up to 1 of their opponent's
+Characters with a cost of 6 or less.
+OP17-118
+Rocks.D.Xebec
+No, it does not.
+OP17-118
+Rocks.D.Xebec
+With this [On Play] effect, can I play only 1 card with a
+cost of 9 or less and the {Rocks Pirates} type from my
+hand?
+Yes, you can.
+OP17-119
+Loki
+Can I K.O. a Character whose cost has been reduced to
+0 with this [On Play] effect?
+Yes, you can. This effect allows you to choose any
+number of your opponent's Characters whose total cost
+is 4 or less and K.O. them.
+OP17-119
+Loki
+Can I K.O. 2 or more of my opponent's Characters with
+this [On Play] effect?
+Yes, you can. This effect allows you to choose any
+number of your opponent's Characters whose total cost
+is 4 or less and K.O. them.
+OP17-119
+Loki
+give this card +12 cost while it is in my hand, trash, or
+deck?
+No. This effect only gives this Character +12 cost while
+this card is on the field.
+OP16-040
+Gum-Gum Hammer Rifle
+If my Leader has an effect that reads "is treated as a
+card with all card names, types, and attributes," but I
+do not have a [Monkey.D.Luffy] or [Mr.3(Galdino)],
+can I still prevent up to 1 of my opponent's rested
+Characters with a cost of 6 or less from becoming
+active in my opponent's next Refresh Phase?
+Yes, you can.
+OP16-048
+Buggy
+my Leader gain [Blocker] with this [Once Per Turn]
+effect?
+Yes, it can.

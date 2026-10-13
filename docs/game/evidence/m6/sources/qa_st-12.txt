@@ -1,0 +1,43 @@
+Card No.
+Card Name
+Question
+Answer
+ST12-001
+Roronoa Zoro & Sanji
+Can I use this Leader's [When Attacking] effect to set as
+active a Character with a base power of 7000 that has had
+its power increased to 8000 by a DON!! card given to it?
+No, you cannot.
+ST12-003
+Dracule Mihawk
+If I play this Character and I now have 3 Characters
+including this Character, can I use this [On Play] effect to
+play 1 Character card?
+No, you cannot.
+ST12-011
+Sanji
+If I activate this [When Attacking] effect when I have 5
+cards in my hand, and then the number of cards in my
+hand becomes 6 or more before the start of my next turn,
+will this Character still have +2000 power?
+Yes, this Character will still have +2000 power.
+ST12-011
+Sanji
+If I activate this [When Attacking] effect twice during one
+turn, can this Character gain a total of +4000 power?
+Yes, it can.
+ST12-010
+Emporio.Ivankov
+Can I use this Character's [On Play] effect to play a
+Character with a cost of 2 from my hand?
+No, you cannot.
+The only card you can play using this Character's [On Play]
+effect is the card revealed according to this Character's
+effect.
+ST12-010
+Emporio.Ivankov
+Does "place the rest at the top or bottom of your deck" in
+this Character's [On Play] effect refer to my hand?
+No.This Character's "place the rest at the top or bottom of
+your deck" refers to the action taken with the card revealed
+according to this Character's effect.

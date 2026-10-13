@@ -1,4 +1,4 @@
-import { canonicalNumber, consolidateDefinitions } from '../../game/cards/adapter'
+import { canonicalNumber } from '../../game/cards/adapter'
 import { REVIEWED_CARDS } from '../../game/cards/reviewedCards'
 import { M3_ABILITY_CARDS } from '../../game/cards/m3Abilities'
 import { PURPLE_CARDS, M3_FULL_REGISTRY } from '../../game/cards/m3PurpleDeck'
@@ -7,6 +7,18 @@ import { M3_RULESET } from '../../game/rulesets/m3'
 import { M5_RULESET } from '../../game/rulesets/m5'
 import { FREE_RULESET } from '../../game/rulesets/free'
 import { M5_CARDS } from '../../game/cards/m5Catalog'
+import { loadCardPacks } from '../../game/cards/packs'
+import { ST01_LOCAL_ABILITY_DEFINITIONS, ST01_LOCAL_CARDS, ST01_LOCAL_CONTINUOUS, ST01_LOCAL_CONDITIONAL_KEYWORDS } from '../../game/cards/m6LocalStarterCards'
+import { ST02_LOCAL_ABILITY_DEFINITIONS, ST02_LOCAL_CARDS, ST02_LOCAL_CONTINUOUS } from '../../game/cards/m6LocalST02Cards'
+import { ST03_ST04_LOCAL_ABILITY_DEFINITIONS, ST03_ST04_LOCAL_CARDS } from '../../game/cards/m6LocalST03ST04Cards'
+import { ST05_ST06_LOCAL_ABILITY_DEFINITIONS, ST05_ST06_LOCAL_CARDS, ST05_ST06_KO_PROTECTIONS, ST05_ST06_CONDITIONAL_KEYWORDS } from '../../game/cards/m6LocalST05ST06Cards'
+import { ST07_LOCAL_ABILITY_DEFINITIONS, ST07_LOCAL_CARDS } from '../../game/cards/m6LocalST07Cards'
+import { ST12_LOCAL_ABILITY_DEFINITIONS, ST12_LOCAL_CARDS } from '../../game/cards/m6LocalST12Cards'
+import { ST09_LOCAL_ABILITY_DEFINITIONS, ST09_LOCAL_CARDS, ST09_LOCAL_CONTINUOUS, ST09_KO_PROTECTIONS, ST09_CONDITIONAL_KEYWORDS } from '../../game/cards/m6LocalST09Cards'
+import { ST11_LOCAL_ABILITY_DEFINITIONS, ST11_LOCAL_CARDS } from '../../game/cards/m6LocalST11Cards'
+import { ST10_LOCAL_ABILITY_DEFINITIONS, ST10_LOCAL_CARDS, ST10_LOCAL_CONTINUOUS } from '../../game/cards/m6LocalST10Cards'
+import { ST08_LOCAL_ABILITY_DEFINITIONS, ST08_LOCAL_CARDS, ST08_KO_PROTECTIONS } from '../../game/cards/m6LocalST08Cards'
+import { ST03_OP_LOCAL_ABILITY_DEFINITIONS, ST03_OP_LOCAL_CARDS } from '../../game/cards/m6LocalST03OPCards'
 import { validateRegistry, type EffectRegistry } from '../../game/effects/contracts'
 import type { CardDefinition, CardInput, CardPrinting } from '../../game/cards/types'
 import type { Ruleset } from '../../game/rulesets/decks'
@@ -15,17 +27,37 @@ import type { Ruleset } from '../../game/rulesets/decks'
 // card is playable only through a reviewed definition of the same number; the database never adds rules.
 const reviewed: CardInput[] = Object.entries(REVIEWED_CARDS).map(([number, facts]) => ({ ...structuredClone(facts), number, printingKey: `${number}::standard`, extensions: [], databaseIds: [],
   life: facts.category === 'LEADER' ? 5 : null, lifeEvidence: facts.category === 'LEADER' ? [{ field: 'life' as const, value: 5, source: 'https://en.onepiece-cardgame.com/cardlist/?series=569001', checkedAt: '2026-10-10', language: 'en' as const }] : [] }))
-function consolidated(cards: CardInput[]) {
-  const catalog = consolidateDefinitions(cards)
-  if (catalog.errors.length) throw new Error(`ENGINE_CATALOG:${catalog.errors.join(',')}`)
-  return { definitions: catalog.definitions, printings: catalog.printings }
-}
 const m3Cards = () => [...reviewed, ...M3_ABILITY_CARDS.filter(card => !PURPLE_CARDS.some(p => p.number === card.number)), ...PURPLE_CARDS]
 /** Frozen M3 catalogue (evidence and reproducible traces). */
-export const m3EngineCatalog = (): { definitions: CardDefinition[]; printings: CardPrinting[] } => consolidated(m3Cards())
+export const m3EngineCatalog = (): { definitions: CardDefinition[]; printings: CardPrinting[] } => {
+  const compiled = loadCardPacks(M3_FULL_REGISTRY, [{ packId: 'M3_REVIEWED_BASE', schemaVersion: 1, rulesVersion: '1.2.1', cards: m3Cards() }])
+  return { definitions: compiled.definitions, printings: compiled.printings }
+}
+const currentPacks = () => [
+  { packId: 'M3_REVIEWED_BASE', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: m3Cards() },
+  { packId: 'M5_RECOGNIZED_CARDS', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: M5_CARDS },
+  { packId: 'M6_LOCAL_ST01', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST01_LOCAL_CARDS, effects: { definitions: ST01_LOCAL_ABILITY_DEFINITIONS, continuous: ST01_LOCAL_CONTINUOUS, conditionalKeywords: ST01_LOCAL_CONDITIONAL_KEYWORDS } },
+  { packId: 'M6_LOCAL_ST02', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST02_LOCAL_CARDS, effects: { definitions: ST02_LOCAL_ABILITY_DEFINITIONS, continuous: ST02_LOCAL_CONTINUOUS } },
+  { packId: 'M6_LOCAL_ST03_ST04', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST03_ST04_LOCAL_CARDS, effects: { definitions: ST03_ST04_LOCAL_ABILITY_DEFINITIONS } },
+  { packId: 'M6_LOCAL_ST05_ST06', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST05_ST06_LOCAL_CARDS, effects: { definitions: ST05_ST06_LOCAL_ABILITY_DEFINITIONS, koProtections: ST05_ST06_KO_PROTECTIONS, conditionalKeywords: ST05_ST06_CONDITIONAL_KEYWORDS } },
+  { packId: 'M6_LOCAL_ST07', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST07_LOCAL_CARDS, effects: { definitions: ST07_LOCAL_ABILITY_DEFINITIONS } },
+  { packId: 'M6_LOCAL_ST08', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST08_LOCAL_CARDS, effects: { definitions: ST08_LOCAL_ABILITY_DEFINITIONS, koProtections: ST08_KO_PROTECTIONS } },
+  { packId: 'M6_LOCAL_ST09', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST09_LOCAL_CARDS, effects: { definitions: ST09_LOCAL_ABILITY_DEFINITIONS, continuous: ST09_LOCAL_CONTINUOUS, koProtections: ST09_KO_PROTECTIONS, conditionalKeywords: ST09_CONDITIONAL_KEYWORDS } },
+  { packId: 'M6_LOCAL_ST10', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST10_LOCAL_CARDS, effects: { definitions: ST10_LOCAL_ABILITY_DEFINITIONS, continuous: ST10_LOCAL_CONTINUOUS } },
+  { packId: 'M6_LOCAL_ST11', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST11_LOCAL_CARDS, effects: { definitions: ST11_LOCAL_ABILITY_DEFINITIONS } },
+  { packId: 'M6_LOCAL_ST12', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST12_LOCAL_CARDS, effects: { definitions: ST12_LOCAL_ABILITY_DEFINITIONS } },
+  { packId: 'M6_LOCAL_ST03_OP', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST03_OP_LOCAL_CARDS, effects: { definitions: ST03_OP_LOCAL_ABILITY_DEFINITIONS } },
+]
+const compileCurrentCatalog = () => loadCardPacks(M3_FULL_REGISTRY, currentPacks())
 /** Catalogue used by /play: M3 plus the M5 recognised cards. */
-export const engineCatalog = (): { definitions: CardDefinition[]; printings: CardPrinting[] } => consolidated([...m3Cards(), ...M5_CARDS])
+export const engineCatalog = (): { definitions: CardDefinition[]; printings: CardPrinting[] } => {
+  const compiled = compileCurrentCatalog()
+  return { definitions: compiled.definitions, printings: compiled.printings }
+}
+/** Historical M3 registry, kept paired with m3EngineCatalog for saved fixtures and M3 verification. */
 export const engineRegistry = (): EffectRegistry => validateRegistry(structuredClone(M3_FULL_REGISTRY))
+/** Registry paired with engineCatalog and used by the current server catalogue. */
+export const currentEngineRegistry = (): EffectRegistry => compileCurrentCatalog().registry
 export const m3EngineRuleset = (): Ruleset => structuredClone(M3_RULESET)
 /** Ruleset of new /play games: the permanent free format. Existing games keep the ruleset stored in their state. */
 export const engineRuleset = (): Ruleset => structuredClone(FREE_RULESET)
@@ -61,6 +93,9 @@ export function bridgeCards(rows: PrismaCardRow[], base = engineCatalog()): Card
     const colours = [...new Set(plain(row.color).split(/[\s/,]+/).filter(Boolean).map(c => colour[c]))].sort()
     if (JSON.stringify(colours) !== JSON.stringify(definition.colors)) reasons.push('COLOR')
     if (definition.category !== 'LEADER' && row.cost !== definition.cost) reasons.push('COST')
+    // A Leader stores its Life in `cost` (catalogue convention, M6). NULL or 0 is legacy "not set" data (rows created
+    // before the sync script); any other value must equal the reviewed Life.
+    if (definition.category === 'LEADER' && row.cost !== null && row.cost !== 0 && row.cost !== definition.life) reasons.push('LIFE')
     if (row.power !== definition.power) reasons.push('POWER')
     const counter = row.counter === null || row.counter.trim() === '' || row.counter === '-' ? null : Number(row.counter.replace(/[^0-9]/g, ''))
     if (counter !== definition.counter) reasons.push('COUNTER')

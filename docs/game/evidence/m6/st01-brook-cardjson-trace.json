@@ -1,0 +1,10 @@
+{
+  "source": "cardgame/carteJson/ST-01/cards-ST-01.json",
+  "cardNumber": "ST01-011",
+  "abilityId": "ST01-011.on-play-attach-rested-don",
+  "restedDonSelected": 2,
+  "oneRecipient": "m6-local-st01-jinbe:p0:c0",
+  "attachedDonAfterResolution": 2,
+  "choiceRestoredFromJson": true,
+  "certification": "DATA_VALID_EFFECT_PENDING"
+}

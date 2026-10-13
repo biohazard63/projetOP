@@ -47,7 +47,7 @@ export function createGame(input: GameInput, generator: RandomGenerator = seeded
         if (e.kind === 'giveRestedDon') return e.timing !== 'ACTIVATE_MAIN' || e.oncePerTurn !== true || e.amount.min !== 0 || e.amount.max !== 1 || e.from !== 'OWN_COST_RESTED' || e.target !== 'OWN_LEADER_OR_CHARACTER'
           || (input.effectRegistry?.version === '1.3.0' && !input.effectRegistry.definitions.some(a => a.timing === 'ACTIVATE_MAIN' && a.usage.kind === 'ONCE_PER_TURN' && a.source.kind === 'CARD_DEFINITION' && a.source.definitionId === d.definitionId && a.program.some(step => step.kind === 'OPERATION' && step.operation.primitive === 'attachRestedDon')))
         if (e.kind === 'blocker') return e.timing !== 'BLOCK' || e.cost !== 'REST_SELF' || e.target !== 'SELF'
-        if (e.kind === 'declarative') return !['1.1.0','1.2.0','1.3.0'].includes(input.effectRegistry?.version ?? '') || (!e.abilityIds.length || e.abilityIds.some(id => !input.effectRegistry?.definitions.some(a => a.id === id && a.source.kind === 'CARD_DEFINITION' && a.source.definitionId === d.definitionId) && !input.effectRegistry?.continuous?.some(a => a.id === id && a.definitionId === d.definitionId) && !input.effectRegistry?.cardReplacements?.some(a => a.id === id && a.definitionId === d.definitionId) && !input.effectRegistry?.leaderReplacements?.some(a => a.id === id && a.definitionId === d.definitionId)))
+        if (e.kind === 'declarative') return !['1.1.0','1.2.0','1.3.0'].includes(input.effectRegistry?.version ?? '') || (!e.abilityIds.length || e.abilityIds.some(id => !input.effectRegistry?.definitions.some(a => a.id === id && a.source.kind === 'CARD_DEFINITION' && a.source.definitionId === d.definitionId) && !input.effectRegistry?.continuous?.some(a => a.id === id && a.definitionId === d.definitionId) && !input.effectRegistry?.conditionalKeywords?.some(a => a.id === id && a.definitionId === d.definitionId) && !input.effectRegistry?.cardReplacements?.some(a => a.id === id && a.definitionId === d.definitionId) && !input.effectRegistry?.leaderReplacements?.some(a => a.id === id && a.definitionId === d.definitionId) && !input.effectRegistry?.koProtections?.some(a => a.id === id && a.definitionId === d.definitionId)))
         return true
       }) || d.review.requiredCapabilities.some(e => !['giveRestedDon', 'blocker', ...(d.review.counterEvent ? ['counterEvent'] : []), ...(triggerProgram ? ['trigger'] : []), ...(['1.1.0','1.2.0','1.3.0'].includes(input.effectRegistry?.version ?? '') ? ['declarative'] : [])].includes(e))) throw new Error('UNSUPPORTED_SETUP_EFFECT')
       if (d.category === 'LEADER' && (d.life === null || d.life > 45)) throw new Error('INVALID_LEADER_LIFE')
@@ -64,7 +64,7 @@ export function createGame(input: GameInput, generator: RandomGenerator = seeded
       const d = input.definitions.find(d => d.definitionId === source.definitionId)
       if (!d || (source.zone === 'temporary' ? d.category === 'DON' : source.zone === 'hand' ? d.category !== 'EVENT' : ({ leader: 'LEADER', characters: 'CHARACTER', stage: 'STAGE' }[source.zone] !== d.category))) throw new Error('INVALID_CARD_PROGRAM_SOURCE')
     }
-    for (const ability of [...effectRuntime.registry.continuous ?? [], ...effectRuntime.registry.cardReplacements ?? []]) if (input.definitions.find(d => d.definitionId === ability.definitionId)?.category !== 'CHARACTER') throw new Error('INVALID_CONTINUOUS_SOURCE')
+    for (const ability of [...effectRuntime.registry.continuous ?? [], ...effectRuntime.registry.cardReplacements ?? []]) if (input.definitions.find(d => d.definitionId === ability.definitionId)?.category !== (ability.zone === 'leader' ? 'LEADER' : 'CHARACTER')) throw new Error('INVALID_CONTINUOUS_SOURCE')
   }
   const state: GameState = {
     schemaVersion: effectRuntime ? 2 : 1, ...(effectRuntime ? { effects: effectRuntime } : {}), battle: null, gameId: input.gameId, version: 0, scope: input.scope ?? 'SETUP_ONLY', phase: 'CHOOSE_FIRST', players, instances: {},
@@ -190,6 +190,7 @@ export function applyCommand(previous: GameState, raw: unknown, generator: Rando
     else if (command.type === 'DECLARE_ATTACK' || command.type === 'ACTIVATE_BLOCKER' || command.type === 'PASS_BLOCKER' || command.type === 'PLAY_COUNTER_CHARACTER' || command.type === 'PLAY_COUNTER_EVENT' || command.type === 'PASS_COUNTER' || command.type === 'RESOLVE_BATTLE' || command.type === 'CONTINUE_LIFE_DAMAGE' || command.type === 'ANSWER_TRIGGER') applyCombatCommand(state, command)
     else applyBasicTurn(state, command)
     capturePlayedEffects(state, state.events.slice(fromEvent))
+    endInterruptedBattle(state)
     state.commands.push(structuredClone(command)); state.version++
     processDefeat(state)
     assertGameInvariants(state)
@@ -226,8 +227,22 @@ export function projectState(state: GameState, viewerId: string | null) {
       leader: p.zones.leader.map(visible), characters: p.zones.characters.map(visible), stage: p.zones.stage.map(visible), trash: p.zones.trash.map(visible),
       donDeck: p.zones.donDeck.map(visible), cost: p.zones.cost.map(visible), attached: p.zones.attached.map(visible),
       hand: p.id === viewerId ? p.zones.hand.map(visible) : null,
+      // Face-up Life cards (placed face-up by an effect) are public; listed only when there are any.
+      ...(p.zones.life.some(id => state.instances[id].faceUp) ? { lifeFaceUp: p.zones.life.flatMap((id, index) => state.instances[id].faceUp ? [{ index, card: visible(id) }] : []) } : {}),
     })),
     ...(state.effects ? { effects: projectEffects(state, viewerId) } : {}),
     events: state.events.map(e => ({ sequence: e.sequence, type: e.type, ...(e.actorId ? { actorId: e.actorId } : {}), ...(e.publicInstanceId ? { publicInstanceId: e.publicInstanceId } : {}), ...(e.revealedCard ? { revealedCard: structuredClone(e.revealedCard) } : {}) })),
   }
+}
+
+// Rules FAQ ("Basic Rules"), FAQ ST03-003/ST03-016: if the attacking Character or the attack target left its area
+// during the Attack, Block or Counter Step, the battle ends without proceeding (no damage, no K.O.). Applied once the
+// effect that moved it has fully resolved.
+function endInterruptedBattle(state: GameState): void {
+  const battle = state.battle
+  if (!battle || ['LIFE_TRIGGER', 'LIFE_CONTINUE'].includes(battle.step) || state.effects?.continuation || state.effects?.scheduler?.resolvingId || state.effects?.scheduler?.orderChoice) return
+  const present = (ref: { instanceId: string; generation: number }) => { const i = state.instances[ref.instanceId]; return !!i && ['leader', 'characters'].includes(i.zone) && i.zoneGeneration === ref.generation }
+  if (present(battle.attacker) && present(battle.target)) return
+  state.events.push({ sequence: state.events.length, type: 'BATTLE_RESOLVED', actorId: battle.attackerControllerId })
+  state.battle = null
 }

@@ -1,0 +1,12 @@
+{
+  "ruleset": "MUGIWARA_FREE",
+  "rulesVersion": "1.2.1",
+  "card": "OP01-016",
+  "lookedAt": 5,
+  "selectedTrait": "Straw Hat Crew",
+  "selectedCard": "ST01-008",
+  "selectedDestination": "hand",
+  "remainingCards": "ordered at bottom by the player",
+  "choicePrivateToController": true,
+  "restored": true
+}

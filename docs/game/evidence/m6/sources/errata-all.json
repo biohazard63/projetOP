@@ -1,0 +1,1065 @@
+{
+ "source": "https://en.onepiece-cardgame.com/rules/errata_card/",
+ "retrievedAt": "2026-10-12",
+ "htmlSha256": "97da7f8cc5f8108701432fda6748d12a69ff18e11389bc196579ac3ed43d1c28",
+ "note": "Parsed from the official errata page; \"after\" is the text in force.",
+ "entries": {
+  "OP07-097": [
+   {
+    "number": "OP07-097",
+    "name": "Vegapunk",
+    "date": "May 16, 2025",
+    "before": "This Leader cannot attack. [Activate: Main] [Once Per Turn] You may rest 1 of your DON!! cards Select up to 1 {Egghead} typSelectup to 1 {Egghead} type card with a cost of 5 or less from your hand and play it or add it to the top of your Life cards face-up.",
+    "after": "This Leader cannot attack. [Activate: Main] [Once Per Turn] You may rest 1 of your DON!! cards: Select up to 1 {Egghead} type card with a cost of 5 or less from your hand and play it or add it to the top of your Life cards face-up."
+   }
+  ],
+  "OP09-058": [
+   {
+    "number": "OP09-058",
+    "name": "Special Muggy Ball",
+    "date": "December 13, 2024",
+    "before": "[Main] Return up to 1 of your opponent's Characters with a cost of 6 or less to the owner's hand.",
+    "after": "[Main] Your opponent chooses 1 of their Character with a cost of 6 or less and return to the owner's hand."
+   }
+  ],
+  "OP06-034": [
+   {
+    "number": "OP06-034",
+    "name": "Hyouzou",
+    "date": "December 6, 2024",
+    "before": "Fish-Man",
+    "after": "Merfolk"
+   }
+  ],
+  "ST14-014": [
+   {
+    "number": "ST14-014",
+    "name": "Gum-Gum Giant Rifle",
+    "date": "August 16, 2024",
+    "before": "[Counter] If you have a Character with a cost of 8 or more, up to 1 of your Leader or Character cards gains +3000 power during this battle. [Trigger] Add up to 1 of your Character cards with a cost of 2 or less from your trash to your hand.",
+    "after": "[Counter] If there is a Character with a cost of 8 or more, up to 1 of your Leader or Character cards gains +3000 power during this battle. [Trigger] Add up to 1 of your Character cards with a cost of 2 or less from your trash to your hand."
+   }
+  ],
+  "OP05-032": [
+   {
+    "number": "OP05-032",
+    "name": "Pica",
+    "date": "December 8, 2023",
+    "before": "[End of Your Turn] ①: Set this Character as active.[Once Per Turn] If this Character would be K.O.'d, you may rest up to 1 of your Characters with a cost of 3 or more other than [Pica] instead.",
+    "after": "[End of Your Turn] ①: Set this Character as active.[Once Per Turn] If this Character would be K.O.'d, you may rest 1 of your Characters with a cost of 3 or more other than [Pica] instead."
+   }
+  ],
+  "OP03-054": [
+   {
+    "number": "OP03-054",
+    "name": "Usopp's Rubber Band of Doom!!!",
+    "date": "July 14, 2023",
+    "before": "[Counter] Up to 1 of your Leader or Character cards gains +2000 power during this battle. Then, you may trash 1 card from the top of your deck. [Trigger] You may draw 1 card and trash 1 card from the top of your deck.",
+    "after": "[Counter] Up to 1 of your Leader or Character cards gains +2000 power during this battle. Then, you may trash 1 card from the top of your deck. [Trigger] Draw 1 card and you may trash 1 card from the top of your deck."
+   }
+  ],
+  "OP03-047": [
+   {
+    "number": "OP03-047",
+    "name": "Zeff",
+    "date": "July 14, 2023",
+    "before": "[DON!! x1] When this Character's attack deals damage to your opponent's Life, you may trash 7 cards from the top of your deck. [On Play] You may return up to 1 Character with a cost of 3 or less to the owner's hand, and trash 2 cards from the top of your deck.",
+    "after": "[DON!! x1] When this Character's attack deals damage to your opponent's Life, you may trash 7 cards from the top of your deck. [On Play] Return up to 1 Character with a cost of 3 or less to the owner's hand, and you may trash 2 cards from the top of your deck."
+   }
+  ],
+  "OP02-071": [
+   {
+    "number": "OP02-071",
+    "name": "Magellan",
+    "date": "April 21, 2023",
+    "before": "[Your Turn] [Once Per Turn] When a DON!! card on your field is returned to your DON!! deck, this Leader gains +1000 power during this turn.",
+    "after": "[Your Turn] [Once Per Turn] When a DON!! card on the field is returned to your DON!! deck, this Leader gains +1000 power during this turn."
+   }
+  ],
+  "ST02-013": [
+   {
+    "number": "ST02-013",
+    "name": "Eustass\"Captain\"Kid",
+    "date": "March 31, 2023",
+    "before": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [DON!! x1] [End of Your Turn] Set this card as active.",
+    "after": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [DON!! x1] [End of Your Turn] Set this Character as active."
+   }
+  ],
+  "OP02-002": [
+   {
+    "number": "OP02-002",
+    "name": "Monkey.D.Garp",
+    "date": "March 3, 2023",
+    "before": "[Your Turn] When this Leader or 1 of your Characters is given a DON!! card, give up to 1 of your opponent's Characters with a cost of 7 or less −1 cost during this turn.",
+    "after": "[Your Turn] When this Leader or any of your Characters is given a DON!! card, give up to 1 of your opponent's Characters with a cost of 7 or less −1 cost during this turn."
+   }
+  ],
+  "OP01-016": [
+   {
+    "number": "OP01-016",
+    "name": "Nami",
+    "date": "February 17, 2023",
+    "before": "[On Play] Look at 5 cards from the top of your deck; reveal 1 {Straw Hat Crew} type Character card other than [Nami] and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+    "after": "[On Play] Look at 5 cards from the top of your deck; reveal up to 1 {Straw Hat Crew} type card other than [Nami] and add it to your hand. Then, place the rest at the bottom of your deck in any order."
+   },
+   {
+    "number": "OP01-016",
+    "name": "Nami",
+    "date": "February 17, 2023",
+    "before": "[On Play] Look at 5 cards from the top of your deck; reveal 1 {Straw Hat Crew} type Character card other than [Nami] and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+    "after": "[On Play] Look at 5 cards from the top of your deck; reveal up to 1 {Straw Hat Crew} type card other than [Nami] and add it to your hand. Then, place the rest at the bottom of your deck in any order."
+   },
+   {
+    "number": "OP01-016",
+    "name": "Nami (Parallel)",
+    "date": "February 17, 2023",
+    "before": "[On Play] Look at 5 cards from the top of your deck; reveal 1 {Straw Hat Crew} type Character card other than [Nami] and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+    "after": "[On Play] Look at 5 cards from the top of your deck; reveal up to 1 {Straw Hat Crew} type card other than [Nami] and add it to your hand. Then, place the rest at the bottom of your deck in any order."
+   }
+  ],
+  "OP01-002": [
+   {
+    "number": "OP01-002",
+    "name": "Trafalgar Law",
+    "date": "February 17, 2023",
+    "before": "[Activate: Main] [Once Per Turn] ➁ (You may rest the specified number of DON!! cards in your cost area.): If you have 5 Characters, return 1 of your Characters to your hand. Then, play 1 Character with a cost of 5 or less from your hand that is a different color than the returned Character.",
+    "after": "[Activate: Main] [Once Per Turn] ➁ (You may rest the specified number of DON!! cards in your cost area.): If you have 5 Characters, return 1 of your Characters to the owner's hand. Then, play up to 1 Character with a cost of 5 or less from your hand that is a different color than the returned Character."
+   },
+   {
+    "number": "OP01-002",
+    "name": "Trafalgar Law (Parallel)",
+    "date": "February 17, 2023",
+    "before": "[Activate: Main] [Once Per Turn] ➁ (You may rest the specified number of DON!! cards in your cost area.): If you have 5 Characters, return 1 of your Characters to your hand. Then, play 1 Character with a cost of 5 or less from your hand that is a different color than the returned Character.",
+    "after": "[Activate: Main] [Once Per Turn] ➁ (You may rest the specified number of DON!! cards in your cost area.): If you have 5 Characters, return 1 of your Characters to the owner's hand. Then, play up to 1 Character with a cost of 5 or less from your hand that is a different color than the returned Character."
+   }
+  ],
+  "OP01-003": [
+   {
+    "number": "OP01-003",
+    "name": "Monkey.D.Luffy",
+    "date": "February 17, 2023",
+    "before": "[Activate: Main] [Once Per Turn] ➃ (You may rest the specified number of DON!! cards in your cost area.): Set 1 of your {Supernovas} or {Straw Hat Crew} type Character cards with a cost of 5 or less as active. It gains +1000 power during this turn.",
+    "after": "[Activate: Main] [Once Per Turn] ➃ (You may rest the specified number of DON!! cards in your cost area.): Set up to 1 of your {Supernovas} or {Straw Hat Crew} type Character cards with a cost of 5 or less as active. It gains +1000 power during this turn."
+   },
+   {
+    "number": "OP01-003",
+    "name": "Monkey.D.Luffy (Parallel)",
+    "date": "February 17, 2023",
+    "before": "[Activate: Main] [Once Per Turn] ➃ (You may rest the specified number of DON!! cards in your cost area.): Set 1 of your {Supernovas} or {Straw Hat Crew} type Character cards with a cost of 5 or less as active. It gains +1000 power during this turn.",
+    "after": "[Activate: Main] [Once Per Turn] ➃ (You may rest the specified number of DON!! cards in your cost area.): Set up to 1 of your {Supernovas} or {Straw Hat Crew} type Character cards with a cost of 5 or less as active. It gains +1000 power during this turn."
+   }
+  ],
+  "OP01-005": [
+   {
+    "number": "OP01-005",
+    "name": "Uta",
+    "date": "February 17, 2023",
+    "before": "[On Play] Add 1 red Character card other than [Uta] with a cost of 3 or less from your trash to your hand.",
+    "after": "[On Play] Add up to 1 red Character card other than [Uta] with a cost of 3 or less from your trash to your hand."
+   }
+  ],
+  "OP01-006": [
+   {
+    "number": "OP01-006",
+    "name": "Otama",
+    "date": "February 17, 2023",
+    "before": "[On Play] Give 1 of your opponent's Characters −2000 power during this turn.",
+    "after": "[On Play] Give up to 1 of your opponent's Characters −2000 power during this turn."
+   }
+  ],
+  "OP01-007": [
+   {
+    "number": "OP01-007",
+    "name": "Caribou",
+    "date": "February 17, 2023",
+    "before": "[On K.O.] K.O. 1 of your opponent's Characters with 4000 power or less.",
+    "after": "[On K.O.] K.O. up to 1 of your opponent's Characters with 4000 power or less."
+   }
+  ],
+  "OP01-014": [
+   {
+    "number": "OP01-014",
+    "name": "Jinbe",
+    "date": "February 17, 2023",
+    "before": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [DON!! x1] [On Block] Play 1 red Character card with a cost of 2 or less from your hand.",
+    "after": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [DON!! x1] [On Block] Play up to 1 red Character card with a cost of 2 or less from your hand."
+   }
+  ],
+  "OP01-015": [
+   {
+    "number": "OP01-015",
+    "name": "Tony Tony.Chopper",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [When Attacking] You may trash 1 card from your hand: Add 1 {Straw Hat Crew} type Character card other than [Tony Tony.Chopper] with a cost of 4 or less from your trash to your hand.",
+    "after": "[DON!! x1] [When Attacking] You may trash 1 card from your hand: Add up to 1 {Straw Hat Crew} type Character card other than [Tony Tony.Chopper] with a cost of 4 or less from your trash to your hand."
+   }
+  ],
+  "OP01-017": [
+   {
+    "number": "OP01-017",
+    "name": "Nico Robin",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [When Attacking] K.O. 1 of your opponent's Characters with 3000 power or less.",
+    "after": "[DON!! x1] [When Attacking] K.O. up to 1 of your opponent's Characters with 3000 power or less."
+   }
+  ],
+  "OP01-020": [
+   {
+    "number": "OP01-020",
+    "name": "Hyogoro",
+    "date": "February 17, 2023",
+    "before": "[Activate: Main] You may rest this Character: Your Leader or 1 of your Characters gains +2000 power during this turn.",
+    "after": "[Activate: Main] You may rest this Character: Up to 1 of your Leader or Character cards gains +2000 power during this turn."
+   }
+  ],
+  "OP01-026": [
+   {
+    "number": "OP01-026",
+    "name": "Gum-Gum Fire-Fist Pistol Red Hawk",
+    "date": "February 17, 2023",
+    "before": "[Counter] Your Leader or 1 of your Characters gains +4000 power during this battle. Then, K.O. 1 of your opponent's Characters with 4000 power or less. [Trigger] Give your opponent's Leader or 1 of their Characters −10000 power during this turn.",
+    "after": "[Counter] Up to 1 of your Leader or Character cards gains +4000 power during this battle. Then, K.O. up to 1 of your opponent's Characters with 4000 power or less. [Trigger] Give up to 1 of your opponent's Leader or Character cards −10000 power during this turn."
+   }
+  ],
+  "OP01-027": [
+   {
+    "number": "OP01-027",
+    "name": "Round Table",
+    "date": "February 17, 2023",
+    "before": "[Main] Give 1 of your opponent's Characters −10000 power during this turn.",
+    "after": "[Main] Give up to 1 of your opponent's Characters −10000 power during this turn."
+   }
+  ],
+  "OP01-028": [
+   {
+    "number": "OP01-028",
+    "name": "Green Star Rafflesia",
+    "date": "February 17, 2023",
+    "before": "[Counter] Give your opponent's Leader or 1 of their Characters −2000 power during this turn. [Trigger] Activate this card's [Counter] effect.",
+    "after": "[Counter] Give up to 1 of your opponent's Leader or Character cards −2000 power during this turn. [Trigger] Activate this card's [Counter] effect."
+   }
+  ],
+  "OP01-029": [
+   {
+    "number": "OP01-029",
+    "name": "Radical Beam!!",
+    "date": "February 17, 2023",
+    "before": "[Counter] Your Leader or 1 of your Characters gains +2000 power during this battle. Then, if you have 2 or less Life cards, that card gains an additional +2000 power. [Trigger] Your Leader or 1 of your Characters gains +1000 power during this turn.",
+    "after": "[Counter] Up to 1 of your Leader or Character cards gains +2000 power during this battle. Then, if you have 2 or less Life cards, that card gains an additional +2000 power. [Trigger] Up to 1 of your Leader or Character cards gains +1000 power during this turn."
+   }
+  ],
+  "OP01-030": [
+   {
+    "number": "OP01-030",
+    "name": "In Two Years!! At the Sabaody Archipelago!!",
+    "date": "February 17, 2023",
+    "before": "[Main] Look at 5 cards from the top of your deck; reveal 1 {Straw Hat Crew} type Character card and add it to your hand. Then, place the rest at the bottom of your deck in any order. [Trigger] Activate this card's [Main] effect.",
+    "after": "[Main] Look at 5 cards from the top of your deck; reveal up to 1 {Straw Hat Crew} type Character card and add it to your hand. Then, place the rest at the bottom of your deck in any order. [Trigger] Activate this card's [Main] effect."
+   }
+  ],
+  "OP01-033": [
+   {
+    "number": "OP01-033",
+    "name": "Izo",
+    "date": "February 17, 2023",
+    "before": "[On Play] Rest 1 of your opponent's Characters with a cost of 4 or less.",
+    "after": "[On Play] Rest up to 1 of your opponent's Characters with a cost of 4 or less."
+   }
+  ],
+  "OP01-034": [
+   {
+    "number": "OP01-034",
+    "name": "Inuarashi",
+    "date": "February 17, 2023",
+    "before": "[DON!! x2] [When Attacking] Set 1 of your DON!! cards as active.",
+    "after": "[DON!! x2] [When Attacking] Set up to 1 of your DON!! cards as active."
+   },
+   {
+    "number": "OP01-034",
+    "name": "Inuarashi(Parallel)",
+    "date": "February 17, 2023",
+    "before": "[DON!! x2] [When Attacking] Set 1 of your DON!! cards as active.",
+    "after": "[DON!! x2] [When Attacking] Set up to 1 of your DON!! cards as active."
+   }
+  ],
+  "OP01-035": [
+   {
+    "number": "OP01-035",
+    "name": "Okiku",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [When Attacking] [Once Per Turn] Rest 1 of your opponent's Characters with a cost of 5 or less.",
+    "after": "[DON!! x1] [When Attacking] [Once Per Turn] Rest up to 1 of your opponent's Characters with a cost of 5 or less."
+   }
+  ],
+  "OP01-038": [
+   {
+    "number": "OP01-038",
+    "name": "Kanjuro",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [When Attacking] K.O. 1 of your opponent's rested Characters with a cost of 2 or less. [On K.O.] Your opponent chooses 1 card from your hand; trash that card.",
+    "after": "[DON!! x1] [When Attacking] K.O. up to 1 of your opponent's rested Characters with a cost of 2 or less. [On K.O.] Your opponent chooses 1 card from your hand; trash that card."
+   }
+  ],
+  "OP01-040": [
+   {
+    "number": "OP01-040",
+    "name": "Kin'emon",
+    "date": "February 17, 2023",
+    "before": "[On Play] If your Leader is [Kouzuki Oden], play 1 {The Akazaya Nine} type Character card with a cost of 3 or less from your hand. [DON!! x1] [When Attacking] [Once Per Turn] Set 1 of your {The Akazaya Nine} type Character cards with a cost of 3 or less as active.",
+    "after": "[On Play] If your Leader is [Kouzuki Oden], play up to 1 {The Akazaya Nine} type Character card with a cost of 3 or less from your hand. [DON!! x1] [When Attacking] [Once Per Turn] Set up to 1 of your {The Akazaya Nine} type Character cards with a cost of 3 or less as active."
+   },
+   {
+    "number": "OP01-040",
+    "name": "Kin'emon (Parallel)",
+    "date": "February 17, 2023",
+    "before": "[On Play] If your Leader is [Kouzuki Oden], play 1 {The Akazaya Nine} type Character card with a cost of 3 or less from your hand. [DON!! x1] [When Attacking] [Once Per Turn] Set 1 of your {The Akazaya Nine} type Character cards with a cost of 3 or less as active.",
+    "after": "[On Play] If your Leader is [Kouzuki Oden], play up to 1 {The Akazaya Nine} type Character card with a cost of 3 or less from your hand. [DON!! x1] [When Attacking] [Once Per Turn] Set up to 1 of your {The Akazaya Nine} type Character cards with a cost of 3 or less as active."
+   }
+  ],
+  "OP01-041": [
+   {
+    "number": "OP01-041",
+    "name": "Kouzuki Momonosuke",
+    "date": "February 17, 2023",
+    "before": "[Activate: Main] ➀ (You may rest the specified number of DON!! cards in your cost area) You may rest this Character: Look at 5 cards from the top of your deck; reveal 1 {Land of Wano} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+    "after": "[Activate: Main] ➀ (You may rest the specified number of DON!! cards in your cost area) You may rest this Character: Look at 5 cards from the top of your deck; reveal up to 1 {Land of Wano} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order."
+   }
+  ],
+  "OP01-042": [
+   {
+    "number": "OP01-042",
+    "name": "Komurasaki",
+    "date": "February 17, 2023",
+    "before": "[On Play] ③ (You may rest the specified number of DON!! cards in your cost area.): If your Leader is [Kouzuki Oden], set 1 of your {Land of Wano} type Character cards with a cost of 3 or less as active.",
+    "after": "[On Play] ③ (You may rest the specified number of DON!! cards in your cost area.): If your Leader is [Kouzuki Oden], set up to 1 of your {Land of Wano} type Character cards with a cost of 3 or less as active."
+   }
+  ],
+  "OP01-044": [
+   {
+    "number": "OP01-044",
+    "name": "Shachi",
+    "date": "February 17, 2023",
+    "before": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [On Play] If you don't have [Penguin], play 1 [Penguin] from your hand.",
+    "after": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [On Play] If you don't have [Penguin], play up to 1 [Penguin] from your hand."
+   }
+  ],
+  "OP01-047": [
+   {
+    "number": "OP01-047",
+    "name": "Trafalgar Law",
+    "date": "February 17, 2023",
+    "before": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [On Play] You may return 1 Character to your hand: Play 1 Character card with a cost of 3 or less from your hand.",
+    "after": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [On Play] You may return 1 of your Characters to the owner's hand : Play up to 1 Character card with a cost of 3 or less from your hand."
+   },
+   {
+    "number": "OP01-047",
+    "name": "Trafalgar Law (Parallel)",
+    "date": "February 17, 2023",
+    "before": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [On Play] You may return 1 Character to your hand: Play 1 Character card with a cost of 3 or less from your hand.",
+    "after": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [On Play] You may return 1 of your Characters to the owner's hand : Play up to 1 Character card with a cost of 3 or less from your hand."
+   }
+  ],
+  "OP01-048": [
+   {
+    "number": "OP01-048",
+    "name": "Nekomamushi",
+    "date": "February 17, 2023",
+    "before": "[On Play] Rest 1 of your opponent's Characters with a cost of 3 or less.",
+    "after": "[On Play] Rest up to 1 of your opponent's Characters with a cost of 3 or less."
+   },
+   {
+    "number": "OP01-048",
+    "name": "Nekomamushi (Parallel)",
+    "date": "February 17, 2023",
+    "before": "[On Play] Rest 1 of your opponent's Characters with a cost of 3 or less.",
+    "after": "[On Play] Rest up to 1 of your opponent's Characters with a cost of 3 or less."
+   }
+  ],
+  "OP01-049": [
+   {
+    "number": "OP01-049",
+    "name": "Bepo",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [When Attacking] Play 1 {Heart Pirates} type card other than [Bepo] with a cost of 4 or less from your hand.",
+    "after": "[DON!! x1] [When Attacking] Play up to 1 {Heart Pirates} type Character card other than [Bepo] with a cost of 4 or less from your hand."
+   }
+  ],
+  "OP01-050": [
+   {
+    "number": "OP01-050",
+    "name": "Penguin",
+    "date": "February 17, 2023",
+    "before": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [On Play] If you don't have [Shachi], play 1 [Shachi] from your hand.",
+    "after": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [On Play] If you don't have [Shachi], play up to 1 [Shachi] from your hand."
+   }
+  ],
+  "OP01-051": [
+   {
+    "number": "OP01-051",
+    "name": "Eustass\"Captain\"Kid",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [Opponent's Turn] If this Character is rested, your opponent cannot attack any Character other than [Eustass\"Captain\"Kid]. [Activate: Main] [Once Per Turn] You may rest this Character: Play 1 Character card with a cost of 3 or less from your hand.",
+    "after": "[DON!! x1] [Opponent's Turn] If this Character is rested, your opponent cannot attack any card other than the Character [Eustass\"Captain\"Kid]. [Activate: Main] [Once Per Turn] You may rest this Character: Play up to 1 Character card with a cost of 3 or less from your hand."
+   },
+   {
+    "number": "OP01-051",
+    "name": "Eustass\"Captain\"Kid (Parallel)",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [Opponent's Turn] If this Character is rested, your opponent cannot attack any Character other than [Eustass\"Captain\"Kid]. [Activate: Main] [Once Per Turn] You may rest this Character: Play 1 Character card with a cost of 3 or less from your hand.",
+    "after": "[DON!! x1] [Opponent's Turn] If this Character is rested, your opponent cannot attack any card other than the Character [Eustass\"Captain\"Kid]. [Activate: Main] [Once Per Turn] You may rest this Character: Play up to 1 Character card with a cost of 3 or less from your hand."
+   },
+   {
+    "number": "OP01-051",
+    "name": "Eustass\"Captain\"Kid",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [Opponent's Turn] If this Character is rested, your opponent cannot attack any Character other than [Eustass\"Captain\"Kid]. [Activate: Main] [Once Per Turn] You may rest this Character: Play 1 Character card with a cost of 3 or less from your hand.",
+    "after": "[DON!! x1] [Opponent's Turn] If this Character is rested, your opponent cannot attack any card other than the Character [Eustass\"Captain\"Kid]. [Activate: Main] [Once Per Turn] You may rest this Character: Play up to 1 Character card with a cost of 3 or less from your hand."
+   }
+  ],
+  "OP01-054": [
+   {
+    "number": "OP01-054",
+    "name": "X.Drake",
+    "date": "February 17, 2023",
+    "before": "[On Play] K.O. 1 of your opponent's rested Characters with a cost of 4 or less.",
+    "after": "[On Play] K.O. up to 1 of your opponent's rested Characters with a cost of 4 or less."
+   }
+  ],
+  "OP01-056": [
+   {
+    "number": "OP01-056",
+    "name": "Demon Face",
+    "date": "February 17, 2023",
+    "before": "[Main] K.O. 2 of your opponent's rested Characters with a cost of 5 or less.",
+    "after": "[Main] K.O. up to 2 of your opponent's rested Characters with a cost of 5 or less."
+   }
+  ],
+  "OP01-057": [
+   {
+    "number": "OP01-057",
+    "name": "Paradise Waterfall",
+    "date": "February 17, 2023",
+    "before": "[Counter] Your Leader or 1 of your Characters gains +2000 power during this battle. Then, set 1 of your Characters as active. [Trigger] K.O. 1 of your opponent's rested Characters with a cost of 4 or less.",
+    "after": "[Counter] Up to 1 of your Leader or Character cards gains +2000 power during this battle. Then, set up to 1 of your Characters as active. [Trigger] K.O. up to 1 of your opponent's rested Characters with a cost of 4 or less."
+   }
+  ],
+  "OP01-058": [
+   {
+    "number": "OP01-058",
+    "name": "Punk Gibson",
+    "date": "February 17, 2023",
+    "before": "[Counter] Your Leader or 1 of your Characters gains +4000 power during this battle. Then, rest 1 of your opponent's Characters with a cost of 4 or less. [Trigger] Rest 1 of your opponent's Characters.",
+    "after": "[Counter] Up to 1 of your Leader or Character cards gains +4000 power during this battle. Then, rest up to 1 of your opponent's Characters with a cost of 4 or less. [Trigger] Rest up to 1 of your opponent's Characters."
+   }
+  ],
+  "OP01-059": [
+   {
+    "number": "OP01-059",
+    "name": "BE-BENG!!",
+    "date": "February 17, 2023",
+    "before": "[Main] You may trash 1 {Land of Wano} type card from your hand: Set 1 of your {Land of Wano} type Character cards with a cost of 3 or less as active.",
+    "after": "[Main] You may trash 1 {Land of Wano} type card from your hand: Set up to 1 of your {Land of Wano} type Character cards with a cost of 3 or less as active."
+   }
+  ],
+  "OP01-061": [
+   {
+    "number": "OP01-061",
+    "name": "Kaido",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [Your Turn] [Once Per Turn] When your opponent's Character is K.O.'d, add 1 card from your DON!! deck and set it as active.",
+    "after": "[DON!! x1] [Your Turn] [Once Per Turn] When your opponent's Character is K.O.'d, add up to 1 DON!! card from your DON!! deck and set it as active."
+   },
+   {
+    "number": "OP01-061",
+    "name": "Kaido (Parallel)",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [Your Turn] [Once Per Turn] When your opponent's Character is K.O.'d, add 1 card from your DON!! deck and set it as active.",
+    "after": "[DON!! x1] [Your Turn] [Once Per Turn] When your opponent's Character is K.O.'d, add up to 1 DON!! card from your DON!! deck and set it as active."
+   }
+  ],
+  "OP01-063": [
+   {
+    "number": "OP01-063",
+    "name": "Arlong",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [Activate: Main] You may rest this Character: Choose 1 card from your opponent's hand; your opponent reveals that card. If the revealed card is an Event, place 1 card from your opponent's Life area at the bottom of the owner's deck.",
+    "after": "[DON!! x1] [Activate: Main] You may rest this Character: Choose 1 card from your opponent's hand; your opponent reveals that card. If the revealed card is an Event, place up to 1 card from your opponent's Life area at the bottom of the owner's deck."
+   }
+  ],
+  "OP01-064": [
+   {
+    "number": "OP01-064",
+    "name": "Alvida",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [When Attacking] You may trash 1 card from your hand: Return 1 of your opponent's Characters with a cost of 3 or less to the owner's hand.",
+    "after": "[DON!! x1] [When Attacking] You may trash 1 card from your hand: Return up to 1 of your opponent's Characters with a cost of 3 or less to the owner's hand."
+   },
+   {
+    "number": "OP01-064",
+    "name": "Alvida (Parallel)",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [When Attacking] You may trash 1 card from your hand: Return 1 of your opponent's Characters with a cost of 3 or less to the owner's hand.",
+    "after": "[DON!! x1] [When Attacking] You may trash 1 card from your hand: Return up to 1 of your opponent's Characters with a cost of 3 or less to the owner's hand."
+   }
+  ],
+  "OP01-069": [
+   {
+    "number": "OP01-069",
+    "name": "Caesar Clown",
+    "date": "February 17, 2023",
+    "before": "[On K.O.] Play 1 [Smiley] from your deck, then shuffle your deck.",
+    "after": "[On K.O.] Play up to 1 [Smiley] from your deck, then shuffle your deck."
+   }
+  ],
+  "OP01-070": [
+   {
+    "number": "OP01-070",
+    "name": "Dracule Mihawk",
+    "date": "February 17, 2023",
+    "before": "[On Play] Place 1 Character with a cost of 7 or less at the bottom of the owner's deck.",
+    "after": "[On Play] Place up to 1 Character with a cost of 7 or less at the bottom of the owner's deck."
+   },
+   {
+    "number": "OP01-070",
+    "name": "Dracule Mihawk (Parallel)",
+    "date": "February 17, 2023",
+    "before": "[On Play] Place 1 Character with a cost of 7 or less at the bottom of the owner's deck.",
+    "after": "[On Play] Place up to 1 Character with a cost of 7 or less at the bottom of the owner's deck."
+   }
+  ],
+  "OP01-071": [
+   {
+    "number": "OP01-071",
+    "name": "Jinbe",
+    "date": "February 17, 2023",
+    "before": "[On Play] Place 1 Character with a cost of 3 or less at the bottom of the owner's deck. [Trigger] Play this card.",
+    "after": "[On Play] Place up to 1 Character with a cost of 3 or less at the bottom of the owner's deck. [Trigger] Play this card."
+   }
+  ],
+  "OP01-074": [
+   {
+    "number": "OP01-074",
+    "name": "Bartholomew Kuma",
+    "date": "February 17, 2023",
+    "before": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [On K.O.] Play 1 [Pacifista] with a cost of 4 or less from your hand.",
+    "after": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [On K.O.] Play up to 1 [Pacifista] with a cost of 4 or less from your hand."
+   }
+  ],
+  "OP01-079": [
+   {
+    "number": "OP01-079",
+    "name": "Ms. All Sunday",
+    "date": "February 17, 2023",
+    "before": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [On K.O.] If your Leader has the {Baroque Works} type, add 1 Event from your trash to your hand.",
+    "after": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [On K.O.] If your Leader has the {Baroque Works} type, add up to 1 Event from your trash to your hand."
+   }
+  ],
+  "OP01-084": [
+   {
+    "number": "OP01-084",
+    "name": "Mr.2.Bon.Kurei(Bentham)",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [When Attacking] Look at 5 cards from the top of your deck; reveal 1 {Baroque Works} type Event card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+    "after": "[DON!! x1] [When Attacking] Look at 5 cards from the top of your deck; reveal up to 1 {Baroque Works} type Event card and add it to your hand. Then, place the rest at the bottom of your deck in any order."
+   }
+  ],
+  "OP01-085": [
+   {
+    "number": "OP01-085",
+    "name": "Mr.3(Galdino)",
+    "date": "February 17, 2023",
+    "before": "[On Play] If your Leader has the {Baroque Works} type, select 1 of your opponent's Characters with a cost of 4 or less. The selected Character cannot attack until the end of your opponent's next turn.",
+    "after": "[On Play] If your Leader has the {Baroque Works} type, select up to 1 of your opponent's Characters with a cost of 4 or less. The selected Character cannot attack until the end of your opponent's next turn."
+   }
+  ],
+  "OP01-086": [
+   {
+    "number": "OP01-086",
+    "name": "Overheat",
+    "date": "February 17, 2023",
+    "before": "[Counter] Your Leader or 1 of your Characters gains +4000 power during this battle. Then, return 1 active Character with a cost of 3 or less to the owner's hand. [Trigger] Return 1 card with a cost of 4 or less to the owner's hand.",
+    "after": "[Counter] Up to 1 of your Leader or Character cards gains +4000 power during this battle. Then, return up to 1 active Character with a cost of 3 or less to the owner's hand. [Trigger] Return up to 1 Character with a cost of 4 or less to the owner's hand."
+   }
+  ],
+  "OP01-087": [
+   {
+    "number": "OP01-087",
+    "name": "Officer Agents",
+    "date": "February 17, 2023",
+    "before": "[Counter] Play 1 {Baroque Works} type card with a cost of 3 or less from your hand. [Trigger] Activate this card's [Counter] effect.",
+    "after": "[Counter] Play up to 1 {Baroque Works} type Character card with a cost of 3 or less from your hand. [Trigger] Activate this card's [Counter] effect."
+   }
+  ],
+  "OP01-088": [
+   {
+    "number": "OP01-088",
+    "name": "Desert Spada",
+    "date": "February 17, 2023",
+    "before": "[Counter] Your Leader or 1 of your Characters gains +2000 power during this battle. Then, look at 3 cards from the top of your deck and place them at the top or bottom of the deck in any order. [Trigger] Draw 2 cards and trash 1 card from your hand.",
+    "after": "[Counter] Up to 1 of your Leader or Character cards gains +2000 power during this battle. Then, look at 3 cards from the top of your deck and place them at the top or bottom of the deck in any order. [Trigger] Draw 2 cards and trash 1 card from your hand."
+   }
+  ],
+  "OP01-089": [
+   {
+    "number": "OP01-089",
+    "name": "Crescent Cutlass",
+    "date": "February 17, 2023",
+    "before": "[Counter] If your Leader has the {The Seven Warlords of the Sea} type, return 1 Character with a cost of 5 or less to the owner's hand.",
+    "after": "[Counter] If your Leader has the {The Seven Warlords of the Sea} type, return up to 1 Character with a cost of 5 or less to the owner's hand."
+   }
+  ],
+  "OP01-090": [
+   {
+    "number": "OP01-090",
+    "name": "Baroque Works",
+    "date": "February 17, 2023",
+    "before": "[Main] Look at 5 cards from the top of your deck; reveal 1 {Baroque Works} type card other than [Baroque Works] and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+    "after": "[Main] Look at 5 cards from the top of your deck; reveal up to 1 {Baroque Works} type card other than [Baroque Works] and add it to your hand. Then, place the rest at the bottom of your deck in any order."
+   }
+  ],
+  "OP01-093": [
+   {
+    "number": "OP01-093",
+    "name": "Ulti",
+    "date": "February 17, 2023",
+    "before": "[On Play] ① (You may rest the specified number of DON!! cards in your cost area.): Add 1 card from your DON!! deck and rest it.",
+    "after": "[On Play] ① (You may rest the specified number of DON!! cards in your cost area.): Add up to 1 DON!! card from your DON!! deck and rest it."
+   },
+   {
+    "number": "OP01-093",
+    "name": "Ulti (Parallel)",
+    "date": "February 17, 2023",
+    "before": "[On Play] ① (You may rest the specified number of DON!! cards in your cost area.): Add 1 card from your DON!! deck and rest it.",
+    "after": "[On Play] ① (You may rest the specified number of DON!! cards in your cost area.): Add up to 1 DON!! card from your DON!! deck and rest it."
+   }
+  ],
+  "OP01-096": [
+   {
+    "number": "OP01-096",
+    "name": "King",
+    "date": "February 17, 2023",
+    "before": "[On Play] DON!! −2 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. 1 of your opponent's Characters with a cost of 3 or less and 1 of your opponent's Characters with a cost of 2 or less.",
+    "after": "[On Play] DON!! −2 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. up to 1 of your opponent's Characters with a cost of 3 or less and up to 1 of your opponent's Characters with a cost of 2 or less."
+   },
+   {
+    "number": "OP01-096",
+    "name": "King (Parallel)",
+    "date": "February 17, 2023",
+    "before": "[On Play] DON!! −2 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. 1 of your opponent's Characters with a cost of 3 or less and 1 of your opponent's Characters with a cost of 2 or less.",
+    "after": "[On Play] DON!! −2 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. up to 1 of your opponent's Characters with a cost of 3 or less and up to 1 of your opponent's Characters with a cost of 2 or less."
+   }
+  ],
+  "OP01-097": [
+   {
+    "number": "OP01-097",
+    "name": "Queen",
+    "date": "February 17, 2023",
+    "before": "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): This Character gains [Rush] during this turn. Give 1 of your opponent's Characters −2000 power during this turn. (This card can attack on the turn in which it is played.)",
+    "after": "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): This Character gains [Rush] during this turn. Then, give up to 1 of your opponent's Characters −2000 power during this turn. (This card can attack on the turn in which it is played.)"
+   },
+   {
+    "number": "OP01-097",
+    "name": "Queen (Parallel)",
+    "date": "February 17, 2023",
+    "before": "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): This Character gains [Rush] during this turn. Give 1 of your opponent's Characters −2000 power during this turn. (This card can attack on the turn in which it is played.)",
+    "after": "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): This Character gains [Rush] during this turn. Then, give up to 1 of your opponent's Characters −2000 power during this turn. (This card can attack on the turn in which it is played.)"
+   }
+  ],
+  "OP01-098": [
+   {
+    "number": "OP01-098",
+    "name": "Kurozumi Orochi",
+    "date": "February 17, 2023",
+    "before": "[On Play] Reveal 1 [Artificial Devil Fruit SMILE] from your deck and add it to your hand. Then, shuffle your deck.",
+    "after": "[On Play] Reveal up to 1 [Artificial Devil Fruit SMILE] from your deck and add it to your hand. Then, shuffle your deck."
+   }
+  ],
+  "OP01-101": [
+   {
+    "number": "OP01-101",
+    "name": "Sasaki",
+    "date": "February 17, 2023",
+    "before": "[DON!! x1] [When Attacking] You may trash 1 card from your hand: Add 1 card from your DON!! deck and rest it.",
+    "after": "[DON!! x1] [When Attacking] You may trash 1 card from your hand: Add up to 1 DON!! card from your DON!! deck and rest it."
+   }
+  ],
+  "OP01-106": [
+   {
+    "number": "OP01-106",
+    "name": "Basil Hawkins",
+    "date": "February 17, 2023",
+    "before": "[On Play] Add 1 card from your DON!! deck and rest it. [Trigger] Play this card.",
+    "after": "[On Play] Add up to 1 DON!! card from your DON!! deck and rest it. [Trigger] Play this card."
+   }
+  ],
+  "OP01-108": [
+   {
+    "number": "OP01-108",
+    "name": "Hitokiri Kamazo",
+    "date": "February 17, 2023",
+    "before": "[On K.O.] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. 1 of your opponent's Characters with a cost of 5 or less.",
+    "after": "[On K.O.] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. up to 1 of your opponent's Characters with a cost of 5 or less."
+   }
+  ],
+  "OP01-113": [
+   {
+    "number": "OP01-113",
+    "name": "Holedem",
+    "date": "February 17, 2023",
+    "before": "[On K.O.] Add 1 card from your DON!! deck and rest it.",
+    "after": "[On K.O.] Add up to 1 DON!! card from your DON!! deck and rest it."
+   }
+  ],
+  "OP01-115": [
+   {
+    "number": "OP01-115",
+    "name": "Elephant's Marchoo",
+    "date": "February 17, 2023",
+    "before": "[Main] K.O. one of your opponent's Characters with a cost of 2 or less, then add 1 DON!! card from your DON!! deck and set it as active. [Trigger] Activate this card's [Main] effect.",
+    "after": "[Main] K.O. up to 1 of your opponent's Characters with a cost of 2 or less, then add up to 1 DON!! card from your DON!! deck and set it as active. [Trigger] Activate this card's [Main] effect."
+   }
+  ],
+  "OP01-116": [
+   {
+    "number": "OP01-116",
+    "name": "Artificial Devil Fruit SMILE",
+    "date": "February 17, 2023",
+    "before": "[Main] Look at 5 cards from the top of your deck; play 1 {SMILE} type Character card with a cost of 3 or less. Then, place the rest at the bottom of your deck in any order. [Trigger] Activate this card's [Main] effect.",
+    "after": "[Main] Look at 5 cards from the top of your deck; play up to 1 {SMILE} type Character card with a cost of 3 or less. Then, place the rest at the bottom of your deck in any order. [Trigger] Activate this card's [Main] effect."
+   }
+  ],
+  "OP01-117": [
+   {
+    "number": "OP01-117",
+    "name": "Sheep's Horn",
+    "date": "February 17, 2023",
+    "before": "[Main] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Rest 1 of your opponent's Characters with a cost of 6 or less.",
+    "after": "[Main] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Rest up to 1 of your opponent's Characters with a cost of 6 or less."
+   }
+  ],
+  "OP01-118": [
+   {
+    "number": "OP01-118",
+    "name": "Ulti-Mortar",
+    "date": "February 17, 2023",
+    "before": "[Counter] DON!! −2 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Your Leader or 1 of your Characters gains +2000 power during this battle. Then, draw 1 card. [Trigger] Add 1 DON!! card from your DON!! deck and set it as active.",
+    "after": "[Counter] DON!! −2 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Up to 1 of your Leader or Character cards gains +2000 power during this battle. Then, draw 1 card. [Trigger] Add up to 1 DON!! card from your DON!! deck and set it as active."
+   }
+  ],
+  "OP01-119": [
+   {
+    "number": "OP01-119",
+    "name": "Thunder Bagua",
+    "date": "February 17, 2023",
+    "before": "[Counter] Your Leader or 1 of your Characters gains +4000 power during this battle. Then, if you have 2 or less Life cards, add 1 DON!! card from your DON!! deck and rest it. [Trigger] Add 1 DON!! card from your DON!! deck and set it as active.",
+    "after": "[Counter] Up to 1 of your Leader or Character cards gains +4000 power during this battle. Then, if you have 2 or less Life cards, add up to 1 DON!! card from your DON!! deck and rest it. [Trigger] Add up to 1 DON!! card from your DON!! deck and set it as active."
+   }
+  ],
+  "OP01-112": [
+   {
+    "number": "OP01-112",
+    "name": "Page One",
+    "date": "February 17, 2023",
+    "before": "[On Play] [Once Per Turn] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): This Character can also attack your opponent's active Characters during this turn.",
+    "after": "[Activate: Main] [Once Per Turn] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): This Character can also attack your opponent's active Characters during this turn."
+   }
+  ],
+  "ST01-001": [
+   {
+    "number": "ST01-001",
+    "name": "Monkey.D.Luffy",
+    "date": "September 26, 2022",
+    "before": "[Activate: Main] [Once Per Turn] Give this Leader or 1 of your Characters 1 rested DON!! card.",
+    "after": "[Activate: Main] [Once Per Turn] Give this Leader or 1 of your Characters up to 1 rested DON!! card."
+   }
+  ],
+  "ST01-005": [
+   {
+    "number": "ST01-005",
+    "name": "Jinbe",
+    "date": "September 26, 2022",
+    "before": "[DON!! x1] [When Attacking] Your Leader or 1 of your Characters other than this card gains +1000 power during this turn.",
+    "after": "[DON!! x1] [When Attacking] Up to 1 of your Leader or Character cards other than this card gains +1000 power during this turn."
+   }
+  ],
+  "ST01-007": [
+   {
+    "number": "ST01-007",
+    "name": "Nami",
+    "date": "September 26, 2022",
+    "before": "[Activate: Main] [Once Per Turn] Give 1 rested DON!! card to your Leader or 1 of your Characters.",
+    "after": "[Activate: Main] [Once Per Turn] Give up to 1 rested DON!! card to your Leader or 1 of your Characters."
+   }
+  ],
+  "ST01-014": [
+   {
+    "number": "ST01-014",
+    "name": "Guard Point",
+    "date": "September 26, 2022",
+    "before": "[Counter] Your Leader or 1 of your Characters gains +3000 power during this battle. [Trigger] Your Leader or 1 of your Characters gains +1000 power during this turn.",
+    "after": "[Counter] Up to 1 of your Leader or Character cards gains +3000 power during this battle. [Trigger] Up to 1 of your Leader or Character cards gains +1000 power during this turn."
+   }
+  ],
+  "ST01-015": [
+   {
+    "number": "ST01-015",
+    "name": "Gum-Gum Jet Pistol",
+    "date": "September 26, 2022",
+    "before": "[Main] K.O. 1 of your opponent's Characters with 6000 power or less. [Trigger] Activate this card's [Main] effect.",
+    "after": "[Main] K.O. up to 1 of your opponent's Characters with 6000 power or less. [Trigger] Activate this card's [Main] effect."
+   }
+  ],
+  "ST01-016": [
+   {
+    "number": "ST01-016",
+    "name": "Diable Jambe",
+    "date": "September 26, 2022",
+    "before": "[Main] Select 1 of your {Straw Hat Crew} type Leader or Character cards. Your opponent cannot activate [Blocker] if that Leader or Character attacks during this turn. [Trigger] K.O. 1 of your opponent's [Blocker] Characters with a cost of 3 or less.",
+    "after": "[Main] Select up to 1 of your {Straw Hat Crew} type Leader or Character cards. Your opponent cannot activate [Blocker] if that Leader or Character attacks during this turn. [Trigger] K.O. up to 1 of your opponent's [Blocker] Characters with a cost of 3 or less."
+   }
+  ],
+  "ST01-017": [
+   {
+    "number": "ST01-017",
+    "name": "Thousand Sunny",
+    "date": "September 26, 2022",
+    "before": "[Activate: Main] You may rest this Stage: 1 {Straw Hat Crew} type Leader or Character card on your field gains +1000 power during this turn.",
+    "after": "[Activate: Main] You may rest this Stage: Up to 1 {Straw Hat Crew} type Leader or Character card on your field gains +1000 power during this turn."
+   }
+  ],
+  "ST02-005": [
+   {
+    "number": "ST02-005",
+    "name": "Killer",
+    "date": "September 26, 2022",
+    "before": "[On Play] K.O. 1 of your opponent's rested Characters with a cost of 3 or less. [Trigger] Play this card.",
+    "after": "[On Play] K.O. up to 1 of your opponent's rested Characters with a cost of 3 or less. [Trigger] Play this card."
+   }
+  ],
+  "ST02-007": [
+   {
+    "number": "ST02-007",
+    "name": "Jewelry Bonney",
+    "date": "February 17, 2023",
+    "before": "[Activate: Main] ➀ (You may rest the specified number of DON!! cards in your cost area.) You may rest this card: Look at up to 5 cards from the top of your deck; reveal 1 {Supernovas} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+    "after": "[Activate: Main] ➀ (You may rest the specified number of DON!! cards in your cost area.) You may rest this Character : Look at 5 cards from the top of your deck; reveal up to 1 {Supernovas} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order."
+   }
+  ],
+  "ST02-008": [
+   {
+    "number": "ST02-008",
+    "name": "Scratchmen Apoo",
+    "date": "September 26, 2022",
+    "before": "[DON!! x1] [When Attacking] Rest 1 of your opponent's DON!! cards.",
+    "after": "[DON!! x1] [When Attacking] Rest up to 1 of your opponent's DON!! cards."
+   }
+  ],
+  "ST02-009": [
+   {
+    "number": "ST02-009",
+    "name": "Trafalgar Law",
+    "date": "September 26, 2022",
+    "before": "[On Play] Set 1 of your {Supernovas} or {Heart Pirates} type rested Characters with a cost of 5 or less as active.",
+    "after": "[On Play] Set up to 1 of your {Supernovas} or {Heart Pirates} type rested Characters with a cost of 5 or less as active."
+   }
+  ],
+  "ST02-015": [
+   {
+    "number": "ST02-015",
+    "name": "Scalpel",
+    "date": "September 26, 2022",
+    "before": "[Counter] Your Leader or 1 of your Characters gains +2000 power during this battle. Then, set 1 of your DON!! cards as active. [Trigger] Set up to 2 of your DON!! cards as active.",
+    "after": "[Counter] Up to 1 of your Leader or Character cards gains +2000 power during this battle. Then, set up to 1 of your DON!! cards as active. [Trigger] Set up to 2 of your DON!! cards as active."
+   }
+  ],
+  "ST02-016": [
+   {
+    "number": "ST02-016",
+    "name": "Repel",
+    "date": "September 26, 2022",
+    "before": "[Counter] Your Leader or 1 of your Characters gains +4000 power during this battle. Then, set 1 of your DON!! cards as active.",
+    "after": "[Counter] Up to 1 of your Leader or Character cards gains +4000 power during this battle. Then, set up to 1 of your DON!! cards as active."
+   }
+  ],
+  "ST02-017": [
+   {
+    "number": "ST02-017",
+    "name": "Straw Sword",
+    "date": "September 26, 2022",
+    "before": "[Main] Rest 1 of your opponent's Characters. [Trigger] Play 1 {Supernovas} type card with a cost of 2 or less from your hand.",
+    "after": "[Main] Rest up to 1 of your opponent's Characters. [Trigger] Play up to 1 {Supernovas} type card with a cost of 2 or less from your hand."
+   }
+  ],
+  "ST03-001": [
+   {
+    "number": "ST03-001",
+    "name": "Crocodile",
+    "date": "September 26, 2022",
+    "before": "[Activate: Main] [Once Per Turn] DON!! −4 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Return 1 Character with a cost of 5 or less to the owner's hand.",
+    "after": "[Activate: Main] [Once Per Turn] DON!! −4 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Return up to 1 Character with a cost of 5 or less to the owner's hand."
+   }
+  ],
+  "ST03-003": [
+   {
+    "number": "ST03-003",
+    "name": "Crocodile",
+    "date": "September 26, 2022",
+    "before": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [DON!! x1] [On Block] Place 1 Character with a cost of 2 or less at the bottom of the owner's deck.",
+    "after": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.) [DON!! x1] [On Block] Place up to 1 Character with a cost of 2 or less at the bottom of the owner's deck."
+   }
+  ],
+  "ST03-004": [
+   {
+    "number": "ST03-004",
+    "name": "Gecko Moria",
+    "date": "September 26, 2022",
+    "before": "[On Play] Add 1 {The Seven Warlords of the Sea} or {Thriller Bark Pirates} type Character with a cost of 4 or less other than [Gecko Moria] from your trash to your hand.",
+    "after": "[On Play] Add up to 1 {The Seven Warlords of the Sea} or {Thriller Bark Pirates} type Character with a cost of 4 or less other than [Gecko Moria] from your trash to your hand."
+   }
+  ],
+  "ST03-007": [
+   {
+    "number": "ST03-007",
+    "name": "Sentomaru",
+    "date": "September 26, 2022",
+    "before": "[DON!! x1] [Activate: Main] [Once Per Turn] ➁ (You may rest the specified number of DON!! cards in your cost area.): Play 1 [Pacifista] with a cost of 4 or less from your deck, then shuffle your deck.",
+    "after": "[DON!! x1] [Activate: Main] [Once Per Turn] ➁ (You may rest the specified number of DON!! cards in your cost area.): Play up to 1 [Pacifista] with a cost of 4 or less from your deck, then shuffle your deck."
+   }
+  ],
+  "ST03-009": [
+   {
+    "number": "ST03-009",
+    "name": "Donquixote Doflamingo",
+    "date": "September 26, 2022",
+    "before": "[On Play] Return 1 Character with a cost of 7 or less to the owner's hand.",
+    "after": "[On Play] Return up to 1 Character with a cost of 7 or less to the owner's hand."
+   }
+  ],
+  "ST03-014": [
+   {
+    "number": "ST03-014",
+    "name": "Marshall.D.Teach",
+    "date": "September 26, 2022",
+    "before": "[On Play] Return 1 Character with a cost of 3 or less to the owner's hand.",
+    "after": "[On Play] Return up to 1 Character with a cost of 3 or less to the owner's hand."
+   }
+  ],
+  "ST03-015": [
+   {
+    "number": "ST03-015",
+    "name": "Sables",
+    "date": "September 26, 2022",
+    "before": "[Main] Return 1 Character with a cost of 7 or less to the owner's hand. [Trigger] Activate this card's [Main] effect.",
+    "after": "[Main] Return up to 1 Character with a cost of 7 or less to the owner's hand. [Trigger] Activate this card's [Main] effect."
+   }
+  ],
+  "ST03-016": [
+   {
+    "number": "ST03-016",
+    "name": "Thrust Pad Cannon",
+    "date": "September 26, 2022",
+    "before": "[Counter] Return 1 Character with a cost of 3 or less to the owner's hand. [Trigger] Activate this card's [Counter] effect.",
+    "after": "[Counter] Return up to 1 Character with a cost of 3 or less to the owner's hand. [Trigger] Activate this card's [Counter] effect."
+   }
+  ],
+  "ST03-017": [
+   {
+    "number": "ST03-017",
+    "name": "Love-Love Mellow",
+    "date": "September 26, 2022",
+    "before": "[Counter] Your Leader or 1 of your Characters gains +4000 power during this battle. Then, draw 1 card if you have 3 or less cards in your hand.",
+    "after": "[Counter] Up to 1 of your Leader or Character cards gains +4000 power during this battle. Then, draw 1 card if you have 3 or less cards in your hand."
+   }
+  ],
+  "ST04-001": [
+   {
+    "number": "ST04-001",
+    "name": "Kaido",
+    "date": "September 26, 2022",
+    "before": "[Activate: Main] [Once Per Turn] DON!! −7 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Trash 1 of your opponent's Life cards.",
+    "after": "[Activate: Main] [Once Per Turn] DON!! −7 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Trash up to 1 of your opponent's cards from the top of their Life cards."
+   }
+  ],
+  "ST04-002": [
+   {
+    "number": "ST04-002",
+    "name": "Ulti",
+    "date": "September 26, 2022",
+    "before": "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Play 1 [Page One] card with a cost of 4 or less from your hand.",
+    "after": "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Play up to 1 [Page One] card with a cost of 4 or less from your hand."
+   }
+  ],
+  "ST04-003": [
+   {
+    "number": "ST04-003",
+    "name": "Kaido",
+    "date": "September 26, 2022",
+    "before": "[On Play] DON!! −5 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. 1 of your opponent's Characters with a cost of 6 or less. This Character gains [Rush] during this turn. (This card can attack on the turn in which it is played.)",
+    "after": "[On Play] DON!! −5 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. up to 1 of your opponent's Characters with a cost of 6 or less. This Character gains [Rush] during this turn. (This card can attack on the turn in which it is played.)"
+   }
+  ],
+  "ST04-004": [
+   {
+    "number": "ST04-004",
+    "name": "King",
+    "date": "September 26, 2022",
+    "before": "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. 1 of your opponent's Characters with a cost of 4 or less.",
+    "after": "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. up to 1 of your opponent's Characters with a cost of 4 or less."
+   }
+  ],
+  "ST04-008": [
+   {
+    "number": "ST04-008",
+    "name": "Jack",
+    "date": "September 26, 2022",
+    "before": "[On Play] You may trash 1 card from your hand: Add 1 card from your DON!! deck and set it as active.",
+    "after": "[On Play] You may trash 1 card from your hand: Add up to 1 DON!! card from your DON!! deck and set it as active."
+   }
+  ],
+  "ST04-010": [
+   {
+    "number": "ST04-010",
+    "name": "Who's.Who",
+    "date": "September 26, 2022",
+    "before": "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. 1 of your opponent's Characters with a cost of 3 or less. [Trigger] Play this card.",
+    "after": "[On Play] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): K.O. up to 1 of your opponent's Characters with a cost of 3 or less. [Trigger] Play this card."
+   }
+  ],
+  "ST04-014": [
+   {
+    "number": "ST04-014",
+    "name": "Lead Performer \"Disaster\"",
+    "date": "September 26, 2022",
+    "before": "[Main] Draw 1 card, then add 1 card from your DON!! deck and set it as active. [Trigger] Activate this card's [Main] effect.",
+    "after": "[Main] Draw 1 card, then add up to 1 DON!! card from your DON!! deck and set it as active. [Trigger] Activate this card's [Main] effect."
+   }
+  ],
+  "ST04-015": [
+   {
+    "number": "ST04-015",
+    "name": "Brachio Bomber",
+    "date": "September 26, 2022",
+    "before": "[Main] K.O. 1 of your opponent's Characters with a cost 6 or less, then add 1 DON!! card from your DON!! deck and set it as active. [Trigger] Add 1 DON!! card from your DON!! deck and set it as active.",
+    "after": "[Main] K.O. up to 1 of your opponent's Characters with a cost of 6 or less, then add up to 1 DON!! card from your DON!! deck and set it as active. [Trigger] Add up to 1 DON!! card from your DON!! deck and set it as active."
+   }
+  ],
+  "ST04-016": [
+   {
+    "number": "ST04-016",
+    "name": "Blast Breath",
+    "date": "September 26, 2022",
+    "before": "[Counter] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Your Leader or 1 of your Characters gains +4000 power during this battle.",
+    "after": "[Counter] DON!! −1 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Up to 1 of your Leader or Character cards gains +4000 power during this battle."
+   }
+  ],
+  "ST04-017": [
+   {
+    "number": "ST04-017",
+    "name": "Onigashima Island",
+    "date": "September 26, 2022",
+    "before": "[Activate: Main] You may rest this Stage: If your Leader has the {Animal Kingdom Pirates} type, add 1 DON!! card from your DON!! deck and rest it.",
+    "after": "[Activate: Main] You may rest this Stage: If your Leader has the {Animal Kingdom Pirates} type, add up to 1 DON!! card from your DON!! deck and rest it."
+   }
+  ]
+ }
+}

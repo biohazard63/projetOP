@@ -1,0 +1,26 @@
+[
+ {
+  "name": "desktop: Starter ST-07 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-08 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-12 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-07 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-08 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-12 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ }
+]

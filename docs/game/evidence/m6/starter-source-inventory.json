@@ -1,0 +1,340 @@
+{
+  "auditedAt": "2026-10-13",
+  "sourceRoot": "cardgame/carteJson",
+  "sourceModified": false,
+  "localCatalog": {
+    "jsonFiles": 59,
+    "cardRowsOrPrintings": 4318,
+    "canonicalNumberCandidates": 2667
+  },
+  "starterDecks": {
+    "filesPresent": 35,
+    "expected": 36,
+    "missing": [
+      "ST-22"
+    ],
+    "quantitiesAvailable": false,
+    "counts": [
+      {
+        "id": "ST-01",
+        "rows": 17,
+        "uniqueNumbers": 17,
+        "leaders": 1,
+        "engineKnown": 13,
+        "certified": 5,
+        "effectNumbersPending": 12
+      },
+      {
+        "id": "ST-02",
+        "rows": 17,
+        "uniqueNumbers": 17,
+        "leaders": 1,
+        "engineKnown": 5,
+        "certified": 0,
+        "effectNumbersPending": 13
+      },
+      {
+        "id": "ST-03",
+        "rows": 17,
+        "uniqueNumbers": 17,
+        "leaders": 1,
+        "engineKnown": 6,
+        "certified": 0,
+        "effectNumbersPending": 13
+      },
+      {
+        "id": "ST-04",
+        "rows": 17,
+        "uniqueNumbers": 17,
+        "leaders": 1,
+        "engineKnown": 7,
+        "certified": 5,
+        "effectNumbersPending": 12
+      },
+      {
+        "id": "ST-05",
+        "rows": 17,
+        "uniqueNumbers": 17,
+        "leaders": 1,
+        "engineKnown": 5,
+        "certified": 5,
+        "effectNumbersPending": 12
+      },
+      {
+        "id": "ST-06",
+        "rows": 17,
+        "uniqueNumbers": 17,
+        "leaders": 1,
+        "engineKnown": 5,
+        "certified": 0,
+        "effectNumbersPending": 13
+      },
+      {
+        "id": "ST-07",
+        "rows": 17,
+        "uniqueNumbers": 17,
+        "leaders": 1,
+        "engineKnown": 4,
+        "certified": 0,
+        "effectNumbersPending": 13
+      },
+      {
+        "id": "ST-08",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 4,
+        "certified": 0,
+        "effectNumbersPending": 11
+      },
+      {
+        "id": "ST-09",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 4,
+        "certified": 0,
+        "effectNumbersPending": 11
+      },
+      {
+        "id": "ST-10",
+        "rows": 19,
+        "uniqueNumbers": 19,
+        "leaders": 3,
+        "engineKnown": 1,
+        "certified": 1,
+        "effectNumbersPending": 18
+      },
+      {
+        "id": "ST-11",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 4,
+        "certified": 0,
+        "effectNumbersPending": 11
+      },
+      {
+        "id": "ST-12",
+        "rows": 17,
+        "uniqueNumbers": 17,
+        "leaders": 1,
+        "engineKnown": 4,
+        "certified": 0,
+        "effectNumbersPending": 13
+      },
+      {
+        "id": "ST-13",
+        "rows": 35,
+        "uniqueNumbers": 19,
+        "leaders": 3,
+        "engineKnown": 0,
+        "certified": 0,
+        "effectNumbersPending": 19
+      },
+      {
+        "id": "ST-14",
+        "rows": 17,
+        "uniqueNumbers": 17,
+        "leaders": 1,
+        "engineKnown": 3,
+        "certified": 0,
+        "effectNumbersPending": 14
+      },
+      {
+        "id": "ST-15",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 3,
+        "certified": 3,
+        "effectNumbersPending": 12
+      },
+      {
+        "id": "ST-16",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 1,
+        "certified": 0,
+        "effectNumbersPending": 14
+      },
+      {
+        "id": "ST-17",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 3,
+        "certified": 0,
+        "effectNumbersPending": 13
+      },
+      {
+        "id": "ST-18",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 1,
+        "certified": 1,
+        "effectNumbersPending": 14
+      },
+      {
+        "id": "ST-19",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 3,
+        "certified": 0,
+        "effectNumbersPending": 13
+      },
+      {
+        "id": "ST-20",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 3,
+        "certified": 0,
+        "effectNumbersPending": 13
+      },
+      {
+        "id": "ST-21",
+        "rows": 32,
+        "uniqueNumbers": 17,
+        "leaders": 1,
+        "engineKnown": 5,
+        "certified": 5,
+        "effectNumbersPending": 12
+      },
+      {
+        "id": "ST-23",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 2,
+        "certified": 2,
+        "effectNumbersPending": 13
+      },
+      {
+        "id": "ST-24",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 0,
+        "certified": 0,
+        "effectNumbersPending": 15
+      },
+      {
+        "id": "ST-25",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 2,
+        "certified": 0,
+        "effectNumbersPending": 14
+      },
+      {
+        "id": "ST-26",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 3,
+        "certified": 2,
+        "effectNumbersPending": 12
+      },
+      {
+        "id": "ST-27",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 2,
+        "certified": 0,
+        "effectNumbersPending": 14
+      },
+      {
+        "id": "ST-28",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 0,
+        "certified": 0,
+        "effectNumbersPending": 15
+      },
+      {
+        "id": "ST-29",
+        "rows": 31,
+        "uniqueNumbers": 17,
+        "leaders": 1,
+        "engineKnown": 3,
+        "certified": 0,
+        "effectNumbersPending": 15
+      },
+      {
+        "id": "ST-30",
+        "rows": 34,
+        "uniqueNumbers": 17,
+        "leaders": 1,
+        "engineKnown": 2,
+        "certified": 1,
+        "effectNumbersPending": 15
+      },
+      {
+        "id": "ST-31",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 2,
+        "certified": 2,
+        "effectNumbersPending": 13
+      },
+      {
+        "id": "ST-32",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 1,
+        "certified": 0,
+        "effectNumbersPending": 14
+      },
+      {
+        "id": "ST-33",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 3,
+        "certified": 0,
+        "effectNumbersPending": 13
+      },
+      {
+        "id": "ST-34",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 1,
+        "certified": 1,
+        "effectNumbersPending": 14
+      },
+      {
+        "id": "ST-35",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 0,
+        "certified": 0,
+        "effectNumbersPending": 15
+      },
+      {
+        "id": "ST-36",
+        "rows": 15,
+        "uniqueNumbers": 15,
+        "leaders": 1,
+        "engineKnown": 1,
+        "certified": 0,
+        "effectNumbersPending": 14
+      }
+    ]
+  },
+  "notes": [
+    "Rows are local card records/printings, not sealed-product quantities.",
+    "ST-13, ST-21, ST-29 and ST-30 have repeated canonical numbers across rows.",
+    "A pending-effect count means source text exists and the engine revision is not certified; it does not mean all such mechanics are missing from the runtime."
+  ]
+}

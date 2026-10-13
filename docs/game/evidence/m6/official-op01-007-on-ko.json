@@ -1,0 +1,12 @@
+{
+  "ruleset": "MUGIWARA_FREE",
+  "rulesVersion": "1.2.1",
+  "card": "OP01-007",
+  "cause": "confirmed battle K.O.",
+  "eligibleTarget": "ST01-003",
+  "excludedTarget": "ST01-008",
+  "targetAfter": "trash",
+  "excludedAfter": "characters",
+  "triggerControllerOnly": true,
+  "restored": true
+}
