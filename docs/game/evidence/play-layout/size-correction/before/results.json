@@ -1,0 +1,9 @@
+{
+  "kind": "CSS/geometry fixture only; no game, rules, database or interactions executed",
+  "results": [
+    {
+      "status": "FAIL",
+      "error": "AssertionError [ERR_ASSERTION]: Characters must use the camp card size, not shrink inside a nested query container at 1920x1080: {\"characters\":[[54.9375,54.9375,54.9375,54.9375,54.9375],[54.9375,54.9375,54.9375,54.9375,54.9375]],\"leaders\":[126,126]}"
+    }
+  ]
+}
