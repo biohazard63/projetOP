@@ -1,0 +1,7 @@
+{
+  "source": "Board rendered from PlayerView created by PlayService and MemoryGameRepository",
+  "deck": "reference-purple",
+  "prompt": "main",
+  "viewVersion": 6,
+  "note": "Static render for visual layout only; interactions are not executed. Remote optimized card image URLs are replaced with a local image to keep this capture offline."
+}

@@ -1,0 +1,585 @@
+{
+  "kind": "CSS/geometry fixture only; no game, rules, database or interactions executed",
+  "results": [
+    {
+      "viewport": "1920x1080",
+      "status": "PASS",
+      "surface": {
+        "x": 16,
+        "y": 50,
+        "width": 1888,
+        "height": 1024,
+        "right": 1904,
+        "bottom": 1074
+      },
+      "field": {
+        "x": 16,
+        "y": 50,
+        "width": 1888,
+        "height": 778.234375,
+        "right": 1904,
+        "bottom": 828.234375
+      },
+      "separator": {
+        "x": 16,
+        "y": 418.625,
+        "width": 1888,
+        "height": 40.96875,
+        "right": 1904,
+        "bottom": 459.59375
+      },
+      "hand": {
+        "x": 16,
+        "y": 828.234375,
+        "width": 1888,
+        "height": 245.75,
+        "right": 1904,
+        "bottom": 1073.984375
+      },
+      "dock": {
+        "x": 1772,
+        "y": 1016,
+        "width": 132,
+        "height": 58,
+        "right": 1904,
+        "bottom": 1074
+      },
+      "camps": [
+        {
+          "box": {
+            "x": 16,
+            "y": 50,
+            "width": 1888,
+            "height": 368.625,
+            "top": 50,
+            "right": 1904,
+            "bottom": 418.625,
+            "left": 16
+          },
+          "coreBottom": 336.484375,
+          "costArea": {
+            "x": 26,
+            "y": 344.484375,
+            "width": 1868,
+            "height": 67.515625,
+            "top": 344.484375,
+            "right": 1894,
+            "bottom": 412,
+            "left": 26
+          }
+        },
+        {
+          "box": {
+            "x": 16,
+            "y": 459.59375,
+            "width": 1888,
+            "height": 368.640625,
+            "top": 459.59375,
+            "right": 1904,
+            "bottom": 828.234375,
+            "left": 16
+          },
+          "coreBottom": 746.09375,
+          "costArea": {
+            "x": 26,
+            "y": 754.09375,
+            "width": 1868,
+            "height": 67.515625,
+            "top": 754.09375,
+            "right": 1894,
+            "bottom": 821.609375,
+            "left": 26
+          }
+        }
+      ],
+      "characterGridRects": [
+        {
+          "x": 690.453125,
+          "y": 158.28125,
+          "width": 662,
+          "height": 90.9375,
+          "top": 158.28125,
+          "right": 1352.453125,
+          "bottom": 249.21875,
+          "left": 690.453125
+        },
+        {
+          "x": 567.515625,
+          "y": 567.890625,
+          "width": 662,
+          "height": 90.9375,
+          "top": 567.890625,
+          "right": 1229.515625,
+          "bottom": 658.828125,
+          "left": 567.515625
+        }
+      ],
+      "costAreaTokenCounts": [
+        10,
+        10
+      ],
+      "handCounts": [
+        {
+          "count": 1,
+          "centerDelta": 0,
+          "inside": true,
+          "minimumExposedFraction": 1
+        },
+        {
+          "count": 5,
+          "centerDelta": 0,
+          "inside": true,
+          "minimumExposedFraction": 1
+        },
+        {
+          "count": 10,
+          "centerDelta": 0,
+          "inside": true,
+          "minimumExposedFraction": 0.79
+        },
+        {
+          "count": 15,
+          "centerDelta": 0,
+          "inside": true,
+          "minimumExposedFraction": 0.65
+        }
+      ],
+      "background": "auto, contain"
+    },
+    {
+      "viewport": "1440x900",
+      "status": "PASS",
+      "surface": {
+        "x": 16,
+        "y": 50,
+        "width": 1408,
+        "height": 844,
+        "right": 1424,
+        "bottom": 894
+      },
+      "field": {
+        "x": 16,
+        "y": 50,
+        "width": 1408,
+        "height": 641.4375,
+        "right": 1424,
+        "bottom": 691.4375
+      },
+      "separator": {
+        "x": 16,
+        "y": 353.828125,
+        "width": 1408,
+        "height": 33.765625,
+        "right": 1424,
+        "bottom": 387.59375
+      },
+      "hand": {
+        "x": 16,
+        "y": 691.4375,
+        "width": 1408,
+        "height": 202.5625,
+        "right": 1424,
+        "bottom": 894
+      },
+      "dock": {
+        "x": 1311.375,
+        "y": 841.8125,
+        "width": 112.625,
+        "height": 52.1875,
+        "right": 1424,
+        "bottom": 894
+      },
+      "camps": [
+        {
+          "box": {
+            "x": 16,
+            "y": 50,
+            "width": 1408,
+            "height": 303.828125,
+            "top": 50,
+            "right": 1424,
+            "bottom": 353.828125,
+            "left": 16
+          },
+          "coreBottom": 284.609375,
+          "costArea": {
+            "x": 24.734375,
+            "y": 292.609375,
+            "width": 1390.53125,
+            "height": 55.578125,
+            "top": 292.609375,
+            "right": 1415.265625,
+            "bottom": 348.1875,
+            "left": 24.734375
+          }
+        },
+        {
+          "box": {
+            "x": 16,
+            "y": 387.59375,
+            "width": 1408,
+            "height": 303.828125,
+            "top": 387.59375,
+            "right": 1424,
+            "bottom": 691.421875,
+            "left": 16
+          },
+          "coreBottom": 622.203125,
+          "costArea": {
+            "x": 24.734375,
+            "y": 630.203125,
+            "width": 1390.53125,
+            "height": 55.578125,
+            "top": 630.203125,
+            "right": 1415.265625,
+            "bottom": 685.78125,
+            "left": 24.734375
+          }
+        }
+      ],
+      "characterGridRects": [
+        {
+          "x": 463.59375,
+          "y": 134.34375,
+          "width": 604.21875,
+          "height": 81.71875,
+          "top": 134.34375,
+          "right": 1067.8125,
+          "bottom": 216.0625,
+          "left": 463.59375
+        },
+        {
+          "x": 372.1875,
+          "y": 471.9375,
+          "width": 604.21875,
+          "height": 81.71875,
+          "top": 471.9375,
+          "right": 976.40625,
+          "bottom": 553.65625,
+          "left": 372.1875
+        }
+      ],
+      "costAreaTokenCounts": [
+        10,
+        10
+      ],
+      "handCounts": [
+        {
+          "count": 1,
+          "centerDelta": 0,
+          "inside": true,
+          "minimumExposedFraction": 1
+        },
+        {
+          "count": 5,
+          "centerDelta": 0,
+          "inside": true,
+          "minimumExposedFraction": 1
+        },
+        {
+          "count": 10,
+          "centerDelta": 0,
+          "inside": true,
+          "minimumExposedFraction": 0.71
+        },
+        {
+          "count": 15,
+          "centerDelta": 0,
+          "inside": true,
+          "minimumExposedFraction": 0.53
+        }
+      ],
+      "background": "auto, contain"
+    },
+    {
+      "viewport": "1366x768",
+      "status": "PASS",
+      "surface": {
+        "x": 16,
+        "y": 50,
+        "width": 1334,
+        "height": 712,
+        "right": 1350,
+        "bottom": 762
+      },
+      "field": {
+        "x": 16,
+        "y": 50,
+        "width": 1334,
+        "height": 541.109375,
+        "right": 1350,
+        "bottom": 591.109375
+      },
+      "separator": {
+        "x": 16,
+        "y": 306.3125,
+        "width": 1334,
+        "height": 28.46875,
+        "right": 1350,
+        "bottom": 334.78125
+      },
+      "hand": {
+        "x": 16,
+        "y": 591.109375,
+        "width": 1334,
+        "height": 170.890625,
+        "right": 1350,
+        "bottom": 762
+      },
+      "dock": {
+        "x": 1243.28125,
+        "y": 717.875,
+        "width": 106.71875,
+        "height": 44.125,
+        "right": 1350,
+        "bottom": 762
+      },
+      "camps": [
+        {
+          "box": {
+            "x": 16,
+            "y": 50,
+            "width": 1334,
+            "height": 256.3125,
+            "top": 50,
+            "right": 1350,
+            "bottom": 306.3125,
+            "left": 16
+          },
+          "coreBottom": 247.46875,
+          "costArea": {
+            "x": 24.328125,
+            "y": 254.578125,
+            "width": 1317.34375,
+            "height": 46.828125,
+            "top": 254.578125,
+            "right": 1341.671875,
+            "bottom": 301.40625,
+            "left": 24.328125
+          }
+        },
+        {
+          "box": {
+            "x": 16,
+            "y": 334.78125,
+            "width": 1334,
+            "height": 256.328125,
+            "top": 334.78125,
+            "right": 1350,
+            "bottom": 591.109375,
+            "left": 16
+          },
+          "coreBottom": 532.265625,
+          "costArea": {
+            "x": 24.328125,
+            "y": 539.375,
+            "width": 1317.34375,
+            "height": 46.828125,
+            "top": 539.375,
+            "right": 1341.671875,
+            "bottom": 586.203125,
+            "left": 24.328125
+          }
+        }
+      ],
+      "characterGridRects": [
+        {
+          "x": 466.515625,
+          "y": 121.15625,
+          "width": 519.546875,
+          "height": 70.0625,
+          "top": 121.15625,
+          "right": 986.0625,
+          "bottom": 191.21875,
+          "left": 466.515625
+        },
+        {
+          "x": 379.90625,
+          "y": 405.9375,
+          "width": 519.578125,
+          "height": 70.0625,
+          "top": 405.9375,
+          "right": 899.484375,
+          "bottom": 476,
+          "left": 379.90625
+        }
+      ],
+      "costAreaTokenCounts": [
+        10,
+        10
+      ],
+      "handCounts": [
+        {
+          "count": 1,
+          "centerDelta": 0.01,
+          "inside": true,
+          "minimumExposedFraction": 1
+        },
+        {
+          "count": 5,
+          "centerDelta": 0.01,
+          "inside": true,
+          "minimumExposedFraction": 0.99
+        },
+        {
+          "count": 10,
+          "centerDelta": 0.01,
+          "inside": true,
+          "minimumExposedFraction": 0.69
+        },
+        {
+          "count": 15,
+          "centerDelta": 0.01,
+          "inside": true,
+          "minimumExposedFraction": 0.51
+        }
+      ],
+      "background": "auto, contain"
+    },
+    {
+      "viewport": "phone-landscape-844x390",
+      "status": "PASS",
+      "surface": {
+        "x": 16,
+        "y": 37,
+        "width": 812,
+        "height": 350,
+        "right": 828,
+        "bottom": 387
+      },
+      "field": {
+        "x": 16,
+        "y": 37,
+        "width": 812,
+        "height": 266,
+        "right": 828,
+        "bottom": 303
+      },
+      "separator": {
+        "x": 16,
+        "y": 163,
+        "width": 812,
+        "height": 14,
+        "right": 828,
+        "bottom": 177
+      },
+      "hand": {
+        "x": 16,
+        "y": 303,
+        "width": 812,
+        "height": 84,
+        "right": 828,
+        "bottom": 387
+      },
+      "dock": {
+        "x": 746.8125,
+        "y": 350,
+        "width": 81.1875,
+        "height": 37,
+        "right": 828,
+        "bottom": 387
+      },
+      "camps": [
+        {
+          "box": {
+            "x": 16,
+            "y": 37,
+            "width": 812,
+            "height": 126,
+            "top": 37,
+            "right": 828,
+            "bottom": 163,
+            "left": 16
+          },
+          "coreBottom": 124.5,
+          "costArea": {
+            "x": 21.453125,
+            "y": 128,
+            "width": 801.09375,
+            "height": 32,
+            "top": 128,
+            "right": 822.546875,
+            "bottom": 160,
+            "left": 21.453125
+          }
+        },
+        {
+          "box": {
+            "x": 16,
+            "y": 177,
+            "width": 812,
+            "height": 126,
+            "top": 177,
+            "right": 828,
+            "bottom": 303,
+            "left": 16
+          },
+          "coreBottom": 264.5,
+          "costArea": {
+            "x": 21.453125,
+            "y": 268,
+            "width": 801.09375,
+            "height": 32,
+            "top": 268,
+            "right": 822.546875,
+            "bottom": 300,
+            "left": 21.453125
+          }
+        }
+      ],
+      "characterGridRects": [
+        {
+          "x": 365.359375,
+          "y": 65.796875,
+          "width": 166.40625,
+          "height": 42.90625,
+          "top": 65.796875,
+          "right": 531.765625,
+          "bottom": 108.703125,
+          "left": 365.359375
+        },
+        {
+          "x": 312.21875,
+          "y": 205.796875,
+          "width": 166.40625,
+          "height": 42.90625,
+          "top": 205.796875,
+          "right": 478.625,
+          "bottom": 248.703125,
+          "left": 312.21875
+        }
+      ],
+      "costAreaTokenCounts": [
+        10,
+        10
+      ],
+      "handCounts": [
+        {
+          "count": 1,
+          "centerDelta": 0,
+          "inside": true,
+          "minimumExposedFraction": 1
+        },
+        {
+          "count": 5,
+          "centerDelta": 0,
+          "inside": true,
+          "minimumExposedFraction": 0.97
+        },
+        {
+          "count": 10,
+          "centerDelta": 0,
+          "inside": true,
+          "minimumExposedFraction": 0.41
+        },
+        {
+          "count": 15,
+          "centerDelta": 0,
+          "inside": true,
+          "minimumExposedFraction": 0.41
+        }
+      ],
+      "background": "auto, contain"
+    }
+  ]
+}
