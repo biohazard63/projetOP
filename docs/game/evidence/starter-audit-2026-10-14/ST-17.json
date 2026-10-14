@@ -1,0 +1,992 @@
+{
+  "deckCode": "ST-17",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569017",
+      "status": "FETCHED",
+      "sha256": "77b922c553ca4575d5357dd6ac221924e1c89cbd5cc3403d0630453284882d76",
+      "retrievedAt": "2026-10-14T07:26:56.163486+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st17-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st17-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st17.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st17.php",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st17_cardlists/",
+      "status": "FETCHED",
+      "sha256": "c75d594b88e703338efc7518d1985fbef5d5c811df7be479b932bce10ce6f7fd",
+      "retrievedAt": "2026-10-14T07:31:32.740562+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st15-20.php",
+      "status": "FETCHED",
+      "sha256": "0863e3edecd416a4e0120fd9360cd47f4cc7e4e966c3837ff7a4c022a902ecaf",
+      "retrievedAt": "2026-10-14T07:31:34.056642+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569017",
+      "status": "FETCHED",
+      "sha256": "77b922c553ca4575d5357dd6ac221924e1c89cbd5cc3403d0630453284882d76",
+      "retrievedAt": "2026-10-14T07:31:35.442576+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569017",
+      "status": "FETCHED",
+      "sha256": "77b922c553ca4575d5357dd6ac221924e1c89cbd5cc3403d0630453284882d76",
+      "retrievedAt": "2026-10-14T07:35:02.297022+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st17_cardlists/",
+      "status": "FETCHED",
+      "sha256": "c75d594b88e703338efc7518d1985fbef5d5c811df7be479b932bce10ce6f7fd",
+      "retrievedAt": "2026-10-14T07:35:03.986478+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550017",
+      "status": "FETCHED",
+      "sha256": "2bfc4087f0549577769a2cd4e4b2fd08c8d95bd57778d66ddaf2223448a41b01",
+      "retrievedAt": "2026-10-14T07:35:05.606898+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569017",
+      "status": "FETCHED",
+      "sha256": "77b922c553ca4575d5357dd6ac221924e1c89cbd5cc3403d0630453284882d76",
+      "retrievedAt": "2026-10-14T07:53:00.282548+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622017",
+      "status": "FETCHED",
+      "sha256": "9f5cfe93fac6155c9864554aa1fcbd74e077ce286f9dd1e4b4b9c263a8d8cd97",
+      "retrievedAt": "2026-10-14T07:53:01.635884+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "OP01-060",
+      "printingCode": "OP01-060_p2",
+      "name": "Donquixote Doflamingo",
+      "type": "LEADER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP01-073",
+      "printingCode": "OP01-073_r1",
+      "name": "Donquixote Doflamingo",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP01-086",
+      "printingCode": "OP01-086_r1",
+      "name": "Overheat",
+      "type": "EVENT",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP02-054",
+      "printingCode": "OP02-054_r1",
+      "name": "Gecko Moria",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP02-057",
+      "printingCode": "OP02-057_r1",
+      "name": "Bartholomew Kuma",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "P-030",
+      "printingCode": "P-030_r1",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST03-002",
+      "printingCode": "ST03-002_r1",
+      "name": "Edward Weevil",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST03-004",
+      "printingCode": "ST03-004_r1",
+      "name": "Gecko Moria",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST03-005",
+      "printingCode": "ST03-005_r1",
+      "name": "Dracule Mihawk",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST03-008",
+      "printingCode": "ST03-008_r1",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST17-001",
+      "printingCode": "ST17-001",
+      "name": "Crocodile",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST17-002",
+      "printingCode": "ST17-002",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST17-003",
+      "printingCode": "ST17-003",
+      "name": "Buggy",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST17-004",
+      "printingCode": "ST17-004",
+      "name": "Boa Hancock",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST17-005",
+      "printingCode": "ST17-005",
+      "name": "Marshall.D.Teach",
+      "type": "CHARACTER",
+      "color": "Blue"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "OP01-060",
+      "quantity": 1,
+      "sourceName": "ドンキホーテ・ドフラミンゴ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    },
+    {
+      "cardNumber": "ST17-001",
+      "quantity": 4,
+      "sourceName": "クロコダイル",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    },
+    {
+      "cardNumber": "ST17-002",
+      "quantity": 2,
+      "sourceName": "トラファルガー・ロー",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    },
+    {
+      "cardNumber": "ST17-003",
+      "quantity": 2,
+      "sourceName": "バギー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    },
+    {
+      "cardNumber": "ST17-004",
+      "quantity": 2,
+      "sourceName": "ボア・ハンコック",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    },
+    {
+      "cardNumber": "ST17-005",
+      "quantity": 4,
+      "sourceName": "マーシャル・D・ティーチ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    },
+    {
+      "cardNumber": "OP01-073",
+      "quantity": 4,
+      "sourceName": "ドンキホーテ・ドフラミンゴ",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-054",
+      "quantity": 4,
+      "sourceName": "ゲッコー・モリア",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-057",
+      "quantity": 4,
+      "sourceName": "バーソロミュー・くま",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    },
+    {
+      "cardNumber": "ST03-002",
+      "quantity": 4,
+      "sourceName": "トラファルガー・ロー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    },
+    {
+      "cardNumber": "ST03-004",
+      "quantity": 4,
+      "sourceName": "エドワード・ウィーブル",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    },
+    {
+      "cardNumber": "ST03-005",
+      "quantity": 4,
+      "sourceName": "ゲッコー・モリア",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    },
+    {
+      "cardNumber": "ST03-008",
+      "quantity": 4,
+      "sourceName": "ジュラキュール・ミホーク",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    },
+    {
+      "cardNumber": "P-030",
+      "quantity": 4,
+      "sourceName": "ジンベエ",
+      "sourceRarity": "P",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    },
+    {
+      "cardNumber": "OP01-086",
+      "quantity": 4,
+      "sourceName": "超過鞭糸",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st17_cardlists/"
+    }
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) \r\n                   ・DON!! Card x 10 \r\n                   ・Playsheet x 1 \r\n                   ・PREMIUM BOOSTER –ONE PIECE CARD THE BEST- x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st15-20.php",
+  "officialDeckTitle": "STARTER DECK -Blue Donquixote Doflamingo- [ST-17]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "OP01-060",
+      "printingCode": "OP01-060_p2",
+      "name": "ドンキホーテ・ドフラミンゴ",
+      "type": "LEADER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP01-073",
+      "printingCode": "OP01-073_r1",
+      "name": "ドンキホーテ・ドフラミンゴ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP01-086",
+      "printingCode": "OP01-086_r1",
+      "name": "超過鞭糸",
+      "type": "EVENT",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP02-054",
+      "printingCode": "OP02-054_r1",
+      "name": "ゲッコー・モリア",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP02-057",
+      "printingCode": "OP02-057_r1",
+      "name": "バーソロミュー・くま",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "P-030",
+      "printingCode": "P-030_r1",
+      "name": "ジンベエ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST03-002",
+      "printingCode": "ST03-002_r1",
+      "name": "エドワード・ウィーブル",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST03-004",
+      "printingCode": "ST03-004_r1",
+      "name": "ゲッコー・モリア",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST03-005",
+      "printingCode": "ST03-005_r2",
+      "name": "ジュラキュール・ミホーク",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST03-008",
+      "printingCode": "ST03-008_r2",
+      "name": "トラファルガー・ロー",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST17-001",
+      "printingCode": "ST17-001",
+      "name": "クロコダイル",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST17-002",
+      "printingCode": "ST17-002",
+      "name": "トラファルガー・ロー",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST17-003",
+      "printingCode": "ST17-003",
+      "name": "バギー",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST17-004",
+      "printingCode": "ST17-004",
+      "name": "ボア・ハンコック",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST17-005",
+      "printingCode": "ST17-005",
+      "name": "マーシャル・D・ティーチ",
+      "type": "CHARACTER",
+      "color": "青"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "OP01-060",
+      "printingCode": "OP01-060_p2",
+      "locale": "EN",
+      "name": "Donquixote Doflamingo",
+      "type": "LEADER",
+      "color": "Blue",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "345a8e130da702df2d60b75ce95db7ee36668d7107a483a72160672d21eef2c1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "2cef9549ed1701310404484396cfd7d1ba105312ba0efa005a2b878764feb060",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "OP01-073",
+      "printingCode": "OP01-073_r1",
+      "locale": "EN",
+      "name": "Donquixote Doflamingo",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "c683c1be8e440eee0d59598334858fa7f3996433f75b044a1aae0c9434e99592",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "2cef9549ed1701310404484396cfd7d1ba105312ba0efa005a2b878764feb060",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "OP01-086",
+      "printingCode": "OP01-086_r1",
+      "locale": "EN",
+      "name": "Overheat",
+      "type": "EVENT",
+      "color": "Blue",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "42faa6b6fcbd7ac5347902761765a4146bb0e25c24a66a92015141ec63725ee1",
+      "triggerHash": "0610c6a66c6b76bdc95627beec34b99ccbda40bc4fc69cd2d7eb91434d814b25",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "2cef9549ed1701310404484396cfd7d1ba105312ba0efa005a2b878764feb060",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "OP02-054",
+      "printingCode": "OP02-054_r1",
+      "locale": "EN",
+      "name": "Gecko Moria",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "637d402a7c3b77d1df7b9ab097000a1efda287c49642f49055aa2b52c4659310",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "OP02-057",
+      "printingCode": "OP02-057_r1",
+      "locale": "EN",
+      "name": "Bartholomew Kuma",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 3,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "007cff3f9bde4fedacf07f08cccae6a91312fa28a991fddabdb0b2310b96a955",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "0cf37a171b9c8f3b9108c07cbf71e33ea465f16cfdb5c3a443f345e54305deaa",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "P-030",
+      "printingCode": "P-030_r1",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "3b73da85ea98ca566eb8f5495bd0c345f14706f255c36c3dc96d3c9de5d45423",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "faa9ad1027f58d32d510cb92831d5756b50e1915233d8d17a4c831378cd102f6",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "ST03-002",
+      "printingCode": "ST03-002_r1",
+      "locale": "EN",
+      "name": "Edward Weevil",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5bbce128d48da16cabfdcb8a8e70eb553956d4fe4c35b55f36ecf9945538ee0b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "ST03-004",
+      "printingCode": "ST03-004_r1",
+      "locale": "EN",
+      "name": "Gecko Moria",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "172c88ebcafe8f81fc82d8f01650a30178ab7a0718061e02415d8a1aae73dcbc",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "637d402a7c3b77d1df7b9ab097000a1efda287c49642f49055aa2b52c4659310",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "ST03-005",
+      "printingCode": "ST03-005_r1",
+      "locale": "EN",
+      "name": "Dracule Mihawk",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "ca61fccdc4d4f7838b7af52e3efc5f4d32ba380968818bb1793ec0fd22d05a47",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5bbce128d48da16cabfdcb8a8e70eb553956d4fe4c35b55f36ecf9945538ee0b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "ST03-008",
+      "printingCode": "ST03-008_r1",
+      "locale": "EN",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "df07c9498bca05d4b6520466321b585e9d8640ab6f9a2ed2e730d302d20a16c6",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "ST17-001",
+      "printingCode": "ST17-001",
+      "locale": "EN",
+      "name": "Crocodile",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "5177017f40fd307aa079abd8f2acbb7f53439186ac91f96e51932dfded1ff91e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "8c5e0a07ed1c4cc14b17a7ae515e869993fe7ece558a7c055a5812e3326a194f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "ST17-002",
+      "printingCode": "ST17-002",
+      "locale": "EN",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "5a765f208bf937619a96f7eb1168a7eaf1ab2c7c181763cc425dc4f2fc9af9a8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "df07c9498bca05d4b6520466321b585e9d8640ab6f9a2ed2e730d302d20a16c6",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "ST17-003",
+      "printingCode": "ST17-003",
+      "locale": "EN",
+      "name": "Buggy",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 1,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "71711d6eab3a4c911a4583ae32340e973dca4b5652ee0d155ec169eb6a67dee9",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "d76413573251557acd34fd4bfa72aeaba81761cf46a7e7e3d3209c2a670f0c8f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "ST17-004",
+      "printingCode": "ST17-004",
+      "locale": "EN",
+      "name": "Boa Hancock",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "053690464812f679ee41c0c105a40fe6b0a08b43abc19b397a3f800293aeff18",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "e5bb9d25f20aebb9d8d7d05baaa299b33a5884979cc93c52d374f7cdf1f8c2e3",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "ST17-005",
+      "printingCode": "ST17-005",
+      "locale": "EN",
+      "name": "Marshall.D.Teach",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "dfde83bb62ceadab363ab9e68d17147aafe9e825f095f4b6f702bc6c9a80c70f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "4dd79eaec066b93195dd9214e5fbad2bde16a2e65f0de815257313ed19422654",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569017"
+    },
+    {
+      "cardNumber": "OP01-060",
+      "printingCode": "OP01-060_p1",
+      "locale": "FR",
+      "name": "Don Quijote Doflamingo",
+      "type": "LEADER",
+      "color": "Bleu",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "b2217d244f4d063b993a473461863bf8cda06bb07ed2bcef57ba557799a2b887",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "059c60284fed84e24bb56ad4757b0c31b304ffb083d00b78a2e1b4eaf47c0b79",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    },
+    {
+      "cardNumber": "OP01-073",
+      "printingCode": "OP01-073_p1",
+      "locale": "FR",
+      "name": "Don Quijote Doflamingo",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "ed978b361730b7c133915670776f5bf7992ad6fc21de6eb0d1c45a94ebadf0a6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "059c60284fed84e24bb56ad4757b0c31b304ffb083d00b78a2e1b4eaf47c0b79",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    },
+    {
+      "cardNumber": "OP01-086",
+      "printingCode": "OP01-086_p1",
+      "locale": "FR",
+      "name": "Overheat",
+      "type": "EVENT",
+      "color": "Bleu",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "2502ede2bb9013efd78c944dfb1bd22dd444eced605a3431421d877ed6cb8e5b",
+      "triggerHash": "ce4261115f646486f1595014973bab0cd32c38678d009b7ecb73134fa6170e41",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "059c60284fed84e24bb56ad4757b0c31b304ffb083d00b78a2e1b4eaf47c0b79",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    },
+    {
+      "cardNumber": "OP02-054",
+      "printingCode": "OP02-054_p1",
+      "locale": "FR",
+      "name": "Gecko Moria",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "8fcc4160404fa4a814b506aa46ad084a987f998a288b2dac98804627f89d5300",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    },
+    {
+      "cardNumber": "OP02-057",
+      "printingCode": "OP02-057_p1",
+      "locale": "FR",
+      "name": "Bartholomew Kuma",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 3,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "cd33c087692077eb6b7be4c2d40e6be94896bf36632ca831acf6a0491f09679d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "4f4e6588bef6add6431e2824582ea093b00b55f1ccc3a42211799942b2a4a280",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    },
+    {
+      "cardNumber": "P-030",
+      "printingCode": "P-030_p1",
+      "locale": "FR",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "30119e64f3eaa1db7d8c5f73ffdf0c87b8de552fd34d0f39828e2bb6d7e6d67e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "ecab8a53ac7b12c0bde6fa6c220ad8f05056248ee8a26aa9552041d63032ab1f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    },
+    {
+      "cardNumber": "ST03-002",
+      "printingCode": "ST03-002_p1",
+      "locale": "FR",
+      "name": "Edward Weeble",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "7cbf8ec0f5bab56d8d863b66cdbe686dde0b467c33655e85295b4b69504bb02f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    },
+    {
+      "cardNumber": "ST03-004",
+      "printingCode": "ST03-004_p1",
+      "locale": "FR",
+      "name": "Gecko Moria",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "fefd8f8ee85ea825330e9742dca68a33fd29e38cb2089f2c159d6df7caf01c28",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "8fcc4160404fa4a814b506aa46ad084a987f998a288b2dac98804627f89d5300",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    },
+    {
+      "cardNumber": "ST03-005",
+      "printingCode": "ST03-005_p1",
+      "locale": "FR",
+      "name": "Dracule Mihawk",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "00be4dc0e60b1f322ce4d0fa94e32050c6cd8abe68a8ae5261db4b09da31df77",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "7cbf8ec0f5bab56d8d863b66cdbe686dde0b467c33655e85295b4b69504bb02f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    },
+    {
+      "cardNumber": "ST03-008",
+      "printingCode": "ST03-008_p1",
+      "locale": "FR",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "f0ad51264658dde2636914bf0552bb927583ce186adec870c0693ee616ce885b",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    },
+    {
+      "cardNumber": "ST17-001",
+      "printingCode": "ST17-001",
+      "locale": "FR",
+      "name": "Crocodile",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "b3e9515540436cd030c1446c30d6febaf2aba8af813a0805595525daa5b97709",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "6dd82d8900f4f02ae2ed7436e7ef09c35522f605cdfb3b9384b30ff4502a8a90",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    },
+    {
+      "cardNumber": "ST17-002",
+      "printingCode": "ST17-002",
+      "locale": "FR",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "2a92ccad3a2d10a269cdb9222abdc362d7ae1e7595d87fda13330bbc33e19c58",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "f0ad51264658dde2636914bf0552bb927583ce186adec870c0693ee616ce885b",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    },
+    {
+      "cardNumber": "ST17-003",
+      "printingCode": "ST17-003",
+      "locale": "FR",
+      "name": "Baggy",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 1,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "c095aad3210bea0e9a5505a866ca644244aef48da5ffe6f44cee9f7c3637acaa",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "9b96d26f2b0d52bb136322be27d8c8dc1aa9de66e1e985f7db1b0183274f000c",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    },
+    {
+      "cardNumber": "ST17-004",
+      "printingCode": "ST17-004",
+      "locale": "FR",
+      "name": "Boa Hancock",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "785e1564209571915ba79c276196c5614d141b457c4e627c5511ea619769f270",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "a4ea80be39efe9b76b8e35d9aaf43bd96a6024c52c1f0f129fc09c4b93664930",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    },
+    {
+      "cardNumber": "ST17-005",
+      "printingCode": "ST17-005",
+      "locale": "FR",
+      "name": "Marshall D. Teach",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "2d253df6d6797d7abf61f35d84843d5c97284830716f1e8d91c26f3a15c61073",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "47561e417bbfdec78a184c96a1f40b2fcf896926169c4ee366bf7a56c144f2ce",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622017"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "OP01-060",
+      "printingCode": "OP01-060_p1",
+      "name": "Don Quijote Doflamingo",
+      "type": "LEADER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP01-073",
+      "printingCode": "OP01-073_p1",
+      "name": "Don Quijote Doflamingo",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP01-086",
+      "printingCode": "OP01-086_p1",
+      "name": "Overheat",
+      "type": "EVENT",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP02-054",
+      "printingCode": "OP02-054_p1",
+      "name": "Gecko Moria",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP02-057",
+      "printingCode": "OP02-057_p1",
+      "name": "Bartholomew Kuma",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "P-030",
+      "printingCode": "P-030_p1",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST03-002",
+      "printingCode": "ST03-002_p1",
+      "name": "Edward Weeble",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST03-004",
+      "printingCode": "ST03-004_p1",
+      "name": "Gecko Moria",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST03-005",
+      "printingCode": "ST03-005_p1",
+      "name": "Dracule Mihawk",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST03-008",
+      "printingCode": "ST03-008_p1",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST17-001",
+      "printingCode": "ST17-001",
+      "name": "Crocodile",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST17-002",
+      "printingCode": "ST17-002",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST17-003",
+      "printingCode": "ST17-003",
+      "name": "Baggy",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST17-004",
+      "printingCode": "ST17-004",
+      "name": "Boa Hancock",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST17-005",
+      "printingCode": "ST17-005",
+      "name": "Marshall D. Teach",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    }
+  ]
+}

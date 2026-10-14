@@ -1,24 +1,40 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import compositions from '../src/game/cards/starter-compositions.json'
-import { STARTER_DECKS } from '../src/game/cards/starterDecks'
+import { STARTER_DECKS, STARTER_COMPOSITIONS } from '../src/game/cards/starterDecks'
 
-test('verified ST-04 and ST-06 aliases produce exact 50-card manifests and become eligible for /play', () => {
-  for (const deckCode of ['ST-04', 'ST-06']) {
-    const composition = compositions.decks.find(deck => deck.deckCode === deckCode)!
-    assert.equal(composition.unresolved, 0)
-    assert.equal(composition.leaders.length, 1)
-    const mainCount = composition.entries.filter(entry => entry.number !== composition.leaders[0]).reduce((sum, entry) => sum + entry.quantity, 0)
-    assert.equal(mainCount, 50)
-    assert.ok(STARTER_DECKS.some(deck => deck.deckCode === deckCode), `${deckCode} should be offered only after all its entries are certified`)
+// The /play manifest is the audited list of scripts/rebuildStarterDecks.ts (explicit numbers and quantities) gated by
+// scripts/starterAudit/product-evidence.json.
+test('audited Starter compositions: ST-01..ST-35 with 50 main cards, at most 4 copies per number and at least one Leader; ST-36 stays absent', () => {
+  assert.deepEqual(STARTER_COMPOSITIONS.map(d => d.deckCode), Array.from({ length: 35 }, (_, i) => `ST-${String(i + 1).padStart(2, '0')}`))
+  assert.deepEqual(compositions.absent.map(a => a.deckCode), ['ST-36'])
+  for (const d of STARTER_COMPOSITIONS) {
+    assert.equal(d.entries.filter(e => e.type !== 'LEADER').reduce((n, e) => n + e.quantity, 0), 50, d.deckCode)
+    const perNumber = new Map<string, number>()
+    for (const e of d.entries) perNumber.set(e.number, (perNumber.get(e.number) ?? 0) + e.quantity)
+    assert.ok([...perNumber.values()].every(q => q <= 4), d.deckCode)
+    assert.ok(d.leaders.length >= 1 && d.leaders.every(l => d.entries.some(e => e.number === l && e.type === 'LEADER' && e.quantity === 1)), d.deckCode)
   }
 })
 
-test('ST-05 remains unavailable while its title mappings are ambiguous (ST-03 is resolved by the rebuild script lookup)', () => {
-  for (const deckCode of ['ST-05']) {
-    const composition = compositions.decks.find(deck => deck.deckCode === deckCode)!
-    assert.ok(composition.unresolved > 0)
-    assert.ok(!STARTER_DECKS.some(deck => deck.deckCode === deckCode))
-    assert.ok(composition.entries.filter(entry => entry.status === 'AMBIGUOUS').every(entry => (entry.candidates?.length ?? 0) === 2))
+test('unverified compositions (ST-24, ST-27) are never listed; a product with several Leaders gives one 51-card deck per Leader', () => {
+  for (const code of ['ST-24', 'ST-27']) {
+    assert.equal(STARTER_COMPOSITIONS.find(d => d.deckCode === code)!.compositionVerified, false, code)
+    assert.ok(!STARTER_DECKS.some(d => d.deckCode === code), code)
   }
+  for (const code of ['ST-10', 'ST-13']) {
+    const decks = STARTER_DECKS.filter(d => d.deckCode === code)
+    assert.deepEqual(decks.map(d => d.leader).sort(), STARTER_COMPOSITIONS.find(d => d.deckCode === code)!.leaders.slice().sort(), code)
+    for (const deck of decks) {
+      assert.equal(deck.entries.reduce((n, e) => n + e.quantity, 0), 51, deck.id)
+      assert.equal(deck.entries.filter(e => decks.some(other => `${other.leader}::standard` === e.printingKey)).length, 1, `${deck.id}: only its own Leader`)
+    }
+  }
+})
+
+test('the audited ST-03 contents replace the earlier name lookup: Sables x4 and Love-Love Mellow x2', () => {
+  const st03 = STARTER_DECKS.find(d => d.id === 'starter-st03')!
+  const q = (n: string) => st03.entries.find(e => e.printingKey === `${n}::standard`)?.quantity
+  assert.equal(q('ST03-015'), 4); assert.equal(q('ST03-017'), 2)
+  assert.equal(q('OP01-088'), undefined); assert.equal(q('OP07-057'), undefined)
 })

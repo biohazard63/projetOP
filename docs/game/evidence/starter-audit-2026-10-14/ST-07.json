@@ -1,0 +1,950 @@
+{
+  "deckCode": "ST-07",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569007",
+      "status": "FETCHED",
+      "sha256": "00edf0e5d3a07ac15a41ca9c5275945df89d233b6341f72f859924ae69924bce",
+      "retrievedAt": "2026-10-14T07:26:44.187519+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st07-cardlists/",
+      "status": "FETCHED",
+      "sha256": "59bead36fe2e06257b26c9425ee86c79b4a0975f4087ef6ef1a1ff7f2b449f4d",
+      "retrievedAt": "2026-10-14T07:26:46.048810+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st07.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st07.php",
+      "status": "FETCHED",
+      "sha256": "af43e17d412bae3ee01befefaaeffb2adcafb274ba5d1d791c2dc432b2fc5ae1",
+      "retrievedAt": "2026-10-14T07:26:48.818594+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st07-cardlists/",
+      "status": "FETCHED",
+      "sha256": "59bead36fe2e06257b26c9425ee86c79b4a0975f4087ef6ef1a1ff7f2b449f4d",
+      "retrievedAt": "2026-10-14T07:31:25.170849+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569007",
+      "status": "FETCHED",
+      "sha256": "00edf0e5d3a07ac15a41ca9c5275945df89d233b6341f72f859924ae69924bce",
+      "retrievedAt": "2026-10-14T07:31:26.548697+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569007",
+      "status": "FETCHED",
+      "sha256": "00edf0e5d3a07ac15a41ca9c5275945df89d233b6341f72f859924ae69924bce",
+      "retrievedAt": "2026-10-14T07:34:57.091277+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st07-cardlists/",
+      "status": "FETCHED",
+      "sha256": "59bead36fe2e06257b26c9425ee86c79b4a0975f4087ef6ef1a1ff7f2b449f4d",
+      "retrievedAt": "2026-10-14T07:34:58.664863+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550007",
+      "status": "FETCHED",
+      "sha256": "403f880a96395ae9d28999c7b6e99139258c3f64d32150b103cd1c8e9d8c30ae",
+      "retrievedAt": "2026-10-14T07:35:00.349179+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07",
+      "status": "FETCHED",
+      "sha256": "bf66a14be983da77e062cd70dd78f4c835f3679387cd38bd4749db4a14fda2e9",
+      "retrievedAt": "2026-10-14T07:52:56.930305+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07",
+      "status": "FETCHED",
+      "sha256": "af9ede4a6380392f96a5feea35d8e4c385240bf60f2640d348eb7e4b0857f1a4",
+      "retrievedAt": "2026-10-14T07:52:58.278582+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "ST07-001",
+      "printingCode": "ST07-001",
+      "name": "Charlotte Linlin",
+      "type": "LEADER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-002",
+      "printingCode": "ST07-002",
+      "name": "Charlotte Anana",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-003",
+      "printingCode": "ST07-003",
+      "name": "Charlotte Katakuri",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-004",
+      "printingCode": "ST07-004",
+      "name": "Charlotte Snack",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-005",
+      "printingCode": "ST07-005",
+      "name": "Charlotte Daifuku",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-006",
+      "printingCode": "ST07-006",
+      "name": "Charlotte Flampe",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-007",
+      "printingCode": "ST07-007",
+      "name": "Charlotte Brulee",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-008",
+      "printingCode": "ST07-008",
+      "name": "Charlotte Pudding",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-009",
+      "printingCode": "ST07-009",
+      "name": "Charlotte Mont-d'or",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-010",
+      "printingCode": "ST07-010",
+      "name": "Charlotte Linlin",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-011",
+      "printingCode": "ST07-011",
+      "name": "Zeus",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-012",
+      "printingCode": "ST07-012",
+      "name": "Baron Tamago",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-013",
+      "printingCode": "ST07-013",
+      "name": "Prometheus",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-014",
+      "printingCode": "ST07-014",
+      "name": "Pekoms",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-015",
+      "printingCode": "ST07-015",
+      "name": "Soul Pocus",
+      "type": "EVENT",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-016",
+      "printingCode": "ST07-016",
+      "name": "Power Mochi",
+      "type": "EVENT",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST07-017",
+      "printingCode": "ST07-017",
+      "name": "Queen Mama Chanter",
+      "type": "STAGE",
+      "color": "Yellow"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST07-001",
+      "quantity": 1,
+      "sourceName": "シャーロット・リンリン",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-002",
+      "quantity": 4,
+      "sourceName": "シャーロット・アナナ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-003",
+      "quantity": 2,
+      "sourceName": "シャーロット・カタクリ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-004",
+      "quantity": 4,
+      "sourceName": "シャーロット・スナック",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-005",
+      "quantity": 2,
+      "sourceName": "シャーロット・ダイフク",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-006",
+      "quantity": 4,
+      "sourceName": "シャーロット・フランぺ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-007",
+      "quantity": 2,
+      "sourceName": "シャーロット・ブリュレ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-008",
+      "quantity": 4,
+      "sourceName": "シャーロット・プリン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-009",
+      "quantity": 2,
+      "sourceName": "シャーロット・モンドール",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-010",
+      "quantity": 2,
+      "sourceName": "シャーロット・リンリン",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-011",
+      "quantity": 4,
+      "sourceName": "ゼウス",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-012",
+      "quantity": 4,
+      "sourceName": "タマゴ男爵",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-013",
+      "quantity": 4,
+      "sourceName": "プロメテウス",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-014",
+      "quantity": 4,
+      "sourceName": "ぺコムズ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-015",
+      "quantity": 4,
+      "sourceName": "ソウル・ポーカス",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-016",
+      "quantity": 2,
+      "sourceName": "力餅",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    },
+    {
+      "cardNumber": "ST07-017",
+      "quantity": 2,
+      "sourceName": "クイーン・ママ・シャンテ号",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st07-cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -Big Mom Pirates- − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -Big Mom Pirates-"
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) \r\n                   ・DON!! Cards x 10 \r\n                   ・Playsheet x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st07.php",
+  "officialDeckTitle": "STARTER DECK -Big Mom Pirates- [ST-07]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "ST07-001",
+      "printingCode": "ST07-001",
+      "name": "シャーロット・リンリン",
+      "type": "LEADER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-002",
+      "printingCode": "ST07-002",
+      "name": "シャーロット・アナナ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-003",
+      "printingCode": "ST07-003",
+      "name": "シャーロット・カタクリ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-004",
+      "printingCode": "ST07-004",
+      "name": "シャーロット・スナック",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-005",
+      "printingCode": "ST07-005",
+      "name": "シャーロット・ダイフク",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-006",
+      "printingCode": "ST07-006",
+      "name": "シャーロット・フランぺ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-007",
+      "printingCode": "ST07-007",
+      "name": "シャーロット・ブリュレ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-008",
+      "printingCode": "ST07-008",
+      "name": "シャーロット・プリン",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-009",
+      "printingCode": "ST07-009",
+      "name": "シャーロット・モンドール",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-010",
+      "printingCode": "ST07-010",
+      "name": "シャーロット・リンリン",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-011",
+      "printingCode": "ST07-011",
+      "name": "ゼウス",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-012",
+      "printingCode": "ST07-012",
+      "name": "タマゴ男爵",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-013",
+      "printingCode": "ST07-013",
+      "name": "プロメテウス",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-014",
+      "printingCode": "ST07-014",
+      "name": "ぺコムズ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-015",
+      "printingCode": "ST07-015",
+      "name": "ソウル・ポーカス",
+      "type": "EVENT",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-016",
+      "printingCode": "ST07-016",
+      "name": "力餅",
+      "type": "EVENT",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST07-017",
+      "printingCode": "ST07-017",
+      "name": "クイーン・ママ・シャンテ号",
+      "type": "STAGE",
+      "color": "黄"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST07-001",
+      "printingCode": "ST07-001",
+      "locale": "EN",
+      "name": "Charlotte Linlin",
+      "type": "LEADER",
+      "color": "Yellow",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "c2b47124714ed95afd3ce93c700c5158137df9be6f7b418a2bc30b3059ff1a88",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "d2649c8a72d6fbfdf9b901b1f9054e8040d71641d5f5e8aff1fa8c55c53ba3b0",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-002",
+      "printingCode": "ST07-002",
+      "locale": "EN",
+      "name": "Charlotte Anana",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 1,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-003",
+      "printingCode": "ST07-003",
+      "locale": "EN",
+      "name": "Charlotte Katakuri",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "9a15e774857b9bf2e0e5b8f5f638919a1dc178da7908945704fe276e49dc818d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-004",
+      "printingCode": "ST07-004",
+      "locale": "EN",
+      "name": "Charlotte Snack",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "2c3b84d267bf779e46ac3cfb524f69da425a36df24760905abe930dba25dc7b1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-005",
+      "printingCode": "ST07-005",
+      "locale": "EN",
+      "name": "Charlotte Daifuku",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "a10ff3e36925c7818380f4dea429df1b6af9e5b838e7e13af68d0e761c59cfaa",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-005",
+      "printingCode": "ST07-005_r1",
+      "locale": "EN",
+      "name": "Charlotte Daifuku",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "a10ff3e36925c7818380f4dea429df1b6af9e5b838e7e13af68d0e761c59cfaa",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-006",
+      "printingCode": "ST07-006",
+      "locale": "EN",
+      "name": "Charlotte Flampe",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-007",
+      "printingCode": "ST07-007",
+      "locale": "EN",
+      "name": "Charlotte Brulee",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-007",
+      "printingCode": "ST07-007_p2",
+      "locale": "EN",
+      "name": "Charlotte Brulee",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-007",
+      "printingCode": "ST07-007_p3",
+      "locale": "EN",
+      "name": "Charlotte Brulee",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-007",
+      "printingCode": "ST07-007_r1",
+      "locale": "EN",
+      "name": "Charlotte Brulee",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-008",
+      "printingCode": "ST07-008",
+      "locale": "EN",
+      "name": "Charlotte Pudding",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "40bdf4c1970a107991488d5a298138224836f296baf71800ed79e1a7f56d967a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-008",
+      "printingCode": "ST07-008_p1",
+      "locale": "EN",
+      "name": "Charlotte Pudding",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "97a3fc84b01fd8f6cb083d5b481caf7342d7fd627160e45a016114dcfc3e5fc2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-009",
+      "printingCode": "ST07-009",
+      "locale": "EN",
+      "name": "Charlotte Mont-d'or",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "5652827c7dc2528e5e370ecd8e219c07c983b369a2452f16c6fa49ddc85006e2",
+      "triggerHash": "2c382d5d1a1d9a2762a23f8f06fc6639b38fe482ecdb151074db0b0dd0195093",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-010",
+      "printingCode": "ST07-010",
+      "locale": "EN",
+      "name": "Charlotte Linlin",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "f0940663681d11a7d9925590621265f2d69f8633e716bb61c28fe65c801cbd55",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "d2649c8a72d6fbfdf9b901b1f9054e8040d71641d5f5e8aff1fa8c55c53ba3b0",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-011",
+      "printingCode": "ST07-011",
+      "locale": "EN",
+      "name": "Zeus",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "110db660a449dc673eac23cf20090b0bab8d6ef0358a653f7f43239e20e271df",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "c4bb0c9f9bdd91e3bd2e57bd1ddf432e1bc8ff4900e912e345e5820a8946f5af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-012",
+      "printingCode": "ST07-012",
+      "locale": "EN",
+      "name": "Baron Tamago",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-013",
+      "printingCode": "ST07-013",
+      "locale": "EN",
+      "name": "Prometheus",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "7e6f9223da8f49b54cf7135ffa0bffd783b8b82f86c789d6d2dc28e57f439176",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "c4bb0c9f9bdd91e3bd2e57bd1ddf432e1bc8ff4900e912e345e5820a8946f5af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-014",
+      "printingCode": "ST07-014",
+      "locale": "EN",
+      "name": "Pekoms",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "3cb4caafe6317390d9bf62de405f96910956e5e1b619e42ab140401d8b15804c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-014",
+      "printingCode": "ST07-014_r1",
+      "locale": "EN",
+      "name": "Pekoms",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "3cb4caafe6317390d9bf62de405f96910956e5e1b619e42ab140401d8b15804c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-015",
+      "printingCode": "ST07-015",
+      "locale": "EN",
+      "name": "Soul Pocus",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 5,
+      "power": null,
+      "counter": null,
+      "effectHash": "0d6341311f26633480b7d22e94e71452f831244f4616d3ca7e30eb55188e47a4",
+      "triggerHash": "f11e3bd95cea2c7b0921ce0651d0a6b34b9ce1c616748f59ed982f22698d0ac5",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d2649c8a72d6fbfdf9b901b1f9054e8040d71641d5f5e8aff1fa8c55c53ba3b0",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-016",
+      "printingCode": "ST07-016",
+      "locale": "EN",
+      "name": "Power Mochi",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "05cdfef0667e36287375bca8e099034e2dca793741af86320823b2a0b7c60fc1",
+      "triggerHash": "179e59e421d38ccbe9bd2f31ec3956b080badd3c584448387b7f8772b48fc68f",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-017",
+      "printingCode": "ST07-017",
+      "locale": "EN",
+      "name": "Queen Mama Chanter",
+      "type": "STAGE",
+      "color": "Yellow",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "3162e254c7162073dbb69d80382828ac986e74197eba907bd067f9271ca62bfb",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "c4bb0c9f9bdd91e3bd2e57bd1ddf432e1bc8ff4900e912e345e5820a8946f5af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-005",
+      "printingCode": "ST07-005_p1",
+      "locale": "FR",
+      "name": "Charlotte Daifuku",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "51c2a591a14999ea1281cc7f25100455364256cc164b395bcaaf524de8057bd6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "d87fc6ae39a4ba799e7dc2401e545efc6c5aec9abf5fde4a03905a56a4b7eb8e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-007",
+      "printingCode": "ST07-007_p1",
+      "locale": "FR",
+      "name": "Charlotte Brûlée",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "2555609e1691cff70e61c3cc56568354cae16fae513db57ca61889154bc43bbc",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "d87fc6ae39a4ba799e7dc2401e545efc6c5aec9abf5fde4a03905a56a4b7eb8e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-007",
+      "printingCode": "ST07-007_p2",
+      "locale": "FR",
+      "name": "Charlotte Brûlée",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "2555609e1691cff70e61c3cc56568354cae16fae513db57ca61889154bc43bbc",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "d87fc6ae39a4ba799e7dc2401e545efc6c5aec9abf5fde4a03905a56a4b7eb8e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-007",
+      "printingCode": "ST07-007_p3",
+      "locale": "FR",
+      "name": "Charlotte Brûlée",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "2555609e1691cff70e61c3cc56568354cae16fae513db57ca61889154bc43bbc",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "d87fc6ae39a4ba799e7dc2401e545efc6c5aec9abf5fde4a03905a56a4b7eb8e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-010",
+      "printingCode": "ST07-010_p1",
+      "locale": "FR",
+      "name": "Charlotte Linlin",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "4952a38640c3ec14f00c08478ebfcc6e0895f49a3dea4926e7b753cd08bc11d7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "607cb6e2d3556715bb1bd8b4867a63a4506c5e050dca0e1de82b745f3a3c44e6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    },
+    {
+      "cardNumber": "ST07-014",
+      "printingCode": "ST07-014_p1",
+      "locale": "FR",
+      "name": "Pekoms",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "e9fe26e6b6c20c2e0cb1aaf339375eac8cc6196d628a8f4a9022e908376a32cf",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST07"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "ST07-005",
+      "printingCode": "ST07-005_p1",
+      "name": "Charlotte Daifuku",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST07-007",
+      "printingCode": "ST07-007_p1",
+      "name": "Charlotte Brûlée",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST07-007",
+      "printingCode": "ST07-007_p2",
+      "name": "Charlotte Brûlée",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST07-007",
+      "printingCode": "ST07-007_p3",
+      "name": "Charlotte Brûlée",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST07-010",
+      "printingCode": "ST07-010_p1",
+      "name": "Charlotte Linlin",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST07-014",
+      "printingCode": "ST07-014_p1",
+      "name": "Pekoms",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    }
+  ]
+}

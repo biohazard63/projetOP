@@ -1,5 +1,35 @@
 # M6 — Matrice d'inventaire ST-01 à ST-36
 
+## CURRENT STATE — compositions auditées (14 octobre 2026)
+
+Source : liste auditée de `scripts/rebuildStarterDecks.ts` + `scripts/starterAudit/product-evidence.json`. Rapport : `docs/game/evidence/m6/starter-coverage-2026-10-14.txt` (`scripts/game/starter-coverage.ts`).
+
+| Starter | Certifiées / uniques | /play | Reste |
+|---|---:|---|---|
+| ST-01..ST-08 | 17/17 (ST-08 15/15) | oui | — (ST-03 corrigé : ST03-015 ×4, ST03-017 ×2) |
+| ST-09 | 14/15 | non | ST09-010 Ace (remplacement K.O. en combat) |
+| ST-10 | 19/19 | oui ×3 (un deck par Leader) | — |
+| ST-11 | 15/15 | oui | — |
+| ST-12 | 17/17 | oui | — |
+| ST-13 | 0/19 | non | Vies face visible |
+| ST-14 | 17/17 | oui | — |
+| ST-15 | 3/15 | non | 12 cartes (restrictions d'ajout de Vie, « retiré du terrain ») |
+| ST-16 | 4/15 | non | 11 cartes (effets différés, « ne se redresse pas », puissance proportionnelle) |
+| ST-17, ST-18, ST-19 | 15/15 | oui | — |
+| ST-20 | 2/15 | non | 13 cartes (Vie face visible, remplacement par Vie) |
+| ST-21 | 17/17 | oui | — |
+| ST-22 | 0/17 | non | 17 cartes |
+| ST-23 | 15/15 | oui | — |
+| ST-24, ST-27 | 0/15 | non | composition non vérifiée (porte de preuve) |
+| ST-25 | 0/15 | non | 15 cartes (« retiré du terrain », attaque interdite par coût) |
+| ST-26 | 5/15 | non | 10 cartes (DON retournés groupés, coût en main nommé) |
+| ST-28 | 0/15 | non | 15 cartes (Vie → dessus du deck, coût dynamique) |
+| ST-29, ST-30, ST-32..ST-35 | 0–1/15–17 | non | toutes leurs cartes propres |
+| ST-31 | 4/15 | non | 11 cartes, dont OP04-016 (coût « - » officiel : bloqué) |
+| ST-36 | — | non | absent (quantités non publiées) |
+
+Totaux : 552 définitions, 387 certificats ; 244 cartes uniques non certifiées. Validation : 687/687 tests, typecheck, lint, build isolé, diff-check PASS ; navigateur 18/18 PASS.
+
 ## CURRENT STATE — reprise Codex (13 octobre 2026)
 
 | Starter | Cartes locales / defs | Certifiés | Composition (Leader + 50) | /play | Résultat courant |

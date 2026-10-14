@@ -1,0 +1,1067 @@
+{
+  "deckCode": "ST-26",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569026",
+      "status": "FETCHED",
+      "sha256": "cf9107e6a492886a41cfb88bfb588cc65d2178967a07961e952f4d314f7ba5a1",
+      "retrievedAt": "2026-10-14T07:27:08.486907+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st26-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st26-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st26.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st26.php",
+      "status": "FETCHED",
+      "sha256": "dd49c1460fa962aa7a13d8dac02d7f6ed3f7b8cf6ca19cf08fc005a3eb0b50cd",
+      "retrievedAt": "2026-10-14T07:27:13.709820+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st26_cardlists/",
+      "status": "FETCHED",
+      "sha256": "c09662c30135e17cae676921295be9ce6319d0e06f4d6bfd402372c0fda7ac0b",
+      "retrievedAt": "2026-10-14T07:31:41.054119+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569026",
+      "status": "FETCHED",
+      "sha256": "cf9107e6a492886a41cfb88bfb588cc65d2178967a07961e952f4d314f7ba5a1",
+      "retrievedAt": "2026-10-14T07:31:42.409582+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569026",
+      "status": "FETCHED",
+      "sha256": "cf9107e6a492886a41cfb88bfb588cc65d2178967a07961e952f4d314f7ba5a1",
+      "retrievedAt": "2026-10-14T07:35:11.865017+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st26_cardlists/",
+      "status": "FETCHED",
+      "sha256": "c09662c30135e17cae676921295be9ce6319d0e06f4d6bfd402372c0fda7ac0b",
+      "retrievedAt": "2026-10-14T07:35:13.491887+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550026",
+      "status": "FETCHED",
+      "sha256": "3112ac36cacdf88053f83c18a64c30f175c2a37ca7ebf89572160a3ae3263b70",
+      "retrievedAt": "2026-10-14T07:35:15.149087+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569026",
+      "status": "FETCHED",
+      "sha256": "cf9107e6a492886a41cfb88bfb588cc65d2178967a07961e952f4d314f7ba5a1",
+      "retrievedAt": "2026-10-14T07:53:05.385551+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622026",
+      "status": "FETCHED",
+      "sha256": "7ce176489cb50e8d4aa97fbc2c9ca31c5a7d90c37ea36970a7eaa7ebae460f9e",
+      "retrievedAt": "2026-10-14T07:53:06.750763+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST26-005",
+      "status": "FETCHED",
+      "sha256": "26d022925d00386bc41a80b4e917cb9f9f5024b7264de0b270dfed1ab075d93a",
+      "retrievedAt": "2026-10-14T08:02:28.611510+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST26-005",
+      "status": "FETCHED",
+      "sha256": "c6b1fbeda6c0fd6d285a5fcb7f191f46a36409431338f96bfe383addeff03f20",
+      "retrievedAt": "2026-10-14T08:02:29.945842+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "OP05-065",
+      "printingCode": "OP05-065_r1",
+      "name": "San-Gorou",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP05-066",
+      "printingCode": "OP05-066_r2",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP05-070",
+      "printingCode": "OP05-070_r2",
+      "name": "Fra-Nosuke",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP09-061",
+      "printingCode": "OP09-061_p2",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Purple/Black"
+    },
+    {
+      "cardNumber": "OP09-063",
+      "printingCode": "OP09-063_r1",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP09-070",
+      "printingCode": "OP09-070_r1",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP09-076",
+      "printingCode": "OP09-076_r1",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP09-077",
+      "printingCode": "OP09-077_r1",
+      "name": "Gum-Gum Lightning",
+      "type": "EVENT",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP09-078",
+      "printingCode": "OP09-078_p1",
+      "name": "Gum-Gum Giant",
+      "type": "EVENT",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010_r1",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST26-001",
+      "printingCode": "ST26-001",
+      "name": "Soba Mask",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST26-002",
+      "printingCode": "ST26-002",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST26-003",
+      "printingCode": "ST26-003",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST26-004",
+      "printingCode": "ST26-004",
+      "name": "General Franky",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST26-005",
+      "printingCode": "ST26-005",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Purple"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "OP09-061",
+      "quantity": 1,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    },
+    {
+      "cardNumber": "ST26-001",
+      "quantity": 4,
+      "sourceName": "おそばマスク",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    },
+    {
+      "cardNumber": "ST26-002",
+      "quantity": 2,
+      "sourceName": "トニートニー・チョッパー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    },
+    {
+      "cardNumber": "ST26-003",
+      "quantity": 2,
+      "sourceName": "ニコ・ロビン",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    },
+    {
+      "cardNumber": "ST26-004",
+      "quantity": 4,
+      "sourceName": "フランキー将軍",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    },
+    {
+      "cardNumber": "ST26-005",
+      "quantity": 2,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    },
+    {
+      "cardNumber": "OP05-065",
+      "quantity": 4,
+      "sourceName": "サン五郎",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    },
+    {
+      "cardNumber": "OP05-066",
+      "quantity": 4,
+      "sourceName": "ジンベエ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    },
+    {
+      "cardNumber": "OP05-070",
+      "quantity": 4,
+      "sourceName": "フラの介",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-063",
+      "quantity": 4,
+      "sourceName": "ウソップ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-070",
+      "quantity": 4,
+      "sourceName": "ナミ",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-076",
+      "quantity": 4,
+      "sourceName": "ロロノア・ゾロ",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "quantity": 4,
+      "sourceName": "ブルック",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-077",
+      "quantity": 4,
+      "sourceName": "ゴムゴムの雷",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-078",
+      "quantity": 4,
+      "sourceName": "ゴムゴムの巨人",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st26_cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -PURPLE/BLACK Monkey.D.Luffy- [ST-26] − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -PURPLE/BLACK Monkey.D.Luffy- [ST-26]"
+  ],
+  "productContents": "Constructed Deck x 1 (51 cards), DON!! Card x 10, Playsheet x 1, BOOSTER PACK -A FIST OF DIVINE SPEED- [OP-11] x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st26.php",
+  "officialDeckTitle": "STARTER DECK -PURPLE/BLACK Monkey.D.Luffy- [ST-26]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "OP05-065",
+      "printingCode": "OP05-065_r1",
+      "name": "サン五郎",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP05-066",
+      "printingCode": "OP05-066_r2",
+      "name": "ジンベエ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP05-070",
+      "printingCode": "OP05-070_r2",
+      "name": "フラの介",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP09-061",
+      "printingCode": "OP09-061_p2",
+      "name": "モンキー・Ｄ・ルフィ",
+      "type": "LEADER",
+      "color": "紫/黒"
+    },
+    {
+      "cardNumber": "OP09-063",
+      "printingCode": "OP09-063_r1",
+      "name": "ウソップ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP09-070",
+      "printingCode": "OP09-070_r1",
+      "name": "ナミ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP09-076",
+      "printingCode": "OP09-076_r1",
+      "name": "ロロノア・ゾロ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP09-077",
+      "printingCode": "OP09-077_r1",
+      "name": "ゴムゴムの雷",
+      "type": "EVENT",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP09-078",
+      "printingCode": "OP09-078_p1",
+      "name": "ゴムゴムの巨人",
+      "type": "EVENT",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010_r1",
+      "name": "ブルック",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST26-001",
+      "printingCode": "ST26-001",
+      "name": "おそばマスク",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST26-002",
+      "printingCode": "ST26-002",
+      "name": "トニートニー・チョッパー",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST26-003",
+      "printingCode": "ST26-003",
+      "name": "ニコ・ロビン",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST26-004",
+      "printingCode": "ST26-004",
+      "name": "フランキー将軍",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST26-005",
+      "printingCode": "ST26-005",
+      "name": "モンキー・Ｄ・ルフィ",
+      "type": "CHARACTER",
+      "color": "紫"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "OP05-065",
+      "printingCode": "OP05-065_r1",
+      "locale": "EN",
+      "name": "San-Gorou",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 6,
+      "power": 8000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "OP05-066",
+      "printingCode": "OP05-066_r2",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "4d1c9b843f23b6f59d9f4627cd4407fc6e13d69bf4efff589bd6d71388ff1aca",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "cca8486c05c288e7608e217b3f87170e165ab1838432d757e767e0e645a97a40",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "OP05-070",
+      "printingCode": "OP05-070_r2",
+      "locale": "EN",
+      "name": "Fra-Nosuke",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 5,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "d032f9dcad195bfbb805750718b59aec4baffaf5efbeeea7538a323adee65bf0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "OP09-061",
+      "printingCode": "OP09-061_p2",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Purple/Black",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "f84862df05ef97bcb537de24a40ae123e52e88da73a0e7fe179d31e8528471e2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "67a1ebcf86dfc715480383380198c3dfbd08f5129835a59b7f5b039de2a8c0ba",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "OP09-063",
+      "printingCode": "OP09-063_r1",
+      "locale": "EN",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "OP09-070",
+      "printingCode": "OP09-070_r1",
+      "locale": "EN",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "2b7760e9a5fda6c0f6bd01519be647e8b3f2e3f3f70d7b3b7107a7ab995c00ae",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "OP09-076",
+      "printingCode": "OP09-076_r1",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "e4e61b1cfdd88db34b691f072caa22a490f63275804adaa51c67970e45227494",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "OP09-077",
+      "printingCode": "OP09-077_r1",
+      "locale": "EN",
+      "name": "Gum-Gum Lightning",
+      "type": "EVENT",
+      "color": "Purple",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "d3f1fc800a9095b403acabd2a5ef94d450d8fa91fd531bf9320debce1d7203ba",
+      "triggerHash": "819578c59ec0945fd64b92c8171b57a5b209fa1826f8b1c4d49da6283187f005",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "67a1ebcf86dfc715480383380198c3dfbd08f5129835a59b7f5b039de2a8c0ba",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "OP09-078",
+      "printingCode": "OP09-078_p1",
+      "locale": "EN",
+      "name": "Gum-Gum Giant",
+      "type": "EVENT",
+      "color": "Purple",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "7c688f4432a30a3ccaabe35f4e11d8dee88d2ebdd5fd3d830ae9ad48e05ae3b3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "67a1ebcf86dfc715480383380198c3dfbd08f5129835a59b7f5b039de2a8c0ba",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010_r1",
+      "locale": "EN",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "ST26-001",
+      "printingCode": "ST26-001",
+      "locale": "EN",
+      "name": "Soba Mask",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 7,
+      "power": 9000,
+      "counter": null,
+      "effectHash": "349d3fc71c50892d5388131347828eb976e7365fe2c08395b866c90450ba01db",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "ST26-002",
+      "printingCode": "ST26-002",
+      "locale": "EN",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "cf92aea6040a5db20acc228b04e2a41684409972f35506a59d287fdbc4ff948a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "595eb2e08913dd501fe4ff0081d6af65e6e171d1b56978b3b5e8bee0b86c5069",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "ST26-003",
+      "printingCode": "ST26-003",
+      "locale": "EN",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "ad640c42f0c637f28c0644e4c26e4b143df00245ffa60b91b055affb1e935f8e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "ST26-004",
+      "printingCode": "ST26-004",
+      "locale": "EN",
+      "name": "General Franky",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 8,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "6e7cc3fcb620145f7790d29ad99226548226d03a2a7ca1e4e3064ed5ec532df4",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "ST26-005",
+      "printingCode": "ST26-005",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 6,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "191a4da64c00d41d0da64edc7e014a6ceb3490505218ef0a4ff4795c89658ca7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569026"
+    },
+    {
+      "cardNumber": "OP05-065",
+      "printingCode": "OP05-065",
+      "locale": "FR",
+      "name": "Sangoro",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 6,
+      "power": 8000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "OP05-066",
+      "printingCode": "OP05-066_r1",
+      "locale": "FR",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "580edfff8f3f6c9b53427c5fecde4731d7e1ecab794fb6bc278e49459383dcc4",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "4f449bbf1de381ac49b47403a0baa15990099acedb17812253bf93fa5a616105",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "OP05-070",
+      "printingCode": "OP05-070_r1",
+      "locale": "FR",
+      "name": "Fransuké",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 5,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "ea16570b82761f7ebfdbb7a758339962a73b0c0279181166031b5b7211728752",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "OP09-061",
+      "printingCode": "OP09-061_p2",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "LEADER",
+      "color": "Violet/Noir",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "514fb1ece5733994ee2bcf81f36a110c694325d36d006faa11cb00f5a12da725",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "7e5b5a013b0fb1ec66751af9ed17fb0051f1e9af9b9cd2b331d15ebfd5076d5f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "OP09-063",
+      "printingCode": "OP09-063_r1",
+      "locale": "FR",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "OP09-070",
+      "printingCode": "OP09-070_r1",
+      "locale": "FR",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 3,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "e92a6ef20b1e0b277f0d330ec48b2c48eab376b2d1d5833a39e458d48e8d3497",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "OP09-076",
+      "printingCode": "OP09-076_r1",
+      "locale": "FR",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 3,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "1fdd301010171ae74d5473876a0b18a8ba4107ec9f498cf560bee2737001b72a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "OP09-077",
+      "printingCode": "OP09-077_r1",
+      "locale": "FR",
+      "name": "Gum Gum Foudre",
+      "type": "EVENT",
+      "color": "Violet",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "d27e8a0882eafbc2129a3e6990a811371c7126ce583453b7da438824fe2fe4cf",
+      "triggerHash": "35e9077f7dcc9fd551351e658714d4ad1c781b40200ec79a998b2a3bbe02bed4",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "7e5b5a013b0fb1ec66751af9ed17fb0051f1e9af9b9cd2b331d15ebfd5076d5f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "OP09-078",
+      "printingCode": "OP09-078_p1",
+      "locale": "FR",
+      "name": "Gum Gum Gigant",
+      "type": "EVENT",
+      "color": "Violet",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "f44a54835c589bf3103811e2b151e52e239583acf5448520accea3b2fd814184",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "7e5b5a013b0fb1ec66751af9ed17fb0051f1e9af9b9cd2b331d15ebfd5076d5f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010",
+      "locale": "FR",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "ST26-001",
+      "printingCode": "ST26-001",
+      "locale": "FR",
+      "name": "O-Soba Mask",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 7,
+      "power": 9000,
+      "counter": null,
+      "effectHash": "dce0ea0a2c32ed1fb87ade6a7908fd2c152d86c4a47401c5815edeaeef6af9dd",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "ST26-002",
+      "printingCode": "ST26-002",
+      "locale": "FR",
+      "name": "Tony-Tony Chopper",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "9c9c7b67d6713e6f2be4f29503c310e90cd9e458a0fe74ad7c7a46162b293489",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "546d704feed49a018d939e9300ce09e33efb520ab804865cc132aec6b9f5eb38",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "ST26-003",
+      "printingCode": "ST26-003",
+      "locale": "FR",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 3,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "61931cfc1017911db2a3b827b5e666ea2ddef6926c93c3eb6d5db9979edf39b2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "ST26-004",
+      "printingCode": "ST26-004",
+      "locale": "FR",
+      "name": "Général Franky",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 8,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "50d4b0a753849c22e504d86447f4e386c4100fb4246b610c16a82d39528ecf25",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "ST26-005",
+      "printingCode": "ST26-005",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 6,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "2547cd99069b4fe41bf2cce7367cd0e47bc1d13547cc0a1053635291ef82b430",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622026"
+    },
+    {
+      "cardNumber": "ST26-005",
+      "printingCode": "ST26-005",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 6,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "191a4da64c00d41d0da64edc7e014a6ceb3490505218ef0a4ff4795c89658ca7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST26-005"
+    },
+    {
+      "cardNumber": "ST26-005",
+      "printingCode": "ST26-005_p1",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 6,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "191a4da64c00d41d0da64edc7e014a6ceb3490505218ef0a4ff4795c89658ca7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST26-005"
+    },
+    {
+      "cardNumber": "ST26-005",
+      "printingCode": "ST26-005",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 6,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "2547cd99069b4fe41bf2cce7367cd0e47bc1d13547cc0a1053635291ef82b430",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST26-005"
+    },
+    {
+      "cardNumber": "ST26-005",
+      "printingCode": "ST26-005_p1",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 6,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "8957d8a431aaf0d9741d4d79cbca3f42f0b2074b16ef73b7a0758579a39eb4fd",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST26-005"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "OP05-065",
+      "printingCode": "OP05-065",
+      "name": "Sangoro",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP05-066",
+      "printingCode": "OP05-066_r1",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP05-070",
+      "printingCode": "OP05-070_r1",
+      "name": "Fransuké",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP09-061",
+      "printingCode": "OP09-061_p2",
+      "name": "Monkey D. Luffy",
+      "type": "LEADER",
+      "color": "Violet/Noir"
+    },
+    {
+      "cardNumber": "OP09-063",
+      "printingCode": "OP09-063_r1",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP09-070",
+      "printingCode": "OP09-070_r1",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP09-076",
+      "printingCode": "OP09-076_r1",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP09-077",
+      "printingCode": "OP09-077_r1",
+      "name": "Gum Gum Foudre",
+      "type": "EVENT",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP09-078",
+      "printingCode": "OP09-078_p1",
+      "name": "Gum Gum Gigant",
+      "type": "EVENT",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST26-001",
+      "printingCode": "ST26-001",
+      "name": "O-Soba Mask",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST26-002",
+      "printingCode": "ST26-002",
+      "name": "Tony-Tony Chopper",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST26-003",
+      "printingCode": "ST26-003",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST26-004",
+      "printingCode": "ST26-004",
+      "name": "Général Franky",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST26-005",
+      "printingCode": "ST26-005",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Violet"
+    }
+  ]
+}

@@ -1,0 +1,1213 @@
+{
+  "deckCode": "ST-04",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569004",
+      "status": "FETCHED",
+      "sha256": "016e64b22652b2eea574891538bcaca36d92f227a3384b4fd86bb14d0eab11df",
+      "retrievedAt": "2026-10-14T07:26:38.336764+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st04-cardlists/",
+      "status": "FETCHED",
+      "sha256": "f0917a5674ab6f02cb7433074eb8501c6c9df26839d7c698978eaf2a4da3d25b",
+      "retrievedAt": "2026-10-14T07:26:40.198119+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st04.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st01-04.php",
+      "status": "FETCHED",
+      "sha256": "6f9d264ed14666d3eced0854845718a2958d76155ce5df8331e61d89432c7e3b",
+      "retrievedAt": "2026-10-14T07:26:42.793885+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st04-cardlists/",
+      "status": "FETCHED",
+      "sha256": "f0917a5674ab6f02cb7433074eb8501c6c9df26839d7c698978eaf2a4da3d25b",
+      "retrievedAt": "2026-10-14T07:31:21.864484+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569004",
+      "status": "FETCHED",
+      "sha256": "016e64b22652b2eea574891538bcaca36d92f227a3384b4fd86bb14d0eab11df",
+      "retrievedAt": "2026-10-14T07:31:23.321541+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569004",
+      "status": "FETCHED",
+      "sha256": "016e64b22652b2eea574891538bcaca36d92f227a3384b4fd86bb14d0eab11df",
+      "retrievedAt": "2026-10-14T07:34:51.974432+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st04-cardlists/",
+      "status": "FETCHED",
+      "sha256": "f0917a5674ab6f02cb7433074eb8501c6c9df26839d7c698978eaf2a4da3d25b",
+      "retrievedAt": "2026-10-14T07:34:53.958461+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550004",
+      "status": "FETCHED",
+      "sha256": "9fa39954453bab5be7a946c6ff40449ed7d21b6fa32906118a05c2883052e96c",
+      "retrievedAt": "2026-10-14T07:34:55.670127+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04",
+      "status": "FETCHED",
+      "sha256": "effbe814e908f317fb1973918f278985784475ded4679709e7b31736220c94d5",
+      "retrievedAt": "2026-10-14T07:52:54.281230+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04",
+      "status": "FETCHED",
+      "sha256": "07a75a366eabe1f638b72acd78c9fe9350803a000489909b6290b61e7051d21e",
+      "retrievedAt": "2026-10-14T07:52:55.735953+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "ST04-001",
+      "printingCode": "ST04-001",
+      "name": "Kaido",
+      "type": "LEADER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-002",
+      "printingCode": "ST04-002",
+      "name": "Ulti",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-003",
+      "printingCode": "ST04-003",
+      "name": "Kaido",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-004",
+      "printingCode": "ST04-004",
+      "name": "King",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005",
+      "name": "Queen",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-006",
+      "printingCode": "ST04-006",
+      "name": "Sasaki",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-007",
+      "printingCode": "ST04-007",
+      "name": "Sheepshead",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-008",
+      "printingCode": "ST04-008",
+      "name": "Jack",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-009",
+      "printingCode": "ST04-009",
+      "name": "Ginrummy",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-010",
+      "printingCode": "ST04-010",
+      "name": "Who's.Who",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-011",
+      "printingCode": "ST04-011",
+      "name": "Black Maria",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-012",
+      "printingCode": "ST04-012",
+      "name": "Page One",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-013",
+      "printingCode": "ST04-013",
+      "name": "X.Drake",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-014",
+      "printingCode": "ST04-014",
+      "name": "Lead Performer \"Disaster\"",
+      "type": "EVENT",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-015",
+      "printingCode": "ST04-015",
+      "name": "Brachio Bomber",
+      "type": "EVENT",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-016",
+      "printingCode": "ST04-016",
+      "name": "Blast Breath",
+      "type": "EVENT",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST04-017",
+      "printingCode": "ST04-017",
+      "name": "Onigashima Island",
+      "type": "STAGE",
+      "color": "Purple"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST04-001",
+      "quantity": 1,
+      "sourceName": "カイドウ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-002",
+      "quantity": 4,
+      "sourceName": "うるティ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-003",
+      "quantity": 2,
+      "sourceName": "カイドウ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-004",
+      "quantity": 2,
+      "sourceName": "キング",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "quantity": 2,
+      "sourceName": "クイーン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-006",
+      "quantity": 4,
+      "sourceName": "ササキ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-007",
+      "quantity": 4,
+      "sourceName": "シープスヘッド",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-008",
+      "quantity": 2,
+      "sourceName": "ジャック",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-009",
+      "quantity": 4,
+      "sourceName": "ジンラミー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-010",
+      "quantity": 2,
+      "sourceName": "フーズフー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-011",
+      "quantity": 4,
+      "sourceName": "ブラックマリア",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-012",
+      "quantity": 4,
+      "sourceName": "ページワン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-013",
+      "quantity": 4,
+      "sourceName": "X・ドレーク",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-014",
+      "quantity": 2,
+      "sourceName": "大看板”災害”",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-015",
+      "quantity": 2,
+      "sourceName": "無頼男爆弾",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-016",
+      "quantity": 4,
+      "sourceName": "熱息",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    },
+    {
+      "cardNumber": "ST04-017",
+      "quantity": 4,
+      "sourceName": "鬼ヶ島",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st04-cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECKS  -Straw Hat Crew- / -Worst Generation- / -The Seven Warlords of the Sea- / -Animal Kingdom Pirates- − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECKS  -Straw Hat Crew- / -Worst Generation- / -The Seven Warlords of the Sea- / -Animal Kingdom Pirates-",
+    "STARTER DECK -Straw Hat Crew-",
+    "STARTER DECK -Worst Generation-"
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) \r\n                   ・DON!! Cards x 10 \r\n                   ・Playsheet x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st01-04.php",
+  "officialDeckTitle": "STARTER DECK -Animal Kingdom Pirates- [ST-04]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "ST04-001",
+      "printingCode": "ST04-001",
+      "name": "カイドウ",
+      "type": "LEADER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-002",
+      "printingCode": "ST04-002",
+      "name": "うるティ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-003",
+      "printingCode": "ST04-003",
+      "name": "カイドウ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-004",
+      "printingCode": "ST04-004",
+      "name": "キング",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005",
+      "name": "クイーン",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-006",
+      "printingCode": "ST04-006",
+      "name": "ササキ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-007",
+      "printingCode": "ST04-007",
+      "name": "シープスヘッド",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-008",
+      "printingCode": "ST04-008",
+      "name": "ジャック",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-009",
+      "printingCode": "ST04-009",
+      "name": "ジンラミー",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-010",
+      "printingCode": "ST04-010",
+      "name": "フーズ・フー",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-011",
+      "printingCode": "ST04-011",
+      "name": "ブラックマリア",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-012",
+      "printingCode": "ST04-012",
+      "name": "ページワン",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-013",
+      "printingCode": "ST04-013",
+      "name": "X・ドレーク",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-014",
+      "printingCode": "ST04-014",
+      "name": "大看板”災害”",
+      "type": "EVENT",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-015",
+      "printingCode": "ST04-015",
+      "name": "無頼男爆弾",
+      "type": "EVENT",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-016",
+      "printingCode": "ST04-016",
+      "name": "熱息",
+      "type": "EVENT",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST04-017",
+      "printingCode": "ST04-017",
+      "name": "鬼ヶ島",
+      "type": "STAGE",
+      "color": "紫"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST04-001",
+      "printingCode": "ST04-001",
+      "locale": "EN",
+      "name": "Kaido",
+      "type": "LEADER",
+      "color": "Purple",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "f765385c9726b5985172a50692afbc07dfe74dbe67423338f1617ea440ace5a1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "e96a5674778a31a885001378d57b52bdd209ee48ba9e59bb75d75b795776e42f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-002",
+      "printingCode": "ST04-002",
+      "locale": "EN",
+      "name": "Ulti",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "5a10ee64ad4fa36d509b344e624bc6ab03523a4a44b428f8a1a1768e4c97566d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-002",
+      "printingCode": "ST04-002_p1",
+      "locale": "EN",
+      "name": "Ulti",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "5a10ee64ad4fa36d509b344e624bc6ab03523a4a44b428f8a1a1768e4c97566d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-003",
+      "printingCode": "ST04-003",
+      "locale": "EN",
+      "name": "Kaido",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 9,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "eb4e520c6d148d5784cc4576b6864406f9e2bc8790c887dd058871d1bdf2bf95",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "e96a5674778a31a885001378d57b52bdd209ee48ba9e59bb75d75b795776e42f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-003",
+      "printingCode": "ST04-003_p2",
+      "locale": "EN",
+      "name": "Kaido",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 9,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "eb4e520c6d148d5784cc4576b6864406f9e2bc8790c887dd058871d1bdf2bf95",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "e96a5674778a31a885001378d57b52bdd209ee48ba9e59bb75d75b795776e42f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-003",
+      "printingCode": "ST04-003_p4",
+      "locale": "EN",
+      "name": "Kaido",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 9,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "eb4e520c6d148d5784cc4576b6864406f9e2bc8790c887dd058871d1bdf2bf95",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "e96a5674778a31a885001378d57b52bdd209ee48ba9e59bb75d75b795776e42f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-003",
+      "printingCode": "ST04-003_r1",
+      "locale": "EN",
+      "name": "Kaido",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 9,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "eb4e520c6d148d5784cc4576b6864406f9e2bc8790c887dd058871d1bdf2bf95",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "e96a5674778a31a885001378d57b52bdd209ee48ba9e59bb75d75b795776e42f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-004",
+      "printingCode": "ST04-004",
+      "locale": "EN",
+      "name": "King",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 6,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "3f946f4166e86fc8c65aa7132437177c30fdd14ea05a1f7127fca881758aa3a3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005",
+      "locale": "EN",
+      "name": "Queen",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "4861293dc280a9afe425f5c1063a0313fb664302bf7877be8c5840ef5870afed",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005_p3",
+      "locale": "EN",
+      "name": "Queen",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "4861293dc280a9afe425f5c1063a0313fb664302bf7877be8c5840ef5870afed",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005_p4",
+      "locale": "EN",
+      "name": "Queen",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "4861293dc280a9afe425f5c1063a0313fb664302bf7877be8c5840ef5870afed",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005_r1",
+      "locale": "EN",
+      "name": "Queen",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "4861293dc280a9afe425f5c1063a0313fb664302bf7877be8c5840ef5870afed",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-006",
+      "printingCode": "ST04-006",
+      "locale": "EN",
+      "name": "Sasaki",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "48e71a7fed8554b1544e06d26e129b02731e903d101526237121d518bfdc6cd0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-007",
+      "printingCode": "ST04-007",
+      "locale": "EN",
+      "name": "Sheepshead",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "7ed530f05e5f0faaecb137abb986a0adca4aa422d9c73750692664a75b0c5aec",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-008",
+      "printingCode": "ST04-008",
+      "locale": "EN",
+      "name": "Jack",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "1499a864c880b0045222330a63c1a72b1c65687011c6b3c9069dd55329d54099",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-008",
+      "printingCode": "ST04-008_p1",
+      "locale": "EN",
+      "name": "Jack",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "1499a864c880b0045222330a63c1a72b1c65687011c6b3c9069dd55329d54099",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-008",
+      "printingCode": "ST04-008_p2",
+      "locale": "EN",
+      "name": "Jack",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "1499a864c880b0045222330a63c1a72b1c65687011c6b3c9069dd55329d54099",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-009",
+      "printingCode": "ST04-009",
+      "locale": "EN",
+      "name": "Ginrummy",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 1,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7ed530f05e5f0faaecb137abb986a0adca4aa422d9c73750692664a75b0c5aec",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-010",
+      "printingCode": "ST04-010",
+      "locale": "EN",
+      "name": "Who's.Who",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 3000,
+      "counter": null,
+      "effectHash": "5eb90bacfb0be9c238c983d4e737fa4dd6fcbe18fc67630fafc760a5e8c58026",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-010",
+      "printingCode": "ST04-010_p1",
+      "locale": "EN",
+      "name": "Who's.Who",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 3000,
+      "counter": null,
+      "effectHash": "5eb90bacfb0be9c238c983d4e737fa4dd6fcbe18fc67630fafc760a5e8c58026",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-011",
+      "printingCode": "ST04-011",
+      "locale": "EN",
+      "name": "Black Maria",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-011",
+      "printingCode": "ST04-011_p1",
+      "locale": "EN",
+      "name": "Black Maria",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-011",
+      "printingCode": "ST04-011_p2",
+      "locale": "EN",
+      "name": "Black Maria",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-012",
+      "printingCode": "ST04-012",
+      "locale": "EN",
+      "name": "Page One",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-013",
+      "printingCode": "ST04-013",
+      "locale": "EN",
+      "name": "X.Drake",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "4c320761c426c3e9320312d2074b015ebcbf01adb769ebd3cc83eb6b5492f2cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-014",
+      "printingCode": "ST04-014",
+      "locale": "EN",
+      "name": "Lead Performer \"Disaster\"",
+      "type": "EVENT",
+      "color": "Purple",
+      "cost": 4,
+      "power": null,
+      "counter": null,
+      "effectHash": "c3a0e62d94fd2cd243f9e2223d1d6d8a785efdf4498f42ca12db9ecedcbc1758",
+      "triggerHash": "f11e3bd95cea2c7b0921ce0651d0a6b34b9ce1c616748f59ed982f22698d0ac5",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-015",
+      "printingCode": "ST04-015",
+      "locale": "EN",
+      "name": "Brachio Bomber",
+      "type": "EVENT",
+      "color": "Purple",
+      "cost": 6,
+      "power": null,
+      "counter": null,
+      "effectHash": "be7e07c8784e4fcc152bdac1004cf54e1a462c6f58dd808442ca91fca8a857d2",
+      "triggerHash": "819578c59ec0945fd64b92c8171b57a5b209fa1826f8b1c4d49da6283187f005",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-016",
+      "printingCode": "ST04-016",
+      "locale": "EN",
+      "name": "Blast Breath",
+      "type": "EVENT",
+      "color": "Purple",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "dd294816753a5b3c611c6a3137278ae7cfef98f24b1fac6924813e171d5cbb35",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "e96a5674778a31a885001378d57b52bdd209ee48ba9e59bb75d75b795776e42f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-016",
+      "printingCode": "ST04-016_p2",
+      "locale": "EN",
+      "name": "Blast Breath",
+      "type": "EVENT",
+      "color": "Purple",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "dd294816753a5b3c611c6a3137278ae7cfef98f24b1fac6924813e171d5cbb35",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "e96a5674778a31a885001378d57b52bdd209ee48ba9e59bb75d75b795776e42f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-016",
+      "printingCode": "ST04-016_p3",
+      "locale": "EN",
+      "name": "Blast Breath",
+      "type": "EVENT",
+      "color": "Purple",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "dd294816753a5b3c611c6a3137278ae7cfef98f24b1fac6924813e171d5cbb35",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "e96a5674778a31a885001378d57b52bdd209ee48ba9e59bb75d75b795776e42f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-016",
+      "printingCode": "ST04-016_p4",
+      "locale": "EN",
+      "name": "Blast Breath",
+      "type": "EVENT",
+      "color": "Purple",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "dd294816753a5b3c611c6a3137278ae7cfef98f24b1fac6924813e171d5cbb35",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "e96a5674778a31a885001378d57b52bdd209ee48ba9e59bb75d75b795776e42f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-016",
+      "printingCode": "ST04-016_r1",
+      "locale": "EN",
+      "name": "Blast Breath",
+      "type": "EVENT",
+      "color": "Purple",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "dd294816753a5b3c611c6a3137278ae7cfef98f24b1fac6924813e171d5cbb35",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "e96a5674778a31a885001378d57b52bdd209ee48ba9e59bb75d75b795776e42f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-017",
+      "printingCode": "ST04-017",
+      "locale": "EN",
+      "name": "Onigashima Island",
+      "type": "STAGE",
+      "color": "Purple",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "a61ee6d3d55681a6fd4597e4161b641320339ddc8338cb1fa41df9255c14c571",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-003",
+      "printingCode": "ST04-003_p1",
+      "locale": "EN",
+      "name": "Kaido",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 9,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "eb4e520c6d148d5784cc4576b6864406f9e2bc8790c887dd058871d1bdf2bf95",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "e96a5674778a31a885001378d57b52bdd209ee48ba9e59bb75d75b795776e42f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005_p1",
+      "locale": "EN",
+      "name": "Queen",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "4861293dc280a9afe425f5c1063a0313fb664302bf7877be8c5840ef5870afed",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-003",
+      "printingCode": "ST04-003_p1",
+      "locale": "FR",
+      "name": "Kaido",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 9,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "d4593606cf509a3804f7e8a7e8348ad0b321b4b68f8cc4fe9651b4ac73699dfb",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "5a45d2e7726cd4222fedb21641bdae98ab4ef5a2558c25a758f76e7c04156dc6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-003",
+      "printingCode": "ST04-003_p2",
+      "locale": "FR",
+      "name": "Kaido",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 9,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "d4593606cf509a3804f7e8a7e8348ad0b321b4b68f8cc4fe9651b4ac73699dfb",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "5a45d2e7726cd4222fedb21641bdae98ab4ef5a2558c25a758f76e7c04156dc6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005_p1",
+      "locale": "FR",
+      "name": "Queen",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "2c2571550406e648d551cf1765b4e55b8a9fa9c4b2a5e51e504782bd8c6758a5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "05ff53521cbba4adcb8b8a6698466ae125dc4318c51b3643619a3b0cca2baa69",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005_p2",
+      "locale": "FR",
+      "name": "Queen",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "2c2571550406e648d551cf1765b4e55b8a9fa9c4b2a5e51e504782bd8c6758a5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "05ff53521cbba4adcb8b8a6698466ae125dc4318c51b3643619a3b0cca2baa69",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005_p3",
+      "locale": "FR",
+      "name": "Queen",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "2c2571550406e648d551cf1765b4e55b8a9fa9c4b2a5e51e504782bd8c6758a5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "05ff53521cbba4adcb8b8a6698466ae125dc4318c51b3643619a3b0cca2baa69",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005_p4",
+      "locale": "FR",
+      "name": "Queen",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "2c2571550406e648d551cf1765b4e55b8a9fa9c4b2a5e51e504782bd8c6758a5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "05ff53521cbba4adcb8b8a6698466ae125dc4318c51b3643619a3b0cca2baa69",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-016",
+      "printingCode": "ST04-016_p1",
+      "locale": "FR",
+      "name": "Souffle ardent",
+      "type": "EVENT",
+      "color": "Violet",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "400dd0c7b4e2ecbfd7424773088860cb4d6601169245df695e72cbd2b4da0ae5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5a45d2e7726cd4222fedb21641bdae98ab4ef5a2558c25a758f76e7c04156dc6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-016",
+      "printingCode": "ST04-016_p2",
+      "locale": "FR",
+      "name": "Souffle ardent",
+      "type": "EVENT",
+      "color": "Violet",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "400dd0c7b4e2ecbfd7424773088860cb4d6601169245df695e72cbd2b4da0ae5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5a45d2e7726cd4222fedb21641bdae98ab4ef5a2558c25a758f76e7c04156dc6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    },
+    {
+      "cardNumber": "ST04-016",
+      "printingCode": "ST04-016_p3",
+      "locale": "FR",
+      "name": "Souffle ardent",
+      "type": "EVENT",
+      "color": "Violet",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "400dd0c7b4e2ecbfd7424773088860cb4d6601169245df695e72cbd2b4da0ae5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5a45d2e7726cd4222fedb21641bdae98ab4ef5a2558c25a758f76e7c04156dc6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST04"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "ST04-003",
+      "printingCode": "ST04-003_p1",
+      "name": "Kaido",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST04-003",
+      "printingCode": "ST04-003_p2",
+      "name": "Kaido",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005_p1",
+      "name": "Queen",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005_p2",
+      "name": "Queen",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005_p3",
+      "name": "Queen",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST04-005",
+      "printingCode": "ST04-005_p4",
+      "name": "Queen",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST04-016",
+      "printingCode": "ST04-016_p1",
+      "name": "Souffle ardent",
+      "type": "EVENT",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST04-016",
+      "printingCode": "ST04-016_p2",
+      "name": "Souffle ardent",
+      "type": "EVENT",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST04-016",
+      "printingCode": "ST04-016_p3",
+      "name": "Souffle ardent",
+      "type": "EVENT",
+      "color": "Violet"
+    }
+  ]
+}

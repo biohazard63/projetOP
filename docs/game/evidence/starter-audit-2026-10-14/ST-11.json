@@ -1,0 +1,1227 @@
+{
+  "deckCode": "ST-11",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569011",
+      "status": "FETCHED",
+      "sha256": "6f5d5324c474d1a5aed4da610506ca00dcb6418769d1e2094b79e7d08bfa1cce",
+      "retrievedAt": "2026-10-14T07:26:50.264368+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st11-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st11-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st11.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st11.php",
+      "status": "FETCHED",
+      "sha256": "c29d61823063a59bc682fcf3cb7a5fde075b28b604a6e73c054cf0bcdd4faf30",
+      "retrievedAt": "2026-10-14T07:26:54.578258+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st11_cardlists/",
+      "status": "FETCHED",
+      "sha256": "d6a094810121f471fc2f1fadc3a3e9919bd2a2c4b2fb4926a00c523fa70153c9",
+      "retrievedAt": "2026-10-14T07:31:28.730381+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st11-12.php",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569011",
+      "status": "FETCHED",
+      "sha256": "6f5d5324c474d1a5aed4da610506ca00dcb6418769d1e2094b79e7d08bfa1cce",
+      "retrievedAt": "2026-10-14T07:31:31.241616+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569011",
+      "status": "FETCHED",
+      "sha256": "6f5d5324c474d1a5aed4da610506ca00dcb6418769d1e2094b79e7d08bfa1cce",
+      "retrievedAt": "2026-10-14T07:34:57.067115+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st11_cardlists/",
+      "status": "FETCHED",
+      "sha256": "d6a094810121f471fc2f1fadc3a3e9919bd2a2c4b2fb4926a00c523fa70153c9",
+      "retrievedAt": "2026-10-14T07:34:59.056569+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550011",
+      "status": "FETCHED",
+      "sha256": "0717725de185706f117edef711576ccade57f5f4f52b03a5a030277aa289e02d",
+      "retrievedAt": "2026-10-14T07:35:01.228538+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st11.php",
+      "status": "FETCHED",
+      "sha256": "c29d61823063a59bc682fcf3cb7a5fde075b28b604a6e73c054cf0bcdd4faf30",
+      "retrievedAt": "2026-10-14T07:37:48.901187+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st11.php",
+      "status": "FETCHED",
+      "sha256": "c29d61823063a59bc682fcf3cb7a5fde075b28b604a6e73c054cf0bcdd4faf30",
+      "retrievedAt": "2026-10-14T07:46:04.799886+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11",
+      "status": "FETCHED",
+      "sha256": "faf0384e5dc1e5ca258d2327bf1352e59ee845a023a6e3bd0906889893c17b80",
+      "retrievedAt": "2026-10-14T07:52:57.232109+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11",
+      "status": "FETCHED",
+      "sha256": "65241a710fc2797dbce8a4f3423efbb4baed9baf72347170b6459162a41a1fc4",
+      "retrievedAt": "2026-10-14T07:52:58.604257+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-028",
+      "status": "FETCHED",
+      "sha256": "7b537d3aa71f5da65f086833d6d731f5dd74cba8ff0e0962a475e9411eed2bab",
+      "retrievedAt": "2026-10-14T08:09:27.462407+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-028",
+      "status": "FETCHED",
+      "sha256": "d0a8390787710729caace160bc68034b5f4aaa23a3732d1da89c1b2ffae5b4fa",
+      "retrievedAt": "2026-10-14T08:09:28.764965+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-033",
+      "status": "FETCHED",
+      "sha256": "9b328106ee9597a827058d63e957d05473cb3c25fac3f6f928675403630b9541",
+      "retrievedAt": "2026-10-14T08:09:27.322202+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-033",
+      "status": "FETCHED",
+      "sha256": "07493637facd7440e0bf9b1c461c8c2d75e981dac08a103876d542705fea24a2",
+      "retrievedAt": "2026-10-14T08:09:28.881730+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-034",
+      "status": "FETCHED",
+      "sha256": "e0028c90050fa0ac067e1ac1c79e402d38a671859ad9997d0c09687d1f0822c4",
+      "retrievedAt": "2026-10-14T08:09:27.340511+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-034",
+      "status": "FETCHED",
+      "sha256": "610b13d4d7dbab3f15dbe4ff5942aaf5f0034e8fbe2d38913a4b48b2f73b63a9",
+      "retrievedAt": "2026-10-14T08:09:28.767573+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-035",
+      "status": "FETCHED",
+      "sha256": "448168ccc023b3778dc5163ba4251af194bdf9a83687384306f748b7f3bcf61d",
+      "retrievedAt": "2026-10-14T08:09:27.326045+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-035",
+      "status": "FETCHED",
+      "sha256": "c19824320448dd1555b8a476c7539fba46a29aa46a37aede282cc0cf3f5fc4dd",
+      "retrievedAt": "2026-10-14T08:09:28.645274+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-037",
+      "status": "FETCHED",
+      "sha256": "896a7287a3effc709495e1823d74aee84cf4d7efa7ca2650daf02af0f4dafc27",
+      "retrievedAt": "2026-10-14T08:09:27.359082+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-037",
+      "status": "FETCHED",
+      "sha256": "8947e37ade1fb110b025c63b18320f6c2146e52701baa8a8664af99b7cb4cb8c",
+      "retrievedAt": "2026-10-14T08:09:28.881941+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-039",
+      "status": "FETCHED",
+      "sha256": "c714509149389c500faffd6f14db212a416a24ae99fe62ee5c68b39983a5cfc1",
+      "retrievedAt": "2026-10-14T08:09:30.010023+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-039",
+      "status": "FETCHED",
+      "sha256": "44fd9df7934596b661158bf2bb80996f717784d788f22699eb924cfd1cb86876",
+      "retrievedAt": "2026-10-14T08:09:31.558147+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-040",
+      "status": "FETCHED",
+      "sha256": "7c0e95a140a7775dbae790cfac86b21dd7c6f190b9a075077f7c6f2767815d67",
+      "retrievedAt": "2026-10-14T08:09:30.320648+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-040",
+      "status": "FETCHED",
+      "sha256": "0b889d8852d07f271a2b94ba7b18287fb4c28e213d038b99456fd84d65b1c720",
+      "retrievedAt": "2026-10-14T08:09:31.597501+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-041",
+      "status": "FETCHED",
+      "sha256": "e8f28ee71c0228fd787283046421c9b53858d2fa3bac2ece3d7d5c383174b8d6",
+      "retrievedAt": "2026-10-14T08:09:30.403061+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-041",
+      "status": "FETCHED",
+      "sha256": "c8857278c341a6e9b7ce073b8c0ea0ee78e88c920232f8110db4886a951d5620",
+      "retrievedAt": "2026-10-14T08:09:31.695786+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-043",
+      "status": "FETCHED",
+      "sha256": "0414296f72b19e29cd39496e63a5e363edf5f32ae6d2e4efce2e6ba6f9e8a6f3",
+      "retrievedAt": "2026-10-14T08:09:30.117709+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-043",
+      "status": "FETCHED",
+      "sha256": "56e74aef4fc461c539a4c6b7c022fffa4200e3b90b6dbc2a91b59222ebc1e984",
+      "retrievedAt": "2026-10-14T08:09:31.414988+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-045",
+      "status": "FETCHED",
+      "sha256": "c0ca1215e50dd9b57e0190b43a7eb34392f851dc78f0ac9f6adfbd39ca691868",
+      "retrievedAt": "2026-10-14T08:09:30.265117+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-045",
+      "status": "FETCHED",
+      "sha256": "881194789cae1a50e311e3565cdb07ea683ecd57bafd02e622b37c43e3fecbbc",
+      "retrievedAt": "2026-10-14T08:09:31.585111+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "OP02-028",
+      "printingCode": "OP02-028_p1",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP02-033",
+      "printingCode": "OP02-033_p1",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP02-034",
+      "printingCode": "OP02-034_p1",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP02-035",
+      "printingCode": "OP02-035_p2",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP02-037",
+      "printingCode": "OP02-037_p1",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP02-039",
+      "printingCode": "OP02-039_p1",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP02-040",
+      "printingCode": "OP02-040_p1",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP02-041",
+      "printingCode": "OP02-041_p2",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP02-043",
+      "printingCode": "OP02-043_p1",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP02-045",
+      "printingCode": "OP02-045_p1",
+      "name": "Three Sword Style Oni Giri",
+      "type": "EVENT",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST11-001",
+      "printingCode": "ST11-001",
+      "name": "Uta",
+      "type": "LEADER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST11-002",
+      "printingCode": "ST11-002",
+      "name": "Uta",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST11-003",
+      "printingCode": "ST11-003",
+      "name": "Backlight",
+      "type": "EVENT",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST11-004",
+      "printingCode": "ST11-004",
+      "name": "New Genesis",
+      "type": "EVENT",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST11-005",
+      "printingCode": "ST11-005",
+      "name": "I'm invincible",
+      "type": "EVENT",
+      "color": "Green"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST11-001",
+      "quantity": 1,
+      "sourceName": "ウタ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    },
+    {
+      "cardNumber": "ST11-002",
+      "quantity": 2,
+      "sourceName": "ウタ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    },
+    {
+      "cardNumber": "ST11-003",
+      "quantity": 2,
+      "sourceName": "逆光",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    },
+    {
+      "cardNumber": "ST11-004",
+      "quantity": 2,
+      "sourceName": "新時代",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    },
+    {
+      "cardNumber": "ST11-005",
+      "quantity": 4,
+      "sourceName": "私は最強",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-028",
+      "quantity": 4,
+      "sourceName": "ウソップ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-033",
+      "quantity": 4,
+      "sourceName": "ジンベエ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-034",
+      "quantity": 4,
+      "sourceName": "トニートニー・チョッパー",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-035",
+      "quantity": 4,
+      "sourceName": "トラファルガー・ロー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-037",
+      "quantity": 4,
+      "sourceName": "ニコ・ロビン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-039",
+      "quantity": 4,
+      "sourceName": "フランキー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-040",
+      "quantity": 4,
+      "sourceName": "ブルック",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-041",
+      "quantity": 4,
+      "sourceName": "モンキー・Ｄ・ルフィ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-043",
+      "quantity": 4,
+      "sourceName": "ロロノア・ゾロ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-045",
+      "quantity": 4,
+      "sourceName": "三刀流 鬼斬り",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st11_cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -Uta- − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -Uta-"
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) ・DON!! Card x 10 ・Playsheet x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st11.php",
+  "officialDeckTitle": "STARTER DECK -Uta- [ST-11]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "OP02-028",
+      "printingCode": "OP02-028_p2",
+      "name": "ウソップ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP02-033",
+      "printingCode": "OP02-033_p2",
+      "name": "ジンベエ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP02-034",
+      "printingCode": "OP02-034_p2",
+      "name": "トニートニー・チョッパー",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP02-035",
+      "printingCode": "OP02-035_p3",
+      "name": "トラファルガー・ロー",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP02-037",
+      "printingCode": "OP02-037_p2",
+      "name": "ニコ・ロビン",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP02-039",
+      "printingCode": "OP02-039_p2",
+      "name": "フランキー",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP02-040",
+      "printingCode": "OP02-040_p2",
+      "name": "ブルック",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP02-041",
+      "printingCode": "OP02-041_p3",
+      "name": "モンキー・Ｄ・ルフィ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP02-043",
+      "printingCode": "OP02-043_p2",
+      "name": "ロロノア・ゾロ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP02-045",
+      "printingCode": "OP02-045_p2",
+      "name": "三刀流 鬼斬り",
+      "type": "EVENT",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST11-001",
+      "printingCode": "ST11-001",
+      "name": "ウタ",
+      "type": "LEADER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST11-002",
+      "printingCode": "ST11-002",
+      "name": "ウタ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST11-003",
+      "printingCode": "ST11-003",
+      "name": "逆光",
+      "type": "EVENT",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST11-004",
+      "printingCode": "ST11-004",
+      "name": "新時代",
+      "type": "EVENT",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST11-005",
+      "printingCode": "ST11-005",
+      "name": "私は最強",
+      "type": "EVENT",
+      "color": "緑"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST11-001",
+      "printingCode": "ST11-001",
+      "locale": "EN",
+      "name": "Uta",
+      "type": "LEADER",
+      "color": "Green",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "69b4cc78b2ea97259fc210bf0721999589d3c7008f58be0d5a63920f80fe8ff1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "da9d4f1a96d44b29aba8fb37cb8058642902fe838398294f6ec66573849a6c9d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-001",
+      "printingCode": "ST11-001_p1",
+      "locale": "EN",
+      "name": "Uta",
+      "type": "LEADER",
+      "color": "Green",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "69b4cc78b2ea97259fc210bf0721999589d3c7008f58be0d5a63920f80fe8ff1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "da9d4f1a96d44b29aba8fb37cb8058642902fe838398294f6ec66573849a6c9d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-002",
+      "printingCode": "ST11-002",
+      "locale": "EN",
+      "name": "Uta",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "16185dfd3f8634ecc918d13905a5755b57a0b82fdda690a00eaa3da1fbe17cfd",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-003",
+      "printingCode": "ST11-003",
+      "locale": "EN",
+      "name": "Backlight",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "ecce2f9167cb470766f50a566d4638bbbc48a0323ad972a5e69c8bbceccc385a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-003",
+      "printingCode": "ST11-003_p1",
+      "locale": "EN",
+      "name": "Backlight",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "ecce2f9167cb470766f50a566d4638bbbc48a0323ad972a5e69c8bbceccc385a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-003",
+      "printingCode": "ST11-003_p2",
+      "locale": "EN",
+      "name": "Backlight",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "ecce2f9167cb470766f50a566d4638bbbc48a0323ad972a5e69c8bbceccc385a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-004",
+      "printingCode": "ST11-004",
+      "locale": "EN",
+      "name": "New Genesis",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "a906c6cd225be2d22c16ce2fb8d849db48bab290c57c00a7264c2b9a0d0b4b88",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-004",
+      "printingCode": "ST11-004_p1",
+      "locale": "EN",
+      "name": "New Genesis",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "a906c6cd225be2d22c16ce2fb8d849db48bab290c57c00a7264c2b9a0d0b4b88",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-004",
+      "printingCode": "ST11-004_p2",
+      "locale": "EN",
+      "name": "New Genesis",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "a906c6cd225be2d22c16ce2fb8d849db48bab290c57c00a7264c2b9a0d0b4b88",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-005",
+      "printingCode": "ST11-005",
+      "locale": "EN",
+      "name": "I'm invincible",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "4a4859eedcae9f246ab208aa990297d8fa415c4d611b56fb9530d60367c9f66c",
+      "triggerHash": "aa8c52259b5bf9ec91a7be2a84bc5115de843ce0b0ebd7d178be9c12e172de7e",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "8f7d8291712fa177e962b3af0455b2abff97133bb8b803b63151e989a3a35c4c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-005",
+      "printingCode": "ST11-005_p1",
+      "locale": "EN",
+      "name": "I'm invincible",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "4a4859eedcae9f246ab208aa990297d8fa415c4d611b56fb9530d60367c9f66c",
+      "triggerHash": "aa8c52259b5bf9ec91a7be2a84bc5115de843ce0b0ebd7d178be9c12e172de7e",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-005",
+      "printingCode": "ST11-005_p2",
+      "locale": "EN",
+      "name": "I'm invincible",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "4a4859eedcae9f246ab208aa990297d8fa415c4d611b56fb9530d60367c9f66c",
+      "triggerHash": "aa8c52259b5bf9ec91a7be2a84bc5115de843ce0b0ebd7d178be9c12e172de7e",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-001",
+      "printingCode": "ST11-001_p1",
+      "locale": "FR",
+      "name": "Uta",
+      "type": "LEADER",
+      "color": "Vert",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "2565ba0adecbd3acc58b657fbd7cc11be332f0ffdeb0ab5154e2d997e8084b92",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "da9d4f1a96d44b29aba8fb37cb8058642902fe838398294f6ec66573849a6c9d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-003",
+      "printingCode": "ST11-003_p1",
+      "locale": "FR",
+      "name": "À contre-jour",
+      "type": "EVENT",
+      "color": "Vert",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "ee11b7dab50d7c4cb134bd98e225e95be6f9c6b4fd15a7823da1f46908119fee",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "c2ea1c55f5849db4cf0d830f3be53fb95461f440b6b5cfa745f0923e7671c70a",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-004",
+      "printingCode": "ST11-004_p1",
+      "locale": "FR",
+      "name": "Nouvelle ère",
+      "type": "EVENT",
+      "color": "Vert",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "2d546e8a96208f2f18fe542f476620067427ef289efc511448d5bcdf1382b720",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "c2ea1c55f5849db4cf0d830f3be53fb95461f440b6b5cfa745f0923e7671c70a",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "ST11-005",
+      "printingCode": "ST11-005_p1",
+      "locale": "FR",
+      "name": "Je suis la plus forte",
+      "type": "EVENT",
+      "color": "Vert",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "9db71a19428951ed6cf26d96a13153c56db9c99c3293f0c5baea948d32d21133",
+      "triggerHash": "16e45a000271e269399109121ed0b53e72e9e639ad1312006e63de70ae00ffbf",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "c2ea1c55f5849db4cf0d830f3be53fb95461f440b6b5cfa745f0923e7671c70a",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST11"
+    },
+    {
+      "cardNumber": "OP02-028",
+      "printingCode": "OP02-028",
+      "locale": "EN",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "d77dadd632bc5b74b19fbf03dd3a33482b15429422f2cda09d43d1e064acb08a",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-028"
+    },
+    {
+      "cardNumber": "OP02-028",
+      "printingCode": "OP02-028_p1",
+      "locale": "EN",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "d77dadd632bc5b74b19fbf03dd3a33482b15429422f2cda09d43d1e064acb08a",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-028"
+    },
+    {
+      "cardNumber": "OP02-033",
+      "printingCode": "OP02-033",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "b03a2238e1a90647edbb725e87fda214bb62ecc20b91a489562fdf2ca0c779cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-033"
+    },
+    {
+      "cardNumber": "OP02-033",
+      "printingCode": "OP02-033_p1",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "b03a2238e1a90647edbb725e87fda214bb62ecc20b91a489562fdf2ca0c779cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-033"
+    },
+    {
+      "cardNumber": "OP02-034",
+      "printingCode": "OP02-034",
+      "locale": "EN",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "04752d69ed55d8b704ab6a954c70e26c0d71c29ee92bc8684818c537460753d0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "b65920a399f61e3ebccf5d168f523ce6d1211a57afef6bc2bae02cacf668401e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-034"
+    },
+    {
+      "cardNumber": "OP02-034",
+      "printingCode": "OP02-034_p1",
+      "locale": "EN",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "04752d69ed55d8b704ab6a954c70e26c0d71c29ee92bc8684818c537460753d0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "b65920a399f61e3ebccf5d168f523ce6d1211a57afef6bc2bae02cacf668401e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-034"
+    },
+    {
+      "cardNumber": "OP02-034",
+      "printingCode": "OP02-034_p2",
+      "locale": "EN",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "04752d69ed55d8b704ab6a954c70e26c0d71c29ee92bc8684818c537460753d0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "b65920a399f61e3ebccf5d168f523ce6d1211a57afef6bc2bae02cacf668401e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-034"
+    },
+    {
+      "cardNumber": "OP02-034",
+      "printingCode": "OP02-034_p1",
+      "locale": "FR",
+      "name": "Tony-Tony Chopper",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 2,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "e83c7b93c3c2f3a3b722d8bfc08e7ca791297ecaa895bea7587e99d5010b23a0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "1a8f81eaa9907f11b7221a39fca6e829539f5461145eccde3202ab2027ce0c57",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-034"
+    },
+    {
+      "cardNumber": "OP02-034",
+      "printingCode": "OP02-034_p2",
+      "locale": "FR",
+      "name": "Tony-Tony Chopper",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 2,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "e83c7b93c3c2f3a3b722d8bfc08e7ca791297ecaa895bea7587e99d5010b23a0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "1a8f81eaa9907f11b7221a39fca6e829539f5461145eccde3202ab2027ce0c57",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-034"
+    },
+    {
+      "cardNumber": "OP02-035",
+      "printingCode": "OP02-035",
+      "locale": "EN",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "22acc3749282459fd7840239e16f3067353b40378d9556068677d15fc3a821fd",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "4c96261621671773fc45b4bd95cff8f5d5135c0da43ce813b18fc8b06ae1594c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-035"
+    },
+    {
+      "cardNumber": "OP02-035",
+      "printingCode": "OP02-035_p1",
+      "locale": "EN",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "22acc3749282459fd7840239e16f3067353b40378d9556068677d15fc3a821fd",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "4c96261621671773fc45b4bd95cff8f5d5135c0da43ce813b18fc8b06ae1594c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-035"
+    },
+    {
+      "cardNumber": "OP02-035",
+      "printingCode": "OP02-035_p2",
+      "locale": "EN",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "22acc3749282459fd7840239e16f3067353b40378d9556068677d15fc3a821fd",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "4c96261621671773fc45b4bd95cff8f5d5135c0da43ce813b18fc8b06ae1594c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-035"
+    },
+    {
+      "cardNumber": "OP02-037",
+      "printingCode": "OP02-037",
+      "locale": "EN",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "c972041ccef2a6ce45c4d7c37676ff349c854ea279b7bc1e6ceda0872c20b01d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "d77dadd632bc5b74b19fbf03dd3a33482b15429422f2cda09d43d1e064acb08a",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-037"
+    },
+    {
+      "cardNumber": "OP02-037",
+      "printingCode": "OP02-037_p1",
+      "locale": "EN",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "c972041ccef2a6ce45c4d7c37676ff349c854ea279b7bc1e6ceda0872c20b01d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "d77dadd632bc5b74b19fbf03dd3a33482b15429422f2cda09d43d1e064acb08a",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-037"
+    },
+    {
+      "cardNumber": "OP02-039",
+      "printingCode": "OP02-039",
+      "locale": "EN",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "d77dadd632bc5b74b19fbf03dd3a33482b15429422f2cda09d43d1e064acb08a",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-039"
+    },
+    {
+      "cardNumber": "OP02-039",
+      "printingCode": "OP02-039_p1",
+      "locale": "EN",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "d77dadd632bc5b74b19fbf03dd3a33482b15429422f2cda09d43d1e064acb08a",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-039"
+    },
+    {
+      "cardNumber": "OP02-040",
+      "printingCode": "OP02-040",
+      "locale": "EN",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "4ea4c1ba8b03b0e9b98990c66da15bbc575bc7124ff95f2b2eb6b513a86905a2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "d77dadd632bc5b74b19fbf03dd3a33482b15429422f2cda09d43d1e064acb08a",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-040"
+    },
+    {
+      "cardNumber": "OP02-040",
+      "printingCode": "OP02-040_p1",
+      "locale": "EN",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "4ea4c1ba8b03b0e9b98990c66da15bbc575bc7124ff95f2b2eb6b513a86905a2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "d77dadd632bc5b74b19fbf03dd3a33482b15429422f2cda09d43d1e064acb08a",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-040"
+    },
+    {
+      "cardNumber": "OP02-041",
+      "printingCode": "OP02-041",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 7,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "d405143aca75dd58d8d9d46a6ee73c316de5a5d4ff73cf2a3f4298ea25ff9b5e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5ac0b9dd80d4afb5645a466ee4b045fdced5eac8f6c464e58f2eaeb4c4cdb865",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-041"
+    },
+    {
+      "cardNumber": "OP02-041",
+      "printingCode": "OP02-041_p1",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 7,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "d405143aca75dd58d8d9d46a6ee73c316de5a5d4ff73cf2a3f4298ea25ff9b5e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5ac0b9dd80d4afb5645a466ee4b045fdced5eac8f6c464e58f2eaeb4c4cdb865",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-041"
+    },
+    {
+      "cardNumber": "OP02-041",
+      "printingCode": "OP02-041_p2",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 7,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "d405143aca75dd58d8d9d46a6ee73c316de5a5d4ff73cf2a3f4298ea25ff9b5e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5ac0b9dd80d4afb5645a466ee4b045fdced5eac8f6c464e58f2eaeb4c4cdb865",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-041"
+    },
+    {
+      "cardNumber": "OP02-043",
+      "printingCode": "OP02-043",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5ac0b9dd80d4afb5645a466ee4b045fdced5eac8f6c464e58f2eaeb4c4cdb865",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-043"
+    },
+    {
+      "cardNumber": "OP02-043",
+      "printingCode": "OP02-043_p1",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5ac0b9dd80d4afb5645a466ee4b045fdced5eac8f6c464e58f2eaeb4c4cdb865",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-043"
+    },
+    {
+      "cardNumber": "OP02-045",
+      "printingCode": "OP02-045",
+      "locale": "EN",
+      "name": "Three Sword Style Oni Giri",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "2f0fb5b92acb193ae712fca4aea520a443f3f791a119e44cf6db0098caf298d8",
+      "triggerHash": "99e8689d08d297bd80ed6fe349b85da51eaaa18c90409a780a68f8d972371c55",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5ac0b9dd80d4afb5645a466ee4b045fdced5eac8f6c464e58f2eaeb4c4cdb865",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-045"
+    },
+    {
+      "cardNumber": "OP02-045",
+      "printingCode": "OP02-045_p1",
+      "locale": "EN",
+      "name": "Three Sword Style Oni Giri",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "2f0fb5b92acb193ae712fca4aea520a443f3f791a119e44cf6db0098caf298d8",
+      "triggerHash": "99e8689d08d297bd80ed6fe349b85da51eaaa18c90409a780a68f8d972371c55",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5ac0b9dd80d4afb5645a466ee4b045fdced5eac8f6c464e58f2eaeb4c4cdb865",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP02-045"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "ST11-001",
+      "printingCode": "ST11-001_p1",
+      "name": "Uta",
+      "type": "LEADER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST11-003",
+      "printingCode": "ST11-003_p1",
+      "name": "À contre-jour",
+      "type": "EVENT",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST11-004",
+      "printingCode": "ST11-004_p1",
+      "name": "Nouvelle ère",
+      "type": "EVENT",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST11-005",
+      "printingCode": "ST11-005_p1",
+      "name": "Je suis la plus forte",
+      "type": "EVENT",
+      "color": "Vert"
+    }
+  ]
+}

@@ -1,0 +1,992 @@
+{
+  "deckCode": "ST-19",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569019",
+      "status": "FETCHED",
+      "sha256": "e14c2915d4003a9f2f8ad8e2dc633f97f688a863284838a55051c8949d8eb975",
+      "retrievedAt": "2026-10-14T07:27:01.972218+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st19-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st19-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st19.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st19.php",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st19_cardlists/",
+      "status": "FETCHED",
+      "sha256": "36b1e373fd517ae7a88b8e8031adc4a9ca64ed353165168ddabec6e2295cbca3",
+      "retrievedAt": "2026-10-14T07:31:37.273428+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st15-20.php",
+      "status": "FETCHED",
+      "sha256": "0863e3edecd416a4e0120fd9360cd47f4cc7e4e966c3837ff7a4c022a902ecaf",
+      "retrievedAt": "2026-10-14T07:31:38.608180+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569019",
+      "status": "FETCHED",
+      "sha256": "e14c2915d4003a9f2f8ad8e2dc633f97f688a863284838a55051c8949d8eb975",
+      "retrievedAt": "2026-10-14T07:31:39.955625+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569019",
+      "status": "FETCHED",
+      "sha256": "e14c2915d4003a9f2f8ad8e2dc633f97f688a863284838a55051c8949d8eb975",
+      "retrievedAt": "2026-10-14T07:35:06.425696+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st19_cardlists/",
+      "status": "FETCHED",
+      "sha256": "36b1e373fd517ae7a88b8e8031adc4a9ca64ed353165168ddabec6e2295cbca3",
+      "retrievedAt": "2026-10-14T07:35:08.314838+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550019",
+      "status": "FETCHED",
+      "sha256": "6881d57b6b7a7707ef9e951ad85785d3e48a5bf77e9df770b8c4151a9d98b1b4",
+      "retrievedAt": "2026-10-14T07:35:10.428354+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569019",
+      "status": "FETCHED",
+      "sha256": "e14c2915d4003a9f2f8ad8e2dc633f97f688a863284838a55051c8949d8eb975",
+      "retrievedAt": "2026-10-14T07:53:02.653795+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622019",
+      "status": "FETCHED",
+      "sha256": "105a407dd7ed8404fdcb656f4166450d75f09b3c59617f97a92bd6a88438ba10",
+      "retrievedAt": "2026-10-14T07:53:04.047218+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "OP02-093",
+      "printingCode": "OP02-093_p2",
+      "name": "Smoker",
+      "type": "LEADER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP02-098",
+      "printingCode": "OP02-098_r1",
+      "name": "Koby",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP02-106",
+      "printingCode": "OP02-106_r1",
+      "name": "Tsuru",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP02-108",
+      "printingCode": "OP02-108_r1",
+      "name": "Donquixote Rosinante",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP02-109",
+      "printingCode": "OP02-109_r1",
+      "name": "Jaguar.D.Saul",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP02-113",
+      "printingCode": "OP02-113_r1",
+      "name": "Helmeppo",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP02-116",
+      "printingCode": "OP02-116_r1",
+      "name": "Yamakaji",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP02-117",
+      "printingCode": "OP02-117_r1",
+      "name": "Ice Age",
+      "type": "EVENT",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP03-079",
+      "printingCode": "OP03-079_r1",
+      "name": "Vergo",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP03-089",
+      "printingCode": "OP03-089_r1",
+      "name": "Brannew",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST19-001",
+      "printingCode": "ST19-001",
+      "name": "Smoker",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST19-002",
+      "printingCode": "ST19-002",
+      "name": "Sengoku",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST19-003",
+      "printingCode": "ST19-003",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST19-004",
+      "printingCode": "ST19-004",
+      "name": "Hina",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST19-005",
+      "printingCode": "ST19-005",
+      "name": "Monkey.D.Garp",
+      "type": "CHARACTER",
+      "color": "Black"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "OP02-093",
+      "quantity": 1,
+      "sourceName": "スモーカー",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    },
+    {
+      "cardNumber": "ST19-001",
+      "quantity": 4,
+      "sourceName": "スモーカー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    },
+    {
+      "cardNumber": "ST19-002",
+      "quantity": 2,
+      "sourceName": "センゴク",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    },
+    {
+      "cardNumber": "ST19-003",
+      "quantity": 2,
+      "sourceName": "たしぎ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    },
+    {
+      "cardNumber": "ST19-004",
+      "quantity": 2,
+      "sourceName": "ヒナ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    },
+    {
+      "cardNumber": "ST19-005",
+      "quantity": 4,
+      "sourceName": "モンキー・D・ガープ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-098",
+      "quantity": 4,
+      "sourceName": "コビー",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-106",
+      "quantity": 4,
+      "sourceName": "つる",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-108",
+      "quantity": 4,
+      "sourceName": "ドンキホーテ・ロシナンテ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-109",
+      "quantity": 4,
+      "sourceName": "ハグワール・D・サウロ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-113",
+      "quantity": 4,
+      "sourceName": "ヘルメッポ",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-116",
+      "quantity": 4,
+      "sourceName": "ヤマカジ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    },
+    {
+      "cardNumber": "OP03-079",
+      "quantity": 4,
+      "sourceName": "ヴェルゴ",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    },
+    {
+      "cardNumber": "OP03-089",
+      "quantity": 4,
+      "sourceName": "ブランニュー",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-117",
+      "quantity": 4,
+      "sourceName": "氷河時代",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st19_cardlists/"
+    }
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) \r\n                   ・DON!! Card x 10 \r\n                   ・Playsheet x 1 \r\n                   ・PREMIUM BOOSTER –ONE PIECE CARD THE BEST- x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st15-20.php",
+  "officialDeckTitle": "STARTER DECK -Black Smoker- [ST-19]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "OP02-093",
+      "printingCode": "OP02-093_p2",
+      "name": "スモーカー",
+      "type": "LEADER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP02-098",
+      "printingCode": "OP02-098_r1",
+      "name": "コビー",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP02-106",
+      "printingCode": "OP02-106_r1",
+      "name": "つる",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP02-108",
+      "printingCode": "OP02-108_r1",
+      "name": "ドンキホーテ・ロシナンテ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP02-109",
+      "printingCode": "OP02-109_r1",
+      "name": "ハグワール・D・サウロ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP02-113",
+      "printingCode": "OP02-113_r1",
+      "name": "ヘルメッポ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP02-116",
+      "printingCode": "OP02-116_r1",
+      "name": "ヤマカジ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP02-117",
+      "printingCode": "OP02-117_r1",
+      "name": "氷河時代",
+      "type": "EVENT",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP03-079",
+      "printingCode": "OP03-079_r1",
+      "name": "ヴェルゴ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP03-089",
+      "printingCode": "OP03-089_r1",
+      "name": "ブランニュー",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST19-001",
+      "printingCode": "ST19-001",
+      "name": "スモーカー",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST19-002",
+      "printingCode": "ST19-002",
+      "name": "センゴク",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST19-003",
+      "printingCode": "ST19-003",
+      "name": "たしぎ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST19-004",
+      "printingCode": "ST19-004",
+      "name": "ヒナ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST19-005",
+      "printingCode": "ST19-005",
+      "name": "モンキー・D・ガープ",
+      "type": "CHARACTER",
+      "color": "黒"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "OP02-093",
+      "printingCode": "OP02-093_p2",
+      "locale": "EN",
+      "name": "Smoker",
+      "type": "LEADER",
+      "color": "Black",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "7e11ce42162f896ae0f9b5fc2c025e3ab98980de50b2cd198347a509beb92b07",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "OP02-098",
+      "printingCode": "OP02-098_r1",
+      "locale": "EN",
+      "name": "Koby",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "eea97fe0f4d2d47d0ac2895596f90aff2bde961dbff6214bf9ff0cf451177bb1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "OP02-106",
+      "printingCode": "OP02-106_r1",
+      "locale": "EN",
+      "name": "Tsuru",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": 2000,
+      "effectHash": "361c391676a40c1c82359286b7ffa11092f870fc33dcdeb628cc68f56a385046",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "OP02-108",
+      "printingCode": "OP02-108_r1",
+      "locale": "EN",
+      "name": "Donquixote Rosinante",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "389b98fa443d0bbc1c66188ad3c34faf3b263e5c63ee71e353ebf67c63c2585e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "OP02-109",
+      "printingCode": "OP02-109_r1",
+      "locale": "EN",
+      "name": "Jaguar.D.Saul",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "1e537a090b844201525b9515b7d90b248ab366558cb7fb3f67022754adb7c276",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "OP02-113",
+      "printingCode": "OP02-113_r1",
+      "locale": "EN",
+      "name": "Helmeppo",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "fb73dde6bbc2bd98aaafb989c248387af8b163084ba85976715002b1c71f62b4",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "OP02-116",
+      "printingCode": "OP02-116_r1",
+      "locale": "EN",
+      "name": "Yamakaji",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "OP02-117",
+      "printingCode": "OP02-117_r1",
+      "locale": "EN",
+      "name": "Ice Age",
+      "type": "EVENT",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "cb0fba7de0f544d685aaa049fdae683cb9503e391b1fecd3d7c8c69902a7758b",
+      "triggerHash": "60c87f74174c02c8a602e594423a0d745b931564d56395beaa4443aa6e3300ad",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "OP03-079",
+      "printingCode": "OP03-079_r1",
+      "locale": "EN",
+      "name": "Vergo",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "e0d3b815739ad53cb070b9c0bf5044023e207ac645db471a2e583362d292c232",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "389b98fa443d0bbc1c66188ad3c34faf3b263e5c63ee71e353ebf67c63c2585e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "OP03-089",
+      "printingCode": "OP03-089_r1",
+      "locale": "EN",
+      "name": "Brannew",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "0ac60cf0546f2dcbc090e0eef42c82264e501ce3b19d4d09e4ea4e53d50d5acc",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "ST19-001",
+      "printingCode": "ST19-001",
+      "locale": "EN",
+      "name": "Smoker",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "885897a5b3463b2244e5b46d53848a88ad6046ea01308c6ff13cf65a1417318e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "ST19-002",
+      "printingCode": "ST19-002",
+      "locale": "EN",
+      "name": "Sengoku",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "6195a1c2f5129d9e62799abbf88c7e756317fce3f582350430c8256ad571fa25",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "ST19-003",
+      "printingCode": "ST19-003",
+      "locale": "EN",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "22257f301763db2888018cd9899ef35bf3feeb9343fba4c53a93dbde2468bfbe",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "ST19-004",
+      "printingCode": "ST19-004",
+      "locale": "EN",
+      "name": "Hina",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "1bf67fbb9494535598beef00bd688f10aa5d72e0fce72ba096b6cfaeb6c7f1f4",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "ST19-005",
+      "printingCode": "ST19-005",
+      "locale": "EN",
+      "name": "Monkey.D.Garp",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e398ae22b8657fd8ed5ade443050972d77eb341041df577ee2d457c2ca6f9391",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569019"
+    },
+    {
+      "cardNumber": "OP02-093",
+      "printingCode": "OP02-093_p1",
+      "locale": "FR",
+      "name": "Smoker",
+      "type": "LEADER",
+      "color": "Noir",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "bcaff900e7757350590f1d444a5d788390edf4a2985a8cde212d16c47c710bd0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    },
+    {
+      "cardNumber": "OP02-098",
+      "printingCode": "OP02-098_p1",
+      "locale": "FR",
+      "name": "Kobby",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "67890c509172c1ac40ac48fb5b3cf4ae56effbbe7ea56a66228fdb8ae268c5a7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    },
+    {
+      "cardNumber": "OP02-106",
+      "printingCode": "OP02-106_p1",
+      "locale": "FR",
+      "name": "Tsuru",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 1,
+      "power": null,
+      "counter": 2000,
+      "effectHash": "d2784d318e268fdf71a950a9782fdd9d2d75dabb4ac8a091eb0eececa4ced412",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    },
+    {
+      "cardNumber": "OP02-108",
+      "printingCode": "OP02-108_p1",
+      "locale": "FR",
+      "name": "Don Quijote Rosinante",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "6392eb1d79b32e9eb7d3bd373aace217bb65858a976295390efae00f9c5277dc",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    },
+    {
+      "cardNumber": "OP02-109",
+      "printingCode": "OP02-109_p1",
+      "locale": "FR",
+      "name": "Haguar D. Sauro",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "895f1a1ccd2b4c20117e62774bc27a3be205d148249084a0f3cbbc3fd2b79f36",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    },
+    {
+      "cardNumber": "OP02-113",
+      "printingCode": "OP02-113_p1",
+      "locale": "FR",
+      "name": "Hermep",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 3,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "7452cf9c51473a4a9cfe7b5016a9bfbad5998bad06d8396f4d380c11e0fc279b",
+      "triggerHash": "2555609e1691cff70e61c3cc56568354cae16fae513db57ca61889154bc43bbc",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    },
+    {
+      "cardNumber": "OP02-116",
+      "printingCode": "OP02-116_p1",
+      "locale": "FR",
+      "name": "Yamakaji",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    },
+    {
+      "cardNumber": "OP02-117",
+      "printingCode": "OP02-117_p1",
+      "locale": "FR",
+      "name": "Ice Age",
+      "type": "EVENT",
+      "color": "Noir",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "319dca1aa8286e24a50ad90ba7fe461ef31625d1e20483c537af28fdcb6eb020",
+      "triggerHash": "e3898f8fd9dfd35d685441e7e2f8202c3b0038f49c3f9e51b33bc1a52a76a9ec",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    },
+    {
+      "cardNumber": "OP03-079",
+      "printingCode": "OP03-079_p1",
+      "locale": "FR",
+      "name": "Vergo",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 5,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "55744590b98a7bea6b9944489cec52f130c02bdab241b149012f4a4171b9924e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "6392eb1d79b32e9eb7d3bd373aace217bb65858a976295390efae00f9c5277dc",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    },
+    {
+      "cardNumber": "OP03-089",
+      "printingCode": "OP03-089_p1",
+      "locale": "FR",
+      "name": "Brandnew",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "be60504bcf34e21bde005d68c6b66a79c3c0b2c927b5c4d510c3d004994fd797",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    },
+    {
+      "cardNumber": "ST19-001",
+      "printingCode": "ST19-001",
+      "locale": "FR",
+      "name": "Smoker",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "5746ff6dc2306663574d0b452163394f8fe766cace7348372b8554a43a59b4e1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    },
+    {
+      "cardNumber": "ST19-002",
+      "printingCode": "ST19-002",
+      "locale": "FR",
+      "name": "Sengoku",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "b9012f34c0f9df43517439d7e4e240a8214c02d6ba582b01743bbc103b979516",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    },
+    {
+      "cardNumber": "ST19-003",
+      "printingCode": "ST19-003",
+      "locale": "FR",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "ce24e1e4c95798f6fd2b03561410b5e74a0f48035182e331b07d6ee775591575",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    },
+    {
+      "cardNumber": "ST19-004",
+      "printingCode": "ST19-004",
+      "locale": "FR",
+      "name": "Hina",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "2086a9c1610239b2dfb134b697d2fbaa9b461654500fa2fc6bd4d90a48287499",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    },
+    {
+      "cardNumber": "ST19-005",
+      "printingCode": "ST19-005",
+      "locale": "FR",
+      "name": "Monkey D. Garp",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "55424549d0883dc857ef39848e2572cdd94ee540f5ecfca359fd5e6885e1eb08",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622019"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "OP02-093",
+      "printingCode": "OP02-093_p1",
+      "name": "Smoker",
+      "type": "LEADER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP02-098",
+      "printingCode": "OP02-098_p1",
+      "name": "Kobby",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP02-106",
+      "printingCode": "OP02-106_p1",
+      "name": "Tsuru",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP02-108",
+      "printingCode": "OP02-108_p1",
+      "name": "Don Quijote Rosinante",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP02-109",
+      "printingCode": "OP02-109_p1",
+      "name": "Haguar D. Sauro",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP02-113",
+      "printingCode": "OP02-113_p1",
+      "name": "Hermep",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP02-116",
+      "printingCode": "OP02-116_p1",
+      "name": "Yamakaji",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP02-117",
+      "printingCode": "OP02-117_p1",
+      "name": "Ice Age",
+      "type": "EVENT",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP03-079",
+      "printingCode": "OP03-079_p1",
+      "name": "Vergo",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP03-089",
+      "printingCode": "OP03-089_p1",
+      "name": "Brandnew",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST19-001",
+      "printingCode": "ST19-001",
+      "name": "Smoker",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST19-002",
+      "printingCode": "ST19-002",
+      "name": "Sengoku",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST19-003",
+      "printingCode": "ST19-003",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST19-004",
+      "printingCode": "ST19-004",
+      "name": "Hina",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST19-005",
+      "printingCode": "ST19-005",
+      "name": "Monkey D. Garp",
+      "type": "CHARACTER",
+      "color": "Noir"
+    }
+  ]
+}

@@ -1,0 +1,1854 @@
+{
+  "deckCode": "ST-29",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569029",
+      "status": "FETCHED",
+      "sha256": "279ce25f898e128ba1806a0821eb2850cc18dbd6613fef1b5564c07c400eaa88",
+      "retrievedAt": "2026-10-14T07:27:15.312469+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st29-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st29-card-list/",
+      "status": "FETCHED",
+      "sha256": "bf9fdef89d28bbc7e14cb871d63f34b1150efd4cb6c076b631440fab5a6177dd",
+      "retrievedAt": "2026-10-14T07:27:17.761122+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st29.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st29.php",
+      "status": "FETCHED",
+      "sha256": "404a8ab204a2affa386e28c2c4599813a17aaa84b94c1e82c77cbf914d954c70",
+      "retrievedAt": "2026-10-14T07:27:20.998005+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st29-card-list/",
+      "status": "FETCHED",
+      "sha256": "bf9fdef89d28bbc7e14cb871d63f34b1150efd4cb6c076b631440fab5a6177dd",
+      "retrievedAt": "2026-10-14T07:31:44.823169+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569029",
+      "status": "FETCHED",
+      "sha256": "279ce25f898e128ba1806a0821eb2850cc18dbd6613fef1b5564c07c400eaa88",
+      "retrievedAt": "2026-10-14T07:31:46.455620+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569029",
+      "status": "FETCHED",
+      "sha256": "279ce25f898e128ba1806a0821eb2850cc18dbd6613fef1b5564c07c400eaa88",
+      "retrievedAt": "2026-10-14T07:35:13.126408+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st29-card-list/",
+      "status": "FETCHED",
+      "sha256": "bf9fdef89d28bbc7e14cb871d63f34b1150efd4cb6c076b631440fab5a6177dd",
+      "retrievedAt": "2026-10-14T07:35:14.693002+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550029",
+      "status": "FETCHED",
+      "sha256": "1120bd8eb7bc53c1cc477bf673d1436878001158e736ce2cd1af2b964510e9a5",
+      "retrievedAt": "2026-10-14T07:35:16.565604+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569029",
+      "status": "FETCHED",
+      "sha256": "279ce25f898e128ba1806a0821eb2850cc18dbd6613fef1b5564c07c400eaa88",
+      "retrievedAt": "2026-10-14T07:53:06.755121+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622029",
+      "status": "FETCHED",
+      "sha256": "f1ccda4c26523833561d72c3be277b81514f8e6e3da433c5a56caae92ecef175",
+      "retrievedAt": "2026-10-14T07:53:08.377531+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "ST29-001",
+      "printingCode": "ST29-001",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-001",
+      "printingCode": "ST29-001_p1",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-002",
+      "printingCode": "ST29-002",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-002",
+      "printingCode": "ST29-002_p1",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-003",
+      "printingCode": "ST29-003",
+      "name": "Kaku",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-003",
+      "printingCode": "ST29-003_p1",
+      "name": "Kaku",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-004",
+      "printingCode": "ST29-004",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-004",
+      "printingCode": "ST29-004_p1",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-005",
+      "printingCode": "ST29-005",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-005",
+      "printingCode": "ST29-005_p1",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-006",
+      "printingCode": "ST29-006",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-006",
+      "printingCode": "ST29-006_p1",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-007",
+      "printingCode": "ST29-007",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-007",
+      "printingCode": "ST29-007_p1",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-008",
+      "printingCode": "ST29-008",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-008",
+      "printingCode": "ST29-008_p1",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-009",
+      "printingCode": "ST29-009",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-009",
+      "printingCode": "ST29-009_p1",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-010",
+      "printingCode": "ST29-010",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-010",
+      "printingCode": "ST29-010_p1",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-011",
+      "printingCode": "ST29-011",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-011",
+      "printingCode": "ST29-011_p1",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-012",
+      "printingCode": "ST29-012",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-012",
+      "printingCode": "ST29-012_p1",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-013",
+      "printingCode": "ST29-013",
+      "name": "Rob Lucci",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-013",
+      "printingCode": "ST29-013_p1",
+      "name": "Rob Lucci",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-014",
+      "printingCode": "ST29-014",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-014",
+      "printingCode": "ST29-014_p1",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-015",
+      "printingCode": "ST29-015",
+      "name": "Raw Heat Strike",
+      "type": "EVENT",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-016",
+      "printingCode": "ST29-016",
+      "name": "Kizaru!! Compared to Two Years Ago We're a Hundred Times Stronger Now!!",
+      "type": "EVENT",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST29-017",
+      "printingCode": "ST29-017",
+      "name": "Iai Death Lion Song",
+      "type": "EVENT",
+      "color": "Yellow"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST29-001",
+      "quantity": 1,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-002",
+      "quantity": 4,
+      "sourceName": "ウソップ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-003",
+      "quantity": 4,
+      "sourceName": "カク",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-004",
+      "quantity": 2,
+      "sourceName": "サンジ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-005",
+      "quantity": 2,
+      "sourceName": "ジンベエ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-006",
+      "quantity": 4,
+      "sourceName": "ステューシー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-007",
+      "quantity": 2,
+      "sourceName": "トニートニー・チョッパー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-008",
+      "quantity": 2,
+      "sourceName": "ナミ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-009",
+      "quantity": 2,
+      "sourceName": "ニコ・ロビン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-010",
+      "quantity": 4,
+      "sourceName": "フランキー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-011",
+      "quantity": 4,
+      "sourceName": "ブルック",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-012",
+      "quantity": 4,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-013",
+      "quantity": 4,
+      "sourceName": "ロブ・ルッチ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-014",
+      "quantity": 2,
+      "sourceName": "ロロノア・ゾロ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-015",
+      "quantity": 4,
+      "sourceName": "温度レアストライク",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-016",
+      "quantity": 2,
+      "sourceName": "黄猿!!おれ達は2年前の100倍強ェぞ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    },
+    {
+      "cardNumber": "ST29-017",
+      "quantity": 4,
+      "sourceName": "死・獅子歌歌",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st29-card-list/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -Egghead- [ST-29] − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -Egghead- [ST-29]"
+  ],
+  "productContents": "Constructed Deck x 1 (51 cards),DON!! Card x 10,Playsheet x 1,Bonus Pack x 1 (3 cards, 14 types in total)",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st29.php",
+  "officialDeckTitle": "STARTER DECK -Egghead- [ST-29]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "ST29-001",
+      "printingCode": "ST29-001",
+      "name": "モンキー・Ｄ・ルフィ",
+      "type": "LEADER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-001",
+      "printingCode": "ST29-001_p1",
+      "name": "モンキー・Ｄ・ルフィ",
+      "type": "LEADER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-002",
+      "printingCode": "ST29-002",
+      "name": "ウソップ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-002",
+      "printingCode": "ST29-002_p1",
+      "name": "ウソップ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-003",
+      "printingCode": "ST29-003",
+      "name": "カク",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-003",
+      "printingCode": "ST29-003_p1",
+      "name": "カク",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-004",
+      "printingCode": "ST29-004",
+      "name": "サンジ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-004",
+      "printingCode": "ST29-004_p1",
+      "name": "サンジ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-005",
+      "printingCode": "ST29-005",
+      "name": "ジンベエ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-005",
+      "printingCode": "ST29-005_p1",
+      "name": "ジンベエ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-006",
+      "printingCode": "ST29-006",
+      "name": "ステューシー",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-006",
+      "printingCode": "ST29-006_p1",
+      "name": "ステューシー",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-007",
+      "printingCode": "ST29-007",
+      "name": "トニートニー・チョッパー",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-007",
+      "printingCode": "ST29-007_p1",
+      "name": "トニートニー・チョッパー",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-008",
+      "printingCode": "ST29-008",
+      "name": "ナミ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-008",
+      "printingCode": "ST29-008_p1",
+      "name": "ナミ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-009",
+      "printingCode": "ST29-009",
+      "name": "ニコ・ロビン",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-009",
+      "printingCode": "ST29-009_p1",
+      "name": "ニコ・ロビン",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-010",
+      "printingCode": "ST29-010",
+      "name": "フランキー",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-010",
+      "printingCode": "ST29-010_p1",
+      "name": "フランキー",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-011",
+      "printingCode": "ST29-011",
+      "name": "ブルック",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-011",
+      "printingCode": "ST29-011_p1",
+      "name": "ブルック",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-012",
+      "printingCode": "ST29-012",
+      "name": "モンキー・Ｄ・ルフィ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-012",
+      "printingCode": "ST29-012_p1",
+      "name": "モンキー・Ｄ・ルフィ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-013",
+      "printingCode": "ST29-013",
+      "name": "ロブ・ルッチ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-013",
+      "printingCode": "ST29-013_p1",
+      "name": "ロブ・ルッチ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-014",
+      "printingCode": "ST29-014",
+      "name": "ロロノア・ゾロ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-014",
+      "printingCode": "ST29-014_p1",
+      "name": "ロロノア・ゾロ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-015",
+      "printingCode": "ST29-015",
+      "name": "温度レアァストライク!!!",
+      "type": "EVENT",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-016",
+      "printingCode": "ST29-016",
+      "name": "黄猿‼おれ達は2年前の100倍強ェぞ",
+      "type": "EVENT",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST29-017",
+      "printingCode": "ST29-017",
+      "name": "死・獅子歌歌",
+      "type": "EVENT",
+      "color": "黄"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST29-001",
+      "printingCode": "ST29-001",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Yellow",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "c4aaaf0908a3defe602967bf4c88b0b312c77d463dade3c04152ff7b3a16f8ea",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "8650d78a2fe24093fd97e2e95216e8a9e12e19a7fa0e09b0488896ce9217952e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-001",
+      "printingCode": "ST29-001_p1",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Yellow",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "c4aaaf0908a3defe602967bf4c88b0b312c77d463dade3c04152ff7b3a16f8ea",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "8650d78a2fe24093fd97e2e95216e8a9e12e19a7fa0e09b0488896ce9217952e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-002",
+      "printingCode": "ST29-002",
+      "locale": "EN",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "2458f2c1c3c72fbea9f4c11c9fbe7414c4c788c4808690f0a4319fc09852c0b8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-002",
+      "printingCode": "ST29-002_p1",
+      "locale": "EN",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "2458f2c1c3c72fbea9f4c11c9fbe7414c4c788c4808690f0a4319fc09852c0b8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-003",
+      "printingCode": "ST29-003",
+      "locale": "EN",
+      "name": "Kaku",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "7f23827a86ac8025f75f1a2e49d44869601dbc12d6604c038b2dc6bb6cbf8da5",
+      "triggerHash": "60c87f74174c02c8a602e594423a0d745b931564d56395beaa4443aa6e3300ad",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "3c39fe218a89431de175c01523b048883ae3c7e6dd08b1121c93a8e5ad989bbc",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-003",
+      "printingCode": "ST29-003_p1",
+      "locale": "EN",
+      "name": "Kaku",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "7f23827a86ac8025f75f1a2e49d44869601dbc12d6604c038b2dc6bb6cbf8da5",
+      "triggerHash": "60c87f74174c02c8a602e594423a0d745b931564d56395beaa4443aa6e3300ad",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "3c39fe218a89431de175c01523b048883ae3c7e6dd08b1121c93a8e5ad989bbc",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-004",
+      "printingCode": "ST29-004",
+      "locale": "EN",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "59c635d94f0d9cfae40bf7f8cabce8125990e7db35ec3476b0fb4d84a576e422",
+      "triggerHash": "2c382d5d1a1d9a2762a23f8f06fc6639b38fe482ecdb151074db0b0dd0195093",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-004",
+      "printingCode": "ST29-004_p1",
+      "locale": "EN",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "59c635d94f0d9cfae40bf7f8cabce8125990e7db35ec3476b0fb4d84a576e422",
+      "triggerHash": "2c382d5d1a1d9a2762a23f8f06fc6639b38fe482ecdb151074db0b0dd0195093",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-005",
+      "printingCode": "ST29-005",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 6,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "6503afc8bb0f25cfa4a700e2449980ae07a6bee86c0507dc1a3c6727634447d6",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "d603eb140346de8c12589a51ba8243222a697697f5f5a0a1b79939a31aa479c8",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-005",
+      "printingCode": "ST29-005_p1",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 6,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "6503afc8bb0f25cfa4a700e2449980ae07a6bee86c0507dc1a3c6727634447d6",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "d603eb140346de8c12589a51ba8243222a697697f5f5a0a1b79939a31aa479c8",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-006",
+      "printingCode": "ST29-006",
+      "locale": "EN",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 6,
+      "power": 7000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "d1ee71a224b59a6ead86e0e778746819c8e2dcd4aefc996aec72beb5cdf04534",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-006",
+      "printingCode": "ST29-006_p1",
+      "locale": "EN",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 6,
+      "power": 7000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "d1ee71a224b59a6ead86e0e778746819c8e2dcd4aefc996aec72beb5cdf04534",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-007",
+      "printingCode": "ST29-007",
+      "locale": "EN",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "8cada89ff821f80081071121ac3252f9f5fea5130a245922c4688e9ad47956ec",
+      "triggerHash": "bdf17d26d4fd4f69665b9c729cf820aa2dc9b026e501c9abc7e6b121d2aa8701",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "3ffa500426be9221eda4bbcc858b7af79cc1e41550ffb287d42814350406c299",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-007",
+      "printingCode": "ST29-007_p1",
+      "locale": "EN",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "8cada89ff821f80081071121ac3252f9f5fea5130a245922c4688e9ad47956ec",
+      "triggerHash": "bdf17d26d4fd4f69665b9c729cf820aa2dc9b026e501c9abc7e6b121d2aa8701",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "3ffa500426be9221eda4bbcc858b7af79cc1e41550ffb287d42814350406c299",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-008",
+      "printingCode": "ST29-008",
+      "locale": "EN",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "75e48287ffcbaae8688440b585790ddef0141ddf11d515d36ebaa1381bf4f225",
+      "triggerHash": "6503afc8bb0f25cfa4a700e2449980ae07a6bee86c0507dc1a3c6727634447d6",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-008",
+      "printingCode": "ST29-008_p1",
+      "locale": "EN",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "75e48287ffcbaae8688440b585790ddef0141ddf11d515d36ebaa1381bf4f225",
+      "triggerHash": "6503afc8bb0f25cfa4a700e2449980ae07a6bee86c0507dc1a3c6727634447d6",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-009",
+      "printingCode": "ST29-009",
+      "locale": "EN",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "6503afc8bb0f25cfa4a700e2449980ae07a6bee86c0507dc1a3c6727634447d6",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-009",
+      "printingCode": "ST29-009_p1",
+      "locale": "EN",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "6503afc8bb0f25cfa4a700e2449980ae07a6bee86c0507dc1a3c6727634447d6",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-010",
+      "printingCode": "ST29-010",
+      "locale": "EN",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-010",
+      "printingCode": "ST29-010_p1",
+      "locale": "EN",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-011",
+      "printingCode": "ST29-011",
+      "locale": "EN",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-011",
+      "printingCode": "ST29-011_p1",
+      "locale": "EN",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-012",
+      "printingCode": "ST29-012",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "e5594871e67a7de1fd70a69a682e6f1a36387a5de552f07d0b5e76294c5325ae",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "8650d78a2fe24093fd97e2e95216e8a9e12e19a7fa0e09b0488896ce9217952e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-012",
+      "printingCode": "ST29-012_p1",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "e5594871e67a7de1fd70a69a682e6f1a36387a5de552f07d0b5e76294c5325ae",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "8650d78a2fe24093fd97e2e95216e8a9e12e19a7fa0e09b0488896ce9217952e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-013",
+      "printingCode": "ST29-013",
+      "locale": "EN",
+      "name": "Rob Lucci",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "ff563b8e2d949f94ee1f29547dc2ce296ab679cc14e680bd28635c17b5faaf00",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "3c39fe218a89431de175c01523b048883ae3c7e6dd08b1121c93a8e5ad989bbc",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-013",
+      "printingCode": "ST29-013_p1",
+      "locale": "EN",
+      "name": "Rob Lucci",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "ff563b8e2d949f94ee1f29547dc2ce296ab679cc14e680bd28635c17b5faaf00",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "3c39fe218a89431de175c01523b048883ae3c7e6dd08b1121c93a8e5ad989bbc",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-014",
+      "printingCode": "ST29-014",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "8f1ebba2de10441b66941eaac571e58bc95424e9a3c1f0462a84a5889dabfb98",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-014",
+      "printingCode": "ST29-014_p1",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "8f1ebba2de10441b66941eaac571e58bc95424e9a3c1f0462a84a5889dabfb98",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-015",
+      "printingCode": "ST29-015",
+      "locale": "EN",
+      "name": "Raw Heat Strike",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "dd092d8571b6dc3b622723fe80151c35818567f1b6877f0b778acf925e9ad5ce",
+      "triggerHash": "3d25b05966b8da7449619645c84ea59ba294c6a936c13a24fdb7cd43a20bb844",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-016",
+      "printingCode": "ST29-016",
+      "locale": "EN",
+      "name": "Kizaru!! Compared to Two Years Ago We're a Hundred Times Stronger Now!!",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "6792c6177326e7df9ea6f36dfda3929884634aaf0c4fc25397bcd15362f6474e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "8650d78a2fe24093fd97e2e95216e8a9e12e19a7fa0e09b0488896ce9217952e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-017",
+      "printingCode": "ST29-017",
+      "locale": "EN",
+      "name": "Iai Death Lion Song",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "a451c885e86410368ae19a3e772a7f66046667ee5275e68a2efd9d84e42e021e",
+      "triggerHash": "dc62acc89953eae2fa50e996534b64d05cec403044540918ec5ece89a667b456",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "425b5b15a4adef3786b9185f2378b4bbb1471dc40cf724b26d2d4df4c14f2d75",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569029"
+    },
+    {
+      "cardNumber": "ST29-001",
+      "printingCode": "ST29-001",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "LEADER",
+      "color": "Jaune",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "9b6c2d970025179dbaed438575c99400689210cf3a8397b161ccb91387799b9b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "44ed7850a5bb15bab6964ab486b9b5585ed20c95818e25c0a946f963013e5612",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-001",
+      "printingCode": "ST29-001_p1",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "LEADER",
+      "color": "Jaune",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "9b6c2d970025179dbaed438575c99400689210cf3a8397b161ccb91387799b9b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "44ed7850a5bb15bab6964ab486b9b5585ed20c95818e25c0a946f963013e5612",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-002",
+      "printingCode": "ST29-002",
+      "locale": "FR",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "f716488c8e3341e75abdda04904faec924ba7008e5b978eb3b8d6b57e6ea3fe7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-002",
+      "printingCode": "ST29-002_p1",
+      "locale": "FR",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "f716488c8e3341e75abdda04904faec924ba7008e5b978eb3b8d6b57e6ea3fe7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-003",
+      "printingCode": "ST29-003",
+      "locale": "FR",
+      "name": "Kaku",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "2bf5e32f7115ccbd3066a27b4c13a64533787bec1fa0bfc9e015e27d7ca863c2",
+      "triggerHash": "e3898f8fd9dfd35d685441e7e2f8202c3b0038f49c3f9e51b33bc1a52a76a9ec",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "34d570346e994d72a7c786f70389d38f73af4df8b7db0d2b85afa062487ea782",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-003",
+      "printingCode": "ST29-003_p1",
+      "locale": "FR",
+      "name": "Kaku",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "2bf5e32f7115ccbd3066a27b4c13a64533787bec1fa0bfc9e015e27d7ca863c2",
+      "triggerHash": "e3898f8fd9dfd35d685441e7e2f8202c3b0038f49c3f9e51b33bc1a52a76a9ec",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "34d570346e994d72a7c786f70389d38f73af4df8b7db0d2b85afa062487ea782",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-004",
+      "printingCode": "ST29-004",
+      "locale": "FR",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "da71979b78ce548e807e722ed64e07e51367ef589f90106ea9828763386cef88",
+      "triggerHash": "5f0a0ab8d867dbab4d1b65cb3ca1314b4f2a114f1abc7621d7364a0146c9a4bd",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-004",
+      "printingCode": "ST29-004_p1",
+      "locale": "FR",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "da71979b78ce548e807e722ed64e07e51367ef589f90106ea9828763386cef88",
+      "triggerHash": "5f0a0ab8d867dbab4d1b65cb3ca1314b4f2a114f1abc7621d7364a0146c9a4bd",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-005",
+      "printingCode": "ST29-005",
+      "locale": "FR",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 6,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "754d308426fab4c0b92fb204bf7166a73b17b00f795671ab64dbcdbfc0fe223b",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "f4e59288c83c0615259e3761fad9a995015c8c9ec63555718901889b834e4816",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-005",
+      "printingCode": "ST29-005_p1",
+      "locale": "FR",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 6,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "754d308426fab4c0b92fb204bf7166a73b17b00f795671ab64dbcdbfc0fe223b",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "f4e59288c83c0615259e3761fad9a995015c8c9ec63555718901889b834e4816",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-006",
+      "printingCode": "ST29-006",
+      "locale": "FR",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 6,
+      "power": 7000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "37a97ec25d5e5bd6dde7ac8d4df262545738f177398a9f7131ef9a6edd3d3018",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-006",
+      "printingCode": "ST29-006_p1",
+      "locale": "FR",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 6,
+      "power": 7000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "37a97ec25d5e5bd6dde7ac8d4df262545738f177398a9f7131ef9a6edd3d3018",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-007",
+      "printingCode": "ST29-007",
+      "locale": "FR",
+      "name": "Tony-Tony Chopper",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "730fcc513dce6e3591ca56ff53e90163fe7fd350fdc05352dad65ee475908fb8",
+      "triggerHash": "3c3329addab4b1562c6988d7822482d300e9fc2ca87d3a8222a21eef52f33db4",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "3a2dfa16d55584125fff362e69829a48df1aed0876c681db7c308fca5db34ed3",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-007",
+      "printingCode": "ST29-007_p1",
+      "locale": "FR",
+      "name": "Tony-Tony Chopper",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "730fcc513dce6e3591ca56ff53e90163fe7fd350fdc05352dad65ee475908fb8",
+      "triggerHash": "3c3329addab4b1562c6988d7822482d300e9fc2ca87d3a8222a21eef52f33db4",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "3a2dfa16d55584125fff362e69829a48df1aed0876c681db7c308fca5db34ed3",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-008",
+      "printingCode": "ST29-008",
+      "locale": "FR",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "d4315b3d4a97bcfb8f437320b7be097ba48401935fc6e47cab4731d1b912c67f",
+      "triggerHash": "754d308426fab4c0b92fb204bf7166a73b17b00f795671ab64dbcdbfc0fe223b",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-008",
+      "printingCode": "ST29-008_p1",
+      "locale": "FR",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "d4315b3d4a97bcfb8f437320b7be097ba48401935fc6e47cab4731d1b912c67f",
+      "triggerHash": "754d308426fab4c0b92fb204bf7166a73b17b00f795671ab64dbcdbfc0fe223b",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-009",
+      "printingCode": "ST29-009",
+      "locale": "FR",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 4,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "754d308426fab4c0b92fb204bf7166a73b17b00f795671ab64dbcdbfc0fe223b",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-009",
+      "printingCode": "ST29-009_p1",
+      "locale": "FR",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 4,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "754d308426fab4c0b92fb204bf7166a73b17b00f795671ab64dbcdbfc0fe223b",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-010",
+      "printingCode": "ST29-010",
+      "locale": "FR",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 5,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-010",
+      "printingCode": "ST29-010_p1",
+      "locale": "FR",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 5,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-011",
+      "printingCode": "ST29-011",
+      "locale": "FR",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-011",
+      "printingCode": "ST29-011_p1",
+      "locale": "FR",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-012",
+      "printingCode": "ST29-012",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 1,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "0cc8c2e336b48b2b50113bb1b44901f119726c0e84834a00b9f0fcc6f7c0ec6b",
+      "triggerHash": "2555609e1691cff70e61c3cc56568354cae16fae513db57ca61889154bc43bbc",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "44ed7850a5bb15bab6964ab486b9b5585ed20c95818e25c0a946f963013e5612",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-012",
+      "printingCode": "ST29-012_p1",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 1,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "0cc8c2e336b48b2b50113bb1b44901f119726c0e84834a00b9f0fcc6f7c0ec6b",
+      "triggerHash": "2555609e1691cff70e61c3cc56568354cae16fae513db57ca61889154bc43bbc",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "44ed7850a5bb15bab6964ab486b9b5585ed20c95818e25c0a946f963013e5612",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-013",
+      "printingCode": "ST29-013",
+      "locale": "FR",
+      "name": "Rob Lucci",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "ed16ae881489d8b5ed0d506760e777b57ba4c4637c2aa5f3051ddcb1847b9292",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "34d570346e994d72a7c786f70389d38f73af4df8b7db0d2b85afa062487ea782",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-013",
+      "printingCode": "ST29-013_p1",
+      "locale": "FR",
+      "name": "Rob Lucci",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "ed16ae881489d8b5ed0d506760e777b57ba4c4637c2aa5f3051ddcb1847b9292",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "34d570346e994d72a7c786f70389d38f73af4df8b7db0d2b85afa062487ea782",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-014",
+      "printingCode": "ST29-014",
+      "locale": "FR",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "512d1b898ee069451688fc6ccc18008a4d0c850dece40edcacbd8eecaa2e9eff",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-014",
+      "printingCode": "ST29-014_p1",
+      "locale": "FR",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "512d1b898ee069451688fc6ccc18008a4d0c850dece40edcacbd8eecaa2e9eff",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-015",
+      "printingCode": "ST29-015",
+      "locale": "FR",
+      "name": "Saignant Strike",
+      "type": "EVENT",
+      "color": "Jaune",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "8ec6ae28db7723240dd78970fe9c3b8654b57e472f60dc3397d5373994d36107",
+      "triggerHash": "5973fb33081d88337d6286dc2945f673c990fcb7e7cb39b65d72e3e6b3703cc3",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-016",
+      "printingCode": "ST29-016",
+      "locale": "FR",
+      "name": "Kizaru ! Mon équipage et moi on est cent fois plus forts qu'il y a deux ans !",
+      "type": "EVENT",
+      "color": "Jaune",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "6f7e9ce5665bf502b2c349e23657fb6e15516939a992a424e28a561a81d70ec2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "44ed7850a5bb15bab6964ab486b9b5585ed20c95818e25c0a946f963013e5612",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    },
+    {
+      "cardNumber": "ST29-017",
+      "printingCode": "ST29-017",
+      "locale": "FR",
+      "name": "Iai, le chant funèbre du lion",
+      "type": "EVENT",
+      "color": "Jaune",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "f3f50234fe880e3ff4fe727b131b1bdf9afe0b5aea18cad91f46ebd582bf3c7a",
+      "triggerHash": "d54c3642fb332108178537aa87bf385671dc1bc33153d7901a8c9084c8c1ddaf",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "bb1ffe84777c3956229d320d923cbcf37964de2cfaa937e89b695882ab5dd776",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622029"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "ST29-001",
+      "printingCode": "ST29-001",
+      "name": "Monkey D. Luffy",
+      "type": "LEADER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-001",
+      "printingCode": "ST29-001_p1",
+      "name": "Monkey D. Luffy",
+      "type": "LEADER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-002",
+      "printingCode": "ST29-002",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-002",
+      "printingCode": "ST29-002_p1",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-003",
+      "printingCode": "ST29-003",
+      "name": "Kaku",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-003",
+      "printingCode": "ST29-003_p1",
+      "name": "Kaku",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-004",
+      "printingCode": "ST29-004",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-004",
+      "printingCode": "ST29-004_p1",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-005",
+      "printingCode": "ST29-005",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-005",
+      "printingCode": "ST29-005_p1",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-006",
+      "printingCode": "ST29-006",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-006",
+      "printingCode": "ST29-006_p1",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-007",
+      "printingCode": "ST29-007",
+      "name": "Tony-Tony Chopper",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-007",
+      "printingCode": "ST29-007_p1",
+      "name": "Tony-Tony Chopper",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-008",
+      "printingCode": "ST29-008",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-008",
+      "printingCode": "ST29-008_p1",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-009",
+      "printingCode": "ST29-009",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-009",
+      "printingCode": "ST29-009_p1",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-010",
+      "printingCode": "ST29-010",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-010",
+      "printingCode": "ST29-010_p1",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-011",
+      "printingCode": "ST29-011",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-011",
+      "printingCode": "ST29-011_p1",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-012",
+      "printingCode": "ST29-012",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-012",
+      "printingCode": "ST29-012_p1",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-013",
+      "printingCode": "ST29-013",
+      "name": "Rob Lucci",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-013",
+      "printingCode": "ST29-013_p1",
+      "name": "Rob Lucci",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-014",
+      "printingCode": "ST29-014",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-014",
+      "printingCode": "ST29-014_p1",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-015",
+      "printingCode": "ST29-015",
+      "name": "Saignant Strike",
+      "type": "EVENT",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-016",
+      "printingCode": "ST29-016",
+      "name": "Kizaru ! Mon équipage et moi on est cent fois plus forts qu'il y a deux ans !",
+      "type": "EVENT",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST29-017",
+      "printingCode": "ST29-017",
+      "name": "Iai, le chant funèbre du lion",
+      "type": "EVENT",
+      "color": "Jaune"
+    }
+  ]
+}

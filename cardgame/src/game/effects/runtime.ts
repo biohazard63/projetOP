@@ -1,6 +1,6 @@
 import { enqueueTriggers, nextTriggers, completeScheduledTrigger } from './scheduler'
 import { confirmPower, confirmMoveOperation, confirmRestOperation, recordOperation, processOperation, preflightCosts, payCosts, fieldDon, noteDonReturned } from './operations'
-import { evaluateCharacteristics } from './characteristics'
+import { evaluateCharacteristics, hasBlockerAbility, ownCharacterCostAtLeast } from './characteristics'
 import { shuffle, seededRandom } from '../core/random'
 import type { GameState, Command, LegalAction } from '../core/types'
 import { CARD_PRIMITIVES, PRIMITIVES, UNIVERSAL_PRIMITIVES, runtimeSchema, validateRegistry, type EffectRuntime, type EffectRegistry, type PrimitiveRegistry, type Condition,
@@ -58,6 +58,10 @@ function condition(s: GameState, c: Condition, controller: string, source?: Effe
     const current = evaluateCharacteristics(s, id).cost.current
     return current !== null && current <= c.maximum
   }))
+  if (c.kind === 'OWN_CHARACTER_COST_AT_LEAST') return ownCharacterCostAtLeast(s, controller, c.minimum)
+  if (c.kind === 'SOURCE_PLAYED_THIS_TURN') { if (source?.kind !== 'CARD') return false; const i = s.instances[source.presence.instanceId]; return !!i && i.zoneGeneration === source.presence.generation && i.playedOnTurn === s.turn }
+  if (c.kind === 'OWN_CHARACTER_POWER_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.characters.some(id => (evaluateCharacteristics(s, id).power.current ?? -1) >= c.minimum)
+  if (c.kind === 'TRASH_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.trash.length >= c.minimum
   if (c.kind === 'DON_DECK_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.donDeck.length >= c.minimum
   if (c.kind === 'FIELD_DON_AT_LEAST') { const p = recipient(s, controller, 'CONTROLLER'); return p.zones.cost.length + p.zones.attached.length >= c.minimum }
   if (c.kind === 'LEADER_HAS_TRAIT') { const p = recipient(s, controller, 'CONTROLLER'); const d = s.catalog.definitions.find(x => x.definitionId === s.instances[p.zones.leader[0]]?.definitionId); return !!d?.traits.includes(c.trait) }
@@ -149,13 +153,13 @@ function execute(s: GameState, spec: OperationSpec, context: EffectContext, sele
     if (r.version !== '1.3.0') throw new Error('INCOMPATIBLE_EFFECT_VERSION')
     const subject = selected ?? (spec.primitive === 'preventKO' && !spec.subjectBinding && context.source.kind === 'CARD' ? context.source.presence : undefined), card = subject && s.instances[subject.instanceId]
     if (!subject || !card || card.zoneGeneration !== subject.generation || !['leader', 'characters'].includes(card.zone)) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
-    if (spec.primitive === 'addCost') (r.costModifiers ?? (r.costModifiers = [])).push({ id: next(r, s.gameId, 'cost'), subject: structuredClone(subject), amount: spec.amount, turnId: s.turn })
+    if (spec.primitive === 'addCost') (r.costModifiers ?? (r.costModifiers = [])).push({ id: next(r, s.gameId, 'cost'), subject: structuredClone(subject), amount: spec.amount, turnId: s.turn, ...(spec.duration === 'UNTIL_END_OF_OPPONENT_NEXT_TURN' ? { untilTurn: untilEndOfOpponentNextTurn(s, context.controllerId) } : {}) })
     else if (card.zone === 'characters') (r.koImmunities ?? (r.koImmunities = [])).push({ id: next(r, s.gameId, 'ko-immunity'), subject: structuredClone(subject), turnId: s.turn })
     return
   }
   if (spec.primitive === 'arrangeTopDeck') {
     if (r.version !== '1.3.0') throw new Error('INCOMPATIBLE_EFFECT_VERSION')
-    const p = s.players.find(x => x.id === context.controllerId)!, order = r.continuation!.bindings[spec.orderBinding] ?? [], bottom = r.continuation!.bindings[spec.bottomBinding] ?? []
+    const p = s.players.find(x => x.id === context.controllerId)!, order = r.continuation!.bindings[spec.orderBinding] ?? [], bottom = spec.bottomBinding ? r.continuation!.bindings[spec.bottomBinding] ?? [] : []
     const top = p.zones.deck.slice(0, order.length)
     // The ordered cards must be exactly the current top cards (same instances, same generations).
     if (order.some(ref => !top.includes(ref.instanceId) || s.instances[ref.instanceId].zoneGeneration !== ref.generation) || new Set(order.map(ref => ref.instanceId)).size !== top.length
@@ -259,7 +263,34 @@ function execute(s: GameState, spec: OperationSpec, context: EffectContext, sele
     const p = recipient(s, context.controllerId, spec.player)
     if (!card || card.kind !== 'CARD' || card.owner !== p.id || card.zone !== spec.from || card.zoneGeneration !== target.generation || !p.zones[spec.from].includes(card.id)) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
     const moved = processOperation(s, { id:next(r,s.gameId,'operation'), resolutionId:context.effectInstanceId, subject:structuredClone(target), controllerId:context.controllerId, type:'MOVE_CARD', intent:'EFFECT', outcome:'CONFIRMED', from:spec.from, to:spec.to })
+    if (moved && spec.deckPosition === 'TOP') { p.zones.deck.splice(p.zones.deck.indexOf(card.id), 1); p.zones.deck.unshift(card.id) }
     if (moved && spec.audience === 'PUBLIC') s.events.push({sequence:s.events.length,type:'CARD_MOVED',actorId:p.id,publicInstanceId:card.id})
+    return
+  }
+  if (spec.primitive === 'preventAttack') {
+    if (r.version !== '1.3.0') throw new Error('INCOMPATIBLE_EFFECT_VERSION')
+    const card = selected && s.instances[selected.instanceId]
+    if (!selected || !card || card.zoneGeneration !== selected.generation || card.zone !== 'characters') throw new Error('EFFECT_OPERATION_UNAVAILABLE')
+    // "until the end of your opponent's next turn": through the next turn.
+    ;(r.attackRestrictions ?? (r.attackRestrictions = [])).push({ id: next(r, s.gameId, 'attack-restriction'), subject: structuredClone(selected), untilTurn: untilEndOfOpponentNextTurn(s, context.controllerId) })
+    return
+  }
+  if (spec.primitive === 'disableBlocker') {
+    if (r.version !== '1.3.0') throw new Error('INCOMPATIBLE_EFFECT_VERSION')
+    const card = selected && s.instances[selected.instanceId]
+    if (!selected || !card || card.zoneGeneration !== selected.generation || card.zone !== 'characters' || card.controller === context.controllerId) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
+    ;(r.blockerDisables ?? (r.blockerDisables = [])).push({ id: next(r, s.gameId, 'blocker-disable'), subject: structuredClone(selected), turnId: s.turn })
+    return
+  }
+  if (spec.primitive === 'trashCharacter') {
+    if (r.version !== '1.3.0') throw new Error('INCOMPATIBLE_EFFECT_VERSION')
+    const card = selected && s.instances[selected.instanceId], p = card && s.players.find(x => x.id === card.controller)
+    if (!selected || !card || !p || card.zoneGeneration !== selected.generation || card.zone !== 'characters' || card.controller === context.controllerId) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
+    // Trashing is not a K.O.: no [On K.O.] (FAQ ST19-003). Given DON!! return rested to the cost area (CR 6-5-5-4).
+    for (const don of p.zones.attached.filter(id => s.instances[id].attachedTo === card.id)) { p.zones.attached.splice(p.zones.attached.indexOf(don), 1); p.zones.cost.push(don); const d = s.instances[don]; d.zone = 'cost'; d.zoneGeneration++; d.attachedTo = null; d.rested = true }
+    p.zones.characters.splice(p.zones.characters.indexOf(card.id), 1); p.zones.trash.push(card.id)
+    card.zone = 'trash'; card.zoneGeneration++; card.rested = false; card.faceUp = true; card.playedOnTurn = null
+    s.events.push({ sequence: s.events.length, type: 'CARD_TRASHED', actorId: card.controller, publicInstanceId: card.id })
     return
   }
   if (spec.primitive === 'trashLife') {
@@ -294,7 +325,7 @@ function execute(s: GameState, spec: OperationSpec, context: EffectContext, sele
     } else if (r.version === '1.2.0') confirmPower(s, subject, spec.amount, context)
     // "until the start of your next turn": through the controller's next turn start (the next turn if it is the opponent's).
     else r.powerModifiers!.push({ id: next(r, s.gameId, 'modifier'), subject: structuredClone(subject), source: structuredClone(context.source), amount: spec.amount, turnId: s.turn,
-      ...(spec.duration === 'UNTIL_START_OF_YOUR_NEXT_TURN' ? { untilTurn: s.turn + (s.activePlayerId === context.controllerId ? 2 : 1) } : spec.duration === 'UNTIL_END_OF_YOUR_NEXT_TURN' ? { untilTurn: s.turn + (s.activePlayerId === context.controllerId ? 3 : 2) } : {}) })
+      ...(spec.duration === 'UNTIL_START_OF_YOUR_NEXT_TURN' ? { untilTurn: s.turn + (s.activePlayerId === context.controllerId ? 2 : 1) } : spec.duration === 'UNTIL_END_OF_YOUR_NEXT_TURN' ? { untilTurn: s.turn + (s.activePlayerId === context.controllerId ? 3 : 2) } : spec.duration === 'UNTIL_END_OF_OPPONENT_NEXT_TURN' ? { untilTurn: untilEndOfOpponentNextTurn(s, context.controllerId) } : {}) })
     cardEvent(s, 'POWER_MODIFIER_CREATED', i.id, context); return
   }
   // "add up to 1 DON!! card from your DON!! deck": with an empty DON!! deck nothing happens (FAQ ST04-008/014/015/017).
@@ -418,6 +449,7 @@ function resume(s: GameState) {
       const candidates = ids.filter(instanceId => {
         const definition=s.catalog.definitions.find(d=>d.definitionId===s.instances[instanceId].definitionId)
         return !!definition && (step.trait===undefined || definition.traits.includes(step.trait))
+          && (step.traitsAny===undefined || step.traitsAny.some(t=>definition.traits.includes(t))) && (step.colorsAny===undefined || step.colorsAny.some(c=>definition.colors.includes(c)))
           && (step.category===undefined || definition.category===step.category)
           && (step.excludeRulesName===undefined || definition.rulesName!==step.excludeRulesName)
       })
@@ -495,6 +527,20 @@ function answerSearchChoice(s: GameState, tokens: string[]) {
       card.zone = 'hand'; card.zoneGeneration++; card.faceUp = false
       s.events.push({ sequence: s.events.length, type: 'CARD_REVEALED', actorId: c.context.controllerId, revealedCard: { definitionId: card.definitionId!, printingKey: card.printingKey! } })
     }
+    const step = r.registry.definitions.find(d => d.id === c.definitionId && d.revision === c.definitionRevision)!.program[c.pc]
+    if (step.kind === 'SEARCH_TOP_DECK' && step.remainder === 'TRASH') {
+      // "Then, trash the rest": the remaining looked-at cards go to the (open) trash.
+      const player = s.players.find(p => p.id === c.context.controllerId)!
+      for (const ref of flow.remainder) {
+        const card = s.instances[ref.instanceId]
+        if (card.zone !== 'deck' || card.zoneGeneration !== ref.generation) throw new Error('INVALID_CHOICE_RESPONSE')
+        player.zones.deck.splice(player.zones.deck.indexOf(card.id), 1); player.zones.trash.push(card.id)
+        card.zone = 'trash'; card.zoneGeneration++; card.faceUp = true
+        s.events.push({ sequence: s.events.length, type: 'CARD_TRASHED', actorId: player.id, publicInstanceId: card.id })
+      }
+      delete c.searchFlow; r.choice = null; c.pc++
+      return
+    }
     flow.stage = 'ORDER'
     createSearchChoice(s, 'ORDER', flow.remainder, flow.bind, flow.remainder.length, flow.remainder.length)
     return
@@ -543,7 +589,7 @@ export function applyEffectCommand(s: GameState, command: Extract<Command, { typ
     const d = candidate?.d, source = candidate?.source
     if (r.choice || !d || !source || (command.donMinusIds !== undefined && d.cost.kind !== 'DON_MINUS') || (command.payOptionalCost && !d.optionalCost) || (command.payOptionalCost && source.kind === 'CARD' && !s.players.find(p=>p.id===command.actorId)!.zones.life.length) || !payable(s, d, source) || !condition(s, d.condition, command.actorId, source)) throw new Error('INVALID_EFFECT_COMMAND')
     const key = usageKey(d.id, d.revision, source, command.actorId, s.turn)
-    if (d.usage.kind === 'ONCE_PER_TURN' && r.usage[key]) throw new Error('INVALID_EFFECT_COMMAND')
+    if (d.usage.kind !== 'UNLIMITED' && r.usage[key]) throw new Error('INVALID_EFFECT_COMMAND')
     begin(s, d, source, command.actorId, command.payOptionalCost === true, undefined, undefined, command.donMinusIds)
   } else {
     const c = r.choice, continuation = r.continuation
@@ -577,6 +623,9 @@ export function applyEffectCommand(s: GameState, command: Extract<Command, { typ
     const anyOwner = cardsSelector(s, continuation)
     if (selected.some(ref => !s.instances[ref.instanceId] || s.instances[ref.instanceId].zoneGeneration !== ref.generation || (!anyOwner && s.instances[ref.instanceId].owner !== selectOwner(s, continuation, c.actorId)))) throw new Error('INVALID_CHOICE_RESPONSE')
     continuation.bindings[c.bind] = structuredClone(selected)
+    // ONCE_PER_TURN_WHEN_CHOSEN: used only once its first choice names a card.
+    const active = r.active, used = active && r.registry.definitions.find(d => d.id === active.definitionId && d.revision === active.revision)
+    if (used?.usage.kind === 'ONCE_PER_TURN_WHEN_CHOSEN' && continuation.pc === 0 && selected.length) r.usage[usageKey(used.id, used.revision, active!.context.source, active!.context.controllerId, s.turn)] = 1
     r.choiceHistory.push({ choiceId: c.id, actorId: c.actorId, tokens: [...command.tokens], visibility: c.visibility })
     r.choice = null; continuation.pc++
   }
@@ -610,7 +659,7 @@ export function assertEffectState(s: GameState): void {
       const definition = source.kind === 'CARD_DEFINITION' && s.catalog.definitions.find(c => c.definitionId === source.definitionId)
       if (!definition || source.kind !== 'CARD_DEFINITION' || (source.zone === 'temporary' ? definition.category === 'DON' : source.zone === 'hand' ? definition.category !== 'EVENT' : definition.category !== ({ leader: 'LEADER', characters: 'CHARACTER', stage: 'STAGE' }[source.zone]))) throw new Error('INVALID_CARD_PROGRAM_SOURCE')
     }
-    if ([...r.registry.continuous ?? [], ...r.registry.cardReplacements ?? []].some(d => s.catalog.definitions.find(c => c.definitionId === d.definitionId)?.category !== (d.zone === 'leader' ? 'LEADER' : 'CHARACTER'))) throw new Error('INVALID_CONTINUOUS_SOURCE')
+    if ([...r.registry.continuous ?? [], ...r.registry.cardReplacements ?? []].some(d => s.catalog.definitions.find(c => c.definitionId === d.definitionId)?.category !== ({ leader: 'LEADER', stage: 'STAGE', characters: 'CHARACTER', hand: 'CHARACTER' } as Record<string, string>)[d.zone])) throw new Error('INVALID_CONTINUOUS_SOURCE')
   }
   for (const m of r.powerModifiers ?? []) {
     if (m.source.kind !== 'CARD' || !s.instances[m.source.presence.instanceId] || s.instances[m.source.presence.instanceId].definitionId !== m.source.definitionId || s.instances[m.subject.instanceId].kind !== 'CARD') throw new Error('INVALID_POWER_MODIFIER')
@@ -638,7 +687,7 @@ export function assertEffectState(s: GameState): void {
   const a = r.active, source = a.context.source
   if (source.kind === 'CARD') {
     const i = s.instances[source.presence.instanceId]
-    if (!i || i.definitionId !== source.definitionId || i.controller !== a.context.controllerId || (a.status === 'SUSPENDED' && i.zoneGeneration !== source.presence.generation && !validActivatedKO(s, source) && !validActivatedMainEvent(s, source, a.context.effectInstanceId))) throw new Error('INVALID_CARD_EFFECT_SOURCE')
+    if (!i || i.definitionId !== source.definitionId || i.controller !== a.context.controllerId || (a.status === 'SUSPENDED' && i.zoneGeneration !== source.presence.generation && !validActivatedKO(s, source) && !validActivatedMainEvent(s, source, a.context.effectInstanceId) && !validSelfReturnedSource(s, source, a.context.effectInstanceId))) throw new Error('INVALID_CARD_EFFECT_SOURCE')
   }
   const d = r.registry.definitions.find(d => d.id === a.definitionId && d.revision === a.revision)
   if (!d || !ids.includes(a.context.controllerId) || a.context.effectInstanceId !== a.id || !matchesSource(d, a.context.source)) throw new Error('INVALID_EFFECT_STATE')
@@ -742,13 +791,18 @@ function select(s: GameState, actor: string, selector: import('./contracts').Sel
       if (selector.battledWithSource && !battledWith(s, source, i)) return false
       if (selector.nameIs && definition.rulesName !== selector.nameIs) return false
       if (selector.nameNot && definition.rulesName === selector.nameNot) return false
+      if (selector.noBaseEffect && (definition.review.effectOriginal.trim() || definition.review.triggerOriginal.trim())) return false
       // Only a Character's own [Blocker] counts, not the word in another ability (FAQ ST01-016).
-      if (selector.hasBlocker && !definition.review.effects.some(effect => effect.kind === 'blocker')) return false
+      if (selector.hasBlocker && !hasBlockerAbility(s, id)) return false
       const onField = ['leader', 'characters', 'stage'].includes(i.zone)
       const cost = onField ? evaluateCharacteristics(s, id).cost.current : definition.cost
       if ((selector.maxCost !== undefined || selector.minCost !== undefined) && cost === null) return false
       if (selector.maxCost !== undefined && cost! > selector.maxCost) return false
       if (selector.minCost !== undefined && cost! < selector.minCost) return false
+      if (selector.minPower !== undefined) {
+        const power = onField ? evaluateCharacteristics(s, id).power[selector.powerBasis === 'BASE' ? 'base' : 'current'] : definition.power
+        if (power === null || power < selector.minPower) return false
+      }
       if (selector.maxPower !== undefined) {
         const power = onField ? evaluateCharacteristics(s, id).power[selector.powerBasis === 'BASE' ? 'base' : 'current'] : definition.power
         if (power === null || power > selector.maxPower) return false
@@ -904,14 +958,16 @@ export function capturePlayedEffects(s: GameState, events: GameState['events']):
     for (const e of events.filter(e => (['CARD_PLAYED', 'ATTACK_DECLARED', 'BLOCKER_ACTIVATED', 'TRIGGER_ACTIVATED', 'CHARACTER_BATTLED', 'BATTLE_PAIRED'].includes(e.type) && e.publicInstanceId) || (r.version === '1.3.0' && (e.type === 'MAIN_ENDED' || e.type === 'DON_RETURNED')))) {
       const causeId = e.type === 'CARD_PLAYED' ? `${s.gameId}:played:${e.sequence}` : `${s.gameId}:event:${e.sequence}`
       // [End of Your Turn]: every such ability on the field of the player whose Main Phase just ended.
-      const observe = (timing: 'END_OF_YOUR_TURN' | 'ON_DON_RETURNED' | 'ON_OPPONENT_BLOCKER', actor: string) => r.registry.definitions.filter(d => d.timing === timing)
+      const observe = (timing: 'END_OF_YOUR_TURN' | 'ON_DON_RETURNED' | 'ON_OPPONENT_BLOCKER' | 'ON_OPPONENT_ATTACK', actor: string) => r.registry.definitions.filter(d => d.timing === timing)
         .flatMap(d => sources(s, d, actor).filter(source => source.kind === 'CARD').map(source => ({ d, source, actor })))
       const matches = e.type === 'MAIN_ENDED' ? observe('END_OF_YOUR_TURN', e.actorId!)
         // A DON!! of this player returned to its DON!! deck; an opposing [Blocker] activated (ST10-006).
         : e.type === 'DON_RETURNED' ? observe('ON_DON_RETURNED', e.actorId!)
         // Only the abilities captured for THIS event (one card can be named by several events of the same command).
         : [...eligible.filter(t => t.sequence === e.sequence && t.source.kind === 'CARD' && t.source.presence.instanceId === e.publicInstanceId),
-          ...(e.type === 'BLOCKER_ACTIVATED' && r.version === '1.3.0' ? observe('ON_OPPONENT_BLOCKER', s.players.find(p => p.id !== s.instances[e.publicInstanceId!].controller)!.id) : [])]
+          ...(e.type === 'BLOCKER_ACTIVATED' && r.version === '1.3.0' ? observe('ON_OPPONENT_BLOCKER', s.players.find(p => p.id !== s.instances[e.publicInstanceId!].controller)!.id) : []),
+          // "when your opponent attacks": the defending player's observers (M6, OP09-001).
+          ...(e.type === 'ATTACK_DECLARED' && r.version === '1.3.0' ? observe('ON_OPPONENT_ATTACK', s.players.find(p => p.id !== s.instances[e.publicInstanceId!].controller)!.id) : [])]
       enqueueTriggers(s, matches.filter(t => condition(s,t.d.condition,t.actor,t.source) && usable(s,t.d,t.source,t.actor)).map(t => makeTrigger(s,t.d,t.source,t.actor,causeId,false)), causeId)
     }
     drainScheduler(s); return
@@ -936,9 +992,19 @@ function selectOwner(s: GameState, continuation: import('./contracts').Serializa
   const step = s.effects!.registry.definitions.find(d => d.id === continuation.definitionId)!.program[continuation.pc]
   return step.kind === 'CHOICE' && (step.selector.kind === 'OPPONENT_CHARACTER' || step.selector.kind === 'OPPONENT_BLOCKER_COST_AT_MOST' || step.selector.kind === 'OPPONENT_RESTED_CHARACTER_COST_AT_MOST' || step.selector.kind === 'OPPONENT_TOP_LIFE') ? s.players.find(p => p.id !== actor)!.id : actor
 }
-function replacementOptions(s: GameState, ownerId: string, replacementId: string) {
+function replacementOptions(s: GameState, ownerId: string, replacementId: string, protectedId?: string) {
   const rule = s.effects!.registry.cardReplacements!.find(d => d.id === replacementId)!
-  return s.players.find(p => p.id === ownerId)!.zones.hand.filter(id => rule.categories.some(category => category === s.catalog.definitions.find(d => d.definitionId === s.instances[id].definitionId)!.category))
+  const owner = s.players.find(p => p.id === ownerId)!
+  // The protecting Character itself (any copy on the field other than the K.O.'d one).
+  if (rule.match === 'NAMED_ALLY_KO_BY_EFFECT') return owner.zones.characters.filter(id => id !== protectedId && s.instances[id].definitionId === rule.definitionId)
+  return owner.zones.hand.filter(id => rule.categories.some(category => category === s.catalog.definitions.find(d => d.definitionId === s.instances[id].definitionId)!.category))
+}
+/** Replacement rules for the K.O. by effect of `i`: its own, and those of allies protecting it by name. */
+function koReplacementRules(s: GameState, i: GameState['instances'][string], source: EffectContext['source']) {
+  const r = s.effects!, name = s.catalog.definitions.find(d => d.definitionId === i.definitionId)?.rulesName
+  return (r.registry.cardReplacements ?? []).filter(rule => rule.match === 'NAMED_ALLY_KO_BY_EFFECT'
+    ? rule.protectedName === name && replacementOptions(s, i.controller, rule.id, i.id).length > 0
+    : rule.definitionId === i.definitionId && !r.usage[usageKey(rule.id, '1.1.0', source, i.controller, s.turn)] && replacementOptions(s, i.controller, rule.id).length > 0)
 }
 function commitKO(s: GameState, op: NonNullable<EffectRuntime['cardOperations']>[number], context: EffectContext) {
   const i = s.instances[op.subject.instanceId], p = s.players.find(p => p.id === i.owner)!
@@ -946,7 +1012,7 @@ function commitKO(s: GameState, op: NonNullable<EffectRuntime['cardOperations']>
   const causeId = op.id
   const scheduled = ['1.2.0','1.3.0'].includes(s.effects!.version)
   const observers = scheduled ? s.effects!.registry.definitions.filter(d=>d.timing==='ON_CHARACTER_KO').flatMap(d=>s.players.flatMap(p=>sources(s,d,p.id).filter(()=>condition(s,d.condition,p.id)).map(source=>makeTrigger(s,d,source,p.id,causeId,false)))) : []
-  const captured = scheduled ? s.effects!.registry.definitions.filter(d => d.timing === 'ON_KO' && d.source.kind === 'CARD_DEFINITION' && d.source.definitionId === i.definitionId && condition(s,d.condition,i.controller)).map(d => makeTrigger(s,d,{ kind: 'CARD', definitionId: i.definitionId!, presence: structuredClone(op.subject) },i.controller,causeId,true)) : []
+  const captured = scheduled ? s.effects!.registry.definitions.filter(d => d.timing === 'ON_KO' && d.source.kind === 'CARD_DEFINITION' && d.source.definitionId === i.definitionId && condition(s,d.condition,i.controller,{ kind: 'CARD', definitionId: i.definitionId!, presence: structuredClone(op.subject) })).map(d => makeTrigger(s,d,{ kind: 'CARD', definitionId: i.definitionId!, presence: structuredClone(op.subject) },i.controller,causeId,true)) : []
   // No On KO definitions are admitted in this version; never confuse a rule trash with KO.
   for (const id of [...p.zones.attached].filter(id => s.instances[id].attachedTo === i.id)) {
     const don = s.instances[id]; p.zones.attached.splice(p.zones.attached.indexOf(id), 1); p.zones.cost.push(id)
@@ -976,7 +1042,7 @@ export function confirmBattleKO(s: GameState, ref: { instanceId: string; generat
   return true
 }
 /** "Cannot be K.O.'d" (M6): printed protections (in battle / by effects, with N field DON!!) and temporary ones this turn. */
-export function protectedFromKO(s: GameState, ref: { instanceId: string; generation: number }, from: 'BATTLE' | 'EFFECT', attackerId?: string): boolean {
+export function protectedFromKO(s: GameState, ref: { instanceId: string; generation: number }, from: 'BATTLE' | 'EFFECT', attackerId?: string, effectControllerId?: string): boolean {
   const r = s.effects, i = s.instances[ref.instanceId]
   if (!r || r.version !== '1.3.0' || !i) return false
   if (r.koImmunities?.some(k => k.subject.instanceId === ref.instanceId && k.subject.generation === ref.generation && k.turnId === s.turn)) return true
@@ -984,7 +1050,9 @@ export function protectedFromKO(s: GameState, ref: { instanceId: string; generat
   const attackerIsLeader = !!attackerId && s.instances[attackerId]?.zone === 'leader'
   const attached = p.zones.attached.filter(id => s.instances[id].attachedTo === i.id).length
   return !!r.registry.koProtections?.some(k => k.definitionId === i.definitionId && k.from === from && i.zone === k.zone && (k.minimumFieldDon === undefined || p.zones.cost.length + p.zones.attached.length >= k.minimumFieldDon)
-    && (!k.byLeaders || attackerIsLeader) && (k.minimumAttachedDon === undefined || attached >= k.minimumAttachedDon) && (k.maximumOwnLife === undefined || p.zones.life.length <= k.maximumOwnLife))
+    && (!k.byLeaders || attackerIsLeader) && (k.minimumAttachedDon === undefined || attached >= k.minimumAttachedDon) && (k.maximumOwnLife === undefined || p.zones.life.length <= k.maximumOwnLife)
+    && (!k.opponentEffectsOnly || (effectControllerId !== undefined && effectControllerId !== i.controller))
+    && (!k.duringOpponentTurn || s.activePlayerId !== i.controller) && (k.whenOwnCharacterCostAtLeast === undefined || ownCharacterCostAtLeast(s, i.controller, k.whenOwnCharacterCostAtLeast)))
 }
 /** "If you do": the K.O. step's resultBinding collects each bound Character that was really K.O.'d (now in the trash). */
 function recordKOResult(s: GameState, c: import('./contracts').SerializableContinuation, ref: { instanceId: string; generation: number }) {
@@ -1003,10 +1071,10 @@ function advanceKO(s: GameState, c: import('./contracts').SerializableContinuati
 function resolveKO(s: GameState, ref: { instanceId: string; generation: number }, context: EffectContext, anySide = false): boolean {
   const r = s.effects!, i = s.instances[ref.instanceId]
   if (!i || i.zone !== 'characters' || i.zoneGeneration !== ref.generation || (!anySide && i.controller === context.controllerId)) throw new Error('INVALID_KO_SUBJECT')
-  if (protectedFromKO(s, ref, 'EFFECT')) return true // nothing happens to a Character that cannot be K.O.'d
+  if (protectedFromKO(s, ref, 'EFFECT', undefined, context.controllerId)) return true // nothing happens to a Character that cannot be K.O.'d
   const op: NonNullable<EffectRuntime['cardOperations']>[number] = { id: next(r, s.gameId, 'operation'), resolutionId: context.effectInstanceId, subject: structuredClone(ref), controllerId: context.controllerId, type: 'KO', outcome: 'PROPOSED' }
   const source: EffectContext['source'] = { kind: 'CARD', definitionId: i.definitionId!, presence: structuredClone(ref) }
-  const rules = (r.registry.cardReplacements ?? []).filter(rule => rule.definitionId === i.definitionId && !r.usage[usageKey(rule.id, '1.1.0', source, i.controller, s.turn)] && replacementOptions(s, i.controller, rule.id).length)
+  const rules = koReplacementRules(s, i, source)
   const leaders = leaderReplacementCandidates(s, i.id)
   if (rules.length + leaders.length > 1) throw new Error('REPLACEMENT_ORDER_NOT_IMPLEMENTED')
   if (leaders.length) { suspendLeaderReplacement(s,op,context,leaders[0]); return false }
@@ -1014,7 +1082,7 @@ function resolveKO(s: GameState, ref: { instanceId: string; generation: number }
   const rule = rules[0], c = r.continuation!, choiceId = next(r, s.gameId, 'choice')
   c.interception = { operation: op, replacementId: rule.id, ownerId: i.controller }
   r.choice = { id: choiceId, actorId: i.controller, expectedVersion: s.version + 1, choiceType: 'SELECT', optional: true, min: 0, max: 1, visibility: 'PRIVATE',
-    options: replacementOptions(s, i.controller, rule.id).map((id, index) => ({ token: `${choiceId}:option:${index}`, presence: { instanceId: id, generation: s.instances[id].zoneGeneration } })),
+    options: replacementOptions(s, i.controller, rule.id, i.id).map((id, index) => ({ token: `${choiceId}:option:${index}`, presence: { instanceId: id, generation: s.instances[id].zoneGeneration } })),
     continuationId: c.id, context: structuredClone(context), bind: '__replacement' }
   r.active!.status = 'SUSPENDED'; return false
 }
@@ -1024,14 +1092,21 @@ function answerReplacement(s: GameState, refs: { instanceId: string; generation:
   assertReplacementChoice(s, false)
   if (refs.length) {
     const ref = refs[0], i = s.instances[ref.instanceId], p = s.players.find(p => p.id === pending.ownerId)!
-    if (!i || i.zone !== 'hand' || i.zoneGeneration !== ref.generation || i.owner !== p.id || !replacementOptions(s, p.id, pending.replacementId).includes(i.id)) throw new Error('INVALID_CHOICE_RESPONSE')
-    p.zones.hand.splice(p.zones.hand.indexOf(i.id), 1); p.zones.trash.push(i.id); i.zone = 'trash'; i.zoneGeneration++; i.faceUp = true; i.rested = false
+    const rule = r.registry.cardReplacements!.find(d => d.id === pending.replacementId)!, ally = rule.match === 'NAMED_ALLY_KO_BY_EFFECT'
+    if (!i || i.zone !== (ally ? 'characters' : 'hand') || i.zoneGeneration !== ref.generation || i.owner !== p.id || !replacementOptions(s, p.id, pending.replacementId, op.subject.instanceId).includes(i.id)) throw new Error('INVALID_CHOICE_RESPONSE')
+    if (ally) {
+      // Trashing the protecting Character is not a K.O.; its given DON!! return rested to the cost area.
+      for (const don of p.zones.attached.filter(id => s.instances[id].attachedTo === i.id)) { p.zones.attached.splice(p.zones.attached.indexOf(don), 1); p.zones.cost.push(don); const d = s.instances[don]; d.zone = 'cost'; d.zoneGeneration++; d.attachedTo = null; d.rested = true }
+      p.zones.characters.splice(p.zones.characters.indexOf(i.id), 1); p.zones.trash.push(i.id); i.zone = 'trash'; i.zoneGeneration++; i.faceUp = true; i.rested = false; i.playedOnTurn = null
+      s.events.push({ sequence: s.events.length, type: 'CARD_TRASHED', actorId: p.id, publicInstanceId: i.id })
+    } else { p.zones.hand.splice(p.zones.hand.indexOf(i.id), 1); p.zones.trash.push(i.id); i.zone = 'trash'; i.zoneGeneration++; i.faceUp = true; i.rested = false }
     op.outcome = 'REPLACED'; op.replacementId = pending.replacementId; r.cardOperations!.push(op)
-    r.cardOperations!.push({ id: next(r, s.gameId, 'operation'), resolutionId: op.resolutionId, subject: structuredClone(ref), controllerId: p.id, type: 'TRASH_HAND', outcome: 'CONFIRMED', replacementId: pending.replacementId })
+    r.cardOperations!.push({ id: next(r, s.gameId, 'operation'), resolutionId: op.resolutionId, subject: structuredClone(ref), controllerId: p.id, type: ally ? 'TRASH_CHARACTER' : 'TRASH_HAND', outcome: 'CONFIRMED', replacementId: pending.replacementId })
     const subject = s.instances[op.subject.instanceId], source: EffectContext['source'] = { kind: 'CARD', definitionId: subject.definitionId!, presence: structuredClone(op.subject) }
-    r.usage[usageKey(pending.replacementId, '1.1.0', source, p.id, s.turn)] = 1
+    if (!ally) r.usage[usageKey(pending.replacementId, '1.1.0', source, p.id, s.turn)] = 1
     const replacementContext = { ...c.context, controllerId: p.id, source }
-    cardEvent(s, 'HAND_CARD_TRASHED', i.id, replacementContext); cardEvent(s, 'KO_REPLACED', subject.id, replacementContext)
+    if (!ally) cardEvent(s, 'HAND_CARD_TRASHED', i.id, replacementContext)
+    cardEvent(s, 'KO_REPLACED', subject.id, replacementContext)
   } else { commitKO(s, op, c.context); recordKOResult(s, c, op.subject) }
   r.choiceHistory.push({ choiceId: choice.id, actorId: choice.actorId, tokens: refs.map(ref => choice.options.find(o => o.presence.instanceId === ref.instanceId)!.token), visibility: 'PRIVATE' })
   delete c.interception; r.choice = null; advanceKO(s, c)
@@ -1041,12 +1116,14 @@ function assertReplacementChoice(s: GameState, checkVersion = true) {
   if (r.registry.leaderReplacements?.some(rule=>rule.id===pending.replacementId)) { assertLeaderReplacement(s,checkVersion); return }
   const rule = r.registry.cardReplacements?.find(d => d.id === pending.replacementId), subject = s.instances[pending.operation.subject.instanceId]
   const d = r.registry.definitions.find(d => d.id === c.definitionId)!, step = d.program[c.pc]
-  if (!rule || !subject || subject.zone !== 'characters' || subject.zoneGeneration !== pending.operation.subject.generation || subject.definitionId !== rule.definitionId || subject.controller !== pending.ownerId
-    || r.usage[usageKey(rule.id, '1.1.0', { kind: 'CARD', definitionId: subject.definitionId!, presence: pending.operation.subject }, pending.ownerId, s.turn)]
+  const subjectName = subject && s.catalog.definitions.find(x => x.definitionId === subject.definitionId)?.rulesName
+  if (!rule || !subject || subject.zone !== 'characters' || subject.zoneGeneration !== pending.operation.subject.generation
+    || (rule.match === 'NAMED_ALLY_KO_BY_EFFECT' ? rule.protectedName !== subjectName : subject.definitionId !== rule.definitionId) || subject.controller !== pending.ownerId
+    || (rule.match === 'SELF_KO_BY_EFFECT' && r.usage[usageKey(rule.id, '1.1.0', { kind: 'CARD', definitionId: subject.definitionId!, presence: pending.operation.subject }, pending.ownerId, s.turn)])
     || pending.operation.controllerId !== c.context.controllerId || pending.operation.resolutionId !== c.context.effectInstanceId || pending.operation.type !== 'KO' || pending.operation.outcome !== 'PROPOSED'
     || step.kind !== 'OPERATION' || step.operation.primitive !== 'koCharacter' || !c.bindings[step.operation.subjectBinding]?.some(ref => ref.instanceId === subject.id && ref.generation === subject.zoneGeneration)
     || choice.actorId !== pending.ownerId || choice.bind !== '__replacement' || choice.visibility !== 'PRIVATE' || choice.min !== 0 || choice.max !== 1 || !choice.optional || choice.choiceType !== 'SELECT'
-    || (checkVersion && choice.expectedVersion !== pendingVersion(s)) || JSON.stringify(choice.options.map(o => o.presence.instanceId)) !== JSON.stringify(replacementOptions(s, pending.ownerId, pending.replacementId))
+    || (checkVersion && choice.expectedVersion !== pendingVersion(s)) || JSON.stringify(choice.options.map(o => o.presence.instanceId)) !== JSON.stringify(replacementOptions(s, pending.ownerId, pending.replacementId, pending.operation.subject.instanceId))
     || new Set(choice.options.map(o => o.token)).size !== choice.options.length || choice.options.some(o => s.instances[o.presence.instanceId]?.zoneGeneration !== o.presence.generation)) throw new Error('INVALID_REPLACEMENT_CHOICE')
 }
 export type { EffectRegistry }
@@ -1063,6 +1140,18 @@ function validActivatedKO(s: GameState, source: EffectContext['source']): boolea
   const q=s.effects!.scheduler, t=q?.batches.flatMap(b=>b.triggers).find(t=>t.id===q.resolvingId), i=s.instances[source.presence.instanceId]
   return !!t && t.activatedOnField && t.timing==='ON_KO' && t.status==='RESOLVING' && JSON.stringify(t.source)===JSON.stringify(source) && i.zone==='trash' && i.zoneGeneration===t.expectedTrashGeneration && !!s.effects!.cardOperations?.some(o=>o.id===t.causeId && o.type==='KO' && o.outcome==='CONFIRMED' && JSON.stringify(o.subject)===JSON.stringify(source.presence))
 }
+/** "until the end of your opponent's next turn" (exclusive turn): activated on the opponent's turn, it ends with that turn
+ * (FAQ ST21-015). */
+function untilEndOfOpponentNextTurn(s: GameState, controllerId: string): number { return s.turn + (s.activePlayerId === controllerId ? 2 : 1) }
+/** M6: an ability whose cost returned its own source to its owner's hand ("You may return this Character to the owner's
+ * hand: ...") keeps resolving; the move must be a confirmed MOVE_CARD of this resolution on exactly that presence. */
+function validSelfReturnedSource(s: GameState, source: EffectContext['source'], resolutionId: string): boolean {
+  if (source.kind !== 'CARD') return false
+  const instance = s.instances[source.presence.instanceId]
+  return instance.zone === 'hand' && instance.zoneGeneration === source.presence.generation + 1
+    && !!s.effects?.operations?.some(o => o.resolutionId === resolutionId && o.type === 'MOVE_CARD' && o.outcome === 'CONFIRMED' && o.to === 'hand'
+      && o.subject.instanceId === instance.id && o.subject.generation === source.presence.generation)
+}
 function validActivatedMainEvent(s: GameState, source: EffectContext['source'], resolutionId: string): boolean {
   if (source.kind !== 'CARD') return false
   const definition = s.catalog.definitions.find(d => d.definitionId === source.definitionId)
@@ -1076,7 +1165,7 @@ function activateScheduled(s: GameState, triggerId: string) {
   if (!t || t.status!=='PENDING') throw new Error('INVALID_TRIGGER_CHOICE')
   const d=r.registry.definitions.find(d=>d.id===t.definitionId && d.revision===t.revision)!
   const source=t.source, i=source.kind==='CARD' ? s.instances[source.presence.instanceId] : undefined
-  if (!i || source.kind!=='CARD' || (t.activatedOnField ? i.zone!=='trash' || i.zoneGeneration!==t.expectedTrashGeneration : i.zoneGeneration!==source.presence.generation || d.source.kind!=='CARD_DEFINITION' || i.zone!==d.source.zone) || (d.usage.kind==='ONCE_PER_TURN' && r.usage[usageKey(d.id,d.revision,source,t.controllerId,s.turn)]) || !payable(s,d,source)) { t.status='INVALIDATED'; return }
+  if (!i || source.kind!=='CARD' || (t.activatedOnField ? i.zone!=='trash' || i.zoneGeneration!==t.expectedTrashGeneration : i.zoneGeneration!==source.presence.generation || d.source.kind!=='CARD_DEFINITION' || i.zone!==d.source.zone) || (d.usage.kind!=='UNLIMITED' && r.usage[usageKey(d.id,d.revision,source,t.controllerId,s.turn)]) || !payable(s,d,source)) { t.status='INVALIDATED'; return }
   t.status='RESOLVING'; q.resolvingId=t.id; begin(s,d,source,t.controllerId)
   if (r.active!.status!=='COMPLETED') resume(s)
 }
@@ -1128,6 +1217,7 @@ function assertScheduler(s: GameState) {
   if (!t.activatedOnField && t.timing === 'END_OF_YOUR_TURN' && !s.events.some(e => e.type === 'MAIN_ENDED' && `${s.gameId}:event:${e.sequence}` === t.causeId && e.actorId === t.controllerId)) throw new Error('INVALID_TRIGGER_CAUSE')
   if (!t.activatedOnField && t.timing === 'ON_BATTLE_PAIRED' && !s.events.some(e => e.type === 'BATTLE_PAIRED' && `${s.gameId}:event:${e.sequence}` === t.causeId && e.publicInstanceId === source.presence.instanceId)) throw new Error('INVALID_TRIGGER_CAUSE')
   if (!t.activatedOnField && t.timing === 'ON_DON_RETURNED' && !s.events.some(e => e.type === 'DON_RETURNED' && `${s.gameId}:event:${e.sequence}` === t.causeId && e.actorId === t.controllerId)) throw new Error('INVALID_TRIGGER_CAUSE')
+  if (!t.activatedOnField && t.timing === 'ON_OPPONENT_ATTACK' && !s.events.some(e => e.type === 'ATTACK_DECLARED' && `${s.gameId}:event:${e.sequence}` === t.causeId && e.publicInstanceId && s.instances[e.publicInstanceId].controller !== t.controllerId)) throw new Error('INVALID_TRIGGER_CAUSE')
   if (!t.activatedOnField && t.timing === 'ON_OPPONENT_BLOCKER' && !s.events.some(e => e.type === 'BLOCKER_ACTIVATED' && `${s.gameId}:event:${e.sequence}` === t.causeId && e.publicInstanceId && s.instances[e.publicInstanceId].owner !== t.controllerId)) throw new Error('INVALID_TRIGGER_CAUSE')
   if (!t.activatedOnField && t.timing === 'END_OF_BATTLE_WITH_CHARACTER' && !s.events.some(e => e.type === 'CHARACTER_BATTLED' && `${s.gameId}:event:${e.sequence}` === t.causeId && e.publicInstanceId === source.presence.instanceId)) throw new Error('INVALID_TRIGGER_CAUSE')
   if (!t.activatedOnField && ['ON_PLAY','WHEN_ATTACKING','ON_BLOCK','WHEN_ATTACKING_OR_ON_BLOCK','TRIGGER'].includes(t.timing)) {
@@ -1140,7 +1230,7 @@ function assertScheduler(s: GameState) {
    }
   }
   if (t.timing==='ON_CHARACTER_KO' && !r.cardOperations!.some(o=>o.id===t.causeId && o.type==='KO' && o.outcome==='CONFIRMED')) throw new Error('INVALID_TRIGGER_CAUSE')
- if (!t.activatedOnField && !['ON_PLAY','ON_CHARACTER_KO','WHEN_ATTACKING','ON_BLOCK','WHEN_ATTACKING_OR_ON_BLOCK','TRIGGER','END_OF_YOUR_TURN','END_OF_BATTLE_WITH_CHARACTER','ON_BATTLE_PAIRED','ON_DON_RETURNED','ON_OPPONENT_BLOCKER'].includes(t.timing)) throw new Error('INVALID_TRIGGER')
+ if (!t.activatedOnField && !['ON_PLAY','ON_CHARACTER_KO','WHEN_ATTACKING','ON_BLOCK','WHEN_ATTACKING_OR_ON_BLOCK','TRIGGER','END_OF_YOUR_TURN','END_OF_BATTLE_WITH_CHARACTER','ON_BATTLE_PAIRED','ON_DON_RETURNED','ON_OPPONENT_BLOCKER','ON_OPPONENT_ATTACK'].includes(t.timing)) throw new Error('INVALID_TRIGGER')
  }
  const resolving=all.filter(t=>t.status==='RESOLVING')
  if (resolving.length!==(q.resolvingId?1:0) || (q.resolvingId && (resolving[0].id!==q.resolvingId || r.active?.definitionId!==resolving[0].definitionId || JSON.stringify(r.active.context.source)!==JSON.stringify(resolving[0].source)))) throw new Error('INVALID_TRIGGER_RESOLUTION')

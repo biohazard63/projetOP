@@ -11,6 +11,9 @@ type Row = { code: string; name: string; type: string }
 const out = process.argv[2]
 if (!out) throw new Error('usage: extract-starter-compositions.ts <output.json>')
 const script = readFileSync(resolve('scripts/rebuildStarterDecks.ts'), 'utf8')
+// The audited reference has explicit numbers and source gates. Never let the old name-only regex export an empty
+// or silently substituted /play manifest. Migrating that runtime manifest is a separate, reviewed task.
+if (script.includes('cardNumber:')) throw new Error('Audited Starter reference detected: use rebuildStarterDecks.ts --dry-run. Legacy /play manifest was not modified.')
 const base = (code: string) => code.replace(/_p\d+$/i, '').toUpperCase()
 
 function rowsOf(deckCode: string): Row[] {

@@ -1,0 +1,1164 @@
+{
+  "deckCode": "ST-16",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569016",
+      "status": "FETCHED",
+      "sha256": "0745f6c82bd5e967d90fbc1464a7d697e96da244395f472bc648f4d7f06e0c60",
+      "retrievedAt": "2026-10-14T07:26:56.133866+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st16-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st16-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st16.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st16.php",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st16_cardlists/",
+      "status": "FETCHED",
+      "sha256": "3dfb88916877f69339bb7e427b4c40bb9b6f1aaff689fb2742a9076925da2c9d",
+      "retrievedAt": "2026-10-14T07:31:32.224047+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st15-20.php",
+      "status": "FETCHED",
+      "sha256": "0863e3edecd416a4e0120fd9360cd47f4cc7e4e966c3837ff7a4c022a902ecaf",
+      "retrievedAt": "2026-10-14T07:31:33.540122+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569016",
+      "status": "FETCHED",
+      "sha256": "0745f6c82bd5e967d90fbc1464a7d697e96da244395f472bc648f4d7f06e0c60",
+      "retrievedAt": "2026-10-14T07:31:35.274977+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569016",
+      "status": "FETCHED",
+      "sha256": "0745f6c82bd5e967d90fbc1464a7d697e96da244395f472bc648f4d7f06e0c60",
+      "retrievedAt": "2026-10-14T07:35:02.148295+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st16_cardlists/",
+      "status": "FETCHED",
+      "sha256": "3dfb88916877f69339bb7e427b4c40bb9b6f1aaff689fb2742a9076925da2c9d",
+      "retrievedAt": "2026-10-14T07:35:03.962509+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550016",
+      "status": "FETCHED",
+      "sha256": "7071ccda8dcabd54561c63717ad966a2f8faaf5db5f6ea446b2c0e4ce31120cc",
+      "retrievedAt": "2026-10-14T07:35:06.058978+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569016",
+      "status": "FETCHED",
+      "sha256": "0745f6c82bd5e967d90fbc1464a7d697e96da244395f472bc648f4d7f06e0c60",
+      "retrievedAt": "2026-10-14T07:53:00.203691+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622016",
+      "status": "FETCHED",
+      "sha256": "5fd1310df7454faafdc6722d0b6df010818cef14de3d95f4efa95b522e9fa0b8",
+      "retrievedAt": "2026-10-14T07:53:01.548062+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST16-004",
+      "status": "FETCHED",
+      "sha256": "378b93fee65a55b0375245a510ab47bd789324734061fcb3c534f267abefb521",
+      "retrievedAt": "2026-10-14T08:02:28.479148+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST16-004",
+      "status": "FETCHED",
+      "sha256": "7f590e7e4c7b2648edcca75d87bbc4d4b6f95fa7621239041f43eac2b36b8b6d",
+      "retrievedAt": "2026-10-14T08:02:29.837124+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "P-029",
+      "printingCode": "P-029_r1",
+      "name": "Bartolomeo",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "P-057",
+      "printingCode": "P-057_p1",
+      "name": "Fleeting Lullaby",
+      "type": "EVENT",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "P-058",
+      "printingCode": "P-058_p1",
+      "name": "Where the Wind Blows",
+      "type": "EVENT",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "P-059",
+      "printingCode": "P-059_p1",
+      "name": "The World's Continuation",
+      "type": "EVENT",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "P-060",
+      "printingCode": "P-060_p1",
+      "name": "Tot Musica",
+      "type": "EVENT",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "P-061",
+      "printingCode": "P-061_r1",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST11-001",
+      "printingCode": "ST11-001_p1",
+      "name": "Uta",
+      "type": "LEADER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST11-003",
+      "printingCode": "ST11-003_p2",
+      "name": "Backlight",
+      "type": "EVENT",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST11-004",
+      "printingCode": "ST11-004_p2",
+      "name": "New Genesis",
+      "type": "EVENT",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST11-005",
+      "printingCode": "ST11-005_p2",
+      "name": "I'm invincible",
+      "type": "EVENT",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST16-001",
+      "printingCode": "ST16-001",
+      "name": "Uta",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST16-002",
+      "printingCode": "ST16-002",
+      "name": "Gordon",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST16-003",
+      "printingCode": "ST16-003",
+      "name": "Charlotte Katakuri",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST16-005",
+      "printingCode": "ST16-005",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Green"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST11-001",
+      "quantity": 1,
+      "sourceName": "ウタ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    },
+    {
+      "cardNumber": "ST16-001",
+      "quantity": 2,
+      "sourceName": "ウタ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    },
+    {
+      "cardNumber": "ST16-002",
+      "quantity": 4,
+      "sourceName": "ゴードン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    },
+    {
+      "cardNumber": "ST16-003",
+      "quantity": 4,
+      "sourceName": "シャーロット・カタクリ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "quantity": 2,
+      "sourceName": "シャンクス",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    },
+    {
+      "cardNumber": "ST16-005",
+      "quantity": 2,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    },
+    {
+      "cardNumber": "P-029",
+      "quantity": 4,
+      "sourceName": "バルトロメオ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    },
+    {
+      "cardNumber": "P-061",
+      "quantity": 4,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    },
+    {
+      "cardNumber": "ST11-003",
+      "quantity": 4,
+      "sourceName": "逆光",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    },
+    {
+      "cardNumber": "ST11-004",
+      "quantity": 4,
+      "sourceName": "新時代",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    },
+    {
+      "cardNumber": "ST11-005",
+      "quantity": 4,
+      "sourceName": "私は最強",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    },
+    {
+      "cardNumber": "P-057",
+      "quantity": 4,
+      "sourceName": "ウタカタララバイ",
+      "sourceRarity": "P",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    },
+    {
+      "cardNumber": "P-058",
+      "quantity": 4,
+      "sourceName": "風のゆくえ",
+      "sourceRarity": "P",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    },
+    {
+      "cardNumber": "P-059",
+      "quantity": 4,
+      "sourceName": "世界のつづき",
+      "sourceRarity": "P",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    },
+    {
+      "cardNumber": "P-060",
+      "quantity": 4,
+      "sourceName": "Tot Musica",
+      "sourceRarity": "P",
+      "source": "https://tier-one-onepiece.jp/blog/st16_cardlists/"
+    }
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) \r\n                   ・DON!! Card x 10 \r\n                   ・Playsheet x 1 \r\n                   ・PREMIUM BOOSTER –ONE PIECE CARD THE BEST- x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st15-20.php",
+  "officialDeckTitle": "STARTER DECK -Green Uta- [ST-16]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "P-029",
+      "printingCode": "P-029_r2",
+      "name": "バルトロメオ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "P-057",
+      "printingCode": "P-057_p1",
+      "name": "ウタカタララバイ",
+      "type": "EVENT",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "P-058",
+      "printingCode": "P-058_p1",
+      "name": "風のゆくえ",
+      "type": "EVENT",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "P-059",
+      "printingCode": "P-059_p1",
+      "name": "世界のつづき",
+      "type": "EVENT",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "P-060",
+      "printingCode": "P-060_p1",
+      "name": "Tot Musica",
+      "type": "EVENT",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "P-061",
+      "printingCode": "P-061_r1",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST11-001",
+      "printingCode": "ST11-001_p1",
+      "name": "ウタ",
+      "type": "LEADER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST11-003",
+      "printingCode": "ST11-003_p2",
+      "name": "逆光",
+      "type": "EVENT",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST11-004",
+      "printingCode": "ST11-004_p2",
+      "name": "新時代",
+      "type": "EVENT",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST11-005",
+      "printingCode": "ST11-005_p2",
+      "name": "私は最強",
+      "type": "EVENT",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST16-001",
+      "printingCode": "ST16-001",
+      "name": "ウタ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST16-002",
+      "printingCode": "ST16-002",
+      "name": "ゴードン",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST16-003",
+      "printingCode": "ST16-003",
+      "name": "シャーロット・カタクリ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004",
+      "name": "シャンクス",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST16-005",
+      "printingCode": "ST16-005",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "緑"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "P-029",
+      "printingCode": "P-029_r1",
+      "locale": "EN",
+      "name": "Bartolomeo",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "c05f4ea68bd08231327b4b244087f7faadcbdf7d449d5edeac67c3feb358e6f9",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "450dcff57345260a42f84698eaba83d9d838144f5bb70033ded120e2cea34d26",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "P-057",
+      "printingCode": "P-057_p1",
+      "locale": "EN",
+      "name": "Fleeting Lullaby",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "d67d165a32ea62895539b89a82f37da22abe3669db2031748f390ece1895ef3b",
+      "triggerHash": "f11e3bd95cea2c7b0921ce0651d0a6b34b9ce1c616748f59ed982f22698d0ac5",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "P-058",
+      "printingCode": "P-058_p1",
+      "locale": "EN",
+      "name": "Where the Wind Blows",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "397fc74ed4d0b6008f3a8f070258f9949b287824585285ce9059f3e5198bd9a4",
+      "triggerHash": "60565fb1bf44a352c7333c18f3581a13100db491983ebef40b8bf4b079e45c2a",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "P-059",
+      "printingCode": "P-059_p1",
+      "locale": "EN",
+      "name": "The World's Continuation",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "646338a769f76d55736fe95ede9eaf5d3c151ff31277330b9fd16cee4b4ad950",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "P-060",
+      "printingCode": "P-060_p1",
+      "locale": "EN",
+      "name": "Tot Musica",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "b7bbc955b56555b7025dc0bbb8416770f7cc177ea9411a55b33fd52d6010b892",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "P-061",
+      "printingCode": "P-061_r1",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 8,
+      "power": 10000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "d77dadd632bc5b74b19fbf03dd3a33482b15429422f2cda09d43d1e064acb08a",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "ST11-001",
+      "printingCode": "ST11-001_p1",
+      "locale": "EN",
+      "name": "Uta",
+      "type": "LEADER",
+      "color": "Green",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "69b4cc78b2ea97259fc210bf0721999589d3c7008f58be0d5a63920f80fe8ff1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "da9d4f1a96d44b29aba8fb37cb8058642902fe838398294f6ec66573849a6c9d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "ST11-003",
+      "printingCode": "ST11-003_p2",
+      "locale": "EN",
+      "name": "Backlight",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "ecce2f9167cb470766f50a566d4638bbbc48a0323ad972a5e69c8bbceccc385a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "ST11-004",
+      "printingCode": "ST11-004_p2",
+      "locale": "EN",
+      "name": "New Genesis",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "a906c6cd225be2d22c16ce2fb8d849db48bab290c57c00a7264c2b9a0d0b4b88",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "ST11-005",
+      "printingCode": "ST11-005_p2",
+      "locale": "EN",
+      "name": "I'm invincible",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "4a4859eedcae9f246ab208aa990297d8fa415c4d611b56fb9530d60367c9f66c",
+      "triggerHash": "aa8c52259b5bf9ec91a7be2a84bc5115de843ce0b0ebd7d178be9c12e172de7e",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "d6d72faee130f5dd9d6b37b29c4798954b5a19949a8ee138238eb0a76b4dbe4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "ST16-001",
+      "printingCode": "ST16-001",
+      "locale": "EN",
+      "name": "Uta",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "1c54dff3ea4a890441d02fb1f4f7cedefe95a1430afd943cb89f7007144a1d37",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "da9d4f1a96d44b29aba8fb37cb8058642902fe838398294f6ec66573849a6c9d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "ST16-002",
+      "printingCode": "ST16-002",
+      "locale": "EN",
+      "name": "Gordon",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "904ae41c6667e6b7d42ae0cf1b2bddcf567cba529621d56442d8f1f856bd4e73",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "da9d4f1a96d44b29aba8fb37cb8058642902fe838398294f6ec66573849a6c9d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "ST16-003",
+      "printingCode": "ST16-003",
+      "locale": "EN",
+      "name": "Charlotte Katakuri",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "2d4331a49fc17b5647fafaa25cc122e357e924c0a85ec519c1cbd51e14b91a26",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "44b6cec8309edec8f46bf9eb0145c2b8b124b28e92f75645ac79546f5b96c86b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004",
+      "locale": "EN",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 9,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "a294a445b5c928636153bc804fd62523bd2bd3046615cf06c410a8daa260a278",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "e8d8ad293471ce1803087f85e1ed2091f3a2c4fa1aa476021a9f54601a96a07d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "ST16-005",
+      "printingCode": "ST16-005",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "d3ff0217c94fe5cc45a8a0f4edc134ec0b2c3ab9d2e174419cd79d53eebab954",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5ac0b9dd80d4afb5645a466ee4b045fdced5eac8f6c464e58f2eaeb4c4cdb865",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569016"
+    },
+    {
+      "cardNumber": "P-029",
+      "printingCode": "P-029_p1",
+      "locale": "FR",
+      "name": "Bartolomeo",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "06e96aa6fd4936c396e88062184f4d632a15cccfd63599e232a7b4fa1c72950b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "c9478367f139447d8aa47401d82c31395550687c07a67e0e678c01ebe5b3f703",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "P-057",
+      "printingCode": "P-057_p1",
+      "locale": "FR",
+      "name": "Berceuse éphémère",
+      "type": "EVENT",
+      "color": "Vert",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "d0303f51fd41683c847e70d8ebd1046aee199a663dc3ad6bbbff80f03bb71e3e",
+      "triggerHash": "66ff632c15ca98e2cfcdc23ed3da90e1844f184c36533b89f32a10c00bd351ca",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "c2ea1c55f5849db4cf0d830f3be53fb95461f440b6b5cfa745f0923e7671c70a",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "P-058",
+      "printingCode": "P-058_p1",
+      "locale": "FR",
+      "name": "Où souffle le vent",
+      "type": "EVENT",
+      "color": "Vert",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "be2e5be3426542c7965f61fe421f8af576c50ca5fcc84d9be0a2bbe9f205a4ad",
+      "triggerHash": "718a67f6a130e5bcc77c363711b7169515d92d21ae147d446af4ad55930edd64",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "c2ea1c55f5849db4cf0d830f3be53fb95461f440b6b5cfa745f0923e7671c70a",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "P-059",
+      "printingCode": "P-059_p1",
+      "locale": "FR",
+      "name": "Le monde continue",
+      "type": "EVENT",
+      "color": "Vert",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "e2d02f47af6891500b23f7494628c7bf55f0b321a7e52eaa672e4f31fe81f0ee",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "c2ea1c55f5849db4cf0d830f3be53fb95461f440b6b5cfa745f0923e7671c70a",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "P-060",
+      "printingCode": "P-060_p1",
+      "locale": "FR",
+      "name": "Tot Musica",
+      "type": "EVENT",
+      "color": "Vert",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "afca273d74da0e575f19e6f67dabb34b25fe2d5eaee03c15436f922355bb1e2c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "c2ea1c55f5849db4cf0d830f3be53fb95461f440b6b5cfa745f0923e7671c70a",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "P-061",
+      "printingCode": "P-061_p1",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 8,
+      "power": 10000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "5fc977bef6246286d15e9e3a788d45286512c086d77ec6c3de85a407dfc7e4ee",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "ST11-001",
+      "printingCode": "ST11-001_p1",
+      "locale": "FR",
+      "name": "Uta",
+      "type": "LEADER",
+      "color": "Vert",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "2565ba0adecbd3acc58b657fbd7cc11be332f0ffdeb0ab5154e2d997e8084b92",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "da9d4f1a96d44b29aba8fb37cb8058642902fe838398294f6ec66573849a6c9d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "ST11-003",
+      "printingCode": "ST11-003_p1",
+      "locale": "FR",
+      "name": "À contre-jour",
+      "type": "EVENT",
+      "color": "Vert",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "ee11b7dab50d7c4cb134bd98e225e95be6f9c6b4fd15a7823da1f46908119fee",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "c2ea1c55f5849db4cf0d830f3be53fb95461f440b6b5cfa745f0923e7671c70a",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "ST11-004",
+      "printingCode": "ST11-004_p1",
+      "locale": "FR",
+      "name": "Nouvelle ère",
+      "type": "EVENT",
+      "color": "Vert",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "2d546e8a96208f2f18fe542f476620067427ef289efc511448d5bcdf1382b720",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "c2ea1c55f5849db4cf0d830f3be53fb95461f440b6b5cfa745f0923e7671c70a",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "ST11-005",
+      "printingCode": "ST11-005_p1",
+      "locale": "FR",
+      "name": "Je suis la plus forte",
+      "type": "EVENT",
+      "color": "Vert",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "9db71a19428951ed6cf26d96a13153c56db9c99c3293f0c5baea948d32d21133",
+      "triggerHash": "16e45a000271e269399109121ed0b53e72e9e639ad1312006e63de70ae00ffbf",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "c2ea1c55f5849db4cf0d830f3be53fb95461f440b6b5cfa745f0923e7671c70a",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "ST16-001",
+      "printingCode": "ST16-001",
+      "locale": "FR",
+      "name": "Uta",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "4ea7e52d2a011d973bf12db45ccec66bc22e31666380a14fcb4a40d631b9ea83",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "da9d4f1a96d44b29aba8fb37cb8058642902fe838398294f6ec66573849a6c9d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "ST16-002",
+      "printingCode": "ST16-002",
+      "locale": "FR",
+      "name": "Gordon",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 2,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "fde4b28829a9ddd101a05f803d1469c17c46b8f402f8852b851b3afe7692bf73",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "da9d4f1a96d44b29aba8fb37cb8058642902fe838398294f6ec66573849a6c9d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "ST16-003",
+      "printingCode": "ST16-003",
+      "locale": "FR",
+      "name": "Charlotte Katakuri",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "186bbd86bc1a4058d818c0d1b4ad6c0e74eb26e1b88323f590cafd513bfa1dcb",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "d4cb6d874fb9287f43311c978d88f0cb033dbdc202fdce97736214f0984fcf8b",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004",
+      "locale": "FR",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 9,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "5667786a40ae9e0738bb4e1a13697684ccac4e1dce846e2549cd15b473e00479",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "47e3136efd55955eaaff8eeb2dd51ed56147df4e650a7b992c61c4444586b8ef",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "ST16-005",
+      "printingCode": "ST16-005",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "6dc8d8d4081313fe1d83ecc0870e0f30569f53aa8ea34e7fb80c8a5af45a88b7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "5e89b5cf79399c54812b40027b05779a29b4344574325d240a55bb5c42014d3f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622016"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004",
+      "locale": "EN",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 9,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "a294a445b5c928636153bc804fd62523bd2bd3046615cf06c410a8daa260a278",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "e8d8ad293471ce1803087f85e1ed2091f3a2c4fa1aa476021a9f54601a96a07d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST16-004"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004_p2",
+      "locale": "EN",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 9,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "a294a445b5c928636153bc804fd62523bd2bd3046615cf06c410a8daa260a278",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "e8d8ad293471ce1803087f85e1ed2091f3a2c4fa1aa476021a9f54601a96a07d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST16-004"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004_r1",
+      "locale": "EN",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 9,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "a294a445b5c928636153bc804fd62523bd2bd3046615cf06c410a8daa260a278",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "e8d8ad293471ce1803087f85e1ed2091f3a2c4fa1aa476021a9f54601a96a07d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST16-004"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004_p1",
+      "locale": "EN",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 9,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "a294a445b5c928636153bc804fd62523bd2bd3046615cf06c410a8daa260a278",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "e8d8ad293471ce1803087f85e1ed2091f3a2c4fa1aa476021a9f54601a96a07d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST16-004"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004",
+      "locale": "FR",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 9,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "5667786a40ae9e0738bb4e1a13697684ccac4e1dce846e2549cd15b473e00479",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "47e3136efd55955eaaff8eeb2dd51ed56147df4e650a7b992c61c4444586b8ef",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST16-004"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004_p1",
+      "locale": "FR",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 9,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "5667786a40ae9e0738bb4e1a13697684ccac4e1dce846e2549cd15b473e00479",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "47e3136efd55955eaaff8eeb2dd51ed56147df4e650a7b992c61c4444586b8ef",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST16-004"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004_p2",
+      "locale": "FR",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 9,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "5667786a40ae9e0738bb4e1a13697684ccac4e1dce846e2549cd15b473e00479",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "47e3136efd55955eaaff8eeb2dd51ed56147df4e650a7b992c61c4444586b8ef",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST16-004"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004_p4",
+      "locale": "FR",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 9,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "5667786a40ae9e0738bb4e1a13697684ccac4e1dce846e2549cd15b473e00479",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "47e3136efd55955eaaff8eeb2dd51ed56147df4e650a7b992c61c4444586b8ef",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST16-004"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004_r1",
+      "locale": "FR",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 9,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "5667786a40ae9e0738bb4e1a13697684ccac4e1dce846e2549cd15b473e00479",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "47e3136efd55955eaaff8eeb2dd51ed56147df4e650a7b992c61c4444586b8ef",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST16-004"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004_p3",
+      "locale": "FR",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 9,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "5667786a40ae9e0738bb4e1a13697684ccac4e1dce846e2549cd15b473e00479",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "47e3136efd55955eaaff8eeb2dd51ed56147df4e650a7b992c61c4444586b8ef",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST16-004"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "P-029",
+      "printingCode": "P-029_p1",
+      "name": "Bartolomeo",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "P-057",
+      "printingCode": "P-057_p1",
+      "name": "Berceuse éphémère",
+      "type": "EVENT",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "P-058",
+      "printingCode": "P-058_p1",
+      "name": "Où souffle le vent",
+      "type": "EVENT",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "P-059",
+      "printingCode": "P-059_p1",
+      "name": "Le monde continue",
+      "type": "EVENT",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "P-060",
+      "printingCode": "P-060_p1",
+      "name": "Tot Musica",
+      "type": "EVENT",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "P-061",
+      "printingCode": "P-061_p1",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST11-001",
+      "printingCode": "ST11-001_p1",
+      "name": "Uta",
+      "type": "LEADER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST11-003",
+      "printingCode": "ST11-003_p1",
+      "name": "À contre-jour",
+      "type": "EVENT",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST11-004",
+      "printingCode": "ST11-004_p1",
+      "name": "Nouvelle ère",
+      "type": "EVENT",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST11-005",
+      "printingCode": "ST11-005_p1",
+      "name": "Je suis la plus forte",
+      "type": "EVENT",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST16-001",
+      "printingCode": "ST16-001",
+      "name": "Uta",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST16-002",
+      "printingCode": "ST16-002",
+      "name": "Gordon",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST16-003",
+      "printingCode": "ST16-003",
+      "name": "Charlotte Katakuri",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST16-004",
+      "printingCode": "ST16-004",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST16-005",
+      "printingCode": "ST16-005",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Vert"
+    }
+  ]
+}

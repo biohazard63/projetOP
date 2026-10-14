@@ -39,6 +39,8 @@ export const toDeckBottom = (bind: string): Step => ({ kind: 'OPERATION', operat
 export const rest = (bind: string): Step => ({ kind: 'OPERATION', operation: { primitive: 'restCard', version: '1.0.0', audience: 'PUBLIC', subjectBinding: bind } })
 export const setActive = (bind?: string): Step => ({ kind: 'OPERATION', operation: { primitive: 'setActive', version: '1.0.0', audience: 'PUBLIC', ...(bind ? { subjectBinding: bind } : {}) } })
 export const power = (bind: string, amount: number, duration: 'THIS_TURN' | 'THIS_BATTLE'): Step => ({ kind: 'OPERATION', operation: { primitive: 'addPower', version: '1.0.0', player: 'CONTROLLER', audience: 'PUBLIC', subjectBinding: bind, amount, duration } })
+/** "give up to N of your opponent's Characters −X power during this turn" (bound opposing Leader/Characters). */
+export const opponentPower = (amount: number, bind = 'target'): Step => ({ kind: 'OPERATION', operation: { primitive: 'addPower', version: '1.0.0', player: 'OPPONENT', audience: 'PUBLIC', subjectBinding: bind, amount, duration: 'THIS_TURN' } })
 export const draw = (amount: number): Step => ({ kind: 'OPERATION', operation: { primitive: 'drawCards', version: '1.0.0', player: 'CONTROLLER', audience: 'CONTROLLER', amount } })
 /** Trash the bound card(s) of the controller's hand (public once in the trash). */
 export const trashFromHand = (bind: string, whenBindingNonempty?: string): Step => ({ kind: 'OPERATION', operation: { primitive: 'moveCard', version: '1.0.0', player: 'CONTROLLER', audience: 'PUBLIC', subjectBinding: bind, from: 'hand', to: 'trash' }, ...(whenBindingNonempty ? { whenBindingNonempty } : {}) })
@@ -97,7 +99,7 @@ export function lookTopAndPlace(n: number): Step[] {
 }
 export const bindAll = (bind: string, filter: CardsFilter): Step => ({ kind: 'BIND_ALL', selector: { kind: 'CARDS', ...filter }, bind })
 export const check = (bind: string, condition: Extract<Step, { kind: 'OPERATION' }>['whenCondition'] & object): Step => ({ kind: 'CHECK', condition, bind })
-export const addCost = (bind: string, amount: number): Step => ({ kind: 'OPERATION', operation: { primitive: 'addCost', version: '1.0.0', audience: 'PUBLIC', subjectBinding: bind, amount, duration: 'THIS_TURN' } })
+export const addCost = (bind: string, amount: number, duration: 'THIS_TURN' | 'UNTIL_END_OF_OPPONENT_NEXT_TURN' = 'THIS_TURN'): Step => ({ kind: 'OPERATION', operation: { primitive: 'addCost', version: '1.0.0', audience: 'PUBLIC', subjectBinding: bind, amount, duration } })
 export const preventKO = (bind?: string): Step => ({ kind: 'OPERATION', operation: { primitive: 'preventKO', version: '1.0.0', audience: 'PUBLIC', duration: 'THIS_TURN', ...(bind ? { subjectBinding: bind } : {}) } })
 export const grantDoubleAttack = (bind?: string): Step => ({ kind: 'OPERATION', operation: { primitive: 'grantKeyword', version: '1.0.0', audience: 'PUBLIC', keyword: 'DOUBLE_ATTACK', duration: 'THIS_TURN', ...(bind ? { subjectBinding: bind } : {}) } })
 export const powerSelf = (amount: number): Step => ({ kind: 'OPERATION', operation: { primitive: 'addPower', version: '1.0.0', player: 'CONTROLLER', audience: 'PUBLIC', amount, duration: 'THIS_TURN' } })
@@ -109,8 +111,8 @@ export function opponentTrashesFromHand(): Step[] {
   ]
 }
 /** "add 1 card from the top or bottom of your Life cards to your hand" (`required`: an activation cost already paid). */
-export function lifeToHand(bind = 'lifeCost', opts: { required?: boolean } = {}): Step[] {
-  return [{ kind: 'CHOICE', choiceType: 'SELECT', selector: { kind: 'CARDS', side: 'OWN', zone: 'life', lifeEnd: 'TOP_OR_BOTTOM' }, optional: !opts.required, min: opts.required ? 1 : 0, max: 1, bind, visibility: 'PUBLIC' },
+export function lifeToHand(bind = 'lifeCost', opts: { required?: boolean; lifeEnd?: 'TOP' | 'TOP_OR_BOTTOM' } = {}): Step[] {
+  return [{ kind: 'CHOICE', choiceType: 'SELECT', selector: { kind: 'CARDS', side: 'OWN', zone: 'life', lifeEnd: opts.lifeEnd ?? 'TOP_OR_BOTTOM' }, optional: !opts.required, min: opts.required ? 1 : 0, max: 1, bind, visibility: 'PUBLIC' },
     { kind: 'OPERATION', operation: { primitive: 'lifeToHand', version: '1.0.0', audience: 'CONTROLLER', subjectBinding: bind } }]
 }
 /** "Add <bound card> to the top of the (owner's) Life cards" (face-up only when printed). */

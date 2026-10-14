@@ -1,0 +1,775 @@
+{
+  "deckCode": "ST-09",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569009",
+      "status": "FETCHED",
+      "sha256": "bb359f6edecb90a596783d2badd93965027cce4d4a927ff63f6254e4f99357ce",
+      "retrievedAt": "2026-10-14T07:26:44.420775+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st09-cardlists/",
+      "status": "FETCHED",
+      "sha256": "0b742e8db1e3703a4ddd55d9a6db08d40deee729867cf07f81cbde2544d2288e",
+      "retrievedAt": "2026-10-14T07:26:45.943826+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st09.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st09.php",
+      "status": "FETCHED",
+      "sha256": "b6ae869ad21101f06993f8472eac9f48f8ec42ead6aa41f0965745cee4237b27",
+      "retrievedAt": "2026-10-14T07:26:48.453324+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st09-cardlists/",
+      "status": "FETCHED",
+      "sha256": "0b742e8db1e3703a4ddd55d9a6db08d40deee729867cf07f81cbde2544d2288e",
+      "retrievedAt": "2026-10-14T07:31:25.637893+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569009",
+      "status": "FETCHED",
+      "sha256": "bb359f6edecb90a596783d2badd93965027cce4d4a927ff63f6254e4f99357ce",
+      "retrievedAt": "2026-10-14T07:31:27.010448+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569009",
+      "status": "FETCHED",
+      "sha256": "bb359f6edecb90a596783d2badd93965027cce4d4a927ff63f6254e4f99357ce",
+      "retrievedAt": "2026-10-14T07:34:57.080769+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st09-cardlists/",
+      "status": "FETCHED",
+      "sha256": "0b742e8db1e3703a4ddd55d9a6db08d40deee729867cf07f81cbde2544d2288e",
+      "retrievedAt": "2026-10-14T07:34:58.690995+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550009",
+      "status": "FETCHED",
+      "sha256": "d118859870b1fbba142114b6f4e0c1325e435ebc5a24d7301625f6fb1e1e0ffe",
+      "retrievedAt": "2026-10-14T07:35:00.317138+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09",
+      "status": "FETCHED",
+      "sha256": "411b6a8aa5ad35ad211d321919983ec627158ab010536df7a81f38a07b4d605d",
+      "retrievedAt": "2026-10-14T07:52:57.598890+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09",
+      "status": "FETCHED",
+      "sha256": "2fcc4c64ae8932552e5d7eb3f2304c2ad5915a0548202269594a37a69f986030",
+      "retrievedAt": "2026-10-14T07:52:58.968766+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "ST09-001",
+      "printingCode": "ST09-001",
+      "name": "Yamato",
+      "type": "LEADER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST09-002",
+      "printingCode": "ST09-002",
+      "name": "Uzuki Tempura",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST09-003",
+      "printingCode": "ST09-003",
+      "name": "Ulti",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST09-004",
+      "printingCode": "ST09-004",
+      "name": "Kaido",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST09-005",
+      "printingCode": "ST09-005",
+      "name": "Kouzuki Oden",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST09-006",
+      "printingCode": "ST09-006",
+      "name": "Kouzuki Momonosuke",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST09-007",
+      "printingCode": "ST09-007",
+      "name": "Shinobu",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST09-008",
+      "printingCode": "ST09-008",
+      "name": "Shimotsuki Ushimaru",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST09-009",
+      "printingCode": "ST09-009",
+      "name": "Fugetsu Omusubi",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST09-010",
+      "printingCode": "ST09-010",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST09-011",
+      "printingCode": "ST09-011",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST09-012",
+      "printingCode": "ST09-012",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST09-013",
+      "printingCode": "ST09-013",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST09-014",
+      "printingCode": "ST09-014",
+      "name": "Narikabura Arrow",
+      "type": "EVENT",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST09-015",
+      "printingCode": "ST09-015",
+      "name": "Thunder Bagua",
+      "type": "EVENT",
+      "color": "Yellow"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST09-001",
+      "quantity": 1,
+      "sourceName": "ヤマト",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    },
+    {
+      "cardNumber": "ST09-002",
+      "quantity": 4,
+      "sourceName": "雨月天ぷら",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    },
+    {
+      "cardNumber": "ST09-003",
+      "quantity": 4,
+      "sourceName": "うるティ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    },
+    {
+      "cardNumber": "ST09-004",
+      "quantity": 4,
+      "sourceName": "カイドウ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    },
+    {
+      "cardNumber": "ST09-005",
+      "quantity": 2,
+      "sourceName": "光月おでん",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    },
+    {
+      "cardNumber": "ST09-006",
+      "quantity": 4,
+      "sourceName": "光月モモの助",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    },
+    {
+      "cardNumber": "ST09-007",
+      "quantity": 4,
+      "sourceName": "しのぶ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    },
+    {
+      "cardNumber": "ST09-008",
+      "quantity": 4,
+      "sourceName": "霜月牛マル",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    },
+    {
+      "cardNumber": "ST09-009",
+      "quantity": 4,
+      "sourceName": "風月おむすび",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    },
+    {
+      "cardNumber": "ST09-010",
+      "quantity": 2,
+      "sourceName": "ポートガス・D・エース",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    },
+    {
+      "cardNumber": "ST09-011",
+      "quantity": 4,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    },
+    {
+      "cardNumber": "ST09-012",
+      "quantity": 4,
+      "sourceName": "ヤマト",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    },
+    {
+      "cardNumber": "ST09-013",
+      "quantity": 4,
+      "sourceName": "ヤマト",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    },
+    {
+      "cardNumber": "ST09-014",
+      "quantity": 2,
+      "sourceName": "鳴鏑",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    },
+    {
+      "cardNumber": "ST09-015",
+      "quantity": 4,
+      "sourceName": "雷鳴八卦",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st09-cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -Yamato- − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -Yamato-"
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) \r\n                   ・DON!! Cards x 10 \r\n                   ・Playsheet x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st09.php",
+  "officialDeckTitle": "STARTER DECK -Yamato- [ST-09]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "ST09-001",
+      "printingCode": "ST09-001",
+      "name": "ヤマト",
+      "type": "LEADER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST09-002",
+      "printingCode": "ST09-002",
+      "name": "雨月天ぷら",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST09-003",
+      "printingCode": "ST09-003",
+      "name": "うるティ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST09-004",
+      "printingCode": "ST09-004",
+      "name": "カイドウ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST09-005",
+      "printingCode": "ST09-005",
+      "name": "光月おでん",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST09-006",
+      "printingCode": "ST09-006",
+      "name": "光月モモの助",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST09-007",
+      "printingCode": "ST09-007",
+      "name": "しのぶ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST09-008",
+      "printingCode": "ST09-008",
+      "name": "霜月牛マル",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST09-009",
+      "printingCode": "ST09-009",
+      "name": "風月おむすび",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST09-010",
+      "printingCode": "ST09-010",
+      "name": "ポートガス・D・エース",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST09-011",
+      "printingCode": "ST09-011",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST09-012",
+      "printingCode": "ST09-012",
+      "name": "ヤマト",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST09-013",
+      "printingCode": "ST09-013",
+      "name": "ヤマト",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST09-014",
+      "printingCode": "ST09-014",
+      "name": "鳴鏑",
+      "type": "EVENT",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST09-015",
+      "printingCode": "ST09-015",
+      "name": "雷鳴八卦",
+      "type": "EVENT",
+      "color": "黄"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST09-001",
+      "printingCode": "ST09-001",
+      "locale": "EN",
+      "name": "Yamato",
+      "type": "LEADER",
+      "color": "Yellow",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "a74749f724b3cd528acc06013d6f592dbbd0a043d192f7a959fbc7374d126536",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-002",
+      "printingCode": "ST09-002",
+      "locale": "EN",
+      "name": "Uzuki Tempura",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "bf2e2afbf118690d6b3f9f6a4dee6cea7d6242915de12809b9de40293a1f6d91",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-003",
+      "printingCode": "ST09-003",
+      "locale": "EN",
+      "name": "Ulti",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "bb2956595806cf735dba565eff02f7f6660208fdfa4be3af1b719d6e243bab6e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-004",
+      "printingCode": "ST09-004",
+      "locale": "EN",
+      "name": "Kaido",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "fe658dd3791b75c1ac41ffc9542bb702a78b254cd7ee3803b73084529ff5ae85",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "e96a5674778a31a885001378d57b52bdd209ee48ba9e59bb75d75b795776e42f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-005",
+      "printingCode": "ST09-005",
+      "locale": "EN",
+      "name": "Kouzuki Oden",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 7,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "903ecdf60459c120d875595af1837c2d58d252077406365ec2b128ba9e6243cd",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "61dbde3b5bfeb2ccd179da09acea61a5912016573c415c492499d13c57f6c034",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-006",
+      "printingCode": "ST09-006",
+      "locale": "EN",
+      "name": "Kouzuki Momonosuke",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "61dbde3b5bfeb2ccd179da09acea61a5912016573c415c492499d13c57f6c034",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-007",
+      "printingCode": "ST09-007",
+      "locale": "EN",
+      "name": "Shinobu",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 2000,
+      "counter": null,
+      "effectHash": "bef75d1284e6536f997cc5992afa21edcef2a3f9cea520f7b5b25e1441193b63",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-008",
+      "printingCode": "ST09-008",
+      "locale": "EN",
+      "name": "Shimotsuki Ushimaru",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "f0b9bd3493c9684c4da2e646d05fa293a55d63ccb838e35f97076c9564db1783",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-009",
+      "printingCode": "ST09-009",
+      "locale": "EN",
+      "name": "Fugetsu Omusubi",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "1fc4db2bd61fe2cd0f7a822c1fb71d49febf4476457d9cee83c2816113d8f880",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-010",
+      "printingCode": "ST09-010",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 6,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "7fbe1234869a846444bd3222a6a33621e9f9e8aff4f5f5487b363e86310beae6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "f2dc3385e74fbf5f492cb02c56085c5c0001080c11173b4287723a16e2b564fa",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-011",
+      "printingCode": "ST09-011",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "0d8de8a4d5e100955886aea493a04dafbbcf78eb0257b10adba26c054c9d8f3f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-012",
+      "printingCode": "ST09-012",
+      "locale": "EN",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "3177683ae0a19fdc468e70795d5bdcbaccf30bd2e4c16a2bfde06964e81ac519",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-012",
+      "printingCode": "ST09-012_p1",
+      "locale": "EN",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "3177683ae0a19fdc468e70795d5bdcbaccf30bd2e4c16a2bfde06964e81ac519",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-013",
+      "printingCode": "ST09-013",
+      "locale": "EN",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-014",
+      "printingCode": "ST09-014",
+      "locale": "EN",
+      "name": "Narikabura Arrow",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "35ec5d9f5092e16b9e2d882ca42e10a6d66130c678770e60e963d69ea1d200e3",
+      "triggerHash": "c935118f218a9dfdd56898221ce9c8403e20bac0679cdc95d00decfcb07f1022",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-014",
+      "printingCode": "ST09-014_p2",
+      "locale": "EN",
+      "name": "Narikabura Arrow",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "35ec5d9f5092e16b9e2d882ca42e10a6d66130c678770e60e963d69ea1d200e3",
+      "triggerHash": "c935118f218a9dfdd56898221ce9c8403e20bac0679cdc95d00decfcb07f1022",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-014",
+      "printingCode": "ST09-014_p3",
+      "locale": "EN",
+      "name": "Narikabura Arrow",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "35ec5d9f5092e16b9e2d882ca42e10a6d66130c678770e60e963d69ea1d200e3",
+      "triggerHash": "c935118f218a9dfdd56898221ce9c8403e20bac0679cdc95d00decfcb07f1022",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-014",
+      "printingCode": "ST09-014_r1",
+      "locale": "EN",
+      "name": "Narikabura Arrow",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "35ec5d9f5092e16b9e2d882ca42e10a6d66130c678770e60e963d69ea1d200e3",
+      "triggerHash": "c935118f218a9dfdd56898221ce9c8403e20bac0679cdc95d00decfcb07f1022",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-015",
+      "printingCode": "ST09-015",
+      "locale": "EN",
+      "name": "Thunder Bagua",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "356944016f226d9c379ac064d6a593ea72f6f217123b9ed9d5a4be993edf8aaf",
+      "triggerHash": "3d25b05966b8da7449619645c84ea59ba294c6a936c13a24fdb7cd43a20bb844",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-014",
+      "printingCode": "ST09-014_p1",
+      "locale": "FR",
+      "name": "Flèche sonore",
+      "type": "EVENT",
+      "color": "Jaune",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "4e50a5d43058f0fc50450e52251ff34afd5e41887383f69a1e52785cba48f6d6",
+      "triggerHash": "28cfe1520d0b6b1aaf5d7621c63769c74768cf27433a84e983e7a89370b0674d",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "dc5943974b2ef47485fbb44e888bef91c159ad933ce5deedb61f053be39c1a33",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-014",
+      "printingCode": "ST09-014_p2",
+      "locale": "FR",
+      "name": "Flèche sonore",
+      "type": "EVENT",
+      "color": "Jaune",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "4e50a5d43058f0fc50450e52251ff34afd5e41887383f69a1e52785cba48f6d6",
+      "triggerHash": "28cfe1520d0b6b1aaf5d7621c63769c74768cf27433a84e983e7a89370b0674d",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "dc5943974b2ef47485fbb44e888bef91c159ad933ce5deedb61f053be39c1a33",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    },
+    {
+      "cardNumber": "ST09-014",
+      "printingCode": "ST09-014_p3",
+      "locale": "FR",
+      "name": "Flèche sonore",
+      "type": "EVENT",
+      "color": "Jaune",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "4e50a5d43058f0fc50450e52251ff34afd5e41887383f69a1e52785cba48f6d6",
+      "triggerHash": "28cfe1520d0b6b1aaf5d7621c63769c74768cf27433a84e983e7a89370b0674d",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "dc5943974b2ef47485fbb44e888bef91c159ad933ce5deedb61f053be39c1a33",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST09"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "ST09-014",
+      "printingCode": "ST09-014_p1",
+      "name": "Flèche sonore",
+      "type": "EVENT",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST09-014",
+      "printingCode": "ST09-014_p2",
+      "name": "Flèche sonore",
+      "type": "EVENT",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST09-014",
+      "printingCode": "ST09-014_p3",
+      "name": "Flèche sonore",
+      "type": "EVENT",
+      "color": "Jaune"
+    }
+  ]
+}

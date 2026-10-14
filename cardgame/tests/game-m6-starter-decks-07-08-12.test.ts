@@ -23,14 +23,9 @@ test('resolved ST-07, ST-08 and ST-12 compositions are offered, legal and finish
   }
 })
 
-test('an equal-quantity ambiguous group gives the same deck list whatever the mapping (ST-12); an unequal group stays blocked (ST-05)', async () => {
-  const { equalQuantityGroups, STARTER_DECKS } = await import('../src/game/cards/starterDecks')
-  const compositions = (await import('../src/game/cards/starter-compositions.json')).default as { decks: { deckCode: string; entries: Parameters<typeof equalQuantityGroups>[0] }[] }
-  const st12 = compositions.decks.find(d => d.deckCode === 'ST-12')!
-  assert.deepEqual([...equalQuantityGroups(st12.entries)!], [['ST12-016', 2], ['ST12-017', 2]])
-  assert.equal(st12.entries.find(e => e.name === 'Elephant Tuna')?.number, 'ST12-009')
+test('the audited ST-12 contents keep Elephant True Bluefin x4 and both techniques x2', async () => {
+  const { STARTER_DECKS } = await import('../src/game/cards/starterDecks')
   const deck = STARTER_DECKS.find(d => d.deckCode === 'ST-12')!
-  assert.equal(deck.entries.find(e => e.printingKey === 'ST12-016::standard')?.quantity, 2)
-  assert.equal(deck.entries.find(e => e.printingKey === 'ST12-017::standard')?.quantity, 2)
-  assert.equal(equalQuantityGroups(compositions.decks.find(d => d.deckCode === 'ST-05')!.entries), null, 'ST-05')
+  const q = (n: string) => deck.entries.find(e => e.printingKey === `${n}::standard`)?.quantity
+  assert.equal(q('ST12-009'), 4); assert.equal(q('ST12-016'), 2); assert.equal(q('ST12-017'), 2)
 })

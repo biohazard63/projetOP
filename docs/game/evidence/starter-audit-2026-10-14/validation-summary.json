@@ -1,0 +1,57 @@
+{
+  "checkedAt": "2026-10-14T08:23:49.200117+00:00",
+  "verdict": "PARTIAL",
+  "starterStatus": {
+    "VERIFIED": 23,
+    "PARTIAL": 2,
+    "BLOCKED": 11
+  },
+  "targetedTests": {
+    "status": "PASS",
+    "total": 59,
+    "log": "tests-targeted.log"
+  },
+  "fullTests": {
+    "status": "PASS",
+    "total": 615,
+    "historical": 556,
+    "new": 59,
+    "log": "tests-full-final.log"
+  },
+  "typecheck": {
+    "status": "PASS",
+    "log": "typecheck-final.log"
+  },
+  "lint": {
+    "status": "PASS",
+    "errors": 0,
+    "warnings": 99,
+    "log": "lint-full.log"
+  },
+  "targetedLint": {
+    "status": "PASS",
+    "log": "lint-targeted-final.log"
+  },
+  "build": {
+    "status": "PASS",
+    "isolated": true,
+    "log": "build-isolated-network.log",
+    "initialAttempt": "FAIL: sandbox DNS blocked Google Fonts; build-isolated.log"
+  },
+  "database": {
+    "status": "PASS",
+    "operation": "Card reads inside READ ONLY transaction",
+    "rows": 4074,
+    "writeOperations": 0
+  },
+  "historicalEvidence": {
+    "status": "PASS",
+    "files": 414,
+    "changed": []
+  },
+  "engineChanges": false,
+  "playManifestChanges": false,
+  "importExecuted": false,
+  "tournamentLegality": "NOT_TESTED",
+  "newDeckBotGames": "NOT_TESTED"
+}

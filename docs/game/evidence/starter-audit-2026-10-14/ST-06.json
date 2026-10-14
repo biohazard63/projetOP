@@ -1,0 +1,1161 @@
+{
+  "deckCode": "ST-06",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569006",
+      "status": "FETCHED",
+      "sha256": "a4eeebc10916eed5a547613ed896eee99943f54747ea08c8ccbb3665886d21ce",
+      "retrievedAt": "2026-10-14T07:26:44.108088+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st06-cardlists/",
+      "status": "FETCHED",
+      "sha256": "cfe278ef7416f7d2b4f374fdcfe0bb355260cf86af502035944a05997ebbf2a7",
+      "retrievedAt": "2026-10-14T07:26:45.569007+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st06.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st06.php",
+      "status": "FETCHED",
+      "sha256": "aa67834de60de00071ed083d4734df36f9dcdcc9a3c73a89eccaa065f4b632f6",
+      "retrievedAt": "2026-10-14T07:26:48.410800+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st06-cardlists/",
+      "status": "FETCHED",
+      "sha256": "cfe278ef7416f7d2b4f374fdcfe0bb355260cf86af502035944a05997ebbf2a7",
+      "retrievedAt": "2026-10-14T07:31:25.166450+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569006",
+      "status": "FETCHED",
+      "sha256": "a4eeebc10916eed5a547613ed896eee99943f54747ea08c8ccbb3665886d21ce",
+      "retrievedAt": "2026-10-14T07:31:26.531893+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569006",
+      "status": "FETCHED",
+      "sha256": "a4eeebc10916eed5a547613ed896eee99943f54747ea08c8ccbb3665886d21ce",
+      "retrievedAt": "2026-10-14T07:34:51.978725+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st06-cardlists/",
+      "status": "FETCHED",
+      "sha256": "cfe278ef7416f7d2b4f374fdcfe0bb355260cf86af502035944a05997ebbf2a7",
+      "retrievedAt": "2026-10-14T07:34:53.970539+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550006",
+      "status": "FETCHED",
+      "sha256": "0f6229de9be236b7080a975af12590714ec25bd4718fc4d732b2e9b7c65cb4ac",
+      "retrievedAt": "2026-10-14T07:34:55.696856+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06",
+      "status": "FETCHED",
+      "sha256": "35a599ae8abb15179b987943d9a56dea438522acc97ca40ad8ef9fb50da37569",
+      "retrievedAt": "2026-10-14T07:52:54.260406+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06",
+      "status": "FETCHED",
+      "sha256": "adbdfdbce888c4482f7daf3fd16f5335cac5bdb7a085aff7595a76376ae567ea",
+      "retrievedAt": "2026-10-14T07:52:55.778472+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "ST06-001",
+      "printingCode": "ST06-001",
+      "name": "Sakazuki",
+      "type": "LEADER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-002",
+      "printingCode": "ST06-002",
+      "name": "Koby",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-003",
+      "printingCode": "ST06-003",
+      "name": "Jango",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-004",
+      "printingCode": "ST06-004",
+      "name": "Smoker",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-005",
+      "printingCode": "ST06-005",
+      "name": "Sengoku",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-006",
+      "printingCode": "ST06-006",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-007",
+      "printingCode": "ST06-007",
+      "name": "Tsuru",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-008",
+      "printingCode": "ST06-008",
+      "name": "Hina",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-009",
+      "printingCode": "ST06-009",
+      "name": "Fullbody",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-010",
+      "printingCode": "ST06-010",
+      "name": "Helmeppo",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-011",
+      "printingCode": "ST06-011",
+      "name": "Momonga",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-012",
+      "printingCode": "ST06-012",
+      "name": "Monkey.D.Garp",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-013",
+      "printingCode": "ST06-013",
+      "name": "T-Bone",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-014",
+      "printingCode": "ST06-014",
+      "name": "Shockwave",
+      "type": "EVENT",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-015",
+      "printingCode": "ST06-015",
+      "name": "Great Eruption",
+      "type": "EVENT",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-016",
+      "printingCode": "ST06-016",
+      "name": "White Out",
+      "type": "EVENT",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST06-017",
+      "printingCode": "ST06-017",
+      "name": "Navy HQ",
+      "type": "STAGE",
+      "color": "Black"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST06-001",
+      "quantity": 1,
+      "sourceName": "サカズキ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-002",
+      "quantity": 2,
+      "sourceName": "コビー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-003",
+      "quantity": 4,
+      "sourceName": "ジャンゴ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-004",
+      "quantity": 2,
+      "sourceName": "スモーカー",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-005",
+      "quantity": 4,
+      "sourceName": "センゴク",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-006",
+      "quantity": 4,
+      "sourceName": "たしぎ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-007",
+      "quantity": 4,
+      "sourceName": "つる",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-008",
+      "quantity": 2,
+      "sourceName": "ヒナ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-009",
+      "quantity": 4,
+      "sourceName": "フルボディ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-010",
+      "quantity": 4,
+      "sourceName": "ヘルメッポ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-011",
+      "quantity": 4,
+      "sourceName": "モモンガ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-012",
+      "quantity": 2,
+      "sourceName": "モンキー・D・ガープ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-013",
+      "quantity": 4,
+      "sourceName": "Tボーン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-014",
+      "quantity": 2,
+      "sourceName": "衝撃波",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-015",
+      "quantity": 2,
+      "sourceName": "大噴火",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-016",
+      "quantity": 4,
+      "sourceName": "ホワイト・アウト",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-017",
+      "quantity": 2,
+      "sourceName": "海軍本部",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st06-cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -Absolute Justice- − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -Absolute Justice-"
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) \r\n                   ・DON!! Cards x 10 \r\n                   ・Playsheet x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st06.php",
+  "officialDeckTitle": "STARTER DECK -Absolute Justice- [ST-06]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "ST06-001",
+      "printingCode": "ST06-001",
+      "name": "サカズキ",
+      "type": "LEADER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-002",
+      "printingCode": "ST06-002",
+      "name": "コビー",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-003",
+      "printingCode": "ST06-003",
+      "name": "ジャンゴ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-004",
+      "printingCode": "ST06-004",
+      "name": "スモーカー",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-005",
+      "printingCode": "ST06-005",
+      "name": "センゴク",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-006",
+      "printingCode": "ST06-006",
+      "name": "たしぎ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-007",
+      "printingCode": "ST06-007",
+      "name": "つる",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-008",
+      "printingCode": "ST06-008",
+      "name": "ヒナ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-009",
+      "printingCode": "ST06-009",
+      "name": "フルボディ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-010",
+      "printingCode": "ST06-010",
+      "name": "ヘルメッポ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-011",
+      "printingCode": "ST06-011",
+      "name": "モモンガ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-012",
+      "printingCode": "ST06-012",
+      "name": "モンキー・D・ガープ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-013",
+      "printingCode": "ST06-013",
+      "name": "Tボーン",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-014",
+      "printingCode": "ST06-014",
+      "name": "衝撃波",
+      "type": "EVENT",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-015",
+      "printingCode": "ST06-015",
+      "name": "大噴火",
+      "type": "EVENT",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-016",
+      "printingCode": "ST06-016",
+      "name": "ホワイト・アウト",
+      "type": "EVENT",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST06-017",
+      "printingCode": "ST06-017",
+      "name": "海軍本部",
+      "type": "STAGE",
+      "color": "黒"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST06-001",
+      "printingCode": "ST06-001",
+      "locale": "EN",
+      "name": "Sakazuki",
+      "type": "LEADER",
+      "color": "Black",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "fe8706546c21861d9e9dda5c774b9277ae8aabbee11685b70e171e8677d14fa4",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-002",
+      "printingCode": "ST06-002",
+      "locale": "EN",
+      "name": "Koby",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "2dd90f4866caac44db111292f490cb31d04f7571d2594c81e6744334bc57adbb",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-003",
+      "printingCode": "ST06-003",
+      "locale": "EN",
+      "name": "Jango",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 1,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-004",
+      "printingCode": "ST06-004",
+      "locale": "EN",
+      "name": "Smoker",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "1005d4fd4cb07de7900aba00de9701ba0e2ac48faddcdad6720cb2589440a57c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-005",
+      "printingCode": "ST06-005",
+      "locale": "EN",
+      "name": "Sengoku",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "7b254a01d4e4f80204492fd2d577dc768c330e26ed762c8cb1bf8efc4fc991eb",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-006",
+      "printingCode": "ST06-006",
+      "locale": "EN",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "535f187618a6509e8800d8d2ac242ee97458e878c38f86bc1bf39b2e9e0d00d3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-006",
+      "printingCode": "ST06-006_p1",
+      "locale": "EN",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "535f187618a6509e8800d8d2ac242ee97458e878c38f86bc1bf39b2e9e0d00d3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-006",
+      "printingCode": "ST06-006_p3",
+      "locale": "EN",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "535f187618a6509e8800d8d2ac242ee97458e878c38f86bc1bf39b2e9e0d00d3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-006",
+      "printingCode": "ST06-006_p4",
+      "locale": "EN",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "535f187618a6509e8800d8d2ac242ee97458e878c38f86bc1bf39b2e9e0d00d3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-007",
+      "printingCode": "ST06-007",
+      "locale": "EN",
+      "name": "Tsuru",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-008",
+      "printingCode": "ST06-008",
+      "locale": "EN",
+      "name": "Hina",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "de49fd3dbfe2d096d95a6b8ab37f1bd9bc52455f54103642c97ccbb88caa373e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-008",
+      "printingCode": "ST06-008_p1",
+      "locale": "EN",
+      "name": "Hina",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "de49fd3dbfe2d096d95a6b8ab37f1bd9bc52455f54103642c97ccbb88caa373e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-008",
+      "printingCode": "ST06-008_r1",
+      "locale": "EN",
+      "name": "Hina",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "de49fd3dbfe2d096d95a6b8ab37f1bd9bc52455f54103642c97ccbb88caa373e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-009",
+      "printingCode": "ST06-009",
+      "locale": "EN",
+      "name": "Fullbody",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-010",
+      "printingCode": "ST06-010",
+      "locale": "EN",
+      "name": "Helmeppo",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "ea7b031eaa50cb7a304378f8a93f7f67457743789cf58072029afe49db7f9e49",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-010",
+      "printingCode": "ST06-010_p2",
+      "locale": "EN",
+      "name": "Helmeppo",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "ea7b031eaa50cb7a304378f8a93f7f67457743789cf58072029afe49db7f9e49",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-010",
+      "printingCode": "ST06-010_p3",
+      "locale": "EN",
+      "name": "Helmeppo",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "ea7b031eaa50cb7a304378f8a93f7f67457743789cf58072029afe49db7f9e49",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-010",
+      "printingCode": "ST06-010_r1",
+      "locale": "EN",
+      "name": "Helmeppo",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "ea7b031eaa50cb7a304378f8a93f7f67457743789cf58072029afe49db7f9e49",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-011",
+      "printingCode": "ST06-011",
+      "locale": "EN",
+      "name": "Momonga",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-012",
+      "printingCode": "ST06-012",
+      "locale": "EN",
+      "name": "Monkey.D.Garp",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "70a76b4cb2320f187fe7ecddc99751e641d80501c87499c9e5b7e83b58bbd404",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-013",
+      "printingCode": "ST06-013",
+      "locale": "EN",
+      "name": "T-Bone",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-014",
+      "printingCode": "ST06-014",
+      "locale": "EN",
+      "name": "Shockwave",
+      "type": "EVENT",
+      "color": "Black",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "a1ee55d20ecfd832e27589232c2576aaa687f8c0ea4ce895c17867d8ea0118fa",
+      "triggerHash": "8600e475bd06c064faf48dfca3ea681343f3b6832794c5cf9cb86f1a0d0aa7bd",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-014",
+      "printingCode": "ST06-014_p2",
+      "locale": "EN",
+      "name": "Shockwave",
+      "type": "EVENT",
+      "color": "Black",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "a1ee55d20ecfd832e27589232c2576aaa687f8c0ea4ce895c17867d8ea0118fa",
+      "triggerHash": "8600e475bd06c064faf48dfca3ea681343f3b6832794c5cf9cb86f1a0d0aa7bd",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-014",
+      "printingCode": "ST06-014_p3",
+      "locale": "EN",
+      "name": "Shockwave",
+      "type": "EVENT",
+      "color": "Black",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "a1ee55d20ecfd832e27589232c2576aaa687f8c0ea4ce895c17867d8ea0118fa",
+      "triggerHash": "8600e475bd06c064faf48dfca3ea681343f3b6832794c5cf9cb86f1a0d0aa7bd",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-014",
+      "printingCode": "ST06-014_r1",
+      "locale": "EN",
+      "name": "Shockwave",
+      "type": "EVENT",
+      "color": "Black",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "a1ee55d20ecfd832e27589232c2576aaa687f8c0ea4ce895c17867d8ea0118fa",
+      "triggerHash": "8600e475bd06c064faf48dfca3ea681343f3b6832794c5cf9cb86f1a0d0aa7bd",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-015",
+      "printingCode": "ST06-015",
+      "locale": "EN",
+      "name": "Great Eruption",
+      "type": "EVENT",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "67d3aa3f00b9f0822197ecd22333ebf6739a7470ae422e1fa6efc0481f63cdc1",
+      "triggerHash": "b5089b80317cb8135c75ff4e93141faaefa540a53f192c69e2ad97fa9c202dc0",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-016",
+      "printingCode": "ST06-016",
+      "locale": "EN",
+      "name": "White Out",
+      "type": "EVENT",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "9a28ff10034e56126e62ca6f91ead1e1577977ecee9b28dab96d162cc45fff0c",
+      "triggerHash": "a5cb48b5905076f4dd47f264d4f129661625fe5ddd228c926dbdffa625cb97e5",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-017",
+      "printingCode": "ST06-017",
+      "locale": "EN",
+      "name": "Navy HQ",
+      "type": "STAGE",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "812fb0290e1d871796b6fbdb1b68c1c42ef91f0d0c304df71c56a886a67cf37a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-006",
+      "printingCode": "ST06-006_p2",
+      "locale": "EN",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "535f187618a6509e8800d8d2ac242ee97458e878c38f86bc1bf39b2e9e0d00d3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-004",
+      "printingCode": "ST06-004_p1",
+      "locale": "FR",
+      "name": "Smoker",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 5,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "5427408f130720fc5103746221aa9acbc426b1d738c1e54cdfe3ebeb96c67320",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-006",
+      "printingCode": "ST06-006_p1",
+      "locale": "FR",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 3,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "baa54f790f0d1211664661731c5f8e5c715c698bcd312673472bd594f9d3264d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-006",
+      "printingCode": "ST06-006_p2",
+      "locale": "FR",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 3,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "baa54f790f0d1211664661731c5f8e5c715c698bcd312673472bd594f9d3264d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-008",
+      "printingCode": "ST06-008_p1",
+      "locale": "FR",
+      "name": "Hina",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 3,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "a16a8d091838def2f4598d58a3b43697d5e260b76e04d643dae3f0b922ef8bc1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-008",
+      "printingCode": "ST06-008_r1",
+      "locale": "FR",
+      "name": "Hina",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 3,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "a16a8d091838def2f4598d58a3b43697d5e260b76e04d643dae3f0b922ef8bc1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-010",
+      "printingCode": "ST06-010_p1",
+      "locale": "FR",
+      "name": "Hermep",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "1fcdcd358435bc823c2782f2338cc7d44d21a044149000b2013d6f8e5926e11e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-010",
+      "printingCode": "ST06-010_p2",
+      "locale": "FR",
+      "name": "Hermep",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "1fcdcd358435bc823c2782f2338cc7d44d21a044149000b2013d6f8e5926e11e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-010",
+      "printingCode": "ST06-010_p3",
+      "locale": "FR",
+      "name": "Hermep",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "1fcdcd358435bc823c2782f2338cc7d44d21a044149000b2013d6f8e5926e11e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-014",
+      "printingCode": "ST06-014_p1",
+      "locale": "FR",
+      "name": "Onde de choc",
+      "type": "EVENT",
+      "color": "Noir",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "d78e2df4ae19529591bdc8ebbbb984928f87887c688999bec8ba6019962789ec",
+      "triggerHash": "bcdfce26a7b074eb3f3d4644d38a002b9b5e9ad509fc28f6417d87e35ebe4d91",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-014",
+      "printingCode": "ST06-014_p2",
+      "locale": "FR",
+      "name": "Onde de choc",
+      "type": "EVENT",
+      "color": "Noir",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "d78e2df4ae19529591bdc8ebbbb984928f87887c688999bec8ba6019962789ec",
+      "triggerHash": "bcdfce26a7b074eb3f3d4644d38a002b9b5e9ad509fc28f6417d87e35ebe4d91",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    },
+    {
+      "cardNumber": "ST06-014",
+      "printingCode": "ST06-014_p3",
+      "locale": "FR",
+      "name": "Onde de choc",
+      "type": "EVENT",
+      "color": "Noir",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "d78e2df4ae19529591bdc8ebbbb984928f87887c688999bec8ba6019962789ec",
+      "triggerHash": "bcdfce26a7b074eb3f3d4644d38a002b9b5e9ad509fc28f6417d87e35ebe4d91",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST06"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "ST06-004",
+      "printingCode": "ST06-004_p1",
+      "name": "Smoker",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST06-006",
+      "printingCode": "ST06-006_p1",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST06-006",
+      "printingCode": "ST06-006_p2",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST06-008",
+      "printingCode": "ST06-008_p1",
+      "name": "Hina",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST06-008",
+      "printingCode": "ST06-008_r1",
+      "name": "Hina",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST06-010",
+      "printingCode": "ST06-010_p1",
+      "name": "Hermep",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST06-010",
+      "printingCode": "ST06-010_p2",
+      "name": "Hermep",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST06-010",
+      "printingCode": "ST06-010_p3",
+      "name": "Hermep",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST06-014",
+      "printingCode": "ST06-014_p1",
+      "name": "Onde de choc",
+      "type": "EVENT",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST06-014",
+      "printingCode": "ST06-014_p2",
+      "name": "Onde de choc",
+      "type": "EVENT",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST06-014",
+      "printingCode": "ST06-014_p3",
+      "name": "Onde de choc",
+      "type": "EVENT",
+      "color": "Noir"
+    }
+  ]
+}

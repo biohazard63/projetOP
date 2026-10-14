@@ -19,6 +19,13 @@ import { ST11_LOCAL_ABILITY_DEFINITIONS, ST11_LOCAL_CARDS } from '../../game/car
 import { ST10_LOCAL_ABILITY_DEFINITIONS, ST10_LOCAL_CARDS, ST10_LOCAL_CONTINUOUS } from '../../game/cards/m6LocalST10Cards'
 import { ST08_LOCAL_ABILITY_DEFINITIONS, ST08_LOCAL_CARDS, ST08_KO_PROTECTIONS } from '../../game/cards/m6LocalST08Cards'
 import { ST03_OP_LOCAL_ABILITY_DEFINITIONS, ST03_OP_LOCAL_CARDS } from '../../game/cards/m6LocalST03OPCards'
+import { REPRINT_LOCAL_ABILITY_DEFINITIONS, REPRINT_LOCAL_CARDS } from '../../game/cards/m6LocalReprintCards'
+import { ST23_OFFICIAL_ABILITY_DEFINITIONS, ST23_OFFICIAL_CARDS, ST23_OFFICIAL_CONTINUOUS, ST23_OFFICIAL_REPLACEMENTS } from '../../game/cards/m6OfficialST23Cards'
+import { ST21_OFFICIAL_ABILITY_DEFINITIONS, ST21_OFFICIAL_CARDS, ST21_OFFICIAL_CONTINUOUS, ST21_OFFICIAL_CONDITIONAL_KEYWORDS } from '../../game/cards/m6OfficialST21Cards'
+import { ST19_OFFICIAL_ABILITY_DEFINITIONS, ST19_OFFICIAL_CARDS, ST19_OFFICIAL_CONTINUOUS, ST19_OFFICIAL_KO_PROTECTIONS } from '../../game/cards/m6OfficialST19Cards'
+import { ST18_OFFICIAL_ABILITY_DEFINITIONS, ST18_OFFICIAL_CARDS, ST18_OFFICIAL_CONTINUOUS, ST18_OFFICIAL_CONDITIONAL_KEYWORDS } from '../../game/cards/m6OfficialST18Cards'
+import { ST17_OFFICIAL_ABILITY_DEFINITIONS, ST17_OFFICIAL_CARDS } from '../../game/cards/m6OfficialST17Cards'
+import { ST14_LOCAL_ABILITY_DEFINITIONS, ST14_LOCAL_CARDS, ST14_LOCAL_CONTINUOUS, ST14_KO_PROTECTIONS, ST14_CONDITIONAL_KEYWORDS } from '../../game/cards/m6LocalST14Cards'
 import { validateRegistry, type EffectRegistry } from '../../game/effects/contracts'
 import type { CardDefinition, CardInput, CardPrinting } from '../../game/cards/types'
 import type { Ruleset } from '../../game/rulesets/decks'
@@ -47,6 +54,13 @@ const currentPacks = () => [
   { packId: 'M6_LOCAL_ST11', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST11_LOCAL_CARDS, effects: { definitions: ST11_LOCAL_ABILITY_DEFINITIONS } },
   { packId: 'M6_LOCAL_ST12', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST12_LOCAL_CARDS, effects: { definitions: ST12_LOCAL_ABILITY_DEFINITIONS } },
   { packId: 'M6_LOCAL_ST03_OP', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST03_OP_LOCAL_CARDS, effects: { definitions: ST03_OP_LOCAL_ABILITY_DEFINITIONS } },
+  { packId: 'M6_LOCAL_REPRINTS', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: REPRINT_LOCAL_CARDS, effects: { definitions: REPRINT_LOCAL_ABILITY_DEFINITIONS } },
+  { packId: 'M6_LOCAL_ST14', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST14_LOCAL_CARDS, effects: { definitions: ST14_LOCAL_ABILITY_DEFINITIONS, continuous: ST14_LOCAL_CONTINUOUS, koProtections: ST14_KO_PROTECTIONS, conditionalKeywords: ST14_CONDITIONAL_KEYWORDS } },
+  { packId: 'M6_OFFICIAL_ST17', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST17_OFFICIAL_CARDS, effects: { definitions: ST17_OFFICIAL_ABILITY_DEFINITIONS } },
+  { packId: 'M6_OFFICIAL_ST18', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST18_OFFICIAL_CARDS, effects: { definitions: ST18_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST18_OFFICIAL_CONTINUOUS, conditionalKeywords: ST18_OFFICIAL_CONDITIONAL_KEYWORDS } },
+  { packId: 'M6_OFFICIAL_ST19', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST19_OFFICIAL_CARDS, effects: { definitions: ST19_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST19_OFFICIAL_CONTINUOUS, koProtections: ST19_OFFICIAL_KO_PROTECTIONS } },
+  { packId: 'M6_OFFICIAL_ST21', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST21_OFFICIAL_CARDS, effects: { definitions: ST21_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST21_OFFICIAL_CONTINUOUS, conditionalKeywords: ST21_OFFICIAL_CONDITIONAL_KEYWORDS } },
+  { packId: 'M6_OFFICIAL_ST23', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST23_OFFICIAL_CARDS, effects: { definitions: ST23_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST23_OFFICIAL_CONTINUOUS, cardReplacements: ST23_OFFICIAL_REPLACEMENTS } },
 ]
 const compileCurrentCatalog = () => loadCardPacks(M3_FULL_REGISTRY, currentPacks())
 /** Catalogue used by /play: M3 plus the M5 recognised cards. */

@@ -1,0 +1,1115 @@
+{
+  "deckCode": "ST-23",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569023",
+      "status": "FETCHED",
+      "sha256": "c82b3073aa6fcac36b35e9030f9b6bbc10e04d4f79fdb39eedcd2bdba0010c9f",
+      "retrievedAt": "2026-10-14T07:27:02.010216+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st23-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st23-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st23.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st23.php",
+      "status": "FETCHED",
+      "sha256": "a615b60aba060170b5eb627d71bbafcc82d464e6e4dc15ea77e61fc5dff13e0f",
+      "retrievedAt": "2026-10-14T07:27:06.728285+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st23_cardlists/",
+      "status": "FETCHED",
+      "sha256": "5de6805147e4db063f97fc715e1b5252a4d6316d610472d9651251e286730430",
+      "retrievedAt": "2026-10-14T07:31:37.315140+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569023",
+      "status": "FETCHED",
+      "sha256": "c82b3073aa6fcac36b35e9030f9b6bbc10e04d4f79fdb39eedcd2bdba0010c9f",
+      "retrievedAt": "2026-10-14T07:31:39.047076+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569023",
+      "status": "FETCHED",
+      "sha256": "c82b3073aa6fcac36b35e9030f9b6bbc10e04d4f79fdb39eedcd2bdba0010c9f",
+      "retrievedAt": "2026-10-14T07:35:07.828410+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st23_cardlists/",
+      "status": "FETCHED",
+      "sha256": "5de6805147e4db063f97fc715e1b5252a4d6316d610472d9651251e286730430",
+      "retrievedAt": "2026-10-14T07:35:09.825226+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550023",
+      "status": "FETCHED",
+      "sha256": "5a06d20a50cd0cb68a750768019584321219bd342d2c6a3fe3614741756e0eac",
+      "retrievedAt": "2026-10-14T07:35:11.496440+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569023",
+      "status": "FETCHED",
+      "sha256": "c82b3073aa6fcac36b35e9030f9b6bbc10e04d4f79fdb39eedcd2bdba0010c9f",
+      "retrievedAt": "2026-10-14T07:53:03.714091+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622023",
+      "status": "FETCHED",
+      "sha256": "4a6208203539a1f21fe5d20bed43994aaf879091f3adde152dffac9645a29966",
+      "retrievedAt": "2026-10-14T07:53:05.099985+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP09-013",
+      "status": "FETCHED",
+      "sha256": "f75d2e9d65572abf986ecbce3031b7643904a220ac5d5d7eb37d6a84a2d969a5",
+      "retrievedAt": "2026-10-14T08:02:16.798674+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP09-013",
+      "status": "FETCHED",
+      "sha256": "8718530b0c638a3e33344e4b73c000917dc2aa560bcfb1c8c7e21ee6809a3ce4",
+      "retrievedAt": "2026-10-14T08:02:18.324002+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "OP09-001",
+      "printingCode": "OP09-001_p2",
+      "name": "Shanks",
+      "type": "LEADER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP09-006",
+      "printingCode": "OP09-006_r1",
+      "name": "Howling Gab",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP09-010",
+      "printingCode": "OP09-010_r1",
+      "name": "Bonk Punch",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP09-011",
+      "printingCode": "OP09-011_r1",
+      "name": "Hongo",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP09-012",
+      "printingCode": "OP09-012_r1",
+      "name": "Monster",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP09-013",
+      "printingCode": "OP09-013_r1",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP09-014",
+      "printingCode": "OP09-014_r1",
+      "name": "Limejuice",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP09-015",
+      "printingCode": "OP09-015_r1",
+      "name": "Lucky.Roux",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP09-016",
+      "printingCode": "OP09-016_r1",
+      "name": "Rockstar",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP09-020",
+      "printingCode": "OP09-020_r1",
+      "name": "Come On!! We'll Fight You!!",
+      "type": "EVENT",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST23-001",
+      "printingCode": "ST23-001",
+      "name": "Uta",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST23-002",
+      "printingCode": "ST23-002",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST23-003",
+      "printingCode": "ST23-003",
+      "name": "Benn.Beckman",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST23-004",
+      "printingCode": "ST23-004",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST23-005",
+      "printingCode": "ST23-005",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Red"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "OP09-001",
+      "quantity": 1,
+      "sourceName": "シャンクス",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    },
+    {
+      "cardNumber": "ST23-001",
+      "quantity": 2,
+      "sourceName": "ウタ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    },
+    {
+      "cardNumber": "ST23-002",
+      "quantity": 2,
+      "sourceName": "シャンクス",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    },
+    {
+      "cardNumber": "ST23-003",
+      "quantity": 2,
+      "sourceName": "ベン・ベックマン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    },
+    {
+      "cardNumber": "ST23-004",
+      "quantity": 4,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    },
+    {
+      "cardNumber": "ST23-005",
+      "quantity": 4,
+      "sourceName": "ヤソップ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-006",
+      "quantity": 4,
+      "sourceName": "“ハウリング”ガブ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-010",
+      "quantity": 4,
+      "sourceName": "ボンク・パンチ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-011",
+      "quantity": 4,
+      "sourceName": "ホンゴウ",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-012",
+      "quantity": 4,
+      "sourceName": "モンスター",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-013",
+      "quantity": 4,
+      "sourceName": "ヤソップ",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-014",
+      "quantity": 4,
+      "sourceName": "ライムジュース",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-015",
+      "quantity": 4,
+      "sourceName": "ラッキー・ルウ",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-016",
+      "quantity": 4,
+      "sourceName": "ロックスター",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-020",
+      "quantity": 4,
+      "sourceName": "来い…!!!おれ達が相手をしてやる!!!",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st23_cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -RED Shanks- [ST-23] − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -RED Shanks- [ST-23]"
+  ],
+  "productContents": "Constructed Deck x 1 (51 cards), DON!! Card x 10, Playsheet x 1, BOOSTER PACK -A FIST OF DIVINE SPEED- [OP-11] x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st23.php",
+  "officialDeckTitle": "STARTER DECK -RED Shanks- [ST-23]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "OP09-001",
+      "printingCode": "OP09-001_p2",
+      "name": "シャンクス",
+      "type": "LEADER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP09-006",
+      "printingCode": "OP09-006_r1",
+      "name": "\"ハウリング\"ガブ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP09-010",
+      "printingCode": "OP09-010_r1",
+      "name": "ボンク・パンチ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP09-011",
+      "printingCode": "OP09-011_r1",
+      "name": "ホンゴウ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP09-012",
+      "printingCode": "OP09-012_r1",
+      "name": "モンスター",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP09-013",
+      "printingCode": "OP09-013_r1",
+      "name": "ヤソップ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP09-014",
+      "printingCode": "OP09-014_r1",
+      "name": "ライムジュース",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP09-015",
+      "printingCode": "OP09-015_r1",
+      "name": "ラッキー・ルウ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP09-016",
+      "printingCode": "OP09-016_r1",
+      "name": "ロックスター",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP09-020",
+      "printingCode": "OP09-020_p1",
+      "name": "来い…!!!おれ達が相手をしてやる!!!",
+      "type": "EVENT",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST23-001",
+      "printingCode": "ST23-001",
+      "name": "ウタ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST23-002",
+      "printingCode": "ST23-002",
+      "name": "シャンクス",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST23-003",
+      "printingCode": "ST23-003",
+      "name": "ベン・ベックマン",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST23-004",
+      "printingCode": "ST23-004",
+      "name": "モンキー・Ｄ・ルフィ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST23-005",
+      "printingCode": "ST23-005",
+      "name": "ヤソップ",
+      "type": "CHARACTER",
+      "color": "赤"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "OP09-001",
+      "printingCode": "OP09-001_p2",
+      "locale": "EN",
+      "name": "Shanks",
+      "type": "LEADER",
+      "color": "Red",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "6c11f3537ee68b109ac1568a4908c3e2607bfbef5645ad1af02045853b8238df",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "9771de9f841aec4e8caa75074b670ff6c1bd81418b64508da04b2260f284e5c2",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "OP09-006",
+      "printingCode": "OP09-006_r1",
+      "locale": "EN",
+      "name": "Howling Gab",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "501b4bbf2527d921678d700d7aaca4d0dda5c8354701b72a843c65707a0beabd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "OP09-010",
+      "printingCode": "OP09-010_r1",
+      "locale": "EN",
+      "name": "Bonk Punch",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "cd15e56975e67b023cd6bdc0e137ca9fb59711d3a9daf081f78995a465f43505",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "501b4bbf2527d921678d700d7aaca4d0dda5c8354701b72a843c65707a0beabd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "OP09-011",
+      "printingCode": "OP09-011_r1",
+      "locale": "EN",
+      "name": "Hongo",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "0b4df859653491753b9c2bb9966cc3c650f52b62fa9b024fcc253ee267e2232d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "501b4bbf2527d921678d700d7aaca4d0dda5c8354701b72a843c65707a0beabd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "OP09-012",
+      "printingCode": "OP09-012_r1",
+      "locale": "EN",
+      "name": "Monster",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "56efc499da675ffb64d7ff85c813c0579d306a403441e77bce78c89fbffa8ba4",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "39541dd98834e4c046ac1de973c642aedf203ac417e9387f9ff88b8781ca732e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "OP09-013",
+      "printingCode": "OP09-013_r1",
+      "locale": "EN",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "8d83c454b2d51fd5e4073c09fbbbad228729796060eb052b53ae0b8a4e2541c3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "501b4bbf2527d921678d700d7aaca4d0dda5c8354701b72a843c65707a0beabd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "OP09-014",
+      "printingCode": "OP09-014_r1",
+      "locale": "EN",
+      "name": "Limejuice",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "33d938debab1513482526153b0ecad35d9efb9adf103b89c995e79480a7b3294",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "501b4bbf2527d921678d700d7aaca4d0dda5c8354701b72a843c65707a0beabd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "OP09-015",
+      "printingCode": "OP09-015_r1",
+      "locale": "EN",
+      "name": "Lucky.Roux",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "59691f48b02d1c8f0c51601ff2c2b22f16a4df674c29fcbcb0fe53824252259d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "501b4bbf2527d921678d700d7aaca4d0dda5c8354701b72a843c65707a0beabd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "OP09-016",
+      "printingCode": "OP09-016_r1",
+      "locale": "EN",
+      "name": "Rockstar",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "501b4bbf2527d921678d700d7aaca4d0dda5c8354701b72a843c65707a0beabd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "OP09-020",
+      "printingCode": "OP09-020_r1",
+      "locale": "EN",
+      "name": "Come On!! We'll Fight You!!",
+      "type": "EVENT",
+      "color": "Red",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "04de464822b4763beb869098747f8660ef3c5a664fb6bab81f62a891aff91194",
+      "triggerHash": "3d25b05966b8da7449619645c84ea59ba294c6a936c13a24fdb7cd43a20bb844",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "9771de9f841aec4e8caa75074b670ff6c1bd81418b64508da04b2260f284e5c2",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "ST23-001",
+      "printingCode": "ST23-001",
+      "locale": "EN",
+      "name": "Uta",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 6,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "6e15eb29bf11ffd29ec671a8041e8a57686c08f2b80499d625b43b7c9e9a6fe8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "da9d4f1a96d44b29aba8fb37cb8058642902fe838398294f6ec66573849a6c9d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "ST23-002",
+      "printingCode": "ST23-002",
+      "locale": "EN",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 9,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "ffd0dd763dc06db961da88bab315f900cd913c69258ea5c24c985766b8857d6b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "9771de9f841aec4e8caa75074b670ff6c1bd81418b64508da04b2260f284e5c2",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "ST23-003",
+      "printingCode": "ST23-003",
+      "locale": "EN",
+      "name": "Benn.Beckman",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e505fb44210d30f39b47bf350c121f6d15ef1ca7cf9e4a76cd01e621e3b1d1e0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "501b4bbf2527d921678d700d7aaca4d0dda5c8354701b72a843c65707a0beabd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "ST23-004",
+      "printingCode": "ST23-004",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "a3717efa9a84cea6032d91d5f1c43b260720c825b7a9f0b14405e0a852068e6c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5ac0b9dd80d4afb5645a466ee4b045fdced5eac8f6c464e58f2eaeb4c4cdb865",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "ST23-005",
+      "printingCode": "ST23-005",
+      "locale": "EN",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "070eb1c85288f4535365da5c5ae046f1bc9f092c4575121aac0396db8c0fa843",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "501b4bbf2527d921678d700d7aaca4d0dda5c8354701b72a843c65707a0beabd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569023"
+    },
+    {
+      "cardNumber": "OP09-001",
+      "printingCode": "OP09-001_p2",
+      "locale": "FR",
+      "name": "Shanks",
+      "type": "LEADER",
+      "color": "Rouge",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "53140dcde80435e715db6e675fd8d654b83118d1da5ac6e97537012a9a660325",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "81decfd46b63c24950972c65c378c6caadaa6b8df9ebec3ce49da0bc79b5918e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "OP09-006",
+      "printingCode": "OP09-006_r1",
+      "locale": "FR",
+      "name": "Howling Gab",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "6765b6d9b3b67772b4bbd99486571254af06699a4c647b7976587c3e51966f22",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "OP09-010",
+      "printingCode": "OP09-010_r1",
+      "locale": "FR",
+      "name": "Bonk Punch",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "a3d6f5655f796f37b001366d8f87705a9595f64a7f17151f2fe2e88b6cea8379",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "6765b6d9b3b67772b4bbd99486571254af06699a4c647b7976587c3e51966f22",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "OP09-011",
+      "printingCode": "OP09-011_r1",
+      "locale": "FR",
+      "name": "Hongo",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "0325ae37a97021609902099a3d617c17f0b4972e67235a24e0c72b8143a52552",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "6765b6d9b3b67772b4bbd99486571254af06699a4c647b7976587c3e51966f22",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "OP09-012",
+      "printingCode": "OP09-012_r1",
+      "locale": "FR",
+      "name": "Monster",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "0cc7818cd84aa2b6dd2d8f9fa61f85506e16c5c0ffb4b1bb40148151fd355f8c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "c5700b5da1cebb524db778a3926cc8ee11be4c6b25ecec0a070c3de9fed2da9f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "OP09-013",
+      "printingCode": "OP09-013_r1",
+      "locale": "FR",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "9228a9b516dc4fc132dd5c525fb34b8bce63f63a65b5d57502e1fd6d1b18cd94",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "6765b6d9b3b67772b4bbd99486571254af06699a4c647b7976587c3e51966f22",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "OP09-014",
+      "printingCode": "OP09-014_r1",
+      "locale": "FR",
+      "name": "Limejuice",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "bd1a892e96ebc663097eb191421eeed21184d46cc978083337a7207b35d4ce04",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "6765b6d9b3b67772b4bbd99486571254af06699a4c647b7976587c3e51966f22",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "OP09-015",
+      "printingCode": "OP09-015_r1",
+      "locale": "FR",
+      "name": "Lucky Roo",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e36334f407d35d9e98962bce966ed9868860834535b3998c1d05d75ce2fdc8cc",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "6765b6d9b3b67772b4bbd99486571254af06699a4c647b7976587c3e51966f22",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "OP09-016",
+      "printingCode": "OP09-016_r1",
+      "locale": "FR",
+      "name": "Rockstar",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "6765b6d9b3b67772b4bbd99486571254af06699a4c647b7976587c3e51966f22",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "OP09-020",
+      "printingCode": "OP09-020_p1",
+      "locale": "FR",
+      "name": "Qu'ils viennent !! On les attend de pied ferme !!",
+      "type": "EVENT",
+      "color": "Rouge",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "3fa0c46333bf248885e96971f499ca84d65cc043569fa902e86c270db79a1051",
+      "triggerHash": "5973fb33081d88337d6286dc2945f673c990fcb7e7cb39b65d72e3e6b3703cc3",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "81decfd46b63c24950972c65c378c6caadaa6b8df9ebec3ce49da0bc79b5918e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "ST23-001",
+      "printingCode": "ST23-001",
+      "locale": "FR",
+      "name": "Uta",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 6,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "95e93f91323e1bbb3dcde5ffedab2cd55fa7025e65bee1abd839c2f571a6e391",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "da9d4f1a96d44b29aba8fb37cb8058642902fe838398294f6ec66573849a6c9d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "ST23-002",
+      "printingCode": "ST23-002",
+      "locale": "FR",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 9,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "b481e7e0fef491616cbf3a17e9bf56321fc9611cb39d84e9cede58b3c7079aa5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "81decfd46b63c24950972c65c378c6caadaa6b8df9ebec3ce49da0bc79b5918e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "ST23-003",
+      "printingCode": "ST23-003",
+      "locale": "FR",
+      "name": "Ben Beckmann",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "4d9bfbefe740c553636662142c5d7b279e1f7d10ad0dab66b31bbf431bc7f9ae",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "6765b6d9b3b67772b4bbd99486571254af06699a4c647b7976587c3e51966f22",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "ST23-004",
+      "printingCode": "ST23-004",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "b63225e03d2943d1277a896287e725955d0844a65282f6bb7ab2165e5fe9a51c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "5e89b5cf79399c54812b40027b05779a29b4344574325d240a55bb5c42014d3f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "ST23-005",
+      "printingCode": "ST23-005",
+      "locale": "FR",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "c1c22cca6fee5a8f4122e15550d4f37476405f0f9472d1d8db2bfadb6d24030e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "6765b6d9b3b67772b4bbd99486571254af06699a4c647b7976587c3e51966f22",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622023"
+    },
+    {
+      "cardNumber": "OP09-013",
+      "printingCode": "OP09-013",
+      "locale": "EN",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "8d83c454b2d51fd5e4073c09fbbbad228729796060eb052b53ae0b8a4e2541c3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "501b4bbf2527d921678d700d7aaca4d0dda5c8354701b72a843c65707a0beabd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP09-013"
+    },
+    {
+      "cardNumber": "OP09-013",
+      "printingCode": "OP09-013_p1",
+      "locale": "EN",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "8d83c454b2d51fd5e4073c09fbbbad228729796060eb052b53ae0b8a4e2541c3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "501b4bbf2527d921678d700d7aaca4d0dda5c8354701b72a843c65707a0beabd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP09-013"
+    },
+    {
+      "cardNumber": "OP09-013",
+      "printingCode": "OP09-013_r1",
+      "locale": "EN",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "8d83c454b2d51fd5e4073c09fbbbad228729796060eb052b53ae0b8a4e2541c3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "501b4bbf2527d921678d700d7aaca4d0dda5c8354701b72a843c65707a0beabd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP09-013"
+    },
+    {
+      "cardNumber": "OP09-013",
+      "printingCode": "OP09-013_p2",
+      "locale": "EN",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "8d83c454b2d51fd5e4073c09fbbbad228729796060eb052b53ae0b8a4e2541c3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "501b4bbf2527d921678d700d7aaca4d0dda5c8354701b72a843c65707a0beabd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP09-013"
+    },
+    {
+      "cardNumber": "OP09-013",
+      "printingCode": "OP09-013",
+      "locale": "FR",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "9228a9b516dc4fc132dd5c525fb34b8bce63f63a65b5d57502e1fd6d1b18cd94",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "6765b6d9b3b67772b4bbd99486571254af06699a4c647b7976587c3e51966f22",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP09-013"
+    },
+    {
+      "cardNumber": "OP09-013",
+      "printingCode": "OP09-013_r1",
+      "locale": "FR",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "9228a9b516dc4fc132dd5c525fb34b8bce63f63a65b5d57502e1fd6d1b18cd94",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "6765b6d9b3b67772b4bbd99486571254af06699a4c647b7976587c3e51966f22",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP09-013"
+    },
+    {
+      "cardNumber": "OP09-013",
+      "printingCode": "OP09-013_p2",
+      "locale": "FR",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "9228a9b516dc4fc132dd5c525fb34b8bce63f63a65b5d57502e1fd6d1b18cd94",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "6765b6d9b3b67772b4bbd99486571254af06699a4c647b7976587c3e51966f22",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP09-013"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "OP09-001",
+      "printingCode": "OP09-001_p2",
+      "name": "Shanks",
+      "type": "LEADER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP09-006",
+      "printingCode": "OP09-006_r1",
+      "name": "Howling Gab",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP09-010",
+      "printingCode": "OP09-010_r1",
+      "name": "Bonk Punch",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP09-011",
+      "printingCode": "OP09-011_r1",
+      "name": "Hongo",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP09-012",
+      "printingCode": "OP09-012_r1",
+      "name": "Monster",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP09-013",
+      "printingCode": "OP09-013_r1",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP09-014",
+      "printingCode": "OP09-014_r1",
+      "name": "Limejuice",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP09-015",
+      "printingCode": "OP09-015_r1",
+      "name": "Lucky Roo",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP09-016",
+      "printingCode": "OP09-016_r1",
+      "name": "Rockstar",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP09-020",
+      "printingCode": "OP09-020_p1",
+      "name": "Qu'ils viennent !! On les attend de pied ferme !!",
+      "type": "EVENT",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST23-001",
+      "printingCode": "ST23-001",
+      "name": "Uta",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST23-002",
+      "printingCode": "ST23-002",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST23-003",
+      "printingCode": "ST23-003",
+      "name": "Ben Beckmann",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST23-004",
+      "printingCode": "ST23-004",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST23-005",
+      "printingCode": "ST23-005",
+      "name": "Yasopp",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    }
+  ]
+}

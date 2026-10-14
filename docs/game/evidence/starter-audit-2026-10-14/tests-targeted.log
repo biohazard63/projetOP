@@ -1,0 +1,364 @@
+TAP version 13
+# Subtest: starter audit never deletes or resets existing decks
+ok 1 - starter audit never deletes or resets existing decks
+  ---
+  duration_ms: 0.954792
+  type: 'test'
+  ...
+# Subtest: starter audit never writes incomplete compositions
+ok 2 - starter audit never writes incomplete compositions
+  ---
+  duration_ms: 0.138583
+  type: 'test'
+  ...
+# Subtest: starter script is safe to import and does not select a first name match
+ok 3 - starter script is safe to import and does not select a first name match
+  ---
+  duration_ms: 0.26125
+  type: 'test'
+  ...
+# Subtest: canonical identity preserves distinct card numbers and strips only known print suffixes
+ok 4 - canonical identity preserves distinct card numbers and strips only known print suffixes
+  ---
+  duration_ms: 0.292917
+  type: 'test'
+  ...
+# Subtest: number takes precedence over translated names and never falls back when missing
+ok 5 - number takes precedence over translated names and never falls back when missing
+  ---
+  duration_ms: 0.538458
+  type: 'test'
+  ...
+# Subtest: visual variants of the same numbered card do not block its identity
+ok 6 - visual variants of the same numbered card do not block its identity
+  ---
+  duration_ms: 0.597042
+  type: 'test'
+  ...
+# Subtest: identical duplicate imports are identified without choosing an arbitrary Prisma ID
+ok 7 - identical duplicate imports are identified without choosing an arbitrary Prisma ID
+  ---
+  duration_ms: 0.188542
+  type: 'test'
+  ...
+# Subtest: an explicit printing ID resolves appearance only after checking the shared game identity
+ok 8 - an explicit printing ID resolves appearance only after checking the shared game identity
+  ---
+  duration_ms: 0.1295
+  type: 'test'
+  ...
+# Subtest: different effects and printed characteristics are never silently merged
+ok 9 - different effects and printed characteristics are never silently merged
+  ---
+  duration_ms: 0.349792
+  type: 'test'
+  ...
+# Subtest: French standard artwork is preferred when the official printing identity permits it
+ok 10 - French standard artwork is preferred when the official printing identity permits it
+  ---
+  duration_ms: 0.502208
+  type: 'test'
+  ...
+# Subtest: a known reprint can be the default only through its explicit official printing code
+ok 11 - a known reprint can be the default only through its explicit official printing code
+  ---
+  duration_ms: 0.096667
+  type: 'test'
+  ...
+# Subtest: name fallback refuses two different numbered cards called Usopp
+ok 12 - name fallback refuses two different numbered cards called Usopp
+  ---
+  duration_ms: 0.119625
+  type: 'test'
+  ...
+# Subtest: name fallback respects the requested Leader/Character type without flipping it
+ok 13 - name fallback respects the requested Leader/Character type without flipping it
+  ---
+  duration_ms: 0.125875
+  type: 'test'
+  ...
+# Subtest: invalid quantities and noncanonical numbers are rejected
+ok 14 - invalid quantities and noncanonical numbers are rejected
+  ---
+  duration_ms: 0.069792
+  type: 'test'
+  ...
+# Subtest: simulation explicitly distinguishes absence of Prisma validation
+ok 15 - simulation explicitly distinguishes absence of Prisma validation
+  ---
+  duration_ms: 2.352958
+  type: 'test'
+  ...
+# Subtest: ST10 and ST13 preserve three commercial Leaders with 50 main cards and separate DON
+ok 16 - ST10 and ST13 preserve three commercial Leaders with 50 main cards and separate DON
+  ---
+  duration_ms: 0.149125
+  type: 'test'
+  ...
+# Subtest: extra Leaders are selectable alternatives, not extra main cards
+ok 17 - extra Leaders are selectable alternatives, not extra main cards
+  ---
+  duration_ms: 10.844583
+  type: 'test'
+  ...
+# Subtest: source conflicts stay PARTIAL even if candidate compositions contain 50 main cards
+ok 18 - source conflicts stay PARTIAL even if candidate compositions contain 50 main cards
+  ---
+  duration_ms: 0.096875
+  type: 'test'
+  ...
+# Subtest: ST08 Event quantities and ST12 Leader typo have independent corroboration
+ok 19 - ST08 Event quantities and ST12 Leader typo have independent corroboration
+  ---
+  duration_ms: 0.105083
+  type: 'test'
+  ...
+# Subtest: real French alternate Chopper cards are verified by official localized references
+ok 20 - real French alternate Chopper cards are verified by official localized references
+  ---
+  duration_ms: 1.05625
+  type: 'test'
+  ...
+# Subtest: a single incorrect printing is refused against Bandai characteristics
+ok 21 - a single incorrect printing is refused against Bandai characteristics
+  ---
+  duration_ms: 0.330792
+  type: 'test'
+  ...
+# Subtest: real FR base and alternate Life Leader prints preserve canonical identity and prefer FR base
+ok 22 - real FR base and alternate Life Leader prints preserve canonical identity and prefer FR base
+  ---
+  duration_ms: 0.581291
+  type: 'test'
+  ...
+# Subtest: ST36 quantities are not invented and ST37..39 are not introduced
+ok 23 - ST36 quantities are not invented and ST37..39 are not introduced
+  ---
+  duration_ms: 0.083542
+  type: 'test'
+  ...
+# Subtest: write options are rejected before any Prisma initialization
+ok 24 - write options are rejected before any Prisma initialization
+  ---
+  duration_ms: 255.752042
+  type: 'test'
+  ...
+# Subtest: ST-01: candidate reference preserves published total and all numbered identities
+ok 25 - ST-01: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.221209
+  type: 'test'
+  ...
+# Subtest: ST-02: candidate reference preserves published total and all numbered identities
+ok 26 - ST-02: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.051
+  type: 'test'
+  ...
+# Subtest: ST-03: candidate reference preserves published total and all numbered identities
+ok 27 - ST-03: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.048291
+  type: 'test'
+  ...
+# Subtest: ST-04: candidate reference preserves published total and all numbered identities
+ok 28 - ST-04: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.042709
+  type: 'test'
+  ...
+# Subtest: ST-05: candidate reference preserves published total and all numbered identities
+ok 29 - ST-05: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.045458
+  type: 'test'
+  ...
+# Subtest: ST-06: candidate reference preserves published total and all numbered identities
+ok 30 - ST-06: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.143417
+  type: 'test'
+  ...
+# Subtest: ST-07: candidate reference preserves published total and all numbered identities
+ok 31 - ST-07: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.047042
+  type: 'test'
+  ...
+# Subtest: ST-08: candidate reference preserves published total and all numbered identities
+ok 32 - ST-08: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.097458
+  type: 'test'
+  ...
+# Subtest: ST-09: candidate reference preserves published total and all numbered identities
+ok 33 - ST-09: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.041375
+  type: 'test'
+  ...
+# Subtest: ST-10: candidate reference preserves published total and all numbered identities
+ok 34 - ST-10: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.047584
+  type: 'test'
+  ...
+# Subtest: ST-11: candidate reference preserves published total and all numbered identities
+ok 35 - ST-11: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.043209
+  type: 'test'
+  ...
+# Subtest: ST-12: candidate reference preserves published total and all numbered identities
+ok 36 - ST-12: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.041
+  type: 'test'
+  ...
+# Subtest: ST-13: candidate reference preserves published total and all numbered identities
+ok 37 - ST-13: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.040625
+  type: 'test'
+  ...
+# Subtest: ST-14: candidate reference preserves published total and all numbered identities
+ok 38 - ST-14: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.037958
+  type: 'test'
+  ...
+# Subtest: ST-15: candidate reference preserves published total and all numbered identities
+ok 39 - ST-15: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.036625
+  type: 'test'
+  ...
+# Subtest: ST-16: candidate reference preserves published total and all numbered identities
+ok 40 - ST-16: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.036167
+  type: 'test'
+  ...
+# Subtest: ST-17: candidate reference preserves published total and all numbered identities
+ok 41 - ST-17: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.035792
+  type: 'test'
+  ...
+# Subtest: ST-18: candidate reference preserves published total and all numbered identities
+ok 42 - ST-18: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.04325
+  type: 'test'
+  ...
+# Subtest: ST-19: candidate reference preserves published total and all numbered identities
+ok 43 - ST-19: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.037417
+  type: 'test'
+  ...
+# Subtest: ST-20: candidate reference preserves published total and all numbered identities
+ok 44 - ST-20: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.070458
+  type: 'test'
+  ...
+# Subtest: ST-21: candidate reference preserves published total and all numbered identities
+ok 45 - ST-21: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.036208
+  type: 'test'
+  ...
+# Subtest: ST-22: candidate reference preserves published total and all numbered identities
+ok 46 - ST-22: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.051791
+  type: 'test'
+  ...
+# Subtest: ST-23: candidate reference preserves published total and all numbered identities
+ok 47 - ST-23: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.03925
+  type: 'test'
+  ...
+# Subtest: ST-24: candidate reference preserves published total and all numbered identities
+ok 48 - ST-24: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.038542
+  type: 'test'
+  ...
+# Subtest: ST-25: candidate reference preserves published total and all numbered identities
+ok 49 - ST-25: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.037042
+  type: 'test'
+  ...
+# Subtest: ST-26: candidate reference preserves published total and all numbered identities
+ok 50 - ST-26: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.040791
+  type: 'test'
+  ...
+# Subtest: ST-27: candidate reference preserves published total and all numbered identities
+ok 51 - ST-27: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.036417
+  type: 'test'
+  ...
+# Subtest: ST-28: candidate reference preserves published total and all numbered identities
+ok 52 - ST-28: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.237083
+  type: 'test'
+  ...
+# Subtest: ST-29: candidate reference preserves published total and all numbered identities
+ok 53 - ST-29: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.085125
+  type: 'test'
+  ...
+# Subtest: ST-30: candidate reference preserves published total and all numbered identities
+ok 54 - ST-30: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.046042
+  type: 'test'
+  ...
+# Subtest: ST-31: candidate reference preserves published total and all numbered identities
+ok 55 - ST-31: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.038875
+  type: 'test'
+  ...
+# Subtest: ST-32: candidate reference preserves published total and all numbered identities
+ok 56 - ST-32: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.038291
+  type: 'test'
+  ...
+# Subtest: ST-33: candidate reference preserves published total and all numbered identities
+ok 57 - ST-33: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.037416
+  type: 'test'
+  ...
+# Subtest: ST-34: candidate reference preserves published total and all numbered identities
+ok 58 - ST-34: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.038459
+  type: 'test'
+  ...
+# Subtest: ST-35: candidate reference preserves published total and all numbered identities
+ok 59 - ST-35: candidate reference preserves published total and all numbered identities
+  ---
+  duration_ms: 0.042209
+  type: 'test'
+  ...
+1..59
+# tests 59
+# suites 0
+# pass 59
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 710.550833

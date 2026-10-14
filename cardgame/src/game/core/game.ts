@@ -1,5 +1,6 @@
 import { createEffectRuntime, effectActions, applyEffectCommand, projectEffects, capturePlayedEffects } from '../effects/runtime'
 import { adaptCard } from '../cards/adapter'
+import { keywordOnlyText } from '../cards/keywordText'
 import { validateEngineDeck } from '../rulesets/decks'
 import { assertGameInvariants } from './invariants'
 import { sample, seededRandom, shuffle, type RandomGenerator } from './random'
@@ -39,7 +40,7 @@ export function createGame(input: GameInput, generator: RandomGenerator = seeded
       const printing = input.printings.find(v => v.printingKey === entry.printingKey)!
       const d = input.definitions.find(d => d.definitionId === printing.definitionId)!
       const triggerProgram = input.effectRegistry?.definitions.some(effect => effect.timing === 'TRIGGER' && effect.source.kind === 'CARD_DEFINITION' && effect.source.definitionId === d.definitionId)
-      if ((!d.review.effects.length && (d.review.effectOriginal.trim() || d.review.effectFr.trim()) && !d.review.counterEvent) || ((d.review.triggerOriginal.trim() || d.review.triggerFr.trim()) && !triggerProgram)) throw new Error('INCOMPLETE_EFFECT_PROGRAM')
+      if ((!d.review.effects.length && (d.review.effectOriginal.trim() || d.review.effectFr.trim()) && !d.review.counterEvent && !keywordOnlyText(d.review.effectOriginal, d.review.combatKeywords ?? [])) || ((d.review.triggerOriginal.trim() || d.review.triggerFr.trim()) && !triggerProgram)) throw new Error('INCOMPLETE_EFFECT_PROGRAM')
       // Explicit allowlist: unknown/start-game/construction/continuous effects cannot be skipped.
       if (d.review.effects.some(e => {
         // With the 1.3.0 runtime the reviewed spec must be backed by an executable [Activate: Main] program, otherwise
@@ -64,7 +65,7 @@ export function createGame(input: GameInput, generator: RandomGenerator = seeded
       const d = input.definitions.find(d => d.definitionId === source.definitionId)
       if (!d || (source.zone === 'temporary' ? d.category === 'DON' : source.zone === 'hand' ? d.category !== 'EVENT' : ({ leader: 'LEADER', characters: 'CHARACTER', stage: 'STAGE' }[source.zone] !== d.category))) throw new Error('INVALID_CARD_PROGRAM_SOURCE')
     }
-    for (const ability of [...effectRuntime.registry.continuous ?? [], ...effectRuntime.registry.cardReplacements ?? []]) if (input.definitions.find(d => d.definitionId === ability.definitionId)?.category !== (ability.zone === 'leader' ? 'LEADER' : 'CHARACTER')) throw new Error('INVALID_CONTINUOUS_SOURCE')
+    for (const ability of [...effectRuntime.registry.continuous ?? [], ...effectRuntime.registry.cardReplacements ?? []]) if (input.definitions.find(d => d.definitionId === ability.definitionId)?.category !== ({ leader: 'LEADER', stage: 'STAGE', characters: 'CHARACTER', hand: 'CHARACTER' } as Record<string, string>)[ability.zone]) throw new Error('INVALID_CONTINUOUS_SOURCE')
   }
   const state: GameState = {
     schemaVersion: effectRuntime ? 2 : 1, ...(effectRuntime ? { effects: effectRuntime } : {}), battle: null, gameId: input.gameId, version: 0, scope: input.scope ?? 'SETUP_ONLY', phase: 'CHOOSE_FIRST', players, instances: {},

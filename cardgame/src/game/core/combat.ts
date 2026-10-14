@@ -1,4 +1,4 @@
-import { evaluateCharacteristics, hasCombatKeyword } from '../effects/characteristics'
+import { evaluateCharacteristics, hasBlockerAbility, hasCombatKeyword } from '../effects/characteristics'
 import { confirmMoveOperation, confirmRestOperation, confirmPower, processOperation } from '../effects/operations'
 import { activateCounterProgram, confirmBattleKO } from '../effects/runtime'
 import type { BattleState, Command, GameState, LegalAction } from './types'
@@ -8,7 +8,14 @@ const samePresence = (state: GameState, ref: BattleState['attacker']) => {
   return !!instance && instance.zoneGeneration === ref.generation
 }
 
+/** M6 "cannot attack until the end of your opponent's next turn" (same presence, before untilTurn). */
+function attackProhibited(state: GameState, id: string): boolean {
+  const i = state.instances[id]
+  return !!state.effects?.attackRestrictions?.some(r => r.subject.instanceId === id && r.subject.generation === i.zoneGeneration && state.turn < r.untilTurn)
+}
 function blockerIsProhibited(state: GameState, battle: BattleState, blockerId: string): boolean {
+  const b = state.instances[blockerId]
+  if (state.effects?.blockerDisables?.some(d => d.subject.instanceId === blockerId && d.subject.generation === b?.zoneGeneration && d.turnId === state.turn)) return true
   return (state.effects?.blockerRestrictions ?? []).some(restriction => {
     if (restriction.subject.instanceId !== battle.attacker.instanceId || restriction.subject.generation !== battle.attacker.generation) return false
     if (restriction.scope === 'BATTLE' && restriction.battleId !== battle.id) return false
@@ -30,7 +37,7 @@ export function combatActions(state: GameState, actorId: string): LegalAction[] 
       const defender = state.players.find(p => p.id === actorId)!
       const unblockable = hasCombatKeyword(state, battle.attacker.instanceId, 'UNBLOCKABLE')
       const blockerIds = battle.blockersUsed === 0 && !unblockable ? defender.zones.characters.filter(id => id !== battle.target.instanceId && !state.instances[id].rested
-        && state.catalog.definitions.find(d => d.definitionId === state.instances[id].definitionId)?.review.effects.some(e => e.kind === 'blocker')
+        && hasBlockerAbility(state, id)
         && !blockerIsProhibited(state, battle, id)) : []
       return [...(blockerIds.length ? [{ type: 'ACTIVATE_BLOCKER' as const, blockerIds, battleId: battle.id }] : []), { type: 'PASS_BLOCKER', battleId: battle.id }]
     }
@@ -61,7 +68,7 @@ export function combatActions(state: GameState, actorId: string): LegalAction[] 
   const eligibleAttacker = (id: string) => {
     const card = state.instances[id]
     const rush = hasCombatKeyword(state, id, 'RUSH') || hasCombatKeyword(state, id, 'RUSH_CHARACTER')
-    return !card.rested && (card.playedOnTurn !== state.turn || card.zone === 'leader' || rush)
+    return !card.rested && (card.playedOnTurn !== state.turn || card.zone === 'leader' || rush) && !attackProhibited(state, id)
   }
   const attackerIds = [...attacker.zones.leader, ...attacker.zones.characters].filter(eligibleAttacker)
   const targetIds = [...defender.zones.leader, ...defender.zones.characters.filter(id => state.instances[id].rested)]
@@ -81,7 +88,7 @@ export function applyCombatCommand(state: GameState, command: Extract<Command, {
     const rush = attacker && (hasCombatKeyword(state, attacker.id, 'RUSH') || hasCombatKeyword(state, attacker.id, 'RUSH_CHARACTER'))
     const rushCharacter = attacker && hasCombatKeyword(state, attacker.id, 'RUSH_CHARACTER')
     if (!attacker || attacker.controller !== command.actorId || !['leader', 'characters'].includes(attacker.zone) || attacker.rested
-      || (attacker.zone === 'characters' && attacker.playedOnTurn === state.turn && !rush)) throw new Error('INVALID_ATTACKER')
+      || (attacker.zone === 'characters' && attacker.playedOnTurn === state.turn && !rush) || attackProhibited(state, attacker.id)) throw new Error('INVALID_ATTACKER')
     if (!attackerOwner.zones[attacker.zone].includes(attacker.id)) throw new Error('INVALID_ATTACKER')
     if (!target || target.controller !== defender.id || !['leader', 'characters'].includes(target.zone) || (target.zone === 'characters' && !target.rested)
       || (rushCharacter && target.zone !== 'characters')) throw new Error('INVALID_ATTACK_TARGET')
@@ -135,7 +142,7 @@ export function applyCombatCommand(state: GameState, command: Extract<Command, {
       if (battle.step !== 'BLOCKER' || battle.blockersUsed !== 0 || hasCombatKeyword(state, battle.attacker.instanceId, 'UNBLOCKABLE')) throw new Error('INVALID_BLOCKER_WINDOW')
       const blocker = state.instances[command.blockerId]
       const definition = blocker && state.catalog.definitions.find(d => d.definitionId === blocker.definitionId)
-      if (!blocker || blocker.controller !== command.actorId || blocker.zone !== 'characters' || blocker.rested || blocker.id === battle.target.instanceId || !definition?.review.effects.some(e => e.kind === 'blocker') || blockerIsProhibited(state, battle, blocker.id)) throw new Error('INVALID_BLOCKER')
+      if (!blocker || blocker.controller !== command.actorId || blocker.zone !== 'characters' || blocker.rested || blocker.id === battle.target.instanceId || !definition || !hasBlockerAbility(state, blocker.id) || blockerIsProhibited(state, battle, blocker.id)) throw new Error('INVALID_BLOCKER')
       if (state.effects && ['1.2.0','1.3.0'].includes(state.effects.version)) {
         if (!confirmRestOperation(state, { instanceId: blocker.id, generation: blocker.zoneGeneration }, command.actorId, battle.id, 'COST')) throw new Error('BLOCKER_REST_PREVENTED')
       } else blocker.rested = true

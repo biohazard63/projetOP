@@ -1,40 +1,30 @@
 import compositions from './starter-compositions.json'
 import type { DeckEntry } from '../rulesets/decks'
 
-// M6 Starter Decks, built from the read-only extraction of scripts/rebuildStarterDecks.ts (see
-// scripts/game/extract-starter-compositions.ts). A deck is listed only if every entry resolved to one number, or belongs to
-// an equal-quantity ambiguous group (below). Being listed does not make a deck playable: /play offers only decks whose
-// every card is certified.
+// M6 Starter Decks, built from the audited contents of scripts/rebuildStarterDecks.ts (explicit card numbers, printings
+// and quantities; see scripts/game/extract-audited-starter-compositions.ts). Only decks whose composition is verified by
+// scripts/starterAudit/product-evidence.json are listed. A product with several Leaders gives one playable deck per
+// Leader: that Leader plus the same 50 main cards (the other Leaders are not deck cards). Being listed does not make a
+// deck playable: /play offers only decks whose every card is certified.
 export type StarterDeck = { id: string; deckCode: string; name: string; leader: string; entries: DeckEntry[] }
-type Entry = { name?: string; number: string | null; quantity: number; status?: string; candidates?: string[] }
-type Composition = { deckCode: string; deckName: string; unresolved: number; leaders: string[]; entries: Entry[] }
+export type StarterCompositionEntry = { name: string; number: string; printingCode: string; type: string; quantity: number }
+export type StarterComposition = { deckCode: string; deckName: string; compositionVerified: boolean; reasons: string[]; leaders: string[]; mainCount: number; entries: StarterCompositionEntry[] }
 
-/** Ambiguous names whose candidate set is shared by exactly as many names, all with the same quantity, and whose candidates
- * appear nowhere else in the list: each candidate then receives that quantity whatever the name mapping is (no mapping is
- * chosen). Returns null when any unresolved entry falls outside such a group. */
-export function equalQuantityGroups(entries: Entry[]): Map<string, number> | null {
-  const unresolved = entries.filter(e => !e.number)
-  const resolvedNumbers = new Set(entries.filter(e => e.number).map(e => e.number!))
-  const out = new Map<string, number>()
-  const groups = new Map<string, Entry[]>()
-  for (const e of unresolved) {
-    if (e.status !== 'AMBIGUOUS' || !e.candidates?.length) return null
-    const key = [...e.candidates].sort((a, b) => a.localeCompare(b)).join('|')
-    groups.set(key, [...(groups.get(key) ?? []), e])
-  }
-  for (const [key, members] of groups) {
-    const candidates = key.split('|')
-    if (members.length !== candidates.length || new Set(members.map(m => m.quantity)).size !== 1 || candidates.some(c => resolvedNumbers.has(c))) return null
-    for (const c of candidates) out.set(c, members[0].quantity)
-  }
-  return out
-}
-export const STARTER_DECKS: StarterDeck[] = (compositions.decks as Composition[])
-  .filter(d => d.leaders.length === 1 && (d.unresolved === 0 || equalQuantityGroups(d.entries) !== null))
-  .map(d => {
-    const quantities = new Map<string, number>()
-    for (const e of d.entries) if (e.number) quantities.set(e.number, (quantities.get(e.number) ?? 0) + e.quantity)
-    for (const [number, quantity] of equalQuantityGroups(d.entries) ?? []) quantities.set(number, (quantities.get(number) ?? 0) + quantity)
-    return { id: `starter-${d.deckCode.toLowerCase().replace('-', '')}`, deckCode: d.deckCode, name: `${d.deckCode} ${d.deckName}`, leader: d.leaders[0],
-      entries: [...quantities].map(([number, quantity]) => ({ printingKey: `${number}::standard`, quantity })) }
+export const STARTER_COMPOSITIONS = compositions.decks as StarterComposition[]
+
+/** Playable deck lists of one audited product: one per Leader, each with the 50 main cards aggregated by card number. */
+export function starterDecksOf(d: StarterComposition): StarterDeck[] {
+  if (!d.compositionVerified || !d.leaders.length) return []
+  const main = new Map<string, number>()
+  for (const e of d.entries) if (e.type !== 'LEADER') main.set(e.number, (main.get(e.number) ?? 0) + e.quantity)
+  const base = `starter-${d.deckCode.toLowerCase().replace('-', '')}`
+  return d.leaders.map(leader => {
+    const leaderName = d.entries.find(e => e.number === leader)?.name ?? leader
+    return {
+      id: d.leaders.length === 1 ? base : `${base}-${leader.toLowerCase()}`, deckCode: d.deckCode, leader,
+      name: d.leaders.length === 1 ? `${d.deckCode} ${d.deckName}` : `${d.deckCode} ${d.deckName} — Leader ${leaderName}`,
+      entries: [{ printingKey: `${leader}::standard`, quantity: 1 }, ...[...main].map(([number, quantity]) => ({ printingKey: `${number}::standard`, quantity }))],
+    }
   })
+}
+export const STARTER_DECKS: StarterDeck[] = STARTER_COMPOSITIONS.flatMap(starterDecksOf)
