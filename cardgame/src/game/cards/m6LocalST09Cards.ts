@@ -69,14 +69,18 @@ const conditionalKeywords: ConditionalKeyword[] = [
   // ST09-005 Kouzuki Oden: [DON!! x1] [Double Attack].
   { id: 'ST09-005.double-attack', definitionId: def('ST09-005'), zone: 'characters', keyword: 'DOUBLE_ATTACK', minimumAttachedDon: 1 },
 ]
+// ST09-010 Portgas.D.Ace: [Once Per Turn] If this Character would be K.O.'d, you may trash 1 card from the top or bottom of your Life
+// cards instead (in battle and by effects; FAQ ST09-010: not with 0 Life). Generic GUARD replacement.
+const cardReplacements = [{ id: 'ST09-010.guard-life', definitionId: def('ST09-010'), zone: 'characters' as const, match: 'GUARD' as const, event: 'KO' as const, cause: 'ANY' as const,
+  protects: { self: true as const }, action: 'TRASH_LIFE_TOP_OR_BOTTOM' as const, usage: 'ONCE_PER_TURN' as const }]
 const ids = (number: string) => [...abilities.filter(a => a.source.kind === 'CARD_DEFINITION' && a.source.definitionId === def(number)).map(a => a.id),
   ...continuous.filter(k => k.definitionId === def(number)).map(k => k.id), ...koProtections.filter(k => k.definitionId === def(number)).map(k => k.id),
-  ...conditionalKeywords.filter(k => k.definitionId === def(number)).map(k => k.id)]
+  ...conditionalKeywords.filter(k => k.definitionId === def(number)).map(k => k.id), ...cardReplacements.filter(k => k.definitionId === def(number)).map(k => k.id)]
 
 export const ST09_LOCAL_CARDS: CardInput[] = [
   card('ST09-001', { abilityIds: ids('ST09-001') }), card('ST09-002', { abilityIds: ids('ST09-002') }), card('ST09-004', { abilityIds: ids('ST09-004') }),
   card('ST09-005', { abilityIds: ids('ST09-005') }), card('ST09-007', { blocker: true, abilityIds: ids('ST09-007') }), card('ST09-008', { abilityIds: ids('ST09-008') }),
-  card('ST09-009', { abilityIds: ids('ST09-009') }), card('ST09-012', { abilityIds: ids('ST09-012') }),
+  card('ST09-009', { abilityIds: ids('ST09-009') }), card('ST09-010', { abilityIds: ids('ST09-010') }), card('ST09-012', { abilityIds: ids('ST09-012') }),
   card('ST09-014', { abilityIds: ids('ST09-014'), counterEvent: { abilityId: 'ST09-014.counter' } }),
   card('ST09-015', { abilityIds: ids('ST09-015'), counterEvent: { abilityId: 'ST09-015.counter' } }),
 ]
@@ -84,3 +88,4 @@ export const ST09_LOCAL_ABILITY_DEFINITIONS = abilities
 export const ST09_LOCAL_CONTINUOUS = continuous
 export const ST09_KO_PROTECTIONS = koProtections
 export const ST09_CONDITIONAL_KEYWORDS = conditionalKeywords
+export const ST09_CARD_REPLACEMENTS = cardReplacements

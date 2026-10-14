@@ -112,7 +112,8 @@ export function opponentTrashesFromHand(): Step[] {
 }
 /** "add 1 card from the top or bottom of your Life cards to your hand" (`required`: an activation cost already paid). */
 export function lifeToHand(bind = 'lifeCost', opts: { required?: boolean; lifeEnd?: 'TOP' | 'TOP_OR_BOTTOM' } = {}): Step[] {
-  return [{ kind: 'CHOICE', choiceType: 'SELECT', selector: { kind: 'CARDS', side: 'OWN', zone: 'life', lifeEnd: opts.lifeEnd ?? 'TOP_OR_BOTTOM' }, optional: !opts.required, min: opts.required ? 1 : 0, max: 1, bind, visibility: 'PUBLIC' },
+  // Not offered while "you cannot add Life cards to your hand using your own effects" applies (FAQ OP02-023: the cost cannot be paid).
+  return [{ kind: 'CHOICE', choiceType: 'SELECT', selector: { kind: 'CARDS', side: 'OWN', zone: 'life', lifeEnd: opts.lifeEnd ?? 'TOP_OR_BOTTOM' }, optional: !opts.required, min: opts.required ? 1 : 0, max: 1, bind, visibility: 'PUBLIC', whenCondition: { kind: 'CAN_ADD_LIFE_TO_HAND' } },
     { kind: 'OPERATION', operation: { primitive: 'lifeToHand', version: '1.0.0', audience: 'CONTROLLER', subjectBinding: bind } }]
 }
 /** "Add <bound card> to the top of the (owner's) Life cards" (face-up only when printed). */

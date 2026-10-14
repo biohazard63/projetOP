@@ -15,12 +15,19 @@ import { ST03_ST04_LOCAL_ABILITY_DEFINITIONS, ST03_ST04_LOCAL_CARDS } from '../.
 import { ST05_ST06_LOCAL_ABILITY_DEFINITIONS, ST05_ST06_LOCAL_CARDS, ST05_ST06_KO_PROTECTIONS, ST05_ST06_CONDITIONAL_KEYWORDS } from '../../game/cards/m6LocalST05ST06Cards'
 import { ST07_LOCAL_ABILITY_DEFINITIONS, ST07_LOCAL_CARDS } from '../../game/cards/m6LocalST07Cards'
 import { ST12_LOCAL_ABILITY_DEFINITIONS, ST12_LOCAL_CARDS } from '../../game/cards/m6LocalST12Cards'
-import { ST09_LOCAL_ABILITY_DEFINITIONS, ST09_LOCAL_CARDS, ST09_LOCAL_CONTINUOUS, ST09_KO_PROTECTIONS, ST09_CONDITIONAL_KEYWORDS } from '../../game/cards/m6LocalST09Cards'
+import { ST09_LOCAL_ABILITY_DEFINITIONS, ST09_LOCAL_CARDS, ST09_LOCAL_CONTINUOUS, ST09_KO_PROTECTIONS, ST09_CONDITIONAL_KEYWORDS, ST09_CARD_REPLACEMENTS } from '../../game/cards/m6LocalST09Cards'
 import { ST11_LOCAL_ABILITY_DEFINITIONS, ST11_LOCAL_CARDS } from '../../game/cards/m6LocalST11Cards'
 import { ST10_LOCAL_ABILITY_DEFINITIONS, ST10_LOCAL_CARDS, ST10_LOCAL_CONTINUOUS } from '../../game/cards/m6LocalST10Cards'
 import { ST08_LOCAL_ABILITY_DEFINITIONS, ST08_LOCAL_CARDS, ST08_KO_PROTECTIONS } from '../../game/cards/m6LocalST08Cards'
 import { ST03_OP_LOCAL_ABILITY_DEFINITIONS, ST03_OP_LOCAL_CARDS } from '../../game/cards/m6LocalST03OPCards'
 import { REPRINT_LOCAL_ABILITY_DEFINITIONS, REPRINT_LOCAL_CARDS } from '../../game/cards/m6LocalReprintCards'
+import { ST20_OFFICIAL_ABILITY_DEFINITIONS, ST20_OFFICIAL_CARDS, ST20_OFFICIAL_REPLACEMENTS } from '../../game/cards/m6OfficialST20Cards'
+import { ST31_OFFICIAL_ABILITY_DEFINITIONS, ST31_OFFICIAL_CARDS, ST31_OFFICIAL_CONDITIONAL_KEYWORDS, ST31_OFFICIAL_CONTINUOUS } from '../../game/cards/m6OfficialST31Cards'
+import { ST26_OFFICIAL_ABILITY_DEFINITIONS, ST26_OFFICIAL_CARDS, ST26_OFFICIAL_CONTINUOUS } from '../../game/cards/m6OfficialST26Cards'
+import { ST16_OFFICIAL_ABILITY_DEFINITIONS, ST16_OFFICIAL_CARDS, ST16_OFFICIAL_CONTINUOUS } from '../../game/cards/m6OfficialST16Cards'
+import { ST15_OFFICIAL_ABILITY_DEFINITIONS, ST15_OFFICIAL_CARDS, ST15_OFFICIAL_CONDITIONAL_KEYWORDS, ST15_OFFICIAL_CONTINUOUS, ST15_OFFICIAL_REPLACEMENTS } from '../../game/cards/m6OfficialST15Cards'
+import { ST25_OFFICIAL_ABILITY_DEFINITIONS, ST25_OFFICIAL_CARDS, ST25_OFFICIAL_CONTINUOUS, ST25_OFFICIAL_CONDITIONAL_KEYWORDS, ST25_OFFICIAL_KO_PROTECTIONS, ST25_OFFICIAL_REPLACEMENTS, ST25_OFFICIAL_ATTACK_PROHIBITIONS } from '../../game/cards/m6OfficialST25Cards'
+import { ST28_OFFICIAL_ABILITY_DEFINITIONS, ST28_OFFICIAL_CARDS, ST28_OFFICIAL_CONTINUOUS, ST28_OFFICIAL_CONDITIONAL_KEYWORDS, ST28_OFFICIAL_KO_PROTECTIONS } from '../../game/cards/m6OfficialST28Cards'
 import { ST23_OFFICIAL_ABILITY_DEFINITIONS, ST23_OFFICIAL_CARDS, ST23_OFFICIAL_CONTINUOUS, ST23_OFFICIAL_REPLACEMENTS } from '../../game/cards/m6OfficialST23Cards'
 import { ST21_OFFICIAL_ABILITY_DEFINITIONS, ST21_OFFICIAL_CARDS, ST21_OFFICIAL_CONTINUOUS, ST21_OFFICIAL_CONDITIONAL_KEYWORDS } from '../../game/cards/m6OfficialST21Cards'
 import { ST19_OFFICIAL_ABILITY_DEFINITIONS, ST19_OFFICIAL_CARDS, ST19_OFFICIAL_CONTINUOUS, ST19_OFFICIAL_KO_PROTECTIONS } from '../../game/cards/m6OfficialST19Cards'
@@ -50,7 +57,7 @@ const currentPacks = () => [
   { packId: 'M6_LOCAL_ST05_ST06', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST05_ST06_LOCAL_CARDS, effects: { definitions: ST05_ST06_LOCAL_ABILITY_DEFINITIONS, koProtections: ST05_ST06_KO_PROTECTIONS, conditionalKeywords: ST05_ST06_CONDITIONAL_KEYWORDS } },
   { packId: 'M6_LOCAL_ST07', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST07_LOCAL_CARDS, effects: { definitions: ST07_LOCAL_ABILITY_DEFINITIONS } },
   { packId: 'M6_LOCAL_ST08', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST08_LOCAL_CARDS, effects: { definitions: ST08_LOCAL_ABILITY_DEFINITIONS, koProtections: ST08_KO_PROTECTIONS } },
-  { packId: 'M6_LOCAL_ST09', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST09_LOCAL_CARDS, effects: { definitions: ST09_LOCAL_ABILITY_DEFINITIONS, continuous: ST09_LOCAL_CONTINUOUS, koProtections: ST09_KO_PROTECTIONS, conditionalKeywords: ST09_CONDITIONAL_KEYWORDS } },
+  { packId: 'M6_LOCAL_ST09', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST09_LOCAL_CARDS, effects: { definitions: ST09_LOCAL_ABILITY_DEFINITIONS, continuous: ST09_LOCAL_CONTINUOUS, koProtections: ST09_KO_PROTECTIONS, conditionalKeywords: ST09_CONDITIONAL_KEYWORDS, cardReplacements: ST09_CARD_REPLACEMENTS } },
   { packId: 'M6_LOCAL_ST10', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST10_LOCAL_CARDS, effects: { definitions: ST10_LOCAL_ABILITY_DEFINITIONS, continuous: ST10_LOCAL_CONTINUOUS } },
   { packId: 'M6_LOCAL_ST11', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST11_LOCAL_CARDS, effects: { definitions: ST11_LOCAL_ABILITY_DEFINITIONS } },
   { packId: 'M6_LOCAL_ST12', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST12_LOCAL_CARDS, effects: { definitions: ST12_LOCAL_ABILITY_DEFINITIONS } },
@@ -62,6 +69,13 @@ const currentPacks = () => [
   { packId: 'M6_OFFICIAL_ST19', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST19_OFFICIAL_CARDS, effects: { definitions: ST19_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST19_OFFICIAL_CONTINUOUS, koProtections: ST19_OFFICIAL_KO_PROTECTIONS } },
   { packId: 'M6_OFFICIAL_ST21', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST21_OFFICIAL_CARDS, effects: { definitions: ST21_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST21_OFFICIAL_CONTINUOUS, conditionalKeywords: ST21_OFFICIAL_CONDITIONAL_KEYWORDS } },
   { packId: 'M6_OFFICIAL_ST23', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST23_OFFICIAL_CARDS, effects: { definitions: ST23_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST23_OFFICIAL_CONTINUOUS, cardReplacements: ST23_OFFICIAL_REPLACEMENTS } },
+  { packId: 'M6_OFFICIAL_ST28', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST28_OFFICIAL_CARDS, effects: { definitions: ST28_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST28_OFFICIAL_CONTINUOUS, conditionalKeywords: ST28_OFFICIAL_CONDITIONAL_KEYWORDS, koProtections: ST28_OFFICIAL_KO_PROTECTIONS } },
+  { packId: 'M6_OFFICIAL_ST25', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST25_OFFICIAL_CARDS, effects: { definitions: ST25_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST25_OFFICIAL_CONTINUOUS, conditionalKeywords: ST25_OFFICIAL_CONDITIONAL_KEYWORDS, koProtections: ST25_OFFICIAL_KO_PROTECTIONS, cardReplacements: ST25_OFFICIAL_REPLACEMENTS, attackProhibitions: ST25_OFFICIAL_ATTACK_PROHIBITIONS } },
+  { packId: 'M6_OFFICIAL_ST20', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST20_OFFICIAL_CARDS, effects: { definitions: ST20_OFFICIAL_ABILITY_DEFINITIONS, cardReplacements: ST20_OFFICIAL_REPLACEMENTS } },
+  { packId: 'M6_OFFICIAL_ST15', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST15_OFFICIAL_CARDS, effects: { definitions: ST15_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST15_OFFICIAL_CONTINUOUS, conditionalKeywords: ST15_OFFICIAL_CONDITIONAL_KEYWORDS, cardReplacements: ST15_OFFICIAL_REPLACEMENTS } },
+  { packId: 'M6_OFFICIAL_ST16', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST16_OFFICIAL_CARDS, effects: { definitions: ST16_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST16_OFFICIAL_CONTINUOUS } },
+  { packId: 'M6_OFFICIAL_ST26', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST26_OFFICIAL_CARDS, effects: { definitions: ST26_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST26_OFFICIAL_CONTINUOUS } },
+  { packId: 'M6_OFFICIAL_ST31', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST31_OFFICIAL_CARDS, effects: { definitions: ST31_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST31_OFFICIAL_CONTINUOUS, conditionalKeywords: ST31_OFFICIAL_CONDITIONAL_KEYWORDS } },
 ]
 // The packs are static data compiled into the build: compile them once per process (every /play request used to recompile
 // 550+ definitions, ~16 ms each time). The result is deep-frozen so that no caller can alter the shared catalogue;
