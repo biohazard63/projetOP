@@ -1,4 +1,5 @@
 import { canonicalNumber } from '../../game/cards/adapter'
+import DISPLAY_FR from '../../game/cards/display-fr.json'
 import { REVIEWED_CARDS } from '../../game/cards/reviewedCards'
 import { M3_ABILITY_CARDS } from '../../game/cards/m3Abilities'
 import { PURPLE_CARDS, M3_FULL_REGISTRY } from '../../game/cards/m3PurpleDeck'
@@ -87,15 +88,27 @@ export const engineRuleset = (): Ruleset => structuredClone(FREE_RULESET)
 export const officialSubsetRuleset = (): Ruleset => structuredClone(M5_RULESET)
 
 export type PrismaCardRow = { id: string; code: string; name: string; type: string; color: string; cost: number | null; power: number | null; counter: string | null; imageUrl: string; isAltArt: boolean; isParallel: boolean; isSpecial: boolean }
-export type CardDisplay = { definitionId: string; number: string; name: string; category: CardDefinition['category']; colors: string[]; cost: number | null; power: number | null; counter: number | null; life: number | null; text: string; trigger: string; imageUrl: string | null; certified: boolean }
+export type CardDisplay = { definitionId: string; number: string; name: string; category: CardDefinition['category']; colors: string[]; cost: number | null; power: number | null; counter: number | null; life: number | null; text: string; trigger: string; imageUrl: string | null; certified: boolean
+  /** 'fr' when the name and texts come from an official French printing (display only; rules use the reviewed English text). */
+  language: 'fr' | 'en' }
 export type CardConflict = { cardId: string; code: string; reasons: string[] }
 export type CardBridge = { printings: CardPrinting[]; byCardId: Map<string, string>; conflicts: CardConflict[]; display: Record<string, CardDisplay> }
 
 const category: Record<string, CardDefinition['category']> = { LEADER: 'LEADER', CHARACTER: 'CHARACTER', PERSONNAGE: 'CHARACTER', EVENT: 'EVENT', EVENEMENT: 'EVENT', EVENEMENTS: 'EVENT', STAGE: 'STAGE', LIEU: 'STAGE' }
 const colour: Record<string, string> = { RED: 'RED', ROUGE: 'RED', GREEN: 'GREEN', VERT: 'GREEN', BLUE: 'BLUE', BLEU: 'BLUE', PURPLE: 'PURPLE', VIOLET: 'PURPLE', BLACK: 'BLACK', NOIR: 'BLACK', YELLOW: 'YELLOW', JAUNE: 'YELLOW' }
 const plain = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').trim().toUpperCase()
-const display = (d: CardDefinition, imageUrl: string | null): CardDisplay => ({ definitionId: d.definitionId, number: d.number, name: d.rulesName, category: d.category, colors: [...d.colors],
-  cost: d.cost, power: d.power, counter: d.counter, life: d.life, text: d.review.effectOriginal, trigger: d.review.triggerOriginal, imageUrl, certified: effectiveStatus(d) === 'PLAYABLE_VERIFIED' })
+// French display (scripts/game/build-display-fr.ts): name, texts and image of the official French printing when one exists. A
+// text block is taken in French only when it exists in both languages, so that no ability is hidden or invented by the swap.
+const FR = DISPLAY_FR as Record<string, { name: string; text: string; trigger: string; image: string | null }>
+export const cardDisplay = (d: CardDefinition, imageUrl: string | null): CardDisplay => {
+  const fr = FR[d.number], text = d.review.effectOriginal, trigger = d.review.triggerOriginal
+  return { definitionId: d.definitionId, number: d.number, name: fr?.name || d.rulesName, category: d.category, colors: [...d.colors],
+    cost: d.cost, power: d.power, counter: d.counter, life: d.life,
+    text: fr && !!fr.text === !!text.trim() ? fr.text : text, trigger: fr && !!fr.trigger === !!trigger.trim() ? fr.trigger : trigger,
+    imageUrl, certified: effectiveStatus(d) === 'PLAYABLE_VERIFIED', language: fr ? 'fr' : 'en' }
+}
+/** French image of the standard printing when an official French printing exists. */
+export const frenchImage = (number: string): string | null => FR[number]?.image ?? null
 export const officialImage = (number: string) => `https://en.onepiece-cardgame.com/images/cardlist/card/${number}.png`
 
 /**
@@ -136,7 +149,8 @@ export function bridgeCards(rows: PrismaCardRow[], base = engineCatalog()): Card
   const out: Record<string, CardDisplay> = {}
   for (const p of printings) {
     const d = base.definitions.find(def => def.definitionId === p.definitionId)!
-    out[p.printingKey] = display(d, images[p.printingKey] ?? (p.printingKey.endsWith('::standard') ? officialImage(d.number) : null))
+    // Standard printing: the French image first (VF as soon as it exists), then the collection row image, then the English one.
+    out[p.printingKey] = cardDisplay(d, p.printingKey.endsWith('::standard') ? (frenchImage(d.number) ?? images[p.printingKey] ?? officialImage(d.number)) : images[p.printingKey] ?? null)
   }
   return { printings, byCardId, conflicts, display: out }
 }

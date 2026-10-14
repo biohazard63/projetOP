@@ -1,7 +1,6 @@
 import { getLegalActions, projectState } from '../../game/core/game'
-import { effectiveStatus } from '../../game/cards/certification'
 import type { GameState, LegalAction } from '../../game/core/types'
-import { officialImage, type CardDisplay } from './catalog'
+import { cardDisplay, frenchImage, officialImage, type CardDisplay } from './catalog'
 import type { StoredGame } from './repository'
 
 // The only game data a browser ever receives: the engine projection for the human seat, its legal actions
@@ -32,8 +31,8 @@ function cardsOf(state: GameState, projection: ReturnType<typeof projectState>, 
     const printing = state.catalog.printings.find(p => p.printingKey === key)
     const d = printing && state.catalog.definitions.find(def => def.definitionId === printing.definitionId)
     if (!d) continue
-    out[key] = { definitionId: d.definitionId, number: d.number, name: d.rulesName, category: d.category, colors: [...d.colors], cost: d.cost, power: d.power, counter: d.counter, life: d.life,
-      text: d.review.effectOriginal, trigger: d.review.triggerOriginal, imageUrl: officialImage(d.number), certified: effectiveStatus(d) === 'PLAYABLE_VERIFIED' }
+    // VF as soon as an official French printing exists (display only).
+    out[key] = cardDisplay(d, frenchImage(d.number) ?? officialImage(d.number))
   }
   return out
 }
@@ -61,7 +60,8 @@ function choiceSource(state: GameState, seat: string): PlayerView['choiceSource'
   if (!instance || !open || !d) return null
   const ability = r.registry.definitions.find(a => a.id === r.active!.definitionId)
   const trigger = ability?.timing === 'TRIGGER'
-  return { name: d.rulesName, number: d.number, text: trigger ? d.review.triggerOriginal : d.review.effectOriginal, trigger }
+  const shown = cardDisplay(d, null)
+  return { name: shown.name, number: d.number, text: trigger ? shown.trigger : shown.text, trigger }
 }
 export function playerView(game: StoredGame, sinceEvent = 0, botName = 'Bot Mugiwara'): PlayerView {
   const projection = projectState(game.state, game.humanSeat), legalActions = getLegalActions(game.state, game.humanSeat)
