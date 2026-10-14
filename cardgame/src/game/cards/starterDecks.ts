@@ -1,3 +1,5 @@
+import DISPLAY_FR from './display-fr.json'
+import NAMES_FR from './starter-names-fr.json'
 import compositions from './starter-compositions.json'
 import type { DeckEntry } from '../rulesets/decks'
 
@@ -19,10 +21,12 @@ export function starterDecksOf(d: StarterComposition): StarterDeck[] {
   for (const e of d.entries) if (e.type !== 'LEADER') main.set(e.number, (main.get(e.number) ?? 0) + e.quantity)
   const base = `starter-${d.deckCode.toLowerCase().replace('-', '')}`
   return d.leaders.map(leader => {
-    const leaderName = d.entries.find(e => e.number === leader)?.name ?? leader
+    const leaderName = (DISPLAY_FR as Record<string, { name: string }>)[leader]?.name ?? d.entries.find(e => e.number === leader)?.name ?? leader
+    // Official French product name (fr.onepiece-cardgame.com, from ST-15) when one exists; otherwise the audited English one.
+    const deckName = (NAMES_FR as Record<string, string>)[d.deckCode] ?? d.deckName
     return {
       id: d.leaders.length === 1 ? base : `${base}-${leader.toLowerCase()}`, deckCode: d.deckCode, leader,
-      name: d.leaders.length === 1 ? `${d.deckCode} ${d.deckName}` : `${d.deckCode} ${d.deckName} — Leader ${leaderName}`,
+      name: d.leaders.length === 1 ? `${d.deckCode} ${deckName}` : `${d.deckCode} ${deckName} — Leader ${leaderName}`,
       entries: [{ printingKey: `${leader}::standard`, quantity: 1 }, ...[...main].map(([number, quantity]) => ({ printingKey: `${number}::standard`, quantity }))],
     }
   })
