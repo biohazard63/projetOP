@@ -4,12 +4,12 @@ import type { CombatKeyword } from '../cards/types'
 type Continuous = NonNullable<NonNullable<GameState['effects']>['registry']['continuous']>[number]
 
 /** Evaluates printed and data-driven conditional keywords from the same serialized game snapshot. */
-export function hasCombatKeyword(s: GameState, id: string, keyword: CombatKeyword | 'BLOCKER'): boolean {
+export function hasCombatKeyword(s: GameState, id: string, keyword: CombatKeyword | 'BLOCKER' | 'ATTACK_ACTIVE_CHARACTERS'): boolean {
   const instance = s.instances[id]
   if (!instance) return false
   const definition = s.catalog.definitions.find(card => card.definitionId === instance.definitionId)
   if (!definition || !['leader', 'characters'].includes(instance.zone)) return false
-  if (keyword !== 'BLOCKER' && definition.review.combatKeywords?.includes(keyword)) return true
+  if (keyword !== 'BLOCKER' && keyword !== 'ATTACK_ACTIVE_CHARACTERS' && definition.review.combatKeywords?.includes(keyword)) return true
   if (s.effects?.keywordGrants?.some(g => g.keyword === keyword && g.turnId === s.turn && (g.battleId === undefined || g.battleId === s.battle?.id) && g.subject.instanceId === id && g.subject.generation === instance.zoneGeneration)) return true
   const attached = s.players.find(player => player.id === instance.controller)?.zones.attached
     .filter(donId => s.instances[donId]?.attachedTo === id).length ?? 0
@@ -19,10 +19,15 @@ export function hasCombatKeyword(s: GameState, id: string, keyword: CombatKeywor
     && (effect.whenOwnCharacterCostAtLeast === undefined || ownCharacterCostAtLeast(s, instance.controller, effect.whenOwnCharacterCostAtLeast))
     && (effect.minimumFieldDon === undefined || fieldDon(s, instance.controller) >= effect.minimumFieldDon)
     && (!effect.duringOpponentTurn || s.activePlayerId !== instance.controller)
+    && (effect.maximumOwnLife === undefined || (s.players.find(p => p.id === instance.controller)?.zones.life.length ?? 99) <= effect.maximumOwnLife)
+    && (effect.leaderTraitIncludes === undefined || leaderTraitIncludes(s, instance.controller, effect.leaderTraitIncludes))
     && (effect.minimumGivenDon === undefined || (s.players.find(p => p.id === instance.controller)?.zones.attached.length ?? 0) >= effect.minimumGivenDon)
-    && (effect.minimumBaseCostCharacters === undefined || (s.players.find(p => p.id === instance.controller)?.zones.characters.filter(c => (s.catalog.definitions.find(d => d.definitionId === s.instances[c].definitionId)?.cost ?? -1) >= effect.minimumBaseCostCharacters!.minCost).length ?? 0) >= effect.minimumBaseCostCharacters.count))
+    && (effect.minimumBaseCostCharacters === undefined || baseCostCount(s, s.players.find(p => p.id === instance.controller)?.zones.characters ?? [], effect.minimumBaseCostCharacters.minCost) >= effect.minimumBaseCostCharacters.count))
 }
 
+/** Characters among `ids` with a base (printed) cost of minCost or more. */
+export const baseCostCount = (s: GameState, ids: string[], minCost: number) => ids.filter(c => (s.catalog.definitions.find(d => d.definitionId === s.instances[c].definitionId)?.cost ?? -1) >= minCost).length
+const leaderTraitIncludes = (s: GameState, playerId: string, text: string) => { const p = s.players.find(x => x.id === playerId)!; return !!s.catalog.definitions.find(d => d.definitionId === s.instances[p.zones.leader[0]]?.definitionId)?.traits.some(t => t.includes(text)) }
 /** A printed [Blocker] or one gained from a data-driven condition. */
 export function hasBlockerAbility(s: GameState, id: string): boolean {
   const d = s.catalog.definitions.find(x => x.definitionId === s.instances[id]?.definitionId)
@@ -43,7 +48,12 @@ function active(s: GameState, m: Continuous, source: GameState['instances'][stri
     && (!m.duringYourTurn || s.activePlayerId === source.controller) && (!m.sourceRested || source.rested)
     && (!m.duringOpponentTurn || s.activePlayerId !== source.controller) && (m.maximumOwnLife === undefined || controller.zones.life.length <= m.maximumOwnLife) && (m.minimumOwnLife === undefined || controller.zones.life.length >= m.minimumOwnLife)
     && (m.minimumFieldDon === undefined || controller.zones.cost.length + controller.zones.attached.length >= m.minimumFieldDon)
+    && (m.minimumBaseCostCharacters === undefined || baseCostCount(s, controller.zones.characters, m.minimumBaseCostCharacters.minCost) >= m.minimumBaseCostCharacters.count)
     && (m.whenCharacter === undefined || characterExists(s, source.controller, m.whenCharacter))
+    && (m.minimumGivenDon === undefined || controller.zones.attached.length >= m.minimumGivenDon)
+    && (m.whenLeaderHasTrait === undefined || !!s.catalog.definitions.find(d => d.definitionId === s.instances[controller.zones.leader[0]]?.definitionId)?.traits.includes(m.whenLeaderHasTrait))
+    && (m.minimumOwnRestedCards === undefined || [...controller.zones.leader, ...controller.zones.characters, ...controller.zones.stage, ...controller.zones.cost].filter(id => s.instances[id].rested).length >= m.minimumOwnRestedCards)
+    && (m.whenOwnRestedNamed === undefined || [...controller.zones.leader, ...controller.zones.characters].some(id => s.instances[id].rested && s.catalog.definitions.find(d => d.definitionId === s.instances[id].definitionId)?.rulesName === m.whenOwnRestedNamed))
 }
 /** "If you (your opponent) have a [Name] Character with N (base) power or more". */
 function characterExists(s: GameState, controllerId: string, w: NonNullable<Continuous['whenCharacter']>): boolean {
@@ -63,7 +73,7 @@ function continuousFor(s: GameState, id: string, characteristic: 'POWER' | 'COST
   const all = (s.effects?.registry.continuous ?? []).filter(m => m.characteristic === characteristic)
   const own = all.filter(m => !m.targets && m.definitionId === d.definitionId && active(s, m, i))
   const aura = field ? all.filter(m => m.targets && (!m.targets.traitsAny || m.targets.traitsAny.some(t => d.traits.includes(t)))
-    && (!m.targets.colorsAny || m.targets.colorsAny.some(c => d.colors.includes(c))) && (!m.targets.charactersOnly || i.zone === 'characters')
+    && (!m.targets.colorsAny || m.targets.colorsAny.some(c => d.colors.includes(c))) && (!m.targets.charactersOnly || i.zone === 'characters') && (!m.targets.leaderOnly || i.zone === 'leader') && (!m.targets.traitIncludesAny || m.targets.traitIncludesAny.some(t => d.traits.some(x => x.includes(t))))
     && (m.targets.maxBasePower === undefined || (d.power !== null && d.power <= m.targets.maxBasePower)))
     .flatMap(m => [...controller.zones.leader, ...controller.zones.characters, ...controller.zones.stage]
       .filter(x => s.instances[x].definitionId === m.definitionId && active(s, m, s.instances[x])).map(() => m)) : []
@@ -94,7 +104,8 @@ export function evaluateCharacteristics(s: GameState, id: string) {
     || ownCharacterCostAtLeast(s, s.instances[id].controller, m.whenOwnCharacterCostAtLeast))
   const activeBaseModifiers = s.effects?.basePowerModifiers?.filter(m => m.subject.instanceId === id && m.subject.generation === i.zoneGeneration
     && field && (s.players.find(p => p.id === m.expiresForPlayerId)?.turns ?? Number.MAX_SAFE_INTEGER) < m.expiresAtPlayerTurn) ?? []
-  if (activeBaseModifiers.length > 1) throw new Error('BASE_POWER_MODIFIER_ORDER_NOT_IMPLEMENTED')
+  // The same base power set twice is that power (FAQ ST26-005); different values would need an application order.
+  if (new Set(activeBaseModifiers.map(m => m.value)).size > 1) throw new Error('BASE_POWER_MODIFIER_ORDER_NOT_IMPLEMENTED')
   const basePower = activeBaseModifiers[0]?.value ?? d.power
   const power = (field && s.activePlayerId === i.controller ? attached * 1000 : 0)
     + continuous.reduce((n, m) => n + m.amount, 0)

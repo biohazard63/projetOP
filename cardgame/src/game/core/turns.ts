@@ -65,7 +65,10 @@ export function applyBasicTurn(s: GameState, command: TurnIntent): void {
     // Phase boundaries are reserved for future mandatory-effect windows. Unsupported effects are not admitted.
     if (s.phase === 'REFRESH') {
       for (const id of [...p.zones.attached]) { move(s, id, 'cost'); s.instances[id].rested = true }
-      for (const id of [...p.zones.leader, ...p.zones.characters, ...p.zones.stage, ...p.zones.cost]) s.instances[id].rested = false
+      // M6: cards an effect keeps rested in this player's next Refresh Phase (consumed here, FAQ P-057).
+      const locked = new Set((s.effects?.refreshLocks ?? []).filter(l => l.playerId === p.id && s.instances[l.subject.instanceId]?.zoneGeneration === l.subject.generation).map(l => l.subject.instanceId))
+      if (s.effects?.refreshLocks) s.effects.refreshLocks = s.effects.refreshLocks.filter(l => l.playerId !== p.id)
+      for (const id of [...p.zones.leader, ...p.zones.characters, ...p.zones.stage, ...p.zones.cost]) if (!locked.has(id)) s.instances[id].rested = false
       emit(s, 'REFRESHED'); s.phase = 'DRAW'
     } else if (s.phase === 'DRAW') {
       if (p.id === s.firstPlayerId && p.turns === 1) emit(s, 'DRAW_SKIPPED')

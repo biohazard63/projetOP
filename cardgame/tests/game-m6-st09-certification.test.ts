@@ -6,7 +6,7 @@ import { act, attachDon, attack, choose, deckFor, endTurn, finishBattle, inHand,
 
 // M6 ST-09 (Yamato, yellow). Scenarios follow the official text, the ST-09 FAQ and the errata snapshot
 // (docs/game/evidence/m6/sources/qa_st-09.txt, errata-all.json), through public commands only.
-const ST09 = ['ST09-002', 'ST09-003', 'ST09-004', 'ST09-005', 'ST09-006', 'ST09-007', 'ST09-008', 'ST09-009', 'ST09-011', 'ST09-012', 'ST09-013', 'ST09-014', 'ST09-015']
+const ST09 = ['ST09-002', 'ST09-003', 'ST09-004', 'ST09-005', 'ST09-006', 'ST09-007', 'ST09-008', 'ST09-009', 'ST09-010', 'ST09-011', 'ST09-012', 'ST09-013', 'ST09-014', 'ST09-015']
 const game = (turn = 3) => toMain(newGame(deckFor('ST09-001', ST09), deckFor('ST09-001', ST09)), turn)
 const zones = (s: GameState, owner: string) => s.players.find(p => p.id === owner)!.zones
 const life = (s: GameState, owner: string) => zones(s, owner).life
@@ -197,14 +197,48 @@ test('M6 ST-09 cards without other ability are played for their printed cost, ke
   }
 })
 
-test('M6 ST-09 certificates validate against the current registry; ST09-010 Portgas.D.Ace stays uncertified', async () => {
+test('M6 FAQ ST09-010: Ace K.O.d in battle may trash the top or bottom Life card instead, once per turn; declining or with 0 Life it is K.O.d', () => {
+  let s = endTurn(game(5))
+  const ace = put(s, 'alice', 'ST09-010', 'characters', { playedEarlier: true, rested: true }), bottom = life(s, 'alice').at(-1)!, count = life(s, 'alice').length
+  const attacker = put(s, 'bob', 'ST09-013', 'characters', { playedEarlier: true })
+  s = finishBattle(attack(s, attacker, ace))
+  const c = pendingChoice(s, 'alice')!
+  assert.deepEqual(c.options.map(o => 'slot' in o ? o.slot?.kind : 'card'), ['LIFE_TOP', 'LIFE_BOTTOM'], 'Life cards are named by their position only')
+  s = roundTrip(pick(s, 'alice', [1]))
+  assert.equal(zoneOf(s, ace), 'characters'); assert.equal(zoneOf(s, bottom), 'trash'); assert.equal(life(s, 'alice').length, count - 1)
+  assert.equal(s.battle, null, 'the battle ends')
+  s.instances[ace].rested = true
+  s = finishBattle(attack(s, put(s, 'bob', 'ST09-013', 'characters', { playedEarlier: true }), ace))
+  assert.equal(pendingChoice(s, 'alice'), undefined, 'once per turn'); assert.equal(zoneOf(s, ace), 'trash')
+  let t = endTurn(game(5))
+  const a2 = put(t, 'alice', 'ST09-010', 'characters', { playedEarlier: true, rested: true })
+  t = finishBattle(attack(t, put(t, 'bob', 'ST09-013', 'characters', { playedEarlier: true }), a2))
+  t = pick(t, 'alice', [])
+  assert.equal(zoneOf(t, a2), 'trash', 'declined')
+  let u = endTurn(game(5))
+  while (life(u, 'alice').length) { const id = life(u, 'alice').shift()!; zones(u, 'alice').trash.push(id); u.instances[id].zone = 'trash'; u.instances[id].zoneGeneration++; u.instances[id].faceUp = true; u.events.push({ sequence: u.events.length, type: 'LIFE_TRASHED', actorId: 'alice' }) }
+  const a3 = put(u, 'alice', 'ST09-010', 'characters', { playedEarlier: true, rested: true })
+  u = finishBattle(attack(u, put(u, 'bob', 'ST09-013', 'characters', { playedEarlier: true }), a3))
+  assert.equal(zoneOf(u, a3), 'trash', 'FAQ ST09-010: 0 Life, no replacement')
+})
+
+test('M6 ST-09 Ace K.O.d by an opposing effect may trash a Life card instead', () => {
+  let s = toMain(newGame(deckFor('ST09-001', ST09), deckFor('ST04-001', ['ST04-003'])), 10)
+  const ace = put(s, 'alice', 'ST09-010', 'characters', { playedEarlier: true }), count = life(s, 'alice').length
+  s = playCard(s, 'bob', inHand(s, 'bob', 'ST04-003'))
+  s = act(s, 'bob', { type: 'ANSWER_CHOICE', choiceId: pendingChoice(s, 'bob')!.choiceId, tokens: pendingChoice(s, 'bob')!.options.slice(0, 5).map(o => o.token) })
+  s = choose(s, 'bob', [ace])
+  s = pick(s, 'alice', [0])
+  assert.equal(zoneOf(s, ace), 'characters'); assert.equal(life(s, 'alice').length, count - 1)
+})
+
+test('M6 ST-09 certificates validate against the current registry; all ST-09 cards are PLAYABLE_VERIFIED', async () => {
   const { ST09_CERTIFICATIONS, certificationErrors, effectiveStatus } = await import('../src/game/cards/certification')
   const { engineCatalog, currentEngineRegistry } = await import('../src/lib/engine/catalog')
   const { definitions } = engineCatalog(), registry = currentEngineRegistry()
   for (const c of ST09_CERTIFICATIONS) assert.deepEqual(certificationErrors(c, definitions.find(x => x.definitionId === c.definitionId), registry), [], c.definitionId)
   for (let i = 1; i <= 15; i++) {
     const n = `ST09-${String(i).padStart(3, '0')}`, d = definitions.find(x => x.number === n)
-    if (n === 'ST09-010') assert.ok(!d || effectiveStatus(d) !== 'PLAYABLE_VERIFIED', n)
-    else assert.equal(effectiveStatus(d!), 'PLAYABLE_VERIFIED', n)
+    assert.equal(effectiveStatus(d!), 'PLAYABLE_VERIFIED', n)
   }
 })

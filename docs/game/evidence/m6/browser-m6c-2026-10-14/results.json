@@ -1,0 +1,90 @@
+[
+ {
+  "name": "desktop: Starter ST-15 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-16 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-20 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-25 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-26 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-28 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-31 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-09 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-10 .*Trafalgar starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-10 .*Monkey.D.Luffy starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-10 .*Captain\"Kid starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-15 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-16 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-20 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-25 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-26 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-28 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-31 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-09 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-10 .*Trafalgar starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-10 .*Monkey.D.Luffy starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-10 .*Captain\"Kid starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ }
+]

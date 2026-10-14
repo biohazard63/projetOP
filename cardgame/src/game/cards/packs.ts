@@ -2,7 +2,7 @@ import { z } from 'zod'
 import { consolidateDefinitions } from './adapter'
 import type { CardDefinition, CardInput, CardPrinting } from './types'
 import {
-  cardReplacementSchema, conditionalKeywordSchema, continuousDefinitionSchema, effectDefinitionSchema, koProtectionSchema,
+  attackProhibitionSchema, cardReplacementSchema, conditionalKeywordSchema, continuousDefinitionSchema, effectDefinitionSchema, koProtectionSchema,
   replacementSchema, restrictionSchema, validateRegistry,
   type EffectRegistry,
 } from '../effects/contracts'
@@ -20,6 +20,7 @@ export type CardPack = {
     continuous?: NonNullable<EffectRegistry['continuous']>
     conditionalKeywords?: NonNullable<EffectRegistry['conditionalKeywords']>
     koProtections?: NonNullable<EffectRegistry['koProtections']>
+    attackProhibitions?: NonNullable<EffectRegistry['attackProhibitions']>
     cardReplacements?: NonNullable<EffectRegistry['cardReplacements']>
     leaderReplacements?: NonNullable<EffectRegistry['leaderReplacements']>
   }
@@ -37,6 +38,7 @@ const packSchema = z.strictObject({
     continuous: z.array(continuousDefinitionSchema).optional(),
     conditionalKeywords: z.array(conditionalKeywordSchema).optional(),
     koProtections: z.array(koProtectionSchema).optional(),
+    attackProhibitions: z.array(attackProhibitionSchema).optional(),
     cardReplacements: z.array(cardReplacementSchema).optional(),
     leaderReplacements: z.array(z.strictObject({ id: z.string(), definitionId: z.string(), minimumAttachedDon: z.number().int().nonnegative(), minimumPower: z.number().int(), amount: z.number().int().negative(), usage: z.literal('ONCE_PER_TURN') })).optional(),
   }).optional(),
@@ -108,6 +110,8 @@ export function loadCardPacks(baseRegistry: EffectRegistry, input: unknown): {
     koProtections: appendUnique(baseRegistry.koProtections, contributions.flatMap(e => e?.koProtections ?? []), 'KO_PROTECTION_ID'),
     cardReplacements: appendUnique(baseRegistry.cardReplacements, contributions.flatMap(e => e?.cardReplacements ?? []), 'CARD_REPLACEMENT_ID'),
     leaderReplacements: appendUnique(baseRegistry.leaderReplacements, contributions.flatMap(e => e?.leaderReplacements ?? []), 'LEADER_REPLACEMENT_ID'),
+    // Only present when a pack declares one, so that earlier registries keep their exact shape.
+    ...(contributions.some(e => e?.attackProhibitions?.length) ? { attackProhibitions: appendUnique(baseRegistry.attackProhibitions, contributions.flatMap(e => e?.attackProhibitions ?? []), 'ATTACK_PROHIBITION_ID') } : {}),
   })
 
   const definitionIds = new Set(catalog.definitions.map(card => card.definitionId))
@@ -116,6 +120,7 @@ export function loadCardPacks(baseRegistry: EffectRegistry, input: unknown): {
     ...(registry.continuous ?? []).map(effect => effect.id),
     ...(registry.conditionalKeywords ?? []).map(effect => effect.id),
     ...(registry.koProtections ?? []).map(effect => effect.id),
+    ...(registry.attackProhibitions ?? []).map(effect => effect.id),
     ...(registry.cardReplacements ?? []).map(effect => effect.id),
     ...(registry.leaderReplacements ?? []).map(effect => effect.id),
   ])

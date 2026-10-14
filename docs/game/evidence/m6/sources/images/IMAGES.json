@@ -1,0 +1,8 @@
+{
+ "retrievedAt": "2026-10-14",
+ "note": "Official card images read when the card list text shows a field as \"-\". The image is the printed card; the value read is recorded in the card review references.",
+ "images": [
+  { "url": "https://en.onepiece-cardgame.com/images/cardlist/card/OP04-016_p3.png", "file": "OP04-016_p3.png", "sha256": "4696d4f623854b5b9395380589281f4ba10434198f5057b14e31f4a6f22213ac", "printing": "ST-31 reprint", "read": "cost 0 (card list: \"-\")" },
+  { "url": "https://en.onepiece-cardgame.com/images/cardlist/card/OP04-016.png", "file": "OP04-016.png", "sha256": "d7e9b1ca2f4abb1fdc810a3f7a151d34f2d0c3390bb4b4478b4eb684f5983cd1", "printing": "OP-04 base printing", "read": "cost 0 (card list: \"-\")" }
+ ]
+}

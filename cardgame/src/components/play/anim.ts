@@ -35,6 +35,8 @@ export function logText(view: View, e: Event): string | null {
     case 'LIFE_DAMAGED': return mine ? 'Vous perdez une carte de Vie' : 'Le bot perd une carte de Vie'
     case 'LIFE_PAID': return mine ? 'Vous ajoutez une Vie à votre main' : 'Le bot ajoute une Vie à sa main'
     case 'LIFE_TRASHED': return mine ? 'Une de vos Vies est défaussée' : 'Une Vie du bot est défaussée'
+    case 'LIFE_TURNED_FACE_UP': return mine ? 'Une de vos Vies est retournée face visible' : 'Une Vie du bot est retournée face visible'
+    case 'LIFE_TO_DECK': return mine ? 'Une de vos Vies est placée sur votre deck' : 'Une Vie du bot est placée sur son deck'
     case 'LIFE_TO_HAND': return mine ? 'Vous ajoutez une Vie à votre main' : 'Le bot ajoute une Vie à sa main'
     case 'LIFE_ADDED': return mine ? 'Une carte rejoint vos Vies' : 'Une carte rejoint les Vies du bot'
     case 'TRIGGER_ACTIVATED': return `[Trigger] ${card || ''}`.trim()

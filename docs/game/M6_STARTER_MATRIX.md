@@ -1,5 +1,33 @@
 # M6 — Matrice d'inventaire ST-01 à ST-36
 
+## CURRENT STATE — fin de session M6 déblocage (14 octobre 2026)
+
+Rapport : `docs/game/evidence/m6/starter-coverage-2026-10-14-m6c.txt`.
+
+| Starter | Certifiées / uniques | /play | VF | Reste |
+|---|---:|---|---|---|
+| ST-01..ST-08, ST-11, ST-12, ST-14 | toutes | oui | partielle (pas d'impression FR archivée pour ST-01..ST-14) | — |
+| ST-09 | 15/15 | oui (nouveau) | anglais | — (ST09-010 : GUARD en combat) |
+| ST-10 | 19/19 | oui ×3 | anglais | — |
+| ST-13 | 1/19 | non | — | Vies face visible |
+| ST-15 | 15/15 | oui (nouveau) | officielle complète | — |
+| ST-16 | 15/15 | oui (nouveau) | officielle complète | — |
+| ST-17, ST-18, ST-19, ST-21, ST-23 | toutes | oui | officielle | — |
+| ST-20 | 15/15 | oui (nouveau) | officielle | — |
+| ST-22 | 0/17 | non | — | 17 cartes |
+| ST-24, ST-27 | — | non | — | composition non vérifiée |
+| ST-25 | 15/15 | oui (nouveau) | officielle | — |
+| ST-26 | 15/15 | oui (nouveau) | officielle | — |
+| ST-28 | 15/15 | oui (nouveau) | officielle | — |
+| ST-29, ST-30, ST-35 | 0–1/15–17 | non | — | toutes leurs cartes propres |
+| ST-31 | 15/15 | oui (nouveau) | officielle | — (OP04-016 coût 0 lu sur l'image officielle) |
+| ST-32 | 0/15 | non | — | repos par effet, « ne peut pas être mis au repos », attributs |
+| ST-33 | 0/15 | non | — | défausse par effet {Navy}, interdiction d'attaque jusqu'au End Phase |
+| ST-34 | 1/15 | non | — | « choisissez un coût et révélez » |
+| ST-36 | — | non | — | absent |
+
+Totaux : 635 définitions, 475 certificats ; 25 produits / 27 configurations jouables. Validation : 770/770 tests, typecheck, lint, build isolé, diff-check PASS ; navigateur 22/22 PASS.
+
 ## CURRENT STATE — compositions auditées (14 octobre 2026)
 
 Source : liste auditée de `scripts/rebuildStarterDecks.ts` + `scripts/starterAudit/product-evidence.json`. Rapport : `docs/game/evidence/m6/starter-coverage-2026-10-14.txt` (`scripts/game/starter-coverage.ts`).

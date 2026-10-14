@@ -1,6 +1,6 @@
 import { evaluateCharacteristics, hasBlockerAbility, hasCombatKeyword } from '../effects/characteristics'
 import { confirmMoveOperation, confirmRestOperation, confirmPower, processOperation } from '../effects/operations'
-import { activateCounterProgram, confirmBattleKO } from '../effects/runtime'
+import { activateCounterProgram, applyBattleGuard, battleKoReplacement, confirmBattleKO, protectedFromKO } from '../effects/runtime'
 import type { BattleState, Command, GameState, LegalAction } from './types'
 
 const samePresence = (state: GameState, ref: BattleState['attacker']) => {
@@ -11,7 +11,17 @@ const samePresence = (state: GameState, ref: BattleState['attacker']) => {
 /** M6 "cannot attack until the end of your opponent's next turn" (same presence, before untilTurn). */
 function attackProhibited(state: GameState, id: string): boolean {
   const i = state.instances[id]
-  return !!state.effects?.attackRestrictions?.some(r => r.subject.instanceId === id && r.subject.generation === i.zoneGeneration && state.turn < r.untilTurn)
+  if (state.effects?.attackRestrictions?.some(r => r.subject.instanceId === id && r.subject.generation === i.zoneGeneration && state.turn < r.untilTurn)) return true
+  // Printed prohibitions: of the card itself, or of all Characters in a cost range while the source is on the field.
+  const rules = state.effects?.registry.attackProhibitions ?? []
+  if (!rules.length) return false
+  const leaderName = (playerId: string) => { const p = state.players.find(x => x.id === playerId)!; return state.catalog.definitions.find(d => d.definitionId === state.instances[p.zones.leader[0]]?.definitionId)?.rulesName }
+  return rules.some(rule => {
+    if (rule.self) return i.zone === 'characters' && i.definitionId === rule.definitionId && (!rule.leaderName || leaderName(i.controller) === rule.leaderName)
+    const cost = i.zone === 'characters' ? evaluateCharacteristics(state, id).cost.current : null
+    if (cost === null || cost < rule.all!.minCost || cost > rule.all!.maxCost) return false
+    return state.players.some(p => p.zones.characters.some(c => state.instances[c].definitionId === rule.definitionId) && (!rule.leaderName || leaderName(p.id) === rule.leaderName))
+  })
 }
 function blockerIsProhibited(state: GameState, battle: BattleState, blockerId: string): boolean {
   const b = state.instances[blockerId]
@@ -33,6 +43,14 @@ export function combatActions(state: GameState, actorId: string): LegalAction[] 
     if (battle.step === 'LIFE_TRIGGER' && battle.pendingLifeTrigger) return actorId === battle.pendingLifeTrigger.actorId
       ? [{ type: 'ANSWER_TRIGGER', choiceId: battle.pendingLifeTrigger.id, choices: [false, true] }] : []
     if (battle.step === 'LIFE_CONTINUE') return actorId === battle.attackerControllerId ? [{ type: 'CONTINUE_LIFE_DAMAGE', battleId: battle.id }] : []
+    if (battle.step === 'KO_REPLACEMENT') {
+      const pending = battle.pendingReplacement!
+      if (actorId !== pending.actorId) return []
+      // A Life option is named by its position only (hidden zone); other options by their card.
+      const owner = state.players.find(p => p.id === pending.actorId)!
+      return [{ type: 'ANSWER_CHOICE', choiceId: pending.id, choiceType: 'SELECT', optional: true, min: 0, max: 1, options: pending.options.map(o => state.instances[o.presence.instanceId].zone === 'life'
+        ? { token: o.token, slot: { kind: owner.zones.life[0] === o.presence.instanceId ? 'LIFE_TOP' as const : 'LIFE_BOTTOM' as const, ownerId: owner.id } } : { token: o.token, instanceId: o.presence.instanceId }) }]
+    }
     if (battle.step === 'BLOCKER' && actorId === battle.defenderId) {
       const defender = state.players.find(p => p.id === actorId)!
       const unblockable = hasCombatKeyword(state, battle.attacker.instanceId, 'UNBLOCKABLE')
@@ -72,13 +90,16 @@ export function combatActions(state: GameState, actorId: string): LegalAction[] 
   }
   const attackerIds = [...attacker.zones.leader, ...attacker.zones.characters].filter(eligibleAttacker)
   const targetIds = [...defender.zones.leader, ...defender.zones.characters.filter(id => state.instances[id].rested)]
+  // "This Character can also attack your opponent's active Characters" (M6 conditional keyword).
+  const allTargets = [...defender.zones.leader, ...defender.zones.characters]
   const legalPairs = attackerIds.map(id => {
-    return { attackerId: id, targetIds: hasCombatKeyword(state, id, 'RUSH_CHARACTER') ? targetIds.filter(targetId => state.instances[targetId].zone === 'characters') : targetIds }
+    const base = hasCombatKeyword(state, id, 'ATTACK_ACTIVE_CHARACTERS') ? allTargets : targetIds
+    return { attackerId: id, targetIds: hasCombatKeyword(state, id, 'RUSH_CHARACTER') ? base.filter(targetId => state.instances[targetId].zone === 'characters') : base }
   }).filter(pair => pair.targetIds.length)
   return legalPairs.length ? [{ type: 'DECLARE_ATTACK', attackerIds: legalPairs.map(p => p.attackerId), targetIds: [...new Set(legalPairs.flatMap(p => p.targetIds))], targetIdsByAttacker: Object.fromEntries(legalPairs.map(pair => [pair.attackerId, pair.targetIds])) }] : []
 }
 
-export function applyCombatCommand(state: GameState, command: Extract<Command, { type: 'DECLARE_ATTACK' | 'ACTIVATE_BLOCKER' | 'PASS_BLOCKER' | 'PLAY_COUNTER_CHARACTER' | 'PLAY_COUNTER_EVENT' | 'PASS_COUNTER' | 'RESOLVE_BATTLE' | 'CONTINUE_LIFE_DAMAGE' | 'ANSWER_TRIGGER' }>): void {
+export function applyCombatCommand(state: GameState, command: Extract<Command, { type: 'DECLARE_ATTACK' | 'ACTIVATE_BLOCKER' | 'PASS_BLOCKER' | 'PLAY_COUNTER_CHARACTER' | 'PLAY_COUNTER_EVENT' | 'PASS_COUNTER' | 'RESOLVE_BATTLE' | 'CONTINUE_LIFE_DAMAGE' | 'ANSWER_TRIGGER' | 'ANSWER_CHOICE' }>): void {
   if (command.type === 'DECLARE_ATTACK') {
     if (state.battle || state.scope !== 'BASIC_TURNS' || state.phase !== 'MAIN' || command.actorId !== state.activePlayerId) throw new Error('INVALID_ATTACK_WINDOW')
     const attacker = state.instances[command.attackerId]
@@ -90,13 +111,13 @@ export function applyCombatCommand(state: GameState, command: Extract<Command, {
     if (!attacker || attacker.controller !== command.actorId || !['leader', 'characters'].includes(attacker.zone) || attacker.rested
       || (attacker.zone === 'characters' && attacker.playedOnTurn === state.turn && !rush) || attackProhibited(state, attacker.id)) throw new Error('INVALID_ATTACKER')
     if (!attackerOwner.zones[attacker.zone].includes(attacker.id)) throw new Error('INVALID_ATTACKER')
-    if (!target || target.controller !== defender.id || !['leader', 'characters'].includes(target.zone) || (target.zone === 'characters' && !target.rested)
+    if (!target || target.controller !== defender.id || !['leader', 'characters'].includes(target.zone) || (target.zone === 'characters' && !target.rested && !hasCombatKeyword(state, attacker.id, 'ATTACK_ACTIVE_CHARACTERS'))
       || (rushCharacter && target.zone !== 'characters')) throw new Error('INVALID_ATTACK_TARGET')
     const battleId = `${state.gameId}:battle:${state.version}`
     if (state.effects && ['1.2.0','1.3.0'].includes(state.effects.version)) {
       if (!confirmRestOperation(state, { instanceId: attacker.id, generation: attacker.zoneGeneration }, command.actorId, battleId, 'RULE')) throw new Error('ATTACKER_REST_PREVENTED')
     } else attacker.rested = true
-    state.battle = { id: battleId, step: 'BLOCKER', attacker: { instanceId: attacker.id, generation: attacker.zoneGeneration }, attackerControllerId: attacker.controller, target: { instanceId: target.id, generation: target.zoneGeneration }, defenderId: defender.id, blockersUsed: 0, powerBonus: 0, counterModifiers: [] }
+    state.battle = { id: battleId, step: 'BLOCKER', attacker: { instanceId: attacker.id, generation: attacker.zoneGeneration }, attackerControllerId: attacker.controller, target: { instanceId: target.id, generation: target.zoneGeneration }, defenderId: defender.id, blockersUsed: 0, powerBonus: 0, ...(target.zone === 'characters' && !target.rested ? { activeTarget: true as const } : {}), counterModifiers: [] }
     state.events.push({ sequence: state.events.length, type: 'ATTACK_DECLARED', actorId: command.actorId, publicInstanceId: attacker.id })
     return
   }
@@ -124,6 +145,18 @@ export function applyCombatCommand(state: GameState, command: Extract<Command, {
     delete battle.pendingLifeTrigger // absent, not undefined: the JSON round trip must give back an equal state
     battle.lifeDamage!.remaining--; battle.lifeDamage!.damageIndex++
     battle.step = 'LIFE_CONTINUE'
+    return
+  }
+  if (command.type === 'ANSWER_CHOICE') {
+    const pending = battle.pendingReplacement
+    if (battle.step !== 'KO_REPLACEMENT' || !pending || command.actorId !== pending.actorId || command.choiceId !== pending.id || command.tokens.length > 1) throw new Error('INVALID_CHOICE_RESPONSE')
+    const chosen = command.tokens.map(token => pending.options.find(o => o.token === token))
+    if (chosen.some(o => !o)) throw new Error('INVALID_CHOICE_RESPONSE')
+    const attacker = state.instances[battle.attacker.instanceId], target = state.instances[battle.target.instanceId]
+    delete battle.pendingReplacement; battle.step = 'DAMAGE'
+    if (chosen.length) applyBattleGuard(state, pending, battle.target, chosen[0]!.presence, battle.id)
+    else if (confirmBattleKO(state, battle.target, battle.attacker, battle.id)) state.events.push({ sequence: state.events.length, type: 'CHARACTER_KO', actorId: battle.attackerControllerId, publicInstanceId: target.id })
+    finishBattle(state, battle, attacker, target, true)
     return
   }
   if (command.battleId !== battle.id) throw new Error('INVALID_BATTLE_RESOLUTION')
@@ -258,6 +291,10 @@ export function applyCombatCommand(state: GameState, command: Extract<Command, {
   // FAQ ST02-010: "battles your opponent's Character" is met once the Damage Step compared powers against a Character.
   const battledCharacter = target.zone === 'characters'
   if (attackPower >= targetPower && target.zone === 'characters') {
+    // M6: a printed replacement of this K.O. ("If this Character would be K.O.'d, you may ... instead") pauses the battle for its
+    // owner's choice (KO_REPLACEMENT); a Character that cannot be K.O.'d in battle is not asked.
+    const pending = state.effects?.version === '1.3.0' && !protectedFromKO(state, battle.target, 'BATTLE', battle.attacker.instanceId) ? battleKoReplacement(state, battle.target, battle.id) : null
+    if (pending) { battle.step = 'KO_REPLACEMENT'; battle.pendingReplacement = pending; return }
     let kod = true
     if (state.effects && ['1.2.0','1.3.0'].includes(state.effects.version)) kod = confirmBattleKO(state, battle.target, battle.attacker, battle.id)
     else {
@@ -280,6 +317,10 @@ export function applyCombatCommand(state: GameState, command: Extract<Command, {
     processLifeDamage(state, battle)
     return
   }
+  finishBattle(state, battle, attacker, target, battledCharacter)
+}
+/** End of a battle that compared powers: battle announcements, then the battle is resolved. */
+function finishBattle(state: GameState, battle: NonNullable<GameState['battle']>, attacker: GameState['instances'][string], target: GameState['instances'][string], battledCharacter: boolean) {
   // Each participant still on the field announces the Character it battled (attacker first; the defending Character
   // only when the attacker is a Character, FAQ ST08-013: a Character K.O.'d in that battle announces nothing).
   if (battledCharacter && listens(state, 'END_OF_BATTLE_WITH_CHARACTER')) {
