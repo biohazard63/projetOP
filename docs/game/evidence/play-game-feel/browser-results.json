@@ -1,0 +1,71 @@
+[
+  {
+    "viewport": "1440x900",
+    "category": "CHARACTER",
+    "card": "OP01-107",
+    "seed": 11,
+    "deck": "reference-purple",
+    "preview": {
+      "x": 624,
+      "y": 60.620635986328125,
+      "width": 192,
+      "height": 317.78997802734375
+    },
+    "decision": {
+      "x": 340,
+      "y": 496.15625,
+      "width": 760,
+      "height": 86.71875
+    },
+    "immediatelyAvailable": true,
+    "geometryStable": true,
+    "reducedMotion": true,
+    "status": "PASS"
+  },
+  {
+    "viewport": "844x390",
+    "category": "CHARACTER",
+    "card": "OP01-107",
+    "seed": 11,
+    "deck": "reference-purple",
+    "preview": {
+      "x": 356.81011962890625,
+      "y": 43.633460998535156,
+      "width": 130.3797607421875,
+      "height": 139.65496063232422
+    },
+    "decision": {
+      "x": 42,
+      "y": 196.640625,
+      "width": 760,
+      "height": 86.71875
+    },
+    "immediatelyAvailable": true,
+    "geometryStable": true,
+    "reducedMotion": true,
+    "status": "PASS"
+  },
+  {
+    "viewport": "1366x768",
+    "category": "EVENT",
+    "card": "ST04-016",
+    "seed": 11,
+    "deck": "reference-purple",
+    "preview": {
+      "x": 550.4224853515625,
+      "y": 60.44593811035156,
+      "width": 265.155029296875,
+      "height": 309.40501403808594
+    },
+    "decision": {
+      "x": 303,
+      "y": 419.59375,
+      "width": 760,
+      "height": 86.71875
+    },
+    "immediatelyAvailable": true,
+    "geometryStable": true,
+    "reducedMotion": true,
+    "status": "PASS"
+  }
+]

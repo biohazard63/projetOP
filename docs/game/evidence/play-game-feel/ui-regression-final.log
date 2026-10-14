@@ -1,0 +1,58 @@
+TAP version 13
+# Subtest: M4-I5: every decision window the human meets has a screen action, and a whole game is played from the screen
+ok 1 - M4-I5: every decision window the human meets has a screen action, and a whole game is played from the screen
+  ---
+  duration_ms: 22604.945791
+  type: 'test'
+  ...
+# Subtest: M4-I5: card actions only come from legal actions and target lists come from the engine
+ok 2 - M4-I5: card actions only come from legal actions and target lists come from the engine
+  ---
+  duration_ms: 651.143708
+  type: 'test'
+  ...
+# Subtest: M4-I5: labels are French, feedback lists only new events and unknown codes stay generic
+ok 3 - M4-I5: labels are French, feedback lists only new events and unknown codes stay generic
+  ---
+  duration_ms: 84.453
+  type: 'test'
+  ...
+# Subtest: M5-2: animations come only from events after the last shown one, in order, with hidden cards face down
+ok 4 - M5-2: animations come only from events after the last shown one, in order, with hidden cards face down
+  ---
+  duration_ms: 7591.196541
+  type: 'test'
+  ...
+# Subtest: M5-3: a drop becomes an intent only when a legal action allows it
+ok 5 - M5-3: a drop becomes an intent only when a legal action allows it
+  ---
+  duration_ms: 573.459959
+  type: 'test'
+  ...
+# Subtest: M5-5: the tutorial covers Leader/Life, DON!!, playing, attacking, Counter, Blocker, end of turn and victory
+ok 6 - M5-5: the tutorial covers Leader/Life, DON!!, playing, attacking, Counter, Blocker, end of turn and victory
+  ---
+  duration_ms: 0.121875
+  type: 'test'
+  ...
+# Subtest: M5-5: statistics count games, wins, losses and concessions by deck and level for the user only
+ok 7 - M5-5: statistics count games, wins, losses and concessions by deck and level for the user only
+  ---
+  duration_ms: 463.358709
+  type: 'test'
+  ...
+# Subtest: M5-2: every animation kind is produced from real server views (draw … result), hidden cards staying face down
+ok 8 - M5-2: every animation kind is produced from real server views (draw … result), hidden cards staying face down
+  ---
+  duration_ms: 124948.438583
+  type: 'test'
+  ...
+1..8
+# tests 8
+# suites 0
+# pass 8
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 134438.745958

@@ -1,0 +1,5446 @@
+{
+  "source": "Real PlayService, MemoryGameRepository, validated commands only",
+  "seed": 11,
+  "deck": "reference-purple",
+  "transitions": [
+    {
+      "command": {
+        "type": "PLAY_COUNTER_EVENT",
+        "cardId": "play-mv8dz2n1:p0:c50",
+        "battleId": "play-mv8dz2n1:battle:213",
+        "paymentDonIds": [
+          "play-mv8dz2n1:p0:c52"
+        ],
+        "donMinusIds": [],
+        "targetId": null
+      },
+      "before": {
+        "gameId": "game-1",
+        "version": 215,
+        "status": "ACTIVE",
+        "seat": "player",
+        "opponentSeat": "bot",
+        "opponent": {
+          "kind": "bot",
+          "name": "Bot Mugiwara"
+        },
+        "deck": "reference-purple",
+        "botDeck": "reference-red",
+        "projection": {
+          "gameId": "play-mv8dz2n1",
+          "version": 215,
+          "scope": "BASIC_TURNS",
+          "phase": "MAIN",
+          "firstPlayerId": "player",
+          "activePlayerId": "bot",
+          "decisionPlayerId": null,
+          "turn": 14,
+          "automaticPlayReady": false,
+          "result": null,
+          "battle": {
+            "id": "play-mv8dz2n1:battle:213",
+            "step": "COUNTER",
+            "attacker": "play-mv8dz2n1:p1:c0",
+            "target": "play-mv8dz2n1:p0:c0",
+            "attackerControllerId": "bot",
+            "defenderId": "player",
+            "counterBonus": 0,
+            "lifeTrigger": null
+          },
+          "players": [
+            {
+              "id": "player",
+              "turns": 7,
+              "mulligan": "KEPT",
+              "counts": {
+                "leader": 1,
+                "deck": 34,
+                "hand": 1,
+                "life": 4,
+                "characters": 3,
+                "stage": 0,
+                "trash": 8,
+                "donDeck": 4,
+                "cost": 4,
+                "attached": 2,
+                "temporary": 0
+              },
+              "leader": [
+                {
+                  "id": "play-mv8dz2n1:p0:c0",
+                  "kind": "CARD",
+                  "printingKey": "ST04-001::standard",
+                  "definitionId": "ST04-001@m3-2026-10-12",
+                  "rested": true,
+                  "attachedTo": null,
+                  "power": 5000
+                }
+              ],
+              "characters": [
+                {
+                  "id": "play-mv8dz2n1:p0:c3",
+                  "kind": "CARD",
+                  "printingKey": "ST04-009::standard",
+                  "definitionId": "ST04-009@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 3000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c44",
+                  "kind": "CARD",
+                  "printingKey": "ST04-011::standard",
+                  "definitionId": "ST04-011@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 2000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c7",
+                  "kind": "CARD",
+                  "printingKey": "ST04-007::standard",
+                  "definitionId": "ST04-007@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 4000
+                }
+              ],
+              "stage": [],
+              "trash": [
+                {
+                  "id": "play-mv8dz2n1:p0:c16",
+                  "kind": "CARD",
+                  "printingKey": "ST04-013::standard",
+                  "definitionId": "ST04-013@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 5000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c34",
+                  "kind": "CARD",
+                  "printingKey": "OP04-062::standard",
+                  "definitionId": "OP04-062@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 7000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c2",
+                  "kind": "CARD",
+                  "printingKey": "ST04-009::standard",
+                  "definitionId": "ST04-009@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 3000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c31",
+                  "kind": "CARD",
+                  "printingKey": "OP01-107::standard",
+                  "definitionId": "OP01-107@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 7000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c35",
+                  "kind": "CARD",
+                  "printingKey": "OP04-062::standard",
+                  "definitionId": "OP04-062@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 7000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c41",
+                  "kind": "CARD",
+                  "printingKey": "OP01-092::standard",
+                  "definitionId": "OP01-092@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 9000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c21",
+                  "kind": "CARD",
+                  "printingKey": "ST04-012::standard",
+                  "definitionId": "ST04-012@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 6000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c29",
+                  "kind": "CARD",
+                  "printingKey": "OP01-107::standard",
+                  "definitionId": "OP01-107@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 7000
+                }
+              ],
+              "donDeck": [
+                {
+                  "id": "play-mv8dz2n1:p0:c54",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c55",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c56",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c57",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                }
+              ],
+              "cost": [
+                {
+                  "id": "play-mv8dz2n1:p0:c58",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": true,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c59",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": true,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c52",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c53",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                }
+              ],
+              "attached": [
+                {
+                  "id": "play-mv8dz2n1:p0:c60",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": "play-mv8dz2n1:p0:c0",
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c51",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": "play-mv8dz2n1:p0:c0",
+                  "power": null
+                }
+              ],
+              "hand": [
+                {
+                  "id": "play-mv8dz2n1:p0:c50",
+                  "kind": "CARD",
+                  "printingKey": "ST04-016::standard",
+                  "definitionId": "ST04-016@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                }
+              ]
+            },
+            {
+              "id": "bot",
+              "turns": 7,
+              "mulligan": "KEPT",
+              "counts": {
+                "leader": 1,
+                "deck": 30,
+                "hand": 3,
+                "life": 1,
+                "characters": 5,
+                "stage": 0,
+                "trash": 11,
+                "donDeck": 0,
+                "cost": 5,
+                "attached": 5,
+                "temporary": 0
+              },
+              "leader": [
+                {
+                  "id": "play-mv8dz2n1:p1:c0",
+                  "kind": "CARD",
+                  "printingKey": "ST01-001::standard",
+                  "definitionId": "ST01-001@m0-2026-10-10",
+                  "rested": true,
+                  "attachedTo": null,
+                  "power": 7000
+                }
+              ],
+              "characters": [
+                {
+                  "id": "play-mv8dz2n1:p1:c33",
+                  "kind": "CARD",
+                  "printingKey": "OP06-013::standard",
+                  "definitionId": "OP06-013@official-2026-10-11",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 3000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c27",
+                  "kind": "CARD",
+                  "printingKey": "OP01-016::standard",
+                  "definitionId": "OP01-016@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 2000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c20",
+                  "kind": "CARD",
+                  "printingKey": "ST01-009::standard",
+                  "definitionId": "ST01-009@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 7000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c17",
+                  "kind": "CARD",
+                  "printingKey": "ST01-009::standard",
+                  "definitionId": "ST01-009@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 4000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c34",
+                  "kind": "CARD",
+                  "printingKey": "OP06-013::standard",
+                  "definitionId": "OP06-013@official-2026-10-11",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 3000
+                }
+              ],
+              "stage": [],
+              "trash": [
+                {
+                  "id": "play-mv8dz2n1:p1:c13",
+                  "kind": "CARD",
+                  "printingKey": "ST01-008::standard",
+                  "definitionId": "ST01-008@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 5000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c22",
+                  "kind": "CARD",
+                  "printingKey": "ST01-010::standard",
+                  "definitionId": "ST01-010@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 6000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c48",
+                  "kind": "CARD",
+                  "printingKey": "OP06-018::standard",
+                  "definitionId": "OP06-018@official-2026-10-11",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c38",
+                  "kind": "CARD",
+                  "printingKey": "ST01-014::standard",
+                  "definitionId": "ST01-014@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c24",
+                  "kind": "CARD",
+                  "printingKey": "ST01-010::standard",
+                  "definitionId": "ST01-010@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 6000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c49",
+                  "kind": "CARD",
+                  "printingKey": "P-016::standard",
+                  "definitionId": "P-016@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 10000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c15",
+                  "kind": "CARD",
+                  "printingKey": "ST01-008::standard",
+                  "definitionId": "ST01-008@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 5000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c7",
+                  "kind": "CARD",
+                  "printingKey": "ST01-006::standard",
+                  "definitionId": "ST01-006@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 1000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c44",
+                  "kind": "CARD",
+                  "printingKey": "OP06-017::standard",
+                  "definitionId": "OP06-017@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c9",
+                  "kind": "CARD",
+                  "printingKey": "ST01-007::standard",
+                  "definitionId": "ST01-007@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 1000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c31",
+                  "kind": "CARD",
+                  "printingKey": "OP06-009::standard",
+                  "definitionId": "OP06-009@official-2026-10-11",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 4000
+                }
+              ],
+              "donDeck": [],
+              "cost": [
+                {
+                  "id": "play-mv8dz2n1:p1:c56",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": true,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c59",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c60",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c55",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c51",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                }
+              ],
+              "attached": [
+                {
+                  "id": "play-mv8dz2n1:p1:c58",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": true,
+                  "attachedTo": "play-mv8dz2n1:p1:c0",
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c54",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": "play-mv8dz2n1:p1:c0",
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c52",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": "play-mv8dz2n1:p1:c20",
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c57",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": "play-mv8dz2n1:p1:c20",
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c53",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": "play-mv8dz2n1:p1:c20",
+                  "power": null
+                }
+              ],
+              "hand": null
+            }
+          ],
+          "effects": {
+            "status": "COMPLETED",
+            "pendingChoice": null,
+            "cardEvents": [
+              {
+                "sequence": 0,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c33",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:10"
+              },
+              {
+                "sequence": 1,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c33",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:10"
+              },
+              {
+                "sequence": 2,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:14"
+              },
+              {
+                "sequence": 3,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:14"
+              },
+              {
+                "sequence": 4,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:36"
+              },
+              {
+                "sequence": 5,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:36"
+              },
+              {
+                "sequence": 6,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c27",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:62"
+              },
+              {
+                "sequence": 7,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c27",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:62"
+              },
+              {
+                "sequence": 8,
+                "type": "EVENT_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c48",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:70"
+              },
+              {
+                "sequence": 9,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c48",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:70"
+              },
+              {
+                "sequence": 10,
+                "type": "POWER_MODIFIER_CREATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:70"
+              },
+              {
+                "sequence": 11,
+                "type": "POWER_MODIFIER_CREATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:70"
+              },
+              {
+                "sequence": 12,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c48",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:70"
+              },
+              {
+                "sequence": 13,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:79"
+              },
+              {
+                "sequence": 14,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:79"
+              },
+              {
+                "sequence": 15,
+                "type": "CARD_KO",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p0:c16",
+                "resolutionId": "play-mv8dz2n1:battle:72"
+              },
+              {
+                "sequence": 16,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "player",
+                "subjectId": "play-mv8dz2n1:p0:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:92"
+              },
+              {
+                "sequence": 17,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "player",
+                "subjectId": "play-mv8dz2n1:p0:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:92"
+              },
+              {
+                "sequence": 18,
+                "type": "CARD_KO",
+                "controllerId": "player",
+                "subjectId": "play-mv8dz2n1:p1:c24",
+                "resolutionId": "play-mv8dz2n1:battle:89"
+              },
+              {
+                "sequence": 19,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:114"
+              },
+              {
+                "sequence": 20,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:114"
+              },
+              {
+                "sequence": 21,
+                "type": "CARD_KO",
+                "controllerId": "player",
+                "subjectId": "play-mv8dz2n1:p1:c15",
+                "resolutionId": "play-mv8dz2n1:battle:125"
+              },
+              {
+                "sequence": 22,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:145"
+              },
+              {
+                "sequence": 23,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:145"
+              },
+              {
+                "sequence": 24,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c9",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:150"
+              },
+              {
+                "sequence": 25,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c9",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:150"
+              },
+              {
+                "sequence": 26,
+                "type": "CARD_KO",
+                "controllerId": "player",
+                "subjectId": "play-mv8dz2n1:p1:c7",
+                "resolutionId": "play-mv8dz2n1:battle:164"
+              },
+              {
+                "sequence": 27,
+                "type": "EVENT_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c44",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:178"
+              },
+              {
+                "sequence": 28,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c44",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:178"
+              },
+              {
+                "sequence": 29,
+                "type": "POWER_MODIFIER_CREATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:178"
+              },
+              {
+                "sequence": 30,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c44",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:178"
+              },
+              {
+                "sequence": 31,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:198"
+              },
+              {
+                "sequence": 32,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:198"
+              },
+              {
+                "sequence": 33,
+                "type": "CARD_KO",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p0:c29",
+                "resolutionId": "play-mv8dz2n1:battle:185"
+              },
+              {
+                "sequence": 34,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c31",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:219"
+              },
+              {
+                "sequence": 35,
+                "type": "POWER_MODIFIER_CREATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c31",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:219"
+              },
+              {
+                "sequence": 36,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c31",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:219"
+              },
+              {
+                "sequence": 37,
+                "type": "CARD_KO",
+                "controllerId": "player",
+                "subjectId": "play-mv8dz2n1:p1:c31",
+                "resolutionId": "play-mv8dz2n1:battle:196"
+              },
+              {
+                "sequence": 38,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c34",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:230"
+              },
+              {
+                "sequence": 39,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c34",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:230"
+              },
+              {
+                "sequence": 40,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:234"
+              },
+              {
+                "sequence": 41,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:234"
+              }
+            ],
+            "events": [
+              {
+                "sequence": 0,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c51",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              },
+              {
+                "sequence": 1,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c52",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              },
+              {
+                "sequence": 2,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c51",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              },
+              {
+                "sequence": 3,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c53",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              },
+              {
+                "sequence": 4,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c54",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              },
+              {
+                "sequence": 5,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c52",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              },
+              {
+                "sequence": 6,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c55",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              },
+              {
+                "sequence": 7,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c58",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              }
+            ]
+          },
+          "events": [
+            {
+              "sequence": 0,
+              "type": "CREATED"
+            },
+            {
+              "sequence": 1,
+              "type": "ORDER_CHOSEN",
+              "actorId": "player"
+            },
+            {
+              "sequence": 2,
+              "type": "HANDS_DEALT"
+            },
+            {
+              "sequence": 3,
+              "type": "HAND_KEPT",
+              "actorId": "player"
+            },
+            {
+              "sequence": 4,
+              "type": "HAND_KEPT",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 5,
+              "type": "PREPARED"
+            },
+            {
+              "sequence": 6,
+              "type": "REFRESHED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 7,
+              "type": "DRAW_SKIPPED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 8,
+              "type": "DON_ADDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 9,
+              "type": "CARD_REVEALED",
+              "actorId": "player",
+              "revealedCard": {
+                "definitionId": "ST04-009@m3-2026-10-12",
+                "printingKey": "ST04-009::standard"
+              }
+            },
+            {
+              "sequence": 10,
+              "type": "CARD_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c3"
+            },
+            {
+              "sequence": 11,
+              "type": "MAIN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 12,
+              "type": "TURN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 13,
+              "type": "REFRESHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 14,
+              "type": "DRAWN",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 15,
+              "type": "DON_ADDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 16,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "OP06-013@official-2026-10-11",
+                "printingKey": "OP06-013::standard"
+              }
+            },
+            {
+              "sequence": 17,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c33"
+            },
+            {
+              "sequence": 18,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "OP06-017@m3-2026-10-12",
+                "printingKey": "OP06-017::standard"
+              }
+            },
+            {
+              "sequence": 19,
+              "type": "MAIN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 20,
+              "type": "TURN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 21,
+              "type": "REFRESHED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 22,
+              "type": "DRAWN",
+              "actorId": "player"
+            },
+            {
+              "sequence": 23,
+              "type": "DON_ADDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 24,
+              "type": "CARD_REVEALED",
+              "actorId": "player",
+              "revealedCard": {
+                "definitionId": "ST04-013@m3-2026-10-12",
+                "printingKey": "ST04-013::standard"
+              }
+            },
+            {
+              "sequence": 25,
+              "type": "CARD_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c16"
+            },
+            {
+              "sequence": 26,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 27,
+              "type": "LIFE_DAMAGED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 28,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 29,
+              "type": "MAIN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 30,
+              "type": "TURN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 31,
+              "type": "REFRESHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 32,
+              "type": "DRAWN",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 33,
+              "type": "DON_ADDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 34,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "ST01-010@m0-2026-10-10",
+                "printingKey": "ST01-010::standard"
+              }
+            },
+            {
+              "sequence": 35,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c24"
+            },
+            {
+              "sequence": 36,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 37,
+              "type": "LIFE_DAMAGED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 38,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 39,
+              "type": "MAIN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 40,
+              "type": "TURN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 41,
+              "type": "REFRESHED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 42,
+              "type": "DRAWN",
+              "actorId": "player"
+            },
+            {
+              "sequence": 43,
+              "type": "DON_ADDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 44,
+              "type": "CARD_REVEALED",
+              "actorId": "player",
+              "revealedCard": {
+                "definitionId": "OP01-107@m3-2026-10-12",
+                "printingKey": "OP01-107::standard"
+              }
+            },
+            {
+              "sequence": 45,
+              "type": "CARD_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 46,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 47,
+              "type": "COUNTER_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c13"
+            },
+            {
+              "sequence": 48,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 49,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c16"
+            },
+            {
+              "sequence": 50,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c16"
+            },
+            {
+              "sequence": 51,
+              "type": "COUNTER_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c22"
+            },
+            {
+              "sequence": 52,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 53,
+              "type": "MAIN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 54,
+              "type": "TURN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 55,
+              "type": "REFRESHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 56,
+              "type": "DRAWN",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 57,
+              "type": "DON_ADDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 58,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "OP01-016@m3-2026-10-12",
+                "printingKey": "OP01-016::standard"
+              }
+            },
+            {
+              "sequence": 59,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c27"
+            },
+            {
+              "sequence": 60,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "ST01-008@m0-2026-10-10",
+                "printingKey": "ST01-008::standard"
+              }
+            },
+            {
+              "sequence": 61,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "ST01-008@m0-2026-10-10",
+                "printingKey": "ST01-008::standard"
+              }
+            },
+            {
+              "sequence": 62,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c15"
+            },
+            {
+              "sequence": 63,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 64,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c16"
+            },
+            {
+              "sequence": 65,
+              "type": "CHARACTER_KO",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p0:c16"
+            },
+            {
+              "sequence": 66,
+              "type": "CHARACTER_KO",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p0:c16"
+            },
+            {
+              "sequence": 67,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 68,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 69,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c24"
+            },
+            {
+              "sequence": 70,
+              "type": "BATTLE_PAIRED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c24"
+            },
+            {
+              "sequence": 71,
+              "type": "COUNTER_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c34"
+            },
+            {
+              "sequence": 72,
+              "type": "COUNTER_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c2"
+            },
+            {
+              "sequence": 73,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 74,
+              "type": "MAIN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 75,
+              "type": "TURN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 76,
+              "type": "REFRESHED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 77,
+              "type": "DRAWN",
+              "actorId": "player"
+            },
+            {
+              "sequence": 78,
+              "type": "DON_ADDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 79,
+              "type": "DON_RETURNED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 80,
+              "type": "DON_RETURNED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 81,
+              "type": "DON_RETURNED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 82,
+              "type": "DON_RETURNED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 83,
+              "type": "DON_RETURNED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 84,
+              "type": "DON_RETURNED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 85,
+              "type": "DON_RETURNED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 86,
+              "type": "LIFE_TRASHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 87,
+              "type": "CARD_TRASHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c38"
+            },
+            {
+              "sequence": 88,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 89,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 90,
+              "type": "BATTLE_PAIRED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c24"
+            },
+            {
+              "sequence": 91,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c24"
+            },
+            {
+              "sequence": 92,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c24"
+            },
+            {
+              "sequence": 93,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 94,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 95,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 96,
+              "type": "COUNTER_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c49"
+            },
+            {
+              "sequence": 97,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 98,
+              "type": "MAIN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 99,
+              "type": "TURN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 100,
+              "type": "REFRESHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 101,
+              "type": "DRAWN",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 102,
+              "type": "DON_ADDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 103,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "ST01-009@m0-2026-10-10",
+                "printingKey": "ST01-009::standard"
+              }
+            },
+            {
+              "sequence": 104,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c20"
+            },
+            {
+              "sequence": 105,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c56"
+            },
+            {
+              "sequence": 106,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c51"
+            },
+            {
+              "sequence": 107,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c57"
+            },
+            {
+              "sequence": 108,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 109,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 110,
+              "type": "COUNTER_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c31"
+            },
+            {
+              "sequence": 111,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 112,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 113,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c15"
+            },
+            {
+              "sequence": 114,
+              "type": "BATTLE_PAIRED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c15"
+            },
+            {
+              "sequence": 115,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 116,
+              "type": "COUNTER_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c35"
+            },
+            {
+              "sequence": 117,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c15"
+            },
+            {
+              "sequence": 118,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 119,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 120,
+              "type": "MAIN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 121,
+              "type": "TURN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 122,
+              "type": "REFRESHED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 123,
+              "type": "DRAWN",
+              "actorId": "player"
+            },
+            {
+              "sequence": 124,
+              "type": "DON_ADDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 125,
+              "type": "DON_ATTACHED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c58"
+            },
+            {
+              "sequence": 126,
+              "type": "DON_ATTACHED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c59"
+            },
+            {
+              "sequence": 127,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 128,
+              "type": "BATTLE_PAIRED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c15"
+            },
+            {
+              "sequence": 129,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c15"
+            },
+            {
+              "sequence": 130,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c15"
+            },
+            {
+              "sequence": 131,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 132,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 133,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 134,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 135,
+              "type": "LIFE_DAMAGED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 136,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 137,
+              "type": "MAIN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 138,
+              "type": "TURN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 139,
+              "type": "REFRESHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 140,
+              "type": "DRAWN",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 141,
+              "type": "DON_ADDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 142,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "ST01-007@m0-2026-10-10",
+                "printingKey": "ST01-007::standard"
+              }
+            },
+            {
+              "sequence": 143,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c9"
+            },
+            {
+              "sequence": 144,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "ST01-006@m0-2026-10-10",
+                "printingKey": "ST01-006::standard"
+              }
+            },
+            {
+              "sequence": 145,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c7"
+            },
+            {
+              "sequence": 146,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c51"
+            },
+            {
+              "sequence": 147,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c57"
+            },
+            {
+              "sequence": 148,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c53"
+            },
+            {
+              "sequence": 149,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 150,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 151,
+              "type": "COUNTER_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c41"
+            },
+            {
+              "sequence": 152,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 153,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 154,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c20"
+            },
+            {
+              "sequence": 155,
+              "type": "BATTLE_PAIRED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c20"
+            },
+            {
+              "sequence": 156,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 157,
+              "type": "COUNTER_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c21"
+            },
+            {
+              "sequence": 158,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c20"
+            },
+            {
+              "sequence": 159,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 160,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 161,
+              "type": "MAIN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 162,
+              "type": "TURN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 163,
+              "type": "REFRESHED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 164,
+              "type": "DRAWN",
+              "actorId": "player"
+            },
+            {
+              "sequence": 165,
+              "type": "DON_ADDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 166,
+              "type": "CARD_REVEALED",
+              "actorId": "player",
+              "revealedCard": {
+                "definitionId": "ST04-011@m3-2026-10-12",
+                "printingKey": "ST04-011::standard"
+              }
+            },
+            {
+              "sequence": 167,
+              "type": "CARD_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c44"
+            },
+            {
+              "sequence": 168,
+              "type": "DON_ATTACHED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c60"
+            },
+            {
+              "sequence": 169,
+              "type": "DON_ATTACHED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c51"
+            },
+            {
+              "sequence": 170,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 171,
+              "type": "BLOCKER_ACTIVATED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c7"
+            },
+            {
+              "sequence": 172,
+              "type": "BATTLE_PAIRED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c7"
+            },
+            {
+              "sequence": 173,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c7"
+            },
+            {
+              "sequence": 174,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c7"
+            },
+            {
+              "sequence": 175,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 176,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 177,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 178,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 179,
+              "type": "LIFE_PAID",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 180,
+              "type": "COUNTER_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c44"
+            },
+            {
+              "sequence": 181,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 182,
+              "type": "MAIN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 183,
+              "type": "TURN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 184,
+              "type": "REFRESHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 185,
+              "type": "DRAWN",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 186,
+              "type": "DON_ADDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 187,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "OP06-009@official-2026-10-11",
+                "printingKey": "OP06-009::standard"
+              }
+            },
+            {
+              "sequence": 188,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c31"
+            },
+            {
+              "sequence": 189,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "ST01-009@m0-2026-10-10",
+                "printingKey": "ST01-009::standard"
+              }
+            },
+            {
+              "sequence": 190,
+              "type": "CARD_TRASHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c9"
+            },
+            {
+              "sequence": 191,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c17"
+            },
+            {
+              "sequence": 192,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c51"
+            },
+            {
+              "sequence": 193,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 194,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 195,
+              "type": "CHARACTER_KO",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 196,
+              "type": "CHARACTER_KO",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 197,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 198,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 199,
+              "type": "MAIN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 200,
+              "type": "TURN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 201,
+              "type": "REFRESHED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 202,
+              "type": "DRAWN",
+              "actorId": "player"
+            },
+            {
+              "sequence": 203,
+              "type": "DON_ADDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 204,
+              "type": "CARD_REVEALED",
+              "actorId": "player",
+              "revealedCard": {
+                "definitionId": "ST04-007@m3-2026-10-12",
+                "printingKey": "ST04-007::standard"
+              }
+            },
+            {
+              "sequence": 205,
+              "type": "CARD_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c7"
+            },
+            {
+              "sequence": 206,
+              "type": "DON_ATTACHED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c60"
+            },
+            {
+              "sequence": 207,
+              "type": "DON_ATTACHED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c51"
+            },
+            {
+              "sequence": 208,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 209,
+              "type": "BLOCKER_ACTIVATED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c31"
+            },
+            {
+              "sequence": 210,
+              "type": "BATTLE_PAIRED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c31"
+            },
+            {
+              "sequence": 211,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c31"
+            },
+            {
+              "sequence": 212,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c31"
+            },
+            {
+              "sequence": 213,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 214,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 215,
+              "type": "MAIN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 216,
+              "type": "TURN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 217,
+              "type": "REFRESHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 218,
+              "type": "DRAWN",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 219,
+              "type": "DON_ADDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 220,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "OP06-013@official-2026-10-11",
+                "printingKey": "OP06-013::standard"
+              }
+            },
+            {
+              "sequence": 221,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c34"
+            },
+            {
+              "sequence": 222,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "OP06-013@official-2026-10-11",
+                "printingKey": "OP06-013::standard"
+              }
+            },
+            {
+              "sequence": 223,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c54"
+            },
+            {
+              "sequence": 224,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c52"
+            },
+            {
+              "sequence": 225,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c57"
+            },
+            {
+              "sequence": 226,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c53"
+            },
+            {
+              "sequence": 227,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            }
+          ]
+        },
+        "legalActions": [
+          {
+            "type": "PLAY_COUNTER_EVENT",
+            "eventIds": [
+              "play-mv8dz2n1:p0:c50"
+            ],
+            "targetIds": [
+              "play-mv8dz2n1:p0:c0",
+              "play-mv8dz2n1:p0:c3",
+              "play-mv8dz2n1:p0:c44",
+              "play-mv8dz2n1:p0:c7"
+            ],
+            "paymentDonIds": [
+              "play-mv8dz2n1:p0:c52",
+              "play-mv8dz2n1:p0:c53"
+            ],
+            "donMinusIds": [
+              "play-mv8dz2n1:p0:c58",
+              "play-mv8dz2n1:p0:c59",
+              "play-mv8dz2n1:p0:c52",
+              "play-mv8dz2n1:p0:c53",
+              "play-mv8dz2n1:p0:c60",
+              "play-mv8dz2n1:p0:c51"
+            ],
+            "battleId": "play-mv8dz2n1:battle:213"
+          },
+          {
+            "type": "PASS_COUNTER",
+            "battleId": "play-mv8dz2n1:battle:213"
+          }
+        ],
+        "privateCards": {
+          "options": {},
+          "lifeTrigger": null
+        },
+        "botLevel": "hard",
+        "choiceSource": null,
+        "cards": {
+          "ST04-001::standard": {
+            "definitionId": "ST04-001@m3-2026-10-12",
+            "number": "ST04-001",
+            "name": "Kaido",
+            "category": "LEADER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": null,
+            "power": 5000,
+            "counter": null,
+            "life": 5,
+            "text": "[Activate: Main] [Once Per Turn] DON!! −7 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Trash up to 1 of your opponent's cards from the top of their Life cards.",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST04-001.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST04-009::standard": {
+            "definitionId": "ST04-009@m3-2026-10-12",
+            "number": "ST04-009",
+            "name": "Ginrummy",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 1,
+            "power": 3000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST04-009.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST04-011::standard": {
+            "definitionId": "ST04-011@m3-2026-10-12",
+            "number": "ST04-011",
+            "name": "Black Maria",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 2,
+            "power": 2000,
+            "counter": 1000,
+            "life": null,
+            "text": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST04-011.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST04-007::standard": {
+            "definitionId": "ST04-007@m3-2026-10-12",
+            "number": "ST04-007",
+            "name": "Sheepshead",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 2,
+            "power": 4000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST04-007.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST04-013::standard": {
+            "definitionId": "ST04-013@m3-2026-10-12",
+            "number": "ST04-013",
+            "name": "X.Drake",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 3,
+            "power": 5000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST04-013.png",
+            "certified": true,
+            "language": "en"
+          },
+          "OP04-062::standard": {
+            "definitionId": "OP04-062@m3-2026-10-12",
+            "number": "OP04-062",
+            "name": "Bananagator",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 5,
+            "power": 7000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP04-062.png",
+            "certified": true,
+            "language": "en"
+          },
+          "OP01-107::standard": {
+            "definitionId": "OP01-107@m3-2026-10-12",
+            "number": "OP01-107",
+            "name": "Babanuki",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 5,
+            "power": 7000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP01-107.png",
+            "certified": true,
+            "language": "en"
+          },
+          "OP01-092::standard": {
+            "definitionId": "OP01-092@m3-2026-10-12",
+            "number": "OP01-092",
+            "name": "Urashima",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 7,
+            "power": 9000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP01-092.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST04-012::standard": {
+            "definitionId": "ST04-012@m3-2026-10-12",
+            "number": "ST04-012",
+            "name": "Page One",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 4,
+            "power": 6000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST04-012.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST04-016::standard": {
+            "definitionId": "ST04-016@m3-2026-10-12",
+            "number": "ST04-016",
+            "name": "Souffle ardent",
+            "category": "EVENT",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 1,
+            "power": null,
+            "counter": null,
+            "life": null,
+            "text": "[Contre] DON!! -1 (Vous pouvez renvoyer à votre deck DON!! le nombre indiqué de cartes DON!! de votre terrain.) : Jusqu'à 1 de vos Leaders ou Personnages gagne +4000 de puissance pour tout le combat.",
+            "trigger": "",
+            "imageUrl": "https://fr.onepiece-cardgame.com/images/cardlist/card/ST04-016_p1.webp?2508202",
+            "certified": true,
+            "language": "fr"
+          },
+          "ST01-001::standard": {
+            "definitionId": "ST01-001@m0-2026-10-10",
+            "number": "ST01-001",
+            "name": "Monkey.D.Luffy",
+            "category": "LEADER",
+            "colors": [
+              "RED"
+            ],
+            "cost": null,
+            "power": 5000,
+            "counter": null,
+            "life": 5,
+            "text": "[Activate: Main] [Once Per Turn] Give this Leader or 1 of your Characters up to 1 rested DON!! card.",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST01-001.png",
+            "certified": true,
+            "language": "en"
+          },
+          "OP06-013::standard": {
+            "definitionId": "OP06-013@official-2026-10-11",
+            "number": "OP06-013",
+            "name": "Monkey.D.Luffy",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 2,
+            "power": 3000,
+            "counter": 1000,
+            "life": null,
+            "text": "[On Play] Look at 3 cards from the top of your deck; reveal up to 1 {FILM} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+            "trigger": "[Trigger] Activate this card’s [On Play] effect.",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP06-013.png",
+            "certified": true,
+            "language": "en"
+          },
+          "OP01-016::standard": {
+            "definitionId": "OP01-016@m3-2026-10-12",
+            "number": "OP01-016",
+            "name": "Nami",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 1,
+            "power": 2000,
+            "counter": 1000,
+            "life": null,
+            "text": "[Jouée] Regardez 5 cartes du dessus de votre deck, révélez jusqu'à 1 carte de type {Équipage de Chapeau de paille} autre que [Nami] et ajoutez-la à votre main. Puis, placez les cartes restantes au-dessous de votre deck dans l'ordre de votre choix.",
+            "trigger": "",
+            "imageUrl": "https://fr.onepiece-cardgame.com/images/cardlist/card/OP01-016_p1.webp?2508202",
+            "certified": true,
+            "language": "fr"
+          },
+          "ST01-009::standard": {
+            "definitionId": "ST01-009@m0-2026-10-10",
+            "number": "ST01-009",
+            "name": "Nefeltari Vivi",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 2,
+            "power": 4000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST01-009.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST01-008::standard": {
+            "definitionId": "ST01-008@m0-2026-10-10",
+            "number": "ST01-008",
+            "name": "Nico Robin",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 3,
+            "power": 5000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST01-008.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST01-010::standard": {
+            "definitionId": "ST01-010@m0-2026-10-10",
+            "number": "ST01-010",
+            "name": "Franky",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 4,
+            "power": 6000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST01-010.png",
+            "certified": true,
+            "language": "en"
+          },
+          "OP06-018::standard": {
+            "definitionId": "OP06-018@official-2026-10-11",
+            "number": "OP06-018",
+            "name": "Gum-Gum King Kong Gatling",
+            "category": "EVENT",
+            "colors": [
+              "RED"
+            ],
+            "cost": 2,
+            "power": null,
+            "counter": null,
+            "life": null,
+            "text": "[Main] Up to 1 of your Leader or Character cards gains +3000 power during this turn. Then, if your opponent has a Character with 7000 power or more, up to 1 of your Leader or Character cards gains +1000 power during this turn.",
+            "trigger": "[Trigger] K.O. up to 1 of your opponent’s Characters with 5000 power or less.",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP06-018.png",
+            "certified": false,
+            "language": "en"
+          },
+          "ST01-014::standard": {
+            "definitionId": "ST01-014@m3-2026-10-12",
+            "number": "ST01-014",
+            "name": "Guard Point",
+            "category": "EVENT",
+            "colors": [
+              "RED"
+            ],
+            "cost": 1,
+            "power": null,
+            "counter": null,
+            "life": null,
+            "text": "[Contre] Jusqu'à 1 de vos Leaders ou Personnages gagne +3000 de puissance pour tout le combat.",
+            "trigger": "[Déclenchement] Jusqu'à 1 de vos Leaders ou Personnages gagne +1000 de puissance pour tout le tour.",
+            "imageUrl": "https://fr.onepiece-cardgame.com/images/cardlist/card/ST01-014_p1.webp?2508202",
+            "certified": true,
+            "language": "fr"
+          },
+          "P-016::standard": {
+            "definitionId": "P-016@m0-2026-10-10",
+            "number": "P-016",
+            "name": "Shanks",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 8,
+            "power": 10000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/P-016.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST01-006::standard": {
+            "definitionId": "ST01-006@m0-2026-10-10",
+            "number": "ST01-006",
+            "name": "Tony-Tony Chopper",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 1,
+            "power": 1000,
+            "counter": null,
+            "life": null,
+            "text": "[Bloqueur] (Après que votre adversaire a déclaré une attaque, vous pouvez épuiser cette carte pour qu'elle devienne la cible de l'attaque.)",
+            "trigger": "",
+            "imageUrl": "https://fr.onepiece-cardgame.com/images/cardlist/card/ST01-006_p1.webp?2508202",
+            "certified": true,
+            "language": "fr"
+          },
+          "OP06-017::standard": {
+            "definitionId": "OP06-017@m3-2026-10-12",
+            "number": "OP06-017",
+            "name": "Meteor-Strike of Love",
+            "category": "EVENT",
+            "colors": [
+              "RED"
+            ],
+            "cost": 2,
+            "power": null,
+            "counter": null,
+            "life": null,
+            "text": "[Main]/[Counter] You may add 1 card from the top of your Life cards to your hand: Up to 1 of your Leader or Character cards gains +3000 power during this turn.",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP06-017.png",
+            "certified": false,
+            "language": "en"
+          },
+          "ST01-007::standard": {
+            "definitionId": "ST01-007@m0-2026-10-10",
+            "number": "ST01-007",
+            "name": "Nami",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 1,
+            "power": 1000,
+            "counter": 1000,
+            "life": null,
+            "text": "[Activation : Principale] [Une fois par tour] Donnez jusqu'à 1 carte DON!! épuisée à votre Leader ou à 1 de vos Personnages.",
+            "trigger": "",
+            "imageUrl": "https://fr.onepiece-cardgame.com/images/cardlist/card/ST01-007_p1.webp?2508202",
+            "certified": true,
+            "language": "fr"
+          },
+          "OP06-009::standard": {
+            "definitionId": "OP06-009@official-2026-10-11",
+            "number": "OP06-009",
+            "name": "Shuraiya",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 3,
+            "power": 4000,
+            "counter": 1000,
+            "life": null,
+            "text": "[Blocker] [When Attacking]/[On Block] [Once Per Turn] This Character’s base power becomes the same as your opponent’s Leader until the start of your next turn.",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP06-009.png",
+            "certified": false,
+            "language": "en"
+          }
+        }
+      },
+      "after": {
+        "gameId": "game-1",
+        "version": 216,
+        "status": "ACTIVE",
+        "seat": "player",
+        "opponentSeat": "bot",
+        "opponent": {
+          "kind": "bot",
+          "name": "Bot Mugiwara"
+        },
+        "deck": "reference-purple",
+        "botDeck": "reference-red",
+        "projection": {
+          "gameId": "play-mv8dz2n1",
+          "version": 216,
+          "scope": "BASIC_TURNS",
+          "phase": "MAIN",
+          "firstPlayerId": "player",
+          "activePlayerId": "bot",
+          "decisionPlayerId": null,
+          "turn": 14,
+          "automaticPlayReady": false,
+          "result": null,
+          "battle": {
+            "id": "play-mv8dz2n1:battle:213",
+            "step": "COUNTER",
+            "attacker": "play-mv8dz2n1:p1:c0",
+            "target": "play-mv8dz2n1:p0:c0",
+            "attackerControllerId": "bot",
+            "defenderId": "player",
+            "counterBonus": 0,
+            "lifeTrigger": null
+          },
+          "players": [
+            {
+              "id": "player",
+              "turns": 7,
+              "mulligan": "KEPT",
+              "counts": {
+                "leader": 1,
+                "deck": 34,
+                "hand": 0,
+                "life": 4,
+                "characters": 3,
+                "stage": 0,
+                "trash": 9,
+                "donDeck": 4,
+                "cost": 4,
+                "attached": 2,
+                "temporary": 0
+              },
+              "leader": [
+                {
+                  "id": "play-mv8dz2n1:p0:c0",
+                  "kind": "CARD",
+                  "printingKey": "ST04-001::standard",
+                  "definitionId": "ST04-001@m3-2026-10-12",
+                  "rested": true,
+                  "attachedTo": null,
+                  "power": 5000
+                }
+              ],
+              "characters": [
+                {
+                  "id": "play-mv8dz2n1:p0:c3",
+                  "kind": "CARD",
+                  "printingKey": "ST04-009::standard",
+                  "definitionId": "ST04-009@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 3000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c44",
+                  "kind": "CARD",
+                  "printingKey": "ST04-011::standard",
+                  "definitionId": "ST04-011@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 2000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c7",
+                  "kind": "CARD",
+                  "printingKey": "ST04-007::standard",
+                  "definitionId": "ST04-007@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 4000
+                }
+              ],
+              "stage": [],
+              "trash": [
+                {
+                  "id": "play-mv8dz2n1:p0:c16",
+                  "kind": "CARD",
+                  "printingKey": "ST04-013::standard",
+                  "definitionId": "ST04-013@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 5000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c34",
+                  "kind": "CARD",
+                  "printingKey": "OP04-062::standard",
+                  "definitionId": "OP04-062@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 7000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c2",
+                  "kind": "CARD",
+                  "printingKey": "ST04-009::standard",
+                  "definitionId": "ST04-009@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 3000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c31",
+                  "kind": "CARD",
+                  "printingKey": "OP01-107::standard",
+                  "definitionId": "OP01-107@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 7000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c35",
+                  "kind": "CARD",
+                  "printingKey": "OP04-062::standard",
+                  "definitionId": "OP04-062@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 7000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c41",
+                  "kind": "CARD",
+                  "printingKey": "OP01-092::standard",
+                  "definitionId": "OP01-092@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 9000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c21",
+                  "kind": "CARD",
+                  "printingKey": "ST04-012::standard",
+                  "definitionId": "ST04-012@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 6000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c29",
+                  "kind": "CARD",
+                  "printingKey": "OP01-107::standard",
+                  "definitionId": "OP01-107@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 7000
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c50",
+                  "kind": "CARD",
+                  "printingKey": "ST04-016::standard",
+                  "definitionId": "ST04-016@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                }
+              ],
+              "donDeck": [
+                {
+                  "id": "play-mv8dz2n1:p0:c54",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c55",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c56",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c57",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                }
+              ],
+              "cost": [
+                {
+                  "id": "play-mv8dz2n1:p0:c58",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": true,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c59",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": true,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c52",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": true,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c53",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                }
+              ],
+              "attached": [
+                {
+                  "id": "play-mv8dz2n1:p0:c60",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": "play-mv8dz2n1:p0:c0",
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p0:c51",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": "play-mv8dz2n1:p0:c0",
+                  "power": null
+                }
+              ],
+              "hand": []
+            },
+            {
+              "id": "bot",
+              "turns": 7,
+              "mulligan": "KEPT",
+              "counts": {
+                "leader": 1,
+                "deck": 30,
+                "hand": 3,
+                "life": 1,
+                "characters": 5,
+                "stage": 0,
+                "trash": 11,
+                "donDeck": 0,
+                "cost": 5,
+                "attached": 5,
+                "temporary": 0
+              },
+              "leader": [
+                {
+                  "id": "play-mv8dz2n1:p1:c0",
+                  "kind": "CARD",
+                  "printingKey": "ST01-001::standard",
+                  "definitionId": "ST01-001@m0-2026-10-10",
+                  "rested": true,
+                  "attachedTo": null,
+                  "power": 7000
+                }
+              ],
+              "characters": [
+                {
+                  "id": "play-mv8dz2n1:p1:c33",
+                  "kind": "CARD",
+                  "printingKey": "OP06-013::standard",
+                  "definitionId": "OP06-013@official-2026-10-11",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 3000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c27",
+                  "kind": "CARD",
+                  "printingKey": "OP01-016::standard",
+                  "definitionId": "OP01-016@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 2000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c20",
+                  "kind": "CARD",
+                  "printingKey": "ST01-009::standard",
+                  "definitionId": "ST01-009@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 7000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c17",
+                  "kind": "CARD",
+                  "printingKey": "ST01-009::standard",
+                  "definitionId": "ST01-009@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 4000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c34",
+                  "kind": "CARD",
+                  "printingKey": "OP06-013::standard",
+                  "definitionId": "OP06-013@official-2026-10-11",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 3000
+                }
+              ],
+              "stage": [],
+              "trash": [
+                {
+                  "id": "play-mv8dz2n1:p1:c13",
+                  "kind": "CARD",
+                  "printingKey": "ST01-008::standard",
+                  "definitionId": "ST01-008@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 5000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c22",
+                  "kind": "CARD",
+                  "printingKey": "ST01-010::standard",
+                  "definitionId": "ST01-010@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 6000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c48",
+                  "kind": "CARD",
+                  "printingKey": "OP06-018::standard",
+                  "definitionId": "OP06-018@official-2026-10-11",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c38",
+                  "kind": "CARD",
+                  "printingKey": "ST01-014::standard",
+                  "definitionId": "ST01-014@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c24",
+                  "kind": "CARD",
+                  "printingKey": "ST01-010::standard",
+                  "definitionId": "ST01-010@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 6000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c49",
+                  "kind": "CARD",
+                  "printingKey": "P-016::standard",
+                  "definitionId": "P-016@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 10000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c15",
+                  "kind": "CARD",
+                  "printingKey": "ST01-008::standard",
+                  "definitionId": "ST01-008@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 5000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c7",
+                  "kind": "CARD",
+                  "printingKey": "ST01-006::standard",
+                  "definitionId": "ST01-006@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 1000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c44",
+                  "kind": "CARD",
+                  "printingKey": "OP06-017::standard",
+                  "definitionId": "OP06-017@m3-2026-10-12",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c9",
+                  "kind": "CARD",
+                  "printingKey": "ST01-007::standard",
+                  "definitionId": "ST01-007@m0-2026-10-10",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 1000
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c31",
+                  "kind": "CARD",
+                  "printingKey": "OP06-009::standard",
+                  "definitionId": "OP06-009@official-2026-10-11",
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": 4000
+                }
+              ],
+              "donDeck": [],
+              "cost": [
+                {
+                  "id": "play-mv8dz2n1:p1:c56",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": true,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c59",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c60",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c55",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c51",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": null,
+                  "power": null
+                }
+              ],
+              "attached": [
+                {
+                  "id": "play-mv8dz2n1:p1:c58",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": true,
+                  "attachedTo": "play-mv8dz2n1:p1:c0",
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c54",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": "play-mv8dz2n1:p1:c0",
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c52",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": "play-mv8dz2n1:p1:c20",
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c57",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": "play-mv8dz2n1:p1:c20",
+                  "power": null
+                },
+                {
+                  "id": "play-mv8dz2n1:p1:c53",
+                  "kind": "DON",
+                  "printingKey": null,
+                  "definitionId": null,
+                  "rested": false,
+                  "attachedTo": "play-mv8dz2n1:p1:c20",
+                  "power": null
+                }
+              ],
+              "hand": null
+            }
+          ],
+          "effects": {
+            "status": "COMPLETED",
+            "pendingChoice": null,
+            "cardEvents": [
+              {
+                "sequence": 0,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c33",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:10"
+              },
+              {
+                "sequence": 1,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c33",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:10"
+              },
+              {
+                "sequence": 2,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:14"
+              },
+              {
+                "sequence": 3,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:14"
+              },
+              {
+                "sequence": 4,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:36"
+              },
+              {
+                "sequence": 5,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:36"
+              },
+              {
+                "sequence": 6,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c27",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:62"
+              },
+              {
+                "sequence": 7,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c27",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:62"
+              },
+              {
+                "sequence": 8,
+                "type": "EVENT_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c48",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:70"
+              },
+              {
+                "sequence": 9,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c48",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:70"
+              },
+              {
+                "sequence": 10,
+                "type": "POWER_MODIFIER_CREATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:70"
+              },
+              {
+                "sequence": 11,
+                "type": "POWER_MODIFIER_CREATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:70"
+              },
+              {
+                "sequence": 12,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c48",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:70"
+              },
+              {
+                "sequence": 13,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:79"
+              },
+              {
+                "sequence": 14,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:79"
+              },
+              {
+                "sequence": 15,
+                "type": "CARD_KO",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p0:c16",
+                "resolutionId": "play-mv8dz2n1:battle:72"
+              },
+              {
+                "sequence": 16,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "player",
+                "subjectId": "play-mv8dz2n1:p0:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:92"
+              },
+              {
+                "sequence": 17,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "player",
+                "subjectId": "play-mv8dz2n1:p0:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:92"
+              },
+              {
+                "sequence": 18,
+                "type": "CARD_KO",
+                "controllerId": "player",
+                "subjectId": "play-mv8dz2n1:p1:c24",
+                "resolutionId": "play-mv8dz2n1:battle:89"
+              },
+              {
+                "sequence": 19,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:114"
+              },
+              {
+                "sequence": 20,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:114"
+              },
+              {
+                "sequence": 21,
+                "type": "CARD_KO",
+                "controllerId": "player",
+                "subjectId": "play-mv8dz2n1:p1:c15",
+                "resolutionId": "play-mv8dz2n1:battle:125"
+              },
+              {
+                "sequence": 22,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:145"
+              },
+              {
+                "sequence": 23,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:145"
+              },
+              {
+                "sequence": 24,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c9",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:150"
+              },
+              {
+                "sequence": 25,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c9",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:150"
+              },
+              {
+                "sequence": 26,
+                "type": "CARD_KO",
+                "controllerId": "player",
+                "subjectId": "play-mv8dz2n1:p1:c7",
+                "resolutionId": "play-mv8dz2n1:battle:164"
+              },
+              {
+                "sequence": 27,
+                "type": "EVENT_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c44",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:178"
+              },
+              {
+                "sequence": 28,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c44",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:178"
+              },
+              {
+                "sequence": 29,
+                "type": "POWER_MODIFIER_CREATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:178"
+              },
+              {
+                "sequence": 30,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c44",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:178"
+              },
+              {
+                "sequence": 31,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:198"
+              },
+              {
+                "sequence": 32,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:198"
+              },
+              {
+                "sequence": 33,
+                "type": "CARD_KO",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p0:c29",
+                "resolutionId": "play-mv8dz2n1:battle:185"
+              },
+              {
+                "sequence": 34,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c31",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:219"
+              },
+              {
+                "sequence": 35,
+                "type": "POWER_MODIFIER_CREATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c31",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:219"
+              },
+              {
+                "sequence": 36,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c31",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:219"
+              },
+              {
+                "sequence": 37,
+                "type": "CARD_KO",
+                "controllerId": "player",
+                "subjectId": "play-mv8dz2n1:p1:c31",
+                "resolutionId": "play-mv8dz2n1:battle:196"
+              },
+              {
+                "sequence": 38,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c34",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:230"
+              },
+              {
+                "sequence": 39,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c34",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:230"
+              },
+              {
+                "sequence": 40,
+                "type": "ABILITY_ACTIVATED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:234"
+              },
+              {
+                "sequence": 41,
+                "type": "ABILITY_COMPLETED",
+                "controllerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c0",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:234"
+              },
+              {
+                "sequence": 42,
+                "type": "EVENT_ACTIVATED",
+                "controllerId": "player",
+                "subjectId": "play-mv8dz2n1:p0:c50",
+                "resolutionId": "play-mv8dz2n1:fx:resolution:245"
+              }
+            ],
+            "events": [
+              {
+                "sequence": 0,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c51",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              },
+              {
+                "sequence": 1,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c52",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              },
+              {
+                "sequence": 2,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c51",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              },
+              {
+                "sequence": 3,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c53",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              },
+              {
+                "sequence": 4,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c54",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              },
+              {
+                "sequence": 5,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c52",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              },
+              {
+                "sequence": 6,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c55",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              },
+              {
+                "sequence": 7,
+                "type": "DON_MOVED",
+                "playerId": "bot",
+                "subjectId": "play-mv8dz2n1:p1:c58",
+                "from": "cost",
+                "to": "attached",
+                "rested": true
+              }
+            ]
+          },
+          "events": [
+            {
+              "sequence": 0,
+              "type": "CREATED"
+            },
+            {
+              "sequence": 1,
+              "type": "ORDER_CHOSEN",
+              "actorId": "player"
+            },
+            {
+              "sequence": 2,
+              "type": "HANDS_DEALT"
+            },
+            {
+              "sequence": 3,
+              "type": "HAND_KEPT",
+              "actorId": "player"
+            },
+            {
+              "sequence": 4,
+              "type": "HAND_KEPT",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 5,
+              "type": "PREPARED"
+            },
+            {
+              "sequence": 6,
+              "type": "REFRESHED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 7,
+              "type": "DRAW_SKIPPED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 8,
+              "type": "DON_ADDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 9,
+              "type": "CARD_REVEALED",
+              "actorId": "player",
+              "revealedCard": {
+                "definitionId": "ST04-009@m3-2026-10-12",
+                "printingKey": "ST04-009::standard"
+              }
+            },
+            {
+              "sequence": 10,
+              "type": "CARD_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c3"
+            },
+            {
+              "sequence": 11,
+              "type": "MAIN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 12,
+              "type": "TURN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 13,
+              "type": "REFRESHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 14,
+              "type": "DRAWN",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 15,
+              "type": "DON_ADDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 16,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "OP06-013@official-2026-10-11",
+                "printingKey": "OP06-013::standard"
+              }
+            },
+            {
+              "sequence": 17,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c33"
+            },
+            {
+              "sequence": 18,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "OP06-017@m3-2026-10-12",
+                "printingKey": "OP06-017::standard"
+              }
+            },
+            {
+              "sequence": 19,
+              "type": "MAIN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 20,
+              "type": "TURN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 21,
+              "type": "REFRESHED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 22,
+              "type": "DRAWN",
+              "actorId": "player"
+            },
+            {
+              "sequence": 23,
+              "type": "DON_ADDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 24,
+              "type": "CARD_REVEALED",
+              "actorId": "player",
+              "revealedCard": {
+                "definitionId": "ST04-013@m3-2026-10-12",
+                "printingKey": "ST04-013::standard"
+              }
+            },
+            {
+              "sequence": 25,
+              "type": "CARD_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c16"
+            },
+            {
+              "sequence": 26,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 27,
+              "type": "LIFE_DAMAGED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 28,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 29,
+              "type": "MAIN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 30,
+              "type": "TURN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 31,
+              "type": "REFRESHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 32,
+              "type": "DRAWN",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 33,
+              "type": "DON_ADDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 34,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "ST01-010@m0-2026-10-10",
+                "printingKey": "ST01-010::standard"
+              }
+            },
+            {
+              "sequence": 35,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c24"
+            },
+            {
+              "sequence": 36,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 37,
+              "type": "LIFE_DAMAGED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 38,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 39,
+              "type": "MAIN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 40,
+              "type": "TURN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 41,
+              "type": "REFRESHED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 42,
+              "type": "DRAWN",
+              "actorId": "player"
+            },
+            {
+              "sequence": 43,
+              "type": "DON_ADDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 44,
+              "type": "CARD_REVEALED",
+              "actorId": "player",
+              "revealedCard": {
+                "definitionId": "OP01-107@m3-2026-10-12",
+                "printingKey": "OP01-107::standard"
+              }
+            },
+            {
+              "sequence": 45,
+              "type": "CARD_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 46,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 47,
+              "type": "COUNTER_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c13"
+            },
+            {
+              "sequence": 48,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 49,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c16"
+            },
+            {
+              "sequence": 50,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c16"
+            },
+            {
+              "sequence": 51,
+              "type": "COUNTER_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c22"
+            },
+            {
+              "sequence": 52,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 53,
+              "type": "MAIN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 54,
+              "type": "TURN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 55,
+              "type": "REFRESHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 56,
+              "type": "DRAWN",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 57,
+              "type": "DON_ADDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 58,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "OP01-016@m3-2026-10-12",
+                "printingKey": "OP01-016::standard"
+              }
+            },
+            {
+              "sequence": 59,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c27"
+            },
+            {
+              "sequence": 60,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "ST01-008@m0-2026-10-10",
+                "printingKey": "ST01-008::standard"
+              }
+            },
+            {
+              "sequence": 61,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "ST01-008@m0-2026-10-10",
+                "printingKey": "ST01-008::standard"
+              }
+            },
+            {
+              "sequence": 62,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c15"
+            },
+            {
+              "sequence": 63,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 64,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c16"
+            },
+            {
+              "sequence": 65,
+              "type": "CHARACTER_KO",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p0:c16"
+            },
+            {
+              "sequence": 66,
+              "type": "CHARACTER_KO",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p0:c16"
+            },
+            {
+              "sequence": 67,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 68,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 69,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c24"
+            },
+            {
+              "sequence": 70,
+              "type": "BATTLE_PAIRED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c24"
+            },
+            {
+              "sequence": 71,
+              "type": "COUNTER_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c34"
+            },
+            {
+              "sequence": 72,
+              "type": "COUNTER_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c2"
+            },
+            {
+              "sequence": 73,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 74,
+              "type": "MAIN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 75,
+              "type": "TURN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 76,
+              "type": "REFRESHED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 77,
+              "type": "DRAWN",
+              "actorId": "player"
+            },
+            {
+              "sequence": 78,
+              "type": "DON_ADDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 79,
+              "type": "DON_RETURNED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 80,
+              "type": "DON_RETURNED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 81,
+              "type": "DON_RETURNED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 82,
+              "type": "DON_RETURNED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 83,
+              "type": "DON_RETURNED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 84,
+              "type": "DON_RETURNED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 85,
+              "type": "DON_RETURNED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 86,
+              "type": "LIFE_TRASHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 87,
+              "type": "CARD_TRASHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c38"
+            },
+            {
+              "sequence": 88,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 89,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 90,
+              "type": "BATTLE_PAIRED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c24"
+            },
+            {
+              "sequence": 91,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c24"
+            },
+            {
+              "sequence": 92,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c24"
+            },
+            {
+              "sequence": 93,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 94,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 95,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 96,
+              "type": "COUNTER_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c49"
+            },
+            {
+              "sequence": 97,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 98,
+              "type": "MAIN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 99,
+              "type": "TURN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 100,
+              "type": "REFRESHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 101,
+              "type": "DRAWN",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 102,
+              "type": "DON_ADDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 103,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "ST01-009@m0-2026-10-10",
+                "printingKey": "ST01-009::standard"
+              }
+            },
+            {
+              "sequence": 104,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c20"
+            },
+            {
+              "sequence": 105,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c56"
+            },
+            {
+              "sequence": 106,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c51"
+            },
+            {
+              "sequence": 107,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c57"
+            },
+            {
+              "sequence": 108,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 109,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 110,
+              "type": "COUNTER_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c31"
+            },
+            {
+              "sequence": 111,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 112,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 113,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c15"
+            },
+            {
+              "sequence": 114,
+              "type": "BATTLE_PAIRED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c15"
+            },
+            {
+              "sequence": 115,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 116,
+              "type": "COUNTER_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c35"
+            },
+            {
+              "sequence": 117,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c15"
+            },
+            {
+              "sequence": 118,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 119,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 120,
+              "type": "MAIN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 121,
+              "type": "TURN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 122,
+              "type": "REFRESHED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 123,
+              "type": "DRAWN",
+              "actorId": "player"
+            },
+            {
+              "sequence": 124,
+              "type": "DON_ADDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 125,
+              "type": "DON_ATTACHED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c58"
+            },
+            {
+              "sequence": 126,
+              "type": "DON_ATTACHED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c59"
+            },
+            {
+              "sequence": 127,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 128,
+              "type": "BATTLE_PAIRED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c15"
+            },
+            {
+              "sequence": 129,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c15"
+            },
+            {
+              "sequence": 130,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c15"
+            },
+            {
+              "sequence": 131,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 132,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 133,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 134,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 135,
+              "type": "LIFE_DAMAGED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 136,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 137,
+              "type": "MAIN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 138,
+              "type": "TURN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 139,
+              "type": "REFRESHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 140,
+              "type": "DRAWN",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 141,
+              "type": "DON_ADDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 142,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "ST01-007@m0-2026-10-10",
+                "printingKey": "ST01-007::standard"
+              }
+            },
+            {
+              "sequence": 143,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c9"
+            },
+            {
+              "sequence": 144,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "ST01-006@m0-2026-10-10",
+                "printingKey": "ST01-006::standard"
+              }
+            },
+            {
+              "sequence": 145,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c7"
+            },
+            {
+              "sequence": 146,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c51"
+            },
+            {
+              "sequence": 147,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c57"
+            },
+            {
+              "sequence": 148,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c53"
+            },
+            {
+              "sequence": 149,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 150,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 151,
+              "type": "COUNTER_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c41"
+            },
+            {
+              "sequence": 152,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 153,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 154,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c20"
+            },
+            {
+              "sequence": 155,
+              "type": "BATTLE_PAIRED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c20"
+            },
+            {
+              "sequence": 156,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 157,
+              "type": "COUNTER_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c21"
+            },
+            {
+              "sequence": 158,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c20"
+            },
+            {
+              "sequence": 159,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 160,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 161,
+              "type": "MAIN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 162,
+              "type": "TURN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 163,
+              "type": "REFRESHED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 164,
+              "type": "DRAWN",
+              "actorId": "player"
+            },
+            {
+              "sequence": 165,
+              "type": "DON_ADDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 166,
+              "type": "CARD_REVEALED",
+              "actorId": "player",
+              "revealedCard": {
+                "definitionId": "ST04-011@m3-2026-10-12",
+                "printingKey": "ST04-011::standard"
+              }
+            },
+            {
+              "sequence": 167,
+              "type": "CARD_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c44"
+            },
+            {
+              "sequence": 168,
+              "type": "DON_ATTACHED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c60"
+            },
+            {
+              "sequence": 169,
+              "type": "DON_ATTACHED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c51"
+            },
+            {
+              "sequence": 170,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 171,
+              "type": "BLOCKER_ACTIVATED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c7"
+            },
+            {
+              "sequence": 172,
+              "type": "BATTLE_PAIRED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c7"
+            },
+            {
+              "sequence": 173,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c7"
+            },
+            {
+              "sequence": 174,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c7"
+            },
+            {
+              "sequence": 175,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 176,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 177,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 178,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 179,
+              "type": "LIFE_PAID",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 180,
+              "type": "COUNTER_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c44"
+            },
+            {
+              "sequence": 181,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 182,
+              "type": "MAIN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 183,
+              "type": "TURN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 184,
+              "type": "REFRESHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 185,
+              "type": "DRAWN",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 186,
+              "type": "DON_ADDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 187,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "OP06-009@official-2026-10-11",
+                "printingKey": "OP06-009::standard"
+              }
+            },
+            {
+              "sequence": 188,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c31"
+            },
+            {
+              "sequence": 189,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "ST01-009@m0-2026-10-10",
+                "printingKey": "ST01-009::standard"
+              }
+            },
+            {
+              "sequence": 190,
+              "type": "CARD_TRASHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c9"
+            },
+            {
+              "sequence": 191,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c17"
+            },
+            {
+              "sequence": 192,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c51"
+            },
+            {
+              "sequence": 193,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 194,
+              "type": "BATTLE_PAIRED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 195,
+              "type": "CHARACTER_KO",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 196,
+              "type": "CHARACTER_KO",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p0:c29"
+            },
+            {
+              "sequence": 197,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 198,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 199,
+              "type": "MAIN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 200,
+              "type": "TURN_ENDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 201,
+              "type": "REFRESHED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 202,
+              "type": "DRAWN",
+              "actorId": "player"
+            },
+            {
+              "sequence": 203,
+              "type": "DON_ADDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 204,
+              "type": "CARD_REVEALED",
+              "actorId": "player",
+              "revealedCard": {
+                "definitionId": "ST04-007@m3-2026-10-12",
+                "printingKey": "ST04-007::standard"
+              }
+            },
+            {
+              "sequence": 205,
+              "type": "CARD_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c7"
+            },
+            {
+              "sequence": 206,
+              "type": "DON_ATTACHED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c60"
+            },
+            {
+              "sequence": 207,
+              "type": "DON_ATTACHED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c51"
+            },
+            {
+              "sequence": 208,
+              "type": "ATTACK_DECLARED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 209,
+              "type": "BLOCKER_ACTIVATED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c31"
+            },
+            {
+              "sequence": 210,
+              "type": "BATTLE_PAIRED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c31"
+            },
+            {
+              "sequence": 211,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c31"
+            },
+            {
+              "sequence": 212,
+              "type": "CHARACTER_KO",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p1:c31"
+            },
+            {
+              "sequence": 213,
+              "type": "CHARACTER_BATTLED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c0"
+            },
+            {
+              "sequence": 214,
+              "type": "BATTLE_RESOLVED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 215,
+              "type": "MAIN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 216,
+              "type": "TURN_ENDED",
+              "actorId": "player"
+            },
+            {
+              "sequence": 217,
+              "type": "REFRESHED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 218,
+              "type": "DRAWN",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 219,
+              "type": "DON_ADDED",
+              "actorId": "bot"
+            },
+            {
+              "sequence": 220,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "OP06-013@official-2026-10-11",
+                "printingKey": "OP06-013::standard"
+              }
+            },
+            {
+              "sequence": 221,
+              "type": "CARD_PLAYED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c34"
+            },
+            {
+              "sequence": 222,
+              "type": "CARD_REVEALED",
+              "actorId": "bot",
+              "revealedCard": {
+                "definitionId": "OP06-013@official-2026-10-11",
+                "printingKey": "OP06-013::standard"
+              }
+            },
+            {
+              "sequence": 223,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c54"
+            },
+            {
+              "sequence": 224,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c52"
+            },
+            {
+              "sequence": 225,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c57"
+            },
+            {
+              "sequence": 226,
+              "type": "DON_ATTACHED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c53"
+            },
+            {
+              "sequence": 227,
+              "type": "ATTACK_DECLARED",
+              "actorId": "bot",
+              "publicInstanceId": "play-mv8dz2n1:p1:c0"
+            },
+            {
+              "sequence": 228,
+              "type": "COUNTER_PLAYED",
+              "actorId": "player",
+              "publicInstanceId": "play-mv8dz2n1:p0:c50"
+            }
+          ]
+        },
+        "legalActions": [
+          {
+            "type": "PASS_COUNTER",
+            "battleId": "play-mv8dz2n1:battle:213"
+          }
+        ],
+        "privateCards": {
+          "options": {},
+          "lifeTrigger": null
+        },
+        "botLevel": "hard",
+        "choiceSource": null,
+        "cards": {
+          "ST04-001::standard": {
+            "definitionId": "ST04-001@m3-2026-10-12",
+            "number": "ST04-001",
+            "name": "Kaido",
+            "category": "LEADER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": null,
+            "power": 5000,
+            "counter": null,
+            "life": 5,
+            "text": "[Activate: Main] [Once Per Turn] DON!! −7 (You may return the specified number of DON!! cards from your field to your DON!! deck.): Trash up to 1 of your opponent's cards from the top of their Life cards.",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST04-001.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST04-009::standard": {
+            "definitionId": "ST04-009@m3-2026-10-12",
+            "number": "ST04-009",
+            "name": "Ginrummy",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 1,
+            "power": 3000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST04-009.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST04-011::standard": {
+            "definitionId": "ST04-011@m3-2026-10-12",
+            "number": "ST04-011",
+            "name": "Black Maria",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 2,
+            "power": 2000,
+            "counter": 1000,
+            "life": null,
+            "text": "[Blocker] (After your opponent declares an attack, you may rest this card to make it the new target of the attack.)",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST04-011.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST04-007::standard": {
+            "definitionId": "ST04-007@m3-2026-10-12",
+            "number": "ST04-007",
+            "name": "Sheepshead",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 2,
+            "power": 4000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST04-007.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST04-013::standard": {
+            "definitionId": "ST04-013@m3-2026-10-12",
+            "number": "ST04-013",
+            "name": "X.Drake",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 3,
+            "power": 5000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST04-013.png",
+            "certified": true,
+            "language": "en"
+          },
+          "OP04-062::standard": {
+            "definitionId": "OP04-062@m3-2026-10-12",
+            "number": "OP04-062",
+            "name": "Bananagator",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 5,
+            "power": 7000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP04-062.png",
+            "certified": true,
+            "language": "en"
+          },
+          "OP01-107::standard": {
+            "definitionId": "OP01-107@m3-2026-10-12",
+            "number": "OP01-107",
+            "name": "Babanuki",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 5,
+            "power": 7000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP01-107.png",
+            "certified": true,
+            "language": "en"
+          },
+          "OP01-092::standard": {
+            "definitionId": "OP01-092@m3-2026-10-12",
+            "number": "OP01-092",
+            "name": "Urashima",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 7,
+            "power": 9000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP01-092.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST04-012::standard": {
+            "definitionId": "ST04-012@m3-2026-10-12",
+            "number": "ST04-012",
+            "name": "Page One",
+            "category": "CHARACTER",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 4,
+            "power": 6000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST04-012.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST04-016::standard": {
+            "definitionId": "ST04-016@m3-2026-10-12",
+            "number": "ST04-016",
+            "name": "Souffle ardent",
+            "category": "EVENT",
+            "colors": [
+              "PURPLE"
+            ],
+            "cost": 1,
+            "power": null,
+            "counter": null,
+            "life": null,
+            "text": "[Contre] DON!! -1 (Vous pouvez renvoyer à votre deck DON!! le nombre indiqué de cartes DON!! de votre terrain.) : Jusqu'à 1 de vos Leaders ou Personnages gagne +4000 de puissance pour tout le combat.",
+            "trigger": "",
+            "imageUrl": "https://fr.onepiece-cardgame.com/images/cardlist/card/ST04-016_p1.webp?2508202",
+            "certified": true,
+            "language": "fr"
+          },
+          "ST01-001::standard": {
+            "definitionId": "ST01-001@m0-2026-10-10",
+            "number": "ST01-001",
+            "name": "Monkey.D.Luffy",
+            "category": "LEADER",
+            "colors": [
+              "RED"
+            ],
+            "cost": null,
+            "power": 5000,
+            "counter": null,
+            "life": 5,
+            "text": "[Activate: Main] [Once Per Turn] Give this Leader or 1 of your Characters up to 1 rested DON!! card.",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST01-001.png",
+            "certified": true,
+            "language": "en"
+          },
+          "OP06-013::standard": {
+            "definitionId": "OP06-013@official-2026-10-11",
+            "number": "OP06-013",
+            "name": "Monkey.D.Luffy",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 2,
+            "power": 3000,
+            "counter": 1000,
+            "life": null,
+            "text": "[On Play] Look at 3 cards from the top of your deck; reveal up to 1 {FILM} type card and add it to your hand. Then, place the rest at the bottom of your deck in any order.",
+            "trigger": "[Trigger] Activate this card’s [On Play] effect.",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP06-013.png",
+            "certified": true,
+            "language": "en"
+          },
+          "OP01-016::standard": {
+            "definitionId": "OP01-016@m3-2026-10-12",
+            "number": "OP01-016",
+            "name": "Nami",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 1,
+            "power": 2000,
+            "counter": 1000,
+            "life": null,
+            "text": "[Jouée] Regardez 5 cartes du dessus de votre deck, révélez jusqu'à 1 carte de type {Équipage de Chapeau de paille} autre que [Nami] et ajoutez-la à votre main. Puis, placez les cartes restantes au-dessous de votre deck dans l'ordre de votre choix.",
+            "trigger": "",
+            "imageUrl": "https://fr.onepiece-cardgame.com/images/cardlist/card/OP01-016_p1.webp?2508202",
+            "certified": true,
+            "language": "fr"
+          },
+          "ST01-009::standard": {
+            "definitionId": "ST01-009@m0-2026-10-10",
+            "number": "ST01-009",
+            "name": "Nefeltari Vivi",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 2,
+            "power": 4000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST01-009.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST01-008::standard": {
+            "definitionId": "ST01-008@m0-2026-10-10",
+            "number": "ST01-008",
+            "name": "Nico Robin",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 3,
+            "power": 5000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST01-008.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST01-010::standard": {
+            "definitionId": "ST01-010@m0-2026-10-10",
+            "number": "ST01-010",
+            "name": "Franky",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 4,
+            "power": 6000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/ST01-010.png",
+            "certified": true,
+            "language": "en"
+          },
+          "OP06-018::standard": {
+            "definitionId": "OP06-018@official-2026-10-11",
+            "number": "OP06-018",
+            "name": "Gum-Gum King Kong Gatling",
+            "category": "EVENT",
+            "colors": [
+              "RED"
+            ],
+            "cost": 2,
+            "power": null,
+            "counter": null,
+            "life": null,
+            "text": "[Main] Up to 1 of your Leader or Character cards gains +3000 power during this turn. Then, if your opponent has a Character with 7000 power or more, up to 1 of your Leader or Character cards gains +1000 power during this turn.",
+            "trigger": "[Trigger] K.O. up to 1 of your opponent’s Characters with 5000 power or less.",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP06-018.png",
+            "certified": false,
+            "language": "en"
+          },
+          "ST01-014::standard": {
+            "definitionId": "ST01-014@m3-2026-10-12",
+            "number": "ST01-014",
+            "name": "Guard Point",
+            "category": "EVENT",
+            "colors": [
+              "RED"
+            ],
+            "cost": 1,
+            "power": null,
+            "counter": null,
+            "life": null,
+            "text": "[Contre] Jusqu'à 1 de vos Leaders ou Personnages gagne +3000 de puissance pour tout le combat.",
+            "trigger": "[Déclenchement] Jusqu'à 1 de vos Leaders ou Personnages gagne +1000 de puissance pour tout le tour.",
+            "imageUrl": "https://fr.onepiece-cardgame.com/images/cardlist/card/ST01-014_p1.webp?2508202",
+            "certified": true,
+            "language": "fr"
+          },
+          "P-016::standard": {
+            "definitionId": "P-016@m0-2026-10-10",
+            "number": "P-016",
+            "name": "Shanks",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 8,
+            "power": 10000,
+            "counter": 1000,
+            "life": null,
+            "text": "",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/P-016.png",
+            "certified": true,
+            "language": "en"
+          },
+          "ST01-006::standard": {
+            "definitionId": "ST01-006@m0-2026-10-10",
+            "number": "ST01-006",
+            "name": "Tony-Tony Chopper",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 1,
+            "power": 1000,
+            "counter": null,
+            "life": null,
+            "text": "[Bloqueur] (Après que votre adversaire a déclaré une attaque, vous pouvez épuiser cette carte pour qu'elle devienne la cible de l'attaque.)",
+            "trigger": "",
+            "imageUrl": "https://fr.onepiece-cardgame.com/images/cardlist/card/ST01-006_p1.webp?2508202",
+            "certified": true,
+            "language": "fr"
+          },
+          "OP06-017::standard": {
+            "definitionId": "OP06-017@m3-2026-10-12",
+            "number": "OP06-017",
+            "name": "Meteor-Strike of Love",
+            "category": "EVENT",
+            "colors": [
+              "RED"
+            ],
+            "cost": 2,
+            "power": null,
+            "counter": null,
+            "life": null,
+            "text": "[Main]/[Counter] You may add 1 card from the top of your Life cards to your hand: Up to 1 of your Leader or Character cards gains +3000 power during this turn.",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP06-017.png",
+            "certified": false,
+            "language": "en"
+          },
+          "ST01-007::standard": {
+            "definitionId": "ST01-007@m0-2026-10-10",
+            "number": "ST01-007",
+            "name": "Nami",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 1,
+            "power": 1000,
+            "counter": 1000,
+            "life": null,
+            "text": "[Activation : Principale] [Une fois par tour] Donnez jusqu'à 1 carte DON!! épuisée à votre Leader ou à 1 de vos Personnages.",
+            "trigger": "",
+            "imageUrl": "https://fr.onepiece-cardgame.com/images/cardlist/card/ST01-007_p1.webp?2508202",
+            "certified": true,
+            "language": "fr"
+          },
+          "OP06-009::standard": {
+            "definitionId": "OP06-009@official-2026-10-11",
+            "number": "OP06-009",
+            "name": "Shuraiya",
+            "category": "CHARACTER",
+            "colors": [
+              "RED"
+            ],
+            "cost": 3,
+            "power": 4000,
+            "counter": 1000,
+            "life": null,
+            "text": "[Blocker] [When Attacking]/[On Block] [Once Per Turn] This Character’s base power becomes the same as your opponent’s Leader until the start of your next turn.",
+            "trigger": "",
+            "imageUrl": "https://en.onepiece-cardgame.com/images/cardlist/card/OP06-009.png",
+            "certified": false,
+            "language": "en"
+          }
+        }
+      },
+      "presentation": [
+        {
+          "key": "e228",
+          "kind": "counter",
+          "mine": true,
+          "text": "Événement de contre : Souffle ardent",
+          "cards": [
+            "ST04-016::standard"
+          ],
+          "ids": [
+            "play-mv8dz2n1:p0:c50"
+          ],
+          "duration": 2500,
+          "counter": {
+            "category": "EVENT",
+            "value": null
+          },
+          "battleId": "play-mv8dz2n1:battle:213",
+          "faces": [
+            {
+              "definitionId": "ST04-016@m3-2026-10-12",
+              "number": "ST04-016",
+              "name": "Souffle ardent",
+              "category": "EVENT",
+              "colors": [
+                "PURPLE"
+              ],
+              "cost": 1,
+              "power": null,
+              "counter": null,
+              "life": null,
+              "text": "[Contre] DON!! -1 (Vous pouvez renvoyer à votre deck DON!! le nombre indiqué de cartes DON!! de votre terrain.) : Jusqu'à 1 de vos Leaders ou Personnages gagne +4000 de puissance pour tout le combat.",
+              "trigger": "",
+              "imageUrl": "https://fr.onepiece-cardgame.com/images/cardlist/card/ST04-016_p1.webp?2508202",
+              "certified": true,
+              "language": "fr"
+            }
+          ]
+        },
+        {
+          "key": "r216",
+          "kind": "don-rest",
+          "mine": true,
+          "text": "DON!! reposés",
+          "cards": [],
+          "ids": [],
+          "duration": 400,
+          "faces": []
+        }
+      ]
+    }
+  ]
+}

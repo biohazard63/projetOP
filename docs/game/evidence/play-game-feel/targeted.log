@@ -1,0 +1,71 @@
+TAP version 13
+# Subtest: M5-2: animations come only from events after the last shown one, in order, with hidden cards face down
+ok 1 - M5-2: animations come only from events after the last shown one, in order, with hidden cards face down
+  ---
+  duration_ms: 7383.971666
+  type: 'test'
+  ...
+# Subtest: M5-3: a drop becomes an intent only when a legal action allows it
+ok 2 - M5-3: a drop becomes an intent only when a legal action allows it
+  ---
+  duration_ms: 667.276375
+  type: 'test'
+  ...
+# Subtest: M5-5: the tutorial covers Leader/Life, DON!!, playing, attacking, Counter, Blocker, end of turn and victory
+ok 3 - M5-5: the tutorial covers Leader/Life, DON!!, playing, attacking, Counter, Blocker, end of turn and victory
+  ---
+  duration_ms: 0.13025
+  type: 'test'
+  ...
+# Subtest: M5-5: statistics count games, wins, losses and concessions by deck and level for the user only
+ok 4 - M5-5: statistics count games, wins, losses and concessions by deck and level for the user only
+  ---
+  duration_ms: 493.813958
+  type: 'test'
+  ...
+# Subtest: M5-2: every animation kind is produced from real server views (draw … result), hidden cards staying face down
+ok 5 - M5-2: every animation kind is produced from real server views (draw … result), hidden cards staying face down
+  ---
+  duration_ms: 143984.104333
+  type: 'test'
+  ...
+# node:internal/modules/run_main:123
+#     triggerUncaughtException(
+#     ^
+# Error: Transform failed with 1 error:
+# /Users/quentin/Documents/GitHub/projetOP/cardgame/tests/play-presentation.test.ts:13:13: ERROR: Top-level await is currently not supported with the "cjs" output format
+#     at failureErrorWithLog (/Users/quentin/Documents/GitHub/projetOP/cardgame/node_modules/esbuild/lib/main.js:1752:15)
+#     at /Users/quentin/Documents/GitHub/projetOP/cardgame/node_modules/esbuild/lib/main.js:1019:50
+#     at responseCallbacks.<computed> (/Users/quentin/Documents/GitHub/projetOP/cardgame/node_modules/esbuild/lib/main.js:886:9)
+#     at handleIncomingPacket (/Users/quentin/Documents/GitHub/projetOP/cardgame/node_modules/esbuild/lib/main.js:941:12)
+#     at Socket.readFromStdout (/Users/quentin/Documents/GitHub/projetOP/cardgame/node_modules/esbuild/lib/main.js:864:7)
+#     at Socket.emit (node:events:519:28)
+#     at addChunk (node:internal/streams/readable:561:12)
+#     at readableAddChunkPushByteMode (node:internal/streams/readable:512:3)
+#     at Readable.push (node:internal/streams/readable:392:5)
+#     at Pipe.onStreamRead (node:internal/stream_base_commons:189:23) {
+#   name: 'TransformError',
+#   code: 'ERR_REQUIRE_ASYNC_MODULE'
+# }
+# Node.js v22.22.2
+# Subtest: tests/play-presentation.test.ts
+not ok 2 - tests/play-presentation.test.ts
+  ---
+  duration_ms: 443.453167
+  type: 'test'
+  location: '/Users/quentin/Documents/GitHub/projetOP/cardgame/tests/play-presentation.test.ts:1:1'
+  failureType: 'testCodeFailure'
+  exitCode: 1
+  signal: ~
+  error: 'test failed'
+  code: 'ERR_TEST_FAILURE'
+  ...
+1..6
+# tests 6
+# suites 0
+# pass 5
+# fail 1
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 153790.185

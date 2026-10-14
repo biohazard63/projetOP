@@ -1,0 +1,132 @@
+{
+  "generatedAt": "2026-10-14T17:21:00.877Z",
+  "purpose": "Public Starter Leader presentation artwork; not a card catalogue",
+  "assets": {
+    "OP01-060": {
+      "path": "/images/play/leaders/OP01-060.webp",
+      "source": "https://fr.onepiece-cardgame.com/images/cardlist/card/OP01-060_p1.webp?2508202",
+      "sha256": "1545145a6dd239230bfc3bace94c0a58305bb10358544adf8294b7e0b50420ac"
+    },
+    "OP02-001": {
+      "path": "/images/play/leaders/OP02-001.webp",
+      "source": "https://fr.onepiece-cardgame.com/images/cardlist/card/OP02-001_p1.webp?2508202",
+      "sha256": "f79b4cb2c39bcb846b1066e4c09124f5a803c11643ed6f32345d88ecb8e13f22"
+    },
+    "OP02-093": {
+      "path": "/images/play/leaders/OP02-093.webp",
+      "source": "https://fr.onepiece-cardgame.com/images/cardlist/card/OP02-093_p1.webp?2508202",
+      "sha256": "14a5b8721fe799b7f5e86b8df29ad780feb893a8ef1e520f77af519ef348cdcb"
+    },
+    "OP03-099": {
+      "path": "/images/play/leaders/OP03-099.webp",
+      "source": "https://fr.onepiece-cardgame.com/images/cardlist/card/OP03-099_p1.webp?2508202",
+      "sha256": "11908e5211790d94b8afbb674f41bf90202efcc7b161ac976958be83f9aba920"
+    },
+    "OP05-060": {
+      "path": "/images/play/leaders/OP05-060.webp",
+      "source": "https://fr.onepiece-cardgame.com/images/cardlist/card/OP05-060_p2.webp?2508202",
+      "sha256": "9d1647d282821280fe35ae9baf5b909c09d5f4dbaf4467ff5699b0f31a117eec"
+    },
+    "OP06-022": {
+      "path": "/images/play/leaders/OP06-022.webp",
+      "source": "https://fr.onepiece-cardgame.com/images/cardlist/card/OP06-022_p1.webp?2508202",
+      "sha256": "e793244a0c705e6d594e54518549dcf6a8aa85199ffbf6b527d9b1995196c059"
+    },
+    "OP09-001": {
+      "path": "/images/play/leaders/OP09-001.webp",
+      "source": "https://fr.onepiece-cardgame.com/images/cardlist/card/OP09-001.webp?2508202",
+      "sha256": "d516293b7dc365eddb16ebd6ad65390b524f22ba45ab033cbf1af74fa70293ba"
+    },
+    "OP09-042": {
+      "path": "/images/play/leaders/OP09-042.webp",
+      "source": "https://fr.onepiece-cardgame.com/images/cardlist/card/OP09-042.webp?2508202",
+      "sha256": "bb216b7e72f1857dec34e5630f7c21d53533310b40943c6e0c7a3b21953ce5c4"
+    },
+    "OP09-061": {
+      "path": "/images/play/leaders/OP09-061.webp",
+      "source": "https://fr.onepiece-cardgame.com/images/cardlist/card/OP09-061.webp?2508202",
+      "sha256": "e5d4a00a8acdf4af785909c006ec3d0c1605342c3881f5ca43df8d060d0d49c2"
+    },
+    "ST01-001": {
+      "path": "/images/play/leaders/ST01-001.png",
+      "source": "https://en.onepiece-cardgame.com/images/cardlist/card/ST01-001.png",
+      "sha256": "e9587b994cf7216bfd20513cc55f602421097ea30781aeb6bad9c8f948a664e7"
+    },
+    "ST02-001": {
+      "path": "/images/play/leaders/ST02-001.png",
+      "source": "https://en.onepiece-cardgame.com/images/cardlist/card/ST02-001.png",
+      "sha256": "548622643a86d30dc7e24a958a66735b2e9f85d400c88d0c69bb3eff217503c7"
+    },
+    "ST03-001": {
+      "path": "/images/play/leaders/ST03-001.png",
+      "source": "https://en.onepiece-cardgame.com/images/cardlist/card/ST03-001.png",
+      "sha256": "1ae15ef8e56e59d3c54abb40678379a0845254b3eb305744dd562787fffb8e02"
+    },
+    "ST04-001": {
+      "path": "/images/play/leaders/ST04-001.png",
+      "source": "https://en.onepiece-cardgame.com/images/cardlist/card/ST04-001.png",
+      "sha256": "dfcfab4b83acbe9b95d7f53f72a978df88124168cafa92638fdc767df540fd12"
+    },
+    "ST05-001": {
+      "path": "/images/play/leaders/ST05-001.png",
+      "source": "https://en.onepiece-cardgame.com/images/cardlist/card/ST05-001.png",
+      "sha256": "91ef0eb102b3654b05dbc0ce2ff9d68459d13c69be4d079912c69693dbd32e57"
+    },
+    "ST06-001": {
+      "path": "/images/play/leaders/ST06-001.png",
+      "source": "https://en.onepiece-cardgame.com/images/cardlist/card/ST06-001.png",
+      "sha256": "179926ceda5aa93b7d64475fa27dd2271228c87e3cce339f67d32d34ccedf7c6"
+    },
+    "ST07-001": {
+      "path": "/images/play/leaders/ST07-001.png",
+      "source": "https://en.onepiece-cardgame.com/images/cardlist/card/ST07-001.png",
+      "sha256": "2903e2690fbd399671419dd52458c58a5c54195c1c0806eb987e4a1962039845"
+    },
+    "ST08-001": {
+      "path": "/images/play/leaders/ST08-001.png",
+      "source": "https://en.onepiece-cardgame.com/images/cardlist/card/ST08-001.png",
+      "sha256": "1ae25bef332008e1a36751e24f9c505b984def2ddd771e8cd55b42516d66202a"
+    },
+    "ST09-001": {
+      "path": "/images/play/leaders/ST09-001.png",
+      "source": "https://en.onepiece-cardgame.com/images/cardlist/card/ST09-001.png",
+      "sha256": "3f5df241d965cc1ce67fb92eb769af032067fb201356fcb51195a51d762813d9"
+    },
+    "ST10-001": {
+      "path": "/images/play/leaders/ST10-001.png",
+      "source": "https://en.onepiece-cardgame.com/images/cardlist/card/ST10-001.png",
+      "sha256": "bd678f24e49e40f3816ecbfa0e391fb2bde0ec79122f842faa339d71ff048e52"
+    },
+    "ST10-002": {
+      "path": "/images/play/leaders/ST10-002.png",
+      "source": "https://en.onepiece-cardgame.com/images/cardlist/card/ST10-002.png",
+      "sha256": "b9edd9174476112e40a444227a170d3fb14b06776fe40206f385047293b043f2"
+    },
+    "ST10-003": {
+      "path": "/images/play/leaders/ST10-003.png",
+      "source": "https://en.onepiece-cardgame.com/images/cardlist/card/ST10-003.png",
+      "sha256": "df0b4b19aeae985b5240b117191fa3f466ee7a081b5138e235f874489263c846"
+    },
+    "ST11-001": {
+      "path": "/images/play/leaders/ST11-001.webp",
+      "source": "https://fr.onepiece-cardgame.com/images/cardlist/card/ST11-001_p1.webp?2508202",
+      "sha256": "56a53592b8363b293ded645a3f0db9065bfe4c78d8c91a908c425c709739615e"
+    },
+    "ST12-001": {
+      "path": "/images/play/leaders/ST12-001.png",
+      "source": "https://en.onepiece-cardgame.com/images/cardlist/card/ST12-001.png",
+      "sha256": "1a88eaea8129ed5dd1b1b6ba1869706da45ee8cae37fe43662c40f2367704285"
+    },
+    "ST14-001": {
+      "path": "/images/play/leaders/ST14-001.png",
+      "source": "https://en.onepiece-cardgame.com/images/cardlist/card/ST14-001.png",
+      "sha256": "3225767d37a5483922dcb9d1d5107a235674e6ff2af2171279881449c46e6ae1"
+    },
+    "ST21-001": {
+      "path": "/images/play/leaders/ST21-001.webp",
+      "source": "https://fr.onepiece-cardgame.com/images/cardlist/card/ST21-001.webp?2508202",
+      "sha256": "3ae4a42123ecc37badc28e23f0673be4ed1aa9cd35bc98c41ab60d162bf02795"
+    }
+  },
+  "failures": []
+}

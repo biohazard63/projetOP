@@ -1,0 +1,24 @@
+[
+  {
+    "viewport": "1440x900",
+    "starterCount": 27,
+    "leader": "ST01-001",
+    "onlyStarters": true,
+    "allLeaderImagesLoaded": true,
+    "search": true,
+    "explicitStart": true,
+    "realMemoryGame": true,
+    "status": "PASS"
+  },
+  {
+    "viewport": "390x844",
+    "starterCount": 27,
+    "leader": "ST01-001",
+    "onlyStarters": true,
+    "allLeaderImagesLoaded": true,
+    "search": true,
+    "explicitStart": true,
+    "realMemoryGame": true,
+    "status": "PASS"
+  }
+]

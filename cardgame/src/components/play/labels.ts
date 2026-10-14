@@ -29,9 +29,9 @@ const MINE: Record<string, string> = {
   LIFE_TRASHED: 'Une de vos Vies est défaussée', LIFE_TO_HAND: 'Vous ajoutez une Vie à votre main', LIFE_ADDED: 'Une carte rejoint vos Vies', DON_ATTACHED: 'Vous donnez un DON!!', HAND_REDRAWN: 'Vous repiochez votre main', TURN_ENDED: 'Fin de votre tour',
 }
 const BOT: Record<string, string> = {
-  DRAWN: 'Le bot pioche', DON_ADDED: 'Le bot reçoit des DON!!', CARD_PLAYED: 'Le bot joue une carte', ATTACK_DECLARED: 'Le bot attaque', BLOCKER_ACTIVATED: 'Le bot bloque',
-  COUNTER_PLAYED: 'Le bot joue un Counter', LIFE_DAMAGED: 'Le bot perd une Vie', TRIGGER_ACTIVATED: 'Le bot active un Trigger', LIFE_PAID: 'Le bot paie une Vie',
-  LIFE_TRASHED: 'Une Vie du bot est défaussée', LIFE_TO_HAND: 'Le bot ajoute une Vie à sa main', LIFE_ADDED: 'Une carte rejoint les Vies du bot', DON_ATTACHED: 'Le bot donne un DON!!', HAND_REDRAWN: 'Le bot repioche sa main', TURN_ENDED: 'Fin du tour du bot',
+  DRAWN: 'L’adversaire pioche', DON_ADDED: 'L’adversaire reçoit des DON!!', CARD_PLAYED: 'L’adversaire joue une carte', ATTACK_DECLARED: 'L’adversaire attaque', BLOCKER_ACTIVATED: 'L’adversaire bloque',
+  COUNTER_PLAYED: 'L’adversaire joue un Counter', LIFE_DAMAGED: 'L’adversaire perd une Vie', TRIGGER_ACTIVATED: 'L’adversaire active un Trigger', LIFE_PAID: 'L’adversaire paie une Vie',
+  LIFE_TRASHED: 'Une Vie du bot est défaussée', LIFE_TO_HAND: 'L’adversaire ajoute une Vie à sa main', LIFE_ADDED: 'Une carte rejoint les Vies du bot', DON_ATTACHED: 'L’adversaire donne un DON!!', HAND_REDRAWN: 'L’adversaire repioche sa main', TURN_ENDED: 'Fin du tour du bot',
 }
-const ANY: Record<string, string> = { CHARACTER_KO: 'Un Personnage est K.O.', BATTLE_RESOLVED: 'Combat résolu', GAME_ENDED: 'Fin de la partie' }
+const ANY: Record<string, string> = { CHARACTER_KO: 'Un Personnage est K.O.', BATTLE_RESOLVED: 'Combat terminé', GAME_ENDED: 'Fin de la partie' }
 export const eventLabel = (type: string, mine: boolean): string | null => ANY[type] ?? (mine ? MINE : BOT)[type] ?? null

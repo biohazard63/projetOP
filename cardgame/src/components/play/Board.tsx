@@ -1,5 +1,5 @@
 'use client'
-import { useCallback, useEffect, useMemo, useState, type CSSProperties, type ReactNode } from 'react'
+import { useCallback, useEffect, useMemo, useState, useRef, type CSSProperties, type ReactNode } from 'react'
 import Image from 'next/image'
 import type { View } from './api'
 import type { AnimStep, LogEntry } from './anim'
@@ -8,16 +8,23 @@ import { attachedCount, cardActions, cardName, display, dropIntent, draggable, f
 import { useGestures, type DragSource } from './gestures'
 import { Tutorial, type TutorialState } from './Tutorial'
 import { handFanLayout } from './handLayout'
+import { BattleArrow } from './BattleArrow'
+import { presentationDuration } from './presentationTiming'
 import { characterPositions } from './boardLayout'
 
 type Send = (intent: Intent) => void
 const LEVELS: Record<string, string> = { easy: 'Facile', normal: 'Normal', hard: 'Difficile' }
 
 // ---------- card faces ----------
-export function CardFace({ view, printingKey, rested, power, attached, size = 'md', hidden, label }: { view: View; printingKey?: string | null; rested?: boolean; power?: number | null; attached?: number; size?: 'xs' | 'sm' | 'md' | 'lg'; hidden?: boolean; label?: string }) {
-  const card = display(view, printingKey)
+function CardBack({ size = 'sm', label = 'Carte cachée', don = false }: { size?: 'xs' | 'sm' | 'md' | 'lg'; label?: string; don?: boolean }) {
+  return <div className={`play-card back ${size}${don ? ' don-deck-back' : ''}`} aria-label={label}>
+    <Image src="/images/card-back.jpg" alt="" fill sizes={size === 'lg' ? '320px' : size === 'md' ? '150px' : '90px'} draggable={false} />
+  </div>
+}
+export function CardFace({ view, printingKey, rested, power, attached, size = 'md', hidden, label, snapshot }: { snapshot?: View['cards'][string] | null; view: View; printingKey?: string | null; rested?: boolean; power?: number | null; attached?: number; size?: 'xs' | 'sm' | 'md' | 'lg'; hidden?: boolean; label?: string }) {
+  const card = snapshot ?? display(view, printingKey)
   const [broken, setBroken] = useState(false)
-  if (hidden || !card) return <div className={`play-card back ${size}`} aria-label={label ?? 'Carte cachée'}><span>MUGIWARA</span></div>
+  if (hidden || !card) return <CardBack size={size} label={label} />
   return <div className={`play-card ${size}${rested ? ' rested' : ''}`} aria-label={`${card.name}${rested ? ', épuisé' : ''}`}>
     {/* Official artwork goes through the same-origin optimizer: Bandai's Cross-Origin-Resource-Policy blocks direct <img>. */}
     {!broken && card.imageUrl ? <Image src={card.imageUrl} alt="" fill sizes={size === 'lg' ? '320px' : size === 'md' ? '150px' : '90px'} loading={size === 'lg' ? 'eager' : 'lazy'} draggable={false} onError={() => setBroken(true)} /> : <div className="play-card-text"><strong>{card.name}</strong><small>{card.number}</small></div>}
@@ -73,11 +80,11 @@ function CardSheet({ view, id, onClose, act }: { view: View; id: string; onClose
     {actions.length ? <ActionList actions={actions} onPick={a => { if (a.targets) setTargets(a.targets); else if (a.intent) { act(a.intent, a.label); onClose() } }} /> : <p className="piece-muted">Aucune action possible avec cette carte maintenant.</p>}
   </Sheet>
 }
-function Inspect({ view, id, onClose }: { view: View; id: string; onClose: () => void }) {
+function Inspect({ view, id, onClose, onEnter, onExit }: { view: View; id: string; onClose: () => void; onEnter?: () => void; onExit?: () => void }) {
   const v = findVisible(view, id), card = display(view, v?.printingKey)
   useEffect(() => { const key = (e: KeyboardEvent) => { if (e.key === 'Escape') onClose() }; window.addEventListener('keydown', key); return () => window.removeEventListener('keydown', key) }, [onClose])
   return <div className="play-inspect-backdrop" role="presentation" onClick={onClose}>
-    <aside className="play-inspect" role="dialog" aria-modal="true" aria-label={`Inspection : ${card?.name ?? 'carte'}`} onClick={e => e.stopPropagation()}>
+    <aside className="play-inspect" role="dialog" aria-modal="true" aria-label={`Inspection : ${card?.name ?? 'carte'}`} onMouseEnter={onEnter} onMouseLeave={onExit} onClick={e => e.stopPropagation()}>
       <header><strong>{card?.name ?? 'Carte'}</strong><button type="button" className="play-close" aria-label="Fermer l’inspection" onClick={onClose}>×</button></header>
       <CardFace view={view} printingKey={v?.printingKey} power={v?.power} size="lg" />
       <p>{card?.text || 'Aucun effet.'}{card?.trigger ? <><br /><br />{card.trigger}</> : null}</p>
@@ -139,17 +146,25 @@ function BattlePanel({ view, act, send, busy }: { view: View; act: (intent: Inte
   const options = p.kind === 'counter' ? hand.flatMap(c => cardActions(view, c.id).filter(a => a.intent && ['counter', 'event', 'event-don', 'event-life'].includes(a.key)).map(a => ({ c, a }))) : []
   return <section className="tbl-decision" aria-label={p.kind === 'counter' ? 'Fenêtre de Counter' : 'Fenêtre de blocage'}>
     <p className="tbl-duel"><strong>{cardName(view, battle.attacker)}</strong> {attackPower} → <strong>{cardName(view, battle.target)}</strong> {defence}{gap > 0 ? <em> · il manque {gap}</em> : <em> · défense suffisante</em>}</p>
-    {p.kind === 'block' && <div className="tbl-quick">{p.blockers.map(id => <button key={id} type="button" className="piece-button" disabled={busy} onClick={() => act({ type: 'ACTIVATE_BLOCKER', blockerId: id, battleId: p.battleId }, 'Blocage')}>Bloquer avec {cardName(view, id)} ({findVisible(view, id)?.power})</button>)}
-      <button type="button" className="piece-button secondary" disabled={busy} onClick={() => send({ type: 'PASS_BLOCKER', battleId: p.battleId })}>Ne pas bloquer</button></div>}
+    {p.kind === 'block' && <div className="tbl-quick">{p.blockers.map(id => <button key={id} type="button" className="piece-button" disabled={busy} onClick={() => act({ type: 'ACTIVATE_BLOCKER', blockerId: id, battleId: p.battleId }, 'Blocage')}>Utiliser un Bloqueur : {cardName(view, id)} ({findVisible(view, id)?.power})</button>)}
+      <button type="button" className="piece-button secondary" disabled={busy} onClick={() => send({ type: 'PASS_BLOCKER', battleId: p.battleId })}>Continuer sans bloquer</button></div>}
     {p.kind === 'counter' && <div className="tbl-quick">{options.map(({ c, a }) => <button key={`${c.id}${a.key}`} type="button" className="piece-button" disabled={busy} onClick={() => a.intent && act(a.intent, a.label)}>{cardName(view, c.id)} : {a.label}</button>)}
-      <button type="button" className="piece-button secondary" disabled={busy} onClick={() => send({ type: 'PASS_COUNTER', battleId: p.battleId })}>Passer</button></div>}
+      <button type="button" className="piece-button secondary" disabled={busy} onClick={() => send({ type: 'PASS_COUNTER', battleId: p.battleId })}>Continuer sans autre Counter</button></div>}
   </section>
 }
-function Stage({ step, view }: { step: AnimStep | null; view: View }) {
+function Stage({ step, view, fast, paused }: { step: AnimStep | null; view: View; fast: boolean; paused: boolean }) {
   if (!step) return null
-  return <div className={`tbl-stage ${step.kind}${step.mine ? ' mine' : ' foe'}`} key={step.key} style={{ ['--d' as string]: `${step.duration}ms` }} data-anim={step.kind} aria-hidden>
-    <div className="tbl-stage-cards">{step.cards.map((k, i) => <CardFace key={i} view={view} printingKey={k} hidden={!k} size="sm" />)}</div>
+  const battle = view.projection.battle
+  const defence = step.battleId && battle?.id === step.battleId ? (findVisible(view, battle.target)?.power ?? 0) + (battle.counterBonus ?? 0) : null
+  return <div className={`tbl-stage ${step.kind}${step.mine ? ' mine' : ' foe'}`} key={step.key} style={{ ['--d' as string]: `${presentationDuration(step.duration, fast)}ms`, animationPlayState: paused ? 'paused' : 'running' }} data-anim={step.kind} role="status" aria-live="polite">
+    <div className="tbl-stage-cards">{step.cards.map((k, i) => <CardFace key={i} view={view} printingKey={k} snapshot={step.faces?.[i]} hidden={!k} size={step.kind === 'counter' ? 'lg' : 'sm'} />)}</div>
     <p>{step.text}</p>
+    {step.counter && <strong className="tbl-counter-value">{step.counter.category === 'EVENT' ? 'Événement · Counter Step' : step.counter.value === null ? 'Counter de Personnage' : `Counter +${step.counter.value}`}</strong>}
+    {step.combat && <div className={`tbl-combat-result ${step.combat.outcome.toLowerCase()}`}>
+      {step.combat.winner && <strong>{step.combat.winner === 'Vous' ? 'Vous remportez le combat' : 'L’adversaire remporte le combat'}</strong>}
+      <small>{step.combat.detail}</small>
+    </div>}
+    {defence !== null && <small>Défense actuelle : {defence}</small>}
   </div>
 }
 function Log({ entries, open, onClose }: { entries: LogEntry[]; open: boolean; onClose: () => void }) {
@@ -162,12 +177,15 @@ function Log({ entries, open, onClose }: { entries: LogEntry[]; open: boolean; o
   </aside>
 }
 // ---------- board ----------
-export type BoardProps = { view: View; send: Send; busy: boolean; step: AnimStep | null; log: LogEntry[]; motion: 'auto' | 'reduced' | 'full'; reduced: boolean
+export type BoardProps = { paused?: boolean; onPause?: () => void; fast?: boolean; onFast?: (value: boolean) => void; onSkipSequence?: () => void; view: View; send: Send; busy: boolean; step: AnimStep | null; log: LogEntry[]; motion: 'auto' | 'reduced' | 'full'; reduced: boolean
   onMotion: (m: 'auto' | 'reduced' | 'full') => void; onConcede: () => void; onLeave: () => void; onNewGame: () => void; onSkipAnim: () => void; tutorial: TutorialState; onTutorial: (t: TutorialState) => void; stats: ReactNode }
-export function Board({ view, send, busy, step, log, motion, reduced, onMotion, onConcede, onLeave, onNewGame, onSkipAnim, tutorial, onTutorial, stats }: BoardProps) {
+export function Board({ paused = false, onPause, fast = false, onFast, onSkipSequence, view, send, busy, step, log, motion, reduced, onMotion, onConcede, onLeave, onNewGame, onSkipAnim, tutorial, onTutorial, stats }: BoardProps) {
   const { me, foe } = seats(view), p = prompt(view), battle = view.projection.battle
   const [selected, setSelected] = useState<string | null>(null)
   const [inspect, setInspect] = useState<string | null>(null)
+  const hoverClose = useRef<ReturnType<typeof setTimeout> | null>(null)
+  const keepInspect = () => { if (hoverClose.current) clearTimeout(hoverClose.current) }
+  useEffect(() => () => { if (hoverClose.current) clearTimeout(hoverClose.current) }, [])
   const [menu, setMenu] = useState(false)
   const [logOpen, setLogOpen] = useState(false)
   const [confirm, setConfirm] = useState<null | { title: string; text: string; confirm: string; intent?: Intent; run?: () => void; danger?: boolean }>(null)
@@ -187,14 +205,21 @@ export function Board({ view, send, busy, step, log, motion, reduced, onMotion, 
   const actable = useMemo(() => new Set([...((me.hand ?? []) as Visible[]), ...(me.leader as Visible[]), ...(me.characters as Visible[])].filter(c => cardActions(view, c.id).length).map(c => c.id)), [view, me])
   const hand = (me.hand ?? []) as Visible[]
   const fan = handFanLayout(hand.length)
+  const fanTilt = Math.max(0, ...fan.map(slot => Math.abs(slot.angle))) * Math.PI / 180
+  const fanHeightRatio = 88 / 63 * Math.cos(fanTilt) + Math.sin(fanTilt) + .18
   const canDrop = (id: string) => !!drag && !!dropIntent(view, drag, id)
   const inspectOnHover = (id: string) => {
+    keepInspect()
     if (typeof window !== 'undefined' && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
       setLogOpen(false)
       setInspect(id)
     }
   }
-  const clearHoverInspect = (id: string) => setInspect(current => current === id ? null : current)
+  const clearHoverInspect = (id: string) => {
+    if (!window.matchMedia('(hover: hover) and (pointer: fine)').matches) return
+    keepInspect()
+    hoverClose.current = setTimeout(() => setInspect(current => current === id ? null : current), 1000)
+  }
   const myTurn = view.projection.activePlayerId === view.seat
   const result = view.projection.result as { reason: string; winnerId: string | null } | null
   const slot = (v: Visible, owner: 'me' | 'foe', leader = false) => {
@@ -211,9 +236,9 @@ export function Board({ view, send, busy, step, log, motion, reduced, onMotion, 
   }
   const trashTop = (seat: typeof me) => (seat.trash as Visible[]).at(-1)
   const piles = (seat: typeof me) => <div className="tbl-piles">
-    <Pile label="Deck" count={seat.counts.deck}><div className="play-card back xs" /></Pile>
+    <Pile label="Deck" count={seat.counts.deck}><CardBack size="xs" label="Deck principal" /></Pile>
     <Pile label="Défausse" count={seat.counts.trash}>{trashTop(seat) ? <CardFace view={view} printingKey={trashTop(seat)!.printingKey} size="xs" /> : <div className="tbl-empty-slot" />}</Pile>
-    <Pile label="DON!! Deck" count={seat.counts.donDeck}><div className="play-card back xs don-deck-back"><span>DON!!</span></div></Pile>
+    <Pile label="DON!! Deck" count={seat.counts.donDeck}><CardBack size="xs" label="Deck DON!!" don /></Pile>
   </div>
   const stageZone = (seat: typeof me, owner: 'me' | 'foe') => <div className="tbl-stage-zone" aria-label={`Zone Stage ${owner === 'me' ? 'du joueur' : 'du bot'}`}>
     <small className="tbl-zone-label">Stage</small>{(seat.stage as Visible[]).map(stage => slot(stage, owner))}
@@ -248,7 +273,7 @@ export function Board({ view, send, busy, step, log, motion, reduced, onMotion, 
   return <div className={`play-board${busy ? ' busy' : ''}${myTurn ? ' my-turn' : ''}`} data-version={view.version} data-motion={reduced ? 'reduced' : 'full'}>
     <header className="tbl-top">
       <button type="button" className="play-icon" aria-label="Quitter la table" onClick={onLeave}>‹</button>
-      <div className="play-turn" aria-live="polite"><strong>{myTurn ? 'Votre tour' : 'Tour du bot'}</strong><span>Tour {view.projection.turn} · {PHASES[view.projection.phase] ?? view.projection.phase}</span></div>
+      <div className="play-turn" aria-live="polite"><strong>{myTurn ? 'Votre tour' : 'Tour adverse'}</strong><span>Tour {view.projection.turn} · {PHASES[view.projection.phase] ?? view.projection.phase}</span></div>
       <span className="tbl-level" title="Difficulté du bot">{LEVELS[view.botLevel] ?? view.botLevel}</span>
       <button type="button" className="play-icon tbl-log-toggle" aria-label="Journal de combat" aria-expanded={logOpen} onClick={() => { const next = !logOpen; if (next) setInspect(null); setLogOpen(next) }}>☰</button>
       <button type="button" className="play-icon" aria-label="Menu de la partie" onClick={() => setMenu(true)}>⋯</button>
@@ -266,8 +291,9 @@ export function Board({ view, send, busy, step, log, motion, reduced, onMotion, 
         </section>
         <div className="tbl-center" aria-live="polite">
           {battle ? <p className="play-battle"><strong>{cardName(view, battle.attacker)}</strong> attaque <strong>{cardName(view, battle.target)}</strong> · {BATTLE_STEPS[battle.step] ?? battle.step}{battle.counterBonus ? ` · Counter +${battle.counterBonus}` : ''}</p>
-            : <p className="play-hint">{p.kind === 'main' ? 'Glissez une carte vers le haut pour la jouer, ou touchez-la. Appui long : inspecter.' : p.kind === 'wait' ? 'Le bot joue…' : ' '}</p>}
-          <Stage step={step} view={view} />
+            : <p className="play-hint">{p.kind === 'main' ? 'Glissez une carte vers le haut pour la jouer, ou touchez-la. Appui long : inspecter.' : p.kind === 'wait' ? 'L’adversaire joue…' : ' '}</p>}
+
+          {step && onPause && <button type="button" className="tbl-hold" onClick={onPause}>{paused ? 'Reprendre' : 'Maintenir à l’écran'}</button>}
           {step && <button type="button" className="tbl-skip" onClick={onSkipAnim} aria-label="Passer l’animation">⏩</button>}
         </div>
         <section className={`play-side me tbl-side${canDrop(FIELD_DROP) ? ' drop-ok' : ''}${drag?.over === FIELD_DROP ? ' drop-over' : ''}`} aria-label="Votre terrain" data-drop={FIELD_DROP}>
@@ -281,8 +307,10 @@ export function Board({ view, send, busy, step, log, motion, reduced, onMotion, 
       </div>
       <Log entries={log} open={logOpen} onClose={() => setLogOpen(false)} />
     </div>
+    <BattleArrow battle={battle} />
+    <Stage step={step} view={view} fast={fast} paused={paused} />
     <BattlePanel view={view} act={act} send={send} busy={busy} />
-    <section className="play-hand" aria-label={`Votre main : ${(me.hand ?? []).length} cartes`}>
+    <section className="play-hand" style={{ '--hand-height-ratio': String(fanHeightRatio) } as CSSProperties} aria-label={`Votre main : ${(me.hand ?? []).length} cartes`}>
       <div className="play-hand-track">
         <div className="play-hand-fan">{hand.map((c, index) => <button type="button" key={c.id} data-card={c.id} className={`play-hand-card${actable.has(c.id) ? ' can-act' : ''}${drag?.id === c.id ? ' dragging' : ''}${selected === c.id ? ' selected' : ''}`} aria-label={cardName(view, c.id)}
           style={{ '--fan-angle': `${fan[index]?.angle ?? 0}deg`, '--fan-offset': `${fan[index]?.offsetY ?? 0}px`, '--fan-overlap': `${fan[index]?.overlap ?? 0}px` } as CSSProperties}
@@ -301,7 +329,7 @@ export function Board({ view, send, busy, step, log, motion, reduced, onMotion, 
     </footer>
     </main>
     {drag && <div className={`tbl-ghost${drag.over ? ' ok' : ''}`} style={{ left: drag.x, top: drag.y }} aria-hidden>{drag.kind === 'don' ? <span className="tbl-chip active">DON</span> : <CardFace view={view} printingKey={drag.printingKey} size="sm" />}</div>}
-    {inspect && <Inspect view={view} id={inspect} onClose={() => setInspect(null)} />}
+    {inspect && <Inspect view={view} id={inspect} onEnter={keepInspect} onExit={() => clearHoverInspect(inspect)} onClose={() => { keepInspect(); setInspect(null) }} />}
     {selected && p.kind !== 'choice' && !confirm && <CardSheet key={selected} view={view} id={selected} act={act} onClose={() => setSelected(null)} />}
     {p.kind === 'choice' && <ChoiceSheet key={p.action.choiceId} view={view} action={p.action} send={send} />}
     {p.kind === 'first' && <Sheet title="Qui commence ?"><p className="piece-muted">Vous avez gagné le tirage : choisissez de jouer en premier ou en second. Le premier joueur ne pioche pas et ne reçoit qu’un DON!! au premier tour.</p><div className="play-actions">
@@ -316,6 +344,8 @@ export function Board({ view, send, busy, step, log, motion, reduced, onMotion, 
     {confirm && <Confirm title={confirm.title} text={confirm.text} confirm={confirm.confirm} danger={confirm.danger} onCancel={() => setConfirm(null)} onConfirm={() => { const c = confirm; setConfirm(null); if (c.intent) send(c.intent); c.run?.() }} />}
     {menu && <Sheet title="Partie" onClose={() => setMenu(false)}>
       <fieldset className="tbl-motion"><legend>Animations</legend>{(['auto', 'full', 'reduced'] as const).map(m => <label key={m}><input type="radio" name="motion" checked={motion === m} onChange={() => onMotion(m)} /> {m === 'auto' ? 'Selon le système' : m === 'full' ? 'Complètes' : 'Réduites'}</label>)}</fieldset>
+      {onFast && <label className="tbl-fast"><input type="checkbox" checked={fast} onChange={e => onFast(e.target.checked)} /> Mode rapide (animations uniquement)</label>}
+      {onSkipSequence && <button type="button" className="piece-button secondary" onClick={() => { onSkipSequence(); setMenu(false) }}>Passer la séquence visuelle</button>}
       <div className="play-actions">
         <button type="button" className="piece-button secondary" onClick={() => { setMenu(false); onTutorial({ active: true, step: 0 }) }}>Relancer le tutoriel</button>
         <button type="button" className="piece-button secondary" onClick={() => { setMenu(false); onLeave() }}>Quitter (la partie reste sauvegardée)</button>

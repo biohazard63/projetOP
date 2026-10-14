@@ -1,0 +1,88 @@
+TAP version 13
+# Subtest: hand fan is centered for one, five, ten and fifteen cards
+ok 1 - hand fan is centered for one, five, ten and fifteen cards
+  ---
+  duration_ms: 0.734209
+  type: 'test'
+  ...
+# Subtest: hand fan adds controlled overlap as the hand grows without changing the board height
+ok 2 - hand fan adds controlled overlap as the hand grows without changing the board height
+  ---
+  duration_ms: 0.197041
+  type: 'test'
+  ...
+# Subtest: hand fan rejects impossible card counts
+ok 3 - hand fan rejects impossible card counts
+  ---
+  duration_ms: 0.388958
+  type: 'test'
+  ...
+# Subtest: outer cards rise into the fan instead of extending below the reserved hand baseline
+ok 4 - outer cards rise into the fan instead of extending below the reserved hand baseline
+  ---
+  duration_ms: 0.120458
+  type: 'test'
+  ...
+# Subtest: confirmed Counter presentation is readable for at least 2.5 seconds after readability feedback
+ok 5 - confirmed Counter presentation is readable for at least 2.5 seconds after readability feedback
+  ---
+  duration_ms: 1.18525
+  type: 'test'
+  ...
+# Subtest: presentation does not postpone automatic phases behind decorative steps
+ok 6 - presentation does not postpone automatic phases behind decorative steps
+  ---
+  duration_ms: 0.204291
+  type: 'test'
+  ...
+# Subtest: queue retains every confirmed event, deduplicates refreshes and advances in order
+ok 7 - queue retains every confirmed event, deduplicates refreshes and advances in order
+  ---
+  duration_ms: 0.381
+  type: 'test'
+  ...
+# Subtest: old timers cannot finish a new game or a newer animation
+ok 8 - old timers cannot finish a new game or a newer animation
+  ---
+  duration_ms: 0.322542
+  type: 'test'
+  ...
+# Subtest: skipping a sequence cannot replay the same events; reset clears only presentation
+ok 9 - skipping a sequence cannot replay the same events; reset clears only presentation
+  ---
+  duration_ms: 0.3145
+  type: 'test'
+  ...
+# Subtest: fast timing shortens decoration without modifying queued event content
+ok 10 - fast timing shortens decoration without modifying queued event content
+  ---
+  duration_ms: 0.14475
+  type: 'test'
+  ...
+# Subtest: draws never disclose private faces and confirmed events preserve their sequence
+ok 11 - draws never disclose private faces and confirmed events preserve their sequence
+  ---
+  duration_ms: 0.184417
+  type: 'test'
+  ...
+# Subtest: a real Counter, resolve and combat announcement preserve server consequences
+ok 12 - a real Counter, resolve and combat announcement preserve server consequences
+  ---
+  duration_ms: 4240.587708
+  type: 'test'
+  ...
+# Subtest: Starter selection hides laboratory and personal decks without modifying their data
+ok 13 - Starter selection hides laboratory and personal decks without modifying their data
+  ---
+  duration_ms: 61.044083
+  type: 'test'
+  ...
+1..13
+# tests 13
+# suites 0
+# pass 13
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 5105.739
