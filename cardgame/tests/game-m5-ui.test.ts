@@ -50,19 +50,19 @@ test('M5-2: animations come only from events after the last shown one, in order,
     for (const s of steps) {
       assert.ok(s.ids.every(id => !secret.has(id)), `${s.kind} names no hidden card`)
       if (s.kind === 'draw' || s.kind === 'life') assert.deepEqual(s.cards, [null], 'draws and Life are shown face down')
-      assert.ok(s.duration > 0 && s.duration <= 900, 'short animations')
+      assert.ok(s.duration > 0 && s.duration <= 2500, 'central readable durations')
     }
     before = next
   }
   const log = journal(g.view)
   assert.ok(log.length > 10 && log.every(e => typeof e.text === 'string' && e.text.length > 0))
-  assert.ok(log.some(e => /bot/i.test(e.text)), 'the bot actions are readable in the journal')
+  assert.ok(log.some(e => /adversaire/i.test(e.text)), 'the bot actions are readable in the journal')
 })
 
 test('M5-3: a drop becomes an intent only when a legal action allows it', async () => {
   const g = await game(); await toMyMain(g)
   const opening = journal(g.view).map(e => e.text)
-  for (const line of ['Vous choisissez l’ordre de jeu', 'Vous gardez votre main', 'Le bot garde sa main', 'Vous recevez des DON!!']) assert.ok(opening.includes(line), `journal shows: ${line}`)
+  for (const line of ['Vous choisissez l’ordre de jeu', 'Vous gardez votre main', 'L’adversaire garde sa main', 'Vous recevez des DON!!']) assert.ok(opening.includes(line), `journal shows: ${line}`)
   const { me, foe } = seats(g.view), hand = (me.hand ?? []) as Visible[]
   for (const c of hand) {
     const legal = g.view.legalActions.some(a => a.type === 'PLAY_CARD' && a.instanceId === c.id)
@@ -108,5 +108,5 @@ test('M5-2: every animation kind is produced from real server views (draw … re
       view = next
     }
   }
-  assert.deepEqual([...kinds].sort(), ['ability', 'attack', 'block', 'counter', 'don-attach', 'don-rest', 'draw', 'ko', 'life', 'play', 'power', 'result', 'trash', 'trigger', 'turn'])
+  assert.deepEqual([...kinds].sort(), ['ability', 'attack', 'block', 'combat', 'counter', 'don-add', 'don-attach', 'don-rest', 'draw', 'ko', 'life', 'play', 'power', 'result', 'trash', 'trigger', 'turn'])
 })

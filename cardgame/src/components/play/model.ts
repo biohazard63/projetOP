@@ -61,23 +61,23 @@ export function cardActions(view: View, instanceId: string): CardAction[] {
     out.push({ key: 'attach', label: `Donner 1 DON!! (${attach.eligibleDonIds.length} disponibles)`, intent: { type: 'ATTACH_DON', donIds: attach.eligibleDonIds.slice(0, 1), targetId: instanceId } })
   }
   for (const block of of(view, 'ACTIVATE_BLOCKER').filter(a => a.blockerIds.includes(instanceId))) {
-    out.push({ key: 'block', label: 'Bloquer avec ce Personnage', tone: 'primary', intent: { type: 'ACTIVATE_BLOCKER', blockerId: instanceId, battleId: block.battleId } })
+    out.push({ key: 'block', label: 'Utiliser ce Bloqueur', tone: 'primary', intent: { type: 'ACTIVATE_BLOCKER', blockerId: instanceId, battleId: block.battleId } })
   }
   const battle = view.projection.battle
   for (const counter of of(view, 'PLAY_COUNTER_CHARACTER').filter(a => a.cardIds.includes(instanceId))) {
     const value = display(view, findVisible(view, instanceId)?.printingKey)?.counter ?? 0
     const build = (targetId: string): Intent => ({ type: 'PLAY_COUNTER_CHARACTER', cardId: instanceId, targetId, battleId: counter.battleId })
     out.push(battle && counter.targetIds.includes(battle.target)
-      ? { key: 'counter', label: `Counter +${value} sur ${name(battle.target)}`, tone: 'primary', intent: build(battle.target) }
-      : { key: 'counter', label: `Counter +${value}`, tone: 'primary', targets: { label: 'Carte à renforcer', ids: counter.targetIds, build } })
+      ? { key: 'counter', label: `Utiliser Counter +${value} sur ${name(battle.target)}`, tone: 'primary', intent: build(battle.target) }
+      : { key: 'counter', label: `Utiliser Counter +${value}`, tone: 'primary', targets: { label: 'Carte à renforcer', ids: counter.targetIds, build } })
   }
   for (const event of of(view, 'PLAY_COUNTER_EVENT').filter(a => a.eventIds.includes(instanceId))) {
     const card = display(view, findVisible(view, instanceId)?.printingKey), pay = event.paymentDonIds.slice(0, card?.cost ?? 0)
     const base: Intent = { type: 'PLAY_COUNTER_EVENT', cardId: instanceId, battleId: event.battleId, paymentDonIds: pay, donMinusIds: [], targetId: null }
     // UI hints from the reviewed card text; the server engine validates every optional cost.
-    if (card && /DON!! −1/.test(card.text)) out.push({ key: 'event-don', label: 'Jouer le Counter avec DON!! −1', tone: 'primary', intent: { ...base, donMinusIds: [pay[0] ?? event.donMinusIds[0]] } })
-    if (card && /top of your Life cards to your hand/.test(card.text) && me.counts.life > 0) out.push({ key: 'event-life', label: 'Jouer le Counter en ajoutant 1 Vie à la main', tone: 'primary', intent: { ...base, lifePayment: true } })
-    out.push({ key: 'event', label: card && /DON!! −1|top of your Life cards/.test(card.text) ? 'Jouer sans coût facultatif (sans effet)' : 'Jouer le Counter', intent: base })
+    if (card && /DON!!\s*[−-]\s*1/.test(card.text)) out.push({ key: 'event-don', label: 'Utiliser l’Événement de contre avec DON!! −1', tone: 'primary', intent: { ...base, donMinusIds: [pay[0] ?? event.donMinusIds[0]] } })
+    if (card && /top of your Life cards to your hand/.test(card.text) && me.counts.life > 0) out.push({ key: 'event-life', label: 'Utiliser l’Événement de contre en ajoutant 1 Vie à la main', tone: 'primary', intent: { ...base, lifePayment: true } })
+    out.push({ key: 'event', label: card && /DON!!\s*[−-]\s*1|top of your Life cards/.test(card.text) ? 'Jouer sans coût facultatif (sans effet)' : 'Utiliser l’Événement de contre', intent: base })
   }
   return out
 }

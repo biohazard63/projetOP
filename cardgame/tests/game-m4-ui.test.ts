@@ -76,7 +76,7 @@ test('M4-I5: card actions only come from legal actions and target lists come fro
 test('M4-I5: labels are French, feedback lists only new events and unknown codes stay generic', async () => {
   const { view } = await newGame()
   assert.deepEqual(feed(view, Number.MAX_SAFE_INTEGER, eventLabel), [])
-  assert.equal(eventLabel('ATTACK_DECLARED', false), 'Le bot attaque'); assert.equal(eventLabel('ATTACK_DECLARED', true), 'Vous attaquez')
+  assert.equal(eventLabel('ATTACK_DECLARED', false), 'L’adversaire attaque'); assert.equal(eventLabel('ATTACK_DECLARED', true), 'Vous attaquez')
   assert.equal(errorLabel('STALE_VERSION'), 'La partie a changé dans un autre onglet : affichage mis à jour.')
   assert.equal(errorLabel('SOMETHING_NEW'), 'Action refusée.')
   assert.equal(deckErrorLabel('NOT_IN_ENGINE_CATALOG:abc'), 'contient des cartes que le moteur ne sait pas encore jouer')

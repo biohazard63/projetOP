@@ -1,0 +1,76 @@
+TAP version 13
+# Subtest: M4-I5: every decision window the human meets has a screen action, and a whole game is played from the screen
+ok 1 - M4-I5: every decision window the human meets has a screen action, and a whole game is played from the screen
+  ---
+  duration_ms: 76542.626042
+  type: 'test'
+  ...
+# Subtest: M4-I5: card actions only come from legal actions and target lists come from the engine
+ok 2 - M4-I5: card actions only come from legal actions and target lists come from the engine
+  ---
+  duration_ms: 2872.455167
+  type: 'test'
+  ...
+# Subtest: M4-I5: labels are French, feedback lists only new events and unknown codes stay generic
+ok 3 - M4-I5: labels are French, feedback lists only new events and unknown codes stay generic
+  ---
+  duration_ms: 706.322292
+  type: 'test'
+  ...
+# Subtest: confirmed Counter presentation is readable for at least 2.5 seconds after readability feedback
+ok 4 - confirmed Counter presentation is readable for at least 2.5 seconds after readability feedback
+  ---
+  duration_ms: 11.666375
+  type: 'test'
+  ...
+# Subtest: presentation does not postpone automatic phases behind decorative steps
+ok 5 - presentation does not postpone automatic phases behind decorative steps
+  ---
+  duration_ms: 0.458334
+  type: 'test'
+  ...
+# Subtest: queue retains every confirmed event, deduplicates refreshes and advances in order
+ok 6 - queue retains every confirmed event, deduplicates refreshes and advances in order
+  ---
+  duration_ms: 0.521875
+  type: 'test'
+  ...
+# Subtest: old timers cannot finish a new game or a newer animation
+ok 7 - old timers cannot finish a new game or a newer animation
+  ---
+  duration_ms: 0.425875
+  type: 'test'
+  ...
+# Subtest: skipping a sequence cannot replay the same events; reset clears only presentation
+ok 8 - skipping a sequence cannot replay the same events; reset clears only presentation
+  ---
+  duration_ms: 0.54225
+  type: 'test'
+  ...
+# Subtest: fast timing shortens decoration without modifying queued event content
+ok 9 - fast timing shortens decoration without modifying queued event content
+  ---
+  duration_ms: 0.249292
+  type: 'test'
+  ...
+# Subtest: draws never disclose private faces and confirmed events preserve their sequence
+ok 10 - draws never disclose private faces and confirmed events preserve their sequence
+  ---
+  duration_ms: 1.397375
+  type: 'test'
+  ...
+# Subtest: a real Counter, resolve and combat announcement preserve server consequences
+ok 11 - a real Counter, resolve and combat announcement preserve server consequences
+  ---
+  duration_ms: 26699.392125
+  type: 'test'
+  ...
+1..11
+# tests 11
+# suites 0
+# pass 11
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 84448.508625

@@ -1,0 +1,30 @@
+ST02-001: cached png
+ST03-001: cached png
+ST01-001: cached png
+ST04-001: cached png
+ST05-001: cached png
+ST06-001: cached png
+ST08-001: cached png
+ST07-001: cached png
+ST09-001: cached png
+ST10-001: cached png
+ST10-002: cached png
+ST10-003: cached png
+ST14-001: cached png
+ST11-001: cached webp
+ST12-001: cached png
+OP01-060: cached webp
+OP02-093: cached webp
+OP02-001: cached webp
+OP03-099: cached webp
+OP09-001: cached webp
+OP09-042: cached webp
+ST21-001: cached webp
+OP09-061: cached webp
+OP05-060: cached webp
+OP06-022: cached webp
+{
+  "expected": 25,
+  "cached": 25,
+  "failures": []
+}

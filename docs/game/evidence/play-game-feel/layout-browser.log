@@ -1,0 +1,42 @@
+[
+  {
+    "viewport": "1920x1080",
+    "status": "PASS",
+    "documentHeight": 1147,
+    "viewportHeight": 1080,
+    "bodyOverflow": "hidden",
+    "rootOverflow": "hidden",
+    "journalStable": true,
+    "cardDialog": true
+  },
+  {
+    "viewport": "1440x900",
+    "status": "PASS",
+    "documentHeight": 967,
+    "viewportHeight": 900,
+    "bodyOverflow": "hidden",
+    "rootOverflow": "hidden",
+    "journalStable": true,
+    "cardDialog": true
+  },
+  {
+    "viewport": "1366x768",
+    "status": "PASS",
+    "documentHeight": 835,
+    "viewportHeight": 768,
+    "bodyOverflow": "hidden",
+    "rootOverflow": "hidden",
+    "journalStable": true,
+    "cardDialog": true
+  },
+  {
+    "viewport": "844x390",
+    "status": "PASS",
+    "documentHeight": 609,
+    "viewportHeight": 390,
+    "bodyOverflow": "hidden",
+    "rootOverflow": "hidden",
+    "journalStable": true,
+    "cardDialog": true
+  }
+]
