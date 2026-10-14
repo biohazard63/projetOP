@@ -31,8 +31,22 @@ function certifiedStarterDecks(): StarterDeck[] {
 }
 
 export type DeckEligibility = { ok: boolean; errors: string[] }
+// The verdict only depends on the deck (printing keys, quantities, the definition behind each printing) and on the catalogue,
+// ruleset and registry compiled into this build, so it is memoised per process: /api/play/decks otherwise built a full game
+// for every reference and personal deck on every request (about 80 ms each), which timed out serverless functions.
+const eligibilityCache = new Map<string, DeckEligibility>()
+const ELIGIBILITY_CACHE_LIMIT = 1000
 /** Same checks as the real start: construction rules in playable mode, then createGame's effect checks. */
 export function deckEligibility(entries: DeckEntry[], printings: CardPrinting[] = engineCatalog().printings): DeckEligibility {
+  const key = JSON.stringify(entries.map(e => [e.printingKey, e.quantity, printings.find(p => p.printingKey === e.printingKey)?.definitionId ?? null]))
+  const cached = eligibilityCache.get(key)
+  if (cached) return { ok: cached.ok, errors: [...cached.errors] }
+  const verdict = computeEligibility(entries, printings)
+  if (eligibilityCache.size >= ELIGIBILITY_CACHE_LIMIT) eligibilityCache.delete(eligibilityCache.keys().next().value!)
+  eligibilityCache.set(key, verdict)
+  return { ok: verdict.ok, errors: [...verdict.errors] }
+}
+function computeEligibility(entries: DeckEntry[], printings: CardPrinting[]): DeckEligibility {
   const { definitions } = engineCatalog(), ruleset = engineRuleset()
   const errors = validateEngineDeck(entries, definitions, printings, ruleset, 'playable')
   if (errors.length) return { ok: false, errors }

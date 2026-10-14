@@ -62,7 +62,15 @@ const currentPacks = () => [
   { packId: 'M6_OFFICIAL_ST21', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST21_OFFICIAL_CARDS, effects: { definitions: ST21_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST21_OFFICIAL_CONTINUOUS, conditionalKeywords: ST21_OFFICIAL_CONDITIONAL_KEYWORDS } },
   { packId: 'M6_OFFICIAL_ST23', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST23_OFFICIAL_CARDS, effects: { definitions: ST23_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST23_OFFICIAL_CONTINUOUS, cardReplacements: ST23_OFFICIAL_REPLACEMENTS } },
 ]
-const compileCurrentCatalog = () => loadCardPacks(M3_FULL_REGISTRY, currentPacks())
+// The packs are static data compiled into the build: compile them once per process (every /play request used to recompile
+// 550+ definitions, ~16 ms each time). The result is deep-frozen so that no caller can alter the shared catalogue;
+// createGame clones what it stores in a game state.
+const deepFreeze = <T>(value: T): T => {
+  if (value && typeof value === 'object' && !Object.isFrozen(value)) { Object.freeze(value); for (const v of Object.values(value as object)) deepFreeze(v) }
+  return value
+}
+let compiledCatalog: ReturnType<typeof loadCardPacks> | null = null
+const compileCurrentCatalog = () => compiledCatalog ??= deepFreeze(loadCardPacks(M3_FULL_REGISTRY, currentPacks()))
 /** Catalogue used by /play: M3 plus the M5 recognised cards. */
 export const engineCatalog = (): { definitions: CardDefinition[]; printings: CardPrinting[] } => {
   const compiled = compileCurrentCatalog()
