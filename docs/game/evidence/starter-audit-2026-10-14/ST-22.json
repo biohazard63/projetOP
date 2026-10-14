@@ -1,0 +1,1849 @@
+{
+  "deckCode": "ST-22",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569022",
+      "status": "FETCHED",
+      "sha256": "9b5e73fb0c0982468e47a482bbf699ab137c3082eb5c6f49333f8284c35e5338",
+      "retrievedAt": "2026-10-14T07:27:02.236851+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st22-cardlists/",
+      "status": "FETCHED",
+      "sha256": "63d342533c6bf4c4b6b3e4d04450bf2ffd029039e347205b5c21a159aea3a6dc",
+      "retrievedAt": "2026-10-14T07:27:04.046843+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st22.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st22.php",
+      "status": "FETCHED",
+      "sha256": "07ecd0f905cc14eae5db52be495aa91fe843ba051f1bb1b82f48fcfd7c11e18f",
+      "retrievedAt": "2026-10-14T07:27:06.859969+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st22-cardlists/",
+      "status": "FETCHED",
+      "sha256": "63d342533c6bf4c4b6b3e4d04450bf2ffd029039e347205b5c21a159aea3a6dc",
+      "retrievedAt": "2026-10-14T07:31:37.563428+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569022",
+      "status": "FETCHED",
+      "sha256": "9b5e73fb0c0982468e47a482bbf699ab137c3082eb5c6f49333f8284c35e5338",
+      "retrievedAt": "2026-10-14T07:31:39.191815+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569022",
+      "status": "FETCHED",
+      "sha256": "9b5e73fb0c0982468e47a482bbf699ab137c3082eb5c6f49333f8284c35e5338",
+      "retrievedAt": "2026-10-14T07:35:07.314858+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st22-cardlists/",
+      "status": "FETCHED",
+      "sha256": "63d342533c6bf4c4b6b3e4d04450bf2ffd029039e347205b5c21a159aea3a6dc",
+      "retrievedAt": "2026-10-14T07:35:09.001712+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550022",
+      "status": "FETCHED",
+      "sha256": "91b7cd992d61790f08f8438bc79c9035207fa753a02f06ec43e2022fb00f3d0e",
+      "retrievedAt": "2026-10-14T07:35:10.829079+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569022",
+      "status": "FETCHED",
+      "sha256": "9b5e73fb0c0982468e47a482bbf699ab137c3082eb5c6f49333f8284c35e5338",
+      "retrievedAt": "2026-10-14T07:53:03.208749+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622022",
+      "status": "FETCHED",
+      "sha256": "747abda540f32a1cac1a35e11c68f1e321b3bd834cc38724d27d318704a4c1d1",
+      "retrievedAt": "2026-10-14T07:53:04.840051+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "ST22-001",
+      "printingCode": "ST22-001",
+      "name": "Ace & Newgate",
+      "type": "LEADER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-001",
+      "printingCode": "ST22-001_p1",
+      "name": "Ace & Newgate",
+      "type": "LEADER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-002",
+      "printingCode": "ST22-002",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-002",
+      "printingCode": "ST22-002_p1",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-003",
+      "printingCode": "ST22-003",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-003",
+      "printingCode": "ST22-003_p1",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-004",
+      "printingCode": "ST22-004",
+      "name": "Elmy",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-004",
+      "printingCode": "ST22-004_p1",
+      "name": "Elmy",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-005",
+      "printingCode": "ST22-005",
+      "name": "Kouzuki Oden",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-005",
+      "printingCode": "ST22-005_p1",
+      "name": "Kouzuki Oden",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-006",
+      "printingCode": "ST22-006",
+      "name": "Jozu",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-006",
+      "printingCode": "ST22-006_p1",
+      "name": "Jozu",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-007",
+      "printingCode": "ST22-007",
+      "name": "Squard",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-007",
+      "printingCode": "ST22-007_p1",
+      "name": "Squard",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-008",
+      "printingCode": "ST22-008",
+      "name": "Decalvan Brothers",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-008",
+      "printingCode": "ST22-008_p1",
+      "name": "Decalvan Brothers",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-009",
+      "printingCode": "ST22-009",
+      "name": "Vista",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-009",
+      "printingCode": "ST22-009_p1",
+      "name": "Vista",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-010",
+      "printingCode": "ST22-010",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-010",
+      "printingCode": "ST22-010_p1",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-011",
+      "printingCode": "ST22-011",
+      "name": "Whitey Bay",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-011",
+      "printingCode": "ST22-011_p1",
+      "name": "Whitey Bay",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-012",
+      "printingCode": "ST22-012",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-012",
+      "printingCode": "ST22-012_p1",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-013",
+      "printingCode": "ST22-013",
+      "name": "LittleOars Jr.",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-013",
+      "printingCode": "ST22-013_p1",
+      "name": "LittleOars Jr.",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-014",
+      "printingCode": "ST22-014",
+      "name": "A.O.",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-014",
+      "printingCode": "ST22-014_p1",
+      "name": "A.O.",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-015",
+      "printingCode": "ST22-015",
+      "name": "I Am Whitebeard!!",
+      "type": "EVENT",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-016",
+      "printingCode": "ST22-016",
+      "name": "Take That Back!! Take Back What You Said!!",
+      "type": "EVENT",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST22-017",
+      "printingCode": "ST22-017",
+      "name": "Fire Fist",
+      "type": "EVENT",
+      "color": "Blue"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST22-001",
+      "quantity": 1,
+      "sourceName": "エース&ニューゲート",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-001",
+      "quantity": 2,
+      "sourceName": "イゾウ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-003",
+      "quantity": 4,
+      "sourceName": "エドワード・ニューゲート",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-004",
+      "quantity": 4,
+      "sourceName": "エルミー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-005",
+      "quantity": 2,
+      "sourceName": "光月おでん",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-006",
+      "quantity": 4,
+      "sourceName": "ジョズ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-007",
+      "quantity": 2,
+      "sourceName": "スクアード",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-008",
+      "quantity": 4,
+      "sourceName": "ディカルバン兄弟",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-009",
+      "quantity": 4,
+      "sourceName": "ビスタ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-010",
+      "quantity": 2,
+      "sourceName": "ポートガス・D・エース",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-011",
+      "quantity": 2,
+      "sourceName": "ホワイティベイ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-012",
+      "quantity": 4,
+      "sourceName": "マルコ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-013",
+      "quantity": 4,
+      "sourceName": "リトルオーズJr.",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-014",
+      "quantity": 4,
+      "sourceName": "A・O",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-015",
+      "quantity": 4,
+      "sourceName": "おれァ“白ひげ”だァア!!!!",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-016",
+      "quantity": 2,
+      "sourceName": "取り消せよ……!!!今の言葉……!!!",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    },
+    {
+      "cardNumber": "ST22-017",
+      "quantity": 2,
+      "sourceName": "火拳",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st22-cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -Ace & Newgate- − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -Ace & Newgate-"
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) \r\n                   ・DON!! Card x 10 \r\n                   ・Playsheet x 1 \r\n                   ・Bonus Pack x 1 (3 cards, 14 types in total)",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st22.php",
+  "officialDeckTitle": "STARTER DECK -Ace & Newgate- [ST-22]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "ST22-001",
+      "printingCode": "ST22-001",
+      "name": "エース＆ニューゲート",
+      "type": "LEADER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-001",
+      "printingCode": "ST22-001_p1",
+      "name": "エース＆ニューゲート",
+      "type": "LEADER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-002",
+      "printingCode": "ST22-002",
+      "name": "イゾウ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-002",
+      "printingCode": "ST22-002_p1",
+      "name": "イゾウ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-003",
+      "printingCode": "ST22-003",
+      "name": "エドワード・ニューゲート",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-003",
+      "printingCode": "ST22-003_p1",
+      "name": "エドワード・ニューゲート",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-004",
+      "printingCode": "ST22-004",
+      "name": "エルミー",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-004",
+      "printingCode": "ST22-004_p1",
+      "name": "エルミー",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-005",
+      "printingCode": "ST22-005",
+      "name": "光月おでん",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-005",
+      "printingCode": "ST22-005_p1",
+      "name": "光月おでん",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-006",
+      "printingCode": "ST22-006",
+      "name": "ジョズ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-006",
+      "printingCode": "ST22-006_p1",
+      "name": "ジョズ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-007",
+      "printingCode": "ST22-007",
+      "name": "スクアード",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-007",
+      "printingCode": "ST22-007_p1",
+      "name": "スクアード",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-008",
+      "printingCode": "ST22-008",
+      "name": "ディカルバン兄弟",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-008",
+      "printingCode": "ST22-008_p1",
+      "name": "ディカルバン兄弟",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-009",
+      "printingCode": "ST22-009",
+      "name": "ビスタ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-009",
+      "printingCode": "ST22-009_p1",
+      "name": "ビスタ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-010",
+      "printingCode": "ST22-010",
+      "name": "ポートガス・Ｄ・エース",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-010",
+      "printingCode": "ST22-010_p1",
+      "name": "ポートガス・Ｄ・エース",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-011",
+      "printingCode": "ST22-011",
+      "name": "ホワイティベイ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-011",
+      "printingCode": "ST22-011_p1",
+      "name": "ホワイティベイ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-012",
+      "printingCode": "ST22-012",
+      "name": "マルコ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-012",
+      "printingCode": "ST22-012_p1",
+      "name": "マルコ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-013",
+      "printingCode": "ST22-013",
+      "name": "リトルオーズJr.",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-013",
+      "printingCode": "ST22-013_p1",
+      "name": "リトルオーズJr.",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-014",
+      "printingCode": "ST22-014",
+      "name": "Ａ・Ｏ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-014",
+      "printingCode": "ST22-014_p1",
+      "name": "Ａ・Ｏ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-015",
+      "printingCode": "ST22-015",
+      "name": "おれァ‘‘白ひげ‘‘だァア!!!!",
+      "type": "EVENT",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-016",
+      "printingCode": "ST22-016",
+      "name": "取り消せよ……!!!今の言葉……!!!",
+      "type": "EVENT",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST22-017",
+      "printingCode": "ST22-017",
+      "name": "火拳",
+      "type": "EVENT",
+      "color": "青"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST22-001",
+      "printingCode": "ST22-001",
+      "locale": "EN",
+      "name": "Ace & Newgate",
+      "type": "LEADER",
+      "color": "Blue",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "9b63dfbc6a75d9ab811b597d76c80e0e61a57d025a12806586afc03f26a7f3ad",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "c87b8661d1c8c06e1b3f58a9c9cc695a1b9570af6d765d2318d4912e0039916c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-001",
+      "printingCode": "ST22-001_p1",
+      "locale": "EN",
+      "name": "Ace & Newgate",
+      "type": "LEADER",
+      "color": "Blue",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "9b63dfbc6a75d9ab811b597d76c80e0e61a57d025a12806586afc03f26a7f3ad",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "c87b8661d1c8c06e1b3f58a9c9cc695a1b9570af6d765d2318d4912e0039916c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-002",
+      "printingCode": "ST22-002",
+      "locale": "EN",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 1,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "12eac06fc1b68c2c27eb246ac52f495997bdc20ac26923c3c85deb161c405308",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "f2dc3385e74fbf5f492cb02c56085c5c0001080c11173b4287723a16e2b564fa",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-002",
+      "printingCode": "ST22-002_p1",
+      "locale": "EN",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 1,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "12eac06fc1b68c2c27eb246ac52f495997bdc20ac26923c3c85deb161c405308",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "f2dc3385e74fbf5f492cb02c56085c5c0001080c11173b4287723a16e2b564fa",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-003",
+      "printingCode": "ST22-003",
+      "locale": "EN",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 9,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "9af38339b1a582c3f4a0b5b8cd5cbcf573f766602dc71b04a8e7e2bd9754d0cc",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "c87b8661d1c8c06e1b3f58a9c9cc695a1b9570af6d765d2318d4912e0039916c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-003",
+      "printingCode": "ST22-003_p1",
+      "locale": "EN",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 9,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "9af38339b1a582c3f4a0b5b8cd5cbcf573f766602dc71b04a8e7e2bd9754d0cc",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "c87b8661d1c8c06e1b3f58a9c9cc695a1b9570af6d765d2318d4912e0039916c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-004",
+      "printingCode": "ST22-004",
+      "locale": "EN",
+      "name": "Elmy",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "a497e00c294d36a4aea835cc6eaade798a255efe1e9228ad3a8f1297bdafbe78",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-004",
+      "printingCode": "ST22-004_p1",
+      "locale": "EN",
+      "name": "Elmy",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "a497e00c294d36a4aea835cc6eaade798a255efe1e9228ad3a8f1297bdafbe78",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-005",
+      "printingCode": "ST22-005",
+      "locale": "EN",
+      "name": "Kouzuki Oden",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "814064361394edfde699253118bad1487fec89abfe31844d31c514887a23dc75",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "79cf4c1deadc99afaf5fffd75cecf7ad1ef1e973efcbe52057a54d025d887483",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-005",
+      "printingCode": "ST22-005_p1",
+      "locale": "EN",
+      "name": "Kouzuki Oden",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "814064361394edfde699253118bad1487fec89abfe31844d31c514887a23dc75",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "79cf4c1deadc99afaf5fffd75cecf7ad1ef1e973efcbe52057a54d025d887483",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-006",
+      "printingCode": "ST22-006",
+      "locale": "EN",
+      "name": "Jozu",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 7,
+      "power": 8000,
+      "counter": 1000,
+      "effectHash": "71ed1db3e0a0b3b129dc9c5555189cc2b671c25b9ed8f0943dd9ff306a34482f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-006",
+      "printingCode": "ST22-006_p1",
+      "locale": "EN",
+      "name": "Jozu",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 7,
+      "power": 8000,
+      "counter": 1000,
+      "effectHash": "71ed1db3e0a0b3b129dc9c5555189cc2b671c25b9ed8f0943dd9ff306a34482f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-007",
+      "printingCode": "ST22-007",
+      "locale": "EN",
+      "name": "Squard",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "6a9088ab4d8972b3d83fd3e6fdd06f460196857d8c6ffc3fca62abcfe505ffd4",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "a497e00c294d36a4aea835cc6eaade798a255efe1e9228ad3a8f1297bdafbe78",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-007",
+      "printingCode": "ST22-007_p1",
+      "locale": "EN",
+      "name": "Squard",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "6a9088ab4d8972b3d83fd3e6fdd06f460196857d8c6ffc3fca62abcfe505ffd4",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "a497e00c294d36a4aea835cc6eaade798a255efe1e9228ad3a8f1297bdafbe78",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-008",
+      "printingCode": "ST22-008",
+      "locale": "EN",
+      "name": "Decalvan Brothers",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "a497e00c294d36a4aea835cc6eaade798a255efe1e9228ad3a8f1297bdafbe78",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-008",
+      "printingCode": "ST22-008_p1",
+      "locale": "EN",
+      "name": "Decalvan Brothers",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "a497e00c294d36a4aea835cc6eaade798a255efe1e9228ad3a8f1297bdafbe78",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-009",
+      "printingCode": "ST22-009",
+      "locale": "EN",
+      "name": "Vista",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-009",
+      "printingCode": "ST22-009_p1",
+      "locale": "EN",
+      "name": "Vista",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-010",
+      "printingCode": "ST22-010",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 5,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-010",
+      "printingCode": "ST22-010_p1",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 5,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-011",
+      "printingCode": "ST22-011",
+      "locale": "EN",
+      "name": "Whitey Bay",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 1,
+      "power": 1000,
+      "counter": 2000,
+      "effectHash": "5a6930fb12da8206597a70c210f22737471aac3121f25c9563d73c096af96a1b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-011",
+      "printingCode": "ST22-011_p1",
+      "locale": "EN",
+      "name": "Whitey Bay",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 1,
+      "power": 1000,
+      "counter": 2000,
+      "effectHash": "5a6930fb12da8206597a70c210f22737471aac3121f25c9563d73c096af96a1b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-012",
+      "printingCode": "ST22-012",
+      "locale": "EN",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "3bfb7f3acdb1f94627fae9052d42531971a1f4455a4af791825ec4cbb30e703e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-012",
+      "printingCode": "ST22-012_p1",
+      "locale": "EN",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "3bfb7f3acdb1f94627fae9052d42531971a1f4455a4af791825ec4cbb30e703e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-013",
+      "printingCode": "ST22-013",
+      "locale": "EN",
+      "name": "LittleOars Jr.",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "2885f480ac1c9d4031350da56da85809c18317ac175fab4bcfcef1cdf57cde98",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-013",
+      "printingCode": "ST22-013_p1",
+      "locale": "EN",
+      "name": "LittleOars Jr.",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "2885f480ac1c9d4031350da56da85809c18317ac175fab4bcfcef1cdf57cde98",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-014",
+      "printingCode": "ST22-014",
+      "locale": "EN",
+      "name": "A.O.",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "a497e00c294d36a4aea835cc6eaade798a255efe1e9228ad3a8f1297bdafbe78",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-014",
+      "printingCode": "ST22-014_p1",
+      "locale": "EN",
+      "name": "A.O.",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "a497e00c294d36a4aea835cc6eaade798a255efe1e9228ad3a8f1297bdafbe78",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-015",
+      "printingCode": "ST22-015",
+      "locale": "EN",
+      "name": "I Am Whitebeard!!",
+      "type": "EVENT",
+      "color": "Blue",
+      "cost": 8,
+      "power": null,
+      "counter": null,
+      "effectHash": "741c9641d04fbc86959b963a9268a85f2f4bf202206e64c61aed8b9d1adfb530",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "c87b8661d1c8c06e1b3f58a9c9cc695a1b9570af6d765d2318d4912e0039916c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-016",
+      "printingCode": "ST22-016",
+      "locale": "EN",
+      "name": "Take That Back!! Take Back What You Said!!",
+      "type": "EVENT",
+      "color": "Blue",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "36c6642c3f440403d7eb8d509c5f99475d9001362a40ba3aa61dbb441123a863",
+      "triggerHash": "3d25b05966b8da7449619645c84ea59ba294c6a936c13a24fdb7cd43a20bb844",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-017",
+      "printingCode": "ST22-017",
+      "locale": "EN",
+      "name": "Fire Fist",
+      "type": "EVENT",
+      "color": "Blue",
+      "cost": 5,
+      "power": null,
+      "counter": null,
+      "effectHash": "8a8963f45bd965f20776e45cdd06ddc6dd3adf34f0f481f11f04e051281afd5c",
+      "triggerHash": "5bfc08228d1399eff12858aa1d7edbae7e83d4d5af22c4822455724ba040c047",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569022"
+    },
+    {
+      "cardNumber": "ST22-001",
+      "printingCode": "ST22-001",
+      "locale": "FR",
+      "name": "Ace et Newgate",
+      "type": "LEADER",
+      "color": "Bleu",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "f058066bc9a20d22356d75740bdaa0ebc8d974bc876b9892243f8362093ac6cf",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "e51170af181ac706b92d9c97436459f5eba0b6ab80f8d2856e9d33428a45d637",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-001",
+      "printingCode": "ST22-001_p1",
+      "locale": "FR",
+      "name": "Ace et Newgate",
+      "type": "LEADER",
+      "color": "Bleu",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "f058066bc9a20d22356d75740bdaa0ebc8d974bc876b9892243f8362093ac6cf",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "e51170af181ac706b92d9c97436459f5eba0b6ab80f8d2856e9d33428a45d637",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-002",
+      "printingCode": "ST22-002",
+      "locale": "FR",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 1,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "50fb4ffa169eae4b91d90bc61cb24b77a424bbb2acac3b1c8e75ada5cb31bbd6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "c191add49123698714bae023330347a61dc400997af7d2c57e18c94d99d9dc08",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-002",
+      "printingCode": "ST22-002_p1",
+      "locale": "FR",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 1,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "50fb4ffa169eae4b91d90bc61cb24b77a424bbb2acac3b1c8e75ada5cb31bbd6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "c191add49123698714bae023330347a61dc400997af7d2c57e18c94d99d9dc08",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-003",
+      "printingCode": "ST22-003",
+      "locale": "FR",
+      "name": "Edward Newgate",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 9,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "85e6035eeb71ee2eba73238765e3b4aae4e7577e5ab75026e4832723bcedb78f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "e51170af181ac706b92d9c97436459f5eba0b6ab80f8d2856e9d33428a45d637",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-003",
+      "printingCode": "ST22-003_p1",
+      "locale": "FR",
+      "name": "Edward Newgate",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 9,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "85e6035eeb71ee2eba73238765e3b4aae4e7577e5ab75026e4832723bcedb78f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "e51170af181ac706b92d9c97436459f5eba0b6ab80f8d2856e9d33428a45d637",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-004",
+      "printingCode": "ST22-004",
+      "locale": "FR",
+      "name": "Elmy",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "3187f3ad8653861307725d65071d53ec5360164e50bd7cb43a96d8c7e2a3003d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-004",
+      "printingCode": "ST22-004_p1",
+      "locale": "FR",
+      "name": "Elmy",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "3187f3ad8653861307725d65071d53ec5360164e50bd7cb43a96d8c7e2a3003d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-005",
+      "printingCode": "ST22-005",
+      "locale": "FR",
+      "name": "Oden Kozuki",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "754e360ec60bd9b1ba56cc9587c4767282f8c631c978835fbf0465d917406d3e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "86077a991b2127019538f6fcac3f9af5c930af7160665dde97f322739e28dd55",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-005",
+      "printingCode": "ST22-005_p1",
+      "locale": "FR",
+      "name": "Oden Kozuki",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "754e360ec60bd9b1ba56cc9587c4767282f8c631c978835fbf0465d917406d3e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "86077a991b2127019538f6fcac3f9af5c930af7160665dde97f322739e28dd55",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-006",
+      "printingCode": "ST22-006",
+      "locale": "FR",
+      "name": "Joz",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 7,
+      "power": 8000,
+      "counter": 1000,
+      "effectHash": "378891264eb6bad32f58cc494cc383dd5680f494a7af4727db98a1366f5b997c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-006",
+      "printingCode": "ST22-006_p1",
+      "locale": "FR",
+      "name": "Joz",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 7,
+      "power": 8000,
+      "counter": 1000,
+      "effectHash": "378891264eb6bad32f58cc494cc383dd5680f494a7af4727db98a1366f5b997c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-007",
+      "printingCode": "ST22-007",
+      "locale": "FR",
+      "name": "Squardo",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "c4ff9d9b080a2c109ac2b952a907e8ad6c4bc883babc745f90db2f73c90e937c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "3187f3ad8653861307725d65071d53ec5360164e50bd7cb43a96d8c7e2a3003d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-007",
+      "printingCode": "ST22-007_p1",
+      "locale": "FR",
+      "name": "Squardo",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "c4ff9d9b080a2c109ac2b952a907e8ad6c4bc883babc745f90db2f73c90e937c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "3187f3ad8653861307725d65071d53ec5360164e50bd7cb43a96d8c7e2a3003d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-008",
+      "printingCode": "ST22-008",
+      "locale": "FR",
+      "name": "Les frères Decalvan",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "3187f3ad8653861307725d65071d53ec5360164e50bd7cb43a96d8c7e2a3003d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-008",
+      "printingCode": "ST22-008_p1",
+      "locale": "FR",
+      "name": "Les frères Decalvan",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "3187f3ad8653861307725d65071d53ec5360164e50bd7cb43a96d8c7e2a3003d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-009",
+      "printingCode": "ST22-009",
+      "locale": "FR",
+      "name": "Vista",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-009",
+      "printingCode": "ST22-009_p1",
+      "locale": "FR",
+      "name": "Vista",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-010",
+      "printingCode": "ST22-010",
+      "locale": "FR",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 5,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-010",
+      "printingCode": "ST22-010_p1",
+      "locale": "FR",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 5,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-011",
+      "printingCode": "ST22-011",
+      "locale": "FR",
+      "name": "Whitey Bay",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 1,
+      "power": 1000,
+      "counter": 2000,
+      "effectHash": "731badf6d702d6948585c3047cd7bc369bf99add85a45148aebb3c8e13730fc1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-011",
+      "printingCode": "ST22-011_p1",
+      "locale": "FR",
+      "name": "Whitey Bay",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 1,
+      "power": 1000,
+      "counter": 2000,
+      "effectHash": "731badf6d702d6948585c3047cd7bc369bf99add85a45148aebb3c8e13730fc1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-012",
+      "printingCode": "ST22-012",
+      "locale": "FR",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "afe61296e5100609a38ea23cb93c3ac04baee1c4b740f7d2155b6f48258de307",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-012",
+      "printingCode": "ST22-012_p1",
+      "locale": "FR",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "afe61296e5100609a38ea23cb93c3ac04baee1c4b740f7d2155b6f48258de307",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-013",
+      "printingCode": "ST22-013",
+      "locale": "FR",
+      "name": "Little Oz Junior",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "f7cc533cdb7562fe0925e005f8e8a9ef3693705641648b21050a8e2cda86e115",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-013",
+      "printingCode": "ST22-013_p1",
+      "locale": "FR",
+      "name": "Little Oz Junior",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "f7cc533cdb7562fe0925e005f8e8a9ef3693705641648b21050a8e2cda86e115",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-014",
+      "printingCode": "ST22-014",
+      "locale": "FR",
+      "name": "A.O",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "3187f3ad8653861307725d65071d53ec5360164e50bd7cb43a96d8c7e2a3003d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-014",
+      "printingCode": "ST22-014_p1",
+      "locale": "FR",
+      "name": "A.O",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "3187f3ad8653861307725d65071d53ec5360164e50bd7cb43a96d8c7e2a3003d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-015",
+      "printingCode": "ST22-015",
+      "locale": "FR",
+      "name": "Je suis \"Barbe Blanche\" !!",
+      "type": "EVENT",
+      "color": "Bleu",
+      "cost": 8,
+      "power": null,
+      "counter": null,
+      "effectHash": "fea67e8590e210dedabf832937818bf9a282872a6233e8e8a7095ef506b07dd5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "e51170af181ac706b92d9c97436459f5eba0b6ab80f8d2856e9d33428a45d637",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-016",
+      "printingCode": "ST22-016",
+      "locale": "FR",
+      "name": "Retire immédiatement... ce que tu viens de dire !!",
+      "type": "EVENT",
+      "color": "Bleu",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "7a33b3412d0438e09c509fbd2c2c1e9fe2b7e9e06fbaff9f4017a7d41ea2d0b6",
+      "triggerHash": "5973fb33081d88337d6286dc2945f673c990fcb7e7cb39b65d72e3e6b3703cc3",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    },
+    {
+      "cardNumber": "ST22-017",
+      "printingCode": "ST22-017",
+      "locale": "FR",
+      "name": "Poing ardent",
+      "type": "EVENT",
+      "color": "Bleu",
+      "cost": 5,
+      "power": null,
+      "counter": null,
+      "effectHash": "96247e7dd7feb83b49f662fdfd7b7ddda431961c58b21b391a20fa3c0eb6dd52",
+      "triggerHash": "ba263ec1530074ae9ff6e35bda37b3c2563595c749136d346775eb5ab783ebd8",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622022"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "ST22-001",
+      "printingCode": "ST22-001",
+      "name": "Ace et Newgate",
+      "type": "LEADER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-001",
+      "printingCode": "ST22-001_p1",
+      "name": "Ace et Newgate",
+      "type": "LEADER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-002",
+      "printingCode": "ST22-002",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-002",
+      "printingCode": "ST22-002_p1",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-003",
+      "printingCode": "ST22-003",
+      "name": "Edward Newgate",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-003",
+      "printingCode": "ST22-003_p1",
+      "name": "Edward Newgate",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-004",
+      "printingCode": "ST22-004",
+      "name": "Elmy",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-004",
+      "printingCode": "ST22-004_p1",
+      "name": "Elmy",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-005",
+      "printingCode": "ST22-005",
+      "name": "Oden Kozuki",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-005",
+      "printingCode": "ST22-005_p1",
+      "name": "Oden Kozuki",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-006",
+      "printingCode": "ST22-006",
+      "name": "Joz",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-006",
+      "printingCode": "ST22-006_p1",
+      "name": "Joz",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-007",
+      "printingCode": "ST22-007",
+      "name": "Squardo",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-007",
+      "printingCode": "ST22-007_p1",
+      "name": "Squardo",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-008",
+      "printingCode": "ST22-008",
+      "name": "Les frères Decalvan",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-008",
+      "printingCode": "ST22-008_p1",
+      "name": "Les frères Decalvan",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-009",
+      "printingCode": "ST22-009",
+      "name": "Vista",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-009",
+      "printingCode": "ST22-009_p1",
+      "name": "Vista",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-010",
+      "printingCode": "ST22-010",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-010",
+      "printingCode": "ST22-010_p1",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-011",
+      "printingCode": "ST22-011",
+      "name": "Whitey Bay",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-011",
+      "printingCode": "ST22-011_p1",
+      "name": "Whitey Bay",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-012",
+      "printingCode": "ST22-012",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-012",
+      "printingCode": "ST22-012_p1",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-013",
+      "printingCode": "ST22-013",
+      "name": "Little Oz Junior",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-013",
+      "printingCode": "ST22-013_p1",
+      "name": "Little Oz Junior",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-014",
+      "printingCode": "ST22-014",
+      "name": "A.O",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-014",
+      "printingCode": "ST22-014_p1",
+      "name": "A.O",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-015",
+      "printingCode": "ST22-015",
+      "name": "Je suis \"Barbe Blanche\" !!",
+      "type": "EVENT",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-016",
+      "printingCode": "ST22-016",
+      "name": "Retire immédiatement... ce que tu viens de dire !!",
+      "type": "EVENT",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST22-017",
+      "printingCode": "ST22-017",
+      "name": "Poing ardent",
+      "type": "EVENT",
+      "color": "Bleu"
+    }
+  ]
+}

@@ -2,12 +2,14 @@ import type { CardDefinition, SourceReference } from './types'
 import type { EffectRegistry } from '../effects/contracts'
 import { M5_CARDS, M5_REVISION } from './m5Catalog'
 import { M3_ABILITY_CARDS } from './m3Abilities'
+import { keywordOnlyText } from './keywordText'
+import { faqUrlFor } from './officialSources'
 
 // M4-C1 — certification per definition revision. A certification is a separate, explicit record bound to
 // one definitionId (number@revision); it is never carried by `review.playabilityStatus`, never inherited by
 // a clone and never granted to a whole deck. The historic `playabilityStatus` field stays as laboratory
 // metadata and cannot by itself make a card PLAYABLE_VERIFIED.
-export type CertifiedAbility = { kind: 'blocker' | 'declarative' | 'giveRestedDon' | 'counterEvent' | 'trigger'; id: string; tests: string[] }
+export type CertifiedAbility = { kind: 'blocker' | 'declarative' | 'giveRestedDon' | 'counterEvent' | 'trigger' | 'keyword'; id: string; tests: string[] }
 export type Certification = {
   definitionId: string
   certifiedAt: string
@@ -579,16 +581,23 @@ export function certificationErrors(c: Certification, definition: CardDefinition
   if (![c.cardText, c.faq, c.errata].every(r => r.checkedAt === c.certifiedAt && /^https:\/\/en\.onepiece-cardgame\.com\//.test(r.source))) errors.push('SOURCE_NOT_RECHECKED')
   if (!c.tests.length || c.abilities.some(a => !a.tests.length)) errors.push('MISSING_TESTS')
   const kinds = [...definition.review.effects.map(e => e.kind), ...(definition.review.triggerOriginal.trim() ? ['trigger'] : []), ...(definition.review.counterEvent ? ['counterEvent'] : [])].sort()
-  if (JSON.stringify(kinds) !== JSON.stringify(c.abilities.map(a => a.kind).sort())) errors.push('ABILITY_SET_MISMATCH')
+  if (JSON.stringify(kinds) !== JSON.stringify(c.abilities.filter(a => a.kind !== 'keyword').map(a => a.kind).sort())) errors.push('ABILITY_SET_MISMATCH')
+  // M6: a printed combat keyword named in a certificate must be one the definition carries (review.combatKeywords).
+  const keywords = definition.review.combatKeywords ?? []
+  if (c.abilities.some(a => a.kind === 'keyword' && !keywords.includes(a.id as never))) errors.push('ABILITY_NOT_EXECUTABLE')
   // M6: a [Counter] Event is certifiable only through its declared COUNTER program, named and tested in the certificate.
   const counter = definition.review.counterEvent
   if (counter && (counter.kind !== 'DECLARATIVE' || !c.abilities.some(a => a.kind === 'counterEvent' && a.id === counter.abilityId)
     || !registry.definitions.some(d => d.id === counter.abilityId && d.timing === 'COUNTER' && d.source.kind === 'CARD_DEFINITION' && d.source.definitionId === definition.definitionId))) errors.push('UNCERTIFIED_CAPABILITY')
-  if (!definition.review.effects.length && (definition.review.effectOriginal.trim() || definition.review.effectFr.trim())) errors.push('TEXT_WITHOUT_ABILITY')
+  // A text made only of printed keywords (with their reminder text) is executable through review.combatKeywords, provided
+  // the certificate names and tests each keyword.
+  const keywordOnly = keywords.length > 0 && keywordOnlyText(definition.review.effectOriginal, keywords) && keywords.every(k => c.abilities.some(a => a.kind === 'keyword' && a.id === k))
+  if (!definition.review.effects.length && (definition.review.effectOriginal.trim() || definition.review.effectFr.trim()) && !keywordOnly) errors.push('TEXT_WITHOUT_ABILITY')
   for (const e of definition.review.effects) if (e.kind === 'declarative' && e.abilityIds.some(id => !registry.definitions.some(d => d.id === id && d.source.kind === 'CARD_DEFINITION' && d.source.definitionId === definition.definitionId)
     && !registry.continuous?.some(d => d.id === id && d.definitionId === definition.definitionId)
     && !registry.conditionalKeywords?.some(d => d.id === id && d.definitionId === definition.definitionId)
-    && !registry.koProtections?.some(d => d.id === id && d.definitionId === definition.definitionId))) errors.push('ABILITY_NOT_EXECUTABLE')
+    && !registry.koProtections?.some(d => d.id === id && d.definitionId === definition.definitionId)
+    && !registry.cardReplacements?.some(d => d.id === id && d.definitionId === definition.definitionId))) errors.push('ABILITY_NOT_EXECUTABLE')
   for (const a of c.abilities) if (a.kind === 'trigger' && !registry.definitions.some(d => d.id === a.id && d.source.kind === 'CARD_DEFINITION' && d.source.definitionId === definition.definitionId && d.timing === 'TRIGGER')) errors.push('ABILITY_NOT_EXECUTABLE')
   return errors
 }
@@ -618,3 +627,225 @@ export const ST03_OP_CERTIFICATIONS: Certification[] = [
     tests: [...O.femur, ...O.femurTrigger], notes: 'Turn-scoped blocker restriction bound to the selected card (same primitive as ST01-016).' },
 ]
 CERTIFICATIONS.push(...ST03_OP_CERTIFICATIONS)
+// M6 — reprints of the audited Starter Deck contents (scripts/rebuildStarterDecks.ts), certified at their own set revision.
+// Card list pages per series, the set FAQ (qa_opNN.pdf) and the errata page are archived in docs/game/evidence/m6/sources/.
+const SERIES: Record<string, string> = { OP01: '569101', OP02: '569102' }
+const FAQS: Record<string, string> = { OP01: 'https://en.onepiece-cardgame.com/pdf/qa_op01.pdf?20240405', OP02: 'https://en.onepiece-cardgame.com/pdf/qa_op02.pdf?20240405' }
+const certR = (number: string, revision: string, detail: string, faqDetail: string, abilities: CertifiedAbility[], notes: string, tests: string[] = []): Certification => {
+  const set = number.split('-')[0]
+  return { definitionId: `${number}@${revision}`, certifiedAt: st01Day, rulesVersion: '1.2.1', rulesetId: 'MUGIWARA_FREE',
+    cardText: { source: `https://en.onepiece-cardgame.com/cardlist/?series=${SERIES[set]}#${number}`, checkedAt: st01Day, language: 'en', detail },
+    faq: { source: FAQS[set], checkedAt: st01Day, language: 'en', detail: faqDetail }, errata: st01Errata('Errata page checked; no erratum for this card'),
+    abilities, tests: [...new Set([...abilities.flatMap(a => a.tests), ...tests])], notes }
+}
+const R = {
+  zoro: ['M6 OP01-025: Roronoa Zoro has [Rush] and can attack on the turn it is played'],
+  chopper: ['M6 OP02-034: Chopper with a DON!! rests up to 1 opposing Character cost 2 or less when attacking; without DON!! nothing'],
+  law: ['M6 FAQ OP02-035: Law rests 1 DON!! and returns itself to hand to play up to 1 Character with a cost of exactly 3'],
+  film: ['M6 OP02-037, OP02-040 and OP02-041: On Play plays a {FILM} or {Straw Hat Crew} Character card of cost 2, 3 or 4 or less from hand'],
+  oni: ['M6 FAQ P-011 / OP02-045: Oni Giri gives +6000 this battle then plays a cost 3 or less Character with no base effect; its Trigger rests a cost 5 or less'],
+  plain: ['M6 vanilla reprints are played for their printed cost, keep their printed power and counter with their printed value'],
+}
+export const REPRINT_CERTIFICATIONS: Certification[] = [
+  certR('OP01-025', L, 'Roronoa Zoro: [Rush]', 'No FAQ entry', [{ kind: 'keyword', id: 'RUSH', tests: R.zoro }], 'Printed keyword only (review.combatKeywords).'),
+  certR('OP02-028', M5, 'Usopp: no ability', 'No FAQ entry', [], 'Vanilla Character.', R.plain),
+  certR('OP02-033', M5, 'Jinbe: no ability', 'No FAQ entry', [], 'Vanilla Character.', R.plain),
+  certR('OP02-034', L, 'Tony Tony.Chopper: [DON!! x1] When Attacking rest up to 1 opposing Character cost 2 or less', 'No FAQ entry', [dd('OP02-034.when-attacking-rest', R.chopper)], 'Rest operation.'),
+  certR('OP02-035', L, 'Trafalgar Law: Activate Main ➀, return this Character to hand: play up to 1 Character with a cost of 3 from hand', 'FAQ OP02-035: a cost of exactly 3', [dd('OP02-035.activate-main-play', R.law)], 'REST_DON cost, then the self return paid before the play.'),
+  certR('OP02-037', L, 'Nico Robin: On Play play up to 1 {FILM} or {Straw Hat Crew} Character cost 2 or less from hand', 'No FAQ entry', [dd('OP02-037.on-play-play', R.film)], 'Trait filter (any of).'),
+  certR('OP02-039', M5, 'Franky: no ability', 'No FAQ entry', [], 'Vanilla Character.', R.plain),
+  certR('OP02-040', L, 'Brook: On Play play up to 1 {FILM} or {Straw Hat Crew} Character cost 3 or less from hand', 'No FAQ entry', [dd('OP02-040.on-play-play', R.film)], 'Trait filter (any of).'),
+  certR('OP02-041', L, 'Monkey.D.Luffy: [Blocker]; On Play play up to 1 {FILM} or {Straw Hat Crew} Character cost 4 or less from hand', 'No FAQ entry', [bl(R.film), dd('OP02-041.on-play-play', R.film)], 'Printed [Blocker].'),
+  certR('OP02-043', M5, 'Roronoa Zoro: no ability', 'No FAQ entry', [], 'Vanilla Character.', R.plain),
+  certR('OP02-045', L, 'Three Sword Style Oni Giri: Counter up to 1 own Leader/Character +6000 this battle, then play up to 1 Character cost 3 or less with no base effect from hand; Trigger rest up to 1 opposing Leader or Character cost 5 or less', 'No OP02-045 entry; FAQ P-011 (qa_promotion-cards): no base effect excludes a Trigger-only Character, a Counter value does not count', [dd('OP02-045.counter+trigger-rest', R.oni), ce('OP02-045.counter', R.oni), tr('OP02-045.trigger-rest', R.oni)], 'noBaseEffect card filter.'),
+]
+CERTIFICATIONS.push(...REPRINT_CERTIFICATIONS)
+// M6 — ST-14 (series 569014). FAQ qa_st-14.pdf?20240802 and the errata page are archived in docs/game/evidence/m6/sources/.
+const cert14 = (number: string, revision: string, detail: string, faqDetail: string, abilities: CertifiedAbility[], notes: string, tests: string[] = []): Certification => ({
+  definitionId: `${number}@${revision}`, certifiedAt: st01Day, rulesVersion: '1.2.1', rulesetId: 'MUGIWARA_FREE',
+  cardText: { source: `https://en.onepiece-cardgame.com/cardlist/?series=569014#${number}`, checkedAt: st01Day, language: 'en', detail },
+  faq: { source: 'https://en.onepiece-cardgame.com/pdf/qa_st-14.pdf?20240802', checkedAt: st01Day, language: 'en', detail: faqDetail },
+  errata: st01Errata('Errata page checked; no erratum for this card'), abilities, tests: [...new Set([...abilities.flatMap(a => a.tests), ...tests])], notes })
+const K = {
+  leader: ['M6 FAQ ST14-001: with a DON!! the Leader gives field Characters +1 cost and gains +1000 while a Character costs 8 or more'],
+  sunny: ['M6 FAQ ST14-017: Thousand Sunny gives black {Straw Hat Crew} field Characters +1 cost and draws 1 on play with a {Straw Hat Crew} Leader'],
+  usopp: ['M6 FAQ ST14-002: Usopp with a DON!! K.O.s a cost 4 or less when attacking if a Character costs 8 or more; otherwise nothing'],
+  sanji: ['M6 FAQ ST14-003: with a DON!! on the Leader and no Character, Sanji (cost 6 on the field) K.O.s a cost 5 or less on play'],
+  raise: ['M6 ST-14 Jinbe, Heracles and Haredas give a black {Straw Hat Crew} Character +2 cost until the end of the opponent next turn'],
+  nami: ['M6 ST-14 Nami blocks and draws 1 on play with 6 or less cards in hand and a Character of cost 8 or more'],
+  robin: ['M6 FAQ ST14-007: Nico Robin gives an opposing Character -5 cost this turn on play and when attacking if a Character costs 8 or more'],
+  franky: ['M6 FAQ ST14-009: Franky with a DON!! and a cost 6 or more Character gains +2000 and cannot be K.O.d by opponent effects on the opponent turn'],
+  luffy: ['M6 FAQ ST14-012: Monkey.D.Luffy gains [Rush] while a Character has a cost of 10 or more'],
+  rifle: ['M6 ST-14 Gum-Gum Giant Rifle gives +3000 this battle with a cost 8 or more Character; its Trigger returns a cost 2 or less Character from trash'],
+  phoenix: ['M6 ST-14 Phoenix Cannon gives +3000 this turn then K.O.s a cost 2 or less with a cost 8 Character; its Trigger K.O.s a cost 5 or less'],
+  crew: ['M6 ST-14 I Have My Crew!! draws 1 then gives +3 cost until the end of the opponent next turn; its Trigger K.O.s a cost 3 or less'],
+  plain: ['M6 ST-14 cards without ability are played for their printed cost and keep their printed power'],
+}
+export const ST14_CERTIFICATIONS: Certification[] = [
+  cert14('ST14-001', L, 'Leader Monkey.D.Luffy, Life 5: [DON!! x1] all your Characters +1 cost; with a Character cost 8 or more, this Leader +1000 power', 'FAQ ST14-001: field only; re-evaluated when the cost 8 Character leaves', [dd('ST14-001.don-cost-aura+don-power', K.leader)], 'Leader aura (COST) and conditional own POWER.'),
+  cert14('ST14-002', L, 'Usopp: [DON!! x1] When Attacking, with a Character cost 8 or more, K.O. up to 1 opposing Character cost 4 or less', 'FAQ ST14-002: Usopp itself may be that Character', [dd('ST14-002.when-attacking-ko', K.usopp)], 'ALL_OF condition.'),
+  cert14('ST14-003', L, 'Sanji: On Play, with a Character cost 6 or more, K.O. up to 1 opposing Character cost 5 or less', 'FAQ ST14-003: Sanji counts itself at its current cost', [dd('ST14-003.on-play-ko', K.sanji)], 'Current cost condition.'),
+  cert14('ST14-004', L, 'Jinbe: Activate Main once per turn: up to 1 black {Straw Hat Crew} Character +2 cost until the end of the opponent next turn', 'No FAQ entry', [dd('ST14-004.activate-main-cost', K.raise)], 'Cost modifier lasting through the next turn.'),
+  cert14('ST14-005', M5, 'Tony Tony.Chopper: no ability', 'No FAQ entry', [], 'Vanilla Character.', K.plain),
+  cert14('ST14-006', L, 'Nami: [Blocker]; On Play with 6 or less cards in hand and a Character cost 8 or more, draw 1', 'No FAQ entry', [bl(K.nami), dd('ST14-006.on-play-draw', K.nami)], 'Printed [Blocker].'),
+  cert14('ST14-007', L, 'Nico Robin: On Play/When Attacking with a Character cost 8 or more, up to 1 opposing Character -5 cost this turn', 'FAQ ST14-007: Robin itself may be that Character', [dd('ST14-007.on-play-cost+when-attacking-cost', K.robin)], 'Two timings, one program.'),
+  cert14('ST14-008', L, 'Haredas: Activate Main, rest this: up to 1 black {Straw Hat Crew} Character +2 cost until the end of the opponent next turn; then with a Character cost 8 or more draw 1 and trash 1', 'No FAQ entry', [dd('ST14-008.activate-main-cost', K.raise)], 'Condition checked after the cost change.'),
+  cert14('ST14-009', L, 'Franky: [DON!! x1] [Opponent\'s Turn] with a Character cost 6 or more, cannot be K.O.d by the opponent effects and +2000 power', 'FAQ ST14-009: Franky itself may be that Character', [dd('ST14-009.opponent-turn-power+no-opponent-effect-ko', K.franky)], 'Continuous POWER and an opponent-effect K.O. protection.'),
+  cert14('ST14-010', M5, 'Brook: no ability', 'No FAQ entry', [], 'Vanilla Character.', K.plain),
+  cert14('ST14-011', L, 'Heracles: Activate Main, rest this: up to 1 black {Straw Hat Crew} Character +2 cost until the end of the opponent next turn', 'No FAQ entry', [dd('ST14-011.activate-main-cost', K.raise)], 'REST_SOURCE cost.'),
+  cert14('ST14-012', L, 'Monkey.D.Luffy: with a Character cost 10 or more, this Character gains [Rush]', 'FAQ ST14-012: Luffy itself may be that Character', [dd('ST14-012.conditional-rush', K.luffy)], 'Conditional keyword on own current costs.'),
+  cert14('ST14-013', M5, 'Roronoa Zoro: no ability', 'No FAQ entry', [], 'Vanilla Character.', K.plain),
+  cert14('ST14-014', L, 'Gum-Gum Giant Rifle: Counter with a Character cost 8 or more, up to 1 own Leader/Character +3000 this battle; Trigger add up to 1 Character cost 2 or less from trash to hand', 'No FAQ entry', [dd('ST14-014.counter+trigger-recover', K.rifle), ce('ST14-014.counter', K.rifle), tr('ST14-014.trigger-recover', K.rifle)], 'Counter Event usable without effect when the condition fails.'),
+  cert14('ST14-015', L, 'Phoenix Cannon: Main up to 1 own Leader/Character +3000 this turn, then with a Character cost 8 or more K.O. up to 1 opposing Character cost 2 or less; Trigger with a Character cost 8 or more K.O. up to 1 cost 5 or less', 'No FAQ entry', [dd('ST14-015.main-power-ko+trigger-ko', K.phoenix), tr('ST14-015.trigger-ko', K.phoenix)], 'Conditional choice step.'),
+  cert14('ST14-016', L, 'I Have My Crew!!: Main draw 1, then up to 1 own Character +3 cost until the end of the opponent next turn; Trigger K.O. up to 1 opposing Character cost 3 or less', 'No FAQ entry', [dd('ST14-016.main-draw-cost+trigger-ko', K.crew), tr('ST14-016.trigger-ko', K.crew)], 'Cost modifier lasting through the next turn.'),
+  cert14('ST14-017', L, 'Thousand Sunny: all your black {Straw Hat Crew} Characters +1 cost; On Play with a {Straw Hat Crew} Leader draw 1', 'FAQ ST14-017: field only', [dd('ST14-017.on-play-draw+cost-aura', K.sunny)], 'Stage aura (COST).'),
+]
+CERTIFICATIONS.push(...ST14_CERTIFICATIONS)
+// M6 — cards reviewed from an official English card list snapshot (data/official-en; archived pages in
+// docs/game/evidence/m6/sources/cardlist-en/). The card list page is the series page of the Starter Deck that reprints them.
+const certO = (series: string, number: string, revision: string, detail: string, faqDetail: string, abilities: CertifiedAbility[], notes: string, tests: string[] = [], errata = 'Errata page checked; no erratum for this card'): Certification => ({
+  definitionId: `${number}@${revision}`, certifiedAt: st01Day, rulesVersion: '1.2.1', rulesetId: 'MUGIWARA_FREE',
+  cardText: { source: `https://en.onepiece-cardgame.com/cardlist/?series=${series}#${number}`, checkedAt: st01Day, language: 'en', detail },
+  faq: { source: faqUrlFor(number), checkedAt: st01Day, language: 'en', detail: faqDetail }, errata: st01Errata(errata),
+  abilities, tests: [...new Set([...abilities.flatMap(a => a.tests), ...tests])], notes })
+const OFF = 'm6-official-en-2026-10-14'
+const Q = {
+  leader: ['M6 FAQ OP01-060: Leader Doflamingo with 2 DON!! pays 1 DON!! to reveal the top card and may play a Warlords Character cost 4 or less rested'],
+  croc: ['M6 FAQ ST17-001: Crocodile reveals the top card; a Warlords card means draw 2 then place 1 hand card on top, otherwise it stays on top'],
+  law: ['M6 FAQ ST17-002: Law may return 1 own Character to return a cost 4 or less Character; without a Warlords Leader only the cost is paid'],
+  buggy: ['M6 ST-17 Buggy looks at 3 and places them at the top in any order'],
+  look: ['M6 FAQ OP01-073: Hancock and Doflamingo block; they look at 3 or 5 and place all at the top or all at the bottom; Hancock then gives a rested DON!! to a Warlords card'],
+  teach: ['M6 ST-17 Marshall.D.Teach places 1 hand card on top of the deck to give up to 2 rested DON!! to the Leader or a Character, once per turn'],
+  kuma: ['M6 ST-17 Bartholomew Kuma looks at 2, adds up to 1 Warlords card to hand and places the rest at the top or bottom'],
+  jinbe: ['M6 FAQ P-030: Jinbe, when K.O.d, places up to 1 Character with a cost of 3 or less (own included) at the bottom of its owner deck'],
+  heat: ['M6 FAQ OP01-086: Overheat gives +4000 this battle and returns an active cost 3 or less Character (own included); its Trigger returns a cost 4 or less'],
+  plain: ['M6 ST-17 Gecko Moria (no ability) is played for its printed cost and keeps its printed power'],
+}
+const c17 = (number: string, revision: string, detail: string, faqDetail: string, abilities: CertifiedAbility[], notes: string, tests: string[] = [], errata?: string) => certO('569017', number, revision, detail, faqDetail, abilities, notes, tests, errata)
+export const ST17_CERTIFICATIONS: Certification[] = [
+  c17('OP01-060', OFF, 'Leader Donquixote Doflamingo, Life 5: [DON!! x2] When Attacking ➀: reveal the top card; a {The Seven Warlords of the Sea} Character cost 4 or less may be played rested', 'FAQ OP01-060: a card not played returns face-down to the top', [dd('OP01-060.when-attacking-reveal', Q.leader)], 'Optional ➀ paid in full or not at all.'),
+  c17('ST17-001', OFF, 'Crocodile: On Play reveal the top card; if {The Seven Warlords of the Sea}, draw 2 and place 1 hand card at the top of the deck', 'FAQ ST17-001: the revealed card is one of the 2 drawn; otherwise it stays on top', [dd('ST17-001.on-play-reveal', Q.croc)], 'moveCard to the deck top.'),
+  c17('ST17-002', OFF, 'Trafalgar Law: On Play you may return 1 of your Characters to hand: with a {The Seven Warlords of the Sea} Leader, return up to 1 Character cost 4 or less to hand', 'FAQ ST17-002: the cost can be paid with another Leader', [dd('ST17-002.on-play-return', Q.law)], 'Condition checked after the optional cost.'),
+  c17('ST17-003', OFF, 'Buggy: On Play look at 3 and place them at the top in any order', 'No FAQ entry', [dd('ST17-003.on-play-order', Q.buggy)], 'arrangeTopDeck without a bottom option.'),
+  c17('ST17-004', OFF, 'Boa Hancock: [Blocker]; On Play look at 3 and place them top or bottom in any order, then give up to 1 rested DON!! to a {The Seven Warlords of the Sea} Leader or Character', 'No FAQ entry', [bl(Q.look), dd('ST17-004.on-play-look-don', Q.look)], 'Printed [Blocker].'),
+  c17('ST17-005', OFF, 'Marshall.D.Teach: Activate Main once per turn, you may place 1 hand card at the top of the deck: give up to 2 rested DON!! to your Leader or 1 Character', 'No FAQ entry', [dd('ST17-005.activate-main-don', Q.teach)], 'Optional hand-to-deck cost.'),
+  c17('OP01-073', OFF, 'Donquixote Doflamingo: [Blocker]; On Play look at 5 and place them top or bottom in any order', 'FAQ OP01-073: all 5 on the same side; with 4 or less cards, all of them', [bl(Q.look), dd('OP01-073.on-play-look', Q.look)], 'Printed [Blocker].'),
+  c17('OP02-054', M5, 'Gecko Moria: no ability', 'No FAQ entry', [], 'Vanilla Character.', Q.plain),
+  c17('OP02-057', OFF, 'Bartholomew Kuma: On Play look at 2, reveal up to 1 {The Seven Warlords of the Sea} card and add it to hand, the rest top or bottom in any order', 'No FAQ entry', [dd('OP02-057.on-play-search', Q.kuma)], 'Private look, public reveal of the card taken.'),
+  c17('P-030', OFF, 'Jinbe: On K.O. place up to 1 Character cost 3 or less at the bottom of the owner deck', 'FAQ P-030: own Characters too', [dd('P-030.on-ko-bottom', Q.jinbe)], 'ON_KO from the trash.'),
+  c17('OP01-086', OFF, 'Overheat: Counter up to 1 own Leader/Character +4000 this battle, then return up to 1 active Character cost 3 or less to hand; Trigger return up to 1 Character cost 4 or less to hand', 'FAQ OP01-086: own Characters too', [dd('OP01-086.counter+trigger-return', Q.heat), ce('OP01-086.counter', Q.heat), tr('OP01-086.trigger-return', Q.heat)], 'Counter Event at its printed cost.', [], 'Errata 2023-02-17 ("up to 1" wording); the official text used is the corrected one'),
+]
+CERTIFICATIONS.push(...ST17_CERTIFICATIONS)
+const E = {
+  leader: ['M6 ST-18 Leader Luffy adds its top Life card to hand to add an active DON!! with 0 or 3 or more field DON!!, once per turn'],
+  eight: ['M6 ST-18 Uso-Hachi, O-Robi and Hone-Kichi need 8 or more field DON!! on play to rest, K.O. and give -2000'],
+  nami: ['M6 FAQ ST18-002: O-Nami blocks; with 8 or more field DON!! it trashes 1 card then draws 2, even with an empty hand'],
+  attack: ['M6 ST-18 San-Gorou draws 1 when attacking with 8 or more field DON!!, once per turn; Uso-Hachi OP05-061 rests a cost 4 or less with a DON!!'],
+  search: ['M6 ST-18 Zoro-Juurou and When You Are at Sea search the top 5 or 3 cards for the printed types, the rest at the bottom'],
+  tarou: ['M6 ST-18 Luffy-Tarou pays DON!! -1 to play a purple {Straw Hat Crew} Character cost 5 or less from hand; declining plays nothing'],
+  life: ['M6 ST-18 Zoro-Juurou OP05-067 adds an active DON!! when attacking with 3 or less Life; Chopa-Emon sets a purple {Straw Hat Crew} 6000 or less active'],
+  cont: ['M6 ST-18 Jinbe gains +1000 on the opponent turn with 10 field DON!!; Fra-Nosuke gains [Rush] with a DON!! and 8 or more field DON!!'],
+}
+const c18 = (number: string, detail: string, faqDetail: string, abilities: CertifiedAbility[], notes: string) => certO('569018', number, OFF, detail, faqDetail, abilities, notes)
+export const ST18_CERTIFICATIONS: Certification[] = [
+  c18('OP05-060', 'Leader Monkey.D.Luffy, Life 5: Activate Main once per turn, you may add your top Life card to hand: with 0 or 3 or more field DON!!, add up to 1 DON!! from the DON!! deck set as active', 'No FAQ entry', [dd('OP05-060.activate-main-don', E.leader)], 'Optional Life cost, condition after it.'),
+  c18('ST18-001', 'Uso-Hachi: On Play with 8 or more field DON!!, rest up to 1 opposing Character cost 5 or less', 'No FAQ entry', [dd('ST18-001.on-play-rest', E.eight)], 'FIELD_DON_AT_LEAST.'),
+  c18('ST18-002', 'O-Nami: [Blocker]; On Play with 8 or more field DON!!, trash 1 card from hand and draw 2', 'FAQ ST18-002: with 0 cards in hand, still draws 2', [bl(E.nami), dd('ST18-002.on-play-draw', E.nami)], 'clampMin discard.'),
+  c18('ST18-003', 'San-Gorou: When Attacking once per turn with 8 or more field DON!!, draw 1', 'No FAQ entry', [dd('ST18-003.when-attacking-draw', E.attack)], 'Once per turn.'),
+  c18('ST18-004', 'Zoro-Juurou: On Play look at 5, reveal up to 1 purple {Straw Hat Crew} card to hand, the rest at the bottom in any order', 'No FAQ entry', [dd('ST18-004.on-play-search', E.search)], 'Colour and type search filter.'),
+  c18('ST18-005', 'Luffy-Tarou: On Play DON!! -1: play up to 1 purple {Straw Hat Crew} Character cost 5 or less from hand', 'No FAQ entry', [dd('ST18-005.on-play-play', E.tarou)], 'Optional DON!! -1.'),
+  c18('OP05-061', 'Uso-Hachi: [DON!! x1] When Attacking with 8 or more field DON!!, rest up to 1 opposing Character cost 4 or less', 'No FAQ entry', [dd('OP05-061.when-attacking-rest', E.attack)], 'ALL_OF condition.'),
+  c18('OP05-063', 'O-Robi: On Play with 8 or more field DON!!, K.O. up to 1 opposing Character cost 3 or less', 'No FAQ entry', [dd('OP05-063.on-play-ko', E.eight)], 'FIELD_DON_AT_LEAST.'),
+  c18('OP05-066', 'Jinbe: [Blocker]; [Opponent\'s Turn] with 10 field DON!!, +1000 power', 'No FAQ entry', [bl(E.cont), dd('OP05-066.opponent-turn-power', E.cont)], 'Continuous POWER with a field DON!! count.'),
+  c18('OP05-067', 'Zoro-Juurou: When Attacking with 3 or less Life, add up to 1 DON!! from the DON!! deck set as active', 'No FAQ entry', [dd('OP05-067.when-attacking-don', E.life)], 'LIFE_AT_MOST.'),
+  c18('OP05-068', 'Chopa-Emon: On Play with 8 or more field DON!!, set up to 1 purple {Straw Hat Crew} Character with 6000 power or less as active', 'No FAQ entry', [dd('OP05-068.on-play-set-active', E.life)], 'Colour and type filter.'),
+  c18('OP05-070', 'Fra-Nosuke: [DON!! x1] with 8 or more field DON!!, this Character gains [Rush]', 'No FAQ entry', [dd('OP05-070.conditional-rush', E.cont)], 'Conditional keyword with a field DON!! count.'),
+  c18('OP05-072', 'Hone-Kichi: On Play with 8 or more field DON!!, give up to 2 opposing Characters -2000 power this turn', 'No FAQ entry', [dd('OP05-072.on-play-power', E.eight)], 'Negative power on opposing Characters.'),
+  c18('OP05-076', 'When You\'re at Sea You Fight against Pirates!!: Main look at 3, reveal up to 1 {Straw Hat Crew}, {Kid Pirates} or {Heart Pirates} card to hand, the rest at the bottom; Trigger activate this Main effect', 'No FAQ entry', [dd('OP05-076.main-search+trigger-search', E.search), tr('OP05-076.trigger-search', E.search)], 'traitsAny search.'),
+]
+CERTIFICATIONS.push(...ST18_CERTIFICATIONS)
+const NV = {
+  leader: ['M6 FAQ OP02-093: Leader Smoker with a DON!! gives -1 cost and gains +1000 this turn once while any Character has a cost of 0'],
+  smoker: ['M6 ST-19 Smoker trashes 1 black {Navy} card to stop up to 2 cost 4 or less Characters attacking until the end of the opponent next turn'],
+  sengoku: ['M6 ST-19 Sengoku trashes 2 black {Navy} cards to draw 3 with a {Navy} Leader'],
+  tashigi: ['M6 FAQ ST19-003: Tashigi gives -4 cost with a Smoker Leader; the turn it is played it trashes a cost 0 Character without a K.O.'],
+  trash: ['M6 FAQ ST19-004 and ST19-005: Hina and Garp place a trash card at the bottom of the deck (not with an empty trash) to give a rested DON!! or -1 cost'],
+  minus: ['M6 ST-19 Koby trashes 1 card to K.O. a cost 3 or less; Tsuru and Ice Age give -2 and -5 cost; Ice Age Trigger K.O.s a cost 3 or less'],
+  helmeppo: ['M6 FAQ OP02-113: Helmeppo gives -2 cost when attacking and gains +2000 this battle while any Character has a cost of 0; its Trigger plays it'],
+  vergo: ['M6 ST-19 Vergo with a DON!! cannot be K.O.d in battle'],
+  brannew: ['M6 FAQ OP03-089: Brannew looks at 3, adds a {Navy} card other than [Brannew] and trashes the rest'],
+  plain: ['M6 ST-19 Rosinante blocks; Jaguar.D.Saul and Yamakaji (no ability) are played for their printed cost and power'],
+}
+const c19 = (number: string, revision: string, detail: string, faqDetail: string, abilities: CertifiedAbility[], notes: string, tests: string[] = []) => certO('569019', number, revision, detail, faqDetail, abilities, notes, tests)
+export const ST19_CERTIFICATIONS: Certification[] = [
+  c19('OP02-093', OFF, 'Leader Smoker, Life 5: [DON!! x1] Activate Main once per turn: up to 1 opposing Character -1 cost this turn; then if there is a Character with a cost of 0, this Leader +1000 this turn', 'FAQ OP02-093: any Character; not per Character', [dd('OP02-093.activate-main-cost', NV.leader)], 'FIELD_CHARACTER_COST_AT_MOST 0 condition.'),
+  c19('ST19-001', OFF, 'Smoker: On Play you may trash 1 black {Navy} card from hand: up to 2 opposing Characters cost 4 or less cannot attack until the end of your opponent next turn', 'No FAQ entry', [dd('ST19-001.on-play-prevent-attack', NV.smoker)], 'preventAttack restriction.'),
+  c19('ST19-002', OFF, 'Sengoku: On Play you may trash 2 black {Navy} cards from hand: with a {Navy} Leader, draw 3', 'No FAQ entry', [dd('ST19-002.on-play-draw', NV.sengoku)], 'All-or-nothing hand cost.'),
+  c19('ST19-003', OFF, 'Tashigi: On Play with a [Smoker] Leader, up to 1 opposing Character -4 cost this turn; Activate Main once per turn, if played this turn, trash up to 1 opposing Character with a cost of 0', 'FAQ ST19-003: trashing is not a K.O.; usable with any Leader', [dd('ST19-003.on-play-cost+activate-main-trash', NV.tashigi)], 'trashCharacter and SOURCE_PLAYED_THIS_TURNV.'),
+  c19('ST19-004', OFF, 'Hina: [DON!! x1] [Opponent\'s Turn] +4 cost; Activate Main once per turn, you may place 1 trash card at the bottom of your deck: give up to 1 rested DON!! to your Leader or 1 Character', 'FAQ ST19-004: not with an empty trash', [dd('ST19-004.opponent-turn-cost+activate-main-don', NV.trash)], 'TRASH_AT_LEAST condition.'),
+  c19('ST19-005', OFF, 'Monkey.D.Garp: [Blocker]; Activate Main once per turn, you may place 1 trash card at the bottom of your deck: up to 1 opposing Character -1 cost this turn', 'FAQ ST19-005: not with an empty trash', [bl(NV.trash), dd('ST19-005.activate-main-cost', NV.trash)], 'Printed [Blocker].'),
+  c19('OP02-098', OFF, 'Koby: On Play you may trash 1 card from hand: K.O. up to 1 opposing Character cost 3 or less', 'No FAQ entry', [dd('OP02-098.on-play-ko', NV.minus)], 'Optional hand cost.'),
+  c19('OP02-106', OFF, 'Tsuru: On Play up to 1 opposing Character -2 cost this turn', 'No FAQ entry', [dd('OP02-106.on-play-cost', NV.minus)], 'Cost modifier.'),
+  c19('OP02-108', M5, 'Donquixote Rosinante: [Blocker]', 'No FAQ entry', [bl(NV.plain)], 'Printed [Blocker] only.'),
+  c19('OP02-109', M5, 'Jaguar.D.Saul: no ability', 'No FAQ entry', [], 'Vanilla Character.', NV.plain),
+  c19('OP02-113', OFF, 'Helmeppo: When Attacking up to 1 opposing Character -2 cost this turn; then if there is a Character with a cost of 0, +2000 this battle; Trigger play this card', 'FAQ OP02-113: any Character; not per Character', [dd('OP02-113.when-attacking-cost+trigger-play', NV.helmeppo), tr('OP02-113.trigger-play', NV.helmeppo)], 'Self power when the condition holds.'),
+  c19('OP02-116', M5, 'Yamakaji: no ability', 'No FAQ entry', [], 'Vanilla Character.', NV.plain),
+  c19('OP03-079', OFF, 'Vergo: [DON!! x1] cannot be K.O.d in battle', 'No FAQ entry', [dd('OP03-079.no-battle-ko', NV.vergo)], 'Battle K.O. protection.'),
+  c19('OP03-089', OFF, 'Brannew: On Play look at 3, reveal up to 1 {Navy} card other than [Brannew] to hand, trash the rest', 'FAQ OP03-089: exactly {Navy}', [dd('OP03-089.on-play-search', NV.brannew)], 'Search with TRASH remainder.'),
+  c19('OP02-117', OFF, 'Ice Age: Main up to 1 opposing Character -5 cost this turn; Trigger K.O. up to 1 opposing Character cost 3 or less', 'No FAQ entry', [dd('OP02-117.main-cost+trigger-ko', NV.minus), tr('OP02-117.trigger-ko', NV.minus)], 'Cost modifier.'),
+]
+CERTIFICATIONS.push(...ST19_CERTIFICATIONS)
+const G5 = {
+  don: ['M6 ST-21 Leader Luffy with a DON!! and Nami give up to 2 rested DON!! to 1 Character (Nami: a {Straw Hat Crew} Leader or Character), once per turn'],
+  cont: ['M6 ST-21 Usopp with 2 DON!! gains +2000 on the opponent turn; Franky with 2 DON!! gives +1000 to {Straw Hat Crew} Characters of 4000 base power or less'],
+  sanji: ['M6 FAQ ST21-003: Sanji selects a {Straw Hat Crew} Character with 6000 power or more; only its attacks this turn cannot be blocked'],
+  bonney: ['M6 ST-21 Jewelry Bonney with 2 DON!! draws 1 when K.O.d; without them nothing'],
+  attack: ['M6 ST-21 Nico Robin with 2 DON!! K.O.s a 4000 power or less when attacking; Brook and Luffy give rested DON!! when attacking; Luffy has [Rush]'],
+  zoro: ['M6 FAQ ST21-015: Roronoa Zoro has [Rush] with 2 DON!!; when K.O.d it plays a red Character of 6000 power or less other than [Roronoa Zoro]'],
+  whip: ['M6 ST-21 Gum-Gum Dawn Whip gives +1000 then stops a 4000 power or less Character from blocking this turn; its Trigger K.O.s a 4000 power or less'],
+  mole: ['M6 FAQ ST21-017: Gum-Gum Mole Pistol gives -5000 then, with a Character of 6000 power or more, K.O.s a 2000 power or less (another Character allowed)'],
+}
+const c21 = (number: string, detail: string, faqDetail: string, abilities: CertifiedAbility[], notes: string) => certO('569021', number, OFF, detail, faqDetail, abilities, notes)
+export const ST21_CERTIFICATIONS: Certification[] = [
+  c21('ST21-001', 'Leader Monkey.D.Luffy, Life 5: [DON!! x1] Activate Main once per turn: give up to 2 rested DON!! to 1 of your Characters', 'No FAQ entry', [dd('ST21-001.activate-main-don', G5.don)], 'Two rested DON!! to one Character.'),
+  c21('ST21-002', 'Usopp: [DON!! x2] [Opponent\'s Turn] +2000 power', 'No FAQ entry', [dd('ST21-002.opponent-turn-power', G5.cont)], 'Continuous POWER.'),
+  c21('ST21-003', 'Sanji: On Play select up to 1 {Straw Hat Crew} Character with 6000 power or more; if it attacks this turn, the opponent cannot activate [Blocker]', 'FAQ ST21-003: other attackers can be blocked', [dd('ST21-003.on-play-prevent-blocker', G5.sanji)], 'minPower filter, turn blocker restriction.'),
+  c21('ST21-004', 'Jewelry Bonney: [DON!! x2] On K.O. draw 1', 'No FAQ entry', [dd('ST21-004.on-ko-draw', G5.bonney)], 'Given DON!! counted when K.O.d.'),
+  c21('ST21-009', 'Nami: Activate Main once per turn: give up to 2 rested DON!! to 1 {Straw Hat Crew} Leader or Character', 'No FAQ entry', [dd('ST21-009.activate-main-don', G5.don)], 'Trait filter.'),
+  c21('ST21-010', 'Nico Robin: [DON!! x2] When Attacking K.O. up to 1 opposing Character with 4000 power or less', 'No FAQ entry', [dd('ST21-010.when-attacking-ko', G5.attack)], 'Power filter.'),
+  c21('ST21-011', 'Franky: [DON!! x2] [Opponent\'s Turn] all your {Straw Hat Crew} Characters with 4000 base power or less +1000 power', 'No FAQ entry', [dd('ST21-011.opponent-turn-aura', G5.cont)], 'Aura with a base power limit.'),
+  c21('ST21-012', 'Brook: When Attacking give up to 2 rested DON!! to your Leader or 1 Character', 'No FAQ entry', [dd('ST21-012.when-attacking-don', G5.attack)], 'Two rested DON!!.'),
+  c21('ST21-014', 'Monkey.D.Luffy: [Rush]; When Attacking give up to 1 rested DON!! to your Leader or 1 Character', 'No FAQ entry', [{ kind: 'keyword', id: 'RUSH', tests: G5.attack }, dd('ST21-014.when-attacking-don', G5.attack)], 'Printed [Rush].'),
+  c21('ST21-015', 'Roronoa Zoro: [DON!! x2] [Rush]; On K.O. play up to 1 red Character with 6000 power or less other than [Roronoa Zoro] from hand', 'FAQ ST21-015: no other [Roronoa Zoro]', [dd('ST21-015.conditional-rush+on-ko-play', G5.zoro)], 'Conditional keyword and ON_KO play.'),
+  c21('ST21-016', 'Gum-Gum Dawn Whip: Main up to 1 own Leader/Character +1000 this turn, then up to 1 opposing Character with 4000 power or less cannot activate [Blocker] this turn; Trigger K.O. up to 1 opposing Character with 4000 power or less', 'No FAQ entry', [dd('ST21-016.main-power-blocker+trigger-ko', G5.whip), tr('ST21-016.trigger-ko', G5.whip)], 'disableBlocker.'),
+  c21('ST21-017', 'Gum-Gum Mole Pistol: Main up to 1 opposing Character -5000 this turn, then with a Character of 6000 power or more K.O. up to 1 opposing Character with 2000 power or less; Trigger activate this Main effect', 'FAQ ST21-017: the K.O. may target another Character', [dd('ST21-017.main-power-ko+trigger-power-ko', G5.mole), tr('ST21-017.trigger-power-ko', G5.mole)], 'OWN_CHARACTER_POWER_AT_LEAST condition.'),
+]
+CERTIFICATIONS.push(...ST21_CERTIFICATIONS)
+const RH = {
+  leader: ['M6 FAQ OP09-001: when the opponent attacks, Leader Shanks may give -1000; declining keeps it for a later attack, once per turn'],
+  uta: ['M6 FAQ ST23-001: Uta costs 4 less in hand while you have a Character of 10000 power or more (current power), and has [Blocker]'],
+  shanks: ['M6 FAQ ST23-002: Shanks costs 3 less while the opponent has an 8000 base power Character; on play the Red-Haired Leader gains +2000 until the end of the opponent next turn'],
+  benn: ['M6 ST-23 Benn.Beckman trashes 1 card to K.O. a 4000 base power or less Character with a Red-Haired Leader'],
+  rest: ['M6 ST-23 Luffy rests a DON!! and itself, Hongo rests itself, to give -1000 and -2000; Yasopp gives a rested DON!! once per turn'],
+  bonk: ['M6 ST-23 Bonk Punch plays a [Monster] from hand and with a DON!! gains +2000 when attacking; Monster may be trashed instead of a Bonk Punch K.O.d by an effect'],
+  yasopp: ['M6 ST-23 Yasopp gives the Leader +1000 until the end of the opponent next turn and -1000 when attacking with a DON!!'],
+  lime: ['M6 FAQ OP09-014: Limejuice stops a [Blocker] Character of 4000 power or less from blocking this turn; Lucky.Roux blocks and K.O.s a 6000 base power or less when K.O.d'],
+  search: ['M6 ST-23 Come On We Will Fight You searches 5 for a Red-Haired card other than itself; its Trigger draws 1'],
+}
+const c23 = (number: string, detail: string, faqDetail: string, abilities: CertifiedAbility[], notes: string) => certO('569023', number, OFF, detail, faqDetail, abilities, notes)
+export const ST23_CERTIFICATIONS: Certification[] = [
+  c23('OP09-001', 'Leader Shanks, Life 5: [Once Per Turn] can be activated when your opponent attacks: give up to 1 opposing Leader or Character -1000 power this turn', 'FAQ OP09-001: may wait for a later attack; attacks by a Leader or a Character', [dd('OP09-001.opponent-attack-power', RH.leader)], 'ON_OPPONENT_ATTACK, used only when a target is chosen.'),
+  c23('ST23-001', 'Uta: with a Character of 10000 power or more, this card in hand -4 cost; [Blocker]', 'FAQ ST23-001: current power counts', [bl(RH.uta), dd('ST23-001.hand-cost', RH.uta)], 'Own cost in hand.'),
+  c23('ST23-002', 'Shanks: while the opponent has a Character of 8000 base power or more, this card in hand -3 cost; On Play with a {Red-Haired Pirates} or [Uta] Leader, your Leader +2000 until the end of your opponent next End Phase', 'FAQ ST23-002: an effect-raised base power counts', [dd('ST23-002.hand-cost+on-play-power', RH.shanks)], 'Own cost in hand and a two-turn power modifier.'),
+  c23('ST23-003', 'Benn.Beckman: On Play you may trash 1 card from hand: with a {Red-Haired Pirates} Leader, K.O. up to 1 opposing Character with 4000 base power or less', 'No FAQ entry', [dd('ST23-003.on-play-ko', RH.benn)], 'Base power filter.'),
+  c23('ST23-004', 'Monkey.D.Luffy: Activate Main, rest 1 DON!! and this Character: up to 1 opposing Character -1000 this turn', 'No FAQ entry', [dd('ST23-004.activate-main-power', RH.rest)], 'SEQUENCE cost.'),
+  c23('ST23-005', 'Yasopp: Activate Main once per turn, give up to 1 rested DON!! to your Leader or 1 Character', 'No FAQ entry', [dd('ST23-005.activate-main-don', RH.rest)], 'Rested DON!!.'),
+  c23('OP09-010', 'Bonk Punch: On Play play up to 1 [Monster] from hand; [DON!! x1] When Attacking +2000 this turn', 'No FAQ entry', [dd('OP09-010.on-play-play+when-attacking-power', RH.bonk)], 'Name filter.'),
+  c23('OP09-011', 'Hongo: Activate Main, rest this: with a {Red-Haired Pirates} Leader, up to 1 opposing Character -2000 this turn', 'No FAQ entry', [dd('OP09-011.activate-main-power', RH.rest)], 'REST_SOURCE cost.'),
+  c23('OP09-012', 'Monster: if your [Bonk Punch] would be K.O.d by an effect, you may trash this Character instead', 'No FAQ entry', [dd('OP09-012.protect-bonk-punch', RH.bonk)], 'Named ally K.O. replacement.'),
+  c23('OP09-013', 'Yasopp: On Play up to 1 of your Leader +1000 until the end of your opponent next turn; [DON!! x1] When Attacking up to 1 opposing Character -1000 this turn', 'No FAQ entry', [dd('OP09-013.on-play-power+when-attacking-power', RH.yasopp)], 'Two-turn power modifier.'),
+  c23('OP09-014', 'Limejuice: On Play the opponent cannot activate up to 1 [Blocker] Character with 4000 power or less this turn', 'FAQ OP09-014: even if its power later rises', [dd('OP09-014.on-play-disable-blocker', RH.lime)], 'disableBlocker.'),
+  c23('OP09-015', 'Lucky.Roux: [Blocker]; On K.O. with a {Red-Haired Pirates} Leader, K.O. up to 1 opposing Character with a base power of 6000 or less', 'No FAQ entry', [bl(RH.lime), dd('OP09-015.on-ko-ko', RH.lime)], 'ON_KO with a base power filter.'),
+  c23('OP09-020', 'Come On!! We\'ll Fight You!!: Main look at 5, reveal up to 1 {Red-Haired Pirates} card other than this to hand, the rest at the bottom; Trigger draw 1', 'No FAQ entry', [dd('OP09-020.main-search+trigger-draw', RH.search), tr('OP09-020.trigger-draw', RH.search)], 'Search excluding its own name.'),
+]
+CERTIFICATIONS.push(...ST23_CERTIFICATIONS)

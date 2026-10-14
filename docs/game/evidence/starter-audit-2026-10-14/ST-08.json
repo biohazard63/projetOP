@@ -1,0 +1,641 @@
+{
+  "deckCode": "ST-08",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569008",
+      "status": "FETCHED",
+      "sha256": "483fe355949be951ac7595c50c14e0588cdc2ec8399d0296ba9108044dfaea19",
+      "retrievedAt": "2026-10-14T07:26:44.192654+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st08-cardlists/",
+      "status": "FETCHED",
+      "sha256": "e69909872639ee00c509cf7a4690c23a66de34a2ce9d7efe8288268745bcf001",
+      "retrievedAt": "2026-10-14T07:26:45.707254+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st08.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st08.php",
+      "status": "FETCHED",
+      "sha256": "4ab7ab9ed9f66fe8324e414c1c75dfa3cc9fdb8487d001bfa9723fc688fc547d",
+      "retrievedAt": "2026-10-14T07:26:48.195081+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st08-cardlists/",
+      "status": "FETCHED",
+      "sha256": "e69909872639ee00c509cf7a4690c23a66de34a2ce9d7efe8288268745bcf001",
+      "retrievedAt": "2026-10-14T07:31:24.887501+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569008",
+      "status": "FETCHED",
+      "sha256": "483fe355949be951ac7595c50c14e0588cdc2ec8399d0296ba9108044dfaea19",
+      "retrievedAt": "2026-10-14T07:31:26.223025+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569008",
+      "status": "FETCHED",
+      "sha256": "483fe355949be951ac7595c50c14e0588cdc2ec8399d0296ba9108044dfaea19",
+      "retrievedAt": "2026-10-14T07:34:57.078113+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st08-cardlists/",
+      "status": "FETCHED",
+      "sha256": "e69909872639ee00c509cf7a4690c23a66de34a2ce9d7efe8288268745bcf001",
+      "retrievedAt": "2026-10-14T07:34:59.005930+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550008",
+      "status": "FETCHED",
+      "sha256": "2714f3e78f195590127131b7672ab1f9e08b7a8e244123dc6c9d41f9fd6d4455",
+      "retrievedAt": "2026-10-14T07:35:00.641343+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08",
+      "status": "FETCHED",
+      "sha256": "d802672ffb2e261e5cc3f9b68b1b1ea225d26db2f5094fccb3c2a2db878790fa",
+      "retrievedAt": "2026-10-14T07:52:57.091063+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08",
+      "status": "FETCHED",
+      "sha256": "59153a9c132213560196c7dfb13a78d7c879a1a24e2f9c3cfe1bf0b8c6219f72",
+      "retrievedAt": "2026-10-14T07:52:58.410381+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "ST08-001",
+      "printingCode": "ST08-001",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST08-002",
+      "printingCode": "ST08-002",
+      "name": "Uta",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST08-003",
+      "printingCode": "ST08-003",
+      "name": "Gaimon",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST08-004",
+      "printingCode": "ST08-004",
+      "name": "Koby",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST08-005",
+      "printingCode": "ST08-005",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST08-006",
+      "printingCode": "ST08-006",
+      "name": "Shirahoshi",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST08-007",
+      "printingCode": "ST08-007",
+      "name": "Nefeltari Vivi",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST08-008",
+      "printingCode": "ST08-008",
+      "name": "Higuma",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST08-009",
+      "printingCode": "ST08-009",
+      "name": "Makino",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST08-010",
+      "printingCode": "ST08-010",
+      "name": "Monkey.D.Garp",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST08-011",
+      "printingCode": "ST08-011",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST08-012",
+      "printingCode": "ST08-012",
+      "name": "Laboon",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST08-013",
+      "printingCode": "ST08-013",
+      "name": "Mr.2.Bon.Kurei(Bentham)",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST08-014",
+      "printingCode": "ST08-014",
+      "name": "Gum-Gum Bell",
+      "type": "EVENT",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST08-015",
+      "printingCode": "ST08-015",
+      "name": "Gum-Gum Pistol",
+      "type": "EVENT",
+      "color": "Black"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST08-001",
+      "quantity": 1,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    },
+    {
+      "cardNumber": "ST08-002",
+      "quantity": 2,
+      "sourceName": "ウタ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    },
+    {
+      "cardNumber": "ST08-003",
+      "quantity": 4,
+      "sourceName": "ガイモン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    },
+    {
+      "cardNumber": "ST08-004",
+      "quantity": 4,
+      "sourceName": "コビー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    },
+    {
+      "cardNumber": "ST08-005",
+      "quantity": 2,
+      "sourceName": "シャンクス",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    },
+    {
+      "cardNumber": "ST08-006",
+      "quantity": 4,
+      "sourceName": "しらほし",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    },
+    {
+      "cardNumber": "ST08-007",
+      "quantity": 4,
+      "sourceName": "ネフェルタリ・ビビ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    },
+    {
+      "cardNumber": "ST08-008",
+      "quantity": 4,
+      "sourceName": "ヒグマ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    },
+    {
+      "cardNumber": "ST08-009",
+      "quantity": 4,
+      "sourceName": "マキノ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    },
+    {
+      "cardNumber": "ST08-010",
+      "quantity": 4,
+      "sourceName": "モンキー・D・ガープ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    },
+    {
+      "cardNumber": "ST08-011",
+      "quantity": 4,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    },
+    {
+      "cardNumber": "ST08-012",
+      "quantity": 4,
+      "sourceName": "ラブーン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    },
+    {
+      "cardNumber": "ST08-013",
+      "quantity": 4,
+      "sourceName": "Mr.2ボン・クレー(ベンサム)",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    },
+    {
+      "cardNumber": "ST08-015",
+      "quantity": 4,
+      "sourceName": "ゴムゴムの鐘",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    },
+    {
+      "cardNumber": "ST08-014",
+      "quantity": 2,
+      "sourceName": "ゴムゴムの銃",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st08-cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -Monkey D. Luffy- − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -Monkey D. Luffy-"
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) \r\n                   ・DON!! Cards x 10 \r\n                   ・Playsheet x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st08.php",
+  "officialDeckTitle": "STARTER DECK -Monkey D. Luffy- [ST-08]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "ST08-001",
+      "printingCode": "ST08-001",
+      "name": "モンキー・D・ルフィ",
+      "type": "LEADER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST08-002",
+      "printingCode": "ST08-002",
+      "name": "ウタ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST08-003",
+      "printingCode": "ST08-003",
+      "name": "ガイモン",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST08-004",
+      "printingCode": "ST08-004",
+      "name": "コビー",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST08-005",
+      "printingCode": "ST08-005",
+      "name": "シャンクス",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST08-006",
+      "printingCode": "ST08-006",
+      "name": "しらほし",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST08-007",
+      "printingCode": "ST08-007",
+      "name": "ネフェルタリ・ビビ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST08-008",
+      "printingCode": "ST08-008",
+      "name": "ヒグマ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST08-009",
+      "printingCode": "ST08-009",
+      "name": "マキノ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST08-010",
+      "printingCode": "ST08-010",
+      "name": "モンキー・D・ガープ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST08-011",
+      "printingCode": "ST08-011",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST08-012",
+      "printingCode": "ST08-012",
+      "name": "ラブーン",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST08-013",
+      "printingCode": "ST08-013",
+      "name": "Mr.2・ボン・クレー(ベンサム)",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST08-014",
+      "printingCode": "ST08-014",
+      "name": "ゴムゴムの鐘",
+      "type": "EVENT",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST08-015",
+      "printingCode": "ST08-015",
+      "name": "ゴムゴムの銃",
+      "type": "EVENT",
+      "color": "黒"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST08-001",
+      "printingCode": "ST08-001",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Black",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "53010a32ac02bcada78b34a79eedc1b8a3aa37ee23c4be2d2e6cec5b45a7a9b9",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    },
+    {
+      "cardNumber": "ST08-002",
+      "printingCode": "ST08-002",
+      "locale": "EN",
+      "name": "Uta",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 2,
+      "power": 3000,
+      "counter": null,
+      "effectHash": "bcaaf336c491a4a9417100d515116f37e0f4ffe9aa8203777adfd496782ca180",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "da9d4f1a96d44b29aba8fb37cb8058642902fe838398294f6ec66573849a6c9d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    },
+    {
+      "cardNumber": "ST08-003",
+      "printingCode": "ST08-003",
+      "locale": "EN",
+      "name": "Gaimon",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "e4dcd04c02756e56298f997b7b79d17a8d318e167e6e5b1f513c1d027b6e8207",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    },
+    {
+      "cardNumber": "ST08-004",
+      "printingCode": "ST08-004",
+      "locale": "EN",
+      "name": "Koby",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 4,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "5e98b262ccc4bb44e60ed53cbfc0410cc55e93eb8594080f3500c082a50740e3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    },
+    {
+      "cardNumber": "ST08-005",
+      "printingCode": "ST08-005",
+      "locale": "EN",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 9,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "08298e5756597745588b0b70fc0b8a7fa764e282c81a8940ba515b969c8b864b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "501b4bbf2527d921678d700d7aaca4d0dda5c8354701b72a843c65707a0beabd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    },
+    {
+      "cardNumber": "ST08-006",
+      "printingCode": "ST08-006",
+      "locale": "EN",
+      "name": "Shirahoshi",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 4,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "d46735f7be999eff1d3f109685e43224cd4a6cea11e62cea2428dd69395f7e85",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "8a7124efd7d316b29f8684e5fcb87882312aaee6b39d4d9f1d267f3fa535b590",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    },
+    {
+      "cardNumber": "ST08-007",
+      "printingCode": "ST08-007",
+      "locale": "EN",
+      "name": "Nefeltari Vivi",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "3cfa5e1ae07aef8bc3bd407daab308a210080e184f4848e0dc846848f27be6c9",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    },
+    {
+      "cardNumber": "ST08-008",
+      "printingCode": "ST08-008",
+      "locale": "EN",
+      "name": "Higuma",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "361c391676a40c1c82359286b7ffa11092f870fc33dcdeb628cc68f56a385046",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "2b9898c6ead85de57081bde95f5d72ef1f1584aada5798763e048666439ecb50",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    },
+    {
+      "cardNumber": "ST08-009",
+      "printingCode": "ST08-009",
+      "locale": "EN",
+      "name": "Makino",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 2,
+      "power": null,
+      "counter": 2000,
+      "effectHash": "caa50f13eee25da11fa4644133862da165e2fa5c18a73a66590dbd67064b581a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "067f0a20da7f399bab444eed38eab091dcad74d23c10906407f007963a0d24b7",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    },
+    {
+      "cardNumber": "ST08-010",
+      "printingCode": "ST08-010",
+      "locale": "EN",
+      "name": "Monkey.D.Garp",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    },
+    {
+      "cardNumber": "ST08-011",
+      "printingCode": "ST08-011",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    },
+    {
+      "cardNumber": "ST08-012",
+      "printingCode": "ST08-012",
+      "locale": "EN",
+      "name": "Laboon",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "3f257e684a3beb0e303fe0572ab07e1de2950880f59821b6ff7449013ee3a063",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    },
+    {
+      "cardNumber": "ST08-013",
+      "printingCode": "ST08-013",
+      "locale": "EN",
+      "name": "Mr.2.Bon.Kurei(Bentham)",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "9b1583b6b8878e01c85024cf1f7ad42622792490cb3c1e538e234d8fffda36f2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "82827be7f19f8d61fa8b220c50bf26e501b9112502ccd8a3eed37fb1eefbcf9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    },
+    {
+      "cardNumber": "ST08-014",
+      "printingCode": "ST08-014",
+      "locale": "EN",
+      "name": "Gum-Gum Bell",
+      "type": "EVENT",
+      "color": "Black",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "b9e1c3d29bc7407a16df8ebb553113d90ac88fa657c3d77ecf3d19192fff0ac9",
+      "triggerHash": "0e325a1ee15e730c477e4d5a8392691b19a49960bb1ed450adda54015893b6b0",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    },
+    {
+      "cardNumber": "ST08-015",
+      "printingCode": "ST08-015",
+      "locale": "EN",
+      "name": "Gum-Gum Pistol",
+      "type": "EVENT",
+      "color": "Black",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "9b91490363ee64bbb68772cdcbbc3f20a61ce44c61a0e7079c288a924c57db25",
+      "triggerHash": "3d25b05966b8da7449619645c84ea59ba294c6a936c13a24fdb7cd43a20bb844",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST08"
+    }
+  ],
+  "officialFrenchCards": []
+}

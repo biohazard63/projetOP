@@ -1,0 +1,1065 @@
+{
+  "deckCode": "ST-12",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569012",
+      "status": "FETCHED",
+      "sha256": "f755e897b2ec9fc6e66b88191e14d6f51f0307c7d2c7e78bdf14d13699daf7dd",
+      "retrievedAt": "2026-10-14T07:26:50.255305+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st12-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st12-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st12.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st12.php",
+      "status": "FETCHED",
+      "sha256": "274b432351668b2154e6d982c3202640899e5efff453be3475e378f4fd480b55",
+      "retrievedAt": "2026-10-14T07:26:54.780644+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st12_cardlists/",
+      "status": "FETCHED",
+      "sha256": "d6ca757f5e2c016dc687e35413b9ee695d609a5332229f1e7e9521cdbeb10a4b",
+      "retrievedAt": "2026-10-14T07:31:28.626160+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st11-12.php",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569012",
+      "status": "FETCHED",
+      "sha256": "f755e897b2ec9fc6e66b88191e14d6f51f0307c7d2c7e78bdf14d13699daf7dd",
+      "retrievedAt": "2026-10-14T07:31:30.856842+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569012",
+      "status": "FETCHED",
+      "sha256": "f755e897b2ec9fc6e66b88191e14d6f51f0307c7d2c7e78bdf14d13699daf7dd",
+      "retrievedAt": "2026-10-14T07:34:57.744256+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st12_cardlists/",
+      "status": "FETCHED",
+      "sha256": "d6ca757f5e2c016dc687e35413b9ee695d609a5332229f1e7e9521cdbeb10a4b",
+      "retrievedAt": "2026-10-14T07:34:59.276993+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550012",
+      "status": "FETCHED",
+      "sha256": "e979de2490e9b8d21abcd137ef92d457d74ba225713972878f6a40b7ddb0fc0d",
+      "retrievedAt": "2026-10-14T07:35:00.955597+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st12.php",
+      "status": "FETCHED",
+      "sha256": "274b432351668b2154e6d982c3202640899e5efff453be3475e378f4fd480b55",
+      "retrievedAt": "2026-10-14T07:37:50.358748+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st12.php",
+      "status": "FETCHED",
+      "sha256": "274b432351668b2154e6d982c3202640899e5efff453be3475e378f4fd480b55",
+      "retrievedAt": "2026-10-14T07:46:06.200512+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12",
+      "status": "FETCHED",
+      "sha256": "eb93114b006903e361c5250446b13298ef45740bf965a7617f011fbe94620efb",
+      "retrievedAt": "2026-10-14T07:52:57.467276+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12",
+      "status": "FETCHED",
+      "sha256": "dc1526107fb5cd8cb09fefbeaf745d0ab59358dec5aadf0e0ffd1e842aa3d9d7",
+      "retrievedAt": "2026-10-14T07:52:58.843687+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "ST12-001",
+      "printingCode": "ST12-001",
+      "name": "Roronoa Zoro & Sanji",
+      "type": "LEADER",
+      "color": "Green/Blue"
+    },
+    {
+      "cardNumber": "ST12-002",
+      "printingCode": "ST12-002",
+      "name": "Kuina",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST12-003",
+      "printingCode": "ST12-003",
+      "name": "Dracule Mihawk",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST12-004",
+      "printingCode": "ST12-004",
+      "name": "Humandrill",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST12-005",
+      "printingCode": "ST12-005",
+      "name": "Perona",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST12-006",
+      "printingCode": "ST12-006",
+      "name": "Yosaku & Johnny",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST12-007",
+      "printingCode": "ST12-007",
+      "name": "Rika",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST12-008",
+      "printingCode": "ST12-008",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST12-009",
+      "printingCode": "ST12-009",
+      "name": "Elephant True Bluefin",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST12-010",
+      "printingCode": "ST12-010",
+      "name": "Emporio.Ivankov",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST12-011",
+      "printingCode": "ST12-011",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST12-012",
+      "printingCode": "ST12-012",
+      "name": "Charlotte Pudding",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST12-013",
+      "printingCode": "ST12-013",
+      "name": "Zeff",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST12-014",
+      "printingCode": "ST12-014",
+      "name": "Duval",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST12-015",
+      "printingCode": "ST12-015",
+      "name": "Patty & Carne",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST12-016",
+      "printingCode": "ST12-016",
+      "name": "Lion Strike",
+      "type": "EVENT",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST12-017",
+      "printingCode": "ST12-017",
+      "name": "Plastic Surgery Shot",
+      "type": "EVENT",
+      "color": "Blue"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST14-001",
+      "quantity": 1,
+      "sourceName": "ゾロ&サンジ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-002",
+      "quantity": 4,
+      "sourceName": "くいな",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-003",
+      "quantity": 2,
+      "sourceName": "ジュラキュール・ミホーク",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-004",
+      "quantity": 4,
+      "sourceName": "ヒューマンドリル",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-005",
+      "quantity": 4,
+      "sourceName": "ペローナ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-006",
+      "quantity": 4,
+      "sourceName": "ヨサク&ジョニー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-007",
+      "quantity": 4,
+      "sourceName": "リカ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-008",
+      "quantity": 2,
+      "sourceName": "ロロノア・ゾロ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-009",
+      "quantity": 4,
+      "sourceName": "エレフェント・ホンマグロ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-010",
+      "quantity": 2,
+      "sourceName": "エンポリオ・イワンコフ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-011",
+      "quantity": 2,
+      "sourceName": "サンジ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-012",
+      "quantity": 4,
+      "sourceName": "シャーロット・プリン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-013",
+      "quantity": 4,
+      "sourceName": "ゼフ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-014",
+      "quantity": 2,
+      "sourceName": "デュバル",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-015",
+      "quantity": 4,
+      "sourceName": "パティ&カルネ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-016",
+      "quantity": 2,
+      "sourceName": "獅子歌々",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    },
+    {
+      "cardNumber": "ST12-017",
+      "quantity": 2,
+      "sourceName": "整形ショット",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st12_cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -Zoro and Sanji- − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -Zoro and Sanji-"
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) ・DON!! Card x 10 ・Playsheet x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st12.php",
+  "officialDeckTitle": "STARTER DECK -Zoro and Sanji- [ST-12]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "ST12-001",
+      "printingCode": "ST12-001",
+      "name": "ロロノア・ゾロ＆サンジ",
+      "type": "LEADER",
+      "color": "緑/青"
+    },
+    {
+      "cardNumber": "ST12-002",
+      "printingCode": "ST12-002",
+      "name": "くいな",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST12-003",
+      "printingCode": "ST12-003",
+      "name": "ジュラキュール・ミホーク",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST12-004",
+      "printingCode": "ST12-004",
+      "name": "ヒューマンドリル",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST12-005",
+      "printingCode": "ST12-005",
+      "name": "ペローナ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST12-006",
+      "printingCode": "ST12-006",
+      "name": "ヨサク＆ジョニー",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST12-007",
+      "printingCode": "ST12-007",
+      "name": "リカ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST12-008",
+      "printingCode": "ST12-008",
+      "name": "ロロノア・ゾロ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST12-009",
+      "printingCode": "ST12-009",
+      "name": "エレファント・ホンマグロ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST12-010",
+      "printingCode": "ST12-010",
+      "name": "エンポリオ・イワンコフ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST12-011",
+      "printingCode": "ST12-011",
+      "name": "サンジ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST12-012",
+      "printingCode": "ST12-012",
+      "name": "シャーロット・プリン",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST12-013",
+      "printingCode": "ST12-013",
+      "name": "ゼフ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST12-014",
+      "printingCode": "ST12-014",
+      "name": "デュバル",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST12-015",
+      "printingCode": "ST12-015",
+      "name": "パティ＆カルネ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST12-016",
+      "printingCode": "ST12-016",
+      "name": "獅子歌歌",
+      "type": "EVENT",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST12-017",
+      "printingCode": "ST12-017",
+      "name": "整形ショット",
+      "type": "EVENT",
+      "color": "青"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST12-001",
+      "printingCode": "ST12-001",
+      "locale": "EN",
+      "name": "Roronoa Zoro & Sanji",
+      "type": "LEADER",
+      "color": "Green/Blue",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "eaffa5fdc7e186449f86fd1de1750c8109eea0aca1319ab2e215adbcc3656c31",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "ec62339e171fd46f8c461a146bde2771ef0c7952e9e4708a8629abcc9558b627",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-002",
+      "printingCode": "ST12-002",
+      "locale": "EN",
+      "name": "Kuina",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 3,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "db2bc53e992b96cd80146e024fc881d2544106507505887ccc2dacd8ff490981",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "b77a5f9854d95baacb7a7672d0b49dc645cd6b04476938f521c0a2cba8415aaa",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-003",
+      "printingCode": "ST12-003",
+      "locale": "EN",
+      "name": "Dracule Mihawk",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 3,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "d5040bf758c4e72400ac045f5fd733f2d08f3132707fb5baf0fb53bf616a3c7f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "4348cdda5fda38ed4e1588407b87ea0ea19c2294eee4859f9460c83e971da9ad",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-004",
+      "printingCode": "ST12-004",
+      "locale": "EN",
+      "name": "Humandrill",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "6fcbea559b9d70f3d30f36dae2f5766105e75e878928d2183097d9b27bfbda40",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-005",
+      "printingCode": "ST12-005",
+      "locale": "EN",
+      "name": "Perona",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "516c357b282e36346a5e7a8608229e7db184f64b5304ffa9f535aa7c69c0db66",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-005",
+      "printingCode": "ST12-005_p1",
+      "locale": "EN",
+      "name": "Perona",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "516c357b282e36346a5e7a8608229e7db184f64b5304ffa9f535aa7c69c0db66",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-005",
+      "printingCode": "ST12-005_r1",
+      "locale": "EN",
+      "name": "Perona",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "516c357b282e36346a5e7a8608229e7db184f64b5304ffa9f535aa7c69c0db66",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-006",
+      "printingCode": "ST12-006",
+      "locale": "EN",
+      "name": "Yosaku & Johnny",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "6aaf950553780790eca3fcb3dbfe394f269b929afc8a5be56c97f92c7be072d9",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "e4dcd04c02756e56298f997b7b79d17a8d318e167e6e5b1f513c1d027b6e8207",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-007",
+      "printingCode": "ST12-007",
+      "locale": "EN",
+      "name": "Rika",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": null,
+      "counter": 2000,
+      "effectHash": "227e26888e1a85934bd1821870a0e0a24d85c6deb1b04e8bf9401af8490f6262",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "e4dcd04c02756e56298f997b7b79d17a8d318e167e6e5b1f513c1d027b6e8207",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-008",
+      "printingCode": "ST12-008",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "3a040e6c5468ce0395de92a4dbdb18fb15680508d4280c0b52dd80afd8fd8647",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-008",
+      "printingCode": "ST12-008_p1",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "3a040e6c5468ce0395de92a4dbdb18fb15680508d4280c0b52dd80afd8fd8647",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-009",
+      "printingCode": "ST12-009",
+      "locale": "EN",
+      "name": "Elephant True Bluefin",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 1,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "3f257e684a3beb0e303fe0572ab07e1de2950880f59821b6ff7449013ee3a063",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-010",
+      "printingCode": "ST12-010",
+      "locale": "EN",
+      "name": "Emporio.Ivankov",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "96c3a05e27da0960c17962b175e87c542213be4722271174ea816644fcaf3fff",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "1044d8f9f52b91f17f98eb152b641b96c014d86d2645f9ceb9a654ce0d9eb5bf",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-011",
+      "printingCode": "ST12-011",
+      "locale": "EN",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 2,
+      "power": 3000,
+      "counter": null,
+      "effectHash": "947c1f47c528b515d2ad552df613b89c25942ef7c4c3f599afdc0619f214a9a5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-012",
+      "printingCode": "ST12-012",
+      "locale": "EN",
+      "name": "Charlotte Pudding",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 2,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "56db20004f6696bf6906ab1c63c470074fa2241a6e216878b8031d70971831db",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-013",
+      "printingCode": "ST12-013",
+      "locale": "EN",
+      "name": "Zeff",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 5,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "0f3745d2698a879c6cc5c99f5cabd2701f49f819ee427c0b7cd7e6ed05f77275",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "e4dcd04c02756e56298f997b7b79d17a8d318e167e6e5b1f513c1d027b6e8207",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-014",
+      "printingCode": "ST12-014",
+      "locale": "EN",
+      "name": "Duval",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "9cf1f650462a30e320aac2fde6a6ff1f0996e8f9c8abcb35abcd21259fd6cb29",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "3b2a943c2292f4ab26651b84ef41b738739da04babe2cc10542be95b6c4107c8",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-014",
+      "printingCode": "ST12-014_p2",
+      "locale": "EN",
+      "name": "Duval",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "9cf1f650462a30e320aac2fde6a6ff1f0996e8f9c8abcb35abcd21259fd6cb29",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "3b2a943c2292f4ab26651b84ef41b738739da04babe2cc10542be95b6c4107c8",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-014",
+      "printingCode": "ST12-014_p3",
+      "locale": "EN",
+      "name": "Duval",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "9cf1f650462a30e320aac2fde6a6ff1f0996e8f9c8abcb35abcd21259fd6cb29",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "3b2a943c2292f4ab26651b84ef41b738739da04babe2cc10542be95b6c4107c8",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-014",
+      "printingCode": "ST12-014_r1",
+      "locale": "EN",
+      "name": "Duval",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "9cf1f650462a30e320aac2fde6a6ff1f0996e8f9c8abcb35abcd21259fd6cb29",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "3b2a943c2292f4ab26651b84ef41b738739da04babe2cc10542be95b6c4107c8",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-015",
+      "printingCode": "ST12-015",
+      "locale": "EN",
+      "name": "Patty & Carne",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "e4dcd04c02756e56298f997b7b79d17a8d318e167e6e5b1f513c1d027b6e8207",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-016",
+      "printingCode": "ST12-016",
+      "locale": "EN",
+      "name": "Lion Strike",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "ed8636bcca0c1d21d4ece67fcf9ddb634071e939b369c2d1d206d647fb1e705d",
+      "triggerHash": "f11e3bd95cea2c7b0921ce0651d0a6b34b9ce1c616748f59ed982f22698d0ac5",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-017",
+      "printingCode": "ST12-017",
+      "locale": "EN",
+      "name": "Plastic Surgery Shot",
+      "type": "EVENT",
+      "color": "Blue",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "44e1a9f0fbafad6de214467e600acf1795c4c250ec184f857cc874432a4c963e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-017",
+      "printingCode": "ST12-017_p1",
+      "locale": "EN",
+      "name": "Plastic Surgery Shot",
+      "type": "EVENT",
+      "color": "Blue",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "44e1a9f0fbafad6de214467e600acf1795c4c250ec184f857cc874432a4c963e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-017",
+      "printingCode": "ST12-017_r1",
+      "locale": "EN",
+      "name": "Plastic Surgery Shot",
+      "type": "EVENT",
+      "color": "Blue",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "44e1a9f0fbafad6de214467e600acf1795c4c250ec184f857cc874432a4c963e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-012",
+      "printingCode": "ST12-012_p1",
+      "locale": "EN",
+      "name": "Charlotte Pudding",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 2,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "56db20004f6696bf6906ab1c63c470074fa2241a6e216878b8031d70971831db",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "514bfb82184d9deb4c1fecaf4a9c964bef5805d2d25968fe77ef33244bd214cd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-005",
+      "printingCode": "ST12-005_p1",
+      "locale": "FR",
+      "name": "Perona",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "8d84a7d9c2344fb540f5cd43a81bef202710de40f04eea2b59e763c960cba469",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-005",
+      "printingCode": "ST12-005_r1",
+      "locale": "FR",
+      "name": "Perona",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "8d84a7d9c2344fb540f5cd43a81bef202710de40f04eea2b59e763c960cba469",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-014",
+      "printingCode": "ST12-014_p1",
+      "locale": "FR",
+      "name": "Duval",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "65a85bf720c5f54e7bdbcd9e8969c973cf77c607424bac7492914e2681e60065",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "04c205fce62041e51541ee565001f24090076ff557e5576a70ce6a21b3dfe2aa",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-014",
+      "printingCode": "ST12-014_p2",
+      "locale": "FR",
+      "name": "Duval",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "65a85bf720c5f54e7bdbcd9e8969c973cf77c607424bac7492914e2681e60065",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "04c205fce62041e51541ee565001f24090076ff557e5576a70ce6a21b3dfe2aa",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-014",
+      "printingCode": "ST12-014_p3",
+      "locale": "FR",
+      "name": "Duval",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "65a85bf720c5f54e7bdbcd9e8969c973cf77c607424bac7492914e2681e60065",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "04c205fce62041e51541ee565001f24090076ff557e5576a70ce6a21b3dfe2aa",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-017",
+      "printingCode": "ST12-017_p1",
+      "locale": "FR",
+      "name": "Parage Shoot",
+      "type": "EVENT",
+      "color": "Bleu",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "a261379674d34939726c2e41c5f6d09170ae0e3f45a525408c05229bc8766dff",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-017",
+      "printingCode": "ST12-017_r1",
+      "locale": "FR",
+      "name": "Parage Shoot",
+      "type": "EVENT",
+      "color": "Bleu",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "a261379674d34939726c2e41c5f6d09170ae0e3f45a525408c05229bc8766dff",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    },
+    {
+      "cardNumber": "ST12-012",
+      "printingCode": "ST12-012_p1",
+      "locale": "FR",
+      "name": "Charlotte Pudding",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 2,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "526e7ef89b253e65ab65c520363918b1a756ee6fc3835559127c1d688ea58c61",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "d87fc6ae39a4ba799e7dc2401e545efc6c5aec9abf5fde4a03905a56a4b7eb8e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST12"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "ST12-005",
+      "printingCode": "ST12-005_p1",
+      "name": "Perona",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST12-005",
+      "printingCode": "ST12-005_r1",
+      "name": "Perona",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST12-014",
+      "printingCode": "ST12-014_p1",
+      "name": "Duval",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST12-014",
+      "printingCode": "ST12-014_p2",
+      "name": "Duval",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST12-014",
+      "printingCode": "ST12-014_p3",
+      "name": "Duval",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST12-017",
+      "printingCode": "ST12-017_p1",
+      "name": "Parage Shoot",
+      "type": "EVENT",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST12-017",
+      "printingCode": "ST12-017_r1",
+      "name": "Parage Shoot",
+      "type": "EVENT",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST12-012",
+      "printingCode": "ST12-012_p1",
+      "name": "Charlotte Pudding",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    }
+  ]
+}

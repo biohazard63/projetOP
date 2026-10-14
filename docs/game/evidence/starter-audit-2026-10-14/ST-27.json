@@ -1,0 +1,991 @@
+{
+  "deckCode": "ST-27",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569027",
+      "status": "FETCHED",
+      "sha256": "e1568d1688c4119cf4360f601be3ee54924fbdf1e9a3235f911e5cf4e8be245e",
+      "retrievedAt": "2026-10-14T07:27:08.254213+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st27-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st27-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st27.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st27.php",
+      "status": "FETCHED",
+      "sha256": "6f986e94728518e3e9542b5b6675f10bc0d9cc8cc9cb2c4deb89a36134be4280",
+      "retrievedAt": "2026-10-14T07:27:13.336357+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st27_cardlists/",
+      "status": "FETCHED",
+      "sha256": "b51aa4978c5691c065ca492f8652011301847d4f0050d8c74ebe0c2e0e5b0e38",
+      "retrievedAt": "2026-10-14T07:31:41.655010+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569027",
+      "status": "FETCHED",
+      "sha256": "e1568d1688c4119cf4360f601be3ee54924fbdf1e9a3235f911e5cf4e8be245e",
+      "retrievedAt": "2026-10-14T07:31:43.083739+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569027",
+      "status": "FETCHED",
+      "sha256": "e1568d1688c4119cf4360f601be3ee54924fbdf1e9a3235f911e5cf4e8be245e",
+      "retrievedAt": "2026-10-14T07:35:12.197210+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st27_cardlists/",
+      "status": "FETCHED",
+      "sha256": "b51aa4978c5691c065ca492f8652011301847d4f0050d8c74ebe0c2e0e5b0e38",
+      "retrievedAt": "2026-10-14T07:35:13.799492+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550027",
+      "status": "FETCHED",
+      "sha256": "167a81155e23672be491d41ace070a5b2e07bf4730ffce387d3137d8eceba125",
+      "retrievedAt": "2026-10-14T07:35:15.489050+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569027",
+      "status": "FETCHED",
+      "sha256": "e1568d1688c4119cf4360f601be3ee54924fbdf1e9a3235f911e5cf4e8be245e",
+      "retrievedAt": "2026-10-14T07:53:06.186241+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622027",
+      "status": "FETCHED",
+      "sha256": "fed48cdc950ee1c07a395c4864208325ea9ec758ecabf6fc85e0f5ed9140889c",
+      "retrievedAt": "2026-10-14T07:53:07.536105+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "OP09-081",
+      "printingCode": "OP09-081_p2",
+      "name": "Marshall.D.Teach",
+      "type": "LEADER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP09-083",
+      "printingCode": "OP09-083_r1",
+      "name": "Van Augur",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP09-086",
+      "printingCode": "OP09-086_r1",
+      "name": "Jesus Burgess",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP09-088",
+      "printingCode": "OP09-088_r1",
+      "name": "Shiryu",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP09-089",
+      "printingCode": "OP09-089_r1",
+      "name": "Stronger",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP09-090",
+      "printingCode": "OP09-090_r1",
+      "name": "Doc Q",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP09-091",
+      "printingCode": "OP09-091_r1",
+      "name": "Vasco Shot",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP09-095",
+      "printingCode": "OP09-095_r1",
+      "name": "Laffitte",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP09-099",
+      "printingCode": "OP09-099_r1",
+      "name": "Fullalead",
+      "type": "STAGE",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "OP10-084",
+      "printingCode": "OP10-084_r1",
+      "name": "Sanjuan.Wolf",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST27-001",
+      "printingCode": "ST27-001",
+      "name": "Avalo Pizarro",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST27-002",
+      "printingCode": "ST27-002",
+      "name": "Catarina Devon",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST27-003",
+      "printingCode": "ST27-003",
+      "name": "Kuzan",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST27-004",
+      "printingCode": "ST27-004",
+      "name": "Sanjuan.Wolf",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST27-005",
+      "printingCode": "ST27-005",
+      "name": "Marshall.D.Teach",
+      "type": "CHARACTER",
+      "color": "Black"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "OP09-081",
+      "quantity": 1,
+      "sourceName": "マーシャル・D・ティーチ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    },
+    {
+      "cardNumber": "ST27-001",
+      "quantity": 4,
+      "sourceName": "アバロ・ピサロ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    },
+    {
+      "cardNumber": "ST27-002",
+      "quantity": 4,
+      "sourceName": "カタリーナ・デボン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    },
+    {
+      "cardNumber": "ST27-003",
+      "quantity": 2,
+      "sourceName": "クザン",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    },
+    {
+      "cardNumber": "ST27-004",
+      "quantity": 2,
+      "sourceName": "サンファン・ウルフ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    },
+    {
+      "cardNumber": "ST27-005",
+      "quantity": 2,
+      "sourceName": "マーシャル・D・ティーチ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-083",
+      "quantity": 4,
+      "sourceName": "ヴァン・オーガー",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-084",
+      "quantity": 4,
+      "sourceName": "サンファン・ウルフ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-086",
+      "quantity": 4,
+      "sourceName": "ジーザス・バージェス",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-088",
+      "quantity": 4,
+      "sourceName": "シリュウ",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-089",
+      "quantity": 4,
+      "sourceName": "ストロンガー",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-090",
+      "quantity": 4,
+      "sourceName": "ドクQ",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-091",
+      "quantity": 4,
+      "sourceName": "バスコ・ショット",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-095",
+      "quantity": 4,
+      "sourceName": "ラフィット",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-099",
+      "quantity": 4,
+      "sourceName": "ハチノス",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st27_cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -BLACK Marshall.D.Teach- [ST-27] − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -BLACK Marshall.D.Teach- [ST-27]"
+  ],
+  "productContents": "Constructed Deck x 1 (51 cards), DON!! Card x 10, Playsheet x 1, BOOSTER PACK -A FIST OF DIVINE SPEED- [OP-11] x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st27.php",
+  "officialDeckTitle": "STARTER DECK -BLACK Marshall.D.Teach- [ST-27]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "OP09-081",
+      "printingCode": "OP09-081_p2",
+      "name": "マーシャル・Ｄ・ティーチ",
+      "type": "LEADER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP09-083",
+      "printingCode": "OP09-083_r1",
+      "name": "ヴァン・オーガー",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP09-086",
+      "printingCode": "OP09-086_r1",
+      "name": "ジーザス・バージェス",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP09-088",
+      "printingCode": "OP09-088_r1",
+      "name": "シリュウ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP09-089",
+      "printingCode": "OP09-089_r1",
+      "name": "ストロンガー",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP09-090",
+      "printingCode": "OP09-090_r1",
+      "name": "ドクQ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP09-091",
+      "printingCode": "OP09-091_r1",
+      "name": "バスコ・ショット",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP09-095",
+      "printingCode": "OP09-095_r1",
+      "name": "ラフィット",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP09-099",
+      "printingCode": "OP09-099_r1",
+      "name": "ハチノス",
+      "type": "STAGE",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "OP10-084",
+      "printingCode": "OP10-084_r1",
+      "name": "サンファン・ウルフ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST27-001",
+      "printingCode": "ST27-001",
+      "name": "アバロ・ピサロ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST27-002",
+      "printingCode": "ST27-002",
+      "name": "カタリーナ・デボン",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST27-003",
+      "printingCode": "ST27-003",
+      "name": "クザン",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST27-004",
+      "printingCode": "ST27-004",
+      "name": "サンファン・ウルフ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST27-005",
+      "printingCode": "ST27-005",
+      "name": "マーシャル・Ｄ・ティーチ",
+      "type": "CHARACTER",
+      "color": "黒"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "OP09-081",
+      "printingCode": "OP09-081_p2",
+      "locale": "EN",
+      "name": "Marshall.D.Teach",
+      "type": "LEADER",
+      "color": "Black",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "7876fde772be8b5d1745e20cf489c800a72c35c6ef0205b31a1cfda269a889f5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "95a3e299c6a7a2631ba6277a62bd89b54fe1c037774ec1702eaf9ea459a1a536",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "OP09-083",
+      "printingCode": "OP09-083_r1",
+      "locale": "EN",
+      "name": "Van Augur",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "cb05ef51fad0039c7ade59d7bcc6bfe095103586382fc15bdb72296b4fff9121",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "f63800864855df654f74c874d41e723f2bb25636b4c7f25e357f0a910f17cbf5",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "OP09-086",
+      "printingCode": "OP09-086_r1",
+      "locale": "EN",
+      "name": "Jesus Burgess",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "09ca7ab34536bb98c47fb2bd0997f206870ff02de0b6924979afec71f7d7e9e2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "f63800864855df654f74c874d41e723f2bb25636b4c7f25e357f0a910f17cbf5",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "OP09-088",
+      "printingCode": "OP09-088_r1",
+      "locale": "EN",
+      "name": "Shiryu",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "d00acdd21184e6dfa9cdfb14e523682c3941f6543b25269b49f85598fd2eb0ff",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "f63800864855df654f74c874d41e723f2bb25636b4c7f25e357f0a910f17cbf5",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "OP09-089",
+      "printingCode": "OP09-089_r1",
+      "locale": "EN",
+      "name": "Stronger",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": 2000,
+      "effectHash": "3590e4afe02bb37cee2f9d9352f09bdd4fc4a6a27eb77413fa67676ebba1d4e1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "9232d0dcad5d7f049250f099cba805768414dc9e6f232dd89a7dad578a14c390",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "OP09-090",
+      "printingCode": "OP09-090_r1",
+      "locale": "EN",
+      "name": "Doc Q",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 2,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "d73de37bbf706d3cdd5f925974fa7fa278c3d23a93db0817690662cf282c2c9e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "f63800864855df654f74c874d41e723f2bb25636b4c7f25e357f0a910f17cbf5",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "OP09-091",
+      "printingCode": "OP09-091_r1",
+      "locale": "EN",
+      "name": "Vasco Shot",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "f63800864855df654f74c874d41e723f2bb25636b4c7f25e357f0a910f17cbf5",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "OP09-095",
+      "printingCode": "OP09-095_r1",
+      "locale": "EN",
+      "name": "Laffitte",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "9ad681fde9d7e6fc6279bf45b0b88e9013e8c26ef36279acfe5b89cdfef77da1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "f63800864855df654f74c874d41e723f2bb25636b4c7f25e357f0a910f17cbf5",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "OP09-099",
+      "printingCode": "OP09-099_r1",
+      "locale": "EN",
+      "name": "Fullalead",
+      "type": "STAGE",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "fe6fddd3797fbeccc1efcd4ba1df920b611bbb996bde6bd0254b93f5631a951e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "f63800864855df654f74c874d41e723f2bb25636b4c7f25e357f0a910f17cbf5",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "OP10-084",
+      "printingCode": "OP10-084_r1",
+      "locale": "EN",
+      "name": "Sanjuan.Wolf",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "96bb38ee51f967c8adf0e70a46143624f52f4cbf99281ff1b3991355ac1c95c3",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "ST27-001",
+      "printingCode": "ST27-001",
+      "locale": "EN",
+      "name": "Avalo Pizarro",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "e6f2a35695a3b3de5561613ff99841f6359cf31eec2859e3a3e8256e732cee90",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "f63800864855df654f74c874d41e723f2bb25636b4c7f25e357f0a910f17cbf5",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "ST27-002",
+      "printingCode": "ST27-002",
+      "locale": "EN",
+      "name": "Catarina Devon",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 1,
+      "power": 1000,
+      "counter": 2000,
+      "effectHash": "83238a0844493b16fbd2ee1d07b8838df2151a84f8f24df09b0cc77d2d7f29a5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "f63800864855df654f74c874d41e723f2bb25636b4c7f25e357f0a910f17cbf5",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "ST27-003",
+      "printingCode": "ST27-003",
+      "locale": "EN",
+      "name": "Kuzan",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 6,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "c99c825216c976e8337a10410b6f4a7dc6d59e132042d72cc5feab42aca13aab",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "6cd6025d5c0f4371838b1875143484043b15679c51222da896fa04c4d1e58e9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "ST27-004",
+      "printingCode": "ST27-004",
+      "locale": "EN",
+      "name": "Sanjuan.Wolf",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "656d5e52d7c55dee3661d77edeede5d4284c28c6bb3f7243a6d3bcf8097a574f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "96bb38ee51f967c8adf0e70a46143624f52f4cbf99281ff1b3991355ac1c95c3",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "ST27-005",
+      "printingCode": "ST27-005",
+      "locale": "EN",
+      "name": "Marshall.D.Teach",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "0e6d3c3bc027b61cd98816c85d607a942757cf3dbfe937d0c036bd0d30bfc79c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "95a3e299c6a7a2631ba6277a62bd89b54fe1c037774ec1702eaf9ea459a1a536",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569027"
+    },
+    {
+      "cardNumber": "OP09-081",
+      "printingCode": "OP09-081_p2",
+      "locale": "FR",
+      "name": "Marshall D. Teach",
+      "type": "LEADER",
+      "color": "Noir",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "55a36e87dca975ad13199d235ae00a6b3ffbf04aec4bd3ebba013f00f897ce26",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "deb343c2e440d9b31592d6b9ff174d235a74163d71d23d18c921d89968499ff1",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    },
+    {
+      "cardNumber": "OP09-083",
+      "printingCode": "OP09-083_r1",
+      "locale": "FR",
+      "name": "Van Auger",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "9a176eb1dca1547733eb023aa4a97325049651f40cb4062e7a65d1c589f8bdd3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "2092fba249e8bf938dadf9160321ea9ccac8be48cacd30e5dc5d424a9c4c15c6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    },
+    {
+      "cardNumber": "OP09-086",
+      "printingCode": "OP09-086_r1",
+      "locale": "FR",
+      "name": "Jesus Burgess",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "14d26648c30fc512b14cf882715d10d4fb04dc50621925d20af96721b34664c7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "2092fba249e8bf938dadf9160321ea9ccac8be48cacd30e5dc5d424a9c4c15c6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    },
+    {
+      "cardNumber": "OP09-088",
+      "printingCode": "OP09-088_r1",
+      "locale": "FR",
+      "name": "Shiliew",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 3,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "117beecf1593e68f0485f8dab90328b3a1f8fceba90809561485030ade2a84be",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "2092fba249e8bf938dadf9160321ea9ccac8be48cacd30e5dc5d424a9c4c15c6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    },
+    {
+      "cardNumber": "OP09-089",
+      "printingCode": "OP09-089_r1",
+      "locale": "FR",
+      "name": "Stronger",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 1,
+      "power": null,
+      "counter": 2000,
+      "effectHash": "3fe1447040136ad9aea9718e8f8faa8d196ca6eafcb084575669cf60a0ac6052",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "16f7893c255bbb0dda2afa43e62df3448211c8ec6d9f5d9fe0da5611f21aaf88",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    },
+    {
+      "cardNumber": "OP09-090",
+      "printingCode": "OP09-090_r1",
+      "locale": "FR",
+      "name": "Doc Q",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 2,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "b60e259a4bb96ffd36fc66b15033ed7217086db704fb62c01c506ca259e12554",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "2092fba249e8bf938dadf9160321ea9ccac8be48cacd30e5dc5d424a9c4c15c6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    },
+    {
+      "cardNumber": "OP09-091",
+      "printingCode": "OP09-091_r1",
+      "locale": "FR",
+      "name": "Vasco Shot",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "2092fba249e8bf938dadf9160321ea9ccac8be48cacd30e5dc5d424a9c4c15c6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    },
+    {
+      "cardNumber": "OP09-095",
+      "printingCode": "OP09-095_r1",
+      "locale": "FR",
+      "name": "Laffitte",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "8075a837a6763fe862b1ffd32815449489b337488a659b392eb009fd79153fb2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "2092fba249e8bf938dadf9160321ea9ccac8be48cacd30e5dc5d424a9c4c15c6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    },
+    {
+      "cardNumber": "OP09-099",
+      "printingCode": "OP09-099_r1",
+      "locale": "FR",
+      "name": "Ruche",
+      "type": "STAGE",
+      "color": "Noir",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "0c27da2bbebeb6277f08bd5ccc0c079fe2ac1333280893b5917dab832a05bd6d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "2092fba249e8bf938dadf9160321ea9ccac8be48cacd30e5dc5d424a9c4c15c6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    },
+    {
+      "cardNumber": "OP10-084",
+      "printingCode": "OP10-084_r1",
+      "locale": "FR",
+      "name": "Sanjuan Wolf",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "bea5bd9e2ac52050355cecf4f4faa0cada901da8f275ca8e224ec1e93170b19c",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    },
+    {
+      "cardNumber": "ST27-001",
+      "printingCode": "ST27-001",
+      "locale": "FR",
+      "name": "Avalo Pizarro",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "58dfcfb1843c28c02d6ba9910e433c9a91d961b40a3feba88e99f23180b75c58",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "2092fba249e8bf938dadf9160321ea9ccac8be48cacd30e5dc5d424a9c4c15c6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    },
+    {
+      "cardNumber": "ST27-002",
+      "printingCode": "ST27-002",
+      "locale": "FR",
+      "name": "Catarina Devon",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 1,
+      "power": 1000,
+      "counter": 2000,
+      "effectHash": "b233aeb77db4d6f43b036baf8eb5d8eafb1484d30258d8e95425bab8cde18bfa",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "2092fba249e8bf938dadf9160321ea9ccac8be48cacd30e5dc5d424a9c4c15c6",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    },
+    {
+      "cardNumber": "ST27-003",
+      "printingCode": "ST27-003",
+      "locale": "FR",
+      "name": "Kuzan",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 6,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "99080834f1315f992710914d60558cbabf10e9ad42046c903390b0b65ff6627a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "31729c82053fe8203996d608b9e6d30600876843bc27da29a3aaee474cc6926b",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    },
+    {
+      "cardNumber": "ST27-004",
+      "printingCode": "ST27-004",
+      "locale": "FR",
+      "name": "Sanjuan Wolf",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "f872eb95790b7ee94975acdaa5e9f4f9bfb0124bb81e29caf3a55e79488249d4",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "bea5bd9e2ac52050355cecf4f4faa0cada901da8f275ca8e224ec1e93170b19c",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    },
+    {
+      "cardNumber": "ST27-005",
+      "printingCode": "ST27-005",
+      "locale": "FR",
+      "name": "Marshall D. Teach",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "b07b9399ed3a617942c6319114bdf02d94487cd6e4b68cb43dead2c979cfff82",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "deb343c2e440d9b31592d6b9ff174d235a74163d71d23d18c921d89968499ff1",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622027"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "OP09-081",
+      "printingCode": "OP09-081_p2",
+      "name": "Marshall D. Teach",
+      "type": "LEADER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP09-083",
+      "printingCode": "OP09-083_r1",
+      "name": "Van Auger",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP09-086",
+      "printingCode": "OP09-086_r1",
+      "name": "Jesus Burgess",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP09-088",
+      "printingCode": "OP09-088_r1",
+      "name": "Shiliew",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP09-089",
+      "printingCode": "OP09-089_r1",
+      "name": "Stronger",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP09-090",
+      "printingCode": "OP09-090_r1",
+      "name": "Doc Q",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP09-091",
+      "printingCode": "OP09-091_r1",
+      "name": "Vasco Shot",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP09-095",
+      "printingCode": "OP09-095_r1",
+      "name": "Laffitte",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP09-099",
+      "printingCode": "OP09-099_r1",
+      "name": "Ruche",
+      "type": "STAGE",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "OP10-084",
+      "printingCode": "OP10-084_r1",
+      "name": "Sanjuan Wolf",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST27-001",
+      "printingCode": "ST27-001",
+      "name": "Avalo Pizarro",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST27-002",
+      "printingCode": "ST27-002",
+      "name": "Catarina Devon",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST27-003",
+      "printingCode": "ST27-003",
+      "name": "Kuzan",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST27-004",
+      "printingCode": "ST27-004",
+      "name": "Sanjuan Wolf",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST27-005",
+      "printingCode": "ST27-005",
+      "name": "Marshall D. Teach",
+      "type": "CHARACTER",
+      "color": "Noir"
+    }
+  ]
+}

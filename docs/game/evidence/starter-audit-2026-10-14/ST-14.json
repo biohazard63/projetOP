@@ -1,0 +1,1211 @@
+{
+  "deckCode": "ST-14",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569014",
+      "status": "FETCHED",
+      "sha256": "71940c3a55c36f67795ce8953a5e54c398315d0a300777a13d2d7aab3a06db30",
+      "retrievedAt": "2026-10-14T07:26:50.267442+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st14-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st14-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st14.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st14.php",
+      "status": "FETCHED",
+      "sha256": "cf7d652932c0ebfe04a2494577dc350d4ca6ced813b2e3aa2a73f90ebb7fd620",
+      "retrievedAt": "2026-10-14T07:26:55.280188+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st14_cardlists/",
+      "status": "FETCHED",
+      "sha256": "858b6257cc2c003e3b5d03a92e5e4150ff51412ad8ab6fdf883eb407633d4ed3",
+      "retrievedAt": "2026-10-14T07:31:29.073495+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569014",
+      "status": "FETCHED",
+      "sha256": "71940c3a55c36f67795ce8953a5e54c398315d0a300777a13d2d7aab3a06db30",
+      "retrievedAt": "2026-10-14T07:31:30.432181+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569014",
+      "status": "FETCHED",
+      "sha256": "71940c3a55c36f67795ce8953a5e54c398315d0a300777a13d2d7aab3a06db30",
+      "retrievedAt": "2026-10-14T07:35:01.727465+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st14_cardlists/",
+      "status": "FETCHED",
+      "sha256": "858b6257cc2c003e3b5d03a92e5e4150ff51412ad8ab6fdf883eb407633d4ed3",
+      "retrievedAt": "2026-10-14T07:35:03.410213+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550014",
+      "status": "FETCHED",
+      "sha256": "4a683768b325de563fc9144f2a2ecad75412e02ef662bce105bdcb037ca207da",
+      "retrievedAt": "2026-10-14T07:35:05.061913+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14",
+      "status": "FETCHED",
+      "sha256": "c7a9938c01e2ac57d9810959a59d2417e4502b481f94bebe52071b0df07f1cd3",
+      "retrievedAt": "2026-10-14T07:53:00.547225+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14",
+      "status": "FETCHED",
+      "sha256": "df8b426aaacebaaf8cd6496783aeb7c8a6c9189662e714ed460278f6f5ddccba",
+      "retrievedAt": "2026-10-14T07:53:02.391112+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "ST14-001",
+      "printingCode": "ST14-001",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-002",
+      "printingCode": "ST14-002",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-003",
+      "printingCode": "ST14-003",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-004",
+      "printingCode": "ST14-004",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-005",
+      "printingCode": "ST14-005",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-006",
+      "printingCode": "ST14-006",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-007",
+      "printingCode": "ST14-007",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-008",
+      "printingCode": "ST14-008",
+      "name": "Haredas",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-009",
+      "printingCode": "ST14-009",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-011",
+      "printingCode": "ST14-011",
+      "name": "Heracles",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-012",
+      "printingCode": "ST14-012",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-013",
+      "printingCode": "ST14-013",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-014",
+      "printingCode": "ST14-014",
+      "name": "Gum-Gum Giant Rifle",
+      "type": "EVENT",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-015",
+      "printingCode": "ST14-015",
+      "name": "Gum-Gum Diable Three-Swords Style Mouten Jet Six Hundred Pound Phoenix Cannon",
+      "type": "EVENT",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-016",
+      "printingCode": "ST14-016",
+      "name": "I Have My Crew!!",
+      "type": "EVENT",
+      "color": "Black"
+    },
+    {
+      "cardNumber": "ST14-017",
+      "printingCode": "ST14-017",
+      "name": "Thousand Sunny",
+      "type": "STAGE",
+      "color": "Black"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST14-001",
+      "quantity": 1,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-002",
+      "quantity": 4,
+      "sourceName": "ウソップ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-003",
+      "quantity": 2,
+      "sourceName": "サンジ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-004",
+      "quantity": 4,
+      "sourceName": "ジンベエ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-005",
+      "quantity": 4,
+      "sourceName": "トニートニー・チョッパー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-006",
+      "quantity": 2,
+      "sourceName": "ナミ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-007",
+      "quantity": 4,
+      "sourceName": "ニコ・ロビン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-008",
+      "quantity": 4,
+      "sourceName": "ハレダス",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-009",
+      "quantity": 4,
+      "sourceName": "フランキー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "quantity": 4,
+      "sourceName": "ブルック",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-011",
+      "quantity": 4,
+      "sourceName": "ヘラクレス",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-012",
+      "quantity": 2,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-013",
+      "quantity": 4,
+      "sourceName": "ロロノア・ゾロ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-014",
+      "quantity": 2,
+      "sourceName": "ゴムゴムの巨人の回転弾",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-015",
+      "quantity": 2,
+      "sourceName": "ゴムゴムの悪魔風三刀流羊肉JET六百煩悩攻城砲",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-016",
+      "quantity": 2,
+      "sourceName": "仲間がいる゛よ!!!!",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    },
+    {
+      "cardNumber": "ST14-017",
+      "quantity": 2,
+      "sourceName": "サウザンド・サニー号",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st14_cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -3D2Y- − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -3D2Y-"
+  ],
+  "productContents": "・Constructed Deck x1 (51 cards) \r\n                   ・DON!! Card x10 \r\n                   ・Playsheet x1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st14.php",
+  "officialDeckTitle": "STARTER DECK -3D2Y- [ST-14]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "ST14-001",
+      "printingCode": "ST14-001",
+      "name": "モンキー・D・ルフィ",
+      "type": "LEADER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-002",
+      "printingCode": "ST14-002",
+      "name": "ウソップ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-003",
+      "printingCode": "ST14-003",
+      "name": "サンジ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-004",
+      "printingCode": "ST14-004",
+      "name": "ジンベエ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-005",
+      "printingCode": "ST14-005",
+      "name": "トニートニー・チョッパー",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-006",
+      "printingCode": "ST14-006",
+      "name": "ナミ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-007",
+      "printingCode": "ST14-007",
+      "name": "ニコ・ロビン",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-008",
+      "printingCode": "ST14-008",
+      "name": "ハレダス",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-009",
+      "printingCode": "ST14-009",
+      "name": "フランキー",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010",
+      "name": "ブルック",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-011",
+      "printingCode": "ST14-011",
+      "name": "ヘラクレス",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-012",
+      "printingCode": "ST14-012",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-013",
+      "printingCode": "ST14-013",
+      "name": "ロロノア・ゾロ",
+      "type": "CHARACTER",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-014",
+      "printingCode": "ST14-014",
+      "name": "ゴムゴムの巨人の回転弾",
+      "type": "EVENT",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-015",
+      "printingCode": "ST14-015",
+      "name": "ゴムゴムの悪魔風三刀流羊肉JET六百煩悩攻城砲",
+      "type": "EVENT",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-016",
+      "printingCode": "ST14-016",
+      "name": "仲間がいる゛よ!!!!",
+      "type": "EVENT",
+      "color": "黒"
+    },
+    {
+      "cardNumber": "ST14-017",
+      "printingCode": "ST14-017",
+      "name": "サウザンド・サニー号",
+      "type": "STAGE",
+      "color": "黒"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST14-001",
+      "printingCode": "ST14-001",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Black",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "a468ecdd91e8de5432b9d4b4da7a0cdad6aa109fcc60e8319da1d78279751334",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-002",
+      "printingCode": "ST14-002",
+      "locale": "EN",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "2d819509ea97fcd3e19074029a8f6bbe61f5864bd49a9880631efdce34bbc94e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-003",
+      "printingCode": "ST14-003",
+      "locale": "EN",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "9a7f5e94f73c5114e28991553afa5bc92a38af18ca5479a9f7036a04a198555b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-004",
+      "printingCode": "ST14-004",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "16540313ef8caf7efd4335b06795ef34564931a59e270024c5c798a71b361923",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "55d69948c9313dcaebfc19a852c31fddacdcb9ae693a5c29faf14a3dd7c47932",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-005",
+      "printingCode": "ST14-005",
+      "locale": "EN",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "595eb2e08913dd501fe4ff0081d6af65e6e171d1b56978b3b5e8bee0b86c5069",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-006",
+      "printingCode": "ST14-006",
+      "locale": "EN",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 3,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "77c1f90363f517a20d3eab471d30df0a0dfde0a2535d50f0c4578b8537ae31dd",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-007",
+      "printingCode": "ST14-007",
+      "locale": "EN",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 6,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "4232e4c4833cb827b743b710773ffc239c7c49ba7210b8563adf008197ee8a3a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-007",
+      "printingCode": "ST14-007_p1",
+      "locale": "EN",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 6,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "4232e4c4833cb827b743b710773ffc239c7c49ba7210b8563adf008197ee8a3a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-007",
+      "printingCode": "ST14-007_r1",
+      "locale": "EN",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 6,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "4232e4c4833cb827b743b710773ffc239c7c49ba7210b8563adf008197ee8a3a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-008",
+      "printingCode": "ST14-008",
+      "locale": "EN",
+      "name": "Haredas",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": 2000,
+      "effectHash": "ef4ce2d3a5be8dfa5885de9ff130837c3ba36a99e731614cdfa6166d9d0fce5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "60cf31ff95f9d2773e16d2c9e74f24506662f1edd927caf5c10bc6511f4d6b1e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-009",
+      "printingCode": "ST14-009",
+      "locale": "EN",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e55c899e7ad17dd180d015febdc988169d252727bb87b563148dbc27276616ee",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010",
+      "locale": "EN",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010_p1",
+      "locale": "EN",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010_r1",
+      "locale": "EN",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010_r2",
+      "locale": "EN",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-011",
+      "printingCode": "ST14-011",
+      "locale": "EN",
+      "name": "Heracles",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 1,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "addbbc59cfc433a0fc6296c14fac1017293c7389f95969027a70ce6d47301207",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "f7832fceb9279435e8cd534bc82fc60ad8727cc23c5a94f777b3046879341713",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-012",
+      "printingCode": "ST14-012",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 8,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "4e35d417d788856df0b9f4c4b0f10791609f211a0025105f91b5d09d60faad74",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-013",
+      "printingCode": "ST14-013",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 6,
+      "power": 8000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-013",
+      "printingCode": "ST14-013_p1",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 6,
+      "power": 8000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-013",
+      "printingCode": "ST14-013_r1",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 6,
+      "power": 8000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-014",
+      "printingCode": "ST14-014",
+      "locale": "EN",
+      "name": "Gum-Gum Giant Rifle",
+      "type": "EVENT",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "07f8a442db664a687dd6ea53e6b4abdbbb9db1aa0d5a6711217e2082fd89dcc2",
+      "triggerHash": "3330ab5525dffb6ce67da52b996b4587ffc16006cd1044b24cc8205bceeb6fa2",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-015",
+      "printingCode": "ST14-015",
+      "locale": "EN",
+      "name": "Gum-Gum Diable Three-Swords Style Mouten Jet Six Hundred Pound Phoenix Cannon",
+      "type": "EVENT",
+      "color": "Black",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "5a8c89616f64aa30cd88d938745e351e98389573ba017de935efb9c291ec61c4",
+      "triggerHash": "caa2fdd92c226158c2550fd1e89d8d3ee3abbe4e23ae87cfb4363ae2f17e542e",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-016",
+      "printingCode": "ST14-016",
+      "locale": "EN",
+      "name": "I Have My Crew!!",
+      "type": "EVENT",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "8a31472efcc3b4fa49f6be4e89af04befd4ebfee307627b4372a35b5271702c5",
+      "triggerHash": "60c87f74174c02c8a602e594423a0d745b931564d56395beaa4443aa6e3300ad",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-016",
+      "printingCode": "ST14-016_p1",
+      "locale": "EN",
+      "name": "I Have My Crew!!",
+      "type": "EVENT",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "8a31472efcc3b4fa49f6be4e89af04befd4ebfee307627b4372a35b5271702c5",
+      "triggerHash": "60c87f74174c02c8a602e594423a0d745b931564d56395beaa4443aa6e3300ad",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-016",
+      "printingCode": "ST14-016_r1",
+      "locale": "EN",
+      "name": "I Have My Crew!!",
+      "type": "EVENT",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "8a31472efcc3b4fa49f6be4e89af04befd4ebfee307627b4372a35b5271702c5",
+      "triggerHash": "60c87f74174c02c8a602e594423a0d745b931564d56395beaa4443aa6e3300ad",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-017",
+      "printingCode": "ST14-017",
+      "locale": "EN",
+      "name": "Thousand Sunny",
+      "type": "STAGE",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "0b0d10adaebc377ad42fe3b7e4b72e75af1ca287d46d408cf8324335be13fe3a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-017",
+      "printingCode": "ST14-017_p1",
+      "locale": "EN",
+      "name": "Thousand Sunny",
+      "type": "STAGE",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "0b0d10adaebc377ad42fe3b7e4b72e75af1ca287d46d408cf8324335be13fe3a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-017",
+      "printingCode": "ST14-017_r1",
+      "locale": "EN",
+      "name": "Thousand Sunny",
+      "type": "STAGE",
+      "color": "Black",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "0b0d10adaebc377ad42fe3b7e4b72e75af1ca287d46d408cf8324335be13fe3a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-003",
+      "printingCode": "ST14-003_p1",
+      "locale": "EN",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Black",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "9a7f5e94f73c5114e28991553afa5bc92a38af18ca5479a9f7036a04a198555b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-007",
+      "printingCode": "ST14-007_p1",
+      "locale": "FR",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 6,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "4a4e70fe4efebcfca07b97ac14882b9c5859db491906f470f3152879f1ad935d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-007",
+      "printingCode": "ST14-007_r1",
+      "locale": "FR",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 6,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "4a4e70fe4efebcfca07b97ac14882b9c5859db491906f470f3152879f1ad935d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010",
+      "locale": "FR",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010_p1",
+      "locale": "FR",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010_p2",
+      "locale": "FR",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010_r2",
+      "locale": "FR",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-013",
+      "printingCode": "ST14-013_p1",
+      "locale": "FR",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 6,
+      "power": 8000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-013",
+      "printingCode": "ST14-013_r1",
+      "locale": "FR",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 6,
+      "power": 8000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-016",
+      "printingCode": "ST14-016_p1",
+      "locale": "FR",
+      "name": "Il me reste tous mes amis !!",
+      "type": "EVENT",
+      "color": "Noir",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "96a9dc9451869dbbcb663e86b8ef83b751105ff84ea83233adf6338d7878bee4",
+      "triggerHash": "e3898f8fd9dfd35d685441e7e2f8202c3b0038f49c3f9e51b33bc1a52a76a9ec",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-016",
+      "printingCode": "ST14-016_r1",
+      "locale": "FR",
+      "name": "Il me reste tous mes amis !!",
+      "type": "EVENT",
+      "color": "Noir",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "96a9dc9451869dbbcb663e86b8ef83b751105ff84ea83233adf6338d7878bee4",
+      "triggerHash": "e3898f8fd9dfd35d685441e7e2f8202c3b0038f49c3f9e51b33bc1a52a76a9ec",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-017",
+      "printingCode": "ST14-017_p1",
+      "locale": "FR",
+      "name": "Thousand Sunny",
+      "type": "STAGE",
+      "color": "Noir",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "899c6b77d3dab46648104751b61aff9ea172f69e335cc67a31f6e89d90b1e2fe",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-017",
+      "printingCode": "ST14-017_r1",
+      "locale": "FR",
+      "name": "Thousand Sunny",
+      "type": "STAGE",
+      "color": "Noir",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "899c6b77d3dab46648104751b61aff9ea172f69e335cc67a31f6e89d90b1e2fe",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    },
+    {
+      "cardNumber": "ST14-003",
+      "printingCode": "ST14-003_p1",
+      "locale": "FR",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Noir",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "a07dc933ff691ebce156801929b4d383827ed363ca4a7fa80ee56dfc1a8638c8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST14"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "ST14-007",
+      "printingCode": "ST14-007_p1",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST14-007",
+      "printingCode": "ST14-007_r1",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010_p1",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010_p2",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST14-010",
+      "printingCode": "ST14-010_r2",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST14-013",
+      "printingCode": "ST14-013_p1",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST14-013",
+      "printingCode": "ST14-013_r1",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST14-016",
+      "printingCode": "ST14-016_p1",
+      "name": "Il me reste tous mes amis !!",
+      "type": "EVENT",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST14-016",
+      "printingCode": "ST14-016_r1",
+      "name": "Il me reste tous mes amis !!",
+      "type": "EVENT",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST14-017",
+      "printingCode": "ST14-017_p1",
+      "name": "Thousand Sunny",
+      "type": "STAGE",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST14-017",
+      "printingCode": "ST14-017_r1",
+      "name": "Thousand Sunny",
+      "type": "STAGE",
+      "color": "Noir"
+    },
+    {
+      "cardNumber": "ST14-003",
+      "printingCode": "ST14-003_p1",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Noir"
+    }
+  ]
+}

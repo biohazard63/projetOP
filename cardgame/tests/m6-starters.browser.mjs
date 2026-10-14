@@ -5,7 +5,8 @@ import { randomUUID } from 'node:crypto'
 import assert from 'node:assert/strict'
 import fs from 'node:fs'
 
-// M6 real-browser check of the ST-07, ST-08 and ST-12 Starter Decks in /play (desktop and phone). Isolated database only.
+// M6 real-browser check of Starter Decks in /play (desktop and phone). Isolated database only.
+// DECKS="ST-14,ST-17" selects the decks (default: ST-07, ST-08, ST-12).
 const target = new URL(process.env.DATABASE_URL || 'invalid://')
 if (target.hostname !== '127.0.0.1' || target.port !== '55433' || target.pathname !== '/op_play_test') throw Error('Isolated database required')
 const db = new PrismaClient(), baseURL = 'http://localhost:3008', results = [], password = 'M6-Starters-9!'
@@ -23,7 +24,7 @@ try {
     const page = await context.newPage(), errors = []
     page.on('pageerror', e => errors.push(String(e))); page.on('dialog', d => d.accept())
     const click = async l => { if (opts.hasTouch) await l.first().tap(); else await l.first().click(); await page.waitForTimeout(400) }
-    for (const deck of ['ST-07', 'ST-08', 'ST-12']) {
+    for (const deck of (process.env.DECKS ?? 'ST-07,ST-08,ST-12').split(',')) {
       await check(`${label}: Starter ${deck} starts, reaches the board, renders its cards and can be conceded`, async () => {
         await page.goto(baseURL + '/play'); await page.getByRole('heading', { name: 'Prêt à prendre la mer ?' }).waitFor()
         const button = page.getByRole('button', { name: new RegExp(`Starter ${deck} `) })

@@ -1,0 +1,1258 @@
+{
+  "deckCode": "ST-10",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569010",
+      "status": "FETCHED",
+      "sha256": "c0f46c002aa20fa7cffb2ed2c67ff1de0d4d6a8027d67ab2358d123f46c9f97e",
+      "retrievedAt": "2026-10-14T07:26:50.268057+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st10-cardlists/",
+      "status": "FETCHED",
+      "sha256": "90bc8eb45f1c3f8f14a66d1ecf2ded73c487a62a9dd43ce11e533b07d2098660",
+      "retrievedAt": "2026-10-14T07:26:52.145962+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st10.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st10.php",
+      "status": "FETCHED",
+      "sha256": "9d467511b8badca2d3e4f3a113630dd80396f0c34fb46810ba8a1ab1a26bf781",
+      "retrievedAt": "2026-10-14T07:26:55.196646+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st10-cardlists/",
+      "status": "FETCHED",
+      "sha256": "90bc8eb45f1c3f8f14a66d1ecf2ded73c487a62a9dd43ce11e533b07d2098660",
+      "retrievedAt": "2026-10-14T07:31:28.599764+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569010",
+      "status": "FETCHED",
+      "sha256": "c0f46c002aa20fa7cffb2ed2c67ff1de0d4d6a8027d67ab2358d123f46c9f97e",
+      "retrievedAt": "2026-10-14T07:31:30.024541+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569010",
+      "status": "FETCHED",
+      "sha256": "c0f46c002aa20fa7cffb2ed2c67ff1de0d4d6a8027d67ab2358d123f46c9f97e",
+      "retrievedAt": "2026-10-14T07:34:57.083307+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st10-cardlists/",
+      "status": "FETCHED",
+      "sha256": "90bc8eb45f1c3f8f14a66d1ecf2ded73c487a62a9dd43ce11e533b07d2098660",
+      "retrievedAt": "2026-10-14T07:34:58.689067+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550010",
+      "status": "FETCHED",
+      "sha256": "315d1280627109a6ecb8dfc9c77a9e3ba87b8e6a3eb62932ec6d030df880802b",
+      "retrievedAt": "2026-10-14T07:35:00.771762+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10",
+      "status": "FETCHED",
+      "sha256": "cda1f458370706cd092cf85514c18011e17721d089fd14277e63e87ee6ed3870",
+      "retrievedAt": "2026-10-14T07:52:57.487794+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10",
+      "status": "FETCHED",
+      "sha256": "e643a54646fccb8a083d848dbc25f1f04fe1f8671e06089b78350548814deffa",
+      "retrievedAt": "2026-10-14T07:52:59.290707+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP01-025",
+      "status": "FETCHED",
+      "sha256": "2ee4a81aebfddeadcf60cfe033ca36914b607b3c0ccaf474158fe76d3301cb4f",
+      "retrievedAt": "2026-10-14T08:09:27.458572+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP01-025",
+      "status": "FETCHED",
+      "sha256": "2cf7055ce2c9e5fd5de9d7aa258beac011d77808e33e0cbd30cd98f21061f35f",
+      "retrievedAt": "2026-10-14T08:09:28.767418+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "OP01-016",
+      "printingCode": "OP01-016_p3",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP01-025",
+      "printingCode": "OP01-025_p2",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST10-001",
+      "printingCode": "ST10-001",
+      "name": "Trafalgar Law",
+      "type": "LEADER",
+      "color": "Red/Purple"
+    },
+    {
+      "cardNumber": "ST10-002",
+      "printingCode": "ST10-002",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Red/Purple"
+    },
+    {
+      "cardNumber": "ST10-003",
+      "printingCode": "ST10-003",
+      "name": "Eustass\"Captain\"Kid",
+      "type": "LEADER",
+      "color": "Red/Purple"
+    },
+    {
+      "cardNumber": "ST10-004",
+      "printingCode": "ST10-004",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST10-005",
+      "printingCode": "ST10-005",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST10-006",
+      "printingCode": "ST10-006",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST10-007",
+      "printingCode": "ST10-007",
+      "name": "Killer",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008",
+      "name": "Shachi & Penguin",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST10-009",
+      "printingCode": "ST10-009",
+      "name": "Jean Bart",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST10-010",
+      "printingCode": "ST10-010",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST10-011",
+      "printingCode": "ST10-011",
+      "name": "Heat",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST10-012",
+      "printingCode": "ST10-012",
+      "name": "Bepo",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST10-013",
+      "printingCode": "ST10-013",
+      "name": "Eustass\"Captain\"Kid",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST10-014",
+      "printingCode": "ST10-014",
+      "name": "Wire",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST10-015",
+      "printingCode": "ST10-015",
+      "name": "Gum-Gum Giant Sumo Slap",
+      "type": "EVENT",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST10-016",
+      "printingCode": "ST10-016",
+      "name": "Gum-Gum Kong Gatling",
+      "type": "EVENT",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST10-017",
+      "printingCode": "ST10-017",
+      "name": "Punk Vise",
+      "type": "EVENT",
+      "color": "Purple"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST10-001",
+      "quantity": 1,
+      "sourceName": "トラファルガー・ロー",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-002",
+      "quantity": 1,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-003",
+      "quantity": 1,
+      "sourceName": "ユースタス・キッド",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-004",
+      "quantity": 4,
+      "sourceName": "サンジ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-005",
+      "quantity": 2,
+      "sourceName": "ジンベエ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-006",
+      "quantity": 2,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-007",
+      "quantity": 4,
+      "sourceName": "キラー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "quantity": 4,
+      "sourceName": "シャチ＆ペンギン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-009",
+      "quantity": 4,
+      "sourceName": "ジャンバール",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-010",
+      "quantity": 2,
+      "sourceName": "トラファルガー・ロー",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-011",
+      "quantity": 4,
+      "sourceName": "ヒート",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-012",
+      "quantity": 4,
+      "sourceName": "ベポ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-013",
+      "quantity": 2,
+      "sourceName": "ユースタス・キッド",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-014",
+      "quantity": 4,
+      "sourceName": "ワイヤー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-015",
+      "quantity": 2,
+      "sourceName": "ゴムゴムの巨人つっぱり",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-016",
+      "quantity": 2,
+      "sourceName": "ゴムゴムの猿王銃乱打",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "ST10-017",
+      "quantity": 2,
+      "sourceName": "磁気万力",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "OP01-016",
+      "quantity": 4,
+      "sourceName": "ナミ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    },
+    {
+      "cardNumber": "OP01-025",
+      "quantity": 4,
+      "sourceName": "ロロノア・ゾロ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st10-cardlists/"
+    }
+  ],
+  "productTitles": [
+    "ULTRA DECK -The Three Captains- − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "ULTRA DECK -The Three Captains-"
+  ],
+  "productContents": "・Constructed Deck x1 (51 cards) \r\n                   ・Alternative Leader Card x2 \r\n                   ・DON!! Cards x10 \r\n                   ・Playsheet x1 \r\n                   ・Card Case x1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st10.php",
+  "officialDeckTitle": "ULTRA DECK -The Three Captains- [ST-10]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "OP01-016",
+      "printingCode": "OP01-016_p3",
+      "name": "ナミ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP01-025",
+      "printingCode": "OP01-025_p2",
+      "name": "ロロノア・ゾロ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST10-001",
+      "printingCode": "ST10-001",
+      "name": "トラファルガー・ロー",
+      "type": "LEADER",
+      "color": "赤/紫"
+    },
+    {
+      "cardNumber": "ST10-002",
+      "printingCode": "ST10-002",
+      "name": "モンキー・D・ルフィ",
+      "type": "LEADER",
+      "color": "赤/紫"
+    },
+    {
+      "cardNumber": "ST10-003",
+      "printingCode": "ST10-003",
+      "name": "ユースタス・キッド",
+      "type": "LEADER",
+      "color": "赤/紫"
+    },
+    {
+      "cardNumber": "ST10-004",
+      "printingCode": "ST10-004",
+      "name": "サンジ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST10-005",
+      "printingCode": "ST10-005",
+      "name": "ジンベエ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST10-006",
+      "printingCode": "ST10-006",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST10-007",
+      "printingCode": "ST10-007",
+      "name": "キラー",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008",
+      "name": "シャチ＆ペンギン",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST10-009",
+      "printingCode": "ST10-009",
+      "name": "ジャンバール",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST10-010",
+      "printingCode": "ST10-010",
+      "name": "トラファルガー・ロー",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST10-011",
+      "printingCode": "ST10-011",
+      "name": "ヒート",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST10-012",
+      "printingCode": "ST10-012",
+      "name": "ベポ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST10-013",
+      "printingCode": "ST10-013",
+      "name": "ユースタス・キッド",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST10-014",
+      "printingCode": "ST10-014",
+      "name": "ワイヤー",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST10-015",
+      "printingCode": "ST10-015",
+      "name": "ゴムゴムの巨人つっぱり",
+      "type": "EVENT",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST10-016",
+      "printingCode": "ST10-016",
+      "name": "ゴムゴムの猿王銃乱打",
+      "type": "EVENT",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST10-017",
+      "printingCode": "ST10-017",
+      "name": "磁気万力",
+      "type": "EVENT",
+      "color": "紫"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST10-001",
+      "printingCode": "ST10-001",
+      "locale": "EN",
+      "name": "Trafalgar Law",
+      "type": "LEADER",
+      "color": "Red/Purple",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "6257504ef611f373569235587367e4e168dc86d187e3d3ef7a81e4d4f764fa3b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "55d108d9ae5fbfa5e01237babef2f35faa52c60119863f64ff5a02702633de4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-002",
+      "printingCode": "ST10-002",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Red/Purple",
+      "cost": null,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "21698b342c4a01e214d7894f9fed0786307af6ae6738105c533b54a5f120b254",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-003",
+      "printingCode": "ST10-003",
+      "locale": "EN",
+      "name": "Eustass\"Captain\"Kid",
+      "type": "LEADER",
+      "color": "Red/Purple",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "4cc2ea61fdef22a78670635e8fb4355da7a3840f96d60eba343fedd597962768",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "a50e3c83bf174548e32c5824194824234e63930dc74a3676a4dbfd8bf30b1d92",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-004",
+      "printingCode": "ST10-004",
+      "locale": "EN",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 6,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "35e0f9db455180d2265ab0346e5c488b094b41821fdf87fbd256372c89b5cfac",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-005",
+      "printingCode": "ST10-005",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 2,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "d1421e6752d141975d20c13ea466ca99ba35e8b0195524e5d599488bc955406e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "cca8486c05c288e7608e217b3f87170e165ab1838432d757e767e0e645a97a40",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-005",
+      "printingCode": "ST10-005_p1",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 2,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "d1421e6752d141975d20c13ea466ca99ba35e8b0195524e5d599488bc955406e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "cca8486c05c288e7608e217b3f87170e165ab1838432d757e767e0e645a97a40",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-005",
+      "printingCode": "ST10-005_p2",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 2,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "d1421e6752d141975d20c13ea466ca99ba35e8b0195524e5d599488bc955406e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "cca8486c05c288e7608e217b3f87170e165ab1838432d757e767e0e645a97a40",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-005",
+      "printingCode": "ST10-005_r1",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 2,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "d1421e6752d141975d20c13ea466ca99ba35e8b0195524e5d599488bc955406e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "cca8486c05c288e7608e217b3f87170e165ab1838432d757e767e0e645a97a40",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-006",
+      "printingCode": "ST10-006",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 10,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "153c5fa0aecafe2de94e1dbc99ce5bc049da23f8881d48ab2b7fd466feb411d2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-006",
+      "printingCode": "ST10-006_p1",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 10,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "153c5fa0aecafe2de94e1dbc99ce5bc049da23f8881d48ab2b7fd466feb411d2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-006",
+      "printingCode": "ST10-006_p2",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 10,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "153c5fa0aecafe2de94e1dbc99ce5bc049da23f8881d48ab2b7fd466feb411d2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-006",
+      "printingCode": "ST10-006_p4",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 10,
+      "power": 11000,
+      "counter": null,
+      "effectHash": "153c5fa0aecafe2de94e1dbc99ce5bc049da23f8881d48ab2b7fd466feb411d2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-007",
+      "printingCode": "ST10-007",
+      "locale": "EN",
+      "name": "Killer",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "a361615b004d0592dc48a6a9c5221baed97d1018824755877890c707784af9b2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "a50e3c83bf174548e32c5824194824234e63930dc74a3676a4dbfd8bf30b1d92",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008",
+      "locale": "EN",
+      "name": "Shachi & Penguin",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "0c39ac75de63cb1c64a4511c40b6424c7b6f2106ff5b9c8b2063202e3243f8d8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "55d108d9ae5fbfa5e01237babef2f35faa52c60119863f64ff5a02702633de4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008_p1",
+      "locale": "EN",
+      "name": "Shachi & Penguin",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "0c39ac75de63cb1c64a4511c40b6424c7b6f2106ff5b9c8b2063202e3243f8d8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "55d108d9ae5fbfa5e01237babef2f35faa52c60119863f64ff5a02702633de4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008_p2",
+      "locale": "EN",
+      "name": "Shachi & Penguin",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "0c39ac75de63cb1c64a4511c40b6424c7b6f2106ff5b9c8b2063202e3243f8d8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "55d108d9ae5fbfa5e01237babef2f35faa52c60119863f64ff5a02702633de4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008_p3",
+      "locale": "EN",
+      "name": "Shachi & Penguin",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "0c39ac75de63cb1c64a4511c40b6424c7b6f2106ff5b9c8b2063202e3243f8d8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "55d108d9ae5fbfa5e01237babef2f35faa52c60119863f64ff5a02702633de4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008_r1",
+      "locale": "EN",
+      "name": "Shachi & Penguin",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "0c39ac75de63cb1c64a4511c40b6424c7b6f2106ff5b9c8b2063202e3243f8d8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "55d108d9ae5fbfa5e01237babef2f35faa52c60119863f64ff5a02702633de4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-009",
+      "printingCode": "ST10-009",
+      "locale": "EN",
+      "name": "Jean Bart",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "b685e875d27f5215c30c935068648c22ef08462091702077fa2e6fcb98fa18db",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "55d108d9ae5fbfa5e01237babef2f35faa52c60119863f64ff5a02702633de4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-010",
+      "printingCode": "ST10-010",
+      "locale": "EN",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "7d0373fa64ceb6e0467c1aada5814e83b806fb9c90c1fb7aaffc3a6eb2182ff9",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "55d108d9ae5fbfa5e01237babef2f35faa52c60119863f64ff5a02702633de4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-010",
+      "printingCode": "ST10-010_p1",
+      "locale": "EN",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "7d0373fa64ceb6e0467c1aada5814e83b806fb9c90c1fb7aaffc3a6eb2182ff9",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "55d108d9ae5fbfa5e01237babef2f35faa52c60119863f64ff5a02702633de4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-010",
+      "printingCode": "ST10-010_p2",
+      "locale": "EN",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "5eba57b35b09f180c80d9bdb8c76ddd7d3bfc3f307025f2c9cc953941e971c0f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "55d108d9ae5fbfa5e01237babef2f35faa52c60119863f64ff5a02702633de4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-010",
+      "printingCode": "ST10-010_p4",
+      "locale": "EN",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "7d0373fa64ceb6e0467c1aada5814e83b806fb9c90c1fb7aaffc3a6eb2182ff9",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "55d108d9ae5fbfa5e01237babef2f35faa52c60119863f64ff5a02702633de4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-010",
+      "printingCode": "ST10-010_r1",
+      "locale": "EN",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "7d0373fa64ceb6e0467c1aada5814e83b806fb9c90c1fb7aaffc3a6eb2182ff9",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "55d108d9ae5fbfa5e01237babef2f35faa52c60119863f64ff5a02702633de4f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-011",
+      "printingCode": "ST10-011",
+      "locale": "EN",
+      "name": "Heat",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "1948522b22e6e9592a5d0c025c529f067a3a7bf7b2068d36736573ee2b15a8bb",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "a50e3c83bf174548e32c5824194824234e63930dc74a3676a4dbfd8bf30b1d92",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-012",
+      "printingCode": "ST10-012",
+      "locale": "EN",
+      "name": "Bepo",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "473d19056b005d8ebd7fe8e1c2b491533d772e374b2f6ac5674a672de3fe648e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "14aa326aa2ab19f2e1b1d0c3c443f78176e1ec22a0d88f1e929d1d5ffb1f8610",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-013",
+      "printingCode": "ST10-013",
+      "locale": "EN",
+      "name": "Eustass\"Captain\"Kid",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "cbdba621b4fe03bcd9bd1aa64cfb34fc4ba09f70975d29ca05772865dda997c9",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "a50e3c83bf174548e32c5824194824234e63930dc74a3676a4dbfd8bf30b1d92",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-013",
+      "printingCode": "ST10-013_p1",
+      "locale": "EN",
+      "name": "Eustass\"Captain\"Kid",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "cbdba621b4fe03bcd9bd1aa64cfb34fc4ba09f70975d29ca05772865dda997c9",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "a50e3c83bf174548e32c5824194824234e63930dc74a3676a4dbfd8bf30b1d92",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-014",
+      "printingCode": "ST10-014",
+      "locale": "EN",
+      "name": "Wire",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "ed718ac931c315bb2094969bf2c665784b2634a8db5d749ac622fdea9163a547",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "a50e3c83bf174548e32c5824194824234e63930dc74a3676a4dbfd8bf30b1d92",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-015",
+      "printingCode": "ST10-015",
+      "locale": "EN",
+      "name": "Gum-Gum Giant Sumo Slap",
+      "type": "EVENT",
+      "color": "Red",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "6cc0635e23bcc7b54c6d71e58b1a937e5daf73675e8496134d1e0d80b7e04014",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-016",
+      "printingCode": "ST10-016",
+      "locale": "EN",
+      "name": "Gum-Gum Kong Gatling",
+      "type": "EVENT",
+      "color": "Red",
+      "cost": 5,
+      "power": null,
+      "counter": null,
+      "effectHash": "c9591e725ce843118c39b9fbf80313a7f8e9909238804432ad9a5513cedd2553",
+      "triggerHash": "adf75d40965186e250dc5e530a204be57a5a7481fcd67bede166fd8ed42f422d",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-017",
+      "printingCode": "ST10-017",
+      "locale": "EN",
+      "name": "Punk Vise",
+      "type": "EVENT",
+      "color": "Purple",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "f5738b28175324daa6e3d58c40a09e9af1521f6daaff7174b278123f2339d4e5",
+      "triggerHash": "819578c59ec0945fd64b92c8171b57a5b209fa1826f8b1c4d49da6283187f005",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "a50e3c83bf174548e32c5824194824234e63930dc74a3676a4dbfd8bf30b1d92",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-005",
+      "printingCode": "ST10-005_p1",
+      "locale": "FR",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 2,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "a708e471b81e6c8dd40b9b4b832d7b66e2c566b2e1292170db8b15eaa0f96e53",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "4f449bbf1de381ac49b47403a0baa15990099acedb17812253bf93fa5a616105",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-005",
+      "printingCode": "ST10-005_r1",
+      "locale": "FR",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 2,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "a708e471b81e6c8dd40b9b4b832d7b66e2c566b2e1292170db8b15eaa0f96e53",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "4f449bbf1de381ac49b47403a0baa15990099acedb17812253bf93fa5a616105",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008_p1",
+      "locale": "FR",
+      "name": "Shachi et Pingouin",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "f40d29097de84d71ed60e4d96046185507a3ccf558d37557f91ff51358b5350e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "044befabec1f28f37bcb8c9f153f17562d7225abbabc4b51595d18d6fe0e0db5",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008_p2",
+      "locale": "FR",
+      "name": "Shachi et Pingouin",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "f40d29097de84d71ed60e4d96046185507a3ccf558d37557f91ff51358b5350e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "044befabec1f28f37bcb8c9f153f17562d7225abbabc4b51595d18d6fe0e0db5",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008_p3",
+      "locale": "FR",
+      "name": "Shachi et Pingouin",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "f40d29097de84d71ed60e4d96046185507a3ccf558d37557f91ff51358b5350e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "044befabec1f28f37bcb8c9f153f17562d7225abbabc4b51595d18d6fe0e0db5",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008_r1",
+      "locale": "FR",
+      "name": "Shachi et Pingouin",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "f40d29097de84d71ed60e4d96046185507a3ccf558d37557f91ff51358b5350e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "044befabec1f28f37bcb8c9f153f17562d7225abbabc4b51595d18d6fe0e0db5",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-010",
+      "printingCode": "ST10-010_p1",
+      "locale": "FR",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "885d9b74833899819b85d48b3c439a5cd5cb2f7d066a0f8277eaf6be5646bd5c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "044befabec1f28f37bcb8c9f153f17562d7225abbabc4b51595d18d6fe0e0db5",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "ST10-010",
+      "printingCode": "ST10-010_p2",
+      "locale": "FR",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "885d9b74833899819b85d48b3c439a5cd5cb2f7d066a0f8277eaf6be5646bd5c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "044befabec1f28f37bcb8c9f153f17562d7225abbabc4b51595d18d6fe0e0db5",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST10"
+    },
+    {
+      "cardNumber": "OP01-025",
+      "printingCode": "OP01-025",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "40b65e30283edb63e9a2208b8d92f64966d53e66cb281aaa02aaee81e8429fd8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "2be931d016362f5408d0cf2cde781be2709ee82713a9068714549c5e1e790d81",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP01-025"
+    },
+    {
+      "cardNumber": "OP01-025",
+      "printingCode": "OP01-025_p1",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "40b65e30283edb63e9a2208b8d92f64966d53e66cb281aaa02aaee81e8429fd8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "2be931d016362f5408d0cf2cde781be2709ee82713a9068714549c5e1e790d81",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP01-025"
+    },
+    {
+      "cardNumber": "OP01-025",
+      "printingCode": "OP01-025_p2",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "40b65e30283edb63e9a2208b8d92f64966d53e66cb281aaa02aaee81e8429fd8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "2be931d016362f5408d0cf2cde781be2709ee82713a9068714549c5e1e790d81",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP01-025"
+    },
+    {
+      "cardNumber": "OP01-025",
+      "printingCode": "OP01-025_p3",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "40b65e30283edb63e9a2208b8d92f64966d53e66cb281aaa02aaee81e8429fd8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "2be931d016362f5408d0cf2cde781be2709ee82713a9068714549c5e1e790d81",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP01-025"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "ST10-005",
+      "printingCode": "ST10-005_p1",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST10-005",
+      "printingCode": "ST10-005_r1",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008_p1",
+      "name": "Shachi et Pingouin",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008_p2",
+      "name": "Shachi et Pingouin",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008_p3",
+      "name": "Shachi et Pingouin",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST10-008",
+      "printingCode": "ST10-008_r1",
+      "name": "Shachi et Pingouin",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST10-010",
+      "printingCode": "ST10-010_p1",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST10-010",
+      "printingCode": "ST10-010_p2",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Violet"
+    }
+  ]
+}

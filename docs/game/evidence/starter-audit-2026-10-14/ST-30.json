@@ -1,0 +1,2008 @@
+{
+  "deckCode": "ST-30",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569030",
+      "status": "FETCHED",
+      "sha256": "4971aaf76972cd6031c2741c612392bd5bf171b4879583a6bca041f438e2bde5",
+      "retrievedAt": "2026-10-14T07:27:15.343829+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st30-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st30-card-list/",
+      "status": "FETCHED",
+      "sha256": "c9f983601fd4a169da0fbbdce755c241010821d5e1cda7ab126f3b190d214d14",
+      "retrievedAt": "2026-10-14T07:27:18.209066+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st30.html",
+      "status": "FETCHED",
+      "sha256": "a7589ab7b7c9454d7b6506083d27124d1276294818903fb910ecfbcdd2040985",
+      "retrievedAt": "2026-10-14T07:27:20.555321+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st30-card-list/",
+      "status": "FETCHED",
+      "sha256": "c9f983601fd4a169da0fbbdce755c241010821d5e1cda7ab126f3b190d214d14",
+      "retrievedAt": "2026-10-14T07:31:44.710443+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569030",
+      "status": "FETCHED",
+      "sha256": "4971aaf76972cd6031c2741c612392bd5bf171b4879583a6bca041f438e2bde5",
+      "retrievedAt": "2026-10-14T07:31:46.330610+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569030",
+      "status": "FETCHED",
+      "sha256": "4971aaf76972cd6031c2741c612392bd5bf171b4879583a6bca041f438e2bde5",
+      "retrievedAt": "2026-10-14T07:35:13.451841+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st30-card-list/",
+      "status": "FETCHED",
+      "sha256": "c9f983601fd4a169da0fbbdce755c241010821d5e1cda7ab126f3b190d214d14",
+      "retrievedAt": "2026-10-14T07:35:15.597522+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550030",
+      "status": "FETCHED",
+      "sha256": "85c0497fc53a11e2772292263ee424781741a3ff59cd88ac1ccc2fe358793c7c",
+      "retrievedAt": "2026-10-14T07:35:17.487267+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569030",
+      "status": "FETCHED",
+      "sha256": "4971aaf76972cd6031c2741c612392bd5bf171b4879583a6bca041f438e2bde5",
+      "retrievedAt": "2026-10-14T07:53:06.770258+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622030",
+      "status": "FETCHED",
+      "sha256": "a4669f5b725951494d34da9db57c1ecb0c6ef6cc3f164d9f1ea2e9958cc888cc",
+      "retrievedAt": "2026-10-14T07:53:08.406548+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "ST30-001",
+      "printingCode": "ST30-001",
+      "name": "Luffy & Ace",
+      "type": "LEADER",
+      "color": "Red/Green"
+    },
+    {
+      "cardNumber": "ST30-001",
+      "printingCode": "ST30-001_p1",
+      "name": "Luffy & Ace",
+      "type": "LEADER",
+      "color": "Red/Green"
+    },
+    {
+      "cardNumber": "ST30-002",
+      "printingCode": "ST30-002",
+      "name": "Inazuma",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-002",
+      "printingCode": "ST30-002_p1",
+      "name": "Inazuma",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-003",
+      "printingCode": "ST30-003",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-003",
+      "printingCode": "ST30-003_p1",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-004",
+      "printingCode": "ST30-004",
+      "name": "Emporio.Ivankov",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-004",
+      "printingCode": "ST30-004_p1",
+      "name": "Emporio.Ivankov",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-005",
+      "printingCode": "ST30-005",
+      "name": "Jozu",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-005",
+      "printingCode": "ST30-005_p1",
+      "name": "Jozu",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-006",
+      "printingCode": "ST30-006",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-006",
+      "printingCode": "ST30-006_p1",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-007",
+      "printingCode": "ST30-007",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-007",
+      "printingCode": "ST30-007_p1",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-008",
+      "printingCode": "ST30-008",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-008",
+      "printingCode": "ST30-008_p1",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-009",
+      "printingCode": "ST30-009",
+      "name": "LittleOars Jr.",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-009",
+      "printingCode": "ST30-009_p1",
+      "name": "LittleOars Jr.",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-010",
+      "printingCode": "ST30-010",
+      "name": "Crocodile",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST30-010",
+      "printingCode": "ST30-010_p1",
+      "name": "Crocodile",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST30-011",
+      "printingCode": "ST30-011",
+      "name": "Buggy",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST30-011",
+      "printingCode": "ST30-011_p1",
+      "name": "Buggy",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST30-012",
+      "printingCode": "ST30-012",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST30-012",
+      "printingCode": "ST30-012_p1",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST30-013",
+      "printingCode": "ST30-013",
+      "name": "Mr.2.Bon.Kurei(Bentham)",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST30-013",
+      "printingCode": "ST30-013_p1",
+      "name": "Mr.2.Bon.Kurei(Bentham)",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST30-014",
+      "printingCode": "ST30-014",
+      "name": "Mr.3(Galdino)",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST30-014",
+      "printingCode": "ST30-014_p1",
+      "name": "Mr.3(Galdino)",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST30-015",
+      "printingCode": "ST30-015",
+      "name": "The Name of This Era Is \"Whitebeard\"!!",
+      "type": "EVENT",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-015",
+      "printingCode": "ST30-015_p1",
+      "name": "The Name of This Era Is \"Whitebeard\"!!",
+      "type": "EVENT",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-016",
+      "printingCode": "ST30-016",
+      "name": "Can You Still Fight, Luffy?! Of Course!!",
+      "type": "EVENT",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-016",
+      "printingCode": "ST30-016_p1",
+      "name": "Can You Still Fight, Luffy?! Of Course!!",
+      "type": "EVENT",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-017",
+      "printingCode": "ST30-017",
+      "name": "And You Get Yourself in Big Trouble!!",
+      "type": "EVENT",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST30-017",
+      "printingCode": "ST30-017_p1",
+      "name": "And You Get Yourself in Big Trouble!!",
+      "type": "EVENT",
+      "color": "Red"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST30-001",
+      "quantity": 1,
+      "sourceName": "ルフィ&エース",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-002",
+      "quantity": 2,
+      "sourceName": "イナズマ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-003",
+      "quantity": 4,
+      "sourceName": "エドワード・ニューゲート",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-004",
+      "quantity": 2,
+      "sourceName": "エンポリオ・イワンコフ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-005",
+      "quantity": 4,
+      "sourceName": "ジョズ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-006",
+      "quantity": 4,
+      "sourceName": "ジンベエ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-007",
+      "quantity": 2,
+      "sourceName": "ポートガス・D・エース",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-008",
+      "quantity": 4,
+      "sourceName": "マルコ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-009",
+      "quantity": 4,
+      "sourceName": "リトルオーズJr.",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-010",
+      "quantity": 4,
+      "sourceName": "クロコダイル",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-011",
+      "quantity": 2,
+      "sourceName": "バギー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-012",
+      "quantity": 2,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-013",
+      "quantity": 4,
+      "sourceName": "Mr.2・ボン・クレー(ベンサム)",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-014",
+      "quantity": 2,
+      "sourceName": "Mr.3(ギャルディーノ)",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-015",
+      "quantity": 4,
+      "sourceName": "この時代の名が!!!“白ひげ”だァ!!!",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-016",
+      "quantity": 2,
+      "sourceName": "戦えるかルフィ!!!勿論だ!!!",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    },
+    {
+      "cardNumber": "ST30-017",
+      "quantity": 4,
+      "sourceName": "無茶ばっかりしやがって!!!",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st30-card-list/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK EX -Luffy & Ace-  [ST-30] | ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK EX -Luffy & Ace-  [ST-30]"
+  ],
+  "productContents": "Constructed Deck x 1 (51 cards), DON!! Card x 10, Playsheet x 1 ,Bonus Pack x 1 (3 cards, 17 types in total)",
+  "productSource": "https://en.onepiece-cardgame.com/products/st30.html",
+  "officialDeckTitle": "STARTER DECK EX -Luffy & Ace- [ST-30]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "ST30-001",
+      "printingCode": "ST30-001",
+      "name": "ルフィ＆エース",
+      "type": "LEADER",
+      "color": "赤/緑"
+    },
+    {
+      "cardNumber": "ST30-001",
+      "printingCode": "ST30-001_p1",
+      "name": "ルフィ＆エース",
+      "type": "LEADER",
+      "color": "赤/緑"
+    },
+    {
+      "cardNumber": "ST30-002",
+      "printingCode": "ST30-002",
+      "name": "イナズマ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-002",
+      "printingCode": "ST30-002_p1",
+      "name": "イナズマ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-003",
+      "printingCode": "ST30-003",
+      "name": "エドワード・ニューゲート",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-003",
+      "printingCode": "ST30-003_p1",
+      "name": "エドワード・ニューゲート",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-004",
+      "printingCode": "ST30-004",
+      "name": "エンポリオ・イワンコフ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-004",
+      "printingCode": "ST30-004_p1",
+      "name": "エンポリオ・イワンコフ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-005",
+      "printingCode": "ST30-005",
+      "name": "ジョズ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-005",
+      "printingCode": "ST30-005_p1",
+      "name": "ジョズ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-006",
+      "printingCode": "ST30-006",
+      "name": "ジンベエ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-006",
+      "printingCode": "ST30-006_p1",
+      "name": "ジンベエ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-007",
+      "printingCode": "ST30-007",
+      "name": "ポートガス・Ｄ・エース",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-007",
+      "printingCode": "ST30-007_p1",
+      "name": "ポートガス・Ｄ・エース",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-008",
+      "printingCode": "ST30-008",
+      "name": "マルコ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-008",
+      "printingCode": "ST30-008_p1",
+      "name": "マルコ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-009",
+      "printingCode": "ST30-009",
+      "name": "リトルオーズJr.",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-009",
+      "printingCode": "ST30-009_p1",
+      "name": "リトルオーズJr.",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-010",
+      "printingCode": "ST30-010",
+      "name": "クロコダイル",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST30-010",
+      "printingCode": "ST30-010_p1",
+      "name": "クロコダイル",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST30-011",
+      "printingCode": "ST30-011",
+      "name": "バギー",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST30-011",
+      "printingCode": "ST30-011_p1",
+      "name": "バギー",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST30-012",
+      "printingCode": "ST30-012",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST30-012",
+      "printingCode": "ST30-012_p1",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST30-013",
+      "printingCode": "ST30-013",
+      "name": "Mr.2・ボン・クレー(ベンサム)",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST30-013",
+      "printingCode": "ST30-013_p1",
+      "name": "Mr.2・ボン・クレー(ベンサム)",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST30-014",
+      "printingCode": "ST30-014",
+      "name": "Mr.3(ギャルディーノ)",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST30-014",
+      "printingCode": "ST30-014_p1",
+      "name": "Mr.3(ギャルディーノ)",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST30-015",
+      "printingCode": "ST30-015",
+      "name": "この時代の名が!!!\"白ひげ\"だァ!!!",
+      "type": "EVENT",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-015",
+      "printingCode": "ST30-015_p1",
+      "name": "この時代の名が!!!\"白ひげ\"だァ!!!",
+      "type": "EVENT",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-016",
+      "printingCode": "ST30-016",
+      "name": "戦えるかルフィ!!!勿論だ!!!",
+      "type": "EVENT",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-016",
+      "printingCode": "ST30-016_p1",
+      "name": "戦えるかルフィ!!!勿論だ!!!",
+      "type": "EVENT",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-017",
+      "printingCode": "ST30-017",
+      "name": "無茶ばっかりしやがって!!!",
+      "type": "EVENT",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST30-017",
+      "printingCode": "ST30-017_p1",
+      "name": "無茶ばっかりしやがって!!!",
+      "type": "EVENT",
+      "color": "赤"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST30-001",
+      "printingCode": "ST30-001",
+      "locale": "EN",
+      "name": "Luffy & Ace",
+      "type": "LEADER",
+      "color": "Red/Green",
+      "cost": null,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "6acd4d1522d81c2b7007afa37981be4ff767e272ad3da76951c0757c6bd444fe",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "0c704fa0c8541faa595dd5a0a11a8f8c9af0cff6e9af791e531d991334c2ba1e",
+      "familyHash": "0aec67a9fba39b9b0b01e5fddcdd3f4fb46f6607bbfcf7c3fa486d63935e8aea",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-001",
+      "printingCode": "ST30-001_p1",
+      "locale": "EN",
+      "name": "Luffy & Ace",
+      "type": "LEADER",
+      "color": "Red/Green",
+      "cost": null,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "6acd4d1522d81c2b7007afa37981be4ff767e272ad3da76951c0757c6bd444fe",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "0c704fa0c8541faa595dd5a0a11a8f8c9af0cff6e9af791e531d991334c2ba1e",
+      "familyHash": "0aec67a9fba39b9b0b01e5fddcdd3f4fb46f6607bbfcf7c3fa486d63935e8aea",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-002",
+      "printingCode": "ST30-002",
+      "locale": "EN",
+      "name": "Inazuma",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "3c8d32ca860d60ce98cf8cb72dc7b7e5bbd00a560660d37dedad62e29caeee73",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "1044d8f9f52b91f17f98eb152b641b96c014d86d2645f9ceb9a654ce0d9eb5bf",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-002",
+      "printingCode": "ST30-002_p1",
+      "locale": "EN",
+      "name": "Inazuma",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "3c8d32ca860d60ce98cf8cb72dc7b7e5bbd00a560660d37dedad62e29caeee73",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "1044d8f9f52b91f17f98eb152b641b96c014d86d2645f9ceb9a654ce0d9eb5bf",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-003",
+      "printingCode": "ST30-003",
+      "locale": "EN",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 8,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "ee6d16f3c177db936cfe101ef38c93dba9aa4e25b291f5dbeb59cdff25b4ecdd",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "c87b8661d1c8c06e1b3f58a9c9cc695a1b9570af6d765d2318d4912e0039916c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-003",
+      "printingCode": "ST30-003_p1",
+      "locale": "EN",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 8,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "ee6d16f3c177db936cfe101ef38c93dba9aa4e25b291f5dbeb59cdff25b4ecdd",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "c87b8661d1c8c06e1b3f58a9c9cc695a1b9570af6d765d2318d4912e0039916c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-004",
+      "printingCode": "ST30-004",
+      "locale": "EN",
+      "name": "Emporio.Ivankov",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "9ed5cf2ed1599504b7422665000ebe268e8e598d269eb2969a8d7b5d1ff87f6a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "1044d8f9f52b91f17f98eb152b641b96c014d86d2645f9ceb9a654ce0d9eb5bf",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-004",
+      "printingCode": "ST30-004_p1",
+      "locale": "EN",
+      "name": "Emporio.Ivankov",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "9ed5cf2ed1599504b7422665000ebe268e8e598d269eb2969a8d7b5d1ff87f6a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "1044d8f9f52b91f17f98eb152b641b96c014d86d2645f9ceb9a654ce0d9eb5bf",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-005",
+      "printingCode": "ST30-005",
+      "locale": "EN",
+      "name": "Jozu",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-005",
+      "printingCode": "ST30-005_p1",
+      "locale": "EN",
+      "name": "Jozu",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-006",
+      "printingCode": "ST30-006",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "200b10847d18ae64dfba3e5ba4e7ba351484e0e8e9e8fba51f5840cf334a02ea",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "26b847590a1a17af9fddf2a8162fe3a54754eedb3e3f8c658d7ed5218123706b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-006",
+      "printingCode": "ST30-006_p1",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "200b10847d18ae64dfba3e5ba4e7ba351484e0e8e9e8fba51f5840cf334a02ea",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "26b847590a1a17af9fddf2a8162fe3a54754eedb3e3f8c658d7ed5218123706b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-007",
+      "printingCode": "ST30-007",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "58c437d7e1d44ca9ca7d90bb42ee934f0699f805636f6d039baeb0bb6d92f2d7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-007",
+      "printingCode": "ST30-007_p1",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "58c437d7e1d44ca9ca7d90bb42ee934f0699f805636f6d039baeb0bb6d92f2d7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-008",
+      "printingCode": "ST30-008",
+      "locale": "EN",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "0b33144044d5ccef221c694a4f85a71a5dc2cbd8c0463a1d0b3df31e77c68c84",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-008",
+      "printingCode": "ST30-008_p1",
+      "locale": "EN",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "0b33144044d5ccef221c694a4f85a71a5dc2cbd8c0463a1d0b3df31e77c68c84",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-009",
+      "printingCode": "ST30-009",
+      "locale": "EN",
+      "name": "LittleOars Jr.",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "04f120b22341459838fad9d99d3085758e104948abbc84ef9ac861fa413ea44b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "2885f480ac1c9d4031350da56da85809c18317ac175fab4bcfcef1cdf57cde98",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-009",
+      "printingCode": "ST30-009_p1",
+      "locale": "EN",
+      "name": "LittleOars Jr.",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "04f120b22341459838fad9d99d3085758e104948abbc84ef9ac861fa413ea44b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "2885f480ac1c9d4031350da56da85809c18317ac175fab4bcfcef1cdf57cde98",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-010",
+      "printingCode": "ST30-010",
+      "locale": "EN",
+      "name": "Crocodile",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 6,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "4d573aea83bbedc18f6302c2660ea72b3de098203c67bc8445d7275299c143f6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "0effdc5c7685bddf87e192b667214379f2a014a1b337c479a16394d210116354",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-010",
+      "printingCode": "ST30-010_p1",
+      "locale": "EN",
+      "name": "Crocodile",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 6,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "4d573aea83bbedc18f6302c2660ea72b3de098203c67bc8445d7275299c143f6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "0effdc5c7685bddf87e192b667214379f2a014a1b337c479a16394d210116354",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-011",
+      "printingCode": "ST30-011",
+      "locale": "EN",
+      "name": "Buggy",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "f327cbf629c1f684eb7b2959dcc938d02e30da1b07147551d18cfc452323e4e2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "9eb233a001ea146456f57e1e7bd2eb0126a550d7ce89a97d86247fea813a970b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-011",
+      "printingCode": "ST30-011_p1",
+      "locale": "EN",
+      "name": "Buggy",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "f327cbf629c1f684eb7b2959dcc938d02e30da1b07147551d18cfc452323e4e2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "9eb233a001ea146456f57e1e7bd2eb0126a550d7ce89a97d86247fea813a970b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-012",
+      "printingCode": "ST30-012",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "bffced12eb396ed47d3c66e5a79d2f009025e3ca0b557733dab61ebf9054375e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "93c2d56b23073a3f9e16b862f684f1ced45e09fb00ffc3c44651a959367be86e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-012",
+      "printingCode": "ST30-012_p1",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "bffced12eb396ed47d3c66e5a79d2f009025e3ca0b557733dab61ebf9054375e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "93c2d56b23073a3f9e16b862f684f1ced45e09fb00ffc3c44651a959367be86e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-013",
+      "printingCode": "ST30-013",
+      "locale": "EN",
+      "name": "Mr.2.Bon.Kurei(Bentham)",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "0effdc5c7685bddf87e192b667214379f2a014a1b337c479a16394d210116354",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-013",
+      "printingCode": "ST30-013_p1",
+      "locale": "EN",
+      "name": "Mr.2.Bon.Kurei(Bentham)",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "0effdc5c7685bddf87e192b667214379f2a014a1b337c479a16394d210116354",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-014",
+      "printingCode": "ST30-014",
+      "locale": "EN",
+      "name": "Mr.3(Galdino)",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "41e91021aeba4cbaa7f77de036c99bd9d8b03b7655a7074e9c0d3a3f0abe3a41",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "0effdc5c7685bddf87e192b667214379f2a014a1b337c479a16394d210116354",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-014",
+      "printingCode": "ST30-014_p1",
+      "locale": "EN",
+      "name": "Mr.3(Galdino)",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "41e91021aeba4cbaa7f77de036c99bd9d8b03b7655a7074e9c0d3a3f0abe3a41",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "0effdc5c7685bddf87e192b667214379f2a014a1b337c479a16394d210116354",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-015",
+      "printingCode": "ST30-015",
+      "locale": "EN",
+      "name": "The Name of This Era Is \"Whitebeard\"!!",
+      "type": "EVENT",
+      "color": "Red",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "e9a7e6058bed48fbda819567a1a989718c3f8363393d4c15877badde43ad5147",
+      "triggerHash": "6054253d896745ecd4a55874858962fc245788d6a638f565798f1e4ce41fc46b",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-015",
+      "printingCode": "ST30-015_p1",
+      "locale": "EN",
+      "name": "The Name of This Era Is \"Whitebeard\"!!",
+      "type": "EVENT",
+      "color": "Red",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "e9a7e6058bed48fbda819567a1a989718c3f8363393d4c15877badde43ad5147",
+      "triggerHash": "6054253d896745ecd4a55874858962fc245788d6a638f565798f1e4ce41fc46b",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-016",
+      "printingCode": "ST30-016",
+      "locale": "EN",
+      "name": "Can You Still Fight, Luffy?! Of Course!!",
+      "type": "EVENT",
+      "color": "Red",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "afb49957ceccf98dbb2e6e09bdef3fbf3eda82980d685f597b478702415cdf68",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "2e12b141726f9e29cbd573d5b4632d69f544970257fb8a9ea4ee5dbeef425ee1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-016",
+      "printingCode": "ST30-016_p1",
+      "locale": "EN",
+      "name": "Can You Still Fight, Luffy?! Of Course!!",
+      "type": "EVENT",
+      "color": "Red",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "afb49957ceccf98dbb2e6e09bdef3fbf3eda82980d685f597b478702415cdf68",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "2e12b141726f9e29cbd573d5b4632d69f544970257fb8a9ea4ee5dbeef425ee1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-017",
+      "printingCode": "ST30-017",
+      "locale": "EN",
+      "name": "And You Get Yourself in Big Trouble!!",
+      "type": "EVENT",
+      "color": "Red",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "6d11685cee970d089c768aa70fa5cf2aacc6053811ad4a4d08b470e8c0397e40",
+      "triggerHash": "f11e3bd95cea2c7b0921ce0651d0a6b34b9ce1c616748f59ed982f22698d0ac5",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-017",
+      "printingCode": "ST30-017_p1",
+      "locale": "EN",
+      "name": "And You Get Yourself in Big Trouble!!",
+      "type": "EVENT",
+      "color": "Red",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "6d11685cee970d089c768aa70fa5cf2aacc6053811ad4a4d08b470e8c0397e40",
+      "triggerHash": "f11e3bd95cea2c7b0921ce0651d0a6b34b9ce1c616748f59ed982f22698d0ac5",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569030"
+    },
+    {
+      "cardNumber": "ST30-001",
+      "printingCode": "ST30-001",
+      "locale": "FR",
+      "name": "Luffy et Ace",
+      "type": "LEADER",
+      "color": "Rouge/Vert",
+      "cost": null,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "414629ba61785ada3abf877f328419474e76488a1ec0cbaa786df7c9b4912aad",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9976f421253568cc98de5157bded731da57cf470cd613f63994599d660e98f59",
+      "familyHash": "bd0cac0f7f8cd989129586d33051c7b1ea9997f9a28b35483bff2640b2f20721",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-001",
+      "printingCode": "ST30-001_p1",
+      "locale": "FR",
+      "name": "Luffy et Ace",
+      "type": "LEADER",
+      "color": "Rouge/Vert",
+      "cost": null,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "414629ba61785ada3abf877f328419474e76488a1ec0cbaa786df7c9b4912aad",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9976f421253568cc98de5157bded731da57cf470cd613f63994599d660e98f59",
+      "familyHash": "bd0cac0f7f8cd989129586d33051c7b1ea9997f9a28b35483bff2640b2f20721",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-002",
+      "printingCode": "ST30-002",
+      "locale": "FR",
+      "name": "Inazuma",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "a2c760917add04d0fd96134ff43311449b55298e0bc1515d01195d62c773bcaa",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "4ae286291fddb475d824685c129428cff21c26e24ef180c55ed34a92089681d5",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-002",
+      "printingCode": "ST30-002_p1",
+      "locale": "FR",
+      "name": "Inazuma",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "a2c760917add04d0fd96134ff43311449b55298e0bc1515d01195d62c773bcaa",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "4ae286291fddb475d824685c129428cff21c26e24ef180c55ed34a92089681d5",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-003",
+      "printingCode": "ST30-003",
+      "locale": "FR",
+      "name": "Edward Newgate",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 8,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "5e8838029efd7ed03ceb6b5165b23cf7c4d9fa3bcba7e579f8d630966a9ede0c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "e51170af181ac706b92d9c97436459f5eba0b6ab80f8d2856e9d33428a45d637",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-003",
+      "printingCode": "ST30-003_p1",
+      "locale": "FR",
+      "name": "Edward Newgate",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 8,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "5e8838029efd7ed03ceb6b5165b23cf7c4d9fa3bcba7e579f8d630966a9ede0c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "e51170af181ac706b92d9c97436459f5eba0b6ab80f8d2856e9d33428a45d637",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-004",
+      "printingCode": "ST30-004",
+      "locale": "FR",
+      "name": "Emporio Ivankov",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "9e23f48a6ebde762e84dd3cd180b837d46a716397bcf841d2fac6b9ff12c7c90",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "4ae286291fddb475d824685c129428cff21c26e24ef180c55ed34a92089681d5",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-004",
+      "printingCode": "ST30-004_p1",
+      "locale": "FR",
+      "name": "Emporio Ivankov",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "9e23f48a6ebde762e84dd3cd180b837d46a716397bcf841d2fac6b9ff12c7c90",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "4ae286291fddb475d824685c129428cff21c26e24ef180c55ed34a92089681d5",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-005",
+      "printingCode": "ST30-005",
+      "locale": "FR",
+      "name": "Joz",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-005",
+      "printingCode": "ST30-005_p1",
+      "locale": "FR",
+      "name": "Joz",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-006",
+      "printingCode": "ST30-006",
+      "locale": "FR",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "c28139016c4517e7c41ec3cee6145633d0828039adcc66724386bf148a50a365",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "e33aad98b8bd84fe637a57b9ac975bd6e4842616d0138a6f0fbc9ce9341740f4",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-006",
+      "printingCode": "ST30-006_p1",
+      "locale": "FR",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "c28139016c4517e7c41ec3cee6145633d0828039adcc66724386bf148a50a365",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "e33aad98b8bd84fe637a57b9ac975bd6e4842616d0138a6f0fbc9ce9341740f4",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-007",
+      "printingCode": "ST30-007",
+      "locale": "FR",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "48a9a960a2c744082b39c527f571035f4a0e7e30b3becfbf657c930328662a8e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-007",
+      "printingCode": "ST30-007_p1",
+      "locale": "FR",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "48a9a960a2c744082b39c527f571035f4a0e7e30b3becfbf657c930328662a8e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-008",
+      "printingCode": "ST30-008",
+      "locale": "FR",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "fc469a18500d8fed5397a1450692531237313b4bca05fc8492eeb39a09bf434e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-008",
+      "printingCode": "ST30-008_p1",
+      "locale": "FR",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "fc469a18500d8fed5397a1450692531237313b4bca05fc8492eeb39a09bf434e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-009",
+      "printingCode": "ST30-009",
+      "locale": "FR",
+      "name": "Little Oz Junior",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "5aa11d8d3fd46c0d0d9d22b0dad0727e86617f42263faedf483c17a470d6527b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "f7cc533cdb7562fe0925e005f8e8a9ef3693705641648b21050a8e2cda86e115",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-009",
+      "printingCode": "ST30-009_p1",
+      "locale": "FR",
+      "name": "Little Oz Junior",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "5aa11d8d3fd46c0d0d9d22b0dad0727e86617f42263faedf483c17a470d6527b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "f7cc533cdb7562fe0925e005f8e8a9ef3693705641648b21050a8e2cda86e115",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-010",
+      "printingCode": "ST30-010",
+      "locale": "FR",
+      "name": "Crocodile",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 6,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "ce2fe98186564d56485bda458411d1e64a1e6cfb1fc6b34dc5f71349d21ae350",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "3a4915c6f4812f7e4128fd0bc949b2331ef7290d82e468ce2da0c609d5500df0",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-010",
+      "printingCode": "ST30-010_p1",
+      "locale": "FR",
+      "name": "Crocodile",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 6,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "ce2fe98186564d56485bda458411d1e64a1e6cfb1fc6b34dc5f71349d21ae350",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "3a4915c6f4812f7e4128fd0bc949b2331ef7290d82e468ce2da0c609d5500df0",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-011",
+      "printingCode": "ST30-011",
+      "locale": "FR",
+      "name": "Baggy",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "34308c52b6adcf053f541059b3cf3c3b207886347e4ffd3b2759962da3534f7c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "a8cd510bed8ded729057672310fc2a5d69e0dce87141af9de7053084292d201a",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-011",
+      "printingCode": "ST30-011_p1",
+      "locale": "FR",
+      "name": "Baggy",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "34308c52b6adcf053f541059b3cf3c3b207886347e4ffd3b2759962da3534f7c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "a8cd510bed8ded729057672310fc2a5d69e0dce87141af9de7053084292d201a",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-012",
+      "printingCode": "ST30-012",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "7d2525e57f7087ff406053fc5356bb96a8f4894e51f5dd06582d6c396a47cf89",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "b4dd677326de7fc7d99104438ccc239486ae778861d74876d1df8d4fc2d51d33",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-012",
+      "printingCode": "ST30-012_p1",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "7d2525e57f7087ff406053fc5356bb96a8f4894e51f5dd06582d6c396a47cf89",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "b4dd677326de7fc7d99104438ccc239486ae778861d74876d1df8d4fc2d51d33",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-013",
+      "printingCode": "ST30-013",
+      "locale": "FR",
+      "name": "Mr 2 Bonclay(Bentham)",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "3a4915c6f4812f7e4128fd0bc949b2331ef7290d82e468ce2da0c609d5500df0",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-013",
+      "printingCode": "ST30-013_p1",
+      "locale": "FR",
+      "name": "Mr 2 Bonclay(Bentham)",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "3a4915c6f4812f7e4128fd0bc949b2331ef7290d82e468ce2da0c609d5500df0",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-014",
+      "printingCode": "ST30-014",
+      "locale": "FR",
+      "name": "Mr 3(Galdino)",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "73198cccaebcd8650113c6ef4fb44f6231cc0454ea914228c8a40cec9e54e1e7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "3a4915c6f4812f7e4128fd0bc949b2331ef7290d82e468ce2da0c609d5500df0",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-014",
+      "printingCode": "ST30-014_p1",
+      "locale": "FR",
+      "name": "Mr 3(Galdino)",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "73198cccaebcd8650113c6ef4fb44f6231cc0454ea914228c8a40cec9e54e1e7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "3a4915c6f4812f7e4128fd0bc949b2331ef7290d82e468ce2da0c609d5500df0",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-015",
+      "printingCode": "ST30-015",
+      "locale": "FR",
+      "name": "Cette ère... c'est celle de Barbe Blanche !!",
+      "type": "EVENT",
+      "color": "Rouge",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "ad550f655e7bae07bd2af9f1f6a7f06a3407c7e7d7cf3459684df9f5518fff06",
+      "triggerHash": "5dd6831d9a3d84e5dbd321eff615e7f06c14f1b99508d72b5977c29f7fc2463a",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-015",
+      "printingCode": "ST30-015_p1",
+      "locale": "FR",
+      "name": "Cette ère... c'est celle de Barbe Blanche !!",
+      "type": "EVENT",
+      "color": "Rouge",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "ad550f655e7bae07bd2af9f1f6a7f06a3407c7e7d7cf3459684df9f5518fff06",
+      "triggerHash": "5dd6831d9a3d84e5dbd321eff615e7f06c14f1b99508d72b5977c29f7fc2463a",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-016",
+      "printingCode": "ST30-016",
+      "locale": "FR",
+      "name": "Prêt à te battre, Luffy ?! Moi ? Toujours !",
+      "type": "EVENT",
+      "color": "Rouge",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "a1f28ab0650ccb7fb0c80d6a91eddfc596f677380246eedaff930c3966422aae",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "919eec960c5e6795ee84f180803dbd0b506c12553585febdd5812b859515bbba",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-016",
+      "printingCode": "ST30-016_p1",
+      "locale": "FR",
+      "name": "Prêt à te battre, Luffy ?! Moi ? Toujours !",
+      "type": "EVENT",
+      "color": "Rouge",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "a1f28ab0650ccb7fb0c80d6a91eddfc596f677380246eedaff930c3966422aae",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "919eec960c5e6795ee84f180803dbd0b506c12553585febdd5812b859515bbba",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-017",
+      "printingCode": "ST30-017",
+      "locale": "FR",
+      "name": "Tu fonces toujours tête baissée vers le danger !!",
+      "type": "EVENT",
+      "color": "Rouge",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "e841680ef830e8cde8231b49235b56e97214922de35363fd5a74a5a9e496ca68",
+      "triggerHash": "66ff632c15ca98e2cfcdc23ed3da90e1844f184c36533b89f32a10c00bd351ca",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    },
+    {
+      "cardNumber": "ST30-017",
+      "printingCode": "ST30-017_p1",
+      "locale": "FR",
+      "name": "Tu fonces toujours tête baissée vers le danger !!",
+      "type": "EVENT",
+      "color": "Rouge",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "e841680ef830e8cde8231b49235b56e97214922de35363fd5a74a5a9e496ca68",
+      "triggerHash": "66ff632c15ca98e2cfcdc23ed3da90e1844f184c36533b89f32a10c00bd351ca",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622030"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "ST30-001",
+      "printingCode": "ST30-001",
+      "name": "Luffy et Ace",
+      "type": "LEADER",
+      "color": "Rouge/Vert"
+    },
+    {
+      "cardNumber": "ST30-001",
+      "printingCode": "ST30-001_p1",
+      "name": "Luffy et Ace",
+      "type": "LEADER",
+      "color": "Rouge/Vert"
+    },
+    {
+      "cardNumber": "ST30-002",
+      "printingCode": "ST30-002",
+      "name": "Inazuma",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-002",
+      "printingCode": "ST30-002_p1",
+      "name": "Inazuma",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-003",
+      "printingCode": "ST30-003",
+      "name": "Edward Newgate",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-003",
+      "printingCode": "ST30-003_p1",
+      "name": "Edward Newgate",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-004",
+      "printingCode": "ST30-004",
+      "name": "Emporio Ivankov",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-004",
+      "printingCode": "ST30-004_p1",
+      "name": "Emporio Ivankov",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-005",
+      "printingCode": "ST30-005",
+      "name": "Joz",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-005",
+      "printingCode": "ST30-005_p1",
+      "name": "Joz",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-006",
+      "printingCode": "ST30-006",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-006",
+      "printingCode": "ST30-006_p1",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-007",
+      "printingCode": "ST30-007",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-007",
+      "printingCode": "ST30-007_p1",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-008",
+      "printingCode": "ST30-008",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-008",
+      "printingCode": "ST30-008_p1",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-009",
+      "printingCode": "ST30-009",
+      "name": "Little Oz Junior",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-009",
+      "printingCode": "ST30-009_p1",
+      "name": "Little Oz Junior",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-010",
+      "printingCode": "ST30-010",
+      "name": "Crocodile",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST30-010",
+      "printingCode": "ST30-010_p1",
+      "name": "Crocodile",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST30-011",
+      "printingCode": "ST30-011",
+      "name": "Baggy",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST30-011",
+      "printingCode": "ST30-011_p1",
+      "name": "Baggy",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST30-012",
+      "printingCode": "ST30-012",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST30-012",
+      "printingCode": "ST30-012_p1",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST30-013",
+      "printingCode": "ST30-013",
+      "name": "Mr 2 Bonclay(Bentham)",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST30-013",
+      "printingCode": "ST30-013_p1",
+      "name": "Mr 2 Bonclay(Bentham)",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST30-014",
+      "printingCode": "ST30-014",
+      "name": "Mr 3(Galdino)",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST30-014",
+      "printingCode": "ST30-014_p1",
+      "name": "Mr 3(Galdino)",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST30-015",
+      "printingCode": "ST30-015",
+      "name": "Cette ère... c'est celle de Barbe Blanche !!",
+      "type": "EVENT",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-015",
+      "printingCode": "ST30-015_p1",
+      "name": "Cette ère... c'est celle de Barbe Blanche !!",
+      "type": "EVENT",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-016",
+      "printingCode": "ST30-016",
+      "name": "Prêt à te battre, Luffy ?! Moi ? Toujours !",
+      "type": "EVENT",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-016",
+      "printingCode": "ST30-016_p1",
+      "name": "Prêt à te battre, Luffy ?! Moi ? Toujours !",
+      "type": "EVENT",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-017",
+      "printingCode": "ST30-017",
+      "name": "Tu fonces toujours tête baissée vers le danger !!",
+      "type": "EVENT",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST30-017",
+      "printingCode": "ST30-017_p1",
+      "name": "Tu fonces toujours tête baissée vers le danger !!",
+      "type": "EVENT",
+      "color": "Rouge"
+    }
+  ]
+}

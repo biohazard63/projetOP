@@ -1,0 +1,1859 @@
+{
+  "deckCode": "ST-13",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569013",
+      "status": "FETCHED",
+      "sha256": "aaabe2d5bb28b3c51acfbca6d2e2188975785810941cda980a798d6ec3d5ad4e",
+      "retrievedAt": "2026-10-14T07:26:50.511291+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st13-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st13-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st13.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st13.php",
+      "status": "FETCHED",
+      "sha256": "c3aa711c8be9e30326afedd1329a68b99c62bdc3b7d68ed9164f2938ddbce960",
+      "retrievedAt": "2026-10-14T07:26:54.817529+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st13_cardlists/",
+      "status": "FETCHED",
+      "sha256": "843bda544eba52e4de7ace2df3ec71bd3e0abdc35da969440f26d60b3d9063d3",
+      "retrievedAt": "2026-10-14T07:31:29.065954+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569013",
+      "status": "FETCHED",
+      "sha256": "aaabe2d5bb28b3c51acfbca6d2e2188975785810941cda980a798d6ec3d5ad4e",
+      "retrievedAt": "2026-10-14T07:31:30.725917+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569013",
+      "status": "FETCHED",
+      "sha256": "aaabe2d5bb28b3c51acfbca6d2e2188975785810941cda980a798d6ec3d5ad4e",
+      "retrievedAt": "2026-10-14T07:35:01.938192+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st13_cardlists/",
+      "status": "FETCHED",
+      "sha256": "843bda544eba52e4de7ace2df3ec71bd3e0abdc35da969440f26d60b3d9063d3",
+      "retrievedAt": "2026-10-14T07:35:03.772908+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550013",
+      "status": "FETCHED",
+      "sha256": "c99dd6bf66b54b036bfc628f312b5018fcef5da328273400e3ceacb6ec49555a",
+      "retrievedAt": "2026-10-14T07:35:05.675376+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13",
+      "status": "FETCHED",
+      "sha256": "52420b10de32cf959ee9aeac087c34af3705316b5202c5e97805ad8a39c73627",
+      "retrievedAt": "2026-10-14T07:52:59.981580+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13",
+      "status": "FETCHED",
+      "sha256": "e4bb5c78147dd163e0cd2427cc0e59431e6638c73c211408f570fbc3ada52c61",
+      "retrievedAt": "2026-10-14T07:53:01.338511+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "ST13-001",
+      "printingCode": "ST13-001",
+      "name": "Sabo",
+      "type": "LEADER",
+      "color": "Red/Yellow"
+    },
+    {
+      "cardNumber": "ST13-001",
+      "printingCode": "ST13-001_p1",
+      "name": "Sabo",
+      "type": "LEADER",
+      "color": "Red/Yellow"
+    },
+    {
+      "cardNumber": "ST13-002",
+      "printingCode": "ST13-002",
+      "name": "Portgas.D.Ace",
+      "type": "LEADER",
+      "color": "Blue/Yellow"
+    },
+    {
+      "cardNumber": "ST13-002",
+      "printingCode": "ST13-002_p1",
+      "name": "Portgas.D.Ace",
+      "type": "LEADER",
+      "color": "Blue/Yellow"
+    },
+    {
+      "cardNumber": "ST13-003",
+      "printingCode": "ST13-003",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Black/Yellow"
+    },
+    {
+      "cardNumber": "ST13-003",
+      "printingCode": "ST13-003_p1",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Black/Yellow"
+    },
+    {
+      "cardNumber": "ST13-004",
+      "printingCode": "ST13-004",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-004",
+      "printingCode": "ST13-004_p1",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-005",
+      "printingCode": "ST13-005",
+      "name": "Emporio.Ivankov",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-005",
+      "printingCode": "ST13-005_p1",
+      "name": "Emporio.Ivankov",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-006",
+      "printingCode": "ST13-006",
+      "name": "Curly.Dadan",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-006",
+      "printingCode": "ST13-006_p1",
+      "name": "Curly.Dadan",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-007",
+      "printingCode": "ST13-007",
+      "name": "Sabo",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-007",
+      "printingCode": "ST13-007_p1",
+      "name": "Sabo",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-008",
+      "printingCode": "ST13-008",
+      "name": "Sabo",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-008",
+      "printingCode": "ST13-008_p1",
+      "name": "Sabo",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-009",
+      "printingCode": "ST13-009",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-009",
+      "printingCode": "ST13-009_p1",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-010",
+      "printingCode": "ST13-010",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-010",
+      "printingCode": "ST13-010_p1",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-011",
+      "printingCode": "ST13-011",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-011",
+      "printingCode": "ST13-011_p1",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-012",
+      "printingCode": "ST13-012",
+      "name": "Makino",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-012",
+      "printingCode": "ST13-012_p1",
+      "name": "Makino",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-013",
+      "printingCode": "ST13-013",
+      "name": "Monkey.D.Garp",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-013",
+      "printingCode": "ST13-013_p1",
+      "name": "Monkey.D.Garp",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-014",
+      "printingCode": "ST13-014",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-014",
+      "printingCode": "ST13-014_p1",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-015",
+      "printingCode": "ST13-015",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-015",
+      "printingCode": "ST13-015_p1",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "printingCode": "ST13-016",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "printingCode": "ST13-016_p1",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-017",
+      "printingCode": "ST13-017",
+      "name": "Flame Dragon King",
+      "type": "EVENT",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-018",
+      "printingCode": "ST13-018",
+      "name": "Gum-Gum Jet Spear",
+      "type": "EVENT",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST13-019",
+      "printingCode": "ST13-019",
+      "name": "The Three Brothers' Bond",
+      "type": "EVENT",
+      "color": "Yellow"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST13-001",
+      "quantity": 1,
+      "sourceName": "サボ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-002",
+      "quantity": 1,
+      "sourceName": "ポートガス・D・エース",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-003",
+      "quantity": 1,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-004",
+      "quantity": 4,
+      "sourceName": "エドワード・ニューゲート",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-005",
+      "quantity": 2,
+      "sourceName": "エンポリオ・イワンコフ",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-006",
+      "quantity": 4,
+      "sourceName": "カーリー・ダダン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-007",
+      "quantity": 4,
+      "sourceName": "サボ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-008",
+      "quantity": 2,
+      "sourceName": "サボ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-009",
+      "quantity": 4,
+      "sourceName": "シャンクス",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-010",
+      "quantity": 4,
+      "sourceName": "ポートガス・D・エース",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-011",
+      "quantity": 2,
+      "sourceName": "ポートガス・D・エース",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-012",
+      "quantity": 4,
+      "sourceName": "マキノ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-013",
+      "quantity": 2,
+      "sourceName": "モンキー・D・ガープ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-014",
+      "quantity": 4,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-015",
+      "quantity": 2,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "quantity": 4,
+      "sourceName": "ヤマト",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-017",
+      "quantity": 2,
+      "sourceName": "「火炎」竜王",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-018",
+      "quantity": 2,
+      "sourceName": "ゴムゴムのJET槍",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-019",
+      "quantity": 4,
+      "sourceName": "3兄弟の絆",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st13_cardlists/"
+    }
+  ],
+  "productTitles": [
+    "ULTRA DECK -The Three Brothers- − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "ULTRA DECK -The Three Brothers-"
+  ],
+  "productContents": "・Constructed Deck x1 (51 cards) \r\n                   ・Alternative Leader Card x2 \r\n                   ・DON!! Cards x10 \r\n                   ・Playsheet x1 \r\n                   ・Card Case x1 \r\n                   ・Bonus Pack x1 (3 cards, 16 types in total)",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st13.php",
+  "officialDeckTitle": "ULTRA DECK -The Three Brothers- [ST-13]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "ST13-001",
+      "printingCode": "ST13-001",
+      "name": "サボ",
+      "type": "LEADER",
+      "color": "赤/黄"
+    },
+    {
+      "cardNumber": "ST13-001",
+      "printingCode": "ST13-001_p1",
+      "name": "サボ",
+      "type": "LEADER",
+      "color": "赤/黄"
+    },
+    {
+      "cardNumber": "ST13-002",
+      "printingCode": "ST13-002",
+      "name": "ポートガス・D・エース",
+      "type": "LEADER",
+      "color": "青/黄"
+    },
+    {
+      "cardNumber": "ST13-002",
+      "printingCode": "ST13-002_p1",
+      "name": "ポートガス・D・エース",
+      "type": "LEADER",
+      "color": "青/黄"
+    },
+    {
+      "cardNumber": "ST13-003",
+      "printingCode": "ST13-003",
+      "name": "モンキー・D・ルフィ",
+      "type": "LEADER",
+      "color": "黒/黄"
+    },
+    {
+      "cardNumber": "ST13-003",
+      "printingCode": "ST13-003_p1",
+      "name": "モンキー・D・ルフィ",
+      "type": "LEADER",
+      "color": "黒/黄"
+    },
+    {
+      "cardNumber": "ST13-004",
+      "printingCode": "ST13-004",
+      "name": "エドワード・ニューゲート",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-004",
+      "printingCode": "ST13-004_p1",
+      "name": "エドワード・ニューゲート",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-005",
+      "printingCode": "ST13-005",
+      "name": "エンポリオ・イワンコフ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-005",
+      "printingCode": "ST13-005_p1",
+      "name": "エンポリオ・イワンコフ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-006",
+      "printingCode": "ST13-006",
+      "name": "カーリー・ダダン",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-006",
+      "printingCode": "ST13-006_p1",
+      "name": "カーリー・ダダン",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-007",
+      "printingCode": "ST13-007",
+      "name": "サボ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-007",
+      "printingCode": "ST13-007_p1",
+      "name": "サボ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-008",
+      "printingCode": "ST13-008",
+      "name": "サボ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-008",
+      "printingCode": "ST13-008_p1",
+      "name": "サボ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-009",
+      "printingCode": "ST13-009",
+      "name": "シャンクス",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-009",
+      "printingCode": "ST13-009_p1",
+      "name": "シャンクス",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-010",
+      "printingCode": "ST13-010",
+      "name": "ポートガス・D・エース",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-010",
+      "printingCode": "ST13-010_p1",
+      "name": "ポートガス・D・エース",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-011",
+      "printingCode": "ST13-011",
+      "name": "ポートガス・D・エース",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-011",
+      "printingCode": "ST13-011_p1",
+      "name": "ポートガス・D・エース",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-012",
+      "printingCode": "ST13-012",
+      "name": "マキノ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-012",
+      "printingCode": "ST13-012_p1",
+      "name": "マキノ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-013",
+      "printingCode": "ST13-013",
+      "name": "モンキー・D・ガープ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-013",
+      "printingCode": "ST13-013_p1",
+      "name": "モンキー・D・ガープ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-014",
+      "printingCode": "ST13-014",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-014",
+      "printingCode": "ST13-014_p1",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-015",
+      "printingCode": "ST13-015",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-015",
+      "printingCode": "ST13-015_p1",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "printingCode": "ST13-016",
+      "name": "ヤマト",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "printingCode": "ST13-016_p1",
+      "name": "ヤマト",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-017",
+      "printingCode": "ST13-017",
+      "name": "「火炎」竜王",
+      "type": "EVENT",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-018",
+      "printingCode": "ST13-018",
+      "name": "ゴムゴムのJET槍",
+      "type": "EVENT",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST13-019",
+      "printingCode": "ST13-019",
+      "name": "3兄弟の絆",
+      "type": "EVENT",
+      "color": "黄"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST13-001",
+      "printingCode": "ST13-001",
+      "locale": "EN",
+      "name": "Sabo",
+      "type": "LEADER",
+      "color": "Red/Yellow",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "b78c7f3dfb726516bd399b9476917547889f4877c817f9b49fc2a43956b579df",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "131729aa2966a64866270fa7956c1eb03a50e65a5586bf44d1dd3659317f0ee3",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-001",
+      "printingCode": "ST13-001_p1",
+      "locale": "EN",
+      "name": "Sabo",
+      "type": "LEADER",
+      "color": "Red/Yellow",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "b78c7f3dfb726516bd399b9476917547889f4877c817f9b49fc2a43956b579df",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "131729aa2966a64866270fa7956c1eb03a50e65a5586bf44d1dd3659317f0ee3",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-002",
+      "printingCode": "ST13-002",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "LEADER",
+      "color": "Blue/Yellow",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "4082d2118dc543a0a2b98b934817912bd44c8c737cfc76f20b6e02fd3f2ebc0f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-002",
+      "printingCode": "ST13-002_p1",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "LEADER",
+      "color": "Blue/Yellow",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "4082d2118dc543a0a2b98b934817912bd44c8c737cfc76f20b6e02fd3f2ebc0f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-003",
+      "printingCode": "ST13-003",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Black/Yellow",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "60a6bfc0e2c4199238d01651966bf0d81c567b778fbe55b646bb43dd4481a68e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "2be931d016362f5408d0cf2cde781be2709ee82713a9068714549c5e1e790d81",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-003",
+      "printingCode": "ST13-003_p1",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Black/Yellow",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "60a6bfc0e2c4199238d01651966bf0d81c567b778fbe55b646bb43dd4481a68e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "2be931d016362f5408d0cf2cde781be2709ee82713a9068714549c5e1e790d81",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-003",
+      "printingCode": "ST13-003_p2",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Black/Yellow",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "60a6bfc0e2c4199238d01651966bf0d81c567b778fbe55b646bb43dd4481a68e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "2be931d016362f5408d0cf2cde781be2709ee82713a9068714549c5e1e790d81",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-004",
+      "printingCode": "ST13-004",
+      "locale": "EN",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 6,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "f369fd089d2f9e1b70cc9198ff5f6f7fa29d15f5381aa30bc605902fe2209e4d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "c87b8661d1c8c06e1b3f58a9c9cc695a1b9570af6d765d2318d4912e0039916c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-004",
+      "printingCode": "ST13-004_p1",
+      "locale": "EN",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 6,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "f369fd089d2f9e1b70cc9198ff5f6f7fa29d15f5381aa30bc605902fe2209e4d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "c87b8661d1c8c06e1b3f58a9c9cc695a1b9570af6d765d2318d4912e0039916c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-004",
+      "printingCode": "ST13-004_p2",
+      "locale": "EN",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 6,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "f369fd089d2f9e1b70cc9198ff5f6f7fa29d15f5381aa30bc605902fe2209e4d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "c87b8661d1c8c06e1b3f58a9c9cc695a1b9570af6d765d2318d4912e0039916c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-004",
+      "printingCode": "ST13-004_r1",
+      "locale": "EN",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 6,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "f369fd089d2f9e1b70cc9198ff5f6f7fa29d15f5381aa30bc605902fe2209e4d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "c87b8661d1c8c06e1b3f58a9c9cc695a1b9570af6d765d2318d4912e0039916c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-005",
+      "printingCode": "ST13-005",
+      "locale": "EN",
+      "name": "Emporio.Ivankov",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "90de510a4f2d98874ddb304a6d54f85b9cbbcfa33adc0969e4a4f787314b8b19",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "57147550c6ac874235eed64a2dd8f8b1b19d5edde7b6813ae2c66cda60fae44a",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-005",
+      "printingCode": "ST13-005_p1",
+      "locale": "EN",
+      "name": "Emporio.Ivankov",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "90de510a4f2d98874ddb304a6d54f85b9cbbcfa33adc0969e4a4f787314b8b19",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "57147550c6ac874235eed64a2dd8f8b1b19d5edde7b6813ae2c66cda60fae44a",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-006",
+      "printingCode": "ST13-006",
+      "locale": "EN",
+      "name": "Curly.Dadan",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "abba04cfd6db18d6c622fb81aebcce9e8773885f163b226a3ab65be80d991ca0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "2b9898c6ead85de57081bde95f5d72ef1f1584aada5798763e048666439ecb50",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-006",
+      "printingCode": "ST13-006_p1",
+      "locale": "EN",
+      "name": "Curly.Dadan",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "abba04cfd6db18d6c622fb81aebcce9e8773885f163b226a3ab65be80d991ca0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "2b9898c6ead85de57081bde95f5d72ef1f1584aada5798763e048666439ecb50",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-007",
+      "printingCode": "ST13-007",
+      "locale": "EN",
+      "name": "Sabo",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "a69e54c6b621a5ad9896852b2db973090c81753ae733db596dc524090190185a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-007",
+      "printingCode": "ST13-007_p1",
+      "locale": "EN",
+      "name": "Sabo",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "a69e54c6b621a5ad9896852b2db973090c81753ae733db596dc524090190185a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-007",
+      "printingCode": "ST13-007_p2",
+      "locale": "EN",
+      "name": "Sabo",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "a69e54c6b621a5ad9896852b2db973090c81753ae733db596dc524090190185a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-007",
+      "printingCode": "ST13-007_r1",
+      "locale": "EN",
+      "name": "Sabo",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "a69e54c6b621a5ad9896852b2db973090c81753ae733db596dc524090190185a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-008",
+      "printingCode": "ST13-008",
+      "locale": "EN",
+      "name": "Sabo",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "a2133dbed91dbf99b3dce8217d9b7cc00724953ef48a90806802deb5231844d3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "131729aa2966a64866270fa7956c1eb03a50e65a5586bf44d1dd3659317f0ee3",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-008",
+      "printingCode": "ST13-008_p1",
+      "locale": "EN",
+      "name": "Sabo",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "a2133dbed91dbf99b3dce8217d9b7cc00724953ef48a90806802deb5231844d3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "131729aa2966a64866270fa7956c1eb03a50e65a5586bf44d1dd3659317f0ee3",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-009",
+      "printingCode": "ST13-009",
+      "locale": "EN",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 7,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "325609311fda18f165a10cb13d546b7e8faf1bd00d5b1541c543fc70d7903678",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "9771de9f841aec4e8caa75074b670ff6c1bd81418b64508da04b2260f284e5c2",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-009",
+      "printingCode": "ST13-009_p1",
+      "locale": "EN",
+      "name": "Shanks",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 7,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "325609311fda18f165a10cb13d546b7e8faf1bd00d5b1541c543fc70d7903678",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "9771de9f841aec4e8caa75074b670ff6c1bd81418b64508da04b2260f284e5c2",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-010",
+      "printingCode": "ST13-010",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "df6f8af4732c018a9bf2c669a1bee54988ec37c925b6175377ca491119fe0744",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-010",
+      "printingCode": "ST13-010_p1",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "df6f8af4732c018a9bf2c669a1bee54988ec37c925b6175377ca491119fe0744",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-010",
+      "printingCode": "ST13-010_p2",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "df6f8af4732c018a9bf2c669a1bee54988ec37c925b6175377ca491119fe0744",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-010",
+      "printingCode": "ST13-010_r1",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "df6f8af4732c018a9bf2c669a1bee54988ec37c925b6175377ca491119fe0744",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-011",
+      "printingCode": "ST13-011",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "bf6d56ba4f590f9454e4b965968e3e042dcb6b5e79ab9d3dfcf29cc7fbeb669d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-011",
+      "printingCode": "ST13-011_p1",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "bf6d56ba4f590f9454e4b965968e3e042dcb6b5e79ab9d3dfcf29cc7fbeb669d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-012",
+      "printingCode": "ST13-012",
+      "locale": "EN",
+      "name": "Makino",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": 2000,
+      "effectHash": "e1dcd1438391e82acf28ac9154f262ca74abdad75421924f9a6427d159c7dea0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "067f0a20da7f399bab444eed38eab091dcad74d23c10906407f007963a0d24b7",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-012",
+      "printingCode": "ST13-012_p1",
+      "locale": "EN",
+      "name": "Makino",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": 2000,
+      "effectHash": "e1dcd1438391e82acf28ac9154f262ca74abdad75421924f9a6427d159c7dea0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "067f0a20da7f399bab444eed38eab091dcad74d23c10906407f007963a0d24b7",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-012",
+      "printingCode": "ST13-012_p2",
+      "locale": "EN",
+      "name": "Makino",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": 2000,
+      "effectHash": "e1dcd1438391e82acf28ac9154f262ca74abdad75421924f9a6427d159c7dea0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "067f0a20da7f399bab444eed38eab091dcad74d23c10906407f007963a0d24b7",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-013",
+      "printingCode": "ST13-013",
+      "locale": "EN",
+      "name": "Monkey.D.Garp",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "fae22f9651d8e098a9057728d53d5ae9a9a7e4c955a609120b906b30ee45b411",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-013",
+      "printingCode": "ST13-013_p1",
+      "locale": "EN",
+      "name": "Monkey.D.Garp",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "fae22f9651d8e098a9057728d53d5ae9a9a7e4c955a609120b906b30ee45b411",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-014",
+      "printingCode": "ST13-014",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "d235dc0cb67ec386931576f482fbd24192552684c8f5de69e7a456fcb4d2186b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-014",
+      "printingCode": "ST13-014_p1",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "d235dc0cb67ec386931576f482fbd24192552684c8f5de69e7a456fcb4d2186b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-014",
+      "printingCode": "ST13-014_p2",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "d235dc0cb67ec386931576f482fbd24192552684c8f5de69e7a456fcb4d2186b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-014",
+      "printingCode": "ST13-014_r1",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "d235dc0cb67ec386931576f482fbd24192552684c8f5de69e7a456fcb4d2186b",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-015",
+      "printingCode": "ST13-015",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "131c36ecc9ca90c331169efa2011cec85587a713c1f6bd8e0d819c2d9648d37c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "2be931d016362f5408d0cf2cde781be2709ee82713a9068714549c5e1e790d81",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-015",
+      "printingCode": "ST13-015_p1",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "131c36ecc9ca90c331169efa2011cec85587a713c1f6bd8e0d819c2d9648d37c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "2be931d016362f5408d0cf2cde781be2709ee82713a9068714549c5e1e790d81",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-015",
+      "printingCode": "ST13-015_p2",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "131c36ecc9ca90c331169efa2011cec85587a713c1f6bd8e0d819c2d9648d37c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "2be931d016362f5408d0cf2cde781be2709ee82713a9068714549c5e1e790d81",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "printingCode": "ST13-016",
+      "locale": "EN",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "f9c3445308c026c996b836ee69849183f818b9d09db4c63da8c76ba595508b7c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "printingCode": "ST13-016_p1",
+      "locale": "EN",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "f9c3445308c026c996b836ee69849183f818b9d09db4c63da8c76ba595508b7c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "printingCode": "ST13-016_r1",
+      "locale": "EN",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "f9c3445308c026c996b836ee69849183f818b9d09db4c63da8c76ba595508b7c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-017",
+      "printingCode": "ST13-017",
+      "locale": "EN",
+      "name": "Flame Dragon King",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "31bed023d97bd2909f0636bec33acc989f22fe1e9b923fdb2d22e104d7dcd884",
+      "triggerHash": "942b04a92972e822f47f3bf7cd33313d1c1049d7f84699885883d48d7cf38b83",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "131729aa2966a64866270fa7956c1eb03a50e65a5586bf44d1dd3659317f0ee3",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-018",
+      "printingCode": "ST13-018",
+      "locale": "EN",
+      "name": "Gum-Gum Jet Spear",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "ec3d79c82caa78468a747d763832f8ddba212d27f5d85d6f56223fbcf012bc6e",
+      "triggerHash": "942b04a92972e822f47f3bf7cd33313d1c1049d7f84699885883d48d7cf38b83",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "54294d1d5a3afd57e0022c24b3516506ecd3fa57c1bccac9cd7acccc0f0750c3",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-019",
+      "printingCode": "ST13-019",
+      "locale": "EN",
+      "name": "The Three Brothers' Bond",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "21768f79867cdcb3df0c2c8101d5814530fbbf961d8c93729c1c42f5b31dff3b",
+      "triggerHash": "f11e3bd95cea2c7b0921ce0651d0a6b34b9ce1c616748f59ed982f22698d0ac5",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-019",
+      "printingCode": "ST13-019_p1",
+      "locale": "EN",
+      "name": "The Three Brothers' Bond",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "21768f79867cdcb3df0c2c8101d5814530fbbf961d8c93729c1c42f5b31dff3b",
+      "triggerHash": "f11e3bd95cea2c7b0921ce0651d0a6b34b9ce1c616748f59ed982f22698d0ac5",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-019",
+      "printingCode": "ST13-019_r1",
+      "locale": "EN",
+      "name": "The Three Brothers' Bond",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "21768f79867cdcb3df0c2c8101d5814530fbbf961d8c93729c1c42f5b31dff3b",
+      "triggerHash": "f11e3bd95cea2c7b0921ce0651d0a6b34b9ce1c616748f59ed982f22698d0ac5",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "7a550980651de7c7a5ab4da0c9a15a85b3d3b9f88f0132b4ebd564e321b262b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-011",
+      "printingCode": "ST13-011_p2",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "bf6d56ba4f590f9454e4b965968e3e042dcb6b5e79ab9d3dfcf29cc7fbeb669d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-001",
+      "printingCode": "ST13-001_p1",
+      "locale": "FR",
+      "name": "Sabo",
+      "type": "LEADER",
+      "color": "Rouge/Jaune",
+      "cost": null,
+      "power": 4,
+      "counter": 5000,
+      "effectHash": "e0bb83c2b45febe1eb013e138624da1e1e1d873edbd593cc8a0d24e85bcfe9d7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "756fea1ba7912c8aa6d55bfcef332c2c50e0f5343817fb2fbe12c4969ce1a709",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-002",
+      "printingCode": "ST13-002_p1",
+      "locale": "FR",
+      "name": "Portgas D. Ace",
+      "type": "LEADER",
+      "color": "Bleu/Jaune",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "f29c3e39f89bc171380c1805d836cd8c84a84e301b269504dec91669bc446a83",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-003",
+      "printingCode": "ST13-003_p1",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "LEADER",
+      "color": "Noir/Jaune",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "953b7cd5c087f2367e9d3ed2a938101c2363acb5954208e811a0f24c198e3851",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "1070a1e7480d27a6a2c17ceb20488c39156b95df1a0ede0dda9a5b95c0dd9eb0",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-004",
+      "printingCode": "ST13-004_p1",
+      "locale": "FR",
+      "name": "Edward Newgate",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 6,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "23fb590c933f32a9f5610d4609893312f5825f5f50bd27e7f6f1ff2a19c595ce",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "e51170af181ac706b92d9c97436459f5eba0b6ab80f8d2856e9d33428a45d637",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-004",
+      "printingCode": "ST13-004_r1",
+      "locale": "FR",
+      "name": "Edward Newgate",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 6,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "23fb590c933f32a9f5610d4609893312f5825f5f50bd27e7f6f1ff2a19c595ce",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "e51170af181ac706b92d9c97436459f5eba0b6ab80f8d2856e9d33428a45d637",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-007",
+      "printingCode": "ST13-007_p1",
+      "locale": "FR",
+      "name": "Sabo",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "eef2dd890b8d5895e63047eb8a18e9d0ea97b15095bd64cfaa54a36dc2791a3d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "a9d2b09553ecb61e87b061178062ea286f8c036286ab6124a7f0b8e45906436e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-007",
+      "printingCode": "ST13-007_r1",
+      "locale": "FR",
+      "name": "Sabo",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "eef2dd890b8d5895e63047eb8a18e9d0ea97b15095bd64cfaa54a36dc2791a3d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "a9d2b09553ecb61e87b061178062ea286f8c036286ab6124a7f0b8e45906436e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-010",
+      "printingCode": "ST13-010_p1",
+      "locale": "FR",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "f71c29b1007a614497b9ad27fda3a7af774e0ee74418585691d4576834f163d0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "a9d2b09553ecb61e87b061178062ea286f8c036286ab6124a7f0b8e45906436e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-010",
+      "printingCode": "ST13-010_r1",
+      "locale": "FR",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "f71c29b1007a614497b9ad27fda3a7af774e0ee74418585691d4576834f163d0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "a9d2b09553ecb61e87b061178062ea286f8c036286ab6124a7f0b8e45906436e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-011",
+      "printingCode": "ST13-011_p1",
+      "locale": "FR",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 5,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "c58d032504c77d9886b03b8f0db9a01bd608f4d8425a1ab2955edb6a5c7da30f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-014",
+      "printingCode": "ST13-014_p1",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "7e0ce2a3c4fe0068d7d7dd6b1f513d7ab1b026805bd8a149aebdf68935fddf9e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "a9d2b09553ecb61e87b061178062ea286f8c036286ab6124a7f0b8e45906436e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-014",
+      "printingCode": "ST13-014_r1",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "7e0ce2a3c4fe0068d7d7dd6b1f513d7ab1b026805bd8a149aebdf68935fddf9e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "a9d2b09553ecb61e87b061178062ea286f8c036286ab6124a7f0b8e45906436e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "printingCode": "ST13-016_p1",
+      "locale": "FR",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 5,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "296266b3360318ddb30fc71dca4a2e882ad575dadf8e7a4d25f25fe0a322c7ac",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "dc5943974b2ef47485fbb44e888bef91c159ad933ce5deedb61f053be39c1a33",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-019",
+      "printingCode": "ST13-019_p1",
+      "locale": "FR",
+      "name": "Le lien des trois frères",
+      "type": "EVENT",
+      "color": "Jaune",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "d90ae3705f5156e5d77a5efdeb4d31a275a07043ad06f84f909c119272c91957",
+      "triggerHash": "66ff632c15ca98e2cfcdc23ed3da90e1844f184c36533b89f32a10c00bd351ca",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "a9d2b09553ecb61e87b061178062ea286f8c036286ab6124a7f0b8e45906436e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    },
+    {
+      "cardNumber": "ST13-019",
+      "printingCode": "ST13-019_r1",
+      "locale": "FR",
+      "name": "Le lien des trois frères",
+      "type": "EVENT",
+      "color": "Jaune",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "d90ae3705f5156e5d77a5efdeb4d31a275a07043ad06f84f909c119272c91957",
+      "triggerHash": "66ff632c15ca98e2cfcdc23ed3da90e1844f184c36533b89f32a10c00bd351ca",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "a9d2b09553ecb61e87b061178062ea286f8c036286ab6124a7f0b8e45906436e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST13"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "ST13-001",
+      "printingCode": "ST13-001_p1",
+      "name": "Sabo",
+      "type": "LEADER",
+      "color": "Rouge/Jaune"
+    },
+    {
+      "cardNumber": "ST13-002",
+      "printingCode": "ST13-002_p1",
+      "name": "Portgas D. Ace",
+      "type": "LEADER",
+      "color": "Bleu/Jaune"
+    },
+    {
+      "cardNumber": "ST13-003",
+      "printingCode": "ST13-003_p1",
+      "name": "Monkey D. Luffy",
+      "type": "LEADER",
+      "color": "Noir/Jaune"
+    },
+    {
+      "cardNumber": "ST13-004",
+      "printingCode": "ST13-004_p1",
+      "name": "Edward Newgate",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST13-004",
+      "printingCode": "ST13-004_r1",
+      "name": "Edward Newgate",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST13-007",
+      "printingCode": "ST13-007_p1",
+      "name": "Sabo",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST13-007",
+      "printingCode": "ST13-007_r1",
+      "name": "Sabo",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST13-010",
+      "printingCode": "ST13-010_p1",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST13-010",
+      "printingCode": "ST13-010_r1",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST13-011",
+      "printingCode": "ST13-011_p1",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST13-014",
+      "printingCode": "ST13-014_p1",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST13-014",
+      "printingCode": "ST13-014_r1",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "printingCode": "ST13-016_p1",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST13-019",
+      "printingCode": "ST13-019_p1",
+      "name": "Le lien des trois frères",
+      "type": "EVENT",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST13-019",
+      "printingCode": "ST13-019_r1",
+      "name": "Le lien des trois frères",
+      "type": "EVENT",
+      "color": "Jaune"
+    }
+  ]
+}

@@ -1,0 +1,329 @@
+[
+  {
+    "deckCode": "ST-01",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-02",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-03",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-04",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-05",
+    "reasons": [],
+    "corrections": [
+      {
+        "kind": "SOURCE_NUMBER_CORRECTION",
+        "from": "ST06-011",
+        "to": "ST05-011",
+        "quantity": 2,
+        "sourceName": "ダグラス・バレット",
+        "bandaiJP": "https://www.onepiece-cardgame.com/cardlist/?series=550005"
+      },
+      {
+        "kind": "SOURCE_NUMBER_CORRECTION",
+        "from": "ST06-013",
+        "to": "ST05-013",
+        "quantity": 4,
+        "sourceName": "ビンズ",
+        "bandaiJP": "https://www.onepiece-cardgame.com/cardlist/?series=550005"
+      }
+    ]
+  },
+  {
+    "deckCode": "ST-06",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-07",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-08",
+    "reasons": [],
+    "corrections": [
+      {
+        "kind": "INDEPENDENT_QUANTITY_CORROBORATION",
+        "number": "ST08-014",
+        "quantity": 4,
+        "source": "https://pokemondeal.com/one-piece-card-game/monkey-d-luffy-starter-deck-one-piece-card-game-st-08/"
+      },
+      {
+        "kind": "SOURCE_NUMBER_CORRECTION",
+        "from": "ST08-015",
+        "to": "ST08-014",
+        "quantity": 4,
+        "sourceName": "ゴムゴムの鐘",
+        "bandaiJP": "https://www.onepiece-cardgame.com/cardlist/?series=550008"
+      },
+      {
+        "kind": "INDEPENDENT_QUANTITY_CORROBORATION",
+        "number": "ST08-015",
+        "quantity": 2,
+        "source": "https://pokemondeal.com/one-piece-card-game/monkey-d-luffy-starter-deck-one-piece-card-game-st-08/"
+      },
+      {
+        "kind": "SOURCE_NUMBER_CORRECTION",
+        "from": "ST08-014",
+        "to": "ST08-015",
+        "quantity": 2,
+        "sourceName": "ゴムゴムの銃",
+        "bandaiJP": "https://www.onepiece-cardgame.com/cardlist/?series=550008"
+      }
+    ]
+  },
+  {
+    "deckCode": "ST-09",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-10",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-11",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-12",
+    "reasons": [],
+    "corrections": [
+      {
+        "kind": "INDEPENDENT_LEADER_CORROBORATION",
+        "number": "ST12-001",
+        "quantity": 1,
+        "source": "https://onepiece-card-labo.com/1014/"
+      },
+      {
+        "kind": "SOURCE_NUMBER_CORRECTION",
+        "from": "ST14-001",
+        "to": "ST12-001",
+        "quantity": 1,
+        "sourceName": "ゾロ&サンジ",
+        "bandaiJP": "https://www.onepiece-cardgame.com/cardlist/?series=550012"
+      }
+    ]
+  },
+  {
+    "deckCode": "ST-13",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-14",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-15",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-16",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-17",
+    "reasons": [],
+    "corrections": [
+      {
+        "kind": "EQUAL_QUANTITY_NAME_PERMUTATION",
+        "number": "ST03-002",
+        "quantity": 4,
+        "sourceName": "トラファルガー・ロー"
+      },
+      {
+        "kind": "EQUAL_QUANTITY_NAME_PERMUTATION",
+        "number": "ST03-004",
+        "quantity": 4,
+        "sourceName": "エドワード・ウィーブル"
+      },
+      {
+        "kind": "EQUAL_QUANTITY_NAME_PERMUTATION",
+        "number": "ST03-005",
+        "quantity": 4,
+        "sourceName": "ゲッコー・モリア"
+      },
+      {
+        "kind": "EQUAL_QUANTITY_NAME_PERMUTATION",
+        "number": "ST03-008",
+        "quantity": 4,
+        "sourceName": "ジュラキュール・ミホーク"
+      }
+    ]
+  },
+  {
+    "deckCode": "ST-18",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-19",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-20",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-21",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-22",
+    "reasons": [],
+    "corrections": [
+      {
+        "kind": "SOURCE_NUMBER_CORRECTION",
+        "from": "ST22-001",
+        "to": "ST22-002",
+        "quantity": 2,
+        "sourceName": "イゾウ",
+        "bandaiJP": "https://www.onepiece-cardgame.com/cardlist/?series=550022"
+      }
+    ]
+  },
+  {
+    "deckCode": "ST-23",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-24",
+    "reasons": [
+      "SOURCE_NUMBER_NAME_CONFLICT_DIFFERENT_QUANTITIES"
+    ],
+    "corrections": [
+      {
+        "kind": "SOURCE_NUMBER_CORRECTION",
+        "from": "ST24-005",
+        "to": "ST24-004",
+        "quantity": 2,
+        "sourceName": "ロー&ベポ",
+        "bandaiJP": "https://www.onepiece-cardgame.com/cardlist/?series=550024"
+      },
+      {
+        "kind": "SOURCE_NUMBER_CORRECTION",
+        "from": "ST24-004",
+        "to": "ST24-005",
+        "quantity": 4,
+        "sourceName": "X・ドレーク",
+        "bandaiJP": "https://www.onepiece-cardgame.com/cardlist/?series=550024"
+      }
+    ]
+  },
+  {
+    "deckCode": "ST-25",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-26",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-27",
+    "reasons": [
+      "SOURCE_SANJUAN_NUMBER_TYPO_NEEDS_QUANTITY_CORROBORATION"
+    ],
+    "corrections": [
+      {
+        "kind": "SOURCE_NUMBER_CORRECTION",
+        "from": "OP09-084",
+        "to": "OP10-084",
+        "quantity": 4,
+        "sourceName": "サンファン・ウルフ",
+        "bandaiJP": "https://www.onepiece-cardgame.com/cardlist/?series=550027"
+      }
+    ]
+  },
+  {
+    "deckCode": "ST-28",
+    "reasons": [],
+    "corrections": [
+      {
+        "kind": "SOURCE_NUMBER_CORRECTION",
+        "from": "OP09-042",
+        "to": "OP06-022",
+        "quantity": 1,
+        "sourceName": "ヤマト",
+        "bandaiJP": "https://www.onepiece-cardgame.com/cardlist/?series=550028"
+      }
+    ]
+  },
+  {
+    "deckCode": "ST-29",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-30",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-31",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-32",
+    "reasons": [],
+    "corrections": [
+      {
+        "kind": "SOURCE_NUMBER_CORRECTION",
+        "from": "OP10-036",
+        "to": "OP12-023",
+        "quantity": 4,
+        "sourceName": "河松",
+        "bandaiJP": "https://www.onepiece-cardgame.com/cardlist/?series=550032"
+      }
+    ]
+  },
+  {
+    "deckCode": "ST-33",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-34",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-35",
+    "reasons": [],
+    "corrections": []
+  },
+  {
+    "deckCode": "ST-36",
+    "reasons": [
+      "MAIN_COUNT_NOT_50",
+      "NO_PUBLISHED_PER_CARD_QUANTITIES",
+      "OFFICIAL_CARDSET_NOT_FULLY_COVERED:OP10-099,OP10-101,OP10-103,OP10-109,OP10-111,OP10-114,OP12-113,OP13-116,P-085,P-088,ST36-001,ST36-002,ST36-003,ST36-004,ST36-005"
+    ],
+    "corrections": []
+  }
+]

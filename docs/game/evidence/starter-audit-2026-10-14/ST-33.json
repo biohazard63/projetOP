@@ -1,0 +1,1171 @@
+{
+  "deckCode": "ST-33",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569033",
+      "status": "FETCHED",
+      "sha256": "7572292038fa294f471e1d5878f6626ef235b0e48efb03386f68312c2e0418fe",
+      "retrievedAt": "2026-10-14T07:27:21.536586+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st33-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st33-card-list/",
+      "status": "FETCHED",
+      "sha256": "b7324ef3d9b8b7f1dd0f5d3801044aff0f452b7a0c5248583507ed64b3024948",
+      "retrievedAt": "2026-10-14T07:27:24.270940+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st33.html",
+      "status": "FETCHED",
+      "sha256": "3f5187fb9a1f45f114fa7789efa41e71020ca60a2da6453d84577cf9fc1befe4",
+      "retrievedAt": "2026-10-14T07:27:27.501099+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st33-card-list/",
+      "status": "FETCHED",
+      "sha256": "b7324ef3d9b8b7f1dd0f5d3801044aff0f452b7a0c5248583507ed64b3024948",
+      "retrievedAt": "2026-10-14T07:31:47.984494+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569033",
+      "status": "FETCHED",
+      "sha256": "7572292038fa294f471e1d5878f6626ef235b0e48efb03386f68312c2e0418fe",
+      "retrievedAt": "2026-10-14T07:31:49.708891+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569033",
+      "status": "FETCHED",
+      "sha256": "7572292038fa294f471e1d5878f6626ef235b0e48efb03386f68312c2e0418fe",
+      "retrievedAt": "2026-10-14T07:35:16.864253+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st33-card-list/",
+      "status": "FETCHED",
+      "sha256": "b7324ef3d9b8b7f1dd0f5d3801044aff0f452b7a0c5248583507ed64b3024948",
+      "retrievedAt": "2026-10-14T07:35:18.466659+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550033",
+      "status": "FETCHED",
+      "sha256": "64c121940179217e9afccac03ab37f8f992e2bf7d3f87af60c7f68916fa479aa",
+      "retrievedAt": "2026-10-14T07:35:20.640336+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569033",
+      "status": "FETCHED",
+      "sha256": "7572292038fa294f471e1d5878f6626ef235b0e48efb03386f68312c2e0418fe",
+      "retrievedAt": "2026-10-14T07:53:09.262895+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622033",
+      "status": "FETCHED",
+      "sha256": "c290b58cc73c9303944ad56416e6a13fe0a14aed8bad8d3857993062bff2414a",
+      "retrievedAt": "2026-10-14T07:53:10.639128+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-043",
+      "status": "FETCHED",
+      "sha256": "4fbab2c86354cb23dda020069625e585356f2df4445c675e903b48c0a0becabc",
+      "retrievedAt": "2026-10-14T08:02:22.750034+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-043",
+      "status": "FETCHED",
+      "sha256": "1f3ca94032f79143aad8fcede60cf683730416ab6492a9feab0d11f84923013c",
+      "retrievedAt": "2026-10-14T08:02:24.120589+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-057",
+      "status": "FETCHED",
+      "sha256": "ba6bfd2ff8e729589bb57dca6cc4e19d0a866de80a57e9d93ed395417aa1a558",
+      "retrievedAt": "2026-10-14T08:02:22.813048+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-057",
+      "status": "FETCHED",
+      "sha256": "4bec4e37f7c4745a4fd0d52b13f58c39c1db31b56c18050f433fcd486a6fc0ee",
+      "retrievedAt": "2026-10-14T08:02:24.200754+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "EB04-026",
+      "printingCode": "EB04-026_r1",
+      "name": "Bluegrass",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "EB04-028",
+      "printingCode": "EB04-028_p2",
+      "name": "Ice Time",
+      "type": "EVENT",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP12-040",
+      "printingCode": "OP12-040_p2",
+      "name": "Kuzan",
+      "type": "LEADER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP12-043",
+      "printingCode": "OP12-043_r1",
+      "name": "Kuzan",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP12-045",
+      "printingCode": "OP12-045_r1",
+      "name": "Jango",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP12-046",
+      "printingCode": "OP12-046_r1",
+      "name": "Zephyr(Navy)",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP12-047",
+      "printingCode": "OP12-047_r1",
+      "name": "Sengoku",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP12-050",
+      "printingCode": "OP12-050_r1",
+      "name": "Jaguar.D.Saul",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP12-052",
+      "printingCode": "OP12-052_r1",
+      "name": "Fullbody",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP12-057",
+      "printingCode": "OP12-057_r1",
+      "name": "Ice Block Pheasant Peck",
+      "type": "EVENT",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST33-001",
+      "printingCode": "ST33-001",
+      "name": "Koby",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST33-002",
+      "printingCode": "ST33-002",
+      "name": "Sakazuki",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST33-003",
+      "printingCode": "ST33-003",
+      "name": "Smoker",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST33-004",
+      "printingCode": "ST33-004",
+      "name": "Borsalino",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST33-005",
+      "printingCode": "ST33-005",
+      "name": "Monkey.D.Garp",
+      "type": "CHARACTER",
+      "color": "Blue"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "OP12-040",
+      "quantity": 1,
+      "sourceName": "クザン",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    },
+    {
+      "cardNumber": "ST33-001",
+      "quantity": 4,
+      "sourceName": "コビー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    },
+    {
+      "cardNumber": "ST33-002",
+      "quantity": 4,
+      "sourceName": "サカズキ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    },
+    {
+      "cardNumber": "ST33-003",
+      "quantity": 2,
+      "sourceName": "スモーカー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    },
+    {
+      "cardNumber": "ST33-004",
+      "quantity": 2,
+      "sourceName": "ボルサリーノ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    },
+    {
+      "cardNumber": "ST33-005",
+      "quantity": 2,
+      "sourceName": "モンキー・D・ガープ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    },
+    {
+      "cardNumber": "EB04-026",
+      "quantity": 4,
+      "sourceName": "ブルーグラス",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    },
+    {
+      "cardNumber": "OP12-043",
+      "quantity": 4,
+      "sourceName": "クザン",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    },
+    {
+      "cardNumber": "OP12-045",
+      "quantity": 4,
+      "sourceName": "ジャンゴ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    },
+    {
+      "cardNumber": "OP12-046",
+      "quantity": 4,
+      "sourceName": "ゼファー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    },
+    {
+      "cardNumber": "OP12-047",
+      "quantity": 4,
+      "sourceName": "センゴク",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    },
+    {
+      "cardNumber": "OP12-050",
+      "quantity": 4,
+      "sourceName": "ハグワール・Ｄ・サウロ",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    },
+    {
+      "cardNumber": "OP12-052",
+      "quantity": 4,
+      "sourceName": "フルボディ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    },
+    {
+      "cardNumber": "EB04-028",
+      "quantity": 4,
+      "sourceName": "アイスタイム",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    },
+    {
+      "cardNumber": "OP12-057",
+      "quantity": 4,
+      "sourceName": "アイス塊暴雉嘴",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st33-card-list/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -BLUE Kuzan- [ST-33] | ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -BLUE Kuzan- [ST-33]"
+  ],
+  "productContents": "Constructed Deck x 1 (51 cards), DON!! Card x 10, Playsheet x 1, BOOSTER PACK -THE TIME OF BATTLE- [OP-16]",
+  "productSource": "https://en.onepiece-cardgame.com/products/st33.html",
+  "officialDeckTitle": "STARTER DECK -BLUE Kuzan- [ST-33]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "EB04-026",
+      "printingCode": "EB04-026_r1",
+      "name": "ブルーグラス",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "EB04-028",
+      "printingCode": "EB04-028_p2",
+      "name": "アイスタイム",
+      "type": "EVENT",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP12-040",
+      "printingCode": "OP12-040_p2",
+      "name": "クザン",
+      "type": "LEADER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP12-043",
+      "printingCode": "OP12-043_r1",
+      "name": "クザン",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP12-045",
+      "printingCode": "OP12-045_r1",
+      "name": "ジャンゴ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP12-046",
+      "printingCode": "OP12-046_r1",
+      "name": "ゼファー",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP12-047",
+      "printingCode": "OP12-047_r1",
+      "name": "センゴク",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP12-050",
+      "printingCode": "OP12-050_r1",
+      "name": "ハグワール・Ｄ・サウロ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP12-052",
+      "printingCode": "OP12-052_r1",
+      "name": "フルボディ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP12-057",
+      "printingCode": "OP12-057_r1",
+      "name": "アイス塊暴雉嘴",
+      "type": "EVENT",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST33-001",
+      "printingCode": "ST33-001",
+      "name": "コビー",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST33-002",
+      "printingCode": "ST33-002",
+      "name": "サカズキ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST33-003",
+      "printingCode": "ST33-003",
+      "name": "スモーカー",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST33-004",
+      "printingCode": "ST33-004",
+      "name": "ボルサリーノ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST33-005",
+      "printingCode": "ST33-005",
+      "name": "モンキー・Ｄ・ガープ",
+      "type": "CHARACTER",
+      "color": "青"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "EB04-026",
+      "printingCode": "EB04-026_r1",
+      "locale": "EN",
+      "name": "Bluegrass",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "cf3c83e20dfe1a881fe52a1ce16c7a0c9abead68f3f9100ba388754499f3be75",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "9c4720d86eb40b92a77a8e271d86216bee9f63618c1727eb79c4491e3489eed5",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "EB04-028",
+      "printingCode": "EB04-028_p2",
+      "locale": "EN",
+      "name": "Ice Time",
+      "type": "EVENT",
+      "color": "Blue",
+      "cost": 5,
+      "power": null,
+      "counter": null,
+      "effectHash": "821f2c69c0e6060fe7fbd21ec9770a5033da6558f1d3c95f84def35779dbb517",
+      "triggerHash": "4bc819eca5a8f039a3377025fffa9d2a5ba1e3e293411f0bb42c29ca3c87929e",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "OP12-040",
+      "printingCode": "OP12-040_p2",
+      "locale": "EN",
+      "name": "Kuzan",
+      "type": "LEADER",
+      "color": "Blue",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "8453e91929138e416011b41432e856966acf7a07f3973d414f55de594c76ad99",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "OP12-043",
+      "printingCode": "OP12-043_r1",
+      "locale": "EN",
+      "name": "Kuzan",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "f636e8b1e4f86f248bb673556d675628d23be791945808dfcd9f703749447441",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "OP12-045",
+      "printingCode": "OP12-045_r1",
+      "locale": "EN",
+      "name": "Jango",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 6,
+      "power": 8000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "OP12-046",
+      "printingCode": "OP12-046_r1",
+      "locale": "EN",
+      "name": "Zephyr(Navy)",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 5,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "13b983cb6bdb16cb4c73d652db231c70b496d0c3b4ba11c2f196a07caf6cc346",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "b59149839797aebf604c71bc58c9669817f55e201e394a694b180feed7a4177a",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "OP12-047",
+      "printingCode": "OP12-047_r1",
+      "locale": "EN",
+      "name": "Sengoku",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 3,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "1496d3d5438ef3954f74f926faca19d07e246ece4c126f0655d77a12ea37b2fd",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "OP12-050",
+      "printingCode": "OP12-050_r1",
+      "locale": "EN",
+      "name": "Jaguar.D.Saul",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 6,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "daadda33cf44efd5d93b1ba02e0345d0c4ea1e3cd34d264cde02a2c59052747e",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "OP12-052",
+      "printingCode": "OP12-052_r1",
+      "locale": "EN",
+      "name": "Fullbody",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "OP12-057",
+      "printingCode": "OP12-057_r1",
+      "locale": "EN",
+      "name": "Ice Block Pheasant Peck",
+      "type": "EVENT",
+      "color": "Blue",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "546b37966b0b9b1ff150e825189fc1cf32bd44453f5e79628393bff12778ba1e",
+      "triggerHash": "2e9bd9ac02da26660dd1bad049ce821be4e7205f0094b31720807abd212a4fe9",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "ST33-001",
+      "printingCode": "ST33-001",
+      "locale": "EN",
+      "name": "Koby",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "dac4d377154ca453a39a1a9dc25d8c5340aa7d3e847b76ac9604ceeed9472fa7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "ST33-002",
+      "printingCode": "ST33-002",
+      "locale": "EN",
+      "name": "Sakazuki",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "ffcdf3373fffa50f1543ea89588f5e61e52551dd9f8d40f03ec18cc10d9a7d1e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "ST33-003",
+      "printingCode": "ST33-003",
+      "locale": "EN",
+      "name": "Smoker",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "1ad5705a6cf0473f97e5d1d5bc365e4cd42cb8ff80ab76c4e26cfa48ad3a0c03",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "ST33-004",
+      "printingCode": "ST33-004",
+      "locale": "EN",
+      "name": "Borsalino",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 6,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "aa3751da02044c264351cb7d39bfd90bb6d471588cc67bc38bd2dbb1f8073452",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "ST33-005",
+      "printingCode": "ST33-005",
+      "locale": "EN",
+      "name": "Monkey.D.Garp",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 6,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "65dae2fdb9e15a1b38088a20a3793806a3799ed2ec6bd2ec07174aacb82c6135",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569033"
+    },
+    {
+      "cardNumber": "EB04-026",
+      "printingCode": "EB04-026_r1",
+      "locale": "FR",
+      "name": "Bluegrass",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "aa65100c637e2276ed83282cf1c26de501c223d64433d7c3692ddb73b4c44888",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "e7063241ba17e005e6fee6f3c48e98d25daf6f777d9c0f2cdb61fa4228d08d1d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "EB04-028",
+      "printingCode": "EB04-028_p1",
+      "locale": "FR",
+      "name": "Ice Time",
+      "type": "EVENT",
+      "color": "Bleu",
+      "cost": 5,
+      "power": null,
+      "counter": null,
+      "effectHash": "ca1536072a8486782a3661a15c915362b20c84a10565591c0961294f6c73c464",
+      "triggerHash": "e5c91eb3904f319099fc73fcd65062257a903009b9c64da6c5ca9a910d847caa",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "OP12-040",
+      "printingCode": "OP12-040_p2",
+      "locale": "FR",
+      "name": "Kuzan",
+      "type": "LEADER",
+      "color": "Bleu",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "006d5e81d56a5e623ed2b8e27b87f1a11903192b85d7fe066ce9923982580392",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "OP12-043",
+      "printingCode": "OP12-043_r1",
+      "locale": "FR",
+      "name": "Kuzan",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "b0453392bf0a471ed56795de6e4e829371fe1164d3cb1915a9f684286737b958",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "OP12-045",
+      "printingCode": "OP12-045_r1",
+      "locale": "FR",
+      "name": "Jango",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 6,
+      "power": 8000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "OP12-046",
+      "printingCode": "OP12-046_r1",
+      "locale": "FR",
+      "name": "Zéphyr",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 5,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "8bfb81378a3d675c812c5bde66fac566fef4a6e5918787f8eec7c7e9512d6fa5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "f5365dcc01b7bdf7477bacd19b6bcd48d87a77f1419c36fef1b2b306fb37504b",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "OP12-047",
+      "printingCode": "OP12-047_r1",
+      "locale": "FR",
+      "name": "Sengoku",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 3,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "7cf28d510ef9320ac1718fb38e90e66176a5ccc6822fb9079ff382055caa84ce",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "OP12-050",
+      "printingCode": "OP12-050_r1",
+      "locale": "FR",
+      "name": "Haguar D. Sauro",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 6,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "d7072a5fd0b1332aae4bfe64efcfc8c340e7d82de2fe5b0e16a2bbb8442f610e",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "OP12-052",
+      "printingCode": "OP12-052_r1",
+      "locale": "FR",
+      "name": "Fullbody",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "OP12-057",
+      "printingCode": "OP12-057_r1",
+      "locale": "FR",
+      "name": "Ice Block, bec de faisan",
+      "type": "EVENT",
+      "color": "Bleu",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "7e779aa0fb584df325dc768bb0e6da48766be8f6e1dbd977ca5998aca2515071",
+      "triggerHash": "6fde8a9d7fc7fd3dba3ad39f4c81dfef367e38fb30de1d003ea95fb94740b94e",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "ST33-001",
+      "printingCode": "ST33-001",
+      "locale": "FR",
+      "name": "Kobby",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "586fe3265647058d9195f5359bce9612d9be47e48eff251aa2a2a006934896dd",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "ST33-002",
+      "printingCode": "ST33-002",
+      "locale": "FR",
+      "name": "Sakazuki",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "5da07bf88f2aa5dfd3cae466434d158f3d0e852714eb05f199f5176944bfa6b1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "ST33-003",
+      "printingCode": "ST33-003",
+      "locale": "FR",
+      "name": "Smoker",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "87015f99bf9e578160ee2a011646850342d835b408c67a8508802127c3bb5d57",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "ST33-004",
+      "printingCode": "ST33-004",
+      "locale": "FR",
+      "name": "Borsalino",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 6,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "76a31167984c905f577b9ea58869756e51e99fe9570c0034b16edd54e28e2922",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "ST33-005",
+      "printingCode": "ST33-005",
+      "locale": "FR",
+      "name": "Monkey D. Garp",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 6,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "d556ea0c1d72150eccd9ac5379192ea51860dc1545936939b31e17ef41f761b1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622033"
+    },
+    {
+      "cardNumber": "OP12-043",
+      "printingCode": "OP12-043",
+      "locale": "EN",
+      "name": "Kuzan",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "f636e8b1e4f86f248bb673556d675628d23be791945808dfcd9f703749447441",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-043"
+    },
+    {
+      "cardNumber": "OP12-043",
+      "printingCode": "OP12-043_p1",
+      "locale": "EN",
+      "name": "Kuzan",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "f636e8b1e4f86f248bb673556d675628d23be791945808dfcd9f703749447441",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-043"
+    },
+    {
+      "cardNumber": "OP12-043",
+      "printingCode": "OP12-043_r1",
+      "locale": "EN",
+      "name": "Kuzan",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "f636e8b1e4f86f248bb673556d675628d23be791945808dfcd9f703749447441",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-043"
+    },
+    {
+      "cardNumber": "OP12-043",
+      "printingCode": "OP12-043",
+      "locale": "FR",
+      "name": "Kuzan",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "e5917e927aab023be50a9fbb2deb53774962e81405ba94866bad8159406e6e65",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-043"
+    },
+    {
+      "cardNumber": "OP12-043",
+      "printingCode": "OP12-043_p1",
+      "locale": "FR",
+      "name": "Kuzan",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "e5917e927aab023be50a9fbb2deb53774962e81405ba94866bad8159406e6e65",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-043"
+    },
+    {
+      "cardNumber": "OP12-043",
+      "printingCode": "OP12-043_r1",
+      "locale": "FR",
+      "name": "Kuzan",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "b0453392bf0a471ed56795de6e4e829371fe1164d3cb1915a9f684286737b958",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-043"
+    },
+    {
+      "cardNumber": "OP12-057",
+      "printingCode": "OP12-057",
+      "locale": "EN",
+      "name": "Ice Block Pheasant Peck",
+      "type": "EVENT",
+      "color": "Blue",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "546b37966b0b9b1ff150e825189fc1cf32bd44453f5e79628393bff12778ba1e",
+      "triggerHash": "2e9bd9ac02da26660dd1bad049ce821be4e7205f0094b31720807abd212a4fe9",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-057"
+    },
+    {
+      "cardNumber": "OP12-057",
+      "printingCode": "OP12-057_r1",
+      "locale": "EN",
+      "name": "Ice Block Pheasant Peck",
+      "type": "EVENT",
+      "color": "Blue",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "546b37966b0b9b1ff150e825189fc1cf32bd44453f5e79628393bff12778ba1e",
+      "triggerHash": "2e9bd9ac02da26660dd1bad049ce821be4e7205f0094b31720807abd212a4fe9",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-057"
+    },
+    {
+      "cardNumber": "OP12-057",
+      "printingCode": "OP12-057",
+      "locale": "FR",
+      "name": "Ice Block, bec de faisan",
+      "type": "EVENT",
+      "color": "Bleu",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "7e779aa0fb584df325dc768bb0e6da48766be8f6e1dbd977ca5998aca2515071",
+      "triggerHash": "6fde8a9d7fc7fd3dba3ad39f4c81dfef367e38fb30de1d003ea95fb94740b94e",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-057"
+    },
+    {
+      "cardNumber": "OP12-057",
+      "printingCode": "OP12-057_r1",
+      "locale": "FR",
+      "name": "Ice Block, bec de faisan",
+      "type": "EVENT",
+      "color": "Bleu",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "7e779aa0fb584df325dc768bb0e6da48766be8f6e1dbd977ca5998aca2515071",
+      "triggerHash": "6fde8a9d7fc7fd3dba3ad39f4c81dfef367e38fb30de1d003ea95fb94740b94e",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "1da20b447642deaa6f426c75c8b5613e2df7ecaa79b0136006f94a518c594110",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-057"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "EB04-026",
+      "printingCode": "EB04-026_r1",
+      "name": "Bluegrass",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "EB04-028",
+      "printingCode": "EB04-028_p1",
+      "name": "Ice Time",
+      "type": "EVENT",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP12-040",
+      "printingCode": "OP12-040_p2",
+      "name": "Kuzan",
+      "type": "LEADER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP12-043",
+      "printingCode": "OP12-043_r1",
+      "name": "Kuzan",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP12-045",
+      "printingCode": "OP12-045_r1",
+      "name": "Jango",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP12-046",
+      "printingCode": "OP12-046_r1",
+      "name": "Zéphyr",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP12-047",
+      "printingCode": "OP12-047_r1",
+      "name": "Sengoku",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP12-050",
+      "printingCode": "OP12-050_r1",
+      "name": "Haguar D. Sauro",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP12-052",
+      "printingCode": "OP12-052_r1",
+      "name": "Fullbody",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP12-057",
+      "printingCode": "OP12-057_r1",
+      "name": "Ice Block, bec de faisan",
+      "type": "EVENT",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST33-001",
+      "printingCode": "ST33-001",
+      "name": "Kobby",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST33-002",
+      "printingCode": "ST33-002",
+      "name": "Sakazuki",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST33-003",
+      "printingCode": "ST33-003",
+      "name": "Smoker",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST33-004",
+      "printingCode": "ST33-004",
+      "name": "Borsalino",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST33-005",
+      "printingCode": "ST33-005",
+      "name": "Monkey D. Garp",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    }
+  ]
+}

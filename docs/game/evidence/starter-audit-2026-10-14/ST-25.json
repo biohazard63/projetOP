@@ -1,0 +1,991 @@
+{
+  "deckCode": "ST-25",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569025",
+      "status": "FETCHED",
+      "sha256": "76e939ec314ee773602f0a0f261444d4be654590a1f57536775f0a4963006035",
+      "retrievedAt": "2026-10-14T07:27:07.524934+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st25-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st25-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st25.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st25.php",
+      "status": "FETCHED",
+      "sha256": "42c5107167e21e868f55b9e83ca011f451ae332c2e96e8195ee0326d17f2f9fc",
+      "retrievedAt": "2026-10-14T07:27:12.597438+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st25_cardlists/",
+      "status": "FETCHED",
+      "sha256": "94e68a1f0d6c5418050f0e191c9488616f7d737871c802f4a002b7495216c6d7",
+      "retrievedAt": "2026-10-14T07:31:40.997051+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569025",
+      "status": "FETCHED",
+      "sha256": "76e939ec314ee773602f0a0f261444d4be654590a1f57536775f0a4963006035",
+      "retrievedAt": "2026-10-14T07:31:42.388343+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569025",
+      "status": "FETCHED",
+      "sha256": "76e939ec314ee773602f0a0f261444d4be654590a1f57536775f0a4963006035",
+      "retrievedAt": "2026-10-14T07:35:11.413644+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st25_cardlists/",
+      "status": "FETCHED",
+      "sha256": "94e68a1f0d6c5418050f0e191c9488616f7d737871c802f4a002b7495216c6d7",
+      "retrievedAt": "2026-10-14T07:35:13.387854+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550025",
+      "status": "FETCHED",
+      "sha256": "3b78c677306a0266cc9b1ddf27ebf566d75b6ec544c6330a6f6a447ad9a114c9",
+      "retrievedAt": "2026-10-14T07:35:15.071056+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569025",
+      "status": "FETCHED",
+      "sha256": "76e939ec314ee773602f0a0f261444d4be654590a1f57536775f0a4963006035",
+      "retrievedAt": "2026-10-14T07:53:05.402234+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622025",
+      "status": "FETCHED",
+      "sha256": "db54829560e52e2520a38019aa2f9104d99b2b3f72474a30dc39441bb6075122",
+      "retrievedAt": "2026-10-14T07:53:06.763595+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "OP09-042",
+      "printingCode": "OP09-042_p2",
+      "name": "Buggy",
+      "type": "LEADER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP09-043",
+      "printingCode": "OP09-043_r1",
+      "name": "Alvida",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP09-045",
+      "printingCode": "OP09-045_r1",
+      "name": "Cabaji",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP09-051",
+      "printingCode": "OP09-051_r1",
+      "name": "Buggy",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP09-053",
+      "printingCode": "OP09-053_r1",
+      "name": "Mohji",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP09-054",
+      "printingCode": "OP09-054_r1",
+      "name": "Richie",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP09-055",
+      "printingCode": "OP09-055_r1",
+      "name": "Mr.1(Daz.Bonez)",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP09-056",
+      "printingCode": "OP09-056_r1",
+      "name": "Mr.3(Galdino)",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "OP09-057",
+      "printingCode": "OP09-057_r1",
+      "name": "Cross Guild",
+      "type": "EVENT",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "P-084",
+      "printingCode": "P-084",
+      "name": "Buggy",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST25-001",
+      "printingCode": "ST25-001",
+      "name": "Alvida",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST25-002",
+      "printingCode": "ST25-002",
+      "name": "Cabaji",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST25-003",
+      "printingCode": "ST25-003",
+      "name": "Crocodile & Mihawk",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST25-004",
+      "printingCode": "ST25-004",
+      "name": "Buggy",
+      "type": "CHARACTER",
+      "color": "Blue"
+    },
+    {
+      "cardNumber": "ST25-005",
+      "printingCode": "ST25-005",
+      "name": "Mohji",
+      "type": "CHARACTER",
+      "color": "Blue"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "OP09-042",
+      "quantity": 1,
+      "sourceName": "バギー",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    },
+    {
+      "cardNumber": "ST25-001",
+      "quantity": 2,
+      "sourceName": "アルビダ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    },
+    {
+      "cardNumber": "ST25-002",
+      "quantity": 4,
+      "sourceName": "カバジ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    },
+    {
+      "cardNumber": "ST25-003",
+      "quantity": 2,
+      "sourceName": "クロコダイル&ミホーク",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    },
+    {
+      "cardNumber": "ST25-004",
+      "quantity": 2,
+      "sourceName": "バギー",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    },
+    {
+      "cardNumber": "ST25-005",
+      "quantity": 4,
+      "sourceName": "モージ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-043",
+      "quantity": 4,
+      "sourceName": "アルビダ",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-045",
+      "quantity": 4,
+      "sourceName": "カバジ",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-051",
+      "quantity": 4,
+      "sourceName": "バギー",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-053",
+      "quantity": 4,
+      "sourceName": "モージ",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-054",
+      "quantity": 4,
+      "sourceName": "リッチー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-055",
+      "quantity": 4,
+      "sourceName": "Mr.1(ダズ・ボーネス)",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-056",
+      "quantity": 4,
+      "sourceName": "Mr.3(ギャルディーノ)",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    },
+    {
+      "cardNumber": "P-084",
+      "quantity": 4,
+      "sourceName": "バギー",
+      "sourceRarity": "P",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-057",
+      "quantity": 4,
+      "sourceName": "クロスギルド",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st25_cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -BLUE Buggy- [ST-25] − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -BLUE Buggy- [ST-25]"
+  ],
+  "productContents": "Constructed Deck x 1 (51 cards), DON!! Card x 10, Playsheet x 1, BOOSTER PACK -A FIST OF DIVINE SPEED- [OP-11] x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st25.php",
+  "officialDeckTitle": "STARTER DECK -BLUE Buggy- [ST-25]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "OP09-042",
+      "printingCode": "OP09-042_p2",
+      "name": "バギー",
+      "type": "LEADER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP09-043",
+      "printingCode": "OP09-043_r1",
+      "name": "アルビダ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP09-045",
+      "printingCode": "OP09-045_r1",
+      "name": "カバジ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP09-051",
+      "printingCode": "OP09-051_r1",
+      "name": "バギー",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP09-053",
+      "printingCode": "OP09-053_r1",
+      "name": "モージ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP09-054",
+      "printingCode": "OP09-054_r1",
+      "name": "リッチー",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP09-055",
+      "printingCode": "OP09-055_r1",
+      "name": "Mr.1(ダズ・ボーネス)",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP09-056",
+      "printingCode": "OP09-056_r1",
+      "name": "Mr.3(ギャルディーノ)",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "OP09-057",
+      "printingCode": "OP09-057_p1",
+      "name": "クロスギルド",
+      "type": "EVENT",
+      "color": "青"
+    },
+    {
+      "cardNumber": "P-084",
+      "printingCode": "P-084_r1",
+      "name": "バギー",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST25-001",
+      "printingCode": "ST25-001",
+      "name": "アルビダ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST25-002",
+      "printingCode": "ST25-002",
+      "name": "カバジ",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST25-003",
+      "printingCode": "ST25-003",
+      "name": "クロコダイル＆ミホーク",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST25-004",
+      "printingCode": "ST25-004",
+      "name": "バギー",
+      "type": "CHARACTER",
+      "color": "青"
+    },
+    {
+      "cardNumber": "ST25-005",
+      "printingCode": "ST25-005",
+      "name": "モージ",
+      "type": "CHARACTER",
+      "color": "青"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "OP09-042",
+      "printingCode": "OP09-042_p2",
+      "locale": "EN",
+      "name": "Buggy",
+      "type": "LEADER",
+      "color": "Blue",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "32e20b74eb69f842146331589776848d67dd82897a16b8eb8d8bc3190be03ee8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "cabbe2cf27f8a4daef61890b5ca0b779209ff64f63392aec5128eba7135eb212",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "OP09-043",
+      "printingCode": "OP09-043_r1",
+      "locale": "EN",
+      "name": "Alvida",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "04bff12fef0480be512f00b82c505627f449a1417c3b6d99aeb38a4f0071af5e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "01c7b580ab95951d0b8fe86b64b635c842c4637a099939c435acb5f70cb295e4",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "OP09-045",
+      "printingCode": "OP09-045_r1",
+      "locale": "EN",
+      "name": "Cabaji",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 5,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "a012f0713c89142c87bb9ecf095109300273f9d8704d371479cb4b9aebe61e3c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "01c7b580ab95951d0b8fe86b64b635c842c4637a099939c435acb5f70cb295e4",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "OP09-051",
+      "printingCode": "OP09-051_r1",
+      "locale": "EN",
+      "name": "Buggy",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 10,
+      "power": 12000,
+      "counter": null,
+      "effectHash": "f0688cf49b40ac6827e255a5318a79382bfd20226839dba3ebde8222a229025a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "cabbe2cf27f8a4daef61890b5ca0b779209ff64f63392aec5128eba7135eb212",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "OP09-053",
+      "printingCode": "OP09-053_r1",
+      "locale": "EN",
+      "name": "Mohji",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 5,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "3c18f4cbc08c17be288c6a56059b15862d06bca3bcf1ab0f4427af38e7b44378",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "01c7b580ab95951d0b8fe86b64b635c842c4637a099939c435acb5f70cb295e4",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "OP09-054",
+      "printingCode": "OP09-054_r1",
+      "locale": "EN",
+      "name": "Richie",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5772216151a3f5bebce8ff0916e37126f0bdb738a70484bc0442dfac8461319a",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "OP09-055",
+      "printingCode": "OP09-055_r1",
+      "locale": "EN",
+      "name": "Mr.1(Daz.Bonez)",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "815db475bc1a05b90c1b40f791616339de579fa1056a10681cf1e217c40472e2",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "OP09-056",
+      "printingCode": "OP09-056_r1",
+      "locale": "EN",
+      "name": "Mr.3(Galdino)",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "15e7633cfef2507c1454dad48b43adcafeec91de517832b0658c79701ddf944d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "815db475bc1a05b90c1b40f791616339de579fa1056a10681cf1e217c40472e2",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "OP09-057",
+      "printingCode": "OP09-057_r1",
+      "locale": "EN",
+      "name": "Cross Guild",
+      "type": "EVENT",
+      "color": "Blue",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "c7b4c916319c3311cbc2e31374eade7c815080f7c67cafd618c32c8224c93854",
+      "triggerHash": "f11e3bd95cea2c7b0921ce0651d0a6b34b9ce1c616748f59ed982f22698d0ac5",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "01c7b580ab95951d0b8fe86b64b635c842c4637a099939c435acb5f70cb295e4",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "P-084",
+      "printingCode": "P-084",
+      "locale": "EN",
+      "name": "Buggy",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "5edd4ad87efe501f531f4aef7c0cc8af63790653707579c2a9adbcd44378c3b6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "cabbe2cf27f8a4daef61890b5ca0b779209ff64f63392aec5128eba7135eb212",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "ST25-001",
+      "printingCode": "ST25-001",
+      "locale": "EN",
+      "name": "Alvida",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "feced20bf574ae684fef0da56949646e19c97f5ffa89eb2f62e307c6cacc2729",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "01c7b580ab95951d0b8fe86b64b635c842c4637a099939c435acb5f70cb295e4",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "ST25-002",
+      "printingCode": "ST25-002",
+      "locale": "EN",
+      "name": "Cabaji",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 1000,
+      "counter": 2000,
+      "effectHash": "5af112074f35c53fe93585a7b7e30aee1aaf8a27496cdaa76bbd2f1c0ded02bf",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "01c7b580ab95951d0b8fe86b64b635c842c4637a099939c435acb5f70cb295e4",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "ST25-003",
+      "printingCode": "ST25-003",
+      "locale": "EN",
+      "name": "Crocodile & Mihawk",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 8,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "54fa5d261eb8159754eb7a3cb8db938bd381399047030e7ba46361ab6d121cb7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "c6df973078ddb86ff61d8f21a4d70d6994bf6d350307698f774408392e981607",
+      "familyHash": "815db475bc1a05b90c1b40f791616339de579fa1056a10681cf1e217c40472e2",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "ST25-004",
+      "printingCode": "ST25-004",
+      "locale": "EN",
+      "name": "Buggy",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "543a6cdcc6f8088d87ca0ecafe2fb666ad79ab002566d7a103ae3e19347568c6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "cabbe2cf27f8a4daef61890b5ca0b779209ff64f63392aec5128eba7135eb212",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "ST25-005",
+      "printingCode": "ST25-005",
+      "locale": "EN",
+      "name": "Mohji",
+      "type": "CHARACTER",
+      "color": "Blue",
+      "cost": 4,
+      "power": 1000,
+      "counter": 2000,
+      "effectHash": "b7da8cfa23b5b4e55b96ac842c6fc8e2857c423673113d90534735692dc153c8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "01c7b580ab95951d0b8fe86b64b635c842c4637a099939c435acb5f70cb295e4",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569025"
+    },
+    {
+      "cardNumber": "OP09-042",
+      "printingCode": "OP09-042_p2",
+      "locale": "FR",
+      "name": "Baggy",
+      "type": "LEADER",
+      "color": "Bleu",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "b6a4eb5df76ca968cbe8b0c7a0dcc3be573a5d0ee22f051069e8ee42a53d6d17",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "429fd9676a57d2dabf37bea703317fa2201aeeb0bfdc28d2e40b8ceae46f928c",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    },
+    {
+      "cardNumber": "OP09-043",
+      "printingCode": "OP09-043_r1",
+      "locale": "FR",
+      "name": "Alvida",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "5072d6a53cac39df09fc68d52aebdc8a678a5c219b67b205ad22602e32850932",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "01c7b580ab95951d0b8fe86b64b635c842c4637a099939c435acb5f70cb295e4",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    },
+    {
+      "cardNumber": "OP09-045",
+      "printingCode": "OP09-045_r1",
+      "locale": "FR",
+      "name": "Cabaji",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 5,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "d029d7dba4e634a58abfc9e4fc6e039e5976c742c1c6baedcc906ee0fcdb6ae0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "01c7b580ab95951d0b8fe86b64b635c842c4637a099939c435acb5f70cb295e4",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    },
+    {
+      "cardNumber": "OP09-051",
+      "printingCode": "OP09-051_r1",
+      "locale": "FR",
+      "name": "Baggy",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 10,
+      "power": 12000,
+      "counter": null,
+      "effectHash": "a0413b2d326285e2982d9234c2ab291fd5398d53c4080d1aa53ecf841bbf6340",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "429fd9676a57d2dabf37bea703317fa2201aeeb0bfdc28d2e40b8ceae46f928c",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    },
+    {
+      "cardNumber": "OP09-053",
+      "printingCode": "OP09-053_r1",
+      "locale": "FR",
+      "name": "Morge",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 5,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "0201d845c800c5db13ae36eddfa660863938772ba5c9c8f661038b2fd5b4ac2a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "01c7b580ab95951d0b8fe86b64b635c842c4637a099939c435acb5f70cb295e4",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    },
+    {
+      "cardNumber": "OP09-054",
+      "printingCode": "OP09-054_r1",
+      "locale": "FR",
+      "name": "Richie",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "5772216151a3f5bebce8ff0916e37126f0bdb738a70484bc0442dfac8461319a",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    },
+    {
+      "cardNumber": "OP09-055",
+      "printingCode": "OP09-055_r1",
+      "locale": "FR",
+      "name": "Mr 1 (Das Bones)",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 5,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "47c82d631290ec3bbfb3a117e0a4728169cd20cf9a300a729f5ed6fd47d77c75",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    },
+    {
+      "cardNumber": "OP09-056",
+      "printingCode": "OP09-056_r1",
+      "locale": "FR",
+      "name": "Mr 3 (Galdino)",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "12a5df527e9997391fb63ad0b0ac432d03904d0830f1b2191debfa5b6d6b879f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "47c82d631290ec3bbfb3a117e0a4728169cd20cf9a300a729f5ed6fd47d77c75",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    },
+    {
+      "cardNumber": "OP09-057",
+      "printingCode": "OP09-057_p1",
+      "locale": "FR",
+      "name": "Cross Guild",
+      "type": "EVENT",
+      "color": "Bleu",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "4a9ac491ac426bbb504e6a868e8b4134b8d60431422ea7b47b7d0b465698c297",
+      "triggerHash": "66ff632c15ca98e2cfcdc23ed3da90e1844f184c36533b89f32a10c00bd351ca",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "01c7b580ab95951d0b8fe86b64b635c842c4637a099939c435acb5f70cb295e4",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    },
+    {
+      "cardNumber": "P-084",
+      "printingCode": "P-084",
+      "locale": "FR",
+      "name": "Baggy",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "11e048a482ec2ee6addb891bd490ec3dd3e1eea0408e2926cfeb4de77b802845",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "429fd9676a57d2dabf37bea703317fa2201aeeb0bfdc28d2e40b8ceae46f928c",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    },
+    {
+      "cardNumber": "ST25-001",
+      "printingCode": "ST25-001",
+      "locale": "FR",
+      "name": "Alvida",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "a68bdaba36f3d375be1d4660eaa1c7d0bfbb60e28eba9173667d2bb2666debcf",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "01c7b580ab95951d0b8fe86b64b635c842c4637a099939c435acb5f70cb295e4",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    },
+    {
+      "cardNumber": "ST25-002",
+      "printingCode": "ST25-002",
+      "locale": "FR",
+      "name": "Cabaji",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 1000,
+      "counter": 2000,
+      "effectHash": "c5bed7210bfb849e0dcd494971af1e1be97df77a2a1bef62d660dd82407f27e0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "01c7b580ab95951d0b8fe86b64b635c842c4637a099939c435acb5f70cb295e4",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    },
+    {
+      "cardNumber": "ST25-003",
+      "printingCode": "ST25-003",
+      "locale": "FR",
+      "name": "Crocodile et Mihawk",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 8,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "1ae51f132f3277ddc826f0ca97bd3998cd2dd97dfaf48b32f8af5d63819deaaa",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "63bb619ae89f5c6aa76711bb049320a4670d0797a027651e72b7dbd2c6d4c365",
+      "familyHash": "47c82d631290ec3bbfb3a117e0a4728169cd20cf9a300a729f5ed6fd47d77c75",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    },
+    {
+      "cardNumber": "ST25-004",
+      "printingCode": "ST25-004",
+      "locale": "FR",
+      "name": "Baggy",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "7586b22f171437b9979e18d1077d525e1a6112c6ba677f3f9d4a481bb1d55e64",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "429fd9676a57d2dabf37bea703317fa2201aeeb0bfdc28d2e40b8ceae46f928c",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    },
+    {
+      "cardNumber": "ST25-005",
+      "printingCode": "ST25-005",
+      "locale": "FR",
+      "name": "Morge",
+      "type": "CHARACTER",
+      "color": "Bleu",
+      "cost": 4,
+      "power": 1000,
+      "counter": 2000,
+      "effectHash": "a6d6b35754bb4c85135b1789397e5f89efe885d7d0c70677e20b5cfff4fd1aa0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "01c7b580ab95951d0b8fe86b64b635c842c4637a099939c435acb5f70cb295e4",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622025"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "OP09-042",
+      "printingCode": "OP09-042_p2",
+      "name": "Baggy",
+      "type": "LEADER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP09-043",
+      "printingCode": "OP09-043_r1",
+      "name": "Alvida",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP09-045",
+      "printingCode": "OP09-045_r1",
+      "name": "Cabaji",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP09-051",
+      "printingCode": "OP09-051_r1",
+      "name": "Baggy",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP09-053",
+      "printingCode": "OP09-053_r1",
+      "name": "Morge",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP09-054",
+      "printingCode": "OP09-054_r1",
+      "name": "Richie",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP09-055",
+      "printingCode": "OP09-055_r1",
+      "name": "Mr 1 (Das Bones)",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP09-056",
+      "printingCode": "OP09-056_r1",
+      "name": "Mr 3 (Galdino)",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "OP09-057",
+      "printingCode": "OP09-057_p1",
+      "name": "Cross Guild",
+      "type": "EVENT",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "P-084",
+      "printingCode": "P-084",
+      "name": "Baggy",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST25-001",
+      "printingCode": "ST25-001",
+      "name": "Alvida",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST25-002",
+      "printingCode": "ST25-002",
+      "name": "Cabaji",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST25-003",
+      "printingCode": "ST25-003",
+      "name": "Crocodile et Mihawk",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST25-004",
+      "printingCode": "ST25-004",
+      "name": "Baggy",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    },
+    {
+      "cardNumber": "ST25-005",
+      "printingCode": "ST25-005",
+      "name": "Morge",
+      "type": "CHARACTER",
+      "color": "Bleu"
+    }
+  ]
+}

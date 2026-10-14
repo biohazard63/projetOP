@@ -1,0 +1,1079 @@
+{
+  "deckCode": "ST-32",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569032",
+      "status": "FETCHED",
+      "sha256": "1f9f046c9f988b6b82bdaaa9eadefdca36e4630e0e2ff83076c094fee499fe81",
+      "retrievedAt": "2026-10-14T07:27:15.069642+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st32-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st32-card-list/",
+      "status": "FETCHED",
+      "sha256": "91121963e2a70c6f5d2ba59c256f37da6ceb792bbc2249a919c3e26a5cec8bf4",
+      "retrievedAt": "2026-10-14T07:27:18.119572+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st32.html",
+      "status": "FETCHED",
+      "sha256": "babb048605bf6bee5d2253d283a9f1435dc536579adccd715c6edfc9d4251755",
+      "retrievedAt": "2026-10-14T07:27:21.308188+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st32-card-list/",
+      "status": "FETCHED",
+      "sha256": "91121963e2a70c6f5d2ba59c256f37da6ceb792bbc2249a919c3e26a5cec8bf4",
+      "retrievedAt": "2026-10-14T07:31:44.833946+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569032",
+      "status": "FETCHED",
+      "sha256": "1f9f046c9f988b6b82bdaaa9eadefdca36e4630e0e2ff83076c094fee499fe81",
+      "retrievedAt": "2026-10-14T07:31:46.182048+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569032",
+      "status": "FETCHED",
+      "sha256": "1f9f046c9f988b6b82bdaaa9eadefdca36e4630e0e2ff83076c094fee499fe81",
+      "retrievedAt": "2026-10-14T07:35:16.509365+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st32-card-list/",
+      "status": "FETCHED",
+      "sha256": "91121963e2a70c6f5d2ba59c256f37da6ceb792bbc2249a919c3e26a5cec8bf4",
+      "retrievedAt": "2026-10-14T07:35:18.145096+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550032",
+      "status": "FETCHED",
+      "sha256": "8d382c373fbd7679a67378b11858f2e7b3ba96f454d0f778a94121ce55ae1eac",
+      "retrievedAt": "2026-10-14T07:35:19.751106+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569032",
+      "status": "FETCHED",
+      "sha256": "1f9f046c9f988b6b82bdaaa9eadefdca36e4630e0e2ff83076c094fee499fe81",
+      "retrievedAt": "2026-10-14T07:53:08.148244+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622032",
+      "status": "FETCHED",
+      "sha256": "9fc00bfea7fe08dc106429339fdcf807d11371044acf06e3642593a3ee1af698",
+      "retrievedAt": "2026-10-14T07:53:09.499290+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-039",
+      "status": "FETCHED",
+      "sha256": "767a98ff0f5edb5f4e5f468eaa7826b0b8fc095d21d7f3c6495735e4f390be07",
+      "retrievedAt": "2026-10-14T08:02:22.650942+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-039",
+      "status": "FETCHED",
+      "sha256": "a70522d345f370581081bf976b7a4cc1d33713855e40623e44e2e10c94c2b8ab",
+      "retrievedAt": "2026-10-14T08:02:24.019662+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "OP10-036",
+      "printingCode": "OP10-036_r1",
+      "name": "Perona",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP12-020",
+      "printingCode": "OP12-020_p5",
+      "name": "Roronoa Zoro",
+      "type": "LEADER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP12-023",
+      "printingCode": "OP12-023_r1",
+      "name": "Kawamatsu",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP12-026",
+      "printingCode": "OP12-026_r1",
+      "name": "Kuina",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP12-027",
+      "printingCode": "OP12-027_r1",
+      "name": "Koushirou",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP12-028",
+      "printingCode": "OP12-028_r1",
+      "name": "Kouzuki Hiyori",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP12-031",
+      "printingCode": "OP12-031_r1",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP12-039",
+      "printingCode": "OP12-039_p2",
+      "name": "Luffy Is the Man Who Will Become the King of Pirates!!!",
+      "type": "EVENT",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "OP15-036",
+      "printingCode": "OP15-036_r1",
+      "name": "Ryuma",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST24-005",
+      "printingCode": "ST24-005_r1",
+      "name": "X.Drake",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST32-001",
+      "printingCode": "ST32-001",
+      "name": "Kin'emon",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST32-002",
+      "printingCode": "ST32-002",
+      "name": "Kouzuki Oden",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST32-003",
+      "printingCode": "ST32-003",
+      "name": "Dracule Mihawk",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST32-004",
+      "printingCode": "ST32-004",
+      "name": "Silvers Rayleigh",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST32-005",
+      "printingCode": "ST32-005",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Green"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "OP12-020",
+      "quantity": 1,
+      "sourceName": "ロロノア・ゾロ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    },
+    {
+      "cardNumber": "ST32-001",
+      "quantity": 4,
+      "sourceName": "錦えもん",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    },
+    {
+      "cardNumber": "ST32-002",
+      "quantity": 2,
+      "sourceName": "光月おでん",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    },
+    {
+      "cardNumber": "ST32-003",
+      "quantity": 2,
+      "sourceName": "ジュラキュール・ミホーク",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    },
+    {
+      "cardNumber": "ST32-004",
+      "quantity": 4,
+      "sourceName": "シルバーズ・レイリー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    },
+    {
+      "cardNumber": "ST32-005",
+      "quantity": 2,
+      "sourceName": "ロロノア・ゾロ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    },
+    {
+      "cardNumber": "OP10-036",
+      "quantity": 4,
+      "sourceName": "ペローナ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    },
+    {
+      "cardNumber": "OP10-036",
+      "quantity": 4,
+      "sourceName": "河松",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    },
+    {
+      "cardNumber": "OP12-026",
+      "quantity": 4,
+      "sourceName": "くいな",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    },
+    {
+      "cardNumber": "OP12-027",
+      "quantity": 4,
+      "sourceName": "コウシロウ",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    },
+    {
+      "cardNumber": "OP12-028",
+      "quantity": 4,
+      "sourceName": "光月日和",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    },
+    {
+      "cardNumber": "OP12-031",
+      "quantity": 4,
+      "sourceName": "たしぎ",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    },
+    {
+      "cardNumber": "OP15-036",
+      "quantity": 4,
+      "sourceName": "リューマ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    },
+    {
+      "cardNumber": "ST24-005",
+      "quantity": 4,
+      "sourceName": "X・ドレーク",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    },
+    {
+      "cardNumber": "OP12-039",
+      "quantity": 4,
+      "sourceName": "ルフィは海賊王になる男だ!!!",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st32-card-list/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -GREEN Roronoa Zoro- [ST-32] | ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -GREEN Roronoa Zoro- [ST-32]"
+  ],
+  "productContents": "Constructed Deck x 1 (51 cards), DON!! Card x 10, Playsheet x 1, BOOSTER PACK -THE TIME OF BATTLE- [OP-16]",
+  "productSource": "https://en.onepiece-cardgame.com/products/st32.html",
+  "officialDeckTitle": "STARTER DECK -GREEN Roronoa Zoro- [ST-32]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "OP10-036",
+      "printingCode": "OP10-036_r1",
+      "name": "ペローナ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP12-020",
+      "printingCode": "OP12-020_p4",
+      "name": "ロロノア・ゾロ",
+      "type": "LEADER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP12-023",
+      "printingCode": "OP12-023_r1",
+      "name": "河松",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP12-026",
+      "printingCode": "OP12-026_r1",
+      "name": "くいな",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP12-027",
+      "printingCode": "OP12-027_r1",
+      "name": "コウシロウ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP12-028",
+      "printingCode": "OP12-028_r1",
+      "name": "光月日和",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP12-031",
+      "printingCode": "OP12-031_r1",
+      "name": "たしぎ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP12-039",
+      "printingCode": "OP12-039_p1",
+      "name": "ルフィは海賊王になる男だ!!!",
+      "type": "EVENT",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "OP15-036",
+      "printingCode": "OP15-036_r1",
+      "name": "リューマ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST24-005",
+      "printingCode": "ST24-005_r1",
+      "name": "X・ドレーク",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST32-001",
+      "printingCode": "ST32-001",
+      "name": "錦えもん",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST32-002",
+      "printingCode": "ST32-002",
+      "name": "光月おでん",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST32-003",
+      "printingCode": "ST32-003",
+      "name": "ジュラキュール・ミホーク",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST32-004",
+      "printingCode": "ST32-004",
+      "name": "シルバーズ・レイリー",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST32-005",
+      "printingCode": "ST32-005",
+      "name": "ロロノア・ゾロ",
+      "type": "CHARACTER",
+      "color": "緑"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "OP10-036",
+      "printingCode": "OP10-036_r1",
+      "locale": "EN",
+      "name": "Perona",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "88e198d53f5705c2f573d4555794db05c133f1481788f271e3cae28d05bcd59f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "1786300bb94dfaebac97ed9a5207b43110c1ccb040d762311ded2a9926f8f886",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "OP12-020",
+      "printingCode": "OP12-020_p5",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "LEADER",
+      "color": "Green",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "cf28c93b738002434be867685a0b697a917d89d49320556cc100b191d2c00665",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "2be931d016362f5408d0cf2cde781be2709ee82713a9068714549c5e1e790d81",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "OP12-023",
+      "printingCode": "OP12-023_r1",
+      "locale": "EN",
+      "name": "Kawamatsu",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 5,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "a40edadbd4cf125c10ddcca29dfb871d02aef2fbd65fd4d9ea42e6c788546f04",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "OP12-026",
+      "printingCode": "OP12-026_r1",
+      "locale": "EN",
+      "name": "Kuina",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "49515655052e2797ea1212c28cbe8a889e8e43e2950d394289b56f0a49c28f4f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "ac76cb492d344d2d67d494d9b196d6303eaee4cc8e14e18009f4bd76738d3ccd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "OP12-027",
+      "printingCode": "OP12-027_r1",
+      "locale": "EN",
+      "name": "Koushirou",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "b35e527d4548f65b830c3bbb5949f13602012ec35b65a86f0482f018f31b9011",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "ac76cb492d344d2d67d494d9b196d6303eaee4cc8e14e18009f4bd76738d3ccd",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "OP12-028",
+      "printingCode": "OP12-028_r1",
+      "locale": "EN",
+      "name": "Kouzuki Hiyori",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 1,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "f0882edcaf2111e47b0f557d4c564b4c3cf357e07022e2a6638bbe012043ab76",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "61dbde3b5bfeb2ccd179da09acea61a5912016573c415c492499d13c57f6c034",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "OP12-031",
+      "printingCode": "OP12-031_r1",
+      "locale": "EN",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 5,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "1bda2d04255cecb2467d8cf7ab9bd5dcf769dcb0a0d0ccc65f6a41ba000eb5c7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "dae4a4fddb6f4c1469638a8f7f6dfbf5409727184ec31fb64bc4b1efea03f391",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "OP12-039",
+      "printingCode": "OP12-039_p2",
+      "locale": "EN",
+      "name": "Luffy Is the Man Who Will Become the King of Pirates!!!",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "2e9e51658f92ac9fa69ea827944645174218c74ecdd0ca2211cc7f34196a8653",
+      "triggerHash": "aa8c52259b5bf9ec91a7be2a84bc5115de843ce0b0ebd7d178be9c12e172de7e",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "OP15-036",
+      "printingCode": "OP15-036_r1",
+      "locale": "EN",
+      "name": "Ryuma",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "215051f8fbb9728d0b7b12a560fde41d7374842c038f0367842496ad6c7d590a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "26b5d953dbd21340bf878d7680c56c85b20c9b4281dfdcfe559631209463e9db",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "ST24-005",
+      "printingCode": "ST24-005_r1",
+      "locale": "EN",
+      "name": "X.Drake",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 5,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "4eccb72ebd391246e0c77c5789d8bbf00a533d8f7e82b93b6654b286c9a288e6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "fcb3c3c57ac92c34f0a4651bfdff8dc161e3982c534bba104c25e29f4519cb4c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "ST32-001",
+      "printingCode": "ST32-001",
+      "locale": "EN",
+      "name": "Kin'emon",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "67b6367b0425b9312e24ef237172b8fcf3315360946a931b1970bc875a3dd812",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "9b71652119a71307e4e21ae30aa9742411e427347337110104bdc1db4202c6d9",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "ST32-002",
+      "printingCode": "ST32-002",
+      "locale": "EN",
+      "name": "Kouzuki Oden",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "f712384be76bc3a90e44a5fcb9ae090b6cf360a1c4ead0f819c447d0b29b88cc",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "61dbde3b5bfeb2ccd179da09acea61a5912016573c415c492499d13c57f6c034",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "ST32-003",
+      "printingCode": "ST32-003",
+      "locale": "EN",
+      "name": "Dracule Mihawk",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 6,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "a404cafd2bd1d5ee8f7ddba6d770130fbca738469c42ddaa00000114acec6721",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5874a22f796d6c8fd4a14ac06257aa369f1b987cf7f9a52fd6f8b71b8a0840e4",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "ST32-004",
+      "printingCode": "ST32-004",
+      "locale": "EN",
+      "name": "Silvers Rayleigh",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "7cea5baa16e9249bf560bf2fbe109c8235ac7adc5665febd449334256a6f7f85",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "6287556ce358099b66c1d2d33a607fc20ae4403db36cfd70c6d1682f70e09c84",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "ST32-005",
+      "printingCode": "ST32-005",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 1,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "76f6bd3f1e6afe336db6e4bf764a3913f1863b4fc2e4e196f94498d608521c2e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "2be931d016362f5408d0cf2cde781be2709ee82713a9068714549c5e1e790d81",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569032"
+    },
+    {
+      "cardNumber": "OP10-036",
+      "printingCode": "OP10-036_r1",
+      "locale": "FR",
+      "name": "Perona",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "d6bb7f2d0199bea3b4d885ea28e2985755b3e73ff3d012847090a1b8f0645d02",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "c9f33942816aef8c2b247428d9b10288f1603514f2ea9725be01e2b04be68332",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "OP12-020",
+      "printingCode": "OP12-020_p3",
+      "locale": "FR",
+      "name": "Roronoa Zoro",
+      "type": "LEADER",
+      "color": "Vert",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "46d5ca0a9cba7452a3f1768509dd868f3b548b7fc0c6cb1747b3228c7fa35a4a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "1070a1e7480d27a6a2c17ceb20488c39156b95df1a0ede0dda9a5b95c0dd9eb0",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "OP12-023",
+      "printingCode": "OP12-023_r1",
+      "locale": "FR",
+      "name": "Kawamatsu",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 5,
+      "power": 6000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "438d0e163773876fbb52b606e996ab256c6e52243cbe710d78fac05a559a2eda",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "OP12-026",
+      "printingCode": "OP12-026_r1",
+      "locale": "FR",
+      "name": "Kuina",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 4,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "59aa081f3378f7df1dbd95cf7653048adeedb1e688bd6db3d4d00b3395bbd6e2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "51fe031509722097b36efd31ca1099ebb398b9dadc5e92cd9bfb4cb795b78979",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "OP12-027",
+      "printingCode": "OP12-027_r1",
+      "locale": "FR",
+      "name": "Koshiro",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "0c2279af5e1ab5ceb7b0cf243db033dbd8cdc21ef9bc5e90627428756bd4c5c7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "51fe031509722097b36efd31ca1099ebb398b9dadc5e92cd9bfb4cb795b78979",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "OP12-028",
+      "printingCode": "OP12-028_r1",
+      "locale": "FR",
+      "name": "Hiyori Kozuki",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 1,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "a95dee090a1e56d9f622582b21fde5e9596d573fb0e0fc83a55ec18ab24ce66f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "dfb1ae48c0f83e9222761cce6ddfe72ea273b9f00356bf3d8f99139c114e352d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "OP12-031",
+      "printingCode": "OP12-031_r1",
+      "locale": "FR",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 5,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "fb57c0810088fca6e55bb7427cd0725bc02c3d99724c8712c31eae414bbf5c56",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "21e1dfd3d39b89fab02965fd15232bd267cbe1f03a9e66a4b002a6fe7edfa6d9",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "OP12-039",
+      "printingCode": "OP12-039_p1",
+      "locale": "FR",
+      "name": "Luffy deviendra un jour le roi des pirates !!",
+      "type": "EVENT",
+      "color": "Vert",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "fae34cf520e95da503e23607ea4e2ba4c6d04423a3c22d7f3459dc12da139678",
+      "triggerHash": "16e45a000271e269399109121ed0b53e72e9e639ad1312006e63de70ae00ffbf",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "OP15-036",
+      "printingCode": "OP15-036_r1",
+      "locale": "FR",
+      "name": "Ryuma",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 6,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "d73a7eeef523d244f10387b835d059ccea7d49fe0b84fce0df69cfd9d7c68a5d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "f4bf1f9ac652b3fd1b18916750b40fff328e66d07f8ef5f1726ed5e94529a496",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "ST24-005",
+      "printingCode": "ST24-005_r1",
+      "locale": "FR",
+      "name": "X-Drake",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 5,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "e927667ae4ac7bcfce720fb6703afafad042af57fc94610fee76d95db90bb617",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "25826b76bd1762cf68461c6edb8e006b8505869493176858d916f051bc1d74b1",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "ST32-001",
+      "printingCode": "ST32-001",
+      "locale": "FR",
+      "name": "Kinémon",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "38dda55da54121b7d65b8576ae38f1c537df2d4e5319e62fe0aedf8d23d4a60a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "f15c673138c3ab63790c6d8287c669667439da11f6eceec6e437e6fe0588c067",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "ST32-002",
+      "printingCode": "ST32-002",
+      "locale": "FR",
+      "name": "Oden Kozuki",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "f9e4e9ab6e7f3595411e4dcaebf6a9feba1018a9d69912b15326a72186662c12",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "dfb1ae48c0f83e9222761cce6ddfe72ea273b9f00356bf3d8f99139c114e352d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "ST32-003",
+      "printingCode": "ST32-003",
+      "locale": "FR",
+      "name": "Dracule Mihawk",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 6,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "8b476def9abba17a680e32d6fe36a0d6186cd14044fd3c518b4d4f83e9dcdee9",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "48ccee2493d23a5873ee4b6e5a2e91bd0d7b05ef74e51251e4a85104662f9a42",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "ST32-004",
+      "printingCode": "ST32-004",
+      "locale": "FR",
+      "name": "Silvers Rayleigh",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "dc9f9d27cb89060d7cd4662f1aa34729570f9433f17881da9c1d96685f78aa46",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "c897d16bee4a12af2c7af44bb793cac637552bbd0a45a4331a7812e9085774c3",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "ST32-005",
+      "printingCode": "ST32-005",
+      "locale": "FR",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 1,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "c286ca52fae5c21efeb282af6a89149a4af5a9be91240d765ef85d1b7ede18ea",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "1070a1e7480d27a6a2c17ceb20488c39156b95df1a0ede0dda9a5b95c0dd9eb0",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622032"
+    },
+    {
+      "cardNumber": "OP12-039",
+      "printingCode": "OP12-039",
+      "locale": "EN",
+      "name": "Luffy Is the Man Who Will Become the King of Pirates!!!",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "2e9e51658f92ac9fa69ea827944645174218c74ecdd0ca2211cc7f34196a8653",
+      "triggerHash": "aa8c52259b5bf9ec91a7be2a84bc5115de843ce0b0ebd7d178be9c12e172de7e",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-039"
+    },
+    {
+      "cardNumber": "OP12-039",
+      "printingCode": "OP12-039_p1",
+      "locale": "EN",
+      "name": "Luffy Is the Man Who Will Become the King of Pirates!!!",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "2e9e51658f92ac9fa69ea827944645174218c74ecdd0ca2211cc7f34196a8653",
+      "triggerHash": "aa8c52259b5bf9ec91a7be2a84bc5115de843ce0b0ebd7d178be9c12e172de7e",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-039"
+    },
+    {
+      "cardNumber": "OP12-039",
+      "printingCode": "OP12-039_p2",
+      "locale": "EN",
+      "name": "Luffy Is the Man Who Will Become the King of Pirates!!!",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "2e9e51658f92ac9fa69ea827944645174218c74ecdd0ca2211cc7f34196a8653",
+      "triggerHash": "aa8c52259b5bf9ec91a7be2a84bc5115de843ce0b0ebd7d178be9c12e172de7e",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-039"
+    },
+    {
+      "cardNumber": "OP12-039",
+      "printingCode": "OP12-039",
+      "locale": "FR",
+      "name": "Luffy deviendra un jour le roi des pirates !!",
+      "type": "EVENT",
+      "color": "Vert",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "fae34cf520e95da503e23607ea4e2ba4c6d04423a3c22d7f3459dc12da139678",
+      "triggerHash": "16e45a000271e269399109121ed0b53e72e9e639ad1312006e63de70ae00ffbf",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-039"
+    },
+    {
+      "cardNumber": "OP12-039",
+      "printingCode": "OP12-039_p1",
+      "locale": "FR",
+      "name": "Luffy deviendra un jour le roi des pirates !!",
+      "type": "EVENT",
+      "color": "Vert",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "fae34cf520e95da503e23607ea4e2ba4c6d04423a3c22d7f3459dc12da139678",
+      "triggerHash": "16e45a000271e269399109121ed0b53e72e9e639ad1312006e63de70ae00ffbf",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=OP12-039"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "OP10-036",
+      "printingCode": "OP10-036_r1",
+      "name": "Perona",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "OP12-020",
+      "printingCode": "OP12-020_p3",
+      "name": "Roronoa Zoro",
+      "type": "LEADER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "OP12-023",
+      "printingCode": "OP12-023_r1",
+      "name": "Kawamatsu",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "OP12-026",
+      "printingCode": "OP12-026_r1",
+      "name": "Kuina",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "OP12-027",
+      "printingCode": "OP12-027_r1",
+      "name": "Koshiro",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "OP12-028",
+      "printingCode": "OP12-028_r1",
+      "name": "Hiyori Kozuki",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "OP12-031",
+      "printingCode": "OP12-031_r1",
+      "name": "Tashigi",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "OP12-039",
+      "printingCode": "OP12-039_p1",
+      "name": "Luffy deviendra un jour le roi des pirates !!",
+      "type": "EVENT",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "OP15-036",
+      "printingCode": "OP15-036_r1",
+      "name": "Ryuma",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST24-005",
+      "printingCode": "ST24-005_r1",
+      "name": "X-Drake",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST32-001",
+      "printingCode": "ST32-001",
+      "name": "Kinémon",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST32-002",
+      "printingCode": "ST32-002",
+      "name": "Oden Kozuki",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST32-003",
+      "printingCode": "ST32-003",
+      "name": "Dracule Mihawk",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST32-004",
+      "printingCode": "ST32-004",
+      "name": "Silvers Rayleigh",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST32-005",
+      "printingCode": "ST32-005",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Vert"
+    }
+  ]
+}

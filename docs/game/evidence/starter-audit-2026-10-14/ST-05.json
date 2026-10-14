@@ -1,0 +1,747 @@
+{
+  "deckCode": "ST-05",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569005",
+      "status": "FETCHED",
+      "sha256": "b871971f0691e5ae1fdcd37d3207a9712d0bfb4f8b347309fde25d22053a902e",
+      "retrievedAt": "2026-10-14T07:26:38.319601+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st05-cardlists/",
+      "status": "FETCHED",
+      "sha256": "836dec13c7a1521f0a3ca575405a8dd645d13658e9658d9fe6df32ab1f1a2b43",
+      "retrievedAt": "2026-10-14T07:26:40.562934+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st05.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st05.php",
+      "status": "FETCHED",
+      "sha256": "69af97f0aff887b0f5167f2f2a1e00f3f8f13c13ab9db0afe33d7e4a2563e37e",
+      "retrievedAt": "2026-10-14T07:26:43.349572+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st05-cardlists/",
+      "status": "FETCHED",
+      "sha256": "836dec13c7a1521f0a3ca575405a8dd645d13658e9658d9fe6df32ab1f1a2b43",
+      "retrievedAt": "2026-10-14T07:31:22.253542+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569005",
+      "status": "FETCHED",
+      "sha256": "b871971f0691e5ae1fdcd37d3207a9712d0bfb4f8b347309fde25d22053a902e",
+      "retrievedAt": "2026-10-14T07:31:23.604618+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569005",
+      "status": "FETCHED",
+      "sha256": "b871971f0691e5ae1fdcd37d3207a9712d0bfb4f8b347309fde25d22053a902e",
+      "retrievedAt": "2026-10-14T07:34:51.966936+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st05-cardlists/",
+      "status": "FETCHED",
+      "sha256": "836dec13c7a1521f0a3ca575405a8dd645d13658e9658d9fe6df32ab1f1a2b43",
+      "retrievedAt": "2026-10-14T07:34:54.274463+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550005",
+      "status": "FETCHED",
+      "sha256": "271b05b9144dde9eeab3e629c2da9a8e9697ad92e76cad1481450ae60dee8c1b",
+      "retrievedAt": "2026-10-14T07:34:56.388328+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05",
+      "status": "FETCHED",
+      "sha256": "b19677f00659958ddf05bbd856fdd8ce6939f5ff12085797d702aa07b2106baa",
+      "retrievedAt": "2026-10-14T07:52:54.001921+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05",
+      "status": "FETCHED",
+      "sha256": "b6684c492f7f90875fb882ab8d0acdb0f78c55a8ff6c2187f605b1f8caca2db2",
+      "retrievedAt": "2026-10-14T07:52:55.342835+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "ST05-001",
+      "printingCode": "ST05-001",
+      "name": "Shanks",
+      "type": "LEADER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-002",
+      "printingCode": "ST05-002",
+      "name": "Ain",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-003",
+      "printingCode": "ST05-003",
+      "name": "Ann",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-004",
+      "printingCode": "ST05-004",
+      "name": "Uta",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-005",
+      "printingCode": "ST05-005",
+      "name": "Carina",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-006",
+      "printingCode": "ST05-006",
+      "name": "Gild Tesoro",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-007",
+      "printingCode": "ST05-007",
+      "name": "Gordon",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-008",
+      "printingCode": "ST05-008",
+      "name": "Shiki",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-009",
+      "printingCode": "ST05-009",
+      "name": "Scarlet",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-010",
+      "printingCode": "ST05-010",
+      "name": "Zephyr",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-011",
+      "printingCode": "ST05-011",
+      "name": "Douglas Bullet",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-012",
+      "printingCode": "ST05-012",
+      "name": "Baccarat",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-013",
+      "printingCode": "ST05-013",
+      "name": "Bins",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-014",
+      "printingCode": "ST05-014",
+      "name": "Buena Festa",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-015",
+      "printingCode": "ST05-015",
+      "name": "Dr. Indigo",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-016",
+      "printingCode": "ST05-016",
+      "name": "Lion's Threat Imperial Earth Bind",
+      "type": "EVENT",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST05-017",
+      "printingCode": "ST05-017",
+      "name": "Union Armada",
+      "type": "EVENT",
+      "color": "Purple"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST05-001",
+      "quantity": 1,
+      "sourceName": "シャンクス",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST05-002",
+      "quantity": 4,
+      "sourceName": "アイン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST05-003",
+      "quantity": 4,
+      "sourceName": "アン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST05-004",
+      "quantity": 2,
+      "sourceName": "ウタ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST05-005",
+      "quantity": 2,
+      "sourceName": "カリーナ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST05-006",
+      "quantity": 2,
+      "sourceName": "ギルド・テゾーロ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST05-007",
+      "quantity": 4,
+      "sourceName": "ゴードン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST05-008",
+      "quantity": 2,
+      "sourceName": "シキ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST05-009",
+      "quantity": 4,
+      "sourceName": "スカーレット",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST05-010",
+      "quantity": 2,
+      "sourceName": "ゼット",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-011",
+      "quantity": 2,
+      "sourceName": "ダグラス・バレット",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST05-012",
+      "quantity": 4,
+      "sourceName": "バカラ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST06-013",
+      "quantity": 4,
+      "sourceName": "ビンズ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST05-014",
+      "quantity": 4,
+      "sourceName": "ブエナ・フェスタ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST05-015",
+      "quantity": 4,
+      "sourceName": "Dr.インディゴ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST05-016",
+      "quantity": 2,
+      "sourceName": "獅子威し御所地巻き",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    },
+    {
+      "cardNumber": "ST05-017",
+      "quantity": 4,
+      "sourceName": "鎧合体",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st05-cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK ONE PIECE FILM edition − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK ONE PIECE FILM edition"
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) \r\n                   ・DON!! Cards x 10 \r\n                   ・Index x 3",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st05.php",
+  "officialDeckTitle": "STARTER DECK -ONE PIECE FILM edition- [ST-05]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "ST05-001",
+      "printingCode": "ST05-001",
+      "name": "シャンクス",
+      "type": "LEADER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-002",
+      "printingCode": "ST05-002",
+      "name": "アイン",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-003",
+      "printingCode": "ST05-003",
+      "name": "アン",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-004",
+      "printingCode": "ST05-004",
+      "name": "ウタ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-005",
+      "printingCode": "ST05-005",
+      "name": "カリーナ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-006",
+      "printingCode": "ST05-006",
+      "name": "ギルド・テゾーロ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-007",
+      "printingCode": "ST05-007",
+      "name": "ゴードン",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-008",
+      "printingCode": "ST05-008",
+      "name": "シキ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-009",
+      "printingCode": "ST05-009",
+      "name": "スカーレット",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-010",
+      "printingCode": "ST05-010",
+      "name": "ゼット",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-011",
+      "printingCode": "ST05-011",
+      "name": "ダグラス・バレット",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-012",
+      "printingCode": "ST05-012",
+      "name": "バカラ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-013",
+      "printingCode": "ST05-013",
+      "name": "ビンズ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-014",
+      "printingCode": "ST05-014",
+      "name": "ブエナ・フェスタ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-015",
+      "printingCode": "ST05-015",
+      "name": "Dr.インディゴ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-016",
+      "printingCode": "ST05-016",
+      "name": "獅子威し御所地巻き",
+      "type": "EVENT",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST05-017",
+      "printingCode": "ST05-017",
+      "name": "鎧合体",
+      "type": "EVENT",
+      "color": "紫"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST05-001",
+      "printingCode": "ST05-001",
+      "locale": "EN",
+      "name": "Shanks",
+      "type": "LEADER",
+      "color": "Purple",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "121fea299ff95ad86a31e66585ed292b4cf20f3725f5d366dab16c55123f1807",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "e8d8ad293471ce1803087f85e1ed2091f3a2c4fa1aa476021a9f54601a96a07d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-002",
+      "printingCode": "ST05-002",
+      "locale": "EN",
+      "name": "Ain",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "f7834fad3640a70c1f51d28c30a4429282c9bd82dfd1a79d3b3360c20f17e78a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "07073d9b9d7ed34d4b51f63ea4cfe18dd9879b2c48a6363090e0e9b565e51757",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-002",
+      "printingCode": "ST05-002_p1",
+      "locale": "EN",
+      "name": "Ain",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "f7834fad3640a70c1f51d28c30a4429282c9bd82dfd1a79d3b3360c20f17e78a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "07073d9b9d7ed34d4b51f63ea4cfe18dd9879b2c48a6363090e0e9b565e51757",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-003",
+      "printingCode": "ST05-003",
+      "locale": "EN",
+      "name": "Ann",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 2,
+      "power": 3000,
+      "counter": null,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "88dd27a8e6b750237c2cf7948c1af6c22885264317734a200b1117c5275526e1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-004",
+      "printingCode": "ST05-004",
+      "locale": "EN",
+      "name": "Uta",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "cff39dd6658f9cd3bd36841515d712943641ec2eb21dde3e10b33d3bdb8c5e8f",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "da9d4f1a96d44b29aba8fb37cb8058642902fe838398294f6ec66573849a6c9d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-005",
+      "printingCode": "ST05-005",
+      "locale": "EN",
+      "name": "Carina",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "a79c9f1af109cdeab434875c414155d554dcc37282b814cd96aa96e8933bf571",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "720b56067a294eb76a38efca0e80d45e87b07b23c93fef8ff0736d648e6918b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-006",
+      "printingCode": "ST05-006",
+      "locale": "EN",
+      "name": "Gild Tesoro",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "bccc2e40a46ff6a7627f0fe29b63b6b0a78470ec712abb9f6efc8720e74925ba",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "720b56067a294eb76a38efca0e80d45e87b07b23c93fef8ff0736d648e6918b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-007",
+      "printingCode": "ST05-007",
+      "locale": "EN",
+      "name": "Gordon",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 1,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "da9d4f1a96d44b29aba8fb37cb8058642902fe838398294f6ec66573849a6c9d",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-008",
+      "printingCode": "ST05-008",
+      "locale": "EN",
+      "name": "Shiki",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 6,
+      "power": 7000,
+      "counter": 1000,
+      "effectHash": "e14527228146d4d39e259b3e31d4988a0544a07949a85889ce511ea5684a162d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "551b206cf9630a6438088c6690b970a23131a99164d70012507b2cba39ff8d8f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-009",
+      "printingCode": "ST05-009",
+      "locale": "EN",
+      "name": "Scarlet",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "444b900afb7707ec8198b01e8fa904ce34463b6c6037421b797d59ba821ce074",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-010",
+      "printingCode": "ST05-010",
+      "locale": "EN",
+      "name": "Zephyr",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "bef91a011f8bc3b6298f6fe3126ffd2adf90010df828ff091782aea26b43aff0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "07073d9b9d7ed34d4b51f63ea4cfe18dd9879b2c48a6363090e0e9b565e51757",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-011",
+      "printingCode": "ST05-011",
+      "locale": "EN",
+      "name": "Douglas Bullet",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 8,
+      "power": 10000,
+      "counter": null,
+      "effectHash": "0b34bc3e43dfc85890567652ac42cb82ed1ef660241e8db55f094160f7591aa7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "88dd27a8e6b750237c2cf7948c1af6c22885264317734a200b1117c5275526e1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-012",
+      "printingCode": "ST05-012",
+      "locale": "EN",
+      "name": "Baccarat",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "720b56067a294eb76a38efca0e80d45e87b07b23c93fef8ff0736d648e6918b1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-013",
+      "printingCode": "ST05-013",
+      "locale": "EN",
+      "name": "Bins",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "07073d9b9d7ed34d4b51f63ea4cfe18dd9879b2c48a6363090e0e9b565e51757",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-014",
+      "printingCode": "ST05-014",
+      "locale": "EN",
+      "name": "Buena Festa",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 1,
+      "power": null,
+      "counter": 2000,
+      "effectHash": "8206fc763a650faab9767bbb6aace196d889df5c88c72bbcb50e85fb05a4d9a4",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "88dd27a8e6b750237c2cf7948c1af6c22885264317734a200b1117c5275526e1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-014",
+      "printingCode": "ST05-014_p1",
+      "locale": "EN",
+      "name": "Buena Festa",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 1,
+      "power": null,
+      "counter": 2000,
+      "effectHash": "8206fc763a650faab9767bbb6aace196d889df5c88c72bbcb50e85fb05a4d9a4",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "88dd27a8e6b750237c2cf7948c1af6c22885264317734a200b1117c5275526e1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-015",
+      "printingCode": "ST05-015",
+      "locale": "EN",
+      "name": "Dr. Indigo",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "849903d8ff62c8e1a5072e1ee3bf84ef5520885a8763c03b7b933ae2a0c36400",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-016",
+      "printingCode": "ST05-016",
+      "locale": "EN",
+      "name": "Lion's Threat Imperial Earth Bind",
+      "type": "EVENT",
+      "color": "Purple",
+      "cost": 3,
+      "power": null,
+      "counter": null,
+      "effectHash": "f192f867137917673094751086f8225df3889fc35dd309baa009c185d5789f62",
+      "triggerHash": "819578c59ec0945fd64b92c8171b57a5b209fa1826f8b1c4d49da6283187f005",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "551b206cf9630a6438088c6690b970a23131a99164d70012507b2cba39ff8d8f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    },
+    {
+      "cardNumber": "ST05-017",
+      "printingCode": "ST05-017",
+      "locale": "EN",
+      "name": "Union Armada",
+      "type": "EVENT",
+      "color": "Purple",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "aebc381fde666c374ebbd843f523ea02ba41e6602c69dd2d595c2adf71256177",
+      "triggerHash": "819578c59ec0945fd64b92c8171b57a5b209fa1826f8b1c4d49da6283187f005",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "88dd27a8e6b750237c2cf7948c1af6c22885264317734a200b1117c5275526e1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST05"
+    }
+  ],
+  "officialFrenchCards": []
+}

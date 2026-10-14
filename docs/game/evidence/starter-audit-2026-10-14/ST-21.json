@@ -1,0 +1,1906 @@
+{
+  "deckCode": "ST-21",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569021",
+      "status": "FETCHED",
+      "sha256": "16a02c0e68c23c100033241ff5845ca4ca890f90a3bf887f57f189398f294e8b",
+      "retrievedAt": "2026-10-14T07:27:02.245119+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st21-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st21-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st21.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st21.php",
+      "status": "FETCHED",
+      "sha256": "f9c1e15277ccb1277882865cd69083e1c27fadbb52c78127971e666f7291715e",
+      "retrievedAt": "2026-10-14T07:27:07.122995+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st21_cardlists/",
+      "status": "FETCHED",
+      "sha256": "bb765137d1d4dd05de9f92058f5489749c0e8cd2794c9835c455dd3972a5fb72",
+      "retrievedAt": "2026-10-14T07:31:37.389818+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569021",
+      "status": "FETCHED",
+      "sha256": "16a02c0e68c23c100033241ff5845ca4ca890f90a3bf887f57f189398f294e8b",
+      "retrievedAt": "2026-10-14T07:31:39.408723+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569021",
+      "status": "FETCHED",
+      "sha256": "16a02c0e68c23c100033241ff5845ca4ca890f90a3bf887f57f189398f294e8b",
+      "retrievedAt": "2026-10-14T07:35:07.712833+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st21_cardlists/",
+      "status": "FETCHED",
+      "sha256": "bb765137d1d4dd05de9f92058f5489749c0e8cd2794c9835c455dd3972a5fb72",
+      "retrievedAt": "2026-10-14T07:35:09.400872+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550021",
+      "status": "FETCHED",
+      "sha256": "467b9516e38b35e55f8e9d0a17da6706c2e630504ad8f95e90e6311a164a33f8",
+      "retrievedAt": "2026-10-14T07:35:11.812632+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569021",
+      "status": "FETCHED",
+      "sha256": "16a02c0e68c23c100033241ff5845ca4ca890f90a3bf887f57f189398f294e8b",
+      "retrievedAt": "2026-10-14T07:53:03.195565+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622021",
+      "status": "FETCHED",
+      "sha256": "1bb89af119ae5d5aa40a0b530119d79c517ccee16cdeb4b8f45b6c4feaa65e7a",
+      "retrievedAt": "2026-10-14T07:53:04.846416+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "ST21-001",
+      "printingCode": "ST21-001",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-001",
+      "printingCode": "ST21-001_p1",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-002",
+      "printingCode": "ST21-002",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-002",
+      "printingCode": "ST21-002_p1",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-003",
+      "printingCode": "ST21-003",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-003",
+      "printingCode": "ST21-003_p1",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-004",
+      "printingCode": "ST21-004",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-004",
+      "printingCode": "ST21-004_p1",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-005",
+      "printingCode": "ST21-005",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-005",
+      "printingCode": "ST21-005_p1",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-006",
+      "printingCode": "ST21-006",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-006",
+      "printingCode": "ST21-006_p1",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-007",
+      "printingCode": "ST21-007",
+      "name": "Sentomaru",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-007",
+      "printingCode": "ST21-007_p1",
+      "name": "Sentomaru",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-008",
+      "printingCode": "ST21-008",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-008",
+      "printingCode": "ST21-008_p1",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-009",
+      "printingCode": "ST21-009",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-009",
+      "printingCode": "ST21-009_p1",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-010",
+      "printingCode": "ST21-010",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-010",
+      "printingCode": "ST21-010_p1",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-011",
+      "printingCode": "ST21-011",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-011",
+      "printingCode": "ST21-011_p1",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-012",
+      "printingCode": "ST21-012",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-012",
+      "printingCode": "ST21-012_p1",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-013",
+      "printingCode": "ST21-013",
+      "name": "Vegapunk",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-013",
+      "printingCode": "ST21-013_p1",
+      "name": "Vegapunk",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-014",
+      "printingCode": "ST21-014",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-014",
+      "printingCode": "ST21-014_p1",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-015",
+      "printingCode": "ST21-015",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-015",
+      "printingCode": "ST21-015_p1",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-016",
+      "printingCode": "ST21-016",
+      "name": "Gum-Gum Dawn Whip",
+      "type": "EVENT",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST21-017",
+      "printingCode": "ST21-017",
+      "name": "Gum-Gum Mole Pistol",
+      "type": "EVENT",
+      "color": "Red"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST21-001",
+      "quantity": 1,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-002",
+      "quantity": 2,
+      "sourceName": "ウソップ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-003",
+      "quantity": 2,
+      "sourceName": "サンジ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-004",
+      "quantity": 4,
+      "sourceName": "ジュエリー・ボニー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-005",
+      "quantity": 4,
+      "sourceName": "ジンベエ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-006",
+      "quantity": 4,
+      "sourceName": "ステューシー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-007",
+      "quantity": 4,
+      "sourceName": "戦桃丸",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-008",
+      "quantity": 4,
+      "sourceName": "トニートニー・チョッパー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-009",
+      "quantity": 4,
+      "sourceName": "ナミ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-010",
+      "quantity": 2,
+      "sourceName": "ニコ・ロビン",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-011",
+      "quantity": 4,
+      "sourceName": "フランキー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-012",
+      "quantity": 4,
+      "sourceName": "ブルック",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-013",
+      "quantity": 4,
+      "sourceName": "ベガパンク",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-014",
+      "quantity": 2,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-015",
+      "quantity": 2,
+      "sourceName": "ロロノア・ゾロ",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-016",
+      "quantity": 2,
+      "sourceName": "ゴムゴムの白い鞭",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    },
+    {
+      "cardNumber": "ST21-017",
+      "quantity": 2,
+      "sourceName": "ゴムゴムのモグラ銃",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st21_cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK EX -GEAR5- − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK EX -GEAR5-"
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) \r\n                   ・DON!! Card x 10 \r\n                   ・Playsheet x 1 \r\n                   ・Sleeve x 70 (1 type) \r\n                   ・Bonus Pack x 1 (3 cards, 15 types in total)",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st21.php",
+  "officialDeckTitle": "STARTER DECK EX -GEAR5- [ST-21]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "ST21-001",
+      "printingCode": "ST21-001",
+      "name": "モンキー・D・ルフィ",
+      "type": "LEADER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-001",
+      "printingCode": "ST21-001_p1",
+      "name": "モンキー・D・ルフィ",
+      "type": "LEADER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-002",
+      "printingCode": "ST21-002",
+      "name": "ウソップ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-002",
+      "printingCode": "ST21-002_p1",
+      "name": "ウソップ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-003",
+      "printingCode": "ST21-003",
+      "name": "サンジ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-003",
+      "printingCode": "ST21-003_p1",
+      "name": "サンジ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-004",
+      "printingCode": "ST21-004",
+      "name": "ジュエリー・ボニー",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-004",
+      "printingCode": "ST21-004_p1",
+      "name": "ジュエリー・ボニー",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-005",
+      "printingCode": "ST21-005",
+      "name": "ジンベエ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-005",
+      "printingCode": "ST21-005_p1",
+      "name": "ジンベエ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-006",
+      "printingCode": "ST21-006",
+      "name": "ステューシー",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-006",
+      "printingCode": "ST21-006_p1",
+      "name": "ステューシー",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-007",
+      "printingCode": "ST21-007",
+      "name": "戦桃丸",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-007",
+      "printingCode": "ST21-007_p1",
+      "name": "戦桃丸",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-008",
+      "printingCode": "ST21-008",
+      "name": "トニートニー・チョッパー",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-008",
+      "printingCode": "ST21-008_p1",
+      "name": "トニートニー・チョッパー",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-009",
+      "printingCode": "ST21-009",
+      "name": "ナミ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-009",
+      "printingCode": "ST21-009_p1",
+      "name": "ナミ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-010",
+      "printingCode": "ST21-010",
+      "name": "ニコ・ロビン",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-010",
+      "printingCode": "ST21-010_p1",
+      "name": "ニコ・ロビン",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-011",
+      "printingCode": "ST21-011",
+      "name": "フランキー",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-011",
+      "printingCode": "ST21-011_p1",
+      "name": "フランキー",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-012",
+      "printingCode": "ST21-012",
+      "name": "ブルック",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-012",
+      "printingCode": "ST21-012_p1",
+      "name": "ブルック",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-013",
+      "printingCode": "ST21-013",
+      "name": "ベガパンク",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-013",
+      "printingCode": "ST21-013_p1",
+      "name": "ベガパンク",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-014",
+      "printingCode": "ST21-014",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-014",
+      "printingCode": "ST21-014_p1",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-015",
+      "printingCode": "ST21-015",
+      "name": "ロロノア・ゾロ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-015",
+      "printingCode": "ST21-015_p1",
+      "name": "ロロノア・ゾロ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-016",
+      "printingCode": "ST21-016",
+      "name": "ゴムゴムの白い鞭",
+      "type": "EVENT",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST21-017",
+      "printingCode": "ST21-017",
+      "name": "ゴムゴムのモグラ銃",
+      "type": "EVENT",
+      "color": "赤"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST21-001",
+      "printingCode": "ST21-001",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Red",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "41f14dac8f2ddd52894918158e8e2c24c5660b884c3a4246f36691576af58b9e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "67a1ebcf86dfc715480383380198c3dfbd08f5129835a59b7f5b039de2a8c0ba",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-001",
+      "printingCode": "ST21-001_p1",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Red",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "41f14dac8f2ddd52894918158e8e2c24c5660b884c3a4246f36691576af58b9e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "67a1ebcf86dfc715480383380198c3dfbd08f5129835a59b7f5b039de2a8c0ba",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-002",
+      "printingCode": "ST21-002",
+      "locale": "EN",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "36249001d8df15895eeb868fbd3f1c5486566b82c33cbe1fac644f74a97843ae",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-002",
+      "printingCode": "ST21-002_p1",
+      "locale": "EN",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "36249001d8df15895eeb868fbd3f1c5486566b82c33cbe1fac644f74a97843ae",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-003",
+      "printingCode": "ST21-003",
+      "locale": "EN",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "a20c33cf288b3e769434fbf6e3a6a9f42d94aee227b7821bca6652ccc856afd1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-003",
+      "printingCode": "ST21-003_p1",
+      "locale": "EN",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "a20c33cf288b3e769434fbf6e3a6a9f42d94aee227b7821bca6652ccc856afd1",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-004",
+      "printingCode": "ST21-004",
+      "locale": "EN",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 1,
+      "power": 3000,
+      "counter": null,
+      "effectHash": "46cbe78d8c02568579ed92564107d4e4d9bbe11bccb8517f8bfc9c59ad3974b6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "0df7868efec652155bf420986e64b5c26ed4a967d5c68acd84f6495df942b732",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-004",
+      "printingCode": "ST21-004_p1",
+      "locale": "EN",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 1,
+      "power": 3000,
+      "counter": null,
+      "effectHash": "46cbe78d8c02568579ed92564107d4e4d9bbe11bccb8517f8bfc9c59ad3974b6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "0df7868efec652155bf420986e64b5c26ed4a967d5c68acd84f6495df942b732",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-005",
+      "printingCode": "ST21-005",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "cca8486c05c288e7608e217b3f87170e165ab1838432d757e767e0e645a97a40",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-005",
+      "printingCode": "ST21-005_p1",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "cca8486c05c288e7608e217b3f87170e165ab1838432d757e767e0e645a97a40",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-006",
+      "printingCode": "ST21-006",
+      "locale": "EN",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "d1ee71a224b59a6ead86e0e778746819c8e2dcd4aefc996aec72beb5cdf04534",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-006",
+      "printingCode": "ST21-006_p1",
+      "locale": "EN",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "d1ee71a224b59a6ead86e0e778746819c8e2dcd4aefc996aec72beb5cdf04534",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-007",
+      "printingCode": "ST21-007",
+      "locale": "EN",
+      "name": "Sentomaru",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "9c4720d86eb40b92a77a8e271d86216bee9f63618c1727eb79c4491e3489eed5",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-007",
+      "printingCode": "ST21-007_p1",
+      "locale": "EN",
+      "name": "Sentomaru",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "9c4720d86eb40b92a77a8e271d86216bee9f63618c1727eb79c4491e3489eed5",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-008",
+      "printingCode": "ST21-008",
+      "locale": "EN",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "595eb2e08913dd501fe4ff0081d6af65e6e171d1b56978b3b5e8bee0b86c5069",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-008",
+      "printingCode": "ST21-008_p1",
+      "locale": "EN",
+      "name": "Tony Tony.Chopper",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "595eb2e08913dd501fe4ff0081d6af65e6e171d1b56978b3b5e8bee0b86c5069",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-009",
+      "printingCode": "ST21-009",
+      "locale": "EN",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "b51fbfc7bf445b0f305b754918bf87fce3d4ea90605c6c26ed44b59b3c62a1d9",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-009",
+      "printingCode": "ST21-009_p1",
+      "locale": "EN",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "b51fbfc7bf445b0f305b754918bf87fce3d4ea90605c6c26ed44b59b3c62a1d9",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-010",
+      "printingCode": "ST21-010",
+      "locale": "EN",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "f5e539e4668b09010ab4045dddb931484e590f1e2ad9787f64b40581383ff431",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-010",
+      "printingCode": "ST21-010_p1",
+      "locale": "EN",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "f5e539e4668b09010ab4045dddb931484e590f1e2ad9787f64b40581383ff431",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-011",
+      "printingCode": "ST21-011",
+      "locale": "EN",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "1cb965967321881b2f5f53f6e06720a86bf3ff36f92b6add799de60698b339dc",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-011",
+      "printingCode": "ST21-011_p1",
+      "locale": "EN",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "1cb965967321881b2f5f53f6e06720a86bf3ff36f92b6add799de60698b339dc",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-012",
+      "printingCode": "ST21-012",
+      "locale": "EN",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "3a7c551f79b541e50ca6505c184fef736a18d16d6f875764fe4789407180dd3a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-012",
+      "printingCode": "ST21-012_p1",
+      "locale": "EN",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "3a7c551f79b541e50ca6505c184fef736a18d16d6f875764fe4789407180dd3a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-013",
+      "printingCode": "ST21-013",
+      "locale": "EN",
+      "name": "Vegapunk",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 1,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "86d8ca3d57f420cd8bd7bdb3bdb60dd9235ce1cbf20c3960182ee155a7791ed1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-013",
+      "printingCode": "ST21-013_p1",
+      "locale": "EN",
+      "name": "Vegapunk",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 1,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "86d8ca3d57f420cd8bd7bdb3bdb60dd9235ce1cbf20c3960182ee155a7791ed1",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-014",
+      "printingCode": "ST21-014",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "1092f7f32bd759e1dec520391c425b20d59185cddfef89db2df0cac78c001708",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "67a1ebcf86dfc715480383380198c3dfbd08f5129835a59b7f5b039de2a8c0ba",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-014",
+      "printingCode": "ST21-014_p1",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "1092f7f32bd759e1dec520391c425b20d59185cddfef89db2df0cac78c001708",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "67a1ebcf86dfc715480383380198c3dfbd08f5129835a59b7f5b039de2a8c0ba",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-015",
+      "printingCode": "ST21-015",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "531b3c773c0b18e66cac9f05863d52751d60be4a29115ae29936c79eec6031e0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-015",
+      "printingCode": "ST21-015_p1",
+      "locale": "EN",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "531b3c773c0b18e66cac9f05863d52751d60be4a29115ae29936c79eec6031e0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-016",
+      "printingCode": "ST21-016",
+      "locale": "EN",
+      "name": "Gum-Gum Dawn Whip",
+      "type": "EVENT",
+      "color": "Red",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "a8b8a4ec167c79c94c46558e7208172b93bd37b47048867b99884ec4edf5f2b0",
+      "triggerHash": "232a2cbf002799ddf18750a870ba1eb65d1dbebe66fbed4d703e9b1a59fdebc0",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "67a1ebcf86dfc715480383380198c3dfbd08f5129835a59b7f5b039de2a8c0ba",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-017",
+      "printingCode": "ST21-017",
+      "locale": "EN",
+      "name": "Gum-Gum Mole Pistol",
+      "type": "EVENT",
+      "color": "Red",
+      "cost": 4,
+      "power": null,
+      "counter": null,
+      "effectHash": "0016303e569075e7a7a2f867405ad3ef9373414993254f32ba85e1e0c1600eab",
+      "triggerHash": "f11e3bd95cea2c7b0921ce0651d0a6b34b9ce1c616748f59ed982f22698d0ac5",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "67a1ebcf86dfc715480383380198c3dfbd08f5129835a59b7f5b039de2a8c0ba",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569021"
+    },
+    {
+      "cardNumber": "ST21-001",
+      "printingCode": "ST21-001",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "LEADER",
+      "color": "Rouge",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "d657b29cb1089cb4ea866a57eb7236938ba2847967f7755162b30c5623572539",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "7e5b5a013b0fb1ec66751af9ed17fb0051f1e9af9b9cd2b331d15ebfd5076d5f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-001",
+      "printingCode": "ST21-001_p1",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "LEADER",
+      "color": "Rouge",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "d657b29cb1089cb4ea866a57eb7236938ba2847967f7755162b30c5623572539",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "7e5b5a013b0fb1ec66751af9ed17fb0051f1e9af9b9cd2b331d15ebfd5076d5f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-002",
+      "printingCode": "ST21-002",
+      "locale": "FR",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "330d5427550d599b336585c5af6b0910cfffbfe264d98675d1d0c8d9a28f07e2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-002",
+      "printingCode": "ST21-002_p1",
+      "locale": "FR",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "330d5427550d599b336585c5af6b0910cfffbfe264d98675d1d0c8d9a28f07e2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-003",
+      "printingCode": "ST21-003",
+      "locale": "FR",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "346cd73f307862d71f6caa98f324643a905893b417fc4364982e01ad9e6ca265",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-003",
+      "printingCode": "ST21-003_p1",
+      "locale": "FR",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "346cd73f307862d71f6caa98f324643a905893b417fc4364982e01ad9e6ca265",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-004",
+      "printingCode": "ST21-004",
+      "locale": "FR",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 1,
+      "power": 3000,
+      "counter": null,
+      "effectHash": "2231b92d0e562659c4616a387e90aae45cdcd84c7bad67a9896fd6c812474ab6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "285de6a246c007de7bf24fb248440efd6a1704658935f8303f10fec4b0dae400",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-004",
+      "printingCode": "ST21-004_p1",
+      "locale": "FR",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 1,
+      "power": 3000,
+      "counter": null,
+      "effectHash": "2231b92d0e562659c4616a387e90aae45cdcd84c7bad67a9896fd6c812474ab6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "285de6a246c007de7bf24fb248440efd6a1704658935f8303f10fec4b0dae400",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-005",
+      "printingCode": "ST21-005",
+      "locale": "FR",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "4f449bbf1de381ac49b47403a0baa15990099acedb17812253bf93fa5a616105",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-005",
+      "printingCode": "ST21-005_p1",
+      "locale": "FR",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "4f449bbf1de381ac49b47403a0baa15990099acedb17812253bf93fa5a616105",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-006",
+      "printingCode": "ST21-006",
+      "locale": "FR",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "37a97ec25d5e5bd6dde7ac8d4df262545738f177398a9f7131ef9a6edd3d3018",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-006",
+      "printingCode": "ST21-006_p1",
+      "locale": "FR",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "37a97ec25d5e5bd6dde7ac8d4df262545738f177398a9f7131ef9a6edd3d3018",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-007",
+      "printingCode": "ST21-007",
+      "locale": "FR",
+      "name": "Sentomaru",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "e7063241ba17e005e6fee6f3c48e98d25daf6f777d9c0f2cdb61fa4228d08d1d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-007",
+      "printingCode": "ST21-007_p1",
+      "locale": "FR",
+      "name": "Sentomaru",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "e7063241ba17e005e6fee6f3c48e98d25daf6f777d9c0f2cdb61fa4228d08d1d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-008",
+      "printingCode": "ST21-008",
+      "locale": "FR",
+      "name": "Tony-Tony Chopper",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "546d704feed49a018d939e9300ce09e33efb520ab804865cc132aec6b9f5eb38",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-008",
+      "printingCode": "ST21-008_p1",
+      "locale": "FR",
+      "name": "Tony-Tony Chopper",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "546d704feed49a018d939e9300ce09e33efb520ab804865cc132aec6b9f5eb38",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-009",
+      "printingCode": "ST21-009",
+      "locale": "FR",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "3992f42459c887859e5f9a104cb0c9d49d82457f3ae054e26b54056dd57cf756",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-009",
+      "printingCode": "ST21-009_p1",
+      "locale": "FR",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "3992f42459c887859e5f9a104cb0c9d49d82457f3ae054e26b54056dd57cf756",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-010",
+      "printingCode": "ST21-010",
+      "locale": "FR",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e23e99a1fdb9b141dfda74560d5705d7f7358fc39d2548191e521f59d98ec7e3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-010",
+      "printingCode": "ST21-010_p1",
+      "locale": "FR",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e23e99a1fdb9b141dfda74560d5705d7f7358fc39d2548191e521f59d98ec7e3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-011",
+      "printingCode": "ST21-011",
+      "locale": "FR",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "645b69606b3a7e58c2c2cee9fee94459b755bc25734672a05ebad3fa55bc39bf",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-011",
+      "printingCode": "ST21-011_p1",
+      "locale": "FR",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "645b69606b3a7e58c2c2cee9fee94459b755bc25734672a05ebad3fa55bc39bf",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-012",
+      "printingCode": "ST21-012",
+      "locale": "FR",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "853e0a913053e0e34fbc149323ca57d58daebda6bcf5d87ef78bfa4b56e3a98d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-012",
+      "printingCode": "ST21-012_p1",
+      "locale": "FR",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "853e0a913053e0e34fbc149323ca57d58daebda6bcf5d87ef78bfa4b56e3a98d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-013",
+      "printingCode": "ST21-013",
+      "locale": "FR",
+      "name": "Végapunk",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 1,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "198521c711844d827b188f254b53d19a4847d7573a51a4355fa4bdf7f7df5063",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-013",
+      "printingCode": "ST21-013_p1",
+      "locale": "FR",
+      "name": "Végapunk",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 1,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "198521c711844d827b188f254b53d19a4847d7573a51a4355fa4bdf7f7df5063",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-014",
+      "printingCode": "ST21-014",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "d787bd8019c082b3e48040a5369bd50d85a50f85a233ef2f6fb9345943a040af",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "7e5b5a013b0fb1ec66751af9ed17fb0051f1e9af9b9cd2b331d15ebfd5076d5f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-014",
+      "printingCode": "ST21-014_p1",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "d787bd8019c082b3e48040a5369bd50d85a50f85a233ef2f6fb9345943a040af",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "7e5b5a013b0fb1ec66751af9ed17fb0051f1e9af9b9cd2b331d15ebfd5076d5f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-015",
+      "printingCode": "ST21-015",
+      "locale": "FR",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "0cb36cd9d42c6a6f29a7b7f93ca64af33094982bf68467b236353741643cbf67",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-015",
+      "printingCode": "ST21-015_p1",
+      "locale": "FR",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "0cb36cd9d42c6a6f29a7b7f93ca64af33094982bf68467b236353741643cbf67",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-016",
+      "printingCode": "ST21-016",
+      "locale": "FR",
+      "name": "Gum Gum Dawn Whip",
+      "type": "EVENT",
+      "color": "Rouge",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "2a1b181d91338ba5b17ab683fbadde7b399cce82ac5cea614983226e3d666841",
+      "triggerHash": "c4359a4fa1f6d0bf888e75c586dfd4860dd5044f9856f58fb65c6ffe2a1ce0c9",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "7e5b5a013b0fb1ec66751af9ed17fb0051f1e9af9b9cd2b331d15ebfd5076d5f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    },
+    {
+      "cardNumber": "ST21-017",
+      "printingCode": "ST21-017",
+      "locale": "FR",
+      "name": "Gum Gum Taupe Bullet",
+      "type": "EVENT",
+      "color": "Rouge",
+      "cost": 4,
+      "power": null,
+      "counter": null,
+      "effectHash": "fb0f79d7bca14f201ce281cdf52397594856319284a451e7aa623f25b1ae1c01",
+      "triggerHash": "66ff632c15ca98e2cfcdc23ed3da90e1844f184c36533b89f32a10c00bd351ca",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "7e5b5a013b0fb1ec66751af9ed17fb0051f1e9af9b9cd2b331d15ebfd5076d5f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622021"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "ST21-001",
+      "printingCode": "ST21-001",
+      "name": "Monkey D. Luffy",
+      "type": "LEADER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-001",
+      "printingCode": "ST21-001_p1",
+      "name": "Monkey D. Luffy",
+      "type": "LEADER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-002",
+      "printingCode": "ST21-002",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-002",
+      "printingCode": "ST21-002_p1",
+      "name": "Usopp",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-003",
+      "printingCode": "ST21-003",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-003",
+      "printingCode": "ST21-003_p1",
+      "name": "Sanji",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-004",
+      "printingCode": "ST21-004",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-004",
+      "printingCode": "ST21-004_p1",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-005",
+      "printingCode": "ST21-005",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-005",
+      "printingCode": "ST21-005_p1",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-006",
+      "printingCode": "ST21-006",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-006",
+      "printingCode": "ST21-006_p1",
+      "name": "Stussy",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-007",
+      "printingCode": "ST21-007",
+      "name": "Sentomaru",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-007",
+      "printingCode": "ST21-007_p1",
+      "name": "Sentomaru",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-008",
+      "printingCode": "ST21-008",
+      "name": "Tony-Tony Chopper",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-008",
+      "printingCode": "ST21-008_p1",
+      "name": "Tony-Tony Chopper",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-009",
+      "printingCode": "ST21-009",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-009",
+      "printingCode": "ST21-009_p1",
+      "name": "Nami",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-010",
+      "printingCode": "ST21-010",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-010",
+      "printingCode": "ST21-010_p1",
+      "name": "Nico Robin",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-011",
+      "printingCode": "ST21-011",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-011",
+      "printingCode": "ST21-011_p1",
+      "name": "Franky",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-012",
+      "printingCode": "ST21-012",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-012",
+      "printingCode": "ST21-012_p1",
+      "name": "Brook",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-013",
+      "printingCode": "ST21-013",
+      "name": "Végapunk",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-013",
+      "printingCode": "ST21-013_p1",
+      "name": "Végapunk",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-014",
+      "printingCode": "ST21-014",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-014",
+      "printingCode": "ST21-014_p1",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-015",
+      "printingCode": "ST21-015",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-015",
+      "printingCode": "ST21-015_p1",
+      "name": "Roronoa Zoro",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-016",
+      "printingCode": "ST21-016",
+      "name": "Gum Gum Dawn Whip",
+      "type": "EVENT",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST21-017",
+      "printingCode": "ST21-017",
+      "name": "Gum Gum Taupe Bullet",
+      "type": "EVENT",
+      "color": "Rouge"
+    }
+  ]
+}

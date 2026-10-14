@@ -1,0 +1,4626 @@
+{
+ "generatedFrom": "starter-compositions.json + engine catalog + certification",
+ "decks": [
+  {
+   "deckCode": "ST-01",
+   "deckName": "Straw Hat Crew",
+   "leaders": [
+    "ST01-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st01",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st01",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-02",
+   "deckName": "Worst Generation",
+   "leaders": [
+    "ST02-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st02",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st02",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-03",
+   "deckName": "The Seven Warlords of the Sea",
+   "leaders": [
+    "ST03-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st03",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st03",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-04",
+   "deckName": "Animal Kingdom Pirates",
+   "leaders": [
+    "ST04-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st04",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st04",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-05",
+   "deckName": "ONE PIECE FILM edition",
+   "leaders": [
+    "ST05-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st05",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st05",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-06",
+   "deckName": "Absolute Justice",
+   "leaders": [
+    "ST06-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st06",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st06",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-07",
+   "deckName": "Big Mom Pirates",
+   "leaders": [
+    "ST07-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st07",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st07",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-08",
+   "deckName": "Monkey D. Luffy",
+   "leaders": [
+    "ST08-001"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st08",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st08",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-10",
+   "deckName": "The Three Captains",
+   "leaders": [
+    "ST10-001",
+    "ST10-002",
+    "ST10-003"
+   ],
+   "uniqueCards": 19,
+   "recognized": 19,
+   "certified": 19,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st10-st10-001",
+     "ok": true,
+     "errors": []
+    },
+    {
+     "id": "starter-st10-st10-002",
+     "ok": true,
+     "errors": []
+    },
+    {
+     "id": "starter-st10-st10-003",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st10-st10-001",
+     "offered": true
+    },
+    {
+     "id": "starter-st10-st10-002",
+     "offered": true
+    },
+    {
+     "id": "starter-st10-st10-003",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-11",
+   "deckName": "Uta",
+   "leaders": [
+    "ST11-001"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st11",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st11",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-12",
+   "deckName": "Zoro and Sanji",
+   "leaders": [
+    "ST12-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st12",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st12",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-14",
+   "deckName": "3D2Y",
+   "leaders": [
+    "ST14-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st14",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st14",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-17",
+   "deckName": "Blue Donquixote Doflamingo",
+   "leaders": [
+    "OP01-060"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st17",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st17",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-18",
+   "deckName": "Purple Monkey.D.Luffy",
+   "leaders": [
+    "OP05-060"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st18",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st18",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-19",
+   "deckName": "Black Smoker",
+   "leaders": [
+    "OP02-093"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st19",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st19",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-21",
+   "deckName": "GEAR5",
+   "leaders": [
+    "ST21-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st21",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st21",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-23",
+   "deckName": "RED Shanks",
+   "leaders": [
+    "OP09-001"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st23",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st23",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-09",
+   "deckName": "Yamato",
+   "leaders": [
+    "ST09-001"
+   ],
+   "uniqueCards": 15,
+   "recognized": 14,
+   "certified": 14,
+   "absent": [
+    "ST09-010"
+   ],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st09",
+     "offered": false
+    }
+   ],
+   "remainingWork": "1 card(s) to certify: ST09-010 [once-per-turn trash ko life]",
+   "remainingCount": 1
+  },
+  {
+   "deckCode": "ST-26",
+   "deckName": "PURPLE/BLACK Monkey.D.Luffy",
+   "leaders": [
+    "OP09-061"
+   ],
+   "uniqueCards": 15,
+   "recognized": 5,
+   "certified": 5,
+   "absent": [
+    "OP09-061",
+    "ST26-001",
+    "ST26-002",
+    "ST26-003",
+    "ST26-004",
+    "ST26-005",
+    "OP09-070",
+    "OP09-076",
+    "OP09-077",
+    "OP09-078"
+   ],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st26",
+     "offered": false
+    }
+   ],
+   "remainingWork": "10 card(s) to certify: OP09-061 [your-turn once-per-turn don-x give-don rest set-active cost-mod]; ST26-001 [on-play return-hand power cost-mod]; ST26-002 [blocker on-play don-minus rest]; ST26-003 [on-play don-minus give-don set-active]; ST26-004 [on-play don-minus power]; ST26-005 [on-play when-attacking don-minus power leader-cond]; OP09-070 [on-play give-don]; OP09-076 [on-play give-don set-active]; OP09-077 [main trigger don-minus give-don ko set-active power]; OP09-078 [counter don-minus draw trash power leader-cond]",
+   "remainingCount": 10
+  },
+  {
+   "deckCode": "ST-16",
+   "deckName": "Green Uta",
+   "leaders": [
+    "ST11-001"
+   ],
+   "uniqueCards": 15,
+   "recognized": 5,
+   "certified": 4,
+   "absent": [
+    "ST16-001",
+    "ST16-002",
+    "ST16-003",
+    "ST16-004",
+    "ST16-005",
+    "P-029",
+    "P-057",
+    "P-058",
+    "P-059",
+    "P-060"
+   ],
+   "uncertified": [
+    "P-061"
+   ],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st16",
+     "offered": false
+    }
+   ],
+   "remainingWork": "11 card(s) to certify: ST16-001 [blocker activate-main once-per-turn give-don trash rest]; ST16-002 [blocker trash rest power]; ST16-003 [power leader-cond]; ST16-004 [on-play ko]; ST16-005 [power]; P-029 [end-of-turn rest]; P-061 []; P-057 [main trigger leader-cond]; P-058 [main trigger set-active leader-cond]; P-059 [counter return-hand power leader-cond]; P-060 [main rest]",
+   "remainingCount": 11
+  },
+  {
+   "deckCode": "ST-31",
+   "deckName": "RED Monkey.D.Luffy",
+   "leaders": [
+    "ST21-001"
+   ],
+   "uniqueCards": 15,
+   "recognized": 4,
+   "certified": 4,
+   "absent": [
+    "ST31-001",
+    "ST31-002",
+    "ST31-003",
+    "ST31-004",
+    "ST31-005",
+    "OP11-009",
+    "OP11-012",
+    "OP14-015",
+    "P-101",
+    "OP04-016",
+    "OP13-021"
+   ],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st31",
+     "offered": false
+    }
+   ],
+   "remainingWork": "11 card(s) to certify: ST31-001 [rush on-play don-x draw play-card]; ST31-002 [blocker on-play draw rest play-card]; ST31-003 [blocker opponent-turn give-don rest power]; ST31-004 [rush on-play give-don power]; ST31-005 [on-play activate-main give-don rest deck-bottom look-reveal]; OP11-009 [when-attacking don-x power]; OP11-012 [your-turn once-per-turn power]; OP14-015 [rush when-attacking power]; P-101 [blocker on-play give-don rest]; OP04-016 [counter trigger trash power]; OP13-021 [main trigger give-don power]",
+   "remainingCount": 11
+  },
+  {
+   "deckCode": "ST-15",
+   "deckName": "Red Edward.Newgate",
+   "leaders": [
+    "OP02-001"
+   ],
+   "uniqueCards": 15,
+   "recognized": 3,
+   "certified": 3,
+   "absent": [
+    "OP02-001",
+    "ST15-001",
+    "ST15-002",
+    "ST15-003",
+    "ST15-004",
+    "ST15-005",
+    "OP02-008",
+    "OP02-018",
+    "OP02-019",
+    "OP03-003",
+    "OP03-009",
+    "OP02-023"
+   ],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st15",
+     "offered": false
+    }
+   ],
+   "remainingWork": "12 card(s) to certify: OP02-001 [end-of-turn life]; ST15-001 [when-attacking life cannot leader-cond]; ST15-002 [on-play activate-main give-don ko rest power]; ST15-003 [blocker opponent-turn ko rest power]; ST15-004 [on-play life power leader-cond]; ST15-005 [rush once-per-turn power leader-cond]; OP02-008 [rush don-x life]; OP02-018 [blocker on-ko trash ko rest life play-card]; OP02-019 [your-turn don-x power]; OP03-003 [on-play rest deck-bottom look-reveal]; OP03-009 [activate-main once-per-turn give-don]; OP02-023 [main trigger life power cannot]",
+   "remainingCount": 12
+  },
+  {
+   "deckCode": "ST-20",
+   "deckName": "Yellow Charlotte Katakuri",
+   "leaders": [
+    "OP03-099"
+   ],
+   "uniqueCards": 15,
+   "recognized": 4,
+   "certified": 2,
+   "absent": [
+    "OP03-099",
+    "ST20-001",
+    "ST20-002",
+    "ST20-003",
+    "ST20-004",
+    "ST20-005",
+    "OP03-110",
+    "OP03-112",
+    "OP03-115",
+    "OP03-118",
+    "OP03-121"
+   ],
+   "uncertified": [
+    "OP03-106",
+    "OP03-107"
+   ],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st20",
+     "offered": false
+    }
+   ],
+   "remainingWork": "13 card(s) to certify: OP03-099 [when-attacking don-x look-reveal life power]; ST20-001 [blocker activate-main once-per-turn give-don rest life]; ST20-002 [trigger once-per-turn trash ko life play-card]; ST20-003 [trigger look-reveal life]; ST20-004 [on-play trigger rest life]; ST20-005 [on-play trash life]; OP03-106 []; OP03-107 [blocker rest]; OP03-110 [when-attacking trigger trash life power play-card]; OP03-112 [on-play rest deck-bottom look-reveal]; OP03-115 [on-play trigger trash ko]; OP03-118 [counter trigger trash life power]; OP03-121 [main trigger trash ko life]",
+   "remainingCount": 13
+  },
+  {
+   "deckCode": "ST-34",
+   "deckName": "PURPLE Charlotte Katakuri",
+   "leaders": [
+    "OP11-062"
+   ],
+   "uniqueCards": 15,
+   "recognized": 1,
+   "certified": 1,
+   "absent": [
+    "OP11-062",
+    "ST34-001",
+    "ST34-002",
+    "ST34-003",
+    "ST34-004",
+    "ST34-005",
+    "EB03-032",
+    "EB03-035",
+    "OP11-065",
+    "OP11-066",
+    "OP11-071",
+    "P-090",
+    "OP11-079",
+    "OP11-081"
+   ],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st34",
+     "offered": false
+    }
+   ],
+   "remainingWork": "14 card(s) to certify: OP11-062 [don-minus]; ST34-001 [on-ko your-turn once-per-turn give-don ko rest power play-card leader-cond]; ST34-002 [on-play give-don ko rest leader-cond]; ST34-003 [on-play rest deck-bottom look-reveal]; ST34-004 [on-play don-minus trash life power]; ST34-005 [when-attacking don-minus ko power]; EB03-032 [on-play your-turn power]; EB03-035 [blocker on-play give-don rest]; OP11-065 [blocker rest]; OP11-066 [activate-main give-don ko rest look-reveal]; OP11-071 [activate-main once-per-turn give-don draw trash set-active look-reveal]; P-090 [on-ko opponent-turn don-minus ko play-card]; OP11-079 [counter trigger draw look-reveal power]; OP11-081 [main trigger give-don ko set-active look-reveal]",
+   "remainingCount": 14
+  },
+  {
+   "deckCode": "ST-25",
+   "deckName": "BLUE Buggy",
+   "leaders": [
+    "OP09-042"
+   ],
+   "uniqueCards": 15,
+   "recognized": 2,
+   "certified": 0,
+   "absent": [
+    "OP09-042",
+    "ST25-001",
+    "ST25-002",
+    "ST25-003",
+    "ST25-004",
+    "ST25-005",
+    "OP09-043",
+    "OP09-045",
+    "OP09-051",
+    "OP09-053",
+    "OP09-056",
+    "P-084",
+    "OP09-057"
+   ],
+   "uncertified": [
+    "OP09-054",
+    "OP09-055"
+   ],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st25",
+     "offered": false
+    }
+   ],
+   "remainingWork": "15 card(s) to certify: OP09-042 [activate-main trash rest play-card]; ST25-001 [on-play draw trash cost-mod leader-cond]; ST25-002 [blocker opponent-turn rest power cost-mod]; ST25-003 [on-play once-per-turn draw trash play-card]; ST25-004 [activate-main trash play-card leader-cond]; ST25-005 [blocker on-ko draw ko rest cost-mod leader-cond]; OP09-043 [on-ko ko play-card leader-cond]; OP09-045 [ko cannot]; OP09-051 [on-play deck-bottom]; OP09-053 [on-play rest deck-bottom look-reveal play-card]; OP09-054 [blocker rest]; OP09-055 []; OP09-056 [on-play rest deck-bottom look-reveal]; P-084 [on-play play-card cannot leader-cond]; OP09-057 [main trigger rest deck-bottom look-reveal]",
+   "remainingCount": 15
+  },
+  {
+   "deckCode": "ST-28",
+   "deckName": "GREEN/YELLOW Yamato",
+   "leaders": [
+    "OP06-022"
+   ],
+   "uniqueCards": 15,
+   "recognized": 0,
+   "certified": 0,
+   "absent": [
+    "OP06-022",
+    "ST28-001",
+    "ST28-002",
+    "ST28-003",
+    "ST28-004",
+    "ST28-005",
+    "OP06-100",
+    "OP06-103",
+    "OP06-104",
+    "OP06-109",
+    "OP06-110",
+    "OP06-112",
+    "OP09-035",
+    "ST13-016",
+    "OP07-116"
+   ],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st28",
+     "offered": false
+    }
+   ],
+   "remainingWork": "15 card(s) to certify: OP06-022 [double-attack activate-main once-per-turn give-don life]; ST28-001 [on-play ko life leader-cond]; ST28-002 [blocker banish on-play don-x]; ST28-003 [trigger life play-card leader-cond]; ST28-004 [rush activate-main your-turn once-per-turn give-don life power]; ST28-005 [on-play your-turn don-x rest deck-bottom look-reveal power]; OP06-100 [when-attacking trigger don-x trash ko life play-card]; OP06-103 [when-attacking trigger trash life power play-card]; OP06-104 [on-ko trigger ko life play-card]; OP06-109 [trigger don-x ko life play-card cannot]; OP06-110 [trigger don-x life play-card]; OP06-112 [when-attacking trigger trash rest life play-card]; OP09-035 [on-play rest]; ST13-016 [rush on-play rest look-reveal life]; OP07-116 [main counter trigger rest life power]",
+   "remainingCount": 15
+  },
+  {
+   "deckCode": "ST-32",
+   "deckName": "GREEN Roronoa Zoro",
+   "leaders": [
+    "OP12-020"
+   ],
+   "uniqueCards": 15,
+   "recognized": 1,
+   "certified": 0,
+   "absent": [
+    "OP12-020",
+    "ST32-001",
+    "ST32-002",
+    "ST32-003",
+    "ST32-004",
+    "ST32-005",
+    "OP10-036",
+    "OP12-026",
+    "OP12-027",
+    "OP12-028",
+    "OP12-031",
+    "OP15-036",
+    "ST24-005",
+    "OP12-039"
+   ],
+   "uncertified": [
+    "OP12-023"
+   ],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st32",
+     "offered": false
+    }
+   ],
+   "remainingWork": "15 card(s) to certify: OP12-020 [activate-main once-per-turn don-x set-active cannot]; ST32-001 [on-play draw trash rest]; ST32-002 [on-play draw cannot]; ST32-003 [on-play your-turn draw trash play-card leader-cond]; ST32-004 [on-play rest leader-cond]; ST32-005 [on-play rest leader-cond]; OP10-036 [your-turn once-per-turn set-active]; OP12-023 []; OP12-026 [activate-main give-don rest]; OP12-027 [blocker ko rest]; OP12-028 [activate-main rest deck-bottom look-reveal leader-cond]; OP12-031 [on-play give-don rest]; OP15-036 [on-play when-attacking ko]; ST24-005 [on-play rest set-active leader-cond]; OP12-039 [main trigger set-active power]",
+   "remainingCount": 15
+  },
+  {
+   "deckCode": "ST-33",
+   "deckName": "BLUE Kuzan",
+   "leaders": [
+    "OP12-040"
+   ],
+   "uniqueCards": 15,
+   "recognized": 3,
+   "certified": 0,
+   "absent": [
+    "OP12-040",
+    "ST33-001",
+    "ST33-002",
+    "ST33-003",
+    "ST33-004",
+    "ST33-005",
+    "EB04-026",
+    "OP12-043",
+    "OP12-046",
+    "OP12-047",
+    "EB04-028",
+    "OP12-057"
+   ],
+   "uncertified": [
+    "OP12-045",
+    "OP12-050",
+    "OP12-052"
+   ],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st33",
+     "offered": false
+    }
+   ],
+   "remainingWork": "15 card(s) to certify: OP12-040 [draw]; ST33-001 [blocker on-play draw trash rest]; ST33-002 [when-attacking on-ko trash ko play-card]; ST33-003 [on-play trash deck-bottom]; ST33-004 [blocker rest cost-mod]; ST33-005 [on-play power play-card leader-cond]; EB04-026 [on-play when-attacking draw trash deck-bottom]; OP12-043 [on-play trash cost-mod cannot]; OP12-045 []; OP12-046 [on-play activate-main trash return-hand]; OP12-047 [on-play trash rest deck-bottom look-reveal]; OP12-050 [blocker rest]; OP12-052 []; EB04-028 [main trigger trash return-hand power cannot leader-cond]; OP12-057 [counter trigger draw trash power]",
+   "remainingCount": 15
+  },
+  {
+   "deckCode": "ST-35",
+   "deckName": "RED/BLACK Sabo",
+   "leaders": [
+    "OP13-004"
+   ],
+   "uniqueCards": 15,
+   "recognized": 0,
+   "certified": 0,
+   "absent": [
+    "OP13-004",
+    "ST35-001",
+    "ST35-002",
+    "ST35-003",
+    "ST35-004",
+    "ST35-005",
+    "OP12-090",
+    "OP12-093",
+    "OP13-005",
+    "OP13-008",
+    "OP13-017",
+    "OP13-081",
+    "P-105",
+    "OP12-098",
+    "OP13-019"
+   ],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st35",
+     "offered": false
+    }
+   ],
+   "remainingWork": "15 card(s) to certify: OP13-004 [don-x life power]; ST35-001 [blocker on-play ko rest power]; ST35-002 [on-play power]; ST35-003 [when-attacking trash]; ST35-004 [blocker on-play give-don trash power cost-mod play-card]; ST35-005 [on-play give-don trash power cost-mod play-card]; OP12-090 [when-attacking trash cost-mod]; OP12-093 [cost-mod leader-cond]; OP13-005 [on-play give-don]; OP13-008 [trash ko]; OP13-017 [once-per-turn power]; OP13-081 [activate-main once-per-turn give-don trash deck-bottom cost-mod leader-cond]; P-105 [blocker on-play give-don life cost-mod leader-cond]; OP12-098 [counter trigger draw trash power]; OP13-019 [main counter ko rest power]",
+   "remainingCount": 15
+  },
+  {
+   "deckCode": "ST-30",
+   "deckName": "Luffy & Ace",
+   "leaders": [
+    "ST30-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 2,
+   "certified": 1,
+   "absent": [
+    "ST30-001",
+    "ST30-002",
+    "ST30-003",
+    "ST30-004",
+    "ST30-006",
+    "ST30-007",
+    "ST30-008",
+    "ST30-009",
+    "ST30-010",
+    "ST30-011",
+    "ST30-012",
+    "ST30-014",
+    "ST30-015",
+    "ST30-016",
+    "ST30-017"
+   ],
+   "uncertified": [
+    "ST30-013"
+   ],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st30",
+     "offered": false
+    }
+   ],
+   "remainingWork": "16 card(s) to certify: ST30-001 [opponent-turn power]; ST30-002 [on-play rest deck-bottom look-reveal power]; ST30-003 [your-turn power]; ST30-004 [on-play draw trash look-reveal power]; ST30-006 [on-play draw trash power]; ST30-007 [rush on-play when-attacking rest power]; ST30-008 [blocker on-ko trash ko rest power play-card]; ST30-009 [draw trash power]; ST30-010 [blocker on-play rest]; ST30-011 [blocker rest power]; ST30-012 [blocker rush on-play when-attacking rest]; ST30-013 []; ST30-014 [activate-main rest power]; ST30-015 [counter trigger ko power]; ST30-016 [counter draw power]; ST30-017 [main trigger rest deck-bottom look-reveal power]",
+   "remainingCount": 16
+  },
+  {
+   "deckCode": "ST-22",
+   "deckName": "Ace & Newgate",
+   "leaders": [
+    "ST22-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 6,
+   "certified": 0,
+   "absent": [
+    "ST22-001",
+    "ST22-002",
+    "ST22-003",
+    "ST22-005",
+    "ST22-006",
+    "ST22-007",
+    "ST22-011",
+    "ST22-012",
+    "ST22-015",
+    "ST22-016",
+    "ST22-017"
+   ],
+   "uncertified": [
+    "ST22-004",
+    "ST22-008",
+    "ST22-009",
+    "ST22-010",
+    "ST22-013",
+    "ST22-014"
+   ],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st22",
+     "offered": false
+    }
+   ],
+   "remainingWork": "17 card(s) to certify: ST22-001 [activate-main once-per-turn draw look-reveal]; ST22-002 [on-play draw trash rest deck-bottom look-reveal]; ST22-003 [double-attack on-play draw look-reveal]; ST22-004 []; ST22-005 [activate-main once-per-turn trash rest set-active return-hand]; ST22-006 [on-play draw trash look-reveal]; ST22-007 [activate-main once-per-turn give-don look-reveal]; ST22-008 []; ST22-009 [blocker rest]; ST22-010 []; ST22-011 [on-play your-turn look-reveal power]; ST22-012 [when-attacking once-per-turn trash ko look-reveal power]; ST22-013 []; ST22-014 []; ST22-015 [main life power play-card leader-cond]; ST22-016 [counter trigger draw look-reveal power]; ST22-017 [main trigger draw return-hand deck-bottom look-reveal]",
+   "remainingCount": 17
+  },
+  {
+   "deckCode": "ST-29",
+   "deckName": "Egghead",
+   "leaders": [
+    "ST29-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 3,
+   "certified": 0,
+   "absent": [
+    "ST29-001",
+    "ST29-002",
+    "ST29-003",
+    "ST29-004",
+    "ST29-005",
+    "ST29-007",
+    "ST29-008",
+    "ST29-009",
+    "ST29-012",
+    "ST29-013",
+    "ST29-014",
+    "ST29-015",
+    "ST29-016",
+    "ST29-017"
+   ],
+   "uncertified": [
+    "ST29-006",
+    "ST29-010",
+    "ST29-011"
+   ],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st29",
+     "offered": false
+    }
+   ],
+   "remainingWork": "17 card(s) to certify: ST29-001 [when-attacking draw trash life]; ST29-002 [on-play when-attacking rest life]; ST29-003 [trigger ko life power]; ST29-004 [on-play trigger trash rest deck-bottom look-reveal play-card]; ST29-005 [trigger play-card leader-cond]; ST29-006 []; ST29-007 [on-ko trigger ko life power]; ST29-008 [trigger ko life play-card leader-cond]; ST29-009 [blocker trigger rest play-card leader-cond]; ST29-010 []; ST29-011 [blocker rest]; ST29-012 [activate-main trigger once-per-turn give-don play-card]; ST29-013 [trigger ko life]; ST29-014 [activate-main trigger once-per-turn give-don draw trash]; ST29-015 [counter trigger draw life power]; ST29-016 [main counter power cannot]; ST29-017 [counter trigger draw trash ko life power]",
+   "remainingCount": 17
+  },
+  {
+   "deckCode": "ST-13",
+   "deckName": "The Three Brothers",
+   "leaders": [
+    "ST13-001",
+    "ST13-002",
+    "ST13-003"
+   ],
+   "uniqueCards": 19,
+   "recognized": 0,
+   "certified": 0,
+   "absent": [
+    "ST13-001",
+    "ST13-002",
+    "ST13-003",
+    "ST13-004",
+    "ST13-005",
+    "ST13-006",
+    "ST13-007",
+    "ST13-008",
+    "ST13-009",
+    "ST13-010",
+    "ST13-011",
+    "ST13-012",
+    "ST13-013",
+    "ST13-014",
+    "ST13-015",
+    "ST13-016",
+    "ST13-017",
+    "ST13-018",
+    "ST13-019"
+   ],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [],
+   "inPlay": [
+    {
+     "id": "starter-st13-st13-001",
+     "offered": false
+    },
+    {
+     "id": "starter-st13-st13-002",
+     "offered": false
+    },
+    {
+     "id": "starter-st13-st13-003",
+     "offered": false
+    }
+   ],
+   "remainingWork": "19 card(s) to certify: ST13-001 [activate-main once-per-turn don-x life power]; ST13-002 [activate-main end-of-turn once-per-turn don-x trash rest deck-bottom look-reveal life]; ST13-003 [activate-main once-per-turn don-x trash deck-bottom life]; ST13-004 [on-play rest look-reveal life]; ST13-005 [blocker on-play trash rest look-reveal life]; ST13-006 [blocker on-play rest play-card]; ST13-007 [activate-main trash look-reveal life power]; ST13-008 [on-play trash ko life]; ST13-009 [on-play trash life]; ST13-010 [activate-main trash look-reveal life power]; ST13-011 [rush on-play life]; ST13-012 [on-play look-reveal life]; ST13-013 [on-play rest deck-bottom look-reveal]; ST13-014 [activate-main trash look-reveal life power]; ST13-015 [activate-main once-per-turn draw trash life power]; ST13-016 [rush on-play rest look-reveal life]; ST13-017 [counter trigger look-reveal life power]; ST13-018 [counter trigger draw life power]; ST13-019 [main trigger rest deck-bottom look-reveal]",
+   "remainingCount": 19
+  },
+  {
+   "deckCode": "ST-24",
+   "deckName": "GREEN Jewelry Bonney",
+   "leaders": [
+    "OP07-019"
+   ],
+   "uniqueCards": 15,
+   "recognized": 0,
+   "certified": 0,
+   "absent": [
+    "OP07-019",
+    "ST24-001",
+    "ST24-002",
+    "ST24-003",
+    "ST24-004",
+    "ST24-005",
+    "EB01-015",
+    "OP07-021",
+    "OP07-023",
+    "OP07-025",
+    "OP07-031",
+    "OP07-033",
+    "OP07-034",
+    "OP07-036",
+    "OP07-037"
+   ],
+   "uncertified": [],
+   "problems": [
+    "COMPOSITION_UNVERIFIED",
+    "SOURCE_NUMBER_NAME_CONFLICT_DIFFERENT_QUANTITIES"
+   ],
+   "eligibility": [],
+   "inPlay": [],
+   "remainingWork": "blocked: COMPOSITION_UNVERIFIED, SOURCE_NUMBER_NAME_CONFLICT_DIFFERENT_QUANTITIES",
+   "remainingCount": 999
+  },
+  {
+   "deckCode": "ST-27",
+   "deckName": "BLACK Marshall.D.Teach",
+   "leaders": [
+    "OP09-081"
+   ],
+   "uniqueCards": 15,
+   "recognized": 2,
+   "certified": 0,
+   "absent": [
+    "OP09-081",
+    "ST27-001",
+    "ST27-002",
+    "ST27-003",
+    "ST27-004",
+    "ST27-005",
+    "OP09-083",
+    "OP09-086",
+    "OP09-088",
+    "OP09-089",
+    "OP09-090",
+    "OP09-095",
+    "OP09-099"
+   ],
+   "uncertified": [
+    "OP10-084",
+    "OP09-091"
+   ],
+   "problems": [
+    "COMPOSITION_UNVERIFIED",
+    "SOURCE_SANJUAN_NUMBER_TYPO_NEEDS_QUANTITY_CORROBORATION"
+   ],
+   "eligibility": [],
+   "inPlay": [],
+   "remainingWork": "blocked: COMPOSITION_UNVERIFIED, SOURCE_SANJUAN_NUMBER_TYPO_NEEDS_QUANTITY_CORROBORATION",
+   "remainingCount": 999
+  }
+ ],
+ "uncertifiedCards": [
+  {
+   "number": "ST13-016",
+   "name": "Yamato",
+   "status": "ABSENT",
+   "tags": [
+    "rush",
+    "on-play",
+    "rest",
+    "look-reveal",
+    "life"
+   ],
+   "decks": [
+    "ST-13",
+    "ST-28"
+   ]
+  },
+  {
+   "number": "ST24-005",
+   "name": "X.Drake",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "rest",
+    "set-active",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-24",
+    "ST-32"
+   ]
+  },
+  {
+   "number": "EB01-015",
+   "name": "Scratchmen Apoo",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "rest"
+   ],
+   "decks": [
+    "ST-24"
+   ]
+  },
+  {
+   "number": "EB03-032",
+   "name": "Charlotte Flampe",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "your-turn",
+    "power"
+   ],
+   "decks": [
+    "ST-34"
+   ]
+  },
+  {
+   "number": "EB03-035",
+   "name": "Charlotte Pudding",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-play",
+    "give-don",
+    "rest"
+   ],
+   "decks": [
+    "ST-34"
+   ]
+  },
+  {
+   "number": "EB04-026",
+   "name": "Bluegrass",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "when-attacking",
+    "draw",
+    "trash",
+    "deck-bottom"
+   ],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "EB04-028",
+   "name": "Ice Time",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "trash",
+    "return-hand",
+    "power",
+    "cannot",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "OP02-001",
+   "name": "Edward.Newgate",
+   "status": "ABSENT",
+   "tags": [
+    "end-of-turn",
+    "life"
+   ],
+   "decks": [
+    "ST-15"
+   ]
+  },
+  {
+   "number": "OP02-008",
+   "name": "Jozu",
+   "status": "ABSENT",
+   "tags": [
+    "rush",
+    "don-x",
+    "life"
+   ],
+   "decks": [
+    "ST-15"
+   ]
+  },
+  {
+   "number": "OP02-018",
+   "name": "Marco",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-ko",
+    "trash",
+    "ko",
+    "rest",
+    "life",
+    "play-card"
+   ],
+   "decks": [
+    "ST-15"
+   ]
+  },
+  {
+   "number": "OP02-019",
+   "name": "Rakuyo",
+   "status": "ABSENT",
+   "tags": [
+    "your-turn",
+    "don-x",
+    "power"
+   ],
+   "decks": [
+    "ST-15"
+   ]
+  },
+  {
+   "number": "OP02-023",
+   "name": "You May Be a Fool...but I Still Love You",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "life",
+    "power",
+    "cannot"
+   ],
+   "decks": [
+    "ST-15"
+   ]
+  },
+  {
+   "number": "OP03-003",
+   "name": "Izo",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "rest",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-15"
+   ]
+  },
+  {
+   "number": "OP03-009",
+   "name": "Haruta",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "once-per-turn",
+    "give-don"
+   ],
+   "decks": [
+    "ST-15"
+   ]
+  },
+  {
+   "number": "OP03-099",
+   "name": "Charlotte Katakuri",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "don-x",
+    "look-reveal",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-20"
+   ]
+  },
+  {
+   "number": "OP03-106",
+   "name": "Charlotte Opera",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-20"
+   ]
+  },
+  {
+   "number": "OP03-107",
+   "name": "Charlotte Galette",
+   "status": "RECOGNIZED",
+   "tags": [
+    "blocker",
+    "rest"
+   ],
+   "decks": [
+    "ST-20"
+   ]
+  },
+  {
+   "number": "OP03-110",
+   "name": "Charlotte Smoothie",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "trigger",
+    "trash",
+    "life",
+    "power",
+    "play-card"
+   ],
+   "decks": [
+    "ST-20"
+   ]
+  },
+  {
+   "number": "OP03-112",
+   "name": "Charlotte Pudding",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "rest",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-20"
+   ]
+  },
+  {
+   "number": "OP03-115",
+   "name": "Streusen",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "trigger",
+    "trash",
+    "ko"
+   ],
+   "decks": [
+    "ST-20"
+   ]
+  },
+  {
+   "number": "OP03-118",
+   "name": "Ikoku Sovereignty",
+   "status": "ABSENT",
+   "tags": [
+    "counter",
+    "trigger",
+    "trash",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-20"
+   ]
+  },
+  {
+   "number": "OP03-121",
+   "name": "Thunder Bolt",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "trash",
+    "ko",
+    "life"
+   ],
+   "decks": [
+    "ST-20"
+   ]
+  },
+  {
+   "number": "OP04-016",
+   "name": "Bad Manners Kick Course",
+   "status": "ABSENT",
+   "tags": [
+    "counter",
+    "trigger",
+    "trash",
+    "power"
+   ],
+   "decks": [
+    "ST-31"
+   ]
+  },
+  {
+   "number": "OP06-022",
+   "name": "Yamato",
+   "status": "ABSENT",
+   "tags": [
+    "double-attack",
+    "activate-main",
+    "once-per-turn",
+    "give-don",
+    "life"
+   ],
+   "decks": [
+    "ST-28"
+   ]
+  },
+  {
+   "number": "OP06-100",
+   "name": "Inuarashi",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "trigger",
+    "don-x",
+    "trash",
+    "ko",
+    "life",
+    "play-card"
+   ],
+   "decks": [
+    "ST-28"
+   ]
+  },
+  {
+   "number": "OP06-103",
+   "name": "Kawamatsu",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "trigger",
+    "trash",
+    "life",
+    "power",
+    "play-card"
+   ],
+   "decks": [
+    "ST-28"
+   ]
+  },
+  {
+   "number": "OP06-104",
+   "name": "Kikunojo",
+   "status": "ABSENT",
+   "tags": [
+    "on-ko",
+    "trigger",
+    "ko",
+    "life",
+    "play-card"
+   ],
+   "decks": [
+    "ST-28"
+   ]
+  },
+  {
+   "number": "OP06-109",
+   "name": "Denjiro",
+   "status": "ABSENT",
+   "tags": [
+    "trigger",
+    "don-x",
+    "ko",
+    "life",
+    "play-card",
+    "cannot"
+   ],
+   "decks": [
+    "ST-28"
+   ]
+  },
+  {
+   "number": "OP06-110",
+   "name": "Nekomamushi",
+   "status": "ABSENT",
+   "tags": [
+    "trigger",
+    "don-x",
+    "life",
+    "play-card"
+   ],
+   "decks": [
+    "ST-28"
+   ]
+  },
+  {
+   "number": "OP06-112",
+   "name": "Raizo",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "trigger",
+    "trash",
+    "rest",
+    "life",
+    "play-card"
+   ],
+   "decks": [
+    "ST-28"
+   ]
+  },
+  {
+   "number": "OP07-019",
+   "name": "Jewelry Bonney",
+   "status": "ABSENT",
+   "tags": [
+    "once-per-turn",
+    "rest"
+   ],
+   "decks": [
+    "ST-24"
+   ]
+  },
+  {
+   "number": "OP07-021",
+   "name": "Urouge",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "end-of-turn",
+    "rest",
+    "set-active"
+   ],
+   "decks": [
+    "ST-24"
+   ]
+  },
+  {
+   "number": "OP07-023",
+   "name": "Caribou",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "rest",
+    "power"
+   ],
+   "decks": [
+    "ST-24"
+   ]
+  },
+  {
+   "number": "OP07-025",
+   "name": "Coribou",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "play-card"
+   ],
+   "decks": [
+    "ST-24"
+   ]
+  },
+  {
+   "number": "OP07-031",
+   "name": "Bartolomeo",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "your-turn",
+    "once-per-turn",
+    "draw",
+    "trash",
+    "rest"
+   ],
+   "decks": [
+    "ST-24"
+   ]
+  },
+  {
+   "number": "OP07-033",
+   "name": "Monkey.D.Luffy",
+   "status": "ABSENT",
+   "tags": [
+    "ko",
+    "cannot"
+   ],
+   "decks": [
+    "ST-24"
+   ]
+  },
+  {
+   "number": "OP07-034",
+   "name": "Roronoa Zoro",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "power"
+   ],
+   "decks": [
+    "ST-24"
+   ]
+  },
+  {
+   "number": "OP07-036",
+   "name": "Demonic Aura Nine-Sword Style Asura Demon Nine Flash",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "rest",
+    "power"
+   ],
+   "decks": [
+    "ST-24"
+   ]
+  },
+  {
+   "number": "OP07-037",
+   "name": "More Pizza!!",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "draw",
+    "rest",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-24"
+   ]
+  },
+  {
+   "number": "OP07-116",
+   "name": "Blaze Slice",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "counter",
+    "trigger",
+    "rest",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-28"
+   ]
+  },
+  {
+   "number": "OP09-035",
+   "name": "Portgas.D.Ace",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "rest"
+   ],
+   "decks": [
+    "ST-28"
+   ]
+  },
+  {
+   "number": "OP09-042",
+   "name": "Buggy",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "trash",
+    "rest",
+    "play-card"
+   ],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "OP09-043",
+   "name": "Alvida",
+   "status": "ABSENT",
+   "tags": [
+    "on-ko",
+    "ko",
+    "play-card",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "OP09-045",
+   "name": "Cabaji",
+   "status": "ABSENT",
+   "tags": [
+    "ko",
+    "cannot"
+   ],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "OP09-051",
+   "name": "Buggy",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "deck-bottom"
+   ],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "OP09-053",
+   "name": "Mohji",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "rest",
+    "deck-bottom",
+    "look-reveal",
+    "play-card"
+   ],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "OP09-054",
+   "name": "Richie",
+   "status": "RECOGNIZED",
+   "tags": [
+    "blocker",
+    "rest"
+   ],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "OP09-055",
+   "name": "Mr.1(Daz.Bonez)",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "OP09-056",
+   "name": "Mr.3(Galdino)",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "rest",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "OP09-057",
+   "name": "Cross Guild",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "rest",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "OP09-061",
+   "name": "Monkey.D.Luffy",
+   "status": "ABSENT",
+   "tags": [
+    "your-turn",
+    "once-per-turn",
+    "don-x",
+    "give-don",
+    "rest",
+    "set-active",
+    "cost-mod"
+   ],
+   "decks": [
+    "ST-26"
+   ]
+  },
+  {
+   "number": "OP09-070",
+   "name": "Nami",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "give-don"
+   ],
+   "decks": [
+    "ST-26"
+   ]
+  },
+  {
+   "number": "OP09-076",
+   "name": "Roronoa Zoro",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "give-don",
+    "set-active"
+   ],
+   "decks": [
+    "ST-26"
+   ]
+  },
+  {
+   "number": "OP09-077",
+   "name": "Gum-Gum Lightning",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "don-minus",
+    "give-don",
+    "ko",
+    "set-active",
+    "power"
+   ],
+   "decks": [
+    "ST-26"
+   ]
+  },
+  {
+   "number": "OP09-078",
+   "name": "Gum-Gum Giant",
+   "status": "ABSENT",
+   "tags": [
+    "counter",
+    "don-minus",
+    "draw",
+    "trash",
+    "power",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-26"
+   ]
+  },
+  {
+   "number": "OP09-081",
+   "name": "Marshall.D.Teach",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "activate-main",
+    "trash"
+   ],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "OP09-083",
+   "name": "Van Augur",
+   "status": "ABSENT",
+   "tags": [
+    "on-ko",
+    "activate-main",
+    "draw",
+    "ko",
+    "rest",
+    "cost-mod",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "OP09-086",
+   "name": "Jesus Burgess",
+   "status": "ABSENT",
+   "tags": [
+    "trash",
+    "ko",
+    "power",
+    "cannot",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "OP09-088",
+   "name": "Shiryu",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "don-x",
+    "draw",
+    "trash"
+   ],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "OP09-089",
+   "name": "Stronger",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "draw",
+    "trash",
+    "cost-mod",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "OP09-090",
+   "name": "Doc Q",
+   "status": "ABSENT",
+   "tags": [
+    "on-ko",
+    "activate-main",
+    "draw",
+    "ko",
+    "rest",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "OP09-091",
+   "name": "Vasco Shot",
+   "status": "RECOGNIZED",
+   "tags": [
+    "blocker",
+    "rest"
+   ],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "OP09-095",
+   "name": "Laffitte",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "rest",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "OP09-099",
+   "name": "Fullalead",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "trash",
+    "rest",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "OP10-036",
+   "name": "Perona",
+   "status": "ABSENT",
+   "tags": [
+    "your-turn",
+    "once-per-turn",
+    "set-active"
+   ],
+   "decks": [
+    "ST-32"
+   ]
+  },
+  {
+   "number": "OP10-084",
+   "name": "Sanjuan.Wolf",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "OP11-009",
+   "name": "Nico Robin",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "don-x",
+    "power"
+   ],
+   "decks": [
+    "ST-31"
+   ]
+  },
+  {
+   "number": "OP11-012",
+   "name": "Franky",
+   "status": "ABSENT",
+   "tags": [
+    "your-turn",
+    "once-per-turn",
+    "power"
+   ],
+   "decks": [
+    "ST-31"
+   ]
+  },
+  {
+   "number": "OP11-062",
+   "name": "Charlotte Katakuri",
+   "status": "ABSENT",
+   "tags": [
+    "don-minus"
+   ],
+   "decks": [
+    "ST-34"
+   ]
+  },
+  {
+   "number": "OP11-065",
+   "name": "Charlotte Anana",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "rest"
+   ],
+   "decks": [
+    "ST-34"
+   ]
+  },
+  {
+   "number": "OP11-066",
+   "name": "Charlotte Oven",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "give-don",
+    "ko",
+    "rest",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-34"
+   ]
+  },
+  {
+   "number": "OP11-071",
+   "name": "Charlotte Perospero",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "once-per-turn",
+    "give-don",
+    "draw",
+    "trash",
+    "set-active",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-34"
+   ]
+  },
+  {
+   "number": "OP11-079",
+   "name": "When Two Men Are Fighting the Last Thing I Need Is Some Half-Hearted Assistance!!!!",
+   "status": "ABSENT",
+   "tags": [
+    "counter",
+    "trigger",
+    "draw",
+    "look-reveal",
+    "power"
+   ],
+   "decks": [
+    "ST-34"
+   ]
+  },
+  {
+   "number": "OP11-081",
+   "name": "Cognac Mama-Mash",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "give-don",
+    "ko",
+    "set-active",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-34"
+   ]
+  },
+  {
+   "number": "OP12-020",
+   "name": "Roronoa Zoro",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "once-per-turn",
+    "don-x",
+    "set-active",
+    "cannot"
+   ],
+   "decks": [
+    "ST-32"
+   ]
+  },
+  {
+   "number": "OP12-023",
+   "name": "Kawamatsu",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-32"
+   ]
+  },
+  {
+   "number": "OP12-026",
+   "name": "Kuina",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "give-don",
+    "rest"
+   ],
+   "decks": [
+    "ST-32"
+   ]
+  },
+  {
+   "number": "OP12-027",
+   "name": "Koushirou",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "ko",
+    "rest"
+   ],
+   "decks": [
+    "ST-32"
+   ]
+  },
+  {
+   "number": "OP12-028",
+   "name": "Kouzuki Hiyori",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "rest",
+    "deck-bottom",
+    "look-reveal",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-32"
+   ]
+  },
+  {
+   "number": "OP12-031",
+   "name": "Tashigi",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "give-don",
+    "rest"
+   ],
+   "decks": [
+    "ST-32"
+   ]
+  },
+  {
+   "number": "OP12-039",
+   "name": "Luffy Is the Man Who Will Become the King of Pirates!!!",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "set-active",
+    "power"
+   ],
+   "decks": [
+    "ST-32"
+   ]
+  },
+  {
+   "number": "OP12-040",
+   "name": "Kuzan",
+   "status": "ABSENT",
+   "tags": [
+    "draw"
+   ],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "OP12-043",
+   "name": "Kuzan",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "trash",
+    "cost-mod",
+    "cannot"
+   ],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "OP12-045",
+   "name": "Jango",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "OP12-046",
+   "name": "Zephyr(Navy)",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "activate-main",
+    "trash",
+    "return-hand"
+   ],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "OP12-047",
+   "name": "Sengoku",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "trash",
+    "rest",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "OP12-050",
+   "name": "Jaguar.D.Saul",
+   "status": "RECOGNIZED",
+   "tags": [
+    "blocker",
+    "rest"
+   ],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "OP12-052",
+   "name": "Fullbody",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "OP12-057",
+   "name": "Ice Block Pheasant Peck",
+   "status": "ABSENT",
+   "tags": [
+    "counter",
+    "trigger",
+    "draw",
+    "trash",
+    "power"
+   ],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "OP12-090",
+   "name": "Belo Betty",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "trash",
+    "cost-mod"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  },
+  {
+   "number": "OP12-093",
+   "name": "Morley",
+   "status": "ABSENT",
+   "tags": [
+    "cost-mod",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  },
+  {
+   "number": "OP12-098",
+   "name": "Hair Removal Fist",
+   "status": "ABSENT",
+   "tags": [
+    "counter",
+    "trigger",
+    "draw",
+    "trash",
+    "power"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  },
+  {
+   "number": "OP13-004",
+   "name": "Sabo",
+   "status": "ABSENT",
+   "tags": [
+    "don-x",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  },
+  {
+   "number": "OP13-005",
+   "name": "Inazuma",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "give-don"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  },
+  {
+   "number": "OP13-008",
+   "name": "Emporio.Ivankov",
+   "status": "ABSENT",
+   "tags": [
+    "trash",
+    "ko"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  },
+  {
+   "number": "OP13-017",
+   "name": "Monkey.D.Dragon",
+   "status": "ABSENT",
+   "tags": [
+    "once-per-turn",
+    "power"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  },
+  {
+   "number": "OP13-019",
+   "name": "But Ace Here Said You Deserved It!!",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "counter",
+    "ko",
+    "rest",
+    "power"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  },
+  {
+   "number": "OP13-021",
+   "name": "Gum-Gum Gatling Gun",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "give-don",
+    "power"
+   ],
+   "decks": [
+    "ST-31"
+   ]
+  },
+  {
+   "number": "OP13-081",
+   "name": "Koala",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "once-per-turn",
+    "give-don",
+    "trash",
+    "deck-bottom",
+    "cost-mod",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  },
+  {
+   "number": "OP14-015",
+   "name": "Roronoa Zoro",
+   "status": "ABSENT",
+   "tags": [
+    "rush",
+    "when-attacking",
+    "power"
+   ],
+   "decks": [
+    "ST-31"
+   ]
+  },
+  {
+   "number": "OP15-036",
+   "name": "Ryuma",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "when-attacking",
+    "ko"
+   ],
+   "decks": [
+    "ST-32"
+   ]
+  },
+  {
+   "number": "P-029",
+   "name": "Bartolomeo",
+   "status": "ABSENT",
+   "tags": [
+    "end-of-turn",
+    "rest"
+   ],
+   "decks": [
+    "ST-16"
+   ]
+  },
+  {
+   "number": "P-057",
+   "name": "Fleeting Lullaby",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-16"
+   ]
+  },
+  {
+   "number": "P-058",
+   "name": "Where the Wind Blows",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "set-active",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-16"
+   ]
+  },
+  {
+   "number": "P-059",
+   "name": "The World's Continuation",
+   "status": "ABSENT",
+   "tags": [
+    "counter",
+    "return-hand",
+    "power",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-16"
+   ]
+  },
+  {
+   "number": "P-060",
+   "name": "Tot Musica",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "rest"
+   ],
+   "decks": [
+    "ST-16"
+   ]
+  },
+  {
+   "number": "P-061",
+   "name": "Monkey.D.Luffy",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-16"
+   ]
+  },
+  {
+   "number": "P-084",
+   "name": "Buggy",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "play-card",
+    "cannot",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "P-090",
+   "name": "Charlotte Smoothie",
+   "status": "ABSENT",
+   "tags": [
+    "on-ko",
+    "opponent-turn",
+    "don-minus",
+    "ko",
+    "play-card"
+   ],
+   "decks": [
+    "ST-34"
+   ]
+  },
+  {
+   "number": "P-101",
+   "name": "Tony Tony.Chopper",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-play",
+    "give-don",
+    "rest"
+   ],
+   "decks": [
+    "ST-31"
+   ]
+  },
+  {
+   "number": "P-105",
+   "name": "Sabo",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-play",
+    "give-don",
+    "life",
+    "cost-mod",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  },
+  {
+   "number": "ST09-010",
+   "name": "Portgas.D.Ace",
+   "status": "ABSENT",
+   "tags": [
+    "once-per-turn",
+    "trash",
+    "ko",
+    "life"
+   ],
+   "decks": [
+    "ST-09"
+   ]
+  },
+  {
+   "number": "ST13-001",
+   "name": "Sabo",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "once-per-turn",
+    "don-x",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-002",
+   "name": "Portgas.D.Ace",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "end-of-turn",
+    "once-per-turn",
+    "don-x",
+    "trash",
+    "rest",
+    "deck-bottom",
+    "look-reveal",
+    "life"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-003",
+   "name": "Monkey.D.Luffy",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "once-per-turn",
+    "don-x",
+    "trash",
+    "deck-bottom",
+    "life"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-004",
+   "name": "Edward.Newgate",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "rest",
+    "look-reveal",
+    "life"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-005",
+   "name": "Emporio.Ivankov",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-play",
+    "trash",
+    "rest",
+    "look-reveal",
+    "life"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-006",
+   "name": "Curly.Dadan",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-play",
+    "rest",
+    "play-card"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-007",
+   "name": "Sabo",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "trash",
+    "look-reveal",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-008",
+   "name": "Sabo",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "trash",
+    "ko",
+    "life"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-009",
+   "name": "Shanks",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "trash",
+    "life"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-010",
+   "name": "Portgas.D.Ace",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "trash",
+    "look-reveal",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-011",
+   "name": "Portgas.D.Ace",
+   "status": "ABSENT",
+   "tags": [
+    "rush",
+    "on-play",
+    "life"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-012",
+   "name": "Makino",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "look-reveal",
+    "life"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-013",
+   "name": "Monkey.D.Garp",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "rest",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-014",
+   "name": "Monkey.D.Luffy",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "trash",
+    "look-reveal",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-015",
+   "name": "Monkey.D.Luffy",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "once-per-turn",
+    "draw",
+    "trash",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-017",
+   "name": "Flame Dragon King",
+   "status": "ABSENT",
+   "tags": [
+    "counter",
+    "trigger",
+    "look-reveal",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-018",
+   "name": "Gum-Gum Jet Spear",
+   "status": "ABSENT",
+   "tags": [
+    "counter",
+    "trigger",
+    "draw",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST13-019",
+   "name": "The Three Brothers' Bond",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "rest",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-13"
+   ]
+  },
+  {
+   "number": "ST15-001",
+   "name": "Atmos",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "life",
+    "cannot",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-15"
+   ]
+  },
+  {
+   "number": "ST15-002",
+   "name": "Edward.Newgate",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "activate-main",
+    "give-don",
+    "ko",
+    "rest",
+    "power"
+   ],
+   "decks": [
+    "ST-15"
+   ]
+  },
+  {
+   "number": "ST15-003",
+   "name": "Kingdew",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "opponent-turn",
+    "ko",
+    "rest",
+    "power"
+   ],
+   "decks": [
+    "ST-15"
+   ]
+  },
+  {
+   "number": "ST15-004",
+   "name": "Thatch",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "life",
+    "power",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-15"
+   ]
+  },
+  {
+   "number": "ST15-005",
+   "name": "Portgas.D.Ace",
+   "status": "ABSENT",
+   "tags": [
+    "rush",
+    "once-per-turn",
+    "power",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-15"
+   ]
+  },
+  {
+   "number": "ST16-001",
+   "name": "Uta",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "activate-main",
+    "once-per-turn",
+    "give-don",
+    "trash",
+    "rest"
+   ],
+   "decks": [
+    "ST-16"
+   ]
+  },
+  {
+   "number": "ST16-002",
+   "name": "Gordon",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "trash",
+    "rest",
+    "power"
+   ],
+   "decks": [
+    "ST-16"
+   ]
+  },
+  {
+   "number": "ST16-003",
+   "name": "Charlotte Katakuri",
+   "status": "ABSENT",
+   "tags": [
+    "power",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-16"
+   ]
+  },
+  {
+   "number": "ST16-004",
+   "name": "Shanks",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "ko"
+   ],
+   "decks": [
+    "ST-16"
+   ]
+  },
+  {
+   "number": "ST16-005",
+   "name": "Monkey.D.Luffy",
+   "status": "ABSENT",
+   "tags": [
+    "power"
+   ],
+   "decks": [
+    "ST-16"
+   ]
+  },
+  {
+   "number": "ST20-001",
+   "name": "Charlotte Katakuri",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "activate-main",
+    "once-per-turn",
+    "give-don",
+    "rest",
+    "life"
+   ],
+   "decks": [
+    "ST-20"
+   ]
+  },
+  {
+   "number": "ST20-002",
+   "name": "Charlotte Cracker",
+   "status": "ABSENT",
+   "tags": [
+    "trigger",
+    "once-per-turn",
+    "trash",
+    "ko",
+    "life",
+    "play-card"
+   ],
+   "decks": [
+    "ST-20"
+   ]
+  },
+  {
+   "number": "ST20-003",
+   "name": "Charlotte Brulee",
+   "status": "ABSENT",
+   "tags": [
+    "trigger",
+    "look-reveal",
+    "life"
+   ],
+   "decks": [
+    "ST-20"
+   ]
+  },
+  {
+   "number": "ST20-004",
+   "name": "Charlotte Pudding",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "trigger",
+    "rest",
+    "life"
+   ],
+   "decks": [
+    "ST-20"
+   ]
+  },
+  {
+   "number": "ST20-005",
+   "name": "Charlotte Linlin",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "trash",
+    "life"
+   ],
+   "decks": [
+    "ST-20"
+   ]
+  },
+  {
+   "number": "ST22-001",
+   "name": "Ace & Newgate",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "once-per-turn",
+    "draw",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-002",
+   "name": "Izo",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "draw",
+    "trash",
+    "rest",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-003",
+   "name": "Edward.Newgate",
+   "status": "ABSENT",
+   "tags": [
+    "double-attack",
+    "on-play",
+    "draw",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-004",
+   "name": "Elmy",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-005",
+   "name": "Kouzuki Oden",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "once-per-turn",
+    "trash",
+    "rest",
+    "set-active",
+    "return-hand"
+   ],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-006",
+   "name": "Jozu",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "draw",
+    "trash",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-007",
+   "name": "Squard",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "once-per-turn",
+    "give-don",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-008",
+   "name": "Decalvan Brothers",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-009",
+   "name": "Vista",
+   "status": "RECOGNIZED",
+   "tags": [
+    "blocker",
+    "rest"
+   ],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-010",
+   "name": "Portgas.D.Ace",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-011",
+   "name": "Whitey Bay",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "your-turn",
+    "look-reveal",
+    "power"
+   ],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-012",
+   "name": "Marco",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "once-per-turn",
+    "trash",
+    "ko",
+    "look-reveal",
+    "power"
+   ],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-013",
+   "name": "LittleOars Jr.",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-014",
+   "name": "A.O.",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-015",
+   "name": "I Am Whitebeard!!",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "life",
+    "power",
+    "play-card",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-016",
+   "name": "Take That Back!! Take Back What You Said!!",
+   "status": "ABSENT",
+   "tags": [
+    "counter",
+    "trigger",
+    "draw",
+    "look-reveal",
+    "power"
+   ],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST22-017",
+   "name": "Fire Fist",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "draw",
+    "return-hand",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-22"
+   ]
+  },
+  {
+   "number": "ST24-001",
+   "name": "Capone\"Gang\"Bege",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-play",
+    "draw",
+    "trash",
+    "rest"
+   ],
+   "decks": [
+    "ST-24"
+   ]
+  },
+  {
+   "number": "ST24-002",
+   "name": "Kid & Killer",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "trash",
+    "rest",
+    "set-active",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-24"
+   ]
+  },
+  {
+   "number": "ST24-003",
+   "name": "Basil Hawkins",
+   "status": "ABSENT",
+   "tags": [
+    "end-of-turn",
+    "set-active"
+   ],
+   "decks": [
+    "ST-24"
+   ]
+  },
+  {
+   "number": "ST24-004",
+   "name": "Law & Bepo",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "rest",
+    "power"
+   ],
+   "decks": [
+    "ST-24"
+   ]
+  },
+  {
+   "number": "ST25-001",
+   "name": "Alvida",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "draw",
+    "trash",
+    "cost-mod",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "ST25-002",
+   "name": "Cabaji",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "opponent-turn",
+    "rest",
+    "power",
+    "cost-mod"
+   ],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "ST25-003",
+   "name": "Crocodile & Mihawk",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "once-per-turn",
+    "draw",
+    "trash",
+    "play-card"
+   ],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "ST25-004",
+   "name": "Buggy",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "trash",
+    "play-card",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "ST25-005",
+   "name": "Mohji",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-ko",
+    "draw",
+    "ko",
+    "rest",
+    "cost-mod",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-25"
+   ]
+  },
+  {
+   "number": "ST26-001",
+   "name": "Soba Mask",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "return-hand",
+    "power",
+    "cost-mod"
+   ],
+   "decks": [
+    "ST-26"
+   ]
+  },
+  {
+   "number": "ST26-002",
+   "name": "Tony Tony.Chopper",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-play",
+    "don-minus",
+    "rest"
+   ],
+   "decks": [
+    "ST-26"
+   ]
+  },
+  {
+   "number": "ST26-003",
+   "name": "Nico Robin",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "don-minus",
+    "give-don",
+    "set-active"
+   ],
+   "decks": [
+    "ST-26"
+   ]
+  },
+  {
+   "number": "ST26-004",
+   "name": "General Franky",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "don-minus",
+    "power"
+   ],
+   "decks": [
+    "ST-26"
+   ]
+  },
+  {
+   "number": "ST26-005",
+   "name": "Monkey.D.Luffy",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "when-attacking",
+    "don-minus",
+    "power",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-26"
+   ]
+  },
+  {
+   "number": "ST27-001",
+   "name": "Avalo Pizarro",
+   "status": "ABSENT",
+   "tags": [
+    "on-ko",
+    "activate-main",
+    "once-per-turn",
+    "draw",
+    "ko",
+    "rest",
+    "power",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "ST27-002",
+   "name": "Catarina Devon",
+   "status": "ABSENT",
+   "tags": [
+    "on-ko",
+    "activate-main",
+    "draw",
+    "trash",
+    "ko",
+    "cost-mod",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "ST27-003",
+   "name": "Kuzan",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-ko",
+    "trash",
+    "ko",
+    "rest",
+    "play-card"
+   ],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "ST27-004",
+   "name": "Sanjuan.Wolf",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-play",
+    "trash",
+    "rest",
+    "cost-mod",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "ST27-005",
+   "name": "Marshall.D.Teach",
+   "status": "ABSENT",
+   "tags": [
+    "on-ko",
+    "activate-main",
+    "trash",
+    "ko",
+    "rest"
+   ],
+   "decks": [
+    "ST-27"
+   ]
+  },
+  {
+   "number": "ST28-001",
+   "name": "Ashura Doji",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "ko",
+    "life",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-28"
+   ]
+  },
+  {
+   "number": "ST28-002",
+   "name": "Izo",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "banish",
+    "on-play",
+    "don-x"
+   ],
+   "decks": [
+    "ST-28"
+   ]
+  },
+  {
+   "number": "ST28-003",
+   "name": "Kin'emon",
+   "status": "ABSENT",
+   "tags": [
+    "trigger",
+    "life",
+    "play-card",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-28"
+   ]
+  },
+  {
+   "number": "ST28-004",
+   "name": "Kouzuki Momonosuke",
+   "status": "ABSENT",
+   "tags": [
+    "rush",
+    "activate-main",
+    "your-turn",
+    "once-per-turn",
+    "give-don",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-28"
+   ]
+  },
+  {
+   "number": "ST28-005",
+   "name": "Yamato",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "your-turn",
+    "don-x",
+    "rest",
+    "deck-bottom",
+    "look-reveal",
+    "power"
+   ],
+   "decks": [
+    "ST-28"
+   ]
+  },
+  {
+   "number": "ST29-001",
+   "name": "Monkey.D.Luffy",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "draw",
+    "trash",
+    "life"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-002",
+   "name": "Usopp",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "when-attacking",
+    "rest",
+    "life"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-003",
+   "name": "Kaku",
+   "status": "ABSENT",
+   "tags": [
+    "trigger",
+    "ko",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-004",
+   "name": "Sanji",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "trigger",
+    "trash",
+    "rest",
+    "deck-bottom",
+    "look-reveal",
+    "play-card"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-005",
+   "name": "Jinbe",
+   "status": "ABSENT",
+   "tags": [
+    "trigger",
+    "play-card",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-006",
+   "name": "Stussy",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-007",
+   "name": "Tony Tony.Chopper",
+   "status": "ABSENT",
+   "tags": [
+    "on-ko",
+    "trigger",
+    "ko",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-008",
+   "name": "Nami",
+   "status": "ABSENT",
+   "tags": [
+    "trigger",
+    "ko",
+    "life",
+    "play-card",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-009",
+   "name": "Nico Robin",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "trigger",
+    "rest",
+    "play-card",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-010",
+   "name": "Franky",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-011",
+   "name": "Brook",
+   "status": "RECOGNIZED",
+   "tags": [
+    "blocker",
+    "rest"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-012",
+   "name": "Monkey.D.Luffy",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "trigger",
+    "once-per-turn",
+    "give-don",
+    "play-card"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-013",
+   "name": "Rob Lucci",
+   "status": "ABSENT",
+   "tags": [
+    "trigger",
+    "ko",
+    "life"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-014",
+   "name": "Roronoa Zoro",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "trigger",
+    "once-per-turn",
+    "give-don",
+    "draw",
+    "trash"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-015",
+   "name": "Raw Heat Strike",
+   "status": "ABSENT",
+   "tags": [
+    "counter",
+    "trigger",
+    "draw",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-016",
+   "name": "Kizaru!! Compared to Two Years Ago We're a Hundred Times Stronger Now!!",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "counter",
+    "power",
+    "cannot"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST29-017",
+   "name": "Iai Death Lion Song",
+   "status": "ABSENT",
+   "tags": [
+    "counter",
+    "trigger",
+    "draw",
+    "trash",
+    "ko",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-29"
+   ]
+  },
+  {
+   "number": "ST30-001",
+   "name": "Luffy & Ace",
+   "status": "ABSENT",
+   "tags": [
+    "opponent-turn",
+    "power"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-002",
+   "name": "Inazuma",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "rest",
+    "deck-bottom",
+    "look-reveal",
+    "power"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-003",
+   "name": "Edward.Newgate",
+   "status": "ABSENT",
+   "tags": [
+    "your-turn",
+    "power"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-004",
+   "name": "Emporio.Ivankov",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "draw",
+    "trash",
+    "look-reveal",
+    "power"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-006",
+   "name": "Jinbe",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "draw",
+    "trash",
+    "power"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-007",
+   "name": "Portgas.D.Ace",
+   "status": "ABSENT",
+   "tags": [
+    "rush",
+    "on-play",
+    "when-attacking",
+    "rest",
+    "power"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-008",
+   "name": "Marco",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-ko",
+    "trash",
+    "ko",
+    "rest",
+    "power",
+    "play-card"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-009",
+   "name": "LittleOars Jr.",
+   "status": "ABSENT",
+   "tags": [
+    "draw",
+    "trash",
+    "power"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-010",
+   "name": "Crocodile",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-play",
+    "rest"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-011",
+   "name": "Buggy",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "rest",
+    "power"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-012",
+   "name": "Monkey.D.Luffy",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "rush",
+    "on-play",
+    "when-attacking",
+    "rest"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-013",
+   "name": "Mr.2.Bon.Kurei(Bentham)",
+   "status": "RECOGNIZED",
+   "tags": [],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-014",
+   "name": "Mr.3(Galdino)",
+   "status": "ABSENT",
+   "tags": [
+    "activate-main",
+    "rest",
+    "power"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-015",
+   "name": "The Name of This Era Is \"Whitebeard\"!!",
+   "status": "ABSENT",
+   "tags": [
+    "counter",
+    "trigger",
+    "ko",
+    "power"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-016",
+   "name": "Can You Still Fight, Luffy?! Of Course!!",
+   "status": "ABSENT",
+   "tags": [
+    "counter",
+    "draw",
+    "power"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST30-017",
+   "name": "And You Get Yourself in Big Trouble!!",
+   "status": "ABSENT",
+   "tags": [
+    "main",
+    "trigger",
+    "rest",
+    "deck-bottom",
+    "look-reveal",
+    "power"
+   ],
+   "decks": [
+    "ST-30"
+   ]
+  },
+  {
+   "number": "ST31-001",
+   "name": "Sanji",
+   "status": "ABSENT",
+   "tags": [
+    "rush",
+    "on-play",
+    "don-x",
+    "draw",
+    "play-card"
+   ],
+   "decks": [
+    "ST-31"
+   ]
+  },
+  {
+   "number": "ST31-002",
+   "name": "Jinbe",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-play",
+    "draw",
+    "rest",
+    "play-card"
+   ],
+   "decks": [
+    "ST-31"
+   ]
+  },
+  {
+   "number": "ST31-003",
+   "name": "Brook",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "opponent-turn",
+    "give-don",
+    "rest",
+    "power"
+   ],
+   "decks": [
+    "ST-31"
+   ]
+  },
+  {
+   "number": "ST31-004",
+   "name": "Monkey.D.Luffy",
+   "status": "ABSENT",
+   "tags": [
+    "rush",
+    "on-play",
+    "give-don",
+    "power"
+   ],
+   "decks": [
+    "ST-31"
+   ]
+  },
+  {
+   "number": "ST31-005",
+   "name": "Thousand Sunny",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "activate-main",
+    "give-don",
+    "rest",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-31"
+   ]
+  },
+  {
+   "number": "ST32-001",
+   "name": "Kin'emon",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "draw",
+    "trash",
+    "rest"
+   ],
+   "decks": [
+    "ST-32"
+   ]
+  },
+  {
+   "number": "ST32-002",
+   "name": "Kouzuki Oden",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "draw",
+    "cannot"
+   ],
+   "decks": [
+    "ST-32"
+   ]
+  },
+  {
+   "number": "ST32-003",
+   "name": "Dracule Mihawk",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "your-turn",
+    "draw",
+    "trash",
+    "play-card",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-32"
+   ]
+  },
+  {
+   "number": "ST32-004",
+   "name": "Silvers Rayleigh",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "rest",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-32"
+   ]
+  },
+  {
+   "number": "ST32-005",
+   "name": "Roronoa Zoro",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "rest",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-32"
+   ]
+  },
+  {
+   "number": "ST33-001",
+   "name": "Koby",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-play",
+    "draw",
+    "trash",
+    "rest"
+   ],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "ST33-002",
+   "name": "Sakazuki",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "on-ko",
+    "trash",
+    "ko",
+    "play-card"
+   ],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "ST33-003",
+   "name": "Smoker",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "trash",
+    "deck-bottom"
+   ],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "ST33-004",
+   "name": "Borsalino",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "rest",
+    "cost-mod"
+   ],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "ST33-005",
+   "name": "Monkey.D.Garp",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "power",
+    "play-card",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-33"
+   ]
+  },
+  {
+   "number": "ST34-001",
+   "name": "Charlotte Katakuri",
+   "status": "ABSENT",
+   "tags": [
+    "on-ko",
+    "your-turn",
+    "once-per-turn",
+    "give-don",
+    "ko",
+    "rest",
+    "power",
+    "play-card",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-34"
+   ]
+  },
+  {
+   "number": "ST34-002",
+   "name": "Charlotte Cracker",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "give-don",
+    "ko",
+    "rest",
+    "leader-cond"
+   ],
+   "decks": [
+    "ST-34"
+   ]
+  },
+  {
+   "number": "ST34-003",
+   "name": "Charlotte Brulee",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "rest",
+    "deck-bottom",
+    "look-reveal"
+   ],
+   "decks": [
+    "ST-34"
+   ]
+  },
+  {
+   "number": "ST34-004",
+   "name": "Charlotte Linlin",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "don-minus",
+    "trash",
+    "life",
+    "power"
+   ],
+   "decks": [
+    "ST-34"
+   ]
+  },
+  {
+   "number": "ST34-005",
+   "name": "Baron Tamago & Pekoms",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "don-minus",
+    "ko",
+    "power"
+   ],
+   "decks": [
+    "ST-34"
+   ]
+  },
+  {
+   "number": "ST35-001",
+   "name": "Hack",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-play",
+    "ko",
+    "rest",
+    "power"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  },
+  {
+   "number": "ST35-002",
+   "name": "Lindbergh",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "power"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  },
+  {
+   "number": "ST35-003",
+   "name": "Karasu",
+   "status": "ABSENT",
+   "tags": [
+    "when-attacking",
+    "trash"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  },
+  {
+   "number": "ST35-004",
+   "name": "Koala",
+   "status": "ABSENT",
+   "tags": [
+    "blocker",
+    "on-play",
+    "give-don",
+    "trash",
+    "power",
+    "cost-mod",
+    "play-card"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  },
+  {
+   "number": "ST35-005",
+   "name": "Bartholomew Kuma",
+   "status": "ABSENT",
+   "tags": [
+    "on-play",
+    "give-don",
+    "trash",
+    "power",
+    "cost-mod",
+    "play-card"
+   ],
+   "decks": [
+    "ST-35"
+   ]
+  }
+ ],
+ "tagCounts": {
+  "rest": 90,
+  "on-play": 84,
+  "power": 82,
+  "trash": 72,
+  "life": 55,
+  "trigger": 48,
+  "ko": 45,
+  "look-reveal": 44,
+  "draw": 41,
+  "blocker": 39,
+  "leader-cond": 39,
+  "activate-main": 38,
+  "play-card": 35,
+  "give-don": 32,
+  "once-per-turn": 30,
+  "deck-bottom": 27,
+  "when-attacking": 22,
+  "main": 20,
+  "counter": 17,
+  "don-x": 17,
+  "cost-mod": 17,
+  "on-ko": 15,
+  "set-active": 15,
+  "your-turn": 12,
+  "cannot": 12,
+  "rush": 10,
+  "don-minus": 10,
+  "return-hand": 6,
+  "end-of-turn": 5,
+  "opponent-turn": 5,
+  "double-attack": 2,
+  "banish": 1
+ }
+}

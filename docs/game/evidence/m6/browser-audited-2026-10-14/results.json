@@ -1,0 +1,74 @@
+[
+ {
+  "name": "desktop: Starter ST-03 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-05 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-11 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-14 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-17 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-18 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-19 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-21 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-23 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-03 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-05 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-11 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-14 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-17 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-18 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-19 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-21 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-23 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ }
+]

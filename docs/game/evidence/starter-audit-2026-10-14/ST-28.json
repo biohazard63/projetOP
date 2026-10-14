@@ -1,0 +1,991 @@
+{
+  "deckCode": "ST-28",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569028",
+      "status": "FETCHED",
+      "sha256": "36bd36c437045bab0fd59e258415178c631e5a69afc2b75bb39f6284546a0b51",
+      "retrievedAt": "2026-10-14T07:27:15.549397+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st28-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st28-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st28.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st28.php",
+      "status": "FETCHED",
+      "sha256": "11beb09e8a4471d0052bfdf0f8a10149577ac6cd10649c81825449daf7941a64",
+      "retrievedAt": "2026-10-14T07:27:20.136615+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st28_cardlists/",
+      "status": "FETCHED",
+      "sha256": "a041e583639a12656b462e386c65643079da14a8c88d19ddc036c4cf2beb6954",
+      "retrievedAt": "2026-10-14T07:31:44.743764+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569028",
+      "status": "FETCHED",
+      "sha256": "36bd36c437045bab0fd59e258415178c631e5a69afc2b75bb39f6284546a0b51",
+      "retrievedAt": "2026-10-14T07:31:46.427809+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569028",
+      "status": "FETCHED",
+      "sha256": "36bd36c437045bab0fd59e258415178c631e5a69afc2b75bb39f6284546a0b51",
+      "retrievedAt": "2026-10-14T07:35:12.570331+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st28_cardlists/",
+      "status": "FETCHED",
+      "sha256": "a041e583639a12656b462e386c65643079da14a8c88d19ddc036c4cf2beb6954",
+      "retrievedAt": "2026-10-14T07:35:14.659371+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550028",
+      "status": "FETCHED",
+      "sha256": "849b60b52d4df77978668d8c06b97c4e172247ab7a22d8a76a66e39d511ec696",
+      "retrievedAt": "2026-10-14T07:35:16.362245+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569028",
+      "status": "FETCHED",
+      "sha256": "36bd36c437045bab0fd59e258415178c631e5a69afc2b75bb39f6284546a0b51",
+      "retrievedAt": "2026-10-14T07:53:06.191572+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622028",
+      "status": "FETCHED",
+      "sha256": "b7017dc97601bcc80bfff11e28499b8ec738e2be6fa66f1782c4d6014b2621cd",
+      "retrievedAt": "2026-10-14T07:53:07.539605+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "OP06-022",
+      "printingCode": "OP06-022_p3",
+      "name": "Yamato",
+      "type": "LEADER",
+      "color": "Green/Yellow"
+    },
+    {
+      "cardNumber": "OP06-100",
+      "printingCode": "OP06-100_r2",
+      "name": "Inuarashi",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "OP06-103",
+      "printingCode": "OP06-103_r1",
+      "name": "Kawamatsu",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "OP06-104",
+      "printingCode": "OP06-104_r1",
+      "name": "Kikunojo",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "OP06-109",
+      "printingCode": "OP06-109_r1",
+      "name": "Denjiro",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "OP06-110",
+      "printingCode": "OP06-110_r2",
+      "name": "Nekomamushi",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "OP06-112",
+      "printingCode": "OP06-112_r1",
+      "name": "Raizo",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "OP07-116",
+      "printingCode": "OP07-116_p1",
+      "name": "Blaze Slice",
+      "type": "EVENT",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "OP09-035",
+      "printingCode": "OP09-035_r1",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "printingCode": "ST13-016_r1",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST28-001",
+      "printingCode": "ST28-001",
+      "name": "Ashura Doji",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST28-002",
+      "printingCode": "ST28-002",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST28-003",
+      "printingCode": "ST28-003",
+      "name": "Kin'emon",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST28-004",
+      "printingCode": "ST28-004",
+      "name": "Kouzuki Momonosuke",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    },
+    {
+      "cardNumber": "ST28-005",
+      "printingCode": "ST28-005",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Yellow"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "OP09-042",
+      "quantity": 1,
+      "sourceName": "ヤマト",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    },
+    {
+      "cardNumber": "ST28-001",
+      "quantity": 4,
+      "sourceName": "アシュラ童子",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    },
+    {
+      "cardNumber": "ST28-002",
+      "quantity": 4,
+      "sourceName": "イゾウ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    },
+    {
+      "cardNumber": "ST28-003",
+      "quantity": 2,
+      "sourceName": "錦えもん",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    },
+    {
+      "cardNumber": "ST28-004",
+      "quantity": 2,
+      "sourceName": "光月モモの助",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    },
+    {
+      "cardNumber": "ST28-005",
+      "quantity": 2,
+      "sourceName": "ヤマト",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    },
+    {
+      "cardNumber": "OP06-100",
+      "quantity": 4,
+      "sourceName": "イヌアラシ",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    },
+    {
+      "cardNumber": "OP06-103",
+      "quantity": 4,
+      "sourceName": "河松",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    },
+    {
+      "cardNumber": "OP06-104",
+      "quantity": 4,
+      "sourceName": "菊之丞",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    },
+    {
+      "cardNumber": "OP06-109",
+      "quantity": 4,
+      "sourceName": "傳ジロー",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    },
+    {
+      "cardNumber": "OP06-110",
+      "quantity": 4,
+      "sourceName": "ネコマムシ",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    },
+    {
+      "cardNumber": "OP06-112",
+      "quantity": 4,
+      "sourceName": "雷ぞう",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    },
+    {
+      "cardNumber": "OP09-035",
+      "quantity": 4,
+      "sourceName": "ポートガス・D・エース",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "quantity": 4,
+      "sourceName": "ヤマト",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    },
+    {
+      "cardNumber": "OP07-116",
+      "quantity": 4,
+      "sourceName": "焔裂き",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st28_cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECK -GREEN/YELLOW Yamato- [ST-28] − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECK -GREEN/YELLOW Yamato- [ST-28]"
+  ],
+  "productContents": "Constructed Deck x 1 (51 cards), DON!! Card x 10, Playsheet x 1, BOOSTER PACK -A FIST OF DIVINE SPEED- [OP-11] x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st28.php",
+  "officialDeckTitle": "STARTER DECK -GREEN/YELLOW Yamato- [ST-28]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "OP06-022",
+      "printingCode": "OP06-022_p3",
+      "name": "ヤマト",
+      "type": "LEADER",
+      "color": "緑/黄"
+    },
+    {
+      "cardNumber": "OP06-100",
+      "printingCode": "OP06-100_r2",
+      "name": "イヌアラシ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "OP06-103",
+      "printingCode": "OP06-103_r1",
+      "name": "河松",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "OP06-104",
+      "printingCode": "OP06-104_r1",
+      "name": "菊之丞",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "OP06-109",
+      "printingCode": "OP06-109_r1",
+      "name": "傳ジロー",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "OP06-110",
+      "printingCode": "OP06-110_r2",
+      "name": "ネコマムシ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "OP06-112",
+      "printingCode": "OP06-112_r1",
+      "name": "雷ぞう",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "OP07-116",
+      "printingCode": "OP07-116_p1",
+      "name": "焔裂き",
+      "type": "EVENT",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "OP09-035",
+      "printingCode": "OP09-035_r1",
+      "name": "ポートガス・D・エース",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "printingCode": "ST13-016_r1",
+      "name": "ヤマト",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST28-001",
+      "printingCode": "ST28-001",
+      "name": "アシュラ童子",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST28-002",
+      "printingCode": "ST28-002",
+      "name": "イゾウ",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST28-003",
+      "printingCode": "ST28-003",
+      "name": "錦えもん",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST28-004",
+      "printingCode": "ST28-004",
+      "name": "光月モモの助",
+      "type": "CHARACTER",
+      "color": "黄"
+    },
+    {
+      "cardNumber": "ST28-005",
+      "printingCode": "ST28-005",
+      "name": "ヤマト",
+      "type": "CHARACTER",
+      "color": "黄"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "OP06-022",
+      "printingCode": "OP06-022_p3",
+      "locale": "EN",
+      "name": "Yamato",
+      "type": "LEADER",
+      "color": "Green/Yellow",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "0cb1e7a2553ea3442687ebb6b49af2675586aba9c6db04d2058f368f769a1376",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "OP06-100",
+      "printingCode": "OP06-100_r2",
+      "locale": "EN",
+      "name": "Inuarashi",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "7b6b7e679b9f1c9ec206ff01527d69665b9e8fe994861c215bc0f5f8659128ad",
+      "triggerHash": "d7d3c18dbeb66acb0e86e3a700bf629694b1f105cd7e270a0ea2e97e27154263",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "81a7f6a0d02ade4646126f3fca2972a9535113a3def0d4a796b66f685c40c20f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "OP06-103",
+      "printingCode": "OP06-103_r1",
+      "locale": "EN",
+      "name": "Kawamatsu",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "e7fbab4101edadd077eabcc13962fb5ec6a863110cd774bb5ef6fd8722780265",
+      "triggerHash": "d7d3c18dbeb66acb0e86e3a700bf629694b1f105cd7e270a0ea2e97e27154263",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "a40edadbd4cf125c10ddcca29dfb871d02aef2fbd65fd4d9ea42e6c788546f04",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "OP06-104",
+      "printingCode": "OP06-104_r1",
+      "locale": "EN",
+      "name": "Kikunojo",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "c106a987fd36cca44f59d75f4a963495fb832a29db8eea2b2c0babdbf5f916ea",
+      "triggerHash": "d7d3c18dbeb66acb0e86e3a700bf629694b1f105cd7e270a0ea2e97e27154263",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "9b71652119a71307e4e21ae30aa9742411e427347337110104bdc1db4202c6d9",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "OP06-109",
+      "printingCode": "OP06-109_r1",
+      "locale": "EN",
+      "name": "Denjiro",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "3a3af2b2304f13ada8bbd4eb5766e42c0f310aabbf798b90b87c382b8cdf84d6",
+      "triggerHash": "d7d3c18dbeb66acb0e86e3a700bf629694b1f105cd7e270a0ea2e97e27154263",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "9b71652119a71307e4e21ae30aa9742411e427347337110104bdc1db4202c6d9",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "OP06-110",
+      "printingCode": "OP06-110_r2",
+      "locale": "EN",
+      "name": "Nekomamushi",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "758d23b1357c8b802ee55c8dd5949ac0dfae6e422f4bd446be512048170d3c1b",
+      "triggerHash": "d7d3c18dbeb66acb0e86e3a700bf629694b1f105cd7e270a0ea2e97e27154263",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "81a7f6a0d02ade4646126f3fca2972a9535113a3def0d4a796b66f685c40c20f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "OP06-112",
+      "printingCode": "OP06-112_r1",
+      "locale": "EN",
+      "name": "Raizo",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "4a21b92e5faa133631ffa9f095453966eb59edbe35e35f79b0ef74479936001a",
+      "triggerHash": "d7d3c18dbeb66acb0e86e3a700bf629694b1f105cd7e270a0ea2e97e27154263",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "9b71652119a71307e4e21ae30aa9742411e427347337110104bdc1db4202c6d9",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "OP07-116",
+      "printingCode": "OP07-116_p1",
+      "locale": "EN",
+      "name": "Blaze Slice",
+      "type": "EVENT",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "1611a7a5ff87b82f7197b063d1b6b87afd9ea69b26c2e10d691e0e56da21d051",
+      "triggerHash": "456d70fb08030045a9966b22821e0a1303ce243d4b1d37fb59e27357663f9b45",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "9b71652119a71307e4e21ae30aa9742411e427347337110104bdc1db4202c6d9",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "OP09-035",
+      "printingCode": "OP09-035_r1",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 5,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "08f65ae256dd6c700c542ae7f448d44da8874677c40d009e1046815a437b6eec",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7a7e75876679bc01956959ec28c6de3a8a4a12c01816b0e0c7777c474d678441",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "printingCode": "ST13-016_r1",
+      "locale": "EN",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 5,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "f9c3445308c026c996b836ee69849183f818b9d09db4c63da8c76ba595508b7c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "ST28-001",
+      "printingCode": "ST28-001",
+      "locale": "EN",
+      "name": "Ashura Doji",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 3,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "b3b16e0936fc5669338c729c5d0fd3ba362b2b26a9aefa504760c9326fd6b490",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "9b71652119a71307e4e21ae30aa9742411e427347337110104bdc1db4202c6d9",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "ST28-002",
+      "printingCode": "ST28-002",
+      "locale": "EN",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "69463f1da32146eac01e70590b6d9438ef49209145bd86972975dc6d08096b68",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "6f11936c6a84ae3c6dac99a544391208ced29667aeb266dcdf9d0535d8336ccb",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "ST28-003",
+      "printingCode": "ST28-003",
+      "locale": "EN",
+      "name": "Kin'emon",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "b3c4d830ef983c04b27176d401a3271a6c3e31b3b95ecddc9d33f046332f387e",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "9b71652119a71307e4e21ae30aa9742411e427347337110104bdc1db4202c6d9",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "ST28-004",
+      "printingCode": "ST28-004",
+      "locale": "EN",
+      "name": "Kouzuki Momonosuke",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 6,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "ed9453d37b4fe82835469ea1cdfea41f2ce1eaa8f735b333707b91d81ed3bdf6",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "61dbde3b5bfeb2ccd179da09acea61a5912016573c415c492499d13c57f6c034",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "ST28-005",
+      "printingCode": "ST28-005",
+      "locale": "EN",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Yellow",
+      "cost": 1,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "7bc7e20d6f38ac1ab9dd5d9ba6b8721ab9fe9141715aee25385f6878129eee4d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569028"
+    },
+    {
+      "cardNumber": "OP06-022",
+      "printingCode": "OP06-022_p2",
+      "locale": "FR",
+      "name": "Yamato",
+      "type": "LEADER",
+      "color": "Vert/Jaune",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "c4cf2e7526a98e4c43cfb9ef0af6305aea776f79ab96c21fb4773293203b83a2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "dc5943974b2ef47485fbb44e888bef91c159ad933ce5deedb61f053be39c1a33",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    },
+    {
+      "cardNumber": "OP06-100",
+      "printingCode": "OP06-100_r1",
+      "locale": "FR",
+      "name": "Caborage",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "1bb317003beaf5fcea9751dd7d30557dfa30d9062adbdad629a6dcc0c37f9d2c",
+      "triggerHash": "5a54709352fed81bee64623c03ea3e1359ece2ac523a92aee8a61bcb43f7db4f",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "cc320b35b5211fc7fe57be7294fdf4beca0827711ead4801390a2ed0d4f33616",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    },
+    {
+      "cardNumber": "OP06-103",
+      "printingCode": "OP06-103_p1",
+      "locale": "FR",
+      "name": "Kawamatsu",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 3,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "7fea7cbb01b62dc250d4066f8025a9a76d6db884b3a408040787a46a83371ed9",
+      "triggerHash": "5a54709352fed81bee64623c03ea3e1359ece2ac523a92aee8a61bcb43f7db4f",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "438d0e163773876fbb52b606e996ab256c6e52243cbe710d78fac05a559a2eda",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    },
+    {
+      "cardNumber": "OP06-104",
+      "printingCode": "OP06-104_p1",
+      "locale": "FR",
+      "name": "Kikunojo",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "0c2dc21bdb9c000ab6a677a468d702b0ee8e75310b831608ed5ebfdb13f0e065",
+      "triggerHash": "5a54709352fed81bee64623c03ea3e1359ece2ac523a92aee8a61bcb43f7db4f",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "f15c673138c3ab63790c6d8287c669667439da11f6eceec6e437e6fe0588c067",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    },
+    {
+      "cardNumber": "OP06-109",
+      "printingCode": "OP06-109_p1",
+      "locale": "FR",
+      "name": "Denjiro",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "6bb9c9f2239fb3c75f9789db4907c54244539e5f53fc9e41c0090476aa4a06f2",
+      "triggerHash": "5a54709352fed81bee64623c03ea3e1359ece2ac523a92aee8a61bcb43f7db4f",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "f15c673138c3ab63790c6d8287c669667439da11f6eceec6e437e6fe0588c067",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    },
+    {
+      "cardNumber": "OP06-110",
+      "printingCode": "OP06-110_r1",
+      "locale": "FR",
+      "name": "Chavipère",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "90b4a21c464e3bca4537ae45e288cd3fbb121d374a726f352b6660db4b000f27",
+      "triggerHash": "5a54709352fed81bee64623c03ea3e1359ece2ac523a92aee8a61bcb43f7db4f",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "cc320b35b5211fc7fe57be7294fdf4beca0827711ead4801390a2ed0d4f33616",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    },
+    {
+      "cardNumber": "OP06-112",
+      "printingCode": "OP06-112_p1",
+      "locale": "FR",
+      "name": "Raizo",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "54c77f85572d297ef5d8222a9fe1f4041d62381257f6f4150d0e5646dad17703",
+      "triggerHash": "5a54709352fed81bee64623c03ea3e1359ece2ac523a92aee8a61bcb43f7db4f",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "f15c673138c3ab63790c6d8287c669667439da11f6eceec6e437e6fe0588c067",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    },
+    {
+      "cardNumber": "OP07-116",
+      "printingCode": "OP07-116_p1",
+      "locale": "FR",
+      "name": "Brise-flammes",
+      "type": "EVENT",
+      "color": "Jaune",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "74b9c1728372383445d6f2e76a1e3f0c5cff2da1295f2b01bdc7d3842389fa42",
+      "triggerHash": "4be80badf65106223a6335c54e05150b4d9b169ce101bd933eff102448ad9ef8",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "f15c673138c3ab63790c6d8287c669667439da11f6eceec6e437e6fe0588c067",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    },
+    {
+      "cardNumber": "OP09-035",
+      "printingCode": "OP09-035_r1",
+      "locale": "FR",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 5,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "7c909a6d4c214e5824b22737d99bb8842968f909b5e3d2fb75c3b886e6822ee7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "f3af557cccb59f11cb0fbf94f6aae01047a768685bc2aab72bdb239d4257fa1a",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "printingCode": "ST13-016_p1",
+      "locale": "FR",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 5,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "296266b3360318ddb30fc71dca4a2e882ad575dadf8e7a4d25f25fe0a322c7ac",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "dc5943974b2ef47485fbb44e888bef91c159ad933ce5deedb61f053be39c1a33",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    },
+    {
+      "cardNumber": "ST28-001",
+      "printingCode": "ST28-001",
+      "locale": "FR",
+      "name": "Ashura Doji",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 3,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "10162249d37d35c3558440402c9915926ac475affee8aa5bedbb0c530c955e27",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "f15c673138c3ab63790c6d8287c669667439da11f6eceec6e437e6fe0588c067",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    },
+    {
+      "cardNumber": "ST28-002",
+      "printingCode": "ST28-002",
+      "locale": "FR",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 2,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "3508ec3bb8b3931330a71b730b23155a0c600f1eb3f25b18710ff4dcc67b963e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "0cc6cb6d81cf0e6dc2ed418e09eabdd1a156a898c58c0d11415acce3efb50854",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    },
+    {
+      "cardNumber": "ST28-003",
+      "printingCode": "ST28-003",
+      "locale": "FR",
+      "name": "Kinémon",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 4,
+      "power": 5000,
+      "counter": 2000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "23b794ee29f47b7c958a79c2c043c57e63d6d274a6f4cfc43f4474caad1bc6a0",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "f15c673138c3ab63790c6d8287c669667439da11f6eceec6e437e6fe0588c067",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    },
+    {
+      "cardNumber": "ST28-004",
+      "printingCode": "ST28-004",
+      "locale": "FR",
+      "name": "Momonosuké Kozuki",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 6,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "0d8e8e276f7740189b3be524a4b0c835f0127b6984386263fce12c701d60c7d5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "dfb1ae48c0f83e9222761cce6ddfe72ea273b9f00356bf3d8f99139c114e352d",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    },
+    {
+      "cardNumber": "ST28-005",
+      "printingCode": "ST28-005",
+      "locale": "FR",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Jaune",
+      "cost": 1,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "597795f84404872465bf1f722682371f3cfa510ffcab0d868f1bfdc2a4252567",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "dc5943974b2ef47485fbb44e888bef91c159ad933ce5deedb61f053be39c1a33",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622028"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "OP06-022",
+      "printingCode": "OP06-022_p2",
+      "name": "Yamato",
+      "type": "LEADER",
+      "color": "Vert/Jaune"
+    },
+    {
+      "cardNumber": "OP06-100",
+      "printingCode": "OP06-100_r1",
+      "name": "Caborage",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "OP06-103",
+      "printingCode": "OP06-103_p1",
+      "name": "Kawamatsu",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "OP06-104",
+      "printingCode": "OP06-104_p1",
+      "name": "Kikunojo",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "OP06-109",
+      "printingCode": "OP06-109_p1",
+      "name": "Denjiro",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "OP06-110",
+      "printingCode": "OP06-110_r1",
+      "name": "Chavipère",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "OP06-112",
+      "printingCode": "OP06-112_p1",
+      "name": "Raizo",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "OP07-116",
+      "printingCode": "OP07-116_p1",
+      "name": "Brise-flammes",
+      "type": "EVENT",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "OP09-035",
+      "printingCode": "OP09-035_r1",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST13-016",
+      "printingCode": "ST13-016_p1",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST28-001",
+      "printingCode": "ST28-001",
+      "name": "Ashura Doji",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST28-002",
+      "printingCode": "ST28-002",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST28-003",
+      "printingCode": "ST28-003",
+      "name": "Kinémon",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST28-004",
+      "printingCode": "ST28-004",
+      "name": "Momonosuké Kozuki",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    },
+    {
+      "cardNumber": "ST28-005",
+      "printingCode": "ST28-005",
+      "name": "Yamato",
+      "type": "CHARACTER",
+      "color": "Jaune"
+    }
+  ]
+}

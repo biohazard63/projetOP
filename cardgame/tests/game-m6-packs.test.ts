@@ -12,6 +12,13 @@ import { ST08_LOCAL_CARDS } from '../src/game/cards/m6LocalST08Cards'
 import { ST07_LOCAL_CARDS } from '../src/game/cards/m6LocalST07Cards'
 import { ST12_LOCAL_CARDS } from '../src/game/cards/m6LocalST12Cards'
 import { ST03_OP_LOCAL_CARDS } from '../src/game/cards/m6LocalST03OPCards'
+import { REPRINT_LOCAL_CARDS } from '../src/game/cards/m6LocalReprintCards'
+import { ST14_LOCAL_CARDS } from '../src/game/cards/m6LocalST14Cards'
+import { ST17_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST17Cards'
+import { ST18_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST18Cards'
+import { ST19_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST19Cards'
+import { ST21_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST21Cards'
+import { ST23_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST23Cards'
 import { ST09_LOCAL_CARDS } from '../src/game/cards/m6LocalST09Cards'
 import { ST11_LOCAL_CARDS } from '../src/game/cards/m6LocalST11Cards'
 import { ST10_LOCAL_CARDS } from '../src/game/cards/m6LocalST10Cards'
@@ -62,7 +69,7 @@ test('M6 card packs preserve prior definitions and add the executable local ST-0
   ])
   const catalog = engineCatalog()
   // M6 lots B/C plus ST-07, ST-08 and ST-12 are added on top of the earlier catalog.
-  const local = ST01_LOCAL_CARDS.length + ST02_LOCAL_CARDS.length + ST03_ST04_LOCAL_CARDS.length + ST05_ST06_LOCAL_CARDS.length + ST07_LOCAL_CARDS.length + ST08_LOCAL_CARDS.length + ST09_LOCAL_CARDS.length + ST10_LOCAL_CARDS.length + ST11_LOCAL_CARDS.length + ST12_LOCAL_CARDS.length + ST03_OP_LOCAL_CARDS.length
+  const local = ST01_LOCAL_CARDS.length + ST02_LOCAL_CARDS.length + ST03_ST04_LOCAL_CARDS.length + ST05_ST06_LOCAL_CARDS.length + ST07_LOCAL_CARDS.length + ST08_LOCAL_CARDS.length + ST09_LOCAL_CARDS.length + ST10_LOCAL_CARDS.length + ST11_LOCAL_CARDS.length + ST12_LOCAL_CARDS.length + ST03_OP_LOCAL_CARDS.length + REPRINT_LOCAL_CARDS.length + ST14_LOCAL_CARDS.length + ST17_OFFICIAL_CARDS.length + ST18_OFFICIAL_CARDS.length + ST19_OFFICIAL_CARDS.length + ST21_OFFICIAL_CARDS.length + ST23_OFFICIAL_CARDS.length
   assert.equal(catalog.definitions.length, compiled.definitions.length + local)
   assert.equal(catalog.printings.length, compiled.printings.length + local)
   const catalogIds = new Set(catalog.definitions.map(card => card.definitionId))

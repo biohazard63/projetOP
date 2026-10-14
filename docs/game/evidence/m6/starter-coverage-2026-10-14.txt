@@ -1,0 +1,37 @@
+ST-01  17/17 certified · IN /play · todo 0
+ST-02  17/17 certified · IN /play · todo 0
+ST-03  17/17 certified · IN /play · todo 0
+ST-04  17/17 certified · IN /play · todo 0
+ST-05  17/17 certified · IN /play · todo 0
+ST-06  17/17 certified · IN /play · todo 0
+ST-07  17/17 certified · IN /play · todo 0
+ST-08  15/15 certified · IN /play · todo 0
+ST-10  19/19 certified · IN /play · todo 0
+ST-11  15/15 certified · IN /play · todo 0
+ST-12  17/17 certified · IN /play · todo 0
+ST-14  17/17 certified · IN /play · todo 0
+ST-17  15/15 certified · IN /play · todo 0
+ST-18  15/15 certified · IN /play · todo 0
+ST-19  15/15 certified · IN /play · todo 0
+ST-21  17/17 certified · IN /play · todo 0
+ST-23  15/15 certified · IN /play · todo 0
+ST-09  14/15 certified · not offered · todo 1
+ST-26   5/15 certified · not offered · todo 10
+ST-16   4/15 certified · not offered · todo 11
+ST-31   4/15 certified · not offered · todo 11
+ST-15   3/15 certified · not offered · todo 12
+ST-20   2/15 certified · not offered · todo 13
+ST-34   1/15 certified · not offered · todo 14
+ST-25   0/15 certified · not offered · todo 15
+ST-28   0/15 certified · not offered · todo 15
+ST-32   0/15 certified · not offered · todo 15
+ST-33   0/15 certified · not offered · todo 15
+ST-35   0/15 certified · not offered · todo 15
+ST-30   1/17 certified · not offered · todo 16
+ST-22   0/17 certified · not offered · todo 17
+ST-29   0/17 certified · not offered · todo 17
+ST-13   0/19 certified · not offered · todo 19
+ST-24   0/15 certified · not offered · COMPOSITION_UNVERIFIED,SOURCE_NUMBER_NAME_CONFLICT_DIFFERENT_QUANTITIES · todo —
+ST-27   0/15 certified · not offered · COMPOSITION_UNVERIFIED,SOURCE_SANJUAN_NUMBER_TYPO_NEEDS_QUANTITY_CORROBORATION · todo —
+uncertified unique cards: 244 (absent 223)
+mechanics: {"rest":90,"on-play":84,"power":82,"trash":72,"life":55,"trigger":48,"ko":45,"look-reveal":44,"draw":41,"blocker":39,"leader-cond":39,"activate-main":38,"play-card":35,"give-don":32,"once-per-turn":30,"deck-bottom":27,"when-attacking":22,"main":20,"counter":17,"don-x":17,"cost-mod":17,"on-ko":15,"set-active":15,"your-turn":12,"cannot":12,"rush":10,"don-minus":10,"return-hand":6,"end-of-turn":5,"opponent-turn":5,"double-attack":2,"banish":1}

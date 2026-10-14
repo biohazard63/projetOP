@@ -1,0 +1,1039 @@
+{
+  "deckCode": "ST-02",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569002",
+      "status": "FETCHED",
+      "sha256": "a465c056525d1b0f587ee78a78136c1d019e4e6d0e4d2b1e5d9813df3ed84091",
+      "retrievedAt": "2026-10-14T07:26:38.341091+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st02-cardlists/",
+      "status": "FETCHED",
+      "sha256": "36f05760901511b63ac8154cc93ce9d6e3d73b72162353342a73a8f8d3bcb9c3",
+      "retrievedAt": "2026-10-14T07:26:40.226199+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st02.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st01-04.php",
+      "status": "FETCHED",
+      "sha256": "6f9d264ed14666d3eced0854845718a2958d76155ce5df8331e61d89432c7e3b",
+      "retrievedAt": "2026-10-14T07:26:43.043279+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st02-cardlists/",
+      "status": "FETCHED",
+      "sha256": "36f05760901511b63ac8154cc93ce9d6e3d73b72162353342a73a8f8d3bcb9c3",
+      "retrievedAt": "2026-10-14T07:31:22.017349+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569002",
+      "status": "FETCHED",
+      "sha256": "a465c056525d1b0f587ee78a78136c1d019e4e6d0e4d2b1e5d9813df3ed84091",
+      "retrievedAt": "2026-10-14T07:31:23.391024+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569002",
+      "status": "FETCHED",
+      "sha256": "a465c056525d1b0f587ee78a78136c1d019e4e6d0e4d2b1e5d9813df3ed84091",
+      "retrievedAt": "2026-10-14T07:34:51.963159+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st02-cardlists/",
+      "status": "FETCHED",
+      "sha256": "36f05760901511b63ac8154cc93ce9d6e3d73b72162353342a73a8f8d3bcb9c3",
+      "retrievedAt": "2026-10-14T07:34:53.911685+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550002",
+      "status": "FETCHED",
+      "sha256": "8b938a04f59b0341ca716e148d707510622225de8dddf7f987b24ada7f9a825a",
+      "retrievedAt": "2026-10-14T07:34:55.639515+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02",
+      "status": "FETCHED",
+      "sha256": "93dd5803912c5324a5ae7f02208c018e8431f6ac60811d6754b764859d8cac4f",
+      "retrievedAt": "2026-10-14T07:52:54.299281+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02",
+      "status": "FETCHED",
+      "sha256": "c027ea8aad8bed526f83124f376fad67dac0b7fa233d733d95f668c36dc00088",
+      "retrievedAt": "2026-10-14T07:52:55.790448+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "ST02-001",
+      "printingCode": "ST02-001",
+      "name": "Eustass\"Captain\"Kid",
+      "type": "LEADER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-002",
+      "printingCode": "ST02-002",
+      "name": "Vito",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-003",
+      "printingCode": "ST02-003",
+      "name": "Urouge",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004",
+      "name": "Capone\"Gang\"Bege",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-005",
+      "printingCode": "ST02-005",
+      "name": "Killer",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-006",
+      "printingCode": "ST02-006",
+      "name": "Koby",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-007",
+      "printingCode": "ST02-007",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-008",
+      "printingCode": "ST02-008",
+      "name": "Scratchmen Apoo",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-009",
+      "printingCode": "ST02-009",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-010",
+      "printingCode": "ST02-010",
+      "name": "Basil Hawkins",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-011",
+      "printingCode": "ST02-011",
+      "name": "Heat",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-012",
+      "printingCode": "ST02-012",
+      "name": "Bepo",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-013",
+      "printingCode": "ST02-013",
+      "name": "Eustass\"Captain\"Kid",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-014",
+      "printingCode": "ST02-014",
+      "name": "X.Drake",
+      "type": "CHARACTER",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-015",
+      "printingCode": "ST02-015",
+      "name": "Scalpel",
+      "type": "EVENT",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-016",
+      "printingCode": "ST02-016",
+      "name": "Repel",
+      "type": "EVENT",
+      "color": "Green"
+    },
+    {
+      "cardNumber": "ST02-017",
+      "printingCode": "ST02-017",
+      "name": "Straw Sword",
+      "type": "EVENT",
+      "color": "Green"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "ST02-001",
+      "quantity": 1,
+      "sourceName": "ユースタス・キッド",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-002",
+      "quantity": 4,
+      "sourceName": "ヴィト",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-003",
+      "quantity": 2,
+      "sourceName": "ウルージ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "quantity": 4,
+      "sourceName": "カポネ・ベッジ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-005",
+      "quantity": 2,
+      "sourceName": "キラー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-006",
+      "quantity": 4,
+      "sourceName": "コビー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-007",
+      "quantity": 4,
+      "sourceName": "ジュエリー・ボニー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-008",
+      "quantity": 4,
+      "sourceName": "スクラッチメン・アプー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-009",
+      "quantity": 2,
+      "sourceName": "トラファルガー・ロー",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-010",
+      "quantity": 2,
+      "sourceName": "バジル・ホーキンス",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-011",
+      "quantity": 4,
+      "sourceName": "ヒート",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-012",
+      "quantity": 4,
+      "sourceName": "ベポ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-013",
+      "quantity": 2,
+      "sourceName": "ユースタス・キッド",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-014",
+      "quantity": 4,
+      "sourceName": "X・ドレーク",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-015",
+      "quantity": 2,
+      "sourceName": "メス",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-016",
+      "quantity": 4,
+      "sourceName": "反発",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    },
+    {
+      "cardNumber": "ST02-017",
+      "quantity": 2,
+      "sourceName": "藁備手刀",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st02-cardlists/"
+    }
+  ],
+  "productTitles": [
+    "STARTER DECKS  -Straw Hat Crew- / -Worst Generation- / -The Seven Warlords of the Sea- / -Animal Kingdom Pirates- − PRODUCTS｜ONE PIECE CARD GAME - Official Web Site",
+    "STARTER DECKS  -Straw Hat Crew- / -Worst Generation- / -The Seven Warlords of the Sea- / -Animal Kingdom Pirates-",
+    "STARTER DECK -Straw Hat Crew-",
+    "STARTER DECK -Worst Generation-"
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) \r\n                   ・DON!! Cards x 10 \r\n                   ・Playsheet x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st01-04.php",
+  "officialDeckTitle": "STARTER DECK -Worst Generation- [ST-02]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "ST02-001",
+      "printingCode": "ST02-001",
+      "name": "ユースタス・キッド",
+      "type": "LEADER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-002",
+      "printingCode": "ST02-002",
+      "name": "ヴィト",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-003",
+      "printingCode": "ST02-003",
+      "name": "ウルージ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004",
+      "name": "カポネ・ベッジ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-005",
+      "printingCode": "ST02-005",
+      "name": "キラー",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-006",
+      "printingCode": "ST02-006",
+      "name": "コビー",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-007",
+      "printingCode": "ST02-007",
+      "name": "ジュエリー・ボニー",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-008",
+      "printingCode": "ST02-008",
+      "name": "スクラッチメン・アプー",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-009",
+      "printingCode": "ST02-009",
+      "name": "トラファルガー・ロー",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-010",
+      "printingCode": "ST02-010",
+      "name": "バジル・ホーキンス",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-011",
+      "printingCode": "ST02-011",
+      "name": "ヒート",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-012",
+      "printingCode": "ST02-012",
+      "name": "ベポ",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-013",
+      "printingCode": "ST02-013",
+      "name": "ユースタス・キッド",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-014",
+      "printingCode": "ST02-014",
+      "name": "X・ドレーク",
+      "type": "CHARACTER",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-015",
+      "printingCode": "ST02-015",
+      "name": "メス",
+      "type": "EVENT",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-016",
+      "printingCode": "ST02-016",
+      "name": "反発",
+      "type": "EVENT",
+      "color": "緑"
+    },
+    {
+      "cardNumber": "ST02-017",
+      "printingCode": "ST02-017",
+      "name": "藁備手刀",
+      "type": "EVENT",
+      "color": "緑"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "ST02-001",
+      "printingCode": "ST02-001",
+      "locale": "EN",
+      "name": "Eustass\"Captain\"Kid",
+      "type": "LEADER",
+      "color": "Green",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "27222a5b95682bb3c7d3804da96ab378b26cd5659a18e3d2c86fd9443d1fab2e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "0c3a38bc8c931a9b7ae43ff38b1a98e037aabb55c365dffd474c9ed2529e01a8",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-002",
+      "printingCode": "ST02-002",
+      "locale": "EN",
+      "name": "Vito",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "266a9a0e9d0fdf699a925b8b5c91db1e6c6cba85323733e57d1726d9d878f864",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-003",
+      "printingCode": "ST02-003",
+      "locale": "EN",
+      "name": "Urouge",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "699333bed6075b467224d2e7adb6448620ecd3d10e6388dd6762b669130907fd",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "bb016f7e0251bf51e341bebf4e318634d6917f7b30ebeaae8897ad3be28e5735",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004",
+      "locale": "EN",
+      "name": "Capone\"Gang\"Bege",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "ec33599a1e223e9de96d8df5d930ed649466fcf4a618788cfeb107ebac0a484f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004_p2",
+      "locale": "EN",
+      "name": "Capone\"Gang\"Bege",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "ec33599a1e223e9de96d8df5d930ed649466fcf4a618788cfeb107ebac0a484f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004_p3",
+      "locale": "EN",
+      "name": "Capone\"Gang\"Bege",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "ec33599a1e223e9de96d8df5d930ed649466fcf4a618788cfeb107ebac0a484f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004_p4",
+      "locale": "EN",
+      "name": "Capone\"Gang\"Bege",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "ec33599a1e223e9de96d8df5d930ed649466fcf4a618788cfeb107ebac0a484f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004_r1",
+      "locale": "EN",
+      "name": "Capone\"Gang\"Bege",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "ec33599a1e223e9de96d8df5d930ed649466fcf4a618788cfeb107ebac0a484f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-005",
+      "printingCode": "ST02-005",
+      "locale": "EN",
+      "name": "Killer",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 3,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "9fe5eb7a881a581f108d516e8d1bde45f417ca3437edbcd02f306501413abb4a",
+      "triggerHash": "07b909b13529e58bf276ab611e4b3d5437f491bc23245f0c6bd69b234f20ecdb",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "0c3a38bc8c931a9b7ae43ff38b1a98e037aabb55c365dffd474c9ed2529e01a8",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-006",
+      "printingCode": "ST02-006",
+      "locale": "EN",
+      "name": "Koby",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "fb2fc1b3b8cc2f442257560c739aaf9a5940e40dc223af9f0f86c541a3532c9b",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-007",
+      "printingCode": "ST02-007",
+      "locale": "EN",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "8fa69da0a0990f32a26bacbd4bdc0ff845016bd34821678768cae69d9d54a267",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "4f0fcff4e93ef277f82765abe06ecba75bc840ce0a419d0cbea7c9730966c867",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-007",
+      "printingCode": "ST02-007_p1",
+      "locale": "EN",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "8fa69da0a0990f32a26bacbd4bdc0ff845016bd34821678768cae69d9d54a267",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "4f0fcff4e93ef277f82765abe06ecba75bc840ce0a419d0cbea7c9730966c867",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-007",
+      "printingCode": "ST02-007_p3",
+      "locale": "EN",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "c0c949cc80dcf7cf79cc08e0baa42f096cfb61fc4f9535bd4cb1f6b42e57637a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "4f0fcff4e93ef277f82765abe06ecba75bc840ce0a419d0cbea7c9730966c867",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-007",
+      "printingCode": "ST02-007_r1",
+      "locale": "EN",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "c0c949cc80dcf7cf79cc08e0baa42f096cfb61fc4f9535bd4cb1f6b42e57637a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "4f0fcff4e93ef277f82765abe06ecba75bc840ce0a419d0cbea7c9730966c867",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-008",
+      "printingCode": "ST02-008",
+      "locale": "EN",
+      "name": "Scratchmen Apoo",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "88b0f611c3c8d4deea2bc805182cebb77e2a397ba5ab9377cf5f8af2d54e7d7a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "48bd35e0ab4010f31e23a111b760032467ae518bb72cb7fb14c88d3762c4cace",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-008",
+      "printingCode": "ST02-008_p1",
+      "locale": "EN",
+      "name": "Scratchmen Apoo",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "88b0f611c3c8d4deea2bc805182cebb77e2a397ba5ab9377cf5f8af2d54e7d7a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "48bd35e0ab4010f31e23a111b760032467ae518bb72cb7fb14c88d3762c4cace",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-009",
+      "printingCode": "ST02-009",
+      "locale": "EN",
+      "name": "Trafalgar Law",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "6ea88b60864f763d280b113cb8da671afdabd4b83cdf77a35dcacd5577667c54",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "6d0571541411324436ba62cd99eaa19a1d57fecc2f235056b4ac1b150cedf82c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-010",
+      "printingCode": "ST02-010",
+      "locale": "EN",
+      "name": "Basil Hawkins",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 5,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "70f2362a0f3adb0620e83a85b0373c4dcea60859381c1b263cdb3926e38e8f85",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "7458d3e7918f0e6cad856436964c0fec63dc8d278eaf5b1b762563e03fcb3bb6",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-011",
+      "printingCode": "ST02-011",
+      "locale": "EN",
+      "name": "Heat",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 2,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "a50e3c83bf174548e32c5824194824234e63930dc74a3676a4dbfd8bf30b1d92",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-012",
+      "printingCode": "ST02-012",
+      "locale": "EN",
+      "name": "Bepo",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 1,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "14aa326aa2ab19f2e1b1d0c3c443f78176e1ec22a0d88f1e929d1d5ffb1f8610",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-013",
+      "printingCode": "ST02-013",
+      "locale": "EN",
+      "name": "Eustass\"Captain\"Kid",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 7,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "f643eefa819de609b6527bc1a0c777042fbc882cd6bf5b2f1b99a19f0de26954",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "0c3a38bc8c931a9b7ae43ff38b1a98e037aabb55c365dffd474c9ed2529e01a8",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-013",
+      "printingCode": "ST02-013_p1",
+      "locale": "EN",
+      "name": "Eustass\"Captain\"Kid",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 7,
+      "power": 7000,
+      "counter": null,
+      "effectHash": "f643eefa819de609b6527bc1a0c777042fbc882cd6bf5b2f1b99a19f0de26954",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "0c3a38bc8c931a9b7ae43ff38b1a98e037aabb55c365dffd474c9ed2529e01a8",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-014",
+      "printingCode": "ST02-014",
+      "locale": "EN",
+      "name": "X.Drake",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "0eb41759fb3a4df4ba21f17cdcf9300ffeee7ef0c705fe62d9b640b2bd220319",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "19f991b62b37c698d943b90d5daec49df31d78f0d08d42345565207735a8647a",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-015",
+      "printingCode": "ST02-015",
+      "locale": "EN",
+      "name": "Scalpel",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "43ba7322e33c368ef6a3d53fcc085d708f14d697548788d4f67a4d00cadebb2c",
+      "triggerHash": "b16b883788b8f0b9b285fb0e958ff8b9fad23379f6097a27e35754a1e2d97762",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "6d0571541411324436ba62cd99eaa19a1d57fecc2f235056b4ac1b150cedf82c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-016",
+      "printingCode": "ST02-016",
+      "locale": "EN",
+      "name": "Repel",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "83df287139ef41e19ec0a6780f24b49fd0477e246528fbc4dbad72581ca8e8da",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "0c3a38bc8c931a9b7ae43ff38b1a98e037aabb55c365dffd474c9ed2529e01a8",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-017",
+      "printingCode": "ST02-017",
+      "locale": "EN",
+      "name": "Straw Sword",
+      "type": "EVENT",
+      "color": "Green",
+      "cost": 2,
+      "power": null,
+      "counter": null,
+      "effectHash": "be51c2a4ebfd3838ac283d952c004f5063786d7bb2039c295f1bbd7f9afc6bd4",
+      "triggerHash": "401dae992a4083ff744719af58340e0571d9002a79781a6c73a6c11f32fb1150",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "7458d3e7918f0e6cad856436964c0fec63dc8d278eaf5b1b762563e03fcb3bb6",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-007",
+      "printingCode": "ST02-007_p2",
+      "locale": "EN",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Green",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "8fa69da0a0990f32a26bacbd4bdc0ff845016bd34821678768cae69d9d54a267",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "4f0fcff4e93ef277f82765abe06ecba75bc840ce0a419d0cbea7c9730966c867",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004_p1",
+      "locale": "FR",
+      "name": "Capone \"Gang\" Bege",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "21aee4165d413bf8f4d1e8d5df65eb3367456f26958a91f0d3d30c13c38d4377",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004_p2",
+      "locale": "FR",
+      "name": "Capone \"Gang\" Bege",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "21aee4165d413bf8f4d1e8d5df65eb3367456f26958a91f0d3d30c13c38d4377",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004_p3",
+      "locale": "FR",
+      "name": "Capone \"Gang\" Bege",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "21aee4165d413bf8f4d1e8d5df65eb3367456f26958a91f0d3d30c13c38d4377",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004_p4",
+      "locale": "FR",
+      "name": "Capone \"Gang\" Bege",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 1,
+      "power": 1000,
+      "counter": null,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "21aee4165d413bf8f4d1e8d5df65eb3367456f26958a91f0d3d30c13c38d4377",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-007",
+      "printingCode": "ST02-007_p1",
+      "locale": "FR",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "329caa1d549d53fd28d90dda3e441c089e1e1949fab959e5fad1d4c5764efbfc",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "67433218ca613d91276ce36ae26545abfae19e4566f5ce46aaf8f1f763437ce2",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-007",
+      "printingCode": "ST02-007_p2",
+      "locale": "FR",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "329caa1d549d53fd28d90dda3e441c089e1e1949fab959e5fad1d4c5764efbfc",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "67433218ca613d91276ce36ae26545abfae19e4566f5ce46aaf8f1f763437ce2",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    },
+    {
+      "cardNumber": "ST02-007",
+      "printingCode": "ST02-007_r1",
+      "locale": "FR",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Vert",
+      "cost": 1,
+      "power": 1000,
+      "counter": 1000,
+      "effectHash": "329caa1d549d53fd28d90dda3e441c089e1e1949fab959e5fad1d4c5764efbfc",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "67433218ca613d91276ce36ae26545abfae19e4566f5ce46aaf8f1f763437ce2",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST02"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004_p1",
+      "name": "Capone \"Gang\" Bege",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004_p2",
+      "name": "Capone \"Gang\" Bege",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004_p3",
+      "name": "Capone \"Gang\" Bege",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST02-004",
+      "printingCode": "ST02-004_p4",
+      "name": "Capone \"Gang\" Bege",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST02-007",
+      "printingCode": "ST02-007_p1",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST02-007",
+      "printingCode": "ST02-007_p2",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Vert"
+    },
+    {
+      "cardNumber": "ST02-007",
+      "printingCode": "ST02-007_r1",
+      "name": "Jewelry Bonney",
+      "type": "CHARACTER",
+      "color": "Vert"
+    }
+  ]
+}

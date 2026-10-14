@@ -1,0 +1,1100 @@
+{
+  "deckCode": "ST-18",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569018",
+      "status": "FETCHED",
+      "sha256": "625f9fcb5065bcbf752c30ce9bc5028be1bc4900f19c9108ef94786fc062dd4b",
+      "retrievedAt": "2026-10-14T07:26:56.528029+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st18-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st18-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st18.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st18.php",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st18_cardlists/",
+      "status": "FETCHED",
+      "sha256": "8aaa89f3adfbed259e60caf0abb9be1996f83c426f6c2dd0cc89352fe7f03499",
+      "retrievedAt": "2026-10-14T07:31:32.514853+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st15-20.php",
+      "status": "FETCHED",
+      "sha256": "0863e3edecd416a4e0120fd9360cd47f4cc7e4e966c3837ff7a4c022a902ecaf",
+      "retrievedAt": "2026-10-14T07:31:34.288174+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569018",
+      "status": "FETCHED",
+      "sha256": "625f9fcb5065bcbf752c30ce9bc5028be1bc4900f19c9108ef94786fc062dd4b",
+      "retrievedAt": "2026-10-14T07:31:35.642635+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569018",
+      "status": "FETCHED",
+      "sha256": "625f9fcb5065bcbf752c30ce9bc5028be1bc4900f19c9108ef94786fc062dd4b",
+      "retrievedAt": "2026-10-14T07:35:02.614420+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st18_cardlists/",
+      "status": "FETCHED",
+      "sha256": "8aaa89f3adfbed259e60caf0abb9be1996f83c426f6c2dd0cc89352fe7f03499",
+      "retrievedAt": "2026-10-14T07:35:04.647690+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550018",
+      "status": "FETCHED",
+      "sha256": "a81381c4b251856453dd3585adfba40d1d880c6bcd9e50b2bc99ed3452f238a8",
+      "retrievedAt": "2026-10-14T07:35:06.250838+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569018",
+      "status": "FETCHED",
+      "sha256": "625f9fcb5065bcbf752c30ce9bc5028be1bc4900f19c9108ef94786fc062dd4b",
+      "retrievedAt": "2026-10-14T07:53:01.059553+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622018",
+      "status": "FETCHED",
+      "sha256": "16fb773b7a35c84477f3e8e546ba6d6551ff88adb07441726df8d92de8abd108",
+      "retrievedAt": "2026-10-14T07:53:02.414854+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST18-005",
+      "status": "FETCHED",
+      "sha256": "7ff9ecfca060346bac89c668bc3e08e6b82d2f7ef92df7178187b5de7f42cfef",
+      "retrievedAt": "2026-10-14T08:02:28.696669+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST18-005",
+      "status": "FETCHED",
+      "sha256": "67c0a07d6ee91b5d22d5c8163a25dea936b48cdfbe71d94b0962d398ed40c13a",
+      "retrievedAt": "2026-10-14T08:02:30.325960+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "OP05-060",
+      "printingCode": "OP05-060_p3",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP05-061",
+      "printingCode": "OP05-061_r1",
+      "name": "Uso-Hachi",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP05-063",
+      "printingCode": "OP05-063_r1",
+      "name": "O-Robi",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP05-066",
+      "printingCode": "OP05-066_r1",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP05-067",
+      "printingCode": "OP05-067_r1",
+      "name": "Zoro-Juurou",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP05-068",
+      "printingCode": "OP05-068_r1",
+      "name": "Chopa-Emon",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP05-070",
+      "printingCode": "OP05-070_r1",
+      "name": "Fra-Nosuke",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP05-072",
+      "printingCode": "OP05-072_r1",
+      "name": "Hone-Kichi",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "OP05-076",
+      "printingCode": "OP05-076_p1",
+      "name": "When You're at Sea You Fight against Pirates!!",
+      "type": "EVENT",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "P-041",
+      "printingCode": "P-041_r1",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST18-001",
+      "printingCode": "ST18-001",
+      "name": "Uso-Hachi",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST18-002",
+      "printingCode": "ST18-002",
+      "name": "O-Nami",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST18-003",
+      "printingCode": "ST18-003",
+      "name": "San-Gorou",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST18-004",
+      "printingCode": "ST18-004",
+      "name": "Zoro-Juurou",
+      "type": "CHARACTER",
+      "color": "Purple"
+    },
+    {
+      "cardNumber": "ST18-005",
+      "printingCode": "ST18-005",
+      "name": "Luffy-Tarou",
+      "type": "CHARACTER",
+      "color": "Purple"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "OP05-060",
+      "quantity": 1,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    },
+    {
+      "cardNumber": "ST18-001",
+      "quantity": 2,
+      "sourceName": "ウソ八",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    },
+    {
+      "cardNumber": "ST18-002",
+      "quantity": 4,
+      "sourceName": "おナミ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    },
+    {
+      "cardNumber": "ST18-003",
+      "quantity": 4,
+      "sourceName": "サン五郎",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    },
+    {
+      "cardNumber": "ST18-004",
+      "quantity": 2,
+      "sourceName": "ゾロ十郎",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    },
+    {
+      "cardNumber": "ST18-005",
+      "quantity": 2,
+      "sourceName": "ルフィ太郎",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    },
+    {
+      "cardNumber": "OP05-061",
+      "quantity": 4,
+      "sourceName": "ウソ八",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    },
+    {
+      "cardNumber": "OP05-063",
+      "quantity": 4,
+      "sourceName": "おロビ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    },
+    {
+      "cardNumber": "OP05-066",
+      "quantity": 4,
+      "sourceName": "ジンベエ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    },
+    {
+      "cardNumber": "OP05-067",
+      "quantity": 4,
+      "sourceName": "ゾロ十郎",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    },
+    {
+      "cardNumber": "OP05-068",
+      "quantity": 4,
+      "sourceName": "チョパえもん",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    },
+    {
+      "cardNumber": "OP05-070",
+      "quantity": 4,
+      "sourceName": "フラの介",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    },
+    {
+      "cardNumber": "OP05-072",
+      "quantity": 4,
+      "sourceName": "ホネ吉",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    },
+    {
+      "cardNumber": "P-041",
+      "quantity": 4,
+      "sourceName": "モンキー・D・ルフィ",
+      "sourceRarity": "P",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    },
+    {
+      "cardNumber": "OP05-076",
+      "quantity": 4,
+      "sourceName": "海は海賊が相手だ!!!",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st18_cardlists/"
+    }
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) \r\n                   ・DON!! Card x 10 \r\n                   ・Playsheet x 1 \r\n                   ・PREMIUM BOOSTER –ONE PIECE CARD THE BEST- x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st15-20.php",
+  "officialDeckTitle": "STARTER DECK -Purple Monkey.D.Luffy- [ST-18]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "OP05-060",
+      "printingCode": "OP05-060_p3",
+      "name": "モンキー・D・ルフィ",
+      "type": "LEADER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP05-061",
+      "printingCode": "OP05-061_r1",
+      "name": "ウソ八",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP05-063",
+      "printingCode": "OP05-063_r1",
+      "name": "おロビ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP05-066",
+      "printingCode": "OP05-066_r1",
+      "name": "ジンベエ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP05-067",
+      "printingCode": "OP05-067_r1",
+      "name": "ゾロ十郎",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP05-068",
+      "printingCode": "OP05-068_r1",
+      "name": "チョパえもん",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP05-070",
+      "printingCode": "OP05-070_r1",
+      "name": "フラの介",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP05-072",
+      "printingCode": "OP05-072_r1",
+      "name": "ホネ吉",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "OP05-076",
+      "printingCode": "OP05-076_p1",
+      "name": "海は海賊が相手だ!!!",
+      "type": "EVENT",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "P-041",
+      "printingCode": "P-041_r1",
+      "name": "モンキー・D・ルフィ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST18-001",
+      "printingCode": "ST18-001",
+      "name": "ウソ八",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST18-002",
+      "printingCode": "ST18-002",
+      "name": "おナミ",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST18-003",
+      "printingCode": "ST18-003",
+      "name": "サン五郎",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST18-004",
+      "printingCode": "ST18-004",
+      "name": "ゾロ十郎",
+      "type": "CHARACTER",
+      "color": "紫"
+    },
+    {
+      "cardNumber": "ST18-005",
+      "printingCode": "ST18-005",
+      "name": "ルフィ太郎",
+      "type": "CHARACTER",
+      "color": "紫"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "OP05-060",
+      "printingCode": "OP05-060_p3",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "LEADER",
+      "color": "Purple",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "ff61b2d8a78c524b341d912c6d023df4859a249dad0b2a6acd2152d903fa5ba8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "OP05-061",
+      "printingCode": "OP05-061_r1",
+      "locale": "EN",
+      "name": "Uso-Hachi",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "a5e7b17379beff48fe31829f3ba35b99878497617be79ce4521221886f65d40e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "OP05-063",
+      "printingCode": "OP05-063_r1",
+      "locale": "EN",
+      "name": "O-Robi",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "f05e738f5e97ed5ae36e241da4fa5338ca9cb1dc352cf9a76ed9db2f74e34c63",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "OP05-066",
+      "printingCode": "OP05-066_r1",
+      "locale": "EN",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "4d1c9b843f23b6f59d9f4627cd4407fc6e13d69bf4efff589bd6d71388ff1aca",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "cca8486c05c288e7608e217b3f87170e165ab1838432d757e767e0e645a97a40",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "OP05-067",
+      "printingCode": "OP05-067_r1",
+      "locale": "EN",
+      "name": "Zoro-Juurou",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "3ca111b72d644cafa9f79b78a4adbcfd3de1b78959d54a2836f2169c1fd6b98a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "OP05-068",
+      "printingCode": "OP05-068_r1",
+      "locale": "EN",
+      "name": "Chopa-Emon",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "f22b79a63b78a9317b779f375cc54d3a6441c9c75a549f471a07664f57f349a2",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "834459084c92274c56c465ca9ced3c595a01a74dc85f6b5b63151b741f882521",
+      "familyHash": "595eb2e08913dd501fe4ff0081d6af65e6e171d1b56978b3b5e8bee0b86c5069",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "OP05-070",
+      "printingCode": "OP05-070_r1",
+      "locale": "EN",
+      "name": "Fra-Nosuke",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 5,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "d032f9dcad195bfbb805750718b59aec4baffaf5efbeeea7538a323adee65bf0",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "OP05-072",
+      "printingCode": "OP05-072_r1",
+      "locale": "EN",
+      "name": "Hone-Kichi",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "339406fad82b80e87e665f37c467df4424341ff0ca0a096f16ee2e98d41adc40",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "OP05-076",
+      "printingCode": "OP05-076_p1",
+      "locale": "EN",
+      "name": "When You're at Sea You Fight against Pirates!!",
+      "type": "EVENT",
+      "color": "Purple",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "912abf2b5d9502b9944ffb07212e7ef4114ef30ef0a62adec347cd8d33b42f30",
+      "triggerHash": "f11e3bd95cea2c7b0921ce0651d0a6b34b9ce1c616748f59ed982f22698d0ac5",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "6ea7002ec8f4c027d6c1b6e02f6955e6d51f699f29acafb1345a08ddd6b159af",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "P-041",
+      "printingCode": "P-041_r1",
+      "locale": "EN",
+      "name": "Monkey.D.Luffy",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 10,
+      "power": 12000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "67a1ebcf86dfc715480383380198c3dfbd08f5129835a59b7f5b039de2a8c0ba",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "ST18-001",
+      "printingCode": "ST18-001",
+      "locale": "EN",
+      "name": "Uso-Hachi",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 3,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "90cf5dcf7d189bc3baa99aca38ce9bb0e9969d916498bfebc97b0055694a83ad",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "ST18-002",
+      "printingCode": "ST18-002",
+      "locale": "EN",
+      "name": "O-Nami",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "55a586a1e681ffbb9ef397aa398bb646c75b99d9e2f0eec91fd5368e1a49b1d4",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "ST18-003",
+      "printingCode": "ST18-003",
+      "locale": "EN",
+      "name": "San-Gorou",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e2010940fe8ece1ca7e64941e492366fe6a6005fba83ee72216761264ce87299",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "ST18-004",
+      "printingCode": "ST18-004",
+      "locale": "EN",
+      "name": "Zoro-Juurou",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "9d5f2d3bf78cc3e8daf9ccf04ee7adfc2c5b2d273cd8794f25c0ec546b8e38fa",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "ST18-005",
+      "printingCode": "ST18-005",
+      "locale": "EN",
+      "name": "Luffy-Tarou",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "b09c6dc173df11cba976f800d5f73234663d4e033e4ac80bf185a8dbf403ac1c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569018"
+    },
+    {
+      "cardNumber": "OP05-060",
+      "printingCode": "OP05-060_p1",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "LEADER",
+      "color": "Violet",
+      "cost": null,
+      "power": 5000,
+      "counter": null,
+      "effectHash": "3406be2eff623a0bae4267fe913d84fdb82d3828b7b427a337c9621a27181780",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "OP05-061",
+      "printingCode": "OP05-061_p1",
+      "locale": "FR",
+      "name": "Usohachi",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 3,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "689690189835179dfaf83a538038b37c5ae51dff25517514e4d982ab9dc37269",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "OP05-063",
+      "printingCode": "OP05-063_p1",
+      "locale": "FR",
+      "name": "O-Robi",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "b3d2fb0d24435d5577cc946bf7ee8fb3616b741b1e03ac3d1108a943e355c865",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "OP05-066",
+      "printingCode": "OP05-066_p1",
+      "locale": "FR",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "580edfff8f3f6c9b53427c5fecde4731d7e1ecab794fb6bc278e49459383dcc4",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "4f449bbf1de381ac49b47403a0baa15990099acedb17812253bf93fa5a616105",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "OP05-067",
+      "printingCode": "OP05-067_p2",
+      "locale": "FR",
+      "name": "Zorojuro",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "b4a99f3df5a70f55012e886bd42069c9d88a9ab9bd09b825fbf2b0c1e9e7d5cb",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "OP05-068",
+      "printingCode": "OP05-068_p1",
+      "locale": "FR",
+      "name": "Choppaemon",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "f7f78e41410d14d99f7ea5e79505966c0a0e3d9c555a9ceb6eaf6e2060021666",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "e4305fbf2af0a467603bad0837e1c3b061ace5b024dabf9a408724d1673d6cd9",
+      "familyHash": "546d704feed49a018d939e9300ce09e33efb520ab804865cc132aec6b9f5eb38",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "OP05-070",
+      "printingCode": "OP05-070_p1",
+      "locale": "FR",
+      "name": "Fransuké",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 5,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "ea16570b82761f7ebfdbb7a758339962a73b0c0279181166031b5b7211728752",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "OP05-072",
+      "printingCode": "OP05-072_p1",
+      "locale": "FR",
+      "name": "Brookichi",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "ee1f4553d4c13c8b145957f1ab7cdd2baf296b464bca80e61f29dd8235ca6c51",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "OP05-076",
+      "printingCode": "OP05-076_p1",
+      "locale": "FR",
+      "name": "En mer... ce sont les pirates qu'on affronte !!",
+      "type": "EVENT",
+      "color": "Violet",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "d2f0dac63809cf11390319d65df6667a984f8990f8fdd93fe3ef5ceddb1cff8f",
+      "triggerHash": "66ff632c15ca98e2cfcdc23ed3da90e1844f184c36533b89f32a10c00bd351ca",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "dc5943974b2ef47485fbb44e888bef91c159ad933ce5deedb61f053be39c1a33",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "P-041",
+      "printingCode": "P-041_p1",
+      "locale": "FR",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 10,
+      "power": 12000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "7e5b5a013b0fb1ec66751af9ed17fb0051f1e9af9b9cd2b331d15ebfd5076d5f",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "ST18-001",
+      "printingCode": "ST18-001",
+      "locale": "FR",
+      "name": "Usohachi",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 3,
+      "power": 3000,
+      "counter": 2000,
+      "effectHash": "b1a3938a39e6bf26b695f7d2c35b1f70beda9426120e62f6604062ca9984c133",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "ST18-002",
+      "printingCode": "ST18-002",
+      "locale": "FR",
+      "name": "O-Nami",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 4,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "fdeda8d730cc4651310d75c531a45f1b238790025b490c7b1053c6ce228a9da3",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "ST18-003",
+      "printingCode": "ST18-003",
+      "locale": "FR",
+      "name": "Sangoro",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "cd959a48891406673da071326c0eb90c34cb2833d03ba0d7a11170006821596e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "ST18-004",
+      "printingCode": "ST18-004",
+      "locale": "FR",
+      "name": "Zorojuro",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 4,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "09b731b62beb9de50ff3ba76a7a234b5cf84c1647b7961e88710a455aab2a59e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "ST18-005",
+      "printingCode": "ST18-005",
+      "locale": "FR",
+      "name": "Luffytaro",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "879164487a8c5d5a8a0016db08809cfa8147162e23a1511c8ae70a803d3c4eda",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622018"
+    },
+    {
+      "cardNumber": "ST18-005",
+      "printingCode": "ST18-005",
+      "locale": "EN",
+      "name": "Luffy-Tarou",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "b09c6dc173df11cba976f800d5f73234663d4e033e4ac80bf185a8dbf403ac1c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST18-005"
+    },
+    {
+      "cardNumber": "ST18-005",
+      "printingCode": "ST18-005_p1",
+      "locale": "EN",
+      "name": "Luffy-Tarou",
+      "type": "CHARACTER",
+      "color": "Purple",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "b09c6dc173df11cba976f800d5f73234663d4e033e4ac80bf185a8dbf403ac1c",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5f1fbba4e0db7b755dc20a1be6be08401f7c280435fdcc3677ffe69ca0400b1f",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST18-005"
+    },
+    {
+      "cardNumber": "ST18-005",
+      "printingCode": "ST18-005",
+      "locale": "FR",
+      "name": "Luffytaro",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "879164487a8c5d5a8a0016db08809cfa8147162e23a1511c8ae70a803d3c4eda",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST18-005"
+    },
+    {
+      "cardNumber": "ST18-005",
+      "printingCode": "ST18-005_p1",
+      "locale": "FR",
+      "name": "Luffytaro",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "879164487a8c5d5a8a0016db08809cfa8147162e23a1511c8ae70a803d3c4eda",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST18-005"
+    },
+    {
+      "cardNumber": "ST18-005",
+      "printingCode": "ST18-005_p2",
+      "locale": "FR",
+      "name": "Luffytaro",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "879164487a8c5d5a8a0016db08809cfa8147162e23a1511c8ae70a803d3c4eda",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST18-005"
+    },
+    {
+      "cardNumber": "ST18-005",
+      "printingCode": "ST18-005_p3",
+      "locale": "FR",
+      "name": "Luffytaro",
+      "type": "CHARACTER",
+      "color": "Violet",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "879164487a8c5d5a8a0016db08809cfa8147162e23a1511c8ae70a803d3c4eda",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "207c5f949e68a2df48f403be6f09debed903ea2769eb928f79ebe0ab461b5036",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST18-005"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "OP05-060",
+      "printingCode": "OP05-060_p1",
+      "name": "Monkey D. Luffy",
+      "type": "LEADER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP05-061",
+      "printingCode": "OP05-061_p1",
+      "name": "Usohachi",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP05-063",
+      "printingCode": "OP05-063_p1",
+      "name": "O-Robi",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP05-066",
+      "printingCode": "OP05-066_p1",
+      "name": "Jinbe",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP05-067",
+      "printingCode": "OP05-067_p2",
+      "name": "Zorojuro",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP05-068",
+      "printingCode": "OP05-068_p1",
+      "name": "Choppaemon",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP05-070",
+      "printingCode": "OP05-070_p1",
+      "name": "Fransuké",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP05-072",
+      "printingCode": "OP05-072_p1",
+      "name": "Brookichi",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "OP05-076",
+      "printingCode": "OP05-076_p1",
+      "name": "En mer... ce sont les pirates qu'on affronte !!",
+      "type": "EVENT",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "P-041",
+      "printingCode": "P-041_p1",
+      "name": "Monkey D. Luffy",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST18-001",
+      "printingCode": "ST18-001",
+      "name": "Usohachi",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST18-002",
+      "printingCode": "ST18-002",
+      "name": "O-Nami",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST18-003",
+      "printingCode": "ST18-003",
+      "name": "Sangoro",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST18-004",
+      "printingCode": "ST18-004",
+      "name": "Zorojuro",
+      "type": "CHARACTER",
+      "color": "Violet"
+    },
+    {
+      "cardNumber": "ST18-005",
+      "printingCode": "ST18-005",
+      "name": "Luffytaro",
+      "type": "CHARACTER",
+      "color": "Violet"
+    }
+  ]
+}

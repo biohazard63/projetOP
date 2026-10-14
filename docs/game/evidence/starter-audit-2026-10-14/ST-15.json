@@ -1,0 +1,1164 @@
+{
+  "deckCode": "ST-15",
+  "sources": [
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569015",
+      "status": "FETCHED",
+      "sha256": "440810b7877fb370fea25b6e5647de65d4bc6f5bca13e6b7d767431e3390fa6b",
+      "retrievedAt": "2026-10-14T07:26:55.958733+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st15-cardlists/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st15-card-list/",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/st15.html",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st15.php",
+      "status": "FAILED",
+      "error": "HTTP Error 404: Not Found"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st15_cardlists/",
+      "status": "FETCHED",
+      "sha256": "28afe2129476110eb63973dcb1764d8bdd73fd0ad629e717ce08a14f08c0ae34",
+      "retrievedAt": "2026-10-14T07:31:31.685747+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/products/decks/st15-20.php",
+      "status": "FETCHED",
+      "sha256": "0863e3edecd416a4e0120fd9360cd47f4cc7e4e966c3837ff7a4c022a902ecaf",
+      "retrievedAt": "2026-10-14T07:31:32.996855+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569015",
+      "status": "FETCHED",
+      "sha256": "440810b7877fb370fea25b6e5647de65d4bc6f5bca13e6b7d767431e3390fa6b",
+      "retrievedAt": "2026-10-14T07:31:34.705735+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569015",
+      "status": "FETCHED",
+      "sha256": "440810b7877fb370fea25b6e5647de65d4bc6f5bca13e6b7d767431e3390fa6b",
+      "retrievedAt": "2026-10-14T07:35:02.042390+00:00"
+    },
+    {
+      "url": "https://tier-one-onepiece.jp/blog/st15_cardlists/",
+      "status": "FETCHED",
+      "sha256": "28afe2129476110eb63973dcb1764d8bdd73fd0ad629e717ce08a14f08c0ae34",
+      "retrievedAt": "2026-10-14T07:35:03.737987+00:00"
+    },
+    {
+      "url": "https://www.onepiece-cardgame.com/cardlist/?series=550015",
+      "status": "FETCHED",
+      "sha256": "6af7c6fc89cc080cf249351719c488901002ab66aa43f526931cc8feba97822b",
+      "retrievedAt": "2026-10-14T07:35:05.410095+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?series=569015",
+      "status": "FETCHED",
+      "sha256": "440810b7877fb370fea25b6e5647de65d4bc6f5bca13e6b7d767431e3390fa6b",
+      "retrievedAt": "2026-10-14T07:52:59.949952+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?series=622015",
+      "status": "FETCHED",
+      "sha256": "e9418babf9095ffa617eccbe198f3b72b2ca2c760663ce5556e80bfe4541f19b",
+      "retrievedAt": "2026-10-14T07:53:01.266853+00:00"
+    },
+    {
+      "url": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST15-005",
+      "status": "FETCHED",
+      "sha256": "f90dacf1d0f8f20dca33c908071d96d54094b076126044aa9c379d5bf6fd8034",
+      "retrievedAt": "2026-10-14T08:02:28.274666+00:00"
+    },
+    {
+      "url": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST15-005",
+      "status": "FETCHED",
+      "sha256": "7577ed70e4a8a56334545792912ebe2aa8d847fb962995a59a6668a7c1ab2a6d",
+      "retrievedAt": "2026-10-14T08:02:29.656314+00:00"
+    }
+  ],
+  "officialCards": [
+    {
+      "cardNumber": "OP02-001",
+      "printingCode": "OP02-001_p2",
+      "name": "Edward.Newgate",
+      "type": "LEADER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP02-008",
+      "printingCode": "OP02-008_r1",
+      "name": "Jozu",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP02-018",
+      "printingCode": "OP02-018_r1",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP02-019",
+      "printingCode": "OP02-019_r1",
+      "name": "Rakuyo",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP02-023",
+      "printingCode": "OP02-023_r1",
+      "name": "You May Be a Fool...but I Still Love You",
+      "type": "EVENT",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP03-003",
+      "printingCode": "OP03-003_r1",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP03-006",
+      "printingCode": "OP03-006_r1",
+      "name": "Speed Jil",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP03-007",
+      "printingCode": "OP03-007_r1",
+      "name": "Namule",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP03-009",
+      "printingCode": "OP03-009_r1",
+      "name": "Haruta",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "OP03-010",
+      "printingCode": "OP03-010_r1",
+      "name": "Fossa",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST15-001",
+      "printingCode": "ST15-001",
+      "name": "Atmos",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST15-002",
+      "printingCode": "ST15-002",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST15-003",
+      "printingCode": "ST15-003",
+      "name": "Kingdew",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST15-004",
+      "printingCode": "ST15-004",
+      "name": "Thatch",
+      "type": "CHARACTER",
+      "color": "Red"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Red"
+    }
+  ],
+  "quantityRows": [
+    {
+      "cardNumber": "OP02-001",
+      "quantity": 1,
+      "sourceName": "エドワード・ニューゲート",
+      "sourceRarity": "L",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    },
+    {
+      "cardNumber": "ST15-001",
+      "quantity": 4,
+      "sourceName": "アトモス",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    },
+    {
+      "cardNumber": "ST15-002",
+      "quantity": 2,
+      "sourceName": "エドワード・ニューゲート",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    },
+    {
+      "cardNumber": "ST15-003",
+      "quantity": 4,
+      "sourceName": "キングデュー",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    },
+    {
+      "cardNumber": "ST15-004",
+      "quantity": 2,
+      "sourceName": "サッチ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "quantity": 2,
+      "sourceName": "ポートガス・D・エース",
+      "sourceRarity": "SR",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-008",
+      "quantity": 4,
+      "sourceName": "ジョズ",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-018",
+      "quantity": 4,
+      "sourceName": "マルコ",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-019",
+      "quantity": 4,
+      "sourceName": "ラクヨウ",
+      "sourceRarity": "UC",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    },
+    {
+      "cardNumber": "OP03-003",
+      "quantity": 4,
+      "sourceName": "イゾウ",
+      "sourceRarity": "R",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    },
+    {
+      "cardNumber": "OP03-006",
+      "quantity": 4,
+      "sourceName": "スピード・ジル",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    },
+    {
+      "cardNumber": "OP03-007",
+      "quantity": 4,
+      "sourceName": "ナミュール",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    },
+    {
+      "cardNumber": "OP03-009",
+      "quantity": 4,
+      "sourceName": "ハルタ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    },
+    {
+      "cardNumber": "OP03-010",
+      "quantity": 4,
+      "sourceName": "フォッサ",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    },
+    {
+      "cardNumber": "OP02-023",
+      "quantity": 4,
+      "sourceName": "バカな息子をそれでも愛そう…",
+      "sourceRarity": "C",
+      "source": "https://tier-one-onepiece.jp/blog/st15_cardlists/"
+    }
+  ],
+  "productContents": "・Constructed Deck x 1 (51 cards) \r\n                   ・DON!! Card x 10 \r\n                   ・Playsheet x 1 \r\n                   ・PREMIUM BOOSTER –ONE PIECE CARD THE BEST- x 1",
+  "productSource": "https://en.onepiece-cardgame.com/products/decks/st15-20.php",
+  "officialDeckTitle": "STARTER DECK -Red Edward.Newgate- [ST-15]",
+  "officialJapaneseCards": [
+    {
+      "cardNumber": "OP02-001",
+      "printingCode": "OP02-001_p4",
+      "name": "エドワード・ニューゲート",
+      "type": "LEADER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP02-008",
+      "printingCode": "OP02-008_r1",
+      "name": "ジョズ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP02-018",
+      "printingCode": "OP02-018_r1",
+      "name": "マルコ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP02-019",
+      "printingCode": "OP02-019_r1",
+      "name": "ラクヨウ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP02-023",
+      "printingCode": "OP02-023_r1",
+      "name": "バカな息子をそれでも愛そう…",
+      "type": "EVENT",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP03-003",
+      "printingCode": "OP03-003_r1",
+      "name": "イゾウ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP03-006",
+      "printingCode": "OP03-006_r1",
+      "name": "スピード・ジル",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP03-007",
+      "printingCode": "OP03-007_r1",
+      "name": "ナミュール",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP03-009",
+      "printingCode": "OP03-009_r1",
+      "name": "ハルタ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "OP03-010",
+      "printingCode": "OP03-010_r1",
+      "name": "フォッサ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST15-001",
+      "printingCode": "ST15-001",
+      "name": "アトモス",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST15-002",
+      "printingCode": "ST15-002",
+      "name": "エドワード・ニューゲート",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST15-003",
+      "printingCode": "ST15-003",
+      "name": "キングデュー",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST15-004",
+      "printingCode": "ST15-004",
+      "name": "サッチ",
+      "type": "CHARACTER",
+      "color": "赤"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005",
+      "name": "ポートガス・D・エース",
+      "type": "CHARACTER",
+      "color": "赤"
+    }
+  ],
+  "localizedReferences": [
+    {
+      "cardNumber": "OP02-001",
+      "printingCode": "OP02-001_p2",
+      "locale": "EN",
+      "name": "Edward.Newgate",
+      "type": "LEADER",
+      "color": "Red",
+      "cost": null,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "1885e0b9cae99fe6a6ca32f2c14e27783168bebddc3d3f9fc07e8b8c6e745579",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "c87b8661d1c8c06e1b3f58a9c9cc695a1b9570af6d765d2318d4912e0039916c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "OP02-008",
+      "printingCode": "OP02-008_r1",
+      "locale": "EN",
+      "name": "Jozu",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 4,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "5b1f7e675c227e73dae1fb17db3917b9d18bb5c97ab1dd4bf71370f672d29a60",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "OP02-018",
+      "printingCode": "OP02-018_r1",
+      "locale": "EN",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "5f1090224be82a931a308021d8fb62595552510aa212a3ec6942a545c0d3b237",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "OP02-019",
+      "printingCode": "OP02-019_r1",
+      "locale": "EN",
+      "name": "Rakuyo",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "6816e800dc764a18896da31d91f60312b51ee36d6109c7127e0afd87f7058cc7",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "OP02-023",
+      "printingCode": "OP02-023_r1",
+      "locale": "EN",
+      "name": "You May Be a Fool...but I Still Love You",
+      "type": "EVENT",
+      "color": "Red",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "a83533fe86a883f867a617fa2e8fafca2deba2ebb0c6b7c9d85b547607b79185",
+      "triggerHash": "a4ca1ba7aaf205e7ee65d981c5d87703fff89f9f0c7afbbb6b5e6b90f7374538",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "c87b8661d1c8c06e1b3f58a9c9cc695a1b9570af6d765d2318d4912e0039916c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "OP03-003",
+      "printingCode": "OP03-003_r1",
+      "locale": "EN",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "b1153efe70c7d80b17c63cd37b46394fd8f36a28f624e9edd410795d29644636",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "3f0b51a2492f73ecf48a84bc7f261e4223a8701efbda4726fa1de490fdf12498",
+      "familyHash": "f2dc3385e74fbf5f492cb02c56085c5c0001080c11173b4287723a16e2b564fa",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "OP03-006",
+      "printingCode": "OP03-006_r1",
+      "locale": "EN",
+      "name": "Speed Jil",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "OP03-007",
+      "printingCode": "OP03-007_r1",
+      "locale": "EN",
+      "name": "Namule",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "5ece22e5188d491d05220d0d652c966af2911ce5595efccf372142fd14dde677",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "OP03-009",
+      "printingCode": "OP03-009_r1",
+      "locale": "EN",
+      "name": "Haruta",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 2,
+      "power": 3000,
+      "counter": 1000,
+      "effectHash": "070eb1c85288f4535365da5c5ae046f1bc9f092c4575121aac0396db8c0fa843",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "OP03-010",
+      "printingCode": "OP03-010_r1",
+      "locale": "EN",
+      "name": "Fossa",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "95a42b1551fdd01030658b50a712c4019e0077e4dbd0272196cb0bdc0ae86f5a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "ST15-001",
+      "printingCode": "ST15-001",
+      "locale": "EN",
+      "name": "Atmos",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "3437e3db465756a4b7a0cbf7b754de8cb9d75ba4a0fb534cf29d55ebefc8d472",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "ST15-002",
+      "printingCode": "ST15-002",
+      "locale": "EN",
+      "name": "Edward.Newgate",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "3d5dd7046193763422a7980aeba4941dd52b535d8ca955239ea22f490e711619",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "c87b8661d1c8c06e1b3f58a9c9cc695a1b9570af6d765d2318d4912e0039916c",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "ST15-003",
+      "printingCode": "ST15-003",
+      "locale": "EN",
+      "name": "Kingdew",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "c9a3b730cfb6bd812895e6fb78591eb45210f56f8b67fcec6f87216086d02250",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "92c872eb9eff1c86014894c6f5795808a22789c9f128b976fa98c196e66caf7f",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "ST15-004",
+      "printingCode": "ST15-004",
+      "locale": "EN",
+      "name": "Thatch",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 1,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "fada5e3ad5c79726f6349cebb0fae97dc2080aa8e7b4edcd74f16ee13b1a041d",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "9c92721ec67ac82c7a922abfd7e8c24c4fb666dce75cb1e0f875b30fdf3bcc4e",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "05e383566bf30e6b736cdec084928a39f112f3d6ed09693a77bf638f7be046be",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?series=569015"
+    },
+    {
+      "cardNumber": "OP02-001",
+      "printingCode": "OP02-001_p1",
+      "locale": "FR",
+      "name": "Edward Newgate",
+      "type": "LEADER",
+      "color": "Rouge",
+      "cost": null,
+      "power": 6000,
+      "counter": null,
+      "effectHash": "e4107c6cd28ebb160c8c42168d371a020fcd1a2a45bbb6385379773b29bb2f78",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "e51170af181ac706b92d9c97436459f5eba0b6ab80f8d2856e9d33428a45d637",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "OP02-008",
+      "printingCode": "OP02-008_p1",
+      "locale": "FR",
+      "name": "Joz",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 4,
+      "power": 4000,
+      "counter": 2000,
+      "effectHash": "b0a499f8e2e163ad35fbb1dcab1ce72b812777f91e78107e3655a95a1a9cb907",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "OP02-018",
+      "printingCode": "OP02-018_p1",
+      "locale": "FR",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "7e72a286c4dff0a8cd3d88d4de0b32086345abdeb5af4fc364df8a090602c8b5",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "OP02-019",
+      "printingCode": "OP02-019_p1",
+      "locale": "FR",
+      "name": "Rakuyo",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "8f1da712e20602f4c2e3632ebff16c5685048d049038721d54553a0cf01af1bc",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "OP02-023",
+      "printingCode": "OP02-023_p1",
+      "locale": "FR",
+      "name": "Tu as été stupide... mais je t'aime quand même, mon fils",
+      "type": "EVENT",
+      "color": "Rouge",
+      "cost": 1,
+      "power": null,
+      "counter": null,
+      "effectHash": "53c82ae31900b2bacf1179bb3459841b541450b811bd261d813974444dba6482",
+      "triggerHash": "104a4ef8965aa89b2e11d1777089724c55886fa150eefb596b0424c3fa55f465",
+      "attributeHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "familyHash": "e51170af181ac706b92d9c97436459f5eba0b6ab80f8d2856e9d33428a45d637",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "OP03-003",
+      "printingCode": "OP03-003_p1",
+      "locale": "FR",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 1,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "0f9f2b98aa2b0c235a22eb516ce1ba2627f52870a6796b19c5a2cc90f6cab1e9",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "b7bdf7a2d6e73e58d69a667ad9b63f706dd96bbbc4a8187914fc34646a1e003b",
+      "familyHash": "c191add49123698714bae023330347a61dc400997af7d2c57e18c94d99d9dc08",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "OP03-006",
+      "printingCode": "OP03-006_p1",
+      "locale": "FR",
+      "name": "Speed Jill",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 4,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "OP03-007",
+      "printingCode": "OP03-007_p1",
+      "locale": "FR",
+      "name": "Namur",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "fa12eebef4e911ebcf36151fa2f961ba225065a816f371a837eeb0b1c4d253f8",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "OP03-009",
+      "printingCode": "OP03-009_p1",
+      "locale": "FR",
+      "name": "Haruta",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 2,
+      "power": null,
+      "counter": 1000,
+      "effectHash": "c1c22cca6fee5a8f4122e15550d4f37476405f0f9472d1d8db2bfadb6d24030e",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "OP03-010",
+      "printingCode": "OP03-010_p1",
+      "locale": "FR",
+      "name": "Fossa",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 2,
+      "power": 2000,
+      "counter": 1000,
+      "effectHash": "6df8c754c0276f4920deec043266e44fe9fd6897f44345f4feb0fabd36792b45",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "ST15-001",
+      "printingCode": "ST15-001",
+      "locale": "FR",
+      "name": "Atmos",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 4,
+      "power": 5000,
+      "counter": 1000,
+      "effectHash": "5d369b24f531dc6c04e1366f3c3f469b7be8f22ee1460c3ae14c6a66c17eae0a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "ST15-002",
+      "printingCode": "ST15-002",
+      "locale": "FR",
+      "name": "Edward Newgate",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 7,
+      "power": 8000,
+      "counter": null,
+      "effectHash": "51923adc623f3a8465cc49931ca940e54b9ed7f78740623aab2f2e2e00104be8",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "e51170af181ac706b92d9c97436459f5eba0b6ab80f8d2856e9d33428a45d637",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "ST15-003",
+      "printingCode": "ST15-003",
+      "locale": "FR",
+      "name": "Kingdew",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 3,
+      "power": 4000,
+      "counter": 1000,
+      "effectHash": "5d7b6fe40c279de5cdd0ef7073e6f0ecce70a045fc00e984a1d0559ad1687c3a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "544496dbcc96238fcabd47acc103c4f8f61a061b0e1c6d2069177582fd50a5cb",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "ST15-004",
+      "printingCode": "ST15-004",
+      "locale": "FR",
+      "name": "Thatch",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 1,
+      "power": 2000,
+      "counter": 2000,
+      "effectHash": "420dd19afbd1eead28cc5d7996a0b79a1b0ba7436e77a123116ebde1b47abc1a",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "30b76d08658dbb6f8f49d3bba6403e43a412c05c4ebc288ba29ddc39b3cda893",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005",
+      "locale": "FR",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "71b600c486575df7a1c0979f5a4f2ed2072a75d59005840d7799b3514e8fd8ef",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?series=622015"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "05e383566bf30e6b736cdec084928a39f112f3d6ed09693a77bf638f7be046be",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST15-005"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005_p1",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "05e383566bf30e6b736cdec084928a39f112f3d6ed09693a77bf638f7be046be",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST15-005"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005_p2",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "05e383566bf30e6b736cdec084928a39f112f3d6ed09693a77bf638f7be046be",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST15-005"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005_p3",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "05e383566bf30e6b736cdec084928a39f112f3d6ed09693a77bf638f7be046be",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST15-005"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005_p4",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "05e383566bf30e6b736cdec084928a39f112f3d6ed09693a77bf638f7be046be",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST15-005"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005_p5",
+      "locale": "EN",
+      "name": "Portgas.D.Ace",
+      "type": "CHARACTER",
+      "color": "Red",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "05e383566bf30e6b736cdec084928a39f112f3d6ed09693a77bf638f7be046be",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "997c544f1be0a2dde15ce4e764321511ce9abdb34c7e7c661439e0382191a396",
+      "familyHash": "7c505f9f9330298019e14f578fc99eee2e35bf39f7d917437b63a5abe2fcfb22",
+      "source": "https://en.onepiece-cardgame.com/cardlist/?search=true&freewords=ST15-005"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005",
+      "locale": "FR",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "71b600c486575df7a1c0979f5a4f2ed2072a75d59005840d7799b3514e8fd8ef",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST15-005"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005_p1",
+      "locale": "FR",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "71b600c486575df7a1c0979f5a4f2ed2072a75d59005840d7799b3514e8fd8ef",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST15-005"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005_p2",
+      "locale": "FR",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "71b600c486575df7a1c0979f5a4f2ed2072a75d59005840d7799b3514e8fd8ef",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST15-005"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005_p3",
+      "locale": "FR",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Rouge",
+      "cost": 5,
+      "power": 6000,
+      "counter": 1000,
+      "effectHash": "5e6f1af3c038d9cee96790c397e885936013f1b095ca765579078590f7894e99",
+      "triggerHash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "attributeHash": "1624566b2af77c308605a1057e6c562d66bb80a0d495bc158d7f400233719ecd",
+      "familyHash": "027058df0d264de03018191ebf10fa82f072162ca2bd187931ac02f3d13c7d12",
+      "source": "https://fr.onepiece-cardgame.com/cardlist/?search=true&freewords=ST15-005"
+    }
+  ],
+  "officialFrenchCards": [
+    {
+      "cardNumber": "OP02-001",
+      "printingCode": "OP02-001_p1",
+      "name": "Edward Newgate",
+      "type": "LEADER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP02-008",
+      "printingCode": "OP02-008_p1",
+      "name": "Joz",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP02-018",
+      "printingCode": "OP02-018_p1",
+      "name": "Marco",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP02-019",
+      "printingCode": "OP02-019_p1",
+      "name": "Rakuyo",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP02-023",
+      "printingCode": "OP02-023_p1",
+      "name": "Tu as été stupide... mais je t'aime quand même, mon fils",
+      "type": "EVENT",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP03-003",
+      "printingCode": "OP03-003_p1",
+      "name": "Izo",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP03-006",
+      "printingCode": "OP03-006_p1",
+      "name": "Speed Jill",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP03-007",
+      "printingCode": "OP03-007_p1",
+      "name": "Namur",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP03-009",
+      "printingCode": "OP03-009_p1",
+      "name": "Haruta",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "OP03-010",
+      "printingCode": "OP03-010_p1",
+      "name": "Fossa",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST15-001",
+      "printingCode": "ST15-001",
+      "name": "Atmos",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST15-002",
+      "printingCode": "ST15-002",
+      "name": "Edward Newgate",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST15-003",
+      "printingCode": "ST15-003",
+      "name": "Kingdew",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST15-004",
+      "printingCode": "ST15-004",
+      "name": "Thatch",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    },
+    {
+      "cardNumber": "ST15-005",
+      "printingCode": "ST15-005",
+      "name": "Portgas D. Ace",
+      "type": "CHARACTER",
+      "color": "Rouge"
+    }
+  ]
+}
