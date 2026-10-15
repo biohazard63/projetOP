@@ -1,0 +1,98 @@
+[
+ {
+  "name": "desktop: Starter ST-13.*Sabo starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-13.*Ace starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-13.*Luffy starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-22 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-27 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-29 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-30 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-32 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-33 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-34 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-35 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "desktop: Starter ST-10.*Trafalgar starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-13.*Sabo starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-13.*Ace starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-13.*Luffy starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-22 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-27 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-29 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-30 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-32 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-33 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-34 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-35 starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ },
+ {
+  "name": "phone-landscape: Starter ST-10.*Trafalgar starts, reaches the board, renders its cards and can be conceded",
+  "status": "PASS"
+ }
+]

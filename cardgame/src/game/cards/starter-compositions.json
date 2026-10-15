@@ -2943,10 +2943,8 @@
   {
    "deckCode": "ST-24",
    "deckName": "GREEN Jewelry Bonney",
-   "compositionVerified": false,
-   "reasons": [
-    "SOURCE_NUMBER_NAME_CONFLICT_DIFFERENT_QUANTITIES"
-   ],
+   "compositionVerified": true,
+   "reasons": [],
    "donCount": 10,
    "leaders": [
     "OP07-019"
@@ -3299,10 +3297,8 @@
   {
    "deckCode": "ST-27",
    "deckName": "BLACK Marshall.D.Teach",
-   "compositionVerified": false,
-   "reasons": [
-    "SOURCE_SANJUAN_NUMBER_TYPO_NEEDS_QUANTITY_CORROBORATION"
-   ],
+   "compositionVerified": true,
+   "reasons": [],
    "donCount": 10,
    "leaders": [
     "OP09-081"

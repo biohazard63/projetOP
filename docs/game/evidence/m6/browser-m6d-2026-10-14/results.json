@@ -1,0 +1,122 @@
+[
+ {
+  "name": "desktop: Starter ST-13 .*Sabo starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "desktop: Starter ST-13 .*Ace starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "desktop: Starter ST-13 .*Luffy starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "desktop: Starter ST-22 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "desktop: Starter ST-27 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "desktop: Starter ST-29 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "desktop: Starter ST-30 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "desktop: Starter ST-32 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "desktop: Starter ST-33 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "desktop: Starter ST-34 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "desktop: Starter ST-35 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "desktop: Starter ST-10 .*Trafalgar starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "phone-landscape: Starter ST-13 .*Sabo starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "phone-landscape: Starter ST-13 .*Ace starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "phone-landscape: Starter ST-13 .*Luffy starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "phone-landscape: Starter ST-22 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "phone-landscape: Starter ST-27 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Timeout 30000ms exceeded.\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "phone-landscape: Starter ST-29 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "locator.waitFor: Target page, context or browser has been closed\nCall log:\n  - waiting for getByRole('heading', { name: 'Prêt à prendre la mer ?' }) to be visible\n"
+ },
+ {
+  "name": "phone-landscape: Starter ST-30 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "page.goto: Target page, context or browser has been closed"
+ },
+ {
+  "name": "phone-landscape: Starter ST-32 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "page.goto: Target page, context or browser has been closed"
+ },
+ {
+  "name": "phone-landscape: Starter ST-33 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "page.goto: Target page, context or browser has been closed"
+ },
+ {
+  "name": "phone-landscape: Starter ST-34 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "page.goto: Target page, context or browser has been closed"
+ },
+ {
+  "name": "phone-landscape: Starter ST-35 starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "page.goto: Target page, context or browser has been closed"
+ },
+ {
+  "name": "phone-landscape: Starter ST-10 .*Trafalgar starts, reaches the board, renders its cards and can be conceded",
+  "status": "FAIL",
+  "detail": "page.goto: Target page, context or browser has been closed"
+ }
+]

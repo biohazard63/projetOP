@@ -1,0 +1,1019 @@
+{
+ "generatedFrom": "starter-compositions.json + engine catalog + certification",
+ "decks": [
+  {
+   "deckCode": "ST-01",
+   "deckName": "Straw Hat Crew",
+   "leaders": [
+    "ST01-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st01",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st01",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-02",
+   "deckName": "Worst Generation",
+   "leaders": [
+    "ST02-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st02",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st02",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-03",
+   "deckName": "The Seven Warlords of the Sea",
+   "leaders": [
+    "ST03-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st03",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st03",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-04",
+   "deckName": "Animal Kingdom Pirates",
+   "leaders": [
+    "ST04-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st04",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st04",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-05",
+   "deckName": "ONE PIECE FILM edition",
+   "leaders": [
+    "ST05-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st05",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st05",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-06",
+   "deckName": "Absolute Justice",
+   "leaders": [
+    "ST06-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st06",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st06",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-07",
+   "deckName": "Big Mom Pirates",
+   "leaders": [
+    "ST07-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st07",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st07",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-08",
+   "deckName": "Monkey D. Luffy",
+   "leaders": [
+    "ST08-001"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st08",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st08",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-09",
+   "deckName": "Yamato",
+   "leaders": [
+    "ST09-001"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st09",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st09",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-10",
+   "deckName": "The Three Captains",
+   "leaders": [
+    "ST10-001",
+    "ST10-002",
+    "ST10-003"
+   ],
+   "uniqueCards": 19,
+   "recognized": 19,
+   "certified": 19,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st10-st10-001",
+     "ok": true,
+     "errors": []
+    },
+    {
+     "id": "starter-st10-st10-002",
+     "ok": true,
+     "errors": []
+    },
+    {
+     "id": "starter-st10-st10-003",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st10-st10-001",
+     "offered": true
+    },
+    {
+     "id": "starter-st10-st10-002",
+     "offered": true
+    },
+    {
+     "id": "starter-st10-st10-003",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-11",
+   "deckName": "Uta",
+   "leaders": [
+    "ST11-001"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st11",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st11",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-12",
+   "deckName": "Zoro and Sanji",
+   "leaders": [
+    "ST12-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st12",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st12",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-13",
+   "deckName": "The Three Brothers",
+   "leaders": [
+    "ST13-001",
+    "ST13-002",
+    "ST13-003"
+   ],
+   "uniqueCards": 19,
+   "recognized": 19,
+   "certified": 19,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st13-st13-001",
+     "ok": true,
+     "errors": []
+    },
+    {
+     "id": "starter-st13-st13-002",
+     "ok": true,
+     "errors": []
+    },
+    {
+     "id": "starter-st13-st13-003",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st13-st13-001",
+     "offered": true
+    },
+    {
+     "id": "starter-st13-st13-002",
+     "offered": true
+    },
+    {
+     "id": "starter-st13-st13-003",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-14",
+   "deckName": "3D2Y",
+   "leaders": [
+    "ST14-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st14",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st14",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-15",
+   "deckName": "Red Edward.Newgate",
+   "leaders": [
+    "OP02-001"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st15",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st15",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-16",
+   "deckName": "Green Uta",
+   "leaders": [
+    "ST11-001"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st16",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st16",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-17",
+   "deckName": "Blue Donquixote Doflamingo",
+   "leaders": [
+    "OP01-060"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st17",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st17",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-18",
+   "deckName": "Purple Monkey.D.Luffy",
+   "leaders": [
+    "OP05-060"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st18",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st18",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-19",
+   "deckName": "Black Smoker",
+   "leaders": [
+    "OP02-093"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st19",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st19",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-20",
+   "deckName": "Yellow Charlotte Katakuri",
+   "leaders": [
+    "OP03-099"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st20",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st20",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-21",
+   "deckName": "GEAR5",
+   "leaders": [
+    "ST21-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st21",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st21",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-22",
+   "deckName": "Ace & Newgate",
+   "leaders": [
+    "ST22-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st22",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st22",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-23",
+   "deckName": "RED Shanks",
+   "leaders": [
+    "OP09-001"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st23",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st23",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-25",
+   "deckName": "BLUE Buggy",
+   "leaders": [
+    "OP09-042"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st25",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st25",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-26",
+   "deckName": "PURPLE/BLACK Monkey.D.Luffy",
+   "leaders": [
+    "OP09-061"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st26",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st26",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-27",
+   "deckName": "BLACK Marshall.D.Teach",
+   "leaders": [
+    "OP09-081"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st27",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st27",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-28",
+   "deckName": "GREEN/YELLOW Yamato",
+   "leaders": [
+    "OP06-022"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st28",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st28",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-29",
+   "deckName": "Egghead",
+   "leaders": [
+    "ST29-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st29",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st29",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-30",
+   "deckName": "Luffy & Ace",
+   "leaders": [
+    "ST30-001"
+   ],
+   "uniqueCards": 17,
+   "recognized": 17,
+   "certified": 17,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st30",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st30",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-31",
+   "deckName": "RED Monkey.D.Luffy",
+   "leaders": [
+    "ST21-001"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st31",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st31",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-32",
+   "deckName": "GREEN Roronoa Zoro",
+   "leaders": [
+    "OP12-020"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st32",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st32",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-33",
+   "deckName": "BLUE Kuzan",
+   "leaders": [
+    "OP12-040"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st33",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st33",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-34",
+   "deckName": "PURPLE Charlotte Katakuri",
+   "leaders": [
+    "OP11-062"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st34",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st34",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-35",
+   "deckName": "RED/BLACK Sabo",
+   "leaders": [
+    "OP13-004"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [],
+   "eligibility": [
+    {
+     "id": "starter-st35",
+     "ok": true,
+     "errors": []
+    }
+   ],
+   "inPlay": [
+    {
+     "id": "starter-st35",
+     "offered": true
+    }
+   ],
+   "remainingWork": "none",
+   "remainingCount": 0
+  },
+  {
+   "deckCode": "ST-24",
+   "deckName": "GREEN Jewelry Bonney",
+   "leaders": [
+    "OP07-019"
+   ],
+   "uniqueCards": 15,
+   "recognized": 15,
+   "certified": 15,
+   "absent": [],
+   "uncertified": [],
+   "problems": [
+    "COMPOSITION_UNVERIFIED",
+    "SOURCE_NUMBER_NAME_CONFLICT_DIFFERENT_QUANTITIES"
+   ],
+   "eligibility": [],
+   "inPlay": [],
+   "remainingWork": "blocked: COMPOSITION_UNVERIFIED, SOURCE_NUMBER_NAME_CONFLICT_DIFFERENT_QUANTITIES",
+   "remainingCount": 999
+  }
+ ],
+ "uncertifiedCards": [],
+ "tagCounts": {}
+}

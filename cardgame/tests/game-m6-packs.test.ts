@@ -26,6 +26,16 @@ import { ST15_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST15Cards'
 import { ST16_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST16Cards'
 import { ST26_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST26Cards'
 import { ST31_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST31Cards'
+import { ST33_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST33Cards'
+import { ST34_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST34Cards'
+import { ST32_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST32Cards'
+import { ST13_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST13Cards'
+import { ST35_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST35Cards'
+import { ST30_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST30Cards'
+import { ST22_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST22Cards'
+import { ST29_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST29Cards'
+import { ST27_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST27Cards'
+import { ST24_OFFICIAL_CARDS } from '../src/game/cards/m6OfficialST24Cards'
 import { ST09_LOCAL_CARDS } from '../src/game/cards/m6LocalST09Cards'
 import { ST11_LOCAL_CARDS } from '../src/game/cards/m6LocalST11Cards'
 import { ST10_LOCAL_CARDS } from '../src/game/cards/m6LocalST10Cards'
@@ -76,7 +86,7 @@ test('M6 card packs preserve prior definitions and add the executable local ST-0
   ])
   const catalog = engineCatalog()
   // M6 lots B/C plus ST-07, ST-08 and ST-12 are added on top of the earlier catalog.
-  const local = ST01_LOCAL_CARDS.length + ST02_LOCAL_CARDS.length + ST03_ST04_LOCAL_CARDS.length + ST05_ST06_LOCAL_CARDS.length + ST07_LOCAL_CARDS.length + ST08_LOCAL_CARDS.length + ST09_LOCAL_CARDS.length + ST10_LOCAL_CARDS.length + ST11_LOCAL_CARDS.length + ST12_LOCAL_CARDS.length + ST03_OP_LOCAL_CARDS.length + REPRINT_LOCAL_CARDS.length + ST14_LOCAL_CARDS.length + ST17_OFFICIAL_CARDS.length + ST18_OFFICIAL_CARDS.length + ST19_OFFICIAL_CARDS.length + ST21_OFFICIAL_CARDS.length + ST23_OFFICIAL_CARDS.length + ST25_OFFICIAL_CARDS.length + ST28_OFFICIAL_CARDS.length + ST20_OFFICIAL_CARDS.length + ST15_OFFICIAL_CARDS.length + ST16_OFFICIAL_CARDS.length + ST26_OFFICIAL_CARDS.length + ST31_OFFICIAL_CARDS.length
+  const local = ST01_LOCAL_CARDS.length + ST02_LOCAL_CARDS.length + ST03_ST04_LOCAL_CARDS.length + ST05_ST06_LOCAL_CARDS.length + ST07_LOCAL_CARDS.length + ST08_LOCAL_CARDS.length + ST09_LOCAL_CARDS.length + ST10_LOCAL_CARDS.length + ST11_LOCAL_CARDS.length + ST12_LOCAL_CARDS.length + ST03_OP_LOCAL_CARDS.length + REPRINT_LOCAL_CARDS.length + ST14_LOCAL_CARDS.length + ST17_OFFICIAL_CARDS.length + ST18_OFFICIAL_CARDS.length + ST19_OFFICIAL_CARDS.length + ST21_OFFICIAL_CARDS.length + ST23_OFFICIAL_CARDS.length + ST25_OFFICIAL_CARDS.length + ST28_OFFICIAL_CARDS.length + ST20_OFFICIAL_CARDS.length + ST15_OFFICIAL_CARDS.length + ST16_OFFICIAL_CARDS.length + ST26_OFFICIAL_CARDS.length + ST31_OFFICIAL_CARDS.length + ST33_OFFICIAL_CARDS.length + ST34_OFFICIAL_CARDS.length + ST32_OFFICIAL_CARDS.length + ST13_OFFICIAL_CARDS.length + ST35_OFFICIAL_CARDS.length + ST30_OFFICIAL_CARDS.length + ST22_OFFICIAL_CARDS.length + ST29_OFFICIAL_CARDS.length + ST27_OFFICIAL_CARDS.length + ST24_OFFICIAL_CARDS.length
   assert.equal(catalog.definitions.length, compiled.definitions.length + local)
   assert.equal(catalog.printings.length, compiled.printings.length + local)
   const catalogIds = new Set(catalog.definitions.map(card => card.definitionId))

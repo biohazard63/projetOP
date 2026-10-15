@@ -60,7 +60,9 @@ function plannedSubjects(s:GameState,cost:Cost,context:EffectContext):string[] |
    for (const id of available.slice(0,part.amount)) { reserved.add(id);ids.push(id) }
   } else {
    const source=context.source,i=source.kind==='CARD'?s.instances[source.presence.instanceId]:undefined
-   if (!i || source.kind!=='CARD' || i.zoneGeneration!==source.presence.generation || i.controller!==p.id || !['leader','characters','stage'].includes(i.zone) || i.rested || reserved.has(i.id)) return null
+   // M6 "cannot be rested": a "rest this card" cost cannot be paid (FAQ EB02-011).
+   const locked=!!s.effects?.restLocks?.some(l=>l.subject.instanceId===i?.id && l.subject.generation===i?.zoneGeneration && s.turn<l.untilTurn)
+   if (!i || source.kind!=='CARD' || i.zoneGeneration!==source.presence.generation || i.controller!==p.id || !['leader','characters','stage'].includes(i.zone) || i.rested || locked || reserved.has(i.id)) return null
    reserved.add(i.id);ids.push(i.id)
   }
  }

@@ -17,11 +17,8 @@ test('audited Starter compositions: ST-01..ST-35 with 50 main cards, at most 4 c
   }
 })
 
-test('unverified compositions (ST-24, ST-27) are never listed; a product with several Leaders gives one 51-card deck per Leader', () => {
-  for (const code of ['ST-24', 'ST-27']) {
-    assert.equal(STARTER_COMPOSITIONS.find(d => d.deckCode === code)!.compositionVerified, false, code)
-    assert.ok(!STARTER_DECKS.some(d => d.deckCode === code), code)
-  }
+test('unverified compositions are never listed; a product with several Leaders gives one 51-card deck per Leader', () => {
+  for (const d of STARTER_COMPOSITIONS.filter(d => !d.compositionVerified)) assert.ok(!STARTER_DECKS.some(deck => deck.deckCode === d.deckCode), d.deckCode)
   for (const code of ['ST-10', 'ST-13']) {
     const decks = STARTER_DECKS.filter(d => d.deckCode === code)
     assert.deepEqual(decks.map(d => d.leader).sort(), STARTER_COMPOSITIONS.find(d => d.deckCode === code)!.leaders.slice().sort(), code)
@@ -37,4 +34,13 @@ test('the audited ST-03 contents replace the earlier name lookup: Sables x4 and 
   const q = (n: string) => st03.entries.find(e => e.printingKey === `${n}::standard`)?.quantity
   assert.equal(q('ST03-015'), 4); assert.equal(q('ST03-017'), 2)
   assert.equal(q('OP01-088'), undefined); assert.equal(q('OP07-057'), undefined)
+})
+
+test('ST-24: the user-confirmed quantities (ST24-004 Law & Bepo x2, ST24-005 X.Drake x4) give one Leader + 50 cards', () => {
+  const st24 = STARTER_COMPOSITIONS.find(d => d.deckCode === 'ST-24')!
+  assert.equal(st24.compositionVerified, true); assert.deepEqual(st24.reasons, []); assert.equal(st24.mainCount, 50)
+  const deck = STARTER_DECKS.find(d => d.id === 'starter-st24')!
+  const q = (n: string) => deck.entries.find(e => e.printingKey === `${n}::standard`)?.quantity
+  assert.equal(q('OP07-019'), 1); assert.equal(q('ST24-004'), 2); assert.equal(q('ST24-005'), 4)
+  assert.equal(deck.entries.reduce((n, e) => n + e.quantity, 0), 51)
 })
