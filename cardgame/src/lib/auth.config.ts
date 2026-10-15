@@ -6,7 +6,6 @@ import EmailProvider from "next-auth/providers/email"
 import type { Provider } from "next-auth/providers"
 import bcrypt from "bcryptjs"
 import { prisma } from "./prisma"
-import { addStarterDeckCardsToUser } from "./starterDeckUtils"
 import { verifyCaptcha } from "./captcha"
 import { getClientIp, rateLimit, isLocked, registerFailure, clearFailures } from "./security"
 
@@ -167,20 +166,6 @@ export const authConfig = {
         }
       } catch (e) {
         console.error('events.linkAccount error:', e)
-      }
-    },
-    // À la création d'un nouvel utilisateur (OAuth) → provisionner cartes ST + decks
-    async createUser({ user }) {
-      try {
-        if (!user?.id) return
-        const found = await prisma.user.findUnique({ where: { id: user.id } })
-        if (!found) return
-        if (found.hasStarterDecks) return
-        await addStarterDeckCardsToUser(user.id)
-        await prisma.user.update({ where: { id: user.id }, data: { hasStarterDecks: true } })
-        console.log(`[auth] Starter ST + decks provisionnés pour ${user.id}`)
-      } catch (e) {
-        console.error('events.createUser error:', e)
       }
     },
   },
