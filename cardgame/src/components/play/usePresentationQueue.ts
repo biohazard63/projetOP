@@ -1,19 +1,30 @@
 'use client'
-import { useEffect, useReducer, useState } from 'react'
+import { useEffect, useReducer, useRef, useState } from 'react'
 import { emptyPresentationQueue, presentationReducer } from './presentationQueue'
-import { presentationDuration } from './presentationTiming'
+import { presentationDuration, readingTimeout, type ReadingMode } from './presentationTiming'
 
-export function usePresentationQueue(reduced: boolean, fast: boolean) {
+// Reading popups (card text) follow the reading mode and stay shown with reduced motion: only movement is skipped, never
+// information. Hovering or touching a reading popup holds it; "Continuer" moves on.
+export function usePresentationQueue(reduced: boolean, fast: boolean, reading: ReadingMode = 'auto') {
   const [queue, dispatch] = useReducer(presentationReducer, undefined, emptyPresentationQueue)
   const [paused, setPaused] = useState(false)
-  useEffect(() => { setPaused(false) }, [queue.gameId])
+  const [held, setHeld] = useState(false)
+  const left = useRef<{ key: string; ms: number } | null>(null) // time left of the active step after a pause
+  useEffect(() => { setPaused(false); setHeld(false) }, [queue.gameId])
+  useEffect(() => { setHeld(false) }, [queue.active?.key])
   useEffect(() => {
-    if (reduced) { setPaused(false); dispatch({ type: 'CLEAR' }); return }
-    if (!queue.active || paused) return
-    const key = queue.active.key
-    const timer = setTimeout(() => dispatch({ type: 'NEXT', gameId: queue.gameId, key }), presentationDuration(queue.active.duration, fast))
-    return () => clearTimeout(timer)
-  }, [queue.active, queue.gameId, reduced, fast, paused])
-  return { dispatch, paused, togglePause: () => setPaused(value => !value), step: reduced ? null : queue.active, skip: () => { setPaused(false); if (queue.active) dispatch({ type: 'NEXT', gameId: queue.gameId, key: queue.active.key }) },
-    clear: () => { setPaused(false); dispatch({ type: 'CLEAR' }) }, reset: () => { setPaused(false); dispatch({ type: 'RESET' }) } }
+    const active = queue.active
+    if (!active || paused || held) return
+    const key = active.key, next = () => dispatch({ type: 'NEXT', gameId: queue.gameId, key })
+    if (!active.reading && reduced) { next(); return }
+    const full = active.reading ? readingTimeout(active.duration, reading) : presentationDuration(active.duration, fast)
+    if (full === null) return
+    const ms = left.current?.key === key ? left.current.ms : full, started = Date.now()
+    const timer = setTimeout(() => { left.current = null; next() }, ms)
+    return () => { clearTimeout(timer); left.current = { key, ms: Math.max(0, ms - (Date.now() - started)) } }
+  }, [queue.active, queue.gameId, reduced, fast, reading, paused, held])
+  const step = reduced && !queue.active?.reading ? null : queue.active
+  return { dispatch, paused: paused || held, togglePause: () => setPaused(value => !value), hold: setHeld, step,
+    skip: () => { setPaused(false); setHeld(false); if (queue.active) dispatch({ type: 'NEXT', gameId: queue.gameId, key: queue.active.key }) },
+    clear: () => { setPaused(false); setHeld(false); dispatch({ type: 'CLEAR' }) }, reset: () => { setPaused(false); setHeld(false); dispatch({ type: 'RESET' }) } }
 }

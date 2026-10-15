@@ -10,7 +10,7 @@ export const RESULTS: Record<string, string> = {
 }
 const ERRORS: Record<string, string> = {
   STALE_VERSION: 'La partie a changé dans un autre onglet : affichage mis à jour.', ILLEGAL_ACTION: 'Action impossible maintenant.', GAME_FINISHED: 'Cette partie est terminée.',
-  ACTIVE_GAME_EXISTS: 'Une partie est déjà en cours.', DECK_NOT_PLAYABLE: 'Ce deck n’est pas jouable par le moteur.', RATE_LIMITED: 'Trop d’actions rapprochées, réessayez dans un instant.',
+  ACTIVE_GAME_EXISTS: 'Une partie est déjà en cours.', DECK_NOT_PLAYABLE: 'Ce deck n’est pas jouable par le moteur.', OPPONENT_NOT_FOUND: 'Le deck de l’adversaire est introuvable.', OPPONENT_NOT_PLAYABLE: 'Le deck de l’adversaire n’est pas jouable par le moteur.', RATE_LIMITED: 'Trop d’actions rapprochées, réessayez dans un instant.',
   UNAUTHENTICATED: 'Connectez-vous pour jouer.', GAME_NOT_FOUND: 'Partie introuvable.', COMMAND_ID_CONFLICT: 'Action déjà envoyée.', SERVER_ERROR: 'Erreur serveur, réessayez.',
   INVALID_CHOICE_RESPONSE: 'Sélection invalide.', COUNTER_EVENT_INITIAL_UNPAYABLE: 'Coût impossible à payer.', INVALID_PAYMENT: 'Paiement invalide.', NETWORK: 'Connexion perdue, réessayez.',
 }

@@ -1,0 +1,59 @@
+/* V2 opening — tear the packet, light burst, cards rise as a pile. Driven by --tear (0..1) and data-phase. */
+.scene { position:relative; isolation:isolate; display:grid; justify-items:center; align-content:center; gap:18px; min-height:min(640px,calc(100dvh - 120px)); padding:56px 16px 24px;
+  overflow:hidden; border-radius:22px; color:#f7f9fc; background:radial-gradient(ellipse at 50% 42%,#1c4677 0,#0b1d33 50%,#050c18 100%); perspective:1100px; touch-action:none; user-select:none; -webkit-user-select:none; }
+.back { position:absolute; top:12px; left:12px; z-index:20; display:grid; place-items:center; width:42px; height:42px; border-radius:12px; background:#061120cc; border:1px solid #ffffff22; color:#fff; }
+.rays { position:absolute; left:50%; top:42%; width:150vmax; height:150vmax; translate:-50% -50%; z-index:-1; opacity:calc(.12 + var(--tear) * .25);
+  background:repeating-conic-gradient(from 0deg,#f5c45c22 0 6deg,transparent 6deg 18deg); mask:radial-gradient(circle,#000 0,transparent 55%); animation:spin 40s linear infinite; }
+.halo { position:absolute; left:50%; top:42%; width:min(520px,90vw); aspect-ratio:1; translate:-50% -50%; z-index:-1; border-radius:50%;
+  background:radial-gradient(circle,#f5c45c55 0,#f5c45c18 35%,transparent 68%); opacity:calc(.6 + var(--tear) * .4); animation:breathe 3.6s ease-in-out infinite; }
+@keyframes spin { to { rotate:360deg; } }
+@keyframes breathe { 0%,100% { scale:.95; } 50% { scale:1.05; } }
+
+/* The packet: body and top strip are the same artwork, clipped along the seam just under the top crimp (8 %). */
+.pack { position:relative; width:clamp(170px,30vw,250px); aspect-ratio:3/5; cursor:grab; outline:none; transform-style:preserve-3d;
+  animation:float 3.6s ease-in-out infinite; filter:drop-shadow(0 28px 34px #000c); }
+.pack:active { cursor:grabbing; }
+.pack:focus-visible { box-shadow:0 0 0 3px #f5c45c; border-radius:8px; }
+.scene[data-phase='ready'] .pack { rotate:calc(var(--tear) * -2deg); }
+.body, .strip { position:absolute; inset:0; }
+.body { clip-path:polygon(0 8%,100% 8%,100% 100%,0 100%); }
+.strip { clip-path:polygon(0 0,100% 0,100% 8.5%,0 8.5%); transform-origin:0% 8%;
+  translate:0 calc(var(--tear) * -6px); rotate:calc(var(--tear) * -5deg); transition:translate .08s linear, rotate .08s linear; }
+.seam { position:absolute; left:0; right:0; top:7.4%; height:6px; pointer-events:none; }
+.seam i { display:block; width:calc(var(--tear) * 100%); height:100%; border-radius:4px; background:linear-gradient(90deg,#fff6d6,#ffd36b 60%,#fff);
+  box-shadow:0 0 18px 6px #ffd36baa, 0 0 42px 14px #f5c45c55; transition:width .08s linear; }
+.seam::before { content:""; position:absolute; inset:-3px 0; border-top:2px dashed #ffffff66; opacity:calc(1 - var(--tear)); }
+@keyframes float { 0%,100% { translate:0 0; } 50% { translate:0 -10px; } }
+
+/* Burst: the strip flies off, a flash, sparks, then the pile rises from the packet. */
+.scene[data-phase='burst'] .strip, .scene[data-phase='rise'] .strip { animation:fly .7s cubic-bezier(.2,.7,.3,1) forwards; }
+@keyframes fly { to { translate:-35% -220%; rotate:-38deg; opacity:0; } }
+.scene[data-phase='burst'] .pack, .scene[data-phase='rise'] .pack { animation:shake .35s ease-in-out 1, float 3.6s ease-in-out infinite .35s; }
+@keyframes shake { 20% { translate:-4px 0; } 40% { translate:4px -2px; } 60% { translate:-3px 1px; } 80% { translate:2px 0; } }
+.flash { position:absolute; inset:0; z-index:15; pointer-events:none; opacity:0; background:radial-gradient(circle at 50% 36%,#fff 0,#fff6d6cc 18%,transparent 55%); }
+.scene[data-phase='burst'] .flash { animation:flash .55s ease-out forwards; }
+@keyframes flash { 0% { opacity:0; } 25% { opacity:1; } 100% { opacity:0; } }
+.sparks { position:absolute; left:50%; top:34%; z-index:14; pointer-events:none; }
+.sparks i { position:absolute; width:6px; height:6px; border-radius:50%; background:#ffe09a; box-shadow:0 0 10px 2px #f5c45c; opacity:0; }
+.scene[data-phase='burst'] .sparks i, .scene[data-phase='rise'] .sparks i { animation:spark 1s cubic-bezier(.15,.7,.3,1) forwards; animation-delay:calc(var(--s) * 12ms); }
+@keyframes spark { 0% { opacity:1; transform:rotate(calc(var(--s) * 16.4deg)) translateY(0) scale(1); } 100% { opacity:0; transform:rotate(calc(var(--s) * 16.4deg)) translateY(calc(-120px - var(--s) * 7px)) scale(.3); } }
+.cards { position:absolute; left:8%; right:8%; top:12%; height:80%; pointer-events:none; }
+.cards span { position:absolute; inset:0; opacity:0; border-radius:8px; overflow:hidden; box-shadow:0 8px 18px #000a; }
+.cards span img { width:100%; height:100%; object-fit:cover; }
+.scene[data-phase='rise'] .cards span { animation:rise var(--rise) cubic-bezier(.2,.8,.2,1) forwards; animation-delay:calc(var(--i) * 70ms); }
+@keyframes rise { 0% { opacity:0; transform:translateY(20%) scale(.9); } 25% { opacity:1; } 100% { opacity:1; transform:translateY(calc(-62% - var(--i) * 3px)) translateX(calc(var(--i) * 2px)) rotate(calc((var(--i) - 2) * 1.6deg)) scale(1.05); } }
+.scene[data-phase='rise'] .body { animation:sink var(--rise) ease-in forwards; }
+@keyframes sink { 60% { opacity:1; } 100% { opacity:.15; transform:translateY(18%) scale(.96); } }
+
+.caption { display:grid; justify-items:center; gap:10px; text-align:center; z-index:16; }
+.caption :global(.piece-eyebrow) { margin:0; }
+.hint { display:flex; flex-direction:column; align-items:center; gap:8px; margin:0; color:#dbe7f3; font-size:.95rem; }
+.finger { position:relative; width:46px; height:6px; border-radius:4px; background:#ffffff26; overflow:hidden; }
+.finger::after { content:""; position:absolute; top:-3px; left:0; width:12px; height:12px; border-radius:50%; background:#ffe09a; box-shadow:0 0 10px #f5c45c; animation:swipe 1.6s ease-in-out infinite; }
+@keyframes swipe { 0% { left:-12px; opacity:0; } 20% { opacity:1; } 80% { opacity:1; } 100% { left:46px; opacity:0; } }
+.actions { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; }
+.actions :global(.piece-button) { display:inline-flex; align-items:center; gap:8px; min-height:46px; }
+.status { margin:0; font-size:1.1rem; font-weight:800; color:#ffe09a; text-shadow:0 2px 12px #000; }
+
+.scene[data-reduced] .rays, .scene[data-reduced] .sparks { display:none; }
+@media (prefers-reduced-motion:reduce) { .pack, .rays, .halo, .finger::after { animation:none !important; } }

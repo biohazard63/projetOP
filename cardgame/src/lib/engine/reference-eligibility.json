@@ -1,0 +1,257 @@
+{
+ "fingerprint": "4578613f1172d80e00d501c8bcfd820a8794147777c615c5c173e6f2797bfe74",
+ "decks": [
+  {
+   "id": "reference-purple",
+   "key": "[[\"ST04-001::standard\",1,\"ST04-001@m3-2026-10-12\"],[\"ST04-009::standard\",4,\"ST04-009@m3-2026-10-12\"],[\"ST04-007::standard\",4,\"ST04-007@m3-2026-10-12\"],[\"OP02-080::standard\",4,\"OP02-080@m3-2026-10-12\"],[\"ST04-013::standard\",4,\"ST04-013@m3-2026-10-12\"],[\"OP02-077::standard\",4,\"OP02-077@m3-2026-10-12\"],[\"ST04-012::standard\",4,\"ST04-012@m3-2026-10-12\"],[\"OP01-103::standard\",4,\"OP01-103@m3-2026-10-12\"],[\"OP01-107::standard\",4,\"OP01-107@m3-2026-10-12\"],[\"OP04-062::standard\",4,\"OP04-062@m3-2026-10-12\"],[\"OP01-110::standard\",4,\"OP01-110@m3-2026-10-12\"],[\"OP01-092::standard\",2,\"OP01-092@m3-2026-10-12\"],[\"ST04-011::standard\",4,\"ST04-011@m3-2026-10-12\"],[\"ST04-016::standard\",4,\"ST04-016@m3-2026-10-12\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "reference-red",
+   "key": "[[\"ST01-001::standard\",1,\"ST01-001@m0-2026-10-10\"],[\"ST01-003::standard\",4,\"ST01-003@m0-2026-10-10\"],[\"ST01-006::standard\",4,\"ST01-006@m0-2026-10-10\"],[\"ST01-007::standard\",4,\"ST01-007@m0-2026-10-10\"],[\"ST01-008::standard\",4,\"ST01-008@m0-2026-10-10\"],[\"ST01-009::standard\",4,\"ST01-009@m0-2026-10-10\"],[\"ST01-010::standard\",4,\"ST01-010@m0-2026-10-10\"],[\"OP01-016::standard\",4,\"OP01-016@m3-2026-10-12\"],[\"OP06-009::standard\",4,\"OP06-009@official-2026-10-11\"],[\"OP06-013::standard\",4,\"OP06-013@official-2026-10-11\"],[\"ST01-014::standard\",4,\"ST01-014@m3-2026-10-12\"],[\"OP06-017::standard\",4,\"OP06-017@m3-2026-10-12\"],[\"OP06-018::standard\",4,\"OP06-018@official-2026-10-11\"],[\"P-016::standard\",2,\"P-016@m0-2026-10-10\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "reference-red-classic",
+   "key": "[[\"ST01-001::standard\",1,\"ST01-001@m0-2026-10-10\"],[\"ST01-003::standard\",4,\"ST01-003@m0-2026-10-10\"],[\"ST01-006::standard\",4,\"ST01-006@m0-2026-10-10\"],[\"ST01-007::standard\",4,\"ST01-007@m0-2026-10-10\"],[\"ST01-008::standard\",4,\"ST01-008@m0-2026-10-10\"],[\"ST01-009::standard\",4,\"ST01-009@m0-2026-10-10\"],[\"ST01-010::standard\",4,\"ST01-010@m0-2026-10-10\"],[\"OP01-010::standard\",4,\"OP01-010@m0-2026-10-10\"],[\"OP01-012::standard\",4,\"OP01-012@m0-2026-10-10\"],[\"OP01-018::standard\",4,\"OP01-018@m0-2026-10-10\"],[\"OP01-023::standard\",4,\"OP01-023@m0-2026-10-10\"],[\"P-012::standard\",4,\"P-012@m0-2026-10-10\"],[\"P-016::standard\",4,\"P-016@m0-2026-10-10\"],[\"ST01-014::standard\",2,\"ST01-014@m3-2026-10-12\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st01",
+   "key": "[[\"ST01-001::standard\",1,\"ST01-001@m0-2026-10-10\"],[\"ST01-002::standard\",4,\"ST01-002@m6-cardjson-2026-10-13\"],[\"ST01-003::standard\",4,\"ST01-003@m0-2026-10-10\"],[\"ST01-004::standard\",4,\"ST01-004@m6-cardjson-2026-10-13\"],[\"ST01-005::standard\",4,\"ST01-005@m6-cardjson-2026-10-13\"],[\"ST01-006::standard\",4,\"ST01-006@m0-2026-10-10\"],[\"ST01-007::standard\",4,\"ST01-007@m0-2026-10-10\"],[\"ST01-008::standard\",4,\"ST01-008@m0-2026-10-10\"],[\"ST01-009::standard\",4,\"ST01-009@m0-2026-10-10\"],[\"ST01-010::standard\",4,\"ST01-010@m0-2026-10-10\"],[\"ST01-011::standard\",2,\"ST01-011@m6-cardjson-2026-10-13\"],[\"ST01-012::standard\",2,\"ST01-012@m6-cardjson-2026-10-13\"],[\"ST01-013::standard\",2,\"ST01-013@m6-cardjson-2026-10-13\"],[\"ST01-014::standard\",2,\"ST01-014@m3-2026-10-12\"],[\"ST01-015::standard\",2,\"ST01-015@m6-cardjson-2026-10-13\"],[\"ST01-016::standard\",2,\"ST01-016@m6-cardjson-2026-10-13\"],[\"ST01-017::standard\",2,\"ST01-017@m6-cardjson-2026-10-13\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st02",
+   "key": "[[\"ST02-001::standard\",1,\"ST02-001@m6-cardjson-2026-10-13\"],[\"ST02-002::standard\",4,\"ST02-002@m5-2026-10-12\"],[\"ST02-003::standard\",2,\"ST02-003@m6-cardjson-2026-10-13\"],[\"ST02-004::standard\",4,\"ST02-004@m5-2026-10-12\"],[\"ST02-005::standard\",2,\"ST02-005@m6-cardjson-2026-10-13\"],[\"ST02-006::standard\",4,\"ST02-006@m5-2026-10-12\"],[\"ST02-007::standard\",4,\"ST02-007@m6-cardjson-2026-10-13\"],[\"ST02-008::standard\",4,\"ST02-008@m6-cardjson-2026-10-13\"],[\"ST02-009::standard\",2,\"ST02-009@m6-cardjson-2026-10-13\"],[\"ST02-010::standard\",2,\"ST02-010@m6-cardjson-2026-10-13\"],[\"ST02-011::standard\",4,\"ST02-011@m5-2026-10-12\"],[\"ST02-012::standard\",4,\"ST02-012@m5-2026-10-12\"],[\"ST02-013::standard\",2,\"ST02-013@m6-cardjson-2026-10-13\"],[\"ST02-014::standard\",4,\"ST02-014@m6-cardjson-2026-10-13\"],[\"ST02-015::standard\",2,\"ST02-015@m6-cardjson-2026-10-13\"],[\"ST02-016::standard\",4,\"ST02-016@m6-cardjson-2026-10-13\"],[\"ST02-017::standard\",2,\"ST02-017@m6-cardjson-2026-10-13\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st03",
+   "key": "[[\"ST03-001::standard\",1,\"ST03-001@m6-cardjson-2026-10-13\"],[\"ST03-002::standard\",4,\"ST03-002@m5-2026-10-12\"],[\"ST03-003::standard\",2,\"ST03-003@m6-cardjson-2026-10-13\"],[\"ST03-004::standard\",2,\"ST03-004@m6-cardjson-2026-10-13\"],[\"ST03-005::standard\",2,\"ST03-005@m6-cardjson-2026-10-13\"],[\"ST03-006::standard\",4,\"ST03-006@m5-2026-10-12\"],[\"ST03-007::standard\",2,\"ST03-007@m6-cardjson-2026-10-13\"],[\"ST03-008::standard\",4,\"ST03-008@m5-2026-10-12\"],[\"ST03-009::standard\",2,\"ST03-009@m6-cardjson-2026-10-13\"],[\"ST03-010::standard\",4,\"ST03-010@m6-cardjson-2026-10-13\"],[\"ST03-011::standard\",4,\"ST03-011@m5-2026-10-12\"],[\"ST03-012::standard\",4,\"ST03-012@m5-2026-10-12\"],[\"ST03-013::standard\",4,\"ST03-013@m6-cardjson-2026-10-13\"],[\"ST03-014::standard\",2,\"ST03-014@m6-cardjson-2026-10-13\"],[\"ST03-015::standard\",4,\"ST03-015@m6-cardjson-2026-10-13\"],[\"ST03-016::standard\",4,\"ST03-016@m6-cardjson-2026-10-13\"],[\"ST03-017::standard\",2,\"ST03-017@m3-2026-10-12\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st04",
+   "key": "[[\"ST04-001::standard\",1,\"ST04-001@m3-2026-10-12\"],[\"ST04-002::standard\",4,\"ST04-002@m6-cardjson-2026-10-13\"],[\"ST04-003::standard\",2,\"ST04-003@m6-cardjson-2026-10-13\"],[\"ST04-004::standard\",2,\"ST04-004@m6-cardjson-2026-10-13\"],[\"ST04-005::standard\",2,\"ST04-005@m6-cardjson-2026-10-13\"],[\"ST04-006::standard\",4,\"ST04-006@m6-cardjson-2026-10-13\"],[\"ST04-007::standard\",4,\"ST04-007@m3-2026-10-12\"],[\"ST04-008::standard\",2,\"ST04-008@m6-cardjson-2026-10-13\"],[\"ST04-009::standard\",4,\"ST04-009@m3-2026-10-12\"],[\"ST04-010::standard\",2,\"ST04-010@m6-cardjson-2026-10-13\"],[\"ST04-011::standard\",4,\"ST04-011@m3-2026-10-12\"],[\"ST04-012::standard\",4,\"ST04-012@m3-2026-10-12\"],[\"ST04-013::standard\",4,\"ST04-013@m3-2026-10-12\"],[\"ST04-014::standard\",2,\"ST04-014@m6-cardjson-2026-10-13\"],[\"ST04-015::standard\",2,\"ST04-015@m6-cardjson-2026-10-13\"],[\"ST04-016::standard\",4,\"ST04-016@m3-2026-10-12\"],[\"ST04-017::standard\",4,\"ST04-017@m6-cardjson-2026-10-13\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st05",
+   "key": "[[\"ST05-001::standard\",1,\"ST05-001@m6-cardjson-2026-10-13\"],[\"ST05-002::standard\",4,\"ST05-002@m6-cardjson-2026-10-13\"],[\"ST05-003::standard\",4,\"ST05-003@m5-2026-10-12\"],[\"ST05-004::standard\",2,\"ST05-004@m6-cardjson-2026-10-13\"],[\"ST05-005::standard\",2,\"ST05-005@m6-cardjson-2026-10-13\"],[\"ST05-006::standard\",2,\"ST05-006@m6-cardjson-2026-10-13\"],[\"ST05-007::standard\",4,\"ST05-007@m5-2026-10-12\"],[\"ST05-008::standard\",2,\"ST05-008@m6-cardjson-2026-10-13\"],[\"ST05-009::standard\",4,\"ST05-009@m6-cardjson-2026-10-13\"],[\"ST05-010::standard\",2,\"ST05-010@m6-cardjson-2026-10-13\"],[\"ST05-011::standard\",2,\"ST05-011@m6-cardjson-2026-10-13\"],[\"ST05-012::standard\",4,\"ST05-012@m5-2026-10-12\"],[\"ST05-013::standard\",4,\"ST05-013@m5-2026-10-12\"],[\"ST05-014::standard\",4,\"ST05-014@m6-cardjson-2026-10-13\"],[\"ST05-015::standard\",4,\"ST05-015@m5-2026-10-12\"],[\"ST05-016::standard\",2,\"ST05-016@m6-cardjson-2026-10-13\"],[\"ST05-017::standard\",4,\"ST05-017@m6-cardjson-2026-10-13\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st06",
+   "key": "[[\"ST06-001::standard\",1,\"ST06-001@m6-cardjson-2026-10-13\"],[\"ST06-002::standard\",2,\"ST06-002@m6-cardjson-2026-10-13\"],[\"ST06-003::standard\",4,\"ST06-003@m5-2026-10-12\"],[\"ST06-004::standard\",2,\"ST06-004@m6-cardjson-2026-10-13\"],[\"ST06-005::standard\",4,\"ST06-005@m6-cardjson-2026-10-13\"],[\"ST06-006::standard\",4,\"ST06-006@m6-cardjson-2026-10-13\"],[\"ST06-007::standard\",4,\"ST06-007@m5-2026-10-12\"],[\"ST06-008::standard\",2,\"ST06-008@m6-cardjson-2026-10-13\"],[\"ST06-009::standard\",4,\"ST06-009@m5-2026-10-12\"],[\"ST06-010::standard\",4,\"ST06-010@m6-cardjson-2026-10-13\"],[\"ST06-011::standard\",4,\"ST06-011@m5-2026-10-12\"],[\"ST06-012::standard\",2,\"ST06-012@m6-cardjson-2026-10-13\"],[\"ST06-013::standard\",4,\"ST06-013@m5-2026-10-12\"],[\"ST06-014::standard\",2,\"ST06-014@m6-cardjson-2026-10-13\"],[\"ST06-015::standard\",2,\"ST06-015@m6-cardjson-2026-10-13\"],[\"ST06-016::standard\",4,\"ST06-016@m6-cardjson-2026-10-13\"],[\"ST06-017::standard\",2,\"ST06-017@m6-cardjson-2026-10-13\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st07",
+   "key": "[[\"ST07-001::standard\",1,\"ST07-001@m6-cardjson-2026-10-13\"],[\"ST07-002::standard\",4,\"ST07-002@m5-2026-10-12\"],[\"ST07-003::standard\",2,\"ST07-003@m6-cardjson-2026-10-13\"],[\"ST07-004::standard\",4,\"ST07-004@m6-cardjson-2026-10-13\"],[\"ST07-005::standard\",2,\"ST07-005@m6-cardjson-2026-10-13\"],[\"ST07-006::standard\",4,\"ST07-006@m5-2026-10-12\"],[\"ST07-007::standard\",2,\"ST07-007@m6-cardjson-2026-10-13\"],[\"ST07-008::standard\",4,\"ST07-008@m6-cardjson-2026-10-13\"],[\"ST07-009::standard\",2,\"ST07-009@m6-cardjson-2026-10-13\"],[\"ST07-010::standard\",2,\"ST07-010@m6-cardjson-2026-10-13\"],[\"ST07-011::standard\",4,\"ST07-011@m6-cardjson-2026-10-13\"],[\"ST07-012::standard\",4,\"ST07-012@m5-2026-10-12\"],[\"ST07-013::standard\",4,\"ST07-013@m6-cardjson-2026-10-13\"],[\"ST07-014::standard\",4,\"ST07-014@m5-2026-10-12\"],[\"ST07-015::standard\",4,\"ST07-015@m6-cardjson-2026-10-13\"],[\"ST07-016::standard\",2,\"ST07-016@m6-cardjson-2026-10-13\"],[\"ST07-017::standard\",2,\"ST07-017@m6-cardjson-2026-10-13\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st08",
+   "key": "[[\"ST08-001::standard\",1,\"ST08-001@m6-cardjson-2026-10-13\"],[\"ST08-002::standard\",2,\"ST08-002@m6-cardjson-2026-10-13\"],[\"ST08-003::standard\",4,\"ST08-003@m5-2026-10-12\"],[\"ST08-004::standard\",4,\"ST08-004@m6-cardjson-2026-10-13\"],[\"ST08-005::standard\",2,\"ST08-005@m6-cardjson-2026-10-13\"],[\"ST08-006::standard\",4,\"ST08-006@m6-cardjson-2026-10-13\"],[\"ST08-007::standard\",4,\"ST08-007@m6-cardjson-2026-10-13\"],[\"ST08-008::standard\",4,\"ST08-008@m6-cardjson-2026-10-13\"],[\"ST08-009::standard\",4,\"ST08-009@m6-cardjson-2026-10-13\"],[\"ST08-010::standard\",4,\"ST08-010@m5-2026-10-12\"],[\"ST08-011::standard\",4,\"ST08-011@m5-2026-10-12\"],[\"ST08-012::standard\",4,\"ST08-012@m5-2026-10-12\"],[\"ST08-013::standard\",4,\"ST08-013@m6-cardjson-2026-10-13\"],[\"ST08-014::standard\",4,\"ST08-014@m6-cardjson-2026-10-13\"],[\"ST08-015::standard\",2,\"ST08-015@m6-cardjson-2026-10-13\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st09",
+   "key": "[[\"ST09-001::standard\",1,\"ST09-001@m6-cardjson-2026-10-13\"],[\"ST09-002::standard\",4,\"ST09-002@m6-cardjson-2026-10-13\"],[\"ST09-003::standard\",4,\"ST09-003@m5-2026-10-12\"],[\"ST09-004::standard\",4,\"ST09-004@m6-cardjson-2026-10-13\"],[\"ST09-005::standard\",2,\"ST09-005@m6-cardjson-2026-10-13\"],[\"ST09-006::standard\",4,\"ST09-006@m5-2026-10-12\"],[\"ST09-007::standard\",4,\"ST09-007@m6-cardjson-2026-10-13\"],[\"ST09-008::standard\",4,\"ST09-008@m6-cardjson-2026-10-13\"],[\"ST09-009::standard\",4,\"ST09-009@m6-cardjson-2026-10-13\"],[\"ST09-010::standard\",2,\"ST09-010@m6-cardjson-2026-10-13\"],[\"ST09-011::standard\",4,\"ST09-011@m5-2026-10-12\"],[\"ST09-012::standard\",4,\"ST09-012@m6-cardjson-2026-10-13\"],[\"ST09-013::standard\",4,\"ST09-013@m5-2026-10-12\"],[\"ST09-014::standard\",2,\"ST09-014@m6-cardjson-2026-10-13\"],[\"ST09-015::standard\",4,\"ST09-015@m6-cardjson-2026-10-13\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st10-st10-001",
+   "key": "[[\"ST10-001::standard\",1,\"ST10-001@m6-cardjson-2026-10-13\"],[\"ST10-004::standard\",4,\"ST10-004@m6-cardjson-2026-10-13\"],[\"ST10-005::standard\",2,\"ST10-005@m6-cardjson-2026-10-13\"],[\"ST10-006::standard\",2,\"ST10-006@m6-cardjson-2026-10-13\"],[\"ST10-007::standard\",4,\"ST10-007@m6-cardjson-2026-10-13\"],[\"ST10-008::standard\",4,\"ST10-008@m6-cardjson-2026-10-13\"],[\"ST10-009::standard\",4,\"ST10-009@m6-cardjson-2026-10-13\"],[\"ST10-010::standard\",2,\"ST10-010@m6-cardjson-2026-10-13\"],[\"ST10-011::standard\",4,\"ST10-011@m6-cardjson-2026-10-13\"],[\"ST10-012::standard\",4,\"ST10-012@m6-cardjson-2026-10-13\"],[\"ST10-013::standard\",2,\"ST10-013@m6-cardjson-2026-10-13\"],[\"ST10-014::standard\",4,\"ST10-014@m6-cardjson-2026-10-13\"],[\"ST10-015::standard\",2,\"ST10-015@m6-cardjson-2026-10-13\"],[\"ST10-016::standard\",2,\"ST10-016@m6-cardjson-2026-10-13\"],[\"ST10-017::standard\",2,\"ST10-017@m6-cardjson-2026-10-13\"],[\"OP01-016::standard\",4,\"OP01-016@m3-2026-10-12\"],[\"OP01-025::standard\",4,\"OP01-025@m6-cardjson-2026-10-13\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st10-st10-002",
+   "key": "[[\"ST10-002::standard\",1,\"ST10-002@m6-cardjson-2026-10-13\"],[\"ST10-004::standard\",4,\"ST10-004@m6-cardjson-2026-10-13\"],[\"ST10-005::standard\",2,\"ST10-005@m6-cardjson-2026-10-13\"],[\"ST10-006::standard\",2,\"ST10-006@m6-cardjson-2026-10-13\"],[\"ST10-007::standard\",4,\"ST10-007@m6-cardjson-2026-10-13\"],[\"ST10-008::standard\",4,\"ST10-008@m6-cardjson-2026-10-13\"],[\"ST10-009::standard\",4,\"ST10-009@m6-cardjson-2026-10-13\"],[\"ST10-010::standard\",2,\"ST10-010@m6-cardjson-2026-10-13\"],[\"ST10-011::standard\",4,\"ST10-011@m6-cardjson-2026-10-13\"],[\"ST10-012::standard\",4,\"ST10-012@m6-cardjson-2026-10-13\"],[\"ST10-013::standard\",2,\"ST10-013@m6-cardjson-2026-10-13\"],[\"ST10-014::standard\",4,\"ST10-014@m6-cardjson-2026-10-13\"],[\"ST10-015::standard\",2,\"ST10-015@m6-cardjson-2026-10-13\"],[\"ST10-016::standard\",2,\"ST10-016@m6-cardjson-2026-10-13\"],[\"ST10-017::standard\",2,\"ST10-017@m6-cardjson-2026-10-13\"],[\"OP01-016::standard\",4,\"OP01-016@m3-2026-10-12\"],[\"OP01-025::standard\",4,\"OP01-025@m6-cardjson-2026-10-13\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st10-st10-003",
+   "key": "[[\"ST10-003::standard\",1,\"ST10-003@m6-cardjson-2026-10-13\"],[\"ST10-004::standard\",4,\"ST10-004@m6-cardjson-2026-10-13\"],[\"ST10-005::standard\",2,\"ST10-005@m6-cardjson-2026-10-13\"],[\"ST10-006::standard\",2,\"ST10-006@m6-cardjson-2026-10-13\"],[\"ST10-007::standard\",4,\"ST10-007@m6-cardjson-2026-10-13\"],[\"ST10-008::standard\",4,\"ST10-008@m6-cardjson-2026-10-13\"],[\"ST10-009::standard\",4,\"ST10-009@m6-cardjson-2026-10-13\"],[\"ST10-010::standard\",2,\"ST10-010@m6-cardjson-2026-10-13\"],[\"ST10-011::standard\",4,\"ST10-011@m6-cardjson-2026-10-13\"],[\"ST10-012::standard\",4,\"ST10-012@m6-cardjson-2026-10-13\"],[\"ST10-013::standard\",2,\"ST10-013@m6-cardjson-2026-10-13\"],[\"ST10-014::standard\",4,\"ST10-014@m6-cardjson-2026-10-13\"],[\"ST10-015::standard\",2,\"ST10-015@m6-cardjson-2026-10-13\"],[\"ST10-016::standard\",2,\"ST10-016@m6-cardjson-2026-10-13\"],[\"ST10-017::standard\",2,\"ST10-017@m6-cardjson-2026-10-13\"],[\"OP01-016::standard\",4,\"OP01-016@m3-2026-10-12\"],[\"OP01-025::standard\",4,\"OP01-025@m6-cardjson-2026-10-13\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st11",
+   "key": "[[\"ST11-001::standard\",1,\"ST11-001@m6-cardjson-2026-10-13\"],[\"ST11-002::standard\",2,\"ST11-002@m6-cardjson-2026-10-13\"],[\"ST11-003::standard\",2,\"ST11-003@m6-cardjson-2026-10-13\"],[\"ST11-004::standard\",2,\"ST11-004@m6-cardjson-2026-10-13\"],[\"ST11-005::standard\",4,\"ST11-005@m6-cardjson-2026-10-13\"],[\"OP02-028::standard\",4,\"OP02-028@m5-2026-10-12\"],[\"OP02-033::standard\",4,\"OP02-033@m5-2026-10-12\"],[\"OP02-034::standard\",4,\"OP02-034@m6-cardjson-2026-10-13\"],[\"OP02-035::standard\",4,\"OP02-035@m6-cardjson-2026-10-13\"],[\"OP02-037::standard\",4,\"OP02-037@m6-cardjson-2026-10-13\"],[\"OP02-039::standard\",4,\"OP02-039@m5-2026-10-12\"],[\"OP02-040::standard\",4,\"OP02-040@m6-cardjson-2026-10-13\"],[\"OP02-041::standard\",4,\"OP02-041@m6-cardjson-2026-10-13\"],[\"OP02-043::standard\",4,\"OP02-043@m5-2026-10-12\"],[\"OP02-045::standard\",4,\"OP02-045@m6-cardjson-2026-10-13\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st12",
+   "key": "[[\"ST12-001::standard\",1,\"ST12-001@m6-cardjson-2026-10-13\"],[\"ST12-002::standard\",4,\"ST12-002@m6-cardjson-2026-10-13\"],[\"ST12-003::standard\",2,\"ST12-003@m6-cardjson-2026-10-13\"],[\"ST12-004::standard\",4,\"ST12-004@m5-2026-10-12\"],[\"ST12-005::standard\",4,\"ST12-005@m5-2026-10-12\"],[\"ST12-006::standard\",4,\"ST12-006@m6-cardjson-2026-10-13\"],[\"ST12-007::standard\",4,\"ST12-007@m6-cardjson-2026-10-13\"],[\"ST12-008::standard\",2,\"ST12-008@m6-cardjson-2026-10-13\"],[\"ST12-009::standard\",4,\"ST12-009@m5-2026-10-12\"],[\"ST12-010::standard\",2,\"ST12-010@m6-cardjson-2026-10-13\"],[\"ST12-011::standard\",2,\"ST12-011@m6-cardjson-2026-10-13\"],[\"ST12-012::standard\",4,\"ST12-012@m6-cardjson-2026-10-13\"],[\"ST12-013::standard\",4,\"ST12-013@m6-cardjson-2026-10-13\"],[\"ST12-014::standard\",2,\"ST12-014@m6-cardjson-2026-10-13\"],[\"ST12-015::standard\",4,\"ST12-015@m5-2026-10-12\"],[\"ST12-016::standard\",2,\"ST12-016@m6-cardjson-2026-10-13\"],[\"ST12-017::standard\",2,\"ST12-017@m6-cardjson-2026-10-13\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st13-st13-001",
+   "key": "[[\"ST13-001::standard\",1,\"ST13-001@m6-official-en-2026-10-14\"],[\"ST13-004::standard\",4,\"ST13-004@m6-official-en-2026-10-14\"],[\"ST13-005::standard\",2,\"ST13-005@m6-official-en-2026-10-14\"],[\"ST13-006::standard\",4,\"ST13-006@m6-official-en-2026-10-14\"],[\"ST13-007::standard\",4,\"ST13-007@m6-official-en-2026-10-14\"],[\"ST13-008::standard\",2,\"ST13-008@m6-official-en-2026-10-14\"],[\"ST13-009::standard\",4,\"ST13-009@m6-official-en-2026-10-14\"],[\"ST13-010::standard\",4,\"ST13-010@m6-official-en-2026-10-14\"],[\"ST13-011::standard\",2,\"ST13-011@m6-official-en-2026-10-14\"],[\"ST13-012::standard\",4,\"ST13-012@m6-official-en-2026-10-14\"],[\"ST13-013::standard\",2,\"ST13-013@m6-official-en-2026-10-14\"],[\"ST13-014::standard\",4,\"ST13-014@m6-official-en-2026-10-14\"],[\"ST13-015::standard\",2,\"ST13-015@m6-official-en-2026-10-14\"],[\"ST13-016::standard\",4,\"ST13-016@m6-official-en-2026-10-14\"],[\"ST13-017::standard\",2,\"ST13-017@m6-official-en-2026-10-14\"],[\"ST13-018::standard\",2,\"ST13-018@m6-official-en-2026-10-14\"],[\"ST13-019::standard\",4,\"ST13-019@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st13-st13-002",
+   "key": "[[\"ST13-002::standard\",1,\"ST13-002@m6-official-en-2026-10-14\"],[\"ST13-004::standard\",4,\"ST13-004@m6-official-en-2026-10-14\"],[\"ST13-005::standard\",2,\"ST13-005@m6-official-en-2026-10-14\"],[\"ST13-006::standard\",4,\"ST13-006@m6-official-en-2026-10-14\"],[\"ST13-007::standard\",4,\"ST13-007@m6-official-en-2026-10-14\"],[\"ST13-008::standard\",2,\"ST13-008@m6-official-en-2026-10-14\"],[\"ST13-009::standard\",4,\"ST13-009@m6-official-en-2026-10-14\"],[\"ST13-010::standard\",4,\"ST13-010@m6-official-en-2026-10-14\"],[\"ST13-011::standard\",2,\"ST13-011@m6-official-en-2026-10-14\"],[\"ST13-012::standard\",4,\"ST13-012@m6-official-en-2026-10-14\"],[\"ST13-013::standard\",2,\"ST13-013@m6-official-en-2026-10-14\"],[\"ST13-014::standard\",4,\"ST13-014@m6-official-en-2026-10-14\"],[\"ST13-015::standard\",2,\"ST13-015@m6-official-en-2026-10-14\"],[\"ST13-016::standard\",4,\"ST13-016@m6-official-en-2026-10-14\"],[\"ST13-017::standard\",2,\"ST13-017@m6-official-en-2026-10-14\"],[\"ST13-018::standard\",2,\"ST13-018@m6-official-en-2026-10-14\"],[\"ST13-019::standard\",4,\"ST13-019@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st13-st13-003",
+   "key": "[[\"ST13-003::standard\",1,\"ST13-003@m6-official-en-2026-10-14\"],[\"ST13-004::standard\",4,\"ST13-004@m6-official-en-2026-10-14\"],[\"ST13-005::standard\",2,\"ST13-005@m6-official-en-2026-10-14\"],[\"ST13-006::standard\",4,\"ST13-006@m6-official-en-2026-10-14\"],[\"ST13-007::standard\",4,\"ST13-007@m6-official-en-2026-10-14\"],[\"ST13-008::standard\",2,\"ST13-008@m6-official-en-2026-10-14\"],[\"ST13-009::standard\",4,\"ST13-009@m6-official-en-2026-10-14\"],[\"ST13-010::standard\",4,\"ST13-010@m6-official-en-2026-10-14\"],[\"ST13-011::standard\",2,\"ST13-011@m6-official-en-2026-10-14\"],[\"ST13-012::standard\",4,\"ST13-012@m6-official-en-2026-10-14\"],[\"ST13-013::standard\",2,\"ST13-013@m6-official-en-2026-10-14\"],[\"ST13-014::standard\",4,\"ST13-014@m6-official-en-2026-10-14\"],[\"ST13-015::standard\",2,\"ST13-015@m6-official-en-2026-10-14\"],[\"ST13-016::standard\",4,\"ST13-016@m6-official-en-2026-10-14\"],[\"ST13-017::standard\",2,\"ST13-017@m6-official-en-2026-10-14\"],[\"ST13-018::standard\",2,\"ST13-018@m6-official-en-2026-10-14\"],[\"ST13-019::standard\",4,\"ST13-019@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st14",
+   "key": "[[\"ST14-001::standard\",1,\"ST14-001@m6-cardjson-2026-10-13\"],[\"ST14-002::standard\",4,\"ST14-002@m6-cardjson-2026-10-13\"],[\"ST14-003::standard\",2,\"ST14-003@m6-cardjson-2026-10-13\"],[\"ST14-004::standard\",4,\"ST14-004@m6-cardjson-2026-10-13\"],[\"ST14-005::standard\",4,\"ST14-005@m5-2026-10-12\"],[\"ST14-006::standard\",2,\"ST14-006@m6-cardjson-2026-10-13\"],[\"ST14-007::standard\",4,\"ST14-007@m6-cardjson-2026-10-13\"],[\"ST14-008::standard\",4,\"ST14-008@m6-cardjson-2026-10-13\"],[\"ST14-009::standard\",4,\"ST14-009@m6-cardjson-2026-10-13\"],[\"ST14-010::standard\",4,\"ST14-010@m5-2026-10-12\"],[\"ST14-011::standard\",4,\"ST14-011@m6-cardjson-2026-10-13\"],[\"ST14-012::standard\",2,\"ST14-012@m6-cardjson-2026-10-13\"],[\"ST14-013::standard\",4,\"ST14-013@m5-2026-10-12\"],[\"ST14-014::standard\",2,\"ST14-014@m6-cardjson-2026-10-13\"],[\"ST14-015::standard\",2,\"ST14-015@m6-cardjson-2026-10-13\"],[\"ST14-016::standard\",2,\"ST14-016@m6-cardjson-2026-10-13\"],[\"ST14-017::standard\",2,\"ST14-017@m6-cardjson-2026-10-13\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st15",
+   "key": "[[\"OP02-001::standard\",1,\"OP02-001@m6-official-en-2026-10-14\"],[\"ST15-001::standard\",4,\"ST15-001@m6-official-en-2026-10-14\"],[\"ST15-002::standard\",2,\"ST15-002@m6-official-en-2026-10-14\"],[\"ST15-003::standard\",4,\"ST15-003@m6-official-en-2026-10-14\"],[\"ST15-004::standard\",2,\"ST15-004@m6-official-en-2026-10-14\"],[\"ST15-005::standard\",2,\"ST15-005@m6-official-en-2026-10-14\"],[\"OP02-008::standard\",4,\"OP02-008@m6-official-en-2026-10-14\"],[\"OP02-018::standard\",4,\"OP02-018@m6-official-en-2026-10-14\"],[\"OP02-019::standard\",4,\"OP02-019@m6-official-en-2026-10-14\"],[\"OP03-003::standard\",4,\"OP03-003@m6-official-en-2026-10-14\"],[\"OP03-006::standard\",4,\"OP03-006@m5-2026-10-12\"],[\"OP03-007::standard\",4,\"OP03-007@m5-2026-10-12\"],[\"OP03-009::standard\",4,\"OP03-009@m6-official-en-2026-10-14\"],[\"OP03-010::standard\",4,\"OP03-010@m5-2026-10-12\"],[\"OP02-023::standard\",4,\"OP02-023@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st16",
+   "key": "[[\"ST11-001::standard\",1,\"ST11-001@m6-cardjson-2026-10-13\"],[\"ST16-001::standard\",2,\"ST16-001@m6-official-en-2026-10-14\"],[\"ST16-002::standard\",4,\"ST16-002@m6-official-en-2026-10-14\"],[\"ST16-003::standard\",4,\"ST16-003@m6-official-en-2026-10-14\"],[\"ST16-004::standard\",2,\"ST16-004@m6-official-en-2026-10-14\"],[\"ST16-005::standard\",2,\"ST16-005@m6-official-en-2026-10-14\"],[\"P-029::standard\",4,\"P-029@m6-official-en-2026-10-14\"],[\"P-061::standard\",4,\"P-061@m5-2026-10-12\"],[\"ST11-003::standard\",4,\"ST11-003@m6-cardjson-2026-10-13\"],[\"ST11-004::standard\",4,\"ST11-004@m6-cardjson-2026-10-13\"],[\"ST11-005::standard\",4,\"ST11-005@m6-cardjson-2026-10-13\"],[\"P-057::standard\",4,\"P-057@m6-official-en-2026-10-14\"],[\"P-058::standard\",4,\"P-058@m6-official-en-2026-10-14\"],[\"P-059::standard\",4,\"P-059@m6-official-en-2026-10-14\"],[\"P-060::standard\",4,\"P-060@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st17",
+   "key": "[[\"OP01-060::standard\",1,\"OP01-060@m6-official-en-2026-10-14\"],[\"ST17-001::standard\",4,\"ST17-001@m6-official-en-2026-10-14\"],[\"ST17-002::standard\",2,\"ST17-002@m6-official-en-2026-10-14\"],[\"ST17-003::standard\",2,\"ST17-003@m6-official-en-2026-10-14\"],[\"ST17-004::standard\",2,\"ST17-004@m6-official-en-2026-10-14\"],[\"ST17-005::standard\",4,\"ST17-005@m6-official-en-2026-10-14\"],[\"OP01-073::standard\",4,\"OP01-073@m6-official-en-2026-10-14\"],[\"OP02-054::standard\",4,\"OP02-054@m5-2026-10-12\"],[\"OP02-057::standard\",4,\"OP02-057@m6-official-en-2026-10-14\"],[\"ST03-002::standard\",4,\"ST03-002@m5-2026-10-12\"],[\"ST03-004::standard\",4,\"ST03-004@m6-cardjson-2026-10-13\"],[\"ST03-005::standard\",4,\"ST03-005@m6-cardjson-2026-10-13\"],[\"ST03-008::standard\",4,\"ST03-008@m5-2026-10-12\"],[\"P-030::standard\",4,\"P-030@m6-official-en-2026-10-14\"],[\"OP01-086::standard\",4,\"OP01-086@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st18",
+   "key": "[[\"OP05-060::standard\",1,\"OP05-060@m6-official-en-2026-10-14\"],[\"ST18-001::standard\",2,\"ST18-001@m6-official-en-2026-10-14\"],[\"ST18-002::standard\",4,\"ST18-002@m6-official-en-2026-10-14\"],[\"ST18-003::standard\",4,\"ST18-003@m6-official-en-2026-10-14\"],[\"ST18-004::standard\",2,\"ST18-004@m6-official-en-2026-10-14\"],[\"ST18-005::standard\",2,\"ST18-005@m6-official-en-2026-10-14\"],[\"OP05-061::standard\",4,\"OP05-061@m6-official-en-2026-10-14\"],[\"OP05-063::standard\",4,\"OP05-063@m6-official-en-2026-10-14\"],[\"OP05-066::standard\",4,\"OP05-066@m6-official-en-2026-10-14\"],[\"OP05-067::standard\",4,\"OP05-067@m6-official-en-2026-10-14\"],[\"OP05-068::standard\",4,\"OP05-068@m6-official-en-2026-10-14\"],[\"OP05-070::standard\",4,\"OP05-070@m6-official-en-2026-10-14\"],[\"OP05-072::standard\",4,\"OP05-072@m6-official-en-2026-10-14\"],[\"P-041::standard\",4,\"P-041@m5-2026-10-12\"],[\"OP05-076::standard\",4,\"OP05-076@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st19",
+   "key": "[[\"OP02-093::standard\",1,\"OP02-093@m6-official-en-2026-10-14\"],[\"ST19-001::standard\",4,\"ST19-001@m6-official-en-2026-10-14\"],[\"ST19-002::standard\",2,\"ST19-002@m6-official-en-2026-10-14\"],[\"ST19-003::standard\",2,\"ST19-003@m6-official-en-2026-10-14\"],[\"ST19-004::standard\",2,\"ST19-004@m6-official-en-2026-10-14\"],[\"ST19-005::standard\",4,\"ST19-005@m6-official-en-2026-10-14\"],[\"OP02-098::standard\",4,\"OP02-098@m6-official-en-2026-10-14\"],[\"OP02-106::standard\",4,\"OP02-106@m6-official-en-2026-10-14\"],[\"OP02-108::standard\",4,\"OP02-108@m5-2026-10-12\"],[\"OP02-109::standard\",4,\"OP02-109@m5-2026-10-12\"],[\"OP02-113::standard\",4,\"OP02-113@m6-official-en-2026-10-14\"],[\"OP02-116::standard\",4,\"OP02-116@m5-2026-10-12\"],[\"OP03-079::standard\",4,\"OP03-079@m6-official-en-2026-10-14\"],[\"OP03-089::standard\",4,\"OP03-089@m6-official-en-2026-10-14\"],[\"OP02-117::standard\",4,\"OP02-117@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st20",
+   "key": "[[\"OP03-099::standard\",1,\"OP03-099@m6-official-en-2026-10-14\"],[\"ST20-001::standard\",2,\"ST20-001@m6-official-en-2026-10-14\"],[\"ST20-002::standard\",4,\"ST20-002@m6-official-en-2026-10-14\"],[\"ST20-003::standard\",4,\"ST20-003@m6-official-en-2026-10-14\"],[\"ST20-004::standard\",2,\"ST20-004@m6-official-en-2026-10-14\"],[\"ST20-005::standard\",2,\"ST20-005@m6-official-en-2026-10-14\"],[\"OP03-106::standard\",4,\"OP03-106@m5-2026-10-12\"],[\"OP03-107::standard\",4,\"OP03-107@m5-2026-10-12\"],[\"OP03-110::standard\",4,\"OP03-110@m6-official-en-2026-10-14\"],[\"OP03-112::standard\",4,\"OP03-112@m6-official-en-2026-10-14\"],[\"OP03-115::standard\",4,\"OP03-115@m6-official-en-2026-10-14\"],[\"ST07-005::standard\",4,\"ST07-005@m6-cardjson-2026-10-13\"],[\"ST07-014::standard\",4,\"ST07-014@m5-2026-10-12\"],[\"OP03-118::standard\",4,\"OP03-118@m6-official-en-2026-10-14\"],[\"OP03-121::standard\",4,\"OP03-121@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st21",
+   "key": "[[\"ST21-001::standard\",1,\"ST21-001@m6-official-en-2026-10-14\"],[\"ST21-002::standard\",2,\"ST21-002@m6-official-en-2026-10-14\"],[\"ST21-003::standard\",2,\"ST21-003@m6-official-en-2026-10-14\"],[\"ST21-004::standard\",4,\"ST21-004@m6-official-en-2026-10-14\"],[\"ST21-005::standard\",4,\"ST21-005@m5-2026-10-12\"],[\"ST21-006::standard\",4,\"ST21-006@m5-2026-10-12\"],[\"ST21-007::standard\",4,\"ST21-007@m5-2026-10-12\"],[\"ST21-008::standard\",4,\"ST21-008@m5-2026-10-12\"],[\"ST21-009::standard\",4,\"ST21-009@m6-official-en-2026-10-14\"],[\"ST21-010::standard\",2,\"ST21-010@m6-official-en-2026-10-14\"],[\"ST21-011::standard\",4,\"ST21-011@m6-official-en-2026-10-14\"],[\"ST21-012::standard\",4,\"ST21-012@m6-official-en-2026-10-14\"],[\"ST21-013::standard\",4,\"ST21-013@m5-2026-10-12\"],[\"ST21-014::standard\",2,\"ST21-014@m6-official-en-2026-10-14\"],[\"ST21-015::standard\",2,\"ST21-015@m6-official-en-2026-10-14\"],[\"ST21-016::standard\",2,\"ST21-016@m6-official-en-2026-10-14\"],[\"ST21-017::standard\",2,\"ST21-017@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st22",
+   "key": "[[\"ST22-001::standard\",1,\"ST22-001@m6-official-en-2026-10-14\"],[\"ST22-002::standard\",2,\"ST22-002@m6-official-en-2026-10-14\"],[\"ST22-003::standard\",4,\"ST22-003@m6-official-en-2026-10-14\"],[\"ST22-004::standard\",4,\"ST22-004@m5-2026-10-12\"],[\"ST22-005::standard\",2,\"ST22-005@m6-official-en-2026-10-14\"],[\"ST22-006::standard\",4,\"ST22-006@m6-official-en-2026-10-14\"],[\"ST22-007::standard\",2,\"ST22-007@m6-official-en-2026-10-14\"],[\"ST22-008::standard\",4,\"ST22-008@m5-2026-10-12\"],[\"ST22-009::standard\",4,\"ST22-009@m5-2026-10-12\"],[\"ST22-010::standard\",2,\"ST22-010@m5-2026-10-12\"],[\"ST22-011::standard\",2,\"ST22-011@m6-official-en-2026-10-14\"],[\"ST22-012::standard\",4,\"ST22-012@m6-official-en-2026-10-14\"],[\"ST22-013::standard\",4,\"ST22-013@m5-2026-10-12\"],[\"ST22-014::standard\",4,\"ST22-014@m5-2026-10-12\"],[\"ST22-015::standard\",4,\"ST22-015@m6-official-en-2026-10-14\"],[\"ST22-016::standard\",2,\"ST22-016@m6-official-en-2026-10-14\"],[\"ST22-017::standard\",2,\"ST22-017@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st23",
+   "key": "[[\"OP09-001::standard\",1,\"OP09-001@m6-official-en-2026-10-14\"],[\"ST23-001::standard\",2,\"ST23-001@m6-official-en-2026-10-14\"],[\"ST23-002::standard\",2,\"ST23-002@m6-official-en-2026-10-14\"],[\"ST23-003::standard\",2,\"ST23-003@m6-official-en-2026-10-14\"],[\"ST23-004::standard\",4,\"ST23-004@m6-official-en-2026-10-14\"],[\"ST23-005::standard\",4,\"ST23-005@m6-official-en-2026-10-14\"],[\"OP09-006::standard\",4,\"OP09-006@m5-2026-10-12\"],[\"OP09-010::standard\",4,\"OP09-010@m6-official-en-2026-10-14\"],[\"OP09-011::standard\",4,\"OP09-011@m6-official-en-2026-10-14\"],[\"OP09-012::standard\",4,\"OP09-012@m6-official-en-2026-10-14\"],[\"OP09-013::standard\",4,\"OP09-013@m6-official-en-2026-10-14\"],[\"OP09-014::standard\",4,\"OP09-014@m6-official-en-2026-10-14\"],[\"OP09-015::standard\",4,\"OP09-015@m6-official-en-2026-10-14\"],[\"OP09-016::standard\",4,\"OP09-016@m5-2026-10-12\"],[\"OP09-020::standard\",4,\"OP09-020@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st24",
+   "key": "[[\"OP07-019::standard\",1,\"OP07-019@m6-official-en-2026-10-14\"],[\"ST24-001::standard\",4,\"ST24-001@m6-official-en-2026-10-14\"],[\"ST24-002::standard\",2,\"ST24-002@m6-official-en-2026-10-14\"],[\"ST24-003::standard\",2,\"ST24-003@m6-official-en-2026-10-14\"],[\"ST24-004::standard\",2,\"ST24-004@m6-official-en-2026-10-14\"],[\"ST24-005::standard\",4,\"ST24-005@m6-official-en-2026-10-14\"],[\"EB01-015::standard\",4,\"EB01-015@m6-official-en-2026-10-14\"],[\"OP07-021::standard\",4,\"OP07-021@m6-official-en-2026-10-14\"],[\"OP07-023::standard\",4,\"OP07-023@m6-official-en-2026-10-14\"],[\"OP07-025::standard\",4,\"OP07-025@m6-official-en-2026-10-14\"],[\"OP07-031::standard\",4,\"OP07-031@m6-official-en-2026-10-14\"],[\"OP07-033::standard\",4,\"OP07-033@m6-official-en-2026-10-14\"],[\"OP07-034::standard\",4,\"OP07-034@m6-official-en-2026-10-14\"],[\"OP07-036::standard\",4,\"OP07-036@m6-official-en-2026-10-14\"],[\"OP07-037::standard\",4,\"OP07-037@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st25",
+   "key": "[[\"OP09-042::standard\",1,\"OP09-042@m6-official-en-2026-10-14\"],[\"ST25-001::standard\",2,\"ST25-001@m6-official-en-2026-10-14\"],[\"ST25-002::standard\",4,\"ST25-002@m6-official-en-2026-10-14\"],[\"ST25-003::standard\",2,\"ST25-003@m6-official-en-2026-10-14\"],[\"ST25-004::standard\",2,\"ST25-004@m6-official-en-2026-10-14\"],[\"ST25-005::standard\",4,\"ST25-005@m6-official-en-2026-10-14\"],[\"OP09-043::standard\",4,\"OP09-043@m6-official-en-2026-10-14\"],[\"OP09-045::standard\",4,\"OP09-045@m6-official-en-2026-10-14\"],[\"OP09-051::standard\",4,\"OP09-051@m6-official-en-2026-10-14\"],[\"OP09-053::standard\",4,\"OP09-053@m6-official-en-2026-10-14\"],[\"OP09-054::standard\",4,\"OP09-054@m5-2026-10-12\"],[\"OP09-055::standard\",4,\"OP09-055@m5-2026-10-12\"],[\"OP09-056::standard\",4,\"OP09-056@m6-official-en-2026-10-14\"],[\"P-084::standard\",4,\"P-084@m6-official-en-2026-10-14\"],[\"OP09-057::standard\",4,\"OP09-057@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st26",
+   "key": "[[\"OP09-061::standard\",1,\"OP09-061@m6-official-en-2026-10-14\"],[\"ST26-001::standard\",4,\"ST26-001@m6-official-en-2026-10-14\"],[\"ST26-002::standard\",2,\"ST26-002@m6-official-en-2026-10-14\"],[\"ST26-003::standard\",2,\"ST26-003@m6-official-en-2026-10-14\"],[\"ST26-004::standard\",4,\"ST26-004@m6-official-en-2026-10-14\"],[\"ST26-005::standard\",2,\"ST26-005@m6-official-en-2026-10-14\"],[\"OP05-065::standard\",4,\"OP05-065@m5-2026-10-12\"],[\"OP05-066::standard\",4,\"OP05-066@m6-official-en-2026-10-14\"],[\"OP05-070::standard\",4,\"OP05-070@m6-official-en-2026-10-14\"],[\"OP09-063::standard\",4,\"OP09-063@m5-2026-10-12\"],[\"OP09-070::standard\",4,\"OP09-070@m6-official-en-2026-10-14\"],[\"OP09-076::standard\",4,\"OP09-076@m6-official-en-2026-10-14\"],[\"ST14-010::standard\",4,\"ST14-010@m5-2026-10-12\"],[\"OP09-077::standard\",4,\"OP09-077@m6-official-en-2026-10-14\"],[\"OP09-078::standard\",4,\"OP09-078@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st27",
+   "key": "[[\"OP09-081::standard\",1,\"OP09-081@m6-official-en-2026-10-14\"],[\"ST27-001::standard\",4,\"ST27-001@m6-official-en-2026-10-14\"],[\"ST27-002::standard\",4,\"ST27-002@m6-official-en-2026-10-14\"],[\"ST27-003::standard\",2,\"ST27-003@m6-official-en-2026-10-14\"],[\"ST27-004::standard\",2,\"ST27-004@m6-official-en-2026-10-14\"],[\"ST27-005::standard\",2,\"ST27-005@m6-official-en-2026-10-14\"],[\"OP09-083::standard\",4,\"OP09-083@m6-official-en-2026-10-14\"],[\"OP10-084::standard\",4,\"OP10-084@m5-2026-10-12\"],[\"OP09-086::standard\",4,\"OP09-086@m6-official-en-2026-10-14\"],[\"OP09-088::standard\",4,\"OP09-088@m6-official-en-2026-10-14\"],[\"OP09-089::standard\",4,\"OP09-089@m6-official-en-2026-10-14\"],[\"OP09-090::standard\",4,\"OP09-090@m6-official-en-2026-10-14\"],[\"OP09-091::standard\",4,\"OP09-091@m5-2026-10-12\"],[\"OP09-095::standard\",4,\"OP09-095@m6-official-en-2026-10-14\"],[\"OP09-099::standard\",4,\"OP09-099@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st28",
+   "key": "[[\"OP06-022::standard\",1,\"OP06-022@m6-official-en-2026-10-14\"],[\"ST28-001::standard\",4,\"ST28-001@m6-official-en-2026-10-14\"],[\"ST28-002::standard\",4,\"ST28-002@m6-official-en-2026-10-14\"],[\"ST28-003::standard\",2,\"ST28-003@m6-official-en-2026-10-14\"],[\"ST28-004::standard\",2,\"ST28-004@m6-official-en-2026-10-14\"],[\"ST28-005::standard\",2,\"ST28-005@m6-official-en-2026-10-14\"],[\"OP06-100::standard\",4,\"OP06-100@m6-official-en-2026-10-14\"],[\"OP06-103::standard\",4,\"OP06-103@m6-official-en-2026-10-14\"],[\"OP06-104::standard\",4,\"OP06-104@m6-official-en-2026-10-14\"],[\"OP06-109::standard\",4,\"OP06-109@m6-official-en-2026-10-14\"],[\"OP06-110::standard\",4,\"OP06-110@m6-official-en-2026-10-14\"],[\"OP06-112::standard\",4,\"OP06-112@m6-official-en-2026-10-14\"],[\"OP09-035::standard\",4,\"OP09-035@m6-official-en-2026-10-14\"],[\"ST13-016::standard\",4,\"ST13-016@m6-official-en-2026-10-14\"],[\"OP07-116::standard\",4,\"OP07-116@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st29",
+   "key": "[[\"ST29-001::standard\",1,\"ST29-001@m6-official-en-2026-10-14\"],[\"ST29-002::standard\",4,\"ST29-002@m6-official-en-2026-10-14\"],[\"ST29-003::standard\",4,\"ST29-003@m6-official-en-2026-10-14\"],[\"ST29-004::standard\",2,\"ST29-004@m6-official-en-2026-10-14\"],[\"ST29-005::standard\",2,\"ST29-005@m6-official-en-2026-10-14\"],[\"ST29-006::standard\",4,\"ST29-006@m5-2026-10-12\"],[\"ST29-007::standard\",2,\"ST29-007@m6-official-en-2026-10-14\"],[\"ST29-008::standard\",2,\"ST29-008@m6-official-en-2026-10-14\"],[\"ST29-009::standard\",2,\"ST29-009@m6-official-en-2026-10-14\"],[\"ST29-010::standard\",4,\"ST29-010@m5-2026-10-12\"],[\"ST29-011::standard\",4,\"ST29-011@m5-2026-10-12\"],[\"ST29-012::standard\",4,\"ST29-012@m6-official-en-2026-10-14\"],[\"ST29-013::standard\",4,\"ST29-013@m6-official-en-2026-10-14\"],[\"ST29-014::standard\",2,\"ST29-014@m6-official-en-2026-10-14\"],[\"ST29-015::standard\",4,\"ST29-015@m6-official-en-2026-10-14\"],[\"ST29-016::standard\",2,\"ST29-016@m6-official-en-2026-10-14\"],[\"ST29-017::standard\",4,\"ST29-017@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st30",
+   "key": "[[\"ST30-001::standard\",1,\"ST30-001@m6-official-en-2026-10-14\"],[\"ST30-002::standard\",2,\"ST30-002@m6-official-en-2026-10-14\"],[\"ST30-003::standard\",4,\"ST30-003@m6-official-en-2026-10-14\"],[\"ST30-004::standard\",2,\"ST30-004@m6-official-en-2026-10-14\"],[\"ST30-005::standard\",4,\"ST30-005@m5-2026-10-12\"],[\"ST30-006::standard\",4,\"ST30-006@m6-official-en-2026-10-14\"],[\"ST30-007::standard\",2,\"ST30-007@m6-official-en-2026-10-14\"],[\"ST30-008::standard\",4,\"ST30-008@m6-official-en-2026-10-14\"],[\"ST30-009::standard\",4,\"ST30-009@m6-official-en-2026-10-14\"],[\"ST30-010::standard\",4,\"ST30-010@m6-official-en-2026-10-14\"],[\"ST30-011::standard\",2,\"ST30-011@m6-official-en-2026-10-14\"],[\"ST30-012::standard\",2,\"ST30-012@m6-official-en-2026-10-14\"],[\"ST30-013::standard\",4,\"ST30-013@m5-2026-10-12\"],[\"ST30-014::standard\",2,\"ST30-014@m6-official-en-2026-10-14\"],[\"ST30-015::standard\",4,\"ST30-015@m6-official-en-2026-10-14\"],[\"ST30-016::standard\",2,\"ST30-016@m6-official-en-2026-10-14\"],[\"ST30-017::standard\",4,\"ST30-017@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st31",
+   "key": "[[\"ST21-001::standard\",1,\"ST21-001@m6-official-en-2026-10-14\"],[\"ST31-001::standard\",2,\"ST31-001@m6-official-en-2026-10-14\"],[\"ST31-002::standard\",4,\"ST31-002@m6-official-en-2026-10-14\"],[\"ST31-003::standard\",4,\"ST31-003@m6-official-en-2026-10-14\"],[\"ST31-004::standard\",2,\"ST31-004@m6-official-en-2026-10-14\"],[\"ST31-005::standard\",2,\"ST31-005@m6-official-en-2026-10-14\"],[\"OP01-016::standard\",4,\"OP01-016@m3-2026-10-12\"],[\"OP11-003::standard\",4,\"OP11-003@m5-2026-10-12\"],[\"OP11-009::standard\",4,\"OP11-009@m6-official-en-2026-10-14\"],[\"OP11-012::standard\",4,\"OP11-012@m6-official-en-2026-10-14\"],[\"OP14-015::standard\",4,\"OP14-015@m6-official-en-2026-10-14\"],[\"ST23-004::standard\",4,\"ST23-004@m6-official-en-2026-10-14\"],[\"P-101::standard\",4,\"P-101@m6-official-en-2026-10-14\"],[\"OP04-016::standard\",4,\"OP04-016@m6-official-en-2026-10-14\"],[\"OP13-021::standard\",4,\"OP13-021@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st32",
+   "key": "[[\"OP12-020::standard\",1,\"OP12-020@m6-official-en-2026-10-14\"],[\"ST32-001::standard\",4,\"ST32-001@m6-official-en-2026-10-14\"],[\"ST32-002::standard\",2,\"ST32-002@m6-official-en-2026-10-14\"],[\"ST32-003::standard\",2,\"ST32-003@m6-official-en-2026-10-14\"],[\"ST32-004::standard\",4,\"ST32-004@m6-official-en-2026-10-14\"],[\"ST32-005::standard\",2,\"ST32-005@m6-official-en-2026-10-14\"],[\"OP10-036::standard\",4,\"OP10-036@m6-official-en-2026-10-14\"],[\"OP12-023::standard\",4,\"OP12-023@m5-2026-10-12\"],[\"OP12-026::standard\",4,\"OP12-026@m6-official-en-2026-10-14\"],[\"OP12-027::standard\",4,\"OP12-027@m6-official-en-2026-10-14\"],[\"OP12-028::standard\",4,\"OP12-028@m6-official-en-2026-10-14\"],[\"OP12-031::standard\",4,\"OP12-031@m6-official-en-2026-10-14\"],[\"OP15-036::standard\",4,\"OP15-036@m6-official-en-2026-10-14\"],[\"ST24-005::standard\",4,\"ST24-005@m6-official-en-2026-10-14\"],[\"OP12-039::standard\",4,\"OP12-039@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st33",
+   "key": "[[\"OP12-040::standard\",1,\"OP12-040@m6-official-en-2026-10-14\"],[\"ST33-001::standard\",4,\"ST33-001@m6-official-en-2026-10-14\"],[\"ST33-002::standard\",4,\"ST33-002@m6-official-en-2026-10-14\"],[\"ST33-003::standard\",2,\"ST33-003@m6-official-en-2026-10-14\"],[\"ST33-004::standard\",2,\"ST33-004@m6-official-en-2026-10-14\"],[\"ST33-005::standard\",2,\"ST33-005@m6-official-en-2026-10-14\"],[\"EB04-026::standard\",4,\"EB04-026@m6-official-en-2026-10-14\"],[\"OP12-043::standard\",4,\"OP12-043@m6-official-en-2026-10-14\"],[\"OP12-045::standard\",4,\"OP12-045@m5-2026-10-12\"],[\"OP12-046::standard\",4,\"OP12-046@m6-official-en-2026-10-14\"],[\"OP12-047::standard\",4,\"OP12-047@m6-official-en-2026-10-14\"],[\"OP12-050::standard\",4,\"OP12-050@m5-2026-10-12\"],[\"OP12-052::standard\",4,\"OP12-052@m5-2026-10-12\"],[\"EB04-028::standard\",4,\"EB04-028@m6-official-en-2026-10-14\"],[\"OP12-057::standard\",4,\"OP12-057@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st34",
+   "key": "[[\"OP11-062::standard\",1,\"OP11-062@m6-official-en-2026-10-14\"],[\"ST34-001::standard\",2,\"ST34-001@m6-official-en-2026-10-14\"],[\"ST34-002::standard\",4,\"ST34-002@m6-official-en-2026-10-14\"],[\"ST34-003::standard\",2,\"ST34-003@m6-official-en-2026-10-14\"],[\"ST34-004::standard\",2,\"ST34-004@m6-official-en-2026-10-14\"],[\"ST34-005::standard\",4,\"ST34-005@m6-official-en-2026-10-14\"],[\"EB03-032::standard\",4,\"EB03-032@m6-official-en-2026-10-14\"],[\"EB03-035::standard\",4,\"EB03-035@m6-official-en-2026-10-14\"],[\"OP11-065::standard\",4,\"OP11-065@m6-official-en-2026-10-14\"],[\"OP11-066::standard\",4,\"OP11-066@m6-official-en-2026-10-14\"],[\"OP11-068::standard\",4,\"OP11-068@m5-2026-10-12\"],[\"OP11-071::standard\",4,\"OP11-071@m6-official-en-2026-10-14\"],[\"P-090::standard\",4,\"P-090@m6-official-en-2026-10-14\"],[\"OP11-079::standard\",4,\"OP11-079@m6-official-en-2026-10-14\"],[\"OP11-081::standard\",4,\"OP11-081@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  },
+  {
+   "id": "starter-st35",
+   "key": "[[\"OP13-004::standard\",1,\"OP13-004@m6-official-en-2026-10-14\"],[\"ST35-001::standard\",4,\"ST35-001@m6-official-en-2026-10-14\"],[\"ST35-002::standard\",2,\"ST35-002@m6-official-en-2026-10-14\"],[\"ST35-003::standard\",4,\"ST35-003@m6-official-en-2026-10-14\"],[\"ST35-004::standard\",2,\"ST35-004@m6-official-en-2026-10-14\"],[\"ST35-005::standard\",2,\"ST35-005@m6-official-en-2026-10-14\"],[\"OP12-090::standard\",4,\"OP12-090@m6-official-en-2026-10-14\"],[\"OP12-093::standard\",4,\"OP12-093@m6-official-en-2026-10-14\"],[\"OP13-005::standard\",4,\"OP13-005@m6-official-en-2026-10-14\"],[\"OP13-008::standard\",4,\"OP13-008@m6-official-en-2026-10-14\"],[\"OP13-017::standard\",4,\"OP13-017@m6-official-en-2026-10-14\"],[\"OP13-081::standard\",4,\"OP13-081@m6-official-en-2026-10-14\"],[\"P-105::standard\",4,\"P-105@m6-official-en-2026-10-14\"],[\"OP12-098::standard\",4,\"OP12-098@m6-official-en-2026-10-14\"],[\"OP13-019::standard\",4,\"OP13-019@m6-official-en-2026-10-14\"]]",
+   "ok": true,
+   "errors": []
+  }
+ ]
+}

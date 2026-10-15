@@ -4,7 +4,7 @@ import type { Command, GameState } from '../../game/core/types'
 import type { DeckEntry } from '../../game/rulesets/decks'
 import type { CardPrinting } from '../../game/cards/types'
 import { botDecision, BOT_LEVELS, type BotLevel } from './strategy'
-import { engineCatalog, currentEngineRegistry, engineRuleset } from './catalog'
+import { engineCatalog, currentEngineRegistry, engineRuleset, scopedToDecks } from './catalog'
 import { REFERENCE_DECKS, deckEligibility } from './decks'
 import { createSecureSeed } from './seed'
 import { playerView, type PlayerView } from './view'
@@ -21,8 +21,11 @@ export class PlayError extends Error {
 // Client intent: a command without identity fields. actorId and expectedVersion are never taken from it.
 const id = z.string().regex(/^[A-Za-z0-9_-]{1,128}$/)
 export const commandRequest = z.strictObject({ id, expectedVersion: z.number().int().nonnegative(), intent: z.record(z.string(), z.unknown()).refine(i => typeof i.type === 'string' && !('actorId' in i) && !('id' in i) && !('expectedVersion' in i), 'INVALID_INTENT') })
-export const startRequest = z.strictObject({ botLevel: z.enum(['easy', 'normal', 'hard']).optional(), deck: z.discriminatedUnion('kind', [z.strictObject({ kind: z.literal('reference'), id: z.string().min(1).max(64) }), z.strictObject({ kind: z.literal('user'), deckId: id })]) })
+const referenceDeck = z.strictObject({ kind: z.literal('reference'), id: z.string().min(1).max(64) })
+export const startRequest = z.strictObject({ botLevel: z.enum(['easy', 'normal', 'hard']).optional(), opponent: z.union([z.literal('random'), referenceDeck]).optional(), deck: z.discriminatedUnion('kind', [z.strictObject({ kind: z.literal('reference'), id: z.string().min(1).max(64) }), z.strictObject({ kind: z.literal('user'), deckId: id })]) })
 export type DeckChoice = { ref: string; entries: DeckEntry[]; printings?: CardPrinting[] }
+/** The bot's deck: a reference or Starter deck by id, or one drawn at random among the playable ones. */
+export type OpponentChoice = 'random' | { kind: 'reference'; id: string }
 export type PlayStats = { played: number; wins: number; losses: number; concessions: number; byDeck: Record<string, { played: number; wins: number }>; byLevel: Record<string, { played: number; wins: number }> }
 const levelOf = (value: string): BotLevel => (BOT_LEVELS as string[]).includes(value) ? value as BotLevel : 'normal'
 
@@ -54,20 +57,35 @@ export class PlayService {
   async view(userId: string, gameId: string, sinceEvent = 0): Promise<PlayerView> {
     return playerView(await this.owned(userId, gameId), sinceEvent)
   }
-  async start(userId: string, deck: DeckChoice, botLevel: BotLevel = 'normal'): Promise<PlayerView> {
+  async start(userId: string, deck: DeckChoice, botLevel: BotLevel = 'normal', opponent?: OpponentChoice): Promise<PlayerView> {
     if (await this.repo.findActive(userId)) throw new PlayError(409, 'ACTIVE_GAME_EXISTS')
     const catalog = engineCatalog(), printings = deck.printings ?? catalog.printings
     const eligibility = deckEligibility(deck.entries, printings)
     if (!eligibility.ok) throw new PlayError(422, 'DECK_NOT_PLAYABLE', { errors: eligibility.errors })
     const leader = deck.entries.map(e => printings.find(p => p.printingKey === e.printingKey)).map(p => p && catalog.definitions.find(d => d.definitionId === p.definitionId)).find(d => d?.category === 'LEADER')
-    const bot = REFERENCE_DECKS.find(d => d.id === (leader?.colors.includes('PURPLE') ? 'reference-red' : 'reference-purple'))!
-    let state = createGame({ gameId: `play-${Date.now().toString(36)}`, seed: this.seed(), scope: 'BASIC_TURNS', chooserId: HUMAN_SEAT, definitions: catalog.definitions, printings, ruleset: engineRuleset(), effectRegistry: currentEngineRegistry(),
+    const bot = this.botDeck(opponent, leader?.colors.includes('PURPLE') ? 'reference-red' : 'reference-purple')
+    // The player's printings first (a personal deck maps its database cards), then the catalogue's for the bot deck.
+    const merged = [...new Map([...catalog.printings, ...printings].map(p => [p.printingKey, p])).values()]
+    const scoped = scopedToDecks([deck.entries, bot.entries], merged, catalog.definitions, currentEngineRegistry())
+    let state = createGame({ gameId: `play-${Date.now().toString(36)}`, seed: this.seed(), scope: 'BASIC_TURNS', chooserId: HUMAN_SEAT, definitions: scoped.definitions, printings: scoped.printings, ruleset: engineRuleset(), effectRegistry: scoped.registry,
       players: [{ id: HUMAN_SEAT, cards: structuredClone(deck.entries), donCount: 10 }, { id: BOT_SEAT, cards: structuredClone(bot.entries), donCount: 10 }] })
     const advanced = advanceBot(state, BOT_SEAT, HUMAN_SEAT, botLevel); state = advanced.state
     const game = await this.repo.create({ userId, status: statusOf(state), humanSeat: HUMAN_SEAT, botSeat: BOT_SEAT, deckRef: deck.ref, botDeckRef: bot.id, botLevel, rulesetId: state.ruleset.id, engineVersion: ENGINE_VERSION,
       version: state.version, state, result: state.result ?? null }, numbered(advanced.commands, 1))
     if (!game) throw new PlayError(409, 'ACTIVE_GAME_EXISTS')
     return playerView(game)
+  }
+  private botDeck(opponent: OpponentChoice | undefined, fallback: string) {
+    if (!opponent) return REFERENCE_DECKS.find(d => d.id === fallback)!
+    if (opponent === 'random') {
+      const playable = REFERENCE_DECKS.filter(d => d.id.startsWith('starter-') && deckEligibility(d.entries).ok)
+      return playable[this.seed() % playable.length]
+    }
+    const chosen = REFERENCE_DECKS.find(d => d.id === opponent.id)
+    if (!chosen) throw new PlayError(404, 'OPPONENT_NOT_FOUND')
+    const eligibility = deckEligibility(chosen.entries)
+    if (!eligibility.ok) throw new PlayError(422, 'OPPONENT_NOT_PLAYABLE', { errors: eligibility.errors })
+    return chosen
   }
   async command(userId: string, gameId: string, body: unknown): Promise<{ view: PlayerView; replayed: boolean }> {
     const parsed = commandRequest.safeParse(body)

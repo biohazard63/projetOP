@@ -1,6 +1,6 @@
 import type { PrismaClient } from '@prisma/client'
 import { rateLimit } from '../security'
-import { bridgeCards, type PrismaCardRow } from './catalog'
+import { bridgeCards, cardDisplay, engineCatalog, frenchImage, officialImage, type PrismaCardRow } from './catalog'
 import { REFERENCE_DECKS, deckEligibility, userDeckEntries } from './decks'
 import { PlayError, PlayService, startRequest, type DeckChoice } from './service'
 
@@ -49,10 +49,24 @@ async function userDeckChoice(userId: string, deckId: string, source: DeckSource
   return { ref: `user:${deck.id}`, name: deck.name, entries, printings: bridge.printings, errors }
 }
 
+// Static display data of the offered decks (Leader name and colours, card list), computed once per process.
+const summaries = new Map<string, object>()
+function deckSummary(d: (typeof REFERENCE_DECKS)[number]) {
+  const known = summaries.get(d.id); if (known) return known
+  const { definitions, printings } = engineCatalog()
+  const definitionOf = (printingKey: string) => { const p = printings.find(x => x.printingKey === printingKey); return p && definitions.find(x => x.definitionId === p.definitionId) }
+  const leader = definitions.find(x => x.number === d.leader && x.category === 'LEADER')
+  const cards = d.entries.flatMap(e => { const def = definitionOf(e.printingKey); if (!def) return []
+    const shown = cardDisplay(def, frenchImage(def.number) ?? officialImage(def.number)); return [{ number: def.number, name: shown.name, category: def.category, cost: def.category === 'LEADER' ? null : shown.cost, quantity: e.quantity, image: shown.imageUrl }] })
+    .sort((a, b) => Number(b.category === 'LEADER') - Number(a.category === 'LEADER') || (a.cost ?? 0) - (b.cost ?? 0) || a.number.localeCompare(b.number))
+  const summary = { id: d.id, name: d.name, leader: d.leader, leaderName: leader ? cardDisplay(leader, null).name : undefined, colors: leader?.colors ?? [], language: d.language, description: d.description, cards }
+  summaries.set(d.id, summary); return summary
+}
+
 export const playHandlers = {
   async decks(userId: string | null, source: DeckSource): Promise<Reply> {
     return guard(userId, 'decks', 60, async uid => {
-      const reference = REFERENCE_DECKS.map(d => ({ id: d.id, name: d.name, leader: d.leader, description: d.description, ...deckEligibility(d.entries) }))
+      const reference = REFERENCE_DECKS.map(d => ({ ...deckSummary(d), ...deckEligibility(d.entries) }))
       const user = []
       const decks = await source.userDecks(uid)
       for (const deck of decks) {
@@ -82,7 +96,7 @@ export const playHandlers = {
         if (user.errors.length) throw new PlayError(422, 'DECK_NOT_PLAYABLE', { errors: user.errors })
         deck = user
       }
-      return { status: 201, body: { game: await service.start(uid, deck, parsed.data.botLevel ?? 'normal') } }
+      return { status: 201, body: { game: await service.start(uid, deck, parsed.data.botLevel ?? 'normal', parsed.data.opponent) } }
     })
   },
   async stats(userId: string | null, service: PlayService): Promise<Reply> {

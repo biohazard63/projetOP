@@ -580,3 +580,49 @@ body:has(.piece-opening-immersive) .piece-footer{display:none}
 .piece-sidebar .piece-brand-desktop img { width:168px; max-width:100%; height:auto; object-fit:contain; border-radius:6px; }
 .piece-brand-name { color:var(--piece-gold); font-size:.65rem; font-weight:700; letter-spacing:.15em; }
 .piece-mobile-brand .piece-brand img { width:48px; height:44px; object-fit:contain; border-radius:6px; }
+
+/* Booster packet artwork at a uniform size (components/booster-opening/PackArt.tsx). */
+.pack-art { position:relative; width:100%; aspect-ratio:3/5; overflow:hidden; border-radius:6px; }
+.pack-art img { user-select:none; -webkit-user-drag:none; pointer-events:none; }
+.pack-art img.pack-art-contain { position:absolute; inset:0; width:100%; height:100%; object-fit:contain; }
+
+/* V2 card tiles: cascade entrance, holographic sheen following the pointer, silhouette for missing cards, scroll loader. */
+.piece-card { animation:piece-card-in .45s cubic-bezier(.2,.8,.2,1) both; animation-delay:calc(min(var(--i, 0), 24) * 18ms); }
+@keyframes piece-card-in { from { opacity:0; transform:translateY(14px) scale(.97); } to { opacity:1; transform:none; } }
+.piece-card:hover .piece-card-image { transform:translateY(-6px) rotate(.6deg) scale(1.02); box-shadow:0 16px 30px #0007; }
+.piece-card-image[data-effect=holographic]::after, .piece-card-image[data-effect=secret]::after { content:''; position:absolute; inset:0; pointer-events:none; opacity:0; mix-blend-mode:color-dodge; transition:opacity .25s;
+  background:radial-gradient(circle at var(--mx,50%) var(--my,50%),#ffffff90 0,transparent 38%), linear-gradient(125deg,transparent 18%,#ff7be555 34%,#7bd7ff55 50%,#ffe07b55 66%,transparent 82%);
+  background-size:100% 100%,200% 200%; background-position:0 0,var(--mx,50%) var(--my,50%); }
+.piece-card:hover .piece-card-image[data-effect=holographic]::after, .piece-card:hover .piece-card-image[data-effect=secret]::after { opacity:.75; }
+.piece-card-image.missing { border-style:dashed; background:repeating-linear-gradient(135deg,#ffffff06 0 8px,transparent 8px 16px); }
+.piece-card-image.missing img { opacity:.16; filter:grayscale(1) brightness(.6) blur(1px); }
+.piece-card-missing { position:absolute; inset:0; display:grid; place-content:center; justify-items:center; gap:2px; color:#cfdcea; font-size:.68rem; font-weight:700; text-shadow:0 2px 6px #000; }
+.piece-card-missing b { font-size:2rem; line-height:1; color:#ffffff99; }
+.piece-card-quantity { font-weight:900; box-shadow:0 0 0 1px #f5c45c55; }
+.cx-sentinel { display:flex; justify-content:center; gap:6px; padding:26px 0; }
+.cx-sentinel span { width:8px; height:8px; border-radius:50%; background:var(--piece-gold); animation:cx-dot 1s ease-in-out infinite; }
+.cx-sentinel span:nth-child(2) { animation-delay:.15s; } .cx-sentinel span:nth-child(3) { animation-delay:.3s; }
+@keyframes cx-dot { 0%,100% { opacity:.3; transform:translateY(0); } 50% { opacity:1; transform:translateY(-5px); } }
+@media (prefers-reduced-motion:reduce) { .piece-card, .cx-sentinel span { animation:none; } }
+/* The floated legend pushed each option list beside it, out of the filter column: the list starts below the legend. */
+.piece-binder-filters .piece-filter-list { clear:both; }
+.piece-filter-list label { min-height:24px; padding:2px 4px; border-radius:6px; font-size:.72rem; }
+.piece-filter-list label:hover { background:color-mix(in srgb, var(--piece-gold) 10%, transparent); color:var(--piece-text); }
+.piece-filter-list label:has(input:checked) { background:color-mix(in srgb, var(--piece-gold) 18%, transparent); color:var(--piece-text); font-weight:700; }
+/* Artwork loading: a shimmering placeholder with the card's name, then the image fades in. */
+.piece-card-image { background:linear-gradient(160deg,#1b3354,#0d1a30); }
+.piece-card-placeholder { position:absolute; inset:0; display:grid; place-content:center; justify-items:center; gap:4px; padding:10px; text-align:center; color:#cfdcea;
+  background:linear-gradient(110deg,transparent 30%,#ffffff12 50%,transparent 70%) 0 0 / 250% 100%; animation:piece-shimmer 1.3s linear infinite; }
+.piece-card-placeholder b { font-size:.72rem; line-height:1.2; } .piece-card-placeholder small { font-size:.6rem; color:#8fa6bf; }
+.piece-card-image.loaded .piece-card-placeholder { display:none; }
+.piece-card-image img { opacity:0; transition:opacity .35s ease; }
+.piece-card-image.loaded img { opacity:1; }
+.piece-card-image.missing.loaded img { opacity:.16; }
+@keyframes piece-shimmer { from { background-position:150% 0; } to { background-position:-100% 0; } }
+@media (prefers-reduced-motion:reduce) { .piece-card-placeholder { animation:none; } .piece-card-image img { transition:none; } }
+/* The sticky filter column was taller than the window: its lower part could never be reached. It now scrolls on its own. */
+@media (min-width:951px) {
+  .piece-binder-filters { max-height:calc(100dvh - 100px); overflow-y:auto; overscroll-behavior:contain; scrollbar-width:thin; }
+  .piece-binder-filters .piece-filter-list { max-height:none; overflow:visible; }
+  .piece-binder-filters fieldset:first-of-type .piece-filter-list { max-height:220px; overflow-y:auto; overscroll-behavior:contain; }
+}
