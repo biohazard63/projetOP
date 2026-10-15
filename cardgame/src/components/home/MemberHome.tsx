@@ -65,7 +65,7 @@ export default function MemberHome() {
         <div className="hm-pack-copy"><p className="fx-kicker">À ouvrir</p><b>{boosterTitle(next.set)}</b><small>{next.set.code}{next.p ? ` · ${next.p.percentage}%` : ''}</small></div>
       </Link></Tilt>}
 
-      <Tilt className="hm-tile hm-treasure-tile"><DailyTreasure compact /></Tilt>
+      <Tilt className="hm-tile hm-treasure-tile"><DailyTreasure compact reward /></Tilt>
 
       <Link href="/collection" className="hm-tile hm-quick"><BookOpen size={22} /><b>Collection</b><small>Mon classeur</small></Link>
       <Link href="/decks" className="hm-tile hm-quick"><Layers size={22} /><b>Decks</b><small>{stats ? `${stats.decks} deck${stats.decks > 1 ? 's' : ''}` : 'Mes decks'}</small></Link>

@@ -40,3 +40,17 @@
   .cx-cta { grid-column:1 / -1; text-align:center; }
 }
 @media (prefers-reduced-motion:reduce) { .cx-counters.skeleton .cx-counter { animation:none; } }
+
+/* Duplicate resale (Berries). */
+.cx-hero-actions { display:grid; gap:8px; justify-items:stretch; }
+.cx-resale { display:inline-flex; align-items:center; justify-content:center; gap:8px; min-height:40px; padding:0 14px; border-radius:12px; border:1px solid #f5c45c66; background:#f5c45c14; color:inherit; font-weight:800; cursor:pointer; }
+.cx-resale:hover { background:#f5c45c26; }
+.rs-modal { max-width:560px !important; }
+.rs-list { display:grid; gap:6px; max-height:min(52vh,420px); overflow-y:auto; margin:4px 0 0; padding:0; list-style:none; }
+.rs-list li { display:grid; grid-template-columns:44px minmax(0,1fr) auto auto; align-items:center; gap:10px; padding:6px 8px; border-radius:10px; background:#ffffff0a; }
+.rs-thumb img { display:block; width:44px; height:auto; border-radius:5px; }
+.rs-name { display:grid; min-width:0; } .rs-name b { overflow:hidden; text-overflow:ellipsis; white-space:nowrap; } .rs-name small, .rs-calc, .rs-muted { color:#8aa3bb; font-size:.78rem; }
+.rs-total { color:#f5c45c; font-variant-numeric:tabular-nums; }
+.rs-sell { width:100%; justify-content:center; gap:8px; }
+.rs-message { margin:0; padding:10px 12px; border-radius:10px; background:#1f8a4c33; font-weight:800; }
+@media (max-width:480px) { .rs-list li { grid-template-columns:36px minmax(0,1fr) auto; } .rs-calc { display:none; } }

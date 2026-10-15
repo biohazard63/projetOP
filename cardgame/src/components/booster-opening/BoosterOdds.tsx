@@ -20,6 +20,7 @@ export function BoosterOdds({rules,warnings}:{rules:NonNullable<BoosterCatalogIt
       <p className="mt-2">Les taux de variantes sont configurés ; ajouter une illustration ne multiplie pas le poids de son numéro.</p>
     </> : <><ol className="list-inside list-decimal">{rules.slots.map((slot,i)=><li key={i}>{slot.label && <b className="text-slate-200">{slot.label} : </b>}{slot.choices.map(choice=>{const share=choice.weight/slot.choices.reduce((sum,item)=>sum+item.weight,0);return `${tiers[choice.rarity] ?? choice.rarity}${choice.variant!=='any'?` (${variants[choice.variant]})`:''} ${(100*share).toFixed(1)} %${odds(share)}`}).join(' · ')}</li>)}</ol>
       {rules.specialPacks.map(pack=><p key={pack.label}>{pack.label} : {(pack.probability*100).toFixed(1)} % des packs ; composition spéciale remplaçant les slots ci-dessus.</p>)}</>}
+    {rules.label.startsWith('Booster réaliste') && <p className="mt-2">Les boosters sont tirés de displays virtuelles de 24 : chaque display contient exactement 2 alternatives, 7 SR et 8 Leaders ; SEC, SP, Treasure Rare et Manga y sont placés selon leur taux. Acheter à l’unité vous fait avancer dans votre display en cours.</p>}
     {warnings.map(warning=><p key={warning} className="mt-2">{warning}</p>)}
   </details>
 }

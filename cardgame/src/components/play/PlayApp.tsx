@@ -1,4 +1,5 @@
 'use client'
+import { notifyBerries } from '@/hooks/useWallet'
 import { useCallback, useEffect, useRef, useState } from 'react'
 import { createPortal } from 'react-dom'
 import { useRouter } from 'next/navigation'
@@ -98,6 +99,15 @@ export default function PlayApp({ leaderImages = {} }: { leaderImages?: Record<s
     void send({ type: 'ADVANCE_PHASE' })
   }, [screen, busy, send])
   useEffect(() => { if (screen.kind === 'board' && screen.view.status === 'FINISHED') void playApi.stats().then(s => { if (s.ok) setStats(s.data.stats) }) }, [screen])
+  // Berries of a finished game, claimed once (the server checks the game, its length and the daily cap).
+  const [reward, setReward] = useState<{ gameId: string; text: string; gain: boolean } | null>(null)
+  const finishedId = screen.kind === 'board' && screen.view.status === 'FINISHED' ? screen.view.gameId : null
+  useEffect(() => {
+    if (!finishedId || reward?.gameId === finishedId) return
+    void fetch('/api/berries/game', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ gameId: finishedId }) })
+      .then(async response => { const data = await response.json(); setReward({ gameId: finishedId, gain: response.ok, text: response.ok ? `+${data.amount.toLocaleString('fr-FR')} ฿${data.capped ? ' (plafond du jour atteint)' : ''}` : data.error ?? 'Berrys indisponibles' }); if (response.ok) notifyBerries() })
+      .catch(() => setReward({ gameId: finishedId, gain: false, text: 'Berrys indisponibles' }))
+  }, [finishedId, reward?.gameId])
 
   const start = async (deck: { kind: 'reference'; id: string } | { kind: 'user'; deckId: string }, withTutorial = false, startLevel = level, opponent: Opponent = 'random') => {
     setBusy(true); seen.current = null; previous.current = null; reset()
@@ -120,7 +130,7 @@ export default function PlayApp({ leaderImages = {} }: { leaderImages?: Record<s
   return createPortal(<div className="play-layer">
     <Board view={screen.view} send={send} busy={busy} pending={pending} step={step} log={log} motion={motion} reduced={reduced} onMotion={changeMotion} onConcede={concede} onSkipAnim={skip} paused={paused} onPause={togglePause} onHold={hold} reading={reading} onReading={changeReading} onSkipSequence={clear} fast={fast} onFast={value => { setFast(value); write(() => localStorage, 'mugiwara:play:fast', String(value)) }}
       onLeave={() => { clear(); router.push('/home') }} onNewGame={() => { seen.current = null; previous.current = null; void loadDecks() }} tutorial={tutorial} onTutorial={setTutorial}
-      stats={stats ? <p className="tbl-result-stats">{stats.played} parties · {stats.wins} victoires · {stats.losses} défaites</p> : null} />
+      stats={<>{reward?.gameId === finishedId && <p className={`tbl-result-berries${reward.gain ? ' gain' : ''}`} role="status">{reward.text}</p>}{stats ? <p className="tbl-result-stats">{stats.played} parties · {stats.wins} victoires · {stats.losses} défaites</p> : null}</>} />
     {toast && <p className="play-toast" role="alert">{toast}</p>}
   </div>, document.body)
 }

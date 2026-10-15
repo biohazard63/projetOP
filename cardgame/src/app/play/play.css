@@ -1028,3 +1028,9 @@ html:has(.play-layer), body:has(.play-layer) { overflow:hidden; overscroll-behav
   .starter-actions { grid-template-columns:minmax(0,auto) minmax(0,1fr); }
   .starter-actions .piece-button { min-width:0; padding-inline:10px; }
 }
+
+/* Berries earned by the finished game. */
+.tbl-result-berries { margin:6px auto 0; padding:4px 12px; width:fit-content; border-radius:99px; background:#ffffff14; color:#cfe0ee; font-size:.85rem; font-weight:700; }
+.tbl-result-berries.gain { background:linear-gradient(180deg,#ffe4a3,#f5c45c); color:#2a1a02; font-weight:900; box-shadow:0 6px 18px #f5c45c55; animation:tbl-berries .6s cubic-bezier(.2,.9,.3,1.3); }
+@keyframes tbl-berries { from { opacity:0; transform:scale(.6); } }
+@media (prefers-reduced-motion:reduce) { .tbl-result-berries.gain { animation:none; } }

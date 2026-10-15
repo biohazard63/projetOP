@@ -7,4 +7,4 @@ export type OpeningResult = {
   rules: { label: string; source: string; slotCount: number } | null;
   newCardsCount: number | null; hasRareCard: boolean; legacy: boolean;
 }
-export type BoosterCatalogItem = { code: string; name: string; imageUrl: string | null; description: string | null; cardCount: number; packSize: number | null; available: boolean; error: string | null; rules: Pick<BoosterRules, 'label' | 'source' | 'slots' | 'specialPacks' | 'packProfiles' | 'selection' | 'variantPolicy'> | null; warnings: string[]; mode: 'free-simulation' }
+export type BoosterCatalogItem = { code: string; name: string; imageUrl: string | null; description: string | null; cardCount: number; packSize: number | null; available: boolean; error: string | null; rules: Pick<BoosterRules, 'label' | 'source' | 'slots' | 'specialPacks' | 'packProfiles' | 'selection' | 'variantPolicy'> | null; warnings: string[]; mode: 'free-simulation'; display?: { opened: number; size: number } | null }

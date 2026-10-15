@@ -8,33 +8,36 @@ datasource db {
 }
 
 model User {
-  id                    String            @id @default(cuid())
+  id                    String             @id @default(cuid())
   name                  String?
-  email                 String            @unique
-  emailVerified        DateTime?
-  image                String?
-  createdAt             DateTime          @default(now())
+  email                 String             @unique
+  emailVerified         DateTime?
+  image                 String?
+  createdAt             DateTime           @default(now())
   password              String?
-  updatedAt             DateTime          @updatedAt
-  hasStarterDecks       Boolean           @default(false)
-  battleInvitesSent     BattleInvite[]    @relation("InviteSender")
-  battleInvitesReceived BattleInvite[]    @relation("InviteReceiver")
+  updatedAt             DateTime           @updatedAt
+  hasStarterDecks       Boolean            @default(false)
+  berries               Int                @default(0)
+  berryTransactions     BerryTransaction[]
+  virtualDisplays       VirtualDisplay[]
+  battleInvitesSent     BattleInvite[]     @relation("InviteSender")
+  battleInvitesReceived BattleInvite[]     @relation("InviteReceiver")
   boosterOpenings       BoosterOpening[]
   coinTransactions      CoinTransaction[]
   decks                 Deck[]
   favorites             FavoriteCard[]
-  opponentHistory       GameHistory[]     @relation("OpponentHistory")
-  playerHistory         GameHistory[]     @relation("PlayerHistory")
-  winnerHistory         GameHistory[]     @relation("WinnerHistory")
+  opponentHistory       GameHistory[]      @relation("OpponentHistory")
+  playerHistory         GameHistory[]      @relation("PlayerHistory")
+  winnerHistory         GameHistory[]      @relation("WinnerHistory")
   gameLogs              GameLog[]
   engineGames           EngineGame[]
-  opponentGames         GameState[]       @relation("OpponentGame")
-  playerGames           GameState[]       @relation("PlayerGame")
-  tournamentMatchesA    TournamentMatch[] @relation("PlayerA")
-  tournamentMatchesB    TournamentMatch[] @relation("PlayerB")
-  tournamentWins        TournamentMatch[] @relation("TournamentWinner")
-  tradesOffered         Trade[]           @relation("TradeOfferer")
-  tradesReceived        Trade[]           @relation("TradeReceiver")
+  opponentGames         GameState[]        @relation("OpponentGame")
+  playerGames           GameState[]        @relation("PlayerGame")
+  tournamentMatchesA    TournamentMatch[]  @relation("PlayerA")
+  tournamentMatchesB    TournamentMatch[]  @relation("PlayerB")
+  tournamentWins        TournamentMatch[]  @relation("TournamentWinner")
+  tradesOffered         Trade[]            @relation("TradeOfferer")
+  tradesReceived        Trade[]            @relation("TradeReceiver")
   achievements          UserAchievement[]
   userCards             UserCard[]
   inventory             UserInventory[]
@@ -179,20 +182,61 @@ model BoosterCard {
 }
 
 model BoosterOpening {
-  id        String               @id @default(cuid())
-  userId    String
-  boosterId String
-  idempotencyKey String?
-  creditedAt DateTime?
-  resultSnapshot Json?
-  rulesSnapshot Json?
-  openedAt  DateTime             @default(now())
-  booster   Booster              @relation(fields: [boosterId], references: [id], onDelete: Restrict)
-  user      User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
-  cards     BoosterOpeningCard[]
+  id                 String               @id @default(cuid())
+  userId             String
+  boosterId          String
+  idempotencyKey     String?
+  creditedAt         DateTime?
+  resultSnapshot     Json?
+  rulesSnapshot      Json?
+  openedAt           DateTime             @default(now())
+  // Economy links (null for openings made before Berries): the box the pack came from and the payment.
+  displayId          String?
+  displayIndex       Int?
+  berryTransactionId String?
+  display            VirtualDisplay?      @relation(fields: [displayId], references: [id], onDelete: SetNull)
+  booster            Booster              @relation(fields: [boosterId], references: [id], onDelete: Restrict)
+  user               User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  cards              BoosterOpeningCard[]
 
   @@unique([userId, idempotencyKey])
+  @@unique([displayId, displayIndex])
   @@index([userId, openedAt, id])
+}
+
+// Berry ledger: the source of truth of the balance (User.berries is its running total, updated in the same
+// transaction). (userId, idempotencyKey) makes every grant, reward or purchase happen at most once.
+model BerryTransaction {
+  id             String   @id @default(cuid())
+  userId         String
+  amount         Int
+  reason         String
+  idempotencyKey String
+  balanceAfter   Int
+  details        Json?
+  createdAt      DateTime @default(now())
+  user           User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, idempotencyKey])
+  @@index([userId, createdAt])
+  @@index([userId, reason, createdAt])
+}
+
+// A virtual 24-pack box: its hits are spread over the packs when it is created, each opening takes the next pack.
+model VirtualDisplay {
+  id           String           @id @default(cuid())
+  userId       String
+  setCode      String
+  size         Int
+  plan         Json
+  nextIndex    Int              @default(0)
+  rulesVersion String
+  createdAt    DateTime         @default(now())
+  completedAt  DateTime?
+  user         User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  openings     BoosterOpening[]
+
+  @@index([userId, setCode, completedAt])
 }
 
 model BoosterOpeningCard {
