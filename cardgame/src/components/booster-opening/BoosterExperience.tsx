@@ -7,6 +7,7 @@ import { boosterTitle, compareCodes } from '@/lib/boosters/catalogPresentation'
 import { isBoosterProduct } from '@/lib/boosters/products'
 import { useVibration } from '@/hooks/useVibration'
 import StackReveal from './StackReveal'
+import BatchOpening from './BatchOpening'
 import { useCardPreload } from './useCardPreload'
 import OpeningSettings from './OpeningSettings'
 import TearOpening from './TearOpening'
@@ -73,6 +74,12 @@ export default function BoosterExperience() {
   const [favorite, setFavorite] = useState(false)
   const [favoriteBusy, setFavoriteBusy] = useState(false)
   const [favoriteError, setFavoriteError] = useState('')
+  // Several boosters at once (×5, ×10): one request, every pack credited together, then revealed one after the other.
+  const [batchCount, setBatchCount] = useState<1 | 5 | 10>(1)
+  const [batch, setBatch] = useState<OpeningResult[] | null>(null)
+  const [batchSummary, setBatchSummary] = useState(false)
+  const showBatchSummary = useCallback(() => setBatchSummary(true), [])
+  const [batchIntent, setBatchIntent] = useState<{ setCode: string; idempotencyKey: string; count: 5 | 10 } | null>(null)
   const flight = useRef(false)
   const resumedUser = useRef<string | null>(null)
   const storageKey = session?.user?.id ? `op:booster:${session.user.id}` : null
@@ -95,6 +102,11 @@ export default function BoosterExperience() {
     setPending(intent)
     if (storageKey) try { window.localStorage.setItem(storageKey, JSON.stringify(intent)) } catch { setStorageWarning('La reprise automatique est indisponible dans ce navigateur. Votre ouverture reste dans l’historique.') }
   }, [storageKey])
+  // A finished opening needs no resume: the next visit shows the booster choice again (the result stays in history).
+  const forget = useCallback(() => {
+    setPending(null)
+    if (storageKey) try { window.localStorage.removeItem(storageKey); window.sessionStorage.removeItem(storageKey) } catch { /* history remains */ }
+  }, [storageKey])
   const loadHistory = useCallback(async (next?: string) => {
     setHistoryBusy(true); setHistoryError('')
     try {
@@ -112,8 +124,9 @@ export default function BoosterExperience() {
         ? await api<{ opening: OpeningResult }>(`/api/booster/openings/${encodeURIComponent(intent.openingId)}`)
         : await api<{ opening: OpeningResult }>('/api/booster/open', { setCode: intent.setCode, idempotencyKey: intent.idempotencyKey })
       const count = preferences.quickOpening ? data.opening.cards.length : Math.min(intent.revealed, data.opening.cards.length)
+      if (!animate && intent.openingId && count >= data.opening.cards.length) { forget(); return }
       setOpening(data.opening); setSelectedSet(data.opening.setCode); setRevealed(count); setShowResult(count === data.opening.cards.length || preferences.quickOpening)
-      save({ ...intent, openingId: data.opening.id, revealed: count })
+      if (count >= data.opening.cards.length) forget(); else save({ ...intent, openingId: data.opening.id, revealed: count })
       const shouldAnimate = animate && !preferences.quickOpening && preferences.animations && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
       setAnimating(shouldAnimate)
       void loadHistory()
@@ -122,7 +135,7 @@ export default function BoosterExperience() {
       setCanDiscard(!intent.openingId && e instanceof ApiError && [400, 422].includes(e.status))
     }
     finally { flight.current = false; setBusy(false) }
-  }, [save, loadHistory, preferences.animations, preferences.quickOpening])
+  }, [save, forget, loadHistory, preferences.animations, preferences.quickOpening])
 
   useEffect(() => {
     if (!session?.user?.id || resumedUser.current === session.user.id) return
@@ -158,7 +171,7 @@ export default function BoosterExperience() {
     vibrate()
     const next = Math.min(count, opening.cards.length)
     setRevealed(next); setAnimating(false)
-    if (pending?.openingId === opening.id) save({ ...pending, revealed: next })
+    if (pending?.openingId === opening.id) { if (next >= opening.cards.length) forget(); else save({ ...pending, revealed: next }) }
     const card = opening.cards[next - 1]
     if (card && next === revealed + 1) {
       if (isVariant(card, 'alt')) audio.playAltArtSound()
@@ -166,8 +179,31 @@ export default function BoosterExperience() {
       else if (card.isNew) audio.playNewCardSound()
     }
   }
+  async function requestBatch(intent: { setCode: string; idempotencyKey: string; count: 5 | 10 }) {
+    if (flight.current) return
+    flight.current = true; setBusy(true); setError(''); setBatchIntent(intent)
+    try {
+      const data = await api<{ openings: OpeningResult[] }>('/api/booster/open-batch', intent)
+      setBatch(data.openings); setBatchSummary(false); setBatchIntent(null)
+      setAnimating(!preferences.quickOpening && preferences.animations && !window.matchMedia('(prefers-reduced-motion: reduce)').matches)
+      void loadHistory()
+    } catch (e) { setError(e instanceof Error && e.name !== 'AbortError' ? e.message : 'Ouverture non confirmée. Réessayez pour récupérer le résultat.') }
+    finally { flight.current = false; setBusy(false) }
+  }
+  function batchCard(card: OpeningCard) {
+    vibrate()
+    if (isVariant(card, 'alt')) audio.playAltArtSound()
+    else if (rare(card)) audio.playUltraRareSound()
+    else if (card.isNew) audio.playNewCardSound()
+  }
   function startOpening() {
     if (flight.current || !chosen?.available || busy || (pending && !pending.openingId)) return
+    if (batchCount > 1) {
+      if (!preferences.animations || preferences.quickOpening || reducedMotion) audio.playPackOpenSound()
+      setOpening(null); setBatch(null)
+      void requestBatch({ setCode: selectedSet, idempotencyKey: crypto.randomUUID(), count: batchCount as 5 | 10 })
+      return
+    }
     // With the tear scene, the opening sound plays when the packet is torn (TearOpening onTear), not on this click.
     if (!preferences.animations || preferences.quickOpening || reducedMotion) audio.playPackOpenSound()
     setOpening(null); setRevealed(0); setShowResult(false)
@@ -199,15 +235,17 @@ export default function BoosterExperience() {
 
   if (status === 'loading') return <p className="p-12 text-center" role="status">Chargement de votre espace…</p>
   if (!session?.user) return <div className="p-12 text-center"><Link href="/login" className={button}>Connectez-vous pour ouvrir des boosters</Link></div>
-  return <div className={`piece-page ${opening && !showResult ? 'piece-opening-immersive' : ''}`}>
+  return <div className={`piece-page ${(opening && !showResult) || (batch && !batchSummary) ? 'piece-opening-immersive' : ''}`}>
     <div className="mx-auto max-w-none">
       <div className="mb-8 flex items-start justify-between gap-4">
         <div><p className="mb-2 text-xs font-semibold tracking-[0.25em] text-amber-300">LA PROCHAINE CARTE VOUS ATTEND</p><h1 className="text-3xl font-bold sm:text-5xl">Ouvrez votre trésor.</h1><p className="mt-3 max-w-xl text-sm leading-6 text-slate-400">Choisissez une extension, découvrez vos cartes et enrichissez votre collection. Ouvertures gratuites du simulateur.</p></div>
         <button type="button" aria-label={soundsEnabled ? 'Désactiver les sons' : 'Activer les sons'} onClick={() => setSoundsEnabled(!soundsEnabled)} className={`${button} border border-slate-700 px-3`}>{soundsEnabled ? <Volume2 size={20} /> : <VolumeX size={20} />}</button>
       </div>
       {storageWarning && <p role="status" className="mb-4 rounded-xl bg-slate-800 p-4 text-sm">{storageWarning}</p>}
-      {error && <div role="alert" className="mb-4 rounded-xl border border-red-500/40 bg-red-950/40 p-4"><p>{error}</p>{pending && <button type="button" disabled={busy} onClick={() => void requestOpening(pending, false)} className={`${button} mt-3 bg-white text-slate-950`}>Réessayer cette ouverture</button>}{canDiscard && <button type="button" disabled={busy} onClick={discardRejectedIntent} className={`${button} mt-3 border border-slate-600`}>Choisir une autre extension</button>}</div>}
-      {!opening && <section className="bo-hero" aria-labelledby="extension-title">
+      {error && <div role="alert" className="mb-4 rounded-xl border border-red-500/40 bg-red-950/40 p-4"><p>{error}</p>{batchIntent && <button type="button" disabled={busy} onClick={() => void requestBatch(batchIntent)} className={`${button} mt-3 bg-white text-slate-950`}>Réessayer ces {batchIntent.count} boosters</button>}{!batchIntent && pending && <button type="button" disabled={busy} onClick={() => void requestOpening(pending, false)} className={`${button} mt-3 bg-white text-slate-950`}>Réessayer cette ouverture</button>}{canDiscard && <button type="button" disabled={busy} onClick={discardRejectedIntent} className={`${button} mt-3 border border-slate-600`}>Choisir une autre extension</button>}</div>}
+      {batch && <div className="bo-batch">{animating ? <TearOpening onTear={() => audio.playPackOpenSound()} returnHref={`/boosters?set=${encodeURIComponent(batch[0].setCode)}`} imageUrl={sets.find(set => set.code === batch[0].setCode)?.imageUrl || null} setName={`${batch[0].setName} · ${batch.length} boosters`} cardCount={batch.length * batch[0].cards.length} onComplete={() => setAnimating(false)} />
+        : <BatchOpening key={batch[0].id} openings={batch} onSummary={showBatchSummary} onCard={batchCard} onDetail={setDetail} busy={busy} againLabel={`Ouvrir ${batch.length} autres boosters`} onAgain={() => { setBatch(null); startOpening() }} />}</div>}
+      {!opening && !batch && <section className="bo-hero" aria-labelledby="extension-title">
         <div className="bo-hero-stage">
           <div className="bo-hero-glow" aria-hidden="true" />
           <div className="bo-hero-pack"><PackArt key={chosen?.code} testId="booster-artwork" src={chosen?.imageUrl} alt={`Booster ${chosen?.code || ''}`} eager /></div>
@@ -226,7 +264,8 @@ export default function BoosterExperience() {
           </> : <h3 className="bo-title">{catalogError || 'Chargement des extensions…'}</h3>}
           {catalogError && <p role="alert" className="bo-unavailable">{catalogError}</p>}
           <div className="bo-cta">
-            <button type="button" onClick={startOpening} disabled={!chosen?.available || busy || Boolean(pending && !pending.openingId)} className="bo-open"><Sparkles size={20} />{busy ? 'Confirmation serveur…' : 'Ouvrir le booster'}</button>
+            <div className="bo-count" role="radiogroup" aria-label="Nombre de boosters">{([1, 5, 10] as const).map(n => <button key={n} type="button" role="radio" aria-checked={batchCount === n} className={batchCount === n ? 'on' : ''} disabled={busy} onClick={() => setBatchCount(n)}>×{n}</button>)}</div>
+            <button type="button" onClick={startOpening} disabled={!chosen?.available || busy || Boolean(pending && !pending.openingId)} className="bo-open"><Sparkles size={20} />{busy ? 'Confirmation serveur…' : batchCount === 1 ? 'Ouvrir le booster' : `Ouvrir ${batchCount} boosters`}</button>
           </div>
           {chosen && <Link href={`/boosters/${encodeURIComponent(chosen.code)}`} className="bo-link">Voir toutes les cartes de l’extension <ArrowUpRight size={14} /></Link>}
         </div>
@@ -283,7 +322,7 @@ export default function BoosterExperience() {
         </section>
       
       </div>}
-      <section hidden={Boolean(opening && !showResult)} aria-labelledby="history-title" className="mt-9 rounded-3xl border border-slate-800 p-6">
+      <section hidden={Boolean((opening && !showResult) || batch)} aria-labelledby="history-title" className="mt-9 rounded-3xl border border-slate-800 p-6">
         <div className="mb-5 flex flex-wrap items-center justify-between gap-3"><h2 id="history-title" className="flex items-center gap-2 text-xl font-semibold"><History size={21} /> Vos ouvertures</h2><button type="button" disabled={historyBusy} onClick={() => void loadHistory()} className={`${button} bg-slate-800`}>Actualiser l’historique</button></div>
         {historyError && <p role="alert" className="text-red-300">{historyError}</p>}
         {!history.length && <p className="text-sm text-slate-400">{historyBusy ? 'Chargement…' : 'Votre prochaine ouverture sera enregistrée ici.'}</p>}

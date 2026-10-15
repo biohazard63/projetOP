@@ -2,7 +2,7 @@
 import { useEffect, useRef, useState, type CSSProperties, type PointerEvent } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronLeft } from 'lucide-react'
+import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { useOpeningPresentation } from '@/components/collector/OpeningPresentation'
 import { useCollectorPreferences } from '@/components/collector/Preferences'
 import { advanceReveal, openingEffect, type RevealState } from '@/lib/boosters/presentation'
@@ -11,17 +11,33 @@ import styles from './StackReveal.module.css'
 import { revealImageSizes, useCardPreload } from './useCardPreload'
 
 const VARIANT = { alt: 'Alternative', parallel: 'Parallèle', special: 'Spéciale' } as const
+const TIER: Record<string, string> = { ALT: 'Alternative', 'SP CARD': 'SP', TR: 'Treasure Rare', MANGA: 'Manga', 'MANGA RED': 'Manga red' }
+// The last two cards (rare slot and hit slot) are turned one by one; the others are dealt at once in a fan.
+const SUSPENSE_CARDS = 2
 const SUSPENSE = new Set(['rare', 'super', 'secret', 'holographic'])
 
 /**
  * V2 reveal: the cards wait in a pile. The top card glows with the colour of its rarity before it is turned (rare blue,
  * super rare gold, secret and alternative art rainbow); a tap or a swipe turns it, the next tap or a swipe throws it aside.
  * Alternative and secret cards tilt with the pointer, with a holographic sheen. Same contract as SingleCardReveal.
+ * The first cards (all but the last two) are first dealt face up in a fan, in about a second.
  */
 export default function StackReveal({ opening, revealed, onReveal, onComplete }: { opening: OpeningResult; revealed: number; onReveal: (count: number) => void; onComplete: () => void }) {
   const prefs = useCollectorPreferences()
   const { setCinematic } = useOpeningPresentation()
-  const [state, setState] = useState<RevealState>({ index: Math.min(revealed, opening.cards.length - 1), faceUp: false, complete: false })
+  const fanCount = opening.cards.length > SUSPENSE_CARDS ? opening.cards.length - SUSPENSE_CARDS : 0
+  const [fan, setFan] = useState(revealed < fanCount)
+  // The deal starts once the fan images are decoded (or after 2.5 s), otherwise it would play on empty frames.
+  const [loaded, setLoaded] = useState(0), [dealReady, setDealReady] = useState(false)
+  const [zoom, setZoom] = useState<number | null>(null)
+  useEffect(() => {
+    if (zoom === null) return
+    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') setZoom(null); if (e.key === 'ArrowRight') setZoom(z => z === null ? z : Math.min(fanCount - 1, z + 1)); if (e.key === 'ArrowLeft') setZoom(z => z === null ? z : Math.max(0, z - 1)) }
+    window.addEventListener('keydown', onKey); return () => window.removeEventListener('keydown', onKey)
+  }, [zoom, fanCount])
+  useEffect(() => { if (!fan) return; const t = setTimeout(() => setDealReady(true), 2500); return () => clearTimeout(t) }, [fan])
+  useEffect(() => { if (loaded >= fanCount) setDealReady(true) }, [loaded, fanCount])
+  const [state, setState] = useState<RevealState>({ index: Math.min(Math.max(revealed, fanCount), opening.cards.length - 1), faceUp: false, complete: false })
   const [throwing, setThrowing] = useState<0 | -1 | 1>(0)
   const [drag, setDrag] = useState(0)
   const [tilt, setTilt] = useState({ x: 0, y: 0, mx: 50, my: 50 })
@@ -61,6 +77,39 @@ export default function StackReveal({ opening, revealed, onReveal, onComplete }:
     setDrag(0)
   }
   if (!card) return null
+  if (fan) {
+    const dealt = opening.cards.slice(0, fanCount), fresh = dealt.filter(c => c.isNew).length
+    const go = () => { onReveal(fanCount); setFan(false) }
+    return <section className={styles.scene} data-testid="single-card-reveal" data-phase="fan" data-ready={dealReady || undefined} data-animations={motion ? 'on' : 'off'} style={{ '--reveal': `${speed}ms`, '--n': fanCount } as CSSProperties}>
+      <div className={styles.toolbar}>
+        <Link className="piece-button secondary !p-2 min-w-11" href={`/boosters?set=${encodeURIComponent(opening.setCode)}`} aria-label="Retour aux boosters"><ChevronLeft size={20} /></Link>
+        <span aria-live="polite">{fanCount} / {opening.cards.length}</span>
+        <button type="button" className="piece-button secondary" onClick={onComplete}>Tout révéler</button>
+      </div>
+      <div className={styles.fan} aria-label={`${fanCount} premières cartes`}>
+        {dealt.map((c, i) => <button type="button" aria-label={`Agrandir ${c.name}`} onClick={() => setZoom(i)} key={`${opening.id}-${i}`} className={styles.fanCard} data-effect={openingEffect(c)} style={{ '--i': i, '--a': `${(i - (fanCount - 1) / 2) * 4.5}deg`, '--y': `${(i - (fanCount - 1) / 2) ** 2 * 1.6}px` } as CSSProperties}>
+          <span className={styles.fanInner}>
+            <span className={styles.fanBack}><Image draggable={false} src="/images/card-back.jpg" alt="" width={180} height={252} sizes="140px" priority /></span>
+            <span className={styles.fanFront}><Image draggable={false} src={c.imageUrl || '/images/card-back.jpg'} alt={c.name} width={180} height={252} sizes="(max-width:640px) 22vw, 140px" priority onLoad={() => setLoaded(n => n + 1)} onError={() => setLoaded(n => n + 1)} /></span>
+          </span>
+          {c.isNew && <span className={styles.fanNew}>Nouvelle</span>}
+        </button>)}
+      </div>
+      {zoom !== null && dealt[zoom] && <div className={styles.zoom} role="dialog" aria-modal="true" aria-label={dealt[zoom].name} onClick={() => setZoom(null)}>
+        <button type="button" className={styles.zoomClose} aria-label="Fermer" onClick={() => setZoom(null)}><X size={22} /></button>
+        <button type="button" className={styles.zoomNav} data-side="left" aria-label="Carte précédente" disabled={zoom === 0} onClick={e => { e.stopPropagation(); setZoom(zoom - 1) }}><ChevronLeft size={26} /></button>
+        <figure onClick={e => e.stopPropagation()} data-effect={openingEffect(dealt[zoom])}>
+          <Image key={zoom} src={dealt[zoom].imageUrl || '/images/card-back.jpg'} alt={dealt[zoom].name} width={600} height={838} sizes="(max-width:640px) 86vw, 420px" />
+          <figcaption><b>{dealt[zoom].name}</b><span>{dealt[zoom].rarity}{dealt[zoom].isNew ? ' · Nouvelle !' : dealt[zoom].isDuplicate ? ' · Doublon' : ''}</span><small>{zoom + 1} / {fanCount}</small></figcaption>
+        </figure>
+        <button type="button" className={styles.zoomNav} data-side="right" aria-label="Carte suivante" disabled={zoom === fanCount - 1} onClick={e => { e.stopPropagation(); setZoom(zoom + 1) }}><ChevronRight size={26} /></button>
+      </div>}
+      <div className={styles.caption} aria-live="polite"><h3>{fanCount} cartes révélées</h3>
+        <p className={styles.badges}>{fresh > 0 ? <span className={styles.new}>{fresh} nouvelle{fresh > 1 ? 's' : ''}</span> : <span className={styles.dup}>Aucune nouvelle carte</span>}</p>
+        <p className={styles.prompt}>Il reste {opening.cards.length - fanCount} cartes, dont la carte coup de chance…</p></div>
+      <button type="button" className={`piece-button ${styles.next}`} onClick={go}>Découvrir les {opening.cards.length - fanCount} dernières cartes</button>
+    </section>
+  }
   const remaining = opening.cards.length - state.index - 1
   const style = { '--reveal': `${speed}ms`, '--drag': `${drag}px`, '--rx': `${tilt.x}deg`, '--ry': `${tilt.y}deg`, '--mx': `${tilt.mx}%`, '--my': `${tilt.my}%` } as CSSProperties
   return <section className={styles.scene} data-testid="single-card-reveal" data-effect={state.faceUp ? effect : 'common'} data-hint={!state.faceUp && SUSPENSE.has(effect) ? effect : undefined}
@@ -92,7 +141,7 @@ export default function StackReveal({ opening, revealed, onReveal, onComplete }:
     </div>
     <div className={styles.caption} aria-live="polite">{state.faceUp ? <>
       <h3>{card.name}</h3>
-      <p className={styles.badges}><span className={styles.rarity} data-effect={effect}>{card.rarity}{card.drawVariant && card.drawVariant !== 'standard' ? ` · ${VARIANT[card.drawVariant as keyof typeof VARIANT] ?? card.drawVariant}` : ''}</span>
+      <p className={styles.badges}><span className={styles.rarity} data-effect={effect}>{card.rarity}{card.drawTier && TIER[card.drawTier] ? ` · ${TIER[card.drawTier]}` : !card.drawTier && card.drawVariant && card.drawVariant !== 'standard' ? ` · ${VARIANT[card.drawVariant as keyof typeof VARIANT] ?? card.drawVariant}` : ''}</span>
         {card.isNew ? <span className={styles.new}>Nouvelle !</span> : card.isDuplicate ? <span className={styles.dup}>Doublon · {card.quantityBefore} déjà possédée(s)</span> : null}</p>
     </> : <p className={styles.prompt}>{SUSPENSE.has(effect) ? 'Quelque chose brille… touchez pour révéler' : 'Touchez ou glissez la carte pour la révéler'}</p>}</div>
     <button type="button" className={`piece-button ${styles.next}`} onClick={() => next(1)}>{!state.faceUp ? 'Révéler la carte' : state.index + 1 === opening.cards.length ? 'Voir le résultat' : 'Carte suivante'}</button>

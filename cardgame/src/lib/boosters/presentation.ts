@@ -6,7 +6,11 @@ export function advanceReveal(state: RevealState, count: number): RevealState {
   if (state.index + 1 >= count) return { ...state, complete: true }
   return { index: state.index + 1, faceUp: false, complete: false }
 }
-export function openingEffect(card: Pick<OpeningCard, 'rarity' | 'drawVariant' | 'isAltArt' | 'isParallel' | 'isSpecial'>) {
+export function openingEffect(card: Pick<OpeningCard, 'rarity' | 'drawVariant' | 'isAltArt' | 'isParallel' | 'isSpecial'> & { drawTier?: string }) {
+  // A tiered draw knows the product's tier (a PRB frame is a standard card there, a reprinted SEC can be an SP).
+  if (card.drawTier === 'ALT') return 'holographic'
+  if (card.drawTier && ['SP CARD', 'TR', 'MANGA', 'MANGA RED'].includes(card.drawTier)) return 'secret'
+  if (card.drawTier) return openingEffect({ rarity: card.drawTier, drawVariant: 'standard', isAltArt: false, isParallel: false, isSpecial: false })
   const variant = card.drawVariant || (card.isSpecial ? 'special' : card.isAltArt ? 'alt' : card.isParallel ? 'parallel' : 'standard')
   if (variant === 'alt' || variant === 'parallel') return 'holographic'
   if (variant === 'special') return 'secret'

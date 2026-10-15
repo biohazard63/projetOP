@@ -3,8 +3,9 @@
 import { useEffect, useRef, useState, useTransition } from 'react'
 import { useRouter, useSearchParams } from 'next/navigation'
 import Link from 'next/link'
-import { motion } from 'framer-motion'
-import { Input } from '@/components/ui/input'
+import { signIn } from 'next-auth/react'
+import { Check, Eye, EyeOff, Lock, Mail, Sparkles, UserRound } from 'lucide-react'
+import AuthShell, { GoogleIcon } from '@/components/auth/AuthShell'
 
 export default function RegisterPage() {
   const router = useRouter()
@@ -15,11 +16,6 @@ export default function RegisterPage() {
   const [passwordStrength, setPasswordStrength] = useState(0)
   const [captchaToken, setCaptchaToken] = useState<string>('')
   const widgetRef = useRef<HTMLDivElement | null>(null)
-  const [isClient, setIsClient] = useState(false)
-
-  useEffect(() => {
-    setIsClient(true)
-  }, [])
 
   // Fonction de validation d'email
   const isValidEmail = (email: string) => {
@@ -50,9 +46,11 @@ export default function RegisterPage() {
     return Math.min(strength, 5)
   }
 
+  const [password, setPassword] = useState('')
+  const [showPassword, setShowPassword] = useState(false)
   const handlePasswordChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const strength = calculatePasswordStrength(e.target.value)
-    setPasswordStrength(strength)
+    setPassword(e.target.value)
+    setPasswordStrength(calculatePasswordStrength(e.target.value))
   }
 
   useEffect(() => {
@@ -110,7 +108,7 @@ export default function RegisterPage() {
 
     // Validation du mot de passe
     if (!isValidPassword(password)) {
-      setError('Le mot de passe doit contenir au moins 8 caractères, une majuscule, une minuscule, un chiffre et un caractère spécial (@$!%*?&)')
+      setError('Le mot de passe doit contenir au moins 8 caractères et 3 catégories sur 4 : majuscule, minuscule, chiffre, symbole.')
       return
     }
 
@@ -140,167 +138,35 @@ export default function RegisterPage() {
     })
   }
 
-  // Ne pas rendre si on n'est pas côté client
-  if (!isClient) {
-    return (
-      <div className="relative min-h-screen flex items-center justify-center px-4 py-12">
-        <div className="w-16 h-16 border-t-2 border-yellow-400 rounded-full animate-spin"></div>
-      </div>
-    )
-  }
+  // Each rule lights up as soon as it is met (same rules as the API: 8 characters and 3 categories out of 4).
+  const rules = [{ ok: password.length >= 8, label: '8 caractères minimum' }, { ok: /[A-Z]/.test(password), label: 'Une majuscule' }, { ok: /[a-z]/.test(password), label: 'Une minuscule' }, { ok: /[0-9]/.test(password), label: 'Un chiffre' }, { ok: /[^A-Za-z0-9]/.test(password), label: 'Un symbole' }]
+  const strengthLabel = ['Trop faible', 'Trop faible', 'Faible', 'Correct', 'Solide', 'Excellent'][passwordStrength]
 
-  return (
-    <div className="relative min-h-screen flex items-center justify-center px-4 py-12">
-      <div aria-hidden className="absolute inset-0 -z-10 bg-gradient-to-b from-black/50 via-black/40 to-black/60" />
-      <motion.div 
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5 }}
-        className="max-w-md w-full space-y-8 bg-black/70 p-8 md:p-10 rounded-2xl border border-white/10 shadow-2xl text-white"
-      >
-        <div className="text-center">
-          <h2 className="mt-2 text-3xl font-extrabold">
-            Créer un compte
-          </h2>
-          <p className="mt-2 text-sm text-white/70">
-            Ou{' '}
-            <Link
-              href="/login"
-              className="font-medium text-orange-400 hover:text-orange-300 transition-colors"
-            >
-              connectez-vous à votre compte
-            </Link>
-          </p>
-        </div>
-
-        <form className="mt-6 space-y-6" onSubmit={handleSubmit}>
-          <div className="rounded-md space-y-4">
-            <div>
-              <label htmlFor="name" className="block text-sm font-medium mb-1 text-white/90">
-                Nom
-              </label>
-              <Input
-                id="name"
-                name="name"
-                type="text"
-                required
-                minLength={2}
-                placeholder="Votre nom"
-                className="bg-white/5 border-white/10 text-white placeholder-white/50 focus-visible:ring-orange-500"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="email" className="block text-sm font-medium mb-1 text-white/90">
-                Adresse email
-              </label>
-              <Input
-                id="email"
-                name="email"
-                type="email"
-                autoComplete="email"
-                required
-                pattern="[^\s@]+@[^\s@]+\.[^\s@]+"
-                placeholder="votre@email.com"
-                className="bg-white/5 border-white/10 text-white placeholder-white/50 focus-visible:ring-orange-500"
-              />
-            </div>
-
-            <div>
-              <label htmlFor="password" className="block text-sm font-medium mb-1 text-white/90">
-                Mot de passe
-              </label>
-              <Input
-                id="password"
-                name="password"
-                type="password"
-                autoComplete="new-password"
-                required
-                minLength={8}
-                onChange={handlePasswordChange}
-                placeholder="••••••••"
-                className="bg-white/5 border-white/10 text-white placeholder-white/50 focus-visible:ring-orange-500"
-              />
-              <div className="mt-2">
-                <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-                  <motion.div
-                    className="h-full bg-orange-500"
-                    initial={{ width: 0 }}
-                    animate={{ width: `${(passwordStrength / 5) * 100}%` }}
-                    transition={{ duration: 0.3 }}
-                  />
-                </div>
-                <p className="text-xs text-white/70 mt-1">Force du mot de passe: {passwordStrength}/5</p>
-              </div>
-            </div>
-
-            <div>
-              <label htmlFor="confirmPassword" className="block text-sm font-medium mb-1 text-white/90">
-                Confirmer le mot de passe
-              </label>
-              <Input
-                id="confirmPassword"
-                name="confirmPassword"
-                type="password"
-                autoComplete="new-password"
-                required
-                minLength={8}
-                placeholder="••••••••"
-                className="bg-white/5 border-white/10 text-white placeholder-white/50 focus-visible:ring-orange-500"
-              />
-            </div>
-          </div>
-
-          {/* Captcha Turnstile */}
-          {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && (
-            <div className="rounded-lg border border-white/10 bg-white/5 p-3">
-              <div ref={widgetRef} className="flex justify-center" />
-            </div>
-          )}
-
-          <div className="bg-white/5 border border-white/10 p-4 rounded-lg">
-            <p className="text-sm font-medium text-white/90 mb-2">Le mot de passe doit contenir :</p>
-            <ul className="text-sm text-white/70 space-y-1">
-              <li className="flex items-center"><span className={`h-2 w-2 rounded-full mr-2 ${passwordStrength >= 1 ? 'bg-green-400' : 'bg-white/30'}`} />Au moins 8 caractères</li>
-              <li className="flex items-center"><span className={`h-2 w-2 rounded-full mr-2 ${/[A-Z]/.test((document.getElementById('password') as HTMLInputElement)?.value || '') ? 'bg-green-400' : 'bg-white/30'}`} />Une lettre majuscule</li>
-              <li className="flex items-center"><span className={`h-2 w-2 rounded-full mr-2 ${/[a-z]/.test((document.getElementById('password') as HTMLInputElement)?.value || '') ? 'bg-green-400' : 'bg-white/30'}`} />Une lettre minuscule</li>
-              <li className="flex items-center"><span className={`h-2 w-2 rounded-full mr-2 ${/[0-9]/.test((document.getElementById('password') as HTMLInputElement)?.value || '') ? 'bg-green-400' : 'bg-white/30'}`} />Un chiffre</li>
-              <li className="flex items-center"><span className={`h-2 w-2 rounded-full mr-2 ${/[^A-Za-z0-9]/.test((document.getElementById('password') as HTMLInputElement)?.value || '') ? 'bg-green-400' : 'bg-white/30'}`} />Un symbole (n’importe lequel)</li>
-              <li className="flex items-center text-white/60"><span className="h-2 w-2 rounded-full mr-2 bg-white/30" />Au moins 3 catégories sur 4 sont requises</li>
-            </ul>
-          </div>
-
-          {error && (
-            <motion.div 
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="text-red-500 text-sm text-center bg-red-50 p-3 rounded-lg"
-            >
-              {error}
-            </motion.div>
-          )}
-
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            type="submit"
-            disabled={isPending}
-            className="group relative w-full flex justify-center py-3 px-4 text-sm font-medium rounded-lg text-white bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-500 hover:to-red-500 focus:outline-none shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
-          >
-            {isPending ? (
-              <div className="flex items-center">
-                <svg className="animate-spin -ml-1 mr-3 h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
-                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
-                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                Inscription en cours...
-              </div>
-            ) : (
-              "S\'inscrire"
-            )}
-          </motion.button>
-        </form>
-      </motion.div>
+  return <AuthShell title="Rejoins l’équipage !" subtitle="Crée ton compte gratuit : boosters, collection et parties contre le bot t’attendent."
+    footer={<>Déjà un compte ? <Link href={`/login${callbackUrl !== '/home' ? `?callbackUrl=${encodeURIComponent(callbackUrl)}` : ''}`}>Se connecter</Link></>}>
+    <div className="au-providers">
+      <button type="button" className="au-provider" onClick={() => signIn('google', { callbackUrl })} disabled={isPending}><GoogleIcon />S’inscrire avec Google</button>
     </div>
-  )
-} 
+    <div className="au-divider"><span>ou avec ton email</span></div>
+    <form className="au-form" onSubmit={handleSubmit}>
+      <label className="au-field" htmlFor="name"><span>Nom de pirate</span>
+        <span className="au-input"><UserRound size={17} /><input id="name" name="name" type="text" required minLength={2} autoComplete="nickname" placeholder="Monkey D. Toi" /></span></label>
+      <label className="au-field" htmlFor="email"><span>Adresse email</span>
+        <span className="au-input"><Mail size={17} /><input id="email" name="email" type="email" autoComplete="email" required pattern="[^\s@]+@[^\s@]+\.[^\s@]+" placeholder="ton@email.com" /></span></label>
+      <label className="au-field" htmlFor="password"><span>Mot de passe</span>
+        <span className="au-input"><Lock size={17} /><input id="password" name="password" type={showPassword ? 'text' : 'password'} autoComplete="new-password" required minLength={8} onChange={handlePasswordChange} placeholder="••••••••" />
+          <button type="button" className="au-eye" onClick={() => setShowPassword(v => !v)} aria-label={showPassword ? 'Masquer le mot de passe' : 'Afficher le mot de passe'}>{showPassword ? <EyeOff size={17} /> : <Eye size={17} />}</button></span></label>
+      <div className="au-strength" data-level={passwordStrength}>
+        <div className="au-strength-bar">{[1, 2, 3, 4, 5].map(i => <i key={i} className={passwordStrength >= i ? 'on' : ''} />)}</div>
+        <span>{password ? strengthLabel : 'Force du mot de passe'}</span>
+      </div>
+      <ul className="au-rules" aria-label="Règles du mot de passe">{rules.map(r => <li key={r.label} className={r.ok ? 'ok' : ''}><Check size={13} />{r.label}</li>)}</ul>
+      <p className="au-hint">Au moins 8 caractères et 3 catégories sur 4 (majuscule, minuscule, chiffre, symbole).</p>
+      <label className="au-field" htmlFor="confirmPassword"><span>Confirmer le mot de passe</span>
+        <span className="au-input"><Lock size={17} /><input id="confirmPassword" name="confirmPassword" type={showPassword ? 'text' : 'password'} autoComplete="new-password" required minLength={8} placeholder="••••••••" /></span></label>
+      {process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY && <div className="au-captcha"><div ref={widgetRef} /></div>}
+      {error && <div role="alert" className="au-alert">{error}</div>}
+      <button type="submit" className="au-submit" disabled={isPending}>{isPending ? <><span className="au-spinner" />Inscription en cours…</> : <><Sparkles size={18} />Créer mon compte</>}</button>
+    </form>
+  </AuthShell>
+}

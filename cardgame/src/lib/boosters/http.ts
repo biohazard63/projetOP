@@ -4,7 +4,7 @@ import { z } from 'zod'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { BoosterError } from './rules'
-import { getBoosterCatalog, getOpening, openBooster } from './service'
+import { getBoosterCatalog, getOpening, openBooster, openBoosters } from './service'
 import { describeBoosterFailure } from './failure'
 
 const requestSchema = z.object({ setCode: z.string().trim().min(2).max(64), idempotencyKey: z.string().uuid() }).strict()
@@ -40,6 +40,19 @@ export async function postOpening(request: Request) {
     if (!parsed.success) throw new BoosterError('INVALID_REQUEST', 'Extension et clé d’idempotence UUID requises ; aucun identifiant de carte n’est accepté.', 400)
     const { opening, replayed } = await openBooster(prisma, session.user.id, parsed.data.setCode, parsed.data.idempotencyKey)
     return NextResponse.json({ success: true, opening, replayed, cards: opening.cards, newCardsCount: opening.newCardsCount, hasRareCard: opening.hasRareCard }, { status: replayed ? 200 : 201 })
+  } catch (error) { return failure(error) }
+}
+const batchSchema = requestSchema.extend({ count: z.union([z.literal(1), z.literal(5), z.literal(10)]) }).strict()
+export async function postBatchOpening(request: Request) {
+  const session = await auth()
+  if (!session?.user?.id) return NextResponse.json({ success: false, error: 'Non authentifié' }, { status: 401 })
+  try {
+    const origin = request.headers.get('origin')
+    if ((origin && origin !== new URL(request.url).origin) || request.headers.get('sec-fetch-site') === 'cross-site') throw new BoosterError('INVALID_ORIGIN', 'Origine de requête refusée', 403)
+    const parsed = batchSchema.safeParse(await json(request))
+    if (!parsed.success) throw new BoosterError('INVALID_REQUEST', 'Extension, nombre de boosters (1, 5 ou 10) et clé d’idempotence UUID requis.', 400)
+    const { openings, replayed } = await openBoosters(prisma, session.user.id, parsed.data.setCode, parsed.data.idempotencyKey, parsed.data.count)
+    return NextResponse.json({ success: true, openings, replayed }, { status: replayed ? 200 : 201 })
   } catch (error) { return failure(error) }
 }
 export async function getCatalog() {

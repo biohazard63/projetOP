@@ -1,4 +1,5 @@
 'use client'
+import type { CollectorOverview } from '@/lib/collector/types'
 import { useEffect, useState } from 'react'
 
 // Cosmetic pirate ranks from the share of the catalogue owned (presentation only).
@@ -32,4 +33,23 @@ export function Ring({ value, size = 140, stroke = 12 }: { value: number; size?:
 export function rankOf(percentage: number, catalogue: number, unique: number) {
   const index = RANKS.findLastIndex(r => percentage >= r.at), rank = RANKS[index], next = RANKS[index + 1]
   return { rank, next, toNext: next ? Math.max(0, Math.ceil(catalogue * next.at / 100) - unique) : 0 }
+}
+
+/** Cosmetic achievements derived from the player's existing statistics (no new rule, no stored state). */
+export function badgesOf(stats: CollectorOverview) {
+  return [
+    { name: 'Premier booster', hint: 'Ouvrir un booster', done: stats.openings >= 1 },
+    { name: 'Habitué des boosters', hint: '10 boosters ouverts', done: stats.openings >= 10 },
+    { name: 'Grand explorateur', hint: '50 boosters ouverts', done: stats.openings >= 50 },
+    { name: 'Stratège', hint: 'Créer un deck', done: stats.decks >= 1 },
+    { name: 'Amiral de flotte', hint: '10 decks créés', done: stats.decks >= 10 },
+    { name: 'Collectionneur', hint: '25 % du catalogue', done: stats.percentage >= 25 },
+    { name: 'Archiviste', hint: '50 % du catalogue', done: stats.percentage >= 50 },
+    { name: 'Chasseur d’alternatives', hint: '100 variantes spéciales', done: stats.ownedAlternatives >= 100 },
+  ]
+}
+
+/** Cosmetic bounty in berries, from the collection (presentation only, nothing is stored or spent). */
+export function bountyOf(stats: CollectorOverview) {
+  return stats.unique * 10_000 + stats.ownedAlternatives * 50_000 + stats.openings * 25_000 + stats.decks * 100_000
 }

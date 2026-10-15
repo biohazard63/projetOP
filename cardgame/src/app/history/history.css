@@ -1,0 +1,39 @@
+/* V2 history — day-grouped timeline and a receipt panel (presentation only). */
+.hs-page { padding-top:clamp(12px,2vw,24px); }
+.hs-head { display:flex; flex-wrap:wrap; justify-content:space-between; align-items:end; gap:18px; }
+.hs-head h1 { margin:4px 0 6px; font-size:clamp(2rem,4.5vw,3.2rem); font-weight:900; letter-spacing:-.03em; line-height:1; }
+.hs-head-side { display:flex; flex-wrap:wrap; align-items:center; gap:10px; }
+.hs-refresh { min-height:46px; }
+.hs-muted { margin:0; color:#a8b9d0; font-size:.88rem; }
+.hs-filter { display:grid; gap:6px; width:min(320px,100%); font-size:.78rem; font-weight:700; color:#dbe7f3; }
+.hs-filter select { min-height:44px; padding:0 12px; border-radius:12px; border:1px solid #ffffff2b; background:#050c1899; color:#fff; }
+.hs-layout { display:grid; gap:24px; }
+.hs-layout.with-receipt { grid-template-columns:minmax(300px,.85fr) minmax(0,1.4fr); align-items:start; }
+.hs-timeline { display:grid; gap:22px; }
+.hs-day { display:grid; gap:10px; }
+.hs-day h3 { display:flex; align-items:center; gap:10px; margin:0; font-size:.8rem; font-weight:800; text-transform:capitalize; color:#ffe09a; letter-spacing:.04em; }
+.hs-day h3 span { width:10px; height:10px; border-radius:50%; background:#f5c45c; box-shadow:0 0 0 4px #f5c45c26, 0 0 12px #f5c45c; }
+.hs-rows { display:grid; gap:8px; margin-left:4px; padding-left:16px; border-left:2px solid #ffffff17; }
+.hs-row { display:flex; align-items:center; gap:14px; width:100%; padding:10px 14px 10px 10px; text-align:left; border-radius:16px; border:1px solid #ffffff1f; background:#ffffff08; color:#f7f9fc; cursor:pointer; transition:border-color .15s, background .15s, transform .15s; }
+.hs-row:hover { border-color:#f5c45c66; background:#ffffff10; transform:translateX(3px); }
+.hs-row.on { border-color:#f5c45c; background:#f5c45c14; box-shadow:0 0 0 1px #f5c45c55; }
+.hs-row-pack { flex:none; width:42px; } .hs-row-pack .pack-art { filter:drop-shadow(0 6px 8px #0009); }
+.hs-row-text { flex:1; display:grid; gap:2px; min-width:0; } .hs-row-text strong { font-size:.92rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; } .hs-row-text small { font-size:.72rem; color:#a8b9d0; }
+.hs-row-go { display:inline-flex; align-items:center; gap:2px; font-size:.75rem; font-weight:800; color:#ffe09a; white-space:nowrap; }
+.hs-more { justify-self:start; min-height:42px; }
+.hs-receipt-panel { position:sticky; top:84px; max-height:calc(100dvh - 100px); overflow:auto; padding:20px; border-radius:24px; border:1px solid #ffffff1f; background:linear-gradient(160deg,#ffffff12,#ffffff05); backdrop-filter:blur(10px); }
+.hs-receipt { display:grid; gap:14px; }
+.hs-receipt-head { display:flex; align-items:center; gap:18px; }
+.hs-receipt-pack { flex:none; width:84px; } .hs-receipt-pack .pack-art { filter:drop-shadow(0 12px 16px #000a); rotate:-4deg; }
+.hs-receipt h2 { margin:2px 0; font-size:1.35rem; font-weight:900; color:#fff; }
+.hs-chips { display:flex; flex-wrap:wrap; gap:6px; margin-top:8px; }
+.hs-chips span { padding:3px 10px; border-radius:999px; background:#ffffff14; font-size:.72rem; font-weight:700; color:#dbe7f3; }
+.hs-chips .ok { background:#1f8a4c; color:#eafff2; } .hs-chips .gold { background:linear-gradient(90deg,#ffd982,#f0a93a); color:#1a1205; }
+.hs-readonly { margin:0; padding:8px 12px; border-radius:12px; background:#4ea3ff14; border:1px solid #4ea3ff33; color:#9fc4ff; font-size:.75rem; }
+.hs-cards.piece-card-grid { grid-template-columns:repeat(auto-fill,minmax(118px,1fr)); gap:14px; }
+.hs-card[data-effect='super'] .piece-card-image { box-shadow:0 0 18px #ffcf5a66; border-color:#ffcf5a; }
+.hs-card[data-effect='secret'] .piece-card-image, .hs-card[data-effect='holographic'] .piece-card-image { box-shadow:0 0 22px #ff7be566; border-color:#ff7be5; }
+.hs-card-note { margin:4px 0 0; font-size:.68rem; color:#8fa6bf; }
+.hs .piece-card-label { color:#f7f9fc; }
+.hs-modal { background:#071528 !important; color:#f7f9fc; } .hs-modal .fx-kicker { color:#f5c45c; }
+@media (max-width:1000px) { .hs-layout.with-receipt { grid-template-columns:minmax(0,1fr); } .hs-receipt-panel { position:static; max-height:none; } }

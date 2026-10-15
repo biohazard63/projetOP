@@ -1,0 +1,121 @@
+{
+ "status": "validated",
+ "note": "Liste validée à la main par le propriétaire du projet",
+ "cards": [
+  {
+   "key": "OP02-013::_p2",
+   "setCode": "OP-02",
+   "id": "OP02-013_p2"
+  },
+  {
+   "key": "OP04-083::_p2",
+   "setCode": "OP-04",
+   "id": "OP04-083_p2"
+  },
+  {
+   "key": "OP05-069::_p2",
+   "setCode": "OP-05",
+   "id": "OP05-069_p2"
+  },
+  {
+   "key": "OP08-118::_p2",
+   "setCode": "OP-08",
+   "id": "OP08-118_p2"
+  },
+  {
+   "key": "OP09-004::_p2",
+   "setCode": "OP-09",
+   "id": "OP09-004_p2"
+  },
+  {
+   "key": "OP09-093::_p2",
+   "setCode": "OP-09",
+   "id": "OP09-093_p2"
+  },
+  {
+   "key": "OP09-119::_p2",
+   "setCode": "OP-09",
+   "id": "OP09-119_p2"
+  },
+  {
+   "key": "OP10-119::_p2",
+   "setCode": "OP-10",
+   "id": "OP10-119_p2"
+  },
+  {
+   "key": "OP11-118::_p2",
+   "setCode": "OP-11",
+   "id": "OP11-118_p2"
+  },
+  {
+   "key": "OP12-118::_p2",
+   "setCode": "OP-12",
+   "id": "OP12-118_p2"
+  },
+  {
+   "key": "OP13-118::_p2",
+   "setCode": "OP-13",
+   "id": "OP13-118_p2"
+  },
+  {
+   "key": "OP13-118::_p3",
+   "setCode": "OP-13",
+   "id": "OP13-118_p3"
+  },
+  {
+   "key": "OP13-119::_p2",
+   "setCode": "OP-13",
+   "id": "OP13-119_p2"
+  },
+  {
+   "key": "OP13-119::_p3",
+   "setCode": "OP-13",
+   "id": "OP13-119_p3"
+  },
+  {
+   "key": "OP13-120::_p2",
+   "setCode": "OP-13",
+   "id": "OP13-120_p2"
+  },
+  {
+   "key": "OP13-120::_p3",
+   "setCode": "OP-13",
+   "id": "OP13-120_p3"
+  },
+  {
+   "key": "OP14-119::_p2",
+   "setCode": "OP14-EB04",
+   "id": "OP14-119_p2"
+  },
+  {
+   "key": "EB04-044::_p2",
+   "setCode": "OP15-EB04",
+   "id": "EB04-044_p2"
+  },
+  {
+   "key": "OP15-118::_p2",
+   "setCode": "OP15-EB04",
+   "id": "OP15-118_p2"
+  },
+  {
+   "key": "OP16-065::_p2",
+   "setCode": "OP-16",
+   "id": "OP16-065_p2"
+  },
+  {
+   "key": "OP17-022::_p2",
+   "setCode": "OP-17",
+   "id": "OP17-022_p2"
+  },
+  {
+   "key": "OP17-112::_p2",
+   "setCode": "OP-17",
+   "id": "OP17-112_p2"
+  },
+  {
+   "key": "EB01-006::_p2",
+   "setCode": "EB-01",
+   "id": "EB01-006_p2"
+  }
+ ]
+}
