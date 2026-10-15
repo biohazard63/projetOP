@@ -25,7 +25,8 @@ else {
   page = await res.text()
   writeFileSync(htmlFile, page)
 }
-const decode = (s: string) => s.replace(/<br\s*\/?>/gi, '\n').replace(/<[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#039;|&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&nbsp;/g, ' ').replace(/[ \t]+/g, ' ').trim()
+// Attribute icons are written as literal <Slash>, <Strike>... in the card text: keep them, strip only HTML tags.
+const decode = (s: string) => s.replace(/<br\s*\/?>/gi, '\n').replace(/<(?!(?:Slash|Strike|Ranged|Special|Wisdom)>)[^>]+>/g, '').replace(/&amp;/g, '&').replace(/&quot;/g, '"').replace(/&#039;|&apos;/g, "'").replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/&nbsp;/g, ' ').replace(/[ \t]+/g, ' ').trim()
 const field = (block: string, cls: string) => {
   const m = block.match(new RegExp(`<div class="${cls}">([\\s\\S]*?)</div>`))
   return m ? decode(m[1].replace(/<h3>[\s\S]*?<\/h3>/, '')) : ''

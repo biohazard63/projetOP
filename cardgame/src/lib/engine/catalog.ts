@@ -22,6 +22,16 @@ import { ST08_LOCAL_ABILITY_DEFINITIONS, ST08_LOCAL_CARDS, ST08_KO_PROTECTIONS }
 import { ST03_OP_LOCAL_ABILITY_DEFINITIONS, ST03_OP_LOCAL_CARDS } from '../../game/cards/m6LocalST03OPCards'
 import { REPRINT_LOCAL_ABILITY_DEFINITIONS, REPRINT_LOCAL_CARDS } from '../../game/cards/m6LocalReprintCards'
 import { ST20_OFFICIAL_ABILITY_DEFINITIONS, ST20_OFFICIAL_CARDS, ST20_OFFICIAL_REPLACEMENTS } from '../../game/cards/m6OfficialST20Cards'
+import { ST24_OFFICIAL_ABILITY_DEFINITIONS, ST24_OFFICIAL_CARDS, ST24_OFFICIAL_CONTINUOUS, ST24_OFFICIAL_KO_PROTECTIONS } from '../../game/cards/m6OfficialST24Cards'
+import { ST27_OFFICIAL_ABILITY_DEFINITIONS, ST27_OFFICIAL_CARDS, ST27_OFFICIAL_CONDITIONAL_KEYWORDS, ST27_OFFICIAL_CONTINUOUS, ST27_OFFICIAL_KO_PROTECTIONS, ST27_OFFICIAL_LEADER_RULES } from '../../game/cards/m6OfficialST27Cards'
+import { ST29_OFFICIAL_ABILITY_DEFINITIONS, ST29_OFFICIAL_CARDS, ST29_OFFICIAL_CONTINUOUS, ST29_OFFICIAL_REPLACEMENTS } from '../../game/cards/m6OfficialST29Cards'
+import { ST22_OFFICIAL_ABILITY_DEFINITIONS, ST22_OFFICIAL_CARDS, ST22_OFFICIAL_REPLACEMENTS } from '../../game/cards/m6OfficialST22Cards'
+import { ST30_OFFICIAL_ABILITY_DEFINITIONS, ST30_OFFICIAL_CARDS, ST30_OFFICIAL_CONTINUOUS, ST30_OFFICIAL_REPLACEMENTS } from '../../game/cards/m6OfficialST30Cards'
+import { ST35_OFFICIAL_ABILITY_DEFINITIONS, ST35_OFFICIAL_CARDS, ST35_OFFICIAL_CONDITIONAL_KEYWORDS, ST35_OFFICIAL_CONTINUOUS, ST35_OFFICIAL_REPLACEMENTS } from '../../game/cards/m6OfficialST35Cards'
+import { ST13_OFFICIAL_ABILITY_DEFINITIONS, ST13_OFFICIAL_CARDS, ST13_OFFICIAL_LIFE_RULES } from '../../game/cards/m6OfficialST13Cards'
+import { ST32_OFFICIAL_ABILITY_DEFINITIONS, ST32_OFFICIAL_CARDS, ST32_OFFICIAL_CONDITIONAL_KEYWORDS, ST32_OFFICIAL_REPLACEMENTS } from '../../game/cards/m6OfficialST32Cards'
+import { ST34_OFFICIAL_ABILITY_DEFINITIONS, ST34_OFFICIAL_CARDS, ST34_OFFICIAL_CONDITIONAL_KEYWORDS } from '../../game/cards/m6OfficialST34Cards'
+import { ST33_OFFICIAL_ABILITY_DEFINITIONS, ST33_OFFICIAL_CARDS, ST33_OFFICIAL_CONTINUOUS } from '../../game/cards/m6OfficialST33Cards'
 import { ST31_OFFICIAL_ABILITY_DEFINITIONS, ST31_OFFICIAL_CARDS, ST31_OFFICIAL_CONDITIONAL_KEYWORDS, ST31_OFFICIAL_CONTINUOUS } from '../../game/cards/m6OfficialST31Cards'
 import { ST26_OFFICIAL_ABILITY_DEFINITIONS, ST26_OFFICIAL_CARDS, ST26_OFFICIAL_CONTINUOUS } from '../../game/cards/m6OfficialST26Cards'
 import { ST16_OFFICIAL_ABILITY_DEFINITIONS, ST16_OFFICIAL_CARDS, ST16_OFFICIAL_CONTINUOUS } from '../../game/cards/m6OfficialST16Cards'
@@ -76,6 +86,16 @@ const currentPacks = () => [
   { packId: 'M6_OFFICIAL_ST16', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST16_OFFICIAL_CARDS, effects: { definitions: ST16_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST16_OFFICIAL_CONTINUOUS } },
   { packId: 'M6_OFFICIAL_ST26', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST26_OFFICIAL_CARDS, effects: { definitions: ST26_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST26_OFFICIAL_CONTINUOUS } },
   { packId: 'M6_OFFICIAL_ST31', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST31_OFFICIAL_CARDS, effects: { definitions: ST31_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST31_OFFICIAL_CONTINUOUS, conditionalKeywords: ST31_OFFICIAL_CONDITIONAL_KEYWORDS } },
+  { packId: 'M6_OFFICIAL_ST33', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST33_OFFICIAL_CARDS, effects: { definitions: ST33_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST33_OFFICIAL_CONTINUOUS } },
+  { packId: 'M6_OFFICIAL_ST34', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST34_OFFICIAL_CARDS, effects: { definitions: ST34_OFFICIAL_ABILITY_DEFINITIONS, conditionalKeywords: ST34_OFFICIAL_CONDITIONAL_KEYWORDS } },
+  { packId: 'M6_OFFICIAL_ST32', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST32_OFFICIAL_CARDS, effects: { definitions: ST32_OFFICIAL_ABILITY_DEFINITIONS, conditionalKeywords: ST32_OFFICIAL_CONDITIONAL_KEYWORDS, cardReplacements: ST32_OFFICIAL_REPLACEMENTS } },
+  { packId: 'M6_OFFICIAL_ST13', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST13_OFFICIAL_CARDS, effects: { definitions: ST13_OFFICIAL_ABILITY_DEFINITIONS, lifeRules: ST13_OFFICIAL_LIFE_RULES } },
+  { packId: 'M6_OFFICIAL_ST35', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST35_OFFICIAL_CARDS, effects: { definitions: ST35_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST35_OFFICIAL_CONTINUOUS, conditionalKeywords: ST35_OFFICIAL_CONDITIONAL_KEYWORDS, cardReplacements: ST35_OFFICIAL_REPLACEMENTS } },
+  { packId: 'M6_OFFICIAL_ST30', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST30_OFFICIAL_CARDS, effects: { definitions: ST30_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST30_OFFICIAL_CONTINUOUS, cardReplacements: ST30_OFFICIAL_REPLACEMENTS } },
+  { packId: 'M6_OFFICIAL_ST22', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST22_OFFICIAL_CARDS, effects: { definitions: ST22_OFFICIAL_ABILITY_DEFINITIONS, cardReplacements: ST22_OFFICIAL_REPLACEMENTS } },
+  { packId: 'M6_OFFICIAL_ST29', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST29_OFFICIAL_CARDS, effects: { definitions: ST29_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST29_OFFICIAL_CONTINUOUS, cardReplacements: ST29_OFFICIAL_REPLACEMENTS } },
+  { packId: 'M6_OFFICIAL_ST27', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST27_OFFICIAL_CARDS, effects: { definitions: ST27_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST27_OFFICIAL_CONTINUOUS, conditionalKeywords: ST27_OFFICIAL_CONDITIONAL_KEYWORDS, koProtections: ST27_OFFICIAL_KO_PROTECTIONS, lifeRules: ST27_OFFICIAL_LEADER_RULES } },
+  { packId: 'M6_OFFICIAL_ST24', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST24_OFFICIAL_CARDS, effects: { definitions: ST24_OFFICIAL_ABILITY_DEFINITIONS, continuous: ST24_OFFICIAL_CONTINUOUS, koProtections: ST24_OFFICIAL_KO_PROTECTIONS } },
 ]
 // The packs are static data compiled into the build: compile them once per process (every /play request used to recompile
 // 550+ definitions, ~16 ms each time). The result is deep-frozen so that no caller can alter the shared catalogue;

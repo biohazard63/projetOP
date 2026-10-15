@@ -70,7 +70,7 @@ export function assertGameInvariants(state: GameState): void {
     // at 0 Life removes nothing (it ends the game), hence the floor at each step.
     let expectedLife = prepared ? leader.life! : 0
     if (prepared) for (const e of state.events) if (e.actorId === p.id) {
-      if (e.type === 'LIFE_DAMAGED' || e.type === 'LIFE_PAID' || e.type === 'LIFE_TRASHED' || e.type === 'LIFE_TO_HAND' || e.type === 'LIFE_TO_DECK') expectedLife = Math.max(0, expectedLife - 1)
+      if (e.type === 'LIFE_DAMAGED' || e.type === 'LIFE_PAID' || e.type === 'LIFE_TRASHED' || e.type === 'LIFE_TO_HAND' || e.type === 'LIFE_TO_DECK' || e.type === 'LIFE_PLAYED') expectedLife = Math.max(0, expectedLife - 1)
       else if (e.type === 'LIFE_ADDED') expectedLife++
     }
     if (p.zones.life.length !== expectedLife || ((!prepared || state.scope === 'SETUP_ONLY') && (p.zones.hand.length !== expectedHand || p.zones.deck.length !== 50 - expectedHand - (prepared ? leader.life! : 0)))) throw new Error('INVALID_SETUP_COUNTS')

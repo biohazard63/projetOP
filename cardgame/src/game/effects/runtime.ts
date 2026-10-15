@@ -26,10 +26,11 @@ const recipient = (s: GameState, controller: string, who: 'CONTROLLER' | 'OPPONE
   if (!p) throw new Error('INVALID_EFFECT_PLAYER')
   return p
 }
-function condition(s: GameState, c: Condition, controller: string, source?: EffectContext['source'], event?: { sequence: number }): boolean {
+function condition(s: GameState, c: Condition, controller: string, source?: EffectContext['source'], event?: { sequence?: number; trashSourceDefinitionId?: string }): boolean {
   if (c.kind === 'ALWAYS') return true
   if (c.kind === 'ALL_OF') return c.conditions.every(part => condition(s, part, controller, source, event))
   if (c.kind === 'ANY_OF') return c.conditions.some(part => condition(s, part, controller, source, event))
+  if (c.kind === 'HAND_TRASH_SOURCE_HAS_TRAIT') return !!event?.trashSourceDefinitionId && !!s.catalog.definitions.find(d => d.definitionId === event.trashSourceDefinitionId)?.traits.includes(c.trait)
   if (c.kind === 'DON_RETURNED_TOGETHER_AT_LEAST') {
     const causes = s.effects?.donReturnCauses ?? [], cause = event && causes.find(x => x.sequence === event.sequence)
     return !!cause && cause.playerId === controller && causes.filter(x => x.resolutionId === cause.resolutionId && x.playerId === controller).length >= c.minimum
@@ -64,11 +65,22 @@ function condition(s: GameState, c: Condition, controller: string, source?: Effe
   }))
   if (c.kind === 'OWN_CHARACTER_COST_AT_LEAST') return ownCharacterCostAtLeast(s, controller, c.minimum)
   if (c.kind === 'SOURCE_PLAYED_THIS_TURN') { if (source?.kind !== 'CARD') return false; const i = s.instances[source.presence.instanceId]; return !!i && i.zoneGeneration === source.presence.generation && i.playedOnTurn === s.turn }
-  if (c.kind === 'OWN_CHARACTER_COUNT') { const n = recipient(s, controller, 'CONTROLLER').zones.characters.filter(id => (evaluateCharacteristics(s, id).cost.current ?? -1) >= c.minCost).length; return (c.atLeast === undefined || n >= c.atLeast) && (c.atMost === undefined || n <= c.atMost) }
+  if (c.kind === 'OWN_CHARACTER_COUNT') { const n = recipient(s, controller, 'CONTROLLER').zones.characters.filter(id => { const d = s.catalog.definitions.find(x => x.definitionId === s.instances[id].definitionId); return (evaluateCharacteristics(s, id).cost.current ?? -1) >= c.minCost && (!c.traitsAny || !!d?.traits.some(t => c.traitsAny!.includes(t))) && (!c.nameIs || d?.rulesName === c.nameIs) && (c.minBasePower === undefined || (d?.power ?? -1) >= c.minBasePower) && (c.maxBasePower === undefined || (d?.power ?? Infinity) <= c.maxBasePower) }).length; return (c.atLeast === undefined || n >= c.atLeast) && (c.atMost === undefined || n <= c.atMost) }
   if (c.kind === 'OWN_RESTED_CHARACTERS_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.characters.filter(id => s.instances[id].rested).length >= c.minimum
   if (c.kind === 'OWN_CHARACTER_POWER_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.characters.some(id => (evaluateCharacteristics(s, id).power.current ?? -1) >= c.minimum)
   if (c.kind === 'TRASH_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.trash.length >= c.minimum
   if (c.kind === 'DON_DECK_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.donDeck.length >= c.minimum
+  if (c.kind === 'LEADER_HAS_ATTRIBUTE') { const p = recipient(s, controller, 'CONTROLLER'); return !!s.catalog.definitions.find(d => d.definitionId === s.instances[p.zones.leader[0]]?.definitionId)?.attributes.includes(c.attribute) }
+  if (c.kind === 'SOURCE_BATTLED_OPPONENT_CHARACTER_THIS_TURN') {
+    if (source?.kind !== 'CARD') return false
+    const start = s.events.findLastIndex(e => e.type === 'TURN_ENDED') + 1
+    return s.events.slice(start).some(e => e.type === 'CHARACTER_BATTLED' && e.publicInstanceId === source.presence.instanceId && !!e.battled
+      && s.catalog.definitions.find(d => d.definitionId === s.instances[e.battled!.instanceId]?.definitionId)?.category === 'CHARACTER' && s.instances[e.battled!.instanceId]?.owner !== controller)
+  }
+  if (c.kind === 'OWN_RESTED_CARDS_AT_LEAST') { const p = recipient(s, controller, 'CONTROLLER'); return [...p.zones.leader, ...p.zones.characters, ...p.zones.stage, ...p.zones.cost].filter(id => s.instances[id].rested).length >= c.minimum }
+  if (c.kind === 'OPPONENT_RESTED_CHARACTERS_AT_LEAST') return recipient(s, controller, 'OPPONENT').zones.characters.filter(id => s.instances[id].rested).length >= c.minimum
+  if (c.kind === 'DECK_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.deck.length >= c.minimum
+  if (c.kind === 'FIELD_DON_AT_MOST_OPPONENT') { const me = recipient(s, controller, 'CONTROLLER'), foe = recipient(s, controller, 'OPPONENT'); return me.zones.cost.length + me.zones.attached.length <= foe.zones.cost.length + foe.zones.attached.length }
   if (c.kind === 'LEADER_MULTICOLORED') { const p = recipient(s, controller, 'CONTROLLER'); return (s.catalog.definitions.find(d => d.definitionId === s.instances[p.zones.leader[0]]?.definitionId)?.colors.length ?? 0) > 1 }
   if (c.kind === 'FIELD_DON_AT_LEAST') { const p = recipient(s, controller, c.player ?? 'CONTROLLER'); return p.zones.cost.length + p.zones.attached.length >= c.minimum }
   if (c.kind === 'LEADER_TRAIT_INCLUDES') { const p = recipient(s, controller, 'CONTROLLER'); const d = s.catalog.definitions.find(x => x.definitionId === s.instances[p.zones.leader[0]]?.definitionId); return !!d?.traits.some(t => t.includes(c.text)) }
@@ -141,9 +153,12 @@ function execute(s: GameState, spec: OperationSpec, context: EffectContext, sele
       if (spec.primitive === 'setActive' && card.controller !== context.controllerId) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
       const rested = spec.primitive === 'restCard'
       if (card.rested === rested) return
+      // "cannot be rested": the effect does not rest it (FAQ EB02-011).
+      if (rested && restLocked(s, card.id)) return
       card.rested = rested
       recordOperation(s, { id: next(r, s.gameId, 'operation'), resolutionId: context.effectInstanceId, subject: structuredClone(subject), controllerId: context.controllerId, type: 'REST', intent: 'EFFECT', outcome: 'CONFIRMED', ...(rested ? {} : { to: 'active' }) })
       cardEvent(s, rested ? 'CARD_RESTED' : 'CARD_SET_ACTIVE', card.id, context)
+      if (rested) noteRested(s, card.id, context.controllerId)
       return
     }
     // Leaving the field: CR 1.2.1 §6-5-5-4 the DON!! cards given to it are placed rested in their owner's cost area.
@@ -214,14 +229,15 @@ function execute(s: GameState, spec: OperationSpec, context: EffectContext, sele
     if (r.version !== '1.3.0') throw new Error('INCOMPATIBLE_EFFECT_VERSION')
     const card = selected && s.instances[selected.instanceId]
     const definition = card && s.catalog.definitions.find(item => item.definitionId === card.definitionId)
-    if (!selected || !card || !definition || card.owner !== context.controllerId || card.zone !== spec.from || card.zoneGeneration !== selected.generation
+    if (!selected || !card || !definition || card.owner !== context.controllerId || !(spec.from === 'handOrTrash' ? ['hand', 'trash'].includes(card.zone) : card.zone === spec.from) || card.zoneGeneration !== selected.generation
       || !['CHARACTER', 'STAGE'].includes(definition.category)) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
     const to = definition.category === 'CHARACTER' ? 'characters' : 'stage'
     makeRoom(s, context, to, spec.replaceBinding)
     if (!processOperation(s, { id: next(r, s.gameId, 'operation'), resolutionId: context.effectInstanceId, subject: structuredClone(selected), controllerId: context.controllerId,
-      type: 'MOVE_CARD', intent: 'EFFECT', outcome: 'CONFIRMED', from: spec.from, to })) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
+      type: 'MOVE_CARD', intent: 'EFFECT', outcome: 'CONFIRMED', from: card.zone as 'hand' | 'deck' | 'trash' | 'life', to })) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
     card.playedOnTurn = s.turn
     if (spec.rested) card.rested = true
+    if (spec.from === 'life') s.events.push({ sequence: s.events.length, type: 'LIFE_PLAYED', actorId: context.controllerId })
     s.events.push({ sequence: s.events.length, type: 'CARD_PLAYED', actorId: context.controllerId, publicInstanceId: card.id })
     return
   }
@@ -262,7 +278,9 @@ function execute(s: GameState, spec: OperationSpec, context: EffectContext, sele
   }
   if (spec.primitive === 'drawCards') {
     const p = recipient(s, context.controllerId, spec.player)
-    const moved = p.zones.deck.splice(0, spec.amount)
+    const q = r.scheduler, cause = spec.amountFromTrigger && q?.resolvingId ? q.batches.flatMap(b => b.triggers).find(t => t.id === q.resolvingId)?.causeId : undefined
+    if (spec.amountFromTrigger && !cause) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
+    const moved = p.zones.deck.splice(0, spec.amountFromTrigger ? (r.handTrashes ?? []).filter(h => h.group === cause && h.playerId === p.id).length : spec.amount)
     for (const id of moved) { p.zones.hand.push(id); s.instances[id].zone = 'hand'; s.instances[id].zoneGeneration++; s.instances[id].faceUp = false }
     if (moved.length) s.events.push({ sequence: s.events.length, type: 'DRAWN', actorId: p.id })
     return
@@ -274,6 +292,7 @@ function execute(s: GameState, spec: OperationSpec, context: EffectContext, sele
     const p = recipient(s, context.controllerId, spec.player)
     if (!card || card.kind !== 'CARD' || card.owner !== p.id || card.zone !== spec.from || card.zoneGeneration !== target.generation || !p.zones[spec.from].includes(card.id)) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
     const moved = processOperation(s, { id:next(r,s.gameId,'operation'), resolutionId:context.effectInstanceId, subject:structuredClone(target), controllerId:context.controllerId, type:'MOVE_CARD', intent:'EFFECT', outcome:'CONFIRMED', from:spec.from, to:spec.to })
+    if (moved && spec.from === 'hand' && spec.to === 'trash') noteHandTrashed(s, p.id, `${context.effectInstanceId}:pc:${r.continuation!.pc}`, context)
     if (moved && spec.deckPosition === 'TOP') { p.zones.deck.splice(p.zones.deck.indexOf(card.id), 1); p.zones.deck.unshift(card.id) }
     if (moved && spec.audience === 'PUBLIC') s.events.push({sequence:s.events.length,type:'CARD_MOVED',actorId:p.id,publicInstanceId:card.id})
     return
@@ -306,11 +325,57 @@ function execute(s: GameState, spec: OperationSpec, context: EffectContext, sele
   }
   if (spec.primitive === 'setBasePower') {
     const card = selected && s.instances[selected.instanceId]
-    if (r.version !== '1.3.0' || !selected || !card || card.zoneGeneration !== selected.generation || card.controller !== context.controllerId || !['leader', 'characters'].includes(card.zone) || context.source.kind !== 'CARD') throw new Error('EFFECT_OPERATION_UNAVAILABLE')
-    // Until the end of the opponent's next End Phase: through to the start of the controller's next turn.
-    const player = s.players.find(p => p.id === context.controllerId)!
+    if (r.version !== '1.3.0' || !selected || !card || card.zoneGeneration !== selected.generation || card.controller !== recipient(s, context.controllerId, spec.player ?? 'CONTROLLER').id || !['leader', 'characters'].includes(card.zone) || context.source.kind !== 'CARD') throw new Error('EFFECT_OPERATION_UNAVAILABLE')
+    // Until the end of the opponent's next End Phase: through to the start of the controller's next turn. This turn: until the
+    // next player's turn starts.
+    const player = spec.duration === 'THIS_TURN' ? s.players.find(p => p.id !== s.activePlayerId)! : s.players.find(p => p.id === context.controllerId)!
     ;(r.basePowerModifiers ?? (r.basePowerModifiers = [])).push({ id: next(r, s.gameId, 'base-power'), subject: structuredClone(selected), source: structuredClone(context.source), value: spec.value, expiresForPlayerId: player.id, expiresAtPlayerTurn: player.turns + 1 })
     cardEvent(s, 'POWER_MODIFIER_CREATED', card.id, context)
+    return
+  }
+  if (spec.primitive === 'revealDeckTopMatch') {
+    if (r.version !== '1.3.0') throw new Error('INCOMPATIBLE_EFFECT_VERSION')
+    const c = r.continuation!, p = recipient(s, context.controllerId, spec.player), top = p.zones.deck[0]
+    c.bindings[spec.resultBinding] = []
+    if (!top) return
+    const card = s.instances[top], d = s.catalog.definitions.find(x => x.definitionId === card.definitionId)!
+    s.events.push({ sequence: s.events.length, type: 'CARD_REVEALED', actorId: p.id, revealedCard: { definitionId: d.definitionId, printingKey: card.printingKey! } })
+    if (spec.traitIncludesAny.some(t => d.traits.some(x => x.includes(t))) && context.source.kind === 'CARD') c.bindings[spec.resultBinding] = [structuredClone(context.source.presence)]
+    return
+  }
+  if (spec.primitive === 'revealDeckTopCostMatch') {
+    if (r.version !== '1.3.0') throw new Error('INCOMPATIBLE_EFFECT_VERSION')
+    const c = r.continuation!, p = recipient(s, context.controllerId, spec.player), top = p.zones.deck[0]
+    const chosen = Array.from({ length: 11 }, (_, k) => k).find(k => c.bindings[`${spec.modeBinding}.${k}`]?.length)
+    if (chosen === undefined) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
+    c.bindings[spec.resultBinding] = []
+    if (!top) return
+    const card = s.instances[top], d = s.catalog.definitions.find(x => x.definitionId === card.definitionId)!
+    s.events.push({ sequence: s.events.length, type: 'CARD_REVEALED', actorId: p.id, revealedCard: { definitionId: d.definitionId, printingKey: card.printingKey! } })
+    if (d.cost === chosen && context.source.kind === 'CARD') c.bindings[spec.resultBinding] = [structuredClone(context.source.presence)]
+    return
+  }
+  if (spec.primitive === 'negateOnPlay') {
+    if (r.version !== '1.3.0') throw new Error('INCOMPATIBLE_EFFECT_VERSION')
+    ;(r.onPlayNegations ?? (r.onPlayNegations = [])).push({ id: next(r, s.gameId, 'on-play-negation'), playerId: recipient(s, context.controllerId, 'OPPONENT').id, untilTurn: untilEndOfOpponentNextTurn(s, context.controllerId) })
+    return
+  }
+  if (spec.primitive === 'turnLifeFaceDown') {
+    const card = selected && s.instances[selected.instanceId]
+    if (r.version !== '1.3.0' || !selected || !card || card.zoneGeneration !== selected.generation || card.zone !== 'life' || card.owner !== context.controllerId || !card.faceUp) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
+    card.faceUp = false
+    return
+  }
+  if (spec.primitive === 'preventRest') {
+    const card = selected && s.instances[selected.instanceId]
+    if (r.version !== '1.3.0' || !selected || !card || card.zoneGeneration !== selected.generation || card.zone !== 'characters') throw new Error('EFFECT_OPERATION_UNAVAILABLE')
+    ;(r.restLocks ?? (r.restLocks = [])).push({ id: next(r, s.gameId, 'rest-lock'), subject: structuredClone(selected), untilTurn: untilEndOfOpponentNextTurn(s, context.controllerId) })
+    return
+  }
+  if (spec.primitive === 'limitAttackTargets') {
+    const source = context.source.kind === 'CARD' ? context.source.presence : undefined, card = source && s.instances[source.instanceId]
+    if (r.version !== '1.3.0' || !source || !card || card.zoneGeneration !== source.generation || !['leader', 'characters'].includes(card.zone)) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
+    ;(r.attackTargetLimits ?? (r.attackTargetLimits = [])).push({ id: next(r, s.gameId, 'attack-limit'), subject: structuredClone(source), maxBaseCost: spec.maxBaseCost, turnId: s.turn })
     return
   }
   if (spec.primitive === 'lockRefresh') {
@@ -322,8 +387,8 @@ function execute(s: GameState, spec: OperationSpec, context: EffectContext, sele
   }
   if (spec.primitive === 'scheduleEndOfTurn') {
     const d = r.registry.definitions.find(x => x.id === spec.definitionId), card = context.source.kind === 'CARD' ? s.instances[context.source.presence.instanceId] : undefined
-    if (r.version !== '1.3.0' || !d || d.timing !== 'END_OF_YOUR_TURN' || d.source.kind !== 'CARD_DEFINITION' || d.source.zone !== 'trash' || context.source.kind !== 'CARD' || d.source.definitionId !== context.source.definitionId
-      || !card || card.zone !== 'trash' || s.activePlayerId !== context.controllerId) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
+    if (r.version !== '1.3.0' || !d || d.timing !== 'END_OF_YOUR_TURN' || d.source.kind !== 'CARD_DEFINITION' || d.source.zone !== 'delayed' || context.source.kind !== 'CARD' || d.source.definitionId !== context.source.definitionId
+      || !card || s.activePlayerId !== context.controllerId) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
     ;(r.delayedTriggers ?? (r.delayedTriggers = [])).push({ id: next(r, s.gameId, 'delayed'), definitionId: d.id, subject: { instanceId: card.id, generation: card.zoneGeneration }, controllerId: context.controllerId, turnId: s.turn })
     return
   }
@@ -467,12 +532,20 @@ function executeLife(s: GameState, spec: Extract<OperationSpec, { primitive: 'li
     // "You cannot add Life cards to your hand using your own effects during this turn": nothing happens (FAQ OP02-001/023).
     if (card.owner === context.controllerId && lifeToHandLocked(s, context.controllerId)) return
     if (card.zone !== 'life' || card.owner !== context.controllerId || (owner.zones.life[0] !== card.id && owner.zones.life.at(-1) !== card.id)) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
+    // A face-up Life card goes to the bottom of the deck instead (Leader Life rule): it is not added to the hand, so a cost
+    // "add 1 Life card to your hand:" is not paid (FAQ ST13-003 with ST13-012).
+    if (card.faceUp && faceUpLifeToDeckBottom(s, owner.id)) {
+      lifeToDeckBottom(s, owner.id, card.id)
+      const b = r.continuation!.bindings[spec.subjectBinding]; if (b) r.continuation!.bindings[spec.subjectBinding] = b.filter(ref => ref.instanceId !== card.id)
+      return
+    }
     if (!processOperation(s, { id: next(r, s.gameId, 'operation'), resolutionId: context.effectInstanceId, subject: structuredClone(selected), controllerId: context.controllerId, type: 'MOVE_CARD', intent: 'EFFECT', outcome: 'CONFIRMED', from: 'life', to: 'hand' })) return
     s.events.push({ sequence: s.events.length, type: 'LIFE_TO_HAND', actorId: owner.id })
     return
   }
   const side = spec.side ?? 'OWN'
-  if (card.zone !== spec.from || (spec.from !== 'characters' && (card.owner !== context.controllerId || side !== 'OWN')) || (spec.from === 'characters' && (card.controller === context.controllerId) !== (side === 'OWN'))) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
+  const from = spec.from === 'handOrTrash' ? card.zone as 'hand' | 'trash' : spec.from
+  if (!(spec.from === 'handOrTrash' ? ['hand', 'trash'].includes(card.zone) : card.zone === spec.from) || (spec.from !== 'characters' && (card.owner !== context.controllerId || side !== 'OWN')) || (spec.from === 'characters' && (card.controller === context.controllerId) !== (side === 'OWN'))) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
   if (spec.from === 'characters') {
     // Leaving the field: CR 1.2.1 §6-5-5-4 the DON!! cards given to it are placed rested in their owner's cost area.
     const controller = s.players.find(p => p.id === card.controller)!
@@ -482,7 +555,7 @@ function executeLife(s: GameState, spec: Extract<OperationSpec, { primitive: 'li
       recordOperation(s, { id: next(r, s.gameId, 'operation'), resolutionId: context.effectInstanceId, subject: { instanceId: id, generation: don.zoneGeneration - 1 }, controllerId: context.controllerId, type: 'MOVE_DON', intent: 'RULE', outcome: 'CONFIRMED', from: 'attached', to: 'cost' })
     }
   }
-  if (!processOperation(s, { id: next(r, s.gameId, 'operation'), resolutionId: context.effectInstanceId, subject: structuredClone(selected), controllerId: context.controllerId, type: 'MOVE_CARD', intent: 'EFFECT', outcome: 'CONFIRMED', from: spec.from, to: 'life' })) return
+  if (!processOperation(s, { id: next(r, s.gameId, 'operation'), resolutionId: context.effectInstanceId, subject: structuredClone(selected), controllerId: context.controllerId, type: 'MOVE_CARD', intent: 'EFFECT', outcome: 'CONFIRMED', from, to: 'life' })) return
   // processOperation appends (the bottom of the Life area); "to the top" unless the bottom was chosen.
   if (!(spec.bottomBinding && r.continuation!.bindings[spec.bottomBinding]?.length)) { owner.zones.life.pop(); owner.zones.life.unshift(card.id) }
   card.faceUp = spec.faceUp
@@ -536,9 +609,12 @@ function resume(s: GameState) {
         return !!definition && (step.trait===undefined || definition.traits.includes(step.trait))
           // traitsAny and traitIncludesAny are alternatives ("{X} type card or card with a type including \"Y\"").
           // traitsAny, traitIncludesAny and namesAny are alternatives ("[Sanji] or {Big Mom Pirates} type card").
-          && ((step.traitsAny===undefined && step.traitIncludesAny===undefined && step.namesAny===undefined) || !!step.traitsAny?.some(t=>definition.traits.includes(t)) || !!step.traitIncludesAny?.some(t=>definition.traits.some(x=>x.includes(t))) || !!step.namesAny?.includes(definition.rulesName))
+          && ((step.traitsAny===undefined && step.traitIncludesAny===undefined && step.namesAny===undefined && step.attributesAny===undefined && step.eventColorsAny===undefined) || !!step.traitsAny?.some(t=>definition.traits.includes(t)) || !!step.traitIncludesAny?.some(t=>definition.traits.some(x=>x.includes(t))) || !!step.namesAny?.includes(definition.rulesName)
+            || !!step.attributesAny?.some(a=>definition.attributes.includes(a)) || (definition.category==='EVENT' && !!step.eventColorsAny?.some(c=>definition.colors.includes(c))))
           && (step.colorsAny===undefined || step.colorsAny.some(c=>definition.colors.includes(c)))
           && (step.minCost===undefined || (definition.cost!==null && definition.cost>=step.minCost))
+          && (step.maxCost===undefined || (definition.cost!==null && definition.cost<=step.maxCost))
+          && (step.minPower===undefined || (definition.power!==null && definition.power>=step.minPower)) && (step.maxPower===undefined || (definition.power!==null && definition.power<=step.maxPower))
           && (step.category===undefined || definition.category===step.category)
           && (step.excludeRulesName===undefined || definition.rulesName!==step.excludeRulesName)
       })
@@ -575,13 +651,14 @@ function resume(s: GameState) {
       }
       const chooserId = step.chooser === 'OPPONENT' ? s.players.find(p => p.id !== c.context.controllerId)!.id : c.context.controllerId
       r.choice = { id: next(r, s.gameId, 'choice'), actorId: chooserId, expectedVersion: s.version + 1, choiceType: 'SELECT', optional: false, min: 1, max: 1, visibility: 'PUBLIC',
-        options: [], continuationId: c.id, context: structuredClone(c.context), bind: step.bind, modes: step.modes }
+        options: [], continuationId: c.id, context: structuredClone(c.context), bind: step.bind, modes: step.modes, ...(step.chooseValue ? { modeValue: step.chooseValue } : {}) }
       active.status = 'SUSPENDED'; return
     }
     if (step.kind === 'CHECK') {
       c.bindings[step.bind] = condition(s, step.condition, c.context.controllerId, c.context.source) && c.context.source.kind === 'CARD' ? [structuredClone(c.context.source.presence)] : []
       c.pc++; continue
     }
+    if (step.kind === 'UNION') { c.bindings[step.bind] = step.from.flatMap(b => c.bindings[b] ?? []).map(ref => structuredClone(ref)); c.pc++; continue }
     if (step.kind === 'BIND_ALL') {
       c.bindings[step.bind] = select(s, c.context.controllerId, step.selector, c.context.source).map(id => ({ instanceId: id, generation: s.instances[id].zoneGeneration }))
       c.pc++; continue
@@ -620,12 +697,16 @@ function answerSearchChoice(s: GameState, tokens: string[]) {
     const chosenIds=new Set(selected.map(ref=>ref.instanceId))
     flow.remainder = flow.topCards.filter(ref => !chosenIds.has(ref.instanceId))
     c.bindings[flow.bind] = selected.map(ref=>({instanceId:ref.instanceId,generation:ref.generation+1}))
+    const searchStep = r.registry.definitions.find(d => d.id === c.definitionId && d.revision === c.definitionRevision)!.program[c.pc]
+    const toLife = searchStep.kind === 'SEARCH_TOP_DECK' && searchStep.destination === 'LIFE_TOP_FACE_UP'
     for(const chosen of selected) {
       const player = s.players.find(p => p.id === c.context.controllerId)!, card = s.instances[chosen.instanceId]
       if (card.zone !== 'deck' || card.zoneGeneration !== chosen.generation) throw new Error('INVALID_CHOICE_RESPONSE')
-      player.zones.deck.splice(player.zones.deck.indexOf(card.id), 1); player.zones.hand.push(card.id)
-      card.zone = 'hand'; card.zoneGeneration++; card.faceUp = false
       s.events.push({ sequence: s.events.length, type: 'CARD_REVEALED', actorId: c.context.controllerId, revealedCard: { definitionId: card.definitionId!, printingKey: card.printingKey! } })
+      player.zones.deck.splice(player.zones.deck.indexOf(card.id), 1)
+      // "add ... to the top of your Life cards face-up" (ST13-002).
+      if (toLife) { player.zones.life.unshift(card.id); card.zone = 'life'; card.zoneGeneration++; card.faceUp = true; s.events.push({ sequence: s.events.length, type: 'LIFE_ADDED', actorId: player.id, publicInstanceId: card.id }) }
+      else { player.zones.hand.push(card.id); card.zone = 'hand'; card.zoneGeneration++; card.faceUp = false }
     }
     const step = r.registry.definitions.find(d => d.id === c.definitionId && d.revision === c.definitionRevision)!.program[c.pc]
     if (step.kind === 'SEARCH_TOP_DECK' && step.remainder === 'TRASH') {
@@ -758,7 +839,7 @@ export function assertEffectState(s: GameState): void {
     for (const d of r.registry.definitions) {
       const source = d.source
       const definition = source.kind === 'CARD_DEFINITION' && s.catalog.definitions.find(c => c.definitionId === source.definitionId)
-      if (!definition || source.kind !== 'CARD_DEFINITION' || (source.zone === 'temporary' ? definition.category === 'DON' : source.zone === 'trash' ? ['DON', 'LEADER'].includes(definition.category) : source.zone === 'hand' ? definition.category !== 'EVENT' : definition.category !== ({ leader: 'LEADER', characters: 'CHARACTER', stage: 'STAGE' }[source.zone]))) throw new Error('INVALID_CARD_PROGRAM_SOURCE')
+      if (!definition || source.kind !== 'CARD_DEFINITION' || (source.zone === 'temporary' ? definition.category === 'DON' : (source.zone === 'trash' || source.zone === 'delayed') ? ['DON', 'LEADER'].includes(definition.category) : source.zone === 'hand' ? definition.category !== 'EVENT' : definition.category !== ({ leader: 'LEADER', characters: 'CHARACTER', stage: 'STAGE' }[source.zone]))) throw new Error('INVALID_CARD_PROGRAM_SOURCE')
     }
     if ([...r.registry.continuous ?? [], ...r.registry.cardReplacements ?? []].some(d => s.catalog.definitions.find(c => c.definitionId === d.definitionId)?.category !== ({ leader: 'LEADER', stage: 'STAGE', characters: 'CHARACTER', hand: 'CHARACTER' } as Record<string, string>)[d.zone])) throw new Error('INVALID_CONTINUOUS_SOURCE')
   }
@@ -788,7 +869,7 @@ export function assertEffectState(s: GameState): void {
   const a = r.active, source = a.context.source
   if (source.kind === 'CARD') {
     const i = s.instances[source.presence.instanceId]
-    if (!i || i.definitionId !== source.definitionId || i.controller !== a.context.controllerId || (a.status === 'SUSPENDED' && i.zoneGeneration !== source.presence.generation && !validActivatedKO(s, source) && !validActivatedMainEvent(s, source, a.context.effectInstanceId) && !validSelfReturnedSource(s, source, a.context.effectInstanceId))) throw new Error('INVALID_CARD_EFFECT_SOURCE')
+    if (!i || i.definitionId !== source.definitionId || i.controller !== a.context.controllerId || (a.status === 'SUSPENDED' && i.zoneGeneration !== source.presence.generation && !validActivatedKO(s, source) && !validActivatedMainEvent(s, source, a.context.effectInstanceId) && !validSelfReturnedSource(s, source, a.context.effectInstanceId) && !validDelayedSource(s, a.definitionId, source))) throw new Error('INVALID_CARD_EFFECT_SOURCE')
   }
   const d = r.registry.definitions.find(d => d.id === a.definitionId && d.revision === a.revision)
   if (!d || !ids.includes(a.context.controllerId) || a.context.effectInstanceId !== a.id || !matchesSource(d, a.context.source)) throw new Error('INVALID_EFFECT_STATE')
@@ -815,7 +896,7 @@ export function assertEffectState(s: GameState): void {
     return
   }
   if (step.kind === 'MODE') {
-    if (choice.modes !== step.modes || choice.bind !== step.bind || choice.options.length || choice.min !== 1 || choice.max !== 1 || choice.optional || choice.visibility !== 'PUBLIC' || choice.choiceType !== 'SELECT') throw new Error('INVALID_EFFECT_CHOICE')
+    if (choice.modes !== step.modes || (choice.modeValue ?? null) !== (step.chooseValue ?? null) || choice.bind !== step.bind || choice.options.length || choice.min !== 1 || choice.max !== 1 || choice.optional || choice.visibility !== 'PUBLIC' || choice.choiceType !== 'SELECT') throw new Error('INVALID_EFFECT_CHOICE')
     return
   }
   if (choice.modes !== undefined || (choice.reveal ?? null) !== (step.kind === 'CHOICE' ? step.reveal ?? null : null) || (choice.conceal ?? null) !== (step.kind === 'CHOICE' ? step.conceal ?? null : null)) throw new Error('INVALID_EFFECT_CHOICE')
@@ -840,7 +921,7 @@ function visibleOption(s: GameState, o: { token: string; presence: { instanceId:
 const modeTokens = (c: NonNullable<EffectRuntime['choice']>) => Array.from({ length: c.modes ?? 0 }, (_, index) => `${c.id}:mode:${index}`)
 /** The options the chooser sees: modes, or cards (a peek reveals hidden cards to the chooser only). */
 function choiceOptions(s: GameState, c: NonNullable<EffectRuntime['choice']>, viewerId: string | null) {
-  if (c.modes !== undefined) return modeTokens(c).map((token, index) => ({ token, slot: { kind: 'MODE' as const, index } }))
+  if (c.modes !== undefined) return modeTokens(c).map((token, index) => ({ token, slot: { kind: 'MODE' as const, index, ...(c.modeValue ? { value: c.modeValue } : {}) } }))
   return c.options.map(o => visibleOption(s, o, viewerId, c.reveal === 'CHOOSER' && viewerId === c.actorId, c.conceal === true))
 }
 export function projectEffects(s: GameState, viewerId: string | null) {
@@ -875,19 +956,22 @@ function select(s: GameState, actor: string, selector: import('./contracts').Sel
   if (selector.kind === 'OPPONENT_TOP_LIFE') return s.players.find(q => q.id !== actor)!.zones.life.slice(0, 1)
   if (selector.kind === 'CARDS') {
     const owners = selector.side === 'OWN' ? [p] : selector.side === 'OPPONENT' ? s.players.filter(q => q.id !== actor) : [p, ...s.players.filter(q => q.id !== actor)]
-    const ids = owners.flatMap(q => selector.zone === 'leader' ? q.zones.leader : selector.zone === 'leaderOrCharacters' ? [...q.zones.leader, ...q.zones.characters] : selector.zone === 'fieldDon' ? [...q.zones.cost, ...q.zones.attached] : selector.zone === 'givenDon' ? q.zones.attached : selector.topN ? q.zones.deck.slice(0, selector.topN)
+    const ids = owners.flatMap(q => selector.zone === 'leader' ? q.zones.leader : selector.zone === 'leaderOrCharacters' ? [...q.zones.leader, ...q.zones.characters] : selector.zone === 'fieldDon' ? [...q.zones.cost, ...q.zones.attached] : selector.zone === 'givenDon' ? q.zones.attached : selector.zone === 'handOrTrash' ? [...q.zones.hand, ...q.zones.trash] : selector.topN ? q.zones.deck.slice(0, selector.topN)
       : selector.zone === 'life' ? selector.lifeEnd === 'ALL' ? [...q.zones.life] : [...new Set(selector.lifeEnd === 'TOP_OR_BOTTOM' ? [q.zones.life[0], q.zones.life.at(-1)] : [q.zones.life[0]])].filter((id): id is string => !!id) : q.zones[selector.zone])
     return ids.filter(id => {
       const i = s.instances[id]
       if (selector.excludeSource && source?.kind === 'CARD' && id === source.presence.instanceId) return false
       if (selector.rested !== undefined && i.rested !== selector.rested) return false
+      // An active card chosen to be rested ("you may rest ..."): not one that cannot be rested (FAQ EB02-011).
+      if (selector.rested === false && restLocked(s, id)) return false
       if (selector.zone === 'cost' || selector.zone === 'fieldDon' || selector.zone === 'givenDon') return i.kind === 'DON'
       const definition = s.catalog.definitions.find(d => d.definitionId === i.definitionId)
       if (!definition) return false
       if (selector.categories && !selector.categories.includes(definition.category as 'CHARACTER' | 'EVENT' | 'STAGE')) return false
-      const traitOk = !selector.traitsAny || selector.traitsAny.some(t => definition.traits.includes(t)), attributeOk = !selector.attributesAny || selector.attributesAny.some(a => definition.attributes.includes(a))
+      const traitOk = !selector.traitsAny || selector.traitsAny.some(t => definition.traits.includes(t)), attributeOk = !selector.attributesAny || selector.attributesAny.some(a => definition.attributes.includes(a)) || !!selector.orNamesAny?.includes(definition.rulesName)
       if (selector.traitOrAttribute ? !traitOk && !attributeOk : !traitOk || !attributeOk) return false
       if (selector.inBinding && !(s.effects?.continuation?.bindings[selector.inBinding] ?? []).some(ref => ref.instanceId === id && ref.generation === i.zoneGeneration)) return false
+      if (selector.excludeBinding && (s.effects?.continuation?.bindings[selector.excludeBinding] ?? []).some(ref => ref.instanceId === id)) return false
       if (selector.colorsAny && !selector.colorsAny.some(color => definition.colors.includes(color))) return false
       if (selector.battledWithSource && !battledWith(s, source, i)) return false
       if (selector.nameIs && definition.rulesName !== selector.nameIs) return false
@@ -902,7 +986,8 @@ function select(s: GameState, actor: string, selector: import('./contracts').Sel
       const onField = ['leader', 'characters', 'stage'].includes(i.zone)
       const cost = onField && selector.costBasis !== 'BASE' ? evaluateCharacteristics(s, id).cost.current : definition.cost
       // "a cost equal to or less than the number of your (opponent's) Life cards", counted when the choice is made.
-      const lifeCap = selector.maxCostFromLife ? (selector.maxCostFromLife === 'OWN' ? p : s.players.find(q => q.id !== actor)!).zones.life.length : undefined
+      const foeDon = selector.maxCostFromFieldDon ? s.players.find(q => q.id !== (source?.kind === 'CARD' ? s.instances[source.presence.instanceId].controller : actor))! : undefined
+      const lifeCap = selector.maxCostFromLife === 'TOTAL' ? s.players.reduce((n, q) => n + q.zones.life.length, 0) : selector.maxCostFromLife ? (selector.maxCostFromLife === 'OWN' ? p : s.players.find(q => q.id !== actor)!).zones.life.length : foeDon ? foeDon.zones.cost.length + foeDon.zones.attached.length : undefined
       if ((selector.maxCost !== undefined || selector.minCost !== undefined || lifeCap !== undefined) && cost === null) return false
       if (lifeCap !== undefined && cost! > lifeCap) return false
       if (selector.maxCost !== undefined && cost! > selector.maxCost) return false
@@ -954,7 +1039,7 @@ function payable(s: GameState, d: import('./contracts').EffectDefinition, source
     }
     return true
   }
-  return d.cost.kind === 'NONE' || (d.cost.kind === 'REST_SOURCE' && source.kind === 'CARD' && !s.instances[source.presence.instanceId]?.rested)
+  return d.cost.kind === 'NONE' || (d.cost.kind === 'REST_SOURCE' && source.kind === 'CARD' && !s.instances[source.presence.instanceId]?.rested && !restLocked(s, source.presence.instanceId))
 }
 function actionId(d: import('./contracts').EffectDefinition, source: EffectContext['source']): string {
   return source.kind === 'CARD' ? `${d.id}:${source.presence.instanceId}:${source.presence.generation}` : d.id
@@ -969,6 +1054,8 @@ function begin(s: GameState, d: import('./contracts').EffectDefinition, source: 
   if (r.version === '1.2.0' || r.version === '1.3.0') {
     const payment = payCosts(s, d.cost, context, costDonIds)
     if (payment === 'INITIAL_UNPAYABLE') throw new Error('INVALID_ACTIVATION_COST')
+    // Cards rested by the activation cost are rested by this effect (CR 1.2.1 §8-3-1).
+    if (payment === 'PAID') for (const opId of r.payments!.at(-1)!.paidOperationIds) { const o = r.operations!.find(x => x.id === opId); if (o?.type === 'REST' && s.instances[o.subject.instanceId]?.zone === 'characters') noteRested(s, o.subject.instanceId, actor) }
     if (payment === 'INTERRUPTED') {
       if (d.usage.kind === 'ONCE_PER_TURN') r.usage[usageKey(d.id, d.revision, source, actor, s.turn)] = 1
       r.active = { id: effectInstanceId, definitionId: d.id, revision: d.revision, context, status: 'COMPLETED' }; r.continuation = null; return
@@ -976,6 +1063,8 @@ function begin(s: GameState, d: import('./contracts').EffectDefinition, source: 
   } else if (d.cost.kind === 'REST_SOURCE') {
     if (source.kind !== 'CARD' || !payable(s, d, source)) throw new Error('INVALID_ACTIVATION_COST')
     s.instances[source.presence.instanceId].rested = true; cardEvent(s, 'SOURCE_RESTED', source.presence.instanceId, context)
+    // An activation cost is part of the effect (CR 1.2.1 §8-3-1): the card is rested by its controller's effect.
+    noteRested(s, source.presence.instanceId, context.controllerId)
   }
   const sourceInstance = source.kind === 'CARD' ? s.instances[source.presence.instanceId] : undefined
   const sourceDefinition = source.kind === 'CARD' ? s.catalog.definitions.find(item=>item.definitionId===source.definitionId) : undefined
@@ -1059,6 +1148,8 @@ export function capturePlayedEffects(s: GameState, events: GameState['events']):
   const eligible = events.filter(e => ['CARD_PLAYED', 'ATTACK_DECLARED', 'BLOCKER_ACTIVATED', 'TRIGGER_ACTIVATED', 'CHARACTER_BATTLED', 'BATTLE_PAIRED'].includes(e.type) && e.publicInstanceId).flatMap(e => {
     const i = s.instances[e.publicInstanceId!]
     const timing = e.type === 'CARD_PLAYED' ? 'ON_PLAY' : e.type === 'ATTACK_DECLARED' ? 'WHEN_ATTACKING' : e.type === 'BLOCKER_ACTIVATED' ? 'ON_BLOCK' : e.type === 'CHARACTER_BATTLED' ? 'END_OF_BATTLE_WITH_CHARACTER' : e.type === 'BATTLE_PAIRED' ? 'ON_BATTLE_PAIRED' : 'TRIGGER'
+    // [On Play] effects of a player whose [On Play] effects are negated are not activated (FAQ OP09-081).
+    if (timing === 'ON_PLAY' && onPlayNegated(s, i.controller)) return []
     return r.registry.definitions.filter(d => d.timing === timing || ((timing === 'WHEN_ATTACKING' || timing === 'ON_BLOCK') && d.timing === 'WHEN_ATTACKING_OR_ON_BLOCK')).flatMap(d => sources(s, d, i.controller)
       .filter(source => source.kind === 'CARD' && source.presence.instanceId === i.id)
       .map(source => ({ d, source, actor: i.controller, sequence: e.sequence })))
@@ -1163,7 +1254,11 @@ export function protectedFromKO(s: GameState, ref: { instanceId: string; generat
   const p = s.players.find(x => x.id === i.controller)!
   const attackerIsLeader = !!attackerId && s.instances[attackerId]?.zone === 'leader'
   const attached = p.zones.attached.filter(id => s.instances[id].attachedTo === i.id).length
-  return !!r.registry.koProtections?.some(k => k.definitionId === i.definitionId && k.from === from && i.zone === k.zone && (k.minimumFieldDon === undefined || p.zones.cost.length + p.zones.attached.length >= k.minimumFieldDon)
+  // Auras of the controller's Characters on the field ("your Characters with a cost of N or less other than [Name]").
+  if (i.zone === 'characters' && r.registry.koProtections?.some(k => k.aura && k.from === from && (!k.opponentEffectsOnly || (effectControllerId !== undefined && effectControllerId !== i.controller))
+    && p.zones.characters.some(id => s.instances[id].definitionId === k.definitionId) && (k.minimumOwnCharacters === undefined || p.zones.characters.length >= k.minimumOwnCharacters)
+    && s.catalog.definitions.find(d => d.definitionId === i.definitionId)?.rulesName !== k.aura.nameNot && (evaluateCharacteristics(s, i.id).cost.current ?? 99) <= k.aura.maxCost)) return true
+  return !!r.registry.koProtections?.some(k => !k.aura && k.definitionId === i.definitionId && k.from === from && i.zone === k.zone && (k.minimumFieldDon === undefined || p.zones.cost.length + p.zones.attached.length >= k.minimumFieldDon)
     && (!k.byLeaders || attackerIsLeader) && (k.minimumAttachedDon === undefined || attached >= k.minimumAttachedDon) && (k.maximumOwnLife === undefined || p.zones.life.length <= k.maximumOwnLife)
     && (!k.opponentEffectsOnly || (effectControllerId !== undefined && effectControllerId !== i.controller))
     && (k.whenOwnCharacterNamed === undefined || p.zones.characters.some(id => id !== i.id && k.whenOwnCharacterNamed!.includes(s.catalog.definitions.find(x => x.definitionId === s.instances[id].definitionId)?.rulesName ?? '')))
@@ -1230,6 +1325,8 @@ function guardCovers(s: GameState, rule: GuardRule, i: GameState['instances'][st
   if (p.self) return i.definitionId === rule.definitionId
   if (p.traitsAny && !p.traitsAny.some(t => d.traits.includes(t))) return false
   if (p.attributesAny && !p.attributesAny.some(a => d.attributes.includes(a))) return false
+  if (p.minBasePower !== undefined && (d.power ?? -1) < p.minBasePower) return false
+  if (p.maxBasePower !== undefined && (d.power ?? Infinity) > p.maxBasePower) return false
   return p.maxCost === undefined || (evaluateCharacteristics(s, i.id).cost.current ?? 99) <= p.maxCost
 }
 /** M6: a GUARD replacement for `ref` K.O.'d in battle ("If this Character would be K.O.'d"), or null. */
@@ -1264,13 +1361,101 @@ export function applyBattleGuard(s: GameState, pending: NonNullable<NonNullable<
   } else if (rule.action === 'TRASH_HAND') {
     p.zones.hand.splice(p.zones.hand.indexOf(card.id), 1); p.zones.trash.push(card.id); card.zone = 'trash'; card.zoneGeneration++; card.faceUp = true; card.rested = false
     s.events.push({ sequence: s.events.length, type: 'CARD_TRASHED', actorId: p.id, publicInstanceId: card.id })
-  } else if (rule.action === 'REST_SOURCE') card.rested = true
+  } else if (rule.action === 'REST_SOURCE') { card.rested = true; noteRested(s, card.id, p.id) }
+  else if (rule.action === 'TRASH_SOURCE' || rule.action === 'TRASH_SOURCE_DRAW') { trashFromField(s, card.id, context); if (rule.action === 'TRASH_SOURCE_DRAW') drawFor(s, p.id, 1) }
+  else if (rule.action === 'POWER_SOURCE_THIS_TURN') (r.powerModifiers ?? (r.powerModifiers = [])).push({ id: next(r, s.gameId, 'modifier'), subject: structuredClone(chosen), source: guardSource, amount: rule.amount!, turnId: s.turn })
   else (r.powerModifiers ?? (r.powerModifiers = [])).push({ id: next(r, s.gameId, 'modifier'), subject: structuredClone(subject), source: guardSource, amount: rule.amount!, turnId: s.turn })
   ;(r.cardOperations ?? (r.cardOperations = [])).push({ id: next(r, s.gameId, 'operation'), resolutionId: battleId, subject: structuredClone(subject), controllerId: p.id, type: 'KO', outcome: 'REPLACED', replacementId: rule.id })
   if (rule.usage === 'ONCE_PER_TURN') r.usage[usageKey(rule.id, '1.1.0', guardSource, p.id, s.turn)] = 1
   cardEvent(s, 'KO_REPLACED', subject.instanceId, context)
 }
 const isEventCard = (s: GameState, id?: string) => !!id && s.catalog.definitions.find(d => d.definitionId === s.instances[id]?.definitionId)?.category === 'EVENT'
+/** M6 a hand card of `playerId` trashed by an effect (cost, effect or replacement, FAQ OP12-040), grouped per trashing step;
+ * the first card of a group announces it to the [When your hand cards are trashed] observers of that player. */
+function noteHandTrashed(s: GameState, playerId: string, group: string, context: EffectContext) {
+  const r = s.effects!
+  // Only games whose registry reads hand trashes record them (other games keep their historical state).
+  if (r.version !== '1.3.0' || !(r.registry.definitions.some(d => d.timing === 'ON_OWN_HAND_TRASHED') || r.registry.continuous?.some(m => m.whenOwnHandTrashedThisTurn))) return
+  const list = r.handTrashes ?? (r.handTrashes = []), first = !list.some(h => h.group === group)
+  list.push({ group, playerId, turnId: s.turn, controllerId: context.controllerId, ...(context.source.kind === 'CARD' ? { sourceDefinitionId: context.source.definitionId } : {}) })
+  if (list.length > 64) list.splice(0, list.length - 64)
+  if (!first || context.controllerId !== playerId) return
+  const event = { trashSourceDefinitionId: context.source.kind === 'CARD' ? context.source.definitionId : undefined }
+  const triggers = r.registry.definitions.filter(d => d.timing === 'ON_OWN_HAND_TRASHED').flatMap(d => sources(s, d, playerId).filter(source => source.kind === 'CARD'
+    && condition(s, d.condition, playerId, source, event) && usable(s, d, source, playerId)).map(source => makeTrigger(s, d, source, playerId, group, false)))
+  if (triggers.length) enqueueTriggers(s, triggers, group)
+}
+/** "At the end of this turn" parts scheduled this turn: activated once every [End of Your Turn] effect has resolved (FAQ
+ * ST24-005), in the End Phase of the player who scheduled them. */
+function fireDelayed(s: GameState): boolean {
+  const r = s.effects!, due = s.phase === 'END' ? (r.delayedTriggers ?? []).filter(x => !x.fired && x.turnId === s.turn && x.controllerId === s.activePlayerId) : []
+  if (!due.length) return false
+  for (const x of due) {
+    x.fired = true
+    const d = r.registry.definitions.find(def => def.id === x.definitionId)!, source = { kind: 'CARD' as const, definitionId: (d.source as { definitionId: string }).definitionId, presence: structuredClone(x.subject) }
+    enqueueTriggers(s, [makeTrigger(s, d, source, x.controllerId, x.id, false)], x.id)
+  }
+  return true
+}
+/** Trashes a Character of the field (not a K.O.: no [On K.O.]); its given DON!! return rested to the cost area (CR 6-5-5-4). */
+function trashFromField(s: GameState, id: string, context: EffectContext) {
+  const r = s.effects!, card = s.instances[id], p = s.players.find(x => x.id === card.controller)!, presence = { instanceId: id, generation: card.zoneGeneration }
+  for (const don of p.zones.attached.filter(x => s.instances[x].attachedTo === id)) { p.zones.attached.splice(p.zones.attached.indexOf(don), 1); p.zones.cost.push(don); const d = s.instances[don]; d.zone = 'cost'; d.zoneGeneration++; d.attachedTo = null; d.rested = true }
+  p.zones.characters.splice(p.zones.characters.indexOf(id), 1); p.zones.trash.push(id)
+  card.zone = 'trash'; card.zoneGeneration++; card.rested = false; card.faceUp = true; card.playedOnTurn = null
+  recordOperation(s, { id: next(r, s.gameId, 'operation'), resolutionId: context.effectInstanceId, subject: presence, controllerId: context.controllerId, type: 'MOVE_CARD', intent: 'EFFECT', outcome: 'CONFIRMED', from: 'characters', to: 'trash' })
+  s.events.push({ sequence: s.events.length, type: 'CARD_TRASHED', actorId: card.controller, publicInstanceId: id })
+}
+function drawFor(s: GameState, playerId: string, n: number) {
+  const p = s.players.find(x => x.id === playerId)!, moved = p.zones.deck.splice(0, n)
+  for (const id of moved) { p.zones.hand.push(id); s.instances[id].zone = 'hand'; s.instances[id].zoneGeneration++; s.instances[id].faceUp = false }
+  if (moved.length) s.events.push({ sequence: s.events.length, type: 'DRAWN', actorId: playerId })
+}
+/** M6 [On Play] effects of `playerId` are negated: its Leader's static rule, or an opposing effect until a turn. */
+export function onPlayNegated(s: GameState, playerId: string): boolean {
+  const p = s.players.find(x => x.id === playerId), leader = p && s.instances[p.zones.leader[0]]
+  return !!s.effects?.onPlayNegations?.some(n => n.playerId === playerId && s.turn < n.untilTurn)
+    || (!!leader && !!s.effects?.registry.lifeRules?.some(rule => rule.rule === 'NEGATE_OWN_ON_PLAY' && rule.definitionId === leader.definitionId))
+}
+/** M6 the Leader of `playerId` has the Life rule "face-up Life cards are placed at the bottom of your deck instead". */
+export function faceUpLifeToDeckBottom(s: GameState, playerId: string): boolean {
+  const p = s.players.find(x => x.id === playerId), leader = p && s.instances[p.zones.leader[0]]
+  return !!leader && !!s.effects?.registry.lifeRules?.some(rule => rule.rule === 'FACE_UP_LIFE_TO_DECK_BOTTOM' && rule.definitionId === leader.definitionId)
+}
+/** Moves a Life card of `playerId` face-down to the bottom of its deck (LIFE_TO_DECK unless the caller announces damage). */
+export function lifeToDeckBottom(s: GameState, playerId: string, id: string, announce = true) {
+  const p = s.players.find(x => x.id === playerId)!, card = s.instances[id]
+  p.zones.life.splice(p.zones.life.indexOf(id), 1); p.zones.deck.push(id)
+  card.zone = 'deck'; card.zoneGeneration++; card.faceUp = false
+  if (announce) s.events.push({ sequence: s.events.length, type: 'LIFE_TO_DECK', actorId: playerId })
+}
+/** M6 "cannot be rested" applies to this card now. */
+export function restLocked(s: GameState, id: string): boolean {
+  const i = s.instances[id]
+  return !!i && !!s.effects?.restLocks?.some(l => l.subject.instanceId === id && l.subject.generation === i.zoneGeneration && s.turn < l.untilTurn)
+}
+/** M6 the opposing Characters `attackerId` may not attack this turn (base cost limit). */
+export function attackTargetLimited(s: GameState, attackerId: string, targetId: string): boolean {
+  const a = s.instances[attackerId], t = s.instances[targetId]
+  if (!a || !t || t.zone !== 'characters') return false
+  const cost = s.catalog.definitions.find(d => d.definitionId === t.definitionId)?.cost ?? null
+  return !!s.effects?.attackTargetLimits?.some(l => l.subject.instanceId === attackerId && l.subject.generation === a.zoneGeneration && l.turnId === s.turn && cost !== null && cost <= l.maxBaseCost)
+}
+/** M6 `id` became rested (by an effect of `byEffectOf`, or by a rule: attack, [Blocker]): announced to its [When this Character
+ * becomes rested] abilities and to the [If a Character is rested by your effect] observers of that player. */
+export function noteRested(s: GameState, id: string, byEffectOf?: string) {
+  const r = s.effects, i = s.instances[id]
+  // Only games whose registry observes rests record them (other games keep their historical state).
+  if (!r || r.version !== '1.3.0' || !i || !r.registry.definitions.some(d => d.timing === 'ON_SOURCE_RESTED' || d.timing === 'ON_CHARACTER_RESTED_BY_OWN_EFFECT')) return
+  const record = { id: next(r, s.gameId, 'rested'), instanceId: id, generation: i.zoneGeneration, turnId: s.turn, ...(byEffectOf ? { byEffectOf } : {}) }
+  const list = r.restEvents ?? (r.restEvents = []); list.push(record); if (list.length > 64) list.splice(0, list.length - 64)
+  const presence = { instanceId: id, generation: i.zoneGeneration }
+  const own = i.zone === 'characters' ? r.registry.definitions.filter(d => d.timing === 'ON_SOURCE_RESTED' && d.source.kind === 'CARD_DEFINITION' && d.source.definitionId === i.definitionId && d.source.zone === 'characters')
+    .map(d => ({ d, source: { kind: 'CARD' as const, definitionId: i.definitionId!, presence }, actor: i.controller })) : []
+  const observers = byEffectOf && i.zone === 'characters' ? r.registry.definitions.filter(d => d.timing === 'ON_CHARACTER_RESTED_BY_OWN_EFFECT').flatMap(d => sources(s, d, byEffectOf).filter(src => src.kind === 'CARD').map(source => ({ d, source, actor: byEffectOf }))) : []
+  const triggers = [...own, ...observers].filter(t => condition(s, t.d.condition, t.actor, t.source) && usable(s, t.d, t.source, t.actor)).map(t => makeTrigger(s, t.d, t.source, t.actor, record.id, false))
+  if (triggers.length) enqueueTriggers(s, triggers, record.id)
+}
 /** A delayed [End of Your Turn] part (source in the trash) fires only for the card that scheduled it this turn. */
 function delayedScheduled(s: GameState, definitionId: string, presence: { instanceId: string; generation: number }, actor: string): boolean {
   return !!s.effects?.delayedTriggers?.some(t => t.definitionId === definitionId && t.controllerId === actor && t.turnId === s.turn && t.subject.instanceId === presence.instanceId && t.subject.generation === presence.generation)
@@ -1289,16 +1474,19 @@ function coveredByBatch(s: GameState, i: GameState['instances'][string], ref: { 
 /** The cards that can be chosen to pay a GUARD replacement. */
 function guardOptions(s: GameState, rule: GuardRule, guardId: string, subjectId: string): string[] {
   const owner = s.players.find(x => x.id === s.instances[subjectId].controller)!
-  if (rule.action === 'TRASH_HAND') return [...owner.zones.hand]
+  if (rule.action === 'TRASH_HAND') return owner.zones.hand.length >= (rule.count ?? 1) ? [...owner.zones.hand] : []
+  if (rule.action === 'TURN_LIFE_FACE_UP') return owner.zones.life[0] && !s.instances[owner.zones.life[0]].faceUp ? [owner.zones.life[0]] : []
   if (rule.action === 'TRASH_LIFE_TOP') return owner.zones.life.slice(0, 1)
   if (rule.action === 'TRASH_LIFE_TOP_OR_BOTTOM') return [...new Set([owner.zones.life[0], owner.zones.life.at(-1)])].filter((id): id is string => !!id)
-  if (rule.action === 'REST_SOURCE') return s.instances[guardId].rested ? [] : [guardId]
+  if (rule.action === 'REST_SOURCE') return s.instances[guardId].rested || restLocked(s, guardId) ? [] : [guardId]
+  if (rule.action === 'TRASH_SOURCE' || rule.action === 'TRASH_SOURCE_DRAW' || rule.action === 'POWER_SOURCE_THIS_TURN') return s.instances[guardId].zone === 'characters' ? [guardId] : []
   return [subjectId]
 }
 function suspendReplacement(s: GameState, op: NonNullable<EffectRuntime['cardOperations']>[number], context: EffectContext, i: GameState['instances'][string], candidate: ReplacementCandidate, declined: string[]) {
   const r = s.effects!, c = r.continuation!, choiceId = next(r, s.gameId, 'choice')
   c.interception = { operation: op, replacementId: candidate.ruleId, ownerId: i.controller, ...(candidate.guard ? { guard: structuredClone(candidate.guard) } : {}), ...(declined.length ? { declined: [...declined] } : {}) }
-  r.choice = { id: choiceId, actorId: i.controller, expectedVersion: s.version + 1, choiceType: 'SELECT', optional: true, min: 0, max: 1, visibility: 'PRIVATE',
+  const count = candidate.guard ? (r.registry.cardReplacements?.find(x => x.id === candidate.ruleId) as { count?: number } | undefined)?.count : undefined
+  r.choice = { id: choiceId, actorId: i.controller, expectedVersion: s.version + 1, choiceType: 'SELECT', optional: true, min: 0, max: count ?? 1, visibility: 'PRIVATE', ...(count ? { allOrNone: true } : {}),
     options: replacementOptions(s, i.controller, candidate.ruleId, i.id, candidate.guard?.instanceId).map((id, index) => ({ token: `${choiceId}:option:${index}`, presence: { instanceId: id, generation: s.instances[id].zoneGeneration } })),
     continuationId: c.id, context: structuredClone(context), bind: '__replacement' }
   r.active!.status = 'SUSPENDED'
@@ -1326,7 +1514,7 @@ function answerReplacement(s: GameState, refs: { instanceId: string; generation:
   if (replacement.match === 'GUARD') {
     r.choiceHistory.push({ choiceId: choice.id, actorId: choice.actorId, tokens, visibility: 'PRIVATE' })
     delete c.interception; r.choice = null
-    if (refs.length) applyGuard(s, replacement, pending, refs[0])
+    if (refs.length) { if (replacement.count !== undefined && refs.length !== replacement.count) throw new Error('INVALID_CHOICE_RESPONSE'); for (const ref of replacement.action === 'TRASH_HAND' ? refs : refs.slice(0, 1)) applyGuard(s, replacement, pending, ref, ref === refs[refs.length - 1] || replacement.action !== 'TRASH_HAND') }
     else if (declineReplacement(s, pending)) return
     advanceKO(s, c); return
   }
@@ -1345,7 +1533,7 @@ function answerReplacement(s: GameState, refs: { instanceId: string; generation:
     const subject = s.instances[op.subject.instanceId], source: EffectContext['source'] = { kind: 'CARD', definitionId: subject.definitionId!, presence: structuredClone(op.subject) }
     if (!ally) r.usage[usageKey(pending.replacementId, '1.1.0', source, p.id, s.turn)] = 1
     const replacementContext = { ...c.context, controllerId: p.id, source }
-    if (!ally) cardEvent(s, 'HAND_CARD_TRASHED', i.id, replacementContext)
+    if (!ally) { cardEvent(s, 'HAND_CARD_TRASHED', i.id, replacementContext); noteHandTrashed(s, i.owner, `${op.id}:replacement`, replacementContext) }
     cardEvent(s, 'KO_REPLACED', subject.id, replacementContext)
   } else {
     r.choiceHistory.push({ choiceId: choice.id, actorId: choice.actorId, tokens, visibility: 'PRIVATE' })
@@ -1372,7 +1560,7 @@ function declineReplacement(s: GameState, pending: NonNullable<import('./contrac
   return false
 }
 /** Pays an accepted GUARD replacement: the protected card stays on the field. */
-function applyGuard(s: GameState, rule: GuardRule, pending: NonNullable<import('./contracts').SerializableContinuation['interception']>, ref: { instanceId: string; generation: number }) {
+function applyGuard(s: GameState, rule: GuardRule, pending: NonNullable<import('./contracts').SerializableContinuation['interception']>, ref: { instanceId: string; generation: number }, last = true) {
   const r = s.effects!, c = r.continuation!, op = pending.operation, p = s.players.find(x => x.id === pending.ownerId)!, guard = pending.guard!, card = s.instances[ref.instanceId]
   if (!card || card.zoneGeneration !== ref.generation || !guardOptions(s, rule, guard.instanceId, op.subject.instanceId).includes(card.id)) throw new Error('INVALID_CHOICE_RESPONSE')
   const guardInstance = s.instances[guard.instanceId], guardSource: EffectContext['source'] = { kind: 'CARD', definitionId: guardInstance.definitionId!, presence: structuredClone(guard) }
@@ -1380,18 +1568,29 @@ function applyGuard(s: GameState, rule: GuardRule, pending: NonNullable<import('
   if (rule.action === 'TRASH_HAND') {
     p.zones.hand.splice(p.zones.hand.indexOf(card.id), 1); p.zones.trash.push(card.id); card.zone = 'trash'; card.zoneGeneration++; card.faceUp = true; card.rested = false
     r.cardOperations!.push({ id: next(r, s.gameId, 'operation'), resolutionId: op.resolutionId, subject: structuredClone(ref), controllerId: p.id, type: 'TRASH_HAND', outcome: 'CONFIRMED', replacementId: rule.id })
-    cardEvent(s, 'HAND_CARD_TRASHED', card.id, context)
+    cardEvent(s, 'HAND_CARD_TRASHED', card.id, context); noteHandTrashed(s, p.id, `${op.id}:guard`, context)
   } else if (rule.action === 'TRASH_LIFE_TOP' || rule.action === 'TRASH_LIFE_TOP_OR_BOTTOM') {
     p.zones.life.splice(p.zones.life.indexOf(card.id), 1); p.zones.trash.push(card.id); card.zone = 'trash'; card.zoneGeneration++; card.faceUp = true
     r.cardOperations!.push({ id: next(r, s.gameId, 'operation'), resolutionId: op.resolutionId, subject: structuredClone(ref), controllerId: p.id, type: 'TRASH_LIFE', outcome: 'CONFIRMED', replacementId: rule.id })
     s.events.push({ sequence: s.events.length, type: 'LIFE_TRASHED', actorId: p.id })
     s.events.push({ sequence: s.events.length, type: 'CARD_TRASHED', actorId: p.id, publicInstanceId: card.id })
   } else if (rule.action === 'REST_SOURCE') {
-    card.rested = true; cardEvent(s, 'CARD_RESTED', card.id, context)
+    card.rested = true; cardEvent(s, 'CARD_RESTED', card.id, context); noteRested(s, card.id, p.id)
+  } else if (rule.action === 'TRASH_SOURCE' || rule.action === 'TRASH_SOURCE_DRAW') {
+    trashFromField(s, card.id, context)
+    if (rule.action === 'TRASH_SOURCE_DRAW') drawFor(s, p.id, 1)
+  } else if (rule.action === 'TURN_LIFE_FACE_UP') {
+    card.faceUp = true
+    s.events.push({ sequence: s.events.length, type: 'LIFE_TURNED_FACE_UP', actorId: p.id, publicInstanceId: card.id })
+    s.events.push({ sequence: s.events.length, type: 'CARD_REVEALED', actorId: p.id, revealedCard: { definitionId: card.definitionId!, printingKey: card.printingKey! } })
+  } else if (rule.action === 'POWER_SOURCE_THIS_TURN') {
+    ;(r.powerModifiers ?? (r.powerModifiers = [])).push({ id: next(r, s.gameId, 'modifier'), subject: structuredClone(ref), source: structuredClone(guardSource), amount: rule.amount!, turnId: s.turn })
+    cardEvent(s, 'POWER_MODIFIER_CREATED', card.id, context)
   } else {
     ;(r.powerModifiers ?? (r.powerModifiers = [])).push({ id: next(r, s.gameId, 'modifier'), subject: structuredClone(op.subject), source: structuredClone(guardSource), amount: rule.amount!, turnId: s.turn })
     cardEvent(s, 'POWER_MODIFIER_CREATED', op.subject.instanceId, context)
   }
+  if (!last) return
   op.outcome = 'REPLACED'; op.replacementId = rule.id; r.cardOperations!.push(op)
   if (rule.usage === 'ONCE_PER_TURN') r.usage[usageKey(rule.id, '1.1.0', guardSource, p.id, s.turn)] = 1
   if (!rule.protects.self) c.guardedBatch = { pc: c.pc, ruleId: rule.id, guard: structuredClone(guard) }
@@ -1411,7 +1610,7 @@ function assertReplacementChoice(s: GameState, checkVersion = true) {
       || subject.controller !== pending.ownerId || op.controllerId !== c.context.controllerId || op.resolutionId !== c.context.effectInstanceId || op.outcome !== 'PROPOSED'
       || !['KO', 'REMOVE'].includes(op.type) || step.kind !== 'OPERATION' || (op.type === 'KO' ? step.operation.primitive !== 'koCharacter' : !isRemoval(step.operation))
       || !('subjectBinding' in step.operation) || !step.operation.subjectBinding || !c.bindings[step.operation.subjectBinding]?.some(ref => ref.instanceId === subject.id && ref.generation === subject.zoneGeneration)
-      || choice.actorId !== pending.ownerId || choice.bind !== '__replacement' || choice.visibility !== 'PRIVATE' || choice.min !== 0 || choice.max !== 1 || !choice.optional || choice.choiceType !== 'SELECT'
+      || choice.actorId !== pending.ownerId || choice.bind !== '__replacement' || choice.visibility !== 'PRIVATE' || choice.min !== 0 || choice.max !== (rule.count ?? 1) || (choice.allOrNone === true) !== (rule.count !== undefined) || !choice.optional || choice.choiceType !== 'SELECT'
       || (checkVersion && choice.expectedVersion !== pendingVersion(s)) || JSON.stringify(choice.options.map(o => o.presence.instanceId)) !== JSON.stringify(replacementOptions(s, pending.ownerId, rule.id, subject.id, guard.instanceId))
       || new Set(choice.options.map(o => o.token)).size !== choice.options.length || choice.options.some(o => s.instances[o.presence.instanceId]?.zoneGeneration !== o.presence.generation)) throw new Error('INVALID_REPLACEMENT_CHOICE')
     return
@@ -1445,6 +1644,10 @@ function validActivatedKO(s: GameState, source: EffectContext['source']): boolea
 function untilEndOfOpponentNextTurn(s: GameState, controllerId: string): number { return s.turn + (s.activePlayerId === controllerId ? 2 : 1) }
 /** M6: an ability whose cost returned its own source to its owner's hand ("You may return this Character to the owner's
  * hand: ...") keeps resolving; the move must be a confirmed MOVE_CARD of this resolution on exactly that presence. */
+/** A delayed part keeps the presence of the card that scheduled it, which may have moved since. */
+function validDelayedSource(s: GameState, definitionId: string, source: EffectContext['source']): boolean {
+  return source.kind === 'CARD' && !!s.effects?.delayedTriggers?.some(x => x.fired && x.definitionId === definitionId && x.subject.instanceId === source.presence.instanceId && x.subject.generation === source.presence.generation)
+}
 function validSelfReturnedSource(s: GameState, source: EffectContext['source'], resolutionId: string): boolean {
   if (source.kind !== 'CARD') return false
   const instance = s.instances[source.presence.instanceId]
@@ -1465,7 +1668,8 @@ function activateScheduled(s: GameState, triggerId: string) {
   if (!t || t.status!=='PENDING') throw new Error('INVALID_TRIGGER_CHOICE')
   const d=r.registry.definitions.find(d=>d.id===t.definitionId && d.revision===t.revision)!
   const source=t.source, i=source.kind==='CARD' ? s.instances[source.presence.instanceId] : undefined
-  if (!i || source.kind!=='CARD' || (t.activatedOnField ? i.zone!=='trash' || i.zoneGeneration!==t.expectedTrashGeneration : i.zoneGeneration!==source.presence.generation || d.source.kind!=='CARD_DEFINITION' || i.zone!==d.source.zone) || (d.usage.kind!=='UNLIMITED' && r.usage[usageKey(d.id,d.revision,source,t.controllerId,s.turn)]) || !payable(s,d,source)) { t.status='INVALIDATED'; return }
+  const delayed = d.source.kind==='CARD_DEFINITION' && d.source.zone==='delayed' && !!r.delayedTriggers?.some(x => x.id===t.causeId && x.definitionId===d.id)
+  if (!i || source.kind!=='CARD' || (t.activatedOnField ? i.zone!=='trash' || i.zoneGeneration!==t.expectedTrashGeneration : !delayed && (i.zoneGeneration!==source.presence.generation || d.source.kind!=='CARD_DEFINITION' || i.zone!==d.source.zone)) || (d.usage.kind!=='UNLIMITED' && r.usage[usageKey(d.id,d.revision,source,t.controllerId,s.turn)]) || !payable(s,d,source)) { t.status='INVALIDATED'; return }
   t.status='RESOLVING'; q.resolvingId=t.id; begin(s,d,source,t.controllerId)
   if (r.active!.status!=='COMPLETED') resume(s)
 }
@@ -1492,7 +1696,7 @@ function drainScheduler(s: GameState) {
   // Finite bound is a technical refusal, never a fabricated game result.
   for (let budget=0;budget<1024;budget++) {
     const eligible=nextTriggers(q)
-    if (!eligible.length) return
+    if (!eligible.length) { if (fireDelayed(s)) continue; return }
     if (eligible.length>1) {
       const choiceId=next(r,s.gameId,'order')
       q.orderChoice={id:choiceId,actorId:eligible[0].controllerId,expectedVersion:s.version+1,batchId:q.batches[0].id,options:eligible.map((t,index)=>({token:`${choiceId}:option:${index}`,triggerId:t.id}))}; return
@@ -1514,8 +1718,11 @@ function assertScheduler(s: GameState) {
   const d=r.registry.definitions.find(d=>d.id===t.definitionId && d.revision===t.revision), source=t.source
   if (!d || source.kind!=='CARD' || d.source.kind!=='CARD_DEFINITION' || d.source.definitionId!==source.definitionId || s.instances[source.presence.instanceId]?.definitionId!==source.definitionId || !s.players.some(p=>p.id===t.controllerId) || s.instances[source.presence.instanceId].controller!==t.controllerId || t.timing!==d.timing) throw new Error('INVALID_TRIGGER')
   if (t.activatedOnField && (t.timing!=='ON_KO' || t.expectedTrashGeneration!==source.presence.generation+1 || !r.cardOperations!.some(o=>o.id===t.causeId && o.outcome==='CONFIRMED' && o.type==='KO' && JSON.stringify(o.subject)===JSON.stringify(source.presence)))) throw new Error('INVALID_KO_CAPTURE')
-  if (!t.activatedOnField && t.timing === 'END_OF_YOUR_TURN' && !s.events.some(e => e.type === 'MAIN_ENDED' && `${s.gameId}:event:${e.sequence}` === t.causeId && e.actorId === t.controllerId)) throw new Error('INVALID_TRIGGER_CAUSE')
+  if (!t.activatedOnField && t.timing === 'END_OF_YOUR_TURN' && !r.delayedTriggers?.some(x => x.id === t.causeId && x.definitionId === t.definitionId && x.controllerId === t.controllerId && x.fired) && !s.events.some(e => e.type === 'MAIN_ENDED' && `${s.gameId}:event:${e.sequence}` === t.causeId && e.actorId === t.controllerId)) throw new Error('INVALID_TRIGGER_CAUSE')
   if (!t.activatedOnField && t.timing === 'ON_BATTLE_PAIRED' && !s.events.some(e => e.type === 'BATTLE_PAIRED' && `${s.gameId}:event:${e.sequence}` === t.causeId && e.publicInstanceId === source.presence.instanceId)) throw new Error('INVALID_TRIGGER_CAUSE')
+  if (!t.activatedOnField && t.timing === 'ON_SOURCE_RESTED' && !r.restEvents?.some(e => e.id === t.causeId && source.kind === 'CARD' && e.instanceId === source.presence.instanceId)) throw new Error('INVALID_TRIGGER_CAUSE')
+  if (!t.activatedOnField && t.timing === 'ON_CHARACTER_RESTED_BY_OWN_EFFECT' && !r.restEvents?.some(e => e.id === t.causeId && e.byEffectOf === t.controllerId)) throw new Error('INVALID_TRIGGER_CAUSE')
+  if (!t.activatedOnField && t.timing === 'ON_OWN_HAND_TRASHED' && !r.handTrashes?.some(h => h.group === t.causeId && h.playerId === t.controllerId)) throw new Error('INVALID_TRIGGER_CAUSE')
   if (!t.activatedOnField && t.timing === 'ON_OPPONENT_EVENT' && !s.events.some(e => e.type === 'COUNTER_PLAYED' && `${s.gameId}:event:${e.sequence}` === t.causeId && e.actorId !== t.controllerId && isEventCard(s, e.publicInstanceId))) throw new Error('INVALID_TRIGGER_CAUSE')
   if (!t.activatedOnField && t.timing === 'ON_DON_RETURNED' && !s.events.some(e => e.type === 'DON_RETURNED' && `${s.gameId}:event:${e.sequence}` === t.causeId && e.actorId === t.controllerId)) throw new Error('INVALID_TRIGGER_CAUSE')
   if (!t.activatedOnField && t.timing === 'ON_OPPONENT_ATTACK' && !s.events.some(e => e.type === 'ATTACK_DECLARED' && `${s.gameId}:event:${e.sequence}` === t.causeId && e.publicInstanceId && s.instances[e.publicInstanceId].controller !== t.controllerId)) throw new Error('INVALID_TRIGGER_CAUSE')
@@ -1531,7 +1738,7 @@ function assertScheduler(s: GameState) {
    }
   }
   if (t.timing==='ON_CHARACTER_KO' && !r.cardOperations!.some(o=>o.id===t.causeId && o.type==='KO' && o.outcome==='CONFIRMED')) throw new Error('INVALID_TRIGGER_CAUSE')
- if (!t.activatedOnField && !['ON_PLAY','ON_CHARACTER_KO','WHEN_ATTACKING','ON_BLOCK','WHEN_ATTACKING_OR_ON_BLOCK','TRIGGER','END_OF_YOUR_TURN','END_OF_BATTLE_WITH_CHARACTER','ON_BATTLE_PAIRED','ON_DON_RETURNED','ON_OPPONENT_BLOCKER','ON_OPPONENT_ATTACK','ON_OPPONENT_EVENT'].includes(t.timing)) throw new Error('INVALID_TRIGGER')
+ if (!t.activatedOnField && !['ON_PLAY','ON_CHARACTER_KO','WHEN_ATTACKING','ON_BLOCK','WHEN_ATTACKING_OR_ON_BLOCK','TRIGGER','END_OF_YOUR_TURN','END_OF_BATTLE_WITH_CHARACTER','ON_BATTLE_PAIRED','ON_DON_RETURNED','ON_OPPONENT_BLOCKER','ON_OPPONENT_ATTACK','ON_OPPONENT_EVENT','ON_OWN_HAND_TRASHED','ON_SOURCE_RESTED','ON_CHARACTER_RESTED_BY_OWN_EFFECT'].includes(t.timing)) throw new Error('INVALID_TRIGGER')
  }
  const resolving=all.filter(t=>t.status==='RESOLVING')
  if (resolving.length!==(q.resolvingId?1:0) || (q.resolvingId && (resolving[0].id!==q.resolvingId || r.active?.definitionId!==resolving[0].definitionId || JSON.stringify(r.active.context.source)!==JSON.stringify(resolving[0].source)))) throw new Error('INVALID_TRIGGER_RESOLUTION')

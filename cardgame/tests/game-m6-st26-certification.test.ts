@@ -41,7 +41,7 @@ test('M6 FAQ OP09-061: Leader Luffy adds 1 active and 1 rested DON!! when 2 or m
 })
 
 test('M6 ST-26 Leader Luffy with a DON!! gives all of your Characters +1 cost', () => {
-  let s = game(7)
+  const s = game(7)
   const usopp = field(s, 'alice', 'OP09-063')
   assert.equal(cost(s, usopp), definitionOf('OP09-063').cost)
   attachDon(s, 'alice', leaderOf(s, 'alice'), 1)
@@ -95,7 +95,9 @@ test('M6 ST-26 Gum-Gum Giant pays DON!! -2 and 1 hand card for +4000 this battle
     s = payDon(s, 'alice', 2)
     return { s, l, hand, fodder }
   }
-  let { s, l, hand, fodder } = run('OP09-061')
+  const r = run('OP09-061')
+  const { l, hand, fodder } = r
+  let s = r.s
   s = roundTrip(choose(s, 'alice', [l]))
   assert.equal(zoneOf(s, fodder), 'trash'); assert.equal(s.battle!.counterModifiers.reduce((n, m) => n + m.amount, 0), 4000)
   assert.equal(zones(s, 'alice').hand.length, hand - 1 + 2)

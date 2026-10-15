@@ -63,7 +63,7 @@ export function drawThenTrash(drawN: number, trashN: number): Step[] {
   return [draw(drawN), { kind: 'CHOICE', choiceType: 'SELECT', selector: { kind: 'CARDS', side: 'OWN', zone: 'hand' }, optional: false, min: trashN, max: trashN, bind: 'discard', visibility: 'PRIVATE', clampMin: true }, trashFromHand('discard')]
 }
 /** "Play up to 1 card ... from your hand/deck/trash": choose, then (5 Characters) choose one to trash, then play. */
-export function playChosen(bind: string, from: 'hand' | 'deck' | 'trash', filter: Omit<CardsFilter, 'side' | 'zone'>, opts: { rested?: boolean; skipIfNone?: boolean; whenBindingNonempty?: string } = {}): Step[] {
+export function playChosen(bind: string, from: 'hand' | 'deck' | 'trash' | 'handOrTrash', filter: Omit<CardsFilter, 'side' | 'zone'>, opts: { rested?: boolean; skipIfNone?: boolean; whenBindingNonempty?: string } = {}): Step[] {
   const choice = upTo(1, bind, { side: 'OWN', zone: from, categories: ['CHARACTER', 'STAGE'], ...filter }, { whenBindingNonempty: opts.whenBindingNonempty })
   return [
     opts.skipIfNone && choice.kind === 'CHOICE' ? { ...choice, skipIfNone: true } : choice,
@@ -117,7 +117,7 @@ export function lifeToHand(bind = 'lifeCost', opts: { required?: boolean; lifeEn
     { kind: 'OPERATION', operation: { primitive: 'lifeToHand', version: '1.0.0', audience: 'CONTROLLER', subjectBinding: bind } }]
 }
 /** "Add <bound card> to the top of the (owner's) Life cards" (face-up only when printed). */
-export const addToLife = (bind: string, from: 'hand' | 'deck' | 'characters', faceUp = false, whenBindingNonempty?: string): Step => ({ kind: 'OPERATION', operation: { primitive: 'addToLife', version: '1.0.0', audience: from === 'characters' ? 'PUBLIC' : 'CONTROLLER', subjectBinding: bind, from, faceUp }, ...(whenBindingNonempty ? { whenBindingNonempty } : {}) })
+export const addToLife = (bind: string, from: 'hand' | 'deck' | 'characters' | 'trash' | 'handOrTrash', faceUp = false, whenBindingNonempty?: string): Step => ({ kind: 'OPERATION', operation: { primitive: 'addToLife', version: '1.0.0', audience: from === 'characters' ? 'PUBLIC' : 'CONTROLLER', subjectBinding: bind, from, faceUp }, ...(whenBindingNonempty ? { whenBindingNonempty } : {}) })
 /** "Add up to 1 card from the top of your deck to the top of your Life cards" (not looked at). */
 export function deckTopToLife(bind = 'deckTop', whenBindingNonempty?: string): Step[] {
   return [{ kind: 'CHOICE', choiceType: 'SELECT', selector: { kind: 'CARDS', side: 'OWN', zone: 'deck', topN: 1 }, optional: true, min: 0, max: 1, bind, visibility: 'PRIVATE', conceal: true, ...(whenBindingNonempty ? { whenBindingNonempty } : {}) },

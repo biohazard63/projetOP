@@ -2,7 +2,7 @@ import test from 'node:test'
 import assert from 'node:assert/strict'
 import { evaluateCharacteristics } from '../src/game/effects/characteristics'
 import type { GameState } from '../src/game/core/types'
-import { act, attachDon, attack, choose, deckFor, definitionOf, endTurn, finishBattle, inHand, leaderOf, legal, newGame, offeredEffects, optionIds, pendingChoice, playCard, put, roundTrip, startEffect, toMain, zoneOf } from './helpers/m6'
+import { act, attack, choose, deckFor, definitionOf, endTurn, finishBattle, inHand, leaderOf, legal, newGame, offeredEffects, optionIds, pendingChoice, playCard, put, roundTrip, startEffect, toMain, zoneOf } from './helpers/m6'
 
 // M6 ST-16 (GREEN Uta), official English texts (series 569016). Scenarios follow the official text, the ST-15-20 and
 // promotion-card FAQ and the errata snapshot (docs/game/evidence/m6/sources/), through public commands only.
@@ -12,7 +12,6 @@ const game = (turn = 5, leader = 'ST11-001') => toMain(newGame(deckFor(leader, S
 const zones = (s: GameState, owner: string) => s.players.find(p => p.id === owner)!.zones
 const power = (s: GameState, id: string) => evaluateCharacteristics(s, id).power.current
 const field = (s: GameState, owner: string, number: string, rested = false) => put(s, owner, number, 'characters', { playedEarlier: true, rested })
-const pick = (s: GameState, owner: string, indexes: number[]) => { const c = pendingChoice(s, owner)!; return act(s, owner, { type: 'ANSWER_CHOICE', choiceId: c.choiceId, tokens: indexes.map(i => c.options[i].token) }) }
 const startFrom = (s: GameState, owner: string, abilityId: string, sourceId: string) => {
   const a = offeredEffects(s, owner, abilityId).find(x => x.effectId.includes(sourceId))
   assert.ok(a, `${abilityId} from ${sourceId} not offered`)
@@ -57,6 +56,15 @@ test('M6 FAQ P-057: with an Uta Leader up to 2 opposing rested Characters cost 4
 })
 
 test('M6 FAQ P-058: with an Uta Leader all FILM Characters become active at the end of the turn, including one played and rested later; its Trigger sets them active', () => {
+  // FAQ ST24-005: "at the end of this turn" resolves after every [End of Your Turn] effect (Bartolomeo rests itself first).
+  let o = game(7)
+  const barto = field(o, 'alice', 'P-029'), rested = field(o, 'alice', 'P-061', true)
+  o = startFrom(o, 'alice', 'P-058.main-delay', inHand(o, 'alice', 'P-058'))
+  o = act(o, 'alice', { type: 'END_MAIN' })
+  o = choose(o, 'alice', [barto])
+  o = roundTrip(choose(o, 'alice', [rested]))
+  assert.equal(o.instances[barto].rested, false, 'the delayed part sets the rested Bartolomeo active afterwards')
+  assert.equal(o.instances[rested].rested, false)
   let s = game(7)
   const luffy = field(s, 'alice', 'P-061', true), bob = field(s, 'bob', 'OP03-106')
   s = roundTrip(startFrom(s, 'alice', 'P-058.main-delay', inHand(s, 'alice', 'P-058')))

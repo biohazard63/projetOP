@@ -30,11 +30,11 @@ const abilities: EffectDefinition[] = [
   ability('P-057.main-lock', def('P-057'), 'hand', 'MAIN', lullaby()),
   ability('P-057.trigger-main', def('P-057'), 'temporary', 'TRIGGER', lullaby()),
   // P-058 Where the Wind Blows: [Main] If your Leader is [Uta], set all of your {FILM} type Characters as active at the end of this
-  // turn (FAQ P-058: including a {FILM} Character played and rested during that turn). [Trigger] Set all of your {FILM} type
-  // Characters as active.
+  // turn (FAQ P-058: including a {FILM} Character played and rested during that turn; FAQ ST24-005: after all [End of Your Turn]
+  // effects). [Trigger] Set all of your {FILM} type Characters as active.
   ability('P-058.main-delay', def('P-058'), 'hand', 'MAIN', [check('uta', uta),
     { kind: 'OPERATION', operation: { primitive: 'scheduleEndOfTurn', version: '1.0.0', audience: 'PUBLIC', definitionId: 'P-058.end-of-turn-delayed' }, whenBindingNonempty: 'uta' }]),
-  ability('P-058.end-of-turn-delayed', def('P-058'), 'trash', 'END_OF_YOUR_TURN', allFilmActive()),
+  ability('P-058.end-of-turn-delayed', def('P-058'), 'delayed', 'END_OF_YOUR_TURN', allFilmActive()),
   ability('P-058.trigger-set-active', def('P-058'), 'temporary', 'TRIGGER', allFilmActive()),
   // P-059 The World's Continuation: [Counter] If your Leader is [Uta], you may return any number of Characters on your field to
   // the owner's hand. Up to 1 of your Leader or Character cards gains +2000 power during this battle for every returned Character.

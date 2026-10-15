@@ -19688,10 +19688,8 @@
     "referenceRegion": "EN (NA/EU/OC/LATAM/ME)"
   },
   "ST-24": {
-    "compositionVerified": false,
-    "reasons": [
-      "SOURCE_NUMBER_NAME_CONFLICT_DIFFERENT_QUANTITIES"
-    ],
+    "compositionVerified": true,
+    "reasons": [],
     "donCount": 10,
     "leaders": [
       "OP07-019"
@@ -19819,6 +19817,24 @@
         "quantity": 4,
         "sourceName": "X・ドレーク",
         "bandaiJP": "https://www.onepiece-cardgame.com/cardlist/?series=550024"
+      },
+      {
+        "kind": "BANDAI_REVIEW",
+        "checkedAt": "2026-10-14",
+        "detail": "Bandai EN/JP/FR card lists confirm the identities (ST24-004 Law & Bepo SR, ST24-005 X.Drake C) and the product page rarity totals (L1, C4, UC5, R3, SR2) match the audited rows, but no Bandai source publishes per-card quantities and the secondary table swaps the numbers of the x2 and x4 rows: both readings total 51. Kept unverified until an independent quantity source.",
+        "sources": [
+          "https://en.onepiece-cardgame.com/products/decks/st24.php",
+          "https://www.onepiece-cardgame.com/products/decks/st24.php"
+        ]
+      },
+      {
+        "kind": "USER_CONFIRMATION",
+        "checkedAt": "2026-10-15",
+        "quantities": {
+          "ST24-004": 2,
+          "ST24-005": 4
+        },
+        "detail": "The project owner confirmed the quantities ST24-004 Law & Bepo x2 and ST24-005 X.Drake x4, which match the audited rows. This is a user confirmation, not an official Bandai source: Bandai still publishes no per-card quantities for ST-24 (see BANDAI_REVIEW). The gate is lifted on this explicit provenance only."
       }
     ],
     "productContents": "Constructed Deck x 1 (51 cards), DON!! Card x 10, Playsheet x 1, BOOSTER PACK -A FIST OF DIVINE SPEED- [OP-11] x 1",
@@ -21952,10 +21968,8 @@
     "referenceRegion": "EN (NA/EU/OC/LATAM/ME)"
   },
   "ST-27": {
-    "compositionVerified": false,
-    "reasons": [
-      "SOURCE_SANJUAN_NUMBER_TYPO_NEEDS_QUANTITY_CORROBORATION"
-    ],
+    "compositionVerified": true,
+    "reasons": [],
     "donCount": 10,
     "leaders": [
       "OP09-081"
@@ -22073,6 +22087,15 @@
         "quantity": 4,
         "sourceName": "サンファン・ウルフ",
         "bandaiJP": "https://www.onepiece-cardgame.com/cardlist/?series=550027"
+      },
+      {
+        "kind": "BANDAI_CORROBORATION",
+        "checkedAt": "2026-10-14",
+        "detail": "The secondary table row numbered OP09-084 (Sanjuan Wolf x4) is OP10-084: the official ST-27 card lists (EN series 569027, JP 550027, FR 622027) contain OP10-084 and ST27-004 (both Sanjuan.Wolf, separate rows x4/x2) and no OP09-084; the official product page rarity totals (Leader x1, Common x6, Uncommon x2, Rare x4, Super Rare x2) and the 51-card total match the 15 audited rows exactly.",
+        "sources": [
+          "https://en.onepiece-cardgame.com/cardlist/?series=569027",
+          "https://en.onepiece-cardgame.com/products/decks/st27.php"
+        ]
       }
     ],
     "productContents": "Constructed Deck x 1 (51 cards), DON!! Card x 10, Playsheet x 1, BOOSTER PACK -A FIST OF DIVINE SPEED- [OP-11] x 1",

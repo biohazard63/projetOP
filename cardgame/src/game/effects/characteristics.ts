@@ -21,10 +21,15 @@ export function hasCombatKeyword(s: GameState, id: string, keyword: CombatKeywor
     && (!effect.duringOpponentTurn || s.activePlayerId !== instance.controller)
     && (effect.maximumOwnLife === undefined || (s.players.find(p => p.id === instance.controller)?.zones.life.length ?? 99) <= effect.maximumOwnLife)
     && (effect.leaderTraitIncludes === undefined || leaderTraitIncludes(s, instance.controller, effect.leaderTraitIncludes))
+    && (effect.leaderHasTrait === undefined || !!s.catalog.definitions.find(d => d.definitionId === s.instances[s.players.find(p => p.id === instance.controller)!.zones.leader[0]]?.definitionId)?.traits.includes(effect.leaderHasTrait))
+    && (effect.leaderHasAttribute === undefined || !!s.catalog.definitions.find(d => d.definitionId === s.instances[s.players.find(p => p.id === instance.controller)!.zones.leader[0]]?.definitionId)?.attributes.includes(effect.leaderHasAttribute))
+    && (effect.whenOtherOwnCharacter === undefined || (s.players.find(p => p.id === instance.controller)?.zones.characters ?? []).some(id => { const w = effect.whenOtherOwnCharacter!, d = s.catalog.definitions.find(x => x.definitionId === s.instances[id].definitionId); return !!d && d.rulesName !== w.nameNot && (!w.colorsAny || w.colorsAny.some(c => d.colors.includes(c))) && (!w.traitsAny || w.traitsAny.some(t => d.traits.includes(t))) }))
     && (effect.minimumGivenDon === undefined || (s.players.find(p => p.id === instance.controller)?.zones.attached.length ?? 0) >= effect.minimumGivenDon)
     && (effect.minimumBaseCostCharacters === undefined || baseCostCount(s, s.players.find(p => p.id === instance.controller)?.zones.characters ?? [], effect.minimumBaseCostCharacters.minCost) >= effect.minimumBaseCostCharacters.count))
 }
 
+/** A continuous amount, multiplied for "for every N cards in your trash" (the card's controller's trash). */
+const continuousAmount = (s: GameState, id: string, m: { amount: number; perTrashCards?: number }) => m.perTrashCards ? m.amount * Math.floor((s.players.find(p => p.id === s.instances[id].controller)?.zones.trash.length ?? 0) / m.perTrashCards) : m.amount
 /** Characters among `ids` with a base (printed) cost of minCost or more. */
 export const baseCostCount = (s: GameState, ids: string[], minCost: number) => ids.filter(c => (s.catalog.definitions.find(d => d.definitionId === s.instances[c].definitionId)?.cost ?? -1) >= minCost).length
 const leaderTraitIncludes = (s: GameState, playerId: string, text: string) => { const p = s.players.find(x => x.id === playerId)!; return !!s.catalog.definitions.find(d => d.definitionId === s.instances[p.zones.leader[0]]?.definitionId)?.traits.some(t => t.includes(text)) }
@@ -51,6 +56,10 @@ function active(s: GameState, m: Continuous, source: GameState['instances'][stri
     && (m.minimumBaseCostCharacters === undefined || baseCostCount(s, controller.zones.characters, m.minimumBaseCostCharacters.minCost) >= m.minimumBaseCostCharacters.count)
     && (m.whenCharacter === undefined || characterExists(s, source.controller, m.whenCharacter))
     && (m.minimumGivenDon === undefined || controller.zones.attached.length >= m.minimumGivenDon)
+    && (m.minimumRestedDon === undefined || controller.zones.cost.filter(x => s.instances[x].rested).length >= m.minimumRestedDon)
+    && (!m.whenOwnLifeAtMostOpponent || controller.zones.life.length <= (s.players.find(p => p.id !== controller.id)?.zones.life.length ?? 0))
+    && (!m.whenOwnHandTrashedThisTurn || !!s.effects?.handTrashes?.some(h => h.playerId === controller.id && h.turnId === s.turn))
+    && (m.minimumHandSize === undefined || controller.zones.hand.length >= m.minimumHandSize)
     && (m.whenLeaderHasTrait === undefined || !!s.catalog.definitions.find(d => d.definitionId === s.instances[controller.zones.leader[0]]?.definitionId)?.traits.includes(m.whenLeaderHasTrait))
     && (m.minimumOwnRestedCards === undefined || [...controller.zones.leader, ...controller.zones.characters, ...controller.zones.stage, ...controller.zones.cost].filter(id => s.instances[id].rested).length >= m.minimumOwnRestedCards)
     && (m.whenOwnRestedNamed === undefined || [...controller.zones.leader, ...controller.zones.characters].some(id => s.instances[id].rested && s.catalog.definitions.find(d => d.definitionId === s.instances[id].definitionId)?.rulesName === m.whenOwnRestedNamed))
@@ -74,7 +83,9 @@ function continuousFor(s: GameState, id: string, characteristic: 'POWER' | 'COST
   const own = all.filter(m => !m.targets && m.definitionId === d.definitionId && active(s, m, i))
   const aura = field ? all.filter(m => m.targets && (!m.targets.traitsAny || m.targets.traitsAny.some(t => d.traits.includes(t)))
     && (!m.targets.colorsAny || m.targets.colorsAny.some(c => d.colors.includes(c))) && (!m.targets.charactersOnly || i.zone === 'characters') && (!m.targets.leaderOnly || i.zone === 'leader') && (!m.targets.traitIncludesAny || m.targets.traitIncludesAny.some(t => d.traits.some(x => x.includes(t))))
-    && (m.targets.maxBasePower === undefined || (d.power !== null && d.power <= m.targets.maxBasePower)))
+    && (m.targets.maxBasePower === undefined || (d.power !== null && d.power <= m.targets.maxBasePower))
+    && (m.targets.minBasePower === undefined || (d.power !== null && d.power >= m.targets.minBasePower))
+    && (!m.targets.namesAny || m.targets.namesAny.includes(d.rulesName)))
     .flatMap(m => [...controller.zones.leader, ...controller.zones.characters, ...controller.zones.stage]
       .filter(x => s.instances[x].definitionId === m.definitionId && active(s, m, s.instances[x])).map(() => m)) : []
   return [...own, ...aura]
@@ -86,7 +97,7 @@ export function evaluateCost(s: GameState, id: string): number | null {
   const d = s.catalog.definitions.find(x => x.definitionId === i.definitionId)
   if (!d || d.cost === null) return null
   const field = ['leader', 'characters'].includes(i.zone)
-  const cost = continuousFor(s, id, 'COST').reduce((n, m) => n + m.amount, 0)
+  const cost = continuousFor(s, id, 'COST').reduce((n, m) => n + continuousAmount(s, id, m), 0)
     + (field ? s.effects?.costModifiers?.filter(m => m.subject.instanceId === id && m.subject.generation === i.zoneGeneration
       && (m.untilTurn === undefined ? m.turnId === s.turn : s.turn >= m.turnId && s.turn < m.untilTurn)).reduce((n, m) => n + m.amount, 0) ?? 0 : 0)
   return Math.max(0, d.cost + cost)
@@ -104,11 +115,10 @@ export function evaluateCharacteristics(s: GameState, id: string) {
     || ownCharacterCostAtLeast(s, s.instances[id].controller, m.whenOwnCharacterCostAtLeast))
   const activeBaseModifiers = s.effects?.basePowerModifiers?.filter(m => m.subject.instanceId === id && m.subject.generation === i.zoneGeneration
     && field && (s.players.find(p => p.id === m.expiresForPlayerId)?.turns ?? Number.MAX_SAFE_INTEGER) < m.expiresAtPlayerTurn) ?? []
-  // The same base power set twice is that power (FAQ ST26-005); different values would need an application order.
-  if (new Set(activeBaseModifiers.map(m => m.value)).size > 1) throw new Error('BASE_POWER_MODIFIER_ORDER_NOT_IMPLEMENTED')
-  const basePower = activeBaseModifiers[0]?.value ?? d.power
+  // Several base powers set on one card: the highest applies (FAQ ST34-004; the same value twice, FAQ ST26-005).
+  const basePower = activeBaseModifiers.length ? Math.max(...activeBaseModifiers.map(m => m.value)) : d.power
   const power = (field && s.activePlayerId === i.controller ? attached * 1000 : 0)
-    + continuous.reduce((n, m) => n + m.amount, 0)
+    + continuous.reduce((n, m) => n + continuousAmount(s, id, m), 0)
     + (s.effects?.powerModifiers?.filter(m => m.subject.instanceId === id && m.subject.generation === i.zoneGeneration && (m.untilTurn === undefined ? m.turnId === s.turn : s.turn >= m.turnId && s.turn < m.untilTurn) && field).reduce((n, m) => n + m.amount, 0) ?? 0)
   return { power: { printed: d.power, base: basePower, current: basePower === null ? null : basePower + power },
     cost: { printed: d.cost, base: d.cost, current: evaluateCost(s, id) } }

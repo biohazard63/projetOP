@@ -1,5 +1,36 @@
 # M6 — Matrice d'inventaire ST-01 à ST-36
 
+## CURRENT STATE — 35/35 (15 octobre 2026)
+
+ST-24 est débloqué sur **confirmation utilisateur** (ST24-004 ×2, ST24-005 ×4, note `USER_CONFIRMATION`). Ce n'est pas une source Bandai : aucune quantité par carte n'est publiée. **35/35 Starter Decks connus jouables, soit 39 configurations** ; ST-36 absent. Rapport : `docs/game/evidence/m6/starter-coverage-2026-10-15-st24.txt`.
+
+| Starter | Certifiées / uniques | /play | Provenance de la composition |
+|---|---:|---|---|
+| ST-01..ST-23, ST-25..ST-35 | toutes | oui | liste auditée + porte de preuve (voir les sections ci-dessous) |
+| ST-24 | 15/15 | oui (nouveau) | liste auditée + **confirmation utilisateur** des quantités ×2/×4 (non publiées par Bandai) |
+| ST-36 | — | non | absent |
+
+## CURRENT STATE — session m6d (14–15 octobre 2026)
+
+Rapport : `docs/game/evidence/m6/starter-coverage-2026-10-14-m6d.txt` (toutes les cartes uniques des 35 Starter connus sont certifiées).
+
+| Starter | Certifiées / uniques | /play | Reste |
+|---|---:|---|---|
+| ST-01..ST-12, ST-14..ST-21, ST-23, ST-25, ST-26, ST-28, ST-31 | toutes | oui (ST-10 ×3) | — |
+| ST-13 | 19/19 | oui ×3 (nouveau, un deck par Leader) | — (Vies face visible, règle de Leader Luffy) |
+| ST-22 | 17/17 | oui (nouveau) | — |
+| ST-24 | 15/15 | **non** | composition : quantités ×2/×4 de ST24-004/ST24-005 non démontrables (aucune quantité publiée par Bandai) |
+| ST-27 | 15/15 | oui (nouveau) | — (OP09-084 → OP10-084 démontré par les listes officielles et les totaux de rareté) |
+| ST-29 | 17/17 | oui (nouveau) | — |
+| ST-30 | 17/17 | oui (nouveau) | — |
+| ST-32 | 15/15 | oui (nouveau) | — |
+| ST-33 | 15/15 | oui (nouveau) | — |
+| ST-34 | 15/15 | oui (nouveau) | — |
+| ST-35 | 15/15 | oui (nouveau) | — |
+| ST-36 | — | non | absent (quantités non publiées) |
+
+Totaux : 775 définitions, 631 certificats, registre 534 ; **34 produits / 38 configurations jouables** (+3 decks de référence). Validation : 876/876 tests, typecheck, lint (0 erreur / 99 avertissements), build isolé, diff-check PASS, preuves inchangées (598 fichiers) ; navigateur 24/24 PASS.
+
 ## CURRENT STATE — fin de session M6 déblocage (14 octobre 2026)
 
 Rapport : `docs/game/evidence/m6/starter-coverage-2026-10-14-m6c.txt`.

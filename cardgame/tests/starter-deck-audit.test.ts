@@ -134,11 +134,23 @@ test('extra Leaders are selectable alternatives, not extra main cards', () => {
   assert.ok(result.playable.every(option => option.structuralLegal && option.mainCount === 50))
 })
 
-test('source conflicts stay PARTIAL even if candidate compositions contain 50 main cards', () => {
-  for (const code of ['ST-24', 'ST-27'] as const) {
-    assert.equal(evidence[code].compositionVerified, false)
-    assert.ok(evidence[code].reasons.length > 0)
-  }
+test('ST-24: the gate is lifted only by an explicit user confirmation of the x2/x4 quantities, kept distinct from the Bandai review', () => {
+  const st24 = evidence['ST-24'] as unknown as { compositionVerified: boolean; reasons: string[]; notes: { kind: string; quantities?: Record<string, number>; detail: string }[] }
+  assert.equal(st24.compositionVerified, true)
+  assert.deepEqual(st24.reasons, [])
+  const user = st24.notes.find(n => n.kind === 'USER_CONFIRMATION')!
+  assert.deepEqual(user.quantities, { 'ST24-004': 2, 'ST24-005': 4 })
+  assert.match(user.detail, /not an official Bandai source/)
+  assert.ok(st24.notes.some(n => n.kind === 'BANDAI_REVIEW'))
+  const deck = STARTER_LIST.find(deck => deck.deckCode === 'ST-24')!
+  assert.equal(deck.cards.find(card => card.cardNumber === 'ST24-004')?.quantity, 2)
+  assert.equal(deck.cards.find(card => card.cardNumber === 'ST24-005')?.quantity, 4)
+})
+
+test('ST-27: the Sanjuan Wolf number typo is resolved by the official card lists (OP10-084), the gate is lifted with its Bandai corroboration note', () => {
+  assert.equal(evidence['ST-27'].compositionVerified, true)
+  assert.deepEqual(evidence['ST-27'].reasons, [])
+  assert.ok((evidence['ST-27'] as unknown as { notes: { kind: string }[] }).notes.some(n => n.kind === 'BANDAI_CORROBORATION'))
 })
 
 test('ST08 Event quantities and ST12 Leader typo have independent corroboration', () => {

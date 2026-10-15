@@ -1,5 +1,54 @@
 # M6 checkpoint — Starter Decks
 
+## CHECKPOINT — 15 octobre 2026 — ST-24 débloqué sur confirmation utilisateur (15 octobre 2026, Claude Code)
+
+- **Jouables dans `/play` : 35/35 Starter Decks connus (ST-01..ST-35), soit 39 configurations de Leader (ST-10 ×3, ST-13 ×3), plus les 3 decks de référence (42 au total).** ST-36 reste absent : aucune quantité publiée.
+- **Provenance de la composition ST-24** : l'utilisateur (propriétaire du projet) a confirmé **ST24-004 Law & Bepo ×2** et **ST24-005 X.Drake ×4**. Il s'agit d'une **confirmation utilisateur, pas d'une source officielle** : Bandai ne publie toujours aucune quantité par carte pour ST-24 (note `BANDAI_REVIEW` conservée). Ces quantités sont déjà celles de la liste auditée (`scripts/rebuildStarterDecks.ts`, inchangé). Dans `scripts/starterAudit/product-evidence.json`, ST-24 passe à `compositionVerified: true` et `reasons: []`, avec une note `USER_CONFIRMATION` datée du 2026-10-15 qui porte les quantités et l'avertissement de provenance. `starter-compositions.json` a été régénéré par l'extracteur non destructif (`extract-audited-starter-compositions.ts <sortie>`) : seule la porte ST-24 change, 1 Leader (OP07-019) + 50 cartes principales.
+- Aucune autre composition, règle, définition ni certification n'a changé : les 15 certifications ST-24 existantes sont réutilisées, et les admissions figuraient déjà dans `MUGIWARA_FREE`.
+- Tests adaptés :
+  - `tests/starter-deck-audit.test.ts` : porte levée seulement par la note `USER_CONFIRMATION`, distincte de `BANDAI_REVIEW` ;
+  - `tests/game-m6-starter-compositions.test.ts` : aucun deck non vérifié n'est proposé ; ST-24 donne 1 + 50 cartes avec ×2/×4 ;
+  - `tests/game-m6-st24-certification.test.ts` : le deck est proposé avec 51 cartes.
+- Partie complète contre le bot (`normal` contre `normal`) : gagnant, 0 fallback, 0 refus (`docs/game/evidence/m6/st24-bot-game.log`).
+- Navigateur (build de production isolé, base jetable) : ST-24 **2/2 PASS** en desktop 1440×900 et en mobile paysage 844×390 (`docs/game/evidence/m6/browser-st24-2026-10-15/`, `st24-browser.log`).
+- Couverture : `docs/game/evidence/m6/starter-coverage-2026-10-15-st24.{json,txt}` (35/35 produits dans `/play`, 0 carte restante). Totaux : 775 définitions, 631 certificats, registre 534. VF officielle : 359 des 541 cartes uniques ; noms de deck en français pour 21 des 39 configurations.
+- Validations : suites ciblées ST-24, compositions et audit 80/80 PASS ; typecheck PASS ; lint 0 erreur / 99 avertissements ; build isolé PASS ; `git diff --check` PASS. `npm test` complet relancé puis **arrêté à la demande de l'utilisateur** après 631 tests OK et 0 échec : la suite complète n'a donc pas été rejouée après le déblocage de ST-24 (dernier passage complet : 876/876, session m6d). Preuves historiques inchangées après l'arrêt (sha256, 632 fichiers).
+- Aucun push, déploiement, migration ni écriture en base réelle.
+
+## CHECKPOINT — 15 octobre 2026 (fin de session m6d) — M6 ST-13/22/27/29/30/32/33/34/35 (14 octobre 2026, Claude Code, session m6d)
+
+- **Jouables dans `/play` : 34 produits Starter / 38 configurations de Leader (ST-10 ×3, ST-13 ×3) + 3 decks de référence = 41.** Seul ST-24 reste bloqué (composition) et ST-36 est absent des données. **Nouveaux dans cette session : ST-13 (×3), ST-22, ST-27, ST-29, ST-30, ST-32, ST-33, ST-34, ST-35.** Couverture : toutes les cartes uniques des 35 Starter connus sont certifiées (0 restante), ST-24 compris (`docs/game/evidence/m6/starter-coverage-2026-10-14-m6d.{json,txt}`).
+- Mesuré : **775 définitions, 631 certificats, registre 534.** Packs : `m6OfficialST13/22/24/27/29/30/32/33/34/35Cards.ts` (câblés dans `src/lib/engine/catalog.ts`), admissions ajoutées à `MUGIWARA_FREE.allowedNumbers` (admission seule, autorisée par l'utilisateur ; aucune autre modification du ruleset).
+- **Primitives génériques ajoutées** (aucune logique par numéro, toutes refusées si inconnues, continuations JSON) :
+  - repos : moments `ON_SOURCE_RESTED`, `ON_CHARACTER_RESTED_BY_OWN_EFFECT`, primitive `preventRest` (« ne peut pas être mis au repos », FAQ EB02-011/OP11-034 : ni attaque, ni [Blocker], ni coût de repos, ni repos par effet), conditions `OWN_RESTED_CARDS_AT_LEAST`, `OPPONENT_RESTED_CHARACTERS_AT_LEAST`, auras `minimumOwnRestedCards`/`whenOwnRestedNamed`/`minimumRestedDon` ;
+  - défausse : moment `ON_OWN_HAND_TRASHED`, condition `HAND_TRASH_SOURCE_HAS_TRAIT`, aura `whenOwnHandTrashedThisTurn` ;
+  - Vies : règles statiques de Leader `lifeRules` (`FACE_UP_LIFE_TO_DECK_BOTTOM`, `NEGATE_OWN_ON_PLAY`), destination `LIFE_TOP_FACE_UP`, `turnLifeFaceDown`, `playCard` depuis la Vie (événement `LIFE_PLAYED`), `addToLife` depuis la défausse ou « main ou défausse » ; les Vies face visible restent visibles des deux joueurs, les autres restent cachées (tests de projection et de reprise JSON) ;
+  - deck adverse : `revealDeckTopCostMatch`, `revealDeckTopMatch`, étape `MODE` avec `chooseValue: 'COST'` (affiché « Coût N » dans `Board.tsx`, une ligne) ; le deck adverse n'est sélectionnable qu'avec `topN` ;
+  - combat : `limitAttackTargets`, `UNBLOCKABLE`, `SOURCE_BATTLED_OPPONENT_CHARACTER_THIS_TURN`, `setBasePower` (joueur, ce tour ; plusieurs puissances de base → la plus haute, FAQ ST34-004) ;
+  - divers : `negateOnPlay` (FAQ OP09-081), `drawCards.amountFromTrigger`, étape `UNION`, sélecteurs `handOrTrash`, `orNamesAny`, `excludeBinding`, `maxCostFromFieldDon`, `maxCostFromLife: 'TOTAL'`, recherches par coût/puissance/attribut/couleur d'Event, conditions `LEADER_HAS_ATTRIBUTE`, `DECK_AT_LEAST`, `FIELD_DON_AT_MOST_OPPONENT`, `OWN_CHARACTER_COUNT` (types, nom, puissance de base) ; GUARD : défausse de la source (+ pioche), puissance de la source ce tour, Vie retournée face visible, coût « défaussez N cartes » ; protections de K.O. en aura.
+  - Les traces `restEvents`/`handTrashes` ne sont enregistrées que si un observateur existe : les traces historiques ne changent pas.
+- **Règles vérifiées et corrigées** :
+  - FAQ ST24-005 : un effet « à la fin de ce tour » se résout **après** tous les effets [End of Your Turn]. Zone source `delayed` (déclenchée après la file de fin de tour). P-058 (ST-16) corrigé et son certificat cite la FAQ ; le test d'ordre ST-16 a été mis à jour.
+  - CR 1.2.1 §8-3-1 et FAQ OP07-031 : une carte mise au repos pour payer un coût d'activation est « mise au repos par votre effet » (Perona, Bartolomeo). Les règles complètes 1.2.1 sont archivées dans `docs/game/evidence/m6/sources/rules/` (`RULES.json`, sha256).
+  - FAQ OP11-066 : même lecture « Then » que EB03-017/OP14-112 (Thatch déjà corrigé).
+  - FAQ ST30 : « 6000 de puissance » signifie exactement 6000.
+- **Source officielle EN** : le décodeur `scripts/game/official-cardlist-en.ts` supprimait les icônes d'attribut `<Slash>`… ; corrigé, seule `data/official-en/cards-ST-32.json` change (6 lignes, filtres d'attribut ST-32).
+- **ST-24 / ST-27** :
+  - ST-27 : la ligne « OP09-084 Sanjuan Wolf ×4 » de la source secondaire est une coquille pour **OP10-084**. Preuves : les listes officielles ST-27 (EN 569027, JP 550027, FR 622027) contiennent OP10-084 et ST27-004 (deux Sanjuan.Wolf distincts, ×4 et ×2) et aucun OP09-084 ; les totaux par rareté de la page produit (L1, C6, UC2, R4, SR2) et le total de 51 cartes correspondent exactement aux 15 lignes auditées. Porte levée (`compositionVerified: true`, note `BANDAI_CORROBORATION`), `starter-compositions.json` régénéré (seul ST-27 change). Test dédié dans `tests/game-m6-starter-compositions.test.ts`.
+  - ST-24 : **reste bloqué**. Les listes Bandai EN/JP/FR confirment les identités (ST24-004 Law & Bepo SR, ST24-005 X.Drake C) et les totaux par rareté (L1, C4, UC5, R3, SR2), mais aucune source Bandai ne publie les quantités par carte et la table secondaire inverse les numéros des lignes ×2 et ×4. Les deux lectures totalisent 51 et respectent les raretés : aucune ne peut être démontrée. Note `BANDAI_REVIEW` ajoutée ; ses 15 cartes sont certifiées, le deck n'est pas proposé.
+  - ST-36 : absent (aucune liste de quantités publiée).
+- **Localisation** : 527 cartes uniques dans les decks jouables, 345 avec VF officielle, 182 en anglais faute d'impression française archivée. Noms de deck en français pour 20 des 38 configurations. Aucune traduction inventée.
+- **Validations réelles** : `npm test` **876/876** (61 min ; les corrections de lint de six fichiers de test, faites après le lancement, ont été revalidées par leurs suites ciblées 207/207) ; typecheck PASS ; lint 0 erreur / 99 avertissements (et 0 erreur sur les nouveaux fichiers de test, hors du périmètre `eslint src`) ; build isolé PASS ; `git diff --check` PASS ; preuves historiques inchangées (sha256 de `docs/game/evidence/` avant/après, 598 fichiers). Parties contre le bot sans fallback ni refus pour chaque Starter proposé (`tests/game-m6-starter-decks-audited.test.ts`).
+- **Navigateur** (build de production isolé, base jetable `127.0.0.1:55433/op_play_test`) : **24/24 PASS** (ST-13 ×3, 22, 27, 29, 30, 32, 33, 34, 35 et ST-10 Law, desktop 1440×900 et mobile paysage 844×390) dans `docs/game/evidence/m6/browser-m6d-picker-2026-10-14/`. Le commit tiers 15f499c a remplacé l'écran de sélection (« Choisissez votre équipage » → carte de deck → « Prendre la mer ») : l'ancien script `tests/m6-starters.browser.mjs` ne trouve plus son titre (premier essai 0 PASS, archivé tel quel dans `browser-m6d-2026-10-14/`). Nouveau script `tests/m6-starters-picker.browser.mjs` ; `DECKS` contient des expressions régulières (`ST-13.*Sabo`). L'ancien script est conservé.
+- Journaux : `docs/game/evidence/m6/m6d-*.log` ; `m6d-bot-games.log` : 38 parties bot (une par configuration), toutes avec un gagnant, 0 fallback, 0 refus, 12 à 38 s chacune.
+- Aucun commit, push, déploiement, migration ni écriture en base réelle. Rien n'a été supprimé.
+
+### Prochaines étapes
+
+1. ST-24 : trouver une source indépendante des quantités (feuille de deck imprimée, photo du produit, liste Bandai JP officielle de tournoi) ; puis basculer `compositionVerified` avec la référence, régénérer `starter-compositions.json` et ajouter l'admission.
+2. ST-36 : attendre la publication des quantités.
+3. Ruleset `m5-reviewed-subset-2026-10-12` à renouveler avant toute partie réelle (voir CLAUDE.md).
+
 ## CHECKPOINT — 14 octobre 2026 (fin de session M6 déblocage, Claude Code)
 
 - **Jouables dans `/play` : 25 produits Starter / 27 configurations de Leader (ST-10 ×3) + 3 decks de référence = 30.** Produits : ST-01..ST-12, ST-14, ST-15, ST-16, ST-17, ST-18, ST-19, ST-20, ST-21, ST-23, ST-25, ST-26, ST-28, ST-31. **Nouveaux dans cette session : ST-09, ST-15, ST-16, ST-20, ST-25, ST-26, ST-28, ST-31.**

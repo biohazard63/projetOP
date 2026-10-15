@@ -1,6 +1,6 @@
 import { evaluateCharacteristics, hasBlockerAbility, hasCombatKeyword } from '../effects/characteristics'
 import { confirmMoveOperation, confirmRestOperation, confirmPower, processOperation } from '../effects/operations'
-import { activateCounterProgram, applyBattleGuard, battleKoReplacement, confirmBattleKO, protectedFromKO } from '../effects/runtime'
+import { activateCounterProgram, applyBattleGuard, attackTargetLimited, battleKoReplacement, confirmBattleKO, faceUpLifeToDeckBottom, lifeToDeckBottom, noteRested, protectedFromKO, restLocked } from '../effects/runtime'
 import type { BattleState, Command, GameState, LegalAction } from './types'
 
 const samePresence = (state: GameState, ref: BattleState['attacker']) => {
@@ -54,7 +54,7 @@ export function combatActions(state: GameState, actorId: string): LegalAction[] 
     if (battle.step === 'BLOCKER' && actorId === battle.defenderId) {
       const defender = state.players.find(p => p.id === actorId)!
       const unblockable = hasCombatKeyword(state, battle.attacker.instanceId, 'UNBLOCKABLE')
-      const blockerIds = battle.blockersUsed === 0 && !unblockable ? defender.zones.characters.filter(id => id !== battle.target.instanceId && !state.instances[id].rested
+      const blockerIds = battle.blockersUsed === 0 && !unblockable ? defender.zones.characters.filter(id => id !== battle.target.instanceId && !state.instances[id].rested && !restLocked(state, id)
         && hasBlockerAbility(state, id)
         && !blockerIsProhibited(state, battle, id)) : []
       return [...(blockerIds.length ? [{ type: 'ACTIVATE_BLOCKER' as const, blockerIds, battleId: battle.id }] : []), { type: 'PASS_BLOCKER', battleId: battle.id }]
@@ -86,7 +86,7 @@ export function combatActions(state: GameState, actorId: string): LegalAction[] 
   const eligibleAttacker = (id: string) => {
     const card = state.instances[id]
     const rush = hasCombatKeyword(state, id, 'RUSH') || hasCombatKeyword(state, id, 'RUSH_CHARACTER')
-    return !card.rested && (card.playedOnTurn !== state.turn || card.zone === 'leader' || rush) && !attackProhibited(state, id)
+    return !card.rested && !restLocked(state, id) && (card.playedOnTurn !== state.turn || card.zone === 'leader' || rush) && !attackProhibited(state, id)
   }
   const attackerIds = [...attacker.zones.leader, ...attacker.zones.characters].filter(eligibleAttacker)
   const targetIds = [...defender.zones.leader, ...defender.zones.characters.filter(id => state.instances[id].rested)]
@@ -94,7 +94,8 @@ export function combatActions(state: GameState, actorId: string): LegalAction[] 
   const allTargets = [...defender.zones.leader, ...defender.zones.characters]
   const legalPairs = attackerIds.map(id => {
     const base = hasCombatKeyword(state, id, 'ATTACK_ACTIVE_CHARACTERS') ? allTargets : targetIds
-    return { attackerId: id, targetIds: hasCombatKeyword(state, id, 'RUSH_CHARACTER') ? base.filter(targetId => state.instances[targetId].zone === 'characters') : base }
+    const allowed = base.filter(targetId => !attackTargetLimited(state, id, targetId))
+    return { attackerId: id, targetIds: hasCombatKeyword(state, id, 'RUSH_CHARACTER') ? allowed.filter(targetId => state.instances[targetId].zone === 'characters') : allowed }
   }).filter(pair => pair.targetIds.length)
   return legalPairs.length ? [{ type: 'DECLARE_ATTACK', attackerIds: legalPairs.map(p => p.attackerId), targetIds: [...new Set(legalPairs.flatMap(p => p.targetIds))], targetIdsByAttacker: Object.fromEntries(legalPairs.map(pair => [pair.attackerId, pair.targetIds])) }] : []
 }
@@ -109,13 +110,14 @@ export function applyCombatCommand(state: GameState, command: Extract<Command, {
     const rush = attacker && (hasCombatKeyword(state, attacker.id, 'RUSH') || hasCombatKeyword(state, attacker.id, 'RUSH_CHARACTER'))
     const rushCharacter = attacker && hasCombatKeyword(state, attacker.id, 'RUSH_CHARACTER')
     if (!attacker || attacker.controller !== command.actorId || !['leader', 'characters'].includes(attacker.zone) || attacker.rested
-      || (attacker.zone === 'characters' && attacker.playedOnTurn === state.turn && !rush) || attackProhibited(state, attacker.id)) throw new Error('INVALID_ATTACKER')
+      || (attacker.zone === 'characters' && attacker.playedOnTurn === state.turn && !rush) || attackProhibited(state, attacker.id) || restLocked(state, attacker.id)) throw new Error('INVALID_ATTACKER')
     if (!attackerOwner.zones[attacker.zone].includes(attacker.id)) throw new Error('INVALID_ATTACKER')
     if (!target || target.controller !== defender.id || !['leader', 'characters'].includes(target.zone) || (target.zone === 'characters' && !target.rested && !hasCombatKeyword(state, attacker.id, 'ATTACK_ACTIVE_CHARACTERS'))
-      || (rushCharacter && target.zone !== 'characters')) throw new Error('INVALID_ATTACK_TARGET')
+      || (rushCharacter && target.zone !== 'characters') || attackTargetLimited(state, attacker.id, target.id)) throw new Error('INVALID_ATTACK_TARGET')
     const battleId = `${state.gameId}:battle:${state.version}`
     if (state.effects && ['1.2.0','1.3.0'].includes(state.effects.version)) {
       if (!confirmRestOperation(state, { instanceId: attacker.id, generation: attacker.zoneGeneration }, command.actorId, battleId, 'RULE')) throw new Error('ATTACKER_REST_PREVENTED')
+      noteRested(state, attacker.id)
     } else attacker.rested = true
     state.battle = { id: battleId, step: 'BLOCKER', attacker: { instanceId: attacker.id, generation: attacker.zoneGeneration }, attackerControllerId: attacker.controller, target: { instanceId: target.id, generation: target.zoneGeneration }, defenderId: defender.id, blockersUsed: 0, powerBonus: 0, ...(target.zone === 'characters' && !target.rested ? { activeTarget: true as const } : {}), counterModifiers: [] }
     state.events.push({ sequence: state.events.length, type: 'ATTACK_DECLARED', actorId: command.actorId, publicInstanceId: attacker.id })
@@ -175,9 +177,10 @@ export function applyCombatCommand(state: GameState, command: Extract<Command, {
       if (battle.step !== 'BLOCKER' || battle.blockersUsed !== 0 || hasCombatKeyword(state, battle.attacker.instanceId, 'UNBLOCKABLE')) throw new Error('INVALID_BLOCKER_WINDOW')
       const blocker = state.instances[command.blockerId]
       const definition = blocker && state.catalog.definitions.find(d => d.definitionId === blocker.definitionId)
-      if (!blocker || blocker.controller !== command.actorId || blocker.zone !== 'characters' || blocker.rested || blocker.id === battle.target.instanceId || !definition || !hasBlockerAbility(state, blocker.id) || blockerIsProhibited(state, battle, blocker.id)) throw new Error('INVALID_BLOCKER')
+      if (!blocker || blocker.controller !== command.actorId || blocker.zone !== 'characters' || blocker.rested || restLocked(state, blocker.id) || blocker.id === battle.target.instanceId || !definition || !hasBlockerAbility(state, blocker.id) || blockerIsProhibited(state, battle, blocker.id)) throw new Error('INVALID_BLOCKER')
       if (state.effects && ['1.2.0','1.3.0'].includes(state.effects.version)) {
         if (!confirmRestOperation(state, { instanceId: blocker.id, generation: blocker.zoneGeneration }, command.actorId, battle.id, 'COST')) throw new Error('BLOCKER_REST_PREVENTED')
+        noteRested(state, blocker.id)
       } else blocker.rested = true
       battle.target = { instanceId: blocker.id, generation: blocker.zoneGeneration }; battle.blockersUsed = 1; battle.step = 'COUNTER'
       state.events.push({ sequence: state.events.length, type: 'BLOCKER_ACTIVATED', actorId: command.actorId, publicInstanceId: blocker.id }); battlePaired(state, battle); return
@@ -348,6 +351,13 @@ function processLifeDamage(state: GameState, battle: NonNullable<GameState['batt
     }
     const lifeId = defender.zones.life[0], life = state.instances[lifeId]
     const definition = state.catalog.definitions.find(d => d.definitionId === life.definitionId)!
+    // Leader Life rule: a face-up Life card goes to the bottom of the deck instead of the hand, without its [Trigger] (FAQ ST13-003).
+    if (!damage.banish && life.faceUp && faceUpLifeToDeckBottom(state, defender.id)) {
+      lifeToDeckBottom(state, defender.id, lifeId, false)
+      state.events.push({ sequence: state.events.length, type: 'LIFE_DAMAGED', actorId: defender.id })
+      damage.remaining--; damage.damageIndex++
+      continue
+    }
     if (!damage.banish && definition.review.triggerOriginal.trim()) {
       battle.step = 'LIFE_TRIGGER'
       battle.pendingLifeTrigger = { id: `${battle.id}:trigger:${damage.damageIndex}`, actorId: defender.id, presence: { instanceId: life.id, generation: life.zoneGeneration } }
