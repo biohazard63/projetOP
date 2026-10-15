@@ -26,7 +26,10 @@ type CardSummary = {
   isAltArt: boolean | null
   isSpecial: boolean | null
 }
-export async function GET() {
+// ?fields=grid: the collection grid only needs what a tile shows (no rules text: about half of the payload).
+// The full card, with its effect texts, comes from /api/cards/[id] when its detail is opened.
+export async function GET(request: Request) {
+  const grid = new URL(request.url).searchParams.get('fields') === 'grid'
   try {
     const cards = await prisma.card.findMany({
       select: {
@@ -39,15 +42,15 @@ export async function GET() {
         power: true,
         // Prisma stocke counter en string, on va le convertir ensuite en number|null
         counter: true,
-        effect: true,
+        effect: !grid,
         rarity: true,
         imageUrl: true,
         set: true,
         setCode: true,
-        attribute: true,
-        family: true,
-        ability: true,
-        trigger: true,
+        attribute: !grid,
+        family: !grid,
+        ability: !grid,
+        trigger: !grid,
         isParallel: true,
         isAltArt: true,
         isSpecial: true
@@ -78,6 +81,7 @@ export async function GET() {
       isSpecial: c.isSpecial,
     }))
 
+    // In grid mode the rules texts were not selected: they are undefined here and left out of the JSON.
     return NextResponse.json(normalized)
   } catch (error) {
     console.error('Erreur GET /api/cards:', error)

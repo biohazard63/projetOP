@@ -1,3 +1,4 @@
+import './booster-opening.css'
 import { auth } from '@/lib/auth'
 import { redirect } from 'next/navigation'
 export default async function PrivateLayout({ children }: { children: React.ReactNode }) {

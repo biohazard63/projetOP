@@ -50,7 +50,8 @@ test('M5-2: animations come only from events after the last shown one, in order,
     for (const s of steps) {
       assert.ok(s.ids.every(id => !secret.has(id)), `${s.kind} names no hidden card`)
       if (s.kind === 'draw' || s.kind === 'life') assert.deepEqual(s.cards, [null], 'draws and Life are shown face down')
-      assert.ok(s.duration > 0 && s.duration <= 2500, 'central readable durations')
+      // Motion stays short; card text is timed for reading (V2) and the turn banner may carry the opponent's turn summary.
+      assert.ok(s.duration > 0 && s.duration <= (s.reading ? 12000 : s.summary ? 3000 : 2500), 'central readable durations')
     }
     before = next
   }

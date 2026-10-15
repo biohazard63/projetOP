@@ -1,7 +1,7 @@
 import { combatPresentation, type CombatPresentation } from './combatPresentation'
 import type { View } from './api'
 import { cardName, display, findVisible, seats, type Visible } from './model'
-import { ANIMATION_DURATIONS, type AnimKind } from './presentationTiming'
+import { ANIMATION_DURATIONS, readingDuration, type AnimKind } from './presentationTiming'
 
 // M5-2 — presentation of CONFIRMED server events. Steps are derived from events with a sequence greater than the
 // last one already shown, plus visible differences between two views (power, DON!! rested). They are purely
@@ -9,7 +9,11 @@ import { ANIMATION_DURATIONS, type AnimKind } from './presentationTiming'
 // for a card the viewer cannot see: draws and Life cards are shown face down).
 export type { AnimKind } from './presentationTiming'
 export type AnimStep = { key: string; kind: AnimKind; mine: boolean; text: string; cards: (string | null)[]; ids: string[]; duration: number
-  faces?: (View['cards'][string] | null)[]; counter?: { category: 'CHARACTER' | 'EVENT'; value: number | null }; battleId?: string; combat?: CombatPresentation }
+  faces?: (View['cards'][string] | null)[]; counter?: { category: 'CHARACTER' | 'EVENT'; value: number | null }; battleId?: string; combat?: CombatPresentation
+  /** Card text shown for reading (effect resolved, [Trigger] revealed): timed by its length, see readingDuration. */
+  reading?: { title: string; name: string; text: string; tone: 'ability' | 'trigger' }
+  /** Turn banner: what the opponent did during the turn that just ended. */
+  summary?: string }
 export type LogEntry = { sequence: number; mine: boolean; text: string }
 type Event = View['projection']['events'][number] & { revealedCard?: { printingKey: string } }
 
@@ -93,10 +97,24 @@ export function animationSteps(prev: View | null, next: View, after: number): An
       }
       case 'LIFE_DAMAGED': steps.push(step('life', key, mine, mine ? '−1 Vie' : 'L’adversaire perd une Vie', [null], [])); break
       case 'LIFE_TRASHED': steps.push(step('life', key, mine, mine ? 'Vie défaussée' : 'Vie adverse défaussée', [null], [])); break
-      case 'TRIGGER_ACTIVATED': steps.push(step('trigger', key, mine, `[Trigger] ${name}`, [face], id ? [id] : [])); break
+      case 'TRIGGER_ACTIVATED': {
+        const current = step('trigger', key, mine, `[Trigger] ${name}`, [face], id ? [id] : [])
+        if (shown?.trigger) { current.reading = { title: mine ? 'Votre [Trigger]' : '[Trigger] adverse', name, text: shown.trigger, tone: 'trigger' }; current.duration = readingDuration(shown.trigger) }
+        steps.push(current); break
+      }
       case 'CHARACTER_KO': steps.push(step('ko', key, mine, `${name} K.O.`, [face], id ? [id] : [])); break
       case 'CARD_TRASHED': if (face) steps.push(step('trash', key, mine, `${name} → défausse`, [face], id ? [id] : [])); break
-      case 'TURN_ENDED': steps.push(step('turn', key, mine, mine ? 'Tour adverse' : 'À vous de jouer', [], [])); break
+      case 'TURN_ENDED': {
+        const current = step('turn', key, mine, mine ? 'Tour adverse' : 'À vous de jouer', [], [])
+        if (!mine) {
+          // What the opponent did during the turn that just ended (events of this batch only).
+          const start = events.findLastIndex(x => x.type === 'TURN_ENDED' && x.sequence < e.sequence), turn = events.slice(start + 1, events.indexOf(e)).filter(x => x.actorId !== next.seat)
+          const n = (type: string) => turn.filter(x => x.type === type).length, plays = n('CARD_PLAYED'), attacks = n('ATTACK_DECLARED'), damage = events.slice(start + 1, events.indexOf(e)).filter(x => x.type === 'LIFE_DAMAGED' && x.actorId === next.seat).length
+          const parts = [plays && `${plays} carte${plays > 1 ? 's' : ''} jouée${plays > 1 ? 's' : ''}`, attacks && `${attacks} attaque${attacks > 1 ? 's' : ''}`, damage && `${damage} Vie${damage > 1 ? 's' : ''} perdue${damage > 1 ? 's' : ''}`].filter(Boolean)
+          if (parts.length) { current.summary = `L’adversaire : ${parts.join(' · ')}`; current.duration += 1200 }
+        }
+        steps.push(current); break
+      }
       case 'GAME_ENDED': {
         const result = next.projection.result as { winnerId: string | null } | null
         steps.push(step('result', key, mine, result?.winnerId === next.seat ? 'Victoire !' : 'Défaite', [], [])); break
@@ -108,7 +126,10 @@ export function animationSteps(prev: View | null, next: View, after: number): An
   const seenAbilities = prev ? new Set(((prev.projection as unknown as { effects?: { cardEvents?: { sequence: number }[] } }).effects?.cardEvents ?? []).map(c => c.sequence)) : null
   for (const c of cardEvents) if (c.type === 'ABILITY_ACTIVATED' && seenAbilities && !seenAbilities.has(c.sequence)) {
     const face = printingOf(next, c.subjectId)
-    if (face) steps.push(step('ability', `a${c.sequence}`, c.controllerId === next.seat, `Capacité appliquée : ${nameOf(next, c.subjectId)}`, [face], [c.subjectId]))
+    if (!face) continue
+    const mine = c.controllerId === next.seat, card = display(next, face), current = step('ability', `a${c.sequence}`, mine, `Capacité appliquée : ${nameOf(next, c.subjectId)}`, [face], [c.subjectId])
+    if (card?.text) { current.reading = { title: mine ? 'Votre effet' : 'Effet adverse', name: card.name, text: card.text, tone: 'ability' }; current.duration = readingDuration(card.text) }
+    steps.push(current)
   }
   if (prev) {
     // Visible power changes (Counters, effects) and DON!! that became rested (payments).
@@ -121,8 +142,17 @@ export function animationSteps(prev: View | null, next: View, after: number): An
     const rested = (v: View) => seats(v).me.cost.filter(d => (d as Visible).rested).length
     if (rested(next) > rested(prev) && !steps.some(s => s.mine && s.kind === 'play')) steps.push(step('don-rest', `r${next.version}`, true, 'DON!! reposés', [], []))
   }
+  // Small consecutive actions of the same player (draw, DON!!) share one toast instead of queueing one after the other.
+  const MINOR: AnimKind[] = ['draw', 'don-add', 'don-rest', 'don-attach']
+  const merged: AnimStep[] = []
+  for (const current of steps) {
+    const last = merged.at(-1)
+    if (last && MINOR.includes(last.kind) && MINOR.includes(current.kind) && last.mine === current.mine && !last.text.includes(current.text)) {
+      merged[merged.length - 1] = { ...last, text: `${last.text} · ${current.text}`, cards: [...last.cards, ...current.cards].slice(0, 3), ids: [...last.ids, ...current.ids], duration: Math.max(last.duration, current.duration) + 200 }
+    } else merged.push(current)
+  }
   // Snapshot only display data already disclosed by a projection. Later views can remove the source from trash/field.
-  return steps.map(current => ({ ...current, faces: current.cards.map(key => {
+  return merged.map(current => ({ ...current, faces: current.cards.map(key => {
     const card = key ? display(next, key) ?? (prev ? display(prev, key) : null) : null
     return card ? { ...card } : null
   }) }))

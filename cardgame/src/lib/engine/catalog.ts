@@ -115,6 +115,25 @@ export const engineCatalog = (): { definitions: CardDefinition[]; printings: Car
 export const engineRegistry = (): EffectRegistry => validateRegistry(structuredClone(M3_FULL_REGISTRY))
 /** Registry paired with engineCatalog and used by the current server catalogue. */
 export const currentEngineRegistry = (): EffectRegistry => compileCurrentCatalog().registry
+
+/**
+ * The catalogue and effect registry a game actually needs: the definitions printed in its decks and their effect programs.
+ * A stored game used to carry the whole catalogue (775 definitions) and registry (534 programs), about 1.6 MB read, copied and
+ * written on every command. Entries without a card definition are kept. Nothing is added, so an unknown card is still refused.
+ */
+export function scopedToDecks(decks: { printingKey: string }[][], printings: CardPrinting[], definitions: CardDefinition[], registry: EffectRegistry) {
+  const keys = new Set(decks.flat().map(e => e.printingKey))
+  const usedPrintings = printings.filter(p => keys.has(p.printingKey))
+  const ids = new Set(usedPrintings.map(p => p.definitionId))
+  const keep = (item: unknown) => {
+    const o = item as { definitionId?: string; source?: { definitionId?: string } }
+    const id = o.definitionId ?? o.source?.definitionId
+    return id === undefined || ids.has(id)
+  }
+  const scoped = { ...registry } as Record<string, unknown>
+  for (const [k, v] of Object.entries(registry)) if (Array.isArray(v)) scoped[k] = v.filter(keep)
+  return { definitions: definitions.filter(d => ids.has(d.definitionId)), printings: usedPrintings, registry: scoped as EffectRegistry }
+}
 export const m3EngineRuleset = (): Ruleset => structuredClone(M3_RULESET)
 /** Ruleset of new /play games: the permanent free format. Existing games keep the ruleset stored in their state. */
 export const engineRuleset = (): Ruleset => structuredClone(FREE_RULESET)

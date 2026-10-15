@@ -1,0 +1,456 @@
+{
+ "names": {
+  "EB-01": {
+   "title": "Memorial Collection",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "EB-02": {
+   "title": "Anime 25th Collection",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "GC-01": {
+   "title": "GIFT COLLECTION 2023",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-01": {
+   "title": "ROMANCE DAWN",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-02": {
+   "title": "PARAMOUNT WAR",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-03": {
+   "title": "PILLARS OF STRENGTH",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-04": {
+   "title": "KINGDOMS OF INTRIGUE",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-05": {
+   "title": "AWAKENING OF THE NEW ERA",
+   "language": "en",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-06": {
+   "title": "WINGS OF THE CAPTAIN",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-07": {
+   "title": "500 YEARS IN THE FUTURE",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-08": {
+   "title": "TWO LEGENDS",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-09": {
+   "title": "LES NOUVEAUX EMPEREURS",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-10": {
+   "title": "SANG ROYAL",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-11": {
+   "title": "DES POINGS VIFS COMME L'ÉCLAIR",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-12": {
+   "title": "L'HÉRITAGE DU MAÎTRE",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-13": {
+   "title": "SUCCESSEURS",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-16": {
+   "title": "L'HEURE DE LA BATAILLE DÉCISIVE",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP-17": {
+   "title": "LES GUERRIERS LES PLUS PUISSANTS AU MONDE",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP14-EB04": {
+   "title": "LES SEPT DE LA MER D'AZUR",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OP15-EB04": {
+   "title": "AVENTURE SUR L'ÎLE DE DIEU",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "OTHER": {
+   "title": "GIFT COLLECTION 2023",
+   "language": "en",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "PRB-01": {
+   "title": "ONE PIECE CARD THE BEST",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "PROMO": {
+   "title": "Cannes Festival International des Jeux",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-01": {
+   "title": "Straw Hat Crew",
+   "language": "en",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-02": {
+   "title": "Worst Generation",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-03": {
+   "title": "The Seven Warlords of the Sea",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-04": {
+   "title": "Animal Kingdom Pirates",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-05": {
+   "title": "ONE PIECE FILM edition",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-06": {
+   "title": "Absolute Justice",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-07": {
+   "title": "Big Mom Pirates",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-08": {
+   "title": "Monkey D. Luffy",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-09": {
+   "title": "Yamato",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-10": {
+   "title": "The Three Captains",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-11": {
+   "title": "Uta",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-12": {
+   "title": "Zoro & Sanji",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-13": {
+   "title": "The Three Brothers",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-14": {
+   "title": "3D2Y",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-15": {
+   "title": "ROUGE Edward Newgate",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-16": {
+   "title": "VERT Uta",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-17": {
+   "title": "–BLEU Don Quijote Doflamingo",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-18": {
+   "title": "VIOLET Monkey D. Luffy",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-19": {
+   "title": "NOIR Smoker",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-20": {
+   "title": "JAUNE Charlotte Katakuri",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-21": {
+   "title": "GEAR 5TH",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-23": {
+   "title": "ROUGE Shanks",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-24": {
+   "title": "VERT Jewelry Bonney",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-25": {
+   "title": "BLEU Baggy",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-26": {
+   "title": "VIOLET/NOIR Monkey D. Luffy",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-27": {
+   "title": "NOIR Marshall D. Teach",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-28": {
+   "title": "VERT/JAUNE Yamato",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-29": {
+   "title": "EGG HEAD",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-30": {
+   "title": "LUFFY ET ACE",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-31": {
+   "title": "DECK POUR DÉBUTANT -ROUGE Monkey D. Luffy",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-32": {
+   "title": "DECK POUR DÉBUTANT -VERT Roronoa Zoro",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-33": {
+   "title": "DECK POUR DÉBUTANT -BLEU Kuzan",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-34": {
+   "title": "DECK POUR DÉBUTANT -VIOLET Charlotte Katakuri",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-35": {
+   "title": "DECK POUR DÉBUTANT -ROUGE/NOIR Sabo",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  },
+  "ST-36": {
+   "title": "DECK POUR DÉBUTANT -JAUNE Eustass \"Captain\" Kidd",
+   "language": "fr",
+   "source": "data/onepiece/catalog/extensions.json"
+  }
+ },
+ "frames": {
+  "https://fr.onepiece-cardgame.com/products/boosters/op13/images/img_item01.webp": {
+   "x": 0.2433,
+   "y": 0.0731,
+   "w": 0.5149,
+   "h": 0.8552,
+   "width": 670,
+   "height": 670
+  },
+  "https://en.onepiece-cardgame.com/onepiececg/bccard/en/products/2026/03/26/olc1E9Gg9WXeLP6V/img_item01.webp": {
+   "x": 0.2448,
+   "y": 0.0746,
+   "w": 0.5119,
+   "h": 0.8522,
+   "width": 670,
+   "height": 670
+  },
+  "https://fr.onepiece-cardgame.com/products/boosters/op17/images/others/product_pack.webp": {
+   "x": 0.2319,
+   "y": 0.0764,
+   "w": 0.5377,
+   "h": 0.8319,
+   "width": 690,
+   "height": 720
+  },
+  "https://fr.onepiece-cardgame.com/renewal/images/products/boosters/op14/img_item01.webp": {
+   "x": 0.2448,
+   "y": 0.0761,
+   "w": 0.509,
+   "h": 0.8478,
+   "width": 670,
+   "height": 670
+  },
+  "https://fr.onepiece-cardgame.com/renewal/images/products/boosters/op15-eb04/img_item01.webp": {
+   "x": 0.2448,
+   "y": 0.0776,
+   "w": 0.5104,
+   "h": 0.8448,
+   "width": 670,
+   "height": 670
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/prb01/img_thumbnail.png": {
+   "x": 0.2308,
+   "y": 0.0567,
+   "w": 0.5385,
+   "h": 0.8907,
+   "width": 247,
+   "height": 247
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/op12/img_thumbnail.png": {
+   "x": 0.2308,
+   "y": 0.0567,
+   "w": 0.5385,
+   "h": 0.8907,
+   "width": 247,
+   "height": 247
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/op11/img_thumbnail.png": {
+   "x": 0.2308,
+   "y": 0.0567,
+   "w": 0.5385,
+   "h": 0.8907,
+   "width": 247,
+   "height": 247
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/op10/img_thumbnail.png": {
+   "x": 0.2308,
+   "y": 0.0567,
+   "w": 0.5385,
+   "h": 0.8907,
+   "width": 247,
+   "height": 247
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/op09/img_thumbnail.png": {
+   "x": 0.2308,
+   "y": 0.0526,
+   "w": 0.5385,
+   "h": 0.8947,
+   "width": 247,
+   "height": 247
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/op08/img_thumbnail.png": {
+   "x": 0.2308,
+   "y": 0.0567,
+   "w": 0.5385,
+   "h": 0.8907,
+   "width": 247,
+   "height": 247
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/op07/img_thumbnail.png": {
+   "x": 0.2308,
+   "y": 0.0526,
+   "w": 0.5385,
+   "h": 0.8947,
+   "width": 247,
+   "height": 247
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/op06/img_thumbnail.png": {
+   "x": 0.2308,
+   "y": 0.0526,
+   "w": 0.5385,
+   "h": 0.8947,
+   "width": 247,
+   "height": 247
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/op05/img_thumbnail.png": {
+   "x": 0.2308,
+   "y": 0.0567,
+   "w": 0.5385,
+   "h": 0.8866,
+   "width": 247,
+   "height": 247
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/op04/img_thumbnail.png": {
+   "x": 0.2308,
+   "y": 0.0567,
+   "w": 0.5385,
+   "h": 0.8907,
+   "width": 247,
+   "height": 247
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/op03/img_thumbnail.png": {
+   "x": 0.2308,
+   "y": 0.0607,
+   "w": 0.5385,
+   "h": 0.8907,
+   "width": 247,
+   "height": 247
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/op02/img_thumbnail.png": {
+   "x": 0.2551,
+   "y": 0.0607,
+   "w": 0.4939,
+   "h": 0.8866,
+   "width": 247,
+   "height": 247
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/op01/img_thumbnail.png": {
+   "x": 0.2308,
+   "y": 0.0607,
+   "w": 0.5385,
+   "h": 0.8866,
+   "width": 247,
+   "height": 247
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/eb02/img_thumbnail.png": {
+   "x": 0.2308,
+   "y": 0.0526,
+   "w": 0.5385,
+   "h": 0.8947,
+   "width": 247,
+   "height": 247
+  },
+  "https://en.onepiece-cardgame.com/images/products/boosters/eb01/img_thumbnail.png": {
+   "x": 0.2308,
+   "y": 0.0526,
+   "w": 0.5385,
+   "h": 0.8866,
+   "width": 247,
+   "height": 247
+  }
+ }
+}

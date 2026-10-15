@@ -4,7 +4,16 @@ import Link from 'next/link'
 import { useEffect, useRef, useState } from 'react'
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog'
 import type { CatalogueCard } from '@/lib/collector/types'
-export default function CardDetail({ card, cards = [], onClose, onFavorite, authenticated = true, navigationCards = [], onSelect }: { card: CatalogueCard | null; cards?: CatalogueCard[]; onClose: () => void; onFavorite?: (id: string) => Promise<void>; authenticated?: boolean; navigationCards?: CatalogueCard[]; onSelect?: (id: string) => void }) {
+export default function CardDetail({ card: base, cards = [], onClose, onFavorite, authenticated = true, navigationCards = [], onSelect }: { card: CatalogueCard | null; cards?: CatalogueCard[]; onClose: () => void; onFavorite?: (id: string) => Promise<void>; authenticated?: boolean; navigationCards?: CatalogueCard[]; onSelect?: (id: string) => void }) {
+  // A light grid card has no rules texts: they are fetched once when its detail opens (/api/cards/[id]).
+  const [full, setFull] = useState<Record<string, Partial<CatalogueCard>>>({})
+  useEffect(() => {
+    if (!base || (base as { effect?: unknown }).effect !== undefined || full[base.id]) return
+    const controller = new AbortController()
+    fetch(`/api/cards/${encodeURIComponent(base.id)}`, { signal: controller.signal }).then(r => r.ok ? r.json() : null).then(d => { if (d) setFull(old => ({ ...old, [base.id]: d })) }).catch(() => {})
+    return () => controller.abort()
+  }, [base, full])
+  const card = base ? { ...(full[base.id] ?? {}), ...base } as CatalogueCard : null
   const [zoomed, setZoomed] = useState(false)
   const [imageFailed, setImageFailed] = useState(false)
   const swipe = useRef<{ x: number; y: number } | null>(null)

@@ -22,3 +22,13 @@ test('M6 saved games: a game whose primitive manifest is an earlier prefix of th
   unknown.effects!.primitives.primitives = [...primitives, { id: 'notAPrimitive', version: '1.0.0' }] as unknown as typeof primitives
   assert.throws(() => projectState(unknown, 'player'), /INVALID_EFFECT_STATE/, 'an unknown primitive is still refused')
 })
+
+// Manifests already published by a deployment (fa75fbf, 26f1673, 15f499c): new primitives may only follow them.
+test('M6 saved games: the published manifest ending with scheduleEndOfTurn is a prefix of the current one', async () => {
+  const repo = new MemoryGameRepository(), deck = REFERENCE_DECKS.find(d => d.id === 'starter-st15')!
+  await new PlayService(repo).start('u2', { ref: deck.id, entries: deck.entries })
+  const state = (await repo.findActive('u2'))!.state, ids = state.effects!.primitives.primitives.map(p => p.id)
+  const published = ['preventAttack', 'trashCharacter', 'disableBlocker', 'returnGivenDon', 'lifeToDeckTop', 'arrangeLife', 'turnLifeFaceUp', 'lockLifeToHand', 'lockRefresh', 'setBasePower', 'scheduleEndOfTurn']
+  const start = ids.indexOf('preventAttack')
+  assert.deepEqual(ids.slice(start, start + published.length), published)
+})
