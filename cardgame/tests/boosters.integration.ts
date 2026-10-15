@@ -8,7 +8,7 @@ import assert from 'node:assert/strict'
 import { randomUUID, createHash } from 'node:crypto'
 import { Prisma, PrismaClient } from '@prisma/client'
 import { isolatedBoosterDb, seedBoosters } from './seed-boosters'
-import { openBooster, getOpening, getBoosterCatalog } from '../src/lib/boosters/service'
+import { openBooster, openBoosters, getOpening, getBoosterCatalog } from '../src/lib/boosters/service'
 import { drawIdentity } from '../src/lib/boosters/generator'
 import { BoosterError } from '../src/lib/boosters/rules'
 import { inspectBoosterDatabase } from '../src/lib/boosters/database-check'
@@ -238,4 +238,28 @@ test('test-only profile CLI applies a reviewed file without changing player data
  await assert.rejects(run(process.execPath,['--import','tsx','scripts/boosters/profiles.ts','--apply-test','--file',file],{env:{...process.env,DATABASE_URL:'postgresql://synthetic:synthetic@example.invalid/neondb'}}),e=>{
   assert.ok(e&&typeof e==='object'&&'stderr' in e&&String(e.stderr).includes('Production interdite'));return true
  })
+})
+
+test('a batch of 5 boosters credits five separate openings once, and replays them without a second credit', async () => {
+ const before = await quantity(), key = randomUUID()
+ const first = await openBoosters(db, userId, 'OP-999991', key, 5)
+ assert.equal(first.replayed, false); assert.equal(first.openings.length, 5)
+ assert.equal(new Set(first.openings.map(o => o.id)).size, 5)
+ const cards = first.openings.reduce((n, o) => n + o.cards.length, 0)
+ assert.equal(await quantity(), before + cards)
+ const rows = await db.boosterOpening.findMany({ where: { userId, idempotencyKey: { startsWith: `${key}#` } } })
+ assert.deepEqual(rows.map(r => r.idempotencyKey).sort(), [1, 2, 3, 4, 5].map(n => `${key}#${n}`))
+ const again = await openBoosters(db, userId, 'OP-999991', key, 5)
+ assert.equal(again.replayed, true); assert.deepEqual(again.openings.map(o => o.id), first.openings.map(o => o.id))
+ assert.equal(await quantity(), before + cards)
+})
+test('a batch only accepts 1, 5 or 10 boosters and credits nothing otherwise', async () => {
+ const before = await quantity()
+ await assert.rejects(openBoosters(db, userId, 'OP-999991', randomUUID(), 3), errorCode('INVALID_REQUEST'))
+ assert.equal(await quantity(), before)
+})
+test('a batch on an incomplete set rolls back every pack', async () => {
+ const before = await quantity(), openings = await db.boosterOpening.count({ where: { userId } })
+ await assert.rejects(openBoosters(db, userId, 'OP-999993', randomUUID(), 5))
+ assert.equal(await quantity(), before); assert.equal(await db.boosterOpening.count({ where: { userId } }), openings)
 })

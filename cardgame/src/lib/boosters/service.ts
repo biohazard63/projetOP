@@ -70,50 +70,72 @@ export async function getBoosterCatalog(db: DB): Promise<BoosterCatalogItem[]> {
     }
   })
 }
-export async function openBooster(db: PrismaClient, userId: string, setCode: string, idempotencyKey: string): Promise<{ opening: OpeningResult; replayed: boolean }> {
+// One opening inside the caller's transaction (user lock already held). A batch reuses the draw context.
+async function creditOpening(tx: DB, userId: string, setCode: string, idempotencyKey: string, shared?: { ctx?: Awaited<ReturnType<typeof getBoosterDrawContext>> }): Promise<{ opening: OpeningResult; replayed: boolean }> {
+  const existing = await tx.boosterOpening.findUnique({ where: { userId_idempotencyKey: { userId, idempotencyKey } } })
+  if (existing) {
+    const result = existing.resultSnapshot as unknown as OpeningResult | null
+    if (!result || !existing.creditedAt) throw new BoosterError('INVALID_RECEIPT', 'Reçu d’ouverture incomplet', 409)
+    const exactSet = await tx.cardSet.findUnique({ where: { code: setCode.trim().toUpperCase() }, select: { code: true } })
+    if ((exactSet && exactSet.code !== result.setCode) || normalizeSetCode(result.setCode) !== normalizeSetCode(setCode)) throw new BoosterError('IDEMPOTENCY_CONFLICT', 'Cette clé appartient à une autre extension', 409)
+    return { opening: result, replayed: true }
+  }
+  if (!await tx.user.findUnique({ where: { id: userId }, select: { id: true } })) throw new BoosterError('USER_NOT_FOUND', 'Utilisateur introuvable', 401)
+  const ctx = shared?.ctx ?? await getBoosterDrawContext(tx, setCode)
+  if (shared) shared.ctx = ctx
+  // Existing product is a free simulation: no currency, payment or inventory debit.
+  const booster = await tx.booster.upsert({ where: { id: ctx.boosterId }, update: {}, create: { id: ctx.boosterId, name: `Simulation · ${ctx.set.name}`, description: 'Ouverture gratuite du simulateur', price: 0, setCode: ctx.set.code, imageUrl: ctx.set.imageUrl } })
+  if (booster.price !== 0) throw new BoosterError('PAID_BOOSTER_UNSUPPORTED', 'Droit d’ouverture non configuré', 403)
+  const draw = generateBooster(ctx.pool, ctx.set.code, ctx.rules, () => randomInt(0, 0x100000000) / 0x100000000, ctx.weights)
+  const counts = new Map<string, number>()
+  const owned = await tx.userCard.findMany({ where: { userId, cardId: { in: draw.cards.map(card => card.id) } }, select: { cardId: true, quantity: true } })
+  const quantities = new Map(owned.map(row => [row.cardId, row.quantity]))
+  // Drawn under its tier, credited and shown as the real catalogue card.
+  const resultCards = draw.cards.map(({ drawTier, ...drawn }, index) => {
+    const card = ctx.originals?.get(drawn.id) ?? drawn
+    const quantityBefore = (quantities.get(card.id) || 0) + (counts.get(card.id) || 0)
+    counts.set(card.id, (counts.get(card.id) || 0) + 1)
+    return { ...card, ...(ctx.rules.variantPolicy === 'metadata' ? {drawVariant: metadataVariant(card)} : {}), ...(drawTier ? { drawTier } : {}), position: index + 1, quantityBefore, isDuplicate: quantityBefore > 0, isNew: quantityBefore === 0 }
+  })
+  const created = await tx.boosterOpening.create({ data: { userId, boosterId: booster.id, idempotencyKey, creditedAt: new Date(), rulesSnapshot: asJson({ generatorVersion: ctx.tiered ? 4 : ctx.rules.selection === 'number' ? 3 : 2, ...(ctx.tiered ? { tierRates: TIER_RATES_VERSION, tierManifest: tierManifest.source } : {}), sampling: 'without-replacement-by-card-number', selection: ctx.rules.selection || 'card', selectedProfile: draw.profile || null, rules: ctx.rules, cardWeights: ctx.weights ? Object.fromEntries(ctx.weights) : null }), cards: { create: resultCards.map(card => ({ cardId: card.id, position: card.position })) } } })
+  for (const [cardId, quantity] of [...counts].sort(([a], [b]) => a.localeCompare(b))) {
+    await tx.userCard.upsert({ where: { userId_cardId: { userId, cardId } }, update: { quantity: { increment: quantity } }, create: { userId, cardId, quantity } })
+  }
+  const opening: OpeningResult = { id: created.id, boosterId: booster.id, setCode: ctx.set.code, setName: ctx.set.name, openedAt: created.openedAt.toISOString(), creditedAt: created.creditedAt!.toISOString(), cards: resultCards, specialPack: draw.specialPack, rules: { label: draw.profile ? `${ctx.rules.label} · ${draw.profile}` : ctx.rules.label, source: ctx.rules.source, slotCount: ctx.rules.slots.length }, newCardsCount: resultCards.filter(card => card.isNew).length, hasRareCard: resultCards.some(isRare), legacy: false }
+  await tx.boosterOpening.update({ where: { id: created.id }, data: { resultSnapshot: asJson(opening) } })
+  return { opening, replayed: false }
+}
+async function inUserTransaction<T>(db: PrismaClient, userId: string, timeout: number, run: (tx: DB) => Promise<T>): Promise<T> {
   for (let attempt = 0; attempt < 3; attempt++) {
     try {
       return await db.$transaction(async tx => {
         // Transaction-scoped PostgreSQL lock serializes all credits for this user across processes.
         await tx.$executeRaw`SELECT pg_advisory_xact_lock(hashtextextended(${`booster:${userId}`}, 0))`
-        const existing = await tx.boosterOpening.findUnique({ where: { userId_idempotencyKey: { userId, idempotencyKey } } })
-        if (existing) {
-          const result = existing.resultSnapshot as unknown as OpeningResult | null
-          if (!result || !existing.creditedAt) throw new BoosterError('INVALID_RECEIPT', 'Reçu d’ouverture incomplet', 409)
-          const exactSet = await tx.cardSet.findUnique({ where: { code: setCode.trim().toUpperCase() }, select: { code: true } })
-          if ((exactSet && exactSet.code !== result.setCode) || normalizeSetCode(result.setCode) !== normalizeSetCode(setCode)) throw new BoosterError('IDEMPOTENCY_CONFLICT', 'Cette clé appartient à une autre extension', 409)
-          return { opening: result, replayed: true }
-        }
-        if (!await tx.user.findUnique({ where: { id: userId }, select: { id: true } })) throw new BoosterError('USER_NOT_FOUND', 'Utilisateur introuvable', 401)
-        const ctx = await getBoosterDrawContext(tx, setCode)
-        // Existing product is a free simulation: no currency, payment or inventory debit.
-        const booster = await tx.booster.upsert({ where: { id: ctx.boosterId }, update: {}, create: { id: ctx.boosterId, name: `Simulation · ${ctx.set.name}`, description: 'Ouverture gratuite du simulateur', price: 0, setCode: ctx.set.code, imageUrl: ctx.set.imageUrl } })
-        if (booster.price !== 0) throw new BoosterError('PAID_BOOSTER_UNSUPPORTED', 'Droit d’ouverture non configuré', 403)
-        const draw = generateBooster(ctx.pool, ctx.set.code, ctx.rules, () => randomInt(0, 0x100000000) / 0x100000000, ctx.weights)
-        const counts = new Map<string, number>()
-        const owned = await tx.userCard.findMany({ where: { userId, cardId: { in: draw.cards.map(card => card.id) } }, select: { cardId: true, quantity: true } })
-        const quantities = new Map(owned.map(row => [row.cardId, row.quantity]))
-        // Drawn under its tier, credited and shown as the real catalogue card.
-        const resultCards = draw.cards.map(({ drawTier, ...drawn }, index) => {
-          const card = ctx.originals?.get(drawn.id) ?? drawn
-          const quantityBefore = (quantities.get(card.id) || 0) + (counts.get(card.id) || 0)
-          counts.set(card.id, (counts.get(card.id) || 0) + 1)
-          return { ...card, ...(ctx.rules.variantPolicy === 'metadata' ? {drawVariant: metadataVariant(card)} : {}), ...(drawTier ? { drawTier } : {}), position: index + 1, quantityBefore, isDuplicate: quantityBefore > 0, isNew: quantityBefore === 0 }
-        })
-        const created = await tx.boosterOpening.create({ data: { userId, boosterId: booster.id, idempotencyKey, creditedAt: new Date(), rulesSnapshot: asJson({ generatorVersion: ctx.tiered ? 4 : ctx.rules.selection === 'number' ? 3 : 2, ...(ctx.tiered ? { tierRates: TIER_RATES_VERSION, tierManifest: tierManifest.source } : {}), sampling: 'without-replacement-by-card-number', selection: ctx.rules.selection || 'card', selectedProfile: draw.profile || null, rules: ctx.rules, cardWeights: ctx.weights ? Object.fromEntries(ctx.weights) : null }), cards: { create: resultCards.map(card => ({ cardId: card.id, position: card.position })) } } })
-        for (const [cardId, quantity] of [...counts].sort(([a], [b]) => a.localeCompare(b))) {
-          await tx.userCard.upsert({ where: { userId_cardId: { userId, cardId } }, update: { quantity: { increment: quantity } }, create: { userId, cardId, quantity } })
-        }
-        const opening: OpeningResult = { id: created.id, boosterId: booster.id, setCode: ctx.set.code, setName: ctx.set.name, openedAt: created.openedAt.toISOString(), creditedAt: created.creditedAt!.toISOString(), cards: resultCards, specialPack: draw.specialPack, rules: { label: draw.profile ? `${ctx.rules.label} · ${draw.profile}` : ctx.rules.label, source: ctx.rules.source, slotCount: ctx.rules.slots.length }, newCardsCount: resultCards.filter(card => card.isNew).length, hasRareCard: resultCards.some(isRare), legacy: false }
-        await tx.boosterOpening.update({ where: { id: created.id }, data: { resultSnapshot: asJson(opening) } })
-        return { opening, replayed: false }
-      }, { maxWait: 10000, timeout: 20000, isolationLevel: Prisma.TransactionIsolationLevel.ReadCommitted })
+        return run(tx)
+      }, { maxWait: 10000, timeout, isolationLevel: Prisma.TransactionIsolationLevel.ReadCommitted })
     } catch (error) {
       if (error instanceof Prisma.PrismaClientKnownRequestError && ['P2034', 'P2002'].includes(error.code) && attempt < 2) continue
       throw error
     }
   }
   throw new BoosterError('RETRY_EXHAUSTED', 'Réessayez la même ouverture', 503)
+}
+export async function openBooster(db: PrismaClient, userId: string, setCode: string, idempotencyKey: string): Promise<{ opening: OpeningResult; replayed: boolean }> {
+  return inUserTransaction(db, userId, 20000, tx => creditOpening(tx, userId, setCode, idempotencyKey))
+}
+export const BATCH_SIZES = [1, 5, 10] as const
+/** Several boosters at once, all credited or none: each one stays its own opening (key `<batch key>#n`), replayable. */
+export async function openBoosters(db: PrismaClient, userId: string, setCode: string, batchKey: string, count: number): Promise<{ openings: OpeningResult[]; replayed: boolean }> {
+  if (!(BATCH_SIZES as readonly number[]).includes(count)) throw new BoosterError('INVALID_REQUEST', 'Nombre de boosters invalide', 400)
+  return inUserTransaction(db, userId, 60000, async tx => {
+    const shared: { ctx?: Awaited<ReturnType<typeof getBoosterDrawContext>> } = {}, openings: OpeningResult[] = []
+    let replayed = true
+    for (let n = 1; n <= count; n++) {
+      const result = await creditOpening(tx, userId, setCode, `${batchKey}#${n}`, shared)
+      openings.push(result.opening); replayed &&= result.replayed
+    }
+    return { openings, replayed }
+  })
 }
 export async function getOpening(db: DB, userId: string, id: string): Promise<OpeningResult | null> {
   const row = await db.boosterOpening.findFirst({ where: { id, userId }, include: { booster: { include: { cardSet: true } }, cards: { orderBy: { position: 'asc' }, include: { card: true } } } })
