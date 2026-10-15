@@ -9,7 +9,6 @@ import { useRemote } from '@/hooks/useRemote'
 import type { BoosterCatalogItem } from '@/lib/boosters/types'
 import type { CollectorOverview } from '@/lib/collector/types'
 import { PageHeading, LoadState, EmptyState, Progress, SectionHeading } from '@/components/collector/Primitives'
-import SetTile from '@/components/collector/SetTile'
 import PackArt from '@/components/booster-opening/PackArt'
 import { extensionFamily, extensionFamilies } from '@/lib/collector/extension-family'
 import { isBoosterProduct } from '@/lib/boosters/products'
@@ -121,7 +120,17 @@ export default function BoostersPage() {
       </div>
     </section>}
     <SectionHeading title={gallery ? 'Extensions du catalogue' : 'Toutes les extensions'} />
-    {gallery ? <div className="piece-set-grid">{sets.map(set => <SetTile key={set.code} set={set} authenticated={Boolean(session?.user)} progress={overview.data?.sets.find(p => p.code === set.code)} />)}</div>
+    {gallery ? <div className="bx-gallery">{sets.map(set => { const p = overview.data?.sets.find(x => x.code === set.code), pct = p?.percentage ?? 0
+      return <article key={set.code} className={`bx-ext${set.available ? '' : ' off'}${pct >= 100 ? ' done' : ''}`}>
+        <Link href={`/boosters/${encodeURIComponent(set.code)}`} className="bx-ext-art" aria-label={`Découvrir ${boosterTitle(set)}`}><span className="bx-ext-glow" /><PackArt src={set.imageUrl} alt={`Booster ${set.name}`} /></Link>
+        <div className="bx-ext-body">
+          <div className="bx-ext-top"><span className="bx-ext-code">{set.code}</span><span className="bx-ext-ring" style={{ '--p': pct } as CSSProperties} title={p ? `${p.unique} / ${p.total} cartes` : undefined}><b>{p ? `${pct}%` : '—'}</b></span></div>
+          <h3>{boosterTitle(set)}</h3>
+          <p>{p ? `${p.unique} / ${set.cardCount} cartes possédées` : `${set.cardCount} cartes`}{p && p.alternatives > 0 ? ` · ${p.ownedAlternatives}/${p.alternatives} variantes` : ''}</p>
+          <div className="bx-ext-actions"><Link href={`/boosters/${encodeURIComponent(set.code)}`} className="piece-button secondary">Détails <ArrowUpRight size={13} /></Link>
+            {set.available ? <Link href={openHref(set.code)} className="piece-button"><PackageOpen size={13} />Ouvrir</Link> : <button className="piece-button" disabled title={set.error || 'Extension indisponible'}>Indisponible</button>}</div>
+        </div>
+      </article> })}</div>
       : <ul className="bx-grid">{sets.map((set, i) => { const p = overview.data?.sets.find(x => x.code === set.code); return <li key={set.code}>
         <button type="button" className={`bx-tile${i === current ? ' selected' : ''}${set.available ? '' : ' unavailable'}`} onClick={() => { select(i); stage.current?.scrollIntoView({ behavior: 'smooth', block: 'center' }) }} aria-label={`Afficher ${set.code} · ${boosterTitle(set)}`}>
           <PackArt src={set.imageUrl} alt="" />

@@ -10,25 +10,11 @@ import { LoadState, SectionHeading, EmptyState, Progress } from '@/components/co
 import CardTile from '@/components/collector/CardTile'
 import CardDetail from '@/components/collector/CardDetail'
 import PackArt from '@/components/booster-opening/PackArt'
-import { Counter, Ring, rankOf, RANKS } from '@/components/collector/Progression'
+import { Counter, Ring, rankOf, RANKS, badgesOf } from '@/components/collector/Progression'
 import { boosterTitle } from '@/lib/boosters/catalogPresentation'
 import { DailyTreasure, OceanBackdrop, Tilt, useReveal } from './fx'
 
 type ActiveGame = { game: { gameId: string; status: string; projection: { turn: number } } | null }
-
-/** Cosmetic achievements derived from the player's existing statistics (no new rule, no stored state). */
-function badgesOf(stats: CollectorOverview) {
-  return [
-    { name: 'Premier booster', hint: 'Ouvrir un booster', done: stats.openings >= 1 },
-    { name: 'Habitué des boosters', hint: '10 boosters ouverts', done: stats.openings >= 10 },
-    { name: 'Grand explorateur', hint: '50 boosters ouverts', done: stats.openings >= 50 },
-    { name: 'Stratège', hint: 'Créer un deck', done: stats.decks >= 1 },
-    { name: 'Amiral de flotte', hint: '10 decks créés', done: stats.decks >= 10 },
-    { name: 'Collectionneur', hint: '25 % du catalogue', done: stats.percentage >= 25 },
-    { name: 'Archiviste', hint: '50 % du catalogue', done: stats.percentage >= 50 },
-    { name: 'Chasseur d’alternatives', hint: '100 variantes spéciales', done: stats.ownedAlternatives >= 100 },
-  ]
-}
 
 /** Home page for signed-in players: a bento dashboard with progression, a game to resume, quick actions and treasures. */
 export default function MemberHome() {
