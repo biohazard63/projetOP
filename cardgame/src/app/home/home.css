@@ -32,7 +32,11 @@
 [data-reveal].is-in { opacity:1; transform:none; }
 
 /* Treasure of the day: flip a card. */
-.fx-treasure { display:flex; align-items:center; gap:20px; }
+.fx-treasure { display:flex; align-items:center; gap:20px; position:relative; }
+.fx-treasure-gain { position:absolute; left:40px; top:10px; z-index:5; padding:4px 12px; border-radius:99px; background:linear-gradient(180deg,#ffe4a3,#f5c45c); color:#2a1a02; font-weight:900; box-shadow:0 6px 18px #f5c45c66; pointer-events:none; animation:fx-gain 1.8s cubic-bezier(.2,.8,.3,1) forwards; }
+.fx-treasure-text .fx-treasure-note { color:#e0a92e; font-weight:800; }
+@keyframes fx-gain { 0% { opacity:0; transform:translateY(20px) scale(.7); } 20% { opacity:1; transform:translateY(0) scale(1.1); } 70% { opacity:1; transform:translateY(-14px) scale(1); } 100% { opacity:0; transform:translateY(-30px); } }
+@media (prefers-reduced-motion:reduce) { .fx-treasure-gain { animation:none; } }
 .fx-treasure-card { position:relative; flex:none; width:clamp(120px,14vw,180px); aspect-ratio:63/88; padding:0; border:0; background:none; cursor:pointer; perspective:1000px; }
 .fx-treasure-inner { position:absolute; inset:0; transform-style:preserve-3d; transition:transform .8s cubic-bezier(.3,1.3,.4,1); }
 .fx-treasure-card.flipped .fx-treasure-inner { transform:rotateY(180deg); }

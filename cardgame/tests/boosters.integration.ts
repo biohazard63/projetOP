@@ -16,7 +16,7 @@ import { describeBoosterFailure } from '../src/lib/boosters/failure'
 const db = isolatedBoosterDb()
 const tag = randomUUID(); let userId: string
 const canonical = (code: string) => `simulation:${createHash('sha256').update(code).digest('hex')}`
-before(async () => { await seedBoosters(db); userId = (await db.user.create({ data: { email: `booster-integration-${tag}@example.test`, name: 'Synthetic booster user' } })).id })
+before(async () => { await seedBoosters(db); userId = (await db.user.create({ data: { berries: 1_000_000, email: `booster-integration-${tag}@example.test`, name: 'Synthetic booster user' } })).id })
 after(async () => db.$disconnect())
 const errorCode = (code: string) => (e: unknown) => e instanceof BoosterError && e.code === code
 async function quantity(id = userId) { return (await db.userCard.aggregate({ where: { userId: id }, _sum: { quantity: true } }))._sum.quantity || 0 }
@@ -104,7 +104,7 @@ test('history is owned, immutable across card edits, and no longer cascades on c
  await assert.rejects(db.card.delete({ where: { id: card.id } }), (e: unknown) => e instanceof Prisma.PrismaClientKnownRequestError && e.code === 'P2003')
 })
 test('an injected collection failure rolls back the entire opening; the same key then succeeds', async () => {
- const victim = await db.user.create({ data: { email: `rollback-${tag}@example.test` } }); const key = randomUUID()
+ const victim = await db.user.create({ data: { berries: 1_000_000, email: `rollback-${tag}@example.test` } }); const key = randomUUID()
  // Test-only DDL in the guarded isolated database. Reject only this synthetic user.
  await db.$executeRawUnsafe(`CREATE OR REPLACE FUNCTION booster_test_fail_credit() RETURNS trigger AS $$ BEGIN IF NEW."userId" = '${victim.id}' THEN RAISE EXCEPTION 'synthetic failure'; END IF; RETURN NEW; END; $$ LANGUAGE plpgsql`)
  await db.$executeRawUnsafe('CREATE TRIGGER booster_test_fail_credit BEFORE INSERT OR UPDATE ON "UserCard" FOR EACH ROW EXECUTE FUNCTION booster_test_fail_credit()')
@@ -147,7 +147,7 @@ test('BoosterCard configured weights control eligibility and reject foreign-set 
 })
 
 test('operation keys are scoped to the user and exact extensions cannot collide through aliases', async () => {
- const second = await db.user.create({ data: { email: `key-owner-${tag}@example.test` } })
+ const second = await db.user.create({ data: { berries: 1_000_000, email: `key-owner-${tag}@example.test` } })
  const key = randomUUID()
  const first = await openBooster(db, userId, 'OP-999991', key)
  const other = await openBooster(db, second.id, 'OP-999991', key)

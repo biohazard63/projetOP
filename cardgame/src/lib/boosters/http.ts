@@ -6,9 +6,11 @@ import { prisma } from '@/lib/prisma'
 import { BoosterError } from './rules'
 import { getBoosterCatalog, getOpening, openBooster, openBoosters } from './service'
 import { describeBoosterFailure } from './failure'
+import { BerryError } from '@/lib/economy/ledger'
 
 const requestSchema = z.object({ setCode: z.string().trim().min(2).max(64), idempotencyKey: z.string().uuid() }).strict()
 function failure(error: unknown) {
+  if (error instanceof BerryError) return NextResponse.json({ success: false, code: error.code, error: error.message }, { status: error.status })
   const detail = describeBoosterFailure(error)
   if (error instanceof BoosterError) return NextResponse.json({ success: false, code: detail.code, error: detail.message }, { status: detail.status })
   const reference = randomUUID()
@@ -42,7 +44,7 @@ export async function postOpening(request: Request) {
     return NextResponse.json({ success: true, opening, replayed, cards: opening.cards, newCardsCount: opening.newCardsCount, hasRareCard: opening.hasRareCard }, { status: replayed ? 200 : 201 })
   } catch (error) { return failure(error) }
 }
-const batchSchema = requestSchema.extend({ count: z.union([z.literal(1), z.literal(5), z.literal(10)]) }).strict()
+const batchSchema = requestSchema.extend({ count: z.union([z.literal(1), z.literal(5), z.literal(10), z.literal(24)]) }).strict()
 export async function postBatchOpening(request: Request) {
   const session = await auth()
   if (!session?.user?.id) return NextResponse.json({ success: false, error: 'Non authentifié' }, { status: 401 })
@@ -50,7 +52,7 @@ export async function postBatchOpening(request: Request) {
     const origin = request.headers.get('origin')
     if ((origin && origin !== new URL(request.url).origin) || request.headers.get('sec-fetch-site') === 'cross-site') throw new BoosterError('INVALID_ORIGIN', 'Origine de requête refusée', 403)
     const parsed = batchSchema.safeParse(await json(request))
-    if (!parsed.success) throw new BoosterError('INVALID_REQUEST', 'Extension, nombre de boosters (1, 5 ou 10) et clé d’idempotence UUID requis.', 400)
+    if (!parsed.success) throw new BoosterError('INVALID_REQUEST', 'Extension, nombre de boosters (1, 5, 10 ou une display de 24) et clé d’idempotence UUID requis.', 400)
     const { openings, replayed } = await openBoosters(prisma, session.user.id, parsed.data.setCode, parsed.data.idempotencyKey, parsed.data.count)
     return NextResponse.json({ success: true, openings, replayed }, { status: replayed ? 200 : 201 })
   } catch (error) { return failure(error) }
@@ -58,7 +60,12 @@ export async function postBatchOpening(request: Request) {
 export async function getCatalog() {
   const session = await auth()
   if (!session?.user?.id) return NextResponse.json({ success: false, error: 'Non authentifié' }, { status: 401 })
-  try { return NextResponse.json({ success: true, sets: await getBoosterCatalog(prisma) }) } catch (error) { return failure(error) }
+  try {
+    // The player's open virtual box per product: how many of its packs are already opened (never what remains in it).
+    const [sets, boxes] = await Promise.all([getBoosterCatalog(prisma), prisma.virtualDisplay.findMany({ where: { userId: session.user.id, completedAt: null }, select: { setCode: true, nextIndex: true, size: true } })])
+    const open = new Map(boxes.map(b => [b.setCode, { opened: b.nextIndex, size: b.size }]))
+    return NextResponse.json({ success: true, sets: sets.map(set => ({ ...set, display: open.get(set.code) ?? null })) })
+  } catch (error) { return failure(error) }
 }
 export async function acknowledgeOpening(request: Request) {
   const session = await auth()

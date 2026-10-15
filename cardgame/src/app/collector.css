@@ -685,3 +685,10 @@ body:has(.piece-opening-immersive) .piece-footer{display:none}
 }
 @media (prefers-reduced-motion:reduce) { .piece-bottom-icon, .piece-sidebar .piece-sidebar-links a { transition:none; } }
 @media (max-width:950px), (hover:none) { .piece-search-key { display:none; } }
+
+/* Berry balance chip (top bar). */
+.piece-berries { position:relative; display:inline-flex; align-items:center; gap:5px; min-height:36px; padding:0 12px; border-radius:999px; background:linear-gradient(180deg,#ffe4a3,#f5c45c); color:#2a1a02; font-size:.85rem; box-shadow:0 0 0 1px #d99a2b66, 0 4px 12px #f5c45c33; white-space:nowrap; }
+.piece-berries b { font-weight:900; font-variant-numeric:tabular-nums; } .piece-berries span { font-weight:800; opacity:.8; }
+.piece-berries:hover { filter:brightness(1.05); }
+.piece-berries-event { position:absolute; top:-2px; right:-2px; width:10px; height:10px; border-radius:50%; background:#ff4d6d; box-shadow:0 0 0 2px #fff; }
+@media (max-width:640px) { .piece-account .piece-topbar-link { display:none; } .piece-berries { min-height:34px; padding:0 10px; } }

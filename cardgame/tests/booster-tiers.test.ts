@@ -64,3 +64,27 @@ test('PRB keeps its own frame as standard and stays drawable', () => {
   const rate = simulate('PRB-01', 1000)
   assert.ok(rate('ALT') < 0.15, `PRB-01 alternates per pack ${rate('ALT')}`)
 })
+
+test('A virtual display holds exactly 2 alternates, 7 SR and 8 Leaders; rarer tiers keep their long-run rate', async () => {
+  const { planDisplay, DISPLAY_SIZE } = await import('../src/lib/boosters/tiers')
+  const available = new Set<DrawTier>(['C', 'UC', 'R', 'L', 'SR', 'SEC', 'ALT', 'SP CARD', 'TR', 'MANGA'])
+  const random = seeded(7), totals = new Map<string, number>(), boxes = 3000
+  for (let b = 0; b < boxes; b++) {
+    const plan = planDisplay(available, random)
+    assert.equal(plan.length, DISPLAY_SIZE)
+    const count = (tier: string) => plan.filter(p => p.rare === tier).length + plan.filter(p => p.hit === tier).length
+    assert.equal(count('ALT'), 2); assert.equal(count('SR'), 7); assert.equal(count('L'), 8)
+    assert.equal(count('MANGA RED'), 0, 'absent tier never planned')
+    for (const tier of ['SEC', 'SP CARD', 'TR', 'MANGA']) totals.set(tier, (totals.get(tier) ?? 0) + count(tier))
+  }
+  const perPack = (tier: string) => totals.get(tier)! / (boxes * DISPLAY_SIZE)
+  assert.ok(Math.abs(perPack('SEC') - 1 / 36) < 0.004, `SEC ${perPack('SEC')}`)
+  assert.ok(Math.abs(perPack('SP CARD') - 1 / 96) < 0.002, `SP ${perPack('SP CARD')}`)
+  assert.ok(Math.abs(perPack('MANGA') - 1 / 288) < 0.001, `MANGA ${perPack('MANGA')}`)
+})
+
+test('A planned pack forces its rare and hit tiers', () => {
+  const rules = tieredRules('OP-05', new Set(['C', 'UC', 'R', 'L', 'SR', 'SEC', 'ALT']), { rare: 'L', hit: 'ALT' })
+  assert.deepEqual(rules.slots[10].choices.map(c => c.rarity), ['L'])
+  assert.deepEqual(rules.slots[11].choices.map(c => c.rarity), ['ALT'])
+})

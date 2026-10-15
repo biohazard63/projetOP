@@ -8,6 +8,9 @@ import { isBoosterProduct } from '@/lib/boosters/products'
 import { useVibration } from '@/hooks/useVibration'
 import StackReveal from './StackReveal'
 import BatchOpening from './BatchOpening'
+import HeroPacks, { DisplayStat } from './HeroPacks'
+import { notifyBerries, useWallet } from '@/hooks/useWallet'
+import { formatBerries } from '@/components/economy/Berries'
 import { useCardPreload } from './useCardPreload'
 import OpeningSettings from './OpeningSettings'
 import TearOpening from './TearOpening'
@@ -75,11 +78,14 @@ export default function BoosterExperience() {
   const [favoriteBusy, setFavoriteBusy] = useState(false)
   const [favoriteError, setFavoriteError] = useState('')
   // Several boosters at once (×5, ×10): one request, every pack credited together, then revealed one after the other.
-  const [batchCount, setBatchCount] = useState<1 | 5 | 10>(1)
+  const [batchCount, setBatchCount] = useState<1 | 5 | 10 | 24>(1)
   const [batch, setBatch] = useState<OpeningResult[] | null>(null)
   const [batchSummary, setBatchSummary] = useState(false)
+  const { wallet } = useWallet()
+  const cost = wallet ? (batchCount === 24 ? wallet.economy.prices.display : wallet.economy.prices.booster * batchCount) : null
+  const missing = wallet && cost !== null ? Math.max(0, cost - wallet.balance) : 0
   const showBatchSummary = useCallback(() => setBatchSummary(true), [])
-  const [batchIntent, setBatchIntent] = useState<{ setCode: string; idempotencyKey: string; count: 5 | 10 } | null>(null)
+  const [batchIntent, setBatchIntent] = useState<{ setCode: string; idempotencyKey: string; count: 5 | 10 | 24 } | null>(null)
   const flight = useRef(false)
   const resumedUser = useRef<string | null>(null)
   const storageKey = session?.user?.id ? `op:booster:${session.user.id}` : null
@@ -103,6 +109,8 @@ export default function BoosterExperience() {
     if (storageKey) try { window.localStorage.setItem(storageKey, JSON.stringify(intent)) } catch { setStorageWarning('La reprise automatique est indisponible dans ce navigateur. Votre ouverture reste dans l’historique.') }
   }, [storageKey])
   // A finished opening needs no resume: the next visit shows the booster choice again (the result stays in history).
+  // Refresh the catalogue after an opening: the open display counter of the product moves on.
+  const reloadSets = useCallback(() => { void api<{ sets: BoosterCatalogItem[] }>('/api/booster').then(data => setSets(data.sets)).catch(() => { /* counter refreshed next time */ }) }, [])
   const forget = useCallback(() => {
     setPending(null)
     if (storageKey) try { window.localStorage.removeItem(storageKey); window.sessionStorage.removeItem(storageKey) } catch { /* history remains */ }
@@ -125,6 +133,7 @@ export default function BoosterExperience() {
         : await api<{ opening: OpeningResult }>('/api/booster/open', { setCode: intent.setCode, idempotencyKey: intent.idempotencyKey })
       const count = preferences.quickOpening ? data.opening.cards.length : Math.min(intent.revealed, data.opening.cards.length)
       if (!animate && intent.openingId && count >= data.opening.cards.length) { forget(); return }
+      notifyBerries(); reloadSets()
       setOpening(data.opening); setSelectedSet(data.opening.setCode); setRevealed(count); setShowResult(count === data.opening.cards.length || preferences.quickOpening)
       if (count >= data.opening.cards.length) forget(); else save({ ...intent, openingId: data.opening.id, revealed: count })
       const shouldAnimate = animate && !preferences.quickOpening && preferences.animations && !window.matchMedia('(prefers-reduced-motion: reduce)').matches
@@ -135,7 +144,7 @@ export default function BoosterExperience() {
       setCanDiscard(!intent.openingId && e instanceof ApiError && [400, 422].includes(e.status))
     }
     finally { flight.current = false; setBusy(false) }
-  }, [save, forget, loadHistory, preferences.animations, preferences.quickOpening])
+  }, [save, forget, reloadSets, loadHistory, preferences.animations, preferences.quickOpening])
 
   useEffect(() => {
     if (!session?.user?.id || resumedUser.current === session.user.id) return
@@ -179,12 +188,12 @@ export default function BoosterExperience() {
       else if (card.isNew) audio.playNewCardSound()
     }
   }
-  async function requestBatch(intent: { setCode: string; idempotencyKey: string; count: 5 | 10 }) {
+  async function requestBatch(intent: { setCode: string; idempotencyKey: string; count: 5 | 10 | 24 }) {
     if (flight.current) return
     flight.current = true; setBusy(true); setError(''); setBatchIntent(intent)
     try {
       const data = await api<{ openings: OpeningResult[] }>('/api/booster/open-batch', intent)
-      setBatch(data.openings); setBatchSummary(false); setBatchIntent(null)
+      setBatch(data.openings); setBatchSummary(false); setBatchIntent(null); notifyBerries(); reloadSets()
       setAnimating(!preferences.quickOpening && preferences.animations && !window.matchMedia('(prefers-reduced-motion: reduce)').matches)
       void loadHistory()
     } catch (e) { setError(e instanceof Error && e.name !== 'AbortError' ? e.message : 'Ouverture non confirmée. Réessayez pour récupérer le résultat.') }
@@ -197,11 +206,11 @@ export default function BoosterExperience() {
     else if (card.isNew) audio.playNewCardSound()
   }
   function startOpening() {
-    if (flight.current || !chosen?.available || busy || (pending && !pending.openingId)) return
+    if (flight.current || !chosen?.available || busy || (pending && !pending.openingId) || missing > 0) return
     if (batchCount > 1) {
       if (!preferences.animations || preferences.quickOpening || reducedMotion) audio.playPackOpenSound()
       setOpening(null); setBatch(null)
-      void requestBatch({ setCode: selectedSet, idempotencyKey: crypto.randomUUID(), count: batchCount as 5 | 10 })
+      void requestBatch({ setCode: selectedSet, idempotencyKey: crypto.randomUUID(), count: batchCount as 5 | 10 | 24 })
       return
     }
     // With the tear scene, the opening sound plays when the packet is torn (TearOpening onTear), not on this click.
@@ -244,11 +253,11 @@ export default function BoosterExperience() {
       {storageWarning && <p role="status" className="mb-4 rounded-xl bg-slate-800 p-4 text-sm">{storageWarning}</p>}
       {error && <div role="alert" className="mb-4 rounded-xl border border-red-500/40 bg-red-950/40 p-4"><p>{error}</p>{batchIntent && <button type="button" disabled={busy} onClick={() => void requestBatch(batchIntent)} className={`${button} mt-3 bg-white text-slate-950`}>Réessayer ces {batchIntent.count} boosters</button>}{!batchIntent && pending && <button type="button" disabled={busy} onClick={() => void requestOpening(pending, false)} className={`${button} mt-3 bg-white text-slate-950`}>Réessayer cette ouverture</button>}{canDiscard && <button type="button" disabled={busy} onClick={discardRejectedIntent} className={`${button} mt-3 border border-slate-600`}>Choisir une autre extension</button>}</div>}
       {batch && <div className="bo-batch">{animating ? <TearOpening onTear={() => audio.playPackOpenSound()} returnHref={`/boosters?set=${encodeURIComponent(batch[0].setCode)}`} imageUrl={sets.find(set => set.code === batch[0].setCode)?.imageUrl || null} setName={`${batch[0].setName} · ${batch.length} boosters`} cardCount={batch.length * batch[0].cards.length} onComplete={() => setAnimating(false)} />
-        : <BatchOpening key={batch[0].id} openings={batch} onSummary={showBatchSummary} onCard={batchCard} onDetail={setDetail} busy={busy} againLabel={`Ouvrir ${batch.length} autres boosters`} onAgain={() => { setBatch(null); startOpening() }} />}</div>}
+        : <BatchOpening key={batch[0].id} openings={batch} onSummary={showBatchSummary} onCard={batchCard} onDetail={setDetail} busy={busy || missing > 0} againLabel={`${batch.length === 24 ? 'Ouvrir une autre display' : `Ouvrir ${batch.length} autres boosters`}${cost !== null ? ` · ${formatBerries(cost)}` : ''}`} onAgain={() => { setBatch(null); startOpening() }} />}</div>}
       {!opening && !batch && <section className="bo-hero" aria-labelledby="extension-title">
         <div className="bo-hero-stage">
           <div className="bo-hero-glow" aria-hidden="true" />
-          <div className="bo-hero-pack"><PackArt key={chosen?.code} testId="booster-artwork" src={chosen?.imageUrl} alt={`Booster ${chosen?.code || ''}`} eager /></div>
+          <HeroPacks src={chosen?.imageUrl} alt={`Booster ${chosen?.code || ''}`} count={batchCount} code={chosen?.code} title={chosen ? boosterTitle(chosen) : undefined} />
           {orderedSets.length > 1 && <><button type="button" className="bo-hero-arrow prev" aria-label="Extension précédente" disabled={busy || chosenIndex <= 0} onClick={() => setSelectedSet(orderedSets[chosenIndex - 1].code)}><ChevronLeft /></button>
             <button type="button" className="bo-hero-arrow next" aria-label="Extension suivante" disabled={busy || chosenIndex >= orderedSets.length - 1} onClick={() => setSelectedSet(orderedSets[chosenIndex + 1].code)}><ChevronRight /></button></>}
         </div>
@@ -258,15 +267,17 @@ export default function BoosterExperience() {
           {chosen ? <>
             <p className="bo-code">{chosen.code}<span className={`bo-pill ${chosen.available ? 'ok' : 'off'}`}>{chosen.available ? 'Disponible' : 'Indisponible'}</span></p>
             <h3 className="bo-title">{boosterTitle(chosen)}</h3>
-            <div className="bo-stats"><div><strong>{chosen.cardCount}</strong><span>Cartes au catalogue</span></div><div><strong>{chosen.packSize ?? '—'}</strong><span>Cartes par booster</span></div></div>
+            <div className="bo-stats"><div><strong>{chosen.cardCount}</strong><span>Cartes au catalogue</span></div><div><strong>{chosen.packSize ?? '—'}</strong><span>Cartes par booster</span></div>{chosen.rules?.label.startsWith('Booster réaliste') && <DisplayStat opened={chosen.display?.opened ?? 0} size={chosen.display?.size ?? 24} take={batchCount === 24 ? 0 : batchCount} started={Boolean(chosen.display)} />}</div>
             {chosen.description && <p className="bo-description">{chosen.description}</p>}
             {!chosen.available && <p role="status" className="bo-unavailable">{chosen.error}</p>}
           </> : <h3 className="bo-title">{catalogError || 'Chargement des extensions…'}</h3>}
           {catalogError && <p role="alert" className="bo-unavailable">{catalogError}</p>}
           <div className="bo-cta">
-            <div className="bo-count" role="radiogroup" aria-label="Nombre de boosters">{([1, 5, 10] as const).map(n => <button key={n} type="button" role="radio" aria-checked={batchCount === n} className={batchCount === n ? 'on' : ''} disabled={busy} onClick={() => setBatchCount(n)}>×{n}</button>)}</div>
-            <button type="button" onClick={startOpening} disabled={!chosen?.available || busy || Boolean(pending && !pending.openingId)} className="bo-open"><Sparkles size={20} />{busy ? 'Confirmation serveur…' : batchCount === 1 ? 'Ouvrir le booster' : `Ouvrir ${batchCount} boosters`}</button>
+            <div className="bo-count" role="radiogroup" aria-label="Nombre de boosters">{([1, 5, 10, 24] as const).map(n => <button key={n} type="button" role="radio" aria-checked={batchCount === n} aria-label={n === 24 ? 'Display de 24 boosters' : `×${n}`} className={`${batchCount === n ? 'on' : ''}${n === 24 ? ' display' : ''}`} disabled={busy} onClick={() => setBatchCount(n)}>{n === 24 ? <>Display<small>24</small></> : `×${n}`}</button>)}</div>
+            <button type="button" onClick={startOpening} disabled={!chosen?.available || busy || Boolean(pending && !pending.openingId) || missing > 0} className="bo-open"><Sparkles size={20} />{busy ? 'Confirmation serveur…' : batchCount === 1 ? 'Ouvrir le booster' : batchCount === 24 ? 'Ouvrir la display' : `Ouvrir ${batchCount} boosters`}{!busy && cost !== null && <small className="bo-price">{formatBerries(cost)}</small>}</button>
           </div>
+          {batchCount === 24 && wallet && <p className="bo-display-note">Une boîte neuve de 24 boosters : 2 alternatives, 7 SR et 8 Leaders garantis{wallet.economy.prices.booster * 24 > wallet.economy.prices.display ? <>, soit <b>{formatBerries(wallet.economy.prices.booster * 24 - wallet.economy.prices.display)}</b> d’économie</> : null}.</p>}
+          {wallet && <p className={`bo-wallet${missing ? ' short' : ''}`} role="status">{missing ? <>Il vous manque <b>{formatBerries(missing)}</b>. Gagnez des Berrys avec le <Link href="/home">trésor du jour</Link>, en <Link href="/play">jouant contre le bot</Link> ou en <Link href="/collection?resale=1">revendant vos doublons</Link>.</> : <>Solde : <b>{formatBerries(wallet.balance)}</b>{wallet.economy.events.map(e => <span key={e.id} className="bo-event">{e.label}</span>)}</>}</p>}
           {chosen && <Link href={`/boosters/${encodeURIComponent(chosen.code)}`} className="bo-link">Voir toutes les cartes de l’extension <ArrowUpRight size={14} /></Link>}
         </div>
         <div className="bo-strip" role="group" aria-label="Changer d’extension">

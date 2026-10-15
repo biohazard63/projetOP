@@ -17,6 +17,7 @@ import { Counter, Ring, badgesOf, bountyOf, rankOf, useCountUp } from '@/compone
 import CardDetail from '@/components/collector/CardDetail'
 import { compareCodes } from '@/lib/boosters/catalogPresentation'
 import { OceanBackdrop, Tilt, useReveal } from '@/components/home/fx'
+import WalletPanel from '@/components/economy/WalletPanel'
 
 function Toggle({ label, hint, icon, checked, disabled, onChange }: { label: string; hint: string; icon: ReactNode; checked: boolean; disabled?: boolean; onChange: (v: boolean) => void }) {
   return <label className="pf-toggle"><span className="pf-toggle-icon">{icon}</span><span className="pf-toggle-text"><b>{label}</b><small>{hint}</small></span>
@@ -70,7 +71,8 @@ export default function ProfilePage() {
           <div className="pf-links"><Link href="/history" className="fx-btn ghost"><History size={17} />Mes ouvertures</Link><Link href="/progress" className="fx-btn ghost"><TrendingUp size={17} />Ma progression</Link><Link href="/collection" className="fx-btn"><BookOpen size={17} />Ma collection</Link></div>
         </div>
       </section>
-      <p className="pf-note">La prime est un clin d’œil calculé à partir de votre collection : elle ne sert à rien d’autre.</p>
+      <p className="pf-note">La prime est un score de réputation calculé à partir de votre collection : elle ne se dépense pas. Vos Berrys sont dans votre bourse ci-dessous.</p>
+      <WalletPanel />
 
       {badges.length > 0 && <section className="pf-section" data-reveal>
         <h2><Trophy size={20} /> Badges <small>{badges.filter(b => b.done).length} / {badges.length}</small></h2>

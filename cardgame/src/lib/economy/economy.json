@@ -1,0 +1,28 @@
+{
+ "_aide": "Montants de l'économie en Berrys (฿). Modifier ici, puis redéployer. Les événements s'appliquent automatiquement entre leurs dates (heure de Paris) ; plusieurs événements actifs se cumulent (multiplications).",
+ "version": "economy-2026-10-15",
+ "starterGrant": 10000,
+ "prices": { "booster": 1000, "display": 20000 },
+ "rewards": {
+  "dailyTreasure": 1000,
+  "botGame": { "easy": 150, "normal": 250, "hard": 400 },
+  "winMultiplier": 2,
+  "minTurns": 5,
+  "dailyGameCap": 4000
+ },
+ "resale": {
+  "keepCopies": 4,
+  "values": { "C": 10, "UC": 20, "R": 50, "L": 100, "SR": 150, "SEC": 500, "ALT": 400, "SP CARD": 800, "TR": 1500, "MANGA": 3000, "MANGA RED": 6000 }
+ },
+ "events": [
+  {
+   "_exemple": "Modèle à copier (désactivé car dans le passé) : gains ×2 et boosters à -20 % pendant un week-end.",
+   "id": "exemple-week-end-double",
+   "label": "Week-end double butin",
+   "start": "2026-01-03T00:00:00+01:00",
+   "end": "2026-01-05T00:00:00+01:00",
+   "rewardMultiplier": 2,
+   "priceMultiplier": 0.8
+  }
+ ]
+}

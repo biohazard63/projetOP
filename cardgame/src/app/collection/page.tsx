@@ -3,7 +3,8 @@ import './collection.css'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import Link from 'next/link'
 import { usePathname, useRouter, useSearchParams } from 'next/navigation'
-import { Sparkles } from 'lucide-react'
+import { Coins, Sparkles } from 'lucide-react'
+import ResaleDialog from '@/components/economy/ResaleDialog'
 import { readApi, useRemote } from '@/hooks/useRemote'
 import type { CatalogueCard, CollectorOverview } from '@/lib/collector/types'
 import { LoadState } from '@/components/collector/Primitives'
@@ -34,6 +35,7 @@ export default function CollectionPage() {
   const [changes, setChanges] = useState<Record<string, boolean>>({})
   const router = useRouter(), pathname = usePathname(), parameters = useSearchParams()
   const activeSet = parameters.get('set') || ''
+  const [resale, setResale] = useState(parameters.get('resale') === '1')
   const quantities = useMemo(() => new Map(owned.data?.cards.map(c => [c.id, c])), [owned.data])
   const favorites = useMemo(() => new Set(user.data?.favorites.map(c => c.cardId)), [user.data])
   const cards = useMemo(() => catalogue.data?.map(c => ({ ...c, quantity: quantities.get(c.id)?.quantity || 0, acquiredAt: quantities.get(c.id)?.acquiredAt, isFavorite: changes[c.id] ?? favorites.has(c.id) })) || [], [catalogue.data, quantities, favorites, changes])
@@ -71,8 +73,10 @@ export default function CollectionPage() {
           <Counter label={`Variantes spéciales / ${data.alternatives.toLocaleString('fr-FR')}`} value={data.ownedAlternatives} />
         </div> : <div className="cx-counters skeleton" aria-hidden="true">{Array.from({ length: 4 }, (_, i) => <div key={i} className="cx-counter" />)}</div>}
       </div>
-      <Link href="/boosters" className="cx-cta">Enrichir ma collection</Link>
+      <div className="cx-hero-actions"><Link href="/boosters" className="cx-cta">Enrichir ma collection</Link>
+        <button type="button" className="cx-resale" onClick={() => setResale(true)}><Coins size={16} />Revendre mes doublons</button></div>
     </section>
+    <ResaleDialog open={resale} onOpenChange={setResale} onSold={() => { owned.retry(); overview.retry() }} />
     {sets.length > 0 && <div className="cx-sets" ref={chips} role="group" aria-label="Filtrer par extension">
       {sets.map(s => <button key={s.code} type="button" aria-pressed={activeSet === s.code} className={`cx-set${activeSet === s.code ? ' on' : ''}${s.percentage >= 100 ? ' done' : ''}`} onClick={() => pickSet(s.code)} title={`${s.code} · ${s.unique} / ${s.total}`}>
         <span className="cx-set-ring" style={{ '--p': s.percentage } as React.CSSProperties} />

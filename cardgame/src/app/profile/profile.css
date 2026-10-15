@@ -76,3 +76,16 @@
   .pf-columns, .pf-settings-grid { grid-template-columns:minmax(0,1fr); }
   .pf-treasures { grid-template-columns:repeat(4,minmax(0,1fr)); gap:8px; }
 }
+
+/* Berry wallet. */
+.pf-wallet-grid { display:grid; grid-template-columns:minmax(220px,1fr) 2fr; gap:14px; }
+.pf-wallet-balance { display:grid; align-content:center; gap:4px; padding:18px; border-radius:18px; background:linear-gradient(160deg,#ffe4a3,#f0a93a); color:#2a1a02; box-shadow:0 12px 30px #f5c45c33; }
+.pf-wallet-balance span { font-size:.8rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; } .pf-wallet-balance strong { font-size:clamp(1.8rem,4vw,2.4rem); font-weight:900; font-variant-numeric:tabular-nums; }
+.pf-wallet-balance em { font-style:normal; font-size:.75rem; font-weight:800; color:#8a1c2e; }
+.pf-wallet-ways { display:grid; grid-template-columns:repeat(auto-fit,minmax(200px,1fr)); gap:8px; margin:0; padding:0; list-style:none; }
+.pf-wallet-ways li { display:flex; align-items:center; gap:8px; padding:12px; border-radius:14px; background:#ffffff0d; border:1px solid #ffffff17; font-size:.88rem; }
+.pf-wallet-ways a { color:#f5c45c; font-weight:800; }
+.pf-wallet-log { display:grid; gap:4px; margin:14px 0 0; padding:0; list-style:none; }
+.pf-wallet-log li { display:grid; grid-template-columns:1fr auto auto; gap:12px; align-items:center; padding:8px 12px; border-radius:10px; background:#ffffff08; font-size:.85rem; }
+.pf-wallet-log time { color:#8aa3bb; font-size:.78rem; } .pf-wallet-log b { font-variant-numeric:tabular-nums; } .pf-wallet-log .in { color:#3ddc97; } .pf-wallet-log .out { color:#ff8a8a; }
+@media (max-width:700px) { .pf-wallet-grid { grid-template-columns:1fr; } .pf-wallet-log li { grid-template-columns:1fr auto; } .pf-wallet-log time { display:none; } }
