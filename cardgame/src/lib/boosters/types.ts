@@ -1,6 +1,6 @@
 import type { Card } from '@prisma/client'
 import type { BoosterRules } from './rules'
-export type OpeningCard = Card & { drawVariant?: 'standard' | 'alt' | 'parallel' | 'special'; position: number; quantityBefore: number | null; isDuplicate: boolean | null; isNew: boolean | null }
+export type OpeningCard = Card & { drawVariant?: 'standard' | 'alt' | 'parallel' | 'special'; drawTier?: string; position: number; quantityBefore: number | null; isDuplicate: boolean | null; isNew: boolean | null }
 export type OpeningResult = {
   id: string; boosterId: string; setCode: string; setName: string; openedAt: string;
   creditedAt: string | null; cards: OpeningCard[]; specialPack: string | null;
