@@ -58,7 +58,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" sizes="512x512" href="/images/icons/icon-512.png" />
         <link rel="apple-touch-startup-image" href="/images/icons/icon-512.png" />
       </head>
-      <body suppressHydrationWarning className={cn(inter.className, "min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))] overflow-x-hidden")}>
+      <body suppressHydrationWarning className={cn(inter.className, "min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))] overflow-x-clip")}>
         <Providers>
           <CollectorPreferencesProvider><OpeningPresentationProvider>
           <a className="piece-skip" href="#main-content">Aller au contenu</a>
