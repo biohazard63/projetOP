@@ -69,11 +69,11 @@ function matching(filter: Record<string, unknown>, leaderColours: string[], excl
 }
 
 type Plan = { aliceLeader: string; extra: string[]; own: string[]; bobTargets: string[]; bobColour: string; restedTargets: boolean; seedDeck?: string; seedHand?: string; seedTrash?: string; ownLife?: number; oppLife?: number; don: number
-  needsDonDeck?: boolean; seedHandCost?: string; ownTargets?: { number: string; rested: boolean }[]; handMin?: number; restedDonMin?: number; ownCharsMin?: number; ownCostAtLeast?: number; ownHandMax?: number; oppHandMax?: number; oppHandMin?: number; ownRested?: number; oppRested?: number; trashMin?: number }
+  needsDonDeck?: boolean; fieldDonMax?: number; seedHandCost?: string; ownTargets?: { number: string; rested: boolean }[]; handMin?: number; restedDonMin?: number; ownCharsMin?: number; ownCostAtLeast?: number; ownHandMax?: number; oppHandMax?: number; oppHandMin?: number; ownRested?: number; oppRested?: number; trashMin?: number }
 /** Builds the scenario needs of one ability (or reports why it cannot be built). */
 function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Record<string, unknown>): Plan | string {
   const d = definitionOf(card.number), { selectors, conditions, searches, ops } = scan(a?.program ?? [])
-  const conds = [...conditions.flatMap(flat), ...(a ? flat(a.condition as Record<string, unknown>) : []), ...(staticConds.whenLeaderHasTrait ? [{ kind: 'LEADER_HAS_TRAIT', trait: staticConds.whenLeaderHasTrait }] : []), ...(staticConds.leaderHasTrait ? [{ kind: 'LEADER_HAS_TRAIT', trait: staticConds.leaderHasTrait }] : [])]
+  const conds = [...conditions.flatMap(flat), ...(a ? flat(a.condition as Record<string, unknown>) : []), ...(staticConds.whenLeaderHasTrait ? [{ kind: 'LEADER_HAS_TRAIT', trait: staticConds.whenLeaderHasTrait }] : []), ...(staticConds.leaderHasTrait ? [{ kind: 'LEADER_HAS_TRAIT', trait: staticConds.leaderHasTrait }] : []), ...(staticConds.leaderTraitIncludes ? [{ kind: 'LEADER_TRAIT_INCLUDES', text: staticConds.leaderTraitIncludes }] : [])]
   const aliceLeader = leaderFor(d, conds, d.category === 'LEADER')
   if (!aliceLeader) return 'NO_LEADER_FOR_CONDITIONS'
   const lead = definitionOf(aliceLeader)
@@ -93,7 +93,7 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
   }
   // Typed hand costs ("trash 1 {X} type card", "a card with a [Trigger]"): one such card in hand.
   const costSelectors = (a?.program ?? []).flatMap(st => st.kind === 'CHOICE' && st.bind === 'paid' ? [st.selector] : [])
-  for (const x of costSelectors) if (x.kind === 'CARDS' && x.side === 'OWN' && x.zone === 'hand' && (x.traitsAny || x.hasTrigger)) {
+  for (const x of costSelectors) if (x.kind === 'CARDS' && x.side === 'OWN' && x.zone === 'hand' && (x.traitsAny || x.hasTrigger || x.categories)) {
     const m = matching(x as unknown as Record<string, unknown>, lead.colors, card.number); if (!m) return 'NO_CARD_FOR_HAND_COST'; extra.push(m); plan.seedHandCost = m
   }
   // "Up to N of your {X} type Leader or Character cards" / "set up to N of your {X} type Characters as active": one on the field.
@@ -118,6 +118,9 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
     if (c.kind === 'OWN_RESTED_CHARACTERS_AT_LEAST') { plan.ownRested = c.minimum as number; continue }
     if (c.kind === 'OPPONENT_RESTED_CHARACTERS_AT_LEAST') { plan.oppRested = c.minimum as number; continue }
     if (c.kind === 'TRASH_AT_LEAST') { plan.trashMin = c.minimum as number; continue }
+    if (c.kind === 'FIELD_DON_AT_MOST') { plan.fieldDonMax = c.maximum as number; continue }
+    if (c.kind === 'LIFE_LESS_THAN_OPPONENT') { plan.ownLife = 3; continue }
+    if (c.kind === 'OWN_CHARACTER_COST_AT_LEAST') { plan.ownCostAtLeast = c.minimum as number; continue }
     if (['ALWAYS', 'LIFE_AT_LEAST', 'FIELD_DON_AT_LEAST', 'LEADER_HAS_TRAIT', 'LEADER_NAME_IS', 'LEADER_TRAIT_INCLUDES', 'LEADER_MULTICOLORED', 'CAN_ADD_LIFE_TO_HAND', 'FIELD_DON_AT_MOST_OPPONENT', 'DECK_AT_LEAST', 'YOUR_TURN', 'OPPONENT_TURN', 'HAND_AT_LEAST', 'ACTIVE_DON_AT_LEAST', 'OWN_CHARACTERS_AT_LEAST'].includes(c.kind as string)) continue
     if (!['SOURCE_ATTACHED_DON_AT_LEAST', 'LIFE_AT_MOST'].includes(c.kind as string)) return `CONDITION_${c.kind}`
   }
@@ -178,6 +181,8 @@ function setup(card: CompiledCard, p: Plan, turn: number) {
   const seededHand = p.seedHand ? put(s, 'alice', p.seedHand, 'hand') : null
   // Two rested DON!! for "give a rested DON!!" / "set DON!! as active".
   for (const id of zones(s, 'alice').cost.slice(0, 2)) s.instances[id].rested = true
+  // "If you have N or less DON!! cards on your field": the extra DON!! go back to the DON!! deck.
+  if (p.fieldDonMax !== undefined) { const z = zones(s, 'alice'); while (z.cost.length + z.attached.length > p.fieldDonMax && z.cost.length) { const id = z.cost.pop()!; z.donDeck.push(id); s.instances[id].zone = 'donDeck'; s.instances[id].zoneGeneration++; s.instances[id].rested = false; s.instances[id].faceUp = false } }
   if (p.needsDonDeck) { const z = zones(s, 'alice'); for (let i = 0; i < 2 && z.donDeck.length < 2; i++) { const id = z.cost.pop()!; z.donDeck.push(id); s.instances[id].zone = 'donDeck'; s.instances[id].zoneGeneration++; s.instances[id].rested = false; s.instances[id].faceUp = false } }
   return { s, targets, seededHand }
 }
@@ -196,10 +201,12 @@ function answerAll(s: GameState): GameState {
   }
   return s
 }
-type Snap = { bobLife: number; aliceTrash: number; aliceLife: number; bobTrash: number; locks: number; battleMods: number; field: string[]; restedDonIds: string[]; aliceHand: number; bobHand: number; aliceChars: string[]; bobChars: string[]; trash: number; bobDeck: number; aliceDeck: number; cost: number; restedDon: number; attached: number; rested: Set<string>; power: Map<string, number>; costs: Map<string, number>; stage: number }
+type Snap = { ev: Record<string, number>; blockerLocks: number; delayed: number; bobLife: number; aliceTrash: number; aliceLife: number; bobTrash: number; locks: number; battleMods: number; field: string[]; restedDonIds: string[]; aliceHand: number; bobHand: number; aliceChars: string[]; bobChars: string[]; trash: number; bobDeck: number; aliceDeck: number; cost: number; restedDon: number; attached: number; rested: Set<string>; power: Map<string, number>; costs: Map<string, number>; stage: number }
 function snap(s: GameState): Snap {
   const a = zones(s, 'alice'), b = zones(s, 'bob'), field = [...a.leader, ...a.characters, ...b.leader, ...b.characters]
-  return { bobLife: b.life.length, aliceTrash: a.trash.length, aliceLife: a.life.length, bobTrash: b.trash.length, locks: (s.effects?.refreshLocks ?? []).length, battleMods: (s.battle?.counterModifiers ?? []).reduce((n, m) => n + m.amount, 0), field: [...a.characters, ...b.characters], restedDonIds: a.cost.filter(id => s.instances[id].rested), aliceHand: a.hand.length, bobHand: b.hand.length, aliceChars: [...a.characters], bobChars: [...b.characters], trash: b.trash.length, bobDeck: b.deck.length, aliceDeck: a.deck.length,
+  // Alice's public events by type: an effect may draw then place back, take a Life then add one (zone counts unchanged).
+  const ev: Record<string, number> = {}; for (const e of s.events) if (e.actorId === 'alice') ev[e.type] = (ev[e.type] ?? 0) + 1
+  return { ev, blockerLocks: (s.effects?.blockerRestrictions ?? []).length, delayed: (s.effects?.delayedTriggers ?? []).length, bobLife: b.life.length, aliceTrash: a.trash.length, aliceLife: a.life.length, bobTrash: b.trash.length, locks: (s.effects?.refreshLocks ?? []).length, battleMods: (s.battle?.counterModifiers ?? []).reduce((n, m) => n + m.amount, 0), field: [...a.characters, ...b.characters], restedDonIds: a.cost.filter(id => s.instances[id].rested), aliceHand: a.hand.length, bobHand: b.hand.length, aliceChars: [...a.characters], bobChars: [...b.characters], trash: b.trash.length, bobDeck: b.deck.length, aliceDeck: a.deck.length,
     cost: a.cost.length, restedDon: a.cost.filter(id => s.instances[id].rested).length, attached: a.attached.length, rested: new Set(field.filter(id => s.instances[id].rested)),
     power: new Map(field.map(id => [id, power(s, id)])), costs: new Map(field.map(id => [id, cost(s, id)])), stage: b.stage.length }
 }
@@ -216,7 +223,7 @@ function verify(program: Step[], before: Snap, after: Snap, s: GameState, source
       case 'addCost': if (![...before.costs].some(([id, c]) => after.costs.has(id) && after.costs.get(id)! - c <= (o.amount as number) || (c > 0 && after.costs.get(id) === Math.max(0, c + (o.amount as number))))) return 'COST_NOT_APPLIED'; checked.push(`cost ${o.amount}`); break
       case 'returnToHand': if (![...before.field, ...(sourceId ? [sourceId] : [])].some(id => s.instances[id].zone === 'hand')) return 'RETURN_NOT_APPLIED'; checked.push('return'); break
       case 'moveToDeckBottom': if (![...before.field, ...(sourceId ? [sourceId] : [])].some(id => s.instances[id].zone === 'deck')) return 'BOTTOM_NOT_APPLIED'; checked.push('bottom'); break
-      case 'drawCards': if (after.aliceDeck > before.aliceDeck - (o.amount as number)) return 'DRAW_NOT_APPLIED'; checked.push(`draw ${o.amount}`); break
+      case 'drawCards': if (after.aliceDeck > before.aliceDeck - (o.amount as number) && (after.ev.DRAWN ?? 0) - (before.ev.DRAWN ?? 0) < (o.amount as number)) return 'DRAW_NOT_APPLIED'; checked.push(`draw ${o.amount}`); break
       case 'moveDon': if (after.cost + after.attached <= before.cost + before.attached) return 'DON_NOT_ADDED'; checked.push('add DON!!'); break
       case 'attachRestedDon': if (after.attached <= before.attached) return 'DON_NOT_GIVEN'; checked.push('give DON!!'); break
       case 'setActive': if (o.subjectBinding ? !before.restedDonIds.some(id => !s.instances[id].rested) && ![...before.rested].some(id => !after.rested.has(id)) : sourceId && s.instances[sourceId].rested) return 'NOT_SET_ACTIVE'; checked.push('set active'); break
@@ -224,9 +231,11 @@ function verify(program: Step[], before: Snap, after: Snap, s: GameState, source
       case 'grantKeyword': if (!sourceId || !hasCombatKeyword(s, sourceId, o.keyword as 'RUSH')) return 'KEYWORD_NOT_GRANTED'; checked.push(`keyword ${o.keyword}`); break
       case 'trashCharacter': if (!sourceId || s.instances[sourceId].zone !== 'trash') return 'NOT_TRASHED'; checked.push('trash this Character'); break
       case 'lockRefresh': if (after.locks <= before.locks) return 'REFRESH_NOT_LOCKED'; checked.push('refresh lock'); break
-      case 'lifeToHand': if (after.aliceLife >= before.aliceLife) return 'LIFE_NOT_TAKEN'; checked.push('Life to hand'); break
+      case 'preventBlocker': if (after.blockerLocks <= before.blockerLocks) return 'BLOCKER_NOT_PREVENTED'; checked.push('no [Blocker]'); break
+      case 'scheduleEndOfTurn': if (after.delayed <= before.delayed) return 'NOT_SCHEDULED'; checked.push('scheduled at end of turn'); break
+      case 'lifeToHand': if (after.aliceLife >= before.aliceLife && (after.ev.LIFE_TO_HAND ?? 0) <= (before.ev.LIFE_TO_HAND ?? 0)) return 'LIFE_NOT_TAKEN'; checked.push('Life to hand'); break
       case 'trashLife': if (after.bobLife >= before.bobLife) return 'OPPONENT_LIFE_NOT_TRASHED'; checked.push('trash opponent Life'); break
-      case 'addToLife': if (after.aliceLife <= before.aliceLife) return 'LIFE_NOT_ADDED'; checked.push('add to Life'); break
+      case 'addToLife': if (after.aliceLife <= before.aliceLife && (after.ev.LIFE_ADDED ?? 0) <= (before.ev.LIFE_ADDED ?? 0)) return 'LIFE_NOT_ADDED'; checked.push('add to Life'); break
       case 'moveCard':
         if (o.player === 'OPPONENT' && o.from === 'hand') { if (after.bobHand >= before.bobHand || after.bobTrash <= before.bobTrash) return 'OPPONENT_NOT_TRASHED'; checked.push('opponent trashes'); break }
         if (o.from === 'deck' && o.to === 'trash') { if (after.aliceTrash <= before.aliceTrash || after.aliceDeck >= before.aliceDeck) return 'DECK_NOT_TRASHED'; checked.push('trash from deck'); break }
@@ -237,7 +246,8 @@ function verify(program: Step[], before: Snap, after: Snap, s: GameState, source
       default: return `UNCHECKED_PRIMITIVE_${op.primitive}`
     }
   }
-  for (const _ of searches) { if (after.aliceHand <= before.aliceHand - 1) return 'SEARCH_NOT_APPLIED'; checked.push('search') }
+  // A search then a play of the found card leaves the hand size unchanged: the reveal of the found card is the proof.
+  for (const _ of searches) { if (after.aliceHand <= before.aliceHand - 1 && !(ops.some(o => o.primitive === 'playCard') && (after.ev.CARD_REVEALED ?? 0) > (before.ev.CARD_REVEALED ?? 0))) return 'SEARCH_NOT_APPLIED'; checked.push('search') }
   return checked
 }
 const sourceInstance = (s: GameState, number: string) => Object.values(s.instances).find(i => i.owner === 'alice' && s.catalog.definitions.find(d => d.definitionId === i.definitionId)?.number === number && ['characters', 'leader', 'stage'].includes(i.zone))?.id ?? null
@@ -245,8 +255,24 @@ const sourceInstance = (s: GameState, number: string) => Object.values(s.instanc
 /** A Character of Bob's deck moved straight onto his field (scenario setup, as `put`). */
 const toBobField = (s: GameState, number: string) => { put(s, 'bob', number, 'characters', { playedEarlier: true }); return s }
 
+/** "At the end of this turn": the turn ends, the delayed part resolves and sets a rested DON!! active. */
+function endOfTurnPart(s: GameState, a: EffectDefinition, card: CompiledCard): string | null {
+  const delayed = card.abilities.filter(x => x.source.kind === 'CARD_DEFINITION' && x.source.zone === 'delayed' && JSON.stringify(a.program).includes(`"definitionId":"${x.id}"`))
+  if (!delayed.length) return null
+  const rested = () => zones(s, 'alice').cost.filter(id => s.instances[id].rested).length
+  if (s.activePlayerId !== 'alice' || s.phase !== 'MAIN') return 'DELAYED_NOT_IN_MAIN'
+  const before = rested(); s = act(s, 'alice', { type: 'END_MAIN' }); s = answerAll(s)
+  return rested() < before ? null : 'DELAYED_NOT_APPLIED'
+}
+
 /** Runs one compiled ability in a real game and checks its printed result. */
 export function runAbility(card: CompiledCard, a: EffectDefinition): Outcome {
+  // A delayed "at the end of this turn" part is run by the scenario of the ability that schedules it.
+  if (a.source.kind === 'CARD_DEFINITION' && a.source.zone === 'delayed') {
+    const parent = card.abilities.find(x => JSON.stringify(x.program).includes(`"definitionId":"${a.id}"`))
+    if (!parent) return { ok: false, reason: 'DELAYED_WITHOUT_SCHEDULER' }
+    const r = runAbility(card, parent); return r.ok ? { ok: true, checked: [...r.checked, 'end of turn part'] } : r
+  }
   const p = plan(card, a, {})
   if (typeof p === 'string') return { ok: false, reason: p }
   const d = definitionOf(card.number)
@@ -262,7 +288,9 @@ export function runAbility(card: CompiledCard, a: EffectDefinition): Outcome {
         sourceId = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true })
         if (p.don) attachDon(s, 'alice', sourceId, p.don)
         before = snap(s); s = attack(s, sourceId, leaderOf(s, 'bob')); s = answerAll(s); const mid = snap(s); s = finishBattle(s)
-        const r = verify(a.program, before, mid, s, sourceId); return typeof r === 'string' ? { ok: false, reason: r } : (roundTrip(s), { ok: true, checked: r })
+        const r = verify(a.program, before, mid, s, sourceId); if (typeof r === 'string') return { ok: false, reason: r }
+        const late = endOfTurnPart(s, a, card); if (late) return { ok: false, reason: late }
+        roundTrip(s); return { ok: true, checked: r }
       }
       case 'ACTIVATE_MAIN': {
         sourceId = d.category === 'LEADER' ? leaderOf(s, 'alice') : d.category === 'STAGE' ? put(s, 'alice', card.number, 'stage', { playedEarlier: true }) : put(s, 'alice', card.number, 'characters', { playedEarlier: true })
@@ -313,6 +341,7 @@ export function runAbility(card: CompiledCard, a: EffectDefinition): Outcome {
     void ownTurn
     const r = verify(a.program, before!, snap(s), s, sourceId ?? sourceInstance(s, card.number))
     if (typeof r === 'string') return { ok: false, reason: r }
+    const late = endOfTurnPart(s, a, card); if (late) return { ok: false, reason: late }
     roundTrip(s)
     return { ok: true, checked: r }
   } catch (e) { return { ok: false, reason: `ERROR ${(e as Error).message.slice(0, 160)}` } }
@@ -333,7 +362,7 @@ export function runStatic(card: CompiledCard, item: CompiledCard['continuous'][n
       const now = evaluateCharacteristics(s, id).cost.current
       return now === (d.cost ?? 0) + item.amount ? { ok: true, checked: [`hand cost ${item.amount}`] } : { ok: false, reason: `HAND_COST ${now}` }
     }
-    if ('characteristic' in item && item.duringOpponentTurn) s = endTurn(s)
+    if (item.duringOpponentTurn) s = endTurn(s)
     const id = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true })
     if ('characteristic' in item) {
       const printed = item.characteristic === 'POWER' ? (d.power ?? 0) : (d.cost ?? 0), read = () => item.characteristic === 'POWER' ? power(s, id) : cost(s, id)
