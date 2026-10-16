@@ -6,6 +6,7 @@ import { ChevronRight, FastForward, PackageOpen, Sparkles } from 'lucide-react'
 import { openingEffect } from '@/lib/boosters/presentation'
 import type { OpeningCard, OpeningResult } from '@/lib/boosters/types'
 import StackReveal from './StackReveal'
+import { preloadFan } from './useCardPreload'
 import styles from './BatchOpening.module.css'
 
 // Highest first: the recap shows the best pulls on top.
@@ -23,6 +24,8 @@ export default function BatchOpening({ openings, onCard, onDetail, onAgain, agai
   const [index, setIndex] = useState(0)
   const done = index >= openings.length
   const summaryRef = useRef<HTMLElement | null>(null)
+  // The next pack is downloaded while this one is revealed: it then deals without waiting.
+  useEffect(() => { preloadFan(openings[index + 1]?.cards) }, [openings, index])
   useEffect(() => { if (!done) return; onSummary(); summaryRef.current?.scrollIntoView({ block: 'start', behavior: 'smooth' }) }, [done, onSummary])
   const summary = useMemo(() => {
     const grouped = new Map<string, { card: OpeningCard; count: number; isNew: boolean }>()

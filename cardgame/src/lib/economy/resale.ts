@@ -49,11 +49,11 @@ export async function sellDuplicates(db: PrismaClient, userId: string, key: stri
     if (done) return { amount: done.amount, balance: done.balanceAfter, copies: (done.details as { copies?: number } | null)?.copies ?? 0, replayed: true }
     const items = await surplus(tx, userId)
     if (!items.length) throw new BerryError('NOTHING_TO_SELL', 'Aucun doublon en trop à revendre', 409)
-    for (const item of items) {
-      // Guarded decrement: the quantity read above is still the current one (player lock held).
-      const updated = await tx.userCard.updateMany({ where: { userId, cardId: item.cardId, quantity: item.quantity }, data: { quantity: item.keep } })
-      if (updated.count !== 1) throw new BerryError('COLLECTION_CHANGED', 'La collection a changé, réessayez', 409)
-    }
+    // One guarded update for every card: each quantity read above must still be the current one (player lock held).
+    const updated = await tx.$executeRaw`UPDATE "UserCard" u SET "quantity" = v.keep, "updatedAt" = now()
+      FROM unnest(${items.map(i => i.cardId)}::text[], ${items.map(i => i.quantity)}::int[], ${items.map(i => i.keep)}::int[]) AS v(card, qty, keep)
+      WHERE u."userId" = ${userId} AND u."cardId" = v.card AND u."quantity" = v.qty`
+    if (updated !== items.length) throw new BerryError('COLLECTION_CHANGED', 'La collection a changé, réessayez', 409)
     const amount = items.reduce((n, i) => n + i.total, 0), copies = items.reduce((n, i) => n + i.extra, 0)
     const { transaction } = await post(tx, userId, { amount, reason: 'DUPLICATE_SALE', key: `resale:${key}`, details: { copies, cards: items.map(i => ({ cardId: i.cardId, extra: i.extra, unit: i.unit })) } })
     return { amount, balance: transaction.balanceAfter, copies, replayed: false }

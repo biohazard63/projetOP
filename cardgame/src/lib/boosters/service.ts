@@ -1,4 +1,4 @@
-import { createHash, randomInt } from 'node:crypto'
+import { createHash, randomInt, randomUUID } from 'node:crypto'
 import { Prisma, type PrismaClient, type Card, type CardSet, type SetRules, type BoosterCard, type Booster } from '@prisma/client'
 import { BoosterError, hasExplicitRules, normalizeSetCode, normalizeRarity, resolveRules } from './rules'
 import { generateBooster, validatePools, metadataVariant } from './generator'
@@ -8,7 +8,7 @@ import { isBoosterProduct } from './products'
 import { DISPLAY_SIZE, TIER_RATES_VERSION, planDisplay, tierPools, tieredRules, type DrawTier, type PackPlan } from './tiers'
 import tierManifest from './booster-tiers.json'
 import { economyAt } from '@/lib/economy/config'
-import { post as postBerries } from '@/lib/economy/ledger'
+import { postMany as postBerries } from '@/lib/economy/ledger'
 
 type DB = Prisma.TransactionClient
 const boosterId = (code: string) => `simulation:${createHash('sha256').update(code).digest('hex')}`
@@ -75,56 +75,79 @@ export async function getBoosterCatalog(db: DB): Promise<BoosterCatalogItem[]> {
 type DrawContext = Awaited<ReturnType<typeof getBoosterDrawContext>>
 type DisplayPack = { id: string; index: number; plan: PackPlan }
 const random = () => randomInt(0, 0x100000000) / 0x100000000
-/** The next pack of the player's open box for this product (a new box is planned when none is open). */
-async function nextDisplayPack(tx: DB, userId: string, ctx: DrawContext): Promise<DisplayPack | null> {
-  if (!ctx.available) return null
-  const box = await tx.virtualDisplay.findFirst({ where: { userId, setCode: ctx.set.code, completedAt: null } })
-    ?? await tx.virtualDisplay.create({ data: { userId, setCode: ctx.set.code, size: DISPLAY_SIZE, plan: asJson(planDisplay(ctx.available, random)), rulesVersion: TIER_RATES_VERSION } })
-  const plan = box.plan as unknown as PackPlan[], index = box.nextIndex
-  await tx.virtualDisplay.update({ where: { id: box.id }, data: { nextIndex: index + 1, completedAt: index + 1 >= box.size ? new Date() : null } })
-  return { id: box.id, index, plan: plan[index] }
-}
-// One opening inside the caller's transaction (user lock already held). A batch reuses the draw context; a display
-// purchase passes its own pack and payment (`prepaid`), the pack being then free.
-async function creditOpening(tx: DB, userId: string, setCode: string, idempotencyKey: string, shared?: { ctx?: DrawContext }, prepaid?: { pack: DisplayPack; paymentId: string }): Promise<{ opening: OpeningResult; replayed: boolean }> {
-  const existing = await tx.boosterOpening.findUnique({ where: { userId_idempotencyKey: { userId, idempotencyKey } } })
-  if (existing) {
-    const result = existing.resultSnapshot as unknown as OpeningResult | null
-    if (!result || !existing.creditedAt) throw new BoosterError('INVALID_RECEIPT', 'Reçu d’ouverture incomplet', 409)
-    const exactSet = await tx.cardSet.findUnique({ where: { code: setCode.trim().toUpperCase() }, select: { code: true } })
-    if ((exactSet && exactSet.code !== result.setCode) || normalizeSetCode(result.setCode) !== normalizeSetCode(setCode)) throw new BoosterError('IDEMPOTENCY_CONFLICT', 'Cette clé appartient à une autre extension', 409)
-    return { opening: result, replayed: true }
+/** The next packs of the player's open box for this product (a new box is planned whenever one is used up). */
+async function nextDisplayPacks(tx: DB, userId: string, ctx: DrawContext, count: number): Promise<(DisplayPack | null)[]> {
+  if (!ctx.available) return Array.from({ length: count }, () => null)
+  const packs: DisplayPack[] = []
+  let box = await tx.virtualDisplay.findFirst({ where: { userId, setCode: ctx.set.code, completedAt: null } })
+  while (packs.length < count) {
+    box ??= await tx.virtualDisplay.create({ data: { userId, setCode: ctx.set.code, size: DISPLAY_SIZE, plan: asJson(planDisplay(ctx.available, random)), rulesVersion: TIER_RATES_VERSION } })
+    const plan = box.plan as unknown as PackPlan[], take = Math.min(count - packs.length, box.size - box.nextIndex)
+    for (let i = 0; i < take; i++) packs.push({ id: box.id, index: box.nextIndex + i, plan: plan[box.nextIndex + i] })
+    const next = box.nextIndex + take, full = next >= box.size
+    // Closed before the next box is created (one open box per product and player).
+    await tx.virtualDisplay.update({ where: { id: box.id }, data: { nextIndex: next, completedAt: full ? new Date() : null } })
+    box = full ? null : { ...box, nextIndex: next }
   }
+  return packs
+}
+async function replay(tx: DB, setCode: string, existing: { resultSnapshot: Prisma.JsonValue; creditedAt: Date | null }) {
+  const result = existing.resultSnapshot as unknown as OpeningResult | null
+  if (!result || !existing.creditedAt) throw new BoosterError('INVALID_RECEIPT', 'Reçu d’ouverture incomplet', 409)
+  const exactSet = await tx.cardSet.findUnique({ where: { code: setCode.trim().toUpperCase() }, select: { code: true } })
+  if ((exactSet && exactSet.code !== result.setCode) || normalizeSetCode(result.setCode) !== normalizeSetCode(setCode)) throw new BoosterError('IDEMPOTENCY_CONFLICT', 'Cette clé appartient à une autre extension', 409)
+  return result
+}
+/**
+ * Openings inside the caller's transaction (user lock already held), one per key, credited with bulk writes: a
+ * display of 24 costs a few queries instead of hundreds. Keys already credited are replayed. A display purchase
+ * passes its own packs and payment (`prepaid`), the packs being then free.
+ */
+async function creditOpenings(tx: DB, userId: string, setCode: string, keys: string[], prepaid?: { ctx: DrawContext; packs: DisplayPack[]; paymentId: string }): Promise<{ openings: OpeningResult[]; replayed: boolean }> {
+  const existing = new Map((await tx.boosterOpening.findMany({ where: { userId, idempotencyKey: { in: keys } }, select: { idempotencyKey: true, resultSnapshot: true, creditedAt: true } })).map(row => [row.idempotencyKey!, row]))
+  const replays = new Map<string, OpeningResult>()
+  for (const [key, row] of existing) replays.set(key, await replay(tx, setCode, row))
+  const fresh = keys.filter(key => !existing.has(key))
+  if (!fresh.length) return { openings: keys.map(key => replays.get(key)!), replayed: true }
   if (!await tx.user.findUnique({ where: { id: userId }, select: { id: true } })) throw new BoosterError('USER_NOT_FOUND', 'Utilisateur introuvable', 401)
-  const ctx = shared?.ctx ?? await getBoosterDrawContext(tx, setCode)
-  if (shared) shared.ctx = ctx
-  // Paid in Berries (game currency, never real money), debited in the same transaction as the credit: the pack
-  // and its payment exist together or not at all; a replay of the same key pays nothing more.
-  const paymentId = prepaid?.paymentId ?? (await postBerries(tx, userId, { amount: -economyAt().prices.booster, reason: 'BOOSTER_PURCHASE', key: `booster:${idempotencyKey}`, details: { setCode: ctx.set.code } })).transaction.id
+  const ctx = prepaid?.ctx ?? await getBoosterDrawContext(tx, setCode)
+  // Paid in Berries (game currency, never real money), debited in the same transaction as the credit: the packs
+  // and their payment exist together or not at all; a replay of the same key pays nothing more.
+  const payments = prepaid ? fresh.map(() => prepaid.paymentId) : await postBerries(tx, userId, fresh.map(key => ({ amount: -economyAt().prices.booster, reason: 'BOOSTER_PURCHASE' as const, key: `booster:${key}`, details: { setCode: ctx.set.code } })))
   // Tiered products come from a virtual display: the rare and hit slots follow the box plan (when still drawable).
-  const pack = prepaid?.pack ?? await nextDisplayPack(tx, userId, ctx)
-  const planned = pack && ctx.available?.has(pack.plan.rare) && ctx.available.has(pack.plan.hit)
-  const rules = planned ? tieredRules(ctx.set.code, ctx.available!, pack.plan) : ctx.rules
+  const packs = prepaid?.packs ?? await nextDisplayPacks(tx, userId, ctx, fresh.length)
   const booster = await tx.booster.upsert({ where: { id: ctx.boosterId }, update: {}, create: { id: ctx.boosterId, name: `Simulation · ${ctx.set.name}`, description: 'Ouverture gratuite du simulateur', price: 0, setCode: ctx.set.code, imageUrl: ctx.set.imageUrl } })
   if (booster.price !== 0) throw new BoosterError('PAID_BOOSTER_UNSUPPORTED', 'Droit d’ouverture non configuré', 403)
-  const draw = generateBooster(ctx.pool, ctx.set.code, rules, random, ctx.weights)
-  const counts = new Map<string, number>()
-  const owned = await tx.userCard.findMany({ where: { userId, cardId: { in: draw.cards.map(card => card.id) } }, select: { cardId: true, quantity: true } })
-  const quantities = new Map(owned.map(row => [row.cardId, row.quantity]))
-  // Drawn under its tier, credited and shown as the real catalogue card.
-  const resultCards = draw.cards.map(({ drawTier, ...drawn }, index) => {
-    const card = ctx.originals?.get(drawn.id) ?? drawn
-    const quantityBefore = (quantities.get(card.id) || 0) + (counts.get(card.id) || 0)
-    counts.set(card.id, (counts.get(card.id) || 0) + 1)
-    return { ...card, ...(ctx.rules.variantPolicy === 'metadata' ? {drawVariant: metadataVariant(card)} : {}), ...(drawTier ? { drawTier } : {}), position: index + 1, quantityBefore, isDuplicate: quantityBefore > 0, isNew: quantityBefore === 0 }
+  const draws = packs.map(pack => {
+    const planned = Boolean(pack && ctx.available?.has(pack.plan.rare) && ctx.available.has(pack.plan.hit))
+    return { pack, planned, draw: generateBooster(ctx.pool, ctx.set.code, planned ? tieredRules(ctx.set.code, ctx.available!, pack!.plan) : ctx.rules, random, ctx.weights) }
   })
-  const created = await tx.boosterOpening.create({ data: { userId, boosterId: booster.id, idempotencyKey, berryTransactionId: paymentId, ...(pack ? { displayId: pack.id, displayIndex: pack.index } : {}), creditedAt: new Date(), rulesSnapshot: asJson({ generatorVersion: ctx.tiered ? 4 : ctx.rules.selection === 'number' ? 3 : 2, ...(ctx.tiered ? { tierRates: TIER_RATES_VERSION, tierManifest: tierManifest.source } : {}), ...(pack ? { display: { id: pack.id, index: pack.index, plan: planned ? pack.plan : null } } : {}), sampling: 'without-replacement-by-card-number', selection: ctx.rules.selection || 'card', selectedProfile: draw.profile || null, rules: ctx.rules, cardWeights: ctx.weights ? Object.fromEntries(ctx.weights) : null }), cards: { create: resultCards.map(card => ({ cardId: card.id, position: card.position })) } } })
-  for (const [cardId, quantity] of [...counts].sort(([a], [b]) => a.localeCompare(b))) {
-    await tx.userCard.upsert({ where: { userId_cardId: { userId, cardId } }, update: { quantity: { increment: quantity } }, create: { userId, cardId, quantity } })
-  }
-  const opening: OpeningResult = { id: created.id, boosterId: booster.id, setCode: ctx.set.code, setName: ctx.set.name, openedAt: created.openedAt.toISOString(), creditedAt: created.creditedAt!.toISOString(), cards: resultCards, specialPack: draw.specialPack, rules: { label: draw.profile ? `${ctx.rules.label} · ${draw.profile}` : ctx.rules.label, source: ctx.rules.source, slotCount: ctx.rules.slots.length }, newCardsCount: resultCards.filter(card => card.isNew).length, hasRareCard: resultCards.some(isRare), legacy: false }
-  await tx.boosterOpening.update({ where: { id: created.id }, data: { resultSnapshot: asJson(opening) } })
-  return { opening, replayed: false }
+  const owned = await tx.userCard.findMany({ where: { userId, cardId: { in: [...new Set(draws.flatMap(d => d.draw.cards.map(card => ctx.originals?.get(card.id)?.id ?? card.id)))] } }, select: { cardId: true, quantity: true } })
+  const quantities = new Map(owned.map(row => [row.cardId, row.quantity])), counts = new Map<string, number>()
+  const start = Date.now(), creditedAt = new Date(start), rows: Prisma.BoosterOpeningCreateManyInput[] = [], links: Prisma.BoosterOpeningCardCreateManyInput[] = []
+  const credited = draws.map(({ pack, planned, draw }, n) => {
+    // Drawn under its tier, credited and shown as the real catalogue card; earlier packs of the batch count as owned.
+    const resultCards = draw.cards.map(({ drawTier, ...drawn }, index) => {
+      const card = ctx.originals?.get(drawn.id) ?? drawn
+      const quantityBefore = (quantities.get(card.id) || 0) + (counts.get(card.id) || 0)
+      counts.set(card.id, (counts.get(card.id) || 0) + 1)
+      return { ...card, ...(ctx.rules.variantPolicy === 'metadata' ? { drawVariant: metadataVariant(card) } : {}), ...(drawTier ? { drawTier } : {}), position: index + 1, quantityBefore, isDuplicate: quantityBefore > 0, isNew: quantityBefore === 0 }
+    })
+    // One millisecond apart: the history keeps the order of the batch.
+    const id = randomUUID(), openedAt = new Date(start + n)
+    const opening: OpeningResult = { id, boosterId: booster.id, setCode: ctx.set.code, setName: ctx.set.name, openedAt: openedAt.toISOString(), creditedAt: creditedAt.toISOString(), cards: resultCards, specialPack: draw.specialPack, rules: { label: draw.profile ? `${ctx.rules.label} · ${draw.profile}` : ctx.rules.label, source: ctx.rules.source, slotCount: ctx.rules.slots.length }, newCardsCount: resultCards.filter(card => card.isNew).length, hasRareCard: resultCards.some(isRare), legacy: false }
+    rows.push({ id, userId, boosterId: booster.id, idempotencyKey: fresh[n], berryTransactionId: payments[n], ...(pack ? { displayId: pack.id, displayIndex: pack.index } : {}), openedAt, creditedAt, resultSnapshot: asJson(opening), rulesSnapshot: asJson({ generatorVersion: ctx.tiered ? 4 : ctx.rules.selection === 'number' ? 3 : 2, ...(ctx.tiered ? { tierRates: TIER_RATES_VERSION, tierManifest: tierManifest.source } : {}), ...(pack ? { display: { id: pack.id, index: pack.index, plan: planned ? pack.plan : null } } : {}), sampling: 'without-replacement-by-card-number', selection: ctx.rules.selection || 'card', selectedProfile: draw.profile || null, rules: ctx.rules, cardWeights: ctx.weights ? Object.fromEntries(ctx.weights) : null }) })
+    links.push(...resultCards.map(card => ({ boosterOpeningId: id, cardId: card.id, position: card.position })))
+    return [fresh[n], opening] as const
+  })
+  await tx.boosterOpening.createMany({ data: rows })
+  await tx.boosterOpeningCard.createMany({ data: links })
+  const added = [...counts].sort(([a], [b]) => a.localeCompare(b))
+  await tx.$executeRaw`INSERT INTO "UserCard" ("id", "userId", "cardId", "quantity", "createdAt", "updatedAt")
+    SELECT gen_random_uuid()::text, ${userId}, c.card, c.qty, now(), now() FROM unnest(${added.map(([id]) => id)}::text[], ${added.map(([, q]) => q)}::int[]) AS c(card, qty)
+    ON CONFLICT ("userId", "cardId") DO UPDATE SET "quantity" = "UserCard"."quantity" + EXCLUDED."quantity", "updatedAt" = now()`
+  const byKey = new Map([...replays, ...credited])
+  return { openings: keys.map(key => byKey.get(key)!), replayed: false }
 }
 async function inUserTransaction<T>(db: PrismaClient, userId: string, timeout: number, run: (tx: DB) => Promise<T>): Promise<T> {
   for (let attempt = 0; attempt < 3; attempt++) {
@@ -142,7 +165,8 @@ async function inUserTransaction<T>(db: PrismaClient, userId: string, timeout: n
   throw new BoosterError('RETRY_EXHAUSTED', 'Réessayez la même ouverture', 503)
 }
 export async function openBooster(db: PrismaClient, userId: string, setCode: string, idempotencyKey: string): Promise<{ opening: OpeningResult; replayed: boolean }> {
-  return inUserTransaction(db, userId, 20000, tx => creditOpening(tx, userId, setCode, idempotencyKey))
+  const { openings: [opening], replayed } = await inUserTransaction(db, userId, 20000, tx => creditOpenings(tx, userId, setCode, [idempotencyKey]))
+  return { opening, replayed }
 }
 export const BATCH_SIZES = [1, 5, 10, DISPLAY_SIZE] as const
 /**
@@ -151,24 +175,16 @@ export const BATCH_SIZES = [1, 5, 10, DISPLAY_SIZE] as const
  */
 export async function openBoosters(db: PrismaClient, userId: string, setCode: string, batchKey: string, count: number): Promise<{ openings: OpeningResult[]; replayed: boolean }> {
   if (!(BATCH_SIZES as readonly number[]).includes(count)) throw new BoosterError('INVALID_REQUEST', 'Nombre de boosters invalide', 400)
-  return inUserTransaction(db, userId, 90000, async tx => {
-    const shared: { ctx?: DrawContext } = {}, openings: OpeningResult[] = []
-    let display: { id: string; plan: PackPlan[]; paymentId: string } | null = null
-    if (count === DISPLAY_SIZE && !await tx.boosterOpening.findUnique({ where: { userId_idempotencyKey: { userId, idempotencyKey: `${batchKey}#1` } }, select: { id: true } })) {
-      const ctx = shared.ctx = await getBoosterDrawContext(tx, setCode)
-      if (!ctx.available) throw new BoosterError('DISPLAY_UNAVAILABLE', 'Cette extension ne se vend pas en display', 422)
-      const payment = await postBerries(tx, userId, { amount: -economyAt().prices.display, reason: 'DISPLAY_PURCHASE', key: `display:${batchKey}`, details: { setCode: ctx.set.code } })
-      const plan = planDisplay(ctx.available, random)
-      // Opened entirely in this transaction: the box is closed at once and never blocks the box of single packs.
-      const box = await tx.virtualDisplay.create({ data: { userId, setCode: ctx.set.code, size: DISPLAY_SIZE, plan: asJson(plan), nextIndex: DISPLAY_SIZE, completedAt: new Date(), rulesVersion: TIER_RATES_VERSION } })
-      display = { id: box.id, plan, paymentId: payment.transaction.id }
-    }
-    let replayed = true
-    for (let n = 1; n <= count; n++) {
-      const result = await creditOpening(tx, userId, setCode, `${batchKey}#${n}`, shared, display ? { pack: { id: display.id, index: n - 1, plan: display.plan[n - 1] }, paymentId: display.paymentId } : undefined)
-      openings.push(result.opening); replayed &&= result.replayed
-    }
-    return { openings, replayed }
+  const keys = Array.from({ length: count }, (_, n) => `${batchKey}#${n + 1}`)
+  return inUserTransaction(db, userId, 30000, async tx => {
+    if (count !== DISPLAY_SIZE || await tx.boosterOpening.findUnique({ where: { userId_idempotencyKey: { userId, idempotencyKey: keys[0] } }, select: { id: true } })) return creditOpenings(tx, userId, setCode, keys)
+    const ctx = await getBoosterDrawContext(tx, setCode)
+    if (!ctx.available) throw new BoosterError('DISPLAY_UNAVAILABLE', 'Cette extension ne se vend pas en display', 422)
+    const [paymentId] = await postBerries(tx, userId, [{ amount: -economyAt().prices.display, reason: 'DISPLAY_PURCHASE', key: `display:${batchKey}`, details: { setCode: ctx.set.code } }])
+    const plan = planDisplay(ctx.available, random)
+    // Opened entirely in this transaction: the box is closed at once and never blocks the box of single packs.
+    const box = await tx.virtualDisplay.create({ data: { userId, setCode: ctx.set.code, size: DISPLAY_SIZE, plan: asJson(plan), nextIndex: DISPLAY_SIZE, completedAt: new Date(), rulesVersion: TIER_RATES_VERSION } })
+    return creditOpenings(tx, userId, setCode, keys, { ctx, packs: plan.map((p, index) => ({ id: box.id, index, plan: p })), paymentId })
   })
 }
 export async function getOpening(db: DB, userId: string, id: string): Promise<OpeningResult | null> {

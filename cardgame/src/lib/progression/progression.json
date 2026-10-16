@@ -1,0 +1,51 @@
+{
+ "_aide": "Niveaux de compte et badges. Paliers, récompenses (฿) et titres modifiables ici, puis redéployer. Les récompenses déjà versées ne sont jamais reprises ; un nouveau palier plus bas que l'actuel est versé à la prochaine synchronisation.",
+ "version": "progression-2026-10-16",
+ "ranks": [
+  { "id": "bronze", "label": "Bronze", "levels": 3, "reward": 500, "xp": 50 },
+  { "id": "silver", "label": "Argent", "levels": 3, "reward": 1000, "xp": 100 },
+  { "id": "gold", "label": "Or", "levels": 3, "reward": 2500, "xp": 250 },
+  { "id": "platinum", "label": "Platine", "levels": 3, "reward": 5000, "xp": 500 },
+  { "id": "legend", "label": "Légende", "levels": 1, "reward": 20000, "xp": 1000, "title": true }
+ ],
+ "secretReward": { "berries": 2000, "xp": 300 },
+ "xp": { "booster": 10, "newCard": 2, "game": { "easy": 20, "normal": 40, "hard": 70 }, "winMultiplier": 2, "dailyTreasure": 25 },
+ "levels": {
+  "max": 100,
+  "curve": { "base": 100, "exponent": 1.6 },
+  "rewardEach": 300,
+  "rewardEvery5": 2000,
+  "rewardEvery10": 20000
+ },
+ "titles": [
+  { "from": 1, "title": "Mousse" }, { "from": 10, "title": "Matelot" }, { "from": 20, "title": "Pirate" }, { "from": 30, "title": "Supernova" },
+  { "from": 40, "title": "Capitaine" }, { "from": 50, "title": "Corsaire" }, { "from": 60, "title": "Commandant" }, { "from": 70, "title": "Amiral" },
+  { "from": 80, "title": "Yonko" }, { "from": 90, "title": "Légende des mers" }, { "from": 100, "title": "Roi des pirates" }
+ ],
+ "badges": [
+  { "id": "pilleur", "name": "Pilleur de boosters", "category": "openings", "metric": "openings", "unit": "boosters ouverts", "legendTitle": "Seigneur des cales", "thresholds": [5, 15, 30, 50, 80, 120, 175, 250, 350, 500, 750, 1000, 2000] },
+  { "id": "cale", "name": "Vider la cale", "category": "openings", "metric": "displays", "unit": "displays terminées", "legendTitle": "Maître des displays", "thresholds": [1, 2, 3, 5, 7, 10, 15, 20, 30, 40, 60, 80, 100] },
+  { "id": "collectionneur", "name": "Collectionneur", "category": "collection", "metric": "catalogPercent", "unit": "% du catalogue", "legendTitle": "Gardien du One Piece", "thresholds": [2, 5, 10, 15, 20, 25, 35, 45, 55, 65, 75, 85, 100] },
+  { "id": "alternatives", "name": "Chasseur d’alternatives", "category": "collection", "metric": "alternatives", "unit": "variantes spéciales", "legendTitle": "Œil de faucon", "thresholds": [1, 3, 5, 10, 15, 25, 40, 60, 80, 100, 150, 200, 300] },
+  { "id": "extensions", "name": "Maître des extensions", "category": "collection", "metric": "completeSets", "unit": "extensions complètes", "legendTitle": "Cartographe de Grand Line", "thresholds": [1, 2, 3, 4, 5, 6, 8, 10, 12, 14, 16, 18, 20] },
+  { "id": "stratege", "name": "Stratège", "category": "collection", "metric": "decks", "unit": "decks créés", "legendTitle": "Grand stratège", "thresholds": [1, 2, 3, 5, 7, 10, 12, 15, 20, 25, 30, 40, 50] },
+  { "id": "capitaine", "name": "Capitaine", "category": "battles", "metric": "wins", "unit": "victoires contre le bot", "legendTitle": "Roi des combats", "thresholds": [1, 3, 5, 10, 20, 35, 50, 75, 100, 150, 250, 400, 750] },
+  { "id": "yonko", "name": "Défi du Yonko", "category": "battles", "metric": "hardWins", "unit": "victoires en difficile", "legendTitle": "Tombeur de Yonko", "thresholds": [1, 2, 3, 5, 8, 12, 20, 30, 40, 60, 80, 100, 200] },
+  { "id": "fidele", "name": "Fidèle au poste", "category": "loyalty", "metric": "treasureDays", "unit": "trésors du jour récupérés", "legendTitle": "Vigie éternelle", "thresholds": [3, 7, 14, 21, 30, 45, 60, 90, 120, 180, 240, 300, 365] },
+  { "id": "marchand", "name": "Marchand de Water Seven", "category": "loyalty", "metric": "resale", "unit": "฿ de doublons revendus", "legendTitle": "Baron de Water Seven", "thresholds": [100, 300, 600, 1000, 2000, 3500, 5000, 8000, 12000, 20000, 35000, 50000, 100000] }
+ ],
+ "secrets": [
+  { "id": "nuit", "name": "La nuit porte conseil", "hint": "Ouvrir un booster entre 3 h et 4 h du matin" },
+  { "id": "tel-est-pris", "name": "Tel est pris…", "hint": "Perdre contre le bot en facile" },
+  { "id": "remontada", "name": "Remontada", "hint": "Gagner une partie sans plus aucune vie" },
+  { "id": "blitz", "name": "Blitz", "hint": "Gagner une partie en 6 tours ou moins" },
+  { "id": "gomu", "name": "Gomu Gomu no…", "hint": "Obtenir une variante spéciale de Luffy" },
+  { "id": "double", "name": "Doublé", "hint": "Deux alternatives dans le même booster" },
+  { "id": "etoile", "name": "Né sous une bonne étoile", "hint": "Une manga dans vos 24 premiers boosters" },
+  { "id": "one-piece", "name": "Le One Piece existe", "hint": "Obtenir une manga red" },
+  { "id": "radin", "name": "Radin", "hint": "Avoir 100 000 ฿ en poche" },
+  { "id": "flambeur", "name": "Flambeur", "hint": "Ouvrir 3 displays dans la même journée" },
+  { "id": "pacifiste", "name": "Pacifiste", "hint": "Abandonner 5 parties" },
+  { "id": "zoro", "name": "Perdu en chemin", "hint": "Posséder 20 cartes Zoro différentes" }
+ ]
+}

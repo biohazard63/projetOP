@@ -2,7 +2,7 @@
 import { useMemo, useState, type CSSProperties } from 'react'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
-import { ArrowRight, BookOpen, Layers, PackageOpen, PlayCircle, Sparkles, Swords, Trophy, Lock } from 'lucide-react'
+import { ArrowRight, BookOpen, Layers, PackageOpen, PlayCircle, Sparkles, Swords } from 'lucide-react'
 import { useRemote } from '@/hooks/useRemote'
 import type { CollectorOverview, CatalogueCard, HistoryPage } from '@/lib/collector/types'
 import type { BoosterCatalogItem } from '@/lib/boosters/types'
@@ -10,7 +10,9 @@ import { LoadState, SectionHeading, EmptyState, Progress } from '@/components/co
 import CardTile from '@/components/collector/CardTile'
 import CardDetail from '@/components/collector/CardDetail'
 import PackArt from '@/components/booster-opening/PackArt'
-import { Counter, Ring, rankOf, RANKS, badgesOf } from '@/components/collector/Progression'
+import { Counter, Ring, rankOf, RANKS } from '@/components/collector/Progression'
+import { Medal } from '@/components/progression/ProgressionPanel'
+import { useProgress } from '@/components/progression/ProgressProvider'
 import { boosterTitle } from '@/lib/boosters/catalogPresentation'
 import { DailyTreasure, OceanBackdrop, Tilt, useReveal } from './fx'
 
@@ -34,7 +36,7 @@ export default function MemberHome() {
     .map(set => ({ set, p: stats?.sets.find(x => x.code === set.code) }))
     .sort((a, b) => (a.p?.percentage ?? 0) - (b.p?.percentage ?? 0)).slice(0, 4), [catalogue.data, stats])
   const game = active.data?.game, next = suggested[0]
-  const badges = stats ? badgesOf(stats) : []
+  const { progress: account } = useProgress()
   return <div className="fx-home hm">
     <OceanBackdrop />
     <section className="hm-bento">
@@ -83,9 +85,12 @@ export default function MemberHome() {
       {stats.recentCards.length ? <div className="hm-hand" style={{ '--n': Math.min(9, stats.recentCards.length) } as CSSProperties}>{stats.recentCards.slice(0, 9).map((card, i, all) => <div key={card.id} className="hm-hand-card" style={{ '--i': i - (all.length - 1) / 2 } as CSSProperties}><CardTile card={card} onClick={() => setDetail(card)} /></div>)}</div>
         : <EmptyState title="Votre première découverte vous attend" description="Ouvrez un booster pour commencer votre collection." />}</section>}
 
-    {badges.length > 0 && <section className="hm-section" data-reveal>
-      <SectionHeading title={`Vos badges · ${badges.filter(b => b.done).length} / ${badges.length}`} />
-      <div className="hm-badges">{badges.map(b => <div key={b.name} className={`hm-badge${b.done ? ' done' : ''}`} title={b.hint}><span>{b.done ? <Trophy size={20} /> : <Lock size={18} />}</span><b>{b.name}</b><small>{b.hint}</small></div>)}</div>
+    {account && <section className="hm-section" data-reveal>
+      <SectionHeading title={`Niveau ${account.account.level} · ${account.account.title}`} href="/profile#progression" label="Tous mes badges" />
+      <ul className="pg-badges">{[...account.badges].filter(b => !b.max).sort((x, y) => (y.next ? (y.value - y.from) / (y.next - y.from) : 0) - (x.next ? (x.value - x.from) / (x.next - x.from) : 0)).slice(0, 4).map(b => <li key={b.id} className={`pg-badge${b.level ? '' : ' locked'}`}>
+        <Medal badge={b} size={46} /><div className="pg-badge-body"><b>{b.name}</b><span className="pg-badge-rank">{b.label}</span>
+          <div className="pg-bar" aria-hidden="true"><i style={{ width: `${b.next ? Math.min(100, (b.value - b.from) / (b.next - b.from) * 100) : 100}%` }} /></div>
+          <small>{b.value.toLocaleString('fr-FR')} / {b.next?.toLocaleString('fr-FR')} {b.unit}</small></div></li>)}</ul>
     </section>}
 
     <section className="hm-section" data-reveal><SectionHeading title="Boosters conseillés" href="/boosters" label="Toutes les extensions" />

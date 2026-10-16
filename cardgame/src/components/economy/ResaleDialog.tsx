@@ -8,6 +8,8 @@ import { formatBerries } from './Berries'
 
 type Item = { cardId: string; name: string; code: string; imageUrl: string | null; tier: string; extra: number; keep: number; unit: number; total: number }
 type Preview = { items: Item[]; total: number; copies: number; keepCopies: number }
+// A gateway error (504) answers with an HTML page, not JSON: show a readable message instead of a parse error.
+const readJson = async (r: Response) => r.json().catch(() => ({ error: r.status === 504 ? 'Le serveur a mis trop de temps à répondre, réessayez.' : 'Réponse du serveur illisible, réessayez.' }))
 const TIER: Record<string, string> = { ALT: 'Alternative', 'SP CARD': 'SP', TR: 'Treasure Rare', MANGA: 'Manga', 'MANGA RED': 'Manga red' }
 
 /** Sells every copy above what the player keeps (4, or more when a deck uses more), after showing the exact list. */
@@ -19,13 +21,13 @@ export default function ResaleDialog({ open, onOpenChange, onSold }: { open: boo
   useEffect(() => {
     if (!open) return
     setPreview(null); setMessage(''); setKey(crypto.randomUUID())
-    void fetch('/api/berries/resale', { cache: 'no-store' }).then(async r => { const data = await r.json(); if (r.ok) setPreview(data); else setMessage(data.error ?? 'Revente indisponible') }).catch(() => setMessage('Revente indisponible'))
+    void fetch('/api/berries/resale', { cache: 'no-store' }).then(async r => { const data = await readJson(r); if (r.ok) setPreview(data); else setMessage(data.error ?? 'Revente indisponible') }).catch(() => setMessage('Revente indisponible'))
   }, [open])
   async function sell() {
     setBusy(true); setMessage('')
     try {
       const response = await fetch('/api/berries/resale', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ idempotencyKey: key }) })
-      const data = await response.json()
+      const data = await readJson(response)
       if (!response.ok) throw new Error(data.error ?? 'Revente impossible')
       setMessage(`+${formatBerries(data.amount)} · ${data.copies} copies revendues`); setPreview(p => p && { ...p, items: [], total: 0, copies: 0 })
       notifyBerries(); onSold()

@@ -6,7 +6,7 @@ import type { Economy } from '@/lib/economy/config'
 export type Wallet = { balance: number; economy: Economy; today: { treasureClaimed: boolean; gamesEarned: number; gamesCap: number }; recent: { id: string; amount: number; reason: string; balanceAfter: number; createdAt: string; details: unknown }[] }
 const EVENT = 'berries:changed'
 /** Tell every wallet on the page (navbar, booster page…) to refresh after a credit or a purchase. */
-export const notifyBerries = () => window.dispatchEvent(new Event(EVENT))
+export const notifyBerries = () => { window.dispatchEvent(new Event(EVENT)); window.dispatchEvent(new Event('progress:sync')) }
 
 /** The player's Berry wallet (null when signed out or not loaded yet). */
 export function useWallet() {

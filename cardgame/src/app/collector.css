@@ -692,3 +692,96 @@ body:has(.piece-opening-immersive) .piece-footer{display:none}
 .piece-berries:hover { filter:brightness(1.05); }
 .piece-berries-event { position:absolute; top:-2px; right:-2px; width:10px; height:10px; border-radius:50%; background:#ff4d6d; box-shadow:0 0 0 2px #fff; }
 @media (max-width:640px) { .piece-account .piece-topbar-link { display:none; } .piece-berries { min-height:34px; padding:0 10px; } }
+
+/* Badge / level unlock banner (global). */
+.pg-unlock { position:fixed; z-index:120; left:50%; top:max(14px, env(safe-area-inset-top)); translate:-50% 0; display:flex; align-items:center; gap:12px; max-width:min(560px,calc(100vw - 24px)); padding:10px 14px 10px 10px; border-radius:18px;
+  background:linear-gradient(135deg,#0b1d33f2,#14304ff2); color:#fff; border:1px solid #f5c45c88; box-shadow:0 18px 40px #000a, 0 0 30px #f5c45c33; cursor:pointer; animation:pg-in .5s cubic-bezier(.2,.9,.3,1.3); }
+.pg-unlock.level { border-color:#7bd7ff; box-shadow:0 18px 40px #000a, 0 0 34px #7bd7ff44; }
+.pg-unlock.secret { border-color:#ff7be5; box-shadow:0 18px 40px #000a, 0 0 34px #ff7be544; }
+.pg-unlock-icon { flex:none; display:grid; place-items:center; width:44px; height:44px; border-radius:14px; background:linear-gradient(160deg,#ffe4a3,#f0a93a); color:#2a1a02; }
+.pg-unlock.level .pg-unlock-icon { background:linear-gradient(160deg,#c9f0ff,#4ea3ff); } .pg-unlock.secret .pg-unlock-icon { background:linear-gradient(160deg,#ffd1f6,#b45cff); color:#fff; }
+.pg-unlock-text { display:grid; min-width:0; line-height:1.2; } .pg-unlock-text small { color:#ffe09a; font-size:.7rem; font-weight:800; text-transform:uppercase; letter-spacing:.08em; }
+.pg-unlock-text b { font-size:.95rem; overflow:hidden; text-overflow:ellipsis; white-space:nowrap; } .pg-unlock-text em { display:inline-flex; align-items:center; gap:4px; font-style:normal; font-size:.75rem; color:#ffe09a; }
+.pg-unlock-gain { flex:none; padding:4px 10px; border-radius:99px; background:#f5c45c; color:#2a1a02; font-weight:900; font-size:.85rem; }
+.pg-unlock-more { flex:none; font-size:.75rem; color:#a8b9d0; }
+@keyframes pg-in { from { opacity:0; transform:translateY(-30px) scale(.9); } }
+@media (prefers-reduced-motion:reduce) { .pg-unlock { animation:none; } }
+
+/* Account level chip (top bar). */
+.piece-level { display:inline-grid; place-items:center; }
+.piece-level-ring { position:relative; display:grid; place-items:center; width:38px; height:38px; border-radius:50%; background:conic-gradient(#7bd7ff var(--p), #7bd7ff33 var(--p)); box-shadow:0 4px 12px #4ea3ff33; }
+.piece-level-ring::before { content:""; position:absolute; inset:4px; border-radius:50%; background:linear-gradient(160deg,#14304f,#0b1d33); }
+.piece-level-ring b { position:relative; color:#fff; font-size:.85rem; font-weight:900; font-variant-numeric:tabular-nums; }
+@media (max-width:640px) { .piece-level-ring { width:34px; height:34px; } }
+
+/* Progression panel: account level, rank medals, secret badges. */
+.pg-muted { color:#8aa3bb; }
+.pg-account { display:flex; align-items:center; gap:18px; padding:16px; border-radius:18px; background:linear-gradient(135deg,#14304f,#0b1d33); border:1px solid #7bd7ff33; margin-bottom:16px; }
+.pg-account-ring { position:relative; flex:none; display:grid; place-content:center; justify-items:center; width:92px; height:92px; border-radius:50%; background:conic-gradient(#7bd7ff var(--p), #7bd7ff26 var(--p)); box-shadow:0 0 28px #4ea3ff44; }
+.pg-account-ring::before { content:""; position:absolute; inset:8px; border-radius:50%; background:#0b1d33; }
+.pg-account-ring b, .pg-account-ring small { position:relative; } .pg-account-ring b { font-size:2rem; font-weight:900; color:#fff; line-height:1; } .pg-account-ring small { font-size:.65rem; color:#a8b9d0; text-transform:uppercase; letter-spacing:.1em; }
+.pg-account-text { display:grid; gap:6px; min-width:0; flex:1; color:#cfe0ee; }
+.pg-account-title { margin:0; font-size:1.3rem; font-weight:900; color:#fff; }
+.pg-titles { display:flex; flex-wrap:wrap; gap:6px; margin:0; } .pg-titles span { display:inline-flex; align-items:center; gap:4px; padding:2px 10px; border-radius:99px; background:#f5c45c22; color:#ffe09a; font-size:.75rem; font-weight:800; }
+.pg-bar { height:7px; border-radius:99px; background:#ffffff1a; overflow:hidden; } .pg-bar.big { height:10px; }
+.pg-bar i { display:block; height:100%; border-radius:inherit; background:linear-gradient(90deg,#4ea3ff,#7bd7ff); transition:width .6s; }
+.pg-group { margin-top:14px; } .pg-group h3 { display:flex; align-items:baseline; gap:8px; margin:0 0 8px; font-size:1rem; } .pg-group h3 small { color:#8aa3bb; font-weight:600; }
+.pg-badges { display:grid; grid-template-columns:repeat(auto-fill,minmax(250px,1fr)); gap:10px; margin:0; padding:0; list-style:none; }
+.pg-badge { display:flex; align-items:center; gap:12px; padding:12px; border-radius:16px; background:#ffffff0b; border:1px solid #ffffff17; }
+.pg-badge.locked { opacity:.7; }
+.pg-badge-body { display:grid; gap:4px; min-width:0; flex:1; } .pg-badge-body b { color:#fff; font-size:.92rem; } .pg-badge-rank { font-size:.75rem; font-weight:800; color:#ffe09a; } .pg-badge-body small { color:#8aa3bb; font-size:.72rem; }
+.pg-badge .pg-bar i { background:linear-gradient(90deg,#f0a93a,#ffe09a); }
+.pg-medal { position:relative; flex:none; display:grid; place-items:center; width:var(--s); height:var(--s); border-radius:50%; color:#2a1a02; font-weight:900; font-size:calc(var(--s) * .32);
+  background:radial-gradient(circle at 35% 30%,#fff8 0,transparent 40%), var(--medal); box-shadow:inset 0 0 0 3px #ffffff55, inset 0 -4px 8px #0004, 0 6px 14px #0007; }
+.pg-medal[data-rank='none'] { --medal:#2a3d55; color:#8aa3bb; box-shadow:inset 0 0 0 2px #ffffff22; }
+.pg-medal[data-rank='bronze'] { --medal:linear-gradient(145deg,#e7a46b,#9a5a2b); }
+.pg-medal[data-rank='silver'] { --medal:linear-gradient(145deg,#f1f5f9,#94a3b8); }
+.pg-medal[data-rank='gold'] { --medal:linear-gradient(145deg,#ffe58a,#d99a1b); }
+.pg-medal[data-rank='platinum'] { --medal:conic-gradient(from 200deg,#e0f7ff,#c7b8ff,#b8fff0,#fff,#e0f7ff); }
+.pg-medal[data-rank='legend'] { --medal:conic-gradient(from 0deg,#ff7be5,#7bd7ff,#ffe07b,#9dff9a,#ff7be5); color:#fff; animation:pg-legend 6s linear infinite; }
+@keyframes pg-legend { to { filter:hue-rotate(360deg); } }
+.pg-secrets { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px; margin:0; padding:0; list-style:none; }
+.pg-secrets li { display:grid; justify-items:center; gap:4px; padding:12px 8px; border-radius:14px; text-align:center; background:#ffffff08; border:1px dashed #ffffff22; color:#8aa3bb; }
+.pg-secrets li span { display:grid; place-items:center; width:36px; height:36px; border-radius:50%; background:#ffffff10; }
+.pg-secrets li b { font-size:.82rem; } .pg-secrets li small { font-size:.7rem; }
+.pg-secrets li.on { border-style:solid; border-color:#ff7be588; background:linear-gradient(160deg,#ff7be51a,#7bd7ff14); color:#fff; } .pg-secrets li.on span { background:linear-gradient(160deg,#ffd1f6,#b45cff); color:#fff; }
+@media (max-width:560px) { .pg-account { flex-direction:column; text-align:center; } .pg-titles { justify-content:center; } }
+@media (prefers-reduced-motion:reduce) { .pg-medal[data-rank='legend'] { animation:none; } .pg-bar i { transition:none; } }
+
+/* /badges: every badge, its ladder and the account titles. */
+.bg-page { display:grid; gap:22px; }
+.bg-head { display:grid; justify-items:start; gap:8px; } .bg-head h1 { margin:0; font-size:clamp(2rem,5vw,3.2rem); font-weight:900; }
+.bg-lead { margin:0; max-width:760px; color:var(--piece-muted,#8aa3bb); line-height:1.5; }
+.bg-section { display:grid; gap:12px; } .bg-section h2 { display:flex; flex-wrap:wrap; align-items:baseline; gap:8px 12px; margin:0; font-size:1.3rem; } .bg-section h2 small { font-size:.8rem; color:#8aa3bb; font-weight:600; }
+.bg-ranks { display:grid; grid-template-columns:repeat(auto-fit,minmax(150px,1fr)); gap:10px; }
+.bg-rank { display:grid; justify-items:center; gap:4px; padding:14px 10px; border-radius:16px; text-align:center; background:#0b1d33cc; border:1px solid #ffffff17; color:#cfe0ee; }
+.bg-rank b { color:#fff; } .bg-rank span { font-size:.8rem; } .bg-rank em, .bg-rank small { font-style:normal; font-size:.72rem; color:#ffe09a; }
+.bg-list { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(100%,420px),1fr)); gap:12px; }
+.bg-badge { display:grid; gap:10px; padding:14px; border-radius:18px; background:#0b1d33d9; border:1px solid #ffffff17; color:#cfe0ee; }
+.bg-badge header { display:flex; align-items:center; gap:12px; } .bg-badge h3 { margin:0; color:#fff; font-size:1rem; } .bg-badge header p { margin:2px 0 0; font-size:.78rem; color:#8aa3bb; }
+.bg-ladder { display:grid; grid-template-columns:repeat(13,minmax(0,1fr)); gap:3px; margin:0; padding:0; list-style:none; }
+.bg-ladder li { display:grid; justify-items:center; gap:2px; padding:4px 0; border-radius:8px; background:#ffffff0a; }
+.bg-ladder li span { display:grid; place-items:center; width:20px; height:20px; border-radius:50%; font-size:.55rem; font-weight:900; color:#2a1a02; background:#2a3d55; }
+.bg-ladder li[data-rank='bronze'] span { background:linear-gradient(145deg,#e7a46b,#9a5a2b); } .bg-ladder li[data-rank='silver'] span { background:linear-gradient(145deg,#f1f5f9,#94a3b8); }
+.bg-ladder li[data-rank='gold'] span { background:linear-gradient(145deg,#ffe58a,#d99a1b); } .bg-ladder li[data-rank='platinum'] span { background:conic-gradient(#e0f7ff,#c7b8ff,#b8fff0,#e0f7ff); }
+.bg-ladder li[data-rank='legend'] span { background:conic-gradient(#ff7be5,#7bd7ff,#ffe07b,#ff7be5); color:#fff; }
+.bg-ladder li b { font-size:.62rem; color:#a8b9d0; font-variant-numeric:tabular-nums; }
+.bg-ladder li:not(.done) span { opacity:.45; } .bg-ladder li.done { background:#f5c45c1f; } .bg-ladder li.done b { color:#ffe09a; }
+.bg-ladder li.next { box-shadow:inset 0 0 0 1px #7bd7ff; } .bg-ladder li.next span { opacity:1; }
+.bg-legend { display:flex; align-items:center; gap:5px; margin:0; font-size:.75rem; color:#ffe09a; }
+.bg-reveal { display:inline-flex; align-items:center; gap:6px; margin-left:auto; padding:6px 12px; border-radius:99px; border:1px solid #ff7be566; background:#ff7be51a; color:inherit; font-size:.8rem; font-weight:800; cursor:pointer; }
+.bg-titles { display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:8px; margin:0; padding:0; list-style:none; }
+.bg-titles li { display:grid; gap:2px; padding:12px; border-radius:14px; background:#0b1d33cc; border:1px solid #ffffff17; color:#8aa3bb; font-size:.78rem; }
+.bg-titles li b { color:#fff; font-size:.95rem; } .bg-titles li.done { border-color:#7bd7ff44; } .bg-titles li.on { border-color:#7bd7ff; box-shadow:0 0 18px #4ea3ff33; background:linear-gradient(135deg,#14304f,#0b1d33); }
+@media (max-width:560px) { .bg-ladder { grid-template-columns:repeat(7,minmax(0,1fr)); } }
+.pg-all { margin-left:auto; font-size:.85rem; font-weight:800; color:#7bd7ff; }
+.pf-section h2:has(.pg-all) { display:flex; align-items:center; gap:8px; }
+
+/* Illustrated badge medal (image per rank) with its level numeral. */
+.pg-art { position:relative; flex:none; display:grid; place-items:center; width:var(--s); height:var(--s); }
+.pg-art img { width:100%; height:100%; object-fit:contain; filter:drop-shadow(0 6px 10px #0009); }
+.pg-art.locked img { filter:grayscale(1) brightness(.55) contrast(.9); }
+.pg-art b { position:absolute; right:-2px; bottom:4%; min-width:22px; padding:1px 6px; border-radius:99px; background:#0b1d33; border:1px solid #f5c45c; color:#ffe09a; font-size:.68rem; font-weight:900; text-align:center; }
+.pg-art svg { position:absolute; color:#cfe0ee; filter:drop-shadow(0 2px 4px #000); }
+.bg-art-row { display:flex; flex-wrap:wrap; justify-content:space-around; gap:6px; padding:8px; border-radius:12px; background:#ffffff08; }
+.bg-art-row figure { display:grid; justify-items:center; gap:2px; margin:0; } .bg-art-row figcaption { font-size:.7rem; color:#a8b9d0; }

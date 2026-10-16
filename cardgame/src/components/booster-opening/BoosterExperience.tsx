@@ -11,7 +11,7 @@ import BatchOpening from './BatchOpening'
 import HeroPacks, { DisplayStat } from './HeroPacks'
 import { notifyBerries, useWallet } from '@/hooks/useWallet'
 import { formatBerries } from '@/components/economy/Berries'
-import { useCardPreload } from './useCardPreload'
+import { preloadFan, useCardPreload } from './useCardPreload'
 import OpeningSettings from './OpeningSettings'
 import TearOpening from './TearOpening'
 import { useCollectorPreferences } from '@/components/collector/Preferences'
@@ -39,7 +39,7 @@ async function api<T>(path: string, body?: unknown): Promise<T> {
   const timeout = setTimeout(() => controller.abort(), 25000)
   try {
     const response = await fetch(path, { ...(body ? { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) } : {}), cache: 'no-store', signal: controller.signal })
-    const data = await response.json()
+    const data = await response.json().catch(() => ({ error: response.status === 504 ? 'Le serveur a mis trop de temps à répondre. Réessayez : rien n’est payé deux fois.' : '' }))
     if (!response.ok) throw new ApiError(data.error || 'La réponse du serveur n’a pas pu être confirmée.', response.status)
     return data
   } finally { clearTimeout(timeout) }
@@ -193,6 +193,8 @@ export default function BoosterExperience() {
     flight.current = true; setBusy(true); setError(''); setBatchIntent(intent)
     try {
       const data = await api<{ openings: OpeningResult[] }>('/api/booster/open-batch', intent)
+      // The first pack loads during the tear animation.
+      preloadFan(data.openings[0]?.cards)
       setBatch(data.openings); setBatchSummary(false); setBatchIntent(null); notifyBerries(); reloadSets()
       setAnimating(!preferences.quickOpening && preferences.animations && !window.matchMedia('(prefers-reduced-motion: reduce)').matches)
       void loadHistory()
