@@ -32,7 +32,8 @@ function scan(program: Step[]) {
   }
   return { selectors, conditions, ops, searches }
 }
-const flat = (c: Record<string, unknown>): Record<string, unknown>[] => c.kind === 'ALL_OF' ? (c.conditions as Record<string, unknown>[]).flatMap(flat) : [c]
+// ANY_OF: the scenario meets the first printed alternative.
+const flat = (c: Record<string, unknown>): Record<string, unknown>[] => c.kind === 'ALL_OF' ? (c.conditions as Record<string, unknown>[]).flatMap(flat) : c.kind === 'ANY_OF' ? flat((c.conditions as Record<string, unknown>[])[0]) : [c]
 
 /** A Leader whose colours cover the card's and which satisfies the Leader conditions printed on it. */
 function leaderFor(card: ReturnType<typeof definitionOf>, conditions: Record<string, unknown>[], cardIsLeader: boolean): string | null {
@@ -63,16 +64,16 @@ function matching(filter: Record<string, unknown>, leaderColours: string[], excl
     && (!filter.colorsAny || (filter.colorsAny as string[]).some(c => (d.colors as string[]).includes(c)))
     && (filter.maxCost === undefined || (d.cost ?? 0) <= (filter.maxCost as number)) && (filter.minCost === undefined || (d.cost ?? 0) >= (filter.minCost as number))
     && (filter.maxPower === undefined || (d.power ?? 0) <= (filter.maxPower as number))
-    && (!filter.nameNot || d.rulesName !== filter.nameNot) && (!filter.nameIs || d.rulesName === filter.nameIs) && (!filter.excludeRulesName || d.rulesName !== filter.excludeRulesName))
+    && (!filter.hasTrigger || !!d.review.triggerOriginal.trim()) && (!filter.nameNot || d.rulesName !== filter.nameNot) && (!filter.nameIs || d.rulesName === filter.nameIs) && (!filter.excludeRulesName || d.rulesName !== filter.excludeRulesName))
   return (want.find(d => isVanilla(d)) ?? want[0])?.number ?? null
 }
 
 type Plan = { aliceLeader: string; extra: string[]; own: string[]; bobTargets: string[]; bobColour: string; restedTargets: boolean; seedDeck?: string; seedHand?: string; seedTrash?: string; ownLife?: number; oppLife?: number; don: number
-  needsDonDeck?: boolean; ownHandMax?: number; oppHandMax?: number; oppHandMin?: number; ownRested?: number; oppRested?: number; trashMin?: number }
+  needsDonDeck?: boolean; seedHandCost?: string; ownTargets?: { number: string; rested: boolean }[]; handMin?: number; restedDonMin?: number; ownCharsMin?: number; ownCostAtLeast?: number; ownHandMax?: number; oppHandMax?: number; oppHandMin?: number; ownRested?: number; oppRested?: number; trashMin?: number }
 /** Builds the scenario needs of one ability (or reports why it cannot be built). */
 function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Record<string, unknown>): Plan | string {
   const d = definitionOf(card.number), { selectors, conditions, searches, ops } = scan(a?.program ?? [])
-  const conds = [...conditions, ...(a ? flat(a.condition as Record<string, unknown>) : []), ...(staticConds.whenLeaderHasTrait ? [{ kind: 'LEADER_HAS_TRAIT', trait: staticConds.whenLeaderHasTrait }] : []), ...(staticConds.leaderHasTrait ? [{ kind: 'LEADER_HAS_TRAIT', trait: staticConds.leaderHasTrait }] : [])]
+  const conds = [...conditions.flatMap(flat), ...(a ? flat(a.condition as Record<string, unknown>) : []), ...(staticConds.whenLeaderHasTrait ? [{ kind: 'LEADER_HAS_TRAIT', trait: staticConds.whenLeaderHasTrait }] : []), ...(staticConds.leaderHasTrait ? [{ kind: 'LEADER_HAS_TRAIT', trait: staticConds.leaderHasTrait }] : [])]
   const aliceLeader = leaderFor(d, conds, d.category === 'LEADER')
   if (!aliceLeader) return 'NO_LEADER_FOR_CONDITIONS'
   const lead = definitionOf(aliceLeader)
@@ -90,6 +91,17 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
     const named = defs().find(d => d.category === 'CHARACTER' && d.rulesName === x.nameIs && d.colors.every(c => lead.colors.includes(c)))
     if (!named) return 'NO_NAMED_CARD'; extra.push(named.number); own.push(named.number)
   }
+  // Typed hand costs ("trash 1 {X} type card", "a card with a [Trigger]"): one such card in hand.
+  const costSelectors = (a?.program ?? []).flatMap(st => st.kind === 'CHOICE' && st.bind === 'paid' ? [st.selector] : [])
+  for (const x of costSelectors) if (x.kind === 'CARDS' && x.side === 'OWN' && x.zone === 'hand' && (x.traitsAny || x.hasTrigger)) {
+    const m = matching(x as unknown as Record<string, unknown>, lead.colors, card.number); if (!m) return 'NO_CARD_FOR_HAND_COST'; extra.push(m); plan.seedHandCost = m
+  }
+  // "Up to N of your {X} type Leader or Character cards" / "set up to N of your {X} type Characters as active": one on the field.
+  for (const x of selectors) if (x.kind === 'CARDS' && x.side === 'OWN' && ['characters', 'leaderOrCharacters'].includes(x.zone) && (x.traitsAny || x.rested) && !x.isSource && !x.nameIs) {
+    if (x.zone === 'leaderOrCharacters' && x.traitsAny?.some(t => lead.traits.includes(t))) continue
+    const m = matching({ ...x, category: 'CHARACTER' } as unknown as Record<string, unknown>, lead.colors, card.number); if (!m) return 'NO_OWN_TARGET'; extra.push(m)
+    ;(plan.ownTargets ??= []).push({ number: m, rested: !!x.rested })
+  }
   for (const sr of searches) { const m = matching(sr as unknown as Record<string, unknown>, lead.colors, card.number); if (!m) return 'NO_CARD_FOR_SEARCH'; extra.push(m); plan.seedDeck = m }
   for (const op of ops.filter(o => o.primitive === 'playCard')) {
     const from = (op as { from?: string }).from
@@ -106,11 +118,15 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
     if (c.kind === 'OWN_RESTED_CHARACTERS_AT_LEAST') { plan.ownRested = c.minimum as number; continue }
     if (c.kind === 'OPPONENT_RESTED_CHARACTERS_AT_LEAST') { plan.oppRested = c.minimum as number; continue }
     if (c.kind === 'TRASH_AT_LEAST') { plan.trashMin = c.minimum as number; continue }
-    if (['ALWAYS', 'LIFE_AT_LEAST', 'FIELD_DON_AT_LEAST', 'LEADER_HAS_TRAIT', 'LEADER_NAME_IS', 'LEADER_TRAIT_INCLUDES', 'LEADER_MULTICOLORED', 'FIELD_DON_AT_MOST_OPPONENT', 'DECK_AT_LEAST', 'YOUR_TURN', 'OPPONENT_TURN', 'HAND_AT_LEAST', 'ACTIVE_DON_AT_LEAST', 'OWN_CHARACTERS_AT_LEAST'].includes(c.kind as string)) continue
+    if (['ALWAYS', 'LIFE_AT_LEAST', 'FIELD_DON_AT_LEAST', 'LEADER_HAS_TRAIT', 'LEADER_NAME_IS', 'LEADER_TRAIT_INCLUDES', 'LEADER_MULTICOLORED', 'CAN_ADD_LIFE_TO_HAND', 'FIELD_DON_AT_MOST_OPPONENT', 'DECK_AT_LEAST', 'YOUR_TURN', 'OPPONENT_TURN', 'HAND_AT_LEAST', 'ACTIVE_DON_AT_LEAST', 'OWN_CHARACTERS_AT_LEAST'].includes(c.kind as string)) continue
     if (!['SOURCE_ATTACHED_DON_AT_LEAST', 'LIFE_AT_MOST'].includes(c.kind as string)) return `CONDITION_${c.kind}`
   }
   // "Add up to 1 DON!! card from your DON!! deck": by turn 11 all 10 DON!! are out, two go back to the DON!! deck.
   if (ops.some(o => o.primitive === 'moveDon')) plan.needsDonDeck = true
+  if (staticConds.minimumHandSize !== undefined) plan.handMin = staticConds.minimumHandSize as number
+  if (staticConds.minimumRestedDon !== undefined) plan.restedDonMin = staticConds.minimumRestedDon as number
+  if (staticConds.minimumOwnCharacters !== undefined) plan.ownCharsMin = staticConds.minimumOwnCharacters as number
+  if (staticConds.whenOwnCharacterCostAtLeast !== undefined) plan.ownCostAtLeast = staticConds.whenOwnCharacterCostAtLeast as number
   if (staticConds.maximumOwnLife !== undefined) plan.ownLife = staticConds.maximumOwnLife as number
   if (typeof staticConds.minimumAttachedDon === 'number') plan.don = Math.max(plan.don, staticConds.minimumAttachedDon)
   return plan
@@ -133,7 +149,7 @@ function toMainAnswering(s: GameState, turn: number): GameState {
   return s
 }
 function setup(card: CompiledCard, p: Plan, turn: number) {
-  const aliceDeck = deckFor(p.aliceLeader, [...(definitionOf(card.number).category === 'LEADER' ? [] : [card.number]), ...p.extra])
+  const aliceDeck = deckFor(p.aliceLeader, [...new Set([...(definitionOf(card.number).category === 'LEADER' ? [] : [card.number]), ...p.extra])])
   const bobDeck = deckFor(bobLeaderOf(p.bobColour)!, [...new Set([...p.bobTargets, bigOf(p.bobColour), ...defs().filter(x => isVanilla(x) && (x.power ?? 0) >= 10000 && x.colors.length === 1 && x.colors[0] === p.bobColour).slice(0, 1).map(x => x.number)])])
   let s = toMainAnswering(newGame(aliceDeck, bobDeck, undefined, true), turn)
   if (p.ownLife !== undefined) lifeTo(s, 'alice', Math.max(1, p.ownLife))
@@ -152,6 +168,13 @@ function setup(card: CompiledCard, p: Plan, turn: number) {
   if (p.ownHandMax !== undefined) trimHand('alice', Math.max(0, p.ownHandMax - (p.seedHand ? 1 : 0)))
   if (p.oppHandMax !== undefined) trimHand('bob', p.oppHandMax)
   if (p.oppHandMin !== undefined && zones(s, 'bob').hand.length < p.oppHandMin) throw new Error('OPPONENT_HAND_TOO_SMALL')
+  if (p.seedHandCost) put(s, 'alice', p.seedHandCost, 'hand')
+  for (const t of p.ownTargets ?? []) put(s, 'alice', t.number, 'characters', { playedEarlier: true, rested: t.rested })
+  const own = definitionOf(p.aliceLeader).colors[0]
+  for (let i = 0; i < (p.ownCharsMin ?? 0); i++) put(s, 'alice', filler('alice', own), 'characters', { playedEarlier: true })
+  if (p.ownCostAtLeast !== undefined) { const big = vanillas(own).filter(v => (v.cost ?? 0) >= p.ownCostAtLeast!)[0]; if (!big) throw new Error('NO_COSTLY_CHARACTER'); put(s, 'alice', big.number, 'characters', { playedEarlier: true }) }
+  for (const z = zones(s, 'alice'); z.hand.length < (p.handMin ?? 0);) { const id = z.deck.shift()!; z.hand.push(id); s.instances[id].zone = 'hand'; s.instances[id].zoneGeneration++ }
+  for (const id of zones(s, 'alice').cost.slice(0, Math.max(2, p.restedDonMin ?? 0))) s.instances[id].rested = true
   const seededHand = p.seedHand ? put(s, 'alice', p.seedHand, 'hand') : null
   // Two rested DON!! for "give a rested DON!!" / "set DON!! as active".
   for (const id of zones(s, 'alice').cost.slice(0, 2)) s.instances[id].rested = true
@@ -173,10 +196,10 @@ function answerAll(s: GameState): GameState {
   }
   return s
 }
-type Snap = { aliceTrash: number; aliceLife: number; bobTrash: number; locks: number; battleMods: number; field: string[]; restedDonIds: string[]; aliceHand: number; bobHand: number; aliceChars: string[]; bobChars: string[]; trash: number; bobDeck: number; aliceDeck: number; cost: number; restedDon: number; attached: number; rested: Set<string>; power: Map<string, number>; costs: Map<string, number>; stage: number }
+type Snap = { bobLife: number; aliceTrash: number; aliceLife: number; bobTrash: number; locks: number; battleMods: number; field: string[]; restedDonIds: string[]; aliceHand: number; bobHand: number; aliceChars: string[]; bobChars: string[]; trash: number; bobDeck: number; aliceDeck: number; cost: number; restedDon: number; attached: number; rested: Set<string>; power: Map<string, number>; costs: Map<string, number>; stage: number }
 function snap(s: GameState): Snap {
   const a = zones(s, 'alice'), b = zones(s, 'bob'), field = [...a.leader, ...a.characters, ...b.leader, ...b.characters]
-  return { aliceTrash: a.trash.length, aliceLife: a.life.length, bobTrash: b.trash.length, locks: (s.effects?.refreshLocks ?? []).length, battleMods: (s.battle?.counterModifiers ?? []).reduce((n, m) => n + m.amount, 0), field: [...a.characters, ...b.characters], restedDonIds: a.cost.filter(id => s.instances[id].rested), aliceHand: a.hand.length, bobHand: b.hand.length, aliceChars: [...a.characters], bobChars: [...b.characters], trash: b.trash.length, bobDeck: b.deck.length, aliceDeck: a.deck.length,
+  return { bobLife: b.life.length, aliceTrash: a.trash.length, aliceLife: a.life.length, bobTrash: b.trash.length, locks: (s.effects?.refreshLocks ?? []).length, battleMods: (s.battle?.counterModifiers ?? []).reduce((n, m) => n + m.amount, 0), field: [...a.characters, ...b.characters], restedDonIds: a.cost.filter(id => s.instances[id].rested), aliceHand: a.hand.length, bobHand: b.hand.length, aliceChars: [...a.characters], bobChars: [...b.characters], trash: b.trash.length, bobDeck: b.deck.length, aliceDeck: a.deck.length,
     cost: a.cost.length, restedDon: a.cost.filter(id => s.instances[id].rested).length, attached: a.attached.length, rested: new Set(field.filter(id => s.instances[id].rested)),
     power: new Map(field.map(id => [id, power(s, id)])), costs: new Map(field.map(id => [id, cost(s, id)])), stage: b.stage.length }
 }
@@ -201,6 +224,8 @@ function verify(program: Step[], before: Snap, after: Snap, s: GameState, source
       case 'grantKeyword': if (!sourceId || !hasCombatKeyword(s, sourceId, o.keyword as 'RUSH')) return 'KEYWORD_NOT_GRANTED'; checked.push(`keyword ${o.keyword}`); break
       case 'trashCharacter': if (!sourceId || s.instances[sourceId].zone !== 'trash') return 'NOT_TRASHED'; checked.push('trash this Character'); break
       case 'lockRefresh': if (after.locks <= before.locks) return 'REFRESH_NOT_LOCKED'; checked.push('refresh lock'); break
+      case 'lifeToHand': if (after.aliceLife >= before.aliceLife) return 'LIFE_NOT_TAKEN'; checked.push('Life to hand'); break
+      case 'trashLife': if (after.bobLife >= before.bobLife) return 'OPPONENT_LIFE_NOT_TRASHED'; checked.push('trash opponent Life'); break
       case 'addToLife': if (after.aliceLife <= before.aliceLife) return 'LIFE_NOT_ADDED'; checked.push('add to Life'); break
       case 'moveCard':
         if (o.player === 'OPPONENT' && o.from === 'hand') { if (after.bobHand >= before.bobHand || after.bobTrash <= before.bobTrash) return 'OPPONENT_NOT_TRASHED'; checked.push('opponent trashes'); break }
