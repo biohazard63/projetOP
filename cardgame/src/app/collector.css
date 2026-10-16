@@ -785,3 +785,7 @@ body:has(.piece-opening-immersive) .piece-footer{display:none}
 .pg-art svg { position:absolute; color:#cfe0ee; filter:drop-shadow(0 2px 4px #000); }
 .bg-art-row { display:flex; flex-wrap:wrap; justify-content:space-around; gap:6px; padding:8px; border-radius:12px; background:#ffffff08; }
 .bg-art-row figure { display:grid; justify-items:center; gap:2px; margin:0; } .bg-art-row figcaption { font-size:.7rem; color:#a8b9d0; }
+/* Source of a card text shown in French (official printing or unofficial translation), with the original on demand. */
+.card-text-source { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:8px 0 0; color:var(--piece-muted,#9fb0c4); font-size:.78rem; }
+.card-text-source button { display:inline-flex; align-items:center; gap:5px; padding:2px 9px; border:1px solid currentColor; border-radius:999px; background:transparent; color:var(--piece-gold,#f5c45c); font:inherit; font-weight:700; cursor:pointer; }
+.card-text-source button:focus-visible { outline:2px solid var(--piece-gold,#f5c45c); outline-offset:2px; }

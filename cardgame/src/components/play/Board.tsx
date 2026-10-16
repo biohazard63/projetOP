@@ -73,6 +73,8 @@ function CardSheet({ view, id, onClose, act }: { view: View; id: string; onClose
   const visible = findVisible(view, id), card = display(view, visible?.printingKey)
   const actions = useMemo(() => cardActions(view, id), [view, id])
   const [targets, setTargets] = useState<CardAction['targets'] | null>(null)
+  const [vo, setVo] = useState(false)
+  const texts = vo && card?.original ? card.original : card
   if (targets) return <Sheet title={targets.label} onClose={onClose}>
     <div className="play-pick-grid">{targets.ids.map(t => { const v = findVisible(view, t); return <button type="button" key={t} className="play-pick" aria-label={cardName(view, t)} onClick={() => { act(targets.build(t), targets.label); onClose() }}>
       <CardFace view={view} printingKey={v?.printingKey} rested={v?.rested} power={v?.power} size="sm" /><span>{cardName(view, t)}{v?.power != null ? ` · ${v.power}` : ''}</span></button> })}</div>
@@ -83,8 +85,9 @@ function CardSheet({ view, id, onClose, act }: { view: View; id: string; onClose
       <div className="play-detail-text">
         {card && <p className="piece-eyebrow">{card.number} · {card.category === 'CHARACTER' ? 'Personnage' : card.category === 'EVENT' ? 'Événement' : card.category === 'LEADER' ? 'Leader' : 'Lieu'}{card.certified ? ' · certifiée' : ''}</p>}
         {card && <p className="play-stats-line">{card.cost !== null ? `Coût ${card.cost} · ` : ''}{card.power !== null ? `Puissance ${visible?.power ?? card.power}` : ''}{card.counter ? ` · Counter +${card.counter}` : ''}{visible?.rested ? ' · épuisé' : ''}</p>}
-        <CardText className="play-rules" text={card?.text || 'Aucun effet.'} />
-        {card?.trigger && <CardText className="play-rules" text={card.trigger} />}
+        <CardText className="play-rules" text={texts?.text || 'Aucun effet.'} />
+        {texts?.trigger && <CardText className="play-rules" text={texts.trigger} />}
+        {card?.original && <button type="button" className="play-translation" title="Traduction non officielle du texte anglais" onClick={() => setVo(v => !v)}>{vo ? 'Voir la VF' : 'Voir la VO'}</button>}
       </div>
     </div>
     {actions.length ? <ActionList actions={actions} onPick={a => { if (a.targets) setTargets(a.targets); else if (a.intent) { act(a.intent, a.label); onClose() } }} /> : <p className="piece-muted">Aucune action possible avec cette carte maintenant.</p>}

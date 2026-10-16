@@ -15,6 +15,7 @@ import { preloadFan, useCardPreload } from './useCardPreload'
 import OpeningSettings from './OpeningSettings'
 import TearOpening from './TearOpening'
 import OpeningWait from './OpeningWait'
+import { CardTextSource, useCardText } from '@/components/cards/useCardText'
 import { useCollectorPreferences } from '@/components/collector/Preferences'
 import { openingEffect } from '@/lib/boosters/presentation'
 import { useSearchParams } from 'next/navigation'
@@ -75,6 +76,7 @@ export default function BoosterExperience() {
   const [historyError, setHistoryError] = useState('')
   const [historyBusy, setHistoryBusy] = useState(false)
   const [detail, setDetail] = useState<OpeningCard | null>(null)
+  const detailText = useCardText(detail)
   const [favorite, setFavorite] = useState(false)
   const [favoriteBusy, setFavoriteBusy] = useState(false)
   const [favoriteError, setFavoriteError] = useState('')
@@ -347,7 +349,7 @@ export default function BoosterExperience() {
         <ul className="divide-y divide-slate-800">{history.map(row => <li key={row.id}><button type="button" disabled={busy} onClick={() => void viewHistory(row.id)} className="flex w-full items-center justify-between gap-4 py-4 text-left"><span className="min-w-0"><span className="block truncate text-sm font-semibold">{row.setCode} · {row.setName}</span><span className="mt-1 block text-xs text-slate-400">{new Date(row.openedAt).toLocaleString('fr-FR')} · {row.cardCount} cartes{!row.creditedAt ? ' · historique ancien' : ''}</span></span><ChevronRight size={18} className="shrink-0 text-amber-300" /></button></li>)}</ul>
         {cursor && <button type="button" disabled={historyBusy} onClick={() => void loadHistory(cursor)} className={`${button} mt-4 bg-slate-800`}>Ouvertures précédentes</button>}
       </section>
-      <Dialog open={Boolean(detail)} onOpenChange={open => { if (!open) setDetail(null) }}><DialogContent className="max-h-[90dvh] max-w-lg overflow-y-auto rounded-2xl border-slate-700 bg-slate-950 text-slate-100 motion-reduce:animate-none">{detail && <><DialogTitle>{detail.name}</DialogTitle><DialogDescription>{detail.code} · {detail.rarity} · {detail.color}</DialogDescription><div className="mx-auto w-52"><CardImage card={detail} /></div><p className="text-sm">{detail.type} · Coût : {detail.cost}{detail.power !== null ? ` · Puissance : ${detail.power}` : ''}{detail.counter ? ` · Contre : ${detail.counter}` : ''}</p>{detail.effect && <p className="text-sm leading-6">{detail.effect}</p>}{detail.trigger && <p className="text-sm text-amber-200">Trigger : {detail.trigger}</p>}<button type="button" disabled={favoriteBusy} onClick={() => void toggleFavorite()} className={`${button} border border-slate-700`}>{favorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}</button>{favoriteError && <p role="alert" className="text-sm text-red-300">{favoriteError}</p>}</>}</DialogContent></Dialog>
+      <Dialog open={Boolean(detail)} onOpenChange={open => { if (!open) setDetail(null) }}><DialogContent className="max-h-[90dvh] max-w-lg overflow-y-auto rounded-2xl border-slate-700 bg-slate-950 text-slate-100 motion-reduce:animate-none">{detail && <><DialogTitle>{detail.name}</DialogTitle><DialogDescription>{detail.code} · {detail.rarity} · {detail.color}</DialogDescription><div className="mx-auto w-52"><CardImage card={detail} /></div><p className="text-sm">{detail.type} · Coût : {detail.cost}{detail.power !== null ? ` · Puissance : ${detail.power}` : ''}{detail.counter ? ` · Contre : ${detail.counter}` : ''}</p>{detailText.effect && <p className="text-sm leading-6">{detailText.effect}</p>}{detailText.trigger && <p className="text-sm text-amber-200">Trigger : {detailText.trigger}</p>}<CardTextSource source={detailText.source} original={detailText.original} onToggle={detailText.setOriginal} /><button type="button" disabled={favoriteBusy} onClick={() => void toggleFavorite()} className={`${button} border border-slate-700`}>{favorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}</button>{favoriteError && <p role="alert" className="text-sm text-red-300">{favoriteError}</p>}</>}</DialogContent></Dialog>
     </div>
   </div>
 }

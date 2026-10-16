@@ -1,5 +1,6 @@
 import { canonicalNumber } from '../../game/cards/adapter'
 import DISPLAY_FR from '../../game/cards/display-fr.json'
+import { unofficialText } from '../cards/frenchText'
 import { REVIEWED_CARDS } from '../../game/cards/reviewedCards'
 import { M3_ABILITY_CARDS } from '../../game/cards/m3Abilities'
 import { PURPLE_CARDS, M3_FULL_REGISTRY } from '../../game/cards/m3PurpleDeck'
@@ -143,7 +144,11 @@ export const officialSubsetRuleset = (): Ruleset => structuredClone(M5_RULESET)
 export type PrismaCardRow = { id: string; code: string; name: string; type: string; color: string; cost: number | null; power: number | null; counter: string | null; imageUrl: string; isAltArt: boolean; isParallel: boolean; isSpecial: boolean }
 export type CardDisplay = { definitionId: string; number: string; name: string; category: CardDefinition['category']; colors: string[]; cost: number | null; power: number | null; counter: number | null; life: number | null; text: string; trigger: string; imageUrl: string | null; certified: boolean
   /** 'fr' when the name and texts come from an official French printing (display only; rules use the reviewed English text). */
-  language: 'fr' | 'en' }
+  language: 'fr' | 'en'
+  /** Present when the texts are an unofficial French translation of the English text (display only, as above). */
+  translation?: 'unofficial'
+  /** The English texts behind an unofficial translation, shown on demand (« VO »). */
+  original?: { text: string; trigger: string } }
 export type CardConflict = { cardId: string; code: string; reasons: string[] }
 export type CardBridge = { printings: CardPrinting[]; byCardId: Map<string, string>; conflicts: CardConflict[]; display: Record<string, CardDisplay> }
 
@@ -155,6 +160,11 @@ const plain = (s: string) => s.normalize('NFD').replace(/[̀-ͯ]/g, '').trim().t
 const FR = DISPLAY_FR as Record<string, { name: string; text: string; trigger: string; image: string | null }>
 export const cardDisplay = (d: CardDefinition, imageUrl: string | null): CardDisplay => {
   const fr = FR[d.number], text = d.review.effectOriginal, trigger = d.review.triggerOriginal
+  // Without an official French printing, an unofficial translation of exactly this English text (scripts/cards).
+  const unofficial = fr ? null : unofficialText(d.number, text, trigger)
+  if (unofficial) return { definitionId: d.definitionId, number: d.number, name: d.rulesName, category: d.category, colors: [...d.colors],
+    cost: d.cost, power: d.power, counter: d.counter, life: d.life, text: unofficial.effect ?? '', trigger: unofficial.trigger ?? '',
+    imageUrl, certified: effectiveStatus(d) === 'PLAYABLE_VERIFIED', language: 'en', translation: 'unofficial', original: { text, trigger } }
   return { definitionId: d.definitionId, number: d.number, name: fr?.name || d.rulesName, category: d.category, colors: [...d.colors],
     cost: d.cost, power: d.power, counter: d.counter, life: d.life,
     text: fr && !!fr.text === !!text.trim() ? fr.text : text, trigger: fr && !!fr.trigger === !!trigger.trim() ? fr.trigger : trigger,
