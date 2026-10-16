@@ -3,6 +3,7 @@ import { evaluateCharacteristics, hasCombatKeyword } from '../../src/game/effect
 import type { GameState } from '../../src/game/core/types'
 import type { EffectDefinition } from '../../src/game/effects/contracts'
 import type { CompiledCard } from '../../src/game/cards/textCompiler'
+import { currentEngineRegistry } from '../../src/lib/engine/catalog'
 import { act, attachDon, attack, catalogDefinitions, deckFor, definitionOf, endTurn, finishBattle, leaderOf, legal, newGame, offeredEffects, pendingChoice, playCard, put, roundTrip, toMain } from './m6'
 
 // M7 — generic scenarios for cards compiled from their official text. Every ability is triggered through its real command
@@ -69,7 +70,7 @@ function matching(filter: Record<string, unknown>, leaderColours: string[], excl
 }
 
 type Plan = { aliceLeader: string; extra: string[]; own: string[]; bobTargets: string[]; bobColour: string; restedTargets: boolean; seedDeck?: string; seedHand?: string; seedTrash?: string; ownLife?: number; oppLife?: number; don: number
-  needsDonDeck?: boolean; fieldDonMax?: number; seedHandCost?: string; ownTargets?: { number: string; rested: boolean }[]; handMin?: number; restedDonMin?: number; ownCharsMin?: number; ownCostAtLeast?: number; ownHandMax?: number; oppHandMax?: number; oppHandMin?: number; ownRested?: number; oppRested?: number; trashMin?: number }
+  needsDonDeck?: boolean; aura?: { target: string; plain: string }; returner?: { number: string; abilityId: string }; ownPowerAtLeast?: number; fieldDonMax?: number; seedHandCost?: string; ownTargets?: { number: string; rested: boolean }[]; handMin?: number; restedDonMin?: number; ownCharsMin?: number; ownCostAtLeast?: number; ownHandMax?: number; oppHandMax?: number; oppHandMin?: number; ownRested?: number; oppRested?: number; trashMin?: number }
 /** Builds the scenario needs of one ability (or reports why it cannot be built). */
 function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Record<string, unknown>): Plan | string {
   const d = definitionOf(card.number), { selectors, conditions, searches, ops } = scan(a?.program ?? [])
@@ -102,6 +103,14 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
     const m = matching({ ...x, category: 'CHARACTER' } as unknown as Record<string, unknown>, lead.colors, card.number); if (!m) return 'NO_OWN_TARGET'; extra.push(m)
     ;(plan.ownTargets ??= []).push({ number: m, rested: !!x.rested })
   }
+  // [When a DON!! card is returned]: a catalogue Character whose [Activate: Main] costs DON!! −X returns one in the scenario.
+  if (a?.timing === 'ON_DON_RETURNED') {
+    const byId = new Map(defs().map(d => [d.definitionId, d]))
+    const r = currentEngineRegistry().definitions.find(x => x.timing === 'ACTIVATE_MAIN' && x.cost.kind === 'DON_MINUS' && x.condition.kind === 'ALWAYS' && x.source.kind === 'CARD_DEFINITION' && x.source.zone === 'characters'
+      && (() => { const d = byId.get((x.source as { definitionId: string }).definitionId); return d && d.number !== card.number && d.colors.every(c => lead.colors.includes(c)) })())
+    if (!r) return 'NO_DON_RETURNER'
+    const n = byId.get((r.source as { definitionId: string }).definitionId)!.number; extra.push(n); plan.returner = { number: n, abilityId: r.id }
+  }
   for (const sr of searches) { const m = matching(sr as unknown as Record<string, unknown>, lead.colors, card.number); if (!m) return 'NO_CARD_FOR_SEARCH'; extra.push(m); plan.seedDeck = m }
   for (const op of ops.filter(o => o.primitive === 'playCard')) {
     const from = (op as { from?: string }).from
@@ -122,6 +131,10 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
       const m = matching({ category: 'CHARACTER', ...(c.traitsAny ? { traitsAny: c.traitsAny } : {}), ...(c.nameIs ? { namesAny: [c.nameIs] } : {}) }, lead.colors, card.number); if (!m) return 'NO_CARD_FOR_CONDITION'
       extra.push(m); (plan.ownTargets ??= []).push({ number: m, rested: false }); continue
     }
+    if (c.kind === 'OWN_CHARACTER_POWER_AT_LEAST') {
+      const big = defs().filter(v => isVanilla(v) && v.colors.every(x => lead.colors.includes(x)) && (v.power ?? 0) >= (c.minimum as number))[0]; if (!big) return 'NO_STRONG_CHARACTER'
+      extra.push(big.number); (plan.ownTargets ??= []).push({ number: big.number, rested: false }); continue
+    }
     if (c.kind === 'FIELD_DON_AT_MOST') { plan.fieldDonMax = c.maximum as number; continue }
     if (c.kind === 'LIFE_LESS_THAN_OPPONENT') { plan.ownLife = 3; continue }
     if (c.kind === 'OWN_CHARACTER_COST_AT_LEAST') { plan.ownCostAtLeast = c.minimum as number; continue }
@@ -130,6 +143,13 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
   }
   // "Add up to 1 DON!! card from your DON!! deck": by turn 11 all 10 DON!! are out, two go back to the DON!! deck.
   if (ops.some(o => o.primitive === 'moveDon')) plan.needsDonDeck = true
+  // An aura: one Character of the printed type and one without it, both in the deck.
+  const targets = staticConds.targets as { traitsAny: string[] } | undefined
+  if (targets) {
+    const t = matching({ category: 'CHARACTER', traitsAny: targets.traitsAny }, lead.colors, card.number), plain = vanillas(lead.colors[0]).find(v => !v.traits.some(x => targets.traitsAny.includes(x)))
+    if (!t || !plain) return 'NO_AURA_TARGET'
+    extra.push(t, plain.number); plan.aura = { target: t, plain: plain.number }
+  }
   if (staticConds.minimumHandSize !== undefined) plan.handMin = staticConds.minimumHandSize as number
   if (staticConds.minimumRestedDon !== undefined) plan.restedDonMin = staticConds.minimumRestedDon as number
   if (staticConds.minimumOwnCharacters !== undefined) plan.ownCharsMin = staticConds.minimumOwnCharacters as number
@@ -320,7 +340,16 @@ export function runAbility(card: CompiledCard, a: EffectDefinition, mode = 0): O
         const offer = offeredEffects(s, 'alice', a.id).find(o => o.effectId.includes(id)); if (!offer) return { ok: false, reason: 'NOT_OFFERED' }
         before = snap(s); s = act(s, 'alice', { type: 'START_EFFECT', effectId: offer.effectId, ...(offer.donMinus ? { donMinusIds: offer.donMinus.eligibleDonIds.slice(0, offer.donMinus.amount) } : {}) }); break
       }
-      case 'END_OF_YOUR_TURN': { sourceId = put(s, 'alice', card.number, 'characters', { playedEarlier: true }); if (p.don) attachDon(s, 'alice', sourceId, p.don); before = snap(s); s = act(s, 'alice', { type: 'END_MAIN' }); break }
+      case 'ON_DON_RETURNED': {
+        sourceId = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true })
+        const returner = put(s, 'alice', p.returner!.number, 'characters', { playedEarlier: true })
+        for (const id of zones(s, 'alice').cost) s.instances[id].rested = false
+        const offer = offeredEffects(s, 'alice', p.returner!.abilityId).find(o => o.effectId.includes(returner)); if (!offer?.donMinus) return { ok: false, reason: 'RETURNER_NOT_OFFERED' }
+        before = snap(s)
+        s = act(s, 'alice', { type: 'START_EFFECT', effectId: offer.effectId, donMinusIds: offer.donMinus.eligibleDonIds.slice(0, offer.donMinus.amount) })
+        break
+      }
+      case 'END_OF_YOUR_TURN': { sourceId = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true }); if (p.don) attachDon(s, 'alice', sourceId, p.don); before = snap(s); s = act(s, 'alice', { type: 'END_MAIN' }); break }
       case 'COUNTER': case 'TRIGGER': case 'ON_KO': case 'ON_BLOCK': case 'ON_OPPONENT_ATTACK': {
         if (condKinds.includes('YOUR_TURN')) return { ok: false, reason: 'YOUR_TURN_ON_OPPONENT_TURN' }
         const ev = a.timing === 'COUNTER' ? put(s, 'alice', card.number, 'hand') : null
@@ -384,6 +413,15 @@ export function runStatic(card: CompiledCard, item: CompiledCard['continuous'][n
     }
     if ('duringOpponentTurn' in item && item.duringOpponentTurn) s = endTurn(s)
     const id = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true })
+    // An aura over your {X} type Characters: one of them gains the amount, a Character without the type does not.
+    if ('characteristic' in item && item.targets) {
+      const t = p.aura!.target, plain = definitionOf(p.aura!.plain)
+      const tid = put(s, 'alice', t, 'characters', { playedEarlier: true }), pid = put(s, 'alice', plain.number, 'characters', { playedEarlier: true })
+      if (item.minimumAttachedDon) attachDon(s, 'alice', id, item.minimumAttachedDon)
+      if (power(s, tid) !== (definitionOf(t).power ?? 0) + item.amount) return { ok: false, reason: `AURA ${power(s, tid)}` }
+      if (power(s, pid) !== (plain.power ?? 0)) return { ok: false, reason: 'AURA_ON_OTHER_TYPE' }
+      return { ok: true, checked: [`aura +${item.amount}`] }
+    }
     if ('characteristic' in item) {
       const printed = item.characteristic === 'POWER' ? (d.power ?? 0) : (d.cost ?? 0), read = () => item.characteristic === 'POWER' ? power(s, id) : cost(s, id)
       const donBonus = (n: number) => item.characteristic === 'POWER' && s.activePlayerId === 'alice' ? 1000 * n : 0
