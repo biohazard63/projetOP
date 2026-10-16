@@ -1039,3 +1039,4 @@ html:has(.play-layer), body:has(.play-layer) { overflow:hidden; overscroll-behav
 .tbl-result-berries.gain { background:linear-gradient(180deg,#ffe4a3,#f5c45c); color:#2a1a02; font-weight:900; box-shadow:0 6px 18px #f5c45c55; animation:tbl-berries .6s cubic-bezier(.2,.9,.3,1.3); }
 @keyframes tbl-berries { from { opacity:0; transform:scale(.6); } }
 @media (prefers-reduced-motion:reduce) { .tbl-result-berries.gain { animation:none; } }
+.play-translation { margin-top:6px; padding:2px 9px; border:1px solid currentColor; border-radius:999px; background:transparent; color:var(--piece-gold,#f5c45c); font-size:.72rem; font-weight:700; cursor:pointer; }
