@@ -655,7 +655,8 @@ function resume(s: GameState) {
       active.status = 'SUSPENDED'; return
     }
     if (step.kind === 'CHECK') {
-      c.bindings[step.bind] = condition(s, step.condition, c.context.controllerId, c.context.source) && c.context.source.kind === 'CARD' ? [structuredClone(c.context.source.presence)] : []
+      const gated = step.whenBindingNonempty !== undefined && !c.bindings[step.whenBindingNonempty]?.length
+      c.bindings[step.bind] = !gated && condition(s, step.condition, c.context.controllerId, c.context.source) && c.context.source.kind === 'CARD' ? [structuredClone(c.context.source.presence)] : []
       c.pc++; continue
     }
     if (step.kind === 'UNION') { c.bindings[step.bind] = step.from.flatMap(b => c.bindings[b] ?? []).map(ref => structuredClone(ref)); c.pc++; continue }

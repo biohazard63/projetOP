@@ -1,3 +1,5 @@
+import M7_ERRATA_JSON from './m7-errata.json'
+import M7_REVIEWED_MORE_JSON from './m7-reviewed.json'
 import type { CardDefinition, SourceReference } from './types'
 import type { EffectRegistry } from '../effects/contracts'
 import { M5_CARDS, M5_REVISION } from './m5Catalog'
@@ -1370,7 +1372,11 @@ export const M7_TESTS = {
   printed: 'M7 compiled printed keywords and [Blocker] are carried by the definition',
 }
 const m7Day = '2026-10-16'
-const M7_SERIES: Record<string, string> = { 'OP-17': '569117' }
+const M7_REVIEWED_MORE = M7_REVIEWED_MORE_JSON as Record<string, Record<string, string>>
+const M7_ERRATA = M7_ERRATA_JSON as Record<string, string>
+const M7_SERIES: Record<string, string> = { 'OP-17': '569117', 'OP-16': '569116', 'OP15-EB04': '569115', 'OP14-EB04': '569114', 'OP-13': '569113', 'OP-12': '569112', 'OP-11': '569111',
+  'OP-10': '569110', 'OP-09': '569109', 'OP-08': '569108', 'OP-07': '569107', 'OP-06': '569106', 'OP-05': '569105', 'OP-04': '569104', 'OP-03': '569103', 'OP-02': '569102',
+  'OP-01': '569101', 'EB-03': '569203', 'EB-02': '569202', 'EB-01': '569201', 'PRB-02': '569302', 'PRB-01': '569301' }
 /** label → number → FAQ note (what the FAQ says about it, or that it has no entry). */
 export const M7_REVIEWED: Record<string, Record<string, string>> = {
   'OP-17': {
@@ -1382,7 +1388,11 @@ export const M7_REVIEWED: Record<string, Record<string, string>> = {
     'OP17-072': 'FAQ OP17-072: declining the effect keeps it available for a later attack of the same turn',
     'OP17-089': 'FAQ OP17-089: +12 cost only while this Character is on the field', 'OP17-107': 'No FAQ entry', 'OP17-108': 'No FAQ entry',
     'OP17-110': 'FAQ OP17-110: this Character itself gains [Rush]; not activated when played during the opponent\'s turn', 'OP17-113': 'No FAQ entry',
+    ...M7_REVIEWED_MORE['OP-17'],
   },
+  // M7 batch 1 (2026-10-16): every card of the other series whose compiled abilities pass the real-game scenarios, with its archived
+  // FAQ entries (docs/game/evidence/m6/sources/). Left out after review: OP09-058 (FAQ: the opponent chooses the returned Character).
+  ...Object.fromEntries(Object.entries(M7_REVIEWED_MORE).filter(([label]) => label !== 'OP-17')),
 }
 const m7Ref = (source: string, detail: string): SourceReference => ({ source, checkedAt: m7Day, language: 'en', detail })
 export const M7_CERTIFICATIONS: Certification[] = Object.entries(M7_REVIEWED).flatMap(([label, cards]) => Object.entries(cards).map(([number, faqDetail]) => {
@@ -1400,7 +1410,9 @@ export const M7_CERTIFICATIONS: Certification[] = Object.entries(M7_REVIEWED).fl
   ]
   return { definitionId: officialDefinitionId(number), certifiedAt: m7Day, rulesVersion: '1.2.1' as const, rulesetId: 'MUGIWARA_FREE',
     cardText: m7Ref(`https://en.onepiece-cardgame.com/cardlist/?series=${M7_SERIES[label]}#${number}`, `${row.name}: ${row.effect.replace(/\s+/g, ' ').slice(0, 300)}${row.trigger && row.trigger !== '-' ? ` [Trigger] ${row.trigger}` : ''}`),
-    faq: m7Ref(faqUrlFor(number), faqDetail), errata: m7Ref('https://en.onepiece-cardgame.com/rules/errata_card/', 'Errata page checked; no erratum for this card'),
-    abilities, tests: [...new Set(abilities.flatMap(a => a.tests))], notes: `Compiled from the official text (templates: ${[...new Set(c.templates)].join(', ')}).` }
+    faq: m7Ref(faqUrlFor(number), faqDetail), errata: m7Ref('https://en.onepiece-cardgame.com/rules/errata_card/', M7_ERRATA[number] ? `Erratum of ${M7_ERRATA[number]} (docs/game/evidence/m6/sources/errata-all.json): the card list text compiled is the text in force` : 'Errata page checked; no erratum for this card'),
+    // A Character without any ability: its printed characteristics in play, battle and Counter step (as the vanilla certifications).
+    abilities, tests: abilities.length ? [...new Set(abilities.flatMap(a => a.tests))] : [CERTIFIED_PLAY_TEST],
+    notes: abilities.length ? `Compiled from the official text (templates: ${[...new Set(c.templates)].join(', ')}).` : 'Card without ability: certification covers its printed characteristics in play, battle and Counter step.' }
 }))
 CERTIFICATIONS.push(...M7_CERTIFICATIONS)

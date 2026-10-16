@@ -267,7 +267,8 @@ const revealBindingSchema = z.strictObject({ kind: z.literal('REVEAL_BINDING'), 
 // "All of your ... gain": binds every matching card at resolution, without a choice.
 const bindAllSchema = z.strictObject({ kind: z.literal('BIND_ALL'), selector: z.lazy(() => cardsSelectorSchema), bind: id })
 // "If ..., <two operations>": the condition is evaluated once; the bind holds the source when it was met, else nothing.
-const checkSchema = z.strictObject({ kind: z.literal('CHECK'), condition: z.lazy(() => conditionSchema), bind: id })
+// `whenBindingNonempty`: checked only once an optional cost bound there was paid ("You may ...: If ..., ..."); otherwise false.
+const checkSchema = z.strictObject({ kind: z.literal('CHECK'), condition: z.lazy(() => conditionSchema), bind: id, whenBindingNonempty: id.optional() })
 // "You may rest A or B:": the union of the bindings filled by the alternatives (each a separate choice).
 const unionSchema = z.strictObject({ kind: z.literal('UNION'), bind: id, from: z.array(id).min(2).max(4) })
 // "(Your opponent) chooses one: - A - B": the chooser picks one mode; `${bind}.${index}` holds the source for the chosen
@@ -472,13 +473,14 @@ export const cardOperationSchema = z.strictObject({ id, resolutionId: id, subjec
 export const registrySchema = z.strictObject({ version: z.enum(['1.0.0', '1.1.0', '1.2.0', '1.3.0']), dslVersion: z.enum(['1.0.0', '1.1.0', '1.2.0', '1.3.0']),
   leaderReplacements: z.array(z.strictObject({ id, definitionId: id, minimumAttachedDon: integer, minimumPower: z.number().int(), amount: z.number().int().negative(), usage: z.literal('ONCE_PER_TURN') })).max(32).optional(),
   cardReplacements: z.array(cardReplacementSchema).max(32).optional(),
-  continuous: z.array(continuousDefinitionSchema).max(256).optional(),
-  conditionalKeywords: z.array(conditionalKeywordSchema).max(256).optional(),
+  continuous: z.array(continuousDefinitionSchema).max(1024).optional(),
+  conditionalKeywords: z.array(conditionalKeywordSchema).max(1024).optional(),
   koProtections: z.array(koProtectionSchema).max(256).optional(),
   attackProhibitions: z.array(attackProhibitionSchema).max(64).optional(),
   lifeRules: z.array(lifeRuleSchema).max(16).optional(),
   blockerRestrictions: z.array(blockerRestrictionSchema).max(256).optional(),
-  definitions: z.array(effectDefinitionSchema).max(1024), replacements: z.array(replacementSchema).max(32), restrictions: z.array(restrictionSchema).max(32),
+  // Bounds of the whole catalogue registry (M7 compiled packs included); a game only keeps the definitions of its two decks.
+  definitions: z.array(effectDefinitionSchema).max(4096), replacements: z.array(replacementSchema).max(32), restrictions: z.array(restrictionSchema).max(32),
 }).superRefine((r, ctx) => {
   if (r.restrictions.some(rule => (!['1.2.0','1.3.0'].includes(r.version) && (rule.prohibited === 'REST' || rule.afterRestedDon !== undefined)) || (rule.afterRestedDon !== undefined && rule.prohibited !== 'REST'))) ctx.addIssue({ code:'custom', message:'INCOMPATIBLE_VERSION' })
   if (!['1.2.0','1.3.0'].includes(r.version) && r.leaderReplacements !== undefined) ctx.addIssue({ code: 'custom', message: 'INCOMPATIBLE_VERSION' })

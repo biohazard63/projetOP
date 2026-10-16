@@ -1,3 +1,4 @@
+import M7_REVIEWED_MORE from '../cards/m7-reviewed.json'
 import type { Ruleset } from './decks'
 import { M5_RULESET } from './m5'
 // M6 Lots B/C: certified ST-03, ST-04, ST-05 and ST-06 numbers; M6 ST-07, ST-08, ST-12, ST-09 ST10-001..017 and ST11-001..005: their certified numbers.
@@ -7,7 +8,7 @@ const M6_ADMITTED = ['ST04-017', ...Array.from({ length: 15 }, (_, i) => `ST08-$
 // Leader colours, DON!! and battle rules are engine rules), and only cards the engine implements are admitted
 // (allowedNumbers and capabilities are those of the reviewed M5 catalogue). An official format stays separate.
 // M7: cards compiled from their official text, certified after review (certification.ts M7_REVIEWED), admitted by number.
-const M7_ADMITTED = ['OP17-001', 'OP17-002', 'OP17-009', 'OP17-011', 'OP17-013', 'OP17-016', 'OP17-019', 'OP17-024', 'OP17-028', 'OP17-029', 'OP17-032', 'OP17-036', 'OP17-046', 'OP17-059', 'OP17-064', 'OP17-071', 'OP17-072', 'OP17-089', 'OP17-107', 'OP17-108', 'OP17-110', 'OP17-113']
+const M7_ADMITTED = ['OP17-001', 'OP17-002', 'OP17-009', 'OP17-011', 'OP17-013', 'OP17-016', 'OP17-019', 'OP17-024', 'OP17-028', 'OP17-029', 'OP17-032', 'OP17-036', 'OP17-046', 'OP17-059', 'OP17-064', 'OP17-071', 'OP17-072', 'OP17-089', 'OP17-107', 'OP17-108', 'OP17-110', 'OP17-113', ...Object.values(M7_REVIEWED_MORE).flatMap(cards => Object.keys(cards))]
 export const FREE_RULESET_ID = 'MUGIWARA_FREE'
 export const FREE_RULESET: Ruleset = {
   id: FREE_RULESET_ID, format: 'FREE', date: '2026-10-12', rulesVersion: '1.2.1', competitive: false,

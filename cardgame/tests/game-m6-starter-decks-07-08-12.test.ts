@@ -1,3 +1,4 @@
+import { scopedInput } from './helpers/m6'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { engineCatalog, currentEngineRegistry, engineRuleset } from '../src/lib/engine/catalog'
@@ -14,8 +15,8 @@ test('resolved ST-07, ST-08 and ST-12 compositions are offered, legal and finish
     for (const [opponentId, seed] of opponents) {
       const opponent = REFERENCE_DECKS.find(candidate => candidate.id === opponentId)!
       assert.ok(opponent, opponentId)
-      const result = playMatch({ definitions, printings, gameId: `${deckId}-${opponentId}`, seed, scope: 'BASIC_TURNS', chooserId: 'p1', ruleset: engineRuleset(), effectRegistry: currentEngineRegistry(),
-        players: [{ id: 'p1', cards: structuredClone(deck!.entries), donCount: 10 }, { id: 'p2', cards: structuredClone(opponent.entries), donCount: 10 }] }, { p1: 'normal', p2: 'normal' })
+      const result = playMatch(scopedInput({ definitions, printings, gameId: `${deckId}-${opponentId}`, seed, scope: 'BASIC_TURNS', chooserId: 'p1', ruleset: engineRuleset(), effectRegistry: currentEngineRegistry(),
+        players: [{ id: 'p1', cards: structuredClone(deck!.entries), donCount: 10 }, { id: 'p2', cards: structuredClone(opponent.entries), donCount: 10 }] }), { p1: 'normal', p2: 'normal' })
       assert.ok(result.winner, `${deckId} vs ${opponentId} should reach a winner`)
       assert.equal(result.fallbacks, 0, `${deckId} vs ${opponentId}: no bot fallback`)
       assert.equal(result.refused, 0, `${deckId} vs ${opponentId}: no refused command`)

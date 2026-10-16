@@ -1,3 +1,4 @@
+import { scopedInput } from './helpers/m6'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { engineCatalog, currentEngineRegistry, engineRuleset } from '../src/lib/engine/catalog'
@@ -13,8 +14,8 @@ test('resolved ST-04 and ST-06 compositions are legal and finish complete bot ga
     assert.ok(deck, `${deckId} must be offered once its 51 cards are resolved and certified`)
     assert.equal(deck!.entries.reduce((sum, entry) => sum + entry.quantity, 0), 51)
     assert.deepEqual(deckEligibility(deck!.entries), { ok: true, errors: [] })
-    const result = playMatch({ definitions, printings, gameId: deckId, seed, scope: 'BASIC_TURNS', chooserId: 'p1', ruleset: engineRuleset(), effectRegistry: currentEngineRegistry(),
-      players: [{ id: 'p1', cards: structuredClone(deck!.entries), donCount: 10 }, { id: 'p2', cards: structuredClone(opponent.entries), donCount: 10 }] }, { p1: 'normal', p2: 'normal' })
+    const result = playMatch(scopedInput({ definitions, printings, gameId: deckId, seed, scope: 'BASIC_TURNS', chooserId: 'p1', ruleset: engineRuleset(), effectRegistry: currentEngineRegistry(),
+      players: [{ id: 'p1', cards: structuredClone(deck!.entries), donCount: 10 }, { id: 'p2', cards: structuredClone(opponent.entries), donCount: 10 }] }), { p1: 'normal', p2: 'normal' })
     assert.ok(result.winner, `${deckId} should reach a winner`)
     assert.equal(result.fallbacks, 0, `${deckId} should not use bot fallback actions`)
     assert.equal(result.refused, 0, `${deckId} should not submit illegal commands`)

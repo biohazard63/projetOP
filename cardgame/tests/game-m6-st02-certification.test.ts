@@ -1,3 +1,4 @@
+import { scopedInput } from './helpers/m6'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { evaluateCharacteristics } from '../src/game/effects/characteristics'
@@ -252,8 +253,8 @@ test('M6 ST-02 deck: the exact Starter Deck is legal, offered in /play and full 
   assert.deepEqual(deckEligibility(deck!.entries), { ok: true, errors: [] })
   const purple = REFERENCE_DECKS.find(d => d.id === 'reference-purple')!, { definitions, printings } = engineCatalog()
   for (const [seed, level] of [[5, 'easy'], [13, 'normal'], [21, 'hard'], [29, 'hard']] as const) {
-    const r = playMatch({ definitions, printings, gameId: 'st02-bots', seed, scope: 'BASIC_TURNS', chooserId: 'p1', ruleset: engineRuleset(), effectRegistry: currentEngineRegistry(),
-      players: [{ id: 'p1', cards: structuredClone(deck!.entries), donCount: 10 }, { id: 'p2', cards: structuredClone(purple.entries), donCount: 10 }] }, { p1: level, p2: level })
+    const r = playMatch(scopedInput({ definitions, printings, gameId: 'st02-bots', seed, scope: 'BASIC_TURNS', chooserId: 'p1', ruleset: engineRuleset(), effectRegistry: currentEngineRegistry(),
+      players: [{ id: 'p1', cards: structuredClone(deck!.entries), donCount: 10 }, { id: 'p2', cards: structuredClone(purple.entries), donCount: 10 }] }), { p1: level, p2: level })
     assert.ok(r.winner, `seed ${seed}: a winner`); assert.equal(r.fallbacks, 0, `seed ${seed}: no fallback`); assert.equal(r.refused, 0)
   }
 })

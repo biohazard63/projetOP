@@ -1,3 +1,4 @@
+import { scopedInput } from './helpers/m6'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { engineCatalog, currentEngineRegistry, engineRuleset } from '../src/lib/engine/catalog'
@@ -15,8 +16,8 @@ test('audited Starter Decks offered in /play are legal and finish complete bot g
     assert.equal(deck.entries.reduce((sum, entry) => sum + entry.quantity, 0), 51, deck.id)
     assert.deepEqual(deckEligibility(deck.entries), { ok: true, errors: [] }, deck.id)
     const opponent = REFERENCE_DECKS[index % 2 ? 1 : 0]
-    const result = playMatch({ definitions, printings, gameId: `${deck.id}-audit`, seed: 600 + index, scope: 'BASIC_TURNS', chooserId: 'p1', ruleset: engineRuleset(), effectRegistry: currentEngineRegistry(),
-      players: [{ id: 'p1', cards: structuredClone(deck.entries), donCount: 10 }, { id: 'p2', cards: structuredClone(opponent.entries), donCount: 10 }] }, { p1: 'normal', p2: 'normal' })
+    const result = playMatch(scopedInput({ definitions, printings, gameId: `${deck.id}-audit`, seed: 600 + index, scope: 'BASIC_TURNS', chooserId: 'p1', ruleset: engineRuleset(), effectRegistry: currentEngineRegistry(),
+      players: [{ id: 'p1', cards: structuredClone(deck.entries), donCount: 10 }, { id: 'p2', cards: structuredClone(opponent.entries), donCount: 10 }] }), { p1: 'normal', p2: 'normal' })
     assert.ok(result.winner, `${deck.id} should reach a winner`)
     assert.equal(result.fallbacks, 0, `${deck.id}: no bot fallback`)
     assert.equal(result.refused, 0, `${deck.id}: no refused command`)
