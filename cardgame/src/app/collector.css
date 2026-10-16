@@ -674,8 +674,8 @@ body:has(.piece-opening-immersive) .piece-footer{display:none}
   .piece-mobile-menu > a[aria-current=page] { border-color:var(--piece-gold); background:color-mix(in srgb, var(--piece-gold) 14%, transparent); }
   .piece-mobile-menu > a .piece-nav-icon { background:color-mix(in srgb, var(--piece-gold) 16%, transparent); color:var(--piece-gold); }
   .piece-mobile-menu > :not(a) { grid-column:1 / -1; }
-  /* Floating glass bar; the active icon rises in a gold disc. */
-  .piece-bottom-nav { inset:auto 10px calc(10px + env(safe-area-inset-bottom)) 10px !important; padding:6px !important; border-radius:24px; border:1px solid #ffffff1f;
+  /* Docked mobile navigation, including the iPhone home indicator area. */
+  .piece-bottom-nav { inset:auto 0 0 !important; padding:6px max(6px,env(safe-area-inset-right)) calc(6px + env(safe-area-inset-bottom)) max(6px,env(safe-area-inset-left)) !important; border-radius:0; border:1px solid #ffffff1f;
     background:color-mix(in srgb, #071528 82%, transparent) !important; backdrop-filter:blur(18px) saturate(150%); -webkit-backdrop-filter:blur(18px) saturate(150%); box-shadow:0 14px 40px #0008; }
   .piece-bottom-nav a { color:#a8b9d0 !important; background:none !important; gap:3px !important; transition:color .2s; }
   .piece-bottom-icon { display:grid; place-items:center; width:38px; height:30px; border-radius:12px; transition:transform .25s cubic-bezier(.3,1.4,.5,1), background .2s, box-shadow .2s; }
@@ -789,3 +789,14 @@ body:has(.piece-opening-immersive) .piece-footer{display:none}
 .card-text-source { display:flex; flex-wrap:wrap; align-items:center; gap:6px; margin:8px 0 0; color:var(--piece-muted,#9fb0c4); font-size:.78rem; }
 .card-text-source button { display:inline-flex; align-items:center; gap:5px; padding:2px 9px; border:1px solid currentColor; border-radius:999px; background:transparent; color:var(--piece-gold,#f5c45c); font:inherit; font-weight:700; cursor:pointer; }
 .card-text-source button:focus-visible { outline:2px solid var(--piece-gold,#f5c45c); outline-offset:2px; }
+
+/* Result actions stay above the mobile navigation, even while sticky. */
+.bo-result-actions { bottom:12px; }
+.bo-reopen-controls { display:flex; flex-wrap:wrap; align-items:center; gap:12px; }
+.bo-reopen-controls .bo-count { margin:0; }
+.bo-reopen-controls [role=status] { flex-basis:100%; color:var(--piece-muted); font-size:.85rem; }
+@media (max-width:950px) {
+  .bo-result-actions { bottom:calc(78px + env(safe-area-inset-bottom)); }
+  .bo-reopen-controls { width:100%; }
+  .bo-reopen-controls > button { width:100%; }
+}

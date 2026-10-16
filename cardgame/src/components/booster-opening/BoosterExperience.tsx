@@ -221,6 +221,7 @@ export default function BoosterExperience() {
       void requestBatch({ setCode: selectedSet, idempotencyKey: crypto.randomUUID(), count: batchCount as 5 | 10 | 24 })
       return
     }
+    setBatch(null)
     // With the tear scene, the opening sound plays when the packet is torn (TearOpening onTear), not on this click.
     if (!preferences.animations || preferences.quickOpening || reducedMotion) audio.playPackOpenSound()
     setOpening(null); setRevealed(0); setShowResult(false)
@@ -250,6 +251,11 @@ export default function BoosterExperience() {
     finally { setFavoriteBusy(false) }
   }
 
+  const quantityChoice = <div className="bo-count" role="radiogroup" aria-label="Nombre de boosters à rouvrir">{([1, 5, 10, 24] as const).map(n => <button key={n} type="button" role="radio" aria-checked={batchCount === n} aria-label={n === 24 ? 'Display de 24 boosters' : `×${n}`} className={`${batchCount === n ? 'on' : ''}${n === 24 ? ' display' : ''}`} disabled={busy} onClick={() => setBatchCount(n)}>{n === 24 ? <>Display<small>24</small></> : `×${n}`}</button>)}</div>
+  const reopenLabel = `${batchCount === 1 ? 'Ouvrir un autre booster' : batchCount === 24 ? 'Ouvrir une autre display' : `Ouvrir ${batchCount} boosters`}${cost !== null ? ` · ${formatBerries(cost)}` : ''}`
+  const reopenDisabled = busy || !chosen?.available || missing > 0 || Boolean(pending && !pending.openingId)
+  const reopenControls = <div className="bo-reopen-controls">{quantityChoice}<button type="button" disabled={reopenDisabled} onClick={startOpening} className={`${button} secondary`}>{reopenLabel}</button>{missing > 0 && <p role="status">Il vous manque {formatBerries(missing)}.</p>}</div>
+
   if (status === 'loading') return <p className="p-12 text-center" role="status">Chargement de votre espace…</p>
   if (!session?.user) return <div className="p-12 text-center"><Link href="/login" className={button}>Connectez-vous pour ouvrir des boosters</Link></div>
   return <div className={`piece-page ${(opening && !showResult) || (batch && !batchSummary) ? 'piece-opening-immersive' : ''}`}>
@@ -261,7 +267,7 @@ export default function BoosterExperience() {
       {storageWarning && <p role="status" className="mb-4 rounded-xl bg-slate-800 p-4 text-sm">{storageWarning}</p>}
       {error && <div role="alert" className="mb-4 rounded-xl border border-red-500/40 bg-red-950/40 p-4"><p>{error}</p>{batchIntent && <button type="button" disabled={busy} onClick={() => void requestBatch(batchIntent)} className={`${button} mt-3 bg-white text-slate-950`}>Réessayer ces {batchIntent.count} boosters</button>}{!batchIntent && pending && <button type="button" disabled={busy} onClick={() => void requestOpening(pending, false)} className={`${button} mt-3 bg-white text-slate-950`}>Réessayer cette ouverture</button>}{canDiscard && <button type="button" disabled={busy} onClick={discardRejectedIntent} className={`${button} mt-3 border border-slate-600`}>Choisir une autre extension</button>}</div>}
       {batch && <div className="bo-batch">{animating ? <TearOpening onTear={() => audio.playPackOpenSound()} returnHref={`/boosters?set=${encodeURIComponent(batch[0].setCode)}`} imageUrl={sets.find(set => set.code === batch[0].setCode)?.imageUrl || null} setName={`${batch[0].setName} · ${batch.length} boosters`} cardCount={batch.length * batch[0].cards.length} onComplete={() => setAnimating(false)} />
-        : <BatchOpening key={batch[0].id} openings={batch} onSummary={showBatchSummary} onCard={batchCard} onDetail={setDetail} busy={busy || missing > 0} againLabel={`${batch.length === 24 ? 'Ouvrir une autre display' : `Ouvrir ${batch.length} autres boosters`}${cost !== null ? ` · ${formatBerries(cost)}` : ''}`} onAgain={() => { setBatch(null); startOpening() }} />}</div>}
+        : <BatchOpening key={batch[0].id} openings={batch} onSummary={showBatchSummary} onCard={batchCard} onDetail={setDetail} reopenControls={reopenControls} />}</div>}
       {!opening && !batch && <section className="bo-hero" aria-labelledby="extension-title">
         <div className={`bo-hero-stage${busy ? ' loading' : ''}`}>
           <div className="bo-hero-glow" aria-hidden="true" />
@@ -337,7 +343,7 @@ export default function BoosterExperience() {
               </div>)}
             </div>}
             {showResult && <div className="grid grid-cols-3 gap-2 my-5 text-center text-sm"><div className="piece-panel !p-3"><strong>{opening.newCardsCount ?? '—'}</strong><p>Nouvelles cartes</p></div><div className="piece-panel !p-3"><strong>{opening.legacy ? '—' : opening.cards.filter(c => c.isDuplicate).length}</strong><p>Déjà possédées</p></div><div className="piece-panel !p-3"><strong>{opening.cards.filter(c => rare(c) || ['R', 'RARE'].includes(c.rarity.toUpperCase())).length}</strong><p>Cartes rares+</p></div></div>}
-            {showResult && <div className="sticky bottom-3 mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-700 bg-slate-950/95 p-3 backdrop-blur"><p aria-live="polite" className="text-sm text-slate-300">{revealed} / {opening.cards.length} cartes révélées</p>{revealed < opening.cards.length ? <div className="flex flex-wrap gap-2"><button type="button" disabled={busy} onClick={() => reveal(opening.cards.length)} className={`${button} border border-slate-600 px-3`}>Tout révéler</button><button type="button" disabled={busy} onClick={() => reveal(revealed + 1)} className={`${button} bg-amber-300 px-3 text-slate-950`}>Carte suivante <ChevronRight size={16} /></button></div> : <div className="piece-actions"><button type="button" disabled={busy || !chosen?.available} onClick={startOpening} className={`${button} secondary`}>Ouvrir un autre booster</button><Link href="/collection" className={button}>Voir ma collection <ChevronRight size={16} /></Link></div>}</div>}
+            {showResult && <div className="bo-result-actions sticky mt-6 flex flex-wrap items-center justify-between gap-3 rounded-2xl border border-slate-700 bg-slate-950/95 p-3 backdrop-blur"><p aria-live="polite" className="text-sm text-slate-300">{revealed} / {opening.cards.length} cartes révélées</p>{revealed < opening.cards.length ? <div className="flex flex-wrap gap-2"><button type="button" disabled={busy} onClick={() => reveal(opening.cards.length)} className={`${button} border border-slate-600 px-3`}>Tout révéler</button><button type="button" disabled={busy} onClick={() => reveal(revealed + 1)} className={`${button} bg-amber-300 px-3 text-slate-950`}>Carte suivante <ChevronRight size={16} /></button></div> : <div className="piece-actions">{reopenControls}<Link href="/collection" className={button}>Voir ma collection <ChevronRight size={16} /></Link></div>}</div>}
           </>}
         </section>
       

@@ -1,8 +1,8 @@
 'use client'
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { type ReactNode, useEffect, useMemo, useRef, useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
-import { ChevronRight, FastForward, PackageOpen, Sparkles } from 'lucide-react'
+import { ChevronRight, FastForward, Sparkles } from 'lucide-react'
 import { openingEffect } from '@/lib/boosters/presentation'
 import type { OpeningCard, OpeningResult } from '@/lib/boosters/types'
 import StackReveal from './StackReveal'
@@ -20,7 +20,7 @@ const isHit = (card: OpeningCard) => rankOf(card) <= RANK.indexOf('SR')
  * Several boosters opened at once: each pack is revealed like a single one (fan, then the last two cards), one after
  * the other; "Passer au récapitulatif" skips to the summary of every card, best pulls first, duplicates grouped.
  */
-export default function BatchOpening({ openings, onCard, onDetail, onAgain, againLabel, busy, onSummary }: { openings: OpeningResult[]; onSummary: () => void; onCard: (card: OpeningCard) => void; onDetail: (card: OpeningCard) => void; onAgain: () => void; againLabel: string; busy: boolean }) {
+export default function BatchOpening({ openings, onCard, onDetail, reopenControls, onSummary }: { openings: OpeningResult[]; onSummary: () => void; onCard: (card: OpeningCard) => void; onDetail: (card: OpeningCard) => void; reopenControls: ReactNode }) {
   const [index, setIndex] = useState(0)
   const done = index >= openings.length
   const summaryRef = useRef<HTMLElement | null>(null)
@@ -65,7 +65,7 @@ export default function BatchOpening({ openings, onCard, onDetail, onAgain, agai
     <h3 className={styles.section}>Toutes les autres cartes <small>{rest.length} cartes différentes</small></h3>
     <div className={styles.grid}>{rest.map(tile)}</div>
     <div className={styles.actions}>
-      <button type="button" className="piece-button" disabled={busy} onClick={onAgain}><PackageOpen size={18} />{againLabel}</button>
+      {reopenControls}
       <Link href="/collection" className="piece-button secondary">Voir ma collection <ChevronRight size={16} /></Link>
     </div>
   </section>
