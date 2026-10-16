@@ -8,6 +8,8 @@ import type { DeckEntry } from '../../src/game/rulesets/decks'
 // move a player's own existing card instance between zones (as a deck order would), keeping zone generations.
 export type Intent = Command extends infer C ? C extends Command ? Omit<C, 'id' | 'actorId' | 'expectedVersion'> : never : never
 const catalog = engineCatalog()
+/** Every definition of the current catalogue (M7 generic scenarios). */
+export const catalogDefinitions = () => catalog.definitions
 export const definitionOf = (number: string) => {
   const d = catalog.definitions.find(x => x.number === number)
   if (!d) throw new Error(`NO_DEFINITION:${number}`)

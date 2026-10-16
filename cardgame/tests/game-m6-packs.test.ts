@@ -5,7 +5,7 @@ import test from 'node:test'
 import { loadCardPacks } from '../src/game/cards/packs'
 import { M3_FULL_REGISTRY } from '../src/game/cards/m3PurpleDeck'
 import { M5_CARDS } from '../src/game/cards/m5Catalog'
-import { engineCatalog, m3EngineCatalog } from '../src/lib/engine/catalog'
+import { engineCatalog, m3EngineCatalog, compiledCards } from '../src/lib/engine/catalog'
 import { ST01_LOCAL_CARDS } from '../src/game/cards/m6LocalStarterCards'
 import { ST02_LOCAL_CARDS } from '../src/game/cards/m6LocalST02Cards'
 import { ST08_LOCAL_CARDS } from '../src/game/cards/m6LocalST08Cards'
@@ -87,8 +87,10 @@ test('M6 card packs preserve prior definitions and add the executable local ST-0
   const catalog = engineCatalog()
   // M6 lots B/C plus ST-07, ST-08 and ST-12 are added on top of the earlier catalog.
   const local = ST01_LOCAL_CARDS.length + ST02_LOCAL_CARDS.length + ST03_ST04_LOCAL_CARDS.length + ST05_ST06_LOCAL_CARDS.length + ST07_LOCAL_CARDS.length + ST08_LOCAL_CARDS.length + ST09_LOCAL_CARDS.length + ST10_LOCAL_CARDS.length + ST11_LOCAL_CARDS.length + ST12_LOCAL_CARDS.length + ST03_OP_LOCAL_CARDS.length + REPRINT_LOCAL_CARDS.length + ST14_LOCAL_CARDS.length + ST17_OFFICIAL_CARDS.length + ST18_OFFICIAL_CARDS.length + ST19_OFFICIAL_CARDS.length + ST21_OFFICIAL_CARDS.length + ST23_OFFICIAL_CARDS.length + ST25_OFFICIAL_CARDS.length + ST28_OFFICIAL_CARDS.length + ST20_OFFICIAL_CARDS.length + ST15_OFFICIAL_CARDS.length + ST16_OFFICIAL_CARDS.length + ST26_OFFICIAL_CARDS.length + ST31_OFFICIAL_CARDS.length + ST33_OFFICIAL_CARDS.length + ST34_OFFICIAL_CARDS.length + ST32_OFFICIAL_CARDS.length + ST13_OFFICIAL_CARDS.length + ST35_OFFICIAL_CARDS.length + ST30_OFFICIAL_CARDS.length + ST22_OFFICIAL_CARDS.length + ST29_OFFICIAL_CARDS.length + ST27_OFFICIAL_CARDS.length + ST24_OFFICIAL_CARDS.length
-  assert.equal(catalog.definitions.length, compiled.definitions.length + local)
-  assert.equal(catalog.printings.length, compiled.printings.length + local)
+  // M7: the cards compiled from their official text form their own packs, on top of every hand-written one.
+  const m7 = compiledCards().length
+  assert.equal(catalog.definitions.length, compiled.definitions.length + local + m7)
+  assert.equal(catalog.printings.length, compiled.printings.length + local + m7)
   const catalogIds = new Set(catalog.definitions.map(card => card.definitionId))
   assert.ok(compiled.definitions.every(card => catalogIds.has(card.definitionId)), 'all earlier definition IDs remain available')
   assert.ok(catalog.definitions.some(card => card.definitionId === 'ST01-005@m6-cardjson-2026-10-13'))

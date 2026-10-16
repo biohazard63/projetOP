@@ -4,6 +4,8 @@ import { M5_CARDS, M5_REVISION } from './m5Catalog'
 import { M3_ABILITY_CARDS } from './m3Abilities'
 import { keywordOnlyText } from './keywordText'
 import { faqUrlFor } from './officialSources'
+import { officialDefinitionId, officialRow } from './officialCards'
+import { compileCardText } from './textCompiler'
 
 // M4-C1 — certification per definition revision. A certification is a separate, explicit record bound to
 // one definitionId (number@revision); it is never carried by `review.playabilityStatus`, never inherited by
@@ -1357,3 +1359,48 @@ export const ST24_CERTIFICATIONS: Certification[] = [
   c24('ST24-004', OFF, "Law & Bepo: On Play rest up to 1 opposing Character, it does not become active in the opponent's next Refresh Phase; then with 2 or more opposing rested Characters your Leader +2000 until the end of the next opposing End Phase", 'FAQ ST24-004: also with no active opposing Character', [dd('ST24-004.on-play-rest', SN.law)], 'Rest plus lockRefresh.'),
 ]
 CERTIFICATIONS.push(...ST24_CERTIFICATIONS)
+
+// M7 — cards compiled from their official English text (textCompiler.ts). Only the numbers listed here, reviewed one by one
+// against the official card list and the set's FAQ (docs/game/evidence/m6/sources/qa_*.txt), are certified; each is exercised
+// by the generic real-game scenarios of tests/game-m7-compiled-cards.test.ts. The certificate is derived from the compiled card,
+// so a change of the compiler or of the text changes the certified programs and is caught by those tests.
+export const M7_TESTS = {
+  abilities: 'M7 compiled abilities run in real games and produce their printed result',
+  statics: 'M7 compiled static modifiers and conditional keywords apply with their printed condition',
+  printed: 'M7 compiled printed keywords and [Blocker] are carried by the definition',
+}
+const m7Day = '2026-10-16'
+const M7_SERIES: Record<string, string> = { 'OP-17': '569117' }
+/** label → number → FAQ note (what the FAQ says about it, or that it has no entry). */
+export const M7_REVIEWED: Record<string, Record<string, string>> = {
+  'OP-17': {
+    'OP17-001': 'FAQ OP17-001: with 0 cards in hand the cost cannot be paid and nothing is given; once per turn only when the cost is paid (FAQ OP17-072)',
+    'OP17-002': 'No FAQ entry', 'OP17-009': 'No FAQ entry',
+    'OP17-011': 'No FAQ entry', 'OP17-013': 'No FAQ entry', 'OP17-016': 'No FAQ entry', 'OP17-019': 'No FAQ entry', 'OP17-024': 'No FAQ entry',
+    'OP17-028': 'No FAQ entry', 'OP17-029': 'No FAQ entry', 'OP17-032': 'No FAQ entry', 'OP17-036': 'No FAQ entry', 'OP17-046': 'No FAQ entry',
+    'OP17-059': 'No FAQ entry', 'OP17-064': 'No FAQ entry; once per turn only when the cost is paid (FAQ OP17-072)', 'OP17-071': 'No FAQ entry',
+    'OP17-072': 'FAQ OP17-072: declining the effect keeps it available for a later attack of the same turn',
+    'OP17-089': 'FAQ OP17-089: +12 cost only while this Character is on the field', 'OP17-107': 'No FAQ entry', 'OP17-108': 'No FAQ entry',
+    'OP17-110': 'FAQ OP17-110: this Character itself gains [Rush]; not activated when played during the opponent\'s turn', 'OP17-113': 'No FAQ entry',
+  },
+}
+const m7Ref = (source: string, detail: string): SourceReference => ({ source, checkedAt: m7Day, language: 'en', detail })
+export const M7_CERTIFICATIONS: Certification[] = Object.entries(M7_REVIEWED).flatMap(([label, cards]) => Object.entries(cards).map(([number, faqDetail]) => {
+  const row = officialRow(label, number), c = compileCardText(row, officialDefinitionId(number))
+  if (c.unparsed.length) throw new Error(`M7_REVIEWED_NOT_COMPILED:${number}`)
+  const trigger = c.abilities.find(a => a.timing === 'TRIGGER'), counter = c.profile.counterEvent?.abilityId
+  const statics = [...c.continuous, ...c.conditionalKeywords].length > 0
+  const ids = c.profile.abilityIds ?? []
+  const abilities: CertifiedAbility[] = [
+    ...(c.profile.blocker ? [bl([M7_TESTS.printed, M7_TESTS.abilities])] : []),
+    ...(c.profile.keywords ?? []).map(k => ({ kind: 'keyword' as const, id: k, tests: [M7_TESTS.printed] })),
+    ...(ids.length ? [dd(ids.join('+'), [...(c.abilities.length ? [M7_TESTS.abilities] : []), ...(statics ? [M7_TESTS.statics] : [])])] : []),
+    ...(trigger ? [tr(trigger.id, [M7_TESTS.abilities])] : []),
+    ...(counter ? [ce(counter, [M7_TESTS.abilities])] : []),
+  ]
+  return { definitionId: officialDefinitionId(number), certifiedAt: m7Day, rulesVersion: '1.2.1' as const, rulesetId: 'MUGIWARA_FREE',
+    cardText: m7Ref(`https://en.onepiece-cardgame.com/cardlist/?series=${M7_SERIES[label]}#${number}`, `${row.name}: ${row.effect.replace(/\s+/g, ' ').slice(0, 300)}${row.trigger && row.trigger !== '-' ? ` [Trigger] ${row.trigger}` : ''}`),
+    faq: m7Ref(faqUrlFor(number), faqDetail), errata: m7Ref('https://en.onepiece-cardgame.com/rules/errata_card/', 'Errata page checked; no erratum for this card'),
+    abilities, tests: [...new Set(abilities.flatMap(a => a.tests))], notes: `Compiled from the official text (templates: ${[...new Set(c.templates)].join(', ')}).` }
+}))
+CERTIFICATIONS.push(...M7_CERTIFICATIONS)
