@@ -1,7 +1,7 @@
 {
  "_aide": "Montants de l'économie en Berrys (฿). Modifier ici, puis redéployer. Les événements s'appliquent automatiquement entre leurs dates (heure de Paris) ; plusieurs événements actifs se cumulent (multiplications).",
  "version": "economy-2026-10-15",
- "starterGrant": 10000,
+ "starterGrant": 1000000,
  "prices": { "booster": 1000, "display": 20000 },
  "rewards": {
   "dailyTreasure": 1000,
