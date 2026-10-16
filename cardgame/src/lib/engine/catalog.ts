@@ -46,6 +46,8 @@ import { ST18_OFFICIAL_ABILITY_DEFINITIONS, ST18_OFFICIAL_CARDS, ST18_OFFICIAL_C
 import { ST17_OFFICIAL_ABILITY_DEFINITIONS, ST17_OFFICIAL_CARDS } from '../../game/cards/m6OfficialST17Cards'
 import { ST14_LOCAL_ABILITY_DEFINITIONS, ST14_LOCAL_CARDS, ST14_LOCAL_CONTINUOUS, ST14_KO_PROTECTIONS, ST14_CONDITIONAL_KEYWORDS } from '../../game/cards/m6LocalST14Cards'
 import { validateRegistry, type EffectRegistry } from '../../game/effects/contracts'
+import { COMPILED_LABELS, compiledPack } from '../../game/cards/compiledCards'
+import type { CompiledCard } from '../../game/cards/textCompiler'
 import type { CardDefinition, CardInput, CardPrinting } from '../../game/cards/types'
 import type { Ruleset } from '../../game/rulesets/decks'
 
@@ -59,7 +61,19 @@ export const m3EngineCatalog = (): { definitions: CardDefinition[]; printings: C
   const compiled = loadCardPacks(M3_FULL_REGISTRY, [{ packId: 'M3_REVIEWED_BASE', schemaVersion: 1, rulesVersion: '1.2.1', cards: m3Cards() }])
   return { definitions: compiled.definitions, printings: compiled.printings }
 }
-const currentPacks = () => [
+let compiledCardList: CompiledCard[] = []
+/** M7: the cards of the catalogue compiled from their official text (textCompiler.ts), with the templates they use. */
+export const compiledCards = (): readonly CompiledCard[] => { compileCurrentCatalog(); return compiledCardList }
+const currentPacks = () => {
+  const manual = manualPacks(), defined = new Set(manual.flatMap(p => p.cards.map(c => c.number)))
+  // M7: cards compiled from their official text, never overriding a hand-written definition (packs/certification decide play).
+  const packs = COMPILED_LABELS.map(label => compiledPack(label, defined)).filter(p => p.cards.length)
+  compiledCardList = packs.flatMap(p => p.compiled)
+  const compiled = packs.map(p => ({ packId: `M7_COMPILED_${p.label.replace(/-/g, '')}`, schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: p.cards,
+    effects: { definitions: p.definitions, continuous: p.continuous, conditionalKeywords: p.conditionalKeywords } }))
+  return [...manual, ...compiled]
+}
+const manualPacks = () => [
   { packId: 'M3_REVIEWED_BASE', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: m3Cards() },
   { packId: 'M5_RECOGNIZED_CARDS', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: M5_CARDS },
   { packId: 'M6_LOCAL_ST01', schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: ST01_LOCAL_CARDS, effects: { definitions: ST01_LOCAL_ABILITY_DEFINITIONS, continuous: ST01_LOCAL_CONTINUOUS, conditionalKeywords: ST01_LOCAL_CONDITIONAL_KEYWORDS } },

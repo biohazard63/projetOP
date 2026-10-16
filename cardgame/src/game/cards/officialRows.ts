@@ -23,6 +23,7 @@ import st32 from '../../../data/official-en/cards-ST-32.json'
 import st33 from '../../../data/official-en/cards-ST-33.json'
 import st34 from '../../../data/official-en/cards-ST-34.json'
 import st35 from '../../../data/official-en/cards-ST-35.json'
+import op17 from '../../../data/official-en/cards-OP-17.json'
 export const OFFICIAL_EN_ROWS: Record<string, LocalRow[]> = {
   'ST-13': st13 as LocalRow[],
   'ST-15': st15 as LocalRow[],
@@ -46,4 +47,5 @@ export const OFFICIAL_EN_ROWS: Record<string, LocalRow[]> = {
   'ST-33': st33 as LocalRow[],
   'ST-34': st34 as LocalRow[],
   'ST-35': st35 as LocalRow[],
+  'OP-17': op17 as LocalRow[],
 }

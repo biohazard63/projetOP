@@ -6,11 +6,13 @@ const M6_ADMITTED = ['ST04-017', ...Array.from({ length: 15 }, (_, i) => `ST08-$
 // Unchanged from the official subset: Comprehensive Rules 1.2.1 (1 Leader, 50 cards, at most 4 copies per number,
 // Leader colours, DON!! and battle rules are engine rules), and only cards the engine implements are admitted
 // (allowedNumbers and capabilities are those of the reviewed M5 catalogue). An official format stays separate.
+// M7: cards compiled from their official text, certified after review (certification.ts M7_REVIEWED), admitted by number.
+const M7_ADMITTED = ['OP17-001', 'OP17-002', 'OP17-009', 'OP17-011', 'OP17-013', 'OP17-016', 'OP17-019', 'OP17-024', 'OP17-028', 'OP17-029', 'OP17-032', 'OP17-036', 'OP17-046', 'OP17-059', 'OP17-064', 'OP17-071', 'OP17-072', 'OP17-089', 'OP17-107', 'OP17-108', 'OP17-110', 'OP17-113']
 export const FREE_RULESET_ID = 'MUGIWARA_FREE'
 export const FREE_RULESET: Ruleset = {
   id: FREE_RULESET_ID, format: 'FREE', date: '2026-10-12', rulesVersion: '1.2.1', competitive: false,
   restrictionWindow: null, restrictions: [],
   // M6 official OP01 ability profiles admitted only after their generic programs and regression tests exist.
   // M6 Lot A: ST-01 and ST-02 are admitted once all 17 numbers of each are certified (src/game/cards/certification.ts).
-  allowedNumbers: [...new Set([...M5_RULESET.allowedNumbers, 'OP01-006', 'OP01-007', ...['ST01', 'ST02'].flatMap(set => Array.from({ length: 17 }, (_, i) => `${set}-${String(i + 1).padStart(3, '0')}`)), ...M6_ADMITTED])], capabilities: [...M5_RULESET.capabilities],
+  allowedNumbers: [...new Set([...M5_RULESET.allowedNumbers, 'OP01-006', 'OP01-007', ...['ST01', 'ST02'].flatMap(set => Array.from({ length: 17 }, (_, i) => `${set}-${String(i + 1).padStart(3, '0')}`)), ...M6_ADMITTED, ...M7_ADMITTED])], capabilities: [...M5_RULESET.capabilities],
 }
