@@ -17,7 +17,7 @@ try {
       await page.evaluate(y => window.scrollTo(0, y), top)
       await page.waitForTimeout(100)
       const gap = await nav.evaluate(el => window.innerHeight - el.getBoundingClientRect().bottom)
-      assert.ok(Math.abs(gap - 10) <= 1, `Bottom gap after scroll/resize: ${gap}`)
+      assert.ok(Math.abs(gap) <= 1, `Bottom gap after scroll/resize: ${gap}`)
       assert.ok(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth), 'No horizontal overflow')
     }
   }
