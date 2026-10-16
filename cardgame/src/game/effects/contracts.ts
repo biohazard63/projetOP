@@ -445,8 +445,9 @@ export const koProtectionSchema = z.strictObject({ id, definitionId: id, zone: z
 // according to the rules" (FAQ ST13-003: no [Trigger]; also an effect adding it to hand, whose cost is then not paid).
 // NEGATE_OWN_ON_PLAY: "Your [On Play] effects are negated" (FAQ OP09-081: also a [Trigger] activating an [On Play]).
 export const lifeRuleSchema = z.strictObject({ id, definitionId: id, zone: z.literal('leader'), rule: z.enum(['FACE_UP_LIFE_TO_DECK_BOTTOM', 'NEGATE_OWN_ON_PLAY']) })
-export const attackProhibitionSchema = z.strictObject({ id, definitionId: id, zone: z.literal('characters'), self: z.literal(true).optional(),
-  all: z.strictObject({ minCost: integer.max(20), maxCost: integer.max(20) }).optional(), leaderName: z.string().min(1).max(128).optional() }).refine(p => !!p.self !== !!p.all)
+// zone 'leader': "This Leader cannot attack" (the card itself only).
+export const attackProhibitionSchema = z.strictObject({ id, definitionId: id, zone: z.enum(['characters', 'leader']), self: z.literal(true).optional(),
+  all: z.strictObject({ minCost: integer.max(20), maxCost: integer.max(20) }).optional(), leaderName: z.string().min(1).max(128).optional() }).refine(p => !!p.self !== !!p.all).refine(p => p.zone === 'characters' || p.self, { message: 'LEADER_PROHIBITION_IS_SELF' })
 export const blockerRestrictionSchema = z.strictObject({ id, source: sourceSchema, subject: presenceSchema, controllerId: id, scope: z.enum(['BATTLE', 'TURN']), battleId: id.optional(), turnId: integer.optional(), minimumBlockerPower: integer.optional() }).superRefine((value, ctx) => {
   if ((value.scope === 'BATTLE') !== (value.battleId !== undefined) || (value.scope === 'TURN') !== (value.turnId !== undefined)) ctx.addIssue({ code: 'custom', message: 'INVALID_BLOCKER_RESTRICTION_DURATION' })
 })

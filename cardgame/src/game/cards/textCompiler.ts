@@ -1,6 +1,6 @@
 import type { EffectDefinition } from '../effects/contracts'
 import type { LocalProfile } from './localCards'
-import { addCost, addDon, addToLife, after, bindAll, check, deckTopToLife, donMinus, draw, drawThenTrash, lookTopAndPlace, opponentTrashesFromHand, giveRestedDon, grantKeyword, ko, opponentPower, ownLeaderOrCharacter, playChosen, playThisCardSteps, power, rest, returnToHand, setActive, toDeckBottom, trashFromHand, upTo, ability } from './dsl'
+import { addCost, addDon, addToLife, bindAll, grantKeyword as grantKw, koAny, check, deckTopToLife, donMinus, draw, drawThenTrash, lookTopAndPlace, opponentTrashesFromHand, giveRestedDon, grantKeyword, ko, opponentPower, ownLeaderOrCharacter, playChosen, playThisCardSteps, power, rest, returnToHand, setActive, toDeckBottom, trashFromHand, upTo, ability } from './dsl'
 
 // M7 — compiler of official English card texts into the declarative DSL, for the recurring wordings only. A card is compiled
 // only when every word of its text is recognised by one of the templates below; any other word leaves it to a manual review
@@ -15,6 +15,7 @@ type Filter = Parameters<typeof upTo>[2]
 type Category = 'LEADER' | 'CHARACTER' | 'EVENT' | 'STAGE'
 export type Continuous = { id: string; definitionId: string; zone: 'characters' | 'leader' | 'hand'; characteristic: 'POWER' | 'COST'; amount: number; minimumAttachedDon: number; duringYourTurn?: true; duringOpponentTurn?: true; whenLeaderHasTrait?: string; maximumOwnLife?: number; minimumOwnLife?: number; minimumFieldDon?: number; minimumHandSize?: number; minimumRestedDon?: number; minimumOwnCharacters?: number; whenOwnCharacterCostAtLeast?: number; leaderTraitIncludes?: string; whenCharacter?: { side: 'OWN' | 'OPPONENT'; minPower: number; powerBasis: 'CURRENT' | 'BASE' } }
 export type ConditionalKeyword = { id: string; definitionId: string; zone: 'characters' | 'leader'; keyword: 'RUSH' | 'DOUBLE_ATTACK' | 'BANISH' | 'BLOCKER'; minimumAttachedDon: number; leaderHasTrait?: string; minimumFieldDon?: number; whenOwnCharacterCostAtLeast?: number; maximumOwnLife?: number; leaderTraitIncludes?: string; duringOpponentTurn?: true }
+export type AttackProhibition = { id: string; definitionId: string; zone: 'characters' | 'leader'; self: true }
 export const COMPILER_VERSION = 'm7-text-compiler-1'
 
 export type CompiledCard = {
@@ -24,6 +25,8 @@ export type CompiledCard = {
   /** Static modifiers (power/cost auras of the card itself, cost of the card in hand) and conditional keywords. */
   continuous: Continuous[]
   conditionalKeywords: ConditionalKeyword[]
+  /** "This Leader / This Character cannot attack" (printed, permanent). */
+  attackProhibitions: AttackProhibition[]
   /** Template names used, one per recognised action (the certification tests are grouped by template). */
   templates: string[]
   /** Text the compiler could not recognise: the card must then be reviewed by hand. */
@@ -191,6 +194,17 @@ function action(text: string, ctx: Ctx, category: Category, timing: Timing): Ste
     const b = fresh(ctx, 'self'), sel = m[1] === 'Your Leader' ? { side: 'OWN', zone: 'leader' } : { side: 'OWN', zone: category === 'LEADER' ? 'leader' : 'characters', isSource: true }
     return emit(m[1] === 'Your Leader' ? 'power-leader' : 'power-self', [bindAll(b, sel as Filter), power(b, Number(m[2]), m[3] === 'turn' ? 'THIS_TURN' : 'THIS_BATTLE')])
   }
+  // "Up to 1 of your ({X} type) Characters gains [Rush] during this turn"
+  if ((m = /^Up to 1 of your ((?:\{[^}]+\}(?:, | or |, or )?)+ type )?Characters gains \[(Rush|Double Attack|Banish)\] during this turn$/.exec(t))) {
+    const b = fresh(ctx, 'granted'), kw = { Rush: 'RUSH', 'Double Attack': 'DOUBLE_ATTACK', Banish: 'BANISH' }[m[2]] as 'RUSH'
+    const traits = m[1] ? { traitsAny: [...m[1].matchAll(/\{([^}]+)\}/g)].map(x => x[1]) } : {}
+    return emit('keyword-own', [upTo(1, b, { side: 'OWN', zone: 'characters', ...traits } as Filter), grantKw(kw, 'THIS_TURN', b)])
+  }
+  // "Your Leader and all of your Characters gain +N power during this turn"
+  if ((m = /^Your Leader and all of your Characters gain \+(\d+) power during this turn$/.exec(t))) {
+    const b = fresh(ctx, 'all')
+    return emit('power-all-own', [bindAll(b, { side: 'OWN', zone: 'leaderOrCharacters' } as Filter), power(b, Number(m[1]), 'THIS_TURN')])
+  }
   if ((m = /^This Character gains \[(Rush|Double Attack|Banish)\] during this turn$/.exec(t))) {
     if (category !== 'CHARACTER') return null
     const b = fresh(ctx, 'self'), kw = { Rush: 'RUSH', 'Double Attack': 'DOUBLE_ATTACK', Banish: 'BANISH' }[m[1]] as 'RUSH'
@@ -275,6 +289,7 @@ function leadingCondition(text: string): { condition: BaseCondition; rest: strin
   if ((m = /^If you have (\d+) or more DON!! cards on your field, (.*)$/.exec(text))) return { condition: { kind: 'FIELD_DON_AT_LEAST', minimum: Number(m[1]) }, rest: m[2] }
   if ((m = /^If your Leader's type includes "([^"]+)", (.*)$/.exec(text))) return { condition: { kind: 'LEADER_TRAIT_INCLUDES', text: m[1] }, rest: m[2] }
   if ((m = /^If you have (\d+) or less DON!! cards on your field, (.*)$/.exec(text))) return { condition: { kind: 'FIELD_DON_AT_MOST', maximum: Number(m[1]) }, rest: m[2] }
+  if ((m = /^If you have an? ((?:\{[^}]+\}(?:, | or |, or )?)+) type Character, (.*)$/.exec(text))) return { condition: { kind: 'OWN_CHARACTER_COUNT', minCost: 0, atLeast: 1, traitsAny: [...m[1].matchAll(/\{([^}]+)\}/g)].map(x => x[1]) }, rest: m[2] }
   if ((m = /^If you have less Life cards than your opponent, (.*)$/.exec(text))) return { condition: { kind: 'LIFE_LESS_THAN_OPPONENT' }, rest: m[1] }
   if ((m = /^If you have a Character with a cost of (\d+) or more, (.*)$/.exec(text))) return { condition: { kind: 'OWN_CHARACTER_COST_AT_LEAST', minimum: Number(m[1]) }, rest: m[2] }
   if ((m = /^If your Leader is multicolored, (.*)$/.exec(text))) return { condition: { kind: 'LEADER_MULTICOLORED' }, rest: m[1] }
@@ -290,11 +305,16 @@ function leadingCondition(text: string): { condition: BaseCondition; rest: strin
   return null
 }
 
+/** Every step that acts (operation, choice, deck search, mode) runs only once `bind` is nonempty — the paid cost or the met condition.
+ * An inner gate is kept: it is itself bound under `bind` (dsl.after leaves searches and modes ungated). */
+const gated = (bind: string, steps: Step[]): Step[] => steps.map(st => st.kind === 'OPERATION' || st.kind === 'CHOICE' || st.kind === 'SEARCH_TOP_DECK' || st.kind === 'MODE' ? { ...st, whenBindingNonempty: st.whenBindingNonempty ?? bind } as Step : st)
 /** The body of one ability (after its bracket prefixes): optional cost, optional condition, actions joined by "Then,". */
 function body(text: string, ctx: Ctx, category: Category, timing: Timing): { program: Step[]; cost?: EffectDefinition['cost'] } | null {
   let t = clean(text).replace(/\.$/, '').replace(/ and add it to your hand\. Then, place the rest at the bottom of your deck in any order/g, ' and add it to your hand §BOTTOM').replace(/ and add it to your hand\. Then, trash the rest/g, ' and add it to your hand §TRASH')
   // "You may rest N of your DON!! cards:" is the current wording of ➀..➅.
-  t = t.replace(REMINDER.DON_MINUS, '').replace(REMINDER.REST_DON, '').replace(/ +:/g, ':').replace(/ {2,}/g, ' ')
+  t = t.replace(REMINDER.DON_MINUS, '').replace(REMINDER.REST_DON, '').replace(REMINDER.RUSH, '').replace(REMINDER.DOUBLE_ATTACK, '').replace(REMINDER.BANISH, '').trim().replace(/\.$/, '').replace(/ +:/g, ':').replace(/ {2,}/g, ' ')
+  // "You can trash ...:" is an older wording of "You may trash ...:".
+  t = t.replace(/^You can (trash|rest) /, 'You may $1 ')
   t = t.replace(/^You may rest (\d) of your DON!! cards: /, (_, n) => `${'①②③④⑤⑥'[Number(n) - 1]}: `)
   t = t.replace(/^You may rest (\d) of your DON!! cards and this (Character|Stage): /, (_, n, w) => `${'①②③④⑤⑥'[Number(n) - 1]} You may rest this ${w}: `)
   let cost: EffectDefinition['cost'] | undefined
@@ -312,6 +332,8 @@ function body(text: string, ctx: Ctx, category: Category, timing: Timing): { pro
     if (!parts.length) return null
     // The engine pays DON!! −X as an activation cost of [Activate: Main] only (an Event's [Main] DON!! −X is left to review).
     if (timing === 'MAIN' && parts.some(x => x.kind === 'DON_MINUS')) return null
+    // DON!! −X is an activation cost on its own only (contracts.ts: not inside a SEQUENCE).
+    if (parts.length > 1 && parts.some(x => x.kind === 'DON_MINUS')) return null
     if (['ACTIVATE_MAIN', 'MAIN'].includes(timing)) cost = parts.length === 1 ? parts[0] : { kind: 'SEQUENCE', parts } as EffectDefinition['cost']
     else if (parts.length === 1 && parts[0].kind === 'DON_MINUS') {
       // "DON!! −X:" inside an automatic ability: pay exactly X field DON!! or nothing (then the rest is skipped).
@@ -331,8 +353,15 @@ function body(text: string, ctx: Ctx, category: Category, timing: Timing): { pro
     const bounceSelf = /^You may return this Character to the owner's hand: (.*)$/.exec(t)
     const self = /^You may trash this Character: (.*)$/.exec(t)
     const life = /^You may add 1 card from the (top or bottom|top) of your Life cards to your hand: (.*)$/.exec(t)
+    const koOwn = /^You may K\.O\. 1 of your ((?:\{[^}]+\}(?:, | or |, or )?)+) type Characters: (.*)$/.exec(t)
     const mill = /^You may trash (\d+) cards? from the top of your deck: (.*)$/.exec(t)
-    if (life) {
+    if (koOwn) {
+      // "You may K.O. 1 of your {X} type Characters:" — a K.O. by your own effect ([On K.O.] of that Character applies).
+      paid = 'paid'
+      prefix.push({ kind: 'CHOICE', choiceType: 'SELECT', selector: { kind: 'CARDS', side: 'OWN', zone: 'characters', traitsAny: [...koOwn[1].matchAll(/\{([^}]+)\}/g)].map(x => x[1]) }, optional: true, min: 0, max: 1, bind: paid, visibility: 'PUBLIC' } as Step,
+        koAny(paid, { whenBindingNonempty: paid }))
+      ctx.templates.push('ko-own-cost'); t = koOwn[2]
+    } else if (life) {
       // Not offered while Life cannot be added to the hand by your own effects (FAQ OP02-023: the cost cannot be paid).
       paid = 'paid'
       prefix.push({ kind: 'CHOICE', choiceType: 'SELECT', selector: { kind: 'CARDS', side: 'OWN', zone: 'life', lifeEnd: life[1] === 'top' ? 'TOP' : 'TOP_OR_BOTTOM' }, optional: true, min: 0, max: 1, bind: paid, visibility: 'PUBLIC', whenCondition: { kind: 'CAN_ADD_LIFE_TO_HAND' } } as Step,
@@ -381,6 +410,15 @@ function body(text: string, ctx: Ctx, category: Category, timing: Timing): { pro
   let gate: string | undefined = paid
   const cond = leadingCondition(t)
   if (cond) { const b = fresh(ctx, 'cond'); prefix.push(paid ? { ...check(b, cond.condition), whenBindingNonempty: paid } as Step : check(b, cond.condition)); gate = b; ctx.templates.push('condition'); t = cond.rest }
+  // "Choose one: • A. • B." — one MODE, each option gated by its own choice (the options are complete sentences).
+  const choose = /^Choose one: • (.+)$/.exec(t)
+  if (choose) {
+    const options = choose[1].split(/\.? • /).map(x => x.trim().replace(/\.$/, ''))
+    const mode = fresh(ctx, 'mode'), steps: Step[] = [{ kind: 'MODE', modes: options.length, bind: mode } as Step]
+    for (const [i, o] of options.entries()) { const a = action(o.charAt(0).toUpperCase() + o.slice(1), ctx, category, timing); if (!a) return null; steps.push(...gated(`${mode}.${i}`, a)) }
+    ctx.templates.push('choose-one')
+    return { program: [...prefix, ...(gate ? gated(gate, steps) : steps)], ...(cost ? { cost } : {}) }
+  }
   const sentences = t.split(/\. Then, |, then /).map(s => s.trim()).filter(Boolean)
   const steps: Step[] = []
   for (const s of sentences) {
@@ -388,7 +426,7 @@ function body(text: string, ctx: Ctx, category: Category, timing: Timing): { pro
     if (!a) return null
     steps.push(...a)
   }
-  return { program: [...prefix, ...(gate ? after(gate, steps) : steps)], ...(cost ? { cost } : {}) }
+  return { program: [...prefix, ...(gate ? gated(gate, steps) : steps)], ...(cost ? { cost } : {}) }
 }
 
 /** A static sentence (no timing): a power/cost modifier of the card itself, a cost of the card in hand, or a keyword it gains. */
@@ -400,7 +438,13 @@ function staticAbility(text: string, conds: BaseCondition[], number: string, def
   const self = category === 'LEADER' ? 'This Leader' : 'This Character'
   const zone = category === 'LEADER' ? 'leader' as const : 'characters' as const
   if (category === 'EVENT' || category === 'STAGE') return false
-  const k = out.continuous.length + out.conditionalKeywords.length + 1
+  const k = out.continuous.length + out.conditionalKeywords.length + out.attackProhibitions.length + 1
+  // "This Leader cannot attack." / "This Character cannot attack." without condition.
+  if (new RegExp(`^${category === 'LEADER' ? 'This Leader' : 'This Character'} cannot attack$`).test(t)) {
+    if (conds.length) return false
+    out.attackProhibitions.push({ id: `${number}.s${k}-cannot-attack`, definitionId, zone: category === 'LEADER' ? 'leader' : 'characters', self: true })
+    ctx.templates.push('cannot-attack'); return true
+  }
   let m: RegExpExecArray | null
   const extra: Partial<Continuous> = {}
   // Card in hand: "If ..., give this card in your hand -N cost" (no other printed condition).
@@ -458,7 +502,7 @@ export function compileCardText(row: { code: string; type: string; effect: strin
   const category = row.type.trim().toUpperCase() as Category
   const ctx: Ctx = { n: 0, templates: [], number, delayed: [] }
   const profile: LocalProfile = {}, abilities: EffectDefinition[] = [], unparsed: string[] = []
-  const out: CompiledCard = { number, profile, abilities, continuous: [], conditionalKeywords: [], templates: ctx.templates, unparsed }
+  const out: CompiledCard = { number, profile, abilities, continuous: [], conditionalKeywords: [], attackProhibitions: [], templates: ctx.templates, unparsed }
   let effect = clean(row.effect === '-' ? '' : row.effect)
   // Printed keywords with their reminder text.
   effect = effect.replace(/(?<![a-z] )\[Blocker\] ?/g, () => { profile.blocker = true; ctx.templates.push('blocker'); return '' }).replace(REMINDER.BLOCKER, '')
@@ -514,7 +558,7 @@ export function compileCardText(row: { code: string; type: string; effect: strin
   if (trigger) add(trigger.replace(/^\[Trigger\]\s*/, '[Trigger] '), true)
   // Delayed "at the end of this turn" parts: own [End of Your Turn] definitions, scheduled by the ability that prints them.
   for (const d of ctx.delayed) abilities.push(ability(d.id, definitionId, 'delayed', 'END_OF_YOUR_TURN', d.program))
-  const ids = [...abilities.map(a => a.id), ...out.continuous.map(c => c.id), ...out.conditionalKeywords.map(c => c.id)]
+  const ids = [...abilities.map(a => a.id), ...out.continuous.map(c => c.id), ...out.conditionalKeywords.map(c => c.id), ...out.attackProhibitions.map(c => c.id)]
   if (ids.length) profile.abilityIds = ids
   return out
 }

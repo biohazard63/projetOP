@@ -17,7 +17,7 @@ function attackProhibited(state: GameState, id: string): boolean {
   if (!rules.length) return false
   const leaderName = (playerId: string) => { const p = state.players.find(x => x.id === playerId)!; return state.catalog.definitions.find(d => d.definitionId === state.instances[p.zones.leader[0]]?.definitionId)?.rulesName }
   return rules.some(rule => {
-    if (rule.self) return i.zone === 'characters' && i.definitionId === rule.definitionId && (!rule.leaderName || leaderName(i.controller) === rule.leaderName)
+    if (rule.self) return i.zone === rule.zone && i.definitionId === rule.definitionId && (!rule.leaderName || leaderName(i.controller) === rule.leaderName)
     const cost = i.zone === 'characters' ? evaluateCharacteristics(state, id).cost.current : null
     if (cost === null || cost < rule.all!.minCost || cost > rule.all!.maxCost) return false
     return state.players.some(p => p.zones.characters.some(c => state.instances[c].definitionId === rule.definitionId) && (!rule.leaderName || leaderName(p.id) === rule.leaderName))

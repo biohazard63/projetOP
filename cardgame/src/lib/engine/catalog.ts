@@ -70,7 +70,7 @@ const currentPacks = () => {
   const packs = COMPILED_LABELS.map(label => { const p = compiledPack(label, defined); for (const c of p.cards) defined.add(c.number); return p }).filter(p => p.cards.length)
   compiledCardList = packs.flatMap(p => p.compiled)
   const compiled = packs.map(p => ({ packId: `M7_COMPILED_${p.label.replace(/-/g, '')}`, schemaVersion: 1 as const, rulesVersion: '1.2.1' as const, cards: p.cards,
-    effects: { definitions: p.definitions, continuous: p.continuous, conditionalKeywords: p.conditionalKeywords } }))
+    effects: { definitions: p.definitions, continuous: p.continuous, conditionalKeywords: p.conditionalKeywords, attackProhibitions: p.attackProhibitions } }))
   return [...manual, ...compiled]
 }
 const manualPacks = () => [

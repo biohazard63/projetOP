@@ -10,11 +10,27 @@ const reviewed = new Set(Object.values(M7_REVIEWED).flatMap(cards => Object.keys
 const cards = () => compiledCards().filter(c => reviewed.has(c.number))
 
 test('M7 compiled abilities run in real games and produce their printed result', async t => {
-  for (const c of cards()) for (const a of c.abilities) await t.test(a.id, () => { const r = runAbility(c, a); assert.ok(r.ok, r.ok ? '' : r.reason) })
+  // A "Choose one" ability is run once per option.
+  const modes = (a: (typeof cards extends () => readonly (infer C)[] ? C : never)['abilities'][number]) => Math.max(1, ...a.program.map(st => st.kind === 'MODE' ? st.modes : 1))
+  for (const c of cards()) for (const a of c.abilities) for (let m = 0; m < modes(a); m++) await t.test(`${a.id}${m ? ` (option ${m + 1})` : ''}`, () => { const r = runAbility(c, a, m); assert.ok(r.ok, r.ok ? '' : r.reason) })
 })
 
 test('M7 compiled static modifiers and conditional keywords apply with their printed condition', async t => {
-  for (const c of cards()) for (const x of [...c.continuous, ...c.conditionalKeywords]) await t.test(x.id, () => { const r = runStatic(c, x); assert.ok(r.ok, r.ok ? '' : r.reason) })
+  for (const c of cards()) for (const x of [...c.continuous, ...c.conditionalKeywords, ...c.attackProhibitions]) await t.test(x.id, () => { const r = runStatic(c, x); assert.ok(r.ok, r.ok ? '' : r.reason) })
+})
+
+test('M7 compiled programs: after an optional cost or a printed condition, every step that acts is gated by it', () => {
+  // Otherwise an action would happen with the cost unpaid or the condition unmet (as a search did before this check).
+  for (const c of compiledCards()) for (const a of c.abilities) {
+    const first = a.program.findIndex(st => st.kind === 'CHECK' || (st.kind === 'CHOICE' && st.bind === 'paid'))
+    if (first < 0) continue
+    for (const st of a.program.slice(first + 1)) {
+      if (st.kind === 'BIND_ALL' || st.kind === 'UNION') continue
+      const subject = st.kind === 'OPERATION' ? (st.operation as { subjectBinding?: string }).subjectBinding : undefined
+      if (subject === 'paid') continue // the payment of the cost itself
+      assert.ok('whenBindingNonempty' in st && st.whenBindingNonempty, `${a.id}: ${st.kind} not gated`)
+    }
+  }
 })
 
 test('M7 compiled printed keywords and [Blocker] are carried by the definition', () => {

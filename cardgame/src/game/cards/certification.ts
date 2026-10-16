@@ -1399,7 +1399,7 @@ export const M7_CERTIFICATIONS: Certification[] = Object.entries(M7_REVIEWED).fl
   const row = officialRow(label, number), c = compileCardText(row, officialDefinitionId(number))
   if (c.unparsed.length) throw new Error(`M7_REVIEWED_NOT_COMPILED:${number}`)
   const trigger = c.abilities.find(a => a.timing === 'TRIGGER'), counter = c.profile.counterEvent?.abilityId
-  const statics = [...c.continuous, ...c.conditionalKeywords].length > 0
+  const statics = [...c.continuous, ...c.conditionalKeywords, ...c.attackProhibitions].length > 0
   const ids = c.profile.abilityIds ?? []
   const abilities: CertifiedAbility[] = [
     ...(c.profile.blocker ? [bl([M7_TESTS.printed, M7_TESTS.abilities])] : []),

@@ -118,6 +118,10 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
     if (c.kind === 'OWN_RESTED_CHARACTERS_AT_LEAST') { plan.ownRested = c.minimum as number; continue }
     if (c.kind === 'OPPONENT_RESTED_CHARACTERS_AT_LEAST') { plan.oppRested = c.minimum as number; continue }
     if (c.kind === 'TRASH_AT_LEAST') { plan.trashMin = c.minimum as number; continue }
+    if (c.kind === 'OWN_CHARACTER_COUNT' && c.atLeast && (c.traitsAny || c.nameIs)) {
+      const m = matching({ category: 'CHARACTER', ...(c.traitsAny ? { traitsAny: c.traitsAny } : {}), ...(c.nameIs ? { namesAny: [c.nameIs] } : {}) }, lead.colors, card.number); if (!m) return 'NO_CARD_FOR_CONDITION'
+      extra.push(m); (plan.ownTargets ??= []).push({ number: m, rested: false }); continue
+    }
     if (c.kind === 'FIELD_DON_AT_MOST') { plan.fieldDonMax = c.maximum as number; continue }
     if (c.kind === 'LIFE_LESS_THAN_OPPONENT') { plan.ownLife = 3; continue }
     if (c.kind === 'OWN_CHARACTER_COST_AT_LEAST') { plan.ownCostAtLeast = c.minimum as number; continue }
@@ -187,6 +191,8 @@ function setup(card: CompiledCard, p: Plan, turn: number) {
   return { s, targets, seededHand }
 }
 /** Answers pending choices with the first offered options (pays optional costs, chooses the maximum allowed). */
+/** The option a "Choose one" MODE takes in the current scenario (each option is run in its own scenario). */
+let modePick = 0
 function answerAll(s: GameState): GameState {
   for (let n = 0; n < 12; n++) {
     const who = ['alice', 'bob'].find(o => pendingChoice(s, o))
@@ -196,6 +202,7 @@ function answerAll(s: GameState): GameState {
       return s
     }
     const c = pendingChoice(s, who)!
+    if (s.effects?.choice?.modes !== undefined) { const o = c.options[Math.min(modePick, c.options.length - 1)]; s = act(s, who, { type: 'ANSWER_CHOICE', choiceId: c.choiceId, tokens: [o.token] }); continue }
     const count = c.choiceType === 'ORDER' ? c.options.length : c.allOrNone ? (c.options.length >= c.max ? c.max : 0) : Math.min(c.max, c.options.length)
     s = act(s, who, { type: 'ANSWER_CHOICE', choiceId: c.choiceId, tokens: c.options.slice(0, Math.max(count, c.min)).map(o => o.token) })
   }
@@ -211,13 +218,16 @@ function snap(s: GameState): Snap {
     power: new Map(field.map(id => [id, power(s, id)])), costs: new Map(field.map(id => [id, cost(s, id)])), stage: b.stage.length }
 }
 /** Checks every operation of `program` against the state change (before → after). */
-function verify(program: Step[], before: Snap, after: Snap, s: GameState, sourceId: string | null): string[] | string {
+function verify(full: Step[], before: Snap, after: Snap, s: GameState, sourceId: string | null): string[] | string {
+  // "Choose one": only the steps of the option taken in this scenario.
+  const modeBinds = full.flatMap(st => st.kind === 'MODE' ? [st.bind] : [])
+  const program = full.filter(st => !('whenBindingNonempty' in st && st.whenBindingNonempty && modeBinds.some(m => st.whenBindingNonempty!.startsWith(`${m}.`) && st.whenBindingNonempty !== `${m}.${modePick}`)))
   const { ops, searches } = scan(program), checked: string[] = []
   const changedPower = (sign: number, amount: number) => [...before.power].some(([id, p]) => after.power.has(id) && (after.power.get(id)! - p) * sign >= amount)
   for (const op of ops) {
     const o = op as Record<string, unknown>
     switch (op.primitive) {
-      case 'koCharacter': { const gone = before.bobChars.filter(id => s.instances[id].zone === 'trash').length; if (!gone && before.stage <= after.stage) return 'KO_NOT_APPLIED'; checked.push('ko'); break }
+      case 'koCharacter': if (o.subjectBinding === 'paid') { if (!before.aliceChars.some(id => s.instances[id].zone === 'trash')) return 'OWN_KO_NOT_APPLIED'; checked.push('K.O. own'); break } { const gone = before.bobChars.filter(id => s.instances[id].zone === 'trash').length; if (!gone && before.stage <= after.stage) return 'KO_NOT_APPLIED'; checked.push('ko'); break }
       case 'restCard': if (o.subjectBinding === 'paid' ? after.restedDon <= before.restedDon : ![...after.rested].some(id => !before.rested.has(id)) && !before.field.some(id => !before.rested.has(id) && s.instances[id].zone === 'trash')) return 'REST_NOT_APPLIED'; checked.push('rest'); break
       case 'addPower': if (!changedPower(Math.sign(o.amount as number), Math.abs(o.amount as number)) && !(o.duration === 'THIS_BATTLE' && (after.battleMods - before.battleMods) * Math.sign(o.amount as number) >= Math.abs(o.amount as number))) return 'POWER_NOT_APPLIED'; checked.push(`power ${o.amount}`); break
       case 'addCost': if (![...before.costs].some(([id, c]) => after.costs.has(id) && after.costs.get(id)! - c <= (o.amount as number) || (c > 0 && after.costs.get(id) === Math.max(0, c + (o.amount as number))))) return 'COST_NOT_APPLIED'; checked.push(`cost ${o.amount}`); break
@@ -228,7 +238,7 @@ function verify(program: Step[], before: Snap, after: Snap, s: GameState, source
       case 'attachRestedDon': if (after.attached <= before.attached) return 'DON_NOT_GIVEN'; checked.push('give DON!!'); break
       case 'setActive': if (o.subjectBinding ? !before.restedDonIds.some(id => !s.instances[id].rested) && ![...before.rested].some(id => !after.rested.has(id)) : sourceId && s.instances[sourceId].rested) return 'NOT_SET_ACTIVE'; checked.push('set active'); break
       case 'playCard': if (after.aliceChars.length <= before.aliceChars.length) return 'NOT_PLAYED'; checked.push('play'); break
-      case 'grantKeyword': if (!sourceId || !hasCombatKeyword(s, sourceId, o.keyword as 'RUSH')) return 'KEYWORD_NOT_GRANTED'; checked.push(`keyword ${o.keyword}`); break
+      case 'grantKeyword': if (!(sourceId && hasCombatKeyword(s, sourceId, o.keyword as 'RUSH')) && !zones(s, 'alice').characters.some(id => hasCombatKeyword(s, id, o.keyword as 'RUSH'))) return 'KEYWORD_NOT_GRANTED'; checked.push(`keyword ${o.keyword}`); break
       case 'trashCharacter': if (!sourceId || s.instances[sourceId].zone !== 'trash') return 'NOT_TRASHED'; checked.push('trash this Character'); break
       case 'lockRefresh': if (after.locks <= before.locks) return 'REFRESH_NOT_LOCKED'; checked.push('refresh lock'); break
       case 'preventBlocker': if (after.blockerLocks <= before.blockerLocks) return 'BLOCKER_NOT_PREVENTED'; checked.push('no [Blocker]'); break
@@ -266,12 +276,13 @@ function endOfTurnPart(s: GameState, a: EffectDefinition, card: CompiledCard): s
 }
 
 /** Runs one compiled ability in a real game and checks its printed result. */
-export function runAbility(card: CompiledCard, a: EffectDefinition): Outcome {
+export function runAbility(card: CompiledCard, a: EffectDefinition, mode = 0): Outcome {
+  modePick = mode
   // A delayed "at the end of this turn" part is run by the scenario of the ability that schedules it.
   if (a.source.kind === 'CARD_DEFINITION' && a.source.zone === 'delayed') {
     const parent = card.abilities.find(x => JSON.stringify(x.program).includes(`"definitionId":"${a.id}"`))
     if (!parent) return { ok: false, reason: 'DELAYED_WITHOUT_SCHEDULER' }
-    const r = runAbility(card, parent); return r.ok ? { ok: true, checked: [...r.checked, 'end of turn part'] } : r
+    const r = runAbility(card, parent, mode); return r.ok ? { ok: true, checked: [...r.checked, 'end of turn part'] } : r
   }
   const p = plan(card, a, {})
   if (typeof p === 'string') return { ok: false, reason: p }
@@ -348,12 +359,21 @@ export function runAbility(card: CompiledCard, a: EffectDefinition): Outcome {
 }
 
 /** A static modifier or conditional keyword: absent without its condition... present with it. */
-export function runStatic(card: CompiledCard, item: CompiledCard['continuous'][number] | CompiledCard['conditionalKeywords'][number]): Outcome {
+export function runStatic(card: CompiledCard, item: CompiledCard['continuous'][number] | CompiledCard['conditionalKeywords'][number] | CompiledCard['attackProhibitions'][number]): Outcome {
   const p = plan(card, null, item as unknown as Record<string, unknown>)
   if (typeof p === 'string') return { ok: false, reason: p }
   try {
     let { s } = setup(card, p, 11)
     const d = definitionOf(card.number)
+    // "cannot attack": never offered as an attacker, while another active card of the same player is.
+    if ('self' in item) {
+      const id = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true })
+      const other = d.category === 'LEADER' ? put(s, 'alice', vanillas(definitionOf(p.aliceLeader).colors[0])[0].number, 'characters', { playedEarlier: true }) : leaderOf(s, 'alice')
+      const attackers = legal(s, 'alice').flatMap(a => a.type === 'DECLARE_ATTACK' ? a.attackerIds : [])
+      if (!attackers.includes(other)) return { ok: false, reason: 'NO_ATTACK_OFFERED' }
+      if (attackers.includes(id)) return { ok: false, reason: 'ATTACK_NOT_PROHIBITED' }
+      try { attack(s, id, leaderOf(s, 'bob')); return { ok: false, reason: 'ATTACK_ACCEPTED' } } catch { return { ok: true, checked: ['cannot attack'] } }
+    }
     if ('characteristic' in item && item.zone === 'hand') {
       const id = put(s, 'alice', card.number, 'hand')
       if (item.whenCharacter) { const big = defs().filter(x => isVanilla(x) && (x.power ?? 0) >= item.whenCharacter!.minPower && x.colors.every(c => definitionOf(bobLeaderOf(p.bobColour)!).colors.includes(c)))[0]; if (!big) return { ok: false, reason: 'NO_OPPOSING_POWER' }
@@ -362,7 +382,7 @@ export function runStatic(card: CompiledCard, item: CompiledCard['continuous'][n
       const now = evaluateCharacteristics(s, id).cost.current
       return now === (d.cost ?? 0) + item.amount ? { ok: true, checked: [`hand cost ${item.amount}`] } : { ok: false, reason: `HAND_COST ${now}` }
     }
-    if (item.duringOpponentTurn) s = endTurn(s)
+    if ('duringOpponentTurn' in item && item.duringOpponentTurn) s = endTurn(s)
     const id = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true })
     if ('characteristic' in item) {
       const printed = item.characteristic === 'POWER' ? (d.power ?? 0) : (d.cost ?? 0), read = () => item.characteristic === 'POWER' ? power(s, id) : cost(s, id)
