@@ -7,6 +7,8 @@ export { BOT_LEVELS, type BotLevel } from './context'
 export type BotDecision = { intent: Intent; usedFallback: boolean }
 
 /** One bounded decision: the strategy sees only its projection; an unusable answer falls back safely. */
+/** The safe default answer (passes, phase advance, end of main): breaks a loop of a decision that changes nothing. */
+export const botFallback = (state: GameState, seat: string): Intent => fallback(botContext(state, seat))
 export function botDecision(state: GameState, seat: string, level: BotLevel): BotDecision {
   const ctx = botContext(state, seat)
   try {

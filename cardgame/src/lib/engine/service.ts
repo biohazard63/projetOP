@@ -3,7 +3,7 @@ import { applyCommand, createGame, getLegalActions } from '../../game/core/game'
 import type { Command, GameState } from '../../game/core/types'
 import type { DeckEntry } from '../../game/rulesets/decks'
 import type { CardPrinting } from '../../game/cards/types'
-import { botDecision, BOT_LEVELS, type BotLevel } from './strategy'
+import { botDecision, botFallback, BOT_LEVELS, type BotLevel } from './strategy'
 import { engineCatalog, currentEngineRegistry, engineRuleset, scopedToDecks } from './catalog'
 import { REFERENCE_DECKS, deckEligibility } from './decks'
 import { createSecureSeed } from './seed'
@@ -31,12 +31,18 @@ const levelOf = (value: string): BotLevel => (BOT_LEVELS as string[]).includes(v
 
 /** Lets the server bot play every decision it owns, until the human must act or the game ends. */
 export function advanceBot(state: GameState, botSeat = BOT_SEAT, humanSeat = HUMAN_SEAT, level: BotLevel = 'normal'): { state: GameState; commands: StoredCommand[] } {
-  const commands: StoredCommand[] = []
+  const commands: StoredCommand[] = [], repeats = new Map<string, number>()
   for (let step = 0; step < MAX_BOT_STEPS && !state.result; step++) {
     const actions = getLegalActions(state, botSeat)
     if (!actions.length || getLegalActions(state, humanSeat).length) break
     // The strategy sees only the bot's projection; botDecision falls back to a safe legal answer if needed.
-    const command = { ...botDecision(state, botSeat, level).intent, id: `bot-${state.version}`, actorId: botSeat, expectedVersion: state.version } as Command
+    let intent = botDecision(state, botSeat, level).intent
+    // The same decision over and over (an ability that is legal but changes nothing) would spin until MAX_BOT_STEPS
+    // and time the request out: past 3 repeats the bot takes the safe default instead.
+    const key = JSON.stringify(intent), seen = (repeats.get(key) ?? 0) + 1
+    repeats.set(key, seen)
+    if (seen > 3) intent = botFallback(state, botSeat)
+    const command = { ...intent, id: `bot-${state.version}`, actorId: botSeat, expectedVersion: state.version } as Command
     const result = applyCommand(state, command)
     if (!result.ok) throw new Error(`BOT_REFUSED:${result.error}`) // a bot command is built from legal actions: refusal is an engine defect
     state = result.state
