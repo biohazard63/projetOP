@@ -14,6 +14,7 @@ import { formatBerries } from '@/components/economy/Berries'
 import { preloadFan, useCardPreload } from './useCardPreload'
 import OpeningSettings from './OpeningSettings'
 import TearOpening from './TearOpening'
+import OpeningWait from './OpeningWait'
 import { useCollectorPreferences } from '@/components/collector/Preferences'
 import { openingEffect } from '@/lib/boosters/presentation'
 import { useSearchParams } from 'next/navigation'
@@ -22,7 +23,7 @@ import { useCallback, useEffect, useRef, useState } from 'react'
 import { useSession } from 'next-auth/react'
 import Link from 'next/link'
 import Image from 'next/image'
-import { ArrowUpRight, Check, ChevronLeft, ChevronRight, History, Sparkles, Volume2, VolumeX } from 'lucide-react'
+import { ArrowUpRight, Check, ChevronLeft, ChevronRight, History, Loader2, Sparkles, Volume2, VolumeX } from 'lucide-react'
 import { useAudio, useSoundSetting } from '@/hooks/useAudio'
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog'
 import type { BoosterCatalogItem, OpeningCard, OpeningResult } from '@/lib/boosters/types'
@@ -209,6 +210,9 @@ export default function BoosterExperience() {
   }
   function startOpening() {
     if (flight.current || !chosen?.available || busy || (pending && !pending.openingId) || missing > 0) return
+    // On a phone the button sits below the packs: bring them (and the waiting bubble) back into view.
+    const stage = document.querySelector('.bo-hero-stage')?.getBoundingClientRect()
+    if (stage && (stage.top < 0 || stage.bottom > window.innerHeight)) window.scrollBy({ top: stage.top - 80, behavior: reducedMotion ? 'auto' : 'smooth' })
     if (batchCount > 1) {
       if (!preferences.animations || preferences.quickOpening || reducedMotion) audio.playPackOpenSound()
       setOpening(null); setBatch(null)
@@ -257,9 +261,10 @@ export default function BoosterExperience() {
       {batch && <div className="bo-batch">{animating ? <TearOpening onTear={() => audio.playPackOpenSound()} returnHref={`/boosters?set=${encodeURIComponent(batch[0].setCode)}`} imageUrl={sets.find(set => set.code === batch[0].setCode)?.imageUrl || null} setName={`${batch[0].setName} · ${batch.length} boosters`} cardCount={batch.length * batch[0].cards.length} onComplete={() => setAnimating(false)} />
         : <BatchOpening key={batch[0].id} openings={batch} onSummary={showBatchSummary} onCard={batchCard} onDetail={setDetail} busy={busy || missing > 0} againLabel={`${batch.length === 24 ? 'Ouvrir une autre display' : `Ouvrir ${batch.length} autres boosters`}${cost !== null ? ` · ${formatBerries(cost)}` : ''}`} onAgain={() => { setBatch(null); startOpening() }} />}</div>}
       {!opening && !batch && <section className="bo-hero" aria-labelledby="extension-title">
-        <div className="bo-hero-stage">
+        <div className={`bo-hero-stage${busy ? ' loading' : ''}`}>
           <div className="bo-hero-glow" aria-hidden="true" />
           <HeroPacks src={chosen?.imageUrl} alt={`Booster ${chosen?.code || ''}`} count={batchCount} code={chosen?.code} title={chosen ? boosterTitle(chosen) : undefined} />
+          {busy && <OpeningWait count={batchIntent?.count ?? batchCount} />}
           {orderedSets.length > 1 && <><button type="button" className="bo-hero-arrow prev" aria-label="Extension précédente" disabled={busy || chosenIndex <= 0} onClick={() => setSelectedSet(orderedSets[chosenIndex - 1].code)}><ChevronLeft /></button>
             <button type="button" className="bo-hero-arrow next" aria-label="Extension suivante" disabled={busy || chosenIndex >= orderedSets.length - 1} onClick={() => setSelectedSet(orderedSets[chosenIndex + 1].code)}><ChevronRight /></button></>}
         </div>
@@ -276,7 +281,7 @@ export default function BoosterExperience() {
           {catalogError && <p role="alert" className="bo-unavailable">{catalogError}</p>}
           <div className="bo-cta">
             <div className="bo-count" role="radiogroup" aria-label="Nombre de boosters">{([1, 5, 10, 24] as const).map(n => <button key={n} type="button" role="radio" aria-checked={batchCount === n} aria-label={n === 24 ? 'Display de 24 boosters' : `×${n}`} className={`${batchCount === n ? 'on' : ''}${n === 24 ? ' display' : ''}`} disabled={busy} onClick={() => setBatchCount(n)}>{n === 24 ? <>Display<small>24</small></> : `×${n}`}</button>)}</div>
-            <button type="button" onClick={startOpening} disabled={!chosen?.available || busy || Boolean(pending && !pending.openingId) || missing > 0} className="bo-open"><Sparkles size={20} />{busy ? 'Confirmation serveur…' : batchCount === 1 ? 'Ouvrir le booster' : batchCount === 24 ? 'Ouvrir la display' : `Ouvrir ${batchCount} boosters`}{!busy && cost !== null && <small className="bo-price">{formatBerries(cost)}</small>}</button>
+            <button type="button" onClick={startOpening} disabled={!chosen?.available || busy || Boolean(pending && !pending.openingId) || missing > 0} className={`bo-open${busy ? ' loading' : ''}`}>{busy ? <Loader2 size={20} className="bo-wait-spin" /> : <Sparkles size={20} />}{busy ? 'Ouverture en cours…' : batchCount === 1 ? 'Ouvrir le booster' : batchCount === 24 ? 'Ouvrir la display' : `Ouvrir ${batchCount} boosters`}{!busy && cost !== null && <small className="bo-price">{formatBerries(cost)}</small>}</button>
           </div>
           {batchCount === 24 && wallet && <p className="bo-display-note">Une boîte neuve de 24 boosters : 2 alternatives, 7 SR et 8 Leaders garantis{wallet.economy.prices.booster * 24 > wallet.economy.prices.display ? <>, soit <b>{formatBerries(wallet.economy.prices.booster * 24 - wallet.economy.prices.display)}</b> d’économie</> : null}.</p>}
           {wallet && <p className={`bo-wallet${missing ? ' short' : ''}`} role="status">{missing ? <>Il vous manque <b>{formatBerries(missing)}</b>. Gagnez des Berrys avec le <Link href="/home">trésor du jour</Link>, en <Link href="/play">jouant contre le bot</Link> ou en <Link href="/collection?resale=1">revendant vos doublons</Link>.</> : <>Solde : <b>{formatBerries(wallet.balance)}</b>{wallet.economy.events.map(e => <span key={e.id} className="bo-event">{e.label}</span>)}</>}</p>}

@@ -142,3 +142,16 @@
 @keyframes bo-rainbow { to { --bo-angle:360deg; } }
 .piece-opening-card .text-emerald-300 { display:inline-block; padding:1px 8px; border-radius:999px; background:#1f8a4c; color:#eafff2 !important; font-weight:800; box-shadow:0 0 10px #2ecc7155; }
 @media (prefers-reduced-motion:reduce) { .bo-deal, .piece-opening-card { animation:none !important; } }
+/* Waiting for the server: the packs tremble and a status bubble tells what is happening. */
+.bo-hero-stage.loading .bo-hero-fan, .bo-hero-stage.loading .bo-display, .bo-hero-stage.loading > :not(.bo-hero-glow):not(.bo-wait):not(.bo-hero-arrow) { animation:bo-wait-shake .9s ease-in-out infinite; }
+.bo-hero-stage.loading .bo-hero-glow { opacity:1; filter:brightness(1.35); }
+@keyframes bo-wait-shake { 0%, 100% { transform:translate(0) rotate(0); } 20% { transform:translate(-2px,1px) rotate(-.8deg); } 40% { transform:translate(2px,-1px) rotate(.8deg); } 60% { transform:translate(-1px,0) rotate(-.4deg); } 80% { transform:translate(1px,1px) rotate(.4deg); } }
+.bo-wait { position:absolute; left:50%; bottom:clamp(8px,4%,24px); z-index:5; display:grid; grid-template-columns:auto minmax(0,1fr); align-items:center; gap:4px 10px; width:max-content; max-width:min(92%,380px); padding:10px 16px 12px; border:1px solid #f5c45c88; border-radius:14px; background:#061321ee; box-shadow:0 10px 30px #0008, 0 0 24px #f5c45c33; color:#ffe7ae; font-weight:700; font-size:.92rem; line-height:1.3; transform:translateX(-50%); animation:bo-wait-in .25s ease-out both; }
+.bo-wait-bar { grid-column:1 / -1; height:3px; border-radius:3px; background:linear-gradient(90deg,transparent,#f5c45c,transparent) 0 0 / 40% 100% no-repeat, #f5c45c22; animation:bo-wait-bar 1.2s linear infinite; }
+.bo-wait-spin { color:#f5c45c; animation:bo-wait-spin .8s linear infinite; }
+.bo-open.loading:disabled { opacity:1; cursor:progress; filter:saturate(.8); }
+@keyframes bo-wait-spin { to { transform:rotate(360deg); } }
+@keyframes bo-wait-bar { from { background-position:-60% 0, 0 0; } to { background-position:160% 0, 0 0; } }
+@keyframes bo-wait-in { from { opacity:0; transform:translate(-50%,8px); } }
+@media (prefers-reduced-motion:reduce) { .bo-hero-stage.loading *, .bo-wait, .bo-wait-bar, .bo-wait-spin { animation:none !important; } }
+.bo-open .bo-wait-spin { color:currentColor; }
