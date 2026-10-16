@@ -109,7 +109,8 @@ function mainPhase(ctx: BotContext, k: Knobs): Intent | null {
   })()
   if (pick) return { type: 'PLAY_CARD', instanceId: pick.instanceId, donIds: pick.eligibleDonIds.slice(0, pick.cost), replaceId: pick.requiresReplacement ? pick.replacementIds[0] : null }
   if (k.abilities) {
-    const main = starts.find(a => !a.donMinus && !a.optionalCost && !a.effectId.includes('give-rested-don') && seats(ctx).hand.some(h => a.effectId.includes(h.id)) && active - keep >= 2)
+    // Effect ids are `<ability>:<instance>:<generation>`: match the whole instance id (`c4` must not match `c49`).
+    const main = starts.find(a => !a.donMinus && !a.optionalCost && !a.effectId.includes('give-rested-don') && seats(ctx).hand.some(h => a.effectId.includes(`:${h.id}:`)) && active - keep >= 2)
     if (main) return { type: 'START_EFFECT', effectId: main.effectId }
     const give = starts.find(a => a.effectId.includes('give-rested-don') && (me.cost as Visible[]).some(d => d.rested))
     if (give) return { type: 'START_EFFECT', effectId: give.effectId }

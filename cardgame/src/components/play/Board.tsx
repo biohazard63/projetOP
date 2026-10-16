@@ -410,7 +410,7 @@ export function Board({ pending = null, paused = false, onPause, onHold, reading
     <BattleArrow battle={battle} />
     <Stage step={deciding ? null : step} view={view} fast={fast} paused={paused} reading={reading} onHold={onHold} onPause={onPause} onContinue={onSkipAnim} />
     {!onlyPass && <BattlePanel view={view} act={act} send={send} busy={busy} />}
-    <section className="play-hand" style={{ '--hand-height-ratio': String(fanHeightRatio) } as CSSProperties} aria-label={`Votre main : ${(me.hand ?? []).length} cartes`}>
+    <section className="play-hand" style={{ '--hand-height-ratio': String(fanHeightRatio), '--hand-count': String(hand.length) } as CSSProperties} aria-label={`Votre main : ${(me.hand ?? []).length} cartes`}>
       <div className="play-hand-track">
         <div className="play-hand-fan">{hand.map((c, index) => <button type="button" key={c.id} data-card={c.id} className={`play-hand-card${optimistic.leaving.has(c.id) ? ' pending-out' : ''}${actable.has(c.id) ? ' can-act' : ''}${drag?.id === c.id ? ' dragging' : ''}${selected === c.id ? ' selected' : ''}`} aria-label={cardName(view, c.id)}
           style={{ '--fan-angle': `${fan[index]?.angle ?? 0}deg`, '--fan-offset': `${fan[index]?.offsetY ?? 0}px`, '--fan-overlap': `${fan[index]?.overlap ?? 0}px` } as CSSProperties}

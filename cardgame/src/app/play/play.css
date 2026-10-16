@@ -703,8 +703,13 @@ html:has(.play-layer), body:has(.play-layer) { overflow:hidden; overscroll-behav
 .tbl-side-utility .tbl-stage-zone .play-slot, .tbl-side-utility .tbl-stage-zone .play-card, .tbl-side-utility .tbl-stage-empty { width:var(--pile-card); }
 /* A fixed play surface must not be programmatically scrolled by focus changes. */
 .play-surface { overflow:clip; }
+/* Phone hand: larger than the cards on the field so it stays readable; the lower part bleeds below the screen
+   edge (clipped by the surface) and a picked card rises whole. */
 @media (orientation:landscape) and (max-height:500px) {
-  .play-surface { --hand-card-width:min(calc((24cqh - 20px) * .716),10.5cqw); }
+  .play-surface { --hand-card-width:min(calc(36cqh * .716 * 1.15),11.5cqw); }
+  /* Overlap from the free width between the side rails, so a long hand always fits on screen. */
+  .play-hand-card { margin-left:min(var(--fan-overlap,0px),calc((100cqw - 2 * var(--surface-hand-rail) - var(--hand-card-width)) / max(var(--hand-count,1) - 1,1) - var(--hand-card-width))); }
+  .play-hand-card:hover, .play-hand-card:focus-visible, .play-hand-card.selected { transform:rotate(0) translateY(-55%) scale(1.04); }
 }
 
 /* Starter selection: presentation of the existing certified references only. */
