@@ -6,6 +6,7 @@ import { OpeningPresentationProvider } from '@/components/collector/OpeningPrese
 import { Inter } from 'next/font/google'
 import { Navbar } from '@/components/Navbar'
 import { Providers } from './providers'
+import { ProgressProvider } from '@/components/progression/ProgressProvider'
 
 import { Analytics } from '@vercel/analytics/react'
 import { cn } from "@/lib/utils"
@@ -60,7 +61,7 @@ export default function RootLayout({
       </head>
       <body suppressHydrationWarning className={cn(inter.className, "min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))] overflow-x-clip")}>
         <Providers>
-          <CollectorPreferencesProvider><OpeningPresentationProvider>
+          <CollectorPreferencesProvider><OpeningPresentationProvider><ProgressProvider>
           <a className="piece-skip" href="#main-content">Aller au contenu</a>
           <div className="relative min-h-screen">
             {/* Fond: image + dégradés radiaux et overlay */}
@@ -74,7 +75,7 @@ export default function RootLayout({
          
           </div>
           <footer className="piece-footer"><span>MUGIWARA TCG · Votre aventure, carte après carte.</span><span>Projet de fans · Simulation gratuite <Link href="/opening-demo" className="ml-4 text-amber-200">Démo cinématique</Link></span></footer>
-            <PWAInstallPrompt /></OpeningPresentationProvider></CollectorPreferencesProvider>
+            <PWAInstallPrompt /></ProgressProvider></OpeningPresentationProvider></CollectorPreferencesProvider>
         </Providers>
         {/* <PWAAuthHelper /> */}
         <Analytics />

@@ -2,7 +2,7 @@ import { Prisma, type PrismaClient } from '@prisma/client'
 import { economyAt, parisDay, parisDayStart } from './config'
 
 type DB = Prisma.TransactionClient
-export type BerryReason = 'STARTER_GRANT' | 'DAILY_TREASURE' | 'BOT_GAME' | 'DUPLICATE_SALE' | 'BOOSTER_PURCHASE' | 'DISPLAY_PURCHASE'
+export type BerryReason = 'STARTER_GRANT' | 'DAILY_TREASURE' | 'BOT_GAME' | 'DUPLICATE_SALE' | 'BOOSTER_PURCHASE' | 'DISPLAY_PURCHASE' | 'BADGE' | 'LEVEL'
 export class BerryError extends Error { constructor(public code: string, message: string, public status = 422) { super(message) } }
 
 /** Same per-player lock as booster openings: every credit and purchase of a player is serialized. */
@@ -35,6 +35,26 @@ export async function post(tx: DB, userId: string, entry: { amount: number; reas
   await tx.user.update({ where: { id: userId }, data: { berries: balanceAfter } })
   const transaction = await tx.berryTransaction.create({ data: { userId, amount: entry.amount, reason: entry.reason, idempotencyKey: entry.key, balanceAfter, details: entry.details } })
   return { transaction, replayed: false }
+}
+
+type Entry = Parameters<typeof post>[2]
+/**
+ * Several ledger lines in a few queries (a batch of boosters), same guarantees as `post`: each key at most once and
+ * a balance never negative (the whole set is refused when its total is above the balance). Ids in entry order.
+ */
+export async function postMany(tx: DB, userId: string, entries: Entry[]) {
+  const existing = await tx.berryTransaction.findMany({ where: { userId, idempotencyKey: { in: entries.map(e => e.key) } }, select: { id: true } })
+  if (existing.length) { const ids: string[] = []; for (const entry of entries) ids.push((await post(tx, userId, entry)).transaction.id); return ids }
+  await grantStarter(tx, userId)
+  const user = await tx.user.findUnique({ where: { id: userId }, select: { berries: true } })
+  if (!user) throw new BerryError('USER_NOT_FOUND', 'Utilisateur introuvable', 401)
+  const total = entries.reduce((sum, e) => sum + e.amount, 0)
+  if (user.berries + total < 0) throw new BerryError('INSUFFICIENT_BERRIES', `Solde insuffisant : ${(-total).toLocaleString('fr-FR')} ฿ nécessaires, ${user.berries.toLocaleString('fr-FR')} ฿ disponibles.`, 402)
+  let balance = user.berries
+  const created = await tx.berryTransaction.createManyAndReturn({ data: entries.map(e => ({ userId, amount: e.amount, reason: e.reason, idempotencyKey: e.key, balanceAfter: balance += e.amount, details: e.details })), select: { id: true, idempotencyKey: true } })
+  await tx.user.update({ where: { id: userId }, data: { berries: balance } })
+  const byKey = new Map(created.map(t => [t.idempotencyKey, t.id]))
+  return entries.map(e => byKey.get(e.key)!)
 }
 
 /** Starting purse, granted once (also to accounts created before Berries existed). */

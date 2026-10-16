@@ -24,3 +24,15 @@ export function useCardPreload(cards: OpeningCard[] | undefined, index: number) 
     return () => { images.forEach(image => { image.onload = null; image.onerror = null }) }
   }, [cards, index])
 }
+
+// Same props as the fan of StackReveal: the browser then reuses the downloaded file.
+export const fanImageSizes = '(max-width:640px) 22vw, 140px'
+/** Downloads and decodes the fan images of a pack ahead of time (the next pack of a batch). */
+export function preloadFan(cards: OpeningCard[] | undefined) {
+  for (const card of cards ?? []) {
+    const { props } = getImageProps({ src: card.imageUrl || '/images/card-back.jpg', alt: '', width: 180, height: 252, sizes: fanImageSizes })
+    const image = new window.Image()
+    image.decoding = 'async'; image.sizes = props.sizes || ''; image.srcset = props.srcSet || ''; image.src = props.src
+    void image.decode().catch(() => {})
+  }
+}

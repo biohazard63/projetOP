@@ -8,7 +8,7 @@ import { useCollectorPreferences } from '@/components/collector/Preferences'
 import { advanceReveal, openingEffect, type RevealState } from '@/lib/boosters/presentation'
 import type { OpeningResult } from '@/lib/boosters/types'
 import styles from './StackReveal.module.css'
-import { revealImageSizes, useCardPreload } from './useCardPreload'
+import { fanImageSizes, revealImageSizes, useCardPreload } from './useCardPreload'
 
 const VARIANT = { alt: 'Alternative', parallel: 'Parallèle', special: 'Spéciale' } as const
 const TIER: Record<string, string> = { ALT: 'Alternative', 'SP CARD': 'SP', TR: 'Treasure Rare', MANGA: 'Manga', 'MANGA RED': 'Manga red' }
@@ -90,7 +90,7 @@ export default function StackReveal({ opening, revealed, onReveal, onComplete }:
         {dealt.map((c, i) => <button type="button" aria-label={`Agrandir ${c.name}`} onClick={() => setZoom(i)} key={`${opening.id}-${i}`} className={styles.fanCard} data-effect={openingEffect(c)} style={{ '--i': i, '--a': `${(i - (fanCount - 1) / 2) * 4.5}deg`, '--y': `${(i - (fanCount - 1) / 2) ** 2 * 1.6}px` } as CSSProperties}>
           <span className={styles.fanInner}>
             <span className={styles.fanBack}><Image draggable={false} src="/images/card-back.jpg" alt="" width={180} height={252} sizes="140px" priority /></span>
-            <span className={styles.fanFront}><Image draggable={false} src={c.imageUrl || '/images/card-back.jpg'} alt={c.name} width={180} height={252} sizes="(max-width:640px) 22vw, 140px" priority onLoad={() => setLoaded(n => n + 1)} onError={() => setLoaded(n => n + 1)} /></span>
+            <span className={styles.fanFront}><Image draggable={false} src={c.imageUrl || '/images/card-back.jpg'} alt={c.name} width={180} height={252} sizes={fanImageSizes} priority onLoad={() => setLoaded(n => n + 1)} onError={() => setLoaded(n => n + 1)} /></span>
           </span>
           {c.isNew && <span className={styles.fanNew}>Nouvelle</span>}
         </button>)}

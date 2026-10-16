@@ -5,7 +5,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { useState, type ReactNode } from 'react'
 import { signOut } from 'next-auth/react'
-import { BookOpen, Clapperboard, History, Layers, LogOut, PackageOpen, Smartphone, Sparkles, TrendingUp, Trophy, Lock, Vibrate, Volume2, Wand2 } from 'lucide-react'
+import { BookOpen, Clapperboard, History, Layers, LogOut, PackageOpen, Smartphone, Sparkles, TrendingUp, Vibrate, Volume2, Wand2 } from 'lucide-react'
 import { InstallHelp } from '@/components/collector/InstallHelp'
 import { ThemeSelector } from '@/components/collector/ThemeSelector'
 import { useRemote } from '@/hooks/useRemote'
@@ -13,11 +13,13 @@ import { useCollectorPreferences } from '@/components/collector/Preferences'
 import { useSoundSetting } from '@/hooks/useAudio'
 import type { CatalogueCard, CollectorOverview } from '@/lib/collector/types'
 import { LoadState, Progress } from '@/components/collector/Primitives'
-import { Counter, Ring, badgesOf, bountyOf, rankOf, useCountUp } from '@/components/collector/Progression'
+import { Counter, Ring, bountyOf, rankOf, useCountUp } from '@/components/collector/Progression'
 import CardDetail from '@/components/collector/CardDetail'
 import { compareCodes } from '@/lib/boosters/catalogPresentation'
 import { OceanBackdrop, Tilt, useReveal } from '@/components/home/fx'
 import WalletPanel from '@/components/economy/WalletPanel'
+import ProgressionPanel from '@/components/progression/ProgressionPanel'
+import { useProgress } from '@/components/progression/ProgressProvider'
 
 function Toggle({ label, hint, icon, checked, disabled, onChange }: { label: string; hint: string; icon: ReactNode; checked: boolean; disabled?: boolean; onChange: (v: boolean) => void }) {
   return <label className="pf-toggle"><span className="pf-toggle-icon">{icon}</span><span className="pf-toggle-text"><b>{label}</b><small>{hint}</small></span>
@@ -34,7 +36,7 @@ export default function ProfilePage() {
   const data = overview.data, profile = data?.profile
   const bounty = useCountUp(data ? bountyOf(data) : 0, 1600)
   const progress = data ? rankOf(data.percentage, data.catalogue, data.unique) : null
-  const badges = data ? badgesOf(data) : []
+  const { progress: account } = useProgress()
   const portrait = data?.recentRareCards[0] ?? data?.recentCards[0]
   const sets = (data?.sets ?? []).filter(s => s.total > 0).sort((a, b) => b.percentage - a.percentage || compareCodes(a.code, b.code)).slice(0, 6)
   const name = profile?.name || 'Pirate inconnu'
@@ -48,6 +50,7 @@ export default function ProfilePage() {
           <div className="pf-photo">{portrait?.imageUrl ? <Image src={portrait.imageUrl} alt="" fill sizes="260px" /> : <span>{name.slice(0, 1).toUpperCase()}</span>}</div>
           <p className="pf-dead">DEAD OR ALIVE</p>
           <p className="pf-name">{name}</p>
+          {account && <p className="pf-title">Niv. {account.account.level} · {account.account.titles[0] ?? account.account.title}</p>}
           <p className="pf-bounty"><span>฿</span>{bounty.toLocaleString('fr-FR')}<span>-</span></p>
           <p className="pf-marine">MARINE</p>
         </Tilt>
@@ -74,10 +77,7 @@ export default function ProfilePage() {
       <p className="pf-note">La prime est un score de réputation calculé à partir de votre collection : elle ne se dépense pas. Vos Berrys sont dans votre bourse ci-dessous.</p>
       <WalletPanel />
 
-      {badges.length > 0 && <section className="pf-section" data-reveal>
-        <h2><Trophy size={20} /> Badges <small>{badges.filter(b => b.done).length} / {badges.length}</small></h2>
-        <div className="hm-badges">{badges.map(b => <div key={b.name} className={`hm-badge${b.done ? ' done' : ''}`} title={b.hint}><span>{b.done ? <Trophy size={20} /> : <Lock size={18} />}</span><b>{b.name}</b><small>{b.hint}</small></div>)}</div>
-      </section>}
+      <ProgressionPanel />
 
       <div className="pf-columns" data-reveal>
         {data && data.recentRareCards.length > 0 && <section className="pf-section">

@@ -5,6 +5,7 @@ import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { BerryError, claimDailyTreasure, claimGameReward, getWallet } from './ledger'
 import { previewResale, sellDuplicates } from './resale'
+import { syncProgress } from '@/lib/progression/service'
 
 type Handler = (userId: string, body: unknown) => Promise<unknown>
 // Same guards as the booster routes: signed-in player, same-origin writes, typed errors, no internal detail leaked.
@@ -34,3 +35,4 @@ export const postTreasure = route(userId => claimDailyTreasure(prisma, userId), 
 export const postGameReward = route((userId, body) => claimGameReward(prisma, userId, parse(z.object({ gameId: z.string().min(1).max(100) }).strict(), body).gameId), true)
 export const getResale = route(userId => previewResale(prisma, userId), false)
 export const postResale = route((userId, body) => sellDuplicates(prisma, userId, parse(z.object({ idempotencyKey: z.string().uuid() }).strict(), body).idempotencyKey), true)
+export const postProgress = route(userId => syncProgress(prisma, userId), true)

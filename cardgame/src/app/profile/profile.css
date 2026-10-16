@@ -89,3 +89,5 @@
 .pf-wallet-log li { display:grid; grid-template-columns:1fr auto auto; gap:12px; align-items:center; padding:8px 12px; border-radius:10px; background:#ffffff08; font-size:.85rem; }
 .pf-wallet-log time { color:#8aa3bb; font-size:.78rem; } .pf-wallet-log b { font-variant-numeric:tabular-nums; } .pf-wallet-log .in { color:#3ddc97; } .pf-wallet-log .out { color:#ff8a8a; }
 @media (max-width:700px) { .pf-wallet-grid { grid-template-columns:1fr; } .pf-wallet-log li { grid-template-columns:1fr auto; } .pf-wallet-log time { display:none; } }
+
+.pf-title { margin:-2px 0 4px; text-align:center; font-family:Georgia,serif; font-size:.8rem; font-weight:800; letter-spacing:.08em; text-transform:uppercase; color:#6b3d14; }
