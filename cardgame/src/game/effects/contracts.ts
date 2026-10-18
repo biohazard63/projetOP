@@ -100,8 +100,10 @@ export type Condition = z.infer<typeof conditionSchema>
 // M6 generic card filter. Hidden zones (hand, trash list order is public but hand is secret) can only be read on the
 // controller's own side; the cost zone holds DON!! cards. Every filter is optional and combined with AND.
 export const cardsSelectorSchema = z.strictObject({ kind: z.literal('CARDS'), side: z.enum(['OWN', 'OPPONENT', 'ANY']),
+  // 'costOrCharacters': "DON!! cards or Characters (with a cost of N or less)" — cost-area DON!! and Characters, the cost and power
+  // filters applying to the Characters only (M7).
   // 'ownCards': "your cards" to rest — Leader, Characters, Stage and cost-area DON!! (FAQ OP14-029), the controller's side only.
-  zone: z.enum(['characters', 'leader', 'leaderOrCharacters', 'stage', 'hand', 'trash', 'handOrTrash', 'deck', 'cost', 'fieldDon', 'givenDon', 'life', 'ownCards']),
+  zone: z.enum(['characters', 'leader', 'leaderOrCharacters', 'stage', 'hand', 'trash', 'handOrTrash', 'deck', 'cost', 'fieldDon', 'givenDon', 'life', 'ownCards', 'costOrCharacters']),
   categories: z.array(z.enum(['CHARACTER', 'EVENT', 'STAGE'])).min(1).max(3).optional(),
   minCost: integer.max(20).optional(), maxCost: integer.max(20).optional(),
   // "base cost": the printed cost, not modified; "a cost equal to or less than the number of your opponent's Life cards".

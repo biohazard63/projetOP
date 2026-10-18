@@ -975,7 +975,7 @@ function select(s: GameState, actor: string, selector: import('./contracts').Sel
   if (selector.kind === 'OPPONENT_TOP_LIFE') return s.players.find(q => q.id !== actor)!.zones.life.slice(0, 1)
   if (selector.kind === 'CARDS') {
     const owners = selector.side === 'OWN' ? [p] : selector.side === 'OPPONENT' ? s.players.filter(q => q.id !== actor) : [p, ...s.players.filter(q => q.id !== actor)]
-    const ids = owners.flatMap(q => selector.zone === 'leader' ? q.zones.leader : selector.zone === 'leaderOrCharacters' ? [...q.zones.leader, ...q.zones.characters] : selector.zone === 'ownCards' ? [...q.zones.leader, ...q.zones.characters, ...q.zones.stage, ...q.zones.cost] : selector.zone === 'fieldDon' ? [...q.zones.cost, ...q.zones.attached] : selector.zone === 'givenDon' ? q.zones.attached : selector.zone === 'handOrTrash' ? [...q.zones.hand, ...q.zones.trash] : selector.topN ? q.zones.deck.slice(0, selector.topN)
+    const ids = owners.flatMap(q => selector.zone === 'leader' ? q.zones.leader : selector.zone === 'leaderOrCharacters' ? [...q.zones.leader, ...q.zones.characters] : selector.zone === 'ownCards' ? [...q.zones.leader, ...q.zones.characters, ...q.zones.stage, ...q.zones.cost] : selector.zone === 'costOrCharacters' ? [...q.zones.cost, ...q.zones.characters] : selector.zone === 'fieldDon' ? [...q.zones.cost, ...q.zones.attached] : selector.zone === 'givenDon' ? q.zones.attached : selector.zone === 'handOrTrash' ? [...q.zones.hand, ...q.zones.trash] : selector.topN ? q.zones.deck.slice(0, selector.topN)
       : selector.zone === 'life' ? selector.lifeEnd === 'ALL' ? [...q.zones.life] : [...new Set(selector.lifeEnd === 'TOP_OR_BOTTOM' ? [q.zones.life[0], q.zones.life.at(-1)] : [q.zones.life[0]])].filter((id): id is string => !!id) : q.zones[selector.zone])
     return ids.filter(id => {
       const i = s.instances[id]
@@ -984,7 +984,7 @@ function select(s: GameState, actor: string, selector: import('./contracts').Sel
       // An active card chosen to be rested ("you may rest ..."): not one that cannot be rested (FAQ EB02-011).
       if (selector.rested === false && restLocked(s, id)) return false
       if (selector.zone === 'cost' || selector.zone === 'fieldDon' || selector.zone === 'givenDon') return i.kind === 'DON'
-      if (selector.zone === 'ownCards' && i.kind === 'DON') return true
+      if ((selector.zone === 'ownCards' || selector.zone === 'costOrCharacters') && i.kind === 'DON') return true
       const definition = s.catalog.definitions.find(d => d.definitionId === i.definitionId)
       if (!definition) return false
       if (selector.categories && !selector.categories.includes(definition.category as 'CHARACTER' | 'EVENT' | 'STAGE')) return false
