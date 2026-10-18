@@ -15,6 +15,7 @@ type Filter = Parameters<typeof upTo>[2]
 type Category = 'LEADER' | 'CHARACTER' | 'EVENT' | 'STAGE'
 export type Continuous = { id: string; definitionId: string; zone: 'characters' | 'leader' | 'hand'; characteristic: 'POWER' | 'COST'; amount: number; minimumAttachedDon: number; duringYourTurn?: true; duringOpponentTurn?: true; whenLeaderHasTrait?: string; maximumOwnLife?: number; minimumOwnLife?: number; minimumFieldDon?: number; minimumHandSize?: number; minimumRestedDon?: number; minimumOwnCharacters?: number; whenOwnCharacterCostAtLeast?: number; leaderTraitIncludes?: string; maximumHandSize?: number; minimumTrash?: number; maximumDeckSize?: number; minimumOpponentRestedCharacters?: number; leaderMulticolored?: true; targets?: { traitsAny: string[]; charactersOnly: true }; whenCharacter?: { side: 'OWN' | 'OPPONENT'; minPower: number; powerBasis: 'CURRENT' | 'BASE' } }
 export type ConditionalKeyword = { id: string; definitionId: string; zone: 'characters' | 'leader'; keyword: 'RUSH' | 'DOUBLE_ATTACK' | 'BANISH' | 'BLOCKER'; minimumAttachedDon: number; leaderHasTrait?: string; minimumFieldDon?: number; whenOwnCharacterCostAtLeast?: number; maximumOwnLife?: number; leaderTraitIncludes?: string; duringOpponentTurn?: true; maximumHandSize?: number; minimumTrash?: number; maximumDeckSize?: number; minimumOpponentRestedCharacters?: number; leaderMulticolored?: true }
+export type KoProtection = { id: string; definitionId: string; zone: 'characters'; from: 'BATTLE' | 'EFFECT'; opponentEffectsOnly?: true; minimumAttachedDon?: number; duringOpponentTurn?: true; maximumOwnLife?: number; whenOwnCharacterNamed?: string[] }
 export type AttackProhibition = { id: string; definitionId: string; zone: 'characters' | 'leader'; self: true }
 export const COMPILER_VERSION = 'm7-text-compiler-1'
 
@@ -27,6 +28,8 @@ export type CompiledCard = {
   conditionalKeywords: ConditionalKeyword[]
   /** "This Leader / This Character cannot attack" (printed, permanent). */
   attackProhibitions: AttackProhibition[]
+  /** "This Character cannot be K.O.'d in battle / by your opponent's effects" (printed, with its printed condition). */
+  koProtections: KoProtection[]
   /** Template names used, one per recognised action (the certification tests are grouped by template). */
   templates: string[]
   /** Text the compiler could not recognise: the card must then be reviewed by hand. */
@@ -305,6 +308,10 @@ function leadingCondition(text: string): { condition: BaseCondition; rest: strin
   // "If you have [X]" / "If you don't have [X]": a Character of that card name on your field (FAQ OP01-044: the exact name). A Leader
   // "treated as a card with all card names" would also count (FAQ OP16-025); no official Leader has these names, none such is defined.
   if ((m = /^If you (have|don't have) \[([^\]]+)\], (.*)$/.exec(text))) return { condition: { kind: 'OWN_CHARACTER_COUNT', minCost: 0, nameIs: m[2], ...(m[1] === 'have' ? { atLeast: 1 } : { atMost: 0 }) }, rest: m[3] }
+  if ((m = /^If (?:this Character|this Leader) has (\d+) power or more, (.*)$/.exec(text))) return { condition: { kind: 'SOURCE_POWER_AT_LEAST', minimum: Number(m[1]) } as never, rest: m[2] }
+  if ((m = /^If there is a Character with a cost of (\d+) or more, (.*)$/.exec(text))) return { condition: { kind: 'ANY_CHARACTER_COST_AT_LEAST', minimum: Number(m[1]) } as never, rest: m[2] }
+  if ((m = /^If your Leader has the \{([^}]+)\} type and you and your opponent have a total of (\d+) or less Life cards, (.*)$/.exec(text))) return { condition: { kind: 'ALL_OF', conditions: [{ kind: 'LEADER_HAS_TRAIT', trait: m[1] }, { kind: 'TOTAL_LIFE_AT_MOST', maximum: Number(m[2]) }] } as never, rest: m[3] }
+  if ((m = /^If you and your opponent have a total of (\d+) or less Life cards, (.*)$/.exec(text))) return { condition: { kind: 'TOTAL_LIFE_AT_MOST', maximum: Number(m[1]) } as never, rest: m[2] }
   if ((m = /^If you have a Character with (\d+) power or more, (.*)$/.exec(text))) return { condition: { kind: 'OWN_CHARACTER_POWER_AT_LEAST', minimum: Number(m[1]) }, rest: m[2] }
   if ((m = /^If you have less Life cards than your opponent, (.*)$/.exec(text))) return { condition: { kind: 'LIFE_LESS_THAN_OPPONENT' }, rest: m[1] }
   if ((m = /^If you have a Character with a cost of (\d+) or more, (.*)$/.exec(text))) return { condition: { kind: 'OWN_CHARACTER_COST_AT_LEAST', minimum: Number(m[1]) }, rest: m[2] }
@@ -369,15 +376,24 @@ function body(text: string, ctx: Ctx, category: Category, timing: Timing): { pro
     const bounceSelf = /^You may return this Character to the owner's hand: (.*)$/.exec(t)
     const self = /^You may trash this Character: (.*)$/.exec(t)
     const life = /^You may add 1 card from the (top or bottom|top) of your Life cards to your hand: (.*)$/.exec(t)
-    const bounceOwn = /^You may return 1 of your ((?:\{[^}]+\}(?:, | or |, or )?)+) type Characters(?: with a cost of (\d+) or more)? to the owner's hand: (.*)$/.exec(t)
+    const restCards = /^You may rest (\d) of your cards: (.*)$/.exec(t)
+    if (restCards) {
+      // "You may rest N of your cards:" — active Leader, Characters, Stage and/or DON!! cards, this card included (FAQ OP14-029).
+      paid = 'paid'
+      const n = Number(restCards[1])
+      prefix.push({ kind: 'CHOICE', choiceType: 'SELECT', selector: { kind: 'CARDS', side: 'OWN', zone: 'ownCards', rested: false }, optional: true, min: 0, max: n, bind: paid, visibility: 'PUBLIC', allOrNone: true } as Step, rest(paid))
+      ctx.templates.push('rest-cards-cost'); t = restCards[2]
+    }
+    const bounceOwn = /^You may return (\d) of your ((?:\{[^}]+\}(?:, | or |, or )?)+ type )?Characters(?: with a cost of (\d+) or more)? to the owner's hand: (.*)$/.exec(t)
     const koOwn = /^You may K\.O\. 1 of your ((?:\{[^}]+\}(?:, | or |, or )?)+) type Characters: (.*)$/.exec(t)
     const mill = /^You may trash (\d+) cards? from the top of your deck: (.*)$/.exec(t)
-    if (bounceOwn) {
+    if (restCards) { /* paid above */ } else if (bounceOwn) {
       // "You may return 1 of your {X} type Characters (with a cost of N or more) to the owner's hand:".
       paid = 'paid'
-      prefix.push({ kind: 'CHOICE', choiceType: 'SELECT', selector: { kind: 'CARDS', side: 'OWN', zone: 'characters', traitsAny: [...bounceOwn[1].matchAll(/\{([^}]+)\}/g)].map(x => x[1]), ...(bounceOwn[2] ? { minCost: Number(bounceOwn[2]) } : {}) }, optional: true, min: 0, max: 1, bind: paid, visibility: 'PUBLIC' } as Step,
+      const n = Number(bounceOwn[1]), traits = bounceOwn[2] ? { traitsAny: [...bounceOwn[2].matchAll(/\{([^}]+)\}/g)].map(x => x[1]) } : {}
+      prefix.push({ kind: 'CHOICE', choiceType: 'SELECT', selector: { kind: 'CARDS', side: 'OWN', zone: 'characters', ...traits, ...(bounceOwn[3] ? { minCost: Number(bounceOwn[3]) } : {}) }, optional: true, min: 0, max: n, bind: paid, visibility: 'PUBLIC', allOrNone: true } as Step,
         { ...returnToHand(paid), whenBindingNonempty: paid } as Step)
-      ctx.templates.push('return-own-cost'); t = bounceOwn[3]
+      ctx.templates.push('return-own-cost'); t = bounceOwn[4]
     } else if (koOwn) {
       // "You may K.O. 1 of your {X} type Characters:" — a K.O. by your own effect ([On K.O.] of that Character applies).
       paid = 'paid'
@@ -469,7 +485,20 @@ function staticAbility(text: string, conds: BaseCondition[], number: string, def
   const self = category === 'LEADER' ? 'This Leader' : 'This Character'
   const zone = category === 'LEADER' ? 'leader' as const : 'characters' as const
   if (category === 'EVENT' || category === 'STAGE') return false
-  const k = out.continuous.length + out.conditionalKeywords.length + out.attackProhibitions.length + 1
+  const k = out.continuous.length + out.conditionalKeywords.length + out.attackProhibitions.length + out.koProtections.length + 1
+  // "(If you have [X], ) this Character cannot be K.O.'d in battle / by your opponent's effects" ([DON!! xN], [Opponent's Turn]).
+  {
+    let u = t, named: string | undefined, life: number | undefined, mm: RegExpExecArray | null
+    if ((mm = /^If you have \[([^\]]+)\], (.*)$/.exec(u))) { named = mm[1]; u = mm[2].charAt(0).toUpperCase() + mm[2].slice(1) }
+    else if ((mm = /^If you have (\d+) or less Life cards, (.*)$/.exec(u))) { life = Number(mm[1]); u = mm[2].charAt(0).toUpperCase() + mm[2].slice(1) }
+    const ko = category === 'CHARACTER' ? /^This Character cannot be K\.O\.'d (in battle|by your opponent's effects)$/.exec(u) : null
+    if (ko) {
+      if (yourTurn || conds.some(c => !['SOURCE_ATTACHED_DON_AT_LEAST', 'OPPONENT_TURN'].includes(c.kind))) return false
+      out.koProtections.push({ id: `${number}.s${k}-ko-protection`, definitionId, zone: 'characters', from: ko[1] === 'in battle' ? 'BATTLE' : 'EFFECT', ...(ko[1] === 'in battle' ? {} : { opponentEffectsOnly: true as const }),
+        ...(don ? { minimumAttachedDon: don.minimum } : {}), ...(oppTurn ? { duringOpponentTurn: true as const } : {}), ...(life !== undefined ? { maximumOwnLife: life } : {}), ...(named ? { whenOwnCharacterNamed: [named] } : {}) })
+      ctx.templates.push('ko-protection'); return true
+    }
+  }
   // "This Leader cannot attack." / "This Character cannot attack." without condition.
   if (new RegExp(`^${category === 'LEADER' ? 'This Leader' : 'This Character'} cannot attack$`).test(t)) {
     if (conds.length) return false
@@ -546,7 +575,7 @@ export function compileCardText(row: { code: string; type: string; effect: strin
   const category = row.type.trim().toUpperCase() as Category
   const ctx: Ctx = { n: 0, templates: [], number, delayed: [] }
   const profile: LocalProfile = {}, abilities: EffectDefinition[] = [], unparsed: string[] = []
-  const out: CompiledCard = { number, profile, abilities, continuous: [], conditionalKeywords: [], attackProhibitions: [], templates: ctx.templates, unparsed }
+  const out: CompiledCard = { number, profile, abilities, continuous: [], conditionalKeywords: [], attackProhibitions: [], koProtections: [], templates: ctx.templates, unparsed }
   let effect = clean(row.effect === '-' ? '' : row.effect)
   // Printed keywords with their reminder text.
   effect = effect.replace(/(?<![a-z] )\[Blocker\] ?/g, () => { profile.blocker = true; ctx.templates.push('blocker'); return '' }).replace(REMINDER.BLOCKER, '')
@@ -606,7 +635,7 @@ export function compileCardText(row: { code: string; type: string; effect: strin
   if (trigger) add(trigger.replace(/^\[Trigger\]\s*/, '[Trigger] '), true)
   // Delayed "at the end of this turn" parts: own [End of Your Turn] definitions, scheduled by the ability that prints them.
   for (const d of ctx.delayed) abilities.push(ability(d.id, definitionId, 'delayed', 'END_OF_YOUR_TURN', d.program))
-  const ids = [...abilities.map(a => a.id), ...out.continuous.map(c => c.id), ...out.conditionalKeywords.map(c => c.id), ...out.attackProhibitions.map(c => c.id)]
+  const ids = [...abilities.map(a => a.id), ...out.continuous.map(c => c.id), ...out.conditionalKeywords.map(c => c.id), ...out.attackProhibitions.map(c => c.id), ...out.koProtections.map(c => c.id)]
   if (ids.length) profile.abilityIds = ids
   return out
 }
@@ -625,7 +654,7 @@ export function unknownFragments(text: string, category: Category): { role: 'tim
     .replace(/ and add it to your hand\. Then, place the rest at the bottom of your deck in any order/g, ' and add it to your hand §BOTTOM').replace(/ and add it to your hand\. Then, trash the rest/g, ' and add it to your hand §TRASH')
   const colon = s.indexOf(': ')
   if (colon > 0 && colon < 120 && !/^If /.test(s)) {
-    const c = s.slice(0, colon), known = /^(?:[①-⑥➀-➅] ?)?(?:DON!! -\d+ ?)?(?:You may rest this (?:Character|Stage|Leader))?$/.test(c) || /^You may trash \d ((?:\{[^}]+\}(?:, | or |, or )?)+ type )?(?:cards?|Events?)( with a \[Trigger\])? from your hand$/.test(c) || c === 'You may trash 1 card from your hand and trash this Character' || c === "You may return this Character to the owner's hand" || /^You may rest \d of your DON!! cards and this (Character|Stage)$/.test(c) || c === 'You may trash 1 card from your hand and rest this Stage' || /^You may add 1 card from the (top or bottom|top) of your Life cards to your hand$/.test(c) || /^You may trash \d+ cards? from the top of your deck$/.test(c) || c === 'You may trash this Character' || /^You may rest \d of your DON!! cards$/.test(c)
+    const c = s.slice(0, colon), known = /^(?:[①-⑥➀-➅] ?)?(?:DON!! -\d+ ?)?(?:You may rest this (?:Character|Stage|Leader))?$/.test(c) || /^You may trash \d ((?:\{[^}]+\}(?:, | or |, or )?)+ type )?(?:cards?|Events?)( with a \[Trigger\])? from your hand$/.test(c) || c === 'You may trash 1 card from your hand and trash this Character' || c === "You may return this Character to the owner's hand" || /^You may rest \d of your DON!! cards and this (Character|Stage)$/.test(c) || c === 'You may trash 1 card from your hand and rest this Stage' || /^You may rest \d of your cards$/.test(c) || /^You may add 1 card from the (top or bottom|top) of your Life cards to your hand$/.test(c) || /^You may trash \d+ cards? from the top of your deck$/.test(c) || c === 'You may trash this Character' || /^You may rest \d of your DON!! cards$/.test(c)
     if (!known) out.push({ role: 'cost', text: c })
     s = s.slice(colon + 2)
   }

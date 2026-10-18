@@ -11,7 +11,7 @@ for (const c of list) {
   const t0 = Date.now()
   const reasons: string[] = []
   for (const a of c.abilities) for (let m = 0; m < Math.max(1, ...a.program.map(st => st.kind === 'MODE' ? st.modes : 1)); m++) { const r = runAbility(c, a, m); if (!r.ok) reasons.push(`${a.id}#${m}:${r.reason}`) }
-  for (const x of [...c.continuous, ...c.conditionalKeywords, ...c.attackProhibitions]) { const r = runStatic(c, x); if (!r.ok) reasons.push(`${x.id}:${r.reason}`) }
+  for (const x of [...c.continuous, ...c.conditionalKeywords, ...c.attackProhibitions, ...c.koProtections]) { const r = runStatic(c, x); if (!r.ok) reasons.push(`${x.id}:${r.reason}`) }
   const p = runPrinted(c); if (!p.ok) reasons.push(`printed:${p.reason}`)
   if (reasons.length) bad.set(c.number, reasons); else ok.push(c.number)
   console.log(`${++done}/${list.length} ${c.number} ${Date.now() - t0}ms ${reasons.length ? 'KO' : 'OK'}`)

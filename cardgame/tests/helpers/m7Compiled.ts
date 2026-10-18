@@ -70,7 +70,7 @@ function matching(filter: Record<string, unknown>, leaderColours: string[], excl
 }
 
 type Plan = { aliceLeader: string; extra: string[]; own: string[]; bobTargets: string[]; bobColour: string; restedTargets: boolean; seedDeck?: string; seedHand?: string; seedTrash?: string; ownLife?: number; oppLife?: number; don: number
-  needsDonDeck?: boolean; deckMax?: number; aura?: { target: string; plain: string }; returner?: { number: string; abilityId: string }; ownPowerAtLeast?: number; fieldDonMax?: number; seedHandCost?: string; ownTargets?: { number: string; rested: boolean }[]; handMin?: number; restedDonMin?: number; ownCharsMin?: number; ownCostAtLeast?: number; ownHandMax?: number; oppHandMax?: number; oppHandMin?: number; ownRested?: number; oppRested?: number; trashMin?: number }
+  needsDonDeck?: boolean; sourcePowerMin?: number; deckMax?: number; aura?: { target: string; plain: string }; returner?: { number: string; abilityId: string }; ownPowerAtLeast?: number; fieldDonMax?: number; seedHandCost?: string; ownTargets?: { number: string; rested: boolean }[]; handMin?: number; restedDonMin?: number; ownCharsMin?: number; ownCostAtLeast?: number; ownHandMax?: number; oppHandMax?: number; oppHandMin?: number; ownRested?: number; oppRested?: number; trashMin?: number }
 /** Builds the scenario needs of one ability (or reports why it cannot be built). */
 function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Record<string, unknown>): Plan | string {
   const d = definitionOf(card.number), { selectors, conditions, searches, ops } = scan(a?.program ?? [])
@@ -133,6 +133,9 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
       const m = matching({ category: 'CHARACTER', ...(c.traitsAny ? { traitsAny: c.traitsAny } : {}), ...(c.nameIs ? { namesAny: [c.nameIs] } : {}) }, lead.colors, card.number); if (!m) return 'NO_CARD_FOR_CONDITION'
       extra.push(m); (plan.ownTargets ??= []).push({ number: m, rested: false }); continue
     }
+    if (c.kind === 'TOTAL_LIFE_AT_MOST') { const t = c.maximum as number; plan.ownLife = Math.max(1, Math.floor(t / 2)); plan.oppLife = Math.max(1, t - plan.ownLife); continue }
+    if (c.kind === 'SOURCE_POWER_AT_LEAST') { plan.sourcePowerMin = c.minimum as number; continue }
+    if (c.kind === 'ANY_CHARACTER_COST_AT_LEAST') { plan.ownCostAtLeast = c.minimum as number; continue }
     if (c.kind === 'OWN_CHARACTER_POWER_AT_LEAST') {
       const big = defs().filter(v => isVanilla(v) && v.colors.every(x => lead.colors.includes(x)) && (v.power ?? 0) >= (c.minimum as number))[0]; if (!big) return 'NO_STRONG_CHARACTER'
       extra.push(big.number); (plan.ownTargets ??= []).push({ number: big.number, rested: false }); continue
@@ -151,6 +154,9 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
     const t = matching({ category: 'CHARACTER', traitsAny: targets.traitsAny }, lead.colors, card.number), plain = vanillas(lead.colors[0]).find(v => !v.traits.some(x => targets.traitsAny.includes(x)))
     if (!t || !plain) return 'NO_AURA_TARGET'
     extra.push(t, plain.number); plan.aura = { target: t, plain: plain.number }
+  }
+  for (const n of (staticConds.whenOwnCharacterNamed as string[] | undefined) ?? []) {
+    const m = matching({ category: 'CHARACTER', namesAny: [n] }, lead.colors, card.number); if (!m) return 'NO_NAMED_CARD'; extra.push(m); (plan.ownTargets ??= []).push({ number: m, rested: false })
   }
   if (staticConds.maximumHandSize !== undefined) plan.ownHandMax = staticConds.maximumHandSize as number
   if (staticConds.minimumTrash !== undefined) plan.trashMin = staticConds.minimumTrash as number
@@ -319,6 +325,12 @@ function endOfTurnPart(s: GameState, a: EffectDefinition, card: CompiledCard): s
   return rested() < before ? null : 'DELAYED_NOT_APPLIED'
 }
 
+/** "If this Character has N power or more": DON!! given to the source (+1000 each during its controller's turn) up to N. */
+function powerUp(s: GameState, id: string | null, p: Plan) {
+  if (!id || p.sourcePowerMin === undefined) return
+  const need = Math.max(0, Math.ceil((p.sourcePowerMin - power(s, id)) / 1000))
+  if (need && s.activePlayerId === 'alice') attachDon(s, 'alice', id, Math.min(need, zones(s, 'alice').cost.length))
+}
 /** Runs one compiled ability in a real game and checks its printed result. */
 export function runAbility(card: CompiledCard, a: EffectDefinition, mode = 0): Outcome {
   modePick = mode
@@ -341,7 +353,7 @@ export function runAbility(card: CompiledCard, a: EffectDefinition, mode = 0): O
       case 'ON_PLAY': { const id = put(s, 'alice', card.number, 'hand'); before = snap(s); s = playCard(s, 'alice', id); sourceId = id; for (let n = 0; n < p.don; n++) {} break }
       case 'WHEN_ATTACKING': {
         sourceId = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true })
-        if (p.don) attachDon(s, 'alice', sourceId, p.don)
+        if (p.don) attachDon(s, 'alice', sourceId, p.don); powerUp(s, sourceId, p)
         before = snap(s); s = attack(s, sourceId, leaderOf(s, 'bob')); s = answerAll(s); const mid = snap(s); s = finishBattle(s)
         const r = verify(a.program, before, mid, s, sourceId); if (typeof r === 'string') return { ok: false, reason: r }
         const late = endOfTurnPart(s, a, card); if (late) return { ok: false, reason: late }
@@ -352,7 +364,7 @@ export function runAbility(card: CompiledCard, a: EffectDefinition, mode = 0): O
         for (const id of zones(s, 'alice').cost) s.instances[id].rested = false
         // "Give up to 1 rested DON!!" / "set up to 1 of your DON!! cards as active": two DON!! stay rested.
         if (scan(a.program).ops.some(o => o.primitive === 'attachRestedDon' || (o.primitive === 'setActive' && o.subjectBinding))) for (const id of zones(s, 'alice').cost.slice(0, 2)) s.instances[id].rested = true
-        if (p.don) attachDon(s, 'alice', sourceId, p.don)
+        if (p.don) attachDon(s, 'alice', sourceId, p.don); powerUp(s, sourceId, p)
         const offer = offeredEffects(s, 'alice', a.id)[0]; if (!offer) return { ok: false, reason: 'NOT_OFFERED' }
         before = snap(s)
         s = act(s, 'alice', { type: 'START_EFFECT', effectId: offer.effectId, ...(offer.donMinus ? { donMinusIds: offer.donMinus.eligibleDonIds.slice(0, offer.donMinus.amount) } : {}) })
@@ -373,12 +385,12 @@ export function runAbility(card: CompiledCard, a: EffectDefinition, mode = 0): O
         s = act(s, 'alice', { type: 'START_EFFECT', effectId: offer.effectId, donMinusIds: offer.donMinus.eligibleDonIds.slice(0, offer.donMinus.amount) })
         break
       }
-      case 'END_OF_YOUR_TURN': { sourceId = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true }); if (p.don) attachDon(s, 'alice', sourceId, p.don); before = snap(s); s = act(s, 'alice', { type: 'END_MAIN' }); break }
+      case 'END_OF_YOUR_TURN': { sourceId = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true }); if (p.don) attachDon(s, 'alice', sourceId, p.don); powerUp(s, sourceId, p); before = snap(s); s = act(s, 'alice', { type: 'END_MAIN' }); break }
       case 'COUNTER': case 'TRIGGER': case 'ON_KO': case 'ON_BLOCK': case 'ON_OPPONENT_ATTACK': {
         if (condKinds.includes('YOUR_TURN')) return { ok: false, reason: 'YOUR_TURN_ON_OPPONENT_TURN' }
         const ev = a.timing === 'COUNTER' ? put(s, 'alice', card.number, 'hand') : null
         if (a.timing === 'TRIGGER') put(s, 'alice', card.number, 'life')
-        if (['ON_KO', 'ON_BLOCK', 'ON_OPPONENT_ATTACK'].includes(a.timing)) { sourceId = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true, rested: a.timing === 'ON_KO' }); if (p.don) attachDon(s, 'alice', sourceId, p.don) }
+        if (['ON_KO', 'ON_BLOCK', 'ON_OPPONENT_ATTACK'].includes(a.timing)) { sourceId = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true, rested: a.timing === 'ON_KO' }); if (p.don) attachDon(s, 'alice', sourceId, p.don); powerUp(s, sourceId, p) }
         s = endTurnAnswering(s)
         // Bob's Refresh Phase set his rested targets active again: the scenario rests them back (as before the effect).
         if (p.restedTargets) for (const id of targets.slice(1)) if (s.instances[id].zone === 'characters') s.instances[id].rested = true
@@ -421,12 +433,33 @@ function breakZoneCondition(s: GameState, m: Record<string, unknown>): boolean {
   return false
 }
 /** A static modifier or conditional keyword: absent without its condition... present with it. */
-export function runStatic(card: CompiledCard, item: CompiledCard['continuous'][number] | CompiledCard['conditionalKeywords'][number] | CompiledCard['attackProhibitions'][number]): Outcome {
+export function runStatic(card: CompiledCard, item: CompiledCard['continuous'][number] | CompiledCard['conditionalKeywords'][number] | CompiledCard['attackProhibitions'][number] | CompiledCard['koProtections'][number]): Outcome {
   const p = plan(card, null, item as unknown as Record<string, unknown>)
   if (typeof p === 'string') return { ok: false, reason: p }
   try {
     let { s } = setup(card, p, 11)
     const d = definitionOf(card.number)
+    // "cannot be K.O.'d in battle": attacked by a stronger Character of Bob, it stays; without its DON!! it is K.O.'d (contre-épreuve).
+    if ('from' in item) {
+      if (item.from !== 'BATTLE') return { ok: false, reason: 'KO_BY_EFFECT_UNTESTED' }
+      const survives = (withDon: boolean) => {
+        let g = setup(card, p, 11).s
+        const id = put(g, 'alice', card.number, 'characters', { playedEarlier: true, rested: true })
+        if (withDon && item.minimumAttachedDon) attachDon(g, 'alice', id, item.minimumAttachedDon)
+        g = endTurnAnswering(g)
+        const atk = put(g, 'bob', bigOf(p.bobColour), 'characters', { playedEarlier: true })
+        if (power(g, atk) <= power(g, id)) throw new Error('ATTACKER_NOT_STRONGER')
+        g = attack(g, atk, id); g = answerAll(g, true)
+        if (g.battle?.step === 'BLOCKER') g = act(g, 'alice', { type: 'PASS_BLOCKER', battleId: g.battle.id })
+        if (g.battle?.step === 'COUNTER') g = act(g, 'alice', { type: 'PASS_COUNTER', battleId: g.battle.id })
+        if (g.battle?.step === 'DAMAGE') g = act(g, 'bob', { type: 'RESOLVE_BATTLE', battleId: g.battle.id })
+        g = answerAll(g, true)
+        return g.instances[id].zone === 'characters'
+      }
+      if (!survives(true)) return { ok: false, reason: 'KO_NOT_PREVENTED' }
+      if (item.minimumAttachedDon && survives(false)) return { ok: false, reason: 'PROTECTED_WITHOUT_DON' }
+      return { ok: true, checked: ['cannot be K.O.d in battle'] }
+    }
     // "cannot attack": never offered as an attacker, while another active card of the same player is.
     if ('self' in item) {
       const id = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true })

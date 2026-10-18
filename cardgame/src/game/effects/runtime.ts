@@ -67,6 +67,10 @@ function condition(s: GameState, c: Condition, controller: string, source?: Effe
   if (c.kind === 'SOURCE_PLAYED_THIS_TURN') { if (source?.kind !== 'CARD') return false; const i = s.instances[source.presence.instanceId]; return !!i && i.zoneGeneration === source.presence.generation && i.playedOnTurn === s.turn }
   if (c.kind === 'OWN_CHARACTER_COUNT') { const n = recipient(s, controller, 'CONTROLLER').zones.characters.filter(id => { const d = s.catalog.definitions.find(x => x.definitionId === s.instances[id].definitionId); return (evaluateCharacteristics(s, id).cost.current ?? -1) >= c.minCost && (!c.traitsAny || !!d?.traits.some(t => c.traitsAny!.includes(t))) && (!c.nameIs || d?.rulesName === c.nameIs) && (c.minBasePower === undefined || (d?.power ?? -1) >= c.minBasePower) && (c.maxBasePower === undefined || (d?.power ?? Infinity) <= c.maxBasePower) }).length; return (c.atLeast === undefined || n >= c.atLeast) && (c.atMost === undefined || n <= c.atMost) }
   if (c.kind === 'OWN_RESTED_CHARACTERS_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.characters.filter(id => s.instances[id].rested).length >= c.minimum
+  if (c.kind === 'SOURCE_POWER_AT_LEAST') { const id = source?.kind === 'CARD' ? source.presence.instanceId : undefined, i = id ? s.instances[id] : undefined
+    return !!i && i.zoneGeneration === (source as { presence: { generation: number } }).presence.generation && ['leader', 'characters'].includes(i.zone) && (evaluateCharacteristics(s, id!).power.current ?? -1) >= c.minimum }
+  if (c.kind === 'ANY_CHARACTER_COST_AT_LEAST') return s.players.some(p => p.zones.characters.some(id => (evaluateCharacteristics(s, id).cost.current ?? -1) >= c.minimum))
+  if (c.kind === 'TOTAL_LIFE_AT_MOST') return s.players.reduce((n, p) => n + p.zones.life.length, 0) <= c.maximum
   if (c.kind === 'OWN_CHARACTER_POWER_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.characters.some(id => (evaluateCharacteristics(s, id).power.current ?? -1) >= c.minimum)
   if (c.kind === 'TRASH_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.trash.length >= c.minimum
   if (c.kind === 'DON_DECK_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.donDeck.length >= c.minimum
@@ -957,7 +961,7 @@ function select(s: GameState, actor: string, selector: import('./contracts').Sel
   if (selector.kind === 'OPPONENT_TOP_LIFE') return s.players.find(q => q.id !== actor)!.zones.life.slice(0, 1)
   if (selector.kind === 'CARDS') {
     const owners = selector.side === 'OWN' ? [p] : selector.side === 'OPPONENT' ? s.players.filter(q => q.id !== actor) : [p, ...s.players.filter(q => q.id !== actor)]
-    const ids = owners.flatMap(q => selector.zone === 'leader' ? q.zones.leader : selector.zone === 'leaderOrCharacters' ? [...q.zones.leader, ...q.zones.characters] : selector.zone === 'fieldDon' ? [...q.zones.cost, ...q.zones.attached] : selector.zone === 'givenDon' ? q.zones.attached : selector.zone === 'handOrTrash' ? [...q.zones.hand, ...q.zones.trash] : selector.topN ? q.zones.deck.slice(0, selector.topN)
+    const ids = owners.flatMap(q => selector.zone === 'leader' ? q.zones.leader : selector.zone === 'leaderOrCharacters' ? [...q.zones.leader, ...q.zones.characters] : selector.zone === 'ownCards' ? [...q.zones.leader, ...q.zones.characters, ...q.zones.stage, ...q.zones.cost] : selector.zone === 'fieldDon' ? [...q.zones.cost, ...q.zones.attached] : selector.zone === 'givenDon' ? q.zones.attached : selector.zone === 'handOrTrash' ? [...q.zones.hand, ...q.zones.trash] : selector.topN ? q.zones.deck.slice(0, selector.topN)
       : selector.zone === 'life' ? selector.lifeEnd === 'ALL' ? [...q.zones.life] : [...new Set(selector.lifeEnd === 'TOP_OR_BOTTOM' ? [q.zones.life[0], q.zones.life.at(-1)] : [q.zones.life[0]])].filter((id): id is string => !!id) : q.zones[selector.zone])
     return ids.filter(id => {
       const i = s.instances[id]
@@ -966,6 +970,7 @@ function select(s: GameState, actor: string, selector: import('./contracts').Sel
       // An active card chosen to be rested ("you may rest ..."): not one that cannot be rested (FAQ EB02-011).
       if (selector.rested === false && restLocked(s, id)) return false
       if (selector.zone === 'cost' || selector.zone === 'fieldDon' || selector.zone === 'givenDon') return i.kind === 'DON'
+      if (selector.zone === 'ownCards' && i.kind === 'DON') return true
       const definition = s.catalog.definitions.find(d => d.definitionId === i.definitionId)
       if (!definition) return false
       if (selector.categories && !selector.categories.includes(definition.category as 'CHARACTER' | 'EVENT' | 'STAGE')) return false
