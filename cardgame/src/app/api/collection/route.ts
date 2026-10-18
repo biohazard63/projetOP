@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { playableCardIds } from '@/lib/engine/catalog'
 
 export const dynamic = 'force-dynamic'
 
@@ -17,7 +18,9 @@ export async function GET(request: Request) {
       where: { userId: session.user.id, quantity: { gt: 0 } },
       include: { card: true },
     })
-    return NextResponse.json({ cards: rows.map(row => ({ ...row.card, quantity: row.quantity, acquiredAt: row.createdAt.toISOString() })) })
+    // ?playable=1 (deck builder): only the owned cards the game engine can play (playableCardIds).
+    const playable = new URL(request.url).searchParams.get('playable') === '1' ? playableCardIds(rows.map(row => row.card)) : null
+    return NextResponse.json({ cards: rows.filter(row => !playable || playable.has(row.cardId)).map(row => ({ ...row.card, quantity: row.quantity, acquiredAt: row.createdAt.toISOString() })) })
   } catch {
     console.error('Collection indisponible')
     return NextResponse.json({ error: 'Erreur serveur' }, { status: 500 })

@@ -64,7 +64,7 @@ function defend(ctx: BotContext, k: Knobs): Intent | null {
     const event = eventChoice.sort((a, b) => (a.d?.cost ?? 0) - (b.d?.cost ?? 0))[0]
     if (event && events) {
       const pay = events.paymentDonIds.slice(0, event.d?.cost ?? 0), text = event.d?.review.effectOriginal ?? ''
-      return { type: 'PLAY_COUNTER_EVENT', cardId: event.id, battleId: battle.id, paymentDonIds: pay, donMinusIds: /DON!! −1/.test(text) ? [pay[0] ?? events.donMinusIds[0]] : [], targetId: null, ...(/top of your Life cards/.test(text) && life >= 2 ? { lifePayment: true } : {}) }
+      return { type: 'PLAY_COUNTER_EVENT', cardId: event.id, battleId: battle.id, paymentDonIds: pay, donMinusIds: ctx.returnsOneDon(event.d?.definitionId) && /DON!! −1/.test(text) ? [pay[0] ?? events.donMinusIds[0]] : [], targetId: null, ...(/top of your Life cards/.test(text) && life >= 2 ? { lifePayment: true } : {}) }
     }
     if (values.length && total >= gap) {
       const best = [...values].sort((a, b) => b.value - a.value)[0]
