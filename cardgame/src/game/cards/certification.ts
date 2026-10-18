@@ -1391,7 +1391,8 @@ export const M7_REVIEWED: Record<string, Record<string, string>> = {
     ...M7_REVIEWED_MORE['OP-17'],
   },
   // M7 batch 1 (2026-10-16): every card of the other series whose compiled abilities pass the real-game scenarios, with its archived
-  // FAQ entries (docs/game/evidence/m6/sources/). Left out after review: OP09-058 (FAQ: the opponent chooses the returned Character).
+  // FAQ entries (docs/game/evidence/m6/sources/). Left out after review: OP09-058 (FAQ: the opponent chooses the returned Character),
+  // OP16-081 (FAQ: "If you have a Character with a cost of 8 or more" is also met by an opposing Character).
   ...Object.fromEntries(Object.entries(M7_REVIEWED_MORE).filter(([label]) => label !== 'OP-17')),
 }
 const m7Ref = (source: string, detail: string): SourceReference => ({ source, checkedAt: m7Day, language: 'en', detail })

@@ -69,8 +69,14 @@ function matching(filter: Record<string, unknown>, leaderColours: string[], excl
   return (want.find(d => isVanilla(d)) ?? want[0])?.number ?? null
 }
 
+/** N Event cards of the Leader's colours (3 copies of each in the deck) for "N or more Events in your trash". */
+function eventsFor(n: number, colours: string[], exclude: string): string[] | null {
+  const evs = defs().filter(d => d.category === 'EVENT' && d.number !== exclude && d.colors.every(c => colours.includes(c))).map(d => d.number)
+  const out: string[] = []; for (const e of evs) for (let i = 0; i < 3 && out.length < n; i++) out.push(e)
+  return out.length >= n ? out : null
+}
 type Plan = { aliceLeader: string; extra: string[]; own: string[]; bobTargets: string[]; bobColour: string; restedTargets: boolean; seedDeck?: string; seedHand?: string; seedTrash?: string; ownLife?: number; oppLife?: number; don: number
-  needsDonDeck?: boolean; sourcePowerMin?: number; deckMax?: number; aura?: { target: string; plain: string }; returner?: { number: string; abilityId: string }; ownPowerAtLeast?: number; fieldDonMax?: number; seedHandCost?: string; ownTargets?: { number: string; rested: boolean }[]; handMin?: number; restedDonMin?: number; ownCharsMin?: number; ownCostAtLeast?: number; ownHandMax?: number; oppHandMax?: number; oppHandMin?: number; ownRested?: number; oppRested?: number; trashMin?: number }
+  needsDonDeck?: boolean; trashEvents?: string[]; sourcePowerMin?: number; deckMax?: number; aura?: { target: string; plain: string }; returner?: { number: string; abilityId: string }; ownPowerAtLeast?: number; fieldDonMax?: number; seedHandCost?: string; ownTargets?: { number: string; rested: boolean }[]; handMin?: number; restedDonMin?: number; ownCharsMin?: number; ownCostAtLeast?: number; ownHandMax?: number; oppHandMax?: number; oppHandMin?: number; ownRested?: number; oppRested?: number; trashMin?: number }
 /** Builds the scenario needs of one ability (or reports why it cannot be built). */
 function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Record<string, unknown>): Plan | string {
   const d = definitionOf(card.number), { selectors, conditions, searches, ops } = scan(a?.program ?? [])
@@ -133,6 +139,8 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
       const m = matching({ category: 'CHARACTER', ...(c.traitsAny ? { traitsAny: c.traitsAny } : {}), ...(c.nameIs ? { namesAny: [c.nameIs] } : {}) }, lead.colors, card.number); if (!m) return 'NO_CARD_FOR_CONDITION'
       extra.push(m); (plan.ownTargets ??= []).push({ number: m, rested: false }); continue
     }
+    if (c.kind === 'TRASH_EVENTS_AT_LEAST') { const r = eventsFor(c.minimum as number, lead.colors, card.number); if (!r) return 'NO_EVENTS_FOR_TRASH'; extra.push(...new Set(r)); plan.trashEvents = r; continue }
+    if (c.kind === 'LIFE_AT_MOST_OPPONENT') { plan.ownLife = 3; continue }
     if (c.kind === 'TOTAL_LIFE_AT_MOST') { const t = c.maximum as number; plan.ownLife = Math.max(1, Math.floor(t / 2)); plan.oppLife = Math.max(1, t - plan.ownLife); continue }
     if (c.kind === 'SOURCE_POWER_AT_LEAST') { plan.sourcePowerMin = c.minimum as number; continue }
     if (c.kind === 'ANY_CHARACTER_COST_AT_LEAST') { plan.ownCostAtLeast = c.minimum as number; continue }
@@ -158,6 +166,11 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
   for (const n of (staticConds.whenOwnCharacterNamed as string[] | undefined) ?? []) {
     const m = matching({ category: 'CHARACTER', namesAny: [n] }, lead.colors, card.number); if (!m) return 'NO_NAMED_CARD'; extra.push(m); (plan.ownTargets ??= []).push({ number: m, rested: false })
   }
+  if (staticConds.whenAnyCharacterCostAtLeast !== undefined) plan.ownCostAtLeast = staticConds.whenAnyCharacterCostAtLeast as number
+  if (staticConds.maximumFieldDon !== undefined) plan.fieldDonMax = staticConds.maximumFieldDon as number
+  if (staticConds.whenOwnLifeAtMostOpponent) plan.ownLife = 3
+  if (typeof staticConds.whenOwnNamed === 'string') { const m = matching({ category: 'CHARACTER', namesAny: [staticConds.whenOwnNamed] }, lead.colors, card.number); if (!m) return 'NO_NAMED_CARD'; extra.push(m); (plan.ownTargets ??= []).push({ number: m, rested: false }) }
+  if (typeof staticConds.minimumTrashEvents === 'number') { const r = eventsFor(staticConds.minimumTrashEvents, lead.colors, card.number); if (!r) return 'NO_EVENTS_FOR_TRASH'; extra.push(...new Set(r)); plan.trashEvents = r }
   if (staticConds.maximumHandSize !== undefined) plan.ownHandMax = staticConds.maximumHandSize as number
   if (staticConds.minimumTrash !== undefined) plan.trashMin = staticConds.minimumTrash as number
   if (staticConds.maximumDeckSize !== undefined) plan.deckMax = staticConds.maximumDeckSize as number
@@ -166,6 +179,12 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
   if (staticConds.minimumRestedDon !== undefined) plan.restedDonMin = staticConds.minimumRestedDon as number
   if (staticConds.minimumOwnCharacters !== undefined) plan.ownCharsMin = staticConds.minimumOwnCharacters as number
   if (staticConds.whenOwnCharacterCostAtLeast !== undefined) plan.ownCostAtLeast = staticConds.whenOwnCharacterCostAtLeast as number
+  // "a Character with a cost of N or more": an effect-less Character of that cost, in the deck and on Alice's field.
+  if (plan.ownCostAtLeast !== undefined) {
+    // An inert one (only an [On Play], not triggered when put on the field) when no effect-less Character costs that much.
+    const big = defs().filter(v => inert(v) && v.number !== card.number && v.colors.every(x => lead.colors.includes(x)) && (v.cost ?? 0) >= plan.ownCostAtLeast!).sort((x, y) => Number(isVanilla(y)) - Number(isVanilla(x)) || (x.cost ?? 0) - (y.cost ?? 0))[0]
+    if (!big) return 'NO_COSTLY_CHARACTER'; extra.push(big.number); (plan.ownTargets ??= []).push({ number: big.number, rested: false })
+  }
   if (staticConds.maximumOwnLife !== undefined) plan.ownLife = staticConds.maximumOwnLife as number
   if (typeof staticConds.minimumAttachedDon === 'number') plan.don = Math.max(plan.don, staticConds.minimumAttachedDon)
   return plan
@@ -198,6 +217,7 @@ function setup(card: CompiledCard, p: Plan, turn: number) {
   for (const n of p.own) put(s, 'alice', n, 'characters', { playedEarlier: true })
   if (p.seedDeck) put(s, 'alice', p.seedDeck, 'deckTop')
   if (p.seedTrash) put(s, 'alice', p.seedTrash, 'trash')
+  for (const e of p.trashEvents ?? []) put(s, 'alice', e, 'trash')
   // Printed counts: rested Characters on each side, cards in the trash, hand sizes (extra hand cards go to the deck bottom).
   const filler = (owner: string, colour: string) => vanillas(colour).find(v => v.category === 'CHARACTER')!.number
   for (let i = 0; i < (p.ownRested ?? 0); i++) put(s, 'alice', filler('alice', definitionOf(p.aliceLeader).colors[0]), 'characters', { playedEarlier: true, rested: true })
@@ -213,7 +233,6 @@ function setup(card: CompiledCard, p: Plan, turn: number) {
   for (const t of p.ownTargets ?? []) put(s, 'alice', t.number, 'characters', { playedEarlier: true, rested: t.rested })
   const own = definitionOf(p.aliceLeader).colors[0]
   for (let i = 0; i < (p.ownCharsMin ?? 0); i++) put(s, 'alice', filler('alice', own), 'characters', { playedEarlier: true })
-  if (p.ownCostAtLeast !== undefined) { const big = vanillas(own).filter(v => (v.cost ?? 0) >= p.ownCostAtLeast!)[0]; if (!big) throw new Error('NO_COSTLY_CHARACTER'); put(s, 'alice', big.number, 'characters', { playedEarlier: true }) }
   for (const z = zones(s, 'alice'); z.hand.length < (p.handMin ?? 0);) { const id = z.deck.shift()!; z.hand.push(id); s.instances[id].zone = 'hand'; s.instances[id].zoneGeneration++ }
   for (const id of zones(s, 'alice').cost.slice(0, Math.max(2, p.restedDonMin ?? 0))) s.instances[id].rested = true
   const seededHand = p.seedHand ? put(s, 'alice', p.seedHand, 'hand') : null
@@ -429,6 +448,7 @@ function breakZoneCondition(s: GameState, m: Record<string, unknown>): boolean {
   if (typeof m.maximumHandSize === 'number') { while (a.hand.length <= m.maximumHandSize && a.deck.length) move('deck', 'hand'); return true }
   if (typeof m.minimumTrash === 'number') { while (a.trash.length >= m.minimumTrash) move('trash', 'deck'); return true }
   if (typeof m.maximumDeckSize === 'number') { while (a.deck.length <= m.maximumDeckSize && a.trash.length) move('trash', 'deck'); return true }
+  if (typeof m.minimumTrashEvents === 'number') { for (const id of [...a.trash]) if (s.catalog.definitions.find(d => d.definitionId === s.instances[id].definitionId)?.category === 'EVENT') { a.trash.splice(a.trash.indexOf(id), 1); a.deck.push(id); s.instances[id].zone = 'deck'; s.instances[id].zoneGeneration++; s.instances[id].faceUp = false }; return true }
   if (typeof m.minimumOpponentRestedCharacters === 'number') { for (const id of zones(s, 'bob').characters) s.instances[id].rested = false; return true }
   return false
 }

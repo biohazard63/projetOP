@@ -13,8 +13,8 @@ type Condition = EffectDefinition['condition']
 type BaseCondition = Exclude<Condition, { kind: 'ALL_OF' | 'ANY_OF' }>
 type Filter = Parameters<typeof upTo>[2]
 type Category = 'LEADER' | 'CHARACTER' | 'EVENT' | 'STAGE'
-export type Continuous = { id: string; definitionId: string; zone: 'characters' | 'leader' | 'hand'; characteristic: 'POWER' | 'COST'; amount: number; minimumAttachedDon: number; duringYourTurn?: true; duringOpponentTurn?: true; whenLeaderHasTrait?: string; maximumOwnLife?: number; minimumOwnLife?: number; minimumFieldDon?: number; minimumHandSize?: number; minimumRestedDon?: number; minimumOwnCharacters?: number; whenOwnCharacterCostAtLeast?: number; leaderTraitIncludes?: string; maximumHandSize?: number; minimumTrash?: number; maximumDeckSize?: number; minimumOpponentRestedCharacters?: number; leaderMulticolored?: true; targets?: { traitsAny: string[]; charactersOnly: true }; whenCharacter?: { side: 'OWN' | 'OPPONENT'; minPower: number; powerBasis: 'CURRENT' | 'BASE' } }
-export type ConditionalKeyword = { id: string; definitionId: string; zone: 'characters' | 'leader'; keyword: 'RUSH' | 'DOUBLE_ATTACK' | 'BANISH' | 'BLOCKER'; minimumAttachedDon: number; leaderHasTrait?: string; minimumFieldDon?: number; whenOwnCharacterCostAtLeast?: number; maximumOwnLife?: number; leaderTraitIncludes?: string; duringOpponentTurn?: true; maximumHandSize?: number; minimumTrash?: number; maximumDeckSize?: number; minimumOpponentRestedCharacters?: number; leaderMulticolored?: true }
+export type Continuous = { id: string; definitionId: string; zone: 'characters' | 'leader' | 'hand'; characteristic: 'POWER' | 'COST'; amount: number; minimumAttachedDon: number; duringYourTurn?: true; duringOpponentTurn?: true; whenLeaderHasTrait?: string; maximumOwnLife?: number; minimumOwnLife?: number; minimumFieldDon?: number; minimumHandSize?: number; minimumRestedDon?: number; minimumOwnCharacters?: number; whenOwnCharacterCostAtLeast?: number; leaderTraitIncludes?: string; whenAnyCharacterCostAtLeast?: number; maximumFieldDon?: number; minimumTrashEvents?: number; whenOwnLifeAtMostOpponent?: true; whenOwnNamed?: string; maximumHandSize?: number; minimumTrash?: number; maximumDeckSize?: number; minimumOpponentRestedCharacters?: number; leaderMulticolored?: true; targets?: { traitsAny: string[]; charactersOnly: true }; whenCharacter?: { side: 'OWN' | 'OPPONENT'; minPower: number; powerBasis: 'CURRENT' | 'BASE' } }
+export type ConditionalKeyword = { id: string; definitionId: string; zone: 'characters' | 'leader'; keyword: 'RUSH' | 'DOUBLE_ATTACK' | 'BANISH' | 'BLOCKER'; minimumAttachedDon: number; leaderHasTrait?: string; minimumFieldDon?: number; whenOwnCharacterCostAtLeast?: number; maximumOwnLife?: number; leaderTraitIncludes?: string; duringOpponentTurn?: true; whenAnyCharacterCostAtLeast?: number; maximumFieldDon?: number; minimumTrashEvents?: number; whenOwnNamed?: string; maximumHandSize?: number; minimumTrash?: number; maximumDeckSize?: number; minimumOpponentRestedCharacters?: number; leaderMulticolored?: true }
 export type KoProtection = { id: string; definitionId: string; zone: 'characters'; from: 'BATTLE' | 'EFFECT'; opponentEffectsOnly?: true; minimumAttachedDon?: number; duringOpponentTurn?: true; maximumOwnLife?: number; whenOwnCharacterNamed?: string[] }
 export type AttackProhibition = { id: string; definitionId: string; zone: 'characters' | 'leader'; self: true }
 export const COMPILER_VERSION = 'm7-text-compiler-1'
@@ -313,6 +313,8 @@ function leadingCondition(text: string): { condition: BaseCondition; rest: strin
   if ((m = /^If your Leader has the \{([^}]+)\} type and you and your opponent have a total of (\d+) or less Life cards, (.*)$/.exec(text))) return { condition: { kind: 'ALL_OF', conditions: [{ kind: 'LEADER_HAS_TRAIT', trait: m[1] }, { kind: 'TOTAL_LIFE_AT_MOST', maximum: Number(m[2]) }] } as never, rest: m[3] }
   if ((m = /^If you and your opponent have a total of (\d+) or less Life cards, (.*)$/.exec(text))) return { condition: { kind: 'TOTAL_LIFE_AT_MOST', maximum: Number(m[1]) } as never, rest: m[2] }
   if ((m = /^If you have a Character with (\d+) power or more, (.*)$/.exec(text))) return { condition: { kind: 'OWN_CHARACTER_POWER_AT_LEAST', minimum: Number(m[1]) }, rest: m[2] }
+  if ((m = /^If you have (\d+) or more Events in your trash, (.*)$/.exec(text))) return { condition: { kind: 'TRASH_EVENTS_AT_LEAST', minimum: Number(m[1]) } as never, rest: m[2] }
+  if ((m = /^If the number of your Life cards is equal to or less than the number of your opponent's Life cards, (.*)$/.exec(text))) return { condition: { kind: 'LIFE_AT_MOST_OPPONENT' } as never, rest: m[1] }
   if ((m = /^If you have less Life cards than your opponent, (.*)$/.exec(text))) return { condition: { kind: 'LIFE_LESS_THAN_OPPONENT' }, rest: m[1] }
   if ((m = /^If you have a Character with a cost of (\d+) or more, (.*)$/.exec(text))) return { condition: { kind: 'OWN_CHARACTER_COST_AT_LEAST', minimum: Number(m[1]) }, rest: m[2] }
   if ((m = /^If your Leader is multicolored, (.*)$/.exec(text))) return { condition: { kind: 'LEADER_MULTICOLORED' }, rest: m[1] }
@@ -530,17 +532,33 @@ function staticAbility(text: string, conds: BaseCondition[], number: string, def
     [/^If you have (\d+) or less cards in your deck, (.*)$/, m => ({ maximumDeckSize: Number(m[1]) })],
     [/^If your opponent has (\d) or more rested Characters, (.*)$/, m => ({ minimumOpponentRestedCharacters: Number(m[1]) })],
     [/^If your Leader is multicolored, (.*)$/, () => ({ leaderMulticolored: true as const })],
+    [/^If there is a Character with a cost of (\d+) or more, (.*)$/, m => ({ whenAnyCharacterCostAtLeast: Number(m[1]) })],
+    [/^If you have (\d+) or less DON!! cards on your field, (.*)$/, m => ({ maximumFieldDon: Number(m[1]) })],
+    [/^If you have (\d+) or more Events in your trash, (.*)$/, m => ({ minimumTrashEvents: Number(m[1]) })],
+    [/^If the number of your Life cards is equal to or less than the number of your opponent's Life cards, (.*)$/, () => ({ whenOwnLifeAtMostOpponent: true as const })],
+    // A Character "also treated as [X]" would count (FAQ OP02-031); that rule is not defined yet, nor any card printing it.
+    [/^If you have an? \[([^\]]+)\] Character, (.*)$/, m => ({ whenOwnNamed: m[1] })],
   ]
+  const original = t
   for (const [re, f] of STATIC_CONDITIONS) if ((m = re.exec(t))) { Object.assign(extra, f(m)); const rest = m[m.length - 1]; t = rest.charAt(0).toUpperCase() + rest.slice(1); break }
   // "type includes" exists only for conditional keywords.
   if (extra.leaderTraitIncludes && !/gains \[/.test(t)) return false
-  const onlyPowerConditions = extra.minimumHandSize !== undefined || extra.minimumRestedDon !== undefined || extra.minimumOwnCharacters !== undefined || extra.whenOwnCharacterCostAtLeast !== undefined || extra.minimumOwnLife !== undefined || extra.minimumFieldDon !== undefined
+  const prefixText = original.slice(0, original.length - t.length).replace(/^(.*), $/, '$1, ')
+  const onlyPowerConditions = extra.whenAnyCharacterCostAtLeast !== undefined || extra.whenOwnLifeAtMostOpponent !== undefined || extra.minimumHandSize !== undefined || extra.minimumRestedDon !== undefined || extra.minimumOwnCharacters !== undefined || extra.whenOwnCharacterCostAtLeast !== undefined || extra.minimumOwnLife !== undefined || extra.minimumFieldDon !== undefined
   // An aura of this card over your {X} type Characters ("All of your {A} or {B} type Characters gain +N power").
   if ((m = /^All of your ((?:\{[^}]+\}(?:, | or |, or )?)+) type Characters gain \+(\d+) power$/.exec(t))) {
     if (Object.keys(extra).length) return false
     out.continuous.push({ id: `${number}.s${k}-aura`, definitionId, zone, characteristic: 'POWER', amount: Number(m[2]), minimumAttachedDon: don?.minimum ?? 0,
       ...(yourTurn ? { duringYourTurn: true as const } : {}), ...(oppTurn ? { duringOpponentTurn: true as const } : {}), targets: { traitsAny: [...m[1].matchAll(/\{([^}]+)\}/g)].map(x => x[1]), charactersOnly: true } })
     ctx.templates.push('static-aura'); return true
+  }
+  // "This Character gains [Blocker] and +N cost / power": the keyword and the modifier, each with the printed condition.
+  if ((m = new RegExp(`^${self} gains \\[(Rush|Double Attack|Banish|Blocker)\\] and \\+(\\d+) (power|cost)$`).exec(t))) {
+    const before = { c: out.continuous.length, k: out.conditionalKeywords.length, t: ctx.templates.length }
+    const okKw = staticAbility(`${prefixText}${self} gains [${m[1]}]`, conds, number, definitionId, category, out, ctx)
+    const okMod = okKw && staticAbility(`${prefixText}${self} gains +${m[2]} ${m[3]}`, conds, number, definitionId, category, out, ctx)
+    if (okKw && okMod) return true
+    out.continuous.length = before.c; out.conditionalKeywords.length = before.k; ctx.templates.length = before.t; return false
   }
   if ((m = new RegExp(`^${self} gains \\+(\\d+) (power|cost)$`).exec(t))) {
     if (m[2] === 'cost' && (yourTurn || oppTurn || extra.maximumOwnLife !== undefined || onlyPowerConditions)) return false
@@ -552,8 +570,8 @@ function staticAbility(text: string, conds: BaseCondition[], number: string, def
     // Keyword conditions the evaluator supports: DON!! given, Leader type, field DON!!, a Character with a cost of N or more.
     const kwExtra = { ...(extra.whenLeaderHasTrait ? { leaderHasTrait: extra.whenLeaderHasTrait } : {}), ...(extra.minimumFieldDon ? { minimumFieldDon: extra.minimumFieldDon } : {}), ...(extra.whenOwnCharacterCostAtLeast ? { whenOwnCharacterCostAtLeast: extra.whenOwnCharacterCostAtLeast } : {}),
       ...(extra.maximumOwnLife !== undefined ? { maximumOwnLife: extra.maximumOwnLife } : {}),
-      ...Object.fromEntries((['maximumHandSize', 'minimumTrash', 'maximumDeckSize', 'minimumOpponentRestedCharacters', 'leaderMulticolored'] as const).filter(k => extra[k] !== undefined).map(k => [k, extra[k]])), ...(extra.leaderTraitIncludes ? { leaderTraitIncludes: extra.leaderTraitIncludes } : {}), ...(oppTurn ? { duringOpponentTurn: true as const } : {}) }
-    const unsupported = extra.minimumOwnLife !== undefined || extra.minimumHandSize !== undefined || extra.minimumRestedDon !== undefined || extra.minimumOwnCharacters !== undefined
+      ...Object.fromEntries((['maximumHandSize', 'minimumTrash', 'maximumDeckSize', 'minimumOpponentRestedCharacters', 'leaderMulticolored', 'maximumFieldDon', 'minimumTrashEvents', 'whenAnyCharacterCostAtLeast', 'whenOwnNamed'] as const).filter(k => extra[k] !== undefined).map(k => [k, extra[k]])), ...(extra.leaderTraitIncludes ? { leaderTraitIncludes: extra.leaderTraitIncludes } : {}), ...(oppTurn ? { duringOpponentTurn: true as const } : {}) }
+    const unsupported = extra.whenOwnLifeAtMostOpponent !== undefined || extra.minimumOwnLife !== undefined || extra.minimumHandSize !== undefined || extra.minimumRestedDon !== undefined || extra.minimumOwnCharacters !== undefined
     if (yourTurn || unsupported || (!don && !Object.keys(kwExtra).length)) return false
     const keyword = ({ Rush: 'RUSH', 'Double Attack': 'DOUBLE_ATTACK', Banish: 'BANISH', Blocker: 'BLOCKER' } as const)[m[1] as 'Rush']
     out.conditionalKeywords.push({ id: `${number}.s${k}-keyword`, definitionId, zone, keyword, minimumAttachedDon: don?.minimum ?? 0, ...kwExtra })

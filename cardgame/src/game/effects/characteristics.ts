@@ -17,6 +17,7 @@ export function hasCombatKeyword(s: GameState, id: string, keyword: CombatKeywor
     && effect.zone === instance.zone && effect.keyword === keyword && attached >= effect.minimumAttachedDon && zoneConditions(s, instance.controller, effect)
     && (effect.whenAnyCharacterCostAtMost === undefined || s.players.some(p => p.zones.characters.some(c => { const v = evaluateCost(s, c); return v !== null && v <= effect.whenAnyCharacterCostAtMost! })))
     && (effect.whenOwnCharacterCostAtLeast === undefined || ownCharacterCostAtLeast(s, instance.controller, effect.whenOwnCharacterCostAtLeast))
+    && (effect.whenAnyCharacterCostAtLeast === undefined || anyCharacterCostAtLeast(s, effect.whenAnyCharacterCostAtLeast))
     && (effect.minimumFieldDon === undefined || fieldDon(s, instance.controller) >= effect.minimumFieldDon)
     && (!effect.duringOpponentTurn || s.activePlayerId !== instance.controller)
     && (effect.maximumOwnLife === undefined || (s.players.find(p => p.id === instance.controller)?.zones.life.length ?? 99) <= effect.maximumOwnLife)
@@ -41,11 +42,15 @@ export function hasBlockerAbility(s: GameState, id: string): boolean {
 /** DON!! cards on a player's field (cost area and given DON!!). */
 export const fieldDon = (s: GameState, playerId: string) => { const p = s.players.find(x => x.id === playerId)!; return p.zones.cost.length + p.zones.attached.length }
 /** "If you have a Character with a cost of N or more": the controller's Characters, at their current cost. */
+/** "If there is a Character with a cost of N or more" (either player's, current cost). */
+export function anyCharacterCostAtLeast(s: GameState, minimum: number): boolean {
+  return s.players.some(p => p.zones.characters.some(c => { const v = evaluateCost(s, c); return v !== null && v >= minimum }))
+}
 export function ownCharacterCostAtLeast(s: GameState, controllerId: string, minimum: number): boolean {
   return !!s.players.find(p => p.id === controllerId)?.zones.characters.some(c => { const v = evaluateCost(s, c); return v !== null && v >= minimum })
 }
 
-type ZoneConditions = { maximumHandSize?: number; minimumTrash?: number; maximumDeckSize?: number; minimumOpponentRestedCharacters?: number; leaderMulticolored?: true; whenOwnNamed?: string }
+type ZoneConditions = { maximumHandSize?: number; minimumTrash?: number; maximumDeckSize?: number; minimumOpponentRestedCharacters?: number; leaderMulticolored?: true; whenOwnNamed?: string; maximumFieldDon?: number; minimumTrashEvents?: number }
 /** M7 zone-count conditions of a continuous definition or a conditional keyword (contracts.ts). */
 function zoneConditions(s: GameState, controllerId: string, m: ZoneConditions): boolean {
   const me = s.players.find(p => p.id === controllerId)!, foe = s.players.find(p => p.id !== controllerId)!
@@ -55,6 +60,8 @@ function zoneConditions(s: GameState, controllerId: string, m: ZoneConditions): 
     && (m.minimumOpponentRestedCharacters === undefined || foe.zones.characters.filter(id => s.instances[id].rested).length >= m.minimumOpponentRestedCharacters)
     && (!m.leaderMulticolored || (def(me.zones.leader[0])?.colors.length ?? 0) > 1)
     && (m.whenOwnNamed === undefined || me.zones.characters.some(id => def(id)?.rulesName === m.whenOwnNamed))
+    && (m.maximumFieldDon === undefined || me.zones.cost.length + me.zones.attached.length <= m.maximumFieldDon)
+    && (m.minimumTrashEvents === undefined || me.zones.trash.filter(id => def(id)?.category === 'EVENT').length >= m.minimumTrashEvents)
 }
 // Whether a continuous definition printed on `source` is active (conditions other than the cost condition).
 function active(s: GameState, m: Continuous, source: GameState['instances'][string]): boolean {
@@ -122,8 +129,8 @@ export function evaluateCharacteristics(s: GameState, id: string) {
   if (!d) return { power: { printed: null, base: null, current: null }, cost: { printed: null, base: null, current: null } }
   const attached = s.players.find(p => p.id === i.controller)!.zones.attached.filter(don => s.instances[don].attachedTo === id).length
   const field = ['leader', 'characters'].includes(i.zone)
-  const continuous = continuousFor(s, id, 'POWER').filter(m => m.whenOwnCharacterCostAtLeast === undefined
-    || ownCharacterCostAtLeast(s, s.instances[id].controller, m.whenOwnCharacterCostAtLeast))
+  const continuous = continuousFor(s, id, 'POWER').filter(m => (m.whenOwnCharacterCostAtLeast === undefined
+    || ownCharacterCostAtLeast(s, s.instances[id].controller, m.whenOwnCharacterCostAtLeast)) && (m.whenAnyCharacterCostAtLeast === undefined || anyCharacterCostAtLeast(s, m.whenAnyCharacterCostAtLeast)))
   const activeBaseModifiers = s.effects?.basePowerModifiers?.filter(m => m.subject.instanceId === id && m.subject.generation === i.zoneGeneration
     && field && (s.players.find(p => p.id === m.expiresForPlayerId)?.turns ?? Number.MAX_SAFE_INTEGER) < m.expiresAtPlayerTurn) ?? []
   // Several base powers set on one card: the highest applies (FAQ ST34-004; the same value twice, FAQ ST26-005).

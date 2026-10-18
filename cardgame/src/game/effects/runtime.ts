@@ -70,6 +70,8 @@ function condition(s: GameState, c: Condition, controller: string, source?: Effe
   if (c.kind === 'SOURCE_POWER_AT_LEAST') { const id = source?.kind === 'CARD' ? source.presence.instanceId : undefined, i = id ? s.instances[id] : undefined
     return !!i && i.zoneGeneration === (source as { presence: { generation: number } }).presence.generation && ['leader', 'characters'].includes(i.zone) && (evaluateCharacteristics(s, id!).power.current ?? -1) >= c.minimum }
   if (c.kind === 'ANY_CHARACTER_COST_AT_LEAST') return s.players.some(p => p.zones.characters.some(id => (evaluateCharacteristics(s, id).cost.current ?? -1) >= c.minimum))
+  if (c.kind === 'TRASH_EVENTS_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.trash.filter(id => s.catalog.definitions.find(d => d.definitionId === s.instances[id].definitionId)?.category === 'EVENT').length >= c.minimum
+  if (c.kind === 'LIFE_AT_MOST_OPPONENT') return recipient(s, controller, 'CONTROLLER').zones.life.length <= recipient(s, controller, 'OPPONENT').zones.life.length
   if (c.kind === 'TOTAL_LIFE_AT_MOST') return s.players.reduce((n, p) => n + p.zones.life.length, 0) <= c.maximum
   if (c.kind === 'OWN_CHARACTER_POWER_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.characters.some(id => (evaluateCharacteristics(s, id).power.current ?? -1) >= c.minimum)
   if (c.kind === 'TRASH_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.trash.length >= c.minimum
