@@ -1,5 +1,7 @@
 import './globals.css'
 import './collector.css'
+import '@/components/reports/reports.css'
+import '@/components/admin/admin.css'
 import { CollectorPreferencesProvider } from '@/components/collector/Preferences'
 import Link from 'next/link'
 import { OpeningPresentationProvider } from '@/components/collector/OpeningPresentation'

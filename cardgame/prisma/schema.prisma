@@ -18,6 +18,7 @@ model User {
   updatedAt             DateTime           @updatedAt
   hasStarterDecks       Boolean            @default(false)
   berries               Int                @default(0)
+  issueReports          IssueReport[]
   accountLevel          Int                @default(1)
   progressSyncedAt      DateTime?
   badges                UserBadge[]
@@ -182,6 +183,48 @@ model BoosterCard {
   card        Card    @relation(fields: [cardId], references: [id], onDelete: Cascade)
 
   @@unique([boosterId, cardId])
+}
+
+model AdminSetting {
+  id        String   @id
+  value     Json
+  revision  Int      @default(1)
+  updatedAt DateTime @updatedAt
+}
+
+model AdminAuditLog {
+  id          String   @id @default(cuid())
+  actorId     String
+  requestId   String
+  requestHash String
+  action      String
+  targetId    String
+  reason      String
+  before      Json
+  after       Json
+  createdAt   DateTime @default(now())
+
+  @@unique([actorId, requestId])
+  @@index([createdAt, id])
+  @@index([targetId, createdAt])
+}
+
+model IssueReport {
+  id           String   @id @default(cuid())
+  userId       String
+  requestId    String
+  source       String
+  category     String
+  description  String
+  status       String   @default("NEW")
+  cardSnapshot Json?
+  context      Json
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, requestId])
+  @@index([status, createdAt, id])
 }
 
 model BoosterOpening {

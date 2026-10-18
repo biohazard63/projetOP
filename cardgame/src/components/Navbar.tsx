@@ -8,7 +8,7 @@ import compactLogo from '../../public/images/logo/mugiwara-emblem.png'
 import desktopLogo from '../../public/images/logo/mugiwara-wordmark.png'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { useSession } from 'next-auth/react'
-import { BookOpen, History, Home, Layers, Menu, Package, PackageOpen, Search, Swords, UserRound, X, Compass, ChevronRight } from 'lucide-react'
+import { BookOpen, History, Home, Layers, Menu, Package, PackageOpen, Search, Swords, UserRound, X, Compass, ChevronRight, ShieldCheck } from 'lucide-react'
 import { ThemeSelector } from '@/components/collector/ThemeSelector'
 import { useOpeningPresentation } from '@/components/collector/OpeningPresentation'
 // Grouped in the V2 sidebar; the order of `links` (and the mobile bottom bar) is unchanged.
@@ -29,6 +29,15 @@ export function Navbar() {
   const parameters = useSearchParams()
   const { data: session } = useSession()
   const [open, setOpen] = useState(false)
+  const [adminUserId, setAdminUserId] = useState<string | null>(null)
+  const userId = session?.user?.id
+  useEffect(() => {
+    if (!userId) return
+    const controller = new AbortController()
+    void fetch('/api/admin/access', { cache: 'no-store', signal: controller.signal }).then(r => r.ok ? r.json() : null).then(data => { if (!controller.signal.aborted) setAdminUserId(data?.admin === true ? userId : null) }).catch(() => {})
+    return () => controller.abort()
+  }, [userId])
+  const adminLink = userId && adminUserId === userId ? <Link href="/admin" aria-current={pathname.startsWith('/admin') ? 'page' : undefined}><span className="piece-nav-icon"><ShieldCheck size={17} /></span>Administration</Link> : null
   const toggle = useRef<HTMLButtonElement>(null), search = useRef<HTMLInputElement>(null)
   // "/" focuses the global card search (outside text fields).
   useEffect(() => {
@@ -52,10 +61,10 @@ export function Navbar() {
   return <>
     <aside className="piece-sidebar"><div className="piece-sidebar-brand">{desktopBrand}</div>
       <Link href="/boosters" className="piece-sidebar-cta"><PackageOpen size={18} />Ouvrir un booster</Link>
-      <nav aria-label="Navigation principale" className="piece-sidebar-links">{grouped}</nav>
+      <nav aria-label="Navigation principale" className="piece-sidebar-links">{grouped}{adminLink}</nav>
       <div className="piece-sidebar-bottom"><div className="piece-sidebar-theme"><ThemeSelector /></div><div className="piece-sidebar-note"><span className="piece-status-dot" />Simulation gratuite</div>
         <Link href={session?.user ? '/profile' : '/login'} className="piece-sidebar-profile"><span className="piece-avatar">{session?.user?.name?.slice(0, 1).toUpperCase() || <UserRound size={18} />}</span><span><strong>{session?.user?.name || 'Bienvenue à bord'}</strong><small>{session?.user ? 'Votre espace collectionneur' : 'Connectez-vous'}</small></span><ChevronRight size={16} className="piece-sidebar-profile-go" /></Link></div></aside>
-    <header className="piece-topbar"><div className="piece-mobile-brand">{mobileBrand}</div><form action="/collection" method="get" className="piece-global-search" role="search"><Search size={16} /><input ref={search} name="q" type="search" aria-label="Recherche globale de cartes" placeholder="Rechercher une carte, un identifiant…" /><kbd className="piece-search-key" aria-hidden="true">/</kbd><button type="submit" aria-label="Rechercher">↵</button></form><div className="piece-account"><LevelChip /><BerryChip /><Link href="/boosters" className="piece-topbar-link"><PackageOpen size={15} />Grand Line</Link><Link href={session?.user ? '/profile' : '/login'} className="piece-avatar" aria-label={session?.user ? 'Mon profil' : 'Se connecter'}><UserRound size={18} /></Link><button ref={toggle} className="piece-mobile-toggle" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="collector-mobile-menu" aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}>{open ? <X /> : <Menu />}</button></div>{open && <nav aria-label="Navigation mobile" id="collector-mobile-menu" className="piece-mobile-menu">{menu}<ThemeSelector /></nav>}</header>
+    <header className="piece-topbar"><div className="piece-mobile-brand">{mobileBrand}</div><form action="/collection" method="get" className="piece-global-search" role="search"><Search size={16} /><input ref={search} name="q" type="search" aria-label="Recherche globale de cartes" placeholder="Rechercher une carte, un identifiant…" /><kbd className="piece-search-key" aria-hidden="true">/</kbd><button type="submit" aria-label="Rechercher">↵</button></form><div className="piece-account"><LevelChip /><BerryChip /><Link href="/boosters" className="piece-topbar-link"><PackageOpen size={15} />Grand Line</Link><Link href={session?.user ? '/profile' : '/login'} className="piece-avatar" aria-label={session?.user ? 'Mon profil' : 'Se connecter'}><UserRound size={18} /></Link><button ref={toggle} className="piece-mobile-toggle" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="collector-mobile-menu" aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}>{open ? <X /> : <Menu />}</button></div>{open && <nav aria-label="Navigation mobile" id="collector-mobile-menu" className="piece-mobile-menu">{menu}{adminLink}<ThemeSelector /></nav>}</header>
     <nav className="piece-bottom-nav" aria-label="Navigation principale mobile">{links.filter(({ href }) => ['/home', '/boosters', '/collection', '/decks', '/play', '/profile'].includes(href)).map(({ href, label, icon: Icon }) => <Link key={href} href={href} aria-current={(href === '/boosters' ? pathname.startsWith('/boosters') || pathname === '/booster-opening' : active(href)) ? 'page' : undefined}><span className="piece-bottom-icon"><Icon size={21} aria-hidden="true" /></span><span>{label === 'Mes decks' ? 'Decks' : label}</span></Link>)}</nav>
   </>
 }
