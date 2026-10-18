@@ -1,6 +1,8 @@
 'use client'
 import { useCallback, useEffect, useMemo, useState, useRef, type CSSProperties, type ReactNode } from 'react'
 import Image from 'next/image'
+import { ReportButton } from '@/components/reports/ReportButton'
+import { playReportCard, playReportContext } from '@/components/reports/snapshots'
 import type { View } from './api'
 import type { AnimStep, LogEntry } from './anim'
 import { BATTLE_STEPS, PHASES, RESULTS } from './labels'
@@ -90,6 +92,7 @@ function CardSheet({ view, id, onClose, act }: { view: View; id: string; onClose
         {card?.original && <button type="button" className="play-translation" title="Traduction non officielle du texte anglais" onClick={() => setVo(v => !v)}>{vo ? 'Voir la VF' : 'Voir la VO'}</button>}
       </div>
     </div>
+    {card && <ReportButton key={id} source="PLAY" card={playReportCard(card, visible?.printingKey, visible, vo)} context={playReportContext(view)} />}
     {actions.length ? <ActionList actions={actions} onPick={a => { if (a.targets) setTargets(a.targets); else if (a.intent) { act(a.intent, a.label); onClose() } }} /> : <p className="piece-muted">Aucune action possible avec cette carte maintenant.</p>}
   </Sheet>
 }
@@ -102,6 +105,7 @@ function Inspect({ view, id, onClose, onEnter, onExit }: { view: View; id: strin
       <CardFace view={view} printingKey={v?.printingKey} power={v?.power} size="lg" />
       <CardText text={card?.text || 'Aucun effet.'} />{card?.trigger && <CardText text={card.trigger} />}
       <span className="piece-muted">{card ? `${card.number} · ${card.category}` : 'Carte visible'}</span>
+      {card && <ReportButton key={id} source="PLAY" card={playReportCard(card, v?.printingKey, v)} context={playReportContext(view)} />}
     </aside>
   </div>
 }
@@ -446,6 +450,7 @@ export function Board({ pending = null, paused = false, onPause, onHold, reading
       <div className="play-actions"><button type="button" className="piece-button" onClick={() => send({ type: 'ANSWER_TRIGGER', choiceId: p.choiceId, activate: true })}>Activer le Trigger</button><button type="button" className="piece-button secondary" onClick={() => send({ type: 'ANSWER_TRIGGER', choiceId: p.choiceId, activate: false })}>Ajouter à la main</button></div></Sheet>}
     {confirm && <Confirm title={confirm.title} text={confirm.text} confirm={confirm.confirm} danger={confirm.danger} onCancel={() => setConfirm(null)} onConfirm={() => { const c = confirm; setConfirm(null); if (c.intent) send(c.intent); c.run?.() }} />}
     {menu && <Sheet title="Partie" onClose={() => setMenu(false)}>
+      <ReportButton source="PLAY" context={playReportContext(view)} />
       <fieldset className="tbl-motion"><legend>Animations</legend>{(['auto', 'full', 'reduced'] as const).map(m => <label key={m}><input type="radio" name="motion" checked={motion === m} onChange={() => onMotion(m)} /> {m === 'auto' ? 'Selon le système' : m === 'full' ? 'Complètes' : 'Réduites'}</label>)}</fieldset>
       {onReading && <fieldset className="tbl-motion"><legend>Lecture des effets</legend>{(['auto', 'manual', 'fast'] as const).map(m => <label key={m}><input type="radio" name="reading" checked={reading === m} onChange={() => onReading(m)} /> {m === 'auto' ? 'Automatique (selon la longueur du texte)' : m === 'manual' ? 'J’appuie sur « Continuer »' : 'Rapide'}</label>)}</fieldset>}
       {onFast && <label className="tbl-fast"><input type="checkbox" checked={fast} onChange={e => onFast(e.target.checked)} /> Mode rapide (animations uniquement)</label>}

@@ -1,9 +1,9 @@
 import { enqueueTriggers, nextTriggers, completeScheduledTrigger } from './scheduler'
-import { confirmPower, confirmMoveOperation, confirmRestOperation, recordOperation, processOperation, preflightCosts, payCosts, fieldDon, noteDonReturned } from './operations'
+import { confirmPower, confirmMoveOperation, confirmRestOperation, recordOperation, processOperation, preflightCosts, payCosts, fieldDon, noteDonReturned, donMinusPart } from './operations'
 import { evaluateCharacteristics, hasBlockerAbility, ownCharacterCostAtLeast } from './characteristics'
 import { shuffle, seededRandom } from '../core/random'
 import type { GameState, Command, LegalAction } from '../core/types'
-import { CARD_PRIMITIVES, PRIMITIVES, UNIVERSAL_PRIMITIVES, runtimeSchema, validateRegistry, type EffectRuntime, type EffectRegistry, type PrimitiveRegistry, type Condition,
+import { CARD_PRIMITIVES, PRIMITIVES, UNIVERSAL_PRIMITIVES, runtimeSchema, validateRegistry, type EffectRuntime, type EffectRegistry, type EffectDefinition as SubjectDefinition, type PrimitiveRegistry, type Condition,
   type OperationSpec, type ProposedOperation, type EffectContext } from './contracts'
 
 // Same command dispatcher and continuation interpreter for laboratory and reviewed card programs.
@@ -26,6 +26,14 @@ const recipient = (s: GameState, controller: string, who: 'CONTROLLER' | 'OPPONE
   if (!p) throw new Error('INVALID_EFFECT_PLAYER')
   return p
 }
+/** M7 `subject` of a [When a Character is K.O.'d / is played] definition: the Character's side, printed types and base power. */
+function subjectMatches(s: GameState, d: SubjectDefinition, instanceId: string, observer: string): boolean {
+  if (!d.subject) return true
+  const i = s.instances[instanceId], def = i && s.catalog.definitions.find(x => x.definitionId === i.definitionId)
+  if (!i || !def || i.controller !== observer) return false
+  return (!d.subject.traitsAny || d.subject.traitsAny.some(t => def.traits.includes(t))) && (d.subject.minBasePower === undefined || (def.power ?? -1) >= d.subject.minBasePower)
+}
+const isCharacterCard = (s: GameState, id: string | undefined) => !!id && s.catalog.definitions.find(d => d.definitionId === s.instances[id]?.definitionId)?.category === 'CHARACTER'
 function condition(s: GameState, c: Condition, controller: string, source?: EffectContext['source'], event?: { sequence?: number; trashSourceDefinitionId?: string }): boolean {
   if (c.kind === 'ALWAYS') return true
   if (c.kind === 'ALL_OF') return c.conditions.every(part => condition(s, part, controller, source, event))
@@ -67,6 +75,12 @@ function condition(s: GameState, c: Condition, controller: string, source?: Effe
   if (c.kind === 'SOURCE_PLAYED_THIS_TURN') { if (source?.kind !== 'CARD') return false; const i = s.instances[source.presence.instanceId]; return !!i && i.zoneGeneration === source.presence.generation && i.playedOnTurn === s.turn }
   if (c.kind === 'OWN_CHARACTER_COUNT') { const n = recipient(s, controller, 'CONTROLLER').zones.characters.filter(id => { const d = s.catalog.definitions.find(x => x.definitionId === s.instances[id].definitionId); return (evaluateCharacteristics(s, id).cost.current ?? -1) >= c.minCost && (!c.traitsAny || !!d?.traits.some(t => c.traitsAny!.includes(t))) && (!c.nameIs || d?.rulesName === c.nameIs) && (c.minBasePower === undefined || (d?.power ?? -1) >= c.minBasePower) && (c.maxBasePower === undefined || (d?.power ?? Infinity) <= c.maxBasePower) }).length; return (c.atLeast === undefined || n >= c.atLeast) && (c.atMost === undefined || n <= c.atMost) }
   if (c.kind === 'OWN_RESTED_CHARACTERS_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.characters.filter(id => s.instances[id].rested).length >= c.minimum
+  if (c.kind === 'SOURCE_POWER_AT_LEAST') { const id = source?.kind === 'CARD' ? source.presence.instanceId : undefined, i = id ? s.instances[id] : undefined
+    return !!i && i.zoneGeneration === (source as { presence: { generation: number } }).presence.generation && ['leader', 'characters'].includes(i.zone) && (evaluateCharacteristics(s, id!).power.current ?? -1) >= c.minimum }
+  if (c.kind === 'ANY_CHARACTER_COST_AT_LEAST') return s.players.some(p => p.zones.characters.some(id => (evaluateCharacteristics(s, id).cost.current ?? -1) >= c.minimum))
+  if (c.kind === 'TRASH_EVENTS_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.trash.filter(id => s.catalog.definitions.find(d => d.definitionId === s.instances[id].definitionId)?.category === 'EVENT').length >= c.minimum
+  if (c.kind === 'LIFE_AT_MOST_OPPONENT') return recipient(s, controller, 'CONTROLLER').zones.life.length <= recipient(s, controller, 'OPPONENT').zones.life.length
+  if (c.kind === 'TOTAL_LIFE_AT_MOST') return s.players.reduce((n, p) => n + p.zones.life.length, 0) <= c.maximum
   if (c.kind === 'OWN_CHARACTER_POWER_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.characters.some(id => (evaluateCharacteristics(s, id).power.current ?? -1) >= c.minimum)
   if (c.kind === 'TRASH_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.trash.length >= c.minimum
   if (c.kind === 'DON_DECK_AT_LEAST') return recipient(s, controller, 'CONTROLLER').zones.donDeck.length >= c.minimum
@@ -531,7 +545,9 @@ function executeLife(s: GameState, spec: Extract<OperationSpec, { primitive: 'li
   if (spec.primitive === 'lifeToHand') {
     // "You cannot add Life cards to your hand using your own effects during this turn": nothing happens (FAQ OP02-001/023).
     if (card.owner === context.controllerId && lifeToHandLocked(s, context.controllerId)) return
-    if (card.zone !== 'life' || card.owner !== context.controllerId || (owner.zones.life[0] !== card.id && owner.zones.life.at(-1) !== card.id)) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
+    // side OPPONENT (M7): the top card of the opponent's Life goes to its owner's hand.
+    const opponents = spec.side === 'OPPONENT'
+    if (card.zone !== 'life' || (card.owner !== context.controllerId) !== opponents || (opponents ? owner.zones.life[0] !== card.id : owner.zones.life[0] !== card.id && owner.zones.life.at(-1) !== card.id)) throw new Error('EFFECT_OPERATION_UNAVAILABLE')
     // A face-up Life card goes to the bottom of the deck instead (Leader Life rule): it is not added to the hand, so a cost
     // "add 1 Life card to your hand:" is not paid (FAQ ST13-003 with ST13-012).
     if (card.faceUp && faceUpLifeToDeckBottom(s, owner.id)) {
@@ -655,7 +671,8 @@ function resume(s: GameState) {
       active.status = 'SUSPENDED'; return
     }
     if (step.kind === 'CHECK') {
-      c.bindings[step.bind] = condition(s, step.condition, c.context.controllerId, c.context.source) && c.context.source.kind === 'CARD' ? [structuredClone(c.context.source.presence)] : []
+      const gated = step.whenBindingNonempty !== undefined && !c.bindings[step.whenBindingNonempty]?.length
+      c.bindings[step.bind] = !gated && condition(s, step.condition, c.context.controllerId, c.context.source) && c.context.source.kind === 'CARD' ? [structuredClone(c.context.source.presence)] : []
       c.pc++; continue
     }
     if (step.kind === 'UNION') { c.bindings[step.bind] = step.from.flatMap(b => c.bindings[b] ?? []).map(ref => structuredClone(ref)); c.pc++; continue }
@@ -751,7 +768,7 @@ export function effectActions(s: GameState, actorId: string): LegalAction[] {
   return r.registry.definitions.filter(d => d.timing === 'MAIN' || d.timing === 'ACTIVATE_MAIN').flatMap(d => sources(s, d, actorId).filter(source => condition(s, d.condition, actorId, source) && payable(s, d, source)
     && (d.usage.kind === 'UNLIMITED' || !r.usage[usageKey(d.id, d.revision, source, actorId, s.turn)]))
     .map(source => ({ type: 'START_EFFECT' as const, effectId: actionId(d, source), ...(d.optionalCost === 'TAKE_TOP_LIFE_TO_HAND' && !lifeToHandLocked(s, actorId) ? { optionalCost:d.optionalCost } : {}),
-      ...(d.cost.kind === 'DON_MINUS' ? { donMinus: { amount: d.cost.amount, eligibleDonIds: fieldDon(s, actorId) } } : {}) })))
+      ...(donMinusPart(d.cost) ? { donMinus: { amount: donMinusPart(d.cost)!.amount, eligibleDonIds: fieldDon(s, actorId) } } : {}) })))
 }
 export function applyEffectCommand(s: GameState, command: Extract<Command, { type: 'START_EFFECT' | 'ANSWER_CHOICE' }>) {
   const r = s.effects
@@ -768,7 +785,7 @@ export function applyEffectCommand(s: GameState, command: Extract<Command, { typ
     if (s.phase !== 'MAIN' || s.activePlayerId !== command.actorId || s.battle || s.result || r.choice || r.scheduler?.orderChoice || r.continuation) throw new Error('INVALID_EFFECT_WINDOW')
     const candidate = r.registry.definitions.filter(d => d.timing === 'MAIN' || d.timing === 'ACTIVATE_MAIN').flatMap(d => sources(s, d, command.actorId).map(source => ({ d, source }))).find(c => actionId(c.d, c.source) === command.effectId)
     const d = candidate?.d, source = candidate?.source
-    if (r.choice || !d || !source || (command.donMinusIds !== undefined && d.cost.kind !== 'DON_MINUS') || (command.payOptionalCost && !d.optionalCost) || (command.payOptionalCost && source.kind === 'CARD' && !s.players.find(p=>p.id===command.actorId)!.zones.life.length) || !payable(s, d, source) || !condition(s, d.condition, command.actorId, source)) throw new Error('INVALID_EFFECT_COMMAND')
+    if (r.choice || !d || !source || (command.donMinusIds !== undefined && !donMinusPart(d.cost)) || (command.payOptionalCost && !d.optionalCost) || (command.payOptionalCost && source.kind === 'CARD' && !s.players.find(p=>p.id===command.actorId)!.zones.life.length) || !payable(s, d, source) || !condition(s, d.condition, command.actorId, source)) throw new Error('INVALID_EFFECT_COMMAND')
     const key = usageKey(d.id, d.revision, source, command.actorId, s.turn)
     if (d.usage.kind !== 'UNLIMITED' && r.usage[key]) throw new Error('INVALID_EFFECT_COMMAND')
     begin(s, d, source, command.actorId, command.payOptionalCost === true, undefined, undefined, command.donMinusIds)
@@ -956,7 +973,7 @@ function select(s: GameState, actor: string, selector: import('./contracts').Sel
   if (selector.kind === 'OPPONENT_TOP_LIFE') return s.players.find(q => q.id !== actor)!.zones.life.slice(0, 1)
   if (selector.kind === 'CARDS') {
     const owners = selector.side === 'OWN' ? [p] : selector.side === 'OPPONENT' ? s.players.filter(q => q.id !== actor) : [p, ...s.players.filter(q => q.id !== actor)]
-    const ids = owners.flatMap(q => selector.zone === 'leader' ? q.zones.leader : selector.zone === 'leaderOrCharacters' ? [...q.zones.leader, ...q.zones.characters] : selector.zone === 'fieldDon' ? [...q.zones.cost, ...q.zones.attached] : selector.zone === 'givenDon' ? q.zones.attached : selector.zone === 'handOrTrash' ? [...q.zones.hand, ...q.zones.trash] : selector.topN ? q.zones.deck.slice(0, selector.topN)
+    const ids = owners.flatMap(q => selector.zone === 'leader' ? q.zones.leader : selector.zone === 'leaderOrCharacters' ? [...q.zones.leader, ...q.zones.characters] : selector.zone === 'ownCards' ? [...q.zones.leader, ...q.zones.characters, ...q.zones.stage, ...q.zones.cost] : selector.zone === 'fieldDon' ? [...q.zones.cost, ...q.zones.attached] : selector.zone === 'givenDon' ? q.zones.attached : selector.zone === 'handOrTrash' ? [...q.zones.hand, ...q.zones.trash] : selector.topN ? q.zones.deck.slice(0, selector.topN)
       : selector.zone === 'life' ? selector.lifeEnd === 'ALL' ? [...q.zones.life] : [...new Set(selector.lifeEnd === 'TOP_OR_BOTTOM' ? [q.zones.life[0], q.zones.life.at(-1)] : [q.zones.life[0]])].filter((id): id is string => !!id) : q.zones[selector.zone])
     return ids.filter(id => {
       const i = s.instances[id]
@@ -965,6 +982,7 @@ function select(s: GameState, actor: string, selector: import('./contracts').Sel
       // An active card chosen to be rested ("you may rest ..."): not one that cannot be rested (FAQ EB02-011).
       if (selector.rested === false && restLocked(s, id)) return false
       if (selector.zone === 'cost' || selector.zone === 'fieldDon' || selector.zone === 'givenDon') return i.kind === 'DON'
+      if (selector.zone === 'ownCards' && i.kind === 'DON') return true
       const definition = s.catalog.definitions.find(d => d.definitionId === i.definitionId)
       if (!definition) return false
       if (selector.categories && !selector.categories.includes(definition.category as 'CHARACTER' | 'EVENT' | 'STAGE')) return false
@@ -1158,7 +1176,7 @@ export function capturePlayedEffects(s: GameState, events: GameState['events']):
     for (const e of events.filter(e => (['CARD_PLAYED', 'ATTACK_DECLARED', 'BLOCKER_ACTIVATED', 'TRIGGER_ACTIVATED', 'CHARACTER_BATTLED', 'BATTLE_PAIRED'].includes(e.type) && e.publicInstanceId) || (r.version === '1.3.0' && (e.type === 'MAIN_ENDED' || e.type === 'DON_RETURNED' || e.type === 'COUNTER_PLAYED')))) {
       const causeId = e.type === 'CARD_PLAYED' ? `${s.gameId}:played:${e.sequence}` : `${s.gameId}:event:${e.sequence}`
       // [End of Your Turn]: every such ability on the field of the player whose Main Phase just ended.
-      const observe = (timing: 'END_OF_YOUR_TURN' | 'ON_DON_RETURNED' | 'ON_OPPONENT_BLOCKER' | 'ON_OPPONENT_ATTACK' | 'ON_OPPONENT_EVENT', actor: string) => r.registry.definitions.filter(d => d.timing === timing)
+      const observe = (timing: 'END_OF_YOUR_TURN' | 'ON_DON_RETURNED' | 'ON_OPPONENT_BLOCKER' | 'ON_OPPONENT_ATTACK' | 'ON_OPPONENT_EVENT' | 'ON_CHARACTER_PLAYED', actor: string) => r.registry.definitions.filter(d => d.timing === timing && (timing !== 'ON_CHARACTER_PLAYED' || subjectMatches(s, d, e.publicInstanceId!, actor)))
         .flatMap(d => sources(s, d, actor).filter(source => source.kind === 'CARD' && (d.source.kind !== 'CARD_DEFINITION' || d.source.zone !== 'trash' || delayedScheduled(s, d.id, source.presence, actor))).map(source => ({ d, source, actor })))
       const matches = e.type === 'MAIN_ENDED' ? observe('END_OF_YOUR_TURN', e.actorId!)
         // A DON!! of this player returned to its DON!! deck; an opposing [Blocker] activated (ST10-006).
@@ -1167,12 +1185,20 @@ export function capturePlayedEffects(s: GameState, events: GameState['events']):
         : e.type === 'COUNTER_PLAYED' ? (isEventCard(s, e.publicInstanceId) ? observe('ON_OPPONENT_EVENT', s.players.find(p => p.id !== e.actorId)!.id) : [])
         // Only the abilities captured for THIS event (one card can be named by several events of the same command).
         : [...eligible.filter(t => t.sequence === e.sequence && t.source.kind === 'CARD' && t.source.presence.instanceId === e.publicInstanceId),
+          // [When you play a Character] (M7): once per Character played, by its controller's observers (FAQ OP14-041).
+          ...(e.type === 'CARD_PLAYED' && r.version === '1.3.0' && isCharacterCard(s, e.publicInstanceId) ? observe('ON_CHARACTER_PLAYED', s.instances[e.publicInstanceId!].controller) : []),
           ...(e.type === 'BLOCKER_ACTIVATED' && r.version === '1.3.0' ? observe('ON_OPPONENT_BLOCKER', s.players.find(p => p.id !== s.instances[e.publicInstanceId!].controller)!.id) : []),
           // "when your opponent attacks": the defending player's observers (M6, OP09-001).
           ...(e.type === 'ATTACK_DECLARED' && r.version === '1.3.0' ? observe('ON_OPPONENT_ATTACK', s.players.find(p => p.id !== s.instances[e.publicInstanceId!].controller)!.id) : [])]
       enqueueTriggers(s, matches.filter(t => condition(s,t.d.condition,t.actor,t.source,e.type === 'DON_RETURNED' ? { sequence: e.sequence } : undefined) && usable(s,t.d,t.source,t.actor)).map(t => makeTrigger(s,t.d,t.source,t.actor,causeId,false)), causeId)
     }
-    drainScheduler(s); return
+    // What resolves here (a [Trigger] that plays its card, a DON!! −X paid inside it...) confirms new events: they are captured in
+    // turn, only those (each event once), so that the played card's [On Play] and the observers of that play activate (M7).
+    const seen = s.events.length
+    drainScheduler(s)
+    const nested = s.events.slice(seen)
+    if (nested.length) capturePlayedEffects(s, nested)
+    return
   }
   if (eligible.length > 1 || (eligible.length && r.choice)) throw new Error('SIMULTANEOUS_TRIGGER_ORDER_NOT_IMPLEMENTED')
   if (eligible.length) {
@@ -1214,7 +1240,7 @@ function commitKO(s: GameState, op: NonNullable<EffectRuntime['cardOperations']>
   if (i.zone !== 'characters' || i.zoneGeneration !== op.subject.generation) throw new Error('INVALID_KO_SUBJECT')
   const causeId = op.id
   const scheduled = ['1.2.0','1.3.0'].includes(s.effects!.version)
-  const observers = scheduled ? s.effects!.registry.definitions.filter(d=>d.timing==='ON_CHARACTER_KO').flatMap(d=>s.players.flatMap(p=>sources(s,d,p.id).filter(()=>condition(s,d.condition,p.id)).map(source=>makeTrigger(s,d,source,p.id,causeId,false)))) : []
+  const observers = scheduled ? s.effects!.registry.definitions.filter(d=>d.timing==='ON_CHARACTER_KO').flatMap(d=>s.players.flatMap(p=>sources(s,d,p.id).filter(source=>subjectMatches(s,d,i.id,p.id) && condition(s,d.condition,p.id,source)).map(source=>makeTrigger(s,d,source,p.id,causeId,false)))) : []
   // A battle K.O. is committed by confirmBattleKO in the battle's damage window; any other K.O. is by an effect.
   const inBattle = !!context.windowId?.endsWith(':damage')
   const captured = scheduled ? s.effects!.registry.definitions.filter(d => d.timing === 'ON_KO' && d.source.kind === 'CARD_DEFINITION' && d.source.definitionId === i.definitionId && !(inBattle && JSON.stringify(d.condition).includes('"KO_BY_EFFECT"')) && condition(s,d.condition,i.controller,{ kind: 'CARD', definitionId: i.definitionId!, presence: structuredClone(op.subject) })).map(d => makeTrigger(s,d,{ kind: 'CARD', definitionId: i.definitionId!, presence: structuredClone(op.subject) },i.controller,causeId,true)) : []
@@ -1738,7 +1764,8 @@ function assertScheduler(s: GameState) {
    }
   }
   if (t.timing==='ON_CHARACTER_KO' && !r.cardOperations!.some(o=>o.id===t.causeId && o.type==='KO' && o.outcome==='CONFIRMED')) throw new Error('INVALID_TRIGGER_CAUSE')
- if (!t.activatedOnField && !['ON_PLAY','ON_CHARACTER_KO','WHEN_ATTACKING','ON_BLOCK','WHEN_ATTACKING_OR_ON_BLOCK','TRIGGER','END_OF_YOUR_TURN','END_OF_BATTLE_WITH_CHARACTER','ON_BATTLE_PAIRED','ON_DON_RETURNED','ON_OPPONENT_BLOCKER','ON_OPPONENT_ATTACK','ON_OPPONENT_EVENT','ON_OWN_HAND_TRASHED','ON_SOURCE_RESTED','ON_CHARACTER_RESTED_BY_OWN_EFFECT'].includes(t.timing)) throw new Error('INVALID_TRIGGER')
+  if (!t.activatedOnField && t.timing === 'ON_CHARACTER_PLAYED' && !s.events.some(e => e.type === 'CARD_PLAYED' && `${s.gameId}:played:${e.sequence}` === t.causeId && e.publicInstanceId && s.instances[e.publicInstanceId].controller === t.controllerId)) throw new Error('INVALID_TRIGGER_CAUSE')
+ if (!t.activatedOnField && !['ON_PLAY','ON_CHARACTER_KO','WHEN_ATTACKING','ON_BLOCK','WHEN_ATTACKING_OR_ON_BLOCK','TRIGGER','END_OF_YOUR_TURN','END_OF_BATTLE_WITH_CHARACTER','ON_BATTLE_PAIRED','ON_DON_RETURNED','ON_OPPONENT_BLOCKER','ON_OPPONENT_ATTACK','ON_OPPONENT_EVENT','ON_OWN_HAND_TRASHED','ON_SOURCE_RESTED','ON_CHARACTER_RESTED_BY_OWN_EFFECT','ON_CHARACTER_PLAYED'].includes(t.timing)) throw new Error('INVALID_TRIGGER')
  }
  const resolving=all.filter(t=>t.status==='RESOLVING')
  if (resolving.length!==(q.resolvingId?1:0) || (q.resolvingId && (resolving[0].id!==q.resolvingId || r.active?.definitionId!==resolving[0].definitionId || JSON.stringify(r.active.context.source)!==JSON.stringify(resolving[0].source)))) throw new Error('INVALID_TRIGGER_RESOLUTION')

@@ -4,7 +4,7 @@ import { Coins, Gift, PackageOpen, Swords, Repeat2 } from 'lucide-react'
 import { useWallet } from '@/hooks/useWallet'
 import { formatBerries } from './Berries'
 
-const REASON: Record<string, string> = { STARTER_GRANT: 'Bourse de départ', DAILY_TREASURE: 'Trésor du jour', BOT_GAME: 'Partie contre le bot', DUPLICATE_SALE: 'Revente de doublons', BOOSTER_PURCHASE: 'Booster', DISPLAY_PURCHASE: 'Display' }
+const REASON: Record<string, string> = { ADMIN_ADJUSTMENT: 'Ajustement administrateur', STARTER_GRANT: 'Bourse de départ', DAILY_TREASURE: 'Trésor du jour', BOT_GAME: 'Partie contre le bot', DUPLICATE_SALE: 'Revente de doublons', BOOSTER_PURCHASE: 'Booster', DISPLAY_PURCHASE: 'Display' }
 
 /** Profile wallet: balance, today's earnings and the last movements of the ledger. */
 export default function WalletPanel() {

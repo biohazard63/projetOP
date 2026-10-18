@@ -9,33 +9,34 @@ const eventSchema = z.object({
   id: z.string().min(1), label: z.string().min(1), start: z.string().datetime({ offset: true }), end: z.string().datetime({ offset: true }),
   rewardMultiplier: multiplier.optional(), priceMultiplier: multiplier.optional(), resaleMultiplier: multiplier.optional(),
 }).passthrough()
-const schema = z.object({
+export const economySchema = z.object({
   version: z.string().min(1), starterGrant: amount,
   prices: z.object({ booster: amount, display: amount }),
   rewards: z.object({ dailyTreasure: amount, botGame: z.object({ easy: amount, normal: amount, hard: amount }), winMultiplier: multiplier, minTurns: z.number().int().min(0), dailyGameCap: amount }),
   resale: z.object({ keepCopies: z.number().int().min(0), values: z.record(z.string(), amount) }),
   events: z.array(eventSchema),
 }).passthrough()
-export const ECONOMY = schema.parse(raw)
+export const ECONOMY = economySchema.parse(raw)
+export type EconomySettings = z.infer<typeof economySchema>
 export type EconomyEvent = z.infer<typeof eventSchema>
 
-export const activeEvents = (at: Date = new Date()) => ECONOMY.events.filter(e => new Date(e.start) <= at && at < new Date(e.end))
-const factor = (key: 'rewardMultiplier' | 'priceMultiplier' | 'resaleMultiplier', at: Date) => activeEvents(at).reduce((f, e) => f * (e[key] ?? 1), 1)
+export const activeEvents = (at: Date = new Date(), settings = ECONOMY) => settings.events.filter(e => new Date(e.start) <= at && at < new Date(e.end))
+const factor = (key: 'rewardMultiplier' | 'priceMultiplier' | 'resaleMultiplier', at: Date, settings: EconomySettings) => activeEvents(at, settings).reduce((f, e) => f * (e[key] ?? 1), 1)
 
 /** Settings in force at a date, events applied (rounded to whole Berries). */
-export function economyAt(at: Date = new Date()) {
-  const reward = factor('rewardMultiplier', at), price = factor('priceMultiplier', at), resale = factor('resaleMultiplier', at)
+export function economyAt(at: Date = new Date(), settings = ECONOMY) {
+  const reward = factor('rewardMultiplier', at, settings), price = factor('priceMultiplier', at, settings), resale = factor('resaleMultiplier', at, settings)
   const r = (value: number, f: number) => Math.round(value * f)
   return {
-    version: ECONOMY.version, events: activeEvents(at).map(e => ({ id: e.id, label: e.label, end: e.end })),
-    starterGrant: ECONOMY.starterGrant,
-    prices: { booster: r(ECONOMY.prices.booster, price), display: r(ECONOMY.prices.display, price) },
+    version: settings.version, events: activeEvents(at, settings).map(e => ({ id: e.id, label: e.label, end: e.end })),
+    starterGrant: settings.starterGrant,
+    prices: { booster: r(settings.prices.booster, price), display: r(settings.prices.display, price) },
     rewards: {
-      dailyTreasure: r(ECONOMY.rewards.dailyTreasure, reward),
-      botGame: { easy: r(ECONOMY.rewards.botGame.easy, reward), normal: r(ECONOMY.rewards.botGame.normal, reward), hard: r(ECONOMY.rewards.botGame.hard, reward) },
-      winMultiplier: ECONOMY.rewards.winMultiplier, minTurns: ECONOMY.rewards.minTurns, dailyGameCap: r(ECONOMY.rewards.dailyGameCap, reward),
+      dailyTreasure: r(settings.rewards.dailyTreasure, reward),
+      botGame: { easy: r(settings.rewards.botGame.easy, reward), normal: r(settings.rewards.botGame.normal, reward), hard: r(settings.rewards.botGame.hard, reward) },
+      winMultiplier: settings.rewards.winMultiplier, minTurns: settings.rewards.minTurns, dailyGameCap: r(settings.rewards.dailyGameCap, reward),
     },
-    resale: { keepCopies: ECONOMY.resale.keepCopies, values: Object.fromEntries(Object.entries(ECONOMY.resale.values).map(([tier, v]) => [tier, r(v, resale)])) as Record<string, number> },
+    resale: { keepCopies: settings.resale.keepCopies, values: Object.fromEntries(Object.entries(settings.resale.values).map(([tier, v]) => [tier, r(v, resale)])) as Record<string, number> },
   }
 }
 export type Economy = ReturnType<typeof economyAt>

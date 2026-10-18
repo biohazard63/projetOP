@@ -1,3 +1,4 @@
+import { scopedInput } from './helpers/m6'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { engineCatalog, currentEngineRegistry, engineRuleset } from '../src/lib/engine/catalog'
@@ -26,8 +27,8 @@ test('decks of certified ST-09, ST-10 and ST-11 cards finish complete bot games 
   for (const [name, entries, opponentId, seed] of decks) {
     assert.deepEqual(deckEligibility(entries), { ok: true, errors: [] }, name)
     const opponent = REFERENCE_DECKS.find(d => d.id === opponentId)!
-    const result = playMatch({ definitions, printings, gameId: `${name}-${opponentId}`.replace(/\W+/g, '-'), seed, scope: 'BASIC_TURNS', chooserId: 'p1', ruleset: engineRuleset(), effectRegistry: currentEngineRegistry(),
-      players: [{ id: 'p1', cards: structuredClone(entries), donCount: 10 }, { id: 'p2', cards: structuredClone(opponent.entries), donCount: 10 }] }, { p1: 'normal', p2: 'normal' })
+    const result = playMatch(scopedInput({ definitions, printings, gameId: `${name}-${opponentId}`.replace(/\W+/g, '-'), seed, scope: 'BASIC_TURNS', chooserId: 'p1', ruleset: engineRuleset(), effectRegistry: currentEngineRegistry(),
+      players: [{ id: 'p1', cards: structuredClone(entries), donCount: 10 }, { id: 'p2', cards: structuredClone(opponent.entries), donCount: 10 }] }), { p1: 'normal', p2: 'normal' })
     assert.ok(result.winner, `${name} should reach a winner`)
     assert.equal(result.fallbacks, 0, `${name}: no bot fallback`)
     assert.equal(result.refused, 0, `${name}: no refused command`)

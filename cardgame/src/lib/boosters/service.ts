@@ -1,13 +1,13 @@
 import { createHash, randomInt, randomUUID } from 'node:crypto'
 import { Prisma, type PrismaClient, type Card, type CardSet, type SetRules, type BoosterCard, type Booster } from '@prisma/client'
-import { BoosterError, hasExplicitRules, normalizeSetCode, normalizeRarity, resolveRules } from './rules'
+import { BoosterError, hasExplicitRules, normalizeSetCode, normalizeRarity, resolveRules, type BoosterRules } from './rules'
 import { generateBooster, validatePools, metadataVariant } from './generator'
 import { getBoosterArtwork } from './artwork'
 import type { BoosterCatalogItem, OpeningResult } from './types'
 import { isBoosterProduct } from './products'
 import { DISPLAY_SIZE, TIER_RATES_VERSION, planDisplay, tierPools, tieredRules, type DrawTier, type PackPlan } from './tiers'
 import tierManifest from './booster-tiers.json'
-import { economyAt } from '@/lib/economy/config'
+import { currentEconomy } from '@/lib/economy/settings'
 import { postMany as postBerries } from '@/lib/economy/ledger'
 
 type DB = Prisma.TransactionClient
@@ -37,7 +37,7 @@ function context(set: CardSet, cards: Card[], row: SetRules | null, booster: (Bo
   return { set, rules, warnings, pool: pool.map(card => ({ ...card, drawTier: undefined as DrawTier | undefined })), weights, boosterId: boosterId(set.code), originals: null as Map<string, Card> | null, tiered: false, available: null as ReadonlySet<DrawTier> | null }
 }
 const tierIds = (code: string) => Object.values(tierPools(code) ?? {}).flat()
-export async function getBoosterDrawContext(db: DB, requested: string) {
+export async function getBoosterDrawContext(db: DB, requested: string, proposedRules?: BoosterRules) {
   if (!isBoosterProduct(requested)) throw new BoosterError('NOT_A_BOOSTER', 'Ce produit ne peut pas être ouvert comme un booster.', 403)
   let set = await db.cardSet.findUnique({ where: { code: requested.trim().toUpperCase() } })
   if (!set) {
@@ -53,7 +53,9 @@ export async function getBoosterDrawContext(db: DB, requested: string) {
     db.setRules.findUnique({ where: { code: normalizeSetCode(set.code) } }),
     db.booster.findUnique({ where: { id: boosterId(set.code) }, include: { cards: true } }),
   ])
-  return context(set, cards, exactRule || normalizedRule, booster)
+  const existing = exactRule || normalizedRule
+  const row = proposedRules ? { ...(existing ?? { id: 'preview', code: set.code, rarityCounts: {}, typeCounts: {}, createdAt: new Date(), updatedAt: new Date(), name: null, releaseDate: null }), boosterRules: asJson(proposedRules) as Prisma.JsonValue } : existing
+  return context(set, cards, row, booster)
 }
 export async function getBoosterCatalog(db: DB): Promise<BoosterCatalogItem[]> {
   const [sets, cards, rules, boosters] = await Promise.all([
@@ -113,7 +115,8 @@ async function creditOpenings(tx: DB, userId: string, setCode: string, keys: str
   const ctx = prepaid?.ctx ?? await getBoosterDrawContext(tx, setCode)
   // Paid in Berries (game currency, never real money), debited in the same transaction as the credit: the packs
   // and their payment exist together or not at all; a replay of the same key pays nothing more.
-  const payments = prepaid ? fresh.map(() => prepaid.paymentId) : await postBerries(tx, userId, fresh.map(key => ({ amount: -economyAt().prices.booster, reason: 'BOOSTER_PURCHASE' as const, key: `booster:${key}`, details: { setCode: ctx.set.code } })))
+  const economy = await currentEconomy(tx)
+  const payments = prepaid ? fresh.map(() => prepaid.paymentId) : await postBerries(tx, userId, fresh.map(key => ({ amount: -economy.prices.booster, reason: 'BOOSTER_PURCHASE' as const, key: `booster:${key}`, details: { setCode: ctx.set.code } })))
   // Tiered products come from a virtual display: the rare and hit slots follow the box plan (when still drawable).
   const packs = prepaid?.packs ?? await nextDisplayPacks(tx, userId, ctx, fresh.length)
   const booster = await tx.booster.upsert({ where: { id: ctx.boosterId }, update: {}, create: { id: ctx.boosterId, name: `Simulation · ${ctx.set.name}`, description: 'Ouverture gratuite du simulateur', price: 0, setCode: ctx.set.code, imageUrl: ctx.set.imageUrl } })
@@ -180,7 +183,7 @@ export async function openBoosters(db: PrismaClient, userId: string, setCode: st
     if (count !== DISPLAY_SIZE || await tx.boosterOpening.findUnique({ where: { userId_idempotencyKey: { userId, idempotencyKey: keys[0] } }, select: { id: true } })) return creditOpenings(tx, userId, setCode, keys)
     const ctx = await getBoosterDrawContext(tx, setCode)
     if (!ctx.available) throw new BoosterError('DISPLAY_UNAVAILABLE', 'Cette extension ne se vend pas en display', 422)
-    const [paymentId] = await postBerries(tx, userId, [{ amount: -economyAt().prices.display, reason: 'DISPLAY_PURCHASE', key: `display:${batchKey}`, details: { setCode: ctx.set.code } }])
+    const [paymentId] = await postBerries(tx, userId, [{ amount: -(await currentEconomy(tx)).prices.display, reason: 'DISPLAY_PURCHASE', key: `display:${batchKey}`, details: { setCode: ctx.set.code } }])
     const plan = planDisplay(ctx.available, random)
     // Opened entirely in this transaction: the box is closed at once and never blocks the box of single packs.
     const box = await tx.virtualDisplay.create({ data: { userId, setCode: ctx.set.code, size: DISPLAY_SIZE, plan: asJson(plan), nextIndex: DISPLAY_SIZE, completedAt: new Date(), rulesVersion: TIER_RATES_VERSION } })

@@ -10,11 +10,27 @@ const reviewed = new Set(Object.values(M7_REVIEWED).flatMap(cards => Object.keys
 const cards = () => compiledCards().filter(c => reviewed.has(c.number))
 
 test('M7 compiled abilities run in real games and produce their printed result', async t => {
-  for (const c of cards()) for (const a of c.abilities) await t.test(a.id, () => { const r = runAbility(c, a); assert.ok(r.ok, r.ok ? '' : r.reason) })
+  // A "Choose one" ability is run once per option.
+  const modes = (a: (typeof cards extends () => readonly (infer C)[] ? C : never)['abilities'][number]) => Math.max(1, ...a.program.map(st => st.kind === 'MODE' ? st.modes : 1))
+  for (const c of cards()) for (const a of c.abilities) for (let m = 0; m < modes(a); m++) await t.test(`${a.id}${m ? ` (option ${m + 1})` : ''}`, () => { const r = runAbility(c, a, m); assert.ok(r.ok, r.ok ? '' : r.reason) })
 })
 
 test('M7 compiled static modifiers and conditional keywords apply with their printed condition', async t => {
-  for (const c of cards()) for (const x of [...c.continuous, ...c.conditionalKeywords]) await t.test(x.id, () => { const r = runStatic(c, x); assert.ok(r.ok, r.ok ? '' : r.reason) })
+  for (const c of cards()) for (const x of [...c.continuous, ...c.conditionalKeywords, ...c.attackProhibitions, ...c.koProtections]) await t.test(x.id, () => { const r = runStatic(c, x); assert.ok(r.ok, r.ok ? '' : r.reason) })
+})
+
+test('M7 compiled programs: after an optional cost or a printed condition, every step that acts is gated by it', () => {
+  // Otherwise an action would happen with the cost unpaid or the condition unmet (as a search did before this check).
+  for (const c of compiledCards()) for (const a of c.abilities) {
+    const first = a.program.findIndex(st => st.kind === 'CHECK' || (st.kind === 'CHOICE' && st.bind === 'paid'))
+    if (first < 0) continue
+    for (const st of a.program.slice(first + 1)) {
+      if (st.kind === 'BIND_ALL' || st.kind === 'UNION') continue
+      const subject = st.kind === 'OPERATION' ? (st.operation as { subjectBinding?: string }).subjectBinding : undefined
+      if (subject === 'paid') continue // the payment of the cost itself
+      assert.ok('whenBindingNonempty' in st && st.whenBindingNonempty, `${a.id}: ${st.kind} not gated`)
+    }
+  }
 })
 
 test('M7 compiled printed keywords and [Blocker] are carried by the definition', () => {
@@ -32,4 +48,35 @@ test('M7 every reviewed card is compiled in the catalogue, certified and PLAYABL
 test('M7 the free ruleset admits exactly the reviewed compiled numbers it certifies', async () => {
   const { FREE_RULESET } = await import('../src/game/rulesets/free')
   for (const n of reviewed) assert.ok(FREE_RULESET.allowedNumbers.includes(n), n)
+})
+
+test('M7 an [Activate: Main] cost "DON!! −1 You may rest this Leader" returns the chosen DON!! and rests the Leader; not offered without field DON!!', async () => {
+  const { act, deckFor, leaderOf, newGame, offeredEffects, toMain } = await import('./helpers/m6')
+  const iceburg = compiledCards().find(c => c.number === 'OP03-058')
+  assert.ok(iceburg, 'OP03-058 compiled')
+  const ability = iceburg!.abilities.find(a => a.timing === 'ACTIVATE_MAIN')!
+  assert.equal(ability.cost.kind, 'SEQUENCE')
+  const deck = deckFor('OP03-058', [])
+  let s = toMain(newGame(deck, deck, 61013, true), 3)
+  const offer = offeredEffects(s, 'alice', ability.id)[0]
+  assert.ok(offer?.donMinus, 'offered with a DON!! −1 selection')
+  assert.equal(offer!.donMinus!.amount, 1)
+  const don = offer!.donMinus!.eligibleDonIds[0], leader = leaderOf(s, 'alice')
+  s = act(s, 'alice', { type: 'START_EFFECT', effectId: offer!.effectId, donMinusIds: [don] })
+  assert.equal(s.instances[don].zone, 'donDeck', 'the chosen DON!! is returned')
+  assert.equal(s.instances[leader].rested, true, 'the Leader is rested')
+  // Without DON!! on the field the cost cannot be paid: the ability is not offered.
+  const t = toMain(newGame(deck, deck, 61013, true), 3)
+  const z = t.players.find(p => p.id === 'alice')!.zones
+  for (const id of [...z.cost]) { z.cost.splice(z.cost.indexOf(id), 1); z.donDeck.push(id); t.instances[id].zone = 'donDeck'; t.instances[id].zoneGeneration++; t.instances[id].rested = false; t.instances[id].faceUp = false }
+  assert.equal(offeredEffects(t, 'alice', ability.id).length, 0)
+})
+
+test('M7 a Character played by its own [Trigger] activates its [On Play] (events of the resolution are captured, FAQ OP05-106)', async () => {
+  const { triggerPlayActivatesOnPlay } = await import('./helpers/m7Compiled')
+  const card = cards().find(c => c.abilities.some(a => a.timing === 'ON_PLAY' && a.condition.kind === 'ALWAYS' && a.cost.kind === 'NONE')
+    && c.abilities.some(a => a.timing === 'TRIGGER' && a.program.some(st => st.kind === 'OPERATION' && st.operation.primitive === 'playSelfFromTrigger') && !a.program.some(st => st.kind === 'CHECK')))
+  assert.ok(card, 'a reviewed card with [On Play] and [Trigger] Play this card')
+  const r = triggerPlayActivatesOnPlay(card!)
+  assert.ok(r.ok, r.ok ? '' : `${card!.number}: ${r.reason}`)
 })

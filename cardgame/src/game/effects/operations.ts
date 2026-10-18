@@ -73,7 +73,14 @@ export function fieldDon(s:GameState,playerId:string):string[] {
  const p=s.players.find(p=>p.id===playerId)
  return p ? [...p.zones.cost,...p.zones.attached].filter(id=>s.instances[id]?.kind==='DON') : []
 }
+/** The DON!! −X part of an activation cost: the whole cost, or one part of a SEQUENCE (M7). */
+export function donMinusPart(cost:Cost):{kind:'DON_MINUS';amount:number}|undefined {
+ return cost.kind==='DON_MINUS' ? cost : cost.kind==='SEQUENCE' ? cost.parts.find((p):p is {kind:'DON_MINUS';amount:number}=>p.kind==='DON_MINUS') : undefined
+}
+const withoutDonMinus=(cost:Cost):Cost=>cost.kind==='SEQUENCE' ? {kind:'SEQUENCE',parts:cost.parts.filter(p=>p.kind!=='DON_MINUS')} : cost
 export function preflightCosts(s:GameState,cost:Cost,context:EffectContext):PaymentOutcome {
+ // A SEQUENCE with DON!! −X: the DON!! part as below, then the other parts (rest this card...).
+ if (cost.kind==='SEQUENCE' && donMinusPart(cost)) { const dm=donMinusPart(cost)!; return preflightCosts(s,dm,context)==='PAID' ? preflightCosts(s,withoutDonMinus(cost),context) : 'INITIAL_UNPAYABLE' }
  if (cost.kind==='DON_MINUS') {
   // A MOVE_DON prohibition on the player makes the return impossible from the start; nothing is paid.
   if (fieldDon(s,context.controllerId).length<cost.amount || s.effects!.registry.restrictions.some(rule=>rule.playerId===context.controllerId && rule.prohibited==='MOVE_DON')) return 'INITIAL_UNPAYABLE'
@@ -88,6 +95,13 @@ export function preflightCosts(s:GameState,cost:Cost,context:EffectContext):Paym
  return 'PAID'
 }
 export function payCosts(s:GameState,cost:Cost,context:EffectContext,donMinusIds?:string[]):PaymentOutcome {
+ // Printed order: the DON!! are returned, then the other parts are paid; both checked before anything is paid.
+ if (cost.kind==='SEQUENCE' && donMinusPart(cost)) {
+  if (preflightCosts(s,cost,context)!=='PAID') return 'INITIAL_UNPAYABLE'
+  const first=payCosts(s,donMinusPart(cost)!,context,donMinusIds)
+  if (first!=='PAID') return first
+  return payCosts(s,withoutDonMinus(cost),context)
+ }
  if (cost.kind==='DON_MINUS') {
   const field=new Set(fieldDon(s,context.controllerId))
   if (!donMinusIds || donMinusIds.length!==cost.amount || new Set(donMinusIds).size!==donMinusIds.length || donMinusIds.some(id=>!field.has(id))) throw new Error('INVALID_DON_MINUS_SELECTION')

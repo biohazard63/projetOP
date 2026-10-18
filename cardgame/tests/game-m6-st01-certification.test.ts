@@ -1,3 +1,4 @@
+import { scopedInput } from './helpers/m6'
 import test from 'node:test'
 import assert from 'node:assert/strict'
 import { evaluateCharacteristics } from '../src/game/effects/characteristics'
@@ -170,8 +171,8 @@ test('M6 ST-01 deck: offered in /play, full bot games end with a winner at every
   assert.deepEqual(deckEligibility(deck!.entries), { ok: true, errors: [] })
   const purple = REFERENCE_DECKS.find(d => d.id === 'reference-purple')!, { definitions, printings } = engineCatalog()
   for (const [seed, level] of [[3, 'easy'], [11, 'normal'], [19, 'hard'], [27, 'hard']] as const) {
-    const r = playMatch({ definitions, printings, gameId: 'st01-bots', seed, scope: 'BASIC_TURNS', chooserId: 'p1', ruleset: engineRuleset(), effectRegistry: currentEngineRegistry(),
-      players: [{ id: 'p1', cards: structuredClone(deck!.entries), donCount: 10 }, { id: 'p2', cards: structuredClone(purple.entries), donCount: 10 }] }, { p1: level, p2: level })
+    const r = playMatch(scopedInput({ definitions, printings, gameId: 'st01-bots', seed, scope: 'BASIC_TURNS', chooserId: 'p1', ruleset: engineRuleset(), effectRegistry: currentEngineRegistry(),
+      players: [{ id: 'p1', cards: structuredClone(deck!.entries), donCount: 10 }, { id: 'p2', cards: structuredClone(purple.entries), donCount: 10 }] }), { p1: level, p2: level })
     assert.ok(r.winner, `seed ${seed}: the game ends with a winner`); assert.equal(r.fallbacks, 0); assert.equal(r.refused, 0)
   }
 })

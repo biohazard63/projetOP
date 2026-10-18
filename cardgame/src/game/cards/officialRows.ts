@@ -24,6 +24,27 @@ import st33 from '../../../data/official-en/cards-ST-33.json'
 import st34 from '../../../data/official-en/cards-ST-34.json'
 import st35 from '../../../data/official-en/cards-ST-35.json'
 import op17 from '../../../data/official-en/cards-OP-17.json'
+import op16 from '../../../data/official-en/cards-OP-16.json'
+import op15eb04 from '../../../data/official-en/cards-OP15-EB04.json'
+import op14eb04 from '../../../data/official-en/cards-OP14-EB04.json'
+import op13 from '../../../data/official-en/cards-OP-13.json'
+import op12 from '../../../data/official-en/cards-OP-12.json'
+import op11 from '../../../data/official-en/cards-OP-11.json'
+import op10 from '../../../data/official-en/cards-OP-10.json'
+import op09 from '../../../data/official-en/cards-OP-09.json'
+import op08 from '../../../data/official-en/cards-OP-08.json'
+import op07 from '../../../data/official-en/cards-OP-07.json'
+import op06 from '../../../data/official-en/cards-OP-06.json'
+import op05 from '../../../data/official-en/cards-OP-05.json'
+import op04 from '../../../data/official-en/cards-OP-04.json'
+import op03 from '../../../data/official-en/cards-OP-03.json'
+import op02 from '../../../data/official-en/cards-OP-02.json'
+import op01 from '../../../data/official-en/cards-OP-01.json'
+import eb03 from '../../../data/official-en/cards-EB-03.json'
+import eb02 from '../../../data/official-en/cards-EB-02.json'
+import eb01 from '../../../data/official-en/cards-EB-01.json'
+import prb02 from '../../../data/official-en/cards-PRB-02.json'
+import prb01 from '../../../data/official-en/cards-PRB-01.json'
 export const OFFICIAL_EN_ROWS: Record<string, LocalRow[]> = {
   'ST-13': st13 as LocalRow[],
   'ST-15': st15 as LocalRow[],
@@ -48,4 +69,25 @@ export const OFFICIAL_EN_ROWS: Record<string, LocalRow[]> = {
   'ST-34': st34 as LocalRow[],
   'ST-35': st35 as LocalRow[],
   'OP-17': op17 as LocalRow[],
+  'OP-16': op16 as LocalRow[],
+  'OP15-EB04': op15eb04 as LocalRow[],
+  'OP14-EB04': op14eb04 as LocalRow[],
+  'OP-13': op13 as LocalRow[],
+  'OP-12': op12 as LocalRow[],
+  'OP-11': op11 as LocalRow[],
+  'OP-10': op10 as LocalRow[],
+  'OP-09': op09 as LocalRow[],
+  'OP-08': op08 as LocalRow[],
+  'OP-07': op07 as LocalRow[],
+  'OP-06': op06 as LocalRow[],
+  'OP-05': op05 as LocalRow[],
+  'OP-04': op04 as LocalRow[],
+  'OP-03': op03 as LocalRow[],
+  'OP-02': op02 as LocalRow[],
+  'OP-01': op01 as LocalRow[],
+  'EB-03': eb03 as LocalRow[],
+  'EB-02': eb02 as LocalRow[],
+  'EB-01': eb01 as LocalRow[],
+  'PRB-02': prb02 as LocalRow[],
+  'PRB-01': prb01 as LocalRow[],
 }

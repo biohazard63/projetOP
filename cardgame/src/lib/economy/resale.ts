@@ -1,5 +1,5 @@
 import type { Prisma, PrismaClient } from '@prisma/client'
-import { economyAt } from './config'
+import { currentEconomy } from './settings'
 import { BerryError, inPlayerTransaction, post } from './ledger'
 import manga from '@/lib/boosters/manga-rares.json'
 import { normalizeRarity } from '@/lib/boosters/rules'
@@ -22,7 +22,7 @@ export function resaleTier(card: { id: string; rarity: string; isAltArt: boolean
  * Unknown rarities (promos, DON) are never sold.
  */
 async function surplus(tx: DB | PrismaClient, userId: string) {
-  const economy = economyAt()
+  const economy = await currentEconomy(tx)
   const [owned, deckCards] = await Promise.all([
     tx.userCard.findMany({ where: { userId, quantity: { gt: economy.resale.keepCopies } }, select: { cardId: true, quantity: true, card: { select: { id: true, name: true, code: true, imageUrl: true, rarity: true, isAltArt: true, isParallel: true } } } }),
     tx.deckCard.findMany({ where: { deckVersion: { deck: { userId } } }, select: { cardId: true, quantity: true } }),
@@ -39,7 +39,7 @@ async function surplus(tx: DB | PrismaClient, userId: string) {
 
 export async function previewResale(db: PrismaClient, userId: string) {
   const items = await surplus(db, userId)
-  return { items, total: items.reduce((n, i) => n + i.total, 0), copies: items.reduce((n, i) => n + i.extra, 0), keepCopies: economyAt().resale.keepCopies }
+  return { items, total: items.reduce((n, i) => n + i.total, 0), copies: items.reduce((n, i) => n + i.extra, 0), keepCopies: (await currentEconomy(db)).resale.keepCopies }
 }
 
 /** Sells every surplus copy at once; the same key never sells twice. */

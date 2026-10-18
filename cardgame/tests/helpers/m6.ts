@@ -1,7 +1,7 @@
 import assert from 'node:assert/strict'
 import { createGame, applyCommand, getLegalActions, restoreGame, projectState } from '../../src/game/core/game'
 import type { Command, GameInput, GameState, LegalAction } from '../../src/game/core/types'
-import { engineCatalog, currentEngineRegistry, engineRuleset } from '../../src/lib/engine/catalog'
+import { engineCatalog, currentEngineRegistry, engineRuleset, scopedToDecks } from '../../src/lib/engine/catalog'
 import type { DeckEntry } from '../../src/game/rulesets/decks'
 
 // M6 scenario harness: real games built by createGame and driven by public commands. Placement helpers only
@@ -29,11 +29,18 @@ export function deckFor(leader: string, numbers: (string | [string, number])[]):
   assert.equal(total, 50, `not enough fillers for ${leader}`)
   return entries
 }
-export function newGame(alice: DeckEntry[], bob: DeckEntry[], seed = 61013): GameState {
+/** A game input narrowed to the definitions and registry of its players' decks, as /play does (scopedToDecks). */
+export function scopedInput<T extends GameInput>(input: T): T {
+  const n = scopedToDecks(input.players.map(p => p.cards), input.printings, input.definitions, input.effectRegistry!)
+  return { ...input, definitions: n.definitions, printings: n.printings, effectRegistry: n.registry }
+}
+/** `scoped`: the definitions and registry of the two decks only, as /play does (scopedToDecks). */
+export function newGame(alice: DeckEntry[], bob: DeckEntry[], seed = 61013, scoped = false): GameState {
   const ruleset = engineRuleset()
   const numbers = [...alice, ...bob].map(e => catalog.printings.find(p => p.printingKey === e.printingKey)!).map(p => catalog.definitions.find(d => d.definitionId === p.definitionId)!.number)
   ruleset.allowedNumbers = [...new Set([...ruleset.allowedNumbers, ...numbers])]
-  const input: GameInput = { ...catalog, gameId: 'm6-scenario', seed, scope: 'BASIC_TURNS', chooserId: 'alice', ruleset, effectRegistry: currentEngineRegistry(),
+  const narrowed = scoped ? scopedToDecks([alice, bob], catalog.printings, catalog.definitions, currentEngineRegistry()) : null
+  const input: GameInput = { ...catalog, ...(narrowed ? { definitions: narrowed.definitions, printings: narrowed.printings } : {}), gameId: 'm6-scenario', seed, scope: 'BASIC_TURNS', chooserId: 'alice', ruleset, effectRegistry: narrowed?.registry ?? currentEngineRegistry(),
     players: [{ id: 'alice', cards: structuredClone(alice), donCount: 10 }, { id: 'bob', cards: structuredClone(bob), donCount: 10 }] }
   return createGame(input)
 }
