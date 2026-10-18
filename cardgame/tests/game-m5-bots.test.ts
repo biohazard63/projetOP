@@ -40,7 +40,8 @@ test('M5-4: a strategy context holds only its projection, legal actions and publ
     const ctx = botContext(s, seat), seen = strings(ctx.projection), foe = s.players.find(p => p.id !== seat)!
     for (const id of [...foe.zones.hand, ...foe.zones.deck, ...foe.zones.life, ...s.players.find(p => p.id === seat)!.zones.life]) assert.equal(seen.has(id), false, `hidden ${id}`)
     assert.equal(JSON.stringify(ctx.projection).includes('"random"'), false)
-    assert.deepEqual(Object.keys(ctx).sort(), ['actions', 'definition', 'projection', 'seat'])
+    // returnsOneDon: a printed [Counter] cost read from the ability registry, public card rules like `definition`.
+    assert.deepEqual(Object.keys(ctx).sort(), ['actions', 'definition', 'projection', 'returnsOneDon', 'seat'])
     const { intent } = botDecision(s, seat, 'hard')
     const r = applyCommand(s, { ...intent, id: `c-${s.version}`, actorId: seat, expectedVersion: s.version } as Command); assert.ok(r.ok); if (r.ok) s = r.state
   }

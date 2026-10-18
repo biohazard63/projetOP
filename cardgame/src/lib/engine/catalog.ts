@@ -193,6 +193,19 @@ export const officialImage = (number: string) => `https://en.onepiece-cardgame.c
  * `NUMBER::_pN` (same definition: art does not change rules). Any characteristic disagreeing with the
  * reviewed definition is reported as a conflict and the row stays unmapped: conflicts are never resolved silently.
  */
+/** Database card ids a player may put in a deck for /play: recognised by the engine (data agrees), certified PLAYABLE_VERIFIED,
+ * admitted by the ruleset and with supported capabilities — the same checks as a game start (validateEngineDeck 'playable'). */
+export function playableCardIds(rows: PrismaCardRow[]): Set<string> {
+  const base = engineCatalog(), bridge = bridgeCards(rows, base), ruleset = engineRuleset()
+  const byPrinting = new Map(bridge.printings.map(p => [p.printingKey, p])), byDefinition = new Map(base.definitions.map(d => [d.definitionId, d]))
+  const ids = new Set<string>()
+  for (const [cardId, printingKey] of bridge.byCardId) {
+    const definition = byDefinition.get(byPrinting.get(printingKey)?.definitionId ?? '')
+    if (definition && effectiveStatus(definition) === 'PLAYABLE_VERIFIED' && ruleset.allowedNumbers.includes(definition.number)
+      && definition.review.requiredCapabilities.every(c => ruleset.capabilities.includes(c))) ids.add(cardId)
+  }
+  return ids
+}
 export function bridgeCards(rows: PrismaCardRow[], base = engineCatalog()): CardBridge {
   const printings = structuredClone(base.printings), byCardId = new Map<string, string>(), conflicts: CardConflict[] = [], images: Record<string, string> = {}
   const alternates = new Map<string, number>()

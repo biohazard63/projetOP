@@ -9,7 +9,9 @@ export type Projection = ReturnType<typeof projectState>
 export type Seat = Projection['players'][number]
 export type Visible = { id: string; kind: string; printingKey: string | null; definitionId: string | null; rested: boolean; attachedTo: string | null; power: number | null }
 export type Intent = Record<string, unknown> & { type: string }
-export type BotContext = { seat: string; projection: Projection; actions: LegalAction[]; definition: (definitionId: string | null | undefined) => CardDefinition | undefined }
+export type BotContext = { seat: string; projection: Projection; actions: LegalAction[]; definition: (definitionId: string | null | undefined) => CardDefinition | undefined
+  /** Whether this card's [Counter] offers the optional "return 1 DON!!" cost when it is played (registry, public card rules). */
+  returnsOneDon: (definitionId: string | null | undefined) => boolean }
 export type Strategy = { id: BotLevel; decide(ctx: BotContext): Intent }
 export type BotLevel = 'easy' | 'normal' | 'hard'
 export const BOT_LEVELS: BotLevel[] = ['easy', 'normal', 'hard']
@@ -17,7 +19,8 @@ export const BOT_LEVELS: BotLevel[] = ['easy', 'normal', 'hard']
 /** Builds the bounded, public-only context. Card rules come from the catalogue, which is public information. */
 export function botContext(state: GameState, seat: string): BotContext {
   const byId = new Map(state.catalog.definitions.map(d => [d.definitionId, d]))
-  return { seat, projection: projectState(state, seat), actions: getLegalActions(state, seat), definition: id => (id ? byId.get(id) : undefined) }
+  const returnsOneDon = new Set((state.effects?.registry.definitions ?? []).filter(d => d.timing === 'COUNTER' && d.optionalCost === 'RETURN_ONE_DON' && d.source.kind === 'CARD_DEFINITION').map(d => (d.source as { definitionId: string }).definitionId))
+  return { seat, projection: projectState(state, seat), actions: getLegalActions(state, seat), definition: id => (id ? byId.get(id) : undefined), returnsOneDon: id => !!id && returnsOneDon.has(id) }
 }
 export const of = <T extends LegalAction['type']>(ctx: BotContext, type: T) => ctx.actions.filter((a): a is Extract<LegalAction, { type: T }> => a.type === type)
 export function seats(ctx: BotContext) {

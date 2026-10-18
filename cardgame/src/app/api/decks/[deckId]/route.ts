@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 
 import { prisma } from '@/lib/prisma'
+import { deckCardsRefusal } from '@/lib/engine/deckCards'
 import { Card } from '@prisma/client'
 
 type CardWithQuantity = Card & { quantity: number }
@@ -115,7 +116,7 @@ export async function PUT(request: Request) {
 
     const ownedDeck = await prisma.deck.findFirst({
       where: { id: deckId, user: { email: session.user.email.toLowerCase() } },
-      select: { id: true },
+      select: { id: true, userId: true },
     })
     if (!ownedDeck) return NextResponse.json({ error: 'Deck non trouvé' }, { status: 404 })
 
@@ -125,6 +126,9 @@ export async function PUT(request: Request) {
     const storedCards = await prisma.card.findMany({ where: { id: { in: normalizedCards.map(c => c.id) } } })
     const validationError = validateDeck(normalizedCards, storedCards)
     if (validationError) return NextResponse.json({ error: validationError }, { status: 400 })
+    if (!ownedDeck.userId) return NextResponse.json({ error: 'Deck non trouvé' }, { status: 404 })
+    const refusal = await deckCardsRefusal(ownedDeck.userId, normalizedCards, storedCards)
+    if (refusal) return NextResponse.json({ error: refusal }, { status: 400 })
 
     // Créer une nouvelle version du deck
     const updatedDeck = await prisma.$transaction(async (tx) => {

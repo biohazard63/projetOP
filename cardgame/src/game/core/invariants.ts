@@ -114,6 +114,8 @@ export function assertGameInvariants(state: GameState): void {
   // A card named by an earlier public event may since have been moved to a hidden zone by a traced effect operation
   // (return to hand, bottom of deck). Projections never show hidden-zone instances of the opponent, so this is not a leak.
   // A face-up Life card (LIFE_ADDED names it) was public when placed; it may later leave the Life for the hand by damage.
-  const hiddenByEffect = new Set((state.effects?.operations ?? []).filter(o => o.type === 'MOVE_CARD' && o.outcome === 'CONFIRMED' && ['hand', 'deck'].includes(o.to ?? '')).map(o => o.subject.instanceId))
+  // A public card that an effect placed in a hidden zone (hand, deck, or Life, which a damage may later move to the hand) may be
+  // private afterwards; its earlier public events stay valid.
+  const hiddenByEffect = new Set((state.effects?.operations ?? []).filter(o => o.type === 'MOVE_CARD' && o.outcome === 'CONFIRMED' && ['hand', 'deck', 'life'].includes(o.to ?? '')).map(o => o.subject.instanceId))
   if (state.events.some(e => e.publicInstanceId && (!['CARD_REVEALED', 'CARD_MOVED', 'TRIGGER_ACTIVATED', 'CARD_TRASHED', 'CARD_PLAYED', 'DON_ATTACHED', 'CHARACTER_KO', 'ATTACK_DECLARED', 'BLOCKER_ACTIVATED', 'COUNTER_PLAYED', 'CHARACTER_BATTLED', 'BATTLE_PAIRED', 'LIFE_ADDED', 'LIFE_TURNED_FACE_UP'].includes(e.type) || (!state.instances[e.publicInstanceId]?.faceUp && state.instances[e.publicInstanceId]?.kind !== 'DON' && !hiddenByEffect.has(e.publicInstanceId) && e.type !== 'LIFE_ADDED' && e.type !== 'LIFE_TURNED_FACE_UP')))) throw new Error('PRIVATE_INSTANCE_IN_PUBLIC_EVENT')
 }

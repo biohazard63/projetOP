@@ -3,6 +3,7 @@ import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 
 import { prisma } from '@/lib/prisma'
+import { deckCardsRefusal } from '@/lib/engine/deckCards'
 import { Prisma, Card, Deck } from '@prisma/client'
 
 type CardWithQuantity = Card & { quantity: number }
@@ -134,6 +135,8 @@ export async function POST(request: Request) {
     const storedCards = await prisma.card.findMany({ where: { id: { in: cards.map(c => c.id) } } })
     const validationError = validateDeck(cards, storedCards)
     if (validationError) return NextResponse.json({ error: validationError }, { status: 400 })
+    const refusal = await deckCardsRefusal(user.id, cards, storedCards)
+    if (refusal) return NextResponse.json({ error: refusal }, { status: 400 })
 
     // Créer le deck avec sa première version
     const deck = await prisma.$transaction(async (tx) => {
