@@ -3,7 +3,7 @@ import { z } from 'zod'
 export const REPORT_CATEGORIES = { WRONG_VARIANT: 'Alternative ou variante mal indiquée', WRONG_IMAGE: 'Mauvaise image', WRONG_DATA: 'Texte ou caractéristiques incorrects', WRONG_EFFECT: 'Effet de jeu incorrect', BUG: 'Autre bug' } as const
 export const REPORT_STATUSES = { NEW: 'Nouveau', IN_PROGRESS: 'En cours', FIXED: 'Corrigé', UNCONFIRMED: 'Non confirmé' } as const
 export const reportStatus = z.enum(['NEW', 'IN_PROGRESS', 'FIXED', 'UNCONFIRMED'])
-export const reportFilters = z.object({ status: reportStatus.optional(), source: z.enum(['PLAY', 'BOOSTER']).optional(), category: z.enum(['WRONG_VARIANT', 'WRONG_IMAGE', 'WRONG_DATA', 'WRONG_EFFECT', 'BUG']).optional(), q: z.string().trim().max(120).optional(), cursor: z.string().min(1).max(100).optional() })
+export const reportFilters = z.object({ status: reportStatus.optional(), source: z.enum(['PLAY', 'BOOSTER', 'COLLECTION']).optional(), category: z.enum(['WRONG_VARIANT', 'WRONG_IMAGE', 'WRONG_DATA', 'WRONG_EFFECT', 'BUG']).optional(), q: z.string().trim().max(120).optional(), cursor: z.string().min(1).max(100).optional() })
 export type ReportFilters = z.infer<typeof reportFilters>
 const short = z.string().max(300)
 const number = z.number().int().min(-1000000).max(1000000).nullable().optional()
@@ -20,16 +20,17 @@ export const cardSnapshot = z.object({
 })
 export type ReportCard = z.infer<typeof cardSnapshot>
 const contextSchema = z.object({
-  pathname: z.enum(['/play', '/booster-opening', '/boosters']).optional(), gameId: short.min(1).optional(), openingId: short.min(1).optional(),
+  pathname: z.enum(['/play', '/booster-opening', '/boosters', '/collection']).optional(), gameId: short.min(1).optional(), openingId: short.min(1).optional(),
   turn: z.number().int().nonnegative().optional(), version: z.number().int().nonnegative().optional(), phase: short.optional(),
   events: z.array(z.object({ type: short, sequence: z.number().int().nonnegative() })).max(20).optional(),
 })
 export type ReportContext = z.infer<typeof contextSchema>
 export const reportRequest = z.object({
-  requestId: z.string().min(1).max(100), source: z.enum(['PLAY', 'BOOSTER']), category: z.enum(['WRONG_VARIANT', 'WRONG_IMAGE', 'WRONG_DATA', 'WRONG_EFFECT', 'BUG']),
+  requestId: z.string().min(1).max(100), source: z.enum(['PLAY', 'BOOSTER', 'COLLECTION']), category: z.enum(['WRONG_VARIANT', 'WRONG_IMAGE', 'WRONG_DATA', 'WRONG_EFFECT', 'BUG']),
   description: z.string().trim().min(5).max(4000), card: cardSnapshot.optional(), context: contextSchema,
 }).superRefine((data, ctx) => {
   if (data.category !== 'BUG' && !data.card) ctx.addIssue({ code: 'custom', path: ['card'], message: 'Carte requise' })
+  if (data.source === 'COLLECTION' && (!data.card || data.context.pathname !== '/collection' || data.context.gameId || data.context.openingId)) ctx.addIssue({ code: 'custom', path: ['context'], message: 'Carte et contexte de collection requis' })
   if ((data.source === 'BOOSTER' && data.context.gameId) || (data.source === 'PLAY' && (data.context.openingId || !data.context.gameId))) ctx.addIssue({ code: 'custom', path: ['context'], message: 'Contexte invalide' })
 })
 export type ReportInput = z.infer<typeof reportRequest>

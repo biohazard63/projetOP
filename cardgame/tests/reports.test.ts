@@ -1,7 +1,7 @@
 import test from 'node:test'
 import assert from 'node:assert/strict'
-import { reportRequest, isReportAdmin, createReport, type ReportStore } from '../src/lib/reports/service'
-import { boosterReportCard, playReportCard } from '../src/components/reports/snapshots'
+import { reportFilters, reportRequest, isReportAdmin, createReport, type ReportStore } from '../src/lib/reports/service'
+import { boosterReportCard, playReportCard, collectionReportCard } from '../src/components/reports/snapshots'
 import type { OpeningCard } from '../src/lib/boosters/types'
 import type { CardDisplay } from '../src/lib/engine/catalog'
 
@@ -63,4 +63,29 @@ test('play snapshot preserves effective power and inspected VO, without losing b
   assert.equal(snapshot.rested, true)
   assert.equal(snapshot.displayedEffect, 'Original text')
   assert.equal(snapshot.effect, 'Texte français')
+})
+
+test('collection reports attach a card and collection origin without game or opening context', async () => {
+  const { store, saved } = fixture()
+  const body = { ...input(), source: 'COLLECTION', context: { pathname: '/collection' } }
+  assert.equal(reportRequest.safeParse(body).success, true)
+  assert.deepEqual(await createReport('collector', body, store), { id: 'report-1' })
+  assert.equal((saved[0] as { source: string }).source, 'COLLECTION')
+  for (const bad of [{ ...body, card: undefined }, { ...body, context: { pathname: '/play' } }, { ...body, context: { pathname: '/collection', gameId: 'game' } }, { ...body, context: { pathname: '/collection', openingId: 'opening' } }]) {
+    assert.equal(reportRequest.safeParse(bad).success, false)
+  }
+})
+
+
+test('collection snapshots preserve full texts and displayed translation with nullable catalogue flags', () => {
+  const card = { ...input().card, isAltArt: null, isParallel: null, isSpecial: null, ability: 'Ability', trigger: 'Original trigger', family: 'Family', attribute: 'Slash', counter: '1000', quantity: 2 } as unknown as import('../src/lib/collector/types').CatalogueCard
+  const snapshot = collectionReportCard(card, { effect: 'Texte affiché', trigger: 'Trigger affiché', source: 'official', original: false })
+  assert.equal(snapshot.ability, 'Ability')
+  assert.equal(snapshot.trigger, 'Original trigger')
+  assert.equal(snapshot.displayedEffect, 'Texte affiché')
+  assert.equal(snapshot.displayedTrigger, 'Trigger affiché')
+  assert.equal(snapshot.family, 'Family')
+  assert.equal(snapshot.isAltArt, undefined)
+  assert.equal('quantity' in snapshot, false)
+  assert.equal(reportFilters.parse({ source: 'COLLECTION' }).source, 'COLLECTION')
 })

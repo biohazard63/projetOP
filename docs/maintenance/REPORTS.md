@@ -1,6 +1,6 @@
 # Signalements de bugs et de cartes
 
-Entrées : fiches de carte de `/play` (inspection et sélection), menu de partie et écran `/booster-opening` (fiche de carte et signalement général). L’envoi est réservé aux joueurs connectés.
+Entrées : fiche détaillée de `/collection` (après chargement des informations complètes), fiches de carte de `/play` (inspection et sélection), menu de partie et écran `/booster-opening` (fiche de carte et signalement général). L’envoi est réservé aux joueurs connectés.
 
 Chaque signalement conserve la description, une copie des informations affichées de la carte (identité exacte, image, rareté, variantes, caractéristiques, textes), et un contexte filtré. Il ne conserve jamais le GameState, la graine, la main adverse, les cookies ou les paramètres de connexion. Les dernières actions jointes sont limitées aux types et numéros de séquence des vingt derniers événements visibles. Les informations signalées sont une observation du joueur, pas une correction automatique du catalogue.
 
@@ -19,3 +19,5 @@ Vérifications ciblées : `node --import tsx --test tests/reports.test.ts tests/
 Sur autorisation explicite de l’utilisateur : sauvegarde locale protégée créée, migration `20261018120000_issue_reports` appliquée à PostgreSQL `localhost:5432/cardgame` uniquement. Le compte administrateur demandé existe en local ; son adresse a été ajoutée à `REPORT_ADMIN_EMAILS` dans la configuration locale ignorée par Git. Aucune base Neon ni configuration de production n’a été modifiée.
 
 Préparation Neon : suivre `docs/maintenance/NEON_ADMIN_MIGRATION.md`. Aucune migration distante exécutée pendant la préparation.
+
+Collection : les signalements utilisent l’origine `COLLECTION`, filtrable dans l’admin. Le formulaire joint les caractéristiques, variantes, textes du catalogue et textes effectivement affichés (VF/VO). Aucun identifiant de partie ou d’ouverture n’est nécessaire. Le chargement des détails peut être relancé s’il échoue ; le bouton de signalement attend la fiche complète. Les indicateurs de variante absents restent inconnus. Aucune migration supplémentaire. Test navigateur : `node tests/collection-reports.browser.mjs` (API simulées, sans écriture en base).

@@ -1,19 +1,26 @@
 'use client'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
+import { ReportButton } from '@/components/reports/ReportButton'
+import { collectionReportCard } from '@/components/reports/snapshots'
 import { useEffect, useRef, useState } from 'react'
 import { Dialog, DialogContent, DialogDescription, DialogTitle } from '@/components/ui/dialog'
 import type { CatalogueCard } from '@/lib/collector/types'
 import { CardTextSource, useCardText } from '@/components/cards/useCardText'
 export default function CardDetail({ card: base, cards = [], onClose, onFavorite, authenticated = true, navigationCards = [], onSelect }: { card: CatalogueCard | null; cards?: CatalogueCard[]; onClose: () => void; onFavorite?: (id: string) => Promise<void>; authenticated?: boolean; navigationCards?: CatalogueCard[]; onSelect?: (id: string) => void }) {
   // A light grid card has no rules texts: they are fetched once when its detail opens (/api/cards/[id]).
+  const pathname = usePathname()
+  const [detailError, setDetailError] = useState<string | null>(null)
+  const [retry, setRetry] = useState(0)
   const [full, setFull] = useState<Record<string, Partial<CatalogueCard>>>({})
   useEffect(() => {
     if (!base || (base as { effect?: unknown }).effect !== undefined || full[base.id]) return
     const controller = new AbortController()
-    fetch(`/api/cards/${encodeURIComponent(base.id)}`, { signal: controller.signal }).then(r => r.ok ? r.json() : null).then(d => { if (d) setFull(old => ({ ...old, [base.id]: d })) }).catch(() => {})
+    setDetailError(null)
+    fetch(`/api/cards/${encodeURIComponent(base.id)}`, { signal: controller.signal }).then(r => { if (!r.ok) throw Error('DETAIL_UNAVAILABLE'); return r.json() }).then(d => { if (!controller.signal.aborted) setFull(old => ({ ...old, [base.id]: d })) }).catch(() => { if (!controller.signal.aborted) setDetailError(base.id) })
     return () => controller.abort()
-  }, [base, full])
+  }, [base, full, retry])
   const card = base ? { ...(full[base.id] ?? {}), ...base } as CatalogueCard : null
   const text = useCardText(card)
   const [zoomed, setZoomed] = useState(false)
@@ -34,6 +41,7 @@ export default function CardDetail({ card: base, cards = [], onClose, onFavorite
         {variants.length > 0 && <p className="piece-muted">Autres variantes du catalogue : {variants.map(c => c.code).join(', ')}</p>}
         <div className="piece-actions mt-6">{authenticated && (card.quantity || 0) > 0 && ['LEADER','CHARACTER','EVENT','STAGE'].includes(card.type.toUpperCase()) && <Link href={`/deck-builder?cardId=${encodeURIComponent(card.id)}`} className="piece-button">Ajouter à un deck</Link>}
           {onFavorite && <button className="piece-button secondary" disabled={busy} onClick={async () => { setBusy(true); setError(''); try { await onFavorite(card.id) } catch { setError('Modification des favoris impossible') } finally { setBusy(false) } }}>{card.isFavorite ? 'Retirer des favoris' : 'Ajouter aux favoris'}</button>}</div>{error && <p role="alert" className="piece-error">{error}</p>}
+        {authenticated && pathname === '/collection' && (card.effect !== undefined ? <ReportButton key={card.id} source="COLLECTION" card={collectionReportCard(card, text)} context={{ pathname: '/collection' }} /> : detailError === card.id ? <p role="alert">Les informations complètes sont indisponibles. <button type="button" className="piece-button secondary" onClick={() => setRetry(n => n + 1)}>Réessayer le chargement</button></p> : <p role="status">Chargement des informations pour le signalement…</p>)}
       </div></div></>}
   </DialogContent></Dialog>
 }
