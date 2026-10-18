@@ -127,6 +127,8 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
     if (c.kind === 'OWN_RESTED_CHARACTERS_AT_LEAST') { plan.ownRested = c.minimum as number; continue }
     if (c.kind === 'OPPONENT_RESTED_CHARACTERS_AT_LEAST') { plan.oppRested = c.minimum as number; continue }
     if (c.kind === 'TRASH_AT_LEAST') { plan.trashMin = c.minimum as number; continue }
+    // "If you don't have [X]": the scenario has none of them on the field.
+    if (c.kind === 'OWN_CHARACTER_COUNT' && c.atMost === 0 && c.atLeast === undefined) continue
     if (c.kind === 'OWN_CHARACTER_COUNT' && c.atLeast && (c.traitsAny || c.nameIs)) {
       const m = matching({ category: 'CHARACTER', ...(c.traitsAny ? { traitsAny: c.traitsAny } : {}), ...(c.nameIs ? { namesAny: [c.nameIs] } : {}) }, lead.colors, card.number); if (!m) return 'NO_CARD_FOR_CONDITION'
       extra.push(m); (plan.ownTargets ??= []).push({ number: m, rested: false }); continue
@@ -213,7 +215,7 @@ function setup(card: CompiledCard, p: Plan, turn: number) {
 /** Answers pending choices with the first offered options (pays optional costs, chooses the maximum allowed). */
 /** The option a "Choose one" MODE takes in the current scenario (each option is run in its own scenario). */
 let modePick = 0
-function answerAll(s: GameState): GameState {
+function answerAll(s: GameState, declineOptional = false): GameState {
   for (let n = 0; n < 12; n++) {
     const who = ['alice', 'bob'].find(o => pendingChoice(s, o))
     if (!who) {
@@ -223,17 +225,17 @@ function answerAll(s: GameState): GameState {
     }
     const c = pendingChoice(s, who)!
     if (s.effects?.choice?.modes !== undefined) { const o = c.options[Math.min(modePick, c.options.length - 1)]; s = act(s, who, { type: 'ANSWER_CHOICE', choiceId: c.choiceId, tokens: [o.token] }); continue }
-    const count = c.choiceType === 'ORDER' ? c.options.length : c.allOrNone ? (c.options.length >= c.max ? c.max : 0) : Math.min(c.max, c.options.length)
+    const count = declineOptional && c.choiceType !== 'ORDER' ? c.min : c.choiceType === 'ORDER' ? c.options.length : c.allOrNone ? (c.options.length >= c.max ? c.max : 0) : Math.min(c.max, c.options.length)
     s = act(s, who, { type: 'ANSWER_CHOICE', choiceId: c.choiceId, tokens: c.options.slice(0, Math.max(count, c.min)).map(o => o.token) })
   }
   return s
 }
-type Snap = { ev: Record<string, number>; blockerLocks: number; delayed: number; bobLife: number; aliceTrash: number; aliceLife: number; bobTrash: number; locks: number; battleMods: number; field: string[]; restedDonIds: string[]; aliceHand: number; bobHand: number; aliceChars: string[]; bobChars: string[]; trash: number; bobDeck: number; aliceDeck: number; cost: number; restedDon: number; attached: number; rested: Set<string>; power: Map<string, number>; costs: Map<string, number>; stage: number }
+type Snap = { restLocks: number; ev: Record<string, number>; blockerLocks: number; delayed: number; bobLife: number; aliceTrash: number; aliceLife: number; bobTrash: number; locks: number; battleMods: number; field: string[]; restedDonIds: string[]; aliceHand: number; bobHand: number; aliceChars: string[]; bobChars: string[]; trash: number; bobDeck: number; aliceDeck: number; cost: number; restedDon: number; attached: number; rested: Set<string>; power: Map<string, number>; costs: Map<string, number>; stage: number }
 function snap(s: GameState): Snap {
-  const a = zones(s, 'alice'), b = zones(s, 'bob'), field = [...a.leader, ...a.characters, ...b.leader, ...b.characters]
+  const a = zones(s, 'alice'), b = zones(s, 'bob'), field = [...a.leader, ...a.characters, ...a.stage, ...b.leader, ...b.characters]
   // Alice's public events by type: an effect may draw then place back, take a Life then add one (zone counts unchanged).
   const ev: Record<string, number> = {}; for (const e of s.events) if (e.actorId === 'alice') ev[e.type] = (ev[e.type] ?? 0) + 1
-  return { ev, blockerLocks: (s.effects?.blockerRestrictions ?? []).length, delayed: (s.effects?.delayedTriggers ?? []).length, bobLife: b.life.length, aliceTrash: a.trash.length, aliceLife: a.life.length, bobTrash: b.trash.length, locks: (s.effects?.refreshLocks ?? []).length, battleMods: (s.battle?.counterModifiers ?? []).reduce((n, m) => n + m.amount, 0), field: [...a.characters, ...b.characters], restedDonIds: a.cost.filter(id => s.instances[id].rested), aliceHand: a.hand.length, bobHand: b.hand.length, aliceChars: [...a.characters], bobChars: [...b.characters], trash: b.trash.length, bobDeck: b.deck.length, aliceDeck: a.deck.length,
+  return { restLocks: (s.effects?.restLocks ?? []).length, ev, blockerLocks: (s.effects?.blockerRestrictions ?? []).length, delayed: (s.effects?.delayedTriggers ?? []).length, bobLife: b.life.length, aliceTrash: a.trash.length, aliceLife: a.life.length, bobTrash: b.trash.length, locks: (s.effects?.refreshLocks ?? []).length, battleMods: (s.battle?.counterModifiers ?? []).reduce((n, m) => n + m.amount, 0), field: [...a.characters, ...b.characters], restedDonIds: a.cost.filter(id => s.instances[id].rested), aliceHand: a.hand.length, bobHand: b.hand.length, aliceChars: [...a.characters], bobChars: [...b.characters], trash: b.trash.length, bobDeck: b.deck.length, aliceDeck: a.deck.length,
     cost: a.cost.length, restedDon: a.cost.filter(id => s.instances[id].rested).length, attached: a.attached.length, rested: new Set(field.filter(id => s.instances[id].rested)),
     power: new Map(field.map(id => [id, power(s, id)])), costs: new Map(field.map(id => [id, cost(s, id)])), stage: b.stage.length }
 }
@@ -248,7 +250,7 @@ function verify(full: Step[], before: Snap, after: Snap, s: GameState, sourceId:
     const o = op as Record<string, unknown>
     switch (op.primitive) {
       case 'koCharacter': if (o.subjectBinding === 'paid') { if (!before.aliceChars.some(id => s.instances[id].zone === 'trash')) return 'OWN_KO_NOT_APPLIED'; checked.push('K.O. own'); break } { const gone = before.bobChars.filter(id => s.instances[id].zone === 'trash').length; if (!gone && before.stage <= after.stage) return 'KO_NOT_APPLIED'; checked.push('ko'); break }
-      case 'restCard': if (o.subjectBinding === 'paid' ? after.restedDon <= before.restedDon : ![...after.rested].some(id => !before.rested.has(id)) && !before.field.some(id => !before.rested.has(id) && s.instances[id].zone === 'trash')) return 'REST_NOT_APPLIED'; checked.push('rest'); break
+      case 'restCard': if (o.subjectBinding === 'paid' ? after.restedDon <= before.restedDon && ![...after.rested].some(id => !before.rested.has(id)) : ![...after.rested].some(id => !before.rested.has(id)) && !before.field.some(id => !before.rested.has(id) && s.instances[id].zone === 'trash')) return 'REST_NOT_APPLIED'; checked.push('rest'); break
       case 'addPower': if (!changedPower(Math.sign(o.amount as number), Math.abs(o.amount as number)) && !(o.duration === 'THIS_BATTLE' && (after.battleMods - before.battleMods) * Math.sign(o.amount as number) >= Math.abs(o.amount as number))) return 'POWER_NOT_APPLIED'; checked.push(`power ${o.amount}`); break
       case 'addCost': if (![...before.costs].some(([id, c]) => after.costs.has(id) && after.costs.get(id)! - c <= (o.amount as number) || (c > 0 && after.costs.get(id) === Math.max(0, c + (o.amount as number))))) return 'COST_NOT_APPLIED'; checked.push(`cost ${o.amount}`); break
       case 'returnToHand': if (![...before.field, ...(sourceId ? [sourceId] : [])].some(id => s.instances[id].zone === 'hand')) return 'RETURN_NOT_APPLIED'; checked.push('return'); break
@@ -257,10 +259,11 @@ function verify(full: Step[], before: Snap, after: Snap, s: GameState, sourceId:
       case 'moveDon': if (after.cost + after.attached <= before.cost + before.attached) return 'DON_NOT_ADDED'; checked.push('add DON!!'); break
       case 'attachRestedDon': if (after.attached <= before.attached) return 'DON_NOT_GIVEN'; checked.push('give DON!!'); break
       case 'setActive': if (o.subjectBinding ? !before.restedDonIds.some(id => !s.instances[id].rested) && ![...before.rested].some(id => !after.rested.has(id)) : sourceId && s.instances[sourceId].rested) return 'NOT_SET_ACTIVE'; checked.push('set active'); break
-      case 'playCard': if (after.aliceChars.length <= before.aliceChars.length) return 'NOT_PLAYED'; checked.push('play'); break
+      case 'playCard': if (after.aliceChars.length <= before.aliceChars.length && (after.ev.CARD_PLAYED ?? 0) <= (before.ev.CARD_PLAYED ?? 0)) return 'NOT_PLAYED'; checked.push('play'); break
       case 'grantKeyword': if (!(sourceId && hasCombatKeyword(s, sourceId, o.keyword as 'RUSH')) && !zones(s, 'alice').characters.some(id => hasCombatKeyword(s, id, o.keyword as 'RUSH'))) return 'KEYWORD_NOT_GRANTED'; checked.push(`keyword ${o.keyword}`); break
       case 'trashCharacter': if (!sourceId || s.instances[sourceId].zone !== 'trash') return 'NOT_TRASHED'; checked.push('trash this Character'); break
       case 'lockRefresh': if (after.locks <= before.locks) return 'REFRESH_NOT_LOCKED'; checked.push('refresh lock'); break
+      case 'preventRest': if (after.restLocks <= before.restLocks) return 'REST_NOT_PREVENTED'; checked.push('cannot be rested'); break
       case 'preventBlocker': if (after.blockerLocks <= before.blockerLocks) return 'BLOCKER_NOT_PREVENTED'; checked.push('no [Blocker]'); break
       case 'scheduleEndOfTurn': if (after.delayed <= before.delayed) return 'NOT_SCHEDULED'; checked.push('scheduled at end of turn'); break
       case 'lifeToHand': if (after.aliceLife >= before.aliceLife && (after.ev.LIFE_TO_HAND ?? 0) <= (before.ev.LIFE_TO_HAND ?? 0)) return 'LIFE_NOT_TAKEN'; checked.push('Life to hand'); break
@@ -282,6 +285,21 @@ function verify(full: Step[], before: Snap, after: Snap, s: GameState, sourceId:
 }
 const sourceInstance = (s: GameState, number: string) => Object.values(s.instances).find(i => i.owner === 'alice' && s.catalog.definitions.find(d => d.definitionId === i.definitionId)?.number === number && ['characters', 'leader', 'stage'].includes(i.zone))?.id ?? null
 
+/** Ends Alice's turn up to Bob's Main Phase, resolving what is pending on the way ([End of Your Turn] of her Leader...). */
+function endTurnAnswering(s: GameState): GameState {
+  s = act(s, s.activePlayerId!, { type: 'END_MAIN' })
+  // Optional costs of other cards (a Leader's [End of Your Turn]...) are declined: they are not part of the scenario.
+  for (let n = 0; n < 60 && !(s.activePlayerId === 'bob' && s.phase === 'MAIN' && !['alice', 'bob'].some(o => pendingChoice(s, o))); n++) {
+    s = answerAll(s, true)
+    const who = s.activePlayerId!, acts = legal(s, who), alice = legal(s, 'alice')
+    const start = [...alice, ...acts].find(x => x.type === 'START_EFFECT') as { effectId: string; donMinus?: { eligibleDonIds: string[]; amount: number } } | undefined
+    if (acts.some(x => x.type === 'ADVANCE_PHASE')) s = act(s, who, { type: 'ADVANCE_PHASE' })
+    else if (start) s = act(s, alice.includes(start as never) ? 'alice' : who, { type: 'START_EFFECT', effectId: start.effectId, ...(start.donMinus ? { donMinusIds: start.donMinus.eligibleDonIds.slice(0, start.donMinus.amount) } : {}) })
+    else if (s.phase === 'MAIN') break
+    else throw new Error(`END_TURN_STUCK ${s.phase} ${[...new Set([...acts, ...alice].map(x => x.type))].join(',')}`)
+  }
+  return s
+}
 /** A Character of Bob's deck moved straight onto his field (scenario setup, as `put`). */
 const toBobField = (s: GameState, number: string) => { put(s, 'bob', number, 'characters', { playedEarlier: true }); return s }
 
@@ -355,7 +373,7 @@ export function runAbility(card: CompiledCard, a: EffectDefinition, mode = 0): O
         const ev = a.timing === 'COUNTER' ? put(s, 'alice', card.number, 'hand') : null
         if (a.timing === 'TRIGGER') put(s, 'alice', card.number, 'life')
         if (['ON_KO', 'ON_BLOCK', 'ON_OPPONENT_ATTACK'].includes(a.timing)) { sourceId = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true, rested: a.timing === 'ON_KO' }); if (p.don) attachDon(s, 'alice', sourceId, p.don) }
-        s = endTurn(s)
+        s = endTurnAnswering(s)
         // Bob's Refresh Phase set his rested targets active again: the scenario rests them back (as before the effect).
         if (p.restedTargets) for (const id of targets.slice(1)) if (s.instances[id].zone === 'characters') s.instances[id].rested = true
         before = snap(s)
