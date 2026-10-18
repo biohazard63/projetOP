@@ -14,7 +14,7 @@ export function hasCombatKeyword(s: GameState, id: string, keyword: CombatKeywor
   const attached = s.players.find(player => player.id === instance.controller)?.zones.attached
     .filter(donId => s.instances[donId]?.attachedTo === id).length ?? 0
   return (s.effects?.registry.conditionalKeywords ?? []).some(effect => effect.definitionId === instance.definitionId
-    && effect.zone === instance.zone && effect.keyword === keyword && attached >= effect.minimumAttachedDon
+    && effect.zone === instance.zone && effect.keyword === keyword && attached >= effect.minimumAttachedDon && zoneConditions(s, instance.controller, effect)
     && (effect.whenAnyCharacterCostAtMost === undefined || s.players.some(p => p.zones.characters.some(c => { const v = evaluateCost(s, c); return v !== null && v <= effect.whenAnyCharacterCostAtMost! })))
     && (effect.whenOwnCharacterCostAtLeast === undefined || ownCharacterCostAtLeast(s, instance.controller, effect.whenOwnCharacterCostAtLeast))
     && (effect.minimumFieldDon === undefined || fieldDon(s, instance.controller) >= effect.minimumFieldDon)
@@ -45,11 +45,22 @@ export function ownCharacterCostAtLeast(s: GameState, controllerId: string, mini
   return !!s.players.find(p => p.id === controllerId)?.zones.characters.some(c => { const v = evaluateCost(s, c); return v !== null && v >= minimum })
 }
 
+type ZoneConditions = { maximumHandSize?: number; minimumTrash?: number; maximumDeckSize?: number; minimumOpponentRestedCharacters?: number; leaderMulticolored?: true; whenOwnNamed?: string }
+/** M7 zone-count conditions of a continuous definition or a conditional keyword (contracts.ts). */
+function zoneConditions(s: GameState, controllerId: string, m: ZoneConditions): boolean {
+  const me = s.players.find(p => p.id === controllerId)!, foe = s.players.find(p => p.id !== controllerId)!
+  const def = (id: string | undefined) => s.catalog.definitions.find(d => d.definitionId === (id && s.instances[id]?.definitionId))
+  return (m.maximumHandSize === undefined || me.zones.hand.length <= m.maximumHandSize) && (m.minimumTrash === undefined || me.zones.trash.length >= m.minimumTrash)
+    && (m.maximumDeckSize === undefined || me.zones.deck.length <= m.maximumDeckSize)
+    && (m.minimumOpponentRestedCharacters === undefined || foe.zones.characters.filter(id => s.instances[id].rested).length >= m.minimumOpponentRestedCharacters)
+    && (!m.leaderMulticolored || (def(me.zones.leader[0])?.colors.length ?? 0) > 1)
+    && (m.whenOwnNamed === undefined || me.zones.characters.some(id => def(id)?.rulesName === m.whenOwnNamed))
+}
 // Whether a continuous definition printed on `source` is active (conditions other than the cost condition).
 function active(s: GameState, m: Continuous, source: GameState['instances'][string]): boolean {
   const controller = s.players.find(p => p.id === source.controller)!
   const don = controller.zones.attached.filter(x => s.instances[x].attachedTo === source.id).length
-  return source.zone === m.zone && don >= m.minimumAttachedDon && (m.minimumOwnCharacters === undefined || controller.zones.characters.length >= m.minimumOwnCharacters)
+  return source.zone === m.zone && don >= m.minimumAttachedDon && zoneConditions(s, source.controller, m) && (m.minimumOwnCharacters === undefined || controller.zones.characters.length >= m.minimumOwnCharacters)
     && (!m.duringYourTurn || s.activePlayerId === source.controller) && (!m.sourceRested || source.rested)
     && (!m.duringOpponentTurn || s.activePlayerId !== source.controller) && (m.maximumOwnLife === undefined || controller.zones.life.length <= m.maximumOwnLife) && (m.minimumOwnLife === undefined || controller.zones.life.length >= m.minimumOwnLife)
     && (m.minimumFieldDon === undefined || controller.zones.cost.length + controller.zones.attached.length >= m.minimumFieldDon)

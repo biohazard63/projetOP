@@ -70,11 +70,11 @@ function matching(filter: Record<string, unknown>, leaderColours: string[], excl
 }
 
 type Plan = { aliceLeader: string; extra: string[]; own: string[]; bobTargets: string[]; bobColour: string; restedTargets: boolean; seedDeck?: string; seedHand?: string; seedTrash?: string; ownLife?: number; oppLife?: number; don: number
-  needsDonDeck?: boolean; aura?: { target: string; plain: string }; returner?: { number: string; abilityId: string }; ownPowerAtLeast?: number; fieldDonMax?: number; seedHandCost?: string; ownTargets?: { number: string; rested: boolean }[]; handMin?: number; restedDonMin?: number; ownCharsMin?: number; ownCostAtLeast?: number; ownHandMax?: number; oppHandMax?: number; oppHandMin?: number; ownRested?: number; oppRested?: number; trashMin?: number }
+  needsDonDeck?: boolean; deckMax?: number; aura?: { target: string; plain: string }; returner?: { number: string; abilityId: string }; ownPowerAtLeast?: number; fieldDonMax?: number; seedHandCost?: string; ownTargets?: { number: string; rested: boolean }[]; handMin?: number; restedDonMin?: number; ownCharsMin?: number; ownCostAtLeast?: number; ownHandMax?: number; oppHandMax?: number; oppHandMin?: number; ownRested?: number; oppRested?: number; trashMin?: number }
 /** Builds the scenario needs of one ability (or reports why it cannot be built). */
 function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Record<string, unknown>): Plan | string {
   const d = definitionOf(card.number), { selectors, conditions, searches, ops } = scan(a?.program ?? [])
-  const conds = [...conditions.flatMap(flat), ...(a ? flat(a.condition as Record<string, unknown>) : []), ...(staticConds.whenLeaderHasTrait ? [{ kind: 'LEADER_HAS_TRAIT', trait: staticConds.whenLeaderHasTrait }] : []), ...(staticConds.leaderHasTrait ? [{ kind: 'LEADER_HAS_TRAIT', trait: staticConds.leaderHasTrait }] : []), ...(staticConds.leaderTraitIncludes ? [{ kind: 'LEADER_TRAIT_INCLUDES', text: staticConds.leaderTraitIncludes }] : [])]
+  const conds = [...conditions.flatMap(flat), ...(a ? flat(a.condition as Record<string, unknown>) : []), ...(staticConds.whenLeaderHasTrait ? [{ kind: 'LEADER_HAS_TRAIT', trait: staticConds.whenLeaderHasTrait }] : []), ...(staticConds.leaderHasTrait ? [{ kind: 'LEADER_HAS_TRAIT', trait: staticConds.leaderHasTrait }] : []), ...(staticConds.leaderTraitIncludes ? [{ kind: 'LEADER_TRAIT_INCLUDES', text: staticConds.leaderTraitIncludes }] : []), ...(staticConds.leaderMulticolored ? [{ kind: 'LEADER_MULTICOLORED' }] : [])]
   const aliceLeader = leaderFor(d, conds, d.category === 'LEADER')
   if (!aliceLeader) return 'NO_LEADER_FOR_CONDITIONS'
   const lead = definitionOf(aliceLeader)
@@ -152,6 +152,10 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
     if (!t || !plain) return 'NO_AURA_TARGET'
     extra.push(t, plain.number); plan.aura = { target: t, plain: plain.number }
   }
+  if (staticConds.maximumHandSize !== undefined) plan.ownHandMax = staticConds.maximumHandSize as number
+  if (staticConds.minimumTrash !== undefined) plan.trashMin = staticConds.minimumTrash as number
+  if (staticConds.maximumDeckSize !== undefined) plan.deckMax = staticConds.maximumDeckSize as number
+  if (staticConds.minimumOpponentRestedCharacters !== undefined) plan.oppRested = staticConds.minimumOpponentRestedCharacters as number
   if (staticConds.minimumHandSize !== undefined) plan.handMin = staticConds.minimumHandSize as number
   if (staticConds.minimumRestedDon !== undefined) plan.restedDonMin = staticConds.minimumRestedDon as number
   if (staticConds.minimumOwnCharacters !== undefined) plan.ownCharsMin = staticConds.minimumOwnCharacters as number
@@ -193,6 +197,8 @@ function setup(card: CompiledCard, p: Plan, turn: number) {
   for (let i = 0; i < (p.ownRested ?? 0); i++) put(s, 'alice', filler('alice', definitionOf(p.aliceLeader).colors[0]), 'characters', { playedEarlier: true, rested: true })
   for (let i = 0; i < (p.oppRested ?? 0); i++) put(s, 'bob', filler('bob', p.bobColour), 'characters', { playedEarlier: true, rested: true })
   for (const z = zones(s, 'alice'); z.trash.length < (p.trashMin ?? 0);) { const id = z.deck.pop()!; z.trash.push(id); s.instances[id].zone = 'trash'; s.instances[id].zoneGeneration++; s.instances[id].faceUp = true }
+  // "N or less cards in your deck": the rest of the deck goes to the trash.
+  for (const z = zones(s, 'alice'); z.deck.length > (p.deckMax ?? 99);) { const id = z.deck.pop()!; z.trash.push(id); s.instances[id].zone = 'trash'; s.instances[id].zoneGeneration++; s.instances[id].faceUp = true }
   const trimHand = (owner: string, n: number) => { const z = zones(s, owner); while (z.hand.length > n) { const id = z.hand.pop()!; z.deck.push(id); s.instances[id].zone = 'deck'; s.instances[id].zoneGeneration++ } }
   if (p.ownHandMax !== undefined) trimHand('alice', Math.max(0, p.ownHandMax - (p.seedHand ? 1 : 0)))
   if (p.oppHandMax !== undefined) trimHand('bob', p.oppHandMax)
@@ -405,6 +411,15 @@ export function runAbility(card: CompiledCard, a: EffectDefinition, mode = 0): O
   } catch (e) { return { ok: false, reason: `ERROR ${(e as Error).message.slice(0, 160)}` } }
 }
 
+/** Makes a printed zone-count condition false (contre-épreuve): more cards in hand, fewer in trash, more in deck, Bob's Characters active. */
+function breakZoneCondition(s: GameState, m: Record<string, unknown>): boolean {
+  const a = zones(s, 'alice'), move = (from: 'deck' | 'trash' | 'hand', to: 'deck' | 'trash' | 'hand') => { const id = a[from].pop()!; a[to].push(id); s.instances[id].zone = to; s.instances[id].zoneGeneration++; s.instances[id].faceUp = to === 'trash' }
+  if (typeof m.maximumHandSize === 'number') { while (a.hand.length <= m.maximumHandSize && a.deck.length) move('deck', 'hand'); return true }
+  if (typeof m.minimumTrash === 'number') { while (a.trash.length >= m.minimumTrash) move('trash', 'deck'); return true }
+  if (typeof m.maximumDeckSize === 'number') { while (a.deck.length <= m.maximumDeckSize && a.trash.length) move('trash', 'deck'); return true }
+  if (typeof m.minimumOpponentRestedCharacters === 'number') { for (const id of zones(s, 'bob').characters) s.instances[id].rested = false; return true }
+  return false
+}
 /** A static modifier or conditional keyword: absent without its condition... present with it. */
 export function runStatic(card: CompiledCard, item: CompiledCard['continuous'][number] | CompiledCard['conditionalKeywords'][number] | CompiledCard['attackProhibitions'][number]): Outcome {
   const p = plan(card, null, item as unknown as Record<string, unknown>)
@@ -445,10 +460,14 @@ export function runStatic(card: CompiledCard, item: CompiledCard['continuous'][n
       const donBonus = (n: number) => item.characteristic === 'POWER' && s.activePlayerId === 'alice' ? 1000 * n : 0
       if (item.minimumAttachedDon) { if (read() !== printed) return { ok: false, reason: 'ACTIVE_WITHOUT_DON' }; attachDon(s, 'alice', id, item.minimumAttachedDon) }
       const want = printed + item.amount + donBonus(item.minimumAttachedDon)
-      return read() === want ? { ok: true, checked: [`${item.characteristic} ${item.amount}`] } : { ok: false, reason: `STATIC ${read()} != ${want}` }
+      if (read() !== want) return { ok: false, reason: `STATIC ${read()} != ${want}` }
+      if (breakZoneCondition(s, item as unknown as Record<string, unknown>) && read() !== printed + donBonus(item.minimumAttachedDon)) return { ok: false, reason: 'STATIC_WITHOUT_CONDITION' }
+      return { ok: true, checked: [`${item.characteristic} ${item.amount}`] }
     }
     if (item.minimumAttachedDon) { if (hasCombatKeyword(s, id, item.keyword)) return { ok: false, reason: 'KEYWORD_WITHOUT_DON' }; attachDon(s, 'alice', id, item.minimumAttachedDon) }
-    return hasCombatKeyword(s, id, item.keyword) ? { ok: true, checked: [`keyword ${item.keyword}`] } : { ok: false, reason: 'KEYWORD_ABSENT' }
+    if (!hasCombatKeyword(s, id, item.keyword)) return { ok: false, reason: 'KEYWORD_ABSENT' }
+    if (breakZoneCondition(s, item as unknown as Record<string, unknown>) && hasCombatKeyword(s, id, item.keyword)) return { ok: false, reason: 'KEYWORD_WITHOUT_CONDITION' }
+    return { ok: true, checked: [`keyword ${item.keyword}`] }
   } catch (e) { return { ok: false, reason: `ERROR ${(e as Error).message.slice(0, 160)}` } }
 }
 

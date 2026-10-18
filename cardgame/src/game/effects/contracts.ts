@@ -390,6 +390,11 @@ export const continuousDefinitionSchema = z.strictObject({ id, definitionId: id,
   whenOwnHandTrashedThisTurn: z.literal(true).optional(), minimumHandSize: integer.min(1).max(50).optional(),
   // "If the number of your Life cards is equal to or less than the number of your opponent's Life cards".
   whenOwnLifeAtMostOpponent: z.literal(true).optional(),
+  // M7 zone-count conditions (no characteristic read, so no dependency loop): "If you have N or less cards in your hand", "N or more
+  // cards in your trash", "N or less cards in your deck", "your opponent has N or more rested Characters", "your Leader is
+  // multicolored", "If you have [Name]" (a Character of that name).
+  maximumHandSize: integer.max(50).optional(), minimumTrash: integer.min(1).max(60).optional(), maximumDeckSize: integer.max(60).optional(),
+  minimumOpponentRestedCharacters: integer.min(1).max(5).optional(), leaderMulticolored: z.literal(true).optional(), whenOwnNamed: z.string().min(1).max(128).optional(),
   // "+N for every 4 cards in your trash": amount multiplied by floor(trash / perTrashCards) (the card itself only).
   perTrashCards: integer.min(1).max(60).optional(),
   // "If you have N or more rested DON!! cards".
@@ -421,7 +426,12 @@ export const conditionalKeywordSchema = z.strictObject({ id, definitionId: id, z
   // [Opponent's Turn]; "If you have a total of N or more given DON!! cards" (FAQ ST31-003: Leader and Characters).
   duringOpponentTurn: z.literal(true).optional(), minimumGivenDon: integer.min(1).max(10).optional(),
   // "If you have N or more Characters with a base cost of X or more".
-  minimumBaseCostCharacters: z.strictObject({ count: integer.min(1).max(5), minCost: integer.min(0).max(20) }).optional() })
+  minimumBaseCostCharacters: z.strictObject({ count: integer.min(1).max(5), minCost: integer.min(0).max(20) }).optional(),
+  // M7 zone-count conditions (no characteristic read, so no dependency loop): "If you have N or less cards in your hand", "N or more
+  // cards in your trash", "N or less cards in your deck", "your opponent has N or more rested Characters", "your Leader is
+  // multicolored", "If you have [Name]" (a Character of that name).
+  maximumHandSize: integer.max(50).optional(), minimumTrash: integer.min(1).max(60).optional(), maximumDeckSize: integer.max(60).optional(),
+  minimumOpponentRestedCharacters: integer.min(1).max(5).optional(), leaderMulticolored: z.literal(true).optional(), whenOwnNamed: z.string().min(1).max(128).optional() })
 // M6 continuous K.O. protection of a printed card: in battle or by effects, optionally with N field DON!! (FAQ ST05-008).
 export const koProtectionSchema = z.strictObject({ id, definitionId: id, zone: z.literal('characters'), from: z.enum(['BATTLE', 'EFFECT']), minimumFieldDon: integer.max(10).optional(),
   // "cannot be K.O.'d in battle by Leaders" (BATTLE only): the attacker is a Leader.
