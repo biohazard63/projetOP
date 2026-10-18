@@ -1,5 +1,5 @@
 import { enqueueTriggers, nextTriggers, completeScheduledTrigger } from './scheduler'
-import { confirmPower, confirmMoveOperation, confirmRestOperation, recordOperation, processOperation, preflightCosts, payCosts, fieldDon, noteDonReturned } from './operations'
+import { confirmPower, confirmMoveOperation, confirmRestOperation, recordOperation, processOperation, preflightCosts, payCosts, fieldDon, noteDonReturned, donMinusPart } from './operations'
 import { evaluateCharacteristics, hasBlockerAbility, ownCharacterCostAtLeast } from './characteristics'
 import { shuffle, seededRandom } from '../core/random'
 import type { GameState, Command, LegalAction } from '../core/types'
@@ -758,7 +758,7 @@ export function effectActions(s: GameState, actorId: string): LegalAction[] {
   return r.registry.definitions.filter(d => d.timing === 'MAIN' || d.timing === 'ACTIVATE_MAIN').flatMap(d => sources(s, d, actorId).filter(source => condition(s, d.condition, actorId, source) && payable(s, d, source)
     && (d.usage.kind === 'UNLIMITED' || !r.usage[usageKey(d.id, d.revision, source, actorId, s.turn)]))
     .map(source => ({ type: 'START_EFFECT' as const, effectId: actionId(d, source), ...(d.optionalCost === 'TAKE_TOP_LIFE_TO_HAND' && !lifeToHandLocked(s, actorId) ? { optionalCost:d.optionalCost } : {}),
-      ...(d.cost.kind === 'DON_MINUS' ? { donMinus: { amount: d.cost.amount, eligibleDonIds: fieldDon(s, actorId) } } : {}) })))
+      ...(donMinusPart(d.cost) ? { donMinus: { amount: donMinusPart(d.cost)!.amount, eligibleDonIds: fieldDon(s, actorId) } } : {}) })))
 }
 export function applyEffectCommand(s: GameState, command: Extract<Command, { type: 'START_EFFECT' | 'ANSWER_CHOICE' }>) {
   const r = s.effects
@@ -775,7 +775,7 @@ export function applyEffectCommand(s: GameState, command: Extract<Command, { typ
     if (s.phase !== 'MAIN' || s.activePlayerId !== command.actorId || s.battle || s.result || r.choice || r.scheduler?.orderChoice || r.continuation) throw new Error('INVALID_EFFECT_WINDOW')
     const candidate = r.registry.definitions.filter(d => d.timing === 'MAIN' || d.timing === 'ACTIVATE_MAIN').flatMap(d => sources(s, d, command.actorId).map(source => ({ d, source }))).find(c => actionId(c.d, c.source) === command.effectId)
     const d = candidate?.d, source = candidate?.source
-    if (r.choice || !d || !source || (command.donMinusIds !== undefined && d.cost.kind !== 'DON_MINUS') || (command.payOptionalCost && !d.optionalCost) || (command.payOptionalCost && source.kind === 'CARD' && !s.players.find(p=>p.id===command.actorId)!.zones.life.length) || !payable(s, d, source) || !condition(s, d.condition, command.actorId, source)) throw new Error('INVALID_EFFECT_COMMAND')
+    if (r.choice || !d || !source || (command.donMinusIds !== undefined && !donMinusPart(d.cost)) || (command.payOptionalCost && !d.optionalCost) || (command.payOptionalCost && source.kind === 'CARD' && !s.players.find(p=>p.id===command.actorId)!.zones.life.length) || !payable(s, d, source) || !condition(s, d.condition, command.actorId, source)) throw new Error('INVALID_EFFECT_COMMAND')
     const key = usageKey(d.id, d.revision, source, command.actorId, s.turn)
     if (d.usage.kind !== 'UNLIMITED' && r.usage[key]) throw new Error('INVALID_EFFECT_COMMAND')
     begin(s, d, source, command.actorId, command.payOptionalCost === true, undefined, undefined, command.donMinusIds)

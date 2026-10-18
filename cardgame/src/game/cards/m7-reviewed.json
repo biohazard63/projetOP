@@ -129,6 +129,7 @@
   "OP14-117": "No FAQ entry"
  },
  "OP-13": {
+  "OP07-111": "FAQ OP07-111: Do I need to reveal the card added to my hand according to this [On Play] effect to my opponent? Yes, you reveal that you have 1 {Egghead} type card to your opponent and add it to your hand.",
   "OP13-013": "No FAQ entry",
   "OP13-014": "No FAQ entry",
   "OP13-015": "No FAQ entry",
@@ -342,8 +343,13 @@
   "OP07-079": "No FAQ entry",
   "OP07-082": "No FAQ entry",
   "OP07-086": "No FAQ entry",
+  "OP07-097": "FAQ OP07-097: Can I use this [Activate: Main] effect to play an {Egghead} type Event card with a cost of 5 or less from my hand onto my field or activate it? No, you cannot. / Erratum of May 16, 2025: the printed \u2460 reads \"You may rest 1 of your DON!! cards:\", the same activation cost (REST_DON 1) as compiled",
+  "OP07-100": "No FAQ entry",
+  "OP07-101": "No FAQ entry",
   "OP07-104": "No FAQ entry",
+  "OP07-105": "No FAQ entry",
   "OP07-106": "No FAQ entry",
+  "OP07-110": "No FAQ entry",
   "OP07-114": "No FAQ entry"
  },
  "OP-06": {
@@ -446,6 +452,8 @@
   "OP04-052": "No FAQ entry",
   "OP04-056": "No FAQ entry",
   "OP04-057": "No FAQ entry",
+  "OP04-061": "No FAQ entry",
+  "OP04-063": "No FAQ entry",
   "OP04-066": "FAQ OP04-066: Can I use this [On Play] effect to add another [Miss.Valentine(Mikita)] card to my hand? Yes, you can. / FAQ OP04-066: Can I use this [Trigger] effect to return DON!! cards to my DON!! deck without playing this Character? No, you cannot. In this case, you must play this Character.",
   "OP04-067": "No FAQ entry",
   "OP04-068": "No FAQ entry",
@@ -480,11 +488,16 @@
   "OP03-053": "No FAQ entry",
   "OP03-056": "No FAQ entry",
   "OP03-057": "No FAQ entry",
+  "OP03-058": "No FAQ entry",
   "OP03-060": "No FAQ entry",
   "OP03-062": "No FAQ entry",
+  "OP03-063": "No FAQ entry",
+  "OP03-064": "No FAQ entry",
+  "OP03-067": "No FAQ entry",
   "OP03-068": "No FAQ entry",
   "OP03-069": "No FAQ entry",
   "OP03-071": "No FAQ entry",
+  "OP03-075": "No FAQ entry",
   "OP03-081": "No FAQ entry",
   "OP03-086": "No FAQ entry",
   "OP03-093": "No FAQ entry",
@@ -593,6 +606,7 @@
   "EB03-036": "No FAQ entry",
   "EB03-047": "No FAQ entry",
   "EB03-050": "No FAQ entry",
+  "EB03-058": "No FAQ entry",
   "EB03-062": "No FAQ entry"
  },
  "EB-02": {

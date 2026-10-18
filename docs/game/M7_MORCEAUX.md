@@ -1,6 +1,6 @@
 # Morceaux de texte à ajouter au compilateur (M7)
 
-2541 cartes, 1140 déjà compilées (45 %). 1392 morceaux inconnus distincts.
+2541 cartes, 1142 déjà compilées (45 %). 1390 morceaux inconnus distincts.
 
 Ordre glouton : chaque morceau, ajouté à tous ceux au-dessus de lui, complète « Débloque » cartes de plus (« Cumul » au total). « Fréquence » : cartes où il apparaît.
 
@@ -252,157 +252,157 @@ Ordre glouton : chaque morceau, ajouté à tous ceux au-dessus de lui, complète
 | 244 | condition: If you have N or N or more DON!! cards on your field | 1 | 430 | 1 | OP05-060 |
 | 245 | action: When your number of Life cards becomes N, add N card from the top of your deck to the top of your Life cards | 1 | 431 | 1 | OP05-098 |
 | 246 | action: Give up to N total of your currently given DON!! cards to N of your Characters | 1 | 432 | 1 | OP07-001 |
-| 247 | action: Select up to N {Type} type card with a cost of N or less from your hand and play it or add it to the top of your Life cards face-up | 1 | 433 | 1 | OP07-097 |
-| 248 | action: Give up to N of your {Type} or {Type} type Characters up to N rested DON!! card each | 1 | 434 | 1 | OP08-001 |
-| 249 | action: Draw N card and place N card from your hand at the top or bottom of your deck | 1 | 435 | 1 | OP08-002 |
-| 250 | cost: You may turn N cards from the top of your Life cards face-up | 1 | 436 | 1 | OP08-058 |
-| 251 | condition: If your Leader is multicolored and you have no Characters with N base power or more | 1 | 437 | 1 | EB03-004 |
-| 252 | action: /[When Attacking] Up to N of your {Type} type Leader or Character cards can also attack active Characters during this turn | 1 | 438 | 1 | EB03-008 |
-| 253 | action: Up to N of your Characters with no base effect gains +N power during this turn | 1 | 439 | 1 | EB03-009 |
-| 254 | action: Look at N cards from the top of your deck; reveal up to N Character card with N power or less or up to N Event card and add it to your hand §BOTTOM | 1 | 440 | 1 | EB03-010 |
-| 255 | action: Rest up to N of your opponent's DON!! cards or {Type} or {Type} type Characters with a cost of N or less | 1 | 441 | 1 | EB03-012 |
-| 256 | action: Give up to N rested DON!! cards to your <Slash> attribute Leader | 1 | 442 | 1 | EB03-014 |
-| 257 | action: Give up to N rested DON!! card to N of your {Type} or {Type} type Leader or Character cards | 1 | 443 | 1 | EB03-015 |
-| 258 | action: This Character cannot be K.O.'d by your opponent's effects and gains [Blocker] | 1 | 444 | 1 | EB03-018 |
-| 259 | action: If you have N or more {Type} type Characters, that card gains an additional +N power during this battle | 1 | 445 | 1 | EB03-020 |
-| 260 | action: Place up to N of your opponent's Characters with N base power or less and up to N Character with a base cost of N or less at the bottom of the owner's d | 1 | 446 | 1 | EB03-021 |
-| 261 | action: You cannot play any Character cards on your field during this turn | 1 | 447 | 1 | EB03-024 |
-| 262 | action: Give your Leader and N Character up to N rested DON!! card each | 1 | 448 | 1 | EB03-026 |
-| 263 | action: Activate the [Main] effect of up to N Event card with a cost of N or less in your trash | 1 | 449 | 1 | EB03-031 |
-| 264 | action: When a DON!! card on your field is returned to your DON!! deck by your effect, if your Leader has the {Type} type, add up to N DON!! card from your DON! | 1 | 450 | 1 | EB03-033 |
-| 265 | action: Draw N card and place N card from your hand at the top of your deck | 1 | 451 | 1 | EB03-034 |
-| 266 | action: All of your {Type} type Leader and Character cards gain +N power until the end of your opponent's next End Phase | 1 | 452 | 1 | EB03-037 |
-| 267 | condition: If the number of DON!! cards on your field is equal to or less than the number on your opponent's field and you only have Characters with a type incl | 1 | 453 | 1 | EB03-038 |
-| 268 | action: Play up to N Character card with N power or less and no base effect from your trash | 1 | 454 | 1 | EB03-039 |
-| 269 | action: All of your {Type} type Characters with a cost of N or less gain +N power | 1 | 455 | 1 | EB03-041 |
-| 270 | action: Play up to N {Type} type Character card with a cost of N or less other than [Nom] or up to N [Nom] with a cost of N or less from your hand or trash | 1 | 456 | 1 | EB03-042 |
-| 271 | action: If you have N or more cards in your trash, play up to N {Type} type Character card with a cost of N or less from your trash rested | 1 | 457 | 1 | EB03-045 |
-| 272 | action: Look at N cards from the top of your deck; reveal up to N {Type} type Stage card and add it to your hand §BOTTOM and play up to N {Type} type Stage card | 1 | 458 | 1 | EB03-048 |
-| 273 | action: Play up to N {Type} type Character card with a cost of N or less and up to N {Type} type Character card with a cost of N or less from your hand or trash | 1 | 459 | 1 | EB03-049 |
-| 274 | action: If your opponent has N or more Life cards, add up to N card from the top of your opponent's Life cards to the owner's hand | 1 | 460 | 1 | EB03-053 |
-| 275 | action: Give up to N rested DON!! cards to your {Type} type Leader | 1 | 461 | 1 | EB03-057 |
-| 276 | action: Look at N cards from the top of your deck; reveal up to N card with a cost of N to N and add it to your hand §BOTTOM | 1 | 462 | 1 | EB03-060 |
-| 277 | action: All of your Characters gain +N power | 1 | 463 | 1 | OP01-001 |
-| 278 | action: It gains +N power during this turn | 1 | 464 | 1 | OP01-003 |
-| 279 | action: Draw N card when your opponent activates an Event | 1 | 465 | 1 | OP01-004 |
-| 280 | action: Add up to N red Character card other than [Nom] with a cost of N or less from your trash to your hand | 1 | 466 | 1 | OP01-005 |
-| 281 | cost: You may place N card from your hand at the bottom of your deck | 1 | 467 | 1 | OP01-011 |
-| 282 | action: Add up to N {Type} type Character card other than [Nom] with a cost of N or less from your trash to your hand | 1 | 468 | 1 | OP01-015 |
-| 283 | action: This Character cannot be K.O.'d in battle by <Strike> attribute Characters | 1 | 469 | 1 | OP01-024 |
-| 284 | action: If you have N or less Life cards, that card gains an additional +N power | 1 | 470 | 1 | OP01-029 |
-| 285 | action: Your opponent chooses N card from your hand; trash that card | 1 | 471 | 1 | OP01-038 |
-| 286 | cost: ➀ (You may rest the specified number of DON!! cards in your cost area) You may rest this Character | 1 | 472 | 1 | OP01-041 |
-| 287 | cost: You may return N Character to your hand | 1 | 473 | 1 | OP01-047 |
-| 288 | action: When your opponent's Character is K.O.'d, add up to N DON!! card from your DON!! deck and set it as active | 1 | 474 | 1 | OP01-061 |
-| 289 | action: When you activate an Event, you may draw N card if you have N or less cards in your hand and haven't drawn a card using this Leader's effect during this | 1 | 475 | 1 | OP01-062 |
-| 290 | action: Give blue Events in your hand -N cost | 1 | 476 | 1 | OP01-067 |
-| 291 | action: This Character gains +N power for every card in your hand | 1 | 477 | 1 | OP01-072 |
-| 292 | action: /[On Block] Draw N card if you have N or less cards in your hand | 1 | 478 | 1 | OP01-078 |
-| 293 | action: Return up to N active Character with a cost of N or less to the owner's hand | 1 | 479 | 1 | OP01-086 |
-| 294 | action: Draw N card if you have N or more DON!! cards on your field | 1 | 480 | 1 | OP01-095 |
-| 295 | action: {Type} type Characters other than your [Nom] cannot be K.O.'d in battle | 1 | 481 | 1 | OP01-099 |
-| 296 | action: Choose N cards from your opponent's hand; your opponent reveals those cards | 1 | 482 | 1 | OP01-105 |
-| 297 | action: This Character can also attack your opponent's active Characters during this turn | 1 | 483 | 1 | OP01-112 |
-| 298 | action: [Double Attack] (This card deals N damage.) [Banish] (When this card deals damage, the target card is trashed without activating its Trigger.) | 1 | 484 | 1 | OP01-121 |
-| 299 | action: When this Leader or any of your Characters is given a DON!! card, give up to N of your opponent's Characters with a cost of N or less -N cost during thi | 1 | 485 | 1 | OP02-002 |
-| 300 | action: Up to N of your Leader gains +N power until the start of your next turn | 1 | 486 | 1 | OP02-004 |
-| 301 | action: Look at up to N cards from the top of your deck; reveal up to N red Character with a cost of N and add it to your hand §BOTTOM | 1 | 487 | 1 | OP02-005 |
-| 302 | condition: If you have N or less Life cards and your Leader's type includes "X" | 1 | 488 | 1 | OP02-008 |
-| 303 | action: Play up to N red Character other than [Nom] with a cost of N from your hand | 1 | 489 | 1 | OP02-010 |
-| 304 | action: If your Leader's type includes "X", this Character gains [Rush] during this turn | 1 | 490 | 1 | OP02-013 |
-| 305 | action: All of your Characters with a type including "X" gain +N power | 1 | 491 | 1 | OP02-019 |
-| 306 | action: Your [Nom] and all your Characters with a type including "X" gain +N power | 1 | 492 | 1 | OP02-024 |
-| 307 | action: When you play a Character with no base effect from your hand, if you have N or less Characters, set up to N of your DON!! cards as active | 1 | 493 | 1 | OP02-026 |
-| 308 | condition: If all of your DON!! cards are rested | 1 | 494 | 1 | OP02-027 |
-| 309 | cost: /[When Attacking] ➀ | 1 | 495 | 1 | OP02-036 |
-| 310 | cost: You may trash N {Type} type card from your hand and rest this Stage | 1 | 496 | 1 | OP02-048 |
-| 311 | condition: If you have N cards in your hand | 1 | 497 | 1 | OP02-049 |
-| 312 | action: Draw card(s) so that you have N cards in your hand and then play up to N blue {Type} type Character card with a cost of N or less from your hand | 1 | 498 | 1 | OP02-051 |
-| 313 | action: Add up to N blue Event card with a cost of N from your trash to your hand | 1 | 499 | 1 | OP02-063 |
-| 314 | action: At the end of this battle, place this Character at the bottom of the owner's deck | 1 | 500 | 1 | OP02-064 |
-| 315 | action: Draw up to N cards | 1 | 501 | 1 | OP02-066 |
-| 316 | action: Draw cards so that you have N cards in your hand | 1 | 502 | 1 | OP02-069 |
-| 317 | action: When a DON!! card on the field is returned to your DON!! deck, this Leader gains +N power during this turn | 1 | 503 | 1 | OP02-071 |
-| 318 | action: Your [Nom] gains [Blocker] | 1 | 504 | 1 | OP02-074 |
-| 319 | action: This Character gains +N power during this turn | 1 | 505 | 1 | OP02-082 |
-| 320 | action: When this Character is K.O.'d, your opponent returns N DON!! cards from their field to their DON!! deck | 1 | 506 | 1 | OP02-085 |
-| 321 | action: If there is a Character with a cost of N, this Leader gains +N power during this turn | 1 | 507 | 1 | OP02-093 |
-| 322 | action: When this Character battles and K.O.'s your opponent's Character, set this Character as active | 1 | 508 | 1 | OP02-094 |
-| 323 | action: This card gains +N power during this battle | 1 | 509 | 1 | OP02-111 |
-| 324 | action: If there is a Character with a cost of N, this Character gains +N power during this battle | 1 | 510 | 1 | OP02-113 |
-| 325 | action: This Character gains +N power and cannot be K.O.'d by effects | 1 | 511 | 1 | OP02-114 |
-| 326 | action: Your Leader and all of your Characters gain +N power until the start of your next turn | 1 | 512 | 1 | OP02-120 |
-| 327 | action: This Character cannot attack a Leader on the turn in which it is played | 1 | 513 | 1 | OP03-004 |
-| 328 | action: Trash this Character at the end of this turn | 1 | 514 | 1 | OP03-005 |
-| 329 | cost: You may trash N of your red Characters with N power or more | 1 | 515 | 1 | OP03-012 |
-| 330 | action: You may play this Character card from your trash rested | 1 | 516 | 1 | OP03-013 |
-| 331 | action: When this Character is K.O.'d, give up to N of your opponent's Leader or Character cards -N power during this turn | 1 | 517 | 1 | OP03-015 |
-| 332 | action: /[Counter] If your Leader's type includes "X", give up to N of your opponent's Characters -N power during this turn | 1 | 518 | 1 | OP03-017 |
-| 333 | action: Rest up to N of your opponent's Characters with a cost of N or less and, if you don't have [Nom], play up to N [Nom] from your hand | 1 | 519 | 1 | OP03-027 |
-| 334 | action: Add up to N blue [Nom] from your trash to your hand | 1 | 520 | 1 | OP03-042 |
-| 335 | action: Return up to N Character with a cost of N or less to the owner's hand, and you may trash N cards from the top of your deck | 1 | 521 | 1 | OP03-047 |
-| 336 | condition: If you have N or less cards in your deck | 1 | 522 | 1 | OP03-049 |
-| 337 | action: Draw N card and you may trash N card from the top of your deck | 1 | 523 | 1 | OP03-054 |
-| 338 | cost: DON!! -N You may rest this Leader | 1 | 524 | 1 | OP03-058 |
-| 339 | cost: DON!! -N You may trash N Character card with a cost of N from your hand | 1 | 525 | 1 | OP03-070 |
-| 340 | action: When your opponent's Character is K.O.'d, set this Leader as active | 1 | 526 | 1 | OP03-076 |
-| 341 | cost: ② You may trash N card from your hand | 1 | 527 | 1 | OP03-077 |
-| 342 | action: Play up to N Character card with a type including "X" and a cost of N or less from your trash rested | 1 | 528 | 1 | OP03-090 |
-| 343 | action: Set the cost of up to N of your opponent's Characters with no base effect to N during this turn | 1 | 529 | 1 | OP03-091 |
-| 344 | action: Up to N of your [Nom] cards gains +N power until the start of your next turn | 1 | 530 | 1 | OP03-117 |
-| 345 | cost: You may rest this Character and give your N active Leader -N power during this turn | 1 | 531 | 1 | OP04-002 |
-| 346 | action: Give up to N rested DON!! card to each of your {Type} type Characters | 1 | 532 | 1 | OP04-004 |
-| 347 | condition: If you have a [Nom] other than this Character | 1 | 533 | 1 | OP04-005 |
-| 348 | action: Return this Character to the owner's hand at the end of this turn | 1 | 534 | 1 | OP04-009 |
-| 349 | action: All of your {Type} type Characters other than this Character gain +N power | 1 | 535 | 1 | OP04-012 |
-| 350 | action: If your Leader is active, give up to N of your opponent's Leader or Character cards -N power during this turn | 1 | 536 | 1 | OP04-017 |
-| 351 | action: Up to a total of N of your opponent's rested Leader and Character cards will not become active in your opponent's next Refresh Phase | 1 | 537 | 1 | OP04-031 |
-| 352 | action: Up to N of your <Slash> attribute Characters gains +N power during this turn | 1 | 538 | 1 | OP04-042 |
-| 353 | action: Return up to N Character with a cost of N or less to the owner's hand or the bottom of their deck | 1 | 539 | 1 | OP04-043 |
-| 354 | action: Return up to N Character with a cost of N or less and up to N Character with a cost of N or less to the owner's hand | 1 | 540 | 1 | OP04-044 |
-| 355 | action: At the end of a battle in which this Character battles your opponent's Character with a cost of N or less, place the opponent's Character you battled wi | 1 | 541 | 1 | OP04-047 |
-| 356 | action: You may trash N [Nom] from your hand and place N Character with a cost of N or less at the bottom of the owner's deck: Play N [Nom] from your trash | 1 | 542 | 1 | OP04-055 |
-| 357 | action: When a DON!! card on your field is returned to your DON!! deck by your effect, add up to N DON!! card from your DON!! deck and set it as active | 1 | 543 | 1 | OP04-058 |
-| 358 | action: This Character gains [Blocker] during this turn | 1 | 544 | 1 | OP04-059 |
-| 359 | action: If you have N or more DON!! cards on your field, draw N card | 1 | 545 | 1 | OP04-064 |
-| 360 | action: This Character's base power becomes the same as the power of your opponent's attacking Leader or Character during this turn | 1 | 546 | 1 | OP04-069 |
-| 361 | action: This Character gains [Blocker] and +N power during this battle | 1 | 547 | 1 | OP04-071 |
-| 362 | cost: You may trash this Character and N of your Characters with a type including "X" | 1 | 548 | 1 | OP04-073 |
-| 363 | action: None of your Characters can be K.O.'d by effects until the start of your next turn | 1 | 549 | 1 | OP04-083 |
-| 364 | action: /[When Attacking] If your Leader has the {Type} type, give up to N of your opponent's Characters -N cost during this turn | 1 | 550 | 1 | OP04-085 |
-| 365 | action: When this Character battles and K.O.'s your opponent's Character, draw N cards and trash N cards from your hand | 1 | 551 | 1 | OP04-086 |
-| 366 | action: Add up to N of your opponent's {Type} or {Type} type Characters with a cost of N or less to the top of your opponent's Life cards face-up | 1 | 552 | 1 | OP04-097 |
-| 367 | action: Up to N of your opponent's Leader or Character cards cannot attack during this turn | 1 | 553 | 1 | OP04-100 |
-| 368 | cost: ➀ You may add N card from the top or bottom of your Life cards to your hand | 1 | 554 | 1 | OP04-102 |
-| 369 | action: All of your red Characters with a cost of N or more other than this Character gain [Rush] | 1 | 555 | 1 | OP04-118 |
-| 370 | action: Your active Characters with a base cost of N cannot be K.O.'d by effects | 1 | 556 | 1 | OP04-119 |
-| 371 | condition: If you have a Character with N power or more other than this Character | 1 | 557 | 1 | OP05-003 |
-| 372 | action: Draw N card if your Leader has N power or less | 1 | 558 | 1 | OP05-009 |
-| 373 | cost: You may rest N of your Characters with a cost of N or more | 1 | 559 | 1 | OP05-026 |
-| 374 | action: Set up to N of your rested Characters with a cost of N as active | 1 | 560 | 1 | OP05-031 |
-| 375 | action: When you draw a card outside of your Draw Phase, this Character gains +N power during this turn | 1 | 561 | 1 | OP05-053 |
-| 376 | cost: You may place N of your Characters other than this Character at the bottom of your deck | 1 | 562 | 1 | OP05-056 |
-| 377 | action: Set up to N of your purple {Type} type Characters with N power or less as active | 1 | 563 | 1 | OP05-068 |
-| 378 | cost: You may rest this Character and place N cards from your trash at the bottom of your deck in any order | 1 | 564 | 1 | OP05-082 |
-| 379 | cost: You may K.O. N of your Characters other than this Character | 1 | 565 | 1 | OP05-087 |
-| 380 | action: /[On K.O.] Up to N of your {Type} type Characters gains +N power during this turn | 1 | 566 | 1 | OP05-090 |
-| 381 | action: Add up to N black Character card with a cost of N to N other than [Nom] from your trash to your hand | 1 | 567 | 1 | OP05-091 |
-| 382 | action: Up to N of your opponent's Characters with a cost of N will not become active in the next Refresh Phase | 1 | 568 | 1 | OP05-094 |
-| 383 | action: The cost of playing {Type} type Character cards with a cost of N or more from your hand will be reduced by N | 1 | 569 | 1 | OP05-097 |
-| 384 | cost: You may place N of your Stages at the bottom of your deck | 1 | 570 | 1 | OP05-104 |
-| 385 | action: When a card is added to your hand from your Life, this Character gains +N power during this turn | 1 | 571 | 1 | OP05-107 |
-| 386 | action: When a [Trigger] activates, draw N cards and trash N cards from your hand | 1 | 572 | 1 | OP05-109 |
-| 387 | cost: You may play N [Nom] from your hand | 1 | 573 | 1 | OP05-111 |
-| 388 | action: If you have N or less Life cards, rest up to N of your opponent's Characters with a cost of N or less | 1 | 574 | 1 | OP05-115 |
-| 389 | action: Draw N cards if your opponent has N or less Life cards | 1 | 575 | 1 | OP05-118 |
-| 390 | action: Trash N of your {Type} type Characters at the end of this turn | 1 | 576 | 1 | OP06-006 |
-| 391 | action: /[On Block] [Once Per Turn] This Character's base power becomes the same as your opponent's Leader until the start of your next turn | 1 | 577 | 1 | OP06-009 |
-| 392 | condition: If your opponent has a Leader or Character with a base power of N or more | 1 | 578 | 1 | OP06-012 |
-| 393 | cost: /[Counter] You may add N card from the top of your Life cards to your hand | 1 | 579 | 1 | OP06-017 |
-| 394 | action: Up to N of your opponent's rested Leader cannot attack until the end of your opponent's next turn | 1 | 580 | 1 | OP06-023 |
-| 395 | action: This Character cannot be K.O.'d in battle and gains +N power until the start of your next turn | 1 | 581 | 1 | OP06-030 |
-| 396 | action: Rest up to N of your opponent's Characters with a cost of N or less and this Character gains +N power during this turn | 1 | 582 | 1 | OP06-034 |
-| 397 | action: If you have N or more rested cards, that card gains an additional +N power during this battle | 1 | 583 | 1 | OP06-038 |
-| 398 | cost: You may trash N card from your hand and place N Character with a cost of N or less at the bottom of the owner's deck | 1 | 584 | 1 | OP06-043 |
-| 399 | action: When your opponent activates an Event, your opponent must place N card from their hand at the bottom of their deck | 1 | 585 | 1 | OP06-044 |
-| 400 | action: When your opponent activates [Blocker] or an Event, if your Leader has the {Type} type, you may trash N cards from the top of your deck | 1 | 586 | 1 | OP06-048 |
+| 247 | action: Give up to N of your {Type} or {Type} type Characters up to N rested DON!! card each | 1 | 433 | 1 | OP08-001 |
+| 248 | action: Draw N card and place N card from your hand at the top or bottom of your deck | 1 | 434 | 1 | OP08-002 |
+| 249 | cost: You may turn N cards from the top of your Life cards face-up | 1 | 435 | 1 | OP08-058 |
+| 250 | condition: If your Leader is multicolored and you have no Characters with N base power or more | 1 | 436 | 1 | EB03-004 |
+| 251 | action: /[When Attacking] Up to N of your {Type} type Leader or Character cards can also attack active Characters during this turn | 1 | 437 | 1 | EB03-008 |
+| 252 | action: Up to N of your Characters with no base effect gains +N power during this turn | 1 | 438 | 1 | EB03-009 |
+| 253 | action: Look at N cards from the top of your deck; reveal up to N Character card with N power or less or up to N Event card and add it to your hand §BOTTOM | 1 | 439 | 1 | EB03-010 |
+| 254 | action: Rest up to N of your opponent's DON!! cards or {Type} or {Type} type Characters with a cost of N or less | 1 | 440 | 1 | EB03-012 |
+| 255 | action: Give up to N rested DON!! cards to your <Slash> attribute Leader | 1 | 441 | 1 | EB03-014 |
+| 256 | action: Give up to N rested DON!! card to N of your {Type} or {Type} type Leader or Character cards | 1 | 442 | 1 | EB03-015 |
+| 257 | action: This Character cannot be K.O.'d by your opponent's effects and gains [Blocker] | 1 | 443 | 1 | EB03-018 |
+| 258 | action: If you have N or more {Type} type Characters, that card gains an additional +N power during this battle | 1 | 444 | 1 | EB03-020 |
+| 259 | action: Place up to N of your opponent's Characters with N base power or less and up to N Character with a base cost of N or less at the bottom of the owner's d | 1 | 445 | 1 | EB03-021 |
+| 260 | action: You cannot play any Character cards on your field during this turn | 1 | 446 | 1 | EB03-024 |
+| 261 | action: Give your Leader and N Character up to N rested DON!! card each | 1 | 447 | 1 | EB03-026 |
+| 262 | action: Activate the [Main] effect of up to N Event card with a cost of N or less in your trash | 1 | 448 | 1 | EB03-031 |
+| 263 | action: When a DON!! card on your field is returned to your DON!! deck by your effect, if your Leader has the {Type} type, add up to N DON!! card from your DON! | 1 | 449 | 1 | EB03-033 |
+| 264 | action: Draw N card and place N card from your hand at the top of your deck | 1 | 450 | 1 | EB03-034 |
+| 265 | action: All of your {Type} type Leader and Character cards gain +N power until the end of your opponent's next End Phase | 1 | 451 | 1 | EB03-037 |
+| 266 | condition: If the number of DON!! cards on your field is equal to or less than the number on your opponent's field and you only have Characters with a type incl | 1 | 452 | 1 | EB03-038 |
+| 267 | action: Play up to N Character card with N power or less and no base effect from your trash | 1 | 453 | 1 | EB03-039 |
+| 268 | action: All of your {Type} type Characters with a cost of N or less gain +N power | 1 | 454 | 1 | EB03-041 |
+| 269 | action: Play up to N {Type} type Character card with a cost of N or less other than [Nom] or up to N [Nom] with a cost of N or less from your hand or trash | 1 | 455 | 1 | EB03-042 |
+| 270 | action: If you have N or more cards in your trash, play up to N {Type} type Character card with a cost of N or less from your trash rested | 1 | 456 | 1 | EB03-045 |
+| 271 | action: Look at N cards from the top of your deck; reveal up to N {Type} type Stage card and add it to your hand §BOTTOM and play up to N {Type} type Stage card | 1 | 457 | 1 | EB03-048 |
+| 272 | action: Play up to N {Type} type Character card with a cost of N or less and up to N {Type} type Character card with a cost of N or less from your hand or trash | 1 | 458 | 1 | EB03-049 |
+| 273 | action: If your opponent has N or more Life cards, add up to N card from the top of your opponent's Life cards to the owner's hand | 1 | 459 | 1 | EB03-053 |
+| 274 | action: Give up to N rested DON!! cards to your {Type} type Leader | 1 | 460 | 1 | EB03-057 |
+| 275 | action: Look at N cards from the top of your deck; reveal up to N card with a cost of N to N and add it to your hand §BOTTOM | 1 | 461 | 1 | EB03-060 |
+| 276 | action: All of your Characters gain +N power | 1 | 462 | 1 | OP01-001 |
+| 277 | action: It gains +N power during this turn | 1 | 463 | 1 | OP01-003 |
+| 278 | action: Draw N card when your opponent activates an Event | 1 | 464 | 1 | OP01-004 |
+| 279 | action: Add up to N red Character card other than [Nom] with a cost of N or less from your trash to your hand | 1 | 465 | 1 | OP01-005 |
+| 280 | cost: You may place N card from your hand at the bottom of your deck | 1 | 466 | 1 | OP01-011 |
+| 281 | action: Add up to N {Type} type Character card other than [Nom] with a cost of N or less from your trash to your hand | 1 | 467 | 1 | OP01-015 |
+| 282 | action: This Character cannot be K.O.'d in battle by <Strike> attribute Characters | 1 | 468 | 1 | OP01-024 |
+| 283 | action: If you have N or less Life cards, that card gains an additional +N power | 1 | 469 | 1 | OP01-029 |
+| 284 | action: Your opponent chooses N card from your hand; trash that card | 1 | 470 | 1 | OP01-038 |
+| 285 | cost: ➀ (You may rest the specified number of DON!! cards in your cost area) You may rest this Character | 1 | 471 | 1 | OP01-041 |
+| 286 | cost: You may return N Character to your hand | 1 | 472 | 1 | OP01-047 |
+| 287 | action: When your opponent's Character is K.O.'d, add up to N DON!! card from your DON!! deck and set it as active | 1 | 473 | 1 | OP01-061 |
+| 288 | action: When you activate an Event, you may draw N card if you have N or less cards in your hand and haven't drawn a card using this Leader's effect during this | 1 | 474 | 1 | OP01-062 |
+| 289 | action: Give blue Events in your hand -N cost | 1 | 475 | 1 | OP01-067 |
+| 290 | action: This Character gains +N power for every card in your hand | 1 | 476 | 1 | OP01-072 |
+| 291 | action: /[On Block] Draw N card if you have N or less cards in your hand | 1 | 477 | 1 | OP01-078 |
+| 292 | action: Return up to N active Character with a cost of N or less to the owner's hand | 1 | 478 | 1 | OP01-086 |
+| 293 | action: Draw N card if you have N or more DON!! cards on your field | 1 | 479 | 1 | OP01-095 |
+| 294 | action: {Type} type Characters other than your [Nom] cannot be K.O.'d in battle | 1 | 480 | 1 | OP01-099 |
+| 295 | action: Choose N cards from your opponent's hand; your opponent reveals those cards | 1 | 481 | 1 | OP01-105 |
+| 296 | action: This Character can also attack your opponent's active Characters during this turn | 1 | 482 | 1 | OP01-112 |
+| 297 | action: [Double Attack] (This card deals N damage.) [Banish] (When this card deals damage, the target card is trashed without activating its Trigger.) | 1 | 483 | 1 | OP01-121 |
+| 298 | action: When this Leader or any of your Characters is given a DON!! card, give up to N of your opponent's Characters with a cost of N or less -N cost during thi | 1 | 484 | 1 | OP02-002 |
+| 299 | action: Up to N of your Leader gains +N power until the start of your next turn | 1 | 485 | 1 | OP02-004 |
+| 300 | action: Look at up to N cards from the top of your deck; reveal up to N red Character with a cost of N and add it to your hand §BOTTOM | 1 | 486 | 1 | OP02-005 |
+| 301 | condition: If you have N or less Life cards and your Leader's type includes "X" | 1 | 487 | 1 | OP02-008 |
+| 302 | action: Play up to N red Character other than [Nom] with a cost of N from your hand | 1 | 488 | 1 | OP02-010 |
+| 303 | action: If your Leader's type includes "X", this Character gains [Rush] during this turn | 1 | 489 | 1 | OP02-013 |
+| 304 | action: All of your Characters with a type including "X" gain +N power | 1 | 490 | 1 | OP02-019 |
+| 305 | action: Your [Nom] and all your Characters with a type including "X" gain +N power | 1 | 491 | 1 | OP02-024 |
+| 306 | action: When you play a Character with no base effect from your hand, if you have N or less Characters, set up to N of your DON!! cards as active | 1 | 492 | 1 | OP02-026 |
+| 307 | condition: If all of your DON!! cards are rested | 1 | 493 | 1 | OP02-027 |
+| 308 | cost: /[When Attacking] ➀ | 1 | 494 | 1 | OP02-036 |
+| 309 | cost: You may trash N {Type} type card from your hand and rest this Stage | 1 | 495 | 1 | OP02-048 |
+| 310 | condition: If you have N cards in your hand | 1 | 496 | 1 | OP02-049 |
+| 311 | action: Draw card(s) so that you have N cards in your hand and then play up to N blue {Type} type Character card with a cost of N or less from your hand | 1 | 497 | 1 | OP02-051 |
+| 312 | action: Add up to N blue Event card with a cost of N from your trash to your hand | 1 | 498 | 1 | OP02-063 |
+| 313 | action: At the end of this battle, place this Character at the bottom of the owner's deck | 1 | 499 | 1 | OP02-064 |
+| 314 | action: Draw up to N cards | 1 | 500 | 1 | OP02-066 |
+| 315 | action: Draw cards so that you have N cards in your hand | 1 | 501 | 1 | OP02-069 |
+| 316 | action: When a DON!! card on the field is returned to your DON!! deck, this Leader gains +N power during this turn | 1 | 502 | 1 | OP02-071 |
+| 317 | action: Your [Nom] gains [Blocker] | 1 | 503 | 1 | OP02-074 |
+| 318 | action: This Character gains +N power during this turn | 1 | 504 | 1 | OP02-082 |
+| 319 | action: When this Character is K.O.'d, your opponent returns N DON!! cards from their field to their DON!! deck | 1 | 505 | 1 | OP02-085 |
+| 320 | action: If there is a Character with a cost of N, this Leader gains +N power during this turn | 1 | 506 | 1 | OP02-093 |
+| 321 | action: When this Character battles and K.O.'s your opponent's Character, set this Character as active | 1 | 507 | 1 | OP02-094 |
+| 322 | action: This card gains +N power during this battle | 1 | 508 | 1 | OP02-111 |
+| 323 | action: If there is a Character with a cost of N, this Character gains +N power during this battle | 1 | 509 | 1 | OP02-113 |
+| 324 | action: This Character gains +N power and cannot be K.O.'d by effects | 1 | 510 | 1 | OP02-114 |
+| 325 | action: Your Leader and all of your Characters gain +N power until the start of your next turn | 1 | 511 | 1 | OP02-120 |
+| 326 | action: This Character cannot attack a Leader on the turn in which it is played | 1 | 512 | 1 | OP03-004 |
+| 327 | action: Trash this Character at the end of this turn | 1 | 513 | 1 | OP03-005 |
+| 328 | cost: You may trash N of your red Characters with N power or more | 1 | 514 | 1 | OP03-012 |
+| 329 | action: You may play this Character card from your trash rested | 1 | 515 | 1 | OP03-013 |
+| 330 | action: When this Character is K.O.'d, give up to N of your opponent's Leader or Character cards -N power during this turn | 1 | 516 | 1 | OP03-015 |
+| 331 | action: /[Counter] If your Leader's type includes "X", give up to N of your opponent's Characters -N power during this turn | 1 | 517 | 1 | OP03-017 |
+| 332 | action: Rest up to N of your opponent's Characters with a cost of N or less and, if you don't have [Nom], play up to N [Nom] from your hand | 1 | 518 | 1 | OP03-027 |
+| 333 | action: Add up to N blue [Nom] from your trash to your hand | 1 | 519 | 1 | OP03-042 |
+| 334 | action: Return up to N Character with a cost of N or less to the owner's hand, and you may trash N cards from the top of your deck | 1 | 520 | 1 | OP03-047 |
+| 335 | condition: If you have N or less cards in your deck | 1 | 521 | 1 | OP03-049 |
+| 336 | action: Draw N card and you may trash N card from the top of your deck | 1 | 522 | 1 | OP03-054 |
+| 337 | cost: DON!! -N You may trash N Character card with a cost of N from your hand | 1 | 523 | 1 | OP03-070 |
+| 338 | action: When your opponent's Character is K.O.'d, set this Leader as active | 1 | 524 | 1 | OP03-076 |
+| 339 | cost: ② You may trash N card from your hand | 1 | 525 | 1 | OP03-077 |
+| 340 | action: Play up to N Character card with a type including "X" and a cost of N or less from your trash rested | 1 | 526 | 1 | OP03-090 |
+| 341 | action: Set the cost of up to N of your opponent's Characters with no base effect to N during this turn | 1 | 527 | 1 | OP03-091 |
+| 342 | action: Up to N of your [Nom] cards gains +N power until the start of your next turn | 1 | 528 | 1 | OP03-117 |
+| 343 | cost: You may rest this Character and give your N active Leader -N power during this turn | 1 | 529 | 1 | OP04-002 |
+| 344 | action: Give up to N rested DON!! card to each of your {Type} type Characters | 1 | 530 | 1 | OP04-004 |
+| 345 | condition: If you have a [Nom] other than this Character | 1 | 531 | 1 | OP04-005 |
+| 346 | action: Return this Character to the owner's hand at the end of this turn | 1 | 532 | 1 | OP04-009 |
+| 347 | action: All of your {Type} type Characters other than this Character gain +N power | 1 | 533 | 1 | OP04-012 |
+| 348 | action: If your Leader is active, give up to N of your opponent's Leader or Character cards -N power during this turn | 1 | 534 | 1 | OP04-017 |
+| 349 | action: Up to a total of N of your opponent's rested Leader and Character cards will not become active in your opponent's next Refresh Phase | 1 | 535 | 1 | OP04-031 |
+| 350 | action: Up to N of your <Slash> attribute Characters gains +N power during this turn | 1 | 536 | 1 | OP04-042 |
+| 351 | action: Return up to N Character with a cost of N or less to the owner's hand or the bottom of their deck | 1 | 537 | 1 | OP04-043 |
+| 352 | action: Return up to N Character with a cost of N or less and up to N Character with a cost of N or less to the owner's hand | 1 | 538 | 1 | OP04-044 |
+| 353 | action: At the end of a battle in which this Character battles your opponent's Character with a cost of N or less, place the opponent's Character you battled wi | 1 | 539 | 1 | OP04-047 |
+| 354 | action: You may trash N [Nom] from your hand and place N Character with a cost of N or less at the bottom of the owner's deck: Play N [Nom] from your trash | 1 | 540 | 1 | OP04-055 |
+| 355 | action: When a DON!! card on your field is returned to your DON!! deck by your effect, add up to N DON!! card from your DON!! deck and set it as active | 1 | 541 | 1 | OP04-058 |
+| 356 | action: This Character gains [Blocker] during this turn | 1 | 542 | 1 | OP04-059 |
+| 357 | action: If you have N or more DON!! cards on your field, draw N card | 1 | 543 | 1 | OP04-064 |
+| 358 | action: This Character's base power becomes the same as the power of your opponent's attacking Leader or Character during this turn | 1 | 544 | 1 | OP04-069 |
+| 359 | action: This Character gains [Blocker] and +N power during this battle | 1 | 545 | 1 | OP04-071 |
+| 360 | cost: You may trash this Character and N of your Characters with a type including "X" | 1 | 546 | 1 | OP04-073 |
+| 361 | action: None of your Characters can be K.O.'d by effects until the start of your next turn | 1 | 547 | 1 | OP04-083 |
+| 362 | action: /[When Attacking] If your Leader has the {Type} type, give up to N of your opponent's Characters -N cost during this turn | 1 | 548 | 1 | OP04-085 |
+| 363 | action: When this Character battles and K.O.'s your opponent's Character, draw N cards and trash N cards from your hand | 1 | 549 | 1 | OP04-086 |
+| 364 | action: Add up to N of your opponent's {Type} or {Type} type Characters with a cost of N or less to the top of your opponent's Life cards face-up | 1 | 550 | 1 | OP04-097 |
+| 365 | action: Up to N of your opponent's Leader or Character cards cannot attack during this turn | 1 | 551 | 1 | OP04-100 |
+| 366 | cost: ➀ You may add N card from the top or bottom of your Life cards to your hand | 1 | 552 | 1 | OP04-102 |
+| 367 | action: All of your red Characters with a cost of N or more other than this Character gain [Rush] | 1 | 553 | 1 | OP04-118 |
+| 368 | action: Your active Characters with a base cost of N cannot be K.O.'d by effects | 1 | 554 | 1 | OP04-119 |
+| 369 | condition: If you have a Character with N power or more other than this Character | 1 | 555 | 1 | OP05-003 |
+| 370 | action: Draw N card if your Leader has N power or less | 1 | 556 | 1 | OP05-009 |
+| 371 | cost: You may rest N of your Characters with a cost of N or more | 1 | 557 | 1 | OP05-026 |
+| 372 | action: Set up to N of your rested Characters with a cost of N as active | 1 | 558 | 1 | OP05-031 |
+| 373 | action: When you draw a card outside of your Draw Phase, this Character gains +N power during this turn | 1 | 559 | 1 | OP05-053 |
+| 374 | cost: You may place N of your Characters other than this Character at the bottom of your deck | 1 | 560 | 1 | OP05-056 |
+| 375 | action: Set up to N of your purple {Type} type Characters with N power or less as active | 1 | 561 | 1 | OP05-068 |
+| 376 | cost: You may rest this Character and place N cards from your trash at the bottom of your deck in any order | 1 | 562 | 1 | OP05-082 |
+| 377 | cost: You may K.O. N of your Characters other than this Character | 1 | 563 | 1 | OP05-087 |
+| 378 | action: /[On K.O.] Up to N of your {Type} type Characters gains +N power during this turn | 1 | 564 | 1 | OP05-090 |
+| 379 | action: Add up to N black Character card with a cost of N to N other than [Nom] from your trash to your hand | 1 | 565 | 1 | OP05-091 |
+| 380 | action: Up to N of your opponent's Characters with a cost of N will not become active in the next Refresh Phase | 1 | 566 | 1 | OP05-094 |
+| 381 | action: The cost of playing {Type} type Character cards with a cost of N or more from your hand will be reduced by N | 1 | 567 | 1 | OP05-097 |
+| 382 | cost: You may place N of your Stages at the bottom of your deck | 1 | 568 | 1 | OP05-104 |
+| 383 | action: When a card is added to your hand from your Life, this Character gains +N power during this turn | 1 | 569 | 1 | OP05-107 |
+| 384 | action: When a [Trigger] activates, draw N cards and trash N cards from your hand | 1 | 570 | 1 | OP05-109 |
+| 385 | cost: You may play N [Nom] from your hand | 1 | 571 | 1 | OP05-111 |
+| 386 | action: If you have N or less Life cards, rest up to N of your opponent's Characters with a cost of N or less | 1 | 572 | 1 | OP05-115 |
+| 387 | action: Draw N cards if your opponent has N or less Life cards | 1 | 573 | 1 | OP05-118 |
+| 388 | action: Trash N of your {Type} type Characters at the end of this turn | 1 | 574 | 1 | OP06-006 |
+| 389 | action: /[On Block] [Once Per Turn] This Character's base power becomes the same as your opponent's Leader until the start of your next turn | 1 | 575 | 1 | OP06-009 |
+| 390 | condition: If your opponent has a Leader or Character with a base power of N or more | 1 | 576 | 1 | OP06-012 |
+| 391 | cost: /[Counter] You may add N card from the top of your Life cards to your hand | 1 | 577 | 1 | OP06-017 |
+| 392 | action: Up to N of your opponent's rested Leader cannot attack until the end of your opponent's next turn | 1 | 578 | 1 | OP06-023 |
+| 393 | action: This Character cannot be K.O.'d in battle and gains +N power until the start of your next turn | 1 | 579 | 1 | OP06-030 |
+| 394 | action: Rest up to N of your opponent's Characters with a cost of N or less and this Character gains +N power during this turn | 1 | 580 | 1 | OP06-034 |
+| 395 | action: If you have N or more rested cards, that card gains an additional +N power during this battle | 1 | 581 | 1 | OP06-038 |
+| 396 | cost: You may trash N card from your hand and place N Character with a cost of N or less at the bottom of the owner's deck | 1 | 582 | 1 | OP06-043 |
+| 397 | action: When your opponent activates an Event, your opponent must place N card from their hand at the bottom of their deck | 1 | 583 | 1 | OP06-044 |
+| 398 | action: When your opponent activates [Blocker] or an Event, if your Leader has the {Type} type, you may trash N cards from the top of your deck | 1 | 584 | 1 | OP06-048 |
+| 399 | action: Your opponent returns N of their Characters to the owner's hand | 1 | 585 | 1 | OP06-051 |
+| 400 | action: Place up to N of your opponent's Characters with a cost of N or less and up to N of your opponent's Characters with a cost of N or less at the bottom of | 1 | 586 | 1 | OP06-056 |

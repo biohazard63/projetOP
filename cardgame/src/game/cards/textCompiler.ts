@@ -146,6 +146,14 @@ function action(text: string, ctx: Ctx, category: Category, timing: Timing): Ste
     const b = fresh(ctx, 'target')
     return emit('prevent-rest', [upTo(Number(m[1]), b, OPP(filter)), { kind: 'OPERATION', operation: { primitive: 'preventRest', version: '1.0.0', audience: 'PUBLIC', subjectBinding: b, duration: 'UNTIL_END_OF_OPPONENT_NEXT_TURN' }, whenBindingNonempty: b } as Step])
   }
+  // "Select up to 1 {X} type card with a cost of N or less from your hand and play it or add it to the top of your Life cards
+  // face-up": one MODE — play a Character or Stage card (an Event cannot be played, FAQ OP07-097), or put any such card in Life.
+  if ((m = /^Select up to 1 ((?:\{[^}]+\}(?:, | or |, or )?)+) type card with a cost of (\d+) or less from your hand and play it or add it to the top of your Life cards face-up$/.exec(t))) {
+    const traitsAny = [...m[1].matchAll(/\{([^}]+)\}/g)].map(x => x[1]), maxCost = Number(m[2]), mode = fresh(ctx, 'mode'), toLife = fresh(ctx, 'toLife')
+    return emit('play-or-life', [{ kind: 'MODE', modes: 2, bind: mode } as Step,
+      ...gated(`${mode}.0`, playChosen(fresh(ctx, 'play'), 'hand', { traitsAny, maxCost } as never)),
+      ...gated(`${mode}.1`, [upTo(1, toLife, { side: 'OWN', zone: 'hand', traitsAny, maxCost } as Filter), addToLife(toLife, 'hand', true)])])
+  }
   // "Give all of your opponent's Characters -N cost during this turn"
   if ((m = /^Give all of your opponent's Characters -(\d+) cost during this turn$/.exec(t))) {
     const b = fresh(ctx, 'all')
@@ -357,8 +365,8 @@ function body(text: string, ctx: Ctx, category: Category, timing: Timing): { pro
     if (!parts.length) return null
     // The engine pays DON!! −X as an activation cost of [Activate: Main] only (an Event's [Main] DON!! −X is left to review).
     if (timing === 'MAIN' && parts.some(x => x.kind === 'DON_MINUS')) return null
-    // DON!! −X is an activation cost on its own only (contracts.ts: not inside a SEQUENCE).
-    if (parts.length > 1 && parts.some(x => x.kind === 'DON_MINUS')) return null
+    // DON!! −X in an activation cost: [Activate: Main] only, alone or as one part of a SEQUENCE (contracts.ts).
+    if (timing !== 'ACTIVATE_MAIN' && parts.length > 1 && parts.some(x => x.kind === 'DON_MINUS')) return null
     if (['ACTIVATE_MAIN', 'MAIN'].includes(timing)) cost = parts.length === 1 ? parts[0] : { kind: 'SEQUENCE', parts } as EffectDefinition['cost']
     else if (parts.length === 1 && parts[0].kind === 'DON_MINUS') {
       // "DON!! −X:" inside an automatic ability: pay exactly X field DON!! or nothing (then the rest is skipped).
