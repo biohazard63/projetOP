@@ -1,3 +1,4 @@
+import type { CatalogueCard } from '@/lib/collector/types'
 import type { OpeningCard } from '@/lib/boosters/types'
 import type { CardDisplay } from '@/lib/engine/catalog'
 import type { PlayerView } from '@/lib/engine/view'
@@ -12,4 +13,8 @@ export function playReportCard(card: CardDisplay, printingKey?: string | null, v
 }
 export function playReportContext(view: PlayerView): ReportContext {
   return { pathname: '/play', gameId: view.gameId, turn: view.projection.turn, version: view.version, phase: view.projection.phase, events: view.projection.events.slice(-20).map(e => ({ type: e.type, sequence: e.sequence })) }
+}
+
+export function collectionReportCard(card: CatalogueCard, shown: { effect: string | null; trigger: string | null; source: string | null; original: boolean }): ReportCard {
+  return cardSnapshot.parse({ ...card, imageUrl: card.imageUrl || null, isAltArt: card.isAltArt ?? undefined, isParallel: card.isParallel ?? undefined, isSpecial: card.isSpecial ?? undefined, displayedEffect: shown.effect, displayedTrigger: shown.trigger, textSource: shown.source, originalShown: shown.original })
 }

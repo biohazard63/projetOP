@@ -124,7 +124,14 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
     if (!v) return 'NO_KO_VICTIM'; extra.push(v.number); plan.koVictim = v.number
   }
   // [When a DON!! card is returned]: a catalogue Character whose [Activate: Main] costs DON!! −X returns one in the scenario.
-  if (a?.timing === 'ON_DON_RETURNED') {
+  // During Bob's turn: a card of Alice whose [Trigger] costs DON!! −1, revealed from her Life by Bob's attack.
+  if (a?.timing === 'ON_DON_RETURNED' && flat(a.condition as Record<string, unknown>).some(c => c.kind === 'OPPONENT_TURN')) {
+    const byId = new Map(defs().map(d => [d.definitionId, d]))
+    const t = currentEngineRegistry().definitions.find(x => x.timing === 'TRIGGER' && x.program.some(st => st.kind === 'OPERATION' && st.operation.primitive === 'returnDon') && x.condition.kind === 'ALWAYS' && !x.program.some(st => st.kind === 'CHECK')
+      && (() => { const d = byId.get((x.source as { definitionId: string }).definitionId); return d && d.number !== card.number && d.colors.every(c => lead.colors.includes(c)) })())
+    if (!t) return 'NO_DON_RETURNING_TRIGGER'
+    const n = byId.get((t.source as { definitionId: string }).definitionId)!.number; extra.push(n); plan.triggerPlayer = n
+  } else if (a?.timing === 'ON_DON_RETURNED') {
     const byId = new Map(defs().map(d => [d.definitionId, d]))
     const r = currentEngineRegistry().definitions.find(x => x.timing === 'ACTIVATE_MAIN' && x.cost.kind === 'DON_MINUS' && x.condition.kind === 'ALWAYS' && x.source.kind === 'CARD_DEFINITION' && x.source.zone === 'characters'
       && (() => { const d = byId.get((x.source as { definitionId: string }).definitionId); return d && d.number !== card.number && d.colors.every(c => lead.colors.includes(c)) })())
@@ -165,7 +172,7 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
     if (c.kind === 'FIELD_DON_AT_MOST') { plan.fieldDonMax = c.maximum as number; continue }
     if (c.kind === 'LIFE_LESS_THAN_OPPONENT') { plan.ownLife = 3; continue }
     if (c.kind === 'OWN_CHARACTER_COST_AT_LEAST') { plan.ownCostAtLeast = c.minimum as number; continue }
-    if (['ALWAYS', 'LIFE_AT_LEAST', 'FIELD_DON_AT_LEAST', 'LEADER_HAS_TRAIT', 'LEADER_NAME_IS', 'LEADER_TRAIT_INCLUDES', 'LEADER_MULTICOLORED', 'CAN_ADD_LIFE_TO_HAND', 'FIELD_DON_AT_MOST_OPPONENT', 'DECK_AT_LEAST', 'YOUR_TURN', 'OPPONENT_TURN', 'HAND_AT_LEAST', 'ACTIVE_DON_AT_LEAST', 'OWN_CHARACTERS_AT_LEAST'].includes(c.kind as string)) continue
+    if (['ALWAYS', 'LIFE_AT_LEAST', 'FIELD_DON_AT_LEAST', 'LEADER_HAS_TRAIT', 'LEADER_NAME_IS', 'LEADER_TRAIT_INCLUDES', 'LEADER_MULTICOLORED', 'CAN_ADD_LIFE_TO_HAND', 'DON_RETURNED_BY_OWN_EFFECT', 'FIELD_DON_AT_MOST_OPPONENT', 'DECK_AT_LEAST', 'YOUR_TURN', 'OPPONENT_TURN', 'HAND_AT_LEAST', 'ACTIVE_DON_AT_LEAST', 'OWN_CHARACTERS_AT_LEAST'].includes(c.kind as string)) continue
     if (!['SOURCE_ATTACHED_DON_AT_LEAST', 'LIFE_AT_MOST'].includes(c.kind as string)) return `CONDITION_${c.kind}`
   }
   // "Add up to 1 DON!! card from your DON!! deck": by turn 11 all 10 DON!! are out, two go back to the DON!! deck.
@@ -277,12 +284,12 @@ function answerAll(s: GameState, declineOptional = false): GameState {
   }
   return s
 }
-type Snap = { restLocks: number; ev: Record<string, number>; blockerLocks: number; delayed: number; bobLife: number; aliceTrash: number; aliceLife: number; bobTrash: number; locks: number; battleMods: number; field: string[]; restedDonIds: string[]; aliceHand: number; bobHand: number; aliceChars: string[]; bobChars: string[]; trash: number; bobDeck: number; aliceDeck: number; cost: number; restedDon: number; attached: number; rested: Set<string>; power: Map<string, number>; costs: Map<string, number>; stage: number }
+type Snap = { lifeLocks: number; bobRestedDon: number; costIds: string[]; donAdds: number; restLocks: number; ev: Record<string, number>; blockerLocks: number; delayed: number; bobLife: number; aliceTrash: number; aliceLife: number; bobTrash: number; locks: number; battleMods: number; field: string[]; restedDonIds: string[]; aliceHand: number; bobHand: number; aliceChars: string[]; bobChars: string[]; trash: number; bobDeck: number; aliceDeck: number; cost: number; restedDon: number; attached: number; rested: Set<string>; power: Map<string, number>; costs: Map<string, number>; stage: number }
 function snap(s: GameState): Snap {
   const a = zones(s, 'alice'), b = zones(s, 'bob'), field = [...a.leader, ...a.characters, ...a.stage, ...b.leader, ...b.characters]
   // Alice's public events by type: an effect may draw then place back, take a Life then add one (zone counts unchanged).
   const ev: Record<string, number> = {}; for (const e of s.events) if (e.actorId === 'alice') ev[e.type] = (ev[e.type] ?? 0) + 1
-  return { restLocks: (s.effects?.restLocks ?? []).length, ev, blockerLocks: (s.effects?.blockerRestrictions ?? []).length, delayed: (s.effects?.delayedTriggers ?? []).length, bobLife: b.life.length, aliceTrash: a.trash.length, aliceLife: a.life.length, bobTrash: b.trash.length, locks: (s.effects?.refreshLocks ?? []).length, battleMods: (s.battle?.counterModifiers ?? []).reduce((n, m) => n + m.amount, 0), field: [...a.characters, ...b.characters], restedDonIds: a.cost.filter(id => s.instances[id].rested), aliceHand: a.hand.length, bobHand: b.hand.length, aliceChars: [...a.characters], bobChars: [...b.characters], trash: b.trash.length, bobDeck: b.deck.length, aliceDeck: a.deck.length,
+  return { lifeLocks: (s.effects?.lifeToHandLocks ?? []).length, bobRestedDon: b.cost.filter(id => s.instances[id].rested).length, costIds: [...a.cost], donAdds: 0, restLocks: (s.effects?.restLocks ?? []).length, ev, blockerLocks: (s.effects?.blockerRestrictions ?? []).length, delayed: (s.effects?.delayedTriggers ?? []).length, bobLife: b.life.length, aliceTrash: a.trash.length, aliceLife: a.life.length, bobTrash: b.trash.length, locks: (s.effects?.refreshLocks ?? []).length, battleMods: (s.battle?.counterModifiers ?? []).reduce((n, m) => n + m.amount, 0), field: [...a.characters, ...b.characters], restedDonIds: a.cost.filter(id => s.instances[id].rested), aliceHand: a.hand.length, bobHand: b.hand.length, aliceChars: [...a.characters], bobChars: [...b.characters], trash: b.trash.length, bobDeck: b.deck.length, aliceDeck: a.deck.length,
     cost: a.cost.length, restedDon: a.cost.filter(id => s.instances[id].rested).length, attached: a.attached.length, rested: new Set(field.filter(id => s.instances[id].rested)),
     power: new Map(field.map(id => [id, power(s, id)])), costs: new Map(field.map(id => [id, cost(s, id)])), stage: b.stage.length }
 }
@@ -297,19 +304,20 @@ function verify(full: Step[], before: Snap, after: Snap, s: GameState, sourceId:
     const o = op as Record<string, unknown>
     switch (op.primitive) {
       case 'koCharacter': if (o.subjectBinding === 'paid') { if (!before.aliceChars.some(id => s.instances[id].zone === 'trash')) return 'OWN_KO_NOT_APPLIED'; checked.push('K.O. own'); break } { const gone = before.bobChars.filter(id => s.instances[id].zone === 'trash').length; if (!gone && before.stage <= after.stage) return 'KO_NOT_APPLIED'; checked.push('ko'); break }
-      case 'restCard': if (o.subjectBinding === 'paid' ? after.restedDon <= before.restedDon && ![...after.rested].some(id => !before.rested.has(id)) : ![...after.rested].some(id => !before.rested.has(id)) && !before.field.some(id => !before.rested.has(id) && s.instances[id].zone === 'trash')) return 'REST_NOT_APPLIED'; checked.push('rest'); break
+      case 'restCard': if (o.subjectBinding === 'paid' ? after.restedDon <= before.restedDon && ![...after.rested].some(id => !before.rested.has(id)) : after.bobRestedDon <= before.bobRestedDon && ![...after.rested].some(id => !before.rested.has(id)) && !before.field.some(id => !before.rested.has(id) && s.instances[id].zone === 'trash')) return 'REST_NOT_APPLIED'; checked.push('rest'); break
       case 'addPower': if (!changedPower(Math.sign(o.amount as number), Math.abs(o.amount as number)) && !(o.duration === 'THIS_BATTLE' && (after.battleMods - before.battleMods) * Math.sign(o.amount as number) >= Math.abs(o.amount as number))) return 'POWER_NOT_APPLIED'; checked.push(`power ${o.amount}`); break
       case 'addCost': if (![...before.costs].some(([id, c]) => after.costs.has(id) && after.costs.get(id)! - c <= (o.amount as number) || (c > 0 && after.costs.get(id) === Math.max(0, c + (o.amount as number))))) return 'COST_NOT_APPLIED'; checked.push(`cost ${o.amount}`); break
       case 'returnToHand': if (![...before.field, ...(sourceId ? [sourceId] : [])].some(id => s.instances[id].zone === 'hand')) return 'RETURN_NOT_APPLIED'; checked.push('return'); break
       case 'moveToDeckBottom': if (![...before.field, ...(sourceId ? [sourceId] : [])].some(id => s.instances[id].zone === 'deck')) return 'BOTTOM_NOT_APPLIED'; checked.push('bottom'); break
       case 'drawCards': if (after.aliceDeck > before.aliceDeck - (o.amount as number) && (after.ev.DRAWN ?? 0) - (before.ev.DRAWN ?? 0) < (o.amount as number)) return 'DRAW_NOT_APPLIED'; checked.push(`draw ${o.amount}`); break
-      case 'moveDon': if (after.cost + after.attached <= before.cost + before.attached) return 'DON_NOT_ADDED'; checked.push('add DON!!'); break
+      case 'moveDon': if (after.cost + after.attached <= before.cost + before.attached && !after.costIds.some(id => !before.costIds.includes(id))) return 'DON_NOT_ADDED'; checked.push('add DON!!'); break
       case 'attachRestedDon': if (after.attached <= before.attached) return 'DON_NOT_GIVEN'; checked.push('give DON!!'); break
       case 'setActive': if (o.subjectBinding ? !before.restedDonIds.some(id => !s.instances[id].rested) && ![...before.rested].some(id => !after.rested.has(id)) : sourceId && s.instances[sourceId].rested) return 'NOT_SET_ACTIVE'; checked.push('set active'); break
       case 'playCard': if (after.aliceChars.length <= before.aliceChars.length && (after.ev.CARD_PLAYED ?? 0) <= (before.ev.CARD_PLAYED ?? 0)) return 'NOT_PLAYED'; checked.push('play'); break
       case 'grantKeyword': if (!(sourceId && hasCombatKeyword(s, sourceId, o.keyword as 'RUSH')) && !zones(s, 'alice').characters.some(id => hasCombatKeyword(s, id, o.keyword as 'RUSH'))) return 'KEYWORD_NOT_GRANTED'; checked.push(`keyword ${o.keyword}`); break
       case 'trashCharacter': if (!sourceId || s.instances[sourceId].zone !== 'trash') return 'NOT_TRASHED'; checked.push('trash this Character'); break
       case 'lockRefresh': if (after.locks <= before.locks) return 'REFRESH_NOT_LOCKED'; checked.push('refresh lock'); break
+      case 'lockLifeToHand': if (after.lifeLocks <= before.lifeLocks) return 'LIFE_NOT_LOCKED'; checked.push('no Life to hand this turn'); break
       case 'preventRest': if (after.restLocks <= before.restLocks) return 'REST_NOT_PREVENTED'; checked.push('cannot be rested'); break
       case 'preventBlocker': if (after.blockerLocks <= before.blockerLocks) return 'BLOCKER_NOT_PREVENTED'; checked.push('no [Blocker]'); break
       case 'scheduleEndOfTurn': if (after.delayed <= before.delayed) return 'NOT_SCHEDULED'; checked.push('scheduled at end of turn'); break
@@ -441,6 +449,17 @@ export function runAbility(card: CompiledCard, a: EffectDefinition, mode = 0): O
       }
       case 'ON_DON_RETURNED': {
         sourceId = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true })
+        if (p.triggerPlayer) {
+          // Two DON!! back in the DON!! deck, so that "add up to 1 DON!!" can be observed.
+          const z = zones(s, 'alice'); for (let i = 0; i < 2; i++) { const id = z.cost.pop()!; z.donDeck.push(id); s.instances[id].zone = 'donDeck'; s.instances[id].zoneGeneration++; s.instances[id].rested = false; s.instances[id].faceUp = false }
+          put(s, 'alice', p.triggerPlayer, 'life'); s = endTurnAnswering(s); before = snap(s)
+          const atk = put(s, 'bob', bigOf(p.bobColour), 'characters', { playedEarlier: true }); s = attack(s, atk, leaderOf(s, 'alice'))
+          if (s.battle?.step === 'BLOCKER') s = act(s, 'alice', { type: 'PASS_BLOCKER', battleId: s.battle.id })
+          if (s.battle?.step === 'COUNTER') s = act(s, 'alice', { type: 'PASS_COUNTER', battleId: s.battle.id })
+          if (s.battle?.step === 'DAMAGE') s = act(s, 'bob', { type: 'RESOLVE_BATTLE', battleId: s.battle.id })
+          for (let n = 0; n < 6 && s.battle; n++) { s = answerAll(s); if (s.battle?.step === 'LIFE_CONTINUE') s = act(s, 'bob', { type: 'CONTINUE_LIFE_DAMAGE', battleId: s.battle.id } as never); else break }
+          break
+        }
         const returner = put(s, 'alice', p.returner!.number, 'characters', { playedEarlier: true })
         for (const id of zones(s, 'alice').cost) s.instances[id].rested = false
         const offer = offeredEffects(s, 'alice', p.returner!.abilityId).find(o => o.effectId.includes(returner)); if (!offer?.donMinus) return { ok: false, reason: 'RETURNER_NOT_OFFERED' }

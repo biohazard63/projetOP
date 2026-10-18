@@ -72,3 +72,12 @@ test('authorized admin can filter and moderate only supported statuses', async (
     assert.deepEqual(counts(), { reads: 1, updates: 2, saves: 0 })
   } finally { if (prior === undefined) delete process.env.REPORT_ADMIN_EMAILS; else process.env.REPORT_ADMIN_EMAILS = prior }
 })
+
+test('collection card report is accepted by the API without a game or booster opening', async () => {
+  const { handlers, counts } = setup()
+  const data = { ...body, source: 'COLLECTION', category: 'WRONG_DATA', card: { id: 'card-1', code: 'OP01-001', name: 'Test', effect: 'Full text' }, context: { pathname: '/collection' } }
+  assert.equal((await handlers.POST(request('POST', data))).status, 201)
+  assert.equal(counts().saves, 1)
+  assert.equal((await handlers.POST(request('POST', { ...data, card: undefined }))).status, 400)
+  assert.equal(counts().saves, 1)
+})
