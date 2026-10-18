@@ -39,6 +39,8 @@ function condition(s: GameState, c: Condition, controller: string, source?: Effe
   if (c.kind === 'ALL_OF') return c.conditions.every(part => condition(s, part, controller, source, event))
   if (c.kind === 'ANY_OF') return c.conditions.some(part => condition(s, part, controller, source, event))
   if (c.kind === 'HAND_TRASH_SOURCE_HAS_TRAIT') return !!event?.trashSourceDefinitionId && !!s.catalog.definitions.find(d => d.definitionId === event.trashSourceDefinitionId)?.traits.includes(c.trait)
+  // [When a DON!! card on your field is returned to your DON!! deck] "by your effect": returned by an effect or cost you control.
+  if (c.kind === 'DON_RETURNED_BY_OWN_EFFECT') { const cause = event && (s.effects?.donReturnCauses ?? []).find(x => x.sequence === event.sequence); return !!cause && cause.playerId === controller && cause.byPlayerId === controller }
   if (c.kind === 'DON_RETURNED_TOGETHER_AT_LEAST') {
     const causes = s.effects?.donReturnCauses ?? [], cause = event && causes.find(x => x.sequence === event.sequence)
     return !!cause && cause.playerId === controller && causes.filter(x => x.resolutionId === cause.resolutionId && x.playerId === controller).length >= c.minimum
@@ -217,7 +219,7 @@ function execute(s: GameState, spec: OperationSpec, context: EffectContext, sele
     p.zones[from].splice(p.zones[from].indexOf(don.id), 1); p.zones.donDeck.push(don.id)
     don.zone = 'donDeck'; don.zoneGeneration++; don.rested = false; don.attachedTo = null; don.faceUp = false
     recordOperation(s, { id: next(r, s.gameId, 'operation'), resolutionId: context.effectInstanceId, subject: structuredClone(selected), controllerId: context.controllerId, type: 'MOVE_DON', intent: 'COST', outcome: 'CONFIRMED', from, to: 'donDeck' })
-    noteDonReturned(s, p.id, context.effectInstanceId)
+    noteDonReturned(s, p.id, context.effectInstanceId, context.controllerId)
     return
   }
   if (spec.primitive === 'triggerCardToHand') {
@@ -516,7 +518,7 @@ function execute(s: GameState, spec: OperationSpec, context: EffectContext, sele
       else {
       p.zones[op.from].splice(p.zones[op.from].indexOf(i.id), 1); p.zones[op.to].push(i.id)
       i.zone = op.to; i.zoneGeneration++; i.rested = op.rested; i.faceUp = op.to !== 'donDeck'; i.attachedTo = op.targetId ?? null
-      if (op.to === 'donDeck') noteDonReturned(s, p.id, op.resolutionId)
+      if (op.to === 'donDeck') noteDonReturned(s, p.id, op.resolutionId, context.controllerId)
       }
       r.trace.push({ operation: structuredClone(op), outcome: 'CONFIRMED' })
 

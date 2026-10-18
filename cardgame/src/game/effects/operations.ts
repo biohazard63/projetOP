@@ -6,10 +6,11 @@ export function recordOperation(s:GameState,op:UnifiedOperation):void { s.effect
 // same discriminated operation and validation path serve costs and effects.
 /** "When a DON!! card on your field is returned to your DON!! deck" (any cause, FAQ ST10-007): announced only for games whose
  * registry listens to it, so that other games keep their historical public event sequence. */
-export function noteDonReturned(s:GameState,ownerId:string,resolutionId:string):void {
+/** `byPlayerId`: the controller of the effect or cost that returned it ("returned to your DON!! deck by your effect", M7). */
+export function noteDonReturned(s:GameState,ownerId:string,resolutionId:string,byPlayerId?:string):void {
  if (!(s.effects?.version==='1.3.0' && s.effects.registry.definitions.some(d=>d.timing==='ON_DON_RETURNED'))) return
  const causes=s.effects.donReturnCauses ?? (s.effects.donReturnCauses=[])
- causes.push({sequence:s.events.length,resolutionId,playerId:ownerId}); if (causes.length>64) causes.splice(0,causes.length-64)
+ causes.push({sequence:s.events.length,resolutionId,playerId:ownerId,...(byPlayerId ? {byPlayerId} : {})}); if (causes.length>64) causes.splice(0,causes.length-64)
  s.events.push({sequence:s.events.length,type:'DON_RETURNED',actorId:ownerId})
 }
 export function processOperation(s:GameState,op:UnifiedOperation,details:{rested?:boolean;targetId?:string}={}):boolean {
@@ -29,7 +30,7 @@ export function processOperation(s:GameState,op:UnifiedOperation,details:{rested
   if (!['leader','characters','stage'].includes(to)) i.playedOnTurn=null
  }
  recordOperation(s,{...op,outcome:'CONFIRMED'})
- if (op.type==='MOVE_DON' && op.to==='donDeck' && op.from!=='donDeck') noteDonReturned(s,i.owner,op.resolutionId)
+ if (op.type==='MOVE_DON' && op.to==='donDeck' && op.from!=='donDeck') noteDonReturned(s,i.owner,op.resolutionId,op.controllerId)
  return true
 }
 export function confirmRest(s:GameState,subject:{instanceId:string;generation:number},context:EffectContext):boolean {

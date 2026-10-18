@@ -633,8 +633,8 @@ export function compileCardText(row: { code: string; type: string; effect: strin
     if (isTrigger) { if (timing && timing !== 'TRIGGER') return unparsed.push(source); timing = 'TRIGGER' }
     // "When a DON!! card on your field is returned to your DON!! deck, ..." — your DON!!, any cause (FAQ OP06-042). The wording "on the
     // field" also counts the opponent's DON!! returned to their deck (FAQ OP02-071), which the engine does not observe: left to review.
-    const donBack = !timing && !isTrigger ? /^When a DON!! card on your field is returned to your DON!! deck, (.*)$/.exec(clean(s)) : null
-    if (donBack) { timing = 'ON_DON_RETURNED'; s = donBack[1].charAt(0).toUpperCase() + donBack[1].slice(1) }
+    const donBack = !timing && !isTrigger ? /^When a DON!! card on your field is returned to your DON!! deck( by your effect)?, (.*)$/.exec(clean(s)) : null
+    if (donBack) { timing = 'ON_DON_RETURNED'; if (donBack[1]) conds.push({ kind: 'DON_RETURNED_BY_OWN_EFFECT' } as BaseCondition); s = donBack[2].charAt(0).toUpperCase() + donBack[2].slice(1) }
     // "When you play a Character, ..." (once per Character played, FAQ OP14-041); "When one of your ({A} or {B} type) Characters (with
     // N base power or more) is K.O.'d, ..." — the Character played or K.O.'d is filtered by `subject`.
     let subject: EffectDefinition['subject']
