@@ -71,3 +71,12 @@ test('M7 an [Activate: Main] cost "DON!! −1 You may rest this Leader" returns 
   for (const id of [...z.cost]) { z.cost.splice(z.cost.indexOf(id), 1); z.donDeck.push(id); t.instances[id].zone = 'donDeck'; t.instances[id].zoneGeneration++; t.instances[id].rested = false; t.instances[id].faceUp = false }
   assert.equal(offeredEffects(t, 'alice', ability.id).length, 0)
 })
+
+test('M7 a Character played by its own [Trigger] activates its [On Play] (events of the resolution are captured, FAQ OP05-106)', async () => {
+  const { triggerPlayActivatesOnPlay } = await import('./helpers/m7Compiled')
+  const card = cards().find(c => c.abilities.some(a => a.timing === 'ON_PLAY' && a.condition.kind === 'ALWAYS' && a.cost.kind === 'NONE')
+    && c.abilities.some(a => a.timing === 'TRIGGER' && a.program.some(st => st.kind === 'OPERATION' && st.operation.primitive === 'playSelfFromTrigger') && !a.program.some(st => st.kind === 'CHECK')))
+  assert.ok(card, 'a reviewed card with [On Play] and [Trigger] Play this card')
+  const r = triggerPlayActivatesOnPlay(card!)
+  assert.ok(r.ok, r.ok ? '' : `${card!.number}: ${r.reason}`)
+})

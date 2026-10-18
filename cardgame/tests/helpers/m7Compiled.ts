@@ -76,7 +76,7 @@ function eventsFor(n: number, colours: string[], exclude: string): string[] | nu
   return out.length >= n ? out : null
 }
 type Plan = { aliceLeader: string; extra: string[]; own: string[]; bobTargets: string[]; bobColour: string; restedTargets: boolean; seedDeck?: string; seedHand?: string; seedTrash?: string; ownLife?: number; oppLife?: number; don: number
-  needsDonDeck?: boolean; trashEvents?: string[]; sourcePowerMin?: number; deckMax?: number; aura?: { target: string; plain: string }; returner?: { number: string; abilityId: string }; ownPowerAtLeast?: number; fieldDonMax?: number; seedHandCost?: string; ownTargets?: { number: string; rested: boolean }[]; handMin?: number; restedDonMin?: number; ownCharsMin?: number; ownCostAtLeast?: number; ownHandMax?: number; oppHandMax?: number; oppHandMin?: number; ownRested?: number; oppRested?: number; trashMin?: number }
+  needsDonDeck?: boolean; triggerPlayer?: string; koVictim?: string; trashEvents?: string[]; sourcePowerMin?: number; deckMax?: number; aura?: { target: string; plain: string }; returner?: { number: string; abilityId: string }; ownPowerAtLeast?: number; fieldDonMax?: number; seedHandCost?: string; ownTargets?: { number: string; rested: boolean }[]; handMin?: number; restedDonMin?: number; ownCharsMin?: number; ownCostAtLeast?: number; ownHandMax?: number; oppHandMax?: number; oppHandMin?: number; ownRested?: number; oppRested?: number; trashMin?: number }
 /** Builds the scenario needs of one ability (or reports why it cannot be built). */
 function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Record<string, unknown>): Plan | string {
   const d = definitionOf(card.number), { selectors, conditions, searches, ops } = scan(a?.program ?? [])
@@ -108,6 +108,20 @@ function plan(card: CompiledCard, a: EffectDefinition | null, staticConds: Recor
     if (x.zone === 'leaderOrCharacters' && x.traitsAny?.some(t => lead.traits.includes(t))) continue
     const m = matching({ ...x, category: 'CHARACTER' } as unknown as Record<string, unknown>, lead.colors, card.number); if (!m) return 'NO_OWN_TARGET'; extra.push(m)
     ;(plan.ownTargets ??= []).push({ number: m, rested: !!x.rested })
+  }
+  // [When you play a Character]: a Character whose [Trigger] plays it (a Life card), so that it is played during Bob's turn too.
+  if (a?.timing === 'ON_CHARACTER_PLAYED') {
+    const byId = new Map(defs().map(d => [d.definitionId, d]))
+    const t = currentEngineRegistry().definitions.find(x => x.timing === 'TRIGGER' && x.program.some(st => st.kind === 'OPERATION' && st.operation.primitive === 'playSelfFromTrigger') && x.condition.kind === 'ALWAYS'
+      && x.program.every(st => st.kind !== 'CHECK') && (() => { const d = byId.get((x.source as { definitionId: string }).definitionId); return d && d.category === 'CHARACTER' && d.number !== card.number && d.colors.every(c => lead.colors.includes(c)) })())
+    if (!t) return 'NO_TRIGGER_CHARACTER'
+    const n = byId.get((t.source as { definitionId: string }).definitionId)!.number; extra.push(n); plan.triggerPlayer = n
+  }
+  // [When one of your {X} Characters is K.O.'d]: such a Character of Alice's, K.O.'d in battle by a stronger attacker.
+  if (a?.timing === 'ON_CHARACTER_KO' && a.subject) {
+    const sub = a.subject, v = defs().filter(d => d.category === 'CHARACTER' && d.number !== card.number && d.colors.every(c => lead.colors.includes(c)) && (!sub.traitsAny || sub.traitsAny.some(t => d.traits.includes(t))) && (sub.minBasePower === undefined || (d.power ?? -1) >= sub.minBasePower) && inert(d))
+      .sort((x, y) => Number(isVanilla(y)) - Number(isVanilla(x)) || (x.power ?? 0) - (y.power ?? 0))[0]
+    if (!v) return 'NO_KO_VICTIM'; extra.push(v.number); plan.koVictim = v.number
   }
   // [When a DON!! card is returned]: a catalogue Character whose [Activate: Main] costs DON!! −X returns one in the scenario.
   if (a?.timing === 'ON_DON_RETURNED') {
@@ -255,6 +269,8 @@ function answerAll(s: GameState, declineOptional = false): GameState {
       return s
     }
     const c = pendingChoice(s, who)!
+    // Simultaneous triggers: the order chooser names the one that resolves first (one token).
+    if (s.effects?.scheduler?.orderChoice) { s = act(s, who, { type: 'ANSWER_CHOICE', choiceId: c.choiceId, tokens: [c.options[0].token] }); continue }
     if (s.effects?.choice?.modes !== undefined) { const o = c.options[Math.min(modePick, c.options.length - 1)]; s = act(s, who, { type: 'ANSWER_CHOICE', choiceId: c.choiceId, tokens: [o.token] }); continue }
     const count = declineOptional && c.choiceType !== 'ORDER' ? c.min : c.choiceType === 'ORDER' ? c.options.length : c.allOrNone ? (c.options.length >= c.max ? c.max : 0) : Math.min(c.max, c.options.length)
     s = act(s, who, { type: 'ANSWER_CHOICE', choiceId: c.choiceId, tokens: c.options.slice(0, Math.max(count, c.min)).map(o => o.token) })
@@ -297,7 +313,8 @@ function verify(full: Step[], before: Snap, after: Snap, s: GameState, sourceId:
       case 'preventRest': if (after.restLocks <= before.restLocks) return 'REST_NOT_PREVENTED'; checked.push('cannot be rested'); break
       case 'preventBlocker': if (after.blockerLocks <= before.blockerLocks) return 'BLOCKER_NOT_PREVENTED'; checked.push('no [Blocker]'); break
       case 'scheduleEndOfTurn': if (after.delayed <= before.delayed) return 'NOT_SCHEDULED'; checked.push('scheduled at end of turn'); break
-      case 'lifeToHand': if (after.aliceLife >= before.aliceLife && (after.ev.LIFE_TO_HAND ?? 0) <= (before.ev.LIFE_TO_HAND ?? 0)) return 'LIFE_NOT_TAKEN'; checked.push('Life to hand'); break
+      case 'lifeToHand': if (o.side === 'OPPONENT') { if (after.bobLife >= before.bobLife || after.bobHand <= before.bobHand) return 'OPPONENT_LIFE_NOT_TAKEN'; checked.push('opponent Life to hand'); break }
+        if (after.aliceLife >= before.aliceLife && (after.ev.LIFE_TO_HAND ?? 0) <= (before.ev.LIFE_TO_HAND ?? 0)) return 'LIFE_NOT_TAKEN'; checked.push('Life to hand'); break
       case 'trashLife': if (after.bobLife >= before.bobLife) return 'OPPONENT_LIFE_NOT_TRASHED'; checked.push('trash opponent Life'); break
       case 'addToLife': if (after.aliceLife <= before.aliceLife && (after.ev.LIFE_ADDED ?? 0) <= (before.ev.LIFE_ADDED ?? 0)) return 'LIFE_NOT_ADDED'; checked.push('add to Life'); break
       case 'moveCard':
@@ -394,6 +411,33 @@ export function runAbility(card: CompiledCard, a: EffectDefinition, mode = 0): O
         for (const x of zones(s, 'alice').cost) s.instances[x].rested = false
         const offer = offeredEffects(s, 'alice', a.id).find(o => o.effectId.includes(id)); if (!offer) return { ok: false, reason: 'NOT_OFFERED' }
         before = snap(s); s = act(s, 'alice', { type: 'START_EFFECT', effectId: offer.effectId, ...(offer.donMinus ? { donMinusIds: offer.donMinus.eligibleDonIds.slice(0, offer.donMinus.amount) } : {}) }); break
+      }
+      case 'ON_CHARACTER_PLAYED': {
+        sourceId = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true })
+        if (p.don) attachDon(s, 'alice', sourceId, p.don)
+        if (condKinds.includes('OPPONENT_TURN')) {
+          put(s, 'alice', p.triggerPlayer!, 'life'); s = endTurnAnswering(s); before = snap(s)
+          const atk = put(s, 'bob', bigOf(p.bobColour), 'characters', { playedEarlier: true }); s = attack(s, atk, leaderOf(s, 'alice'))
+          if (s.battle?.step === 'BLOCKER') s = act(s, 'alice', { type: 'PASS_BLOCKER', battleId: s.battle.id })
+          if (s.battle?.step === 'COUNTER') s = act(s, 'alice', { type: 'PASS_COUNTER', battleId: s.battle.id })
+          if (s.battle?.step === 'DAMAGE') s = act(s, 'bob', { type: 'RESOLVE_BATTLE', battleId: s.battle.id })
+          // The [Trigger] plays the card; the damage then continues, and what it captured resolves.
+          for (let n = 0; n < 6 && s.battle; n++) { s = answerAll(s); if (s.battle?.step === 'LIFE_CONTINUE' && legal(s, 'bob').some(x => x.type === 'CONTINUE_LIFE_DAMAGE')) s = act(s, 'bob', { type: 'CONTINUE_LIFE_DAMAGE', battleId: s.battle.id } as never); else break }
+        } else { const id = put(s, 'alice', p.triggerPlayer!, 'hand'); for (const x of zones(s, 'alice').cost) s.instances[x].rested = false; before = snap(s); s = playCard(s, 'alice', id) }
+        break
+      }
+      case 'ON_CHARACTER_KO': {
+        sourceId = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true })
+        if (p.don) attachDon(s, 'alice', sourceId, p.don)
+        const victim = put(s, 'alice', p.koVictim!, 'characters', { playedEarlier: true, rested: true })
+        s = endTurnAnswering(s); before = snap(s)
+        const atk = put(s, 'bob', bigOf(p.bobColour), 'characters', { playedEarlier: true }); if (power(s, atk) <= power(s, victim)) return { ok: false, reason: 'ATTACKER_NOT_STRONGER' }
+        s = attack(s, atk, victim)
+        if (s.battle?.step === 'BLOCKER') s = act(s, 'alice', { type: 'PASS_BLOCKER', battleId: s.battle.id })
+        if (s.battle?.step === 'COUNTER') s = act(s, 'alice', { type: 'PASS_COUNTER', battleId: s.battle.id })
+        if (s.battle?.step === 'DAMAGE') s = act(s, 'bob', { type: 'RESOLVE_BATTLE', battleId: s.battle.id })
+        if (s.instances[victim].zone !== 'trash') return { ok: false, reason: 'VICTIM_NOT_KOD' }
+        break
       }
       case 'ON_DON_RETURNED': {
         sourceId = d.category === 'LEADER' ? leaderOf(s, 'alice') : put(s, 'alice', card.number, 'characters', { playedEarlier: true })
@@ -532,3 +576,22 @@ export function runPrinted(card: CompiledCard): Outcome {
   return { ok: true, checked }
 }
 export { assert }
+
+/** A Character played by its own [Trigger] during Bob's attack: its [On Play] activates (resolution history of the scheduler). */
+export function triggerPlayActivatesOnPlay(card: CompiledCard): Outcome {
+  const p = plan(card, null, {})
+  if (typeof p === 'string') return { ok: false, reason: p }
+  try {
+    let { s } = setup(card, p, 11)
+    put(s, 'alice', card.number, 'life'); s = endTurnAnswering(s)
+    const atk = put(s, 'bob', bigOf(p.bobColour), 'characters', { playedEarlier: true }); s = attack(s, atk, leaderOf(s, 'alice'))
+    if (s.battle?.step === 'BLOCKER') s = act(s, 'alice', { type: 'PASS_BLOCKER', battleId: s.battle.id })
+    if (s.battle?.step === 'COUNTER') s = act(s, 'alice', { type: 'PASS_COUNTER', battleId: s.battle.id })
+    if (s.battle?.step === 'DAMAGE') s = act(s, 'bob', { type: 'RESOLVE_BATTLE', battleId: s.battle.id })
+    for (let n = 0; n < 6 && s.battle; n++) { s = answerAll(s); if (s.battle?.step === 'LIFE_CONTINUE') s = act(s, 'bob', { type: 'CONTINUE_LIFE_DAMAGE', battleId: s.battle.id } as never); else break }
+    s = answerAll(s)
+    const onPlay = card.abilities.find(a => a.timing === 'ON_PLAY')!
+    const ran = (s.effects?.scheduler?.history ?? []).some(t => t.definitionId === onPlay.id && t.timing === 'ON_PLAY')
+    return ran ? { ok: true, checked: ['[On Play] after [Trigger] play'] } : { ok: false, reason: 'ON_PLAY_NOT_ACTIVATED' }
+  } catch (e) { return { ok: false, reason: `ERROR ${(e as Error).message.slice(0, 160)}` } }
+}

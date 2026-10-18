@@ -134,6 +134,12 @@ function action(text: string, ctx: Ctx, category: Category, timing: Timing): Ste
     return emit('life-to-hand', [{ kind: 'CHOICE', choiceType: 'SELECT', selector: { kind: 'CARDS', side: 'OWN', zone: 'life', lifeEnd: 'TOP' }, optional: false, min: 1, max: 1, bind: b, visibility: 'PUBLIC', clampMin: true, whenCondition: { kind: 'CAN_ADD_LIFE_TO_HAND' } } as Step,
       { kind: 'OPERATION', operation: { primitive: 'lifeToHand', version: '1.0.0', audience: 'CONTROLLER', subjectBinding: b } } as Step])
   }
+  // "Add up to 1 card from the top of your opponent's Life cards to the owner's hand".
+  if (/^Add up to 1 card from the top of your opponent's Life cards to the owner's hand$/.test(t)) {
+    const b = fresh(ctx, 'oppLife')
+    return emit('opponent-life-to-hand', [{ kind: 'CHOICE', choiceType: 'SELECT', selector: { kind: 'CARDS', side: 'OPPONENT', zone: 'life', lifeEnd: 'TOP' }, optional: true, min: 0, max: 1, bind: b, visibility: 'PUBLIC' } as Step,
+      { kind: 'OPERATION', operation: { primitive: 'lifeToHand', version: '1.0.0', audience: 'CONTROLLER', subjectBinding: b, side: 'OPPONENT' } } as Step])
+  }
   // "Trash up to 1 card from the top of your opponent's Life cards" (not damage: no [Trigger], FAQ ST04-001).
   if (/^Trash up to 1 card from the top of your opponent's Life cards$/.test(t)) {
     const b = fresh(ctx, 'oppLife')
@@ -629,6 +635,16 @@ export function compileCardText(row: { code: string; type: string; effect: strin
     // field" also counts the opponent's DON!! returned to their deck (FAQ OP02-071), which the engine does not observe: left to review.
     const donBack = !timing && !isTrigger ? /^When a DON!! card on your field is returned to your DON!! deck, (.*)$/.exec(clean(s)) : null
     if (donBack) { timing = 'ON_DON_RETURNED'; s = donBack[1].charAt(0).toUpperCase() + donBack[1].slice(1) }
+    // "When you play a Character, ..." (once per Character played, FAQ OP14-041); "When one of your ({A} or {B} type) Characters (with
+    // N base power or more) is K.O.'d, ..." — the Character played or K.O.'d is filtered by `subject`.
+    let subject: EffectDefinition['subject']
+    const played = !timing && !isTrigger ? /^When you play a Character, (.*)$/.exec(clean(s)) : null
+    const koMine = !timing && !isTrigger ? /^When one of your ((?:\{[^}]+\}(?:, | or |, or )?)+ type )?Characters(?: with (\d+) base power or more)? is K\.O\.'d, (.*)$/.exec(clean(s)) : null
+    if (played) { timing = 'ON_CHARACTER_PLAYED'; subject = { side: 'OWN' }; s = played[1].charAt(0).toUpperCase() + played[1].slice(1) }
+    else if (koMine) {
+      timing = 'ON_CHARACTER_KO'; s = koMine[3].charAt(0).toUpperCase() + koMine[3].slice(1)
+      subject = { side: 'OWN', ...(koMine[1] ? { traitsAny: [...koMine[1].matchAll(/\{([^}]+)\}/g)].map(x => x[1]) } : {}), ...(koMine[2] ? { minBasePower: Number(koMine[2]) } : {}) }
+    }
     if (!timing && !isTrigger && !once) { if (!staticAbility(s, conds, number, definitionId, category, out, ctx)) unparsed.push(source); return }
     if (!timing || (timing === 'TRIGGER') !== isTrigger) return unparsed.push(source)
     if (['MAIN', 'COUNTER'].includes(timing) !== (category === 'EVENT') && timing !== 'TRIGGER') return unparsed.push(source)
@@ -653,7 +669,7 @@ export function compileCardText(row: { code: string; type: string; effect: strin
     if (conds.some(c => c.kind === 'SOURCE_ATTACHED_DON_AT_LEAST') && (b.cost?.kind === 'DON_MINUS' || b.program.some(st => st.kind === 'OPERATION' && st.operation.primitive === 'returnDon'))) return unparsed.push(source)
     const condition: Condition = conds.length === 0 ? { kind: 'ALWAYS' } : conds.length === 1 ? conds[0] : { kind: 'ALL_OF', conditions: conds }
     const id = `${number}.c${abilities.length + 1}-${timing.toLowerCase().replace(/_/g, '-')}`
-    abilities.push(ability(id, definitionId, zoneFor(category, timing), timing, b.program, { condition, ...(b.cost ? { cost: b.cost } : {}), ...(once ? { usage: onceUsage(timing, b.program) } : {}) }))
+    abilities.push({ ...ability(id, definitionId, zoneFor(category, timing), timing, b.program, { condition, ...(b.cost ? { cost: b.cost } : {}), ...(once ? { usage: onceUsage(timing, b.program) } : {}) }), ...(subject ? { subject } : {}) })
     if (timing === 'COUNTER') profile.counterEvent = { abilityId: id }
   }
   for (const chunk of chunks) add(chunk, false)
