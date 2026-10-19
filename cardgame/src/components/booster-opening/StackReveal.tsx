@@ -19,9 +19,9 @@ const TILT = new Set(['holographic', 'secret', 'super', 'manga', 'legendary'])
 const HINT: Record<string, string> = { manga: 'Des cases de manga se dessinent… touchez pour révéler', legendary: 'Une lumière légendaire s’échappe… touchez pour révéler' }
 // Each collector tier has its own reveal on top of its level: an overlay (rings, coins, stars, speed lines, lightning…)
 // and a stamp. The styles live in StackReveal.module.css under .fx[data-tier=…].
-const STAMP: Record<string, string> = { ALT: '', 'LEADER ALT': 'LEADER', 'SP CARD': 'SP', WANTED: 'WANTED', TR: 'TREASURE', MANGA: 'ドン！', 'CREW ALT': '☠ ÉQUIPAGE', 'SP SILVER': 'SILVER', 'SUPER LEADER': '👑 SUPER LEADER', 'SP GOLD': 'GOLD', 'MANGA GOLD': 'ドドドド', 'MANGA RED': 'ゴゴゴゴ' }
+const STAMP: Record<string, string> = { R: '', L: 'LEADER', SR: 'SUPER RARE', SEC: 'SECRÈTE', ALT: '', 'LEADER ALT': 'LEADER', 'SP CARD': 'SP', WANTED: 'WANTED', TR: 'TREASURE', MANGA: 'ドン！', 'CREW ALT': '☠ ÉQUIPAGE', 'SP SILVER': 'SILVER', 'SUPER LEADER': '👑 SUPER LEADER', 'SP GOLD': 'GOLD', 'MANGA GOLD': 'ドドドド', 'MANGA RED': 'ゴゴゴゴ' }
 // Title shown under the card once turned, in the tier's light.
-const TITLE: Record<string, string> = { ALT: 'Alternative', 'LEADER ALT': 'Leader alternatif', 'SP CARD': 'Spéciale', WANTED: 'Avis de recherche', TR: 'Trésor', MANGA: 'Manga', 'CREW ALT': 'Équipage', 'SP SILVER': 'Légendaire · argent', 'SUPER LEADER': 'Super Leader', 'SP GOLD': 'Légendaire · or', 'MANGA GOLD': 'Légendaire · manga or', 'MANGA RED': 'Légendaire · manga red' }
+const TITLE: Record<string, string> = { R: 'Rare', L: 'Leader', SR: 'Super Rare', SEC: 'Secrète', ALT: 'Alternative', 'LEADER ALT': 'Leader alternatif', 'SP CARD': 'Spéciale', WANTED: 'Avis de recherche', TR: 'Trésor', MANGA: 'Manga', 'CREW ALT': 'Équipage', 'SP SILVER': 'Légendaire · argent', 'SUPER LEADER': 'Super Leader', 'SP GOLD': 'Légendaire · or', 'MANGA GOLD': 'Légendaire · manga or', 'MANGA RED': 'Légendaire · manga red' }
 // God Pack themes: the Demon pack in purple and blood red, the Manga pack in ink and gold.
 const godTheme = (label: string | null | undefined) => /demon/i.test(label ?? '') ? 'demon' : /manga/i.test(label ?? '') ? 'manga' : 'gold'
 const PANELS = new Set(['MANGA', 'SUPER LEADER', 'MANGA GOLD', 'MANGA RED'])

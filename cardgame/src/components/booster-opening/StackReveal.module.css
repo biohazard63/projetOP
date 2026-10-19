@@ -300,3 +300,40 @@ button.fanCard:focus-visible .fanFront img { outline:3px solid #ffe09a; outline-
 .scene[data-pack='demon'] .godConfetti i { background:hsl(calc(275 + var(--k) * 3) 90% 62%); }
 .scene[data-pack='demon'] .godConfetti i:nth-child(3n) { background:#ff2b4a; }
 .caption .godTitle { -webkit-text-stroke:0; font-size:clamp(1.8rem,6vw,3rem); }
+
+/* Classic rarities revealed one by one (rare and hit slots): the same cinematic, in their own light. */
+.scene[data-tier='R'] { --glow:#4ea3ff; } .scene[data-tier='L'] { --glow:#9bf0c8; } .scene[data-tier='SR'] { --glow:#ffcf5a; } .scene[data-tier='SEC'] { --glow:#b98cff; }
+.scene[data-tier='R'] .rays { background:repeating-conic-gradient(from 0deg,#4ea3ff88 0 4deg,transparent 4deg 18deg); animation:spin 10s linear infinite, raysIn 1s ease-out both; }
+.scene[data-tier='L'] .rays { background:repeating-conic-gradient(from 0deg,#9bf0c899 0 2deg,transparent 2deg 12deg); animation:spin 7s linear infinite reverse, raysIn 1s ease-out both; }
+.scene[data-tier='SR'] .rays { background:repeating-conic-gradient(from 0deg,#ffcf5aaa 0 5deg,transparent 5deg 14deg,#fff3c088 14deg 16deg,transparent 16deg 24deg); }
+.scene[data-tier='SEC'] .rays { background:repeating-conic-gradient(from 0deg,#b98cffaa 0 6deg,transparent 6deg 13deg,#ff7be588 13deg 17deg,transparent 17deg 26deg); }
+/* Rare: blue sparkles circling the card. */
+.fx[data-tier='R'] i { display:block; left:calc(50% + cos(calc(var(--k) * 1.3rad)) * 36%); top:calc(50% + sin(calc(var(--k) * 1.3rad)) * 32%); width:14px; aspect-ratio:1; background:#bfe0ff;
+  clip-path:polygon(50% 0,60% 40%,100% 50%,60% 60%,50% 100%,40% 60%,0 50%,40% 40%); filter:drop-shadow(0 0 6px #4ea3ff); animation:twinkle 1.2s ease-in-out both; animation-delay:calc(var(--k) * 60ms); }
+/* Leader: a pillar of light and a rising ring. */
+.fx[data-tier='L']::before { content:''; position:absolute; left:50%; top:0; bottom:0; width:34%; translate:-50% 0; background:linear-gradient(90deg,transparent,#9bf0c866 30%,#ffffffaa 50%,#9bf0c866 70%,transparent); animation:pillar 1.4s ease-out both; }
+@keyframes pillar { 0% { opacity:0; scale:.2 1; } 30% { opacity:1; scale:1 1; } 100% { opacity:0; scale:1.4 1; } }
+.fx[data-tier='L'] i:nth-child(-n+2) { display:block; left:50%; top:50%; width:26%; aspect-ratio:1; margin:-13% 0 0 -13%; border:4px solid #9bf0c8; border-radius:50%; box-shadow:0 0 22px #9bf0c8; animation:ring 1.2s ease-out both; animation-delay:calc(var(--k) * 260ms); }
+.fx[data-tier='L'] b { color:#eafff5; }
+/* Super Rare: golden sparks thrown out, a golden stamp. */
+.fx[data-tier='SR'] i { display:block; left:50%; top:50%; width:10px; height:22px; margin:-11px -5px; border-radius:5px; background:linear-gradient(#fff6c4,#ffcf5a); box-shadow:0 0 10px #ffcf5a; animation:fly 1.1s cubic-bezier(.15,.7,.3,1) both; animation-delay:calc(var(--k) * 20ms); }
+.fx[data-tier='SR'] b { background:linear-gradient(180deg,#fff7d6,#ffcf5a); -webkit-background-clip:text; background-clip:text; color:transparent; text-shadow:none; filter:drop-shadow(0 0 12px #ffcf5a); }
+/* Secret: violet flash and falling stars. */
+.fx[data-tier='SEC']::before { content:''; position:absolute; inset:0; background:radial-gradient(circle,#b98cffaa 0,transparent 55%); animation:flash 1s ease-out both; }
+.fx[data-tier='SEC'] i { display:block; left:calc(3% + var(--k) * 6.1%); top:0; width:16px; aspect-ratio:1; background:#e6d6ff; clip-path:polygon(50% 0,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%);
+  filter:drop-shadow(0 0 6px #b98cff); animation:fall 2s ease-in both; animation-delay:calc(var(--k) * 90ms); }
+.fx[data-tier='SEC'] b { color:#f1e8ff; text-shadow:0 0 18px #b98cff, 0 0 36px #ff7be5; }
+.scene[data-tier='SR'], .scene[data-tier='SEC'] { animation:thump .6s ease-out; }
+
+/* Fan: each dealt card glows in its rarity's light and a sheen sweeps it once turned. */
+.fanFront::after { content:''; position:absolute; inset:0; border-radius:8px; pointer-events:none; background:linear-gradient(115deg,transparent 35%,#ffffff99 50%,transparent 65%); background-size:250% 100%; background-position:150% 0; mix-blend-mode:overlay; }
+.scene[data-ready] .fanFront::after { animation:fanSheen 1s ease-out both; animation-delay:calc(900ms + var(--i) * 90ms); }
+@keyframes fanSheen { to { background-position:-60% 0; } }
+.fanCard[data-effect='uncommon'] .fanFront img { box-shadow:0 0 0 2px #31bda3, 0 0 14px #31bda366, 0 10px 22px #000a; }
+.fanCard[data-effect='rare'] .fanFront img { box-shadow:0 0 0 2px #4ea3ff, 0 0 16px #4ea3ff88, 0 10px 22px #000a; }
+.fanCard[data-effect='super'] .fanFront img { box-shadow:0 0 0 2px #ffcf5a, 0 0 22px #ffcf5aaa; }
+.fanCard[data-effect='secret'] .fanFront img, .fanCard[data-effect='holographic'] .fanFront img { box-shadow:0 0 0 2px #ff7be5, 0 0 22px #7bd7ffaa; }
+.scene[data-ready] .fanCard[data-effect='rare'], .scene[data-ready] .fanCard[data-effect='super'], .scene[data-ready] .fanCard[data-effect='uncommon'] { animation:deal .5s cubic-bezier(.2,.9,.3,1.15) both, fanPop .5s ease-out both; animation-delay:calc(var(--i) * 80ms), calc(950ms + var(--i) * 90ms); }
+@keyframes fanPop { 50% { translate:0 -10px; filter:brightness(1.25); } }
+@media (prefers-reduced-motion:reduce) { .fanFront::after { display:none; } }
+.scene[data-animations='off'] .fanFront::after { display:none; }
