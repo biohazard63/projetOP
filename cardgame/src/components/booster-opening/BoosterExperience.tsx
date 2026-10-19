@@ -188,7 +188,8 @@ export default function BoosterExperience() {
     if (pending?.openingId === opening.id) { if (next >= opening.cards.length) forget(); else save({ ...pending, revealed: next }) }
     const card = opening.cards[next - 1]
     if (card && next === revealed + 1) {
-      if (isVariant(card, 'alt')) audio.playAltArtSound()
+      if (['manga', 'legendary'].includes(openingEffect(card))) audio.playUltraRareSound()
+      else if (isVariant(card, 'alt')) audio.playAltArtSound()
       else if (rare(card)) audio.playUltraRareSound()
       else if (card.isNew) audio.playNewCardSound()
     }
@@ -208,7 +209,8 @@ export default function BoosterExperience() {
   }
   function batchCard(card: OpeningCard) {
     vibrate()
-    if (isVariant(card, 'alt')) audio.playAltArtSound()
+    if (['manga', 'legendary'].includes(openingEffect(card))) audio.playUltraRareSound()
+    else if (isVariant(card, 'alt')) audio.playAltArtSound()
     else if (rare(card)) audio.playUltraRareSound()
     else if (card.isNew) audio.playNewCardSound()
   }

@@ -1,0 +1,415 @@
+{
+ "note": "Illustrations qu'un produit tirerait avec l'image d'une autre impression : la base garde une image par identifiant, et les sites Bandai FR et EN ne numérotent pas les illustrations pareil. Contrôle du 2026-10-19 contre les listes officielles (en.onepiece-cardgame.com séries 569101-569301, fr.onepiece-cardgame.com séries 622109-622301) et l'URL d'image de chaque carte en base. Ces illustrations ne sont plus tirées dans ce produit jusqu'à la correction des images.",
+ "cards": [
+  {
+   "id": "EB01-001_p1",
+   "setCode": "EB-01",
+   "reason": "image FR d'une autre impression (EB-02)"
+  },
+  {
+   "id": "EB01-021_p1",
+   "setCode": "EB-01",
+   "reason": "image FR d'une autre impression (EB-02)"
+  },
+  {
+   "id": "EB01-040_p1",
+   "setCode": "EB-01",
+   "reason": "image FR d'une autre impression (EB-02)"
+  },
+  {
+   "id": "EB01-056_p1",
+   "setCode": "EB-01",
+   "reason": "image FR d'une autre impression (OP-10)"
+  },
+  {
+   "id": "EB01-057_p1",
+   "setCode": "EB-01",
+   "reason": "image FR d'une autre impression (OP-11)"
+  },
+  {
+   "id": "OP05-001_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-05)"
+  },
+  {
+   "id": "OP05-002_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-05)"
+  },
+  {
+   "id": "OP05-022_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-05)"
+  },
+  {
+   "id": "OP05-060_p2",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02"
+  },
+  {
+   "id": "OP05-098_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-05)"
+  },
+  {
+   "id": "OP06-001_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-06)"
+  },
+  {
+   "id": "OP06-020_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-06)"
+  },
+  {
+   "id": "OP06-021_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-06)"
+  },
+  {
+   "id": "OP06-022_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-06)"
+  },
+  {
+   "id": "OP06-042_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-06)"
+  },
+  {
+   "id": "OP06-080_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-06)"
+  },
+  {
+   "id": "OP07-001_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-07)"
+  },
+  {
+   "id": "OP07-019_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-07)"
+  },
+  {
+   "id": "OP07-038_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-07)"
+  },
+  {
+   "id": "OP07-059_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-07)"
+  },
+  {
+   "id": "OP07-079_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-07)"
+  },
+  {
+   "id": "OP07-097_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-07)"
+  },
+  {
+   "id": "OP08-001_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-08)"
+  },
+  {
+   "id": "OP08-002_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-08)"
+  },
+  {
+   "id": "OP08-021_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-08)"
+  },
+  {
+   "id": "OP08-057_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-08)"
+  },
+  {
+   "id": "OP08-058_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-08)"
+  },
+  {
+   "id": "OP08-098_p1",
+   "setCode": "EB-02",
+   "reason": "image EN absente de la liste officielle EN de EB-02 (impression de OP-08)"
+  },
+  {
+   "id": "OP01-060_p1",
+   "setCode": "OP-01",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "OP01-073_p1",
+   "setCode": "OP-01",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "OP02-001_p1",
+   "setCode": "OP-02",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "OP02-093_p1",
+   "setCode": "OP-02",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "OP02-018_p1",
+   "setCode": "OP-02",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "OP02-108_p1",
+   "setCode": "OP-02",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "OP03-099_p1",
+   "setCode": "OP-03",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "OP03-112_p1",
+   "setCode": "OP-03",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "OP04-119_p1",
+   "setCode": "OP-04",
+   "reason": "image FR d'une autre impression (OP-09)"
+  },
+  {
+   "id": "OP05-060_p1",
+   "setCode": "OP-05",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "OP05-065",
+   "setCode": "OP-05",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "OP05-067_p1",
+   "setCode": "OP-05",
+   "reason": "image FR d'une autre impression (OP-09)"
+  },
+  {
+   "id": "OP05-093_p1",
+   "setCode": "OP-05",
+   "reason": "image FR d'une autre impression (OP-09)"
+  },
+  {
+   "id": "OP05-119_p1",
+   "setCode": "OP-05",
+   "reason": "image FR d'une autre impression (OP-09)"
+  },
+  {
+   "id": "OP06-050_p1",
+   "setCode": "OP-06",
+   "reason": "image FR d'une autre impression (OP-12)"
+  },
+  {
+   "id": "OP06-118_p2",
+   "setCode": "OP-06",
+   "reason": "image FR d'une autre impression (OP-11)"
+  },
+  {
+   "id": "OP06-119_p1",
+   "setCode": "OP-06",
+   "reason": "image FR d'une autre impression (OP-09)"
+  },
+  {
+   "id": "OP03-003_p1",
+   "setCode": "OP-07",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "OP07-015_p1",
+   "setCode": "OP-07",
+   "reason": "image FR d'une autre impression (OP-09)"
+  },
+  {
+   "id": "OP07-051_p1",
+   "setCode": "OP-07",
+   "reason": "image FR d'une autre impression (OP-09)"
+  },
+  {
+   "id": "OP07-085_p1",
+   "setCode": "OP-07",
+   "reason": "image FR d'une autre impression (OP-11)"
+  },
+  {
+   "id": "ST03-004_p1",
+   "setCode": "OP-08",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "ST04-005_p1",
+   "setCode": "OP-08",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "ST06-006_p2",
+   "setCode": "OP-08",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "OP08-106_p1",
+   "setCode": "OP-08",
+   "reason": "image FR d'une autre impression (OP-09)"
+  },
+  {
+   "id": "OP08-110_p1",
+   "setCode": "OP-08",
+   "reason": "image FR d'une autre impression (absente des listes officielles de cette langue)"
+  },
+  {
+   "id": "OP04-119_p2",
+   "setCode": "OP-09",
+   "reason": "aucune image en base"
+  },
+  {
+   "id": "OP05-067_p4",
+   "setCode": "OP-09",
+   "reason": "aucune image en base"
+  },
+  {
+   "id": "OP05-093_p2",
+   "setCode": "OP-09",
+   "reason": "aucune image en base"
+  },
+  {
+   "id": "OP07-015_p2",
+   "setCode": "OP-09",
+   "reason": "aucune image en base"
+  },
+  {
+   "id": "OP07-051_p3",
+   "setCode": "OP-09",
+   "reason": "aucune image en base"
+  },
+  {
+   "id": "OP08-106_p2",
+   "setCode": "OP-09",
+   "reason": "aucune image en base"
+  },
+  {
+   "id": "ST18-004_p1",
+   "setCode": "OP-09",
+   "reason": "image FR absente de la liste officielle FR de OP-09 (impression de OP-12)"
+  },
+  {
+   "id": "OP07-021_p1",
+   "setCode": "OP-10",
+   "reason": "image EN absente de la liste officielle EN de OP-10"
+  },
+  {
+   "id": "ST13-011_p1",
+   "setCode": "OP-12",
+   "reason": "image EN absente de la liste officielle EN de OP-12"
+  },
+  {
+   "id": "OP07-111_p1",
+   "setCode": "OP-13",
+   "reason": "image EN absente de la liste officielle EN de OP-13 (impression de OP-07)"
+  },
+  {
+   "id": "OP07-118_p1",
+   "setCode": "OP-13",
+   "reason": "image EN absente de la liste officielle EN de OP-13 (impression de OP-07)"
+  },
+  {
+   "id": "OP09-009_p2",
+   "setCode": "OP-13",
+   "reason": "image EN absente de la liste officielle EN de OP-13"
+  },
+  {
+   "id": "OP09-004_p4",
+   "setCode": "OP-13",
+   "reason": "image EN absente de la liste officielle EN de OP-13"
+  },
+  {
+   "id": "EB01-003_p1",
+   "setCode": "OP14-EB04",
+   "reason": "image EN absente de la liste officielle EN de OP14-EB04 (impression de EB-01)"
+  },
+  {
+   "id": "OP06-093_p1",
+   "setCode": "OP14-EB04",
+   "reason": "image EN absente de la liste officielle EN de OP14-EB04 (impression de OP-06)"
+  },
+  {
+   "id": "OP07-046_p1",
+   "setCode": "OP14-EB04",
+   "reason": "image EN absente de la liste officielle EN de OP14-EB04 (impression de OP-07)"
+  },
+  {
+   "id": "OP01-033_p1",
+   "setCode": "PRB-01",
+   "reason": "image EN absente de la liste officielle EN de PRB-01"
+  },
+  {
+   "id": "OP01-052_p1",
+   "setCode": "PRB-01",
+   "reason": "image EN absente de la liste officielle EN de PRB-01"
+  },
+  {
+   "id": "OP03-116_p3",
+   "setCode": "PRB-01",
+   "reason": "image EN absente de la liste officielle EN de PRB-01"
+  },
+  {
+   "id": "OP06-110_p1",
+   "setCode": "PRB-01",
+   "reason": "image EN absente de la liste officielle EN de PRB-01"
+  },
+  {
+   "id": "OP01-070_p2",
+   "setCode": "PRB-01",
+   "reason": "image EN absente de la liste officielle EN de PRB-01"
+  },
+  {
+   "id": "OP03-123_p2",
+   "setCode": "PRB-01",
+   "reason": "image EN absente de la liste officielle EN de PRB-01"
+  },
+  {
+   "id": "OP06-069_p2",
+   "setCode": "PRB-01",
+   "reason": "image EN absente de la liste officielle EN de PRB-01"
+  },
+  {
+   "id": "ST03-008_p3",
+   "setCode": "PRB-01",
+   "reason": "image EN absente de la liste officielle EN de PRB-01"
+  },
+  {
+   "id": "ST04-003_p2",
+   "setCode": "PRB-01",
+   "reason": "image EN absente de la liste officielle EN de PRB-01"
+  },
+  {
+   "id": "ST10-010_p1",
+   "setCode": "PRB-01",
+   "reason": "image EN absente de la liste officielle EN de PRB-01"
+  },
+  {
+   "id": "OP01-041_p1",
+   "setCode": "PRB-01",
+   "reason": "image EN absente de la liste officielle EN de PRB-01"
+  },
+  {
+   "id": "ST03-008_p2",
+   "setCode": "PRB-01",
+   "reason": "image EN absente de la liste officielle EN de PRB-01"
+  }
+ ]
+}

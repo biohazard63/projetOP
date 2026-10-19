@@ -6,10 +6,15 @@ export function advanceReveal(state: RevealState, count: number): RevealState {
   if (state.index + 1 >= count) return { ...state, complete: true }
   return { index: state.index + 1, faceUp: false, complete: false }
 }
+/** Light of a legendary reveal: silver, gold or red. */
+export const LEGENDARY: Record<string, 'silver' | 'gold' | 'red'> = { 'SP SILVER': 'silver', 'SP GOLD': 'gold', 'MANGA GOLD': 'gold', 'MANGA RED': 'red' }
 export function openingEffect(card: Pick<OpeningCard, 'rarity' | 'drawVariant' | 'isAltArt' | 'isParallel' | 'isSpecial'> & { drawTier?: string }) {
   // A tiered draw knows the product's tier (a PRB frame is a standard card there, a reprinted SEC can be an SP).
-  if (card.drawTier === 'ALT') return 'holographic'
-  if (card.drawTier && ['SP CARD', 'TR', 'MANGA', 'MANGA RED'].includes(card.drawTier)) return 'secret'
+  // Reveal levels: alternatives shine, SP / Wanted / TR flash, manga families open on comic panels, the rarest are legendary.
+  if (card.drawTier === 'ALT' || card.drawTier === 'LEADER ALT') return 'holographic'
+  if (card.drawTier && ['SP CARD', 'WANTED', 'TR'].includes(card.drawTier)) return 'secret'
+  if (card.drawTier && ['MANGA', 'CREW ALT', 'SUPER LEADER'].includes(card.drawTier)) return 'manga'
+  if (card.drawTier && card.drawTier in LEGENDARY) return 'legendary'
   if (card.drawTier) return openingEffect({ rarity: card.drawTier, drawVariant: 'standard', isAltArt: false, isParallel: false, isSpecial: false })
   const variant = card.drawVariant || (card.isSpecial ? 'special' : card.isAltArt ? 'alt' : card.isParallel ? 'parallel' : 'standard')
   if (variant === 'alt' || variant === 'parallel') return 'holographic'

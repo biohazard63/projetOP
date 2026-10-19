@@ -1,6 +1,6 @@
 {
  "_aide": "Montants de l'économie en Berrys (฿). Modifier ici, puis redéployer. Les événements s'appliquent automatiquement entre leurs dates (heure de Paris) ; plusieurs événements actifs se cumulent (multiplications).",
- "version": "economy-2026-10-15",
+ "version": "economy-2026-10-19",
  "starterGrant": 1000000,
  "prices": { "booster": 1000, "display": 20000 },
  "rewards": {
@@ -12,7 +12,7 @@
  },
  "resale": {
   "keepCopies": 4,
-  "values": { "C": 10, "UC": 20, "R": 50, "L": 100, "SR": 150, "SEC": 500, "ALT": 400, "SP CARD": 800, "TR": 1500, "MANGA": 3000, "MANGA RED": 6000 }
+  "values": { "C": 10, "UC": 20, "R": 50, "L": 100, "SR": 150, "SEC": 500, "ALT": 400, "LEADER ALT": 800, "SP CARD": 1200, "WANTED": 1600, "TR": 2400, "MANGA": 4000, "CREW ALT": 6000, "SP SILVER": 8000, "SUPER LEADER": 12000, "SP GOLD": 18000, "MANGA GOLD": 24000, "MANGA RED": 32000 }
  },
  "events": [
   {

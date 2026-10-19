@@ -56,9 +56,9 @@ async function secretsReached(tx: DB, userId: string, m: Awaited<ReturnType<type
   check('pacifiste', m.games.filter(g => g.result?.reason === 'CONCESSION' && g.result.loserIds?.includes(g.humanSeat)).length >= 5)
   if (!done.has('nuit')) check('nuit', (await tx.boosterOpening.findMany({ where: { userId, openedAt: { gte: since } }, select: { openedAt: true } })).some(o => parisHour(o.openedAt) === 3))
   if (!done.has('double')) check('double', (await tx.boosterOpening.findMany({ where: { userId, openedAt: { gte: since } }, select: { resultSnapshot: true } }))
-    .some(o => ((o.resultSnapshot as Snapshot)?.cards ?? []).filter(c => c.drawTier === 'ALT').length >= 2))
+    .some(o => ((o.resultSnapshot as Snapshot)?.cards ?? []).filter(c => c.drawTier === 'ALT' || c.drawTier === 'LEADER ALT').length >= 2))
   if (!done.has('etoile')) check('etoile', (await tx.boosterOpening.findMany({ where: { userId }, orderBy: { openedAt: 'asc' }, take: 24, select: { resultSnapshot: true } }))
-    .some(o => ((o.resultSnapshot as Snapshot)?.cards ?? []).some(c => c.drawTier === 'MANGA' || c.drawTier === 'MANGA RED')))
+    .some(o => ((o.resultSnapshot as Snapshot)?.cards ?? []).some(c => ['MANGA', 'MANGA GOLD', 'MANGA RED'].includes(c.drawTier ?? ''))))
   if (!done.has('flambeur')) {
     const days = new Map<string, number>()
     for (const t of await tx.berryTransaction.findMany({ where: { userId, reason: 'DISPLAY_PURCHASE' }, select: { createdAt: true } })) days.set(parisDay(t.createdAt), (days.get(parisDay(t.createdAt)) ?? 0) + 1)

@@ -1,0 +1,134 @@
+{
+ "status": "validated",
+ "note": "Familles d'illustrations rares repérées à l'œil sur les images officielles le 2026-10-19 et validées par le propriétaire du projet. Clé : identifiant de l'illustration et produit qui l'imprime. Vérifié sur les images de la base (site FR), dont les numéros d'illustration diffèrent parfois du site EN. EXCLUDED : illustration que le catalogue attribue à ce produit mais dont l'image en base est celle d'un autre produit.",
+ "tiers": {
+  "WANTED": [
+   {
+    "id": "ST01-012_p1",
+    "setCode": "OP-03"
+   },
+   {
+    "id": "ST03-009_p1",
+    "setCode": "OP-03"
+   },
+   {
+    "id": "OP01-051_p2",
+    "setCode": "OP-03"
+   },
+   {
+    "id": "ST04-003_p1",
+    "setCode": "OP-03"
+   },
+   {
+    "id": "OP09-004_p3",
+    "setCode": "OP-09"
+   },
+   {
+    "id": "OP09-051_p3",
+    "setCode": "OP-09"
+   },
+   {
+    "id": "OP05-119_p1",
+    "setCode": "OP-09"
+   },
+   {
+    "id": "OP09-093_p3",
+    "setCode": "OP-09"
+   },
+   {
+    "id": "OP09-118_p3",
+    "setCode": "OP-13"
+   },
+   {
+    "id": "OP13-118_p4",
+    "setCode": "OP-13"
+   },
+   {
+    "id": "OP13-119_p4",
+    "setCode": "OP-13"
+   },
+   {
+    "id": "OP13-120_p4",
+    "setCode": "OP-13"
+   }
+  ],
+  "MANGA": [
+   {
+    "id": "EB02-061_p2",
+    "setCode": "EB-02"
+   },
+   {
+    "id": "OP17-005_p2",
+    "setCode": "OP-17"
+   },
+   {
+    "id": "OP17-062_p2",
+    "setCode": "OP-17"
+   }
+  ],
+  "CREW ALT": [
+   {
+    "id": "EB04-061_p2",
+    "setCode": "OP-17"
+   },
+   {
+    "id": "OP17-118_p2",
+    "setCode": "OP-17"
+   }
+  ],
+  "SP SILVER": [
+   {
+    "id": "OP05-119_p5",
+    "setCode": "OP-11"
+   },
+   {
+    "id": "OP09-093_p5",
+    "setCode": "OP-12"
+   },
+   {
+    "id": "OP09-004_p5",
+    "setCode": "OP-13"
+   },
+   {
+    "id": "OP09-051_p5",
+    "setCode": "OP14-EB04"
+   }
+  ],
+  "SUPER LEADER": [
+   {
+    "id": "OP17-079_p2",
+    "setCode": "OP-17"
+   }
+  ],
+  "SP GOLD": [
+   {
+    "id": "OP05-119_p6",
+    "setCode": "OP-11"
+   },
+   {
+    "id": "OP09-093_p4",
+    "setCode": "OP-12"
+   },
+   {
+    "id": "OP09-004_p4",
+    "setCode": "OP-13"
+   },
+   {
+    "id": "OP09-051_p4",
+    "setCode": "OP14-EB04"
+   }
+  ],
+  "MANGA GOLD": [
+   {
+    "id": "OP09-118_p2",
+    "setCode": "OP-09"
+   }
+  ],
+  "EXCLUDED": [
+   {
+    "id": "OP05-119_p6",
+    "setCode": "OP-09"
+   }
+  ]
+ }
+}

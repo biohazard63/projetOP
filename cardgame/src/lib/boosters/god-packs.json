@@ -1,0 +1,32 @@
+{
+ "rate": "1/3000",
+ "note": "God Packs du simulateur : 1 booster éligible sur 3 000 contient en plus ce paquet exceptionnel, sans consommer de booster de la display. Composition exacte vérifiée sur les images de la base le 2026-10-19. PRB-02 (10 DON!! dorées) et EB-03 (6 SP) restent inactifs : ces produits ne sont pas ouvrables et la base n'a pas de cartes DON!!.",
+ "packs": {
+  "PRB-01": {
+   "label": "Manga God Pack",
+   "cards": [
+    "EB01-006_p1",
+    "OP01-016_p1",
+    "OP01-120_p3",
+    "OP02-013_p1",
+    "OP03-122_p1",
+    "OP04-083_p1",
+    "OP05-069_p1",
+    "OP05-074_p3",
+    "OP05-119_p4",
+    "OP06-118_p1"
+   ]
+  },
+  "OP-13": {
+   "label": "Demon God Pack",
+   "cards": [
+    "OP13-080_p2",
+    "OP13-083_p2",
+    "OP13-084_p2",
+    "OP13-089_p2",
+    "OP13-091_p2",
+    "OP13-079_p1"
+   ]
+  }
+ }
+}

@@ -10,8 +10,8 @@ import { preloadFan } from './useCardPreload'
 import styles from './BatchOpening.module.css'
 
 // Highest first: the recap shows the best pulls on top.
-const RANK = ['MANGA RED', 'MANGA', 'TR', 'SP CARD', 'ALT', 'SEC', 'SR', 'L', 'R', 'UC', 'C']
-const LABEL: Record<string, string> = { 'MANGA RED': 'Manga red', MANGA: 'Manga', TR: 'Treasure Rare', 'SP CARD': 'SP', ALT: 'Alternative' }
+const RANK = ['MANGA RED', 'MANGA GOLD', 'SP GOLD', 'SUPER LEADER', 'SP SILVER', 'CREW ALT', 'MANGA', 'TR', 'WANTED', 'SP CARD', 'LEADER ALT', 'ALT', 'SEC', 'SR', 'L', 'R', 'UC', 'C']
+const LABEL: Record<string, string> = { ALT: 'Alternative', 'LEADER ALT': 'Leader alternatif', 'SP CARD': 'SP', WANTED: 'Wanted', TR: 'Treasure Rare', MANGA: 'Manga', 'CREW ALT': 'Équipage', 'SP SILVER': 'SP argent', 'SUPER LEADER': 'Super Leader', 'SP GOLD': 'SP or', 'MANGA GOLD': 'Manga or', 'MANGA RED': 'Manga red' }
 const tierOf = (card: OpeningCard) => card.drawTier ?? card.rarity.toUpperCase()
 const rankOf = (card: OpeningCard) => { const i = RANK.indexOf(tierOf(card)); return i < 0 ? RANK.length : i }
 const isHit = (card: OpeningCard) => rankOf(card) <= RANK.indexOf('SR')
@@ -44,7 +44,7 @@ export default function BatchOpening({ openings, onCard, onDetail, reopenControl
         <b aria-live="polite">Booster {index + 1} / {openings.length}</b>
         <button type="button" className="piece-button secondary" onClick={() => setIndex(openings.length)}><FastForward size={16} />Passer au récapitulatif</button>
       </div>
-      <StackReveal key={opening.id} opening={opening} revealed={0} onReveal={count => { const card = opening.cards[count - 1]; if (card && count > opening.cards.length - 2) onCard(card) }} onComplete={() => setIndex(i => i + 1)} />
+      <StackReveal key={opening.id} opening={opening} revealed={0} onReveal={count => { const card = opening.cards[count - 1]; if (card && (count > opening.cards.filter(c => !c.godPack).length - 2)) onCard(card) }} onComplete={() => setIndex(i => i + 1)} />
     </section>
   }
   const cards = openings.reduce((n, o) => n + o.cards.length, 0), fresh = summary.filter(s => s.isNew).length

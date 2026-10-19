@@ -31,3 +31,7 @@
 .actions { display:flex; flex-wrap:wrap; justify-content:center; gap:10px; margin-top:8px; }
 @keyframes tileIn { from { opacity:0; transform:translateY(10px) scale(.96); } }
 @media (prefers-reduced-motion:reduce) { .tile { animation:none; } }
+.tile[data-effect='manga'] img { box-shadow:0 0 0 2px #f4f4f4, 0 0 0 4px #111, 0 8px 18px #0009; }
+.tile[data-effect='manga'] .tier { background:#f4f4f4; color:#0b0b0b; }
+.tile[data-effect='legendary'] img { box-shadow:0 0 0 2px #ffd36b, 0 0 26px #ffd36baa; }
+.tile[data-effect='legendary'] .tier { background:linear-gradient(90deg,#fff3c0,#ffd36b); color:#1a0f02; }

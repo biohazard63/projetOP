@@ -37,3 +37,5 @@
 .hs .piece-card-label { color:#f7f9fc; }
 .hs-modal { background:#071528 !important; color:#f7f9fc; } .hs-modal .fx-kicker { color:#f5c45c; }
 @media (max-width:1000px) { .hs-layout.with-receipt { grid-template-columns:minmax(0,1fr); } .hs-receipt-panel { position:static; max-height:none; } }
+.hs-card[data-effect='manga'] .piece-card-image { box-shadow:0 0 0 2px #111, 0 0 18px #ffffff66; border-color:#f4f4f4; }
+.hs-card[data-effect='legendary'] .piece-card-image { box-shadow:0 0 24px #ffd36b99; border-color:#ffd36b; }

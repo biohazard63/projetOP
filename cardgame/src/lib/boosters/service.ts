@@ -5,7 +5,7 @@ import { generateBooster, validatePools, metadataVariant } from './generator'
 import { getBoosterArtwork } from './artwork'
 import type { BoosterCatalogItem, OpeningResult } from './types'
 import { isBoosterProduct } from './products'
-import { DISPLAY_SIZE, TIER_RATES_VERSION, planDisplay, tierPools, tieredRules, type DrawTier, type PackPlan } from './tiers'
+import { DISPLAY_SIZE, TIER_RATES_VERSION, godPackSlots, planDisplay, rollGodPack, tierPools, tieredRules, type DrawTier, type GodPack, type PackPlan } from './tiers'
 import tierManifest from './booster-tiers.json'
 import { currentEconomy } from '@/lib/economy/settings'
 import { postMany as postBerries } from '@/lib/economy/ledger'
@@ -78,7 +78,7 @@ type DrawContext = Awaited<ReturnType<typeof getBoosterDrawContext>>
 type DisplayPack = { id: string; index: number; plan: PackPlan }
 const random = () => randomInt(0, 0x100000000) / 0x100000000
 /** The next packs of the player's open box for this product (a new box is planned whenever one is used up). */
-async function nextDisplayPacks(tx: DB, userId: string, ctx: DrawContext, count: number): Promise<(DisplayPack | null)[]> {
+export async function nextDisplayPacks(tx: DB, userId: string, ctx: DrawContext, count: number): Promise<(DisplayPack | null)[]> {
   if (!ctx.available) return Array.from({ length: count }, () => null)
   const packs: DisplayPack[] = []
   let box = await tx.virtualDisplay.findFirst({ where: { userId, setCode: ctx.set.code, completedAt: null } })
@@ -117,29 +117,43 @@ async function creditOpenings(tx: DB, userId: string, setCode: string, keys: str
   // and their payment exist together or not at all; a replay of the same key pays nothing more.
   const economy = await currentEconomy(tx)
   const payments = prepaid ? fresh.map(() => prepaid.paymentId) : await postBerries(tx, userId, fresh.map(key => ({ amount: -economy.prices.booster, reason: 'BOOSTER_PURCHASE' as const, key: `booster:${key}`, details: { setCode: ctx.set.code } })))
+  // God Packs are rolled first, one roll per booster, and only granted when every card is in this product's pool.
+  const poolIds = new Set(ctx.pool.map(card => card.id))
+  const rolled = fresh.map(() => ctx.tiered ? rollGodPack(ctx.set.code, random) : null).map(god => god && god.cards.every(id => poolIds.has(id)) ? god : null)
   // Tiered products come from a virtual display: the rare and hit slots follow the box plan (when still drawable).
-  const packs = prepaid?.packs ?? await nextDisplayPacks(tx, userId, ctx, fresh.length)
+  // A God Pack bought singly uses no pack of the display; in a display purchase it replaces a pack without collector.
+  let packs: (DisplayPack | null)[], gods: (GodPack | null)[]
+  if (prepaid) {
+    const slots = godPackSlots(prepaid.packs.map(p => p.plan), rolled.filter(Boolean).length, random), granted = rolled.filter(Boolean)
+    packs = prepaid.packs; gods = packs.map((_, n) => slots.includes(n) ? granted[slots.indexOf(n)]! : null)
+  } else {
+    const reserved = await nextDisplayPacks(tx, userId, ctx, rolled.filter(god => !god).length)
+    packs = rolled.map(god => god ? null : reserved.shift()!); gods = rolled
+  }
   const booster = await tx.booster.upsert({ where: { id: ctx.boosterId }, update: {}, create: { id: ctx.boosterId, name: `Simulation · ${ctx.set.name}`, description: 'Ouverture gratuite du simulateur', price: 0, setCode: ctx.set.code, imageUrl: ctx.set.imageUrl } })
   if (booster.price !== 0) throw new BoosterError('PAID_BOOSTER_UNSUPPORTED', 'Droit d’ouverture non configuré', 403)
-  const draws = packs.map(pack => {
+  const draws = packs.map((pack, n) => {
+    const god = gods[n]
+    // A God Pack holds its own cards only, in its exact composition.
+    if (god) return { pack, planned: false, god: god.label, draw: { cards: god.cards.map(id => ({ ...ctx.pool.find(card => card.id === id)!, godPack: true as const })), specialPack: null, profile: null } }
     const planned = Boolean(pack && ctx.available?.has(pack.plan.rare) && ctx.available.has(pack.plan.hit))
-    return { pack, planned, draw: generateBooster(ctx.pool, ctx.set.code, planned ? tieredRules(ctx.set.code, ctx.available!, pack!.plan) : ctx.rules, random, ctx.weights) }
+    return { pack, planned, god: null, draw: generateBooster(ctx.pool, ctx.set.code, planned ? tieredRules(ctx.set.code, ctx.available!, pack!.plan) : ctx.rules, random, ctx.weights) }
   })
   const owned = await tx.userCard.findMany({ where: { userId, cardId: { in: [...new Set(draws.flatMap(d => d.draw.cards.map(card => ctx.originals?.get(card.id)?.id ?? card.id)))] } }, select: { cardId: true, quantity: true } })
   const quantities = new Map(owned.map(row => [row.cardId, row.quantity])), counts = new Map<string, number>()
   const start = Date.now(), creditedAt = new Date(start), rows: Prisma.BoosterOpeningCreateManyInput[] = [], links: Prisma.BoosterOpeningCardCreateManyInput[] = []
-  const credited = draws.map(({ pack, planned, draw }, n) => {
+  const credited = draws.map(({ pack, planned, draw, god }, n) => {
     // Drawn under its tier, credited and shown as the real catalogue card; earlier packs of the batch count as owned.
     const resultCards = draw.cards.map(({ drawTier, ...drawn }, index) => {
       const card = ctx.originals?.get(drawn.id) ?? drawn
       const quantityBefore = (quantities.get(card.id) || 0) + (counts.get(card.id) || 0)
       counts.set(card.id, (counts.get(card.id) || 0) + 1)
-      return { ...card, ...(ctx.rules.variantPolicy === 'metadata' ? { drawVariant: metadataVariant(card) } : {}), ...(drawTier ? { drawTier } : {}), position: index + 1, quantityBefore, isDuplicate: quantityBefore > 0, isNew: quantityBefore === 0 }
+      return { ...card, ...(ctx.rules.variantPolicy === 'metadata' ? { drawVariant: metadataVariant(card) } : {}), ...(drawTier ? { drawTier } : {}), ...('godPack' in drawn ? { godPack: true } : {}), position: index + 1, quantityBefore, isDuplicate: quantityBefore > 0, isNew: quantityBefore === 0 }
     })
     // One millisecond apart: the history keeps the order of the batch.
     const id = randomUUID(), openedAt = new Date(start + n)
-    const opening: OpeningResult = { id, boosterId: booster.id, setCode: ctx.set.code, setName: ctx.set.name, openedAt: openedAt.toISOString(), creditedAt: creditedAt.toISOString(), cards: resultCards, specialPack: draw.specialPack, rules: { label: draw.profile ? `${ctx.rules.label} · ${draw.profile}` : ctx.rules.label, source: ctx.rules.source, slotCount: ctx.rules.slots.length }, newCardsCount: resultCards.filter(card => card.isNew).length, hasRareCard: resultCards.some(isRare), legacy: false }
-    rows.push({ id, userId, boosterId: booster.id, idempotencyKey: fresh[n], berryTransactionId: payments[n], ...(pack ? { displayId: pack.id, displayIndex: pack.index } : {}), openedAt, creditedAt, resultSnapshot: asJson(opening), rulesSnapshot: asJson({ generatorVersion: ctx.tiered ? 4 : ctx.rules.selection === 'number' ? 3 : 2, ...(ctx.tiered ? { tierRates: TIER_RATES_VERSION, tierManifest: tierManifest.source } : {}), ...(pack ? { display: { id: pack.id, index: pack.index, plan: planned ? pack.plan : null } } : {}), sampling: 'without-replacement-by-card-number', selection: ctx.rules.selection || 'card', selectedProfile: draw.profile || null, rules: ctx.rules, cardWeights: ctx.weights ? Object.fromEntries(ctx.weights) : null }) })
+    const opening: OpeningResult = { id, boosterId: booster.id, setCode: ctx.set.code, setName: ctx.set.name, openedAt: openedAt.toISOString(), creditedAt: creditedAt.toISOString(), cards: resultCards, specialPack: draw.specialPack, rules: { label: draw.profile ? `${ctx.rules.label} · ${draw.profile}` : ctx.rules.label, source: ctx.rules.source, slotCount: ctx.rules.slots.length }, newCardsCount: resultCards.filter(card => card.isNew).length, hasRareCard: resultCards.some(isRare), legacy: false, godPack: god }
+    rows.push({ id, userId, boosterId: booster.id, idempotencyKey: fresh[n], berryTransactionId: payments[n], ...(pack ? { displayId: pack.id, displayIndex: pack.index } : {}), openedAt, creditedAt, resultSnapshot: asJson(opening), rulesSnapshot: asJson({ generatorVersion: ctx.tiered ? 4 : ctx.rules.selection === 'number' ? 3 : 2, ...(ctx.tiered ? { tierRates: TIER_RATES_VERSION, tierManifest: tierManifest.source } : {}), ...(pack ? { display: { id: pack.id, index: pack.index, plan: planned ? pack.plan : null } } : {}), ...(god ? { godPack: { label: god, cards: draw.cards.map(card => card.id) } } : {}), sampling: 'without-replacement-by-card-number', selection: ctx.rules.selection || 'card', selectedProfile: draw.profile || null, rules: ctx.rules, cardWeights: ctx.weights ? Object.fromEntries(ctx.weights) : null }) })
     links.push(...resultCards.map(card => ({ boosterOpeningId: id, cardId: card.id, position: card.position })))
     return [fresh[n], opening] as const
   })
