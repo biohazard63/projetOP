@@ -337,3 +337,11 @@ button.fanCard:focus-visible .fanFront img { outline:3px solid #ffe09a; outline-
 @keyframes fanPop { 50% { translate:0 -10px; filter:brightness(1.25); } }
 @media (prefers-reduced-motion:reduce) { .fanFront::after { display:none; } }
 .scene[data-animations='off'] .fanFront::after { display:none; }
+
+/* Phone: the first ten cards are dealt in two rows of five, large enough to see; a tap zooms (arrows to browse). */
+@media (max-width:640px) {
+  .fan { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:8px 6px; min-height:0; margin:18px 0 14px; padding:0 2px; align-items:start; }
+  .fanCard { width:auto; margin-left:0; --a:0deg; --y:0px; transform:none; transform-origin:50% 50%; }
+  .fanCard:hover { transform:none; }
+  .fanNew { bottom:-8px; font-size:.55rem; padding:1px 5px; }
+}
