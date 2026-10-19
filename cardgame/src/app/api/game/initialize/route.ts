@@ -7,6 +7,7 @@ export const revalidate = 0
 import { auth } from '@/lib/auth'
 
 import { prisma } from '@/lib/prisma'
+import { catalogCards } from '@/lib/catalog/cache'
 import { cookies } from 'next/headers'
 import { GameState, GamePhase, SetupPhase, GameCard, CardType, CardColor } from '@/types/game'
 import { ManualGameService } from '@/lib/game/manualGameService'
@@ -170,7 +171,7 @@ export async function POST() {
 
     // Générer un deck aléatoire pour l'adversaire
     console.log('🔄 Génération du deck adversaire')
-    const allCards = await prisma.card.findMany()
+    const allCards = await catalogCards(prisma)
     const normalizeDbCard = (c: { id: string; name: string; type: string; color: string; cost: number | null; power: number | null; imageUrl: string | null; effect: string | null; trigger: string | null; counter: string | null }): DbCard => ({
       id: c.id,
       name: c.name,

@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { catalogCards } from '@/lib/catalog/cache'
 import { getBoosterCatalog } from '@/lib/boosters/service'
 import { isBoosterProduct } from '@/lib/boosters/products'
 import { boosterTitle, compareCodes } from '@/lib/boosters/catalogPresentation'
@@ -18,11 +19,8 @@ const RARE = ['SEC', 'SP CARD', 'SP', 'TR', 'SR']
 export async function GET() {
   try {
     if (!cached || Date.now() - cached.at > 600_000) {
-      const [sets, cards, rareRows] = await Promise.all([
-        getBoosterCatalog(prisma),
-        prisma.card.count(),
-        prisma.card.findMany({ where: { OR: [{ rarity: { in: RARE } }, { isAltArt: true }] }, select: { id: true, code: true, name: true, rarity: true, imageUrl: true }, take: 400 }),
-      ])
+      const [sets, all] = await Promise.all([getBoosterCatalog(prisma), catalogCards(prisma)])
+      const cards = all.length, rareRows = all.filter(c => RARE.includes(c.rarity) || c.isAltArt).slice(0, 400).map(({ id, code, name, rarity, imageUrl }) => ({ id, code, name, rarity, imageUrl }))
       const boosters = sets.filter(s => isBoosterProduct(s.code)).sort((a, b) => compareCodes(a.code, b.code))
         .map(s => ({ code: s.code, title: boosterTitle(s), imageUrl: s.imageUrl, cardCount: s.cardCount, available: s.available }))
       // A different selection each day, stable within the day.

@@ -1,10 +1,11 @@
 import { NextResponse } from 'next/server'
 import { prisma } from '@/lib/prisma'
+import { catalogCards } from '@/lib/catalog/cache'
 
 export async function GET() {
   try {
     // Récupérer toutes les cartes disponibles
-    const allCards = await prisma.card.findMany()
+    const allCards = await catalogCards(prisma)
     
     // Mélanger les cartes
     const shuffledCards = [...allCards].sort(() => Math.random() - 0.5)

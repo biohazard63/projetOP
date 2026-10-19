@@ -368,7 +368,7 @@ body { background: var(--piece-bg); color: var(--piece-text); }
 .piece-recent-strip { background:var(--piece-bg-secondary); border-color:var(--piece-border); }
 .piece-theme-selector { margin-top:24px; }
 .piece-theme-selector legend { color:var(--piece-muted); font-size:.8rem; margin-bottom:10px; }
-.piece-theme-selector>div { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:8px; }
+.piece-theme-selector>div { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:8px; }
 .piece-theme-selector button { display:flex; align-items:center; justify-content:center; gap:7px; min-height:48px; border:1px solid var(--piece-border); border-radius:9px; font-size:.8rem; background:var(--piece-bg-secondary); color:var(--piece-muted); }
 .piece-theme-selector button[aria-pressed=true] { color:var(--piece-accent); border-color:var(--piece-accent); background:color-mix(in srgb,var(--piece-accent) 8%,var(--piece-bg-secondary)); }
 .piece-bottom-nav { display:none; }
@@ -800,3 +800,30 @@ body:has(.piece-opening-immersive) .piece-footer{display:none}
   .bo-reopen-controls { width:100%; }
   .bo-reopen-controls > button { width:100%; }
 }
+
+/* Theme switch of the sidebar: one button, a track with the sun and the moon, a knob sliding to the active one. */
+.piece-theme-switch { display:flex; align-items:center; gap:10px; width:100%; padding:8px 10px; border-radius:14px; border:1px solid var(--piece-border); background:var(--piece-surface); color:var(--piece-text); font-size:.78rem; font-weight:700; cursor:pointer; transition:border-color .15s, background .15s; }
+.piece-theme-switch:hover { border-color:color-mix(in srgb,var(--piece-gold) 60%,transparent); }
+.piece-theme-switch:focus-visible { outline:2px solid var(--piece-gold); outline-offset:2px; }
+.piece-theme-switch-track { position:relative; display:flex; align-items:center; justify-content:space-between; width:54px; height:28px; padding:0 7px; border-radius:999px; background:#0b1d33; color:#f5c45c; box-shadow:inset 0 0 0 1px #ffffff1f; }
+.piece-theme-switch-track > svg { position:relative; z-index:1; }
+.piece-theme-switch-knob { position:absolute; top:3px; left:3px; width:22px; height:22px; border-radius:50%; background:linear-gradient(160deg,#ffd982,#f0a93a); box-shadow:0 2px 6px #0006; transition:translate .25s cubic-bezier(.3,1.4,.5,1); }
+.piece-theme-switch[data-theme-current='dark'] .piece-theme-switch-knob { translate:26px 0; }
+.piece-theme-switch[data-theme-current='light'] .piece-theme-switch-track { background:#fff3d6; color:#956715; box-shadow:inset 0 0 0 1px #e8d3a4; }
+.piece-theme-switch[data-theme-current='light'] .piece-theme-switch-track > svg:first-child, .piece-theme-switch[data-theme-current='dark'] .piece-theme-switch-track > svg:last-child { color:#1a1205; }
+@media (prefers-reduced-motion:reduce) { .piece-theme-switch-knob { transition:none; } }
+
+/* Sign-out: in the sidebar under the profile card, in the account menu of the top bar, in the mobile menu. */
+.piece-sidebar-logout { display:flex; align-items:center; justify-content:center; gap:8px; min-height:38px; border-radius:12px; border:1px solid var(--piece-border); background:none; color:var(--piece-muted); font-size:.78rem; font-weight:700; cursor:pointer; transition:color .15s, border-color .15s, background .15s; }
+.piece-sidebar-logout:hover { color:#ff8a9b; border-color:#ff8a9b88; background:#ff4d6d14; }
+.piece-account-menu { position:relative; }
+.piece-account-menu > .piece-avatar { cursor:pointer; font-weight:900; }
+.piece-account-dropdown { position:absolute; right:0; top:calc(100% + 10px); z-index:60; display:grid; min-width:230px; padding:8px; border-radius:16px; border:1px solid var(--piece-border);
+  background:var(--piece-bg-secondary); color:var(--piece-text); box-shadow:0 18px 40px #0006; animation:piece-drop .18s ease-out; }
+@keyframes piece-drop { from { opacity:0; translate:0 -6px; } }
+.piece-account-dropdown p { display:grid; gap:2px; margin:0 0 6px; padding:8px 10px 10px; border-bottom:1px solid var(--piece-border); }
+.piece-account-dropdown p strong { font-size:.9rem; } .piece-account-dropdown p small { color:var(--piece-muted); font-size:.75rem; overflow:hidden; text-overflow:ellipsis; }
+.piece-account-dropdown :is(a,button) { display:flex; align-items:center; gap:10px; min-height:42px; padding:0 10px; border:0; border-radius:10px; background:none; color:var(--piece-text); font-size:.86rem; font-weight:600; text-align:left; cursor:pointer; }
+.piece-account-dropdown :is(a,button):hover, .piece-account-dropdown :is(a,button):focus-visible { background:var(--piece-surface); outline:none; }
+.piece-account-dropdown button { color:#e5485f; }
+.piece-mobile-logout { display:flex; align-items:center; justify-content:center; gap:8px; min-height:46px; border-radius:14px; border:1px solid #e5485f66; background:#e5485f12; color:#e5485f; font-weight:800; cursor:pointer; }

@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 
 import { prisma } from '@/lib/prisma'
+import { withCatalogCards } from '@/lib/catalog/deckCards'
 import { cookies } from 'next/headers'
 
 export async function GET() {
@@ -46,7 +47,7 @@ export async function GET() {
     }
 
     // Récupérer le deck actif
-    const deck = await prisma.deck.findUnique({
+    const deck = await withCatalogCards(await prisma.deck.findUnique({
       where: {
         id: activeDeckId, userId: user.id
       },
@@ -55,15 +56,11 @@ export async function GET() {
           orderBy: { createdAt: 'desc' },
           take: 1,
           include: {
-            cards: {
-              include: {
-                card: true
-              }
-            }
+            cards: true
           }
         }
       }
-    });
+    }));
 
     if (!deck) {
       console.log('Erreur: Deck actif non trouvé')

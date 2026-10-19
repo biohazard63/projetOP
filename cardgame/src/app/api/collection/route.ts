@@ -1,6 +1,7 @@
 import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
+import { catalogById } from '@/lib/catalog/cache'
 import { playableCardIds } from '@/lib/engine/catalog'
 
 export const dynamic = 'force-dynamic'
@@ -14,10 +15,9 @@ export async function GET(request: Request) {
       const owned = await prisma.userCard.findMany({ where: { userId: session.user.id, quantity: { gt: 0 } }, select: { cardId: true, quantity: true, createdAt: true } })
       return NextResponse.json({ cards: owned.map(row => ({ id: row.cardId, quantity: row.quantity, acquiredAt: row.createdAt.toISOString() })) })
     }
-    const rows = await prisma.userCard.findMany({
-      where: { userId: session.user.id, quantity: { gt: 0 } },
-      include: { card: true },
-    })
+    // Owned identifiers and quantities only; the cards come from the shared catalogue.
+    const [owned, byId] = await Promise.all([prisma.userCard.findMany({ where: { userId: session.user.id, quantity: { gt: 0 } }, select: { cardId: true, quantity: true, createdAt: true } }), catalogById(prisma)])
+    const rows = owned.flatMap(row => { const card = byId.get(row.cardId); return card ? [{ ...row, card }] : [] })
     // ?playable=1 (deck builder): only the owned cards the game engine can play (playableCardIds).
     const playable = new URL(request.url).searchParams.get('playable') === '1' ? playableCardIds(rows.map(row => row.card)) : null
     return NextResponse.json({ cards: rows.filter(row => !playable || playable.has(row.cardId)).map(row => ({ ...row.card, quantity: row.quantity, acquiredAt: row.createdAt.toISOString() })) })
