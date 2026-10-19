@@ -57,3 +57,5 @@
 
 .scene[data-reduced] .rays, .scene[data-reduced] .sparks { display:none; }
 @media (prefers-reduced-motion:reduce) { .pack, .rays, .halo, .finger::after { animation:none !important; } }
+/* Phone: the packet as large as the revealed card (about 60 % of the width), kept within the screen height. */
+@media (max-width:640px) { .pack { width:min(62vw,260px,calc((100dvh - 300px) * .6)); } }
