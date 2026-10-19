@@ -7,6 +7,7 @@ import type { BoosterCatalogItem, OpeningResult } from './types'
 import { isBoosterProduct } from './products'
 import { DISPLAY_SIZE, TIER_RATES_VERSION, godPackSlots, planDisplay, rollGodPack, tierPools, tieredRules, type DrawTier, type GodPack, type PackPlan } from './tiers'
 import tierManifest from './booster-tiers.json'
+import { catalogCards } from '@/lib/catalog/cache'
 import { currentEconomy } from '@/lib/economy/settings'
 import { postMany as postBerries } from '@/lib/economy/ledger'
 
@@ -48,7 +49,8 @@ export async function getBoosterDrawContext(db: DB, requested: string, proposedR
   }
   if (!set) throw new BoosterError('SET_NOT_FOUND', 'Extension introuvable', 404)
   const [cards, exactRule, normalizedRule, booster] = await Promise.all([
-    db.card.findMany({ where: { OR: [{ setCode: set.code }, { id: { in: tierIds(set.code) } }] }, orderBy: { id: 'asc' } }),
+    // From the shared catalogue: an opening reads no card row from the database.
+    catalogCards(db).then(all => { const ids = new Set(tierIds(set!.code)); return all.filter(card => card.setCode === set!.code || ids.has(card.id)) }),
     db.setRules.findUnique({ where: { code: set.code } }),
     db.setRules.findUnique({ where: { code: normalizeSetCode(set.code) } }),
     db.booster.findUnique({ where: { id: boosterId(set.code) }, include: { cards: true } }),
@@ -59,7 +61,8 @@ export async function getBoosterDrawContext(db: DB, requested: string, proposedR
 }
 export async function getBoosterCatalog(db: DB): Promise<BoosterCatalogItem[]> {
   const [sets, cards, rules, boosters] = await Promise.all([
-    db.cardSet.findMany({ orderBy: [{ releaseDate: 'desc' }, { code: 'asc' }] }), db.card.findMany(), db.setRules.findMany(), db.booster.findMany({ where: { id: { startsWith: 'simulation:' } }, include: { cards: true } }),
+    // Cards from the shared in-memory catalogue (listed on every booster page and on the home page).
+    db.cardSet.findMany({ orderBy: [{ releaseDate: 'desc' }, { code: 'asc' }] }), catalogCards(db), db.setRules.findMany(), db.booster.findMany({ where: { id: { startsWith: 'simulation:' } }, include: { cards: true } }),
   ])
   return sets.map(set => {
     const ids = new Set(tierIds(set.code)), setCards = cards.filter(card => card.setCode === set.code || ids.has(card.id))

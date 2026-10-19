@@ -4,6 +4,7 @@ import { auth } from '@/lib/auth'
 import { prisma } from '@/lib/prisma'
 import { collectionStats } from '@/lib/collector/stats'
 import { cardEffect } from '@/lib/collector/effects'
+import { catalogById, catalogCards } from '@/lib/catalog/cache'
 
 export const dynamic = 'force-dynamic'
 export async function GET() {
@@ -14,17 +15,20 @@ export async function GET() {
       const userId = session.user.id
       const [profile, cards, sets, owned, decks, openings, lastOpening] = await Promise.all([
         tx.user.findUnique({ where: { id: userId }, select: { name: true, email: true, createdAt: true } }),
-        tx.card.findMany({ select: { id: true, setCode: true, isAltArt: true, isParallel: true, isSpecial: true } }),
+        catalogCards(prisma),
         tx.cardSet.findMany({ select: { code: true, name: true }, orderBy: { releaseDate: 'desc' } }),
-        tx.userCard.findMany({ where: { userId, quantity: { gt: 0 } }, include: { card: true }, orderBy: [{ createdAt: 'desc' }, { id: 'desc' }] }),
+        // Every owned card for the figures, with only the fields that decide the reveal effect; full cards for the few shown.
+        tx.userCard.findMany({ where: { userId, quantity: { gt: 0 } }, select: { cardId: true, quantity: true, createdAt: true }, orderBy: [{ createdAt: 'desc' }, { id: 'desc' }] }),
         tx.deck.count({ where: { userId } }),
         tx.boosterOpening.count({ where: { userId } }),
         tx.boosterOpening.findFirst({ where: { userId }, orderBy: [{ openedAt: 'desc' }, { id: 'desc' }], select: { id: true, openedAt: true, booster: { select: { setCode: true, cardSet: { select: { name: true } } } } } }),
       ])
       if (!profile) return null
-      const recent = owned.map(row => ({ ...row.card, quantity: row.quantity, acquiredAt: row.createdAt.toISOString() }))
+      // Owned identifiers and quantities only; the card itself comes from the shared catalogue.
+      const byId = await catalogById(prisma), known = owned.filter(row => byId.has(row.cardId))
+      const entry = (row: (typeof owned)[number]) => ({ ...byId.get(row.cardId)!, quantity: row.quantity, acquiredAt: row.createdAt.toISOString() })
       return { profile, ...collectionStats(cards, owned, sets), decks, openings,
-        recentCards: recent.slice(0, 8), recentRareCards: recent.filter(c => cardEffect(c) !== 'common').slice(0, 6),
+        recentCards: known.slice(0, 8).map(entry), recentRareCards: known.filter(row => cardEffect(byId.get(row.cardId)!) !== 'common').slice(0, 6).map(entry),
         lastOpening: lastOpening ? { id: lastOpening.id, openedAt: lastOpening.openedAt, setCode: lastOpening.booster.setCode, setName: lastOpening.booster.cardSet.name } : null }
     }, { isolationLevel: Prisma.TransactionIsolationLevel.RepeatableRead })
     return result ? NextResponse.json(result, { headers: { 'Cache-Control': 'private, no-store' } }) : NextResponse.json({ error: 'Compte introuvable' }, { status: 404 })

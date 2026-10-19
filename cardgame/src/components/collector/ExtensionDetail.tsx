@@ -10,8 +10,8 @@ import { EmptyState, LoadState, PageHeading, Progress, SectionHeading } from './
 export default function ExtensionDetail({code}:{code:string}) {
   const {data:session}=useSession()
   const catalogue=useRemote<{sets:BoosterCatalogItem[]}>('/api/booster')
-  const cards=useRemote<CatalogueCard[]>('/api/cards')
-  const owned=useRemote<{cards:CatalogueCard[]}>(session?.user?.id ? '/api/collection' : null)
+  const cards=useRemote<CatalogueCard[]>('/api/cards?fields=grid')
+  const owned=useRemote<{cards:{id:string;quantity:number}[]}>(session?.user?.id ? '/api/collection?fields=quantities' : null)
   const overview=useRemote<CollectorOverview>(session?.user?.id ? '/api/collector' : null)
   const set=catalogue.data?.sets.find(s=>s.code.toUpperCase().replace(/[\s-]/g,'')===code.toUpperCase().replace(/[\s-]/g,''))
   const progress=overview.data?.sets.find(s=>s.code===set?.code)

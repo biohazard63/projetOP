@@ -7,13 +7,16 @@ export const deckInput = z.object({
 })
 
 type StoredCard = { id: string; code: string; type: string; color: string }
+// Catalogue types are stored in English or in French (cards imported from the French site).
+const TYPE: Record<string, string> = { PERSONNAGE: 'CHARACTER', 'ÉVÉNEMENT': 'EVENT', 'ÉVÉNEMENTS': 'EVENT', EVENEMENT: 'EVENT', EVENEMENTS: 'EVENT', LIEU: 'STAGE' }
+const typeOf = (card: StoredCard) => { const t = card.type.trim().toUpperCase(); return TYPE[t] ?? t }
 
 
 export function validateDeck(cards: z.infer<typeof deckInput>['cards'], stored: StoredCard[]): string | null {
   if (new Set(cards.map(c => c.id)).size !== cards.length) return 'Carte dupliquée dans la requête'
   const byId = new Map(stored.map(c => [c.id, c]))
   if (cards.some(c => !byId.has(c.id))) return 'Carte inconnue'
-  const leaders = cards.filter(c => byId.get(c.id)?.type.toUpperCase() === 'LEADER')
+  const leaders = cards.filter(c => (byId.has(c.id) && typeOf(byId.get(c.id)!) === 'LEADER'))
   if (leaders.length !== 1 || leaders[0].quantity !== 1) return 'Le deck doit contenir exactement 1 leader'
   const main = cards.filter(c => c !== leaders[0])
   if (main.reduce((total, c) => total + c.quantity, 0) !== 50) return 'Le deck doit contenir exactement 50 cartes sans le leader'
@@ -21,7 +24,7 @@ export function validateDeck(cards: z.infer<typeof deckInput>['cards'], stored: 
   const counts = new Map<string, number>()
   for (const entry of main) {
     const card = byId.get(entry.id)!
-    if (!['CHARACTER', 'EVENT', 'STAGE'].includes(card.type.toUpperCase())) return 'Type de carte interdit'
+    if (!['CHARACTER', 'EVENT', 'STAGE'].includes(typeOf(card))) return 'Type de carte interdit'
     const cardColors = colors(card.color)
     if (!cardColors.length || cardColors.some(c => !allowed.includes(c))) return 'Couleur incompatible avec le leader'
     const code = card.code.replace(/_p\d+$/i, '')

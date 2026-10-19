@@ -2,6 +2,7 @@ import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 
 import { prisma } from '@/lib/prisma'
+import { withCatalogCards } from '@/lib/catalog/deckCards'
 import { cookies } from 'next/headers'
 
 export async function POST(request: Request) {
@@ -40,7 +41,7 @@ export async function POST(request: Request) {
     console.log('Vérification du deck:', deckIdFromPath, 'pour l\'utilisateur:', user.id)
 
     // Vérifier que le deck appartient à l'utilisateur
-    const deck = await prisma.deck.findFirst({
+    const deck = await withCatalogCards(await prisma.deck.findFirst({
       where: {
         id: deckIdFromPath,
         userId: user.id
@@ -48,15 +49,11 @@ export async function POST(request: Request) {
       include: {
         versions: {
           include: {
-            cards: {
-              include: {
-                card: true
-              }
-            }
+            cards: true
           }
         }
       }
-    })
+    }))
 
     if (!deck) {
       console.log('Erreur: Deck non trouvé ou n\'appartient pas à l\'utilisateur')

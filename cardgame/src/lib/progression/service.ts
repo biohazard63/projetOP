@@ -1,5 +1,6 @@
 import type { Prisma, PrismaClient } from '@prisma/client'
 import { collectionStats } from '@/lib/collector/stats'
+import { catalogById, catalogCards } from '@/lib/catalog/cache'
 import { BerryError, inPlayerTransaction, postMany } from '@/lib/economy/ledger'
 import { parisDay } from '@/lib/economy/config'
 import manga from '@/lib/boosters/manga-rares.json'
@@ -16,9 +17,9 @@ const won = (g: Game) => g.result?.winnerId === g.humanSeat
 async function metrics(tx: DB, userId: string) {
   if (!await tx.user.findUnique({ where: { id: userId }, select: { id: true } })) throw new BerryError('USER_NOT_FOUND', 'Utilisateur introuvable', 401)
   const [cards, sets, owned, decks, openings, displays, games, treasureDays, resale, user, boosterCards] = await Promise.all([
-    tx.card.findMany({ select: { id: true, setCode: true, isAltArt: true, isParallel: true, isSpecial: true } }),
+    catalogCards(tx),
     tx.cardSet.findMany({ select: { code: true, name: true } }),
-    tx.userCard.findMany({ where: { userId, quantity: { gt: 0 } }, select: { cardId: true, quantity: true, card: { select: { name: true, isAltArt: true, isParallel: true, isSpecial: true } } } }),
+    tx.userCard.findMany({ where: { userId, quantity: { gt: 0 } }, select: { cardId: true, quantity: true } }),
     tx.deck.count({ where: { userId } }),
     tx.boosterOpening.count({ where: { userId, creditedAt: { not: null } } }),
     tx.virtualDisplay.count({ where: { userId, completedAt: { not: null } } }),
@@ -47,7 +48,9 @@ async function metrics(tx: DB, userId: string) {
 async function secretsReached(tx: DB, userId: string, m: Awaited<ReturnType<typeof metrics>>, done: Set<string>) {
   const reached: string[] = [], check = (id: string, ok: boolean) => { if (!done.has(id) && ok) reached.push(id) }
   const since = m.user.progressSyncedAt ?? new Date(0)
-  const names = m.owned.map(o => ({ id: o.cardId, ...o.card, special: o.card.isAltArt || o.card.isParallel || o.card.isSpecial }))
+  // Owned identifiers only; names and variants from the shared catalogue.
+  const byId = await catalogById(tx)
+  const names = m.owned.flatMap(o => { const card = byId.get(o.cardId); return card ? [{ id: o.cardId, name: card.name, special: card.isAltArt || card.isParallel || card.isSpecial }] : [] })
   check('gomu', names.some(c => c.special && /luffy/i.test(c.name)))
   check('one-piece', names.some(c => mangaRedIds.has(c.id)))
   check('zoro', names.filter(c => /zoro/i.test(c.name)).length >= 20)

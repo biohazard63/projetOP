@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 
 import { prisma } from '@/lib/prisma'
+import { catalogById } from '@/lib/catalog/cache'
+import { withCatalogCards } from '@/lib/catalog/deckCards'
 import { deckCardsRefusal } from '@/lib/engine/deckCards'
 import { Prisma, Card, Deck } from '@prisma/client'
 
@@ -35,7 +37,7 @@ export async function GET() {
       )
     }
 
-    const user = await prisma.user.findUnique({
+    const user = await withCatalogCards(await prisma.user.findUnique({
       where: { email: session.user.email.toLowerCase() },
       include: {
         decks: {
@@ -46,17 +48,13 @@ export async function GET() {
               },
               take: 1,
               include: {
-                cards: {
-                  include: {
-                    card: true
-                  }
-                }
+                cards: true
               }
             }
           }
         }
       }
-    })
+    }))
 
     if (!user) {
       return NextResponse.json(
@@ -132,14 +130,14 @@ export async function POST(request: Request) {
     const parsed = deckInput.safeParse(await request.json())
     if (!parsed.success) return NextResponse.json({ error: 'Deck invalide' }, { status: 400 })
     const { name, cards: cards } = parsed.data
-    const storedCards = await prisma.card.findMany({ where: { id: { in: cards.map(c => c.id) } } })
+    const byId = await catalogById(prisma), storedCards = cards.flatMap(c => byId.get(c.id) ?? [])
     const validationError = validateDeck(cards, storedCards)
     if (validationError) return NextResponse.json({ error: validationError }, { status: 400 })
     const refusal = await deckCardsRefusal(user.id, cards, storedCards)
     if (refusal) return NextResponse.json({ error: refusal }, { status: 400 })
 
     // Créer le deck avec sa première version
-    const deck = await prisma.$transaction(async (tx) => {
+    const deck = await withCatalogCards(await prisma.$transaction(async (tx) => {
       // Créer le deck
       const newDeck = await tx.deck.create({
         data: {
@@ -174,16 +172,12 @@ export async function POST(request: Request) {
           versions: {
             where: { id: newVersion.id },
             include: {
-              cards: {
-                include: {
-                  card: true
-                }
-              }
+              cards: true
             }
           }
         }
       })
-    })
+    }))
 
     if (!deck) {
       throw new Error('Erreur lors de la création du deck')

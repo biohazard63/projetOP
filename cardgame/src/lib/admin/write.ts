@@ -4,6 +4,7 @@ import { asJson, cardSelect, fingerprint } from './data'
 import { lockPlayer } from '../economy/ledger'
 import { readEconomySettings } from '../economy/settings'
 import { getBoosterDrawContext } from '../boosters/service'
+import { invalidateCatalog } from '@/lib/catalog/cache'
 
 function unchanged(value: unknown, expected: string) { if (fingerprint(value) !== expected) throw Error('EDIT_CONFLICT') }
 export async function adminWrite(db: PrismaClient, actorId: string, raw: unknown) {
@@ -46,6 +47,7 @@ async function apply(tx: Prisma.TransactionClient, actorId: string, action: Admi
     if (action.changes.imageUrl === null) throw Error('INVALID_ACTION')
     const changes = { ...action.changes, imageUrl: action.changes.imageUrl ?? undefined }
     const result = await tx.card.updateMany({ where: before, data: changes }); if (!result.count) throw Error('EDIT_CONFLICT')
+    invalidateCatalog()
     return { before, after: { ...before, ...action.changes } }
   }
   if (action.type === 'SET_EDIT') {

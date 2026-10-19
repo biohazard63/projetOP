@@ -3,6 +3,8 @@ import { NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 
 import { prisma } from '@/lib/prisma'
+import { catalogById } from '@/lib/catalog/cache'
+import { withCatalogCards } from '@/lib/catalog/deckCards'
 import { deckCardsRefusal } from '@/lib/engine/deckCards'
 import { Card } from '@prisma/client'
 
@@ -27,7 +29,7 @@ export async function GET(request: Request) {
       )
     }
 
-    const deck = await prisma.deck.findUnique({
+    const deck = await withCatalogCards(await prisma.deck.findUnique({
       where: {
         id: deckId,
         OR: [{ userId: null }, { user: { email: session.user.email.toLowerCase() } }]
@@ -39,15 +41,11 @@ export async function GET(request: Request) {
           },
           take: 1,
           include: {
-            cards: {
-              include: {
-                card: true
-              }
-            }
+            cards: true
           }
         }
       }
-    })
+    }))
 
     if (!deck) {
       return NextResponse.json(
@@ -123,7 +121,7 @@ export async function PUT(request: Request) {
     const parsed = deckInput.safeParse(await request.json())
     if (!parsed.success) return NextResponse.json({ error: 'Deck invalide' }, { status: 400 })
     const { name, cards: normalizedCards } = parsed.data
-    const storedCards = await prisma.card.findMany({ where: { id: { in: normalizedCards.map(c => c.id) } } })
+    const byId = await catalogById(prisma), storedCards = normalizedCards.flatMap(c => byId.get(c.id) ?? [])
     const validationError = validateDeck(normalizedCards, storedCards)
     if (validationError) return NextResponse.json({ error: validationError }, { status: 400 })
     if (!ownedDeck.userId) return NextResponse.json({ error: 'Deck non trouvé' }, { status: 404 })
@@ -131,7 +129,7 @@ export async function PUT(request: Request) {
     if (refusal) return NextResponse.json({ error: refusal }, { status: 400 })
 
     // Créer une nouvelle version du deck
-    const updatedDeck = await prisma.$transaction(async (tx) => {
+    const updatedDeck = await withCatalogCards(await prisma.$transaction(async (tx) => {
       // Créer la nouvelle version
       const newVersion = await tx.deckVersion.create({
         data: {
@@ -164,16 +162,12 @@ export async function PUT(request: Request) {
           versions: {
             where: { id: newVersion.id },
             include: {
-              cards: {
-                include: {
-                  card: true
-                }
-              }
+              cards: true
             }
           }
         }
       })
-    })
+    }))
 
     if (!updatedDeck) {
       throw new Error('Erreur lors de la mise à jour du deck')
