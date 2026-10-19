@@ -11,6 +11,7 @@ import {
   Suspense
 } from 'react'
 import { SessionProvider } from 'next-auth/react'
+import type { Session } from 'next-auth'
 import { signOut } from 'next-auth/react'
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from 'sonner'
@@ -261,7 +262,7 @@ function ProvidersInitializer({
 }
 
 // Composant principal Providers
-export function Providers({ children }: { children: React.ReactNode }) {
+export function Providers({ children, session }: { children: React.ReactNode; session?: Session | null }) {
   const [config, setConfig] = useState<ProvidersConfig>(defaultConfig)
   const [isTransitioning, startConfigTransition] = useTransition()
 
@@ -280,11 +281,11 @@ export function Providers({ children }: { children: React.ReactNode }) {
   }), [config, updateConfig])
 
   return (
-    <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem disableTransitionOnChange>
     <ProvidersContext.Provider value={contextValue}>
       <ErrorBoundary>
         <ProvidersInitializer config={config}>
-          <SessionProvider>
+          <SessionProvider session={session}>
             <>
               <Suspense fallback={
                 <div className="min-h-screen flex items-center justify-center bg-gray-50">

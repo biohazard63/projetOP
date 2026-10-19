@@ -7,8 +7,8 @@ import Image from 'next/image'
 import compactLogo from '../../public/images/logo/mugiwara-emblem.png'
 import desktopLogo from '../../public/images/logo/mugiwara-wordmark.png'
 import { usePathname, useSearchParams } from 'next/navigation'
-import { useSession } from 'next-auth/react'
-import { BookOpen, History, Home, Layers, Menu, Package, PackageOpen, Search, Swords, UserRound, X, Compass, ChevronRight, ShieldCheck } from 'lucide-react'
+import { signOut, useSession } from 'next-auth/react'
+import { BookOpen, History, Home, Layers, Menu, Package, PackageOpen, Search, Swords, UserRound, X, Compass, ChevronRight, ShieldCheck, LogOut } from 'lucide-react'
 import { ThemeSelector } from '@/components/collector/ThemeSelector'
 import { useOpeningPresentation } from '@/components/collector/OpeningPresentation'
 // Grouped in the V2 sidebar; the order of `links` (and the mobile bottom bar) is unchanged.
@@ -39,6 +39,16 @@ export function Navbar() {
   }, [userId])
   const adminLink = userId && adminUserId === userId ? <Link href="/admin" aria-current={pathname.startsWith('/admin') ? 'page' : undefined}><span className="piece-nav-icon"><ShieldCheck size={17} /></span>Administration</Link> : null
   const toggle = useRef<HTMLButtonElement>(null), search = useRef<HTMLInputElement>(null)
+  // Account menu of the top bar: profile and sign-out one tap away, closed by Escape or a click outside.
+  const [account, setAccount] = useState(false), accountRef = useRef<HTMLDivElement>(null)
+  useEffect(() => {
+    if (!account) return
+    const close = (e: Event) => { if (e instanceof KeyboardEvent ? e.key === 'Escape' : !accountRef.current?.contains(e.target as Node)) setAccount(false) }
+    document.addEventListener('keydown', close); document.addEventListener('pointerdown', close)
+    return () => { document.removeEventListener('keydown', close); document.removeEventListener('pointerdown', close) }
+  }, [account])
+  useEffect(() => setAccount(false), [pathname])
+  const logout = () => void signOut({ callbackUrl: '/login' })
   // "/" focuses the global card search (outside text fields).
   useEffect(() => {
     const key = (e: KeyboardEvent) => { const t = e.target as HTMLElement; if (e.key === '/' && !e.metaKey && !e.ctrlKey && !t.closest('input,textarea,select,[contenteditable=true]')) { e.preventDefault(); search.current?.focus() } }
@@ -62,9 +72,15 @@ export function Navbar() {
     <aside className="piece-sidebar"><div className="piece-sidebar-brand">{desktopBrand}</div>
       <Link href="/boosters" className="piece-sidebar-cta"><PackageOpen size={18} />Ouvrir un booster</Link>
       <nav aria-label="Navigation principale" className="piece-sidebar-links">{grouped}{adminLink}</nav>
-      <div className="piece-sidebar-bottom"><div className="piece-sidebar-theme"><ThemeSelector /></div><div className="piece-sidebar-note"><span className="piece-status-dot" />Simulation gratuite</div>
-        <Link href={session?.user ? '/profile' : '/login'} className="piece-sidebar-profile"><span className="piece-avatar">{session?.user?.name?.slice(0, 1).toUpperCase() || <UserRound size={18} />}</span><span><strong>{session?.user?.name || 'Bienvenue à bord'}</strong><small>{session?.user ? 'Votre espace collectionneur' : 'Connectez-vous'}</small></span><ChevronRight size={16} className="piece-sidebar-profile-go" /></Link></div></aside>
-    <header className="piece-topbar"><div className="piece-mobile-brand">{mobileBrand}</div><form action="/collection" method="get" className="piece-global-search" role="search"><Search size={16} /><input ref={search} name="q" type="search" aria-label="Recherche globale de cartes" placeholder="Rechercher une carte, un identifiant…" /><kbd className="piece-search-key" aria-hidden="true">/</kbd><button type="submit" aria-label="Rechercher">↵</button></form><div className="piece-account"><LevelChip /><BerryChip /><Link href="/boosters" className="piece-topbar-link"><PackageOpen size={15} />Grand Line</Link><Link href={session?.user ? '/profile' : '/login'} className="piece-avatar" aria-label={session?.user ? 'Mon profil' : 'Se connecter'}><UserRound size={18} /></Link><button ref={toggle} className="piece-mobile-toggle" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="collector-mobile-menu" aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}>{open ? <X /> : <Menu />}</button></div>{open && <nav aria-label="Navigation mobile" id="collector-mobile-menu" className="piece-mobile-menu">{menu}{adminLink}<ThemeSelector /></nav>}</header>
+      <div className="piece-sidebar-bottom"><div className="piece-sidebar-theme"><ThemeSelector compact /></div><div className="piece-sidebar-note"><span className="piece-status-dot" />Simulation gratuite</div>
+        <Link href={session?.user ? '/profile' : '/login'} className="piece-sidebar-profile"><span className="piece-avatar">{session?.user?.name?.slice(0, 1).toUpperCase() || <UserRound size={18} />}</span><span><strong>{session?.user?.name || 'Bienvenue à bord'}</strong><small>{session?.user ? 'Votre espace collectionneur' : 'Connectez-vous'}</small></span><ChevronRight size={16} className="piece-sidebar-profile-go" /></Link>
+        {session?.user && <button type="button" className="piece-sidebar-logout" onClick={logout}><LogOut size={16} />Se déconnecter</button>}</div></aside>
+    <header className="piece-topbar"><div className="piece-mobile-brand">{mobileBrand}</div><form action="/collection" method="get" className="piece-global-search" role="search"><Search size={16} /><input ref={search} name="q" type="search" aria-label="Recherche globale de cartes" placeholder="Rechercher une carte, un identifiant…" /><kbd className="piece-search-key" aria-hidden="true">/</kbd><button type="submit" aria-label="Rechercher">↵</button></form><div className="piece-account"><LevelChip /><BerryChip /><Link href="/boosters" className="piece-topbar-link"><PackageOpen size={15} />Grand Line</Link>{session?.user ? <div className="piece-account-menu" ref={accountRef}>
+        <button type="button" className="piece-avatar" aria-label="Mon compte" aria-haspopup="menu" aria-expanded={account} onClick={() => setAccount(!account)}>{session.user.name?.slice(0, 1).toUpperCase() || <UserRound size={18} />}</button>
+        {account && <div className="piece-account-dropdown" role="menu"><p><strong>{session.user.name || 'Pirate'}</strong>{session.user.email && <small>{session.user.email}</small>}</p>
+          <Link role="menuitem" href="/profile"><UserRound size={16} />Mon profil</Link><Link role="menuitem" href="/history"><History size={16} />Historique</Link>
+          <button role="menuitem" type="button" onClick={logout}><LogOut size={16} />Se déconnecter</button></div>}
+      </div> : <Link href="/login" className="piece-avatar" aria-label="Se connecter"><UserRound size={18} /></Link>}<button ref={toggle} className="piece-mobile-toggle" onClick={() => setOpen(!open)} aria-expanded={open} aria-controls="collector-mobile-menu" aria-label={open ? 'Fermer le menu' : 'Ouvrir le menu'}>{open ? <X /> : <Menu />}</button></div>{open && <nav aria-label="Navigation mobile" id="collector-mobile-menu" className="piece-mobile-menu">{menu}{adminLink}<ThemeSelector />{session?.user && <button type="button" className="piece-mobile-logout" onClick={logout}><LogOut size={17} />Se déconnecter</button>}</nav>}</header>
     <nav className="piece-bottom-nav" aria-label="Navigation principale mobile">{links.filter(({ href }) => ['/home', '/boosters', '/collection', '/decks', '/play', '/profile'].includes(href)).map(({ href, label, icon: Icon }) => <Link key={href} href={href} aria-current={(href === '/boosters' ? pathname.startsWith('/boosters') || pathname === '/booster-opening' : active(href)) ? 'page' : undefined}><span className="piece-bottom-icon"><Icon size={21} aria-hidden="true" /></span><span>{label === 'Mes decks' ? 'Decks' : label}</span></Link>)}</nav>
   </>
 }

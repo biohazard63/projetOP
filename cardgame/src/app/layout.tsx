@@ -2,12 +2,14 @@ import './globals.css'
 import './collector.css'
 import '@/components/reports/reports.css'
 import '@/components/admin/admin.css'
+import './light.css'
 import { CollectorPreferencesProvider } from '@/components/collector/Preferences'
 import Link from 'next/link'
 import { OpeningPresentationProvider } from '@/components/collector/OpeningPresentation'
 import { Inter } from 'next/font/google'
 import { Navbar } from '@/components/Navbar'
 import { Providers } from './providers'
+import { auth } from '@/lib/auth'
 import { ProgressProvider } from '@/components/progression/ProgressProvider'
 
 import { Analytics } from '@vercel/analytics/react'
@@ -44,7 +46,7 @@ export const metadata = {
 
 // Note: variante de layout réservée pour usage futur (supprimée pour éviter warn unused)
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode
@@ -62,7 +64,8 @@ export default function RootLayout({
         <link rel="apple-touch-startup-image" href="/images/icons/icon-512.png" />
       </head>
       <body suppressHydrationWarning className={cn(inter.className, "min-h-screen bg-[hsl(var(--background))] text-[hsl(var(--foreground))] overflow-x-clip")}>
-        <Providers>
+        {/* The session comes with the page: no client round trip before the signed-in views can render. */}
+        <Providers session={await auth()}>
           <CollectorPreferencesProvider><OpeningPresentationProvider><ProgressProvider>
           <a className="piece-skip" href="#main-content">Aller au contenu</a>
           <div className="relative min-h-screen">

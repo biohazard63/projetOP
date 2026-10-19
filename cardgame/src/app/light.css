@@ -1,0 +1,141 @@
+/* Light theme of the whole application, loaded after every other stylesheet. Rules are scoped `html.light` so they win
+   over the page stylesheets (one more element and class). Cinematic scenes (booster opening, game board) keep their
+   night look on purpose: they are lit scenes, framed by light surfaces. */
+
+/* Navigation: a light glass sidebar instead of the night one. */
+html.light .piece-sidebar { --piece-text:#152238; --piece-muted:#5d6d84; --piece-border:#e3dccb; --piece-surface:#ffffff; --piece-bg-secondary:#fffdf8;
+  background:radial-gradient(ellipse at 0% 0%,#f5c45c26,transparent 55%), radial-gradient(ellipse at 100% 100%,#1675dd14,transparent 55%), linear-gradient(180deg,#fffdf8,#f6f1e6);
+  border-right:1px solid #e3dccb; box-shadow:inset -1px 0 0 #f5c45c33; }
+html.light .piece-sidebar .piece-sidebar-links a { color:#3d4d66; }
+html.light .piece-sidebar .piece-sidebar-links a:hover { background:#f5c45c1f; color:#152238; }
+html.light .piece-sidebar .piece-sidebar-links a[aria-current=page] { color:#152238; background:linear-gradient(90deg,#f5c45c40,#f5c45c10 70%,transparent); border-color:#e8c97f; }
+html.light .piece-nav-icon { background:#15223808; }
+html.light .piece-nav-group .piece-sidebar-label, html.light .piece-sidebar-profile-go, html.light .piece-sidebar-note { color:#8a97a9; }
+html.light .piece-sidebar .piece-sidebar-profile { border-color:#e3dccb; background:#ffffffb3; }
+html.light .piece-sidebar .piece-sidebar-profile:hover { background:#fff; border-color:#e8c97f; }
+html.light .piece-sidebar .piece-sidebar-profile .piece-avatar { box-shadow:0 0 0 2px #fff, 0 0 0 3px #e8c97f; }
+html.light .piece-sidebar-brand .piece-brand-name { color:#956715; }
+html.light .piece-topbar { background:color-mix(in srgb,#fffdf8 82%,transparent); border-bottom-color:#e3dccb; }
+html.light .piece-account-dropdown { box-shadow:0 18px 40px #15223826; }
+
+/* Mobile: light docked bar and menu. */
+@media (max-width:950px) {
+  html.light .piece-bottom-nav { background:color-mix(in srgb,#fffdf8 92%,transparent) !important; border-color:#e3dccb; box-shadow:0 -6px 24px #15223814; }
+  html.light .piece-bottom-nav a { color:#5d6d84 !important; }
+  html.light .piece-bottom-nav a[aria-current=page] { color:#956715 !important; }
+  html.light .piece-mobile-menu { background:color-mix(in srgb,#fffdf8 94%,transparent) !important; }
+}
+
+/* ---------- Home (visitor and member) ---------- */
+/* The night canvas becomes a cream one with soft coloured lights; photo banners keep their dark veil for legibility. */
+html.light .fx-home { --piece-text:#152238; --piece-muted:#5d6d84; --piece-border:#e3dccb; --piece-surface:#ffffff; --piece-bg-secondary:#fffdf8; --piece-gold:#b07a12;
+  background:linear-gradient(180deg,#fffdf8 0%,#f8f3e8 45%,#f4efe3 100%); box-shadow:0 30px 70px #15223814, inset 0 0 0 1px #e9e1cf; }
+html.light .fx-ocean i { opacity:.16; } html.light .fx-ocean .a3 { opacity:.2; }
+html.light .fx-ocean b { background:#f0a93a; box-shadow:0 0 8px #f0a93a88; }
+html.light .fx-btn.ghost { background:#15223808; color:#152238; border-color:#15223826; } html.light .fx-btn.ghost:hover { background:#15223812; }
+html.light .fx-treasure-back, html.light .fx-treasure-front { box-shadow:0 0 0 2px #f5c45c, 0 0 26px #f5c45c55, 0 14px 28px #15223833; }
+html.light .fx-treasure-text .fx-treasure-note { color:#a06b0a; }
+/* Surfaces drawn as light glass on the night canvas become white cards. */
+html.light :is(.hv-daily,.hv-feature,.hv-booster,.hv-steps li,.hm-tile:not(.hm-hero,.hm-resume),.hm-stats .piece-stat,.hm-badge,.hm-booster,.hm-opening,.hm-quick) {
+  border-color:#e6dfcf; background:#ffffff; box-shadow:0 8px 22px #1522380d; color:var(--piece-text); backdrop-filter:none; }
+html.light .hv-feature.f0 { background:linear-gradient(140deg,#ffe9bf,#ffffff 60%); } html.light .hv-feature.f3 { background:linear-gradient(140deg,#ece0ff,#ffffff 60%); }
+html.light :is(.hv-booster,.hm-quick,.hm-opening):hover { border-color:#e8c97f; background:#fff8e8; }
+html.light :is(.hv-booster,.hm-booster-art,.hm-pack-tile) .pack-art { filter:drop-shadow(0 12px 16px #15223840); }
+html.light .hm-badge { border-color:#d9d0bd; background:#fffdf8; } html.light .hm-badge span { background:#f1ebde; }
+html.light .hm-badge.done { border-color:#e8c97f; background:linear-gradient(160deg,#fff1cf,#ffffff); }
+html.light .hm-opening > span { background:#f5c45c2e; }
+html.light :is(.hm-stats,.hv-figures) .cx-counter strong { color:#152238; } html.light :is(.hm-stats,.hv-figures) .cx-counter.accent strong { color:#a06b0a; } html.light :is(.hm-stats,.hv-figures) .cx-counter span { color:#5d6d84; }
+html.light .hv-figures { background:radial-gradient(ellipse at 20% 0%,#fff1cf,#ffffff 60%); border-color:#e6dfcf; box-shadow:0 8px 22px #1522380d; }
+html.light .hv-final { color:#152238; border-color:#e6dfcf; background:radial-gradient(ellipse at 50% 0%,#fff1cf 0,#fffdf8 55%,#f6f0e3 100%); }
+html.light .hv-final p { color:#3d4d66; } html.light .hv-final small { color:#7a879a; } html.light .hv-final svg { color:#c48a14; }
+html.light .hv-marquee .hv-card { box-shadow:0 14px 30px #15223833, 0 0 0 1px #15223814; }
+html.light .hm-xp-bar { background:#15223814; box-shadow:inset 0 1px 3px #15223822; }
+
+/* ---------- Sign in / sign up ---------- */
+/* The artwork half keeps its photo and veil (white text); the form half becomes a light card. */
+html.light .au { color:#152238; background:linear-gradient(180deg,#fffdf8,#f4efe3); box-shadow:0 30px 70px #15223814; border-color:#e6dfcf; }
+html.light .au-art { color:#f7f9fc; border-right-color:#e6dfcf; }
+html.light .au > .fx-ocean i { opacity:.14; }
+html.light .au-card-form { --piece-text:#152238; color:#152238; border-color:#e6dfcf; background:#ffffff; backdrop-filter:none; -webkit-backdrop-filter:none; box-shadow:0 24px 50px #1522381a; }
+html.light .au-card-form :is(h1,h2,h3) { color:#152238; }
+html.light :is(.au-back,.au-subtitle,.au-muted-link,.au-strength,.au-footer) { color:#5d6d84; }
+html.light :is(.au-back,.au-muted-link):hover { color:#a06b0a; }
+html.light .au-footer a { color:#a06b0a; }
+html.light :is(.au-divider,.au-hint,.au-legal) { color:#8a97a9; } html.light .au-divider::before, html.light .au-divider::after { background:#e6dfcf; }
+html.light .au-provider { border-color:#dcd4c2; background:#fffdf8; color:#152238; } html.light .au-provider:hover:not(:disabled) { background:#fff6e2; border-color:#e8c97f; }
+html.light .au-field > span:first-child { color:#3d4d66; }
+html.light .au-input { border-color:#dcd4c2; background:#fffdf8; } html.light .au-input > svg { color:#8a97a9; }
+html.light .au-input input { color:#152238; } html.light .au-input input::placeholder { color:#9aa5b5; }
+html.light .au-input input:-webkit-autofill { -webkit-text-fill-color:#152238; -webkit-box-shadow:0 0 0 40px #fffdf8 inset; caret-color:#152238; }
+html.light .au-eye { color:#8a97a9; } html.light .au-eye:hover { color:#152238; background:#15223810; }
+html.light .au-strength-bar i { background:#15223814; }
+html.light .au-rules li { border-color:#dcd4c2; color:#6b778a; } html.light .au-rules li.ok { color:#1f7a45; }
+html.light .au-captcha { border-color:#e6dfcf; background:#fffdf8; }
+html.light .au-alert { color:#a12a3a; } html.light .au-alert.ok { color:#1f7a45; } html.light .au-alert.warn { color:#8a5a06; }
+
+/* ---------- Shared light surfaces for the pages built on the night canvas (decks, profile, history, badges) ---------- */
+html.light :is(.dk-head-stats div,.dk-card article,.pf-facts div,.pf-counters .cx-counter,.pf-set,.pf-settings,.pf-toggle,.pf-wallet-ways li,.pf-wallet-log li,
+  .hs-row,.hs-receipt-panel,.pg-badge,.pg-secrets li,.bg-rank,.bg-badge) { border-color:#e6dfcf; background:#ffffff; color:#152238; box-shadow:0 6px 18px #1522380a; backdrop-filter:none; }
+html.light :is(.dk-lead,.dk-head-stats span,.dk-new small,.dk-count span,.pf-facts dt,.pf-counters .cx-counter span,.pf-section h2 small,.pf-muted,.pf-toggle-text small,
+  .hs-muted,.pg-muted,.pg-group h3 small,.pg-badge-body small,.bg-section h2 small,.pf-note,.dk-legacy,.hs-card-note) { color:#5d6d84; }
+html.light :is(.dk-head-stats strong,.pf-ring strong,.pf-counters .cx-counter.accent strong,.pf-set span,.pf-warn,.hs-day h3,.hs-row-go,.pg-badge-rank,.bg-rank em,.bg-rank small,.pg-titles span) { color:#a06b0a; }
+html.light :is(.pf-counters .cx-counter strong,.pf-ring,.hs-receipt h2,.pg-badge-body b,.bg-rank b,.pf-rank,.pf-select,.hs-filter,.hs .piece-card-label) { color:#152238; }
+html.light :is(.dk-count-bar,.pg-bar,.au-strength-bar i) { background:#15223814; }
+/* Decks */
+html.light .dk-new { border-color:#e8c97f; background:#fffaf0; color:#152238; } html.light .dk-new:hover { background:#fff3d6; border-color:#d9a43a; }
+html.light .dk-card:hover article { border-color:#e8c97f; box-shadow:0 18px 36px #1522381f, 0 0 0 1px #e8c97f; }
+html.light .dk-curve { background:#f4efe3; } html.light .dk-curve small { color:#7a879a; }
+html.light .dk-btn { border-color:#dcd4c2; background:#fffdf8; color:#152238; } html.light .dk-btn.danger { color:#c0354a; border-color:#e9a5b5; }
+html.light .dk-alert { color:#a12a3a; } html.light .dk-alert.ok { color:#1f7a45; }
+/* Profile */
+html.light .pf-select select, html.light .hs-filter select { border-color:#dcd4c2; background:#fffdf8; color:#152238; }
+html.light .pf-toggle:has(input:checked) { border-color:#e8c97f; background:#fff8e8; } html.light .pf-toggle-icon { background:#f1ebde; color:#5d6d84; }
+html.light .pf-switch { background:#15223826; }
+html.light .pf-install { border-top-color:#e6dfcf; } html.light .pf-install details, html.light .pf-install .piece-panel { color:#3d4d66; }
+html.light .pf-logout { color:#c0354a; border-color:#e9a5b5; background:#fff0f3; } html.light .pf-logout:hover { background:#ffe2e8; }
+html.light .pf-wallet-ways a { color:#a06b0a; } html.light .pf-wallet-log time { color:#7a879a; } html.light .pf-wallet-log .in { color:#1f8a4c; } html.light .pf-wallet-log .out { color:#c0354a; }
+html.light .pf-ring span { color:#5d6d84; }
+html.light .pf-treasure button { box-shadow:0 14px 30px #15223833, 0 0 0 1px #15223814; }
+/* History */
+html.light .hs-rows { border-left-color:#e6dfcf; }
+html.light .hs-row:hover { border-color:#e8c97f; background:#fff8e8; } html.light .hs-row.on { border-color:#d9a43a; background:#fff3d6; }
+html.light .hs-row-pack .pack-art, html.light .hs-receipt-pack .pack-art { filter:drop-shadow(0 8px 10px #15223840); }
+html.light .hs-chips span { background:#f1ebde; color:#3d4d66; }
+html.light .hs-modal { background:#fffdf8 !important; color:#152238; }
+/* Progression and badges */
+html.light .pg-account { background:linear-gradient(135deg,#eaf4ff,#ffffff); border-color:#b9dcff; }
+html.light .pg-account-ring::before { background:#ffffff; } html.light .pg-account-ring b { color:#152238; } html.light .pg-account-ring small { color:#5d6d84; }
+html.light .pg-account-text { color:#3d4d66; } html.light .pg-account-title { color:#152238; }
+html.light .pg-titles span { background:#f5c45c2e; }
+html.light .pg-medal[data-rank='none'] { --medal:#d6dde6; color:#6b778a; box-shadow:inset 0 0 0 2px #ffffff; }
+html.light .pg-secrets li { border-color:#d9d0bd; background:#fffdf8; color:#6b778a; } html.light .pg-secrets li span { background:#f1ebde; }
+html.light .pg-secrets li.on { border-color:#e3a6d9; background:linear-gradient(160deg,#ffe8f9,#eaf6ff); color:#152238; }
+html.light .pg-unlock { background:linear-gradient(135deg,#fffdf8f2,#fff6e2f2); color:#152238; box-shadow:0 18px 40px #15223829, 0 0 30px #f5c45c44; }
+html.light .pg-unlock-text small { color:#a06b0a; } html.light .pg-unlock-more { color:#5d6d84; }
+html.light .piece-level-ring::before { background:linear-gradient(160deg,#ffffff,#eaf4ff); } html.light .piece-level-ring b { color:#152238; }
+
+/* ---------- /play lobby (the table itself keeps its night palette) ---------- */
+html.light .play-shell { --piece-text:#152238; --piece-muted:#5d6d84; --piece-border:#e3dccb; --piece-bg:#f8f6f0; --piece-bg-secondary:#ffffff; --piece-surface:#fffdf8; --piece-gold:#a06b0a;
+  background:radial-gradient(120% 80% at 50% 0%,#fff3d6 0%,#f8f6f0 60%); color:#152238; }
+html.light .play-shell .piece-button.secondary { background:#fffdf8; border-color:#dcd4c2; color:#152238; }
+html.light .play-shell .piece-button.ghost { border-color:#dcd4c2; color:#5d6d84; }
+html.light :is(.play-tutorial-card) { background:linear-gradient(120deg,#fff3d6,#eaf4ff); border-color:#e8c97f; }
+html.light :is(.play-level,.play-deck,.play-stats-grid > div) { background:#ffffff; border-color:#e3dccb; color:#152238; }
+html.light .play-level.on { background:#fff8e8; border-color:#d9a43a; box-shadow:0 0 0 2px #f5c45c44; }
+html.light .play-deck em, html.light .starter-unavailable { color:#c0533a; }
+html.light .starter-languages { background:#f1ebde; border-color:#e3dccb; } html.light .starter-language { color:#3d4d66; } html.light .starter-language span { background:#15223812; }
+html.light .starter-color { border-color:#dcd4c2; background:#ffffff; color:#3d4d66; } html.light .starter-color.on { background:#fff3d6; color:#152238; border-color:#d9a43a; }
+html.light .starter-details { background:#ffffff; border-color:#e8c97f; box-shadow:0 10px 26px #1522380f; }
+html.light .starter-details h2 { color:#152238; } html.light .starter-details .starter-leader { color:#3d4d66; }
+html.light .starter-pill { background:#f1ebde; color:#3d4d66; }
+/* /play lobby: the leader carousel and its header keep a dark stage (artwork), the rest of the lobby follows the light theme. */
+html.light .starter-hero { --piece-text:#f7f9fc; color:#f7f9fc; }
+html.light .starter-hero h1 { color:#f7f9fc; }
+html.light .starter-search > span, html.light .starter-opponent { color:#5d6d84; }
+html.light .starter-search input, html.light .starter-opponent select { background:#fffdf8; color:#152238; border-color:#dcd4c2; }
+html.light .starter-carousel { --piece-text:#f7f9fc; }
+html.light .play-collection, html.light .play-shell details summary { color:#5d6d84; }
+html.light .starter-details .starter-card-label, html.light .starter-details figcaption { color:#3d4d66; }
+/* Photo banners keep white text and their translucent buttons. */
+html.light :is(.hm-hero,.hv-hero,.hm-resume) { --piece-text:#f7f9fc; --piece-muted:#dbe7f3; color:#f7f9fc; }
+html.light :is(.hm-hero,.hv-hero) .fx-btn.ghost { background:#ffffff14; color:#fff; border-color:#ffffff40; }
