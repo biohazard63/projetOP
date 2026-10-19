@@ -26,3 +26,11 @@ test('Speed and fast mode only configure presentation duration', () => {
  assert.ok(animationDuration('slow', false) > animationDuration('fast', false))
  assert.equal(animationDuration('slow', true), animationDuration('fast', true))
 })
+test('Collector tiers have their own reveal: alternates shine, SP flash, manga panels, legendary light', () => {
+ const base = { rarity: 'SR', isAltArt: false, isParallel: false, isSpecial: false }
+ const effect = (drawTier: string) => openingEffect({ ...base, drawTier })
+ assert.deepEqual(['ALT', 'LEADER ALT'].map(effect), ['holographic', 'holographic'])
+ assert.deepEqual(['SP CARD', 'WANTED', 'TR'].map(effect), ['secret', 'secret', 'secret'])
+ assert.deepEqual(['MANGA', 'CREW ALT', 'SUPER LEADER'].map(effect), ['manga', 'manga', 'manga'])
+ assert.deepEqual(['SP SILVER', 'SP GOLD', 'MANGA GOLD', 'MANGA RED'].map(effect), ['legendary', 'legendary', 'legendary', 'legendary'])
+})

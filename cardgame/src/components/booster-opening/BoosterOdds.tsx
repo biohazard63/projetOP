@@ -1,7 +1,7 @@
 import type { BoosterCatalogItem } from '@/lib/boosters/types'
 
 const variants: Record<string,string> = {standard:'standard',alt:'alternative',parallel:'parallèle',special:'spéciale',any:'toutes variantes'}
-const tiers: Record<string,string> = {ALT:'Alternative','SP CARD':'SP',TR:'Treasure Rare',MANGA:'Manga','MANGA RED':'Manga red'}
+const tiers: Record<string,string> = {ALT: 'Alternative', 'LEADER ALT': 'Leader alternatif', 'SP CARD': 'SP', WANTED: 'Wanted', TR: 'Treasure Rare', MANGA: 'Manga', 'CREW ALT': 'Équipage', 'SP SILVER': 'SP argent', 'SUPER LEADER': 'Super Leader', 'SP GOLD': 'SP or', 'MANGA GOLD': 'Manga or', 'MANGA RED': 'Manga red'}
 // Rare outcomes read better as "1 in N" than as a tiny percentage.
 const odds = (share:number) => share > 0 && share < .2 ? ` · 1 sur ${Math.round(1/share)}` : ''
 export function BoosterOdds({rules,warnings}:{rules:NonNullable<BoosterCatalogItem['rules']>;warnings:string[]}) {
@@ -20,7 +20,7 @@ export function BoosterOdds({rules,warnings}:{rules:NonNullable<BoosterCatalogIt
       <p className="mt-2">Les taux de variantes sont configurés ; ajouter une illustration ne multiplie pas le poids de son numéro.</p>
     </> : <><ol className="list-inside list-decimal">{rules.slots.map((slot,i)=><li key={i}>{slot.label && <b className="text-slate-200">{slot.label} : </b>}{slot.choices.map(choice=>{const share=choice.weight/slot.choices.reduce((sum,item)=>sum+item.weight,0);return `${tiers[choice.rarity] ?? choice.rarity}${choice.variant!=='any'?` (${variants[choice.variant]})`:''} ${(100*share).toFixed(1)} %${odds(share)}`}).join(' · ')}</li>)}</ol>
       {rules.specialPacks.map(pack=><p key={pack.label}>{pack.label} : {(pack.probability*100).toFixed(1)} % des packs ; composition spéciale remplaçant les slots ci-dessus.</p>)}</>}
-    {rules.label.startsWith('Booster réaliste') && <p className="mt-2">Les boosters sont tirés de displays virtuelles de 24 : chaque display contient exactement 2 alternatives, 7 SR et 8 Leaders ; SEC, SP, Treasure Rare et Manga y sont placés selon leur taux. Acheter à l’unité vous fait avancer dans votre display en cours.</p>}
+    {rules.label.startsWith('Booster réaliste') && <p className="mt-2">Les boosters sont tirés de displays virtuelles de 24 : chaque display contient exactement 2 alternatives, 7 SR et 8 Leaders ; Leaders alternatifs, SEC, SP, Wanted, Treasure Rare, Manga et les autres raretés collector y sont placés selon leur taux. Acheter à l’unité vous fait avancer dans votre display en cours.</p>}
     {warnings.map(warning=><p key={warning} className="mt-2">{warning}</p>)}
   </details>
 }

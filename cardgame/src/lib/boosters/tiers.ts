@@ -1,15 +1,23 @@
 import manifest from './booster-tiers.json'
+import godPacks from './god-packs.json'
 import { normalizeSetCode, rulesSchema, type BoosterRules } from './rules'
 
 // Realistic 12-card packs: standard cards first, alternates only in the last two positions (11 = rare slot,
 // 12 = hit slot). A tier is drawn first, then a number inside it (selection "number"), so the count of
 // illustrations never raises a tier's odds. Game rates of the simulator, set from community box observations
 // (≈ 2 alternates and 5–8 SR per 24-pack display, SP ≈ 1 per case, manga rarer); red manga 1 in 1 440 is a game choice; Bandai publishes no rates.
-export const TIER_RATES_VERSION = 'tiers-2026-10-15b'
-export const DRAW_TIERS = ['C', 'UC', 'R', 'L', 'SR', 'SEC', 'ALT', 'SP CARD', 'TR', 'MANGA', 'MANGA RED'] as const
+// Rarity order of the hand-reviewed families (owner, 2026-10-19), most common first: Leader alternate, SP, Wanted, TR, manga,
+// crew alternate, silver SP, super Leader, gold SP, gold manga, red manga.
+export const TIER_RATES_VERSION = 'tiers-2026-10-19'
+export const DRAW_TIERS = ['C', 'UC', 'R', 'L', 'SR', 'SEC', 'ALT', 'LEADER ALT', 'SP CARD', 'WANTED', 'TR', 'MANGA', 'CREW ALT', 'SP SILVER', 'SUPER LEADER', 'SP GOLD', 'MANGA GOLD', 'MANGA RED'] as const
 export type DrawTier = typeof DRAW_TIERS[number]
-const RARE_SLOT: [DrawTier, number][] = [['L', 1 / 3], ['ALT', 1 / 36]]
-const HIT_SLOT: [DrawTier, number][] = [['SR', 7 / 24], ['SEC', 1 / 36], ['ALT', 1 / 18], ['SP CARD', 1 / 96], ['TR', 1 / 288], ['MANGA', 1 / 288], ['MANGA RED', 1 / 1440]]
+const RARE_SLOT: [DrawTier, number][] = [['L', 1 / 3], ['ALT', 1 / 36], ['LEADER ALT', 1 / 72]]
+const HIT_SLOT: [DrawTier, number][] = [['SR', 7 / 24], ['SEC', 1 / 36], ['ALT', 1 / 18], ['SP CARD', 1 / 96], ['WANTED', 1 / 144], ['TR', 1 / 240], ['MANGA', 1 / 288],
+  ['CREW ALT', 1 / 432], ['SP SILVER', 1 / 576], ['SUPER LEADER', 1 / 864], ['SP GOLD', 1 / 1152], ['MANGA GOLD', 1 / 1296], ['MANGA RED', 1 / 1440]]
+/** Expected copies of a tier per pack, rare and hit slots together (before an absent tier gives its share to the R). */
+export const tierRate = (tier: DrawTier) => [...RARE_SLOT, ...HIT_SLOT].filter(([t]) => t === tier).reduce((sum, [, rate]) => sum + rate, 0)
+/** Chase tiers, most common first; every tier above the standard rarities only appears in positions 11–12. */
+export const CHASE_TIERS: DrawTier[] = DRAW_TIERS.slice(DRAW_TIERS.indexOf('ALT'))
 // Base positions 1 → 10 by product family (EB has no UC; PRB adds rares and a standard SR).
 const BASE: Record<'OP' | 'EB' | 'PRB', [DrawTier, number][]> = {
   OP: [['C', 7], ['UC', 3]],
@@ -55,4 +63,27 @@ export function planDisplay(available: ReadonlySet<DrawTier>, random: () => numb
   const slot = (tiers: DrawTier[]) => shuffle([...tiers, ...Array<DrawTier>(size).fill('R')].slice(0, size))
   const rare = slot([...counts(RARE_SLOT), ...Array<DrawTier>(inRare).fill('ALT')]), hit = slot([...counts(HIT_SLOT), ...Array<DrawTier>(alts - inRare).fill('ALT')])
   return rare.map((r, i) => ({ rare: r, hit: hit[i] }))
+}
+
+// God Packs: 1 eligible booster in 3 000 is an exceptional pack of the product (exact composition in god-packs.json)
+// instead of a normal booster, rolled before the booster is composed. It never costs the display a collector: bought
+// singly it uses no pack of the display; in a display purchase it takes the place of a pack planned without collector.
+export const GOD_PACK_RATE = 1 / 3000
+export type GodPack = { label: string; cards: string[] }
+export function godPack(setCode: string): GodPack | null {
+  const packs = godPacks.packs as Record<string, GodPack>
+  return packs[setCode] ?? Object.entries(packs).find(([code]) => normalizeSetCode(code) === normalizeSetCode(setCode))?.[1] ?? null
+}
+/** The God Pack this booster holds, if any (always one draw of `random`, so the rest of the draw stays reproducible). */
+export function rollGodPack(setCode: string, random: () => number): GodPack | null {
+  const roll = random()
+  const pack = godPack(setCode)
+  return pack && roll < GOD_PACK_RATE ? pack : null
+}
+/** Packs of a planned display a God Pack may replace: those without any collector tier (at most `count` of them). */
+export function godPackSlots(plans: PackPlan[], count: number, random: () => number): number[] {
+  const chase = new Set<DrawTier>(CHASE_TIERS)
+  const free = plans.flatMap((plan, index) => chase.has(plan.rare) || chase.has(plan.hit) ? [] : [index])
+  for (let i = free.length - 1; i > 0; i--) { const j = Math.floor(random() * (i + 1)); [free[i], free[j]] = [free[j], free[i]] }
+  return free.slice(0, count)
 }

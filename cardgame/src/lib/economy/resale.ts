@@ -2,18 +2,26 @@ import type { Prisma, PrismaClient } from '@prisma/client'
 import { currentEconomy } from './settings'
 import { BerryError, inPlayerTransaction, post } from './ledger'
 import manga from '@/lib/boosters/manga-rares.json'
+import prb01 from '@/lib/boosters/product-lists/PRB-01.json'
+import tierManifest from '@/lib/boosters/booster-tiers.json'
+import { CHASE_TIERS } from '@/lib/boosters/tiers'
 import { normalizeRarity } from '@/lib/boosters/rules'
 
 type DB = Prisma.TransactionClient
 const mangaTier = new Map((manga.status === 'validated' ? manga.cards : []).map(c => [(c as { id?: string }).id ?? c.key.replace('::', '_'), c.key.endsWith('::_p3') ? 'MANGA RED' : 'MANGA']))
+// The collector tier each print is drawn under (one identifier per print: added prints have their own).
+const chase = new Set<string>(CHASE_TIERS)
+const drawnTier = new Map(Object.values(tierManifest.sets as Record<string, Record<string, string[]>>).flatMap(tiers => Object.entries(tiers).filter(([tier]) => chase.has(tier)).flatMap(([tier, ids]) => ids.map(id => [id, tier] as const))))
+const prbStandard = new Set(prb01.status === 'validated' ? prb01.cards.filter(c => c.tier === 'STD').map(c => c.id) : [])
 
-/** Resale tier of a card: the manga list first, then its printed rarity, any other alternate illustration being an ALT. */
+/** Resale tier of a card: the collector tier it is drawn under (then the manga list), else its printed rarity, any other alternate illustration being an ALT. */
 export function resaleTier(card: { id: string; rarity: string; isAltArt: boolean; isParallel: boolean }) {
-  const listed = mangaTier.get(card.id)
+  const listed = drawnTier.get(card.id) ?? mangaTier.get(card.id)
   if (listed) return listed
+  if (prbStandard.has(card.id)) return normalizeRarity(card.rarity)
   const rarity = normalizeRarity(card.rarity)
   if (rarity === 'SP CARD' || rarity === 'TR') return rarity
-  if (card.isAltArt || card.isParallel || /_p\d+$/i.test(card.id)) return 'ALT'
+  if (card.isAltArt || card.isParallel || /_p\d+$/i.test(card.id)) return rarity === 'L' ? 'LEADER ALT' : 'ALT'
   return rarity
 }
 

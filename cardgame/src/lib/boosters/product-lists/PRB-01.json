@@ -1,0 +1,1922 @@
+{
+ "product": "PRB-01",
+ "status": "validated",
+ "source": "Listes officielles Bandai du 2026-10-19 : fr.onepiece-cardgame.com/cardlist/?series=622301 (identifiants et images de la base) et en.onepiece-cardgame.com/cardlist/?series=569301 (_rN = réimpression, _pN = parallèle). Correspondance FR→EN par ordre des illustrations et par image ; Manga = réimpressions des Manga d'origine (comparaison d'images) Nami OP01-016_p8 et Kid OP05-074 (fond de manga, vérifié à l'image) : les 10 Manga du God Pack.",
+ "note": "STD = version normale du produit (la réimpression _rN la plus basse, ou la carte sans suffixe) ; ALT = parallèle ; MANGA = parallèle manga. Ces identifiants appartiennent à ce produit seul : la base les a importés avec ses images.",
+ "cards": [
+  {
+   "id": "EB01-006_p1",
+   "rarity": "SR",
+   "tier": "MANGA",
+   "en": "EB01-006_r1"
+  },
+  {
+   "id": "OP01-006_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP01-006_r1"
+  },
+  {
+   "id": "OP01-006_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP01-006_p3"
+  },
+  {
+   "id": "OP01-006_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP01-006_p4"
+  },
+  {
+   "id": "OP01-006_p4",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP01-006_p5"
+  },
+  {
+   "id": "OP01-016_p1",
+   "rarity": "R",
+   "tier": "MANGA",
+   "en": "OP01-016_p8"
+  },
+  {
+   "id": "OP01-024_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP01-024_r1"
+  },
+  {
+   "id": "OP01-024_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP01-024_p3"
+  },
+  {
+   "id": "OP01-029_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP01-029_r1"
+  },
+  {
+   "id": "OP01-029_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP01-029_p2"
+  },
+  {
+   "id": "OP01-029_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP01-029_p3"
+  },
+  {
+   "id": "OP01-033_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP01-033_r1"
+  },
+  {
+   "id": "OP01-033_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP01-033_p3"
+  },
+  {
+   "id": "OP01-033_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP01-033_p4"
+  },
+  {
+   "id": "OP01-033_p4",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP01-033_p5"
+  },
+  {
+   "id": "OP01-041_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP01-041_r1"
+  },
+  {
+   "id": "OP01-041_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP01-041_p3"
+  },
+  {
+   "id": "OP01-041_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP01-041_p4"
+  },
+  {
+   "id": "OP01-041_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP01-041_p5"
+  },
+  {
+   "id": "OP01-047_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP01-047_r1"
+  },
+  {
+   "id": "OP01-047_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP01-047_p4"
+  },
+  {
+   "id": "OP01-051_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP01-051_r1"
+  },
+  {
+   "id": "OP01-051_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP01-051_p4"
+  },
+  {
+   "id": "OP01-052_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP01-052_r1"
+  },
+  {
+   "id": "OP01-052_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP01-052_p3"
+  },
+  {
+   "id": "OP01-052_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP01-052_p4"
+  },
+  {
+   "id": "OP01-070_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP01-070_r1"
+  },
+  {
+   "id": "OP01-070_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP01-070_p4"
+  },
+  {
+   "id": "OP01-078_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP01-078_r1"
+  },
+  {
+   "id": "OP01-078_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP01-078_p4"
+  },
+  {
+   "id": "OP01-120_p1",
+   "rarity": "SEC",
+   "tier": "STD",
+   "en": "OP01-120_r1"
+  },
+  {
+   "id": "OP01-120_p2",
+   "rarity": "SEC",
+   "tier": "ALT",
+   "en": "OP01-120_p5"
+  },
+  {
+   "id": "OP01-120_p3",
+   "rarity": "SEC",
+   "tier": "MANGA",
+   "en": "OP01-120_r2"
+  },
+  {
+   "id": "OP01-121_p1",
+   "rarity": "SEC",
+   "tier": "STD",
+   "en": "OP01-121_r1"
+  },
+  {
+   "id": "OP01-121_p2",
+   "rarity": "SEC",
+   "tier": "ALT",
+   "en": "OP01-121_p4"
+  },
+  {
+   "id": "OP02-004_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP02-004_r1"
+  },
+  {
+   "id": "OP02-004_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP02-004_p4"
+  },
+  {
+   "id": "OP02-013_p1",
+   "rarity": "SR",
+   "tier": "MANGA",
+   "en": "OP02-013_r1"
+  },
+  {
+   "id": "OP02-015_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP02-015_r1"
+  },
+  {
+   "id": "OP02-015_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP02-015_p3"
+  },
+  {
+   "id": "OP02-015_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP02-015_p4"
+  },
+  {
+   "id": "OP02-018_p3",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP02-018_r2"
+  },
+  {
+   "id": "OP02-018_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP02-018_p4"
+  },
+  {
+   "id": "OP02-018_p5",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP02-018_p5"
+  },
+  {
+   "id": "OP02-018_r1",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP02-018_p6"
+  },
+  {
+   "id": "OP02-089_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP02-089_r1"
+  },
+  {
+   "id": "OP02-089_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP02-089_p2"
+  },
+  {
+   "id": "OP02-089_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP02-089_p3"
+  },
+  {
+   "id": "OP02-089_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP02-089_p4"
+  },
+  {
+   "id": "OP02-096_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP02-096_r1"
+  },
+  {
+   "id": "OP02-096_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP02-096_p3"
+  },
+  {
+   "id": "OP02-099_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP02-099_r1"
+  },
+  {
+   "id": "OP02-099_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP02-099_p4"
+  },
+  {
+   "id": "OP02-106_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP02-106_p4"
+  },
+  {
+   "id": "OP02-106_p4",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP02-106_p5"
+  },
+  {
+   "id": "OP02-106_r1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP02-106_r2"
+  },
+  {
+   "id": "OP02-114_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP02-114_r1"
+  },
+  {
+   "id": "OP02-114_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP02-114_p3"
+  },
+  {
+   "id": "OP02-117_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP02-117_p5"
+  },
+  {
+   "id": "OP02-117_p4",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP02-117_p6"
+  },
+  {
+   "id": "OP02-117_r1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP02-117_r2"
+  },
+  {
+   "id": "OP02-121_p1",
+   "rarity": "SEC",
+   "tier": "STD",
+   "en": "OP02-121_r1"
+  },
+  {
+   "id": "OP02-121_p2",
+   "rarity": "SEC",
+   "tier": "ALT",
+   "en": "OP02-121_p3"
+  },
+  {
+   "id": "OP03-003_p3",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP03-003_r2"
+  },
+  {
+   "id": "OP03-003_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP03-003_p4"
+  },
+  {
+   "id": "OP03-003_p5",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP03-003_p5"
+  },
+  {
+   "id": "OP03-003_r1",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP03-003_p6"
+  },
+  {
+   "id": "OP03-055_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "OP03-055_r1"
+  },
+  {
+   "id": "OP03-055_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP03-055_p2"
+  },
+  {
+   "id": "OP03-055_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP03-055_p3"
+  },
+  {
+   "id": "OP03-056_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP03-056_r1"
+  },
+  {
+   "id": "OP03-056_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP03-056_p2"
+  },
+  {
+   "id": "OP03-056_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP03-056_p3"
+  },
+  {
+   "id": "OP03-056_p4",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP03-056_p4"
+  },
+  {
+   "id": "OP03-057_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP03-057_r1"
+  },
+  {
+   "id": "OP03-057_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP03-057_p2"
+  },
+  {
+   "id": "OP03-057_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP03-057_p3"
+  },
+  {
+   "id": "OP03-057_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP03-057_p4"
+  },
+  {
+   "id": "OP03-060_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP03-060_r1"
+  },
+  {
+   "id": "OP03-060_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP03-060_p2"
+  },
+  {
+   "id": "OP03-060_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP03-060_p3"
+  },
+  {
+   "id": "OP03-079_p3",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP03-079_r2"
+  },
+  {
+   "id": "OP03-079_p4",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP03-079_p3"
+  },
+  {
+   "id": "OP03-079_r1",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP03-079_p4"
+  },
+  {
+   "id": "OP03-089_p3",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP03-089_r2"
+  },
+  {
+   "id": "OP03-089_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP03-089_p4"
+  },
+  {
+   "id": "OP03-089_p5",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP03-089_p5"
+  },
+  {
+   "id": "OP03-089_r1",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP03-089_p6"
+  },
+  {
+   "id": "OP03-094_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP03-094_r1"
+  },
+  {
+   "id": "OP03-094_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP03-094_p2"
+  },
+  {
+   "id": "OP03-094_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP03-094_p3"
+  },
+  {
+   "id": "OP03-108_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP03-108_r1"
+  },
+  {
+   "id": "OP03-108_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP03-108_p3"
+  },
+  {
+   "id": "OP03-110_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP03-110_p3"
+  },
+  {
+   "id": "OP03-110_p3",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP03-110_r2"
+  },
+  {
+   "id": "OP03-110_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP03-110_p4"
+  },
+  {
+   "id": "OP03-110_p5",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP03-110_p5"
+  },
+  {
+   "id": "OP03-113_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP03-113_r1"
+  },
+  {
+   "id": "OP03-113_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP03-113_p3"
+  },
+  {
+   "id": "OP03-116_p3",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP03-116_r1"
+  },
+  {
+   "id": "OP03-116_p4",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP03-116_p5"
+  },
+  {
+   "id": "OP03-116_p5",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP03-116_p6"
+  },
+  {
+   "id": "OP03-121_p2",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "OP03-121_r2"
+  },
+  {
+   "id": "OP03-121_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP03-121_p3"
+  },
+  {
+   "id": "OP03-121_p4",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP03-121_p4"
+  },
+  {
+   "id": "OP03-122_p1",
+   "rarity": "SEC",
+   "tier": "MANGA",
+   "en": "OP03-122_r1"
+  },
+  {
+   "id": "OP03-123_p1",
+   "rarity": "SEC",
+   "tier": "STD",
+   "en": "OP03-123_r1"
+  },
+  {
+   "id": "OP03-123_p2",
+   "rarity": "SEC",
+   "tier": "ALT",
+   "en": "OP03-123_p4"
+  },
+  {
+   "id": "OP04-029_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "OP04-029_r1"
+  },
+  {
+   "id": "OP04-029_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP04-029_p2"
+  },
+  {
+   "id": "OP04-029_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP04-029_p3"
+  },
+  {
+   "id": "OP04-031_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP04-031_r1"
+  },
+  {
+   "id": "OP04-031_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP04-031_p3"
+  },
+  {
+   "id": "OP04-032_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP04-032_r1"
+  },
+  {
+   "id": "OP04-032_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP04-032_p2"
+  },
+  {
+   "id": "OP04-032_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP04-032_p3"
+  },
+  {
+   "id": "OP04-036_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "OP04-036_r1"
+  },
+  {
+   "id": "OP04-036_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP04-036_p2"
+  },
+  {
+   "id": "OP04-036_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP04-036_p3"
+  },
+  {
+   "id": "OP04-044_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP04-044_r1"
+  },
+  {
+   "id": "OP04-044_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP04-044_p4"
+  },
+  {
+   "id": "OP04-056_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP04-056_r1"
+  },
+  {
+   "id": "OP04-056_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP04-056_p2"
+  },
+  {
+   "id": "OP04-056_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP04-056_p3"
+  },
+  {
+   "id": "OP04-056_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP04-056_p4"
+  },
+  {
+   "id": "OP04-083_p1",
+   "rarity": "SR",
+   "tier": "MANGA",
+   "en": "OP04-083_r1"
+  },
+  {
+   "id": "OP04-089_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP04-089_r1"
+  },
+  {
+   "id": "OP04-089_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP04-089_p2"
+  },
+  {
+   "id": "OP04-089_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP04-089_p3"
+  },
+  {
+   "id": "OP04-089_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP04-089_p4"
+  },
+  {
+   "id": "OP04-095_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "OP04-095_r1"
+  },
+  {
+   "id": "OP04-095_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP04-095_p2"
+  },
+  {
+   "id": "OP04-095_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP04-095_p3"
+  },
+  {
+   "id": "OP04-100_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP04-100_r1"
+  },
+  {
+   "id": "OP04-100_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP04-100_p3"
+  },
+  {
+   "id": "OP04-100_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP04-100_p4"
+  },
+  {
+   "id": "OP04-100_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP04-100_p5"
+  },
+  {
+   "id": "OP04-104_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP04-104_r1"
+  },
+  {
+   "id": "OP04-104_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP04-104_p3"
+  },
+  {
+   "id": "OP04-112_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP04-112_r1"
+  },
+  {
+   "id": "OP04-112_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP04-112_p3"
+  },
+  {
+   "id": "OP05-006_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP05-006_r1"
+  },
+  {
+   "id": "OP05-006_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP05-006_p3"
+  },
+  {
+   "id": "OP05-007_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP05-007_r1"
+  },
+  {
+   "id": "OP05-007_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP05-007_p3"
+  },
+  {
+   "id": "OP05-010_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP05-010_r1"
+  },
+  {
+   "id": "OP05-010_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP05-010_p2"
+  },
+  {
+   "id": "OP05-010_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP05-010_p3"
+  },
+  {
+   "id": "OP05-015_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP05-015_r1"
+  },
+  {
+   "id": "OP05-015_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-015_p3"
+  },
+  {
+   "id": "OP05-015_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-015_p4"
+  },
+  {
+   "id": "OP05-015_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-015_p5"
+  },
+  {
+   "id": "OP05-034_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP05-034_r1"
+  },
+  {
+   "id": "OP05-034_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-034_p3"
+  },
+  {
+   "id": "OP05-034_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-034_p4"
+  },
+  {
+   "id": "OP05-034_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-034_p5"
+  },
+  {
+   "id": "OP05-043_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP05-043_r1"
+  },
+  {
+   "id": "OP05-043_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP05-043_p3"
+  },
+  {
+   "id": "OP05-057_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP05-057_r1"
+  },
+  {
+   "id": "OP05-057_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-057_p2"
+  },
+  {
+   "id": "OP05-057_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-057_p3"
+  },
+  {
+   "id": "OP05-057_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-057_p4"
+  },
+  {
+   "id": "OP05-069_p1",
+   "rarity": "SR",
+   "tier": "MANGA",
+   "en": "OP05-069_r1"
+  },
+  {
+   "id": "OP05-073_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP05-073_r1"
+  },
+  {
+   "id": "OP05-073_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP05-073_p2"
+  },
+  {
+   "id": "OP05-073_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP05-073_p3"
+  },
+  {
+   "id": "OP05-074_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP05-074_r1"
+  },
+  {
+   "id": "OP05-074_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP05-074_p5"
+  },
+  {
+   "id": "OP05-074_p3",
+   "rarity": "SR",
+   "tier": "MANGA",
+   "en": "OP05-074_r2"
+  },
+  {
+   "id": "OP05-081_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP05-081_r1"
+  },
+  {
+   "id": "OP05-081_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP05-081_p2"
+  },
+  {
+   "id": "OP05-081_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP05-081_p3"
+  },
+  {
+   "id": "OP05-081_p4",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP05-081_p4"
+  },
+  {
+   "id": "OP05-082_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP05-082_r1"
+  },
+  {
+   "id": "OP05-082_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-082_p2"
+  },
+  {
+   "id": "OP05-082_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-082_p3"
+  },
+  {
+   "id": "OP05-082_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-082_p4"
+  },
+  {
+   "id": "OP05-105_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP05-105_r1"
+  },
+  {
+   "id": "OP05-105_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-105_p2"
+  },
+  {
+   "id": "OP05-105_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-105_p3"
+  },
+  {
+   "id": "OP05-105_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-105_p4"
+  },
+  {
+   "id": "OP05-114_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP05-114_r1"
+  },
+  {
+   "id": "OP05-114_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP05-114_p2"
+  },
+  {
+   "id": "OP05-114_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP05-114_p3"
+  },
+  {
+   "id": "OP05-115_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP05-115_r1"
+  },
+  {
+   "id": "OP05-115_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-115_p2"
+  },
+  {
+   "id": "OP05-115_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-115_p3"
+  },
+  {
+   "id": "OP05-115_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP05-115_p4"
+  },
+  {
+   "id": "OP05-117_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP05-117_r1"
+  },
+  {
+   "id": "OP05-117_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP05-117_p2"
+  },
+  {
+   "id": "OP05-117_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP05-117_p3"
+  },
+  {
+   "id": "OP05-117_p4",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP05-117_p4"
+  },
+  {
+   "id": "OP05-118_p1",
+   "rarity": "SEC",
+   "tier": "STD",
+   "en": "OP05-118_r1"
+  },
+  {
+   "id": "OP05-118_p2",
+   "rarity": "SEC",
+   "tier": "ALT",
+   "en": "OP05-118_p3"
+  },
+  {
+   "id": "OP05-119_p2",
+   "rarity": "SEC",
+   "tier": "STD",
+   "en": "OP05-119_r1"
+  },
+  {
+   "id": "OP05-119_p3",
+   "rarity": "SEC",
+   "tier": "ALT",
+   "en": "OP05-119_p4"
+  },
+  {
+   "id": "OP05-119_p4",
+   "rarity": "SEC",
+   "tier": "MANGA",
+   "en": "OP05-119_r2"
+  },
+  {
+   "id": "OP06-003_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP06-003_r1"
+  },
+  {
+   "id": "OP06-003_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP06-003_p2"
+  },
+  {
+   "id": "OP06-003_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP06-003_p3"
+  },
+  {
+   "id": "OP06-023_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP06-023_r1"
+  },
+  {
+   "id": "OP06-023_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP06-023_p2"
+  },
+  {
+   "id": "OP06-023_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP06-023_p3"
+  },
+  {
+   "id": "OP06-023_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP06-023_p4"
+  },
+  {
+   "id": "OP06-035_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP06-035_r1"
+  },
+  {
+   "id": "OP06-035_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP06-035_p3"
+  },
+  {
+   "id": "OP06-036_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP06-036_r1"
+  },
+  {
+   "id": "OP06-036_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP06-036_p2"
+  },
+  {
+   "id": "OP06-036_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP06-036_p3"
+  },
+  {
+   "id": "OP06-036_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP06-036_p4"
+  },
+  {
+   "id": "OP06-038_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP06-038_r1"
+  },
+  {
+   "id": "OP06-038_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP06-038_p2"
+  },
+  {
+   "id": "OP06-038_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP06-038_p3"
+  },
+  {
+   "id": "OP06-056_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP06-056_r1"
+  },
+  {
+   "id": "OP06-056_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP06-056_p2"
+  },
+  {
+   "id": "OP06-056_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP06-056_p3"
+  },
+  {
+   "id": "OP06-060_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "OP06-060_r1"
+  },
+  {
+   "id": "OP06-060_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP06-060_p2"
+  },
+  {
+   "id": "OP06-060_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP06-060_p3"
+  },
+  {
+   "id": "OP06-064_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "OP06-064_r1"
+  },
+  {
+   "id": "OP06-064_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP06-064_p2"
+  },
+  {
+   "id": "OP06-064_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP06-064_p3"
+  },
+  {
+   "id": "OP06-065_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP06-065_r1"
+  },
+  {
+   "id": "OP06-065_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP06-065_p2"
+  },
+  {
+   "id": "OP06-065_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP06-065_p3"
+  },
+  {
+   "id": "OP06-065_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP06-065_p4"
+  },
+  {
+   "id": "OP06-066_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "OP06-066_r1"
+  },
+  {
+   "id": "OP06-066_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP06-066_p2"
+  },
+  {
+   "id": "OP06-066_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP06-066_p3"
+  },
+  {
+   "id": "OP06-067_p1",
+   "rarity": "R",
+   "tier": "STD",
+   "en": "OP06-067_r1"
+  },
+  {
+   "id": "OP06-067_p2",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP06-067_p2"
+  },
+  {
+   "id": "OP06-067_p3",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP06-067_p3"
+  },
+  {
+   "id": "OP06-067_p4",
+   "rarity": "R",
+   "tier": "ALT",
+   "en": "OP06-067_p4"
+  },
+  {
+   "id": "OP06-068_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "OP06-068_r1"
+  },
+  {
+   "id": "OP06-068_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP06-068_p2"
+  },
+  {
+   "id": "OP06-068_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP06-068_p3"
+  },
+  {
+   "id": "OP06-069_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP06-069_r1"
+  },
+  {
+   "id": "OP06-069_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP06-069_p4"
+  },
+  {
+   "id": "OP06-079_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "OP06-079_r1"
+  },
+  {
+   "id": "OP06-079_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP06-079_p2"
+  },
+  {
+   "id": "OP06-079_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP06-079_p3"
+  },
+  {
+   "id": "OP06-079_p4",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "OP06-079_p4"
+  },
+  {
+   "id": "OP06-086_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP06-086_r1"
+  },
+  {
+   "id": "OP06-086_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP06-086_p3"
+  },
+  {
+   "id": "OP06-091_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP06-091_r1"
+  },
+  {
+   "id": "OP06-091_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP06-091_p2"
+  },
+  {
+   "id": "OP06-091_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP06-091_p3"
+  },
+  {
+   "id": "OP06-100_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP06-100_r1"
+  },
+  {
+   "id": "OP06-100_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP06-100_p2"
+  },
+  {
+   "id": "OP06-100_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP06-100_p3"
+  },
+  {
+   "id": "OP06-106_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "OP06-106_r1"
+  },
+  {
+   "id": "OP06-106_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "OP06-106_p3"
+  },
+  {
+   "id": "OP06-110_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP06-110_r1"
+  },
+  {
+   "id": "OP06-110_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP06-110_p3"
+  },
+  {
+   "id": "OP06-110_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP06-110_p4"
+  },
+  {
+   "id": "OP06-114_p1",
+   "rarity": "UC",
+   "tier": "STD",
+   "en": "OP06-114_r1"
+  },
+  {
+   "id": "OP06-114_p2",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP06-114_p2"
+  },
+  {
+   "id": "OP06-114_p3",
+   "rarity": "UC",
+   "tier": "ALT",
+   "en": "OP06-114_p3"
+  },
+  {
+   "id": "OP06-118_p1",
+   "rarity": "SEC",
+   "tier": "MANGA",
+   "en": "OP06-118_r1"
+  },
+  {
+   "id": "P-014",
+   "rarity": "P",
+   "tier": "STD",
+   "en": "P-014_r1"
+  },
+  {
+   "id": "P-014_p1",
+   "rarity": "P",
+   "tier": "ALT",
+   "en": "P-014_p2"
+  },
+  {
+   "id": "P-014_p2",
+   "rarity": "P",
+   "tier": "ALT",
+   "en": "P-014_p3"
+  },
+  {
+   "id": "P-029_p2",
+   "rarity": "P",
+   "tier": "STD",
+   "en": "P-029_r2"
+  },
+  {
+   "id": "P-029_p3",
+   "rarity": "P",
+   "tier": "ALT",
+   "en": "P-029_p3"
+  },
+  {
+   "id": "P-029_p4",
+   "rarity": "P",
+   "tier": "ALT",
+   "en": "P-029_p4"
+  },
+  {
+   "id": "P-053",
+   "rarity": "P",
+   "tier": "STD",
+   "en": "P-053_r1"
+  },
+  {
+   "id": "P-053_p1",
+   "rarity": "P",
+   "tier": "ALT",
+   "en": "P-053_p2"
+  },
+  {
+   "id": "P-053_p2",
+   "rarity": "P",
+   "tier": "ALT",
+   "en": "P-053_p3"
+  },
+  {
+   "id": "P-055",
+   "rarity": "P",
+   "tier": "STD",
+   "en": "P-055_r1"
+  },
+  {
+   "id": "P-055_p1",
+   "rarity": "P",
+   "tier": "ALT",
+   "en": "P-055_p2"
+  },
+  {
+   "id": "P-055_p2",
+   "rarity": "P",
+   "tier": "ALT",
+   "en": "P-055_p3"
+  },
+  {
+   "id": "PRB01-001",
+   "rarity": "L",
+   "tier": "STD",
+   "en": "PRB01-001"
+  },
+  {
+   "id": "PRB01-001_p1",
+   "rarity": "L",
+   "tier": "LEADER ALT",
+   "en": "PRB01-001_p1"
+  },
+  {
+   "id": "ST01-006_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "ST01-006_r1"
+  },
+  {
+   "id": "ST01-006_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST01-006_p6"
+  },
+  {
+   "id": "ST01-006_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST01-006_p7"
+  },
+  {
+   "id": "ST01-006_p4",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST01-006_p8"
+  },
+  {
+   "id": "ST01-014_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "ST01-014_r1"
+  },
+  {
+   "id": "ST01-014_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST01-014_p2"
+  },
+  {
+   "id": "ST01-014_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST01-014_p3"
+  },
+  {
+   "id": "ST02-004_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "ST02-004_r1"
+  },
+  {
+   "id": "ST02-004_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST02-004_p2"
+  },
+  {
+   "id": "ST02-004_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST02-004_p3"
+  },
+  {
+   "id": "ST02-004_p4",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST02-004_p4"
+  },
+  {
+   "id": "ST03-005_p2",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "ST03-005_r2"
+  },
+  {
+   "id": "ST03-005_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST03-005_p4"
+  },
+  {
+   "id": "ST03-005_p4",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST03-005_p5"
+  },
+  {
+   "id": "ST03-008_p2",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "ST03-008_r2"
+  },
+  {
+   "id": "ST03-008_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST03-008_p6"
+  },
+  {
+   "id": "ST03-008_p4",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST03-008_p7"
+  },
+  {
+   "id": "ST03-013_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "ST03-013_r1"
+  },
+  {
+   "id": "ST03-013_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST03-013_p2"
+  },
+  {
+   "id": "ST03-013_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST03-013_p3"
+  },
+  {
+   "id": "ST03-013_p4",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST03-013_p4"
+  },
+  {
+   "id": "ST04-003_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "ST04-003_r1"
+  },
+  {
+   "id": "ST04-003_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "ST04-003_p4"
+  },
+  {
+   "id": "ST04-005_p2",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "ST04-005_r1"
+  },
+  {
+   "id": "ST04-005_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST04-005_p3"
+  },
+  {
+   "id": "ST04-005_p4",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST04-005_p4"
+  },
+  {
+   "id": "ST04-016_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "ST04-016_r1"
+  },
+  {
+   "id": "ST04-016_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST04-016_p2"
+  },
+  {
+   "id": "ST04-016_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST04-016_p3"
+  },
+  {
+   "id": "ST06-010_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "ST06-010_r1"
+  },
+  {
+   "id": "ST06-010_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST06-010_p2"
+  },
+  {
+   "id": "ST06-010_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST06-010_p3"
+  },
+  {
+   "id": "ST06-014_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "ST06-014_r1"
+  },
+  {
+   "id": "ST06-014_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST06-014_p2"
+  },
+  {
+   "id": "ST06-014_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST06-014_p3"
+  },
+  {
+   "id": "ST07-007_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "ST07-007_r1"
+  },
+  {
+   "id": "ST07-007_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST07-007_p2"
+  },
+  {
+   "id": "ST07-007_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST07-007_p3"
+  },
+  {
+   "id": "ST09-014_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "ST09-014_r1"
+  },
+  {
+   "id": "ST09-014_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST09-014_p2"
+  },
+  {
+   "id": "ST09-014_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST09-014_p3"
+  },
+  {
+   "id": "ST10-010_p1",
+   "rarity": "SR",
+   "tier": "STD",
+   "en": "ST10-010_r1"
+  },
+  {
+   "id": "ST10-010_p2",
+   "rarity": "SR",
+   "tier": "ALT",
+   "en": "ST10-010_p4"
+  },
+  {
+   "id": "ST12-014_p1",
+   "rarity": "C",
+   "tier": "STD",
+   "en": "ST12-014_r1"
+  },
+  {
+   "id": "ST12-014_p2",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST12-014_p2"
+  },
+  {
+   "id": "ST12-014_p3",
+   "rarity": "C",
+   "tier": "ALT",
+   "en": "ST12-014_p3"
+  }
+ ]
+}

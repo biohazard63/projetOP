@@ -5,16 +5,27 @@ import Link from 'next/link'
 import { ChevronLeft, ChevronRight, X } from 'lucide-react'
 import { useOpeningPresentation } from '@/components/collector/OpeningPresentation'
 import { useCollectorPreferences } from '@/components/collector/Preferences'
-import { advanceReveal, openingEffect, type RevealState } from '@/lib/boosters/presentation'
+import { LEGENDARY, advanceReveal, openingEffect, type RevealState } from '@/lib/boosters/presentation'
 import type { OpeningResult } from '@/lib/boosters/types'
 import styles from './StackReveal.module.css'
 import { fanImageSizes, revealImageSizes, useCardPreload } from './useCardPreload'
 
 const VARIANT = { alt: 'Alternative', parallel: 'Parallèle', special: 'Spéciale' } as const
-const TIER: Record<string, string> = { ALT: 'Alternative', 'SP CARD': 'SP', TR: 'Treasure Rare', MANGA: 'Manga', 'MANGA RED': 'Manga red' }
+const TIER: Record<string, string> = { ALT: 'Alternative', 'LEADER ALT': 'Leader alternatif', 'SP CARD': 'SP', WANTED: 'Wanted', TR: 'Treasure Rare', MANGA: 'Manga', 'CREW ALT': 'Équipage', 'SP SILVER': 'SP argent', 'SUPER LEADER': 'Super Leader', 'SP GOLD': 'SP or', 'MANGA GOLD': 'Manga or', 'MANGA RED': 'Manga red' }
 // The last two cards (rare slot and hit slot) are turned one by one; the others are dealt at once in a fan.
 const SUSPENSE_CARDS = 2
-const SUSPENSE = new Set(['rare', 'super', 'secret', 'holographic'])
+const SUSPENSE = new Set(['rare', 'super', 'secret', 'holographic', 'manga', 'legendary'])
+const TILT = new Set(['holographic', 'secret', 'super', 'manga', 'legendary'])
+const HINT: Record<string, string> = { manga: 'Des cases de manga se dessinent… touchez pour révéler', legendary: 'Une lumière légendaire s’échappe… touchez pour révéler' }
+// Each collector tier has its own reveal on top of its level: an overlay (rings, coins, stars, speed lines, lightning…)
+// and a stamp. The styles live in StackReveal.module.css under .fx[data-tier=…].
+const STAMP: Record<string, string> = { ALT: '', 'LEADER ALT': 'LEADER', 'SP CARD': 'SP', WANTED: 'WANTED', TR: 'TREASURE', MANGA: 'ドン！', 'CREW ALT': '☠ ÉQUIPAGE', 'SP SILVER': 'SILVER', 'SUPER LEADER': '👑 SUPER LEADER', 'SP GOLD': 'GOLD', 'MANGA GOLD': 'ドドドド', 'MANGA RED': 'ゴゴゴゴ' }
+// Title shown under the card once turned, in the tier's light.
+const TITLE: Record<string, string> = { ALT: 'Alternative', 'LEADER ALT': 'Leader alternatif', 'SP CARD': 'Spéciale', WANTED: 'Avis de recherche', TR: 'Trésor', MANGA: 'Manga', 'CREW ALT': 'Équipage', 'SP SILVER': 'Légendaire · argent', 'SUPER LEADER': 'Super Leader', 'SP GOLD': 'Légendaire · or', 'MANGA GOLD': 'Légendaire · manga or', 'MANGA RED': 'Légendaire · manga red' }
+// God Pack themes: the Demon pack in purple and blood red, the Manga pack in ink and gold.
+const godTheme = (label: string | null | undefined) => /demon/i.test(label ?? '') ? 'demon' : /manga/i.test(label ?? '') ? 'manga' : 'gold'
+const PANELS = new Set(['MANGA', 'SUPER LEADER', 'MANGA GOLD', 'MANGA RED'])
+const VIBRATE: Record<string, number | number[]> = { rare: 20, manga: [40, 60, 40, 60, 120], legendary: [60, 80, 60, 80, 60, 80, 300] }
 
 /**
  * V2 reveal: the cards wait in a pile. The top card glows with the colour of its rarity before it is turned (rare blue,
@@ -25,7 +36,10 @@ const SUSPENSE = new Set(['rare', 'super', 'secret', 'holographic'])
 export default function StackReveal({ opening, revealed, onReveal, onComplete }: { opening: OpeningResult; revealed: number; onReveal: (count: number) => void; onComplete: () => void }) {
   const prefs = useCollectorPreferences()
   const { setCinematic } = useOpeningPresentation()
-  const fanCount = opening.cards.length > SUSPENSE_CARDS ? opening.cards.length - SUSPENSE_CARDS : 0
+  // A God Pack replaces the booster: its own cinematic first, then every card turned one by one, then a recap.
+  const godCards = opening.cards.filter(c => c.godPack), isGodPack = godCards.length > 0
+  const fanCount = !isGodPack && opening.cards.length > SUSPENSE_CARDS ? opening.cards.length - SUSPENSE_CARDS : 0
+  const [godIntro, setGodIntro] = useState(isGodPack && revealed === 0), [godRecap, setGodRecap] = useState(false)
   const [fan, setFan] = useState(revealed < fanCount)
   // The deal starts once the fan images are decoded (or after 2.5 s), otherwise it would play on empty frames.
   const [loaded, setLoaded] = useState(0), [dealReady, setDealReady] = useState(false)
@@ -44,6 +58,8 @@ export default function StackReveal({ opening, revealed, onReveal, onComplete }:
   const gesture = useRef<{ x: number; y: number; moved: boolean } | null>(null), lastUp = useRef(0)
   const card = opening.cards[state.index]
   const effect = card ? openingEffect(card) : 'common'
+  const tone = card?.drawTier ? LEGENDARY[card.drawTier] : undefined, inGodPack = Boolean(card?.godPack)
+  const tier = card?.drawTier && card.drawTier in STAMP ? card.drawTier : undefined
   const motion = prefs.animations && !prefs.reducedEffects
   const speed = prefs.quickOpening ? 150 : prefs.openingSpeed === 'slow' ? 850 : prefs.openingSpeed === 'fast' ? 300 : 550
   useCardPreload(opening.cards, state.index)
@@ -51,9 +67,9 @@ export default function StackReveal({ opening, revealed, onReveal, onComplete }:
 
   function next(direction: -1 | 1 = 1) {
     if (throwing) return
-    if (!state.faceUp) { onReveal(state.index + 1); setState(advanceReveal(state, opening.cards.length)); if (SUSPENSE.has(effect) && navigator.vibrate) try { navigator.vibrate(effect === 'rare' ? 20 : [30, 40, 60]) } catch { /* optional */ } return }
+    if (!state.faceUp) { onReveal(state.index + 1); setState(advanceReveal(state, opening.cards.length)); if (SUSPENSE.has(effect) && navigator.vibrate) try { navigator.vibrate(VIBRATE[effect] ?? [30, 40, 60]) } catch { /* optional */ } return }
     const after = advanceReveal(state, opening.cards.length)
-    if (after.complete) { onComplete(); return }
+    if (after.complete) { if (isGodPack && !godRecap) { setGodRecap(true); return } onComplete(); return }
     if (!motion) { setState(after); return }
     setThrowing(direction); setTilt({ x: 0, y: 0, mx: 50, my: 50 })
     setTimeout(() => { setThrowing(0); setDrag(0); setState(after) }, Math.min(360, speed * .7))
@@ -62,7 +78,7 @@ export default function StackReveal({ opening, revealed, onReveal, onComplete }:
   const onMove = (e: PointerEvent) => {
     const g = gesture.current, box = (e.currentTarget as HTMLElement).getBoundingClientRect()
     if (g) { const dx = e.clientX - g.x; if (Math.abs(dx) > 8) g.moved = true; if (g.moved) setDrag(dx); return }
-    if (state.faceUp && (effect === 'holographic' || effect === 'secret' || effect === 'super') && e.pointerType === 'mouse') {
+    if (state.faceUp && TILT.has(effect) && e.pointerType === 'mouse') {
       const px = (e.clientX - box.left) / box.width, py = (e.clientY - box.top) / box.height
       setTilt({ x: (py - .5) * -14, y: (px - .5) * 18, mx: px * 100, my: py * 100 })
     }
@@ -110,9 +126,30 @@ export default function StackReveal({ opening, revealed, onReveal, onComplete }:
       <button type="button" className={`piece-button ${styles.next}`} onClick={go}>Découvrir les {opening.cards.length - fanCount} dernières cartes</button>
     </section>
   }
+  const theme = godTheme(opening.godPack)
+  const confetti = motion && <div className={styles.godConfetti} aria-hidden="true">{Array.from({ length: 28 }, (_, i) => <i key={i} style={{ '--k': i } as CSSProperties} />)}</div>
+  if (godRecap) return <section className={styles.scene} data-testid="god-pack-recap" data-god="recap" data-pack={theme} data-animations={motion ? 'on' : 'off'} style={{ '--reveal': `${speed}ms` } as CSSProperties}>
+    <div className={styles.godRays} aria-hidden="true" />{confetti}
+    <div className={styles.caption}><p className={styles.godKicker}>Récapitulatif exceptionnel</p><h3 className={styles.godTitle}>{opening.godPack ?? 'God Pack'}</h3>
+      <p className={styles.badges}><span className={styles.new}>{godCards.filter(c => c.isNew).length} nouvelle(s)</span><span className={styles.dup}>{godCards.length} cartes collector</span></p></div>
+    <div className={styles.godGrid}>{godCards.map((c, i) => <figure key={`${opening.id}-god-${i}`} data-effect={openingEffect(c)} data-tone={c.drawTier ? LEGENDARY[c.drawTier] : undefined} style={{ '--i': i } as CSSProperties}>
+      <Image src={c.imageUrl || '/images/card-back.jpg'} alt={c.name} width={180} height={252} sizes="(max-width:640px) 30vw, 150px" /><figcaption>{c.name}{c.isNew ? ' · Nouvelle !' : ''}</figcaption></figure>)}</div>
+    <button type="button" className={`piece-button ${styles.next}`} onClick={onComplete}>Voir le résultat</button>
+  </section>
+  if (godIntro) return <section className={styles.scene} data-testid="god-pack-intro" data-god="intro" data-pack={theme} data-animations={motion ? 'on' : 'off'} style={{ '--reveal': `${speed}ms`, '--n': godCards.length } as CSSProperties}>
+    <div className={styles.godRays} aria-hidden="true" />
+    {motion && <div className={styles.godFlash} aria-hidden="true" />}
+    {motion && <div className={styles.godRings} aria-hidden="true">{[0, 1, 2, 3].map(i => <i key={i} style={{ '--k': i } as CSSProperties} />)}</div>}
+    {confetti}
+    {motion && <div className={styles.burst} aria-hidden="true">{Array.from({ length: 40 }, (_, i) => <i key={i} style={{ '--b': i } as CSSProperties} />)}</div>}
+    <div className={styles.godFan} aria-hidden="true">{godCards.map((c, i) => <span key={i} style={{ '--i': i } as CSSProperties} />)}</div>
+    <div className={styles.godIntro}><p className={styles.godKicker}>Incroyable !</p><h3 className={styles.godTitle}>GOD PACK</h3><p className={styles.godLabel}>{opening.godPack}</p>
+      <p className={styles.prompt}>Ce booster est un paquet exceptionnel de {godCards.length} cartes collector.</p></div>
+    <button type="button" className={`piece-button ${styles.next}`} onClick={() => setGodIntro(false)}>Révéler le God Pack</button>
+  </section>
   const remaining = opening.cards.length - state.index - 1
   const style = { '--reveal': `${speed}ms`, '--drag': `${drag}px`, '--rx': `${tilt.x}deg`, '--ry': `${tilt.y}deg`, '--mx': `${tilt.mx}%`, '--my': `${tilt.my}%` } as CSSProperties
-  return <section className={styles.scene} data-testid="single-card-reveal" data-effect={state.faceUp ? effect : 'common'} data-hint={!state.faceUp && SUSPENSE.has(effect) ? effect : undefined}
+  return <section className={styles.scene} data-testid="single-card-reveal" data-effect={state.faceUp ? effect : 'common'} data-hint={!state.faceUp && SUSPENSE.has(effect) ? effect : undefined} data-tone={tone} data-god={inGodPack ? 'card' : undefined} data-pack={inGodPack ? theme : undefined} data-tier={state.faceUp ? tier : undefined}
     data-animations={motion ? 'on' : 'off'} style={style}>
     <div className={styles.toolbar}>
       <Link className="piece-button secondary !p-2 min-w-11" href={`/boosters?set=${encodeURIComponent(opening.setCode)}`} aria-label="Retour aux boosters"><ChevronLeft size={20} /></Link>
@@ -137,13 +174,19 @@ export default function StackReveal({ opening, revealed, onReveal, onComplete }:
           </span>
         </span>
       </button>
-      {state.faceUp && motion && SUSPENSE.has(effect) && <div className={styles.burst} aria-hidden="true">{Array.from({ length: effect === 'rare' ? 8 : 18 }, (_, i) => <i key={`${state.index}-${i}`} style={{ '--b': i } as CSSProperties} />)}</div>}
+      {state.faceUp && motion && tier && <div key={`fx-${state.index}`} className={styles.fx} data-tier={tier} aria-hidden="true">{Array.from({ length: 16 }, (_, i) => <i key={i} style={{ '--k': i } as CSSProperties} />)}{STAMP[tier] && <b>{STAMP[tier]}</b>}</div>}
+      {state.faceUp && motion && tier && PANELS.has(tier) && <div data-tier={tier} className={styles.panels} aria-hidden="true">{Array.from({ length: 6 }, (_, i) => <i key={`${state.index}-${i}`} style={{ '--k': i } as CSSProperties} />)}</div>}
+      {state.faceUp && motion && (tier || effect === 'legendary') && <div key={`rays-${state.index}`} className={styles.rays} aria-hidden="true" />}
+      {state.faceUp && motion && tier && <div key={`flash-${state.index}`} className={styles.flash} aria-hidden="true" />}
+      {state.faceUp && motion && SUSPENSE.has(effect) && <div className={styles.burst} aria-hidden="true">{Array.from({ length: tier ? 36 : effect === 'rare' ? 8 : 18 }, (_, i) => <i key={`${state.index}-${i}`} style={{ '--b': i } as CSSProperties} />)}</div>}
     </div>
     <div className={styles.caption} aria-live="polite">{state.faceUp ? <>
       <h3>{card.name}</h3>
       <p className={styles.badges}><span className={styles.rarity} data-effect={effect}>{card.rarity}{card.drawTier && TIER[card.drawTier] ? ` · ${TIER[card.drawTier]}` : !card.drawTier && card.drawVariant && card.drawVariant !== 'standard' ? ` · ${VARIANT[card.drawVariant as keyof typeof VARIANT] ?? card.drawVariant}` : ''}</span>
         {card.isNew ? <span className={styles.new}>Nouvelle !</span> : card.isDuplicate ? <span className={styles.dup}>Doublon · {card.quantityBefore} déjà possédée(s)</span> : null}</p>
-    </> : <p className={styles.prompt}>{SUSPENSE.has(effect) ? 'Quelque chose brille… touchez pour révéler' : 'Touchez ou glissez la carte pour la révéler'}</p>}</div>
+      {state.faceUp && tier && <p className={styles.legend} data-tone={tone}>{TITLE[tier]}</p>}
+      {state.faceUp && inGodPack && <p className={styles.godCount}>God Pack · carte {state.index + 1} / {opening.cards.length}</p>}
+    </> : <p className={styles.prompt}>{HINT[effect] ?? (SUSPENSE.has(effect) ? 'Quelque chose brille… touchez pour révéler' : 'Touchez ou glissez la carte pour la révéler')}</p>}</div>
     <button type="button" className={`piece-button ${styles.next}`} onClick={() => next(1)}>{!state.faceUp ? 'Révéler la carte' : state.index + 1 === opening.cards.length ? 'Voir le résultat' : 'Carte suivante'}</button>
   </section>
 }

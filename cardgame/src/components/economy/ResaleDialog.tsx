@@ -10,7 +10,7 @@ type Item = { cardId: string; name: string; code: string; imageUrl: string | nul
 type Preview = { items: Item[]; total: number; copies: number; keepCopies: number }
 // A gateway error (504) answers with an HTML page, not JSON: show a readable message instead of a parse error.
 const readJson = async (r: Response) => r.json().catch(() => ({ error: r.status === 504 ? 'Le serveur a mis trop de temps à répondre, réessayez.' : 'Réponse du serveur illisible, réessayez.' }))
-const TIER: Record<string, string> = { ALT: 'Alternative', 'SP CARD': 'SP', TR: 'Treasure Rare', MANGA: 'Manga', 'MANGA RED': 'Manga red' }
+const TIER: Record<string, string> = { ALT: 'Alternative', 'LEADER ALT': 'Leader alternatif', 'SP CARD': 'SP', WANTED: 'Wanted', TR: 'Treasure Rare', MANGA: 'Manga', 'CREW ALT': 'Équipage', 'SP SILVER': 'SP argent', 'SUPER LEADER': 'Super Leader', 'SP GOLD': 'SP or', 'MANGA GOLD': 'Manga or', 'MANGA RED': 'Manga red' }
 
 /** Sells every copy above what the player keeps (4, or more when a deck uses more), after showing the exact list. */
 export default function ResaleDialog({ open, onOpenChange, onSold }: { open: boolean; onOpenChange: (open: boolean) => void; onSold: () => void }) {
